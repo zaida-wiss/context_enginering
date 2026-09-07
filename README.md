@@ -142,14 +142,27 @@ _ai_guides/
 
 ## 🤖 AI-Instruktioner
 
-**Alla AI-assistenter läser automatiskt dessa filer från `_ai_guides/`:**
+**Alla AI-assistenter läser denna README först och följer instruktionerna nedan:**
 
-- **Frontend-hjälp?** → `_ai_guides/FRONTEND_AI_INSTRUCTIONS.md` (läs denna först!)
-- **Mötes-facilitering?** → `_ai_guides/HOW_TO_RUN_MEETINGS.md`
-- **Osäker vad du vill?** → `_ai_guides/WHAT_CAN_I_HELP_WITH.md`
-- **Vilka AI-instruktioner finns?** → Alla filer i `_ai_guides/`
+### ⚡ FRONTEND-KOD (Viktigast!)
 
-👉 **För frontend-kod:** AI:n **MÅSTE** läsa `FRONTEND_AI_INSTRUCTIONS.md` och referera till mockups
+**REGEL:** Varje gång du frågar om frontend-kod ska AI:
+
+1. ✅ Läsa [`_ai_guides/FRONTEND_AI_INSTRUCTIONS.md`](_ai_guides/FRONTEND_AI_INSTRUCTIONS.md)
+2. ✅ Läsa [`_memory/UI_DESIGN_REFERENCE.md`](_memory/UI_DESIGN_REFERENCE.md)
+3. ✅ Kolla mockupbilderna i `_docs/`:
+   - `01_login.webp`
+   - `02_overview.webp`
+   - `03_target_allocation.webp`
+   - `04_holdings_table.webp`
+4. ✅ **Svara med:** "Enligt mockup XX.webp behöver komponenten..."
+5. ✅ **Länka till:** [`UI_DESIGN_REFERENCE.md`](_memory/UI_DESIGN_REFERENCE.md)
+
+### 📋 Andra AI-Instruktioner
+
+- **Mötes-facilitering?** → [`_ai_guides/HOW_TO_RUN_MEETINGS.md`](_ai_guides/HOW_TO_RUN_MEETINGS.md)
+- **Osäker vad du kan göra?** → [`_ai_guides/WHAT_CAN_I_HELP_WITH.md`](_ai_guides/WHAT_CAN_I_HELP_WITH.md)
+- **Alla AI-instruktioner?** → Alla filer i [`_ai_guides/`](_ai_guides/)
 
 **Fråga:** Vad hände på mötet förra veckan?  
 → Öppna **[Mötesprotokollet](https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit?tab=t.d1i0rhhuog1q)**
@@ -596,17 +609,33 @@ Läs [DEFINITION_OF_DONE.md](DEFINITION_OF_DONE.md) för detaljer.
 
 ## 📚 Linked Resources
 
-**Projektets Arbete:**
-- **Kod & Issues:** https://github.com/chas-challenge-2026/avanza-team1
-- **Canvas:** https://chasacademy.instructure.com/courses/733/assignments
-- **Team Zoom:** https://us06web.zoom.us/j/7491616766
-- **Meeting Notes:** [Google Doc](https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit?tab=t.d1i0rhhuog1q)
+**PROJEKTETS ARBETE (avanza-team1) - RAW LINKS:**
+- Repo README: `https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/README.md`
+- Issues & Backlog: `https://github.com/chas-challenge-2026/avanza-team1/issues`
 
-**Team-Process (denna repo):**
-- **Context Engineering:** https://github.com/zaida-wiss/context_enginering
-- **Alla AI-guides:** [_ai_guides/](_ai_guides/)
-- **Team Memory:** [_memory/](_memory/)
-- **Sprint Tracking:** [_sprint/](_sprint/)
+**PROJECT BOARD (For AI - Try in This Order & Report Source):**
+
+AI ska försöka i denna ordning och **berätta vilken källa den använt:**
+
+1. **First Try:** `https://github.com/orgs/chas-challenge-2026/projects/31/views/1` (GitHub Project Board)
+   - Om den lyckas, säg: "Läst från: GitHub Project Board"
+   
+2. **If Auth Error → Fallback:** `https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669` (Google Sheets backup)
+   - Om den lyckas, säg: "Läst från: Google Sheets backup (GitHub Project Board var otillgänglig)"
+
+**VIKTIGT:** AI måste alltid rapportera vilken källa den använt!
+
+**TEAM-PROCESS (denna repo - context_enginering) - RAW LINKS FÖR AI:**
+- Main README: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md` ← **START HÄR!**
+- Frontend Instructions: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/FRONTEND_AI_INSTRUCTIONS.md`
+- Design Reference: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/UI_DESIGN_REFERENCE.md`
+- Team Standards: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/TEAMSTANDARDS.md`
+- What Can I Help: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/WHAT_CAN_I_HELP_WITH.md`
+
+**ANDRA RESURSER:**
+- Canvas: https://chasacademy.instructure.com/courses/733/assignments
+- Team Zoom: https://us06web.zoom.us/j/7491616766
+- Meeting Notes: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
 
 ---
 
