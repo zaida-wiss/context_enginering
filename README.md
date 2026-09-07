@@ -4,9 +4,10 @@
 
 ---
 
-## 📚 Dokument Guide - Mapp-Struktur
+## 📚 Dokument Guide - Två Repos Samarbete
 
-**Alla dokument är organiserade i 3 mappar för att göra det tydligt vilka som uppdateras varje vecka (AI skriver) vs vilka som är referensmaterial (minne).**
+**Denna repo (`context_enginering`) innehåller teamdokumentation och AI-guider.  
+Projekt-arbetet finns i `avanza-team1`.**
 
 ---
 
@@ -23,13 +24,17 @@ _memory/
 
 👉 Använd dessa filer som referensmaterial när du behöver förstå **bakgrund & principer**.
 
+**📍 För projekt-KONTEXT, läs från avanza-team1-repot:**
+- **Projekt-övergripande kontext:** https://github.com/chas-challenge-2026/avanza-team1/tree/main
+- **Alla filer uppdateras där** (denna repo är enbart för team-process)
+
 ---
 
 ### 📊 `_sprint/` - LEVANDE DOKUMENT (Real-Time Tracking)
-**Uppdateras varje möte. AI läser OCH uppdaterar dessa.**
+**Uppdateras varje möte. AI läser OCH uppdaterar dessa. Finns i denna repo (context_enginering).**
 
 ```
-_sprint/
+context_enginering/_sprint/
 ├── CURRENT_STATUS.md       ← Levande data: Sprint tracking (uppdateras EFTER varje möte)
 ├── RISKS.md                ← Levande data: Risk-register (uppdateras VECKOVIS)
 ├── SCHEDULE.md             ← Plan-data: Sprint-schema & vecko-fokus
@@ -89,25 +94,25 @@ _ai_guides/
 1. **Fråga AI:** "Vad kan du hjälpa mig med?"  
    → Copy-pasta detta i AI (Web-based):
    ```
-   https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/WHAT_CAN_I_HELP_WITH.md
+   https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/WHAT_CAN_I_HELP_WITH.md
    ```
    → Eller läs direkt: **[WHAT_CAN_I_HELP_WITH.md](_ai_guides/WHAT_CAN_I_HELP_WITH.md)**
 
 2. **För Möten - Kopiera Dessa Raw-Länkar Till AI:**
    - **"Kör torsdags-möte":**
      ```
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/AI_TEAMLEADER.md
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/MEETING_THURSDAY.md
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_sprint/CURRENT_STATUS.md
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_sprint/RISKS.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/AI_TEAMLEADER.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_THURSDAY.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/CURRENT_STATUS.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/RISKS.md
      ```
    
    - **"Kör sprintplanering":**
      ```
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/AI_TEAMLEADER.md
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/MEETING_MONDAY.md
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_sprint/CURRENT_STATUS.md
-     https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_sprint/RISKS.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/AI_TEAMLEADER.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_MONDAY.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/CURRENT_STATUS.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/RISKS.md
      ```
 
 3. **Välja Vad Du Vill Göra:**
@@ -130,6 +135,22 @@ _ai_guides/
 **Vad är godkänt (Definition of Done)?**  
 → **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)**
 
+**🎨 UI Design Mockups (För Frontend)?**  
+→ **[_memory/UI_DESIGN_REFERENCE.md](_memory/UI_DESIGN_REFERENCE.md)** + **[_docs/DESIGN_MOCKUPS_README.md](_docs/DESIGN_MOCKUPS_README.md)**
+
+---
+
+## 🤖 AI-Instruktioner
+
+**Alla AI-assistenter läser automatiskt dessa filer från `_ai_guides/`:**
+
+- **Frontend-hjälp?** → `_ai_guides/FRONTEND_AI_INSTRUCTIONS.md` (läs denna först!)
+- **Mötes-facilitering?** → `_ai_guides/HOW_TO_RUN_MEETINGS.md`
+- **Osäker vad du vill?** → `_ai_guides/WHAT_CAN_I_HELP_WITH.md`
+- **Vilka AI-instruktioner finns?** → Alla filer i `_ai_guides/`
+
+👉 **För frontend-kod:** AI:n **MÅSTE** läsa `FRONTEND_AI_INSTRUCTIONS.md` och referera till mockups
+
 **Fråga:** Vad hände på mötet förra veckan?  
 → Öppna **[Mötesprotokollet](https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit?tab=t.d1i0rhhuog1q)**
 
@@ -143,13 +164,13 @@ _ai_guides/
 2. Kopiera denna text:
 ```
 Läs dessa instruktioner:
-https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/AI_TEAMLEADER.md
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/AI_TEAMLEADER.md
 
 Sedan läs denna guide för mötet (välj en):
-- Torsdags-möte: https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/MEETING_THURSDAY.md
-- Sprintplanering: https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/MEETING_MONDAY.md
+- Torsdags-möte: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_THURSDAY.md
+- Sprintplanering: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_MONDAY.md
 
-Sedan kopiera denna data (uppdatera från ditt repo):
+Sedan kopiera denna data (uppdatera från context_enginering-repot):
 [Paste innehållet från: _sprint/CURRENT_STATUS.md]
 [Paste innehållet från: _sprint/RISKS.md]
 
@@ -157,7 +178,7 @@ Nu: Kör mötet!
 ```
 
 3. AI faciliterar mötet
-4. Du copy-pastas sammanfattning tillbaka till filerna
+4. Du copy-pastas sammanfattning tillbaka till filerna i context_enginering-repot
 
 ### **Scenario 2: Du Vill Köra Ett Möte (VS Code - SNABBARE!)**
 
@@ -171,7 +192,7 @@ Nu: Kör mötet!
 
 1. Kopiera denna länk till AI:
 ```
-https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guides/WHAT_CAN_I_HELP_WITH.md
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/WHAT_CAN_I_HELP_WITH.md
 ```
 2. Fråga: "Vad kan du göra?"
 3. AI visar meny med 20+ möjligheter
@@ -188,24 +209,26 @@ https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/_ai_guid
 
 Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är hur du bör agera när du hjälper teamet:
 
-### Grundläggande kontext:
-1. **[PROJEKTKONTEXT.md](PROJEKTKONTEXT.md)** - Kundens behov (Anna), vad vi bygger, MVP-features
-2. **[TEAMSTANDARDS.md](TEAMSTANDARDS.md)** - Kodstandarder, commit-format, Git workflow
-3. **[DEFINITION_OF_DONE.md](DEFINITION_OF_DONE.md)** - Godkänd-krav och acceptance criteria
+### Grundläggande kontext från context_enginering:
+1. **[_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md)** - Kundens behov (Anna), vad vi bygger, MVP-features
+2. **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** - Kodstandarder, commit-format, Git workflow
+3. **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)** - Godkänd-krav och acceptance criteria
 
 ### Ge vägledning utifrån rätt fil:
-- **"Hjälp mig planera sprint"** → [SPRINT_PLANNING.md](SPRINT_PLANNING.md) (steg-för-steg guide)
-- **"Vad är aktuell sprint-status?"** → [CURRENT_STATUS.md](CURRENT_STATUS.md) (tracking)
-- **"Vilka risker finns?"** → [RISKS.md](RISKS.md) (risk-register + mitigations)
-- **"Vilken issue ska jag göra?"** → [BACKLOG.md](BACKLOG.md) (prioriterad backlog)
-- **"Varför gjorde vi det så?"** → [DECISIONS.md](DECISIONS.md) (arkitektur-beslut)
+- **"Hjälp mig planera sprint"** → [_sprint/SPRINT_PLANNING.md](_sprint/SPRINT_PLANNING.md) (steg-för-steg guide)
+- **"Vad är aktuell sprint-status?"** → [_sprint/CURRENT_STATUS.md](_sprint/CURRENT_STATUS.md) (tracking)
+- **"Vilka risker finns?"** → [_sprint/RISKS.md](_sprint/RISKS.md) (risk-register + mitigations)
+- **"Vilken issue ska jag göra?"** → https://github.com/chas-challenge-2026/avanza-team1 (GitHub Project backlog)
+- **"Varför gjorde vi det så?"** → [_memory/DECISIONS.md](_memory/DECISIONS.md) (arkitektur-beslut)
 
 ### Viktiga regler att följa:
-✅ **Commit-format:** `type(scope): message (#ISSUE)` (t.ex. `feat(backend): add portfolio API (#52)`)
+✅ **Commit-format:** `type(scope): message (#ISSUE)` (t.ex. `feat(backend): add portfolio API (#52)`)  
+   → Se **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** för format
 ✅ **Branch naming:** `type/#ISSUE-description` (t.ex. `feature/#52-portfolio-api`)
 ✅ **Code standards:** TypeScript interfaces (FE), SOLID + DI (BE), safe memory (Native)
 ✅ **Pull requests:** Feature branch → PR → review by other team member → merge
-✅ **Definition of Done:** Acceptance criteria, tests, documentation, code review
+✅ **Definition of Done:** Acceptance criteria, tests, documentation, code review  
+   → Se **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)**
 ✅ **NOT:** `console.log()`, `TODO`, `FIXME`, inline styles, mock data i prod-kod
 
 ### När du guidar team-medlemmar:
@@ -223,13 +246,15 @@ Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är
 
 ### 👨‍💻 Backend Developer (Java)
 
+**📍 Kod finns i:** https://github.com/chas-challenge-2026/avanza-team1
+
 1. **Installera:**
    ```bash
    # Prerequisites: Java 21, PostgreSQL 12
    brew install java@21 postgresql
    
    # Clone repo
-   git clone [repo] && cd avanza-team1
+   git clone https://github.com/chas-challenge-2026/avanza-team1.git && cd avanza-team1
    
    # Setup database
    createdb avanza_dev
@@ -242,10 +267,10 @@ Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är
    ```
 
 2. **Första uppgift:**
-   - Läs [PROJEKTKONTEXT.md](PROJEKTKONTEXT.md) - förstå kundproblemet
-   - Läs [BACKLOG.md](BACKLOG.md) - vilka issues är prioriterade?
+   - Läs [_memory/PROJEKTKONTEXT.md i context_enginering](_memory/PROJEKTKONTEXT.md) - förstå kundproblemet
+   - Läs issues på https://github.com/chas-challenge-2026/avanza-team1/issues - vilka är prioriterade?
    - **Start:** Issue #52 (Portfolio Data API) eller #51 (Migrations)
-   - Commit format: `feat(backend): message (#ISSUE)`
+   - Commit format: `feat(backend): message (#ISSUE)` (se [TEAMSTANDARDS](_memory/TEAMSTANDARDS.md))
 
 3. **Testa lokalt:**
    ```bash
@@ -269,22 +294,24 @@ Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är
 
 ### 🎨 Frontend Developer (React)
 
+**📍 Kod finns i:** https://github.com/chas-challenge-2026/avanza-team1
+
 1. **Installera:**
    ```bash
    # Prerequisites: Node 18+
    node --version  # Should be v18+
    
    # Setup
-   cd frontend
+   cd avanza-team1/frontend
    npm install
    npm run dev
    ```
 
 2. **Första uppgift:**
-   - Läs [PROJEKTKONTEXT.md](PROJEKTKONTEXT.md) - förstå Annas problem
-   - Läs [BACKLOG.md](BACKLOG.md)
+   - Läs [_memory/PROJEKTKONTEXT.md i context_enginering](_memory/PROJEKTKONTEXT.md) - förstå Annas problem
+   - Läs issues på https://github.com/chas-challenge-2026/avanza-team1/issues
    - **Start:** Issue #54 (Connect Dashboard to API) eller #55 (Target Allocation UI)
-   - Commit format: `feat(frontend): message (#ISSUE)`
+   - Commit format: `feat(frontend): message (#ISSUE)` (se [TEAMSTANDARDS](_memory/TEAMSTANDARDS.md))
 
 3. **Testa lokalt:**
    ```bash
@@ -304,23 +331,25 @@ Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är
 
 ### 🔧 Native Developer (C++)
 
+**📍 Kod finns i:** https://github.com/chas-challenge-2026/avanza-team1
+
 1. **Installera:**
    ```bash
    # Prerequisites: C++17, CMake, Jansson
    brew install cmake jansson
    
    # Build native module
-   cd native
+   cd avanza-team1/native
    mkdir build && cd build
    cmake ..
    make
    ```
 
 2. **Första uppgift:**
-   - Läs [PROJEKTKONTEXT.md](PROJEKTKONTEXT.md) - förstå FX-requirements
-   - Läs [BACKLOG.md](BACKLOG.md)
+   - Läs [_memory/PROJEKTKONTEXT.md i context_enginering](_memory/PROJEKTKONTEXT.md) - förstå FX-requirements
+   - Läs issues på https://github.com/chas-challenge-2026/avanza-team1/issues
    - **Start:** Issue #56 (FX Conversion) eller #57 (Back-testing)
-   - Commit format: `feat(native): message (#ISSUE)`
+   - Commit format: `feat(native): message (#ISSUE)` (se [TEAMSTANDARDS](_memory/TEAMSTANDARDS.md))
 
 3. **Testa:**
    ```bash
@@ -337,6 +366,8 @@ Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är
 ---
 
 ## 🏗️ System Architecture
+
+**📍 Detaljerad arkitektur finns i:** https://github.com/chas-challenge-2026/avanza-team1/blob/main/README.md
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -457,7 +488,9 @@ avanza-team1/
 
 ---
 
-## 🔄 Git Workflow
+## 🔄 Git Workflow (i avanza-team1-repot)
+
+**📍 Denna information gäller för:** https://github.com/chas-challenge-2026/avanza-team1
 
 ### Branches
 - **main** = production (stable, tested)
@@ -476,6 +509,8 @@ Examples:
 - docs(all): update README architecture (#62)
 ```
 
+Se **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** för full detaljer.
+
 ### PR Process
 1. Create feature branch: `git checkout -b feature/#52-portfolio-api`
 2. Commit with format above
@@ -488,27 +523,29 @@ Examples:
 
 ---
 
-## 🧪 Testing
+## 🧪 Testing (i avanza-team1-repot)
+
+**📍 Run tests i:** https://github.com/chas-challenge-2026/avanza-team1
 
 ### Run Tests
 
 **Backend (Java):**
 ```bash
-cd backend
+cd avanza-team1/backend
 mvn test                  # All tests
 mvn test -Dtest=UserServiceTest  # Single test
 ```
 
 **Frontend (React):**
 ```bash
-cd frontend
+cd avanza-team1/frontend
 npm test                  # Watch mode
 npm run test:ci          # CI mode
 ```
 
 **Native (C++):**
 ```bash
-cd native
+cd avanza-team1/native
 mkdir build && cd build
 cmake ..
 make test
@@ -559,10 +596,17 @@ Läs [DEFINITION_OF_DONE.md](DEFINITION_OF_DONE.md) för detaljer.
 
 ## 📚 Linked Resources
 
-- **GitHub Repository:** https://github.com/chas-challenge-2026/avanza-team1
+**Projektets Arbete:**
+- **Kod & Issues:** https://github.com/chas-challenge-2026/avanza-team1
 - **Canvas:** https://chasacademy.instructure.com/courses/733/assignments
 - **Team Zoom:** https://us06web.zoom.us/j/7491616766
 - **Meeting Notes:** [Google Doc](https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit?tab=t.d1i0rhhuog1q)
+
+**Team-Process (denna repo):**
+- **Context Engineering:** https://github.com/zaida-wiss/context_enginering
+- **Alla AI-guides:** [_ai_guides/](_ai_guides/)
+- **Team Memory:** [_memory/](_memory/)
+- **Sprint Tracking:** [_sprint/](_sprint/)
 
 ---
 
@@ -595,9 +639,27 @@ c1cae3b Merge pull request #51 from Refactor/Move-controller-logic-to-service
 
 ---
 
-**Senast uppdaterad:** 2026-09-04  
-**Ansvarig:** Team 1 - Avanza Portföljhälsa  
-**Version:** v1 (MVP)
+---
 
-**Start här → [PROJEKTKONTEXT.md](PROJEKTKONTEXT.md)**
+## 📚 TWO-REPO STRUCTURE SUMMARY
+
+| Repo | Innehål | Ansvar |
+|------|---------|--------|
+| **context_enginering** | Team-process, AI-guides, minnesdokument, sprint-tracking | Team process & documentation |
+| **avanza-team1** | Projektets kod, issues, GitHub Project, commit history | Utveckling & release |
+
+**Integration:**
+- ✅ Alla AI-guides pekar till context_enginering
+- ✅ Alla projektöversikter pekar till avanza-team1
+- ✅ Kod-standarder dokumenterade här, tillämpade där
+- ✅ Sprint-status sparas här, issues driven av Project Board där
+
+---
+
+**Senast uppdaterad:** 2026-09-07  
+**Repos:** 
+- Team Process: https://github.com/zaida-wiss/context_enginering
+- Projekt Kod: https://github.com/chas-challenge-2026/avanza-team1
+
+**Start här → [_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md)**
 

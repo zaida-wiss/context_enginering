@@ -102,6 +102,10 @@ Måste dokumentera:
 ## 🎯 Kodkvalitet Per Lager
 
 ### Frontend (React + TypeScript)
+
+**📍 Använd design-mockups som guide:** Se [UI_DESIGN_REFERENCE.md](UI_DESIGN_REFERENCE.md) för layout & komponenter
+
+- [ ] **Komponenter matchar mockups:** LoginForm, PortfolioOverview, TargetAllocationForm, HoldingsTable
 - [ ] Alla komponenter har TypeScript-interfaces för props
 - [ ] Alla funktioner har explicit return types (`JSX.Element`, `string`, etc.)
 - [ ] CSS är i `.module.css`-filer (en per komponent)

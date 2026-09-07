@@ -147,10 +147,14 @@ Kunden (Anna) har många sparformer men saknar överblick.
 Huvudproblemet: Hon vet inte att hennes portfölj driftat från 60/40 till 75/25.
 Vi behöver visa henne detta tydligt utan att göra det för komplicerat.
 
-Använd denna kontext från docs/team-standards-branchen:
-- PROJEKTKONTEXT.md (denna fil)
-- DEFINITION_OF_DONE.md (vad som krävs)
-- TEAMSTANDARDS.md (teamstandards)"
+Använd denna kontext från context_enginering-repot:
+- _memory/PROJEKTKONTEXT.md (denna fil)
+- _memory/DEFINITION_OF_DONE.md (vad som krävs)
+- _memory/TEAMSTANDARDS.md (teamstandards)
+- _sprint/CURRENT_STATUS.md (sprint status)
+- _sprint/RISKS.md (risk register)
+
+Projekt-kod finns på: https://github.com/chas-challenge-2026/avanza-team1"
 ```
 
 Med denna kontext ger AI mycket bättre vägledning på:

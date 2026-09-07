@@ -198,6 +198,33 @@ AI: Förbered dig för möte!
 
 ---
 
+## 🎨 FRONTEND-KOD HJÄLP
+
+### "Hjälp Mig Bygga [LoginForm/PortfolioOverview/etc]"
+```
+Du: "Hjälp mig bygga LoginForm"
+
+AI: (MÅSTE göra detta)
+   1. Läser FRONTEND_AI_INSTRUCTIONS.md
+   2. Läser UI_DESIGN_REFERENCE.md
+   3. Kollar mockup 01_login.webp
+   4. Baserar svaret på mockup-specen
+   5. Säger: "Enligt mockup 01_login.webp behöver komponenten..."
+   6. Ger TypeScript + React kod
+   7. Länkar till full spec
+
+AI: Svar innehåler:
+   ✅ "Enligt mockup XX.webp..."
+   ✅ Design-requirements från mockup
+   ✅ React + TypeScript kod
+   ✅ CSS modules (en per komponent)
+   ✅ Länk till UI_DESIGN_REFERENCE.md
+```
+
+**Viktigt:** AI ska ALLTID läsa `FRONTEND_AI_INSTRUCTIONS.md` och mockups för frontend-frågor!
+
+---
+
 ## 📚 GUIDER & INSTRUKTIONER
 
 ### "Hur Kör Jag Ett Möte?"

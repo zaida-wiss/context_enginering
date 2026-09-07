@@ -16,15 +16,19 @@ Det här projekt-repot innehåller tre viktiga filer för teamet:
 
 **Använd denna länk när du delar med AI-agenter:**
 ```
-https://github.com/chas-challenge-2026/avanza-team1/tree/docs/team-standards
+https://github.com/zaida-wiss/context_enginering
 ```
 
 **Instruera AI så här:**
 ```
-"Läs från denna GitHub-branch (docs/team-standards) för kontext:
-- TEAMSTANDARDS.md (teamstandards)
-- PROJEKTKONTEXT.md (vad vi bygger)  
-- DEFINITION_OF_DONE.md (godkänd-krav)
+"Läs från context_enginering-repot för kontext:
+- _memory/TEAMSTANDARDS.md (teamstandards)
+- _memory/PROJEKTKONTEXT.md (vad vi bygger)  
+- _memory/DEFINITION_OF_DONE.md (godkänd-krav)
+
+Och projekt-status från:
+- _sprint/CURRENT_STATUS.md (sprint tracking)
+- _sprint/RISKS.md (risk register)
 
 Använd denna kontext när du ger vägledning om kod, arkitektur och prioriteringar."
 ```
