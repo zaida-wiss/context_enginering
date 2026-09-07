@@ -612,25 +612,31 @@ Läs [DEFINITION_OF_DONE.md](DEFINITION_OF_DONE.md) för detaljer.
 **PROJEKTETS ARBETE (avanza-team1) - RAW LINKS:**
 - Repo README: `https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/README.md`
 - Issues & Backlog: `https://github.com/chas-challenge-2026/avanza-team1/issues`
+- **Open PRs:** `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Aopen+is%3Apr`
+- **Closed/Merged PRs:** `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed`
 
-**PROJECT BOARD (For AI - Try in This Order & Report Source):**
+**PROJECT BOARD - Käll-Prioritering för AI:**
 
-AI ska försöka i denna ordning och **berätta vilken källa den använt:**
+AI ska följa denna ordning EXAKT och **ALLTID berätta vilken källa:**
 
-1. **First Try:** `https://github.com/orgs/chas-challenge-2026/projects/31/views/1` (GitHub Project Board)
-   - Om den lyckas, säg: "Läst från: GitHub Project Board"
-   
-2. **If Auth Error → Fallback:** `https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669` (Google Sheets backup)
-   - Om den lyckas, säg: "Läst från: Google Sheets backup (GitHub Project Board var otillgänglig)"
+1. **PRIMÄR:** GitHub Project Board
+   - `https://github.com/orgs/chas-challenge-2026/projects/31/views/1`
+   - Om lyckas, säg: "Läst från: GitHub Project Board"
 
-**VIKTIGT:** AI måste alltid rapportera vilken källa den använt!
+2. **PRIMÄR FALLBACK:** Google Sheets Project Board
+   - `https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669`
+   - Om GitHub misslyckas, säg: "Läst från: Google Sheets (GitHub Project Board var otillgänglig)"
+
+**⚠️ VIKTIGASTE REGELN:** AI måste ALLTID rapportera vilken källa den använt!
 
 **TEAM-PROCESS (denna repo - context_enginering) - RAW LINKS FÖR AI:**
 - Main README: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md` ← **START HÄR!**
+- 🎓 Pedagogical Guidance (LÄSA FÖRST!): `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PEDAGOGICAL_GUIDANCE.md`
 - Frontend Instructions: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/FRONTEND_AI_INSTRUCTIONS.md`
 - Design Reference: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/UI_DESIGN_REFERENCE.md`
 - Team Standards: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/TEAMSTANDARDS.md`
 - What Can I Help: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/WHAT_CAN_I_HELP_WITH.md`
+- PR Updates (Fallback): `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PR_UPDATES.md`
 
 **ANDRA RESURSER:**
 - Canvas: https://chasacademy.instructure.com/courses/733/assignments

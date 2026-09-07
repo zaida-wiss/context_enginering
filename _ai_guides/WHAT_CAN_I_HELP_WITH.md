@@ -81,18 +81,64 @@ Du är ready att möte!
 
 ## 📝 DOKUMENTATION & STATUS
 
-### "Ge Mig En Status-Rapport"
+### "Vilka Issues Är I Progress?" (ELLER "Vad Jobbar Teamet På?")
+```
+Du: "Vilka issues är I Progress?"
+
+AI: (MÅSTE följa denna prioritering)
+
+PRIMÄR KÄLLA - GitHub Project Board:
+   1. ✅ Läser: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+
+PRIMÄR FALLBACK - Google Sheets:
+   2. Om GitHub misslyckas → Läser: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
+
+PRESENTERA:
+   3. Lista issues per status:
+      - 🟢 To Do
+      - 🟡 In Progress (PRIORITET)
+      - ✅ Done
+
+VIKTIGASTE:
+   4. ⚠️ Berätta källa: "Läst från: GitHub" eller "Läst från: Google Sheets"
+```
+
+---
+
+### "Ge Mig En Status-Rapport" (ELLER "Vad är projektets status?")
 ```
 Du: "Status-rapport denna vecka"
-AI: Läser git log
-AI: Läser CURRENT_STATUS.md
-AI: Läser RISKS.md
-AI: Presenterar:
-   - Completed issues denna vecka
-   - WIP issues & progress
-   - Blockers & status
-   - Risk-uppdateringar
-   - Plan för nästa vecka
+
+AI: (MÅSTE följa denna prioritering EXAKT)
+
+PRIMÄR KÄLLA - GitHub:
+   1. ✅ Läser CURRENT_STATUS.md
+   2. ✅ Läser RISKS.md
+   3. ✅ Läser Open PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Aopen+is%3Apr
+   4. ✅ Läser Closed/Merged PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed
+
+PRIMÄR FALLBACK - Google Sheets:
+   5. Om GitHub inte läses → Läser Google Sheets Project Board: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
+   6. Om GitHub PRs inte läses → Läser Google Sheets PR Status: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=743460023#gid=743460023
+
+SEKUNDÄR FALLBACK:
+   7. Om allt ovan misslyckas → Läser PR_UPDATES.md
+
+PRESENTERA:
+   8. Presenterar:
+      - Completed issues denna vecka
+      - WIP issues & progress
+      - 🟢 Open PRs + status
+      - ✅ Recently merged PRs
+      - Blockers & status
+      - Risk-uppdateringar
+      - Plan för nästa vecka
+
+VIKTIGT - MÅSTE ALLTID GÖRA:
+   9. ⚠️ BERÄTTA EXAKT vilken källa du använt för VARJE SEKTION:
+      "Projekt Status: Läst från GitHub"
+      "PRs: Läst från Google Sheets (GitHub var otillgänglig)"
+      etc.
 ```
 
 ### "Uppdatera Dokumenten"
