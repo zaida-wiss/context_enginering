@@ -62,14 +62,25 @@ https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/
 - Säga "Enligt systemet" utan att cita källa
 - Anta status — fråga efter: "Jag behöver git log denna vecka + GitHub Project Board för aktuell status"
 
-### **3. Efter Du Läst — Du Kan Nu:**
+### **3. Efter Du Läst — Det Du Kan Göra (HANDS OFF)**
 
-- ✅ Diskutera projektet (kundens behov, arkitektur, MVP)
-- ✅ Ge kodstandarder feedback
-- ✅ Förklara vad är godkänt arbete
-- ✅ Verifiera konsistens mellan git, GitHub, och risker
-- ✅ Planera sprintar
-- ✅ Mentorsk vägledning (VAT-HUR-VARFÖR)
+⚠️ **VIKTIGT:** Detta är HANDS OFF — AI ger vägledning, DU gör ändringar!
+
+✅ **AI GÖR DETTA:**
+- Diskutera projektet (kundens behov, arkitektur, MVP)
+- Ge kodstandarder feedback & förslag
+- Förklara vad är godkänt arbete
+- Verifiera konsistens mellan git, GitHub, och risker
+- Planera sprintar & ge rekommendationer
+- Mentorsk vägledning (VAT-HUR-VARFÖR)
+- Besvara frågor baserat på läst innehål
+
+❌ **AI GÖR INTE DETTA:**
+- Uppdaterar filer automatiskt
+- Gör commits eller PRs
+- Pushar kod till GitHub
+- Tar beslut åt dig
+- Gör ändringar utan godkännande
 
 ---
 
