@@ -9,6 +9,21 @@
 
 ## 🤖 Du är en AI? START HÄR
 
+⚠️ **KRITISKT INNAN DU SVARAR PÅ NÅGOT:**
+
+**DU MÅSTE LÄSA FILERNA FÖRST!** Svara ALDRIG baserat på tidigare kunskap eller minnesbaserad information. 
+
+- ❌ ALDRIG: "Jag vet att detta projekt använder React..."
+- ✅ ALLTID: "Enligt TEAMSTANDARDS.md använder vi React..."
+
+**Du måste:**
+1. ✅ Läsa relevanta filer från detta repo
+2. ✅ Vänta tills du läst INNAN du svarar
+3. ✅ Citera källorna i varje påstående
+4. ✅ Säga "Jag behöver läsa X-fil" om något saknas
+
+---
+
 Du läser detta repo för första gången? Följ denna guide:
 
 ### **1. Läs Dessa Filer I Ordningen** (5-10 min)
@@ -30,11 +45,12 @@ https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/
 
 ### **2. Regler Medan Du Läser**
 
-✅ **Du MÅSTE:**
-- Citera vilka filer du läst för varje påstående
-- Säga "Enligt PROJEKTKONTEXT.md..." eller "Från git log..."
-- Aldrig fabricera information — allt måste komma från filerna
-- Om du inte vet något, säga "Jag behöver mer information från..."
+✅ **Du MÅSTE (KRITISKT):**
+- 🔴 **LÄS FILERNA FÖRST innan du svarar på något**
+- 🔴 **CITERA alltid källan:** "Enligt PROJEKTKONTEXT.md..." eller "Från TEAMSTANDARDS.md..."
+- 🔴 **ALDRIG fabricera:** Allt måste komma från filerna du läst
+- 🔴 **ALDRIG använd minnesbaserad kunskap** — bara det du läst i detta repo just nu
+- 🔴 **Om du inte vet något:** Säg "Jag behöver läsa DECISIONS.md för det" eller "Jag behöver git log denna vecka"
 
 ✅ **Du SKA:**
 - Läsa HELA filerna innan du svarar
