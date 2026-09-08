@@ -144,6 +144,16 @@ _ai_guides/
 
 **Alla AI-assistenter läser denna README först och följer instruktionerna nedan:**
 
+### 🎫 ISSUES - Presentationsformat
+
+**REGEL:** När AI presenterar issues (nya eller uppdateringar), ALLTID tabellformat:
+
+```
+Title | Body | Assignees | Status | Priority | Labels | Estimate
+```
+
+Se `_ai_guides/WHAT_CAN_I_HELP_WITH.md` för exempel.
+
 ### ⚡ FRONTEND-KOD (Viktigast!)
 
 **REGEL:** Varje gång du frågar om frontend-kod ska AI:
@@ -638,10 +648,14 @@ AI ska följa denna ordning EXAKT och **ALLTID berätta vilken källa:**
 - What Can I Help: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/WHAT_CAN_I_HELP_WITH.md`
 - PR Updates (Fallback): `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PR_UPDATES.md`
 
+**MÖTESPROTOKOLLET (Primär källa för möten) - RAW LÄNK FÖR AI:**
+- TXT (för AI): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+- PDF (för läsning): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf`
+- HTML (original): https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
+
 **ANDRA RESURSER:**
 - Canvas: https://chasacademy.instructure.com/courses/733/assignments
 - Team Zoom: https://us06web.zoom.us/j/7491616766
-- Meeting Notes: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
 
 ---
 

@@ -4,6 +4,43 @@
 
 ---
 
+## 📝 MÖTESPROTOKOLLET - Primär Källa
+
+**FÖRE ALLA MÖTES-FRÅGOR - LÄSA FÖRST:**
+
+Mötesprotokollet är **PRIMÄR källa** för:
+- Vad diskuterades på mötet?
+- Vilka beslut togs?
+- Vad är action items?
+- Vad är nästa möte?
+
+**Raw-länk för AI:**
+- TXT: `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+
+**FORMAT I MÖTESPROTOKOLLET:**
+```
+I = Information (bara info, ingen åtgärd)
+B = Beslutdiskussion (beslut togs här)
+```
+
+**Exempel ur protokoll:**
+```
+I: Backend-API är 80% klar
+B: BESLUT - Vi pausar FX-optimering tills Oct 1
+I: CTO feedback från Sep 3 är insamlad
+B: BESLUT - Frontend prioriteras till Sep 20
+```
+
+**AI ska:**
+1. Läsa mötesprotokollet
+2. Identifiera B = Beslut (VIKTIGA!)
+3. Identifiera I = Information (kontext)
+4. Rapportera vilka beslut som togs
+
+**Instruktion:** Läs protokollet INNAN du svarar på frågor om möten eller action items!
+
+---
+
 ## 🎯 MÖTEN - Facilitering & Planering
 
 ### 1. Sprintmöten (Hela Teamet)
@@ -241,6 +278,29 @@ AI: Listar diskussions-punkter
 AI: Visar tid per punkt
 AI: Förbered dig för möte!
 ```
+
+---
+
+## 🎫 ISSUES - Format & Presentation
+
+**VIKTIGT:** När du frågar om nya issues eller uppdateringar - presentera i denna tabellformat:
+
+```
+Title | Body | Assignees | Status | Priority | Labels | Estimate
+------|------|-----------|--------|----------|--------|----------
+feat(frontend): Add LoginForm | Implementera inloggnings-form med TypeScript. Se UI_DESIGN_REFERENCE.md mockup 01_login.webp | @developer-name | To Do | High | frontend, feature, #26 | 8h
+```
+
+**Kolumner (i denna ordning):**
+1. **Title** - Issue-titel (format: `type(scope): message`)
+2. **Body** - Beskrivning av vad som ska göras
+3. **Assignees** - Vem jobbar på det (@username)
+4. **Status** - To Do / In Progress / In Review / Done
+5. **Priority** - Critical / High / Medium / Low
+6. **Labels** - Tags (comma-separated, inkludera GitHub-issue #nummer)
+7. **Estimate** - Tidsuppskattning (4h, 8h, 16h, 1d, etc.)
+
+**AI ska presentera issues i denna tabell varje gång!**
 
 ---
 
