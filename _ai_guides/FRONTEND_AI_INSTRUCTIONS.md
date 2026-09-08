@@ -18,6 +18,21 @@ Läs denna **varje gång** användaren frågar om frontend-kod.
 
 ---
 
+## 📘 TypeScript är Mandatory
+
+**REGEL: Alla kodexempel MÅSTE vara TypeScript**
+
+- ✅ Explicit types på all kod
+- ✅ Interfaces för all data
+- ✅ Enums för constants
+- ✅ Generics där relevant
+- ✅ Strict mode enabled
+- ❌ ALDRIG `any` types
+- ❌ ALDRIG JavaScript-only
+- ❌ ALDRIG lösa typer
+
+---
+
 ## 🎯 Frontend-Komponenter & Mockups
 
 | Komponent | Mockup-Fil | Vad Den Visar |

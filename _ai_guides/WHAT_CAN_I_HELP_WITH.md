@@ -148,23 +148,25 @@ Du: "Status-rapport denna vecka"
 
 AI: (MÅSTE följa denna prioritering EXAKT)
 
-PRIMÄR KÄLLA - GitHub:
-   1. ✅ Läser CURRENT_STATUS.md
-   2. ✅ Läser RISKS.md
-   3. ✅ Läser Open PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Aopen+is%3Apr
-   4. ✅ Läser Closed/Merged PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed
+PRIMÄR KÄLLA - GitHub Project Board:
+   1. ✅ Läser GitHub Project Board: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+   2. ✅ Läser Open PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Aopen+is%3Apr
+   3. ✅ Läser Closed/Merged PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed
+
+PRIMÄR KÄLLA - Google Sheets (Risker & Assets):
+   4. ✅ Läser Risker: `https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285`
+   5. ✅ Läser Assets: `https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349`
 
 PRIMÄR FALLBACK - Google Sheets:
-   5. Om GitHub inte läses → Läser Google Sheets Project Board: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
-   6. Om GitHub PRs inte läses → Läser Google Sheets PR Status: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=743460023#gid=743460023
+   5. Om GitHub misslyckas → Läser Google Sheets Project Board: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
+   6. Om GitHub PRs misslyckas → Läser Google Sheets PR Status: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=743460023#gid=743460023
 
 SEKUNDÄR FALLBACK:
-   7. Om allt ovan misslyckas → Läser PR_UPDATES.md
+   7. Om allt misslyckas → Läser PR_UPDATES.md
 
 PRESENTERA:
    8. Presenterar:
-      - Completed issues denna vecka
-      - WIP issues & progress
+      - Issues I Progress (från Project Board)
       - 🟢 Open PRs + status
       - ✅ Recently merged PRs
       - Blockers & status
@@ -243,6 +245,60 @@ AI: Presenterar:
    - Deadline för varje risk
 ```
 
+### "Ge Mig Risk Status Presentation" (Nuläge på Risker)
+```
+Du: "Ge mig risk status presentation" 
+    ELLER "Risk-rapport denna vecka"
+    ELLER "Hur ser det ut med risker?"
+
+AI: (MÅSTE följa denna prioritering)
+
+PRIMÄR KÄLLA - Google Sheets:
+   1. ✅ Läser Risker: https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285
+   2. ✅ Läser Assets: https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349
+
+PRESENTERA (i denna ordning):
+   3. Executive Summary (1-2 mening):
+      - Antal CRITICAL/HIGH risker
+      - Antal mitigations pågår
+      - Största hot denna vecka
+
+   4. Risk Status Tabell (Google Sheets format):
+      Asset / system | Category | Risk | Status | Risk level | Mitigation | Owner | Deadline
+      
+   5. Risker Efter Status:
+      - 🔴 CRITICAL risker (lista alla)
+      - 🟠 HIGH risker (lista alla)
+      - 🟡 MEDIUM risker (lista alla)
+      
+   6. Mitigations i Progress:
+      - Vad jobbar vi på?
+      - Framsteg denna vecka?
+      - Blockers?
+      
+   7. Nästa Steg:
+      - Vad måste vi adressera denna vecka?
+      - Vilka risker närmar sig deadline?
+      - Nya risker som behöver dokumenteras?
+
+VIKTIGT:
+   ⚠️ BERÄTTA vilken källa: "Läst från: Google Sheets Risker"
+   ✅ Presentera i tabellformat (klar för copy-pasta)
+   ✅ Fokusera på CRITICAL/HIGH (ignorera LOW)
+   
+VERIFIKATION MOT NULÄGET:
+   🔍 För varje risk - stämma av:
+   - Risk säger "Mitigated" → Verifiera: Finns commits för denna mitigation? (kolla git)
+   - Risk säger "In Progress" → Verifiera: Pågår arbetet? Är det mergat?
+   - Risk säger "Open" → Verifiera: Är detta fortfarande en hot? Eller redan löst?
+   - 🚨 Mismatch → FLAGGA: "⚠️ Risk #XX verkar löst men status uppdaterad i Google Sheets?"
+   
+   För varje asset:
+   - Asset säger "Active" → Verifiera: Finns den fortfarande i koden?
+   - Asset säger "Deprecated" → Verifiera: Är den verkligen borttagen?
+   - 🚨 Mismatch → FLAGGA: "⚠️ Asset #XX status stämmer inte med nuläget"
+```
+
 ### "Uppdatera Risk Register"
 ```
 Du: "Ny risk: Back-testing är långsam"
@@ -255,6 +311,171 @@ AI: Uppdaterar automatiskt (VS Code)
 ---
 
 ## 💬 MÖTES-SUPPORT
+
+### "Ge Mig Issues Nuläge Presentation" (Mötes-Format)
+```
+Du: "Ge mig issues nuläge för mötet"
+    ELLER "Issues presentation denna vecka"
+    ELLER "Hur ser det ut med issues?"
+
+AI: (MÅSTE följa denna prioritering)
+
+PRIMÄR KÄLLA - GitHub Project Board:
+   1. ✅ Läser: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+   2. ✅ Läser git log denna vecka (commits på develop)
+
+PRIMÄR FALLBACK - Google Sheets:
+   3. Om GitHub misslyckas → Läser: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
+
+PRESENTERA (MÖTES-FORMAT):
+
+   📊 EXECUTIVE SUMMARY (överst):
+   ┌─────────────────────────────────────┐
+   │ Issues Status Denna Vecka           │
+   │ Done denna vecka:      X issues     │
+   │ In Progress:           X issues     │
+   │ To Do / Backlog:       X issues     │
+   │ Blockers:              X issues     │
+   │ Kritiska:              X issues     │
+   │ Dagar till deadline:   X dagar      │
+   └─────────────────────────────────────┘
+
+   ✅ COMPLETED (Denna vecka):
+   Tabell: #XX | Title | Owner | Branch | Merged
+   - Visa alla issues som är Done denna vecka
+   - Visa om de är mergade till develop
+   
+   🟡 IN PROGRESS (Pågår nu):
+   Tabell: #XX | Title | Owner | Status | Progress % | Blocker?
+   - Visa alla issues i In Progress
+   - Flagga blockers (🔴)
+   - Flagga kritiska (⚠️)
+   - Visa progress/commits denna vecka
+   
+   🟢 TO DO / BACKLOG (Nästa på tur):
+   Tabell: #XX | Title | Priority | Estimate | Owner | Ready?
+   - Top 5 prioriterade
+   - Vilka kan starta nästa?
+   - Vilka är kritiska för deadline?
+   
+   🚨 BLOCKERS & KRITISKA:
+   - Lista alla blockers (red flags)
+   - Lista alla CRITICAL priority issues
+   - Vad behöver vi göra?
+   - Vilka är beroenden?
+   
+   ⏰ DEADLINE RISK:
+   - Dagar kvar till Sep 24 (CTO deadline)
+   - Issues som måste vara Done innan SWE23
+   - Risk för att inte hinna?
+
+VIKTIGASTE:
+   ⚠️ BERÄTTA källa: "Läst från: GitHub Project Board"
+   ✅ Presentera i tabellformat (mötes-klar)
+   ✅ Fokusera på KRITISKA och BLOCKERS
+   ✅ Visa nästa backlog-items
+   ✅ Ge konkreta rekommendationer
+   
+VERIFIKATION (KRITISK):
+   🔍 STÄMMA AV MOT NULÄGET - för VARJE issue:
+   - Issue säger "Done" → Verifiera: Är den mergad till develop? (kolla git log)
+   - Issue säger "In Progress" → Verifiera: Finns commits denna vecka? (kolla git)
+   - Issue säger "To Do" → Verifiera: Är den verkligen inte påbörjad?
+   - 🚨 Om något stämmer inte → FLAGGA DETTA: "⚠️ Issue #XX säger Done men ingen merge på develop"
+   
+   Samma verifikation för RISKER & ASSETS:
+   - Risk säger "Mitigated" → Verifiera: Finns commits för mitigation?
+   - Asset säger "Active" → Verifiera: Är den faktiskt i användning?
+   - Mismatch → FLAGGA: "⚠️ Risk #XX status uppdaterad i Google Sheets?"
+```
+
+### "Förbered Sprintmöte Presentation" (Nuläge + Förslag Framåt)
+```
+Du: "Förbered sprintmöte presentation"
+    ELLER "Sprint prep - vad ska vi diskutera?"
+    ELLER "Ge mig sprint meeting prep"
+
+AI: (MÅSTE följa denna prioritering)
+
+PRIMÄR KÄLLOR:
+   1. ✅ Läser git log (commits denna vecka + senaste)
+   2. ✅ Läser GitHub Project Board: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+   3. ✅ Läser RISKS.md (vilka risker att diskutera)
+   4. ✅ Läser SCHEDULE.md (denna veckas fokus)
+   5. ✅ Läser mötesprotokollet (förra mötes action items)
+
+PRIMÄR FALLBACK - Google Sheets:
+   6. Om GitHub misslyckas → Google Sheets Project Board
+
+PRESENTERA (MÖTES-PREP FORMAT):
+
+   📊 SPRINT SUMMARY (överst):
+   ┌─────────────────────────────────────┐
+   │ Sprint Vecka XX Nuläge              │
+   │ Fokus denna vecka: [från SCHEDULE]  │
+   │ Förra veckan:                       │
+   │  - X issues genomförda ✅           │
+   │  - Y issues blockers/WIP 🟡         │
+   │  - Z dagar till nästa deadline ⏰   │
+   └─────────────────────────────────────┘
+
+   ✅ VIKEN GJORT FÖRRA VECKAN:
+   - Tabell: Issue # | Title | Owner | Status | Merged to develop?
+   - Lista alla issues Done på GitHub Project Board
+   - Vilka PRs är mergade denna vecka?
+   - Vilka commits på develop?
+   - Vad levererar det för värde?
+
+   🟡 PÅGÅR - BLOCKERS & WIP:
+   - Tabell: Issue # | Title | Owner | Status | Blocker? | Progress
+   - Vilka är stuck?
+   - Vad behöver göras för att lösa?
+   - Vilka kan pushes denna veckan?
+   - Vilka är nära att bli klara?
+
+   🎯 DENNA VECKA - FOKUS & FÖRSLAG:
+   - Denna veckas fokus (från SCHEDULE.md): [läs]
+   - 🔴 KRITISKA issues som MÅSTE klara denna vecka
+   - 🟡 HÖG prioritet issues
+   - 🟢 MEDIUM prioritet om det finns tid
+   - Kapacitet: ~35h per person denna vecka
+
+   🚨 RISKER & DEADLINES ATT DISKUTERA:
+   - Vilka risker från RISKS.md påverkar denna vecka?
+   - Vilka är nära sitt mitigation-datum?
+   - Vilka deadlines närmar sig? (Sep 24 CTO-underlag!)
+   - Vilka arkitektur-beslut behövs?
+   - Vilka dependency-issues mellan teams?
+
+   🛣️ VÄGAR FRAMÅT - REKOMMENDATIONER:
+   - "Vi bör prioritera [X] för att [Y]"
+   - "Risk att vi inte hinner med [Z] - förslag: fokusera på MVP"
+   - "Deadline för [W] är nästa vecka - rekommendation: starta nu"
+   - "[Team A] behöver hjälp från [Team B] - kan vi lösa det?"
+   - "Action items från förra möte - status:" [verifiera]
+
+   📋 MÖTES-AGENDA FÖRSLAG:
+   1. (5 min) Summera vad som blev gjort ✅
+   2. (10 min) Diskutera blockers från förra veckan
+   3. (15 min) Gå igenom denna veckas fokus & risker
+   4. (20 min) Prioritera och estimera issues
+   5. (10 min) Tilldela issues + kickoff
+
+KRITISKT:
+   ⚠️ BERÄTTA källa: "Läst från: GitHub Project Board + git log"
+   ✅ Presentera i mötes-format (klar att presentera direkt)
+   ✅ Fokusera på DECISIONER som behöver tas
+   ✅ Ge KONKRETA rekommendationer
+   ✅ Inkludera RISKER + DEADLINES
+   ✅ Verifiera action items från förra möte
+   
+VERIFIKATION MOT NULÄGET:
+   🔍 Stämma av mellan sources:
+   - Project Board säger "Done" → Verifiera: Mergad till develop? (kolla git)
+   - Issue säger "In Progress" → Verifiera: Commits denna vecka?
+   - Förra mötes action items → Verifiera: Är de genomförda?
+   - 🚨 Mismatch → FLAGGA: "⚠️ Issue #XX säger klar men inte mergad"
+```
 
 ### "Vad Ska Vi Diskutera I Mötet?"
 ```
@@ -281,6 +502,38 @@ AI: Förbered dig för möte!
 
 ---
 
+## 🚨 RISKER OCH ASSETS - Hantering
+
+**Google Sheets är ENDA källan för dokumenterade risker och assets**
+
+### Scenario 1: Användaren Frågar "Vilka Risker För Denna Issue?"
+1. Läs Google Sheets (Risker CSV)
+2. Identifiera relevanta risker från sheet
+3. Presentera i tabellformat (klar för copy-pasta):
+   ```
+   Asset / system | Category | Risk | Cause | Consequence | Likelihood | Impact | Risk score | Risk level | Response | Mitigation | Owner | Status
+   ```
+
+### Scenario 2: Användaren Frågar "Vilka Risker BORDE Finnas Men Står Inte I Google Sheets?"
+1. Analysera issuen
+2. Identifiera potentiella risker
+3. Identifiera saknade assets
+4. Presentera BÅDE i tabellformat (klar för copy-pasta till Google Sheets):
+
+**Nya Risker Som BORDE Dokumenteras:**
+```
+Asset / system | Category | Risk | Cause | Consequence | Likelihood | Impact | Risk score | Risk level | Response | Mitigation | Owner | Status
+```
+
+**Saknade Assets Som BORDE Dokumenteras:**
+```
+System / application | Owner | Lifecycle status | Description / purpose | Type of information | Personal data | Criticality
+```
+
+**Instruktion:** "Dessa risker/assets finns inte i Google Sheets än. Kopiera och lägg till dem om du håller med."
+
+---
+
 ## 🎫 ISSUES - Format & Presentation
 
 **VIKTIGT:** När du frågar om nya issues eller uppdateringar - presentera i denna tabellformat:
@@ -300,7 +553,60 @@ feat(frontend): Add LoginForm | Implementera inloggnings-form med TypeScript. Se
 6. **Labels** - Tags (comma-separated, inkludera GitHub-issue #nummer)
 7. **Estimate** - Tidsuppskattning (4h, 8h, 16h, 1d, etc.)
 
-**AI ska presentera issues i denna tabell varje gång!**
+**INNAN VI BÖRJAR - RISK ASSESSMENT:**
+
+1. ⚠️ AI MÅSTE fråga: "Är du medveten om några risker för denna issue?"
+2. Om JA - Presentera riskerna i Google Sheets-format (Asset / system | Category | Risk | osv.)
+3. Om NEJ - Presentera eventuella risker från Google Sheets som är relevanta
+
+### Assets & Risker Presentation (Efter issuen)
+
+**Assets för denna issue (Google Sheets format):**
+```
+System / application | Owner | Lifecycle status | Description / purpose | Type of information | Personal data | Criticality
+```
+
+**Risker för denna issue (Google Sheets format):**
+```
+Asset / system | Category | Risk | Cause | Consequence | Likelihood | Impact | Risk score | Risk level | Response | Mitigation | Owner | Likelihood after fix | Impact after fix | Residual score | Residual level | Status
+```
+
+**Workflow:**
+1. AI presenterar issuen (tabellformat)
+2. AI frågar: "Är det någon risk du tänker på för denna issue?"
+3. AI presenterar assets (Google Sheets format)
+4. AI presenterar relevanta risker (Google Sheets format)
+
+---
+
+## 📝 COMMITS - Efter Varje Commit
+
+**EFTER ATT ISSUEN ÄR KLAR - när du frågar om commit-meddelande:**
+
+1. ✅ AI presenterar kort, informativt commit-meddelande (rätt format enligt TEAMSTANDARDS)
+   ```
+   type(scope): message (#ISSUE)
+   ```
+
+2. ⚠️ AI FRÅGAR: "Vill du se relevanta assets och risker för denna commit?"
+
+3. 📊 **Om JA - Presentera Assets** (Google Sheets format):
+   ```
+   System / application | Owner | Lifecycle status | Description / purpose | Type of information | Personal data | Criticality
+   ```
+
+4. 🚨 **Om JA - Presentera Risker** (Google Sheets format):
+   ```
+   Asset / system | Category | Risk | Cause | Consequence | Likelihood | Impact | Risk score | Risk level | Response | Mitigation | Owner | Likelihood after fix | Impact after fix | Residual score | Residual level | Status
+   ```
+
+**Workflow:**
+1. Issuen är klar
+2. Du frågar AI om commit-meddelande
+3. AI ger commit-text
+4. AI frågar om du vill se assets/risker
+5. Du svarar JA/NEJ
+6. AI presenterar (om JA) i Google Sheets-format
 
 ---
 
@@ -618,8 +924,13 @@ Korta kommandon du kan använda:
 
 ```
 "Status" eller "Rapport"           → Ge status-rapport
+"Issues nuläge" eller "Issues"     → Issues status presentation
+"Sprint prep" eller "Sprint meeting" → Sprint möte prep-presentation
 "Plan" eller "Vad nästa?"          → Vad ska vi göra nästa
 "Risks" eller "Vad är riskerna?"   → Visa risker
+"Risk presentation"                → Nuläge på risker (detaljerat)
+"Mötes-prep"                       → Förbered mötet
+"Blocker?" eller "Vad stoppar oss" → Visa blockers
 "Help" eller "Vad kan du göra?"    → Denna guide
 "Prepare"                           → Förbered mötet
 "Run meeting"                       → Kör mötet
@@ -634,9 +945,12 @@ Korta kommandon du kan använda:
 ## 📋 FULL LISTA: Vad Jag KAN Göra
 
 ✅ **Mötes-Facilitering**
+- Sprint meeting prep (nuläge + förslag framåt)
 - Sprintmöten (Torsdag/Måndag)
 - Team-möten (Backend/Frontend/Native)
 - Pre-möte prep & agenda
+- Issues status presentation (mötes-format)
+- Risk status presentation (mötes-format)
 
 ✅ **Dokumentation**
 - Läsa status-dokument
@@ -646,6 +960,7 @@ Korta kommandon du kan använda:
 ✅ **Analys**
 - Git log → insighter
 - Risk-identifiering
+- Risk status presentation (nuläge)
 - Issue-status tracking
 - Blocker-detection
 

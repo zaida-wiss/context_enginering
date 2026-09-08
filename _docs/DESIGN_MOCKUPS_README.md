@@ -30,7 +30,7 @@
 
 4. **Multi-tab Navigation**
    - Portföljöversikt | Målallokering | Innehav | Inloggning
-   - Grön accent-färg (Avanza-branding)
+   - Grön accent-färg (Avanza-branding)st
 
 ## Använd denna kontext när du frågar Frontend-AI
 
@@ -78,5 +78,5 @@ App.tsx
 
 ---
 
-**Senast uppdaterad:** 2026-09-07  
+**Senast uppdaterad:** 2026-09-07
 **Status:** Design mockups från Avanza - redo för implementation

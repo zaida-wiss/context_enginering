@@ -30,24 +30,18 @@ _memory/
 
 ---
 
-### 📊 `_sprint/` - LEVANDE DOKUMENT (Real-Time Tracking)
-**Uppdateras varje möte. AI läser OCH uppdaterar dessa. Finns i denna repo (context_enginering).**
+### 📊 `_sprint/` - REFERENS-DOKUMENT
+**Lokala referensfiler. Uppdateras sällan. GitHub Project Board är primär källa för status.**
 
 ```
 context_enginering/_sprint/
-├── CURRENT_STATUS.md       ← Levande data: Sprint tracking (uppdateras EFTER varje möte)
-├── RISKS.md                ← Levande data: Risk-register (uppdateras VECKOVIS)
-├── SCHEDULE.md             ← Plan-data: Sprint-schema & vecko-fokus
-└── SPRINT_PLANNING.md      ← Guide-data: Planerings-guide (referens)
+├── RISKS.md                ← Risk-register (uppdateras vid behov)
+├── SCHEDULE.md             ← Sprint-schema & vecko-fokus
+└── SPRINT_PLANNING.md      ← Planerings-guide (referens)
 ```
 
-👉 **Viktigt:** Läs **[_ai_guides/UPDATE_SCHEDULE.md](_ai_guides/UPDATE_SCHEDULE.md)** för exakt uppdaterings-schema.
-
-**Snabb sammanfattning:**
-- Torsdag efter möte: 10 min (CURRENT_STATUS + RISKS)
-- Måndag efter möte: 10 min (CURRENT_STATUS + RISKS)
-- Tisdag: 5 min (RISKS check)
-- **Total: ~25 min/vecka**
+👉 **Status läses från:** GitHub Project Board (primär) + Google Sheets (fallback)  
+👉 **Risker läses från:** RISKS.md + mötesprotokollet
 
 ---
 
@@ -153,6 +147,18 @@ Title | Body | Assignees | Status | Priority | Labels | Estimate
 ```
 
 Se `_ai_guides/WHAT_CAN_I_HELP_WITH.md` för exempel.
+
+### 📘 TYPESCRIPT - MANDATORY
+
+**REGEL: All kod MÅSTE vara TypeScript, ALDRIG JavaScript**
+
+- ✅ Explicit types på all kod
+- ✅ Interfaces för all data
+- ✅ Enums för constants
+- ✅ Strict mode
+- ❌ ALDRIG `any`
+
+Se `_ai_guides/ACCESSIBILITY_AND_SECURITY.md` för TypeScript-checklist.
 
 ### ⚡ FRONTEND-KOD (Viktigast!)
 
@@ -515,10 +521,34 @@ avanza-team1/
 
 **📍 Denna information gäller för:** https://github.com/chas-challenge-2026/avanza-team1
 
-### Branches
-- **main** = production (stable, tested)
-- **develop** = integration (default branch)
-- **feature/\***, **fix/\*** = work branches
+### Branches & Status Tracking
+
+**Branch-pyramiden visar arbets-status:**
+
+```
+main (RELEASED)
+  ↑ merge när ready for production
+develop (DONE - slutfört arbete)
+  ↑ merge när PR godkänd + fungerar
+feature/#XX, fix/#XX (IN PROGRESS - påbörjat)
+```
+
+**Branch-beskrivningar:**
+
+- **main** = Production (stable, tested, ready for CTO demo Sep 24)
+  - Endast kod som är release-ready
+  - Långsam release-cykel (planerad)
+  
+- **develop** = Integration branch (default branch, **SLUTFÖRT ARBETE**)
+  - Endast kod som **FUNGERAR** och är **GODKÄND**
+  - Alla commits på develop = arbete är klart
+  - Detta är källan för "vad är slutfört denna vecka?"
+  - Används för testing innan release till main
+  
+- **feature/#XX-name**, **fix/#XX-name** = Work branches (**IN PROGRESS**)
+  - Arbete pågår, ännu ej godkänd
+  - Senaste uppdateringen = senast någon jobbade på denna issue
+  - Inte mergad till develop ännu
 
 ### Commit Format
 ```
@@ -534,15 +564,21 @@ Examples:
 
 Se **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** för full detaljer.
 
-### PR Process
-1. Create feature branch: `git checkout -b feature/#52-portfolio-api`
-2. Commit with format above
-3. Push and create PR
-4. Another team member reviews
-5. Address feedback
-6. Merge (only when approved)
+### PR Process & Workflow
+1. **Skapa feature branch:** `git checkout -b feature/#52-portfolio-api`
+2. **Commita regelbundet** med rätt format (se ovan)
+3. **Push och skapa PR** när ready for review
+4. **Team member granskar** (kan INTE vara samma person som skrev koden)
+5. **Testa lokalt** - Se till att det fungerar helt
+6. **Adressera feedback** om det finns
+7. **Merge till develop** (ENDAST om allt fungerar)
+8. **Markera issue som Done** (efter successful merge)
 
-**Reviewer Cannot Merge Their Own PR** ✅
+**Regler:**
+- ✅ Reviewer CANNOT merge sin egen PR
+- ✅ Endast fungerande kod mergäs till develop
+- ✅ Efter merge → Issue markeras Done omedelbar
+- ✅ Develop innehåller BARA slutfört arbete
 
 ---
 
@@ -642,6 +678,7 @@ AI ska följa denna ordning EXAKT och **ALLTID berätta vilken källa:**
 **TEAM-PROCESS (denna repo - context_enginering) - RAW LINKS FÖR AI:**
 - Main README: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md` ← **START HÄR!**
 - 🎓 Pedagogical Guidance (LÄSA FÖRST!): `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PEDAGOGICAL_GUIDANCE.md`
+- ♿ 🔒 ⚡ Accessibility, Security & Performance (ALLTID LÄSA!): `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/ACCESSIBILITY_AND_SECURITY.md`
 - Frontend Instructions: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/FRONTEND_AI_INSTRUCTIONS.md`
 - Design Reference: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/UI_DESIGN_REFERENCE.md`
 - Team Standards: `https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/TEAMSTANDARDS.md`
@@ -652,6 +689,11 @@ AI ska följa denna ordning EXAKT och **ALLTID berätta vilken källa:**
 - TXT (för AI): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
 - PDF (för läsning): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf`
 - HTML (original): https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
+
+**RISKER & ASSETS (Google Sheets) - RAW LÄNK FÖR AI:**
+- Risker CSV: `https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285`
+- Assets CSV: `https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349`
+- HTML (original): https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/edit
 
 **ANDRA RESURSER:**
 - Canvas: https://chasacademy.instructure.com/courses/733/assignments
