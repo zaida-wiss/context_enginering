@@ -1,18 +1,44 @@
-# 📅 Sprint - References & Guidelines
+# 📅 Sprint - DEPRECATED/ARCHIVED
 
-**Denna mapp innehåller sprint-relaterade referensdokument.**
-
-Dessa är KOPIOR av officiella källor och uppdateras sällan.
+**🚨 Denna mapp är nu DEPRECATED och kan tas bort.**
 
 ---
 
-## 📁 Fil-Index
+## 🔄 Vad Hände?
 
-Denna mapp är nu **MINIMAL** — mest innehål är flyttat:
-- `SPRINT_PLANNING.md` → `_ai_guides/SPRINT_PLANNING.md` (instruktioner)
-- `SPRINT_FOCUS_TIMELINE.md` → `_memory/SPRINT_FOCUS_TIMELINE.md` (tidslinje)
+Filerna i denna mapp har flyttats:
 
-**Denna mapp kan nu arkiveras eller rensas helt.**
+| Fil | Ny Plats | Anledning |
+|-----|----------|-----------|
+| `SPRINT_PLANNING.md` | `_ai_guides/SPRINT_PLANNING.md` | Det är instruktioner för AI, inte sprint-status |
+| `SPRINT_FOCUS_TIMELINE.md` | `_memory/SPRINT_FOCUS_TIMELINE.md` | Det är statisk referens/tidslinje, inte sprint-data |
+
+---
+
+## ✅ Nytt System
+
+**Sprint-relaterad info finns nu här:**
+
+- **Sprint-fokus & tidsplan:** `_memory/SPRINT_FOCUS_TIMELINE.md`
+- **Sprintplanerings-guide:** `_ai_guides/SPRINT_PLANNING.md`
+- **Aktuell sprint-status:** GitHub Project Board (real-time)
+- **Risker denna sprint:** Google Sheets Risker (real-time)
+- **Commits denna vecka:** git log (real-time)
+
+---
+
+## 🗑️ Kan Tas Bort
+
+Denna mapp kan raderas från repot när du är redo.
+
+```bash
+git rm -r _sprint/
+git commit -m "chore: remove deprecated _sprint folder"
+```
+
+---
+
+**Senast uppdaterad:** 2026-09-08
 
 ---
 
