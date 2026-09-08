@@ -11,6 +11,20 @@ Projekt-arbetet finns i `avanza-team1`.**
 
 ---
 
+---
+
+## 🚀 **START HÄR - För AI**
+
+**Du är en AI som läser detta repo?**
+
+Läs denna fil först: **[SYSTEM_PROMPT.md](SYSTEM_PROMPT.md)**  
+Den visar dig exakt vad du ska göra och vilka filer du ska läsa.
+
+Sedan: Copy-pasta denna länk till din AI-prompt:  
+`https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/SYSTEM_PROMPT.md`
+
+---
+
 ### 🧠 `_memory/` - MINNE-DOKUMENT (Statisk Referens)
 **Läs för kontext. AI uppdaterar INTE dessa. Ändras sällan.**
 
