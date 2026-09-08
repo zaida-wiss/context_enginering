@@ -8,10 +8,11 @@ Dessa är KOPIOR av officiella källor och uppdateras sällan.
 
 ## 📁 Fil-Index
 
-| Fil | Syfte | Källa | Uppdateras |
-|-----|-------|-------|-----------|
-| **SPRINT_FOCUS_TIMELINE.md** | Sprint-fokus väg, tidsplan, milestones | Canvas/officiell tidslinje | Årlig |
-| **SPRINT_PLANNING.md** | Guide för sprintplanering (steg-för-steg) | Best practices | Vid process-ändringar |
+Denna mapp är nu **MINIMAL** — mest innehål är flyttat:
+- `SPRINT_PLANNING.md` → `_ai_guides/SPRINT_PLANNING.md` (instruktioner)
+- `SPRINT_FOCUS_TIMELINE.md` → `_memory/SPRINT_FOCUS_TIMELINE.md` (tidslinje)
+
+**Denna mapp kan nu arkiveras eller rensas helt.**
 
 ---
 

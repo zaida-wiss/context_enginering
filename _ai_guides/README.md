@@ -26,6 +26,7 @@ Använd dessa filer när du:
 | **BACKLOG_TEMPLATE.md** | Issue-template | Du skapar nya issues |
 | **PEDAGOGICAL_GUIDANCE.md** | Pedagogisk metod | Du vill förstå VAT-HUR-VARFÖR |
 | **ACCESSIBILITY_AND_SECURITY.md** | ♿🔒 Viktigt! | Innan all kod-arbete |
+| **SPRINT_PLANNING.md** | Sprint-planering steg-för-steg | Innan varje sprint |
 | **FRONTEND_AI_INSTRUCTIONS.md** | Frontend-specifikt | React/TypeScript-frågor |
 | **PR_UPDATES.md** | PR-uppdateringar | Fallback när GitHub inte går |
 | **DEPRECATED_FILES_MIGRATION.md** | Migration-guide | Förstå vad som ändrades |
