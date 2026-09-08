@@ -17,11 +17,15 @@ Projekt-arbetet finns i `avanza-team1`.**
 
 **Du är en AI som läser detta repo?**
 
-Läs denna fil först: **[SYSTEM_PROMPT.md](SYSTEM_PROMPT.md)**  
-Den visar dig exakt vad du ska göra och vilka filer du ska läsa.
+1. Läs denna fil först: **[_ai_guides/SYSTEM_PROMPT.md](_ai_guides/SYSTEM_PROMPT.md)**  
+   Den visar dig exakt vad du ska göra och vilka filer du ska läsa.
 
-Sedan: Copy-pasta denna länk till din AI-prompt:  
-`https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/SYSTEM_PROMPT.md`
+2. Eller copy-pasta denna länk direkt:  
+   ```
+   https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SYSTEM_PROMPT.md
+   ```
+
+**Vill du dela repot med annan AI?** → **[_ai_guides/QUICK_SHARE.md](_ai_guides/QUICK_SHARE.md)**
 
 ---
 
