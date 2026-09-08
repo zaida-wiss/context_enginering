@@ -1,6 +1,8 @@
-# 🤖 AI Guides - How to Use
+# 🤖 AI Guides - Instruktioner & Guider
 
-**Denna mapp innehåller instruktioner för AI om hur den ska fungera i detta projekt.**
+**Denna mapp innehåller instruktioner och guider för AI-assistenter.**
+
+⚠️ **START:** Läs först root-nivå `README.md` för övergripande instruktioner!
 
 Använd dessa filer när du:
 - ❓ Inte vet vad du kan be AI om → `WHAT_CAN_I_HELP_WITH.md`
@@ -17,8 +19,6 @@ Använd dessa filer när du:
 
 | Fil | Syfte | Använd När |
 |-----|-------|-----------|
-| **SYSTEM_PROMPT.md** | 🆕 Instruktioner för AI | AI läser detta repo första gången |
-| **QUICK_SHARE.md** | 🆕 Dela repot med annan AI | Du vill dela projektet med annan AI |
 | **WHAT_CAN_I_HELP_WITH.md** | Meny — vad kan AI göra | Du vet inte vad du ska fråga AI om |
 | **AI_TEAMLEADER.md** | Universal facilitator-prompt | Alla möten (copy-pasta denna fil) |
 | **MEETING_THURSDAY.md** | Torsdag-möte struktur | Vecko-slutabstämning (15:00-15:30) |
