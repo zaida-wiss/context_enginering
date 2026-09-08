@@ -151,8 +151,8 @@ Använd denna kontext från context_enginering-repot:
 - _memory/PROJEKTKONTEXT.md (denna fil)
 - _memory/DEFINITION_OF_DONE.md (vad som krävs)
 - _memory/TEAMSTANDARDS.md (teamstandards)
-- _sprint/CURRENT_STATUS.md (sprint status)
-- _sprint/RISKS.md (risk register)
+- _sprint/GitHub Project Board (sprint status)
+- _sprint/Google Sheets Risker (risk register)
 
 Projekt-kod finns på: https://github.com/chas-challenge-2026/avanza-team1"
 ```

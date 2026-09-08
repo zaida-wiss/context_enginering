@@ -35,13 +35,12 @@ _memory/
 
 ```
 context_enginering/_sprint/
-├── RISKS.md                ← Risk-register (uppdateras vid behov)
 ├── SCHEDULE.md             ← Sprint-schema & vecko-fokus
 └── SPRINT_PLANNING.md      ← Planerings-guide (referens)
 ```
 
 👉 **Status läses från:** GitHub Project Board (primär) + Google Sheets (fallback)  
-👉 **Risker läses från:** RISKS.md + mötesprotokollet
+👉 **Risker läses från:** Google Sheets (primär) + mötesprotokollet (fallback)
 
 ---
 
@@ -97,22 +96,22 @@ _ai_guides/
      ```
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/AI_TEAMLEADER.md
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_THURSDAY.md
-     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/CURRENT_STATUS.md
-     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/RISKS.md
+     
+     (AI läser GitHub Project Board + Google Sheets Risker direkt - inget copy-paste behövs)
      ```
    
    - **"Kör sprintplanering":**
      ```
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/AI_TEAMLEADER.md
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_MONDAY.md
-     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/CURRENT_STATUS.md
-     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_sprint/RISKS.md
+     
+     (AI läser GitHub Project Board + Google Sheets Risker direkt - inget copy-paste behövs)
      ```
 
 3. **Välja Vad Du Vill Göra:**
    - "Kör möte" → [HOW_TO_RUN_MEETINGS.md](_ai_guides/HOW_TO_RUN_MEETINGS.md)
-   - "Status-rapport" → [CURRENT_STATUS.md](_sprint/CURRENT_STATUS.md)
-   - "Vilka risker?" → [RISKS.md](_sprint/RISKS.md)
+   - "Status-rapport" → GitHub Project Board (läs via AI: "Status-rapport denna vecka")
+   - "Vilka risker?" → Google Sheets Risker (läs via AI: "Risk presentation")
    - "Vanlig uppgift" → [WHAT_CAN_I_HELP_WITH.md](_ai_guides/WHAT_CAN_I_HELP_WITH.md)
 
 **REFERENSMATERIAL (Läs När Du Behöver):**
@@ -199,9 +198,10 @@ Sedan läs denna guide för mötet (välj en):
 - Torsdags-möte: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_THURSDAY.md
 - Sprintplanering: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/MEETING_MONDAY.md
 
-Sedan kopiera denna data (uppdatera från context_enginering-repot):
-[Paste innehållet från: _sprint/CURRENT_STATUS.md]
-[Paste innehållet från: _sprint/RISKS.md]
+AI läser nu automatiskt från:
+- GitHub Project Board (status)
+- Google Sheets Risker (risker)
+- Mötesprotokollet (tidigare decisions)
 
 Nu: Kör mötet!
 ```
@@ -243,10 +243,10 @@ Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är
 2. **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** - Kodstandarder, commit-format, Git workflow
 3. **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)** - Godkänd-krav och acceptance criteria
 
-### Ge vägledning utifrån rätt fil:
+### Ge vägledning utifrån rätt källa:
 - **"Hjälp mig planera sprint"** → [_sprint/SPRINT_PLANNING.md](_sprint/SPRINT_PLANNING.md) (steg-för-steg guide)
-- **"Vad är aktuell sprint-status?"** → [_sprint/CURRENT_STATUS.md](_sprint/CURRENT_STATUS.md) (tracking)
-- **"Vilka risker finns?"** → [_sprint/RISKS.md](_sprint/RISKS.md) (risk-register + mitigations)
+- **"Vad är aktuell sprint-status?"** → GitHub Project Board (tracking) - AI läser direkt
+- **"Vilka risker finns?"** → Google Sheets Risker (risk-register) - AI läser direkt
 - **"Vilken issue ska jag göra?"** → https://github.com/chas-challenge-2026/avanza-team1 (GitHub Project backlog)
 - **"Varför gjorde vi det så?"** → [_memory/DECISIONS.md](_memory/DECISIONS.md) (arkitektur-beslut)
 
@@ -263,9 +263,9 @@ Du läser dokumentationen för Team 1's Avanza Portföljhälsa projekt. Här är
 ### När du guidar team-medlemmar:
 1. **Referera alltid till dokumentation** (länka till TEAMSTANDARDS, PROJEKTKONTEXT, etc.)
 2. **Använd samma struktur** som dokumentationen föreslår
-3. **För nya issues:** Använd template från BACKLOG.md
+3. **För nya issues:** Använd template från GitHub Project Board
 4. **För sprintplanering:** Följ steg från SPRINT_PLANNING.md
-5. **För risker:** Uppdatera RISKS.md med ny risk eller mitigation
+5. **För risker:** Uppdatera Google Sheets Risker direkt
 
 ### Kritisk information:
 ⚠️ **Tävlingen ≠ Betyget** — Fokusera på kursmål och slutleverans
@@ -478,9 +478,6 @@ avanza-team1/
 ├── DEFINITION_OF_DONE.md       ← Acceptance criteria
 ├── SCHEDULE.md                 ← Sprint schema
 ├── SPRINT_PLANNING.md          ← Sprintplanerings-guide
-├── CURRENT_STATUS.md           ← Sprint tracking
-├── RISKS.md                    ← Risk matrix
-├── BACKLOG.md                  ← Prioriterad backlog
 ├── DECISIONS.md                ← Arkitektur-beslut
 │
 ├── backend/                    ← Java + Spring Boot
@@ -646,9 +643,9 @@ Läs [DEFINITION_OF_DONE.md](DEFINITION_OF_DONE.md) för detaljer.
 ## 🆘 Behöver Du Hjälp?
 
 1. **Teknisk fråga?** → Läs relevant dokumentation (PROJEKTKONTEXT, TEAMSTANDARDS, DECISIONS)
-2. **Issue-definition?** → Läs [BACKLOG.md](BACKLOG.md)
+2. **Issue-definition?** → Läs GitHub Project Board issues
 3. **Sprint-fråga?** → Läs [SPRINT_PLANNING.md](SPRINT_PLANNING.md)
-4. **Blocked?** → Rapportera i [CURRENT_STATUS.md](CURRENT_STATUS.md), diskutera på Tuesday PL-möte
+4. **Blocked?** → Rapportera på GitHub Project Board eller diskutera på möte
 5. **Osäker på arkitektur?** → Läs [DECISIONS.md](DECISIONS.md)
 
 ---

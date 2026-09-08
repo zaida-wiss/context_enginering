@@ -27,8 +27,8 @@ https://github.com/zaida-wiss/context_enginering
 - _memory/DEFINITION_OF_DONE.md (godkänd-krav)
 
 Och projekt-status från:
-- _sprint/CURRENT_STATUS.md (sprint tracking)
-- _sprint/RISKS.md (risk register)
+- _sprint/GitHub Project Board (sprint tracking)
+- _sprint/Google Sheets Risker (risk register)
 
 Använd denna kontext när du ger vägledning om kod, arkitektur och prioriteringar."
 ```

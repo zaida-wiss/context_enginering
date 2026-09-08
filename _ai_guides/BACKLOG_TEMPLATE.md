@@ -416,7 +416,7 @@ Create Storybook with:
 - **SPRINT_PLANNING.md** - How to plan sprints
 - **BACKLOG_TEMPLATE.md** - This file (issue templates)
 - **DECISIONS.md** - Why we made certain architecture choices
-- **CURRENT_STATUS.md** - Real-time sprint tracking
+- **GitHub Project Board** - Real-time sprint tracking
 
 ---
 

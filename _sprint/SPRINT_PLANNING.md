@@ -30,10 +30,10 @@
   - V11: Omtag + dokumentation
   - V12: Slutcheck
   
-- [ ] **4. Uppdatera CURRENT_STATUS.md**
-  - Rapportera vad som är gjort
-  - Notera blockers från förra sprinten
-  - Uppdatera fokus-område för denna vecka
+- [ ] **4. Uppdatera Project Board status**
+  - Rapportera vad som är gjort (mark issues Done)
+  - Notera blockers från förra sprinten (use labels)
+  - Uppdatera fokus-område för denna vecka (add labels)
 
 - [ ] **5. Kolla deadlines**
   - Finns det Canvas-inlämningar denna vecka?
@@ -54,12 +54,12 @@ Team Lead presenterar:
 - Vad är denna veckas fokus? (Se SCHEDULE.md)
 - Vilka deadlines gäller?
 - Vad blev inte klart förra veckan?
-- Vilka risker identifieras? (Se RISKS.md)
+- Vilka risker identifieras? (Se Google Sheets Risker eller mötesprotokollet)
 
 #### Steg 2: Diskutera Backlog (20 min)
 - Vilka 5-7 topprioritet-issues ska vi göra denna vecka?
 - Finns det beroenden mellan frontend/backend/native?
-- Vilka blockers finns redan? (Se CURRENT_STATUS.md)
+- Vilka blockers finns redan? (Se GitHub Project Board eller mötesprotokollet)
 - Vilka väntar på feedback från förra vecka?
 
 **Använd denna prioriteringsmall:**
@@ -249,7 +249,7 @@ Sprint 4: 50 story points gjorda
 ```
 
 ### Blockers & Risks
-- **Tracking:** Spåra alla blockers i CURRENT_STATUS.md
+- **Tracking:** Spåra alla blockers i GitHub Project Board (labels: blockers, risk)
 - **Lösa:** Dedikera tid att lösa blockers samma dag (inte nästa vecka!)
 - **Preventera:** Om samma blocker uppstår två gånger, åtgärda root cause
 

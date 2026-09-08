@@ -1,6 +1,6 @@
 # 🚀 Mondags Sprintplanering (3 timmar)
 
-**Denna mötes-guide faciliteras av AI-teamleader. Länk denna fil tillsammans med CURRENT_STATUS.md, RISKS.md och BACKLOG.md**
+**Denna mötes-guide faciliteras av AI-teamleader. Länk denna fil tillsammans med GitHub Project Board, Google Sheets Risker och BACKLOG.md**
 
 ---
 
@@ -111,8 +111,8 @@ AI: "Okej, nästa punkt..."
 PRE-MÖTE DATA (Teamleader läser detta före mötet)
 ==================================================
 
-1. CURRENT_STATUS.md - Senast uppdaterad?
-2. RISKS.md - Vilka är de kritiska riskerna?
+1. GitHub Project Board - Senast uppdaterad?
+2. Google Sheets Risker - Vilka är de kritiska riskerna?
 3. Top 10 prioriterade issues från GitHub Project (COPY-PASTA DESSA!)
 4. SPRINT_PLANNING.md - Planerings-guide
 5. SCHEDULE.md - Vad är denna veckas fokus?
@@ -180,7 +180,7 @@ Enligt SCHEDULE.md + SPRINT_PLANNING.md:
 🎯 Priority 3: [Tredje fokus]
 
 === RISKER VI FOKUSERAR PÅ ===
-Från RISKS.md:
+Från Google Sheets Risker:
 🚨 Risk #1: [Största risken]
    Mitigation denna vecka: [Action]
 
@@ -188,11 +188,11 @@ Från RISKS.md:
    Mitigation denna vecka: [Action]
 
 === DEADLINES DENNA VECKA ===
-Från CURRENT_STATUS.md:
+Från GitHub Project Board:
 📅 [Om det finns deadlines]
 
 === RESULTAT FRÅN FÖRRA SPRINTEN ===
-Från CURRENT_STATUS.md:
+Från GitHub Project Board:
 ✅ Vi slutförde X issues
 ✅ Vi lärde oss: [Vad lärde vi?]
 ⚠️ Vi hade blockers: [Vad var det?]
@@ -434,7 +434,7 @@ Native [Person C]:
 
 === NEXT STEPS ===
 1. Klockan 13:00 börjar alla jobba
-2. Vi uppdaterar CURRENT_STATUS.md
+2. Vi uppdaterar GitHub Project Board
 3. Alla skapar feature-branches
 4. Vi ses på Tuesday PL-möte
 
@@ -496,7 +496,7 @@ RESULTAT: ✅ Klar plan för veckan!
 ```
 🎉 Sprintplaneringen är klar! Nu uppdaterar du dokumenten:
 
-1. ÖPPNA: _sprint/CURRENT_STATUS.md
+1. ÖPPNA: _sprint/GitHub Project Board
 
 2. HIT ÄR NYA SPRINT-SEKTION:
    "## 📊 Sprint 37 (v37: 7-13 September 2026)"
@@ -516,7 +516,7 @@ RESULTAT: ✅ Klar plan för veckan!
    "### Tuesday PL-Meeting (Tues 12:30-14:00)"
    → Nya fokus-områden noterade?
 
-SEDAN: Öppna _sprint/RISKS.md
+SEDAN: Öppna _sprint/Google Sheets Risker
 6. HIT ÄR RISKER:
    "## 🎯 Risk Response Matrix"
    → Uppdatera status på varje risk
@@ -575,8 +575,8 @@ Mötet är INTE lyckat om:
 ## 📚 Linked Documents
 
 Läs dessa före mötet:
-- **CURRENT_STATUS.md** - Förra veckas resultat
-- **RISKS.md** - Risk matrix
+- **GitHub Project Board** - Förra veckas resultat
+- **Google Sheets Risker** - Risk matrix
 - **BACKLOG.md** - Alla available issues
 - **SPRINT_PLANNING.md** - Planning guide
 - **SCHEDULE.md** - Sprint schema & fokus
@@ -602,8 +602,8 @@ Läs dessa före mötet:
    - Utan: "Frontend väntar på Backend. Vilken ordning gör vi?"
 
 5. **DOKUMENTERA ALLT**
-   - Varje sprint → uppdatera CURRENT_STATUS.md
-   - Varje risk → uppdatera RISKS.md
+   - Varje sprint → uppdatera GitHub Project Board
+   - Varje risk → uppdatera Google Sheets Risker
    - Varje decision → spara för retrospective
 
 ---
@@ -611,7 +611,7 @@ Läs dessa före mötet:
 ## 🚀 Quick Start
 
 1. Kopiera länken till denna fil
-2. Kopiera länkar till CURRENT_STATUS.md, RISKS.md, BACKLOG.md
+2. Kopiera länkar till GitHub Project Board, Google Sheets Risker, BACKLOG.md
 3. Klistra in dessa i AI-modellen tillsammans med AI_TEAMLEADER.md
 4. Säg: "Kör sprintplanering"
 5. Ge teamets svar när AI frågar

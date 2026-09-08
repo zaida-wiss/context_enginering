@@ -48,7 +48,7 @@ B: BESLUT - Frontend prioriteras till Sep 20
 **Torsdags Vecko-Slutabstämning** (15:00-15:30, 30 min)
 ```
 Du: "Förbered torsdags-möte"
-AI: Läser git log → CURRENT_STATUS.md → RISKS.md
+AI: Läser git log → GitHub Project Board → RISKS.md
 AI: Presenterar fresh status + agenda
 
 Du: "Kör torsdags-möte"
@@ -74,7 +74,7 @@ AI: Faciliterar mötet enligt struktur
    - Estimera kapacitet per team
    - Tilldela issues åt personer
 
-AI: Uppdaterar CURRENT_STATUS.md + RISKS.md
+AI: Uppdaterar GitHub Project Board status
 ```
 
 ### 2. Team-Specifika Möten (Backend/Frontend/Native)
@@ -102,8 +102,8 @@ AI: Dokumenterar beslut och action items
 ```
 Du: "Förbered nästa möte"
 AI: Läser git log denna vecka
-AI: Analyserar CURRENT_STATUS.md
-AI: Granskar RISKS.md
+AI: Analyserar GitHub Project Board
+AI: Granskar Google Sheets Risker
 AI: Visar:
    ✅ Vad blev klart denna vecka
    ✅ Vilka issues är WIP
@@ -180,22 +180,20 @@ VIKTIGT - MÅSTE ALLTID GÖRA:
       etc.
 ```
 
-### "Uppdatera Dokumenten"
+### "Uppdatera Risker i Google Sheets"
 ```
-Du: "Uppdatera CURRENT_STATUS.md"
-AI: Läser nuvarande fil
-AI: Läser git log denna vecka
-AI: Uppdaterar automatiskt (VS Code)
-   - Completed This Week
-   - Issues Planned
-   - Team Capacity
-   - Blockers & Risks
+Du: "Ny risk: Back-testing är långsam"
+    ELLER "Uppdatera risker"
 
-Du: "Uppdatera RISKS.md"
-AI: Granskar alla risker
-AI: Uppdaterar status på befintliga
-AI: Identifierar nya risker från git log
-AI: Uppdaterar automatiskt (VS Code)
+AI: (Läser alltid från Google Sheets direkt)
+   1. ✅ Läser Google Sheets Risker: https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285
+   2. ✅ Läser git log för att verifiera mitigations
+   3. ✅ Identifierar om detta är en ny risk
+   
+AI: Presenterar risken i Google Sheets-format:
+   Asset / system | Category | Risk | Cause | Consequence | Likelihood | Impact | Risk score | Risk level | Response | Mitigation | Owner | Status
+   
+AI: Instruktion: "Lägg till denna risken i Google Sheets om du håller med"
 ```
 
 ---
@@ -207,7 +205,7 @@ AI: Uppdaterar automatiskt (VS Code)
 Du: "Planera denna vecka"
 AI: Läser SCHEDULE.md (denna veckas fokus)
 AI: Läser BACKLOG.md (prioriterade issues)
-AI: Läser RISKS.md (vad kan gå fel?)
+AI: Läser Google Sheets Risker (vad kan gå fel?)
 AI: Presenterar:
    - Denna veckas fokus
    - Top 5 prioriterade issues
@@ -220,7 +218,7 @@ AI: Presenterar:
 ```
 Du: "Vad är nästa kritisk sak?"
 AI: Läser SCHEDULE.md (deadlines)
-AI: Läser RISKS.md (HIGH/CRITICAL)
+AI: Läser Google Sheets Risker (HIGH/CRITICAL)
 AI: Läser BACKLOG.md (prioritering)
 AI: Säger:
    ✅ Nästa deadline
@@ -236,7 +234,7 @@ AI: Säger:
 ### "Vilka Är De Största Riskerna?"
 ```
 Du: "Vilka är de största riskerna?"
-AI: Läser RISKS.md
+AI: Läser Google Sheets Risker
 AI: Presenterar:
    - Top 3 CRITICAL/HIGH risker
    - Status på varje
@@ -302,7 +300,7 @@ VERIFIKATION MOT NULÄGET:
 ### "Uppdatera Risk Register"
 ```
 Du: "Ny risk: Back-testing är långsam"
-AI: Läser RISKS.md
+AI: Läser Google Sheets Risker
 AI: Lägger till ny risk enligt template
 AI: Skapar mitigation-plan
 AI: Uppdaterar automatiskt (VS Code)
@@ -311,6 +309,106 @@ AI: Uppdaterar automatiskt (VS Code)
 ---
 
 ## 💬 MÖTES-SUPPORT
+
+### "Stämma Av Status" (Verifiera Project Board mot Git)
+```
+Du: "Stämma av status"
+    ELLER "Verifierar allt stämmer"
+    ELLER "Vad säger git vs project board?"
+
+AI: (MÅSTE följa denna verifikations-process)
+
+LÄSA - GIT COMMIT HISTORY:
+   1. ✅ Läser git log develop (commits denna vecka)
+      - Vilka commits är på develop?
+      - Format bör vara: type(scope): message (#ISSUE)
+      - Vilka issue-nummer refereras?
+      
+   2. ✅ Läser git log på feature/* och fix/* branches
+      - Vilka branches är aktiva (senaste commit < 7 dagar)?
+      - Vad jobbar de på?
+      - Är de framsteg denna vecka?
+
+LÄSA - PROJECT BOARD:
+   3. ✅ Läser GitHub Project Board: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+      - Vilka issues är markerade Done?
+      - Vilka är In Progress?
+      - Vilka är To Do?
+
+LÄSA - PULL REQUESTS & REVIEWS:
+   4. ✅ Läser Open PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Aopen+is%3Apr
+      - Vilka PRs är öppna?
+      - Vilka väntar på review (keine approvals)?
+      - Vilka är reviewade (approvals)?
+      - Vilka väntar på fixes (changes requested)?
+      
+   5. ✅ Läser Closed/Merged PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed
+      - Vilka PRs är mergade denna vecka?
+      - Vilka är closed utan merge?
+
+VERIFIERING - STÄMMA AV:
+   
+   ✅ DONE vs MERGED:
+   - Issue #XX säger "Done" på Project Board
+   - ✓ Verifiera: Är den mergad till develop? (kolla git log develop + PR closed)
+   - ✓ Verifiera: Finns PR/commit?
+   - ✓ Verifiera: PR status = Merged (eller Closed)?
+   - 🚨 IF mismatch: "⚠️ Issue #XX säger Done men ingen commit på develop denna vecka"
+   - 🚨 IF PR inte merged: "⚠️ PR för #XX är closed utan merge"
+   
+   🟡 IN PROGRESS vs COMMITS & PR STATUS:
+   - Issue #XX säger "In Progress" på Project Board
+   - ✓ Verifiera: Finns commits på feature/#XX branch?
+   - ✓ Verifiera: Är commits senaste < 7 dagar?
+   - ✓ Verifiera: Finns PR öppen? Vad är PR-status?
+      - ⏳ Väntar på review (0 approvals)? → FLAGGA: PR väntar på review
+      - ✅ Reviewad + approved? → Ready för merge!
+      - ⚠️ Changes requested? → Väntar på fixes från owner
+   - 🚨 IF ingen commit: "⚠️ Issue #XX är In Progress men ingen commit denna vecka"
+   - 🚨 IF PR väntar på review >2 dagar: "⚠️ PR #YY för #XX väntar på review - prioritera review!"
+   - 🚨 IF PR har changes requested: "⚠️ PR #YY kräver fixes innan merge"
+   
+   🟢 TO DO vs BRANCHES & PRS:
+   - Issue #XX säger "To Do" på Project Board
+   - ✓ Verifiera: Finns feature/#XX branch redan?
+   - ✓ Verifiera: Finns PR redan öppen?
+   - 🚨 IF finns branch: "⚠️ Issue #XX är To Do men branch existerar med commits"
+   - 🚨 IF finns PR: "⚠️ Issue #XX är To Do men PR redan öppen (#YY) - uppdatera status"
+
+PRESENTERA MISMATCH-RAPPORT:
+   
+   📊 SUMMARY:
+   ✅ X issues korrekt (Done + mergad, eller To Do + ingen branch)
+   ⚠️ Y issues med mismatch (Du måste uppdatera Project Board / PR)
+   🔴 Z PRs som blockerar (väntar på review, changes requested)
+   
+   🚨 MISMATCHES (Kräver handling):
+   - [Tabell] Issue # | Title | Status | Git Branch | PR Status | Åtgärd
+   - Exempel:
+     - #52 | Portfolio API | Done | f/52 merged | PR #100 Merged ✅
+     - #54 | Dashboard | Done | f/54 has commits | PR #101 väntar review ⚠️ → Prioritera review!
+     - #56 | FX Converter | In Progress | f/56 aktiv | PR #102 approved ✅ → Ready för merge
+     - #57 | Back-testing | To Do | f/57 exists | PR #103 changes req ⚠️ → Owner måste fixa
+   
+   🔴 BLOCKERS - PRS VÄNTAR:
+   - [Tabell] PR # | Issue # | Author | Status | Väntar på | Tid väntad
+   - Exempel:
+     - #101 | #54 | @dev1 | Needs Review | Reviewer | 2 dagar → PRIORITERA!
+     - #103 | #57 | @dev2 | Changes Requested | Author fixes | 1 dag
+   
+   🎯 REKOMMENDATIONER:
+   - "Dessa issues behöver uppdateras på Project Board: #54, #57"
+   - "Dessa är korrekt uppdaterade: #52, #56"
+   - "Dessa PRs VÄNTAR PÅ REVIEW (>2 dagar): #101 - prioritera review!"
+   - "Dessa branches ser inaktiva ut (>7 dagar): f/XX, f/YY"
+   - "Dessa PRs har changes requested - owner behöver fixa: #103"
+
+VIKTIGT:
+   ⚠️ BERÄTTA källor: "Läst från: git log + GitHub Project Board"
+   ✅ Fokusera på MISMATCHES (det är viktiga att fixa)
+   ✅ Ge KONKRETA instruktioner för uppdateringar
+   ✅ Flag inaktiva branches (> 7 dagar utan commits)
+```
 
 ### "Ge Mig Issues Nuläge Presentation" (Mötes-Format)
 ```
@@ -346,10 +444,12 @@ PRESENTERA (MÖTES-FORMAT):
    - Visa om de är mergade till develop
    
    🟡 IN PROGRESS (Pågår nu):
-   Tabell: #XX | Title | Owner | Status | Progress % | Blocker?
+   Tabell: #XX | Title | Owner | Status | Branch | PR # | PR Status | Blocker?
    - Visa alla issues i In Progress
-   - Flagga blockers (🔴)
-   - Flagga kritiska (⚠️)
+   - Visa om de har PR öppen
+   - PR Status: Needs Review / Approved / Changes Requested
+   - Flagga PRs som väntar på review > 2 dagar (🔴 BLOCKERA!)
+   - Flagga blockers/kritiska (🔴)
    - Visa progress/commits denna vecka
    
    🟢 TO DO / BACKLOG (Nästa på tur):
@@ -400,7 +500,7 @@ AI: (MÅSTE följa denna prioritering)
 PRIMÄR KÄLLOR:
    1. ✅ Läser git log (commits denna vecka + senaste)
    2. ✅ Läser GitHub Project Board: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
-   3. ✅ Läser RISKS.md (vilka risker att diskutera)
+   3. ✅ Läser Google Sheets Risker (vilka risker att diskutera)
    4. ✅ Läser SCHEDULE.md (denna veckas fokus)
    5. ✅ Läser mötesprotokollet (förra mötes action items)
 
@@ -420,11 +520,12 @@ PRESENTERA (MÖTES-PREP FORMAT):
    └─────────────────────────────────────┘
 
    ✅ VIKEN GJORT FÖRRA VECKAN:
-   - Tabell: Issue # | Title | Owner | Status | Merged to develop?
+   - Tabell: Issue # | Title | Owner | PR # | PR Status | Merged? | Value
    - Lista alla issues Done på GitHub Project Board
    - Vilka PRs är mergade denna vecka?
    - Vilka commits på develop?
    - Vad levererar det för värde?
+   - 📊 Visa antal PRs mergade denna vecka
 
    🟡 PÅGÅR - BLOCKERS & WIP:
    - Tabell: Issue # | Title | Owner | Status | Blocker? | Progress
@@ -433,15 +534,23 @@ PRESENTERA (MÖTES-PREP FORMAT):
    - Vilka kan pushes denna veckan?
    - Vilka är nära att bli klara?
 
+   🚨 PRS SOM BLOCKERAR DENNA VECKA:
+   - Tabell: PR # | Issue # | Author | Status | Blocked since | Action
+   - PRs som väntar på review > 2 dagar → PRIORITERA REVIEW!
+   - PRs med changes requested → OWNER behöver fixa
+   - PRs som är approved men ej mergade → MERGE NU!
+   - 🔴 Flagga vilka PRs som stoppar utvecklingen
+
    🎯 DENNA VECKA - FOKUS & FÖRSLAG:
    - Denna veckas fokus (från SCHEDULE.md): [läs]
    - 🔴 KRITISKA issues som MÅSTE klara denna vecka
    - 🟡 HÖG prioritet issues
    - 🟢 MEDIUM prioritet om det finns tid
    - Kapacitet: ~35h per person denna vecka
+   - NOTERA: Vilka PRs blockerar detta fokus? Måste vi prioritera review?
 
    🚨 RISKER & DEADLINES ATT DISKUTERA:
-   - Vilka risker från RISKS.md påverkar denna vecka?
+   - Vilka risker från Google Sheets påverkar denna vecka?
    - Vilka är nära sitt mitigation-datum?
    - Vilka deadlines närmar sig? (Sep 24 CTO-underlag!)
    - Vilka arkitektur-beslut behövs?
@@ -480,8 +589,8 @@ VERIFIKATION MOT NULÄGET:
 ### "Vad Ska Vi Diskutera I Mötet?"
 ```
 Du: "Vad ska vi diskutera i mötet?"
-AI: Läser CURRENT_STATUS.md
-AI: Läser RISKS.md
+AI: Läser GitHub Project Board
+AI: Läser Google Sheets Risker
 AI: Läser git log
 AI: Föreslår diskussions-punkter:
    - Issues som är stuck
@@ -681,7 +790,7 @@ AI: Presenterar:
 ```
 Du: "Vad är status på issue #52?"
 AI: Läser git log för #52
-AI: Läser CURRENT_STATUS.md
+AI: Läser GitHub Project Board
 AI: Presenterar:
    - Är den DONE / WIP / Blocked?
    - Senaste commits
@@ -693,8 +802,8 @@ AI: Presenterar:
 ### "Vilka Issues Är Blocked?"
 ```
 Du: "Vilka issues är blockade?"
-AI: Läser CURRENT_STATUS.md
-AI: Läser RISKS.md
+AI: Läser GitHub Project Board
+AI: Läser Google Sheets Risker
 AI: Läser git log för inaktiva branches
 AI: Listar:
    - Vilka är stuck
@@ -827,9 +936,9 @@ AI: Presenterar:
 Du: "Vilken issue ska jag prioritera nästa?"
 
 AI: Läser:
-   - BACKLOG (prioritering från backlog_template)
-   - RISKS.md (vilka risker påverkas)
-   - CURRENT_STATUS.md (beroenden)
+   - GitHub Project Board (prioritering + backlog)
+   - Google Sheets Risker (vilka risker påverkas)
+   - GitHub Project Board (beroenden mellan issues)
    
 AI: Rekommenderar:
    - Top 3 candidates
@@ -894,7 +1003,7 @@ AI: Presenterar:
 ```
 Du: "Tips för denna vecka?"
 AI: Läser denna vecka's arbete
-AI: Läser RISKS.md
+AI: Läser Google Sheets Risker
 AI: Läser SPRINT_PLANNING.md
 AI: Ger:
    - Vad gick bra senast
@@ -926,11 +1035,13 @@ Korta kommandon du kan använda:
 "Status" eller "Rapport"           → Ge status-rapport
 "Issues nuläge" eller "Issues"     → Issues status presentation
 "Sprint prep" eller "Sprint meeting" → Sprint möte prep-presentation
+"Stämma av" eller "Verify"         → Verifiera Project Board mot git
 "Plan" eller "Vad nästa?"          → Vad ska vi göra nästa
 "Risks" eller "Vad är riskerna?"   → Visa risker
 "Risk presentation"                → Nuläge på risker (detaljerat)
 "Mötes-prep"                       → Förbered mötet
 "Blocker?" eller "Vad stoppar oss" → Visa blockers
+"Git status?"                       → Se vad som händer på brancherna
 "Help" eller "Vad kan du göra?"    → Denna guide
 "Prepare"                           → Förbered mötet
 "Run meeting"                       → Kör mötet
@@ -958,11 +1069,13 @@ Korta kommandon du kan använda:
 - Presentera sammanfattningar
 
 ✅ **Analys**
-- Git log → insighter
+- Git log → insighter (commits på develop/feature)
+- Status verification (Project Board vs git)
 - Risk-identifiering
 - Risk status presentation (nuläge)
 - Issue-status tracking
 - Blocker-detection
+- Branch activity tracking (vilka är aktiva?)
 
 ✅ **Planering**
 - Denna vecka fokus

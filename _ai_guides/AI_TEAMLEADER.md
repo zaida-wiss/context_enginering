@@ -29,8 +29,8 @@ CONTEXT TO PASTE:
    git log --since="1 week ago" --oneline --stat --all
    [eller med full diff: git log --since="1 week ago" -p --all]
 
-2. Innehållet från: _sprint/CURRENT_STATUS.md (sprint tracking)
-3. Innehållet från: _sprint/RISKS.md (risk matrix)
+2. Innehållet från: _sprint/GitHub Project Board (sprint tracking)
+3. Innehållet från: _sprint/Google Sheets Risker (risk matrix)
 4. Top 10 issues från GitHub Project (copy-pasta från board)
 ```
 
@@ -51,8 +51,8 @@ kan mitt svar vara FÖRVIRAT eller INKOMPLETT.
 
 Bekräfta att:
 ✅ Issues från GitHub är aktuella
-✅ CURRENT_STATUS.md är uppdaterad (max 2h gammal)
-✅ RISKS.md är aktuell (max 1 vecka gammal)
+✅ GitHub Project Board är uppdaterad (max 2h gammal)
+✅ Google Sheets Risker är aktuell (max 1 vecka gammal)
 
 Sedan kan vi börja mötet!
 ```
@@ -224,7 +224,7 @@ Baserat på svaret (torsdag/måndag/tisdag), läs relevant kontext från CURRENT
 ### Steg 2: Presentera Situationen
 Visa teamet en snabb överblick (2 min):
 - **"Denna vecka har vi gjort X..."** (från CURRENT_STATUS)
-- **"Största risker är Y..."** (från RISKS.md)
+- **"Största risker är Y..."** (från Google Sheets Risker)
 - **"Vi ska fokusera på Z..."** (från SPRINT_PLANNING)
 
 ### Steg 3: Facilitera Diskussionen
@@ -288,7 +288,7 @@ AI: "Nice! Men implementation-detaljer passar på Native's
 ### Omedelbar Alert:
 - 🔴 **Blockers från förra veckan är INTE lösta** → "Vi måste prioritera detta IDAG"
 - 🔴 **Någon är 100% stuck** → "Vem kan pair-program med dig?"
-- 🔴 **Risk #1 eller #2 förändras** → "Vi måste uppdatera RISKS.md"
+- 🔴 **Risk #1 eller #2 förändras** → "Vi måste uppdatera Google Sheets Risker"
 - 🔴 **Mindre än 2 veckor till CTO deadline (24 sep)** → "Vi måste fokusera på kärnflödet"
 
 ### Gul Alert:
@@ -352,8 +352,8 @@ MÖTES-KONTEXT (Copy-Paste This):
    - Team Lead: ☐ Ja  ☐ Nej
 
 3. Kopiera denna text från dokumenten:
-   - [ ] CURRENT_STATUS.md (senast 2h gammal)
-   - [ ] RISKS.md (senast 1 vecka gammal)
+   - [ ] GitHub Project Board (senast 2h gammal)
+   - [ ] Google Sheets Risker (senast 1 vecka gammal)
    - [ ] BACKLOG.md (senast 1 vecka gammal)
    - [ ] SPRINT_PLANNING.md (för referens)
 ```
@@ -378,7 +378,7 @@ MÖTES-KONTEXT (Copy-Paste This):
 ⚠️ ACTIONS:
 - [ ] Person A: Gör detta till torsdag
 - [ ] Person B: Pair-program med Person A
-- [ ] Team: Uppdatera CURRENT_STATUS.md
+- [ ] Team: Uppdatera GitHub Project Board
 
 🚨 RISKER IDENTIFIERADE:
 - Risk #1: [Vad är det?]
@@ -400,7 +400,7 @@ MÖTES-KONTEXT (Copy-Paste This):
 - ✅ Ställ Open-ended frågor ("Vad gör oss stuck?")
 - ✅ Lyssna på teamet, inte bara prata
 - ✅ Är du osäker → Fråga teamet!
-- ✅ Uppdatera CURRENT_STATUS.md live under mötet
+- ✅ Uppdatera GitHub Project Board live under mötet
 - ✅ Ge credit när något görs bra
 - ✅ Flag risker OMEDELBAR om du ser dem
 - ✅ Fokusera på decisions, inte diskussioner
@@ -454,12 +454,12 @@ Before we start, ask me: "Which meeting are we running today?"
 - **DECISIONS.md** - Arkitektur-beslut (varför?)
 
 ### 📊 LEVANDE DOKUMENT (Jag LÄSER OCH UPPDATERAR efter mötet)
-- **CURRENT_STATUS.md** ✅ JA, jag uppdaterar denna
+- **GitHub Project Board** ✅ JA, jag uppdaterar denna
   - Vad blev klart denna vecka?
   - WIP-issues status
   - Mötes-sammanfattning
   
-- **RISKS.md** ✅ JA, jag uppdaterar denna
+- **Google Sheets Risker** ✅ JA, jag uppdaterar denna
   - Nya risker identifierade?
   - Mitigations framsteg?
   - Uppdaterad status på befintliga risker
@@ -471,7 +471,7 @@ Before we start, ask me: "Which meeting are we running today?"
 - Jag läser issues (du copy-pastas dem)
 - Jag kommenterar ej direkt - du uppdaterar själv
 
-**Resultat efter mötet:** Jag ger dig en sammanfattning som du kan copy-pasta direkt in i CURRENT_STATUS.md eller RISKS.md
+**Resultat efter mötet:** Jag ger dig en sammanfattning som du kan copy-pasta direkt in i GitHub Project Board eller Google Sheets Risker
 
 ---
 
@@ -486,7 +486,7 @@ Denna setup gör att:
 
 ---
 
-**Nästa steg:** Kopiera denna fil och klistra in den i din AI-modell tillsammans med CURRENT_STATUS.md och RISKS.md → Säg "Kör torsdags-möte" och se vad som händer! 🚀
+**Nästa steg:** Kopiera denna fil och klistra in den i din AI-modell tillsammans med GitHub Project Board och Google Sheets Risker → Säg "Kör torsdags-möte" och se vad som händer! 🚀
 
 ---
 
