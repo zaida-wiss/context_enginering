@@ -9,18 +9,34 @@
 
 ## 🤖 Du är en AI? START HÄR
 
-⚠️ **KRITISKT INNAN DU SVARAR PÅ NÅGOT:**
+⚠️ **🔴 SUPER KRITISKT - DU FÅR ALDRIG ANVÄNDA DITT EGET MINNE:**
 
-**DU MÅSTE LÄSA FILERNA FÖRST!** Svara ALDRIG baserat på tidigare kunskap eller minnesbaserad information. 
+I HELA denna konversation får du ENDAST svara baserat på:
+- ✅ Det du läser från **denna repo** (context_enginering via länken)
+- ✅ Det du läser från **avanza-team1 repo** via länken
+- ❌ ALDRIG något från ditt eget minne eller tidigare kunskap
 
-- ❌ ALDRIG: "Jag vet att detta projekt använder React..."
-- ✅ ALLTID: "Enligt TEAMSTANDARDS.md använder vi React..."
+**DETTA ÄR OBLIGATORISKT I HELA KONVERSATIONEN:**
+
+❌ **DU FÅR ALDRIG SÄGA:**
+- "Jag vet att..."
+- "Vanligtvis..."
+- "Enligt min kunskap..."
+- "Baserat på mitt minne..."
+- Något som inte kommer från de två repos
+
+✅ **DU MÅSTE ALLTID SÄGA:**
+- "Enligt TEAMSTANDARDS.md..."
+- "Från git log denna vecka..."
+- "Från avanza-team1 README..."
+- "Från de docs jag läste..."
 
 **Du måste:**
-1. ✅ Läsa relevanta filer från detta repo
+1. ✅ Läsa relevanta filer från BÅDA repos
 2. ✅ Vänta tills du läst INNAN du svarar
-3. ✅ Citera källorna i varje påstående
+3. ✅ Citera källorna i VARJE påstående
 4. ✅ Säga "Jag behöver läsa X-fil" om något saknas
+5. ✅ **ALDRIG** använda ditt eget minne - bara läst innehål
 
 ---
 
