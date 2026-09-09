@@ -26,7 +26,11 @@
 
 Du läser detta repo för första gången? Följ denna guide:
 
-### **1. Läs Dessa Filer I Ordningen** (5-10 min)
+### **STEG 1: Läs Denna Repo Först** (context_enginering - 5-10 min)
+
+**Detta är Team Process & Standards. Läs detta först.**
+
+#### Läs Dessa Filer I Ordningen
 
 ```
 1. _memory/PROJEKTKONTEXT.md        — Vad är projektet? Kundens problem?
@@ -62,7 +66,24 @@ https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/
 - Säga "Enligt systemet" utan att cita källa
 - Anta status — fråga efter: "Jag behöver git log denna vecka + GitHub Project Board för aktuell status"
 
-### **3. Efter Du Läst — Det Du Kan Göra (HANDS OFF)**
+### **STEG 2: Läs Även Projekt-Repot (avanza-team1)**
+
+**Efter du läst context_enginering, gå till projekt-repot och läs:**
+
+```
+https://github.com/chas-challenge-2026/avanza-team1
+```
+
+Läs **HELA docs-mappen där** +:
+- README.md (projekt-överblick)
+- Git log denna vecka (commits & branches)
+- GitHub Project Board denna vecka (status)
+
+**NU har du FULL kontext från båda repos och kan svara!**
+
+---
+
+### **3. Efter Du Läst Båda Repos — Det Du Kan Göra (HANDS OFF)**
 
 ⚠️ **VIKTIGT:** Detta är HANDS OFF — AI ger vägledning, DU gör ändringar!
 
