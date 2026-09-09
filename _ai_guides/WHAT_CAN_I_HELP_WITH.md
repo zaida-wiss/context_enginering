@@ -656,18 +656,38 @@ System / application | Owner | Lifecycle status | Description / purpose | Type o
 **Template För Varje Issue:**
 ```
 Title: type(scope): Clear title (#number)
+
 Body:
-- Problem: Vad är användarens behov?
-- Solution: Vad bygger vi?
-- Acceptance Criteria: 3-5 mätbara checkboxes
-- Technical Details: Filer, dependencies
-- Blockers: None eller WAITS FOR: #XX
+**Problem:** Vad är användarens behov?
+
+**Solution:** Vad bygger vi?
+
+**Acceptance Criteria:**
+☐ Kriterium 1
+☐ Kriterium 2
+☐ Kriterium 3
+
+**Technical Details:**
+File: src/path/file.tsx
+Dependencies: #XX (if any)
+Framework: React + TypeScript
+
+**Blockers:** 
+None (eller "WAITS FOR: #XX API")
+
+**Definition of Ready:**
+✅ Problem är definierat
+✅ AC är mätbar (inte "make it work")
+✅ Blockare identifierade
+✅ Estimat är realistic (inte "2h" för stor feature)
+✅ Ingen vaga beskrivningar
+✅ Tech stack är klar
 
 Assignees: Person-name
-Status: Ready (if Definition of Ready met)
+Status: Ready (only if all DoR ✅)
 Priority: Critical/High/Medium/Low
-Labels: vec-X, scope, feature-type, dependencies
-Estimate: 2h/4h/8h/12h etc
+Labels: vec-X, scope, feature-type, blocks-#XX
+Estimate: 2h/4h/8h/12h/16h etc
 ```
 
 **VIKTIGT:** Varje issue MÅSTE följa Definition of Ready (se DEFINITION_OF_DONE.md):
