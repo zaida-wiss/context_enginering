@@ -645,7 +645,43 @@ System / application | Owner | Lifecycle status | Description / purpose | Type o
 
 ## 🎫 ISSUES - Format & Presentation
 
-**VIKTIGT:** När du frågar om nya issues eller uppdateringar - presentera i denna tabellformat:
+### Format För Nya Issues
+
+**VIKTIGT:** När du frågar "ge mig nya issues" eller "vad är nästa issues" - presentera i denna EXAKTA tabellformat:
+
+| Title | Body | Assignees | Status | Priority | Labels | Estimate |
+|-------|------|-----------|--------|----------|--------|----------|
+| **feat(scope): Issue Title** | **Problem:** Vad är problemet?<br><br>**Solution:** Vad bygger vi?<br><br>**Acceptance Criteria:**<br>☐ Kriterium 1<br>☐ Kriterium 2<br><br>**Technical Details:**<br>File: X<br>Dependencies: Y<br><br>**Blockers:** None eller "WAITS FOR: #XX" | Person-name | Ready | Critical/High/Medium/Low | vec-1, scope, feature | 4h |
+
+**Template För Varje Issue:**
+```
+Title: type(scope): Clear title (#number)
+Body:
+- Problem: Vad är användarens behov?
+- Solution: Vad bygger vi?
+- Acceptance Criteria: 3-5 mätbara checkboxes
+- Technical Details: Filer, dependencies
+- Blockers: None eller WAITS FOR: #XX
+
+Assignees: Person-name
+Status: Ready (if Definition of Ready met)
+Priority: Critical/High/Medium/Low
+Labels: vec-X, scope, feature-type, dependencies
+Estimate: 2h/4h/8h/12h etc
+```
+
+**VIKTIGT:** Varje issue MÅSTE följa Definition of Ready (se DEFINITION_OF_DONE.md):
+- ✅ Acceptanskriterier tydliga
+- ✅ Blockade identifierade
+- ✅ Estimat given
+- ✅ Ingen vaga beskrivningar
+
+**Gamla Format (GAMLA - ANVÄND INTE):**
+~~`Title | Body | Assignees...`~~ (detta är det gamla formatet, inte längre använt)
+
+---
+
+**VIKTIGT:** Presentera ALL nya issues i denna tabellformat
 
 ```
 Title | Body | Assignees | Status | Priority | Labels | Estimate
