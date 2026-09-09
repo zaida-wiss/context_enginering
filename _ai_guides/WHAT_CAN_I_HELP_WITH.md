@@ -1255,200 +1255,58 @@ Korta kommandon du kan använda:
 
 ---
 
-## 📋 SNABB-REFERENS: KODEXEMPEL TEMPLATES
+## 📋 SNABB-REFERENS: KODSTRUKTUR & MÖNSTER
 
-**Om du behöver se ett exempel snabbt — här är generiska TEMPLATES för vilken feature som helst.**
+**Dessa principer gäller för VILKEN feature som helst (LoginForm, PortfolioOverview, osv):**
 
-**BELANGRIKT:** Dessa är LoginForm-exemplen, men samma mönster gäller för:
-- PortfolioOverview
-- TargetAllocationForm
-- HoldingsTable
-- RiskMetrics
-- Eller VILKEN annan komponent som helst
+### React Component Struktur
 
-**Kopiera mönstret, byt namnen!**
+```
+✅ DÖ:
+- Använd TypeScript interfaces för props
+- State lokalt i komponenten (useState)
+- Separera business logic från UI
+- .module.css för styling
+- Explicit return types
 
-### React Component Template (Generisk)
-
-```typescript
-// src/components/LoginForm.tsx
-import React, { useState } from 'react';
-import { mockAuth } from '../auth/mockAuth';
-import styles from './LoginForm.module.css';
-
-interface LoginFormProps {
-  onSuccess?: () => void;
-}
-
-export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-    
-    try {
-      const result = await mockAuth.login(email, password);
-      if (result.success) {
-        onSuccess?.();
-      } else {
-        setError(result.error || 'Login failed');
-      }
-    } catch (err) {
-      setError('An error occurred');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        required
-      />
-      {error && <div className={styles.error}>{error}</div>}
-      <button type="submit" disabled={loading}>
-        {loading ? 'Logging in...' : 'Login'}
-      </button>
-    </form>
-  );
-};
+❌ UNDVIK:
+- Inline styles (förutom enkla fall)
+- Business logic i komponenten
+- Any types
+- console.log() i producerad kod
 ```
 
-### Auth Module (mockAuth.ts)
+### Modulstruktur
 
-```typescript
-// src/auth/mockAuth.ts
-interface LoginResponse {
-  success: boolean;
-  error?: string;
-  token?: string;
-}
+```
+✅ DÖ:
+- Separera auth/API-logik i egna moduler
+- Interfaces för requests/responses
+- Error handling i modulerna
+- Mock-data för testing
 
-export const mockAuth = {
-  async login(email: string, password: string): Promise<LoginResponse> {
-    // Mock validation
-    if (!email.includes('@')) {
-      return { success: false, error: 'Invalid email' };
-    }
-    if (password.length < 6) {
-      return { success: false, error: 'Password too short' };
-    }
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    return {
-      success: true,
-      token: 'mock-token-123',
-    };
-  },
-};
+❌ UNDVIK:
+- Blandad logik (UI + business)
+- Direkta API-anrop från komponenten
+- Hardkodade värden
 ```
 
-### CSS Module
+### Testing Mönster
 
-```css
-/* src/components/LoginForm.module.css */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
+```
+✅ DÖ:
+- Unit tests för komponenter (Vitest/Jest)
+- Test user interactions
+- Verifiera integration med moduler
+- Mock dependencies
 
-.form input {
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.error {
-  color: #dc3545;
-  font-size: 0.875rem;
-  padding: 0.5rem;
-  background: #f8d7da;
-  border-radius: 4px;
-}
-
-.form button {
-  padding: 0.75rem;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.form button:disabled {
-  background: #6c757d;
-  cursor: not-allowed;
-}
+❌ UNDVIK:
+- Testing implementation details
+- Ingen error-scenario testing
+- Beroende på tidsbaserad logik
 ```
 
-### Test Example
-
-```typescript
-// src/components/__tests__/LoginForm.test.tsx
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { LoginForm } from '../LoginForm';
-
-describe('LoginForm', () => {
-  it('shows error for invalid email', async () => {
-    render(<LoginForm />);
-    
-    fireEvent.change(screen.getByPlaceholderText('Email'), {
-      target: { value: 'invalid' }
-    });
-    fireEvent.change(screen.getByPlaceholderText('Password'), {
-      target: { value: 'password123' }
-    });
-    fireEvent.click(screen.getByText('Login'));
-    
-    await waitFor(() => {
-      expect(screen.getByText('Invalid email')).toBeInTheDocument();
-    });
-  });
-
-  it('calls onSuccess when login succeeds', async () => {
-    const onSuccess = jest.fn();
-    render(<LoginForm onSuccess={onSuccess} />);
-    
-    fireEvent.change(screen.getByPlaceholderText('Email'), {
-      target: { value: 'test@example.com' }
-    });
-    fireEvent.change(screen.getByPlaceholderText('Password'), {
-      target: { value: 'password123' }
-    });
-    fireEvent.click(screen.getByText('Login'));
-    
-    await waitFor(() => {
-      expect(onSuccess).toHaveBeenCalled();
-    });
-  });
-});
-```
+**Viktigt:** Använd dessa PRINCIPER för din specifika feature. AI kan visa exempel om du behöver.
 
 ---
 
