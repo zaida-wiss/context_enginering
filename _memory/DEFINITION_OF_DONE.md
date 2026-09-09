@@ -43,9 +43,35 @@ Estimate: 16h
 
 ---
 
+---
+
+## 🎯 AC vs DoD - VIKTIGT SKILLJA!
+
+**AC och DoD är INTE samma sak:**
+
+```
+AC (Acceptance Criteria)     = VAD ska fungera?
+                               ☐ Login works
+                               ☐ Error shows
+                               ☐ Redirects
+                               = ~20% av DoD
+
+DoD (Definition of Done)     = HUR säkerställer vi det är klart?
+                               ☐ AC uppfyllda (JA, men...)
+                               ☐ Testade
+                               ☐ Reviewade
+                               ☐ Dokumenterat
+                               ☐ Format korrekt
+                               = 100% krav för att stänga
+```
+
+**AC är en DELMÄNGD av DoD!**
+
+---
+
 ## ✅ Definition of Done - INNAN Vi Stänger
 
-En feature/fix är **DONE** när den uppfyller ALLT här:
+En feature/fix är **DONE** när den uppfyller ALLT här (inklusive AC):
 
 ## ⚠️ ALLRA VIKTIGASTE: TÄVLINGEN ≠ BETYGET
 
