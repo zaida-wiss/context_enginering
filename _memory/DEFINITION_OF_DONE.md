@@ -1,8 +1,51 @@
-# Definition of Done - v2 Godkänd-krav
-
-En godkänd v2 måste uppfylla **alla** dessa kriterier för att kunna presenteras för Avanza.
+# Definition of Ready & Definition of Done
 
 ---
+
+## 🚀 Definition of Ready (DoR) - INNAN Vi Börjar
+
+En issue är **READY** att börja arbeta på när:
+
+### Tydlighet
+- [ ] **Titel är klar** - "Add portfolio overview dashboard" (inte "dashboard")
+- [ ] **Problem är definierat** - Vad är användarens behov?
+- [ ] **Lösning är beskriven** - Vad ska vi bygga?
+
+### Acceptance Criteria
+- [ ] **3-5 mätbara kriterier** - Testa om det är klart
+- [ ] **Inte vaga** - Inte "make it work", utan specifikt
+- [ ] **Definition av klart** - Vad betyder "klart"?
+
+### Teknik & Beroenden
+- [ ] **Scope definierad** - Frontend/Backend/Native?
+- [ ] **Ingen blockers** - Eller är det tydligt vad som blockerar?
+- [ ] **Beroenden identifierade** - Väntar denna på något annat?
+- [ ] **Estimat givet** - 4h/8h/16h/20h?
+
+### Exempel på READY Issue:
+```
+Title: feat(frontend): Add portfolio overview dashboard (#26)
+
+Problem: User cannot see total portfolio value across all savings
+
+Solution: Dashboard showing total, allocation, risk metrics
+
+Acceptance Criteria:
+- [ ] Dashboard displays ISK + KF + depå value
+- [ ] Values converted to SEK
+- [ ] Allocation chart shows aktier/fonder %
+- [ ] Components TypeScript-typed
+- [ ] E2E test covers happy path
+
+Blockers: None
+Estimate: 16h
+```
+
+---
+
+## ✅ Definition of Done - INNAN Vi Stänger
+
+En feature/fix är **DONE** när den uppfyller ALLT här:
 
 ## ⚠️ ALLRA VIKTIGASTE: TÄVLINGEN ≠ BETYGET
 
