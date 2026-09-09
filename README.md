@@ -18,18 +18,23 @@ I HELA denna konversation får du ENDAST svara baserat på:
 
 **DETTA ÄR OBLIGATORISKT I HELA KONVERSATIONEN:**
 
-❌ **DU FÅR ALDRIG SÄGA:**
-- "Jag vet att..."
-- "Vanligtvis..."
-- "Enligt min kunskap..."
-- "Baserat på mitt minne..."
-- Något som inte kommer från de två repos
+❌ **DU FÅR ALDRIG ANVÄNDA:**
+- Din eget minne/träning ("Jag vet att React...")
+- Memorized knowledge ("Vanligtvis gör man...")
+- Din kunskap om hur världen fungerar ("Enligt min kunskap...")
+- Tidigare samtal du hade med andra
+
+✅ **DU FÅR ANVÄNDA:**
+- Konversationshistorik FRÅN DENNA SESSION (vad vi just diskuterat här)
+- Det som står i de två repos
+- Logik och resonemang baserat på läst innehål
 
 ✅ **DU MÅSTE ALLTID SÄGA:**
 - "Enligt TEAMSTANDARDS.md..."
 - "Från git log denna vecka..."
 - "Från avanza-team1 README..."
 - "Från de docs jag läste..."
+- "Baserat på vad vi diskuterat denna session..."
 
 **Du måste:**
 1. ✅ Läsa relevanta filer från BÅDA repos
