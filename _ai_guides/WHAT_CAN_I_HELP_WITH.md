@@ -710,22 +710,91 @@ Estimate: 2h/4h/8h/12h/16h etc
 
 ---
 
-**VIKTIGT:** Presentera ALL nya issues i denna tabellformat
+**VIKTIGT:** Issue-Body MÅSTE innehålla dessa detaljer INNAN du frågar AI om hjälp!
+
+```
+## Issue Body Format (KRAVS för att AI kan ge bra hjälp)
+
+### Problem
+Varför behövs denna feature? Vad är användarens/systemets behov?
+(NOT: "build a login form" — YES: "users need to authenticate...")
+
+### Acceptance Criteria
+- [ ] Testbar kriterium 1 (e.g., "user enters email + password → sees loading state")
+- [ ] Testbar kriterium 2
+- [ ] Testbar kriterium 3
+
+### Technical Details
+**Architecture decisions to think through:**
+- Vilken state behöver komponenten? Lokal eller central?
+- Vilka moduler behöver vi anropa?
+- Vad händer på success/failure?
+- Vilka validerings-regler gäller?
+
+### Dependencies
+- Does this depend on feature X being done first?
+- Any backend API requirements?
+- Design mockup: [link to mockup]
+
+### Definition of Ready (Before starting)
+- [ ] Acceptance criteria är tydliga
+- [ ] Ingen blockers
+- [ ] Design mockup är länkad
+- [ ] Beroenden är identifierade
+
+### Definition of Done (Before closing)
+- [ ] AC uppfyllda
+- [ ] Tester skrivna (Vitest)
+- [ ] Ingen console.log/TODO
+- [ ] TypeScript strict
+- [ ] Code reviewed
+- [ ] Commit-format korrekt
+```
+
+**Presentera som tabell EFTER issue är definierad:**
 
 ```
 Title | Body | Assignees | Status | Priority | Labels | Estimate
 ------|------|-----------|--------|----------|--------|----------
-feat(frontend): Add LoginForm | Implementera inloggnings-form med TypeScript. Se UI_DESIGN_REFERENCE.md mockup 01_login.webp | @developer-name | To Do | High | frontend, feature, #26 | 8h
+feat(frontend): Add LoginForm | [se ovan format] | @developer-name | To Do | High | frontend, feature, #26 | 8h
 ```
 
 **Kolumner (i denna ordning):**
 1. **Title** - Issue-titel (format: `type(scope): message`)
-2. **Body** - Beskrivning av vad som ska göras
+2. **Body** - Beskrivning enligt format ovan (Problem → AC → Technical → DoR → DoD)
 3. **Assignees** - Vem jobbar på det (@username)
 4. **Status** - To Do / In Progress / In Review / Done
 5. **Priority** - Critical / High / Medium / Low
 6. **Labels** - Tags (comma-separated, inkludera GitHub-issue #nummer)
 7. **Estimate** - Tidsuppskattning (4h, 8h, 16h, 1d, etc.)
+
+---
+
+## 🆘 NÄR DU FRÅGAR AI OM HJÄLP MED EN ISSUE
+
+⚠️ **VIKTIG:** Copy-pasta issue-body enligt formatet ovan (Problem → AC → Technical → DoR → DoD)
+
+AI kan INTE ge bra hjälp om:
+- ❌ Issue-body bara säger "build LoginForm"
+- ❌ Acceptance criteria är vaga ("make it work")
+- ❌ Ingen arkitektur-diskussion (state, validation, etc)
+- ❌ Ingen länk till mockup/design
+
+AI GER BÄSTA HJÄLP när:
+- ✅ Problem är klart (varför behövs denna feature?)
+- ✅ AC är specifika och testbara
+- ✅ Du har tänkt igenom arkitekturen (frågorna i "Technical Details")
+- ✅ Design mockup är länkad
+- ✅ Beroenden är tydliga
+
+**Workflow:**
+1. Fyll i issue-body enligt formatet ovan (Du gör detta!)
+2. Copy-pasta hele issue-body till AI
+3. AI frågar arkitektur-frågor (du svarar!)
+4. Du implementerar
+5. AI reviewar mot AC & DoD
+
+---
 
 **INNAN VI BÖRJAR - RISK ASSESSMENT:**
 
@@ -813,62 +882,51 @@ AI: Svar innehåler:
 
 ⚠️ **DET VIKTIGASTE CONCEPTET:**  
 AI guider DIG att TÄNKA genom arkitekturen. Du implementerar. AI granskar.
+**KODEXEMPEL KOMMER LÄNGST NED** — tvinga dig själv att tänka först!
 
-**FLÖDE (LoginForm som exempel):**
+**FLÖDE:**
 
 ```
 1️⃣ CONTEXT & DESIGN
-   Du: "Hjälp mig bygga LoginForm enligt mockup"
-   
-   AI: Läser mockup 01_login.webp
-   AI: "Enligt mockup behöver LoginForm:
-        - Email input
-        - Password input
-        - Submit button
-        - Validation på båda fält
-        - Loading state under submit"
+   Du: Copy-pastas issue-body med Problem + AC + Technical
 
 2️⃣ ARKITEKTUR-FRÅGOR (INNAN KOD!)
-   AI: "Fundera på dessa INNAN du kodar:
+   AI: Läser din issue. Ställer frågor:
         
-        💭 State-frågor:
-        - Vilken state behöver komponenten? (email, password, loading, error)
-        - Ska detta ligga i komponenten eller någonstans centralt?
-        - Hur hanterar du form-validering?
-        
-        💭 Integration-frågor:
-        - Vem ansvarar för mock-auth? Komponenten eller auth-modulen?
-        - Hur skall komponenten anropa auth-funktionen?
-        - Hur skall felmeddelanden flöda tillbaka?
-        
-        💭 UX-frågor:
-        - Vad ska hända när submit lyckas?
-        - Vad ska hända när det misslyckas?
-        - Hur visar du loading state?"
+        💭 "Vilken state behöver komponenten?"
+        💭 "Ska validation ligga i komponenten eller modulen?"
+        💭 "Hur flödar error-meddelanden tillbaka?"
+        💭 "Vad händer när submit lyckas vs misslyckas?"
+        💭 "Vilken routing är rätt här?"
 
-3️⃣ DU IMPLEMENTERAR
-   Du: "Här är min implementation..." [kod]
+3️⃣ DU SVARAR OCH TÄNKER
+   Du: "Jag tänkte lagra [email, password, loading, error] lokalt"
+       "Auth-modulen hanterar login, komponenten visar UI"
+       etc
 
-4️⃣ AI GRANSKAR
-   AI: "Bra! Jag ser att du:
-        ✅ Lagrar state i komponenten
-        ✅ Separerar auth-logik i auth-modulen
-        ✅ Visar loading state
+4️⃣ DU IMPLEMENTERAR
+   Du: "Här är min implementation..." [din kod]
+
+5️⃣ AI GRANSKAR
+   AI: "Bra tänk! Du har:
+        ✅ Rätt state-placering
+        ✅ Bra separation of concerns
+        ✅ Korrekt routing
         
-        En fråga: Varför valde du att PUT validering här
-        istället för i inputkomponenten? Vilka fördelar/nackdelar?"
+        Märkte du att du inte använder logout? 
+        Och validering här är redundant — två villkor för samma sak."
 
-5️⃣ KODEXEMPEL (om du behöver)
-   Du: "Jag vet inte hur man gör..."
-   AI: "Här är ett exempel:" [visar fragment, inte hela filen]
+6️⃣ KODEXEMPEL (om du behöver — längst ner i denna fil)
+   Du: "Jag vet inte hur man skriver det..."
+   AI: "Se SNABB-REFERENS längst ner för principer"
 ```
 
 **Fördelar med denna modell:**
-- 🧠 Du lär dig VARFÖR, inte bara VISS kopiera
+- 🧠 Du lär dig VARFÖR, inte bara att KOPIERA
 - 💪 Du fattar egna arkitektur-beslut
 - 🎓 Du blir expert, inte kodkopiare
-- 🔍 Du förstår trade-offs
-- 📈 Du växer som utvecklare
+- 🔍 Du förstår trade-offs och orsaker
+- 📈 Du växer som utvecklare — och undviker buggar!
 
 ---
 
