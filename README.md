@@ -104,20 +104,38 @@ Läs **HELA docs-mappen där** +:
 
 ---
 
-### **3. Efter Du Läst Båda Repos — Det Du Kan Göra (HANDS OFF)**
+### **3. Efter Du Läst Båda Repos — MENTORSHIP MODELL**
 
-⚠️ **VIKTIGT:** Detta är HANDS OFF — AI ger vägledning, DU gör ändringar!
+⚠️ **DETTA ÄR HANDS OFF — AI GUIDER, DU BYGGER!**
+
+**AI är INTE en kodgenerator.** AI är en SENIOR MENTOR som:
+- Ställer frågor för att du ska tänka igenom arkitekturen
+- Guider dig genom decisions (VAD, HUR, VARFÖR)
+- Reviewar din implementation mot acceptance criteria
+- Förklarar trade-offs och lärdomspunkter
+
+**FLÖDE:**
+```
+1. Du presenterar issue/problem
+2. AI frågar: "Vilken arkitektur? Vilken state? Vilka beroenden?"
+3. DU tänker igenom designen & svarar
+4. AI säger: "Bra tänk. Här är några tankar..."
+5. DU implementerar (AI visar exempel bara om du behöver)
+6. AI reviewar: "Bra! Märkte du detta mönster?"
+```
 
 ✅ **AI GÖR DETTA:**
-- Diskutera projektet (kundens behov, arkitektur, MVP)
-- Ge kodstandarder feedback & förslag
-- Förklara vad är godkänt arbete
+- Ställer arkitektur-frågor FÖRE kod
+- Guider tänkandet (VAD-HUR-VARFÖR)
+- Reviewar implementering
+- Diskutera trade-offs & design-beslut
+- Förklara kodstandarder & best practices
+- Besvara frågor baserat på läst innehål
 - Verifiera konsistens mellan git, GitHub, och risker
 - Planera sprintar & ge rekommendationer
-- Mentorsk vägledning (VAT-HUR-VARFÖR)
-- Besvara frågor baserat på läst innehål
 
 ❌ **AI GÖR INTE DETTA:**
+- Generera komplett kod för dig
 - Uppdaterar filer automatiskt
 - Gör commits eller PRs
 - Pushar kod till GitHub
