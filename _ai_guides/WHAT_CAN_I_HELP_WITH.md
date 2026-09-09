@@ -807,6 +807,71 @@ AI: Svar innehåler:
    ✅ Länk till UI_DESIGN_REFERENCE.md
 ```
 
+---
+
+## 🎓 MENTORSHIP-MODELL — INTE CODEGEN!
+
+⚠️ **DET VIKTIGASTE CONCEPTET:**  
+AI guider DIG att TÄNKA genom arkitekturen. Du implementerar. AI granskar.
+
+**FLÖDE (LoginForm som exempel):**
+
+```
+1️⃣ CONTEXT & DESIGN
+   Du: "Hjälp mig bygga LoginForm enligt mockup"
+   
+   AI: Läser mockup 01_login.webp
+   AI: "Enligt mockup behöver LoginForm:
+        - Email input
+        - Password input
+        - Submit button
+        - Validation på båda fält
+        - Loading state under submit"
+
+2️⃣ ARKITEKTUR-FRÅGOR (INNAN KOD!)
+   AI: "Fundera på dessa INNAN du kodar:
+        
+        💭 State-frågor:
+        - Vilken state behöver komponenten? (email, password, loading, error)
+        - Ska detta ligga i komponenten eller någonstans centralt?
+        - Hur hanterar du form-validering?
+        
+        💭 Integration-frågor:
+        - Vem ansvarar för mock-auth? Komponenten eller auth-modulen?
+        - Hur skall komponenten anropa auth-funktionen?
+        - Hur skall felmeddelanden flöda tillbaka?
+        
+        💭 UX-frågor:
+        - Vad ska hända när submit lyckas?
+        - Vad ska hända när det misslyckas?
+        - Hur visar du loading state?"
+
+3️⃣ DU IMPLEMENTERAR
+   Du: "Här är min implementation..." [kod]
+
+4️⃣ AI GRANSKAR
+   AI: "Bra! Jag ser att du:
+        ✅ Lagrar state i komponenten
+        ✅ Separerar auth-logik i auth-modulen
+        ✅ Visar loading state
+        
+        En fråga: Varför valde du att PUT validering här
+        istället för i inputkomponenten? Vilka fördelar/nackdelar?"
+
+5️⃣ KODEXEMPEL (om du behöver)
+   Du: "Jag vet inte hur man gör..."
+   AI: "Här är ett exempel:" [visar fragment, inte hela filen]
+```
+
+**Fördelar med denna modell:**
+- 🧠 Du lär dig VARFÖR, inte bara VISS kopiera
+- 💪 Du fattar egna arkitektur-beslut
+- 🎓 Du blir expert, inte kodkopiare
+- 🔍 Du förstår trade-offs
+- 📈 Du växer som utvecklare
+
+---
+
 **Viktigt:** AI ska ALLTID läsa `FRONTEND_AI_INSTRUCTIONS.md` och mockups för frontend-frågor!
 
 ---
@@ -1187,6 +1252,203 @@ Korta kommandon du kan använda:
 ❌ Project Manager (din roll)
 ❌ Decision-maker (du och teamet gör beslut)
 ❌ Ansvarig för resultat (du är det)
+
+---
+
+## 📋 SNABB-REFERENS: KODEXEMPEL TEMPLATES
+
+**Om du behöver se ett exempel snabbt — här är generiska TEMPLATES för vilken feature som helst.**
+
+**BELANGRIKT:** Dessa är LoginForm-exemplen, men samma mönster gäller för:
+- PortfolioOverview
+- TargetAllocationForm
+- HoldingsTable
+- RiskMetrics
+- Eller VILKEN annan komponent som helst
+
+**Kopiera mönstret, byt namnen!**
+
+### React Component Template (Generisk)
+
+```typescript
+// src/components/LoginForm.tsx
+import React, { useState } from 'react';
+import { mockAuth } from '../auth/mockAuth';
+import styles from './LoginForm.module.css';
+
+interface LoginFormProps {
+  onSuccess?: () => void;
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    
+    try {
+      const result = await mockAuth.login(email, password);
+      if (result.success) {
+        onSuccess?.();
+      } else {
+        setError(result.error || 'Login failed');
+      }
+    } catch (err) {
+      setError('An error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+        required
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+        required
+      />
+      {error && <div className={styles.error}>{error}</div>}
+      <button type="submit" disabled={loading}>
+        {loading ? 'Logging in...' : 'Login'}
+      </button>
+    </form>
+  );
+};
+```
+
+### Auth Module (mockAuth.ts)
+
+```typescript
+// src/auth/mockAuth.ts
+interface LoginResponse {
+  success: boolean;
+  error?: string;
+  token?: string;
+}
+
+export const mockAuth = {
+  async login(email: string, password: string): Promise<LoginResponse> {
+    // Mock validation
+    if (!email.includes('@')) {
+      return { success: false, error: 'Invalid email' };
+    }
+    if (password.length < 6) {
+      return { success: false, error: 'Password too short' };
+    }
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    return {
+      success: true,
+      token: 'mock-token-123',
+    };
+  },
+};
+```
+
+### CSS Module
+
+```css
+/* src/components/LoginForm.module.css */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  background: #f8d7da;
+  border-radius: 4px;
+}
+
+.form button {
+  padding: 0.75rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+```
+
+### Test Example
+
+```typescript
+// src/components/__tests__/LoginForm.test.tsx
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { LoginForm } from '../LoginForm';
+
+describe('LoginForm', () => {
+  it('shows error for invalid email', async () => {
+    render(<LoginForm />);
+    
+    fireEvent.change(screen.getByPlaceholderText('Email'), {
+      target: { value: 'invalid' }
+    });
+    fireEvent.change(screen.getByPlaceholderText('Password'), {
+      target: { value: 'password123' }
+    });
+    fireEvent.click(screen.getByText('Login'));
+    
+    await waitFor(() => {
+      expect(screen.getByText('Invalid email')).toBeInTheDocument();
+    });
+  });
+
+  it('calls onSuccess when login succeeds', async () => {
+    const onSuccess = jest.fn();
+    render(<LoginForm onSuccess={onSuccess} />);
+    
+    fireEvent.change(screen.getByPlaceholderText('Email'), {
+      target: { value: 'test@example.com' }
+    });
+    fireEvent.change(screen.getByPlaceholderText('Password'), {
+      target: { value: 'password123' }
+    });
+    fireEvent.click(screen.getByText('Login'));
+    
+    await waitFor(() => {
+      expect(onSuccess).toHaveBeenCalled();
+    });
+  });
+});
+```
 
 ---
 
