@@ -675,13 +675,22 @@ Framework: React + TypeScript
 **Blockers:** 
 None (eller "WAITS FOR: #XX API")
 
-**Definition of Ready:**
+**Definition of Ready:** (innan vi börjar)
 ✅ Problem är definierat
 ✅ AC är mätbar (inte "make it work")
 ✅ Blockare identifierade
 ✅ Estimat är realistic (inte "2h" för stor feature)
 ✅ Ingen vaga beskrivningar
 ✅ Tech stack är klar
+
+**Definition of Done:** (innan vi stänger DENNA issue)
+☐ Alla AC är uppfyllda
+☐ Jest unit tests skrivna (min 60-70% coverage)
+☐ Kod är granskad av annan person
+☐ TypeScript strict mode passar
+☐ Ingen console.log/TODO/FIXME
+☐ README uppdaterad (om relevant)
+☐ Commit-format korrekt: type(scope): message (#issue)
 
 Assignees: Person-name
 Status: Ready (only if all DoR ✅)
