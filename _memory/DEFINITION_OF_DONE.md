@@ -204,6 +204,95 @@ Måste dokumentera:
 
 ---
 
+## ♿ Accessibility (WCAG 2.1 AA Standard)
+
+**FÖRE detta krävs i VARJE issue:**
+
+### Frontend Components
+- [ ] **Keyboard navigation** - Alla funktioner går att nå via keyboard (Tab, Enter, Escape)
+- [ ] **Contrast ratios** - Text/bakgrund minst 4.5:1 (normal) eller 3:1 (stor)
+- [ ] **ARIA labels** - Form inputs, buttons har `aria-label` eller `aria-labelledby`
+- [ ] **Focus indicators** - Focus states är tydliga (inte borttagen)
+- [ ] **Semantic HTML** - Använder `<button>`, `<nav>`, `<main>` etc (inte bara `<div>`)
+- [ ] **Alt text** - Alla bilder har meningsfull alt-text
+- [ ] **Color blindness** - Inte bara färg för information (ikoner + färg)
+
+### Backend APIs
+- [ ] **HTTP status codes** - Korrekt 200/400/404/500 retureras
+- [ ] **Error messages** - Är tydliga och hjälpfulla (inte "error occurred")
+- [ ] **Rate limiting** - Skyddad mot abuse
+
+### Native Modules
+- [ ] **Performance** - Inte blocking UI
+- [ ] **Error handling** - Graceful degradation om native failer
+
+**Issue-body MÅSTE inkludera:**
+```
+### Accessibility Requirements
+- WCAG 2.1 AA target level
+- Keyboard navigation required? Yes/No
+- Color contrast check? Yes/No
+- ARIA labels needed? Yes/No
+```
+
+---
+
+## 📝 README Updates
+
+**KRITISKT:** Om issue introducerar ett nytt flöde, en ny modul, eller ändrar hur något fungerar — README MÅSTE uppdateras!
+
+### Vilken README?
+
+**Root README.md** (om issue påverkar kerf-flödet eller installation):
+- [ ] Installationsinstruktioner uppdaterad
+- [ ] Nya commands dokumenterade
+- [ ] Arkitektur-översikt uppdaterad
+- [ ] Kända brister uppdaterad
+- [ ] Links till relevanta filer uppdaterad
+
+**Frontend README** (om issue är React-relaterad):
+- [ ] Ny komponent dokumenterad
+- [ ] State-management uppdaterad
+- [ ] Build/run instruktioner korrekt
+- [ ] Dependencies listade
+
+**Backend README** (om issue är Java-relaterad):
+- [ ] Ny endpoint dokumenterad
+- [ ] Database schema changes noterad
+- [ ] API-dokumentation uppdaterad
+- [ ] Configuration/env requirements tydliga
+
+**Native README** (om issue är C/C++):
+- [ ] Nya funktioner dokumenterade
+- [ ] Build-instruktioner uppdaterad
+- [ ] Performance-karakteristika noterad
+- [ ] Dependencies tydliga
+
+### Issue-body MÅSTE inkludera:
+
+```
+### README Updates
+[ ] Root README.md — Installation/architecture changes
+[ ] Frontend README.md — Ny komponent/state changes
+[ ] Backend README.md — Ny endpoint/schema changes
+[ ] Native README.md — Nya funktioner/performance changes
+[ ] Docs — Ny guide/instruktion behövs?
+```
+
+**Exempel issue:**
+```
+Title: [Frontend] Add PortfolioOverview component
+
+...
+
+README Updates:
+- [ ] Root: Add PortfolioOverview to architecture overview
+- [ ] Frontend: Document new PortfolioOverview component + props
+- [ ] Frontend: Update "Komponenter" section with mockup reference
+```
+
+---
+
 ## 🧪 Testing
 
 Måste ha tester för:

@@ -731,6 +731,21 @@ Varför behövs denna feature? Vad är användarens/systemets behov?
 - Vad händer på success/failure?
 - Vilka validerings-regler gäller?
 
+### Accessibility Requirements
+**WCAG 2.1 AA compliance — välj relevanta:**
+- [ ] Keyboard navigation required? (Tab, Enter, Escape)
+- [ ] Color contrast check? (4.5:1 for text)
+- [ ] ARIA labels needed? (form inputs, buttons)
+- [ ] Semantic HTML? (button, nav, main, etc)
+- [ ] Focus indicators? (tydliga)
+
+### README Updates
+**Om denna issue introducerar något nytt — vad behöver dokumenteras?**
+- [ ] Root README.md — Installation/architecture changes?
+- [ ] Component-specific README — Nya komponenter/moduler?
+- [ ] API documentation — Nya endpoints?
+- [ ] Setup guide — Nya konfiguration?
+
 ### Dependencies
 - Does this depend on feature X being done first?
 - Any backend API requirements?
@@ -741,10 +756,14 @@ Varför behövs denna feature? Vad är användarens/systemets behov?
 - [ ] Ingen blockers
 - [ ] Design mockup är länkad
 - [ ] Beroenden är identifierade
+- [ ] Accessibility requirements identifierade
+- [ ] README update-plan klar
 
 ### Definition of Done (Before closing)
 - [ ] AC uppfyllda
 - [ ] Tester skrivna (Vitest)
+- [ ] Accessibility checklist genomfört
+- [ ] README uppdaterad (relevant sektion)
 - [ ] Ingen console.log/TODO
 - [ ] TypeScript strict
 - [ ] Code reviewed
