@@ -170,6 +170,38 @@ Läs **HELA docs-mappen där** +:
 
 ---
 
+## 🎯 Team Decisions (BESLUT)
+
+**Varje team dokumenterar sina arkitektur-beslut:**
+
+| Team | Beslut-logg | Format |
+|------|-------------|--------|
+| **Frontend** | [docs/frontend/BESLUT.md](https://github.com/chas-challenge-2026/avanza-team1/blob/main/docs/frontend/BESLUT.md) | ✅ Aktivt |
+| **Backend (Java)** | `backend/BESLUT.md` | ⚠️ Behöver skapas |
+| **Native (C/C++)** | `native/docs/BESLUT.md` | ⚠️ Behöver skapas |
+
+**Format för varje beslut:**
+```
+## [DATUM] — [Beslut]
+- Beslut: Vad beslöts?
+- Varför: Reasoning bakom beslutet
+- Konsekvenser: Vad betyder detta för systemet?
+- Bevis: Issue #X, PR #Y
+- Beslutsfattare: Namn
+```
+
+**Exempel (Frontend):**
+```
+## 2026-09-02 — Mock före Java-API
+- Beslut: UI läser src/data/portfolio.json tills GET /api/portfolio finns
+- Varför: Backend inte redo, men MVP-översikt kan byggas ändå
+- Konsekvenser: Typ-kontraktet är Portfolio. Risk R-24.
+- Bevis: Issue #24, PR #46
+- Beslutsfattare: Tomac
+```
+
+---
+
 ## 🔗 Projekt-Relaterade Länker
 
 **Projektets Kod (avanza-team1):**
@@ -183,6 +215,7 @@ Läs **HELA docs-mappen där** +:
 - Google Sheets Risker (risker & assets) — uppdateras efter möten
 - git log (commits & branches) — uppdateras per commit
 - Mötesprotokollet (decisions) — uppdateras efter möten
+- **Team Decision Logs (BESLUT.md)** — uppdateras när arkitektur-beslut tas
 
 ---
 
