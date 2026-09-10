@@ -760,7 +760,16 @@ feat(frontend): Add LoginForm | [se ovan format] | @developer-name | To Do | Hig
 ```
 
 **Kolumner (i denna ordning):**
-1. **Title** - Issue-titel (format: `type(scope): message`)
+1. **Title** - Issue-titel format: `[Category] Clear action-oriented description`
+   - `[Frontend]` — React/TypeScript UI
+   - `[Java]` — Spring Boot backend
+   - `[Native]` — C/C++ calculations
+   - `[Docs]` — Documentation
+   - `[DevOps]` — Infrastructure
+   
+   ✅ Exempel: `[Frontend] Linked target-allocation inputs (sum always 100)`
+   ❌ Felaktigt: `Add LoginForm` (ingen kategori)
+
 2. **Body** - Beskrivning enligt format ovan (Problem → AC → Technical → DoR → DoD)
 3. **Assignees** - Vem jobbar på det (@username)
 4. **Status** - To Do / In Progress / In Review / Done
