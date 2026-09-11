@@ -2,7 +2,62 @@
 
 ---
 
-## 🚨 MEGA-REGEL: VARJE ISSUE MÅSTE HA ASSIGNEE — LÄGG DETTA ÖVERST!
+## 🚨 MEGA-REGEL 0: VISUELL PEDAGOGIK FÖR BILDTÄNKARE
+
+**Presentationen är FÖR DE SOM TÄNKER BILDLIGT.**
+
+Inte bara text — visa allt VISUELLT:
+
+```
+🖼️ VISUELL DESIGN (OBLIGATORISK):
+
+PROGRESS & STATISTIK:
+  ✅ Progress bars (████░░ 80%)
+  ✅ Grafer/tal (14/17, 75% → 85%)
+  ✅ Färgkodade status (🟢🟠🔴)
+  ❌ INTE bara "vi ligger bakom"
+
+FLÖDEN & PROCESSER:
+  ✅ Visuell blockering (pillar: väntar på → blockerar)
+  ✅ Tidslinjer med ikoner (📍 MON 09:00, 📍 THU 15:00)
+  ✅ Steg-för-steg diagrammer (vad → hur → resultat)
+  ❌ INTE bara ord-listor
+
+TEAM STATUS:
+  ✅ Färgade kort (borders visar status)
+  ✅ Progress-bars per team
+  ✅ Ikon-representationer av personer (👥 Jan, Marco, Anna)
+  ❌ INTE bara namn i text
+
+PRIORITERING:
+  ✅ Visuell tabell med olika kolumner
+  ✅ Storlek/färg visar viktighet
+  ✅ Pilar mellan related items
+  ❌ INTE bara bullet-lista
+
+ARKITEKTUR & BEROENDEN:
+  ✅ Visuella flödesdiagram
+  ✅ Vilka blockar vilka (visuella linjer)
+  ✅ System-komponenter som boxar
+  ❌ INTE bara text-beskrivningar
+```
+
+**DESSA SLIDES MÅSTE VARA VISUELLA:**
+- Övergripande status (progress bars, färger)
+- Team-status (cards med färger + progress)
+- Blockers (flödesdiagram: väntar på → blockerar)
+- Prioritering (tabell med visuell viktighet)
+- Nästa steg (timeline med ikoner)
+- Sammanfattning (statistik-visuell, inte bara text)
+
+**INNAN DU LEVERERAR:**
+Scan presentationen → räkna visuella element (grafer, ikoner, diagram)
+Varje slide med data MÅSTE ha minst ETT visuellt element
+Inga slides som är BARA text ✋
+
+---
+
+## 🚨 MEGA-REGEL 1: VARJE ISSUE MÅSTE HA ASSIGNEE — LÄGG DETTA ÖVERST!
 
 **Du får ALDRIG skriva ett issue-nummer utan assignee i parentes.**
 
