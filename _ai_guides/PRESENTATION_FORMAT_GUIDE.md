@@ -1,0 +1,558 @@
+# 🎨 PRESENTATION FORMAT GUIDE — Exakt Layout för Varje Slide
+
+## 📍 DOKUMENTVÄGEN
+
+**Du är här:** PRESENTATION_FORMAT_GUIDE.md (Visuell formatering)
+
+```
+START — README.md
+        ↓
+SPRINT_PRESENTATION_STRUCTURE.md
+        ↓
+🟢 DU ÄR HÄR: PRESENTATION_FORMAT_GUIDE.md (denna fil)
+        ↓
+ANVÄND MED:
+  • SPRINT_PROTOCOL_NUMBERED.md (vilka punkter?)
+  • Dessa EXEMPEL-SLIDES (kopiera layout exakt)
+        ↓
+RESULTAT: NPF-vänlig presentation med rätt design
+```
+
+---
+
+## 🚨 KRITISKT FÖR AI
+
+**Du MÅSTE följa denna format exakt.** Inte ungefär. EXAKT.
+
+- ✅ Symbol **📝①** överst på VARJE slide (vänster kant)
+- ✅ Färger **🟢🟠🔴** för status (MÅSTE finnas)
+- ✅ Borders runt team-status (visar om de är i fas)
+- ✅ Tabeller, inte bara bullets
+- ✅ Whitespace (60-70% tom yta)
+- ✅ Kontrast WCAG AA (4.5:1 minimum)
+- ✅ MAX 3-5 bullets per sektion
+
+---
+
+## 📐 NPF-DESIGN REGLER (TVINGANDE)
+
+### Whitespace
+```
+Toppadding:    20px minimum
+Sidpadding:    16px minimum vänster/höger
+Mellan sektioner: 24px minimum
+Mellan bullets: 8px minimum
+```
+
+### Typografi
+```
+Rubrik (slides titel):     24-28pt, bold
+Undernubrik (mötespunkt):  18-20pt, bold
+Body text (bullets):       14-16pt, regular
+Färger:                    Mörk text på ljus bakgrund (4.5:1 kontrast)
+```
+
+### Färger & Status
+```
+🟢 GRÖN (ON TRACK):        #2ecc71
+🟠 ORANGE (SLIGHT DELAY):  #e67e22
+🔴 RÖD (CRITICAL):         #e74c3c
+```
+
+### Borders & Frames
+```
+Team-status cards:
+  Border: 3px solid [status-färg]
+  Padding inuti: 16px
+  Border-radius: 4px (skarpa hörn, inte rundad)
+  Background: Ljus nyans av status-färg (10% opacity)
+```
+
+---
+
+## 🎬 SLIDE-FORMAT EXEMPEL
+
+### **SLIDE 0.1 — 📝⓪ PRESENTATIONSSLIDE**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝⓪ MÅNDAGSMÖTE — SPRINT PLANNING              ║
+║                                                ║
+║                                                ║
+║ Tid: 09:00-10:30 (90 minuter)                  ║
+║                                                ║
+║ Denna veckas tema:                             ║
+║ "Risk prioritization & team capacity"          ║
+║                                                ║
+║ Vi täcker:                                     ║
+║ ✅ Status sedan förra veckan                   ║
+║ ✅ Tre målsystem (Kursen + Projekt + Kund)     ║
+║ ✅ Team-status med färgkodning                 ║
+║ ✅ Prioritering & support-förslag              ║
+║                                                ║
+║ Nästa möte: TISDAG 13:00 (Halvtids-checkup)   ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Symbol 📝⓪ ÖVERST VÄNSTER
+- Titel bold, 24pt
+- Innehål: 3-5 bullets max
+- Whitespace överallt (60% tom yta)
+- Ej for mycket text
+```
+
+---
+
+### **SLIDE 1 — 📝① ÖVERGRIPANDE MÅL (DEL 1: KURSEN)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝① KURSEN — VAD BEHÖVER VI UPPNÅ?             ║
+║                                                ║
+║                                                ║
+║ Mål: Uppfylla alla 17 kursmål → G/VG betyg    ║
+║                                                ║
+║ Deadlines:                                     ║
+║ 🔴 4 november 15:00 — SLUTLEVERANS             ║
+║ 🟠 5 november 09:00 — FINALDAG (om topp 4)    ║
+║                                                ║
+║ Status denna vecka: 🟢 ON TRACK                ║
+║                                                ║
+║ Fortskridande: 14/17 kursmål adresserade      ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Symbol 📝① överst
+- Deadlines med färgkodning (🔴🟠🟢)
+- Status-färg ÖVERST HÖGER på slide
+- Copy-paste-friendly format
+- Bullets alignerade vänster
+```
+
+---
+
+### **SLIDE 2 — 📝① ÖVERGRIPANDE STATUS (DEL 2: PROJEKTET)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝① PROJEKTET — MVP v2 LEVERABLES             ║
+║                                                ║
+║                                                ║
+║ Mål: Funktionerande MVP som löser Annas       ║
+║       problem                                  ║
+║                                                ║
+║ MVP Scope:                                     ║
+║ ✅ Portföljöversikt (alla sparformer)         ║
+║ ✅ Riskmått (volatilitet, Sharpe)             ║
+║ ✅ Back-testing motor                          ║
+║ ✅ FX-justering                                ║
+║ ✅ Rebalanserings-förslag                      ║
+║                                                ║
+║ Status denna vecka: 🟢 ON TRACK                ║
+║ Fortskridande: 4/5 features klara             ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Samma layout som förra slide
+- ✅-markörer för färdig funktion
+- Status-färg tydlig
+```
+
+---
+
+### **SLIDE 3 — 📝① PROGRESS BOARD (DEL 3: BIG PICTURE)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝① PROGRESS BOARD — MÅLSYSTEM + TEAM         ║
+║                                                ║
+║                                                ║
+║ ┌──────────────────────────────────────────┐  ║
+║ │ 🟢 BIG TEAM — VÄG TILL SLUTLEVERANS     │  ║
+║ │                                          │  ║
+║ │ Deadline: 4 november 15:00               │  ║
+║ │                                          │  ║
+║ │ Kursmål:  ████████░░ 80% (14/17)        │  ║
+║ │ Projekt:  ████████░░ 75% (4/5 features) │  ║
+║ │ Kund:     ███████░░░ 70% (Annas behov)  │  ║
+║ │                                          │  ║
+║ │ Status: 🟢 ON TRACK                      │  ║
+║ └──────────────────────────────────────────┘  ║
+║                                                ║
+║ ┌──────────────────┐ ┌──────────────────┐     ║
+║ │ 🟢 FRONTEND      │ │ 🟠 BACKEND       │     ║
+║ │ ████████░░ 80%  │ │ ██████░░░░ 60%   │     ║
+║ │ 4/5 done        │ │ 2/4 done (1 wait)│     ║
+║ │ ON TRACK        │ │ SLIGHT DELAY     │     ║
+║ └──────────────────┘ └──────────────────┘     ║
+║                                                ║
+║ ┌──────────────────┐                          ║
+║ │ 🔴 NATIVE        │                          ║
+║ │ ████░░░░░░ 40%  │                          ║
+║ │ 1/3 done        │                          ║
+║ │ CRITICAL 🚨     │                          ║
+║ └──────────────────┘                          ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Borders RUNT team-status (3px solid färg)
+- 🟢🟠🔴 färger MÅSTE finnas
+- Progress bars (████░░)
+- Separated cards för big team + small teams
+- Status-ord (ON TRACK / SLIGHT DELAY / CRITICAL) tydligt
+```
+
+---
+
+### **SLIDE 4 — 📝② FRONTEND TEAM STATUS**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝② FRONTEND TEAM — 🟢 ON TRACK                ║
+║                                                ║
+║ ┌──────────────────────────────────────────┐  ║
+║ │ 🟢 FRONTEND TEAM                         │  ║
+║ │ Progress: ████████░░ 80%                 │  ║
+║ │ Issues: 4/5 done                         │  ║
+║ │ Assignees: Jan, Marco                    │  ║
+║ └──────────────────────────────────────────┘  ║
+║                                                ║
+║ Klart denna vecka:                            ║
+║ ✅ #42 Portfolio overview (Jan)               ║
+║ ✅ #45 Risk dashboard (Marco)                 ║
+║                                                ║
+║ Pågår:                                        ║
+║ ⏳ #51 Rebalance suggestions (Jan)            ║
+║                                                ║
+║ Blockers: ❌ Ingen                             ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Border RUNT team-card (3px solid 🟢)
+- Progress bar (████░░)
+- ✅ för klara items
+- ⏳ för pågår
+- ❌ för blockers
+- Assignee namn obligatoriskt
+```
+
+---
+
+### **SLIDE 5 — 📝③ BACKEND TEAM STATUS (MED ÅTGÄRD)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝③ BACKEND TEAM — 🟠 SLIGHT DELAY             ║
+║                                                ║
+║ ┌──────────────────────────────────────────┐  ║
+║ │ 🟠 BACKEND TEAM                          │  ║
+║ │ Progress: ██████░░░░ 60%                 │  ║
+║ │ Issues: 2/4 done                         │  ║
+║ │ Assignees: Anna, Kiran                   │  ║
+║ └──────────────────────────────────────────┘  ║
+║                                                ║
+║ Klart denna vecka:                            ║
+║ ✅ #48 Risk metrics (Anna)                    ║
+║                                                ║
+║ Bakom plan:                                   ║
+║ ⏳ #51 FX conversion (Kiran) — väntar data  ║
+║                                                ║
+║ BLOCKER: ⚠️ Swagger spec från API team        ║
+║ Förväntat: ONSDAG 14:00                       ║
+║                                                ║
+║ ÅTGÄRD:                                       ║
+║ → Kiran startar Core calc (oberoende)        ║
+║ → Möte TIS 10:00 för spec-draft               ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Orange border (🟠) för SLIGHT DELAY
+- ⚠️ för kritisk blocker
+- ÅTGÄRD-sektion tydlig (vad gör vi?)
+- Deadlines för åtgärder (datum + tid)
+- Action items som konkreta steg (inte vaga)
+```
+
+---
+
+### **SLIDE 6 — 📝④ NATIVE TEAM STATUS (KRITISK)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝④ NATIVE TEAM — 🔴 CRITICAL 🚨              ║
+║                                                ║
+║ ┌──────────────────────────────────────────┐  ║
+║ │ 🔴 NATIVE TEAM                           │  ║
+║ │ Progress: ████░░░░░░ 40%                 │  ║
+║ │ Issues: 1/3 done                         │  ║
+║ │ Assignee: Sam                            │  ║
+║ └──────────────────────────────────────────┘  ║
+║                                                ║
+║ Klart denna vecka:                            ║
+║ ✅ #40 App setup (Sam)                       ║
+║                                                ║
+║ KRITISK BLOCKER 🔴:                           ║
+║ ❌ Sharpe formula spec SAKNAS                 ║
+║ ❌ API endpoint inte redo                     ║
+║ Påverkan: Native kan inte testa               ║
+║                                                ║
+║ OMEDELBAR ÅTGÄRD:                             ║
+║ 🔴 Backend + Native pair prog IDAG 14:00     ║
+║    • Spec writing (1 hour)                    ║
+║    • Implementation (3 hours)                 ║
+║    • Deadline: SAMMA DAG 17:00               ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- RÖD border (🔴) för CRITICAL
+- 🚨 OMEDELBAR ÅTGÄRD section måste finnas
+- Konkreta tidsestimat (1h, 3h)
+- Deadline SAMMA DAG om kritisk
+- Bold eller highlighting för "OMEDELBAR"
+```
+
+---
+
+### **SLIDE 7 — 📝⑤ PRIORITERING & SCOPE**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝⑤ PRIORITERING & SCOPE — KAN VI GÖRA ALLT?  ║
+║                                                ║
+║ ┌─────────────────────┬─────────────────────┐ ║
+║ │ 🟢 MÅSTE-HA DENNA   │ 🟠 NICE-TO-HAVE     │ ║
+║ │    VECKA            │                     │ ║
+║ │                     │                     │ ║
+║ │ #42 Portfolio (3h)  │ #99 Dark mode (2h)  │ ║
+║ │ #45 Risk calc (5h)  │ #100 Export (1h)   │ ║
+║ │ #48 Tests (4h)      │                     │ ║
+║ │ #51 Core flow (6h)  │                     │ ║
+║ │                     │                     │ ║
+║ │ TOTAL: 18h          │ TOTAL: 3h           │ ║
+║ └─────────────────────┴─────────────────────┘ ║
+║                                                ║
+║ Kapacitet denna vecka: 20h                    ║
+║                                                ║
+║ ✅ JAM VI GÖR ALLT? Ja, 18h passar inom 20h  ║
+║                                                ║
+║ 🟠 NICE-TO-HAVE: Kan vänta till nästa vecka  ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Tabell-layout (två spalter: MÅSTE-HA | NICE-TO-HAVE)
+- Timestimat på VARJE issue
+- Summa totalt
+- Kapacitet tydlig
+- RESULTAT: "Passar vi?" med 🟢 eller 🟠 eller 🔴
+```
+
+---
+
+### **SLIDE 8 — 📝⑥ ESTIMERING & RISK**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝⑥ ESTIMERING & RISK                          ║
+║                                                ║
+║ ┌──────────────────────────────────────────┐  ║
+║ │ KAPACITET DENNA VECKA                    │  ║
+║ │                                          │  ║
+║ │ Frontend:  20h available / 15h needed   │  ║
+║ │ Backend:   18h available / 18h needed   │  ║
+║ │ Native:    15h available / 25h needed   │  ║
+║ │                                          │  ║
+║ │ ✅ Frontend: OK (5h buffer)              │  ║
+║ │ 🟡 Backend:  TIGHT (0h buffer)           │  ║
+║ │ 🔴 Native:   OVER 10h saknas!            │  ║
+║ └──────────────────────────────────────────┘  ║
+║                                                ║
+║ 🔴 KRITISK RISK:                              ║
+║ Native kan inte allt denna vecka              ║
+║                                                ║
+║ MITIGATION:                                   ║
+║ • Delay #100 (2h) till nästa vecka            ║
+║ • Backend stödjar Native (pair prog)          ║
+║ • Resultat: Native 15h, passar inom 15h ✅   ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Tabell med AVAILABLE | NEEDED
+- ✅🟡🔴 status för varje team
+- Risk highlighted (🔴 KRITISK RISK)
+- Mitigation konkret (vad gör vi?)
+- Resultat: "Passar vi?" efter åtgärd
+```
+
+---
+
+### **SLIDE 9 — 📝⑦ ARBETSUPPGIFTER (ISSUES DENNA VECKA)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝⑦ ARBETSUPPGIFTER — ISSUES DENNA VECKA      ║
+║                                                ║
+║ ┌─────────────────────────────────────────┐   ║
+║ │ FRONTEND                                │   ║
+║ │ [ ] #42 Portfolio overview (Jan) - 3h  │   ║
+║ │ [ ] #45 Risk dashboard (Marco) - 5h    │   ║
+║ │ [ ] #51 Rebalance (Jan) - 7h            │   ║
+║ └─────────────────────────────────────────┘   ║
+║                                                ║
+║ ┌─────────────────────────────────────────┐   ║
+║ │ BACKEND                                 │   ║
+║ │ [ ] #48 Risk metrics (Anna) - 4h        │   ║
+║ │ [ ] #51 FX conversion (Kiran) - 5h      │   ║
+║ │ [ ] #52 Tests (Anna) - 9h               │   ║
+║ └─────────────────────────────────────────┘   ║
+║                                                ║
+║ ┌─────────────────────────────────────────┐   ║
+║ │ NATIVE                                  │   ║
+║ │ [ ] #40 App setup (Sam) - 5h            │   ║
+║ │ [ ] #53 Integration (Sam) - 10h         │   ║
+║ └─────────────────────────────────────────┘   ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Per-team boxes (borders)
+- Checkboxes [ ] för copy-paste
+- #issue-nummer
+- Assignee namn
+- Timestimat (h)
+- Kan copy-pastas direkt till protokollet
+```
+
+---
+
+### **SLIDE 10 — 📝⑧ NÄSTA STEG & SUMMARY**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝⑧ NÄSTA STEG & SUMMARY                       ║
+║                                                ║
+║ NÄSTA STEG (IDAG):                            ║
+║                                                ║
+║ ☐ GitHub Project Board uppdaterad             ║
+║ ☐ Pair programming sessions bokade:           ║
+║   • Backend + Native: IDAG 14:00 (3h)         ║
+║   • Frontend + Backend: TIS 10:00 (1h)        ║
+║ ☐ Alla vet sitt jobb & timestimat            ║
+║ ☐ Blockers documented i GitHub                ║
+║                                                ║
+║ DENNA VECKAS DEADLINES:                       ║
+║                                                ║
+║ MON 17:00  — Native spec done (KRITISK)       ║
+║ TUE 14:00  — #42 #45 klara (Frontend)         ║
+║ WED 09:00  — #48 #51 klara (Backend)          ║
+║ THU 15:00  — SPRINT END (allt klart)          ║
+║                                                ║
+║ DENNA VECKAS FOKUS:                           ║
+║ "Risk prioritization & team capacity"         ║
+║                                                ║
+║ ÖVERGRIPANDE STATUS: 🟢 ON TRACK (med        ║
+║ Native support från Backend)                  ║
+║                                                ║
+║ Lycka till denna vecka! 💪                    ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Checkboxes [ ] för actionitems
+- Deadlines tydliga (DAY HH:MM)
+- Färger för kritiska deadlines (🔴)
+- Sammanfattning: FOKUS + STATUS
+- Motiverande avslut
+```
+
+---
+
+## 🚨 CHECKLIST FÖR AI — INNAN DU LEVERERAR
+
+✅ **OBLIGATORISK CHECKLIST:**
+
+```
+Symbol & Numrering:
+  [ ] VARJE slide har symbol 📝① eller 📝⓪ överst VÄNSTER
+  [ ] Symbol matchar SPRINT_PROTOCOL_NUMBERED.md (ingen blandning)
+  [ ] Symbolen är TYDLIG (inte dold eller liten)
+
+Färger & Status:
+  [ ] 🟢🟠🔴 färger på VARJE team-status slide
+  [ ] Färgerna matchar: Green = ON TRACK, Orange = DELAY, Red = CRITICAL
+  [ ] Färgerna ANVÄND konsistent överallt
+
+Design & Layout:
+  [ ] Borders RUNT team-status (3px solid)
+  [ ] Progress bars (████░░) på team-status slides
+  [ ] Tabeller (MÅSTE-HA | NICE-TO-HAVE) på prioritering
+  [ ] Checkboxes [ ] på arbetsuppgifter för copy-paste
+
+Whitespace & Typografi:
+  [ ] 60-70% tom yta på varje slide
+  [ ] Toppadding 20px, sidpadding 16px
+  [ ] Ingen text-overlap
+  [ ] Kontrast 4.5:1 minimum (WCAG AA)
+
+Innehål:
+  [ ] Max 3-5 bullets per sektion
+  [ ] Deadlines med tid (HH:MM)
+  [ ] Assignee namn på varje issue
+  [ ] Timestimat på varje issue
+  [ ] ÅTGÄRD-sektion på röda slides (CRITICAL)
+
+Format:
+  [ ] PowerPoint eller Google Slides eller Markdown
+  [ ] Allt kan copy-pastas direkt till mötesprotokollet
+  [ ] Samma struktur som dessa EXEMPEL-SLIDES
+
+TOTALT:
+  [ ] ~10-14 slides (beroende på innehål)
+  [ ] Alla 📝⓪-⑫ punkter representerade
+  [ ] NPF-vänlig (förutsägbar, visuell, lättläst)
+```
+
+---
+
+## 💡 TIPS FÖR CONSISTENCY
+
+**Samma design varje vecka = Teamet känner igen den**
+
+- Punkt ① är ALLTID övergripande (med 3 målsystem)
+- Punkt ②③④ är ALLTID team-status (med borders & färger)
+- Punkt ⑤ är ALLTID prioritering (tabell-layout)
+- Punkt ⑥ är ALLTID estimering (kapacitet-tabell)
+- Punkt ⑦ är ALLTID issues (per-team boxes)
+- Punkt ⑧ är ALLTID nästa steg (deadlines + summary)
+
+**Resultat:** Mötet flyter snabbt, desigben är tydlig, protokollet blir korrekt.
+
+---
+
+## 🤖 FÖR EXTERNA AIs
+
+**Om du är AI och ska skapa presentation:**
+
+1. ✅ Läs denna fil från början
+2. ✅ Kopiera LAYOUT från EXEMPEL-SLIDES ovan
+3. ✅ Ersätt data med denna veckas information
+4. ✅ Verifiera CHECKLIST innan leverans
+5. ✅ Leverera i PowerPoint, Google Slides, eller Markdown
+
+**ALDRIG:**
+- ❌ Skapa egen design (använd DESSA exempel)
+- ❌ Skippa borders runt team-status
+- ❌ Glömma färger (🟢🟠🔴)
+- ❌ Mindre än 10 slides
+- ❌ Skippa checkboxes på arbetsuppgifter
+- ❌ Dålig kontrast eller text-overlap
+
+**Du har MISSLYCKATS om något av checklist-items inte är gjort.**
