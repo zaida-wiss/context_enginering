@@ -49,11 +49,90 @@
 **Deltagare:** Hela Team 1 (backend, frontend, native)  
 **Resultat:** Sprint backlog i GitHub/Project board
 
+---
+
+## 🎯 STRUKTUR: NULÄGE → MÅL → FRAMGÅNGSKRITERIER
+
+**Varje sprintmöte MÅSTE innehålla dessa tre delar (i denna ordning):**
+
+### 📊 DEL 1: NULÄGE (Status från förra sprint) — 10 min
+
+Team Lead presenterar:
+```
+NULÄGE:
+├─ Vad blev klart förra veckan? (commits från git log)
+├─ Vad blev INTE klart? (varför? vilka blockers?)
+├─ Vilka risker identifierades förra veckan?
+├─ Vilken feedback fick vi från PL/CTO?
+└─ Hur är vi ställda mot deadlines?
+
+EXEMPEL:
+✅ Login form fungerar (från PR #46)
+❌ Risk metrics inte klara (blocked by API)
+⚠️ Performance metrics försämrades (Lighthouse 75→70)
+📝 Feedback: "Vi behöver mer tests"
+📅 CTO-deadline: 24 sep (11 dagar kvar, på rätt väg)
+```
+
+### 🎯 DEL 2: MÅL FÖR DENNA SPRINT (Vad ska vi försöka uppnå?) — 15 min
+
+Team Lead presenterar:
+```
+MÅL DENNA SPRINT (Vecka X):
+
+Från SPRINT_FOCUS_TIMELINE.md:
+"V6: Kunna visa CTO att kärnflödet fungerar"
+
+För att nå det måste vi denna vecka:
+1. ✅ Risk metrics (backend) - MÅSTE vara klart
+2. ✅ FX converter (backend) - MÅSTE vara klart
+3. ✅ Test coverage 70% - MÅSTE vara klart
+4. 🟡 Portfolio optimization (frontend) - om tid
+
+Resultat om vi lyckas:
+- Vi kan demot kärnflödet för CTO
+- Vi har 70%+ test coverage
+- Vi är redo för CTO-feedback session
+
+Resultat om vi INTE lyckas:
+- Vi missar CTO deadline → Sämre intryck
+- Vi är i backlog och måste in nästa vecka igen
+- Vi kan inte gå vidare till kvaldemo-prep
+```
+
+### ✅ DEL 3: FRAMGÅNGSKRITERIER (Hur vet vi att vi lyckades?) — 5 min
+
+```
+FRAMGÅNGSKRITERIER - Sprint är LYCKAT om:
+
+✅ Risk metrics är 100% klara (PR merged, tests pass)
+✅ FX converter är 100% klara (PR merged, tests pass)
+✅ Test coverage är 70%+ (CI rapporterar det)
+✅ Kärnflödet kan demos (login → portfolio → allocate)
+✅ All dokumentation uppdaterad (README, decisions)
+✅ Git history är tydlig (commits i rätt format)
+
+VARNING-TECKEN (Sprint är i risk om):
+⚠️ Risk metrics eller FX-converter är < 80% klara
+⚠️ Test coverage sjunker (< 60%)
+⚠️ Blockers identifieras utan mitigation
+⚠️ Pull requests inte reviewade i tid
+
+MISSLYCKANDE (Sprint är FAILED om):
+❌ Risk metrics eller FX-converter inte klara
+❌ Test coverage < 60%
+❌ Kärnflödet kan INTE demoas
+❌ Git history är rörig/omorganiserad
+```
+
+---
+
 #### Steg 1: Presentera Fokus (10 min)
 Team Lead presenterar:
-- Vad är denna veckas fokus? (Se SCHEDULE.md)
+- **NULÄGE:** Vad blev klart/ej klart förra veckan?
+- **MÅL:** Vad ska vi försöka uppnå denna vecka?
+- **FRAMGÅNGSKRITERIER:** Hur vet vi att vi lyckades?
 - Vilka deadlines gäller?
-- Vad blev inte klart förra veckan?
 - Vilka risker identifieras? (Se Google Sheets Risker eller mötesprotokollet)
 
 #### Steg 2: Diskutera Backlog (20 min)
