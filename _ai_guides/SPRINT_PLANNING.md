@@ -220,10 +220,435 @@
 
 ---
 
-### 🟡 SPRINTPLANERING (Måndag 09:00-12:00)
+### 🟡 SPRINTPLANERING (Måndag 09:00-12:00) — VERKLIG MÖTESPRAXIS
 
 **Deltagare:** Hela Team 1 (backend, frontend, native)  
 **Resultat:** Sprint backlog i GitHub/Project board
+
+---
+
+## 📖 PEDAGOGISK INTRODUKTION — Vad Är Ett Sprintmöte?
+
+**För de som aldrig varit på ett riktigt sprintmöte innan:**
+
+### VAD? — Definition
+
+```
+📖 Ett sprintmöte är INTE:
+❌ En rapport där alla säger vad de gjort (det är standup)
+❌ En kodreview (det är ett separat möte)
+❌ Ett möte där bara chefen pratar (det är en presentation)
+
+✅ Ett sprintmöte ÄR:
+✅ En planering tillsammans för nästa vecka
+✅ Vi beslutar TILLSAMMANS vad vi ska göra
+✅ Vi estimerar TILLSAMMANS hur långt det tar
+✅ Vi löser blockers TILLSAMMANS
+✅ Vi säkerställer att alla förstår sitt jobb
+```
+
+### VARFÖR? — Syftet
+
+```
+💡 VARFÖR gör vi det här?
+
+Scenario 1 — UTAN sprintmöte:
+├─ Backend tar ett estimat från GitHub: "8 timmar"
+├─ Backend arbetar i 2 dagar, sedan: "Oops, det var 16 timmar"
+├─ Frontend väntar på Backend-API (blockerad)
+├─ Kund är besviken (vi inte klar på deadline)
+└─ RESULTAT: Chaos och misslyckande
+
+Scenario 2 — MED sprintmöte:
+├─ Vi diskuterar tillsammans: "Risk Metrics tar 16 timmar"
+├─ Vi säger: "Ok, det är hög prioritet denna vecka"
+├─ Frontend VET att API kommer senare, kan jobba på annat
+├─ Vi löser blockers INNAN veckan börjar
+├─ Kund är nöjd (vi levererar på deadline)
+└─ RESULTAT: Ordning och framgång
+
+🎯 Sprintmötet = Vi jobbar smart tillsammans
+```
+
+### HUR? — Processen (Förenkl)
+
+```
+🛠️ ENKELT: Sprintmöte i tre faser
+
+FASE 1: Vad blev gjort? (Förra veckan)
+└─ "Vad blev klart? Vilka blockers?"
+└─ Längd: 10 minuter
+└─ Feeling: "Ok, vi vet var vi står"
+
+FASE 2: Vad gör vi denna vecka? (Denna vecka)
+└─ "Vilka är KRITISKA issues?"
+└─ "Hur långt tar de?"
+└─ "Vem gör vad?"
+└─ Längd: 2 timmar
+└─ Feeling: "Ok, jag vet mitt jobb"
+
+FASE 3: Framgång & Risker (Denna vecka)
+└─ "Hur vet vi att vi lyckas?"
+└─ "Vad kan gå fel?"
+└─ "Vem hjälper om vi fastnar?"
+└─ Längd: 30 minuter
+└─ Feeling: "Vi är redo att börja"
+```
+
+### NÄR? — Tidpunkt
+
+```
+⏰ TRADITIONELLT:
+├─ MÅNDAG MORGON (inte fredag eftermiddag!)
+├─ 09:00 - 12:00 (3 timmar för ett lag på ~6 personer)
+├─ Första dagen av sprint (ny vecka = frisk energi)
+└─ SAMMA TID varje vecka (förutsägbar)
+
+💡 VARFÖR MÅNDAG?
+└─ Veckans början = ny energi
+└─ Du kan ge feedback redan tisdag
+└─ Folk är friska (inte utmattade på fredag)
+└─ Mötet sätter tonen för veckan
+```
+
+### VEM? — Roller & Ansvar
+
+```
+👥 ROLLERNA I MÖTET:
+
+🎯 TEAM LEAD / SCRUM MASTER
+├─ Facilitator (leder mötet)
+├─ Timekeeper (håller tider)
+├─ Konfliktlösare (Backend vs Frontend disagree)
+├─ Motivator ("Vi kan göra detta!")
+└─ Dokumenterare (skriver mötesprotokollet)
+
+💼 PRODUCT LEAD / PRODUCT OWNER
+├─ Säger prioriteringen ("Risk Metrics först")
+├─ Svarar på scope-frågor ("Kan vi göra det utan detta?")
+├─ Tie-breaker vid konflikter
+└─ Representerar kunden/business
+
+👨‍💻 BACKEND-UTVECKLARE
+├─ Estimerar sitt arbete ("Risk Metrics = 16h")
+├─ Säger blockers ("Vi behöver Swagger docs")
+├─ Frågar om klarhet ("Vad betyder 'accurate'?")
+└─ Lyssnar på Frontend-behov ("Vi behöver API på torsdag")
+
+🎨 FRONTEND-UTVECKLARE
+├─ Estimerar sitt arbete ("UI = 10h")
+├─ Säger blockers ("Vi väntar på Backend API")
+├─ Frågar om design ("Vilken Figma-design är det?")
+└─ Lyssnar på Native-behov ("Behöver ni något från oss?")
+
+📱 NATIVE/SYSTEM-UTVECKLARE
+├─ Estimerar sitt arbete ("Calculations = 12h")
+├─ Säger blockers ("Behöver vi data från Backend?")
+├─ Verifierar arkitektur-antaganden
+└─ Stödjer vid behov
+
+🤝 ALLA TILLSAMMANS
+├─ Lyssnar på varandra
+├─ Ställer frågor om klarhet
+├─ Löser blockers tillsammans
+├─ Säger om något är orealistiskt
+└─ Committar till veckan tillsammans
+```
+
+---
+
+## 🎯 VERKLIGT SPRINTMÖTE — Hur Det Faktiskt Fungerar
+
+### FÖRE MÖTET (AI + Team Lead gör detta)
+
+**Ansvarig: Team Lead / Scrum Master**
+
+```
+30 min innan möte börjar:
+
+✅ Läs mötesprotokollet (senaste beslut + action items)
+✅ Gör Issue Review & Refinement (se SPRINT_PLANNING.md, punkt 6)
+✅ Förbered 3-4 diskussionspunkter baserat på blockers från förra vecka
+✅ Sätt upp fysisk/digital mötesutrymme
+✅ Säkerställ att GitHub Project Board är uppdaterad
+✅ Testa att presentation funkar (hvis den finns)
+✅ Sätt timer på mobilen (3 timmar)
+```
+
+### PEDAGOGISKA EXEMPEL — Verkliga Mötes-Dialoger
+
+**Här är exempel på vad mötet faktiskt låter som:**
+
+**Exempel 1: Estimering (Vad det INTE ska låta som)**
+
+```
+❌ DÅLIGT:
+Lead: "Risk Metrics, hur många timmar?"
+Backend: "Eh... typ 8?"
+Lead: "Ok, nästa issue..."
+
+❌ PROBLEM:
+└─ Backend är osäker ("typ 8")
+└─ Vi vet inte varför
+└─ Möjligt att det blir 16 timmar
+└─ Hela planen brister
+```
+
+**Exempel 1b: Estimering (BRA)**
+
+```
+✅ BRA:
+Lead: "Risk Metrics, hur många timmar?"
+Backend: "Jag sa 16h förra veckan. Det är:
+         ├─ API endpoint (4h)
+         ├─ Beräkningar i Native (6h)
+         ├─ Tester (4h)
+         └─ Dokumentation (2h)
+         Men jag är osäker på Native-delen..."
+
+Native: "Jag kan hjälpa. Det är ungefär 6h om jag har spec."
+
+Backend: "Vi har ingen Swagger spec än. Det kan ta 1-2h extra."
+
+Lead: "Ok, så Risk Metrics = 16-18h denna vecka. Passar det?"
+
+Backend: "Ja, om vi inte får andra blockers."
+
+Lead: "Dokumenterar: Risk Metrics 16h, blocker = Swagger docs"
+
+✅ BÄTTRE:
+└─ Vi VET vad som ingår
+└─ Vi VET vad som är osäkert
+└─ Vi KAN adressera blockers
+└─ Planen är realistisk
+```
+
+**Exempel 2: Lösa en konflikt**
+
+```
+Frontend: "Vi behöver UI-skisser från design innan vi kan börja Target Allocation"
+
+Design: "Jag kan ha det på torsdag"
+
+Lead: "Så Frontend kan inte starta Target Allocation förrän torsdag?"
+
+Frontend: "Nej, och det tar 8 timmar. Så tidigast fredag."
+
+Backend: "Men vi behöver Target Allocation för vår Rebalance-feature nästa vecka!"
+
+Lead: "Ok, här är valet:
+       A) Frontend väntar på design (torsdag start)
+       B) Frontend börjar utan design (snabbare, men risk)
+       C) Vi skjuter Target Allocation till nästa vecka"
+
+PL: "Vi behöver det för kvaldemo. Design är viktig här. Option A — vi får acceptera att det blir sent denna vecka."
+
+Lead: "Dokumenterar: Design prioriteras, Target Allocation startar torsdag, Backend jobbar på något annat denna vecka"
+
+✅ RESULTAT: Beslut är fat, alla förstår, ingen är besviken
+```
+
+**Exempel 3: Att säga "Nej" realistiskt**
+
+```
+Lead: "Vi har 5 issues här, totalt 48h, men vi har bara 35h denna vecka."
+
+Backend: "Vi kan väl jobba snabbare?"
+
+Lead: "Vi kan alltid försuöka, men estimat är baserat på erfarenhet. Vad gör vi?"
+
+PL: "Risk Metrics är MÅSTE-ha. FX-converter är MÅSTE-ha. Rebalance kan skjutas."
+
+Frontend: "Ok, då jobbar vi på Risk API-integration och Rebalance pushes till nästa vecka."
+
+Lead: "Dokumenterar: Rebalance är BACKLOG nästa vecka, scope cut denna vecka"
+
+✅ RESULTAT: Vi är realistiska, CTO-deadline är säker
+```
+
+---
+
+### MÖTET — KONKRET AGENDA MED TIDER
+
+```
+TIMME 1 (09:00-10:00): STATUS & FOKUS
+
+09:00-09:10 (10 min) — KOLLA IN & ENERGI-BOOST
+├─ Kort rundning: "Hur mår ni?"
+├─ Ingen deep-dive, bara check-in
+└─ Skapa gott mötesutrymme
+
+09:10-09:20 (10 min) — FÖRRA VECKAN (NULÄGE)
+├─ Team Lead presenterar vad som blev gjort
+├─ Vilka issues blev klara? (från GitHub)
+├─ Vilka blockers identifierades?
+└─ Feedback från PL/CTO? (från mötesprotokollet)
+
+09:20-09:35 (15 min) — DENNA VECKAS FOKUS (MÅL)
+├─ Team Lead läser från mötesprotokollet
+├─ VAD ska vi försöka uppnå denna vecka?
+├─ VARFÖR är detta prioriterat?
+├─ Deadline och risker?
+└─ Frågor från teamet?
+
+09:35-10:00 (25 min) — ISSUE REVIEW & REFINEMENT (från förberedelsen)
+├─ AI presenterar förslag på ändringar
+├─ Diskutera: Är issues realistiska?
+├─ Vilka kan vi starta? Vilka behöver vänta?
+├─ Är DoR uppfylld för var issue?
+└─ Uppdatera GitHub Project Board baserat på diskussion
+
+TIMME 2 (10:00-11:00): PRIORITERING & ESTIMERING
+
+10:00-10:15 (15 min) — PRIORITERING TILLSAMMANS
+├─ "Vilka issues är KRITISKA för denna vecka?"
+├─ Diskutera: Backend vs Frontend prioritet
+├─ Lösa prioriteringskonflikter (PL är tie-breaker)
+├─ Uppdatera prioritering i GitHub
+└─ RESULTAT: Top issues för denna vecka klara
+
+10:15-10:45 (30 min) — ESTIMERING (Agile Planning Poker eller diskussion)
+├─ För varje kritisk issue:
+│  ├─ "Hur många timmar? 5h? 10h? 16h?"
+│  ├─ Backend sällan, vad är er bedömning?
+│  ├─ Frontend, några höga-nivå estimat?
+│  └─ Native, ser ni något som tar längre än estimat?
+├─ Notera blockers under estimering
+├─ Justera estimat baserat på team-feedback
+└─ RESULTAT: Alla kritiska issues har estimat
+
+10:45-11:00 (15 min) — KAPACITETSPLANERING
+├─ "Vi har X timmar denna vecka (per person)"
+├─ "Dessa issues tar Y timmar tillsammans"
+├─ "Passar det? Eller behöver vi scope cut?"
+├─ Beslut: Vilka issues är IN, vilka är BACKLOG?
+└─ RESULTAT: Sprint backlog är finaliserad
+
+TIMME 3 (11:00-12:00): TILLÄMPNING & LÄRDOM
+
+11:00-11:30 (30 min) — TILLDELA ISSUES & KICKOFF
+├─ "Vem gör vad denna vecka?"
+├─ Tilldela issues till personer/pairs
+├─ Notera blockers (vilka behöver support?)
+├─ Notera dependencies (vilken ordning?)
+├─ Uppdatera GitHub Project Board (assign issues)
+└─ RESULTAT: Varje person vet sitt jobb
+
+11:30-11:50 (20 min) — FRAMGÅNGSKRITERIER & RISKER
+├─ "Hur vet vi att denna sprint är lyckad?"
+├─ Diskutera varningscenarios:
+│  ├─ "Om Risk Metrics tar längre tid?"
+│  ├─ "Om vi får nya blockers?"
+│  └─ "Om nära deadline dyker upp?"
+├─ Mitigation för varje risk
+├─ Vem är on-call för blockers?
+└─ RESULTAT: Team vet vad som är framgång/misslyckande
+
+11:50-12:00 (10 min) — AVSLUT & RETROSPEKTIV-PROMPT
+├─ "Vad gick bra med detta möte?"
+├─ "Vad kan vi göra annorlunda nästa vecka?"
+├─ Kort feedback-runda
+└─ "Håll humöret! Denna vecka fokuserar vi på..."
+
+RESULTAT FRÅN MÖTET:
+✅ Mötesprotokollet uppdaterat (vad var beslut?)
+✅ GitHub Project Board uppdaterad (issues assigned)
+✅ Estimat låst för denna sprint
+✅ Risk Dashboard uppdaterad
+✅ Varje person vet sitt jobb
+✅ Deadlines klara
+✅ Team är motiverat för denna vecka
+```
+
+### MÖTESFASILITERING — LEDARENS ROLL
+
+**Vad gör Team Lead under mötet?**
+
+```
+✅ HÅLLA TIDER
+├─ Timer på 15 min per sektion
+├─ "Vi har 5 min kvar för denna punkt"
+├─ Styr diskussion tillbaka om den går vilse
+└─ Om vi behöver mer tid: "Parkeringslist" för senare
+
+✅ SÄKERSTÄLLA DELTAGANDE
+├─ Lyssna på alla röster (inte bara senior devs)
+├─ "Anna, vad tycker du? Du känner frontend bäst"
+├─ "Kiran, ser du någon risk här?"
+├─ Om någon är tyst: "Marco, du jobbar på detta — vad behöver du?"
+
+✅ LÖSA KONFLIKTER
+├─ Backend vill göra X, Frontend vill göra Y
+├─ "Jag förstår båda perspektiven. Låt oss rösta."
+├─ Om inte enighet: "PL bestämmer prioritet"
+├─ Dokumentera beslutet, gå vidare
+
+✅ HÅLLA FOKUS
+├─ "Det är en bra fråga, men den är för denna sprint review"
+├─ "Låt oss adressera denna i nästa retrospektiv"
+├─ Ej låta teknikdiskussioner ta över mötet
+├─ "Tekniska detaljer kan ni lösa i pair programming"
+
+✅ DOKUMENTERA VÄGEN
+├─ "Noterar: Risk Metrics kan ta längre än estimat"
+├─ "Noterar: Vi behöver Swagger docs från Backend"
+├─ "Noterar: Frontend blockeras på API"
+├─ Mötesprotokollet uppdateras under mötet
+```
+
+### VERKLIGA MÖTESBETEENDEN — VAD SOM KAN HÄNDA
+
+```
+🟢 BRA MÖTESBETEENDEN:
+✅ "Jag är osäker på detta estimat — kan vi parprogrammera på det?"
+✅ "Jag ser ett blocker här — vi behöver API docs från Backend"
+✅ "Det här tar längre än vi estimerade — bör vi reducera scope?"
+✅ "Kan vi börja detta innan förutsättningen är klar?"
+✅ "Vilken hjälp behöver ni från mig denna vecka?"
+
+🟠 VARNINGS-BETEENDEN:
+⚠️ "Jag estimerar 8h, men egentligen vet jag inte..."
+   → Fråga: "Vad gör dig osäker? Kan vi dela upp det?"
+
+⚠️ "Vi kan försöka göra allt detta"
+   → Säg: "Vi har X timmar. Låt oss prioritera"
+
+⚠️ "Vi behöver den här funktionen men det är ej klart..."
+   → Fråga: "Kan vi göra det utan den? Eller behöver vi vänta?"
+
+❌ RÖDA FLAGS:
+❌ "Jag vet inte hur länge detta tar"
+   → Måste estimera eller dela upp
+
+❌ "Vi gör allt detta och mer"
+   → Scope är för stor — behöver skära ner
+
+❌ "Denna issue är helt oklar"
+   → DoR är inte uppfylld — kan ej starta
+
+❌ "Ingen vet vem som gör vad"
+   → Tilldelning är ofullständig — måste lösa
+```
+
+### EFTER MÖTET (Samma dag)
+
+```
+✅ Team Lead uppdaterar GitHub Project Board
+   └─ Alla issues assignade
+   └─ Sprint label tillagd
+   └─ Estimat synliga
+   └─ Priority-ordning klar
+
+✅ Skicka mötesprotokollet till teamet
+   └─ "Här är vad vi beslutade"
+   └─ "Action items denna vecka"
+   └─ "Deadline: 24 sep 16:00"
+
+✅ Kickoff-möte (kort) för varje team
+   └─ Backend: "Här är era issues denna vecka"
+   └─ Frontend: "Här är era issues denna vecka"
+   └─ Parprogrammering setup om behövs
+```
 
 ---
 
