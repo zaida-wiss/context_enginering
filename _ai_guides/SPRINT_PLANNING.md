@@ -9,38 +9,80 @@
 ### 🟢 FÖRE PLANERING (Måndag morgon)
 
 **Tid:** 60 minuter före sprintmöte  
-**Ansvarig:** Team Lead / Scrum Master
+**Ansvarig:** Team Lead / Scrum Master / AI
 
-- [ ] **1. Verifiera schemat**
-  - Öppna SCHEDULE.md och Canvas-kalendern
-  - Finns det workshops, blockers eller deadlines denna vecka?
-  - Är mötetider korrekt? (Tisdag 12:30-14:00 är fast)
+---
+
+## 🔴 KRITISKT — AI MÅSTE LÄSA ALLT DETTA:
+
+**Innan AI presenterar status, måste den läsa i denna ordning:**
+
+```
+1. 📋 MÖTESPROTOKOLLET (SENASTE)
+   Länk: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+   ├─ Vad diskuterades förra veckan?
+   ├─ Vilka beslut togs? (B = beslut)
+   ├─ Vilka action items? (I = information)
+   ├─ Feedback från PL/CTO?
+   ├─ Risker som identifierades?
+   └─ Vad sa vi skulle fokuseras denna vecka?
+
+2. 📊 GIT LOG (denna vecka)
+   $ git log --oneline --since="1 week ago"
+   ├─ Vilka commits kom in?
+   ├─ Vilka PRs mergades?
+   └─ Vad blev klart?
+
+3. 📈 GITHUB PROJECT BOARD (denna vecka)
+   ├─ Vilka issues är Done?
+   ├─ Vilka är In Progress?
+   ├─ Vilka blockers finns?
+   └─ Status för denna veckas fokus?
+
+4. ⏰ DEADLINES & FOKUS (från SPRINT_FOCUS_TIMELINE.md)
+   ├─ Vilken vecka är det?
+   ├─ Vad är fokus denna vecka?
+   ├─ Vilka deadlines gäller?
+   └─ Vad måste vi leverera?
+
+5. 🚨 RISKER (från mötesprotokollet + Google Sheets)
+   ├─ Vilka risker identifierades förra veckan?
+   ├─ Är de lösta?
+   ├─ Nya risker denna vecka?
+   └─ Vilka är kritiska?
+```
+
+---
+
+- [ ] **1. Läs Mötesprotokollet FÖRST**
+  - Länk: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+  - Format: I = Information, B = Beslut
+  - **DETTA är källan till vad som diskuterades förra veckan**
+  - Vilka action items har vi?
+  - Vilka beslut togs? (MÅSTE respekteras denna vecka!)
   
-- [ ] **2. Se över vad som är gjort**
+- [ ] **2. Se över vad som är gjort** (från mötesprotokollet + git)
   - Kör `git log --oneline --since="1 week ago"`
   - Vilka commits kom in förra sprinten?
+  - Matcherar commits med mötesprotokollets action items?
   - Vad blev inte klart? (Lägg tillbaka i backlog)
   
-- [ ] **3. Granska denna veckas fokus** (från SCHEDULE.md)
-  - V2: MVP, backlog, arbetsstruktur
-  - V3-V5: Fungerande delar, teststatus, README
-  - V6: CTO-underlag (arkitektur, beslut)
-  - V7: CTO-feedback, scope
-  - V9: Kvaldemo-plan + stabilitet
-  - V11: Omtag + dokumentation
-  - V12: Slutcheck
+- [ ] **3. Granska denna veckas fokus** (från mötesprotokollet + SPRINT_FOCUS_TIMELINE.md)
+  - Vad sa vi skulle fokuseras denna vecka? (se mötesprotokollet)
+  - Matchar mötesprotokollet med SPRINT_FOCUS_TIMELINE.md?
+  - Vilka deadlines gäller denna vecka?
   
 - [ ] **4. Uppdatera Project Board status**
   - Rapportera vad som är gjort (mark issues Done)
   - Notera blockers från förra sprinten (use labels)
   - Uppdatera fokus-område för denna vecka (add labels)
+  - **Verifiera att status i Project Board matchar mötesprotokollet**
 
-- [ ] **5. Kolla deadlines**
-  - Finns det Canvas-inlämningar denna vecka?
-  - V6 → 24 sep kl 16:00 (CTO-underlag)
-  - V9 → 15 okt kl 17:00 (Demo-plan)
-  - V12 → 4 nov kl 15:00 (SLUTLEVERANS)
-  - Lägg in i backlog om relevant denna vecka
+- [ ] **5. Kolla deadlines & risker**
+  - Vilka deadlines nämnde mötesprotokollet?
+  - Vilka risker identifierades förra veckan?
+  - Är de lösta? Nya denna vecka?
+  - Canvas-inlämningar denna vecka?
 
 ---
 
