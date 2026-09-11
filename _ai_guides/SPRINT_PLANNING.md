@@ -54,21 +54,24 @@
 
 ---
 
-- [ ] **1. Läs Mötesprotokollet FÖRST**
-  - **🔴 KRITISKT:** Kopiera helt mötesprotokollet och paste till AI
-  - Länk: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
-  - Raw-export (om AI har åtkomst): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+- [ ] **1. Läs Mötesprotokollet FÖRST (via RAW-LÄNK)**
+  - **🔴 KRITISKT:** AI måste kunna läsa mötesprotokollet direkt
+  - Google Docs länk: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+  - **RAW-EXPORT LÄNK (för AI):** `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
   
-  **Hur man delar med AI:**
+  **🟢 OPTIMAL: Dela Raw-länken med AI**
   ```
-  Du: "Läs detta mötesprotokollet och förbered sedan för mandagsmötet:
-  
-  [KOPIERA HELT INNEHÅLLET FRÅN GOOGLE DOCS HÄR]
-  
-  Länk till original: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+  Du: "Läs detta mötesprotokollet från raw-länken:
+  https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
   
   Sedan: Förbered FÖR mandagsmötet"
   ```
+  
+  **FÖRDELAR MED RAW-LÄNK:**
+  ✅ AI kan läsa direkt (ingen copy-pasta behövs)
+  ✅ Alltid aktuell (AI läser senaste version)
+  ✅ Öppen för alla som har länken
+  ✅ Snabbare och enklare
 
   ---
 

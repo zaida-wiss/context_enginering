@@ -77,12 +77,24 @@ Du läser detta repo för första gången? Följ denna guide:
 4. _ai_guides/VERIFICATION_SYSTEM.md — Hur verifierar vi systemet?
 ```
 
-Raw-links för copy-pasta:
+Raw-links för direkt AI-läsning:
 ```
+REPO FILES:
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/PROJEKTKONTEXT.md
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/TEAMSTANDARDS.md
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/DEFINITION_OF_DONE.md
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/VERIFICATION_SYSTEM.md
+
+🔴 MÖTESPROTOKOLLET (RAW-LÄNK - öppen för alla med länken):
+https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+```
+
+**🟢 OPTIMAL WAY TO SHARE WITH AI:**
+```
+Du: "Läs mötesprotokollet från raw-länken:
+https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+
+Sedan: Förbered FÖR mandagsmötet"
 ```
 
 ### **2. Regler Medan Du Läser**
