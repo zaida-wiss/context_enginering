@@ -67,17 +67,57 @@ EXEMPEL FEL:
 2. Kapacitet — vem har mindre att göra?
 3. Balans över effektivitet (alla hjälps åt, inte max-flöde)
 
-### ✅ MEGA-REGEL 2: Ingenting Fabriceras
+### ✅ MEGA-REGEL 2: Verifiera Faktisk Git-Status
+
+**AI MÅSTE köra dessa git-commands för att få FAKTISK data (inte gissa):**
+
+```
+🔴 TVINGANDE VERIFICERING:
+
+FÖRE du säger något om "status" eller "framsteg":
+
+1. git log develop --since="7 days ago" --oneline
+   → Vilka commits är mergade till develop DENNA VECKA?
+
+2. git branch -a
+   → Vilka branches existerar?
+
+3. git log --all --since="7 days ago" --oneline
+   → Vilka commits är gjorda DENNA VECKA (i alla branches)?
+
+4. För varje branch: git log -1 --format="%ai" [branch-name]
+   → När var senaste commit? (Stale eller aktiv?)
+
+5. git diff develop..feature/[branch-name] --stat
+   → Vilka filer ändrades? Hur mycket arbete?
+
+RESULTAT du MÅSTE visa i presentationen:
+✅ Konkreta commits (hash + message)
+✅ Vilka branches är aktiva denna vecka
+✅ Vilka branches är stale (>3 dagar utan commit)
+✅ Vem jobbar på vad (commit author)
+✅ Total "delta" mellan develop och feature-branches
+
+❌ ALDRIG säga: "Teamet jobbar på kärnflödet"
+✅ ALLTID säga: "Git visar X commits denna vecka:
+            • #42 (Jan - portfolio), #45 (Marco - risk-calc)
+            • Branches active: feature/#42, feature/#45
+            • Stale: feature/#40 (5 dagar, ingen commit)"
+```
+
+### ✅ MEGA-REGEL 3: Ingenting Fabriceras
 
 Varje siffra, datum, mål måste komma från:
 - KURSMAL_OCH_BETYG.md (kursmål)
 - GitHub Project Board (projektmål)
 - Mötesprotokollet (tidsplan, åtgärder)
-- Git log (faktiska commits denna vecka)
+- **Git log (VERIFIERA — kör git commands!)**
+- **Git branches (vad pågår — vilka är aktiva?)**
+- **Git diff (hur mycket arbete — konkreta ändringar)**
 
 **ALDRIG:** Gissa, antag, eller "normalt skulle man..."
 
-### ✅ MEGA-REGEL 3: Sanningen Före Känslan
+### ✅ MEGA-REGEL 4: Sanningen Före Känslan
 
 Design ska vara organiserad och lätt att läsa.
 Men DATA måste ALLTID vara ärlig.
