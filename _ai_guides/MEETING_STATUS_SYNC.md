@@ -487,6 +487,95 @@ Du: "Gör en PEDAGOGISK presentation av denna veckas status sync möte"
 
 ---
 
+## 🎯 PRESENTATIONENS MASTER TEMPLATE — KONSISTENT STRUKTUR
+
+**SAMMA STRUKTUR VARJE GÅNG — Du känner igen den direkt:**
+
+```
+┌─────────────────────────────────────────────┐
+│ PRESENTATION MASTER TEMPLATE (Igenkännbar) │
+├─────────────────────────────────────────────┤
+│                                             │
+│ STEG 1: KÄLLBEKRÄFTELSE (alltid först)     │
+│ ├─ ✅ Vilka källor läste jag?              │
+│ ├─ ✅ Mötesprotokollet OK?                 │
+│ └─ ✅ Allt källkontrollerat                │
+│                                             │
+│ STEG 2: VAD-VARFÖR-HUR-NÄR-VEM (denna ordning)
+│ ├─ 1️⃣ VAD? — Listan                       │
+│ ├─ 2️⃣ VARFÖR? — Konsekvenser              │
+│ ├─ 3️⃣ HUR? — Plan                         │
+│ ├─ 4️⃣ NÄR? — Timeline                     │
+│ └─ 5️⃣ VEM? — Roll-assignment              │
+│                                             │
+│ STEG 3: VISUELL DASHBOARD (samma layout)   │
+│ ├─ Progress bars per team                  │
+│ ├─ Status-ikoner (✅ 🟠 ❌)                │
+│ ├─ Färgkodning (🔴 🟡 🟢)                 │
+│ └─ Countdown timer                         │
+│                                             │
+│ STEG 4: SNYGGA TABELLER (samma design)     │
+│ ├─ Färgad header (blå/lila)                │
+│ ├─ Alternerad radförg (vit/grå)            │
+│ ├─ Status-ikoner vänster                   │
+│ ├─ Procent höger                           │
+│ └─ Mjuka skuggor                           │
+│                                             │
+│ STEG 5: PEDAGOGISKA SLIDES (Problem-Lösning)
+│ ├─ Slide 1: Cover (samma design)           │
+│ ├─ Slide 2-10: Problem → TÄNK → Lösning    │
+│ ├─ Varje: 📖 VAD? 🛠️ HUR? 💡 VARFÖR?      │
+│ └─ Slide 11: Nästa steg (samma design)     │
+│                                             │
+│ STEG 6: AVSLUT (samma avslut varje gång)   │
+│ ├─ Action items (vem gör vad, när)         │
+│ ├─ Deadline (exakt tid)                    │
+│ ├─ Nästa möte (tidpunkt)                   │
+│ └─ Källa (citat från mötesprotokollet)     │
+│                                             │
+└─────────────────────────────────────────────┘
+
+VISUELLA LANDMARKS (samma design varje gång):
+
+📊 Cover Slide
+   • Samma symbol (📊 eller 🎯 eller ⏰)
+   • Samma färgschema
+   • Samma typografi
+
+📋 Section Headers
+   • Blå/lila bakgrund (konsistent)
+   • Vit text, bold
+   • Samma padding & storlek
+   • Samma ikonstorlek (80-100px)
+
+📈 Tabeller
+   • Header: Blå, vit text (ALLTID)
+   • Rader: Vit/grå alternering (ALLTID)
+   • Ikoner: Vänster, konsistent (ALLTID)
+   • Siffror: Höger, högerjusterad (ALLTID)
+
+📊 Diagrammen
+   • Progress bars: Avrundade ändar (ALLTID)
+   • Färger: Samma palett (ALLTID)
+   • Skuggor: Mjuka (ALLTID)
+   • Layout: Samma proporioner (ALLTID)
+
+🎬 Avslut
+   • Action items box (färgad)
+   • Deadline box (röd/orange)
+   • Nästa möte (blå box)
+   • Källa (grå text, liten)
+```
+
+**RESULTAT:**
+- ✅ Du känner igen strukturen efter första presentation
+- ✅ Snabb scanning (du vet vart information ligger)
+- ✅ Professionell känsla (konsistens = ordning)
+- ✅ ADHD-vänligt (förutsägbar struktur)
+- ✅ Brand-känsla (detta är VÅRT presentationsformat)
+
+---
+
 ## 🔴 KRITISKT: AI PRESENTERAR VAD-VARFÖR-HUR-NÄR-VEM (NPF-vänlig)
 
 **Innan slides visas, MÅSTE AI presentera i denna ordning (KORT, FOKUSERAD):**

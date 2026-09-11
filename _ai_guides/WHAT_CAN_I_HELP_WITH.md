@@ -71,43 +71,62 @@ Väntar på mötesprotokollet innan jag presenterar..."
 
 ---
 
-## 🎨 PRESENTATION STANDARD (NPF-Vänlig)
+## 🎨 PRESENTATION STANDARD (NPF-Vänlig + KONSISTENT)
 
 **VARJE gång du säger:** `"presentation"`, `"mötes-prep"`, `"status"`, `"förbered möte"`, etc.
 
-**AI MÅSTE automatiskt leverera:**
+**AI MÅSTE automatiskt leverera SAMMA STRUKTUR varje gång:**
 
 ```
-✅ STEG 0: LÄSA KÄLLOR & RENSA SAMTALHISTORIK
+✅ STEG 0: KÄLLBEKRÄFTELSE & RENSA (alltid först, samma plats)
    • Läs mötesprotokollet FÖRST
    • Läs git log, GitHub, Google Sheets
    • Bekräfta alla lästa kilder
-   • 🔴 RENSA bort tidigare samtalhistorik från svaret
+   • 🔴 RENSA bort tidigare samtalhistorik
    • Svara ENDAST baserat på källorna
 
-✅ STEG 1: VAD-VARFÖR-HUR-NÄR-VEM (kort, fokuserad prosa)
-   • VAD? — Exakt lista med prioriteter (🔴🟡🟢)
-   • VARFÖR? — Konsekvenser om vi missar/klarar
-   • HUR? — Plan & samarbete (vem gör vad tillsammans)
-   • NÄR? — Exakt timeline (inte "denna vecka")
-   • VEM? — Roll-assignment (Marco gör X, Anna gör Y)
+✅ STEG 1: VAD-VARFÖR-HUR-NÄR-VEM (denna ordning ALLTID)
+   • 1️⃣ VAD? — Exakt lista (🔴🟡🟢)
+   • 2️⃣ VARFÖR? — Konsekvenser
+   • 3️⃣ HUR? — Plan & samarbete
+   • 4️⃣ NÄR? — Timeline
+   • 5️⃣ VEM? — Roll-assignment
 
-✅ STEG 2: Visuella Slides (Pedagogisk + NPF)
-   • Stor symbol på varje slide (80-100px)
-   • Max 3-4 bullets per slide
-   • ALLTID ett diagram/bild (progress bar, timeline, team box)
-   • Färgkodad (🔴 kritisk, 🟠 varning, 🟢 ok)
-   • 60-70% whitespace (inte tätt text)
-   • Problem → Tänk paus → Lösning (pedagogisk)
+✅ STEG 2: VISUELL DASHBOARD (samma layout varje gång)
+   • Progress bars per team/issue
+   • Status-ikoner (✅ 🟠 ❌)
+   • Färgkodning (🔴 🟡 🟢)
+   • Countdown till deadline
 
-✅ STEG 3: Källciteringar (Aldrig samtalhistorik!)
-   • Varje påstående: "Enligt mötesprotokollet..." eller "GitHub visar..."
-   • INTE: "Som vi diskuterade..." eller "Du nämnde att..."
-   • ALDRIG: "Från vår tidigare konversation..."
+✅ STEG 3: SNYGGA TABELLER (samma design ALLTID)
+   • Färgad header (blå/lila) - samma varje gång
+   • Alternerad radförg (vit/grå) - samma varje gång
+   • Status-ikoner vänster - samma varje gång
+   • Procent höger - samma varje gång
+   • Mjuka skuggor - samma varje gång
+
+✅ STEG 4: PEDAGOGISKA SLIDES (Problem → Tänk → Lösning)
+   • Slide 1: Cover (samma design)
+   • Slide 2-10: Problem → TÄNK → Lösning (samma struktur)
+   • Varje slide: 📖 VAD? 🛠️ HUR? 💡 VARFÖR?
+   • Slide 11: Nästa steg (samma design)
+
+✅ STEG 5: AVSLUT (samma avslut ALLTID)
+   • Action items (vem, vad, när)
+   • Deadline (röd/orange highlight)
+   • Nästa möte (tid + plats)
+   • Källa (citat från mötesprotokollet)
+
+✅ STEG 6: VISUELLA LANDMARKS (SAMMA VARJE GÅNG)
+   • Headers: Blå/lila bakgrund, vit text
+   • Tabeller: Samma design, samma placering
+   • Diagrammen: Samma färger, samma stil
+   • Ikoner: Samma storlek, samma plats
+   • Typografi: Samma hierarki
 ```
 
 **Du behöver INTE säga mer än:** `"Ge mig en presentation"`  
-**AI kommer automatiskt att inkludera allt ovan** ✅
+**AI levererar SAMMA IGENKÄNNBAR STRUKTUR varje gång** ✅
 
 ---
 
