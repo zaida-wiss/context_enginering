@@ -362,26 +362,30 @@ VALFRITT — använd denna om behövs för:
 ```
 Totalt: 15 SLIDES REKOMMENDERAT (16 med reserve)
 
-1️⃣  FRAMSIDA
-2️⃣  AGENDA (alla 12 mötespunkter)
-3️⃣  Status sedan förra (Git progress + branches)
-4️⃣  Övergripande status (hele teamet → 🟢🟠🔴)
-5️⃣  FRONTEND fokus denna vecka
-6️⃣  BACKEND fokus denna vecka
-7️⃣  NATIVE fokus denna vecka
-8️⃣  BLOCKERS (visuell flödesdiagram)
-9️⃣  Prioritering & Scope
-🔟 Estimering & Risk
-1️⃣1️⃣ Tekniska Beslut
-1️⃣2️⃣ Arbetsuppgifter (per team)
-1️⃣3️⃣ Frågor till PL
-1️⃣4️⃣ Nästa Steg (ACTION ITEMS)
-1️⃣5️⃣ Sammanfattning
-[1️⃣6️⃣ Reserve/Extra info]
+🚨 VIKTIGT: PRESENTATIONEN BÖRJAR MED SLIDE 1 (FRAMSIDA)
+            ALDRIG någon "Slide 0" eller "mötespunkt 0" på presentationen!
+
+1️⃣  FRAMSIDA (Möte-typ, tid, syfte)
+2️⃣  AGENDA (alla 12 mötespunkter 📝①-⑫)
+3️⃣  Status sedan förra (Git progress + branches) — 📝①
+4️⃣  Övergripande status (hele teamet → 🟢🟠🔴) — 📝②
+5️⃣  FRONTEND fokus denna vecka — 📝③
+6️⃣  BACKEND fokus denna vecka — 📝④
+7️⃣  NATIVE fokus denna vecka — 📝⑤
+8️⃣  BLOCKERS (visuell flödesdiagram) — 📝⑥
+9️⃣  Prioritering & Scope — 📝⑦
+🔟 Estimering & Risk — 📝⑧
+1️⃣1️⃣ Tekniska Beslut — 📝⑨
+1️⃣2️⃣ Arbetsuppgifter (per team) — 📝⑩
+1️⃣3️⃣ Frågor till PL — 📝⑪
+1️⃣4️⃣ Nästa Steg (ACTION ITEMS) — 📝⑫
+1️⃣5️⃣ Sammanfattning — 📝⑫
+[1️⃣6️⃣ Reserve/Extra info — (ingen mötespunkt)]
 ```
 
 ---
 
 **Senast uppdaterad:** 2026-09-11  
 **Status:** Editable requirements för 15-16 slides  
+**KRITISKT:** Slide 1 = FRAMSIDA, ALDRIG Slide 0 eller mötespunkt 0!  
 **NOTERING:** Slide 7 = NATIVE/SYSTEMUTVECKLARE team
