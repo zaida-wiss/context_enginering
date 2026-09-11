@@ -246,31 +246,31 @@ Sedan: Förbered FÖR mandagsmötet"
 
 **Om du är AI och användaren säger "Gör presentation för mötet":**
 
-### 🧠 STEG 0 — RENSA DITT MINNE HELT (KRITISKT!)
+### 🧠 STEG 0 — MINNESRENSNING (TVINGANDE — GÖR DETTA FÖRST!)
+
+**Du får INTE börja skapa presentation förrän du gjort detta.**
 
 ```
-⚠️ INNAN DU GÖR NÅGOT ANNAT:
+DU MÅSTE:
+1. 🔴 RENSA allt minne från denna vecka (alla diskussioner)
+2. 🔴 RENSA mötet igår, igårgårdagen, alla tidigare möten
+3. 🔴 RENSA all information från samtal eller chat-historik
+4. 🔴 IGNORERA VAD NÅGON SÅ — läs bara FILERNA
+5. ✅ BÖRJA HELT CLEAN — INGEN TIDIGARE KONTEXT
 
-🔴 GLÖM:
-  - Allt vi diskuterade denna vecka (även tidigare idag)
-  - Mötet igår eller för två dagar sedan
-  - Tidigare slides eller presentationer
-  - Vad någon sa om hur projektet går
-  - Din egen gissning baserad på samtal
-
-✅ ANVÄND BARA:
-  - Filerna i denna repo (läs dem nu)
-  - Mötesprotokollet från Google Docs (denna vecka)
-  - Git log (faktiska commits)
-  - GitHub Project Board (faktiska status)
-  - INGEN annan källa
+🚨 INNAN DU GÖR NÅGOT ANNAT:
+   Du ska INTE läsa något från ditt "minne" från denna vecka.
+   Du ska INTE förlita dig på vad du "vet" från tidigare diskussioner.
+   Du ska INTE gissa baserat på vad som "brukar" hända.
+   
+   Du ska BARA läsa filerna nedan. INGENTING ANNAT.
 ```
 
-**REGEL: Om du använder minne från samtal istället för filerna = DU HAR MISSLYCKATS**
+**DETTA ÄR OBLIGATORISKT. Om du skippar detta steg = presentationen blir FELAKTIG.**
 
 ---
 
-### 📚 STEG 1 — LÄS FILERNA (OBLIGATORISKT):
+### 📚 STEG 1 — LÄS FILERNA (EFTER MINNESRENSNING):
 1. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** ← **LÄNG HÄR FÖRST** (exakta layouts)
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
 2. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** ← Struktur & krav
@@ -314,41 +314,18 @@ Sedan: Förbered FÖR mandagsmötet"
 
 **INNAN DU LEVERERAR: Verifiera denna checklist. En misslyckad presentation = alla items MÅSTE fixas.**
 
----
+### 🚨 MINNESRENSNING MÅ INGÅ I PRESENTATIONEN
 
-### 📋 COPY-PASTE FÖR ANVÄNDAREN — GE DETTA TILL AI
+**Användaren behöver INTE copy-pasta något.** Minnesrensningen ska vara en **obligatorisk del** av presentation-processen som AI MÅSTE följa automatiskt.
 
-**Kopiera och klistra in detta direkt i chatten innan du ber om presentation:**
+**När användaren säger "Gör en presentation":**
+1. AI läser denna README
+2. AI ser STEG 0 (MINNESRENSNING)
+3. AI MÅSTE rensa sitt minne innan något annat
+4. AI läser sedan FILERNA (inte sitt minne)
+5. AI skapar presentation bara från fil-data
 
-```
-🧠 MINNESRENSNING — GÖR DETTA FÖRST:
-
-Du är en AI och ska skapa en presentation för måndagsmötet enligt context_enginering repo.
-
-INNAN du börjar, måste du:
-
-1. 🔴 GLÖMMA allt minne från denna vecka (alla diskussioner vi haft)
-2. 🔴 GLÖMMA mötet igår eller tidigare möten  
-3. 🔴 GLÖMMA allt vad jag sa om projekt-status
-4. ✅ ENDAST läsa DATA från dessa FILER
-
-Läs BARA från:
-- Repo: https://github.com/zaida-wiss/context_enginering
-- PRESENTATION_FORMAT_GUIDE.md: 
-  https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
-- Mötesprotokollet denna vecka:
-  https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-- Git log denna vecka
-- GitHub Project Board
-
-🚨 REGEL: Om du använder något från våra tidigare samtal istället för dessa 
-FILER, HAR DU MISSLYCKATS.
-
-Bekräfta att du förstår och att du har rensat ditt minne, INNAN du börjar.
-```
-
-**Varför detta är kritiskt:** 
-AI kan omedvetet basera presentation på tidigare diskussioner istället för filerna. EXPLICIT minnesrensning tvingar AI att BARA läsa från källorna.
+**Minnesrensningen är INTE frivillig — den är TVINGANDE.**
 
 ---
 
