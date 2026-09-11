@@ -35,6 +35,28 @@
 
 ---
 
+## 🎬 SLIDE 0 — AGENDA (ALLTID FÖRSTA SLIDEN)
+
+**Slide 0.1 — AGENDA**
+- Titel: "MÖTESPUNKTER DENNA VECKA"
+- Innehål: Lista alla 11 punkter
+
+```
+📝① STATUS SEDAN FÖRRA MÖTE
+📝② ÖVERGRIPANDE MÅL & STATUS
+📝③ FRONTEND TEAM
+📝④ BACKEND TEAM
+📝⑤ NATIVE TEAM
+📝⑥ PRIORITERING & SCOPE
+📝⑦ ESTIMERING & RISK
+📝⑧ TEKNISKA BESLUT
+📝⑨ BEROENDEN & BLOCKERS
+📝⑩ ARBETSUPPGIFTER
+📝⑪ NÄSTA STEG & SAMMANFATTNING
+```
+
+---
+
 ## 📋 PRESENTATION FLOW (90 minuter)
 
 ```
@@ -64,20 +86,32 @@
 
 ### SEKTION 📝② — ÖVERGRIPANDE MÅL & STATUS (10 min)
 
-**Slide 2.1 — 📝②**
-- Titel: "Denna Veckas Mål"
-- Innehål:
-  - Risk Metrics (#42 - Marco)
-  - FX Converter (#45 - Jana)
-  - Tests (#48 - Anna)
-  - Kärnflödet (#51 - Kiran)
+**Slide 2.1 — 📝② (SYMBOL TILL VÄNSTER, TEXT TILL HÖGER)**
+```
+📝② DENNA VECKAS MÅL
 
-**Slide 2.2 — 📝②**
-- Titel: "Övergripande Status"
-- Innehål:
-  - 🟢 GRÖN / 🟠 ORANGE / 🔴 RÖD (välj EN)
-  - Deadlines: Torsdag 15:00, 24 sep, 15 okt
-  - Åtgärdsförslag (om inte grön)
+Risk Metrics (#42 - Marco): [%]
+FX Converter (#45 - Jana): [%]
+Tests (#48 - Anna): [%]
+Kärnflödet (#51 - Kiran): [status]
+```
+*Secretary copy-pastar allt till höger om 📝② direkt in i punkt ② i protokollet*
+
+**Slide 2.2 — 📝② (FORTSÄTTNING — SAMMA PUNKT)**
+```
+📝② ÖVERGRIPANDE STATUS
+
+Status: 🟢 GRÖN / 🟠 ORANGE / 🔴 RÖD
+
+Deadlines:
+- Torsdag 15:00 (Sprint end)
+- 24 sep 16:00 (CTO-demo)
+- 15 oktober (Kvaldemo)
+
+Åtgärdsförslag (om orange/red):
+[Åtgärder...]
+```
+*Secretary fortsätter copy-pasta till samma punkt ②*
 
 ---
 
@@ -297,14 +331,20 @@ Secretary vet: "Slide med 📝⑥ = Jag fyller in punkt 6 i protokollet"
    - Mötesprotokollet från tidigare möten
    - Team-status från mötesprotokollet (🟢🟠🔴)
 5. Skapa presentation **EXAKT enligt denna struktur**:
-   - Slide 1.1 → 📝①
-   - Slide 2.1, 2.2 → 📝②
+   - **SLIDE 0:** AGENDA med alla 11 punkter (📝①②③ etc) — ALLTID FÖRST
+   - Slide 1.1 → 📝① med text till höger
+   - Slide 2.1, 2.2 → 📝② med text till höger (båda samma punkt)
    - Slide 3.1 → 📝③ (Frontend)
    - Slide 4.1 → 📝④ (Backend)
    - Slide 5.1, 5.2 → 📝⑤ (Native)
    - osv enligt schema ovan
 
-6. Output i format: **PowerPoint (.pptx), Google Slides, eller Markdown**
+6. **KRITIGT:** VARJE SLIDE måste ha:
+   - Symbol **📝① klistrad till VÄNSTER**
+   - Text till HÖGER som kan copy-pastas direkt
+   - Secretary kan se symbolen och veta exakt vilken punkt att fylla in
+
+7. Output i format: **PowerPoint (.pptx), Google Slides, eller Markdown**
    - Berätta vilket format du använder
    - Sätt in all text direkt (inte "add text manually")
 
