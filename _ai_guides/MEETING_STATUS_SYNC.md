@@ -848,11 +848,268 @@ SUMMARY (3 Teams At a Glance):
 ├─ Blockers: KRITISKA — blockerar andra team
 ├─ Tests: Underskridande eller missande
 ├─ Risk: HÖG — kan missa deadline
-└─ Action: 🚨 OMEDELBAR ÅTGÄRD — vad behöver ni nu?
-          ├─ Pair programming? 
-          ├─ Support från annan team?
-          ├─ Scope cut?
-          └─ Resurslyfting?
+└─ Action: 🚨 OMEDELBAR ÅTGÄRD — konkreta stödinsatser!
+          ├─ Pair programming (vilken timme idag?)
+          ├─ Support från annan team (Frontend kan testa?)
+          ├─ Scope cut (vilken issue kan skjutas?)
+          ├─ Resurslyfting (kan någon från annat team?
+          └─ Issue-splitting (kan vi dela upp det?)
+```
+
+---
+
+## 🤝 KONKRETA STÖDINSATSER — Hur Vi Hjälps Åt
+
+**När ett team är överbelastat, AI presenterar KONKRETA lösningar:**
+
+### EXEMPEL 1: Pair Programming
+
+**Situation:**
+```
+Backend Team: Risk Metrics är 40% done, 2 dagar kvar
+Problem: Backend-dev är osäker på beräknings-spec
+Risk: Kan inte testa utan spec
+```
+
+**AI föreslår:**
+```
+🟠 LÖSNING: Pair Programming SESSION
+├─ Vem: Marco (Backend) + Kiran (Native)
+├─ När: Idag 14:00-16:00 (2 timmar)
+├─ Vad: Skriva spec tillsammans
+├─ Resultat: Marco kan sedan implementera parallellt
+├─ Effekt: Risk Metrics kan slutföras torsdag
+└─ Action: "Can Kiran pair with Marco idag 14:00?"
+```
+
+---
+
+### EXEMPEL 2: Issue-Splitting (Dela Upp Arbete)
+
+**Situation:**
+```
+Frontend: Target Allocation är 8h, men bara 1 person
+Problem: Kan inte hinna inom torsdag 15:00
+Risk: Kvaldemo-feature blir skjuten
+```
+
+**AI föreslår:**
+```
+🟠 LÖSNING: Split Issue Into Subtasks
+├─ Target Allocation DEL 1 (Anna): 4h
+│  └─ Component + basic logic (Anna kan göra själv)
+│
+├─ Target Allocation DEL 2 (Marco): 3h  
+│  └─ Backend API-integration (Marco från Frontend-team kan stötta)
+│
+└─ Target Allocation DEL 3 (Test): 1h
+   └─ Integration test (Anna + Marco tillsammans)
+
+RESULTAT:
+✅ Anna jobbar på sitt, Marco stödjer (inte full parallel, bara support)
+✅ Beräknas klart torsdag (separat par kan arbeta separat)
+✅ Frontend får sitt feature, Backend får sina API-ändringar
+✅ Ingen blockad
+
+ACTION: "Kan vi split denna issue i två subtasks?"
+```
+
+---
+
+### EXEMPEL 3: Peer Support Från Annat Team
+
+**Situation:**
+```
+Native Team: Tests är 45%, behöver 70%
+Problem: Bara Kiran jobbar på tests
+Risk: Test coverage missas på CTO-deadline
+```
+
+**AI föreslår:**
+```
+🟠 LÖSNING: Peer Support From Frontend
+├─ Request: Frontend-dev skriver tests för Native-beräkningar
+│
+├─ Vem: Anna (Frontend) har erfarenhet av test-writing
+├─ Aktivitet: Skriva unit-tests för Sharpe-kalkulering
+├─ Tid: 3 timmar på onsdagen
+├─ Resultat: Kiran fokuserar på integration-tests
+│
+├─ Win-Win:
+│  ├─ Native: Test coverage ökar (70% möjligt)
+│  ├─ Frontend: Lär sig Native-logik (bättre integration senare)
+│  └─ Team: Stödja varandra (team-kultur)
+│
+└─ ACTION: "Anna, kan du paira på tests onsdag 10-13?"
+```
+
+---
+
+### EXEMPEL 4: Scope Cut (Prioritera Aggressivt)
+
+**Situation:**
+```
+Backend: Risk Metrics + FX + Tests = 32h totalt
+Kapacitet: 24h denna vecka
+Problem: Kan inte göra allt
+Risk: Missad deadline
+```
+
+**AI föreslår:**
+```
+🟠 LÖSNING: Scope Cut — Prioritera MÅSTE-HA
+├─ MÅSTE denna vecka (20h):
+│  ├─ Risk Metrics API (16h) — CTO behöver det
+│  └─ Tests för Risk Metrics (4h) — DoD-krav
+│
+├─ NICE-TO-HAVE (skjut till nästa vecka):
+│  ├─ FX Converter (12h) — kan göra nästa vecka
+│  └─ Extra test coverage (8h) — kan göra nästa vecka
+│
+├─ RESULTAT:
+│  ✅ Passar inom 24h kapacitet (20h < 24h)
+│  ✅ CTO-deadline säker (Risk Metrics klart)
+│  ✅ Nästa vecka: FX + extra tests
+│  ✅ Inte overload denna vecka
+│
+└─ KOMMUNICERA:
+   "Vi prioriterar Risk Metrics denna vecka.
+    FX Converter och extra tests skjuts till nästa vecka.
+    Är det okej med PL?"
+```
+
+---
+
+### EXEMPEL 5: Resource Reallocation (Flytta Person)
+
+**Situation:**
+```
+Backend: Risk Metrics tar 16h, 1 dev
+Frontend: Tests bara behöver 4h, 2 devs
+Risk: Backend blir överbelastad, Frontend underutnyttjad
+```
+
+**AI föreslår:**
+```
+🟠 LÖSNING: Temporary Resource Move
+├─ Situation: Marco (Frontend) är klar tidigt
+├─ Förslag: Marco hjälper Backend denna vecka
+│
+├─ Konkret plan:
+│  ├─ Tis-Ons: Marco jobbar på Risk Metrics API
+│  ├─ Tor: Marco tillbaka till Frontend (slutpush)
+│  └─ Resultat: Risk Metrics klart snabbare
+│
+├─ Hur det fungerar:
+│  ├─ Marco vet Backend-kodstrukturen (worked there before)
+│  ├─ Parprogrammering första dagen (ramp-up)
+│  ├─ Sedan kan Marco jobba självständigt
+│  └─ Backend-dev Petra kan fokusera på tester
+│
+└─ ACTION: "Marco, kan du stötta Backend tis-ons?"
+```
+
+---
+
+### EXEMPEL 6: Daily Check-In (Aggressiv Övervakning)
+
+**Situation:**
+```
+Team ligger light behind, men det är bara tisdag
+Problem: Vi vet inte om det blir bättre eller värre
+Risk: Väntar för långt innan vi agerar
+```
+
+**AI föreslår:**
+```
+🟠 LÖSNING: Daily Check-In på Blockers
+├─ Kort möte varje dag 09:15 (15 min)
+│  └─ "Vad är blockers idag?"
+│  └─ "Behöver någon hjälp?"
+│  └─ "Ändring av plan?"
+│
+├─ Tisdags standup:
+│  ├─ Backend: Risk Metrics är 30% (on track)
+│  ├─ Frontend: UI-tests är 80% (on track)
+│  └─ Native: Väntar på spec (BLOCKER!)
+│     → Lös omedelbar: Pair prog idag 14:00
+│
+├─ Onsdags standup:
+│  ├─ Backend: Risk Metrics 60% (ahead!)
+│  ├─ Native: Spec klar, kan bygga nu
+│  └─ Beslut: Allt ser bra ut, continue as is
+│
+└─ Resultat:
+   ✅ Aggressiv övervakning = tidiga åtgärder
+   ✅ Inte "överraskat" på torsdag
+   ✅ Team vet att vi bryr oss
+```
+
+---
+
+## 📊 AI Presenterar Dessa Förslag Automatiskt
+
+**När AI ser ett team är bakom, säger den:**
+
+```
+🔴 NATIVE TEAM — CRITICAL (40% progress)
+
+BLOCKERS:
+• Calculation spec missing (1 dag)
+• Test coverage low (45% vs 70%)
+
+KONKRETA STÖDINSATSER:
+
+Option A: Pair Programming (RECOMMENDED)
+├─ Backend + Native pair session idag 14:00
+├─ Skriva spec tillsammans (1 tim)
+├─ Sharpe-kalkulering clarify (1 tim)
+├─ Kiran kan sedan implementera parallellt
+└─ Tidsbudget: 2 timmar idag, sedan på track
+
+Option B: Frontend Support (Parallel)
+├─ Anna (Frontend) skriver tests for Native
+├─ Kiran fokuserar på implementation
+├─ Tidsbudget: 3 timmar onsdag
+└─ Resultat: Test coverage ökar
+
+Option C: Scope Cut (If needed)
+├─ Prioritera bara Volatility denna vecka
+├─ Sharpe ratio nästa vecka (ej kritisk)
+├─ Tidsbudget: 16h → 10h
+└─ Resultat: Risk Metrics ready, Sharpe later
+
+REKOMMENDATION:
+Try Option A + Option B together:
+• Idag 14:00: Pair programming spec (Backend + Native)
+• Onsdag 10:00: Frontend helps with tests (Frontend + Native)
+• Result: Allt on track torsdag
+
+IMMEDIATE ACTION:
+"Kiran + Backend lead, kan ni pair idag 14:00?"
+"Anna, can you join tests onsdag 10:00?"
+```
+
+---
+
+## 🎯 Vad Gör Denna Approach?
+
+**Det visar att:**
+- ✅ Vi har **konkreta lösningar** (inte bara problem-identification)
+- ✅ Vi **bryr oss om teamet** (vilja att hjälpa)
+- ✅ Vi **tror på peer support** (inte solo-arbete)
+- ✅ Vi **är realistiska** (scope cut är okej)
+- ✅ Vi **agerar tidigt** (tisdag, inte torsdag)
+- ✅ Vi **distribuerar kunskap** (Anna lär sig Native)
+
+**Psykologisk effekt:**
+```
+Istället för: "Du ligger efter. Work harder."
+             (demoralizing)
+
+Vi säger: "Vi ser problemet. Här är 3 konkreta sätt
+          vi kan lösa det tillsammans. Vilken funkar?"
+          (empowering)
 ```
 
 ### Exempel: Snygg Tabell (Active Issues)
