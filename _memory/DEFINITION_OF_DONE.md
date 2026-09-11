@@ -1,4 +1,15 @@
+---
+name: definition-of-done
+description: Definition of Done (DoD) = when a GitHub issue is complete. NOT about course goals.
+metadata:
+  type: reference
+---
+
 # Definition of Ready & Definition of Done
+
+**VIKTIGT:** DoD är en UTVECKLINGSTERMIN för när en issue är slutförd. Inte samma som kursmål!
+
+Se [[course-goals-grading]] för information om betyg och kursmål.
 
 ---
 
@@ -43,8 +54,6 @@ Estimate: 16h
 
 ---
 
----
-
 ## 🎯 AC vs DoD - VIKTIGT SKILLJA!
 
 **AC och DoD är INTE samma sak:**
@@ -69,70 +78,85 @@ DoD (Definition of Done)     = HUR säkerställer vi det är klart?
 
 ---
 
-## ✅ Definition of Done - INNAN Vi Stänger
+## ✅ Definition of Done - INNAN Vi Stänger Issue
 
 En feature/fix är **DONE** när den uppfyller ALLT här (inklusive AC):
-örmc
-## ⚠️ ALLRA VIKTIGASTE: TÄVLINGEN ≠ BETYGET
 
-**Läs detta först!**
+### Kod
+- [ ] **AC är uppfyllda** - Allt som AC säger ska fungera gör det
+- [ ] **Ingen console.log** - Debug-kod är borttagen
+- [ ] **Ingen TODO/FIXME** - Eller tydligt dokumenterat varför det finns
+- [ ] **Formatterad kod** - Linting passerar (ESLint, Prettier)
+- [ ] **Ingen dead code** - Oanvänd kod är borttagen
 
-- **Tävlingsresultatet påverkar INTE ditt betyg**
-- Finaldagen är INTE examinerande
-- Du får betyg G eller VG baserat på slutleverans + kursmål
-- Du får samma betyg oavsett om du går till final eller vinner
+### Tester
+- [ ] **Unit tests** - För kritiska funktioner
+- [ ] **Integration tests** - För databas/API-interaktion
+- [ ] **E2E tests** - För kärnflödet
+- [ ] **Alla tests passerar** - Lokalt OCH i CI
+- [ ] **Testade edge cases** - Inte bara happy path
 
-### Din Prioritering
+### Code Review
+- [ ] **Granskad av annan** - Minst en annan person
+- [ ] **Feedback adresserad** - Alla kommentarer lösta
+- [ ] **Godkänd pull request** - Minst en godkännande review
+- [ ] **Ingen self-approval** - Du kan INTE godkänna din egen PR
 
-1. **FÖRST:** Uppfylla alla 17 kursmål ← Din betyg
-2. **SEDAN:** Lösa Annas problem + imponera på kund ← Kan ge finalplats
-3. **BONUS:** Vinna tävlingen mot andra lag ← Coolt men inte avgörande
+### Dokumentation
+- [ ] **README uppdaterad** - Om issue påverkar installation/arkitektur
+- [ ] **Komponenter dokumenterade** - Nya funktioner förklarade
+- [ ] **API dokumenterad** - Nya endpoints/datamodeller
+- [ ] **Beslutslogg uppdaterad** - Om arkitektur-val gjordes
+- [ ] **Kända brister dokumenterade** - Vad fungerar INTE än
 
-**Fokusera på kursmål, inte på att vinna tävlingen.**
+### Accessibility (WCAG 2.1 AA)
+- [ ] **Keyboard navigation** - Tab/Enter/Escape funkar
+- [ ] **Contrast ratios** - Text/bakgrund minst 4.5:1
+- [ ] **ARIA labels** - Form inputs har aria-label
+- [ ] **Semantic HTML** - `<button>`, `<nav>`, `<main>` används
+- [ ] **Color blindness** - Inte bara färg för info
+
+### Git & Commit
+- [ ] **Commits är logiska** - Inte "fixed stuff"
+- [ ] **Commit messages är tydliga** - `type(scope): message (#issue)`
+- [ ] **Branch är deskriptiv** - `feature/#42-portfolio-dashboard`
+- [ ] **Branch är mergad** - Ej stray branch kvar
+- [ ] **Git-historia är ren** - Inga force-push artefakter
+
+### Deploy & Integration
+- [ ] **Kod passar in i systemet** - Ingen breaking changes
+- [ ] **Beroenden är uppdaterade** - package.json, pom.xml etc
+- [ ] **Migration klara** - Databas-schema-ändringar dokumenterade
+- [ ] **Environment-variables** - Inte hardkodade
+- [ ] **Kan köras lokalt** - Inga externa tjänster som krävas (om möjligt)
+
+### Kvalitets-gates
+- [ ] **70%+ kodtäckning** - Coverage acceptabel
+- [ ] **Ingen kritiska säkerhetsproblem** - Inga OWASP-bärbara buggar
+- [ ] **Performance OK** - Inte långsammare än tidigare
+- [ ] **Build passerar** - `npm run build`, `mvn clean build` etc
+- [ ] **Linting passerar** - Ingen format-brus
 
 ---
 
----
-
-## ✅ Kärnflödet Fungerar
-
-Användaren kan gå igenom hela MVP-flödet från start till slut:
-
-- [ ] Användare kan logga in
-- [ ] Portföljöversikt visas med alla sparformer
-- [ ] Värden är konverterade till SEK (FX-justering)
-- [ ] Riskmått visas (allokering, volatilitet, Sharpe-ratio)
-- [ ] Användare kan sätta målallokering
-- [ ] Avvikelse-indikator visas tydligt
-- [ ] Back-testing-motor kan köras
-- [ ] Rebalanseringsförslag presenteras
-
-**Acceptance Criteria:** Du kan köra genom hela flödet på ~5 minuter utan att något kraschar.
-
----
-
-## 📖 Dokumentation
+## 📖 Dokumentation (Specifikt för DoD)
 
 ### README.md
 Måste innehålla:
 
-- [ ] **Projektbeskrivning** - Vad är Avanza Portföljhälsa?
+- [ ] **Projektbeskrivning** - Vad är detta?
 - [ ] **Installationsinstruktioner** - Steg-för-steg setup
 - [ ] **Hur man kör projektet** - Start backend, frontend, native
 - [ ] **Hur man kör tester** - Testkommando för alla tre lager
 - [ ] **Arkitektur-översikt** - Hur fungerar systemet?
 - [ ] **Kända brister** - Vad fungerar inte än?
 - [ ] **Avgränsningar** - Vad gjorde vi INTE?
-- [ ] **Bransch-kontakt** - Länk till TEAMSTANDARDS.md, PROJEKTKONTEXT.md
 
 ### Beslutslogg (DECISIONS.md eller i README)
 Måste dokumentera:
 
-- [ ] Varför C/C++ för back-testing (inte Java)
-- [ ] Varför React + TypeScript (not Vue, Svelte, etc.)
-- [ ] Varför Spring Boot 3.x (arkitektur-val)
-- [ ] Varför dessa riskmått (volatilitet, Sharpe, max drawdown)
-- [ ] Varför denna datamodell (User → Account → Holding)
+- [ ] Varför denna teknikstack (not Vue, Svelte, etc.)
+- [ ] Varför denna arkitektur (choices made)
 - [ ] Varför dessa prioriteringar (vad gjorde vi först, vad skippade vi)
 
 ### Teststatus
@@ -142,12 +166,10 @@ Måste dokumentera:
 - [ ] Integration tests status
 - [ ] E2E tests (minst kärnflödet)
 - [ ] Testresultat (vilka passar, vilka är TODO)
-- [ ] Prestandatester (back-testing på 500 instrument)
-- [ ] Kända testluckor (vad testar vi INTE än)
 
 ---
 
-## 🔀 Git & Process
+## 🔀 Git & Process (Specifikt för DoD)
 
 ### Commits & Branches
 - [ ] Alla commits följer format: `type(scope): message (#issue)`
@@ -159,7 +181,7 @@ Måste dokumentera:
 - [ ] Alla features/fixes är via PR
 - [ ] PR:er är granskade av annan teammedlem
 - [ ] Granskare kan INTE merga sitt eget godkännande
-- [ ] PR-beskrivning refererar till issue och design-beslut
+- [ ] PR-beskrivning refererar till issue
 
 ### Historia & Traceability
 - [ ] `git log --graph --all --oneline` visar tydlig historia
@@ -168,132 +190,7 @@ Måste dokumentera:
 
 ---
 
-## 🎯 Kodkvalitet Per Lager
-
-### Frontend (React + TypeScript)
-
-**📍 Använd design-mockups som guide:** Se [UI_DESIGN_REFERENCE.md](UI_DESIGN_REFERENCE.md) för layout & komponenter
-
-- [ ] **Komponenter matchar mockups:** LoginForm, PortfolioOverview, TargetAllocationForm, HoldingsTable
-- [ ] Alla komponenter har TypeScript-interfaces för props
-- [ ] Alla funktioner har explicit return types (`JSX.Element`, `string`, etc.)
-- [ ] CSS är i `.module.css`-filer (en per komponent)
-- [ ] Ingen inline-styles (förutom helt enkla fall)
-- [ ] Component-namngivning: PascalCase
-- [ ] Variabler: camelCase
-- [ ] CSS-klasser: camelCase
-- [ ] Linting passerar (ESLint + Prettier)
-
-### Backend (Java + Spring Boot)
-- [ ] SOLID-principer följs
-- [ ] Dependency injection används
-- [ ] SQL-injections förhindras (JPA/Hibernate)
-- [ ] Klasser: PascalCase
-- [ ] Metoder/variabler: camelCase
-- [ ] Konstanter: UPPER_CASE
-- [ ] Exceptions hanteras ordentligt
-
-### Native (C/C++)
-- [ ] Minneshantering är säker (ingen minnesläcka)
-- [ ] Destruktorer städar upp
-- [ ] Back-testing-motor är snabb (< 2 sekunder för 500 instrument)
-- [ ] Funktioner: snake_case
-- [ ] Variabler: snake_case
-- [ ] Konstanter: UPPER_CASE
-- [ ] Defensive coding (nil checks, error handling)
-
----
-
-## ♿ Accessibility (WCAG 2.1 AA Standard)
-
-**FÖRE detta krävs i VARJE issue:**
-
-### Frontend Components
-- [ ] **Keyboard navigation** - Alla funktioner går att nå via keyboard (Tab, Enter, Escape)
-- [ ] **Contrast ratios** - Text/bakgrund minst 4.5:1 (normal) eller 3:1 (stor)
-- [ ] **ARIA labels** - Form inputs, buttons har `aria-label` eller `aria-labelledby`
-- [ ] **Focus indicators** - Focus states är tydliga (inte borttagen)
-- [ ] **Semantic HTML** - Använder `<button>`, `<nav>`, `<main>` etc (inte bara `<div>`)
-- [ ] **Alt text** - Alla bilder har meningsfull alt-text
-- [ ] **Color blindness** - Inte bara färg för information (ikoner + färg)
-
-### Backend APIs
-- [ ] **HTTP status codes** - Korrekt 200/400/404/500 retureras
-- [ ] **Error messages** - Är tydliga och hjälpfulla (inte "error occurred")
-- [ ] **Rate limiting** - Skyddad mot abuse
-
-### Native Modules
-- [ ] **Performance** - Inte blocking UI
-- [ ] **Error handling** - Graceful degradation om native failer
-
-**Issue-body MÅSTE inkludera:**
-```
-### Accessibility Requirements
-- WCAG 2.1 AA target level
-- Keyboard navigation required? Yes/No
-- Color contrast check? Yes/No
-- ARIA labels needed? Yes/No
-```
-
----
-
-## 📝 README Updates
-
-**KRITISKT:** Om issue introducerar ett nytt flöde, en ny modul, eller ändrar hur något fungerar — README MÅSTE uppdateras!
-
-### Vilken README?
-
-**Root README.md** (om issue påverkar kerf-flödet eller installation):
-- [ ] Installationsinstruktioner uppdaterad
-- [ ] Nya commands dokumenterade
-- [ ] Arkitektur-översikt uppdaterad
-- [ ] Kända brister uppdaterad
-- [ ] Links till relevanta filer uppdaterad
-
-**Frontend README** (om issue är React-relaterad):
-- [ ] Ny komponent dokumenterad
-- [ ] State-management uppdaterad
-- [ ] Build/run instruktioner korrekt
-- [ ] Dependencies listade
-
-**Backend README** (om issue är Java-relaterad):
-- [ ] Ny endpoint dokumenterad
-- [ ] Database schema changes noterad
-- [ ] API-dokumentation uppdaterad
-- [ ] Configuration/env requirements tydliga
-
-**Native README** (om issue är C/C++):
-- [ ] Nya funktioner dokumenterade
-- [ ] Build-instruktioner uppdaterad
-- [ ] Performance-karakteristika noterad
-- [ ] Dependencies tydliga
-
-### Issue-body MÅSTE inkludera:
-
-```
-### README Updates
-[ ] Root README.md — Installation/architecture changes
-[ ] Frontend README.md — Ny komponent/state changes
-[ ] Backend README.md — Ny endpoint/schema changes
-[ ] Native README.md — Nya funktioner/performance changes
-[ ] Docs — Ny guide/instruktion behövs?
-```
-
-**Exempel issue:**
-```
-Title: [Frontend] Add PortfolioOverview component
-
-...
-
-README Updates:
-- [ ] Root: Add PortfolioOverview to architecture overview
-- [ ] Frontend: Document new PortfolioOverview component + props
-- [ ] Frontend: Update "Komponenter" section with mockup reference
-```
-
----
-
-## 🧪 Testing
+## 🧪 Testing (Specifikt för DoD)
 
 Måste ha tester för:
 
@@ -306,175 +203,39 @@ Måste ha tester för:
 - [ ] Unit tests för service-lager (JUnit)
 - [ ] Integration tests för repository (använder testdatabase)
 - [ ] API tests för endpoints (REST endpoints testad)
-- [ ] Test för FX-konvertering (edge cases)
 
 ### Native
-- [ ] Unit tests för back-testing-motor
+- [ ] Unit tests för kritiska funktioner
 - [ ] Benchmark tests (prestanda)
-- [ ] Test för edge cases (tom portfölj, negativa värden)
+- [ ] Edge case testing
 
 ### Täckning
 - [ ] Minst 70% kodtäckning på backend
 - [ ] Minst 60% på frontend
-- [ ] Kritiska paths täckade 100%
+- [ ] Kritiska paths täckta 100%
 
 ---
 
 ## 🚀 Prestanda & Skalning
 
-- [ ] Back-testing på 500 instrument < 2 sekunder
-- [ ] Portföljöversikt laddar < 1 sekund
-- [ ] FX-konvertering på 10 år × 500 instrument är snabb
+- [ ] Inte långsammare än tidigare
 - [ ] Database-queries är optimerade (inga N+1 problem)
+- [ ] Build-tid rimlig (inte exponentiell ökning)
 
 ---
 
-## 🤝 Feedback & Iterering
+## ✅ Final Checklista Innan Stänga Issue
 
-- [ ] Specialistfeedback från Avanza är hanterad
-- [ ] Feedback-logg visar vad vi ändrade baserat på feedback
-- [ ] Alla större ändringar är documenterade
-
----
-
-## 🛟 Fallback-plan
-
-Om livedemo kraschar:
-
-- [ ] Vi har en fallback-demo (screencast eller slides)
-- [ ] Vi kan visa statistik/resultat utan live-system
-- [ ] Vi kan förklara arkitekturen på en whiteboard
+- [ ] Alla AC är uppfyllda
+- [ ] Alla tests passerar
+- [ ] Code review är godkänd
+- [ ] Dokumentation är uppdaterad
+- [ ] Git-historia är ren
+- [ ] Ingen `console.log` eller debug-kod
+- [ ] README är uppdaterad
+- [ ] Accessibility klar (WCAG AA)
+- [ ] Branch är mergad
 
 ---
 
-## 📋 Slutlig Checklista Innan Inlämning
-
-- [ ] `README.md` är komplett och testbar
-- [ ] Alla tests passerar lokalt
-- [ ] Ingen `console.log()` eller debug-kod
-- [ ] Inga `TODO` eller `FIXME` kommentarer (eller de är dokumenterade)
-- [ ] `.env`-filer är i `.gitignore` (inga secrets i git)
-- [ ] Build-processen fungerar: `mvn clean build`, `npm run build`, etc.
-- [ ] Databasen kan initieras från scratch (migrations fungerar)
-- [ ] Hela flödet kan köras lokalt utan externa tjänster (om möjligt)
-- [ ] Ingen dead code (oanvänd kod är borttagen)
-- [ ] Branch är push:ad och uppdaterad mot `develop`
-
----
-
-## 🎬 Definition of Ready (Innan vi börjar på en feature)
-
-Innan vi börjar på något nytt:
-
-- [ ] Issue är tydligt definierat
-- [ ] Acceptance criteria är klara
-- [ ] Vilka team arbetar på det? (frontend, backend, native)
-- [ ] Beroenden är klara (t.ex. "backend måste göra X först")
-- [ ] Estimat är gjort
-- [ ] Branch är skapad: `feature/#ISSUE-description`
-
----
-
-## Godkänd = Allt Ovan + Ett Fungerande System
-
-**En godkänd v2 är INTE:**
-- En perfekt UI/UX (bra är nog)
-- Alla möjliga features (MVP räcker)
-- 100% kodtäckning (70%+ är tillräckligt)
-- Helt utan buggar (men kritiska flödet fungerar)
-
-**En godkänd v2 ÄR:**
-- Kärnflödet fungerar från start till slut
-- Användaren kan back-testa strategier
-- Allt är dokumenterat
-- Git-historia är tydlig
-- Kan köras lokalt och demoas
-- Svarar på Annas behov: "Förklara min portfölj utan att göra det för komplicerat"
-
----
-
-## 📅 Tidsplan & Milestones
-
-**Kursen löper 12 veckor: 17 aug – 6 nov 2026**
-
-Varje vecka har sprintmål, PL-tid (2,5 h/team) och fredagsdialoger.
-
-### Kritiska Deadlines
-
-| Vecka | Datum | Mileston | Din Deadline |
-|-------|-------|----------|--------------|
-| V1 | 17-21 aug | Kursstart + första dialogfredag | Miljö installerad |
-| V2 | 24 aug | Sprintstart: planering | Backlog + MVP klara |
-| V3-V5 | 31 aug-18 sep | Produktion med veckovisa checkpoints | README-struktur, tester, beslutslogg |
-| **V6** | **24 sep, 16:00** | **CTO-underlag deadline** | **Kod, arkitektur, beslut klara** |
-| V7 | 28 sep & 1 okt | CTO-feedforward + inspelad demo | Bearbeta feedback, demo-plan |
-| V8 | 5 okt | UX & DM-feedforward | Omsätta feedback till prioritering |
-| **V9** | **15 okt, 17:00** | **Kvaldemo-plan deadline** | **Stabilisering + presentation klara** |
-| V10 | 22 okt | **KVALDEMO** - livedemo för kund | Live-demo, finalistval |
-| **V11** | **26 okt, 16:00** | **Omtagsplan deadline** | **Bearbeta kundfeedback** |
-| **V12** | **4 nov, 15:00** | **SLUTLEVERANS deadline** | **Allt inlämnat** |
-| V12 | 5 nov, 09:00 | **FINALDAG** - livedemo för juryn | De 4 finalistteamen presenterar |
-| - | 6 nov | Betyg sätts | **Individuell bedömning** |
-
-### Fredagar = Dialogdag (Obligatoriskt)
-
-- Inget projektarbete på fredagar
-- Professionella dialoger med branschen
-- Career workshops
-- Skyddad tid för att bygga nätverk
-
-**Fredagarna är också betygsgrundande** – detta är Färdighet 8: "Initiera och driva professionella dialoger inom IT"
-
-### Vad Som Måste Vara Klart NÄR
-
-**Före V6 (24 sep):**
-- ✅ Kärnflödet fungerar
-- ✅ README-struktur på plats
-- ✅ Veckovisa checkpoints genomförda
-- ✅ Teststatus dokumenterad
-- ✅ Beslutslogg igång
-- ✅ Git-historia är tydlig
-- ⚠️ Inte perfekt – men visar riktning
-
-**Före V9 (15 okt):**
-- ✅ Kundfeedback från V7-V8 implementerad
-- ✅ Demo-plan + fallback klar
-- ✅ Stabilisering påbörjad
-- ✅ Presentation-material förberett
-
-**Före V12 (4 nov):**
-- ✅ ALLT är godkänt enligt Definition of Done
-- ✅ Kundfeedback från V10 implementerad
-- ✅ Slutleverans är körbar
-- ✅ README är komplett
-- ✅ Teststatus dokumenterad
-- ✅ Fallback på plats
-
-### Prioritering Före CTO-Feedback
-
-**Focus V3-V6 (31 aug - 24 sep):**
-1. **Kärnflödet fungerar** - MVP-flödet måste gå igenom
-2. **Riskmått & allokering** - Annas huvudbehov
-3. **Back-testing-motor** - Prestandakritisk
-4. **FX-justering** - Multivaluta-stöd
-5. **Tester & dokumentation** - Visar kvalitet
-
-**Skipp V3-V6:**
-- Perfekt UI/UX (bra räcker)
-- Alla möjliga features (MVP räcker)
-- Polering (gör senare)
-
-### Vad Examinatorn Tittar På
-
-**Slutleverans bedöms på:**
-- Funktionalitet (kursmål 1-4)
-- Dokumentation (Git, README, beslut)
-- Kodkvalitet (tester, granskning)
-- Din individuella insats (Git-historia)
-- Kursmål-uppfyllelse (alla 17)
-
-**Finalplats bedöms INTE enligt kursmål** – betyget bygger på slutleveransen, inte på tävlingsresultatet.
-
----
-
-**Klar? Då är vi klara!** 🎉
+**En issue är DONE när du kan stänga den och inte tänka på den igen.**

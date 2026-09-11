@@ -62,6 +62,23 @@ I HELA denna konversation får du ENDAST svara baserat på:
 
 ---
 
+## ⚠️ DoD ≠ Kursmål (VIKTIGT SKILLJA!)
+
+**Definition of Done (DoD)** = Utvecklingstermin
+- När en GitHub-issue är SLUTFÖRD
+- Tester passerar, code review godkänd, docs uppdaterade
+- *Handlar om att en issue är klar*
+
+**Kursmål & Betyg** = Pedagogik
+- De 17 kursmål som ger G/VG-betyg
+- Deadlines för slutleverans (4 nov)
+- Prioritering (kursmål > tävlingen)
+- *Handlar om att lära sig och få betyg*
+
+**Dessa är HELT SKILDA!** Blanda aldrig DoD med kursmål.
+
+---
+
 Du läser detta repo för första gången? Följ denna guide:
 
 ### **STEG 1: Läs Denna Repo Först** (context_enginering - 5-10 min)
@@ -73,8 +90,9 @@ Du läser detta repo för första gången? Följ denna guide:
 ```
 1. _memory/PROJEKTKONTEXT.md        — Vad är projektet? Kundens problem?
 2. _memory/TEAMSTANDARDS.md         — Regler, Git-format, kodstandarder
-3. _memory/DEFINITION_OF_DONE.md    — Vad är godkänt arbete?
-4. _ai_guides/VERIFICATION_SYSTEM.md — Hur verifierar vi systemet?
+3. _memory/DEFINITION_OF_DONE.md    — Vad är en SLUTFÖRD GitHub-issue? (tester, review, docs)
+4. _memory/KURSMAL_OCH_BETYG.md     — ⚠️ SKILT! Kursmål, betyg, deadlines (INTE DoD)
+5. _ai_guides/VERIFICATION_SYSTEM.md — Hur verifierar vi systemet?
 ```
 
 Raw-links för direkt AI-läsning:
