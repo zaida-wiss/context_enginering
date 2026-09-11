@@ -241,66 +241,109 @@ VARFÖR RÖD?
 
 ---
 
-### 👥 VAD FÅR VARJE TEAM-MEDLEM VID MÖTET?
+### 👥 TEAM-LEVEL STATUS & LÖSNINGAR (INTE PERSONLIG FEEDBACK!)
 
-**Varje team-medlem får FEEDBACK på sin status:**
+**Fokus: Vad kan VI göra tillsammans för att hjälpa varandra?**
 
 ```
-HEJ @ALEX (Frontend Developer):
+FRONTEND TEAM STATUS:
 
-DIN STATUS MOT TIDSPLAN:
+📊 Vad vi ser:
+├─ LoginForm: ✅ Klart
+├─ Portfolio: 75% (on track)
+├─ Tests: 45% (need 70%)
+└─ Performance: Lighthouse 75 (need 85)
 
-Issue: Portfolio Overview (#42)
-├─ Estimat: 16h
-├─ Tid använd så långt: 12h (3 dagar)
-├─ % Complete: 75%
-├─ Tid kvar: 3 dagar
-├─ Är du ON TRACK? 🟢 JA
-└─ Nästa steg: Finish tests + README
+🚫 Flödes-blockers:
+├─ Väntar på CSS variables från design
+├─ Tests tar längre tid än estimerat
+└─ Performance work är komplexare än väntat
 
-Issue: Performance Optimization (#50)
-├─ Estimat: 8h
-├─ Tid använd: 10h (ÖVER budget!)
-├─ % Complete: 60%
-├─ Är du ON TRACK? 🟠 NEJ (bakom)
-└─ Rekommendation: Focus här denna vecka
-
-DIN TOTALA STATUS: 🟠 Lite i stress
-Avslutad denna vecka: ~75% av planerat
-Rekommendation: Cut nice-to-have features
+💡 LÖSNINGAR VI KAN GÖRA TILLSAMMANS:
+├─ Pair programming: Frontend pair på tests imorgon?
+├─ Omfördela: Vem kan ta CSS vars från design IDAG?
+├─ Help: Native team kan hjälpa med performance? (är klara)
+├─ Cut scope: Skipa Performance polish denna vecka?
+└─ Support: Backend team kan review CSS när den kommer
 
 ---
 
-HEJ @MARCUS (Backend Developer):
+BACKEND TEAM STATUS:
 
-DIN STATUS MOT TIDSPLAN:
+📊 Vad vi ser:
+├─ Risk Metrics: 40% (KRITISK - måste klart denna vecka!)
+├─ FX Converter: 30% (HIGH)
+└─ API Endpoints: 60% (on track)
 
-Issue: Risk Metrics (#52)
-├─ Estimat: 16h
-├─ Tid använd: 12h (2,5 dagar)
-├─ % Complete: 40%
-├─ Tid kvar: 2,5 dagar
-├─ Är du ON TRACK? 🔴 NEJ (kommer inte klart!)
-├─ Blocker: Swagger docs från API team
-└─ ÅTGÄRD BEHÖVS: Pair programming idag
+🚫 Flödes-blockers:
+├─ Swagger docs från API team saknas (BLOCKING)
+├─ Risk Metrics är mer komplexer än estimerat
+└─ FX Converter drar tid från Risk Metrics
 
-Issue: FX Converter (#53)
-├─ Estimat: 12h
-├─ Tid använd: 4h (0,5 dagar)
-├─ % Complete: 30%
-├─ Tid kvar: 2,5 dagar
-├─ Är du ON TRACK? 🟠 Knappt (risk om Risk Metrics drar tid)
-└─ Börja här imorgon efter Risk Metrics
+💡 LÖSNINGAR VI KAN GÖRA TILLSAMMANS:
+├─ KRITISK: API team - Priority! Swagger docs IDAG
+├─ Pair: Backend pair på Risk Metrics (om Swagger klara)
+├─ Help: Frontend team kan help test Risk Metrics
+├─ Native: Native team kan help verify calculations
+├─ Omfördela: Kan vi cut FX scope denna vecka?
+└─ Fokus: Risk Metrics är det viktigaste för CTO deadline
 
-DIN TOTALA STATUS: 🔴 KRITISK
-Du kommer INTE klara båda i tid med nuvarande progress
-Behöver: Extra fokus, pair programming, möjliga scope cuts
+---
 
-PLAN:
-1. Risk Metrics är PRIORITY idag (pair with team)
-2. Swagger docs måste komma from API team IDAG
-3. Tomorrow: Focus på FX Converter
-4. Tuesday: Status update med PL
+NATIVE TEAM STATUS:
+
+📊 Vad vi ser:
+├─ Volatility: 50% (on track)
+├─ Max Drawdown: 30% (slight delay)
+└─ Tests: 80% coverage (good!)
+
+💡 LÖSNINGAR VI KAN GÖRA TILLSAMMANS:
+├─ Support: Vi KAN hjälpa Backend team!
+│  └─ Verify Risk Metrics calculations
+│  └─ Pair program if Volatility work dries up
+├─ Help Frontend: Performance optimization support
+└─ Momentum: Keep this pace, you're helping others
+```
+
+---
+
+### 🤝 TEAM-FOKUSERAD ÅTGÄRD (Inte personlig)
+
+**Istället för personlig feedback, fokusera på HUR VI HJÄLPER VARANDRA:**
+
+```
+PROBLEM: Risk Metrics kommer inte klart
+
+PERSONLIG FEEDBACK (❌ UNDVIK):
+"Marcus, du är bakom. Du måste fokusera bättre."
+→ Defensivt, demotiverande, löser inget
+
+TEAM-FOKUSERAD ÅTGÄRD (✅ GÖR DET HÄR):
+"Risk Metrics är KRITISK. Hur kan vi hjälpa?
+ ├─ API team: Priority Swagger docs IDAG?
+ ├─ Backend team: Pair programming imorgon?
+ ├─ Native: Kan ni hjälpa verify calculations?
+ ├─ Frontend: Kan ni test Risk Metrics API?
+ └─ Alla: Risk Metrics är högsta prioritet denna vecka"
+
+→ Samarbete, lösnings-fokus, gemensamt ansvar
+
+---
+
+PROBLEM: Frontend tests tar längre tid
+
+PERSONLIG FEEDBACK (❌ UNDVIK):
+"Alex, du är ineffektiv. Tests borde vara snabbare."
+→ Kritiserande, löser inget
+
+TEAM-FOKUSERAD ÅTGÄRD (✅ GÖR DET HÄR):
+"Tests tar längre än estimerat. Hur kan vi lösa?
+ ├─ Pair programming: Vem kan paja tests imorgon?
+ ├─ Omfördela: Kan Native/Backend hjälpa test-arbete?
+ ├─ Cut scope: Kan vi skip niceto-have tests denna vecka?
+ └─ Support: Vad behövs för att gå snabbare?"
+
+→ Samarbete, lösnings-fokus, "vi löser detta tillsammans"
 ```
 
 ---
