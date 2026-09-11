@@ -477,8 +477,12 @@ AI: [Faciliterar mötet enligt agenda ovan]
 
 **Kommando för AI:**
 ```
-Du: "Gör en presentation av denna veckas status sync möte"
+Du: "Gör en PEDAGOGISK presentation av denna veckas status sync möte"
+    (eller: "Med pedagogisk text för studenterna")
+
 AI: [Skapar visuell slide-presentation, 1 slide per sektion]
+   [Varje slide inkluderar VAD/HUR/VARFÖR brödtext]
+   [Förklarar bransch-principer & varför vi gör det så]
 ```
 
 **Presentation innehåller (EN SLIDE PER PUNKT):**
@@ -501,13 +505,100 @@ AI: [Skapar visuell slide-presentation, 1 slide per sektion]
 - ✅ Luftig layout (mycket whitespace, max 50% av sidan är text)
 - ✅ Stor symbol/ikon i toppen för varje slide (100px+)
 - ✅ En huvud-punkt per slide (3-5 bullet max)
+- ✅ **Pedagogisk brödtext** (VAD/HUR/VARFÖR) under bullets
 - ✅ Färger: 🔴 kritisk, 🟡 varning, 🟢 ok, 🔵 info
 - ✅ Tydlig typografi:
+  - Symbolen: 80-100px
   - Rubrik: 36-48pt, bold
-  - Body text: 20-24pt, regular
-  - Status: 16-18pt, muted
+  - Bullets: 20-24pt, regular
+  - Pedagogisk text: 14-16pt, muted (lätt att läsa)
+  - Status/källa: 12pt, very muted
 - ✅ Kontrastrik (ljust/mörkt tema support)
 - ✅ Konsistent brand-färger (om tillämpligt)
+
+---
+
+## 📚 PEDAGOGISK BRÖDTEXT — VAD/HUR/VARFÖR
+
+**Varje slide inkluderar en kort förklarande text:**
+
+```
+VAD?   — Vad är detta? (kort definition)
+HUR?   — Hur jobbar vi med detta i branchen?
+VARFÖR? — Varför är detta viktigt för projektet?
+```
+
+**Exempel: Slide 2 (Deadlines)**
+```
+┌─────────────────────────────────────────────────────┐
+│                    ⏰ DEADLINES                      │
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│ 🔴 CTO Deadline (24 sep)                            │
+│    Risk metrics: 40% done ❌                         │
+│    FX converter: 30% done ❌                         │
+│    Tests: 45% coverage (need 70%) ❌                │
+│                                                     │
+│ ───────────────────────────────────────────────     │
+│                                                     │
+│ 📖 VAD?                                             │
+│ En deadline är en tidsgräns då ett arbete måste     │
+│ levereras. Det är inte bara ett datum — det är ett  │
+│ mål som hela teamet jobbar mot.                     │
+│                                                     │
+│ 🛠️  HUR?                                             │
+│ Vi använder GitHub Project Board + SPRINT_TIMELINE  │
+│ för att spåra deadlines. Vi läser denna vecka vad   │
+│ som är klart vs vad som MÅSTE vara klart.           │
+│                                                     │
+│ 💡 VARFÖR?                                          │
+│ CTO behöver se att vi förstår kundens behov. Om vi  │
+│ missar denna deadline, visar vi att vi inte kan     │
+│ leverera på tid — något viktigt i branchen.         │
+│                                                     │
+│ Denna vecka: Risk metrics är bakom (40% vs 100%).   │
+│ Nästa vecka måste vi prioritera det här för att     │
+│ klara CTO-deadline.                                 │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+```
+
+**Exempel: Slide 5 (Active Branches)**
+```
+┌─────────────────────────────────────────────────────┐
+│                  🔄 ACTIVE BRANCHES                 │
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│ feature/#52-risk-calculations (Backend)             │
+│   Status: 40% done, BEHIND schedule                 │
+│   Estimat: 16h total, redan använt: 12h             │
+│   Kommer in i dev: DENNA VECKA (crítica!)           │
+│                                                     │
+│ ───────────────────────────────────────────────     │
+│                                                     │
+│ 📖 VAD?                                             │
+│ En branch är en separat arbetslinje i Git där vi    │
+│ utvecklar en feature utan att påverka main-koden.   │
+│ Varje issue får sin egen branch.                    │
+│                                                     │
+│ 🛠️  HUR?                                             │
+│ Vi skapar en branch: git checkout -b feature/#52    │
+│ Vi jobbar där tills det är klart, sedan gör vi en   │
+│ Pull Request för att merge tillbaka till develop.   │
+│ Branch-status visas i GitHub Project Board.         │
+│                                                     │
+│ 💡 VARFÖR?                                          │
+│ Branches skyddar main-koden. Om något går fel på    │
+│ vår branch påverkas inte team-koden. Vi kan jobba   │
+│ parallellt utan att trampa på varandra.             │
+│                                                     │
+│ ⚠️  BRANSCH-PRINCIP:                                │
+│ Om en branch är BEHIND schedule (40% av 16h redan   │
+│ använt) måste vi prioritera. Vi kan inte lägga mer  │
+│ arbete på nya branches tills denna är klar.         │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+```
 
 **Exempel på en slide (Deadlines):**
 ```
@@ -529,6 +620,37 @@ AI: [Skapar visuell slide-presentation, 1 slide per sektion]
 │                                                 │
 └─────────────────────────────────────────────────┘
 ```
+
+---
+
+## 🎓 LEARNING OUTCOMES — VAD SKA NI LÄRA ER?
+
+**Efter denna presentation ska ni kunna:**
+
+### Deadlines (Slide 2)
+- 📖 Förstå vad en deadline är (INTE bara ett datum)
+- 🛠️ Veta hur vi spårar deadlines (GitHub + SPRINT_TIMELINE)
+- 💡 Förstå varför deadlines är kritiska i branchen (leveransprecision)
+
+### Active Branches (Slide 5)
+- 📖 Förstå vad en Git branch är och varför de existerar
+- 🛠️ Veta hur man läser branch-status från Project Board
+- 💡 Förstå konsekvensen av "behind schedule" (andra kan inte börja sitt arbete)
+
+### PRs Under Review (Slide 6)
+- 📖 Förstå att en PR är en "förfrågan att merge" — inte bara kod
+- 🛠️ Veta att PRs behöver reviews innan de mergas (kvalitetskontroll)
+- 💡 Förstå att "merge decisions" är en TEAM-aktivitet, inte en individ-aktivitet
+
+### Blockers & Solutions (Slide 8)
+- 📖 Förstå vad en blocker är (något som hindrar arbete)
+- 🛠️ Veta att VARJE blocker behöver en mitigation (lösningsplan)
+- 💡 Förstå att "problem-solving" är en central bransch-skicklighet
+
+### Gap Analysis (Slide 9)
+- 📖 Förstå vad "gap" betyder (skillnad mellan målat och faktiskt)
+- 🛠️ Veta hur man beräknar gap (målat - faktiskt)
+- 💡 Förstå att gap-analys hjälper oss prioritera arbete rätt
 
 ---
 
