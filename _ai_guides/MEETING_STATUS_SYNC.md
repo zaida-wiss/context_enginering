@@ -478,8 +478,58 @@ AI: [Faciliterar mötet enligt agenda ovan]
 **Kommando för AI:**
 ```
 Du: "Gör en PEDAGOGISK presentation av denna veckas status sync möte"
-    (eller: "Med pedagogisk text för studenterna")
+```
 
+---
+
+## 🔴 KRITISKT: AI PRESENTERAR FÖRST VAD-VARFÖR-HUR-NÄR
+
+**Innan slides visas, MÅSTE AI presentera:**
+
+### 1️⃣ VAD SKA VI GÖRA?
+```
+"Denna vecka måste vi:
+├─ Risk Metrics: 100% klara (från mötesprotokollet + deadlines)
+├─ FX Converter: 100% klara (från mötesprotokollet + deadlines)
+├─ Test Coverage: 70%+ (från DEFINITION_OF_DONE)
+└─ Kärnflödet: Måste kunna demoas (för CTO deadline)"
+```
+
+### 2️⃣ VARFÖR SKA VI GÖRA DET?
+```
+"Varför detta är kritiskt:
+├─ Risk Metrics & FX måste klara för CTO deadline (24 sep)
+├─ Utan dessa kan vi inte demoa kärnflödet för CTO
+├─ Test coverage är DoD-krav (70%+)
+├─ Om vi missar deadline: Sämre intryck på CTO
+└─ Detta är överenskommet från mötesprotokollet"
+```
+
+### 3️⃣ HUR SKA VI GÖRA DET?
+```
+"Plan för denna vecka:
+├─ Risk Metrics: PRIORITERA IDAG (pair programming?)
+├─ Backend + Native: Verify calculations tillsammans
+├─ Frontend: Test Risk Metrics API när den kommer
+├─ FX: Kan skjutas om Risk Metrics tar all tid (scope cut)
+└─ Daily standup: Följ progress"
+```
+
+### 4️⃣ NÄR SKA VI GÖRA DET?
+```
+"Tidplan:
+├─ Idag (Tisdag): Swagger docs + starta Risk Metrics
+├─ Imorgon (Onsdag): Pair programming + API test
+├─ Torsdag: Finish Risk Metrics + test
+├─ Fredag: LIA (ingen kod) + finalize
+└─ DEADLINE: MÅSTE klart innan CTO session (24 sep kl 16:00)"
+```
+
+---
+
+**SEDAN (efter VAD-VARFÖR-HUR-NÄR), visa AI:**
+
+```
 AI: [Skapar visuell interaktiv slide-presentation]
    [Problem-slide → TÄNK SJÄLV paus → Lösning-slide]
    [Varje Problem-slide har pedagogisk brödtext]
