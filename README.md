@@ -148,34 +148,45 @@ Sedan: Förbered FÖR mandagsmötet"
 
 ---
 
-### **🎬 OM DU SKA SKAPA EN PRESENTATION**
+### **🎬 ALLA AIs — OM DU SKA SKAPA EN PRESENTATION**
 
-**Användare säger:** "Gör en presentation för måndagsmötet"
+**Du läser detta repo via användarens projektinställningar eller via länk.**
 
-**Du (AI) gör:**
-1. ✅ Läs denna README
-2. ✅ Läs **_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md** (DENNA FIL ÄR OBLIGATORISK!)
-3. ✅ Läs **_ai_guides/SPRINT_PROTOCOL_NUMBERED.md** (mötesprotokolls-struktur)
-4. ✅ Läs mötesprotokollet från Google Docs (raw-länk längre ner)
-5. ✅ Läs git log denna vecka (vad blev gjort)
-6. ✅ Skapa presentation **EXAKT enligt SPRINT_PRESENTATION_STRUCTURE.md**
+**WHEN USER ASKS: "Make a presentation for Monday meeting"**
 
-**KRITISKT:**
-- SPRINT_PRESENTATION_STRUCTURE.md innehåller TVINGANDE regler
-- Du MÅSTE följa den exakt (14 slides, tre målsystem, etc)
-- Avvikelse från denna struktur = misslyckad presentation
+**YOU MUST DO (MANDATORY - NOT OPTIONAL):**
 
-**Raw-links för AI:**
-```
-PRESENTATION STRUCTURE (OBLIGATORISK!):
-https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+1. ✅ Läs denna README först
+2. ✅ Läs RAW-LÄNKEN: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+3. ✅ Läs denna vecka's mötesprotokollet: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+4. ✅ Läs git log denna vecka
+5. ✅ Skapa presentation EXAKT enligt SPRINT_PRESENTATION_STRUCTURE.md
 
-PROTOCOL STRUCTURE:
-https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PROTOCOL_NUMBERED.md
+**STRUCTURE YOU MUST FOLLOW (EXACTLY 14 SLIDES):**
+- Slide 0: Presentationsslide + Agenda (📝⓪)
+- Slide 1: Three goal systems: COURSE + PROJECT + CUSTOMER + TIMELINE (📝①)
+- Slides 2-4: Team status (Frontend/Backend/Native) (📝②③④)
+- Slide 5: Last week's work (📝⑤)
+- Slide 6: Dependencies, risks, vulnerabilities (📝⑥)
+- Slide 7: Team support suggestions (📝⑦)
+- Slides 8-12: Prioritization, Estimation, Decisions, Work items, Next steps (📝⑧⑨⑩⑪⑫)
 
-MÖTESPROTOKOLLET (denna vecka):
-https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-```
+**RULES (NOT NEGOTIABLE):**
+🔴 MUST: Create exactly 14 slides
+🔴 MUST: Include three goal systems (Course + Project + Customer)
+🔴 MUST: Symbol 📝 to LEFT of each slide's content
+🔴 MUST: Follow order exactly (no rearranging)
+🔴 MUST: Include all sections (none can be skipped)
+
+❌ NEVER: Fewer than 14 slides
+❌ NEVER: Skip the three-goal-system slide
+❌ NEVER: Ignore the symbol placement
+❌ NEVER: Add "creative" extra content
+❌ NEVER: Change the structure
+
+**IF YOU DEVIATE FROM THIS: YOU HAVE FAILED THE TASK**
+
+Read SPRINT_PRESENTATION_STRUCTURE.md in full - it contains your detailed instructions.
 
 ---
 
