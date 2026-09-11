@@ -20,7 +20,63 @@ RESULTAT: NPF-vänlig presentation med rätt design
 
 ---
 
-## 🚨 KRITISKT FÖR AI — TVÅ VIKTIGA REGLER
+## 🚨 KRITISKT FÖR AI — TRE VIKTIGA REGLER
+
+### REGEL 0: INGENTING FABRICERAS — ALLT FRÅN KÄLLOR
+
+**Du får ALDRIG hitta på något.**
+
+Varje siffra, datum, mål, och statistik i presentationen MÅSTE komma från dessa och ENDAST dessa kilder:
+
+```
+🔴 TVINGANDE KÄLLKRAV:
+
+KURSMÅL denna vecka:
+  → Läs från: _memory/KURSMAL_OCH_BETYG.md
+  → ELLER: Mötesprotokollet (vad diskuterades förra veckan)
+  → Verifiera: Vilka kursmål är "denna veckas fokus"?
+
+PROJEKTMÅL denna vecka:
+  → Läs från: GitHub Project Board (denna vecka)
+  → Läs från: Mötesprotokollet (vad är målsättningen)
+  → Verifiera: Vilka features ska vara klara THU 15:00?
+
+VECKANS TIDSPLAN:
+  → Läs från: Mötesprotokollet (vilka möten är bokade?)
+  → Läs från: GitHub Project Board (deadlines)
+  → Verifiera: Vem sa vilken tid? Är det i mötesprotokollet?
+
+TEAM STATUS (grön/orange/röd):
+  → Läs från: Mötesprotokollet (vad sa teamet förra veckan?)
+  → Läs från: Git log denna vecka (faktiska commits)
+  → Läs från: GitHub Project Board (faktiska issues done/in progress)
+  → Verifiera: Matchar status det som faktiskt gjordes?
+
+BLOCKERS:
+  → Läs från: Mötesprotokollet (vilka blockers nämndes?)
+  → Läs från: GitHub issues (marked as blocked)
+  → Verifiera: Är denna blockade verklig eller löst redan?
+
+ÅTGÄRDSFÖRSLAG:
+  → Läs från: Mötesprotokollet (vad kom vi överens om?)
+  → ALDRIG: Din egen gissning eller "normalt skulle man..."
+
+🚫 ALDRIG HITTA PÅ:
+❌ "Kursmål X är fokus denna vecka" (verifierat från KURSMAL_OCH_BETYG.md?)
+❌ "Teamet är grön" (verifierat från actual git commits?)
+❌ "Möte på TUE 10:00" (finns det i mötesprotokollet?)
+❌ "En åtgärd skulle vara..." (kom teamet överens om detta?)
+❌ Exempel-mål eller hypotes-mål
+
+🔴 REGEL: Om du inte kan cita källan = DU HAR FABRICERAT = MISSLYCKAD
+```
+
+**Innan du sätter en siffra, ett mål, eller ett datum i presentationen — fråga dig själv:**
+- Var står detta exakt? (fil + rad)
+- Är det från en VERIFICERAD källa?
+- Eller är det min gissning?
+
+---
 
 ### REGEL 1: DATA FÖRE DESIGN
 **Du MÅSTE följa denna format exakt.** Inte ungefär. EXAKT.
@@ -834,13 +890,20 @@ REGLER:
 ✅ **OBLIGATORISK CHECKLIST:**
 
 ```
-🔴 SANNINGSCHECK (VIKTIGAST!):
+🔴 KÄLLKRAV & SANNINGSCHECK (VIKTIGAST!):
+  [ ] 🚫 INGENTING är fabricerat — ALLT från verifierade källor
+  [ ] Kursmål denna vecka: från KURSMAL_OCH_BETYG.md
+  [ ] Projektmål denna vecka: från GitHub Project Board + Mötesprotokollet
+  [ ] Tidsplan: från mötesprotokollet (vilka möten är bokade?)
+  [ ] Team status (grön/orange/röd): från git log + actual commits
+  [ ] Blockers: från mötesprotokollet + GitHub issues
+  [ ] Åtgärdsförslag: från mötesprotokollet (INTE AI gissningar)
   [ ] DATA matchar MÖTESPROTOKOLLET (ingen feltolkningar)
   [ ] Om vi är KRITISK (🔴) → texten säger KRITISK (inte dolt)
   [ ] Om vi ligger EFTER → texten säger det klart (inte dolt)
   [ ] Inga LÖJ-positiva tal ("vi löser detta") om data visar motsatsen
-  [ ] Alla blockers är namngivna + timeline för lösning
-  [ ] Åtgärder är KONKRETA (datum, tid, person) — inte vaga
+  [ ] Alla blockers är namngivna + timeline från mötet
+  [ ] Åtgärder är KONKRETA (datum, tid, person från mötesprotokollet)
 
 Symbol & Numrering:
   [ ] VARJE slide har symbol 📝① eller 📝⓪ överst VÄNSTER
