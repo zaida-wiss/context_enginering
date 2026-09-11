@@ -7,6 +7,114 @@
 
 ---
 
+## 🎨 PRESENTATION STANDARD (NPF-Vänlig)
+
+**VARJE gång du säger:** `"presentation"`, `"mötes-prep"`, `"status"`, `"förbered möte"`, etc.
+
+**AI MÅSTE automatiskt leverera:**
+
+```
+✅ STEG 1: VAD-VARFÖR-HUR-NÄR-VEM (kort, fokuserad prosa)
+   • VAD? — Exakt lista med prioriteter (🔴🟡🟢)
+   • VARFÖR? — Konsekvenser om vi missar/klarar
+   • HUR? — Plan & samarbete (vem gör vad tillsammans)
+   • NÄR? — Exakt timeline (inte "denna vecka")
+   • VEM? — Roll-assignment (Marco gör X, Anna gör Y)
+
+✅ STEG 2: Visuella Slides (Pedagogisk + NPF)
+   • Stor symbol på varje slide (80-100px)
+   • Max 3-4 bullets per slide
+   • ALLTID ett diagram/bild (progress bar, timeline, team box)
+   • Färgkodad (🔴 kritisk, 🟠 varning, 🟢 ok)
+   • 60-70% whitespace (inte tätt text)
+   • Problem → Tänk paus → Lösning (pedagogisk)
+
+✅ STEG 3: Pedagogisk Brödtext
+   • Varje slide: 📖 VAD? 🛠️ HUR? 💡 VARFÖR?
+   • Citat källa: "Från MEETING_PROTOCOL.md..." eller "GitHub säger..."
+```
+
+**Du behöver INTE säga mer än:** `"Ge mig en presentation"`  
+**AI kommer automatiskt att inkludera allt ovan** ✅
+
+### Exempel: Du frågar...
+
+```
+Du: "Ge mig en presentation till måndagsmötet"
+```
+
+### AI Levererar...
+
+```
+📋 FÖRST (Prosa - 2 min läsning):
+
+1️⃣ VAD?
+   Esta vecka måste vi:
+   • Risk Metrics: 100% klara (från GitHub + deadline 24 sep)
+   • FX Converter: 100% klara
+   • Tests: 70%+ coverage (DoD-krav)
+
+2️⃣ VARFÖR?
+   • CTO-deadline 24 sep — utan dessa kan vi inte demoa
+   • Leveransprecision är kritisk i branchen
+   • Risk att kvaldemo blir svag om detta misses
+
+3️⃣ HUR?
+   • Backend prioriterar Risk Metrics denna vecka
+   • Pair programming på blockers
+   • Frontend testar API när den kommer
+
+4️⃣ NÄR?
+   • Idag (Tis): Swagger docs
+   • Imorgon (Ons): Pair programming
+   • Torsdag: Finish + test
+   • Deadline: 24 sep 16:00
+
+5️⃣ VEM?
+   • Marco (Backend): Risk Metrics — PRIORITY
+   • Jana (Backend): FX Converter
+   • Anna (Frontend): Test Risk API
+
+─────────────────────────────────
+
+📊 SEDAN (Visuella Slides - 20 min):
+
+SLIDE 1: 📊 SPRINT SUMMARY
+┌────────────────────────────┐
+│ Sprint Vecka XX Status     │
+│                            │
+│ 🔴 Risk Metrics: 80%       │
+│ 🟠 FX: 20%                 │
+│ 🟠 Tests: 40%              │
+│                            │
+│ ⏰ Time to deadline: 5 dagar│
+└────────────────────────────┘
+
+SLIDE 2: ⏰ PROBLEM
+[Visar: CTO deadline närmar sig, vi är bakom på risk metrics]
+→ TÄNK SJÄLV paus (5 min) ←
+→ Diskutera: Vad skulle DU prioritera?
+
+SLIDE 3: ✅ LÖSNING
+[Visar: Prioritering, resurser, timeline]
+
+[etc. — 11 totala slides enligt pedagogisk struktur]
+```
+
+---
+
+**Designprinciper (NPF-Vänlig):**
+- ✅ Mycket whitespace (60-70%)
+- ✅ Kort text (max 3-4 bullets)
+- ✅ Stora symboler (80-100px)
+- ✅ Diagrams (inte bara text!)
+- ✅ Färgkodad (🔴🟠🟢)
+- ✅ Tydliga separatörer (─────)
+- ✅ Problem → Tänk → Lösning
+- ✅ Källa citerad
+
+---
+
 ## 📝 MÖTESPROTOKOLLET - Primär Källa
 
 **FÖRE ALLA MÖTES-FRÅGOR - LÄSA FÖRST:**
