@@ -1,6 +1,35 @@
-# 🎬 Presentationens Struktur — Guide för Slideutformning
+# 🎬 INSTRUKTIONER FÖR AI — Skapa Sprint Meeting Presentation
 
-**Varje presentation ska följa denna struktur, SAMMA VARJE VECKA.**
+**DETTA ÄR EN REGEL FÖR AI** — Läs denna FÖRST innan du skapar presentationen.
+
+**Vilken AI som helst (Claude, ChatGPT, Gemini) ska kunna följa denna guide och skapa SAMMA presentation varje gång.**
+
+**Användaren kommer säga:** "Skapa en presentation till måndagsmötet" + länk till detta repo  
+**Du läser denna fil FÖRST** → Du skapar presentationen enligt denna struktur  
+**Resultat:** Samma struktur, samma innehål, varje vecka
+
+---
+
+## 📋 KORT INSTRUKTION FÖR AI
+
+1. ✅ Läs denna fil (SPRINT_PRESENTATION_STRUCTURE.md)
+2. ✅ Läs møtesprotokollet (SPRINT_PROTOCOL_NUMBERED.md) för denna vecka
+3. ✅ Läs mötesprotokollet från Google Docs (raw-export länk i README.md)
+4. ✅ Skapa presentation enligt denna struktur (samma ordning, samma format)
+5. ✅ Varje slide får rätt symbol (📝①②③ etc)
+6. ✅ Output: PowerPoint, Google Slides, eller Markdown (berätta vilket du använder)
+
+---
+
+## ✅ FÖRE DU BÖRJAR — CHECKLIST
+
+- [ ] Jag har läst SPRINT_PRESENTATION_STRUCTURE.md (denna fil)
+- [ ] Jag vet vilken mötesprotokolls-data som gäller denna vecka
+- [ ] Jag vet att samma STRUKTUR ska användas varje vecka
+- [ ] Jag förstår att varje slide ska ha symbol 📝①②③ etc
+- [ ] Jag vet vilka färger som är 🟢🟠🔴
+
+---
 
 **Sekreteraren ser symbolen 📝①②③ på varje slide och vet vilket protokoll-punkt att fylla in.**
 
@@ -251,3 +280,58 @@ Lag lär sig: "Jag vet att efter Breakout kommer Prioritering på slide 7"
 Secretary vet: "Slide med 📝⑥ = Jag fyller in punkt 6 i protokollet"
 
 **Resultat:** Mötet flyter snabbt, protokollet blir korrekt och komplett.
+
+---
+
+## 🤖 FÖR EXTERNA AIS — ANVÄNDA DENNA GUIDE
+
+**Om någon säger:** "Skapa en presentation till måndagsmötet enligt context_enginering repo"
+
+**Du gör:**
+1. Läs denna fil (SPRINT_PRESENTATION_STRUCTURE.md) från början
+2. Läs SPRINT_PROTOCOL_NUMBERED.md för att förstå strukturen
+3. Fråga användaren: "Vilken vecka?" eller "Läs mötesprotokollet från Google Docs"
+4. Samla data för denna vecka:
+   - Git log denna vecka (vad blev done)
+   - GitHub Project Board status
+   - Mötesprotokollet från tidigare möten
+   - Team-status från mötesprotokollet (🟢🟠🔴)
+5. Skapa presentation **EXAKT enligt denna struktur**:
+   - Slide 1.1 → 📝①
+   - Slide 2.1, 2.2 → 📝②
+   - Slide 3.1 → 📝③ (Frontend)
+   - Slide 4.1 → 📝④ (Backend)
+   - Slide 5.1, 5.2 → 📝⑤ (Native)
+   - osv enligt schema ovan
+
+6. Output i format: **PowerPoint (.pptx), Google Slides, eller Markdown**
+   - Berätta vilket format du använder
+   - Sätt in all text direkt (inte "add text manually")
+
+**WICHTIGT:**
+- ✅ SAMMA struktur varje vecka
+- ✅ VARJE slide får symbol 📝①②③ etc
+- ✅ Designkrav: WCAG AA, padding 12px/16px
+- ✅ Max 3-5 bullets per slide
+- ❌ Aldrig ändra ordningen på slides
+- ❌ Aldrig lägga till "kreativa" extra slides utan att fråga
+- ❌ Aldrig utelämna breakout/paus-slides
+
+**Output:**
+```
+Presentation klar! Format: [PowerPoint / Google Slides / Markdown]
+
+📝① Status — [summary]
+📝② Mål & Status — [summary]
+📝③ Frontend — [summary]
+📝④ Backend — [summary]
+📝⑤ Native — [summary]
+📝⑥ Prioritering — [summary]
+📝⑦ Estimering & Risk — [summary]
+📝⑧⑨⑩⑪ Tekniska beslut, nästa steg
+
+Du kan nu:
+- Kopiera denna presentation
+- Visa den under mötet
+- Secretary fyller in mötesprotokollet parallelt
+```
