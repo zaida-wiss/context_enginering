@@ -34,6 +34,69 @@ RESULTAT: NPF-vänlig presentation med rätt design
 
 ---
 
+## 💫 TONALITET — DU SKA KÄNNA DIG GLAD & MOTIVERAD
+
+**Presentationen är inte bara information — det är motivationskällor.**
+
+```
+KÄNSLAN SKA VARA:
+✅ Optimistisk (vi löser detta!)
+✅ Organiserad (allt är under kontroll)
+✅ Energisk (framsteg varje vecka)
+✅ Transparant (vi ser problemerna + lösningarna)
+✅ Lekfull (inte grå eller tråkig)
+
+KÄNSLAN SKA INTE VARA:
+❌ Stressande (för mycket text, dålig design)
+❌ Deprimerande (endast problem, ingen lösning)
+❌ Kaotisk (allt överallt, ingen struktur)
+❌ Mekanisk (bara data, ingen människorörning)
+```
+
+### Hur vi skapar denna känsla:
+
+**Färger & Emojis**
+- 🟢 Grön visar framsteg och ON TRACK — se det överallt!
+- 🟠 Orange visar utmaningar men LÖSBAR — vi har åtgärder
+- 🔴 Röd visar KRITISKT men ADRESSERAD — vi gör något IDAG
+- ✅ Checkmarks visar vad som är klart (framsteg!)
+- 💪 Motiverande ord på slutslide ("Lycka till denna vecka!")
+
+**Layout & Whitespace**
+- 60-70% tom yta = andrum, inte känslan av kaos
+- Tydlig hierarki = "jag förstår vad som är viktigt"
+- Borders & cards = struktur, "vi har kontroll"
+- Tabeller & bars = visuell förståelse, inte massa text
+
+**Text & Ord**
+- "Framsteg", "ON TRACK", "klart" visas överst
+- "Blocker", "Risk", "åtgärd" visas MED LÖSNING
+- Deadlines = konkreta (inte vaga)
+- Actions = konkreta steg (vi gör något!)
+
+**Exempel på GOD tonalitet:**
+```
+❌ "Native är bakom och det är ett problem"
+✅ "Native ligger bakom (40%) — Backend + Native pair prog 
+    IDAG 14:00 för spec-writing. Resultat: Vi kommer i fas."
+```
+
+**Exempel på GLAD layout:**
+```
+Framsteg denna vecka:
+✅ Portfolio overview klar
+✅ Risk calc klar  
+✅ Tests 80% klara
+⏳ Rebalance i progress
+
+Resultat: Vi ligger ON TRACK 🟢
+
+🚨 En blocker: Sharpe spec väntas WED 14:00
+ÅTGÄRD: Pair prog MON 14:00 för att köra parallelt
+```
+
+---
+
 ## 📐 NPF-DESIGN REGLER (TVINGANDE)
 
 ### Whitespace
@@ -54,9 +117,34 @@ Färger:                    Mörk text på ljus bakgrund (4.5:1 kontrast)
 
 ### Färger & Status
 ```
-🟢 GRÖN (ON TRACK):        #2ecc71
-🟠 ORANGE (SLIGHT DELAY):  #e67e22
-🔴 RÖD (CRITICAL):         #e74c3c
+🟢 GRÖN (ON TRACK):        #2ecc71 (framsteg!)
+🟠 ORANGE (SLIGHT DELAY):  #e67e22 (vi åtgärdar)
+🔴 RÖD (CRITICAL):         #e74c3c (vi gör något)
+
+Ikoner för att göra det lekfullt:
+✅ Klart (framsteg!)
+⏳ Pågår (vi jobbar)
+⚠️ Blocker (men vi löser det)
+🔴 Kritisk (vi gör något IDAG)
+💪 Motiverande avslut
+🎯 Fokus denna vecka
+```
+
+### Visuell Balans (för känslan av kontroll)
+```
+LAYOUT SOM GÖR DIG GLAD:
+- Färg överst på slide (status-färg)
+- Framsteg visas först (positiv start)
+- Problem + LÖSNING tillsammans (inte bara problem)
+- Whitespace mellan sektioner (andrum)
+- Motiverande avslut ("Lycka till!")
+
+LAYOUT SOM STRESSAR:
+❌ All text buntat ihop
+❌ Endast negativa saker utan lösning
+❌ Dålig kontrast (svårt att läsa)
+❌ För många färger (förvirrande)
+❌ Ingen struktur (kaotisk)
 ```
 
 ### Borders & Frames

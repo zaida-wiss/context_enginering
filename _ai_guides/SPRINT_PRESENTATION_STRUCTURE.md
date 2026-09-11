@@ -28,8 +28,8 @@ RESULTAT: Presentation med alla 13 mötespunkter (📝⓪-⑫)
 **Vilken AI som helst (Claude, ChatGPT, Gemini) ska kunna följa denna guide och skapa SAMMA presentation varje gång.**
 
 **Användaren kommer säga:** "Skapa en presentation till måndagsmötet" + länk till detta repo  
-**Du läser denna fil HELT** → Du läser SPRINT_PROTOCOL_NUMBERED.md → Du skapar presentationen enligt denna struktur  
-**Resultat:** Samma struktur, samma innehål, varje vecka
+**Du läser denna fil HELT** → Du läser PRESENTATION_FORMAT_GUIDE.md för exakt layout → Du skapar presentationen enligt denna struktur  
+**Resultat:** Samma struktur, samma innehål, NPF-vänlig & inspirerande, varje vecka
 
 ---
 
