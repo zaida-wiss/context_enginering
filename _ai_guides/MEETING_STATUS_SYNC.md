@@ -480,25 +480,71 @@ AI: [Faciliterar mötet enligt agenda ovan]
 Du: "Gör en PEDAGOGISK presentation av denna veckas status sync möte"
     (eller: "Med pedagogisk text för studenterna")
 
-AI: [Skapar visuell slide-presentation, 1 slide per sektion]
-   [Varje slide inkluderar VAD/HUR/VARFÖR brödtext]
+AI: [Skapar visuell interaktiv slide-presentation]
+   [Problem-slide → TÄNK SJÄLV paus → Lösning-slide]
+   [Varje Problem-slide har pedagogisk brödtext]
+   [Varje Lösning-slide visar konkreta exempel & resonemang]
    [Förklarar bransch-principer & varför vi gör det så]
+
+Resultat: En presentation som TVINGAR studenterna att tänka
 ```
 
-**Presentation innehåller (EN SLIDE PER PUNKT):**
+**Hur presentationen fungerar:**
 
-| # | Slide | Symbol | Content |
-|---|-------|--------|---------|
+```
+SLIDE 2: ⏰ PROBLEM - Deadlines
+├─ Visar: CTO deadline 24 sep, risk-metrics bara 40% klara
+├─ Brödtext: VAD är deadline? HUR jobbar vi? VARFÖR är det kritiskt?
+└─ Fråga: "Vad skulle DU prioritera denna vecka?"
+
+🧠 PAUS — Studenterna diskuterar/tänker själva (5 min)
+
+SLIDE 2c: ✅ LÖSNING - Deadlines
+├─ Visar: Förslag på prioritering
+├─ Exempel: "Risk-metrics är KRITISK → allokooa 16h denna vecka"
+├─ Resonemang: "Varför? Utan det missar vi CTO deadline"
+└─ Bransch-princip: "Deadlines är om leveransprecision, inte perfekt kod"
+
+---
+
+SLIDE 3: 📈 PROBLEM - Metrics
+├─ Visar: Lighthouse 78/100 (behövs 85+), test coverage 45% (behövs 70%)
+└─ Fråga: "Vilka problem ser DU här? Hur skulle du lösa dem?"
+
+🧠 PAUS — Studenterna tänker
+
+SLIDE 3c: ✅ LÖSNING - Metrics
+├─ Exempel: "Performance gap = 7 poäng. Lösning: Optimize LCP images"
+├─ Kod-exempel: "Använd WebP format istället för PNG"
+└─ Resultat: "Då når vi 85+ och är ready för kvaldemo"
+```
+
+**Presentation innehåller (INTERAKTIV LÄRSTIL):**
+
+| # | Slide Type | Symbol | Content |
+|---|-----------|--------|---------|
 | 1 | Cover | 📊 | Status Sync - Vecka X |
-| 2 | Deadlines | ⏰ | Vad måste vara klart för CTO? |
-| 3 | Metrics | 📈 | Lighthouse scores, test coverage |
-| 4 | Develop | ✅ | Klart/pågår/inte startat |
-| 5 | Branches | 🔄 | Active branches + status |
-| 6 | PRs | 🚀 | Pull requests under review |
-| 7 | New Work | ✨ | Nyligen startade branches |
-| 8 | Blockers | 🚫 | Blockers + lösningsförslag |
-| 9 | Gap | ⚠️ | Gap mellan "måste" och "är klart" |
-| 10 | Actions | ☑️ | Action items & decisions |
+| 2 | Problem | ⏰ | Deadlines: vad måste vara klart? |
+| 2b | **TÄNK SJÄLV** 🧠 | — | *Pausera här — vad skulle DU prioritera?* |
+| 2c | Solution | ✅ | Lösning: Prioritering + exempel |
+| 3 | Problem | 📈 | Metrics: Vad säger siffrorna? |
+| 3b | **TÄNK SJÄLV** 🧠 | — | *Pausera — vad är problemet här?* |
+| 3c | Solution | ✅ | Lösning: Vad vi bör göra |
+| 4 | Info | ✅ | Develop status (klart/pågår/ej startat) |
+| 5 | Problem | 🔄 | Active branches: vilka är blocked? |
+| 5b | **TÄNK SJÄLV** 🧠 | — | *Pausera — vilka är kritiska?* |
+| 5c | Solution | ✅ | Lösning: Prioritering + nästa steg |
+| 6 | Problem | 🚀 | PRs: vilka kan mergas? |
+| 6b | **TÄNK SJÄLV** 🧠 | — | *Pausera — skulle DU merga denna?* |
+| 6c | Solution | ✅ | Lösning: Merge decisions + varför |
+| 7 | Info | ✨ | Nyligen startade branches |
+| 8 | Problem | 🚫 | Blockers: vad hindrar oss? |
+| 8b | **TÄNK SJÄLV** 🧠 | — | *Pausera — hur skulle DU lösa det?* |
+| 8c | Solution | ✅ | Lösning: Förslag + implementation |
+| 9 | Problem | ⚠️ | Gap: vad saknas? |
+| 9b | **TÄNK SJÄLV** 🧠 | — | *Pausera — vilka är de kritiska gapen?* |
+| 9c | Solution | ✅ | Lösning: Plan för att fylla gap |
+| 10 | Info | ☑️ | Action items & decisions |
 | 11 | Next | 📅 | Next steps & focus |
 
 **Slide-design (SAMMA FÖR ALLA SLIDES):**
@@ -624,6 +670,19 @@ VARFÖR? — Varför är detta viktigt för projektet?
 ---
 
 ## 🎓 LEARNING OUTCOMES — VAD SKA NI LÄRA ER?
+
+**Denna presentation använder PROBLEM-TÄNK-LÖSNING modellen:**
+
+1. **PROBLEM-slide** — Vi presenterar situationen
+2. **TÄNK SJÄLV 🧠** — 5-10 min paus, ni diskuterar
+3. **LÖSNING-slide** — Vi visar hur professionella gör det
+
+**Varför denna modell?**
+- ✅ Ni engageras aktivt (inte bara passiv lyssnare)
+- ✅ Ni tränar på problem-solving (en bransch-skicklighet)
+- ✅ Ni förstår VARFÖR vi gör det så (inte bara VAD)
+- ✅ Ni jämför er egen tanke med professionell lösning (lärdom!)
+- ✅ Presentationen blir mer engagerande
 
 **Efter denna presentation ska ni kunna:**
 
