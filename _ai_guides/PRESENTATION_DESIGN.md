@@ -117,7 +117,51 @@ Varje siffra, datum, mål måste komma från:
 
 **ALDRIG:** Gissa, antag, eller "normalt skulle man..."
 
-### ✅ MEGA-REGEL 4: Sanningen Före Känslan
+### ✅ MEGA-REGEL 4: Pedagogisk Förklaring av Ord & Begrepp
+
+**Aldrig använd term utan att förklara vad den betyder.**
+
+```
+❌ DÅLIGT: "Vi säkrar kärnflödet denna vecka"
+          (vad är kärnflödet? vilka commits visar det?)
+
+✅ BÄTTRE: "Vi fokuserar på kärnflödet: portföljöversikten 
+          end-to-end. Git visar 5 commits denna vecka 
+          (#42 portfolio, #45 risk-calc, etc).
+          Status: 80% klar. API inte integrera ännu."
+
+❌ DÅLIGT: "Risk dashboard är i progress"
+          (vad är risk dashboard? vem jobbar?)
+
+✅ BÄTTRE: "Risk dashboard (visar risk-mått: volatilitet, 
+          Sharpe-ratio). Jobbar på av: Marco (#45).
+          Status: 60% klar. Väntar på: API-spec från backend."
+```
+
+**ANVÄND DENNA STRUKTUR:**
+```
+Begrepp: [vad är det]
+Varför: [varför är det viktigt]
+Status: [konkret progress]
+Blockers: [om det finns]
+```
+
+**EXEMPEL:**
+```
+📊 Progress bar (visar procent)
+   Varför: Snabbt att se status utan att läsa tal
+   Status: Frontend 80% (████████░░)
+   
+🔴 Critical status (betyder: måste lösa IDAG)
+   Varför: Risk att inte få klart i tid
+   Status: Native team 40%, blocker från Backend API
+
+#42 Issue nummer (kopplar till GitHub)
+   Varför: Kan klicka direkt och se full issue
+   Assignee: (#42 - Jan föreslaget, jobbar på portfolio)
+```
+
+### ✅ MEGA-REGEL 5: Sanningen Före Känslan
 
 Design ska vara organiserad och lätt att läsa.
 Men DATA måste ALLTID vara ärlig.
