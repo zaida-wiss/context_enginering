@@ -361,6 +361,52 @@ REGLER:
 
 ---
 
+### **🆕 SLIDE 0.1.5 — 📅 VECKANS SCHEMA & MÅL (NYTT!)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📅 VECKANS SCHEMA & MÅLSÄTTNING                ║
+║                                                ║
+║ ┌──────────────────────────────────────────┐  ║
+║ │ 🎯 DENNA VECKA SKA VI UPPNÅ:             │  ║
+║ └──────────────────────────────────────────┘  ║
+║                                                ║
+║ 📚 KURSMÅL DENNA VECKA:                        ║
+║ ✅ Adressera kursmål #5-7 (Git historik)      ║
+║ ✅ Slutföra individuell dokumentation          ║
+║ ✅ Framsteg: 14/17 → 16/17 kursmål            ║
+║                                                ║
+║ 🚀 PROJEKTMÅL DENNA VECKA:                     ║
+║ ✅ Portfolio dashboard fungerar end-to-end    ║
+║ ✅ Risk metrics calculation live               ║
+║ ✅ Backend API testad med Frontend             ║
+║ ✅ Framsteg: 75% → 85% MVP                    ║
+║                                                ║
+║ ┌──────────────────────────────────────────┐  ║
+║ │ ⏰ VECKANS TIDSPLAN:                     │  ║
+║ └──────────────────────────────────────────┘  ║
+║                                                ║
+║ 📍 MON 09:00  Sprint Planning möte (90 min)   ║
+║ 📍 MON 14:00  Backend + Native pair prog      ║
+║ 📍 TUE 10:00  Frontend möte                   ║
+║ 📍 TUE 13:00  Halvtids-checkup möte          ║
+║ 📍 WED 14:00  Sharpe spec ready (väntat)     ║
+║ 📍 THU 15:00  SPRINT END (allt klart!)       ║
+║ 📍 THU 17:00  CTO demo (feedback)            ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Svart border (neutral info, ingen status-bedömning)
+- Två spalter visuell: KURSMÅL | PROJEKTMÅL
+- Tydliga deadlines med konkret tid (inte bara "denna vecka")
+- Symbols: 📚 🚀 📍 ⏰ ✅
+- Visuell progress: "från 75% → 85%"
+- Konkreta handlingar (vad ska hända DENNA VECKA)
+```
+
+---
+
 ### **SLIDE 1 — 📝① ÖVERGRIPANDE MÅL (DEL 1: KURSEN)**
 
 ```
@@ -846,8 +892,11 @@ Format:
   [ ] Samma struktur som dessa EXEMPEL-SLIDES
 
 TOTALT:
-  [ ] ~10-14 slides (beroende på innehål)
+  [ ] ~16-20 slides (beroende på innehål)
+      (mer innehål OK nu: schema, blockers, statistik)
   [ ] Alla 📝⓪-⑫ punkter representerade
+  [ ] SEPARAT slide för blockers visualisering
+  [ ] SEPARAT slide för veckans schema & mål
   [ ] NPF-vänlig (förutsägbar, visuell, lättläst)
   [ ] ÄRLIG DATA utan vilseledning
 ```
