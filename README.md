@@ -118,7 +118,24 @@ I HELA denna konversation får du ENDAST svara baserat på:
 
 Du läser detta repo för första gången? Följ denna guide:
 
-### **📍 DOKUMENTVÄGEN — Hitta Rätt Fil**
+### **📍 DOKUMENTVÄGEN — RAW-LINKS FÖR AI**
+
+```
+🟢 VIKTIGA RAW-LINKS:
+  📝 SPRINT_PRESENTATION_STRUCTURE.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+  
+  📝 SPRINT_PROTOCOL_NUMBERED.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PROTOCOL_NUMBERED.md
+  
+  📋 DEFINITION_OF_DONE.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/DEFINITION_OF_DONE.md
+  
+  🔴 MÖTESPROTOKOLLET (denna vecka):
+     https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+```
+
+**Navigering mellan filerna:**
 
 ```
 START HERE (denna README)
@@ -130,20 +147,20 @@ _memory/DEFINITION_OF_DONE.md ← Vad är en KLAR issue?
 _memory/KURSMAL_OCH_BETYG.md  ← Kursmål & betyg (SKILT från DoD!)
         ↓
 VILL DU SKAPA EN PRESENTATION?
-  → _ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
-    → SPRINT_PROTOCOL_NUMBERED.md (vilka mötespunkter)
-    → mötesprotokollet (denna veckas status)
+  → _ai_guides/SPRINT_PRESENTATION_STRUCTURE.md (raw-link ovan)
+    → SPRINT_PROTOCOL_NUMBERED.md (raw-link ovan)
+    → mötesprotokollet (raw-link ovan)
         ↓
 VILL DU SKAPA ISSUES?
   → _memory/ISSUE_TEMPLATE.md
     → _memory/DEFINITION_OF_READY.md (innan du startar)
         ↓
 VILL DU VERIFIERA ARBETE?
-  → _memory/DEFINITION_OF_DONE.md (checklist)
+  → _memory/DEFINITION_OF_DONE.md (raw-link ovan)
   → _ai_guides/VERIFICATION_SYSTEM.md (hur verifierar vi?)
 ```
 
-**REGEL: Varje fil länkar till nästa fil du behöver läsa.**
+**REGEL: Varje fil länkar till nästa fil du behöver läsa. Raw-links överst för AI.**
 
 ---
 
