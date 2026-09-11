@@ -21,12 +21,19 @@
    - GitHub Project Board (status)
    - Branches/PRs/blockers
    - Vem jobbar på vad
+   - Frågor för PL (från team eller mötesprotokollet)
 6. ✅ Skapa presentation **EXAKT enligt denna struktur**
-   - Slide 0: Presentationsslide + Agenda
-   - Slide 1: Övergripande (KURSEN + PROJEKTET + AVANZA + TIDSLINJE)
-   - Slides 2-14: Se schema nedan
+   - Slide 0: Presentationsslide + Agenda + Denna veckas tema + Nästa möte preview
+   - Slide 1: Frågor till PL
+   - Slide 2: Övergripande (KURSEN + PROJEKTET + AVANZA + TIDSLINJE)
+   - Slides 3-15: Per-team och planering
 7. ✅ Symbol 📝 till VÄNSTER, copy-paste text till HÖGER
-8. ✅ Output: PowerPoint/Google Slides/Markdown (berätta vilket)
+8. ✅ NPF-vänlig design:
+   - Samma struktur VARJE vecka (förutsägbar)
+   - 60-70% whitespace (WCAG AA contrast)
+   - Visuell hierarki (stora rubriker, små detaljer)
+   - Tydliga avsnittsskiljningar
+9. ✅ Output: PowerPoint/Google Slides/Markdown (berätta vilket)
 
 ---
 
@@ -231,9 +238,39 @@ Nu: ████████░░ 70% på vägen
 
 ## 🎬 SLIDES MED NUMRERING
 
-### SEKTION 📝① — STATUS SEDAN FÖREGÅENDE MÖTE (5 min)
+### SEKTION 📝⓪ — AGENDA & TEMA (5 min)
 
-**Slide 1.1 — 📝①**
+**Slide 0.1 — 📝⓪ PRESENTATIONSSLIDE**
+- Titel: "MÅNDAGSMÖTE — SPRINT PLANNING"
+- Innehål:
+  - Tid: 09:00-10:30
+  - Syfte: Planera denna vecka
+  - Denna veckas tema: [Vad handlar mötet om? Ex: "Risk prioritization", "Customer feedback integration", "Performance optimization"]
+  - Struktur: Systematisk genomgång, kort & koncist
+
+**Slide 0.2 — 📝⓪ AGENDA & NÄSTA MÖTE PREVIEW**
+- Titel: "AGENDA + PREVIEW"
+- Innehål:
+  - Lista alla 10 mötespunkter (📝①②③...)
+  - Påminnelse: Vi håller mötet kort & koncist
+  - 🔜 NÄSTA MÖTE (TIS 13:00): [Vad handlar det mötet om?]
+    - Ex: "Halvtids-checkup och blockers"
+    - Ex: "Feedback från CTO demo"
+    - Ex: "Customer insights integration"
+
+### SEKTION 📝① — FRÅGOR TILL PL (5 min)
+
+**Slide 1.1 — 📝① FRÅGOR TILL PL**
+- Titel: "Frågor Till Projektledaren"
+- Innehål (om det finns):
+  - Fråga 1: [Från team]
+  - Fråga 2: [Från team]
+  - Fråga 3: [Från PL:s updates]
+- Om inga frågor: "Inga frågor denna vecka ✅"
+
+### SEKTION 📝② — STATUS SEDAN FÖREGÅENDE MÖTE (5 min)
+
+**Slide 2.1 — 📝②**
 - Titel: "Status Sedan Föregående Möte"
 - Innehål: 
   - Git log denna vecka (vad blev done)
