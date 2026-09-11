@@ -20,8 +20,9 @@ RESULTAT: NPF-vänlig presentation med rätt design
 
 ---
 
-## 🚨 KRITISKT FÖR AI
+## 🚨 KRITISKT FÖR AI — TVÅ VIKTIGA REGLER
 
+### REGEL 1: DATA FÖRE DESIGN
 **Du MÅSTE följa denna format exakt.** Inte ungefär. EXAKT.
 
 - ✅ Symbol **📝①** överst på VARJE slide (vänster kant)
@@ -32,26 +33,92 @@ RESULTAT: NPF-vänlig presentation med rätt design
 - ✅ Kontrast WCAG AA (4.5:1 minimum)
 - ✅ MAX 3-5 bullets per sektion
 
+### REGEL 2: SANNINGEN FÖRE KÄNSLAN ⚠️
+**Blanda ALDRIG ihop design-känslan med faktisk data!**
+
+```
+🔴 ALDRIG:
+- "Vi löser detta!" (känsla) när data visar KRITISK
+- Snygga design för att dölja att vi ligger efter
+- Optimistisk ton när projektet riskerar att INTE gå i mål
+- Färger som inte matchar faktisk status
+
+✅ ALLTID:
+- Ärlig data: om vi är kritisk → säg "KRITISK" (🔴)
+- Konkreta åtgärder: vad gör vi IDAG för att lösa det?
+- Transparent bedömning: visa både problem OCH lösning
+- Färger som matchar verkligheten: 🟢 = faktisk ON TRACK
+```
+
+**Användaren säger: "Om vårat projekt riskerar att inte gå i mål, 
+ska AI inte lura oss att tro att vi är på banan i texten som står."**
+
+Du har förvaret att vara helt ÄRLIG med data.
+
 ---
 
-## 💫 TONALITET — DU SKA KÄNNA DIG GLAD & MOTIVERAD
+## 💫 TONALITET vs DATA — TVÅ HELT OLIKA SAKER
 
-**Presentationen är inte bara information — det är motivationskällor.**
+**🚨 VARNING: Blanda ALDRIG ihop DESIGN-känslan med faktiska DATA!**
 
 ```
-KÄNSLAN SKA VARA:
-✅ Optimistisk (vi löser detta!)
-✅ Organiserad (allt är under kontroll)
-✅ Energisk (framsteg varje vecka)
-✅ Transparant (vi ser problemerna + lösningarna)
-✅ Lekfull (inte grå eller tråkig)
+TONALITET (Design, färger, layout):
+✅ KAN vara: Organiserad, lättläst, tydlig visuell hierarki
+✅ SYFTE: Göra presentationen lätt att förstå, inte stressande
+✅ EXEMPEL: Bra whitespace, tydlig struktur, ikoner
 
-KÄNSLAN SKA INTE VARA:
-❌ Stressande (för mycket text, dålig design)
-❌ Deprimerande (endast problem, ingen lösning)
-❌ Kaotisk (allt överallt, ingen struktur)
-❌ Mekanisk (bara data, ingen människorörning)
+DATA & TEXT (Faktisk status, siffror, bedömning):
+✅ MÅSTE vara: 100% ÄRLIG, INGEN giltig
+✅ REGEL: Om vi är KRITISK → text säger "🔴 KRITISK"
+✅ REGEL: Om vi är GRÖN → text säger "🟢 ON TRACK"
+✅ REGEL: Om vi ligger EFTER → säg det tydligt, göm det INTE
+
+🚨 ALDRIG GÖRA:
+❌ "Vi är on track" (text) när data visar bakom plan
+❌ Snygga design för att dölja faktiska problem
+❌ Positivitet i ord när data visar kritisk status
+❌ "Allt är bra" design-känsla när projektet riskerar att inte gå i mål
 ```
+
+### EXEMPEL på RÄTT SEPARATION:
+
+**❌ FELAKTIGT (blandning av design-känsla & faktisk data):**
+```
+Slide ser snyggt ut: "Vi löser detta! 💪"
+Men text säger: "Bakom plan 60%, två kritiska blockers"
+Resultat: Användare blir vilseförd av design-känslan
+```
+
+**✅ KORREKT (ärlig data, organiserad design):**
+```
+Slide är tydlig & organiserad:
+
+🔴 NATIVE TEAM — CRITICAL
+Progress: ████░░░░░░ 40%
+Issues: 1/3 done
+
+Blocker: API spec väntas WED 14:00
+
+ÅTGÄRD: Backend + Native pair prog MON 14:00
+         • Spec writing (1h)
+         • Implementation (3h)
+         • Deadline: SAMMA DAG 17:00
+
+Känsla: "Vi är i en utmaning men vi HANDLAR på det"
+Sanningen: Vi är kritisk OCH vi gör något konkret
+```
+
+### RÄTT TONALITET BETYDER:
+✅ Organiserad layout (du FÖRSTÅR situationen)
+✅ Tydliga färger (du VET vad som är kritisk)
+✅ Konkreta åtgärder (du VET vad vi gör)
+✅ Ärlig data (du kan lita på informationen)
+
+### FELAKTIG TONALITET BETYDER:
+❌ Vilseledande design (dölja problem med snyggt layout)
+❌ Falskt positiv text ("allt är bra" när det inte är det)
+❌ Tomt positivitet utan åtgärder (bara ord, ingen handling)
+❌ Data som motsäger design (förvirring)
 
 ### Hur vi skapar denna känsla:
 
@@ -568,14 +635,24 @@ REGLER:
 ✅ **OBLIGATORISK CHECKLIST:**
 
 ```
+🔴 SANNINGSCHECK (VIKTIGAST!):
+  [ ] DATA matchar MÖTESPROTOKOLLET (ingen feltolkningar)
+  [ ] Om vi är KRITISK (🔴) → texten säger KRITISK (inte dolt)
+  [ ] Om vi ligger EFTER → texten säger det klart (inte dolt)
+  [ ] Inga LÖJ-positiva tal ("vi löser detta") om data visar motsatsen
+  [ ] Alla blockers är namngivna + timeline för lösning
+  [ ] Åtgärder är KONKRETA (datum, tid, person) — inte vaga
+
 Symbol & Numrering:
   [ ] VARJE slide har symbol 📝① eller 📝⓪ överst VÄNSTER
   [ ] Symbol matchar SPRINT_PROTOCOL_NUMBERED.md (ingen blandning)
   [ ] Symbolen är TYDLIG (inte dold eller liten)
 
 Färger & Status:
-  [ ] 🟢🟠🔴 färger på VARJE team-status slide
-  [ ] Färgerna matchar: Green = ON TRACK, Orange = DELAY, Red = CRITICAL
+  [ ] 🟢🟠🔴 färger matchar FAKTISK status (inte design-känsla)
+  [ ] Green = ON TRACK med data som visar ON TRACK
+  [ ] Orange = DELAY med konkret data om vad som ligger efter
+  [ ] Red = CRITICAL med omedelbar åtgärd specificerad
   [ ] Färgerna ANVÄND konsistent överallt
 
 Design & Layout:
@@ -592,10 +669,10 @@ Whitespace & Typografi:
 
 Innehål:
   [ ] Max 3-5 bullets per sektion
-  [ ] Deadlines med tid (HH:MM)
+  [ ] Deadlines med tid (HH:MM) — faktiska deadlines
   [ ] Assignee namn på varje issue
-  [ ] Timestimat på varje issue
-  [ ] ÅTGÄRD-sektion på röda slides (CRITICAL)
+  [ ] Timestimat på varje issue — faktiska estimat
+  [ ] ÅTGÄRD-sektion på röda slides (CRITICAL) + konkreta steg
 
 Format:
   [ ] PowerPoint eller Google Slides eller Markdown
@@ -606,6 +683,7 @@ TOTALT:
   [ ] ~10-14 slides (beroende på innehål)
   [ ] Alla 📝⓪-⑫ punkter representerade
   [ ] NPF-vänlig (förutsägbar, visuell, lättläst)
+  [ ] ÄRLIG DATA utan vilseledning
 ```
 
 ---
