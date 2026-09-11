@@ -241,68 +241,138 @@ VARFÖR RÖD?
 
 ---
 
-### 👥 TEAM-LEVEL STATUS & LÖSNINGAR (INTE PERSONLIG FEEDBACK!)
+### 👥 VAD FÅR VARJE LITET TEAM VID MÖTET?
 
-**Fokus: Vad kan VI göra tillsammans för att hjälpa varandra?**
+**De tre små teamen (Frontend, Backend, Native) får TEAM-STATUS för sitt område:**
 
+---
+
+## FRONTEND TEAM — DIN TEAM STATUS:
+
+**ISSUES & STATUS:**
 ```
-FRONTEND TEAM STATUS:
+Issue #24 - LoginForm
+  └─ Status: ✅ 100% DONE
+     ├─ Tests: Pass
+     ├─ Code review: Approved
+     └─ Merged: Yes
 
-📊 Vad vi ser:
-├─ LoginForm: ✅ Klart
-├─ Portfolio: 75% (on track)
-├─ Tests: 45% (need 70%)
-└─ Performance: Lighthouse 75 (need 85)
+Issue #42 - Portfolio Overview
+  └─ Status: 75% done (ON TRACK)
+     ├─ Estimat: 16h
+     ├─ Använt: 12h
+     ├─ Blockers: Väntar CSS vars från design
+     └─ Next: Tests this week
 
-🚫 Flödes-blockers:
-├─ Väntar på CSS variables från design
-├─ Tests tar längre tid än estimerat
-└─ Performance work är komplexare än väntat
+Issue #50 - Test Coverage
+  └─ Status: 45% done (RISK)
+     ├─ Estimat: 20h (totalt)
+     ├─ Använt: 10h
+     ├─ Problem: Tests tar längre än estimerat
+     └─ Impact: May not hit 70% target
+```
 
-💡 LÖSNINGAR VI KAN GÖRA TILLSAMMANS:
-├─ Pair programming: Frontend pair på tests imorgon?
-├─ Omfördela: Vem kan ta CSS vars från design IDAG?
-├─ Help: Native team kan hjälpa med performance? (är klara)
-├─ Cut scope: Skipa Performance polish denna vecka?
+**HUR VI KAN HJÄLPA:**
+```
+Blockrar:
+├─ Design CSS vars - Vem kan prioritera från design IDAG?
+├─ Tests komplexare - Vem kan pair programming imorgon?
+└─ Performance work - Native team kan support (de är klara)
+
+Lösningar:
+├─ Pair programming på tests (intern eller external help?)
+├─ Omfördela: Vem tar vad denna vecka?
+├─ Cut scope: Skip nice-to-have polish denna vecka?
 └─ Support: Backend team kan review CSS när den kommer
 
----
-
-BACKEND TEAM STATUS:
-
-📊 Vad vi ser:
-├─ Risk Metrics: 40% (KRITISK - måste klart denna vecka!)
-├─ FX Converter: 30% (HIGH)
-└─ API Endpoints: 60% (on track)
-
-🚫 Flödes-blockers:
-├─ Swagger docs från API team saknas (BLOCKING)
-├─ Risk Metrics är mer komplexer än estimerat
-└─ FX Converter drar tid från Risk Metrics
-
-💡 LÖSNINGAR VI KAN GÖRA TILLSAMMANS:
-├─ KRITISK: API team - Priority! Swagger docs IDAG
-├─ Pair: Backend pair på Risk Metrics (om Swagger klara)
-├─ Help: Frontend team kan help test Risk Metrics
-├─ Native: Native team kan help verify calculations
-├─ Omfördela: Kan vi cut FX scope denna vecka?
-└─ Fokus: Risk Metrics är det viktigaste för CTO deadline
+Fokus denna vecka: Tests är viktiga för DoD
+```
 
 ---
 
-NATIVE TEAM STATUS:
+## BACKEND TEAM — DIN TEAM STATUS:
 
-📊 Vad vi ser:
-├─ Volatility: 50% (on track)
-├─ Max Drawdown: 30% (slight delay)
-└─ Tests: 80% coverage (good!)
+**ISSUES & STATUS:**
+```
+Issue #52 - Risk Metrics
+  └─ Status: 40% done (🔴 KRITISK!)
+     ├─ Estimat: 16h
+     ├─ Använt: 12h
+     ├─ BLOCKER: Swagger docs saknas från API team
+     └─ Impact: MÅSTE klart för CTO deadline
+     
+Issue #53 - FX Converter
+  └─ Status: 30% done (🟠 AT RISK)
+     ├─ Estimat: 12h
+     ├─ Använt: 4h
+     ├─ Blockers: Risk Metrics får prioritet
+     └─ Impact: May slip to next week
 
-💡 LÖSNINGAR VI KAN GÖRA TILLSAMMANS:
-├─ Support: Vi KAN hjälpa Backend team!
-│  └─ Verify Risk Metrics calculations
-│  └─ Pair program if Volatility work dries up
-├─ Help Frontend: Performance optimization support
-└─ Momentum: Keep this pace, you're helping others
+Issue #47 - API Endpoints
+  └─ Status: 60% done (ON TRACK)
+```
+
+**HÖG PRIORITET DENNA VECKA:**
+```
+🔴 Risk Metrics MÅSTE klart för CTO deadline
+   - API team: Swagger docs ASAP?
+   - Backend: Pair programming om Swagger kommer?
+   - Native: Kan ni verify calculations?
+   - Frontend: Kan ni test Risk Metrics API?
+```
+
+**HUR VI KAN HJÄLPA:**
+```
+Blockers:
+├─ Swagger docs saknas - Vem fixar? Idag?
+└─ Risk Metrics komplexare - Behöver support?
+
+Lösningar:
+├─ Pair programming med Native om Swagger klara?
+├─ Frontend kan help test API endpoints
+├─ Native kan verify calculations
+├─ Omfördela: Cut FX scope denna vecka?
+└─ Fokus: Risk Metrics är #1 prioritet
+
+Observation: Risk Metrics är CRITICAL för deadline
+```
+
+---
+
+## NATIVE TEAM — DIN TEAM STATUS:
+
+**ISSUES & STATUS:**
+```
+Issue #88 - Volatility Calculations
+  └─ Status: 50% done (ON TRACK 🟢)
+     ├─ Estimat: 16h
+     ├─ Använt: 8h
+     ├─ Blockers: None
+     └─ Tests: 80% coverage (good!)
+
+Issue #89 - Max Drawdown
+  └─ Status: 30% done (SLIGHT DELAY 🟠)
+     ├─ Estimat: 12h
+     ├─ Använt: 4h
+     └─ Blockers: None (just slower progress)
+```
+
+**HUR VI KAN HJÄLPA ANDRA TEAM:**
+
+```
+Status: Du är klar med Volatility snart!
+        Kan du hjälpa Backend?
+
+Möjligheter:
+├─ Backend: Verify Risk Metrics calculations?
+├─ Backend: Pair program på Risk Metrics?
+├─ Frontend: Performance optimization support?
+└─ Support: Du kan vara "force multiplier" för andra
+
+Fokus denna vecka: 
+├─ Finish Volatility (du ligger bra till)
+└─ Support Backend Risk Metrics (kritisk för deadline)
+```
 ```
 
 ---
