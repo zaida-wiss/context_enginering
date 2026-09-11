@@ -1136,10 +1136,116 @@ Du: [Paste samma issue-innehål som ovan]
     - Tests skrivna
     - PR: https://github.com/.../pull/123
     
-    Du: "Uppfyller jag acceptance criteria?"
+    Du: "Uppfyller jag acceptance criteria och DoD?"
 
-AI: Validerar mot:
-   ✅ Definition of Done
+AI: (KRITISKT!) 
+   ❌ LÄSER INTE bara issue-body DoD-checklistan
+   ✅ LÄSER DEFINITION_OF_DONE.md för aktuell DoD-standard
+   ✅ VERIFIERAR att issue-body inkluderar ALLT från DoD
+   ✅ **LETAR I BRANCHEN/KODEN för att BEVISA varje DoD-punkt**
+   ✅ FLAGGAR om något saknas eller inte kan bevisas i kod
+
+AI: Validerar din implementering mot:
+   ✅ ACTUAL Definition of Done (från DEFINITION_OF_DONE.md)
+   ✅ Acceptance Criteria (från issue)
+   ✅ **VISAR tester från kod** (läser test-filerna, inte bara checkbox)
+   ✅ **VISAR README-uppdateringar** (länk till commit, läser innehållet)
+   ✅ **VERIFIERAR kod-quality** (TypeScript strict, no console.log, etc)
+   ⚠️ Flaggar saknade DoD-element eller omöjliga att bevisa
+```
+
+---
+
+## 🚨 VIKTIGT: VERIFIERA DOD, LÅSTA INTE UTGÅ IFRÅN ISSUE-TEXTEN
+
+**Problem:** En issue kan ha en ofullständig DoD-checklista.
+
+**Lösning:** AI MÅSTE alltid:
+
+1. **Läsa DEFINITION_OF_DONE.md** — Detta är källan till sanning
+2. **Verifiera issue-body** — Inkluderar den ALLT från DoD?
+3. **Flagga om något saknas** — "Issue-body saknar [X] från DoD"
+
+**Exempel 1: Ofullständig DoD-checklista**
+
+```
+Issue säger:
+DoD:
+  ☑ AC uppfyllda
+  ☑ Tests skrivna
+  ☑ Code reviewed
+  ☑ TypeScript strict
+
+Men DEFINITION_OF_DONE.md säger:
+  ☑ AC uppfyllda
+  ☑ Tests skrivna
+  ☑ Code reviewed
+  ☑ TypeScript strict
+  ☑ Accessibility checklist (SAKNAS!)
+  ☑ README uppdaterad (SAKNAS!)
+  ☑ Ingen console.log/TODO (SAKNAS!)
+  ☑ Commit-format korrekt (SAKNAS!)
+
+AI måste då säga:
+"🚨 Issue-body DoD är OFULLSTÄNDIG. Saknas:
+ - Accessibility checklist
+ - README updates
+ - console.log/TODO check
+ - Commit format verification
+
+Enligt DEFINITION_OF_DONE.md måste du även göra dessa."
+```
+
+**Exempel 2: Checkbox säger "Tests skrivna" — men verifiera i KOD**
+
+```
+Issue säger: ☑ Tests skrivna
+
+AI måste VERIFIERA i branchen:
+1. Läs feature-branchen: feature/#24-login
+2. Leta efter test-fil: src/components/__tests__/LoginForm.test.tsx
+3. Läs testfilen:
+   - Finns test för varje AC? (expect clauses)
+   - Testar den faktisk behavior (inte bara snapshots)?
+   - Körs testarna utan errors?
+
+Om AI hittar test-filen:
+✅ "Tests skrivna: JA
+    - 3 unit tests för LoginForm
+    - 1 E2E test för login flow
+    - All passar, coverage 85%"
+
+Om AI INTE hittar test-filen:
+❌ "Tests skrivna: CHECKBOX FELAKTIG
+    - Issue säger tests är skrivna
+    - Men test-filer existerar inte i branchen
+    - Eller tests är incomplete/failing
+    - Du måste skriva/fixa testen!"
+```
+
+**Exempel 3: README-uppdatering — verifiera innehållet**
+
+```
+Issue DoD säger: ☑ README uppdaterad
+
+AI måste:
+1. Läsa commits på branchen
+2. Hitta vilken commit som uppdaterade README
+3. LÄSA själva README-uppdateringen
+4. Verifiera att det inkluderar:
+   - Komponenten dokumenterad? Ja
+   - Props dokumenterade? Ja
+   - Användnings-exempel? Ja
+   - Länk till mockup? Ja
+
+Resultat:
+✅ "README uppdaterad: JA
+    Commit abc123 uppdaterade:
+    - LoginForm-komponenten är dokumenterad
+    - Props är listade med types
+    - Har användnings-exempel
+    - Länkar till mockup 01_login.webp"
+```
    ✅ Acceptance Criteria
    ✅ Kodstandarder (TEAMSTANDARDS.md)
    
