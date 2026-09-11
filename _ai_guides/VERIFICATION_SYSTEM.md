@@ -1,5 +1,30 @@
 # ✅ Verification System - Source of Truth
 
+## 📍 DOKUMENTVÄGEN
+
+**Du är här:** VERIFICATION_SYSTEM.md (Verifiering av arbete)
+
+```
+START — README.md (denna repo)
+        ↓
+        VILL DU VERIFIERA NÅGOT?
+        ↓
+🟢 DU ÄR HÄR: VERIFICATION_SYSTEM.md (denna fil)
+        ↓
+ANVÄND MED:
+  • DEFINITION_OF_DONE.md ← DoD checklist för issues
+  • Git history (git log) ← Faktiska commits
+  • GitHub Project Board ← Issue status
+  • Mötesprotokollet ← Decisions & action items
+        ↓
+RESULTAT: Du vet vad som är sanningen för varje aspekt
+```
+
+**GÅ TILLBAKA TILL:** README.md för övergripande guide  
+**GÅ TILL:** DEFINITION_OF_DONE.md för specifik issue-verification
+
+---
+
 **Denna guide visar hur vi verifierar att allt är konsistent mellan:**
 - Git branches, commits, och PRs
 - GitHub Project Board (issues & status)

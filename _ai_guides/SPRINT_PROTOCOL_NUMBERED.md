@@ -1,5 +1,28 @@
 # 📝 Mötesprotokollet — Numrerad Mall
 
+## 📍 DOKUMENTVÄGEN
+
+**Du är här:** SPRINT_PROTOCOL_NUMBERED.md (Mötespunktstruktur)
+
+```
+START — README.md (denna repo)
+        ↓
+        VILL DU FÖRSTÅ MÖTESSTRUKTUREN?
+        ↓
+🟢 DU ÄR HÄR: SPRINT_PROTOCOL_NUMBERED.md (denna fil)
+        ↓
+ANVÄND MED:
+  • SPRINT_PRESENTATION_STRUCTURE.md ← Hur presentationen ska se ut
+  • mötesprotokollet (Google Docs) ← Denna veckas data
+        ↓
+RESULTAT: Möte med alla 12 mötespunkter (📝①-⑫) + intro (📝⓪)
+```
+
+**GÅ TILLBAKA TILL:** SPRINT_PRESENTATION_STRUCTURE.md om du skapar presentation  
+**GÅ TILL:** mötesprotokollet för denna veckas status
+
+---
+
 **Använd denna struktur varje möte. Presentationen har samma numrering (📝①②③ etc)**
 
 **Datum:** [Veckodag, datum]  

@@ -1,11 +1,34 @@
 # 🎬 INSTRUKTIONER FÖR AI — Skapa Sprint Meeting Presentation
 
-**DETTA ÄR EN REGEL FÖR AI** — Läs denna FÖRST innan du skapar presentationen.
+## 📍 DOKUMENTVÄGEN
+
+**Du är här:** SPRINT_PRESENTATION_STRUCTURE.md (Presentationsguide)
+
+```
+START — README.md (denna repo)
+        ↓
+        VILL DU SKAPA EN PRESENTATION?
+        ↓
+🟢 DU ÄR HÄR: SPRINT_PRESENTATION_STRUCTURE.md (denna fil)
+        ↓
+LÄNG MOT: 
+  • SPRINT_PROTOCOL_NUMBERED.md ← Vilka mötespunkter finns?
+  • mötesprotokollet (Google Docs) ← Denna veckas status
+  • DEFINITION_OF_DONE.md ← Vad är en KLAR issue?
+        ↓
+RESULTAT: Presentation med alla 13 mötespunkter (📝⓪-⑫)
+```
+
+**GÅ TILLBAKA TILL:** README.md om du är vilse
+
+---
+
+**DETTA ÄR EN REGEL FÖR AI** — Läs denna HELT innan du skapar presentationen.
 
 **Vilken AI som helst (Claude, ChatGPT, Gemini) ska kunna följa denna guide och skapa SAMMA presentation varje gång.**
 
 **Användaren kommer säga:** "Skapa en presentation till måndagsmötet" + länk till detta repo  
-**Du läser denna fil FÖRST** → Du skapar presentationen enligt denna struktur  
+**Du läser denna fil HELT** → Du läser SPRINT_PROTOCOL_NUMBERED.md → Du skapar presentationen enligt denna struktur  
 **Resultat:** Samma struktur, samma innehål, varje vecka
 
 ---

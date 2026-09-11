@@ -5,6 +5,29 @@ metadata:
   type: reference
 ---
 
+## 📍 DOKUMENTVÄGEN
+
+**Du är här:** DEFINITION_OF_DONE.md (Vad är en KLAR issue?)
+
+```
+START — README.md (denna repo)
+        ↓
+        VILL DU VERIFIERA EN ISSUE?
+        ↓
+🟢 DU ÄR HÄR: DEFINITION_OF_DONE.md (denna fil)
+        ↓
+ANVÄND MED:
+  • DEFINITION_OF_READY.md (innan issue börjas)
+  • VERIFICATION_SYSTEM.md ← Hur verifierar vi?
+  • Faktisk GitHub issue ← Vilka kriterier är checkade?
+        ↓
+RESULTAT: Du vet om en issue är VERKLIGEN KLAR
+```
+
+**GÅ TILLBAKA TILL:** README.md för övergripande guide
+
+---
+
 # Definition of Ready & Definition of Done
 
 **VIKTIGT:** DoD är en UTVECKLINGSTERMIN för när en issue är slutförd. Inte samma som kursmål!

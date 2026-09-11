@@ -118,6 +118,35 @@ I HELA denna konversation får du ENDAST svara baserat på:
 
 Du läser detta repo för första gången? Följ denna guide:
 
+### **📍 DOKUMENTVÄGEN — Hitta Rätt Fil**
+
+```
+START HERE (denna README)
+        ↓
+_memory/TEAMSTANDARDS.md      ← Regler, Git-format, hur vi jobbar
+        ↓
+_memory/DEFINITION_OF_DONE.md ← Vad är en KLAR issue?
+        ↓
+_memory/KURSMAL_OCH_BETYG.md  ← Kursmål & betyg (SKILT från DoD!)
+        ↓
+VILL DU SKAPA EN PRESENTATION?
+  → _ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+    → SPRINT_PROTOCOL_NUMBERED.md (vilka mötespunkter)
+    → mötesprotokollet (denna veckas status)
+        ↓
+VILL DU SKAPA ISSUES?
+  → _memory/ISSUE_TEMPLATE.md
+    → _memory/DEFINITION_OF_READY.md (innan du startar)
+        ↓
+VILL DU VERIFIERA ARBETE?
+  → _memory/DEFINITION_OF_DONE.md (checklist)
+  → _ai_guides/VERIFICATION_SYSTEM.md (hur verifierar vi?)
+```
+
+**REGEL: Varje fil länkar till nästa fil du behöver läsa.**
+
+---
+
 ### **STEG 1: Läs Denna Repo Först** (context_enginering - 5-10 min)
 
 **Detta är Team Process & Standards. Läs detta först.**
