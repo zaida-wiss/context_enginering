@@ -192,7 +192,25 @@ Vad hände förra veckan?
 
 ---
 
-## 📝⑪ NÄSTA STEG & SAMMANFATTNING
+## 📝⑪ FRÅGOR TILL PROJEKTLEDAREN
+
+[Copy från presentation — Slide med 📝⑪]
+
+**Frågor från team:**
+- Q: [Fråga 1]
+- Q: [Fråga 2]
+- Q: [Fråga 3]
+
+**Svar från PL:**
+- A: [Svar 1]
+- A: [Svar 2]
+- A: [Svar 3]
+
+Eller: Inga frågor denna vecka ✅
+
+---
+
+## 📝⑫ NÄSTA STEG & SAMMANFATTNING
 
 [Copy från presentation — Slide med 📝⑪]
 
