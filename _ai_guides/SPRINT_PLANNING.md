@@ -471,7 +471,7 @@ Lead: "Dokumenterar: Rebalance är BACKLOG nästa vecka, scope cut denna vecka"
 ### MÖTET — KONKRET AGENDA MED TIDER
 
 ```
-TIMME 1 (09:00-10:00): STATUS & FOKUS
+TIMME 1 (09:00-10:30): STATUS & FOKUS (Helgrupp + Team Breakouts)
 
 09:00-09:10 (10 min) — KOLLA IN & ENERGI-BOOST
 ├─ Kort rundning: "Hur mår ni?"
@@ -491,42 +491,281 @@ TIMME 1 (09:00-10:00): STATUS & FOKUS
 ├─ Deadline och risker?
 └─ Frågor från teamet?
 
-09:35-10:00 (25 min) — ISSUE REVIEW & REFINEMENT (från förberedelsen)
+09:35-09:50 (15 min) — ISSUE REVIEW & REFINEMENT (från förberedelsen)
 ├─ AI presenterar förslag på ändringar
-├─ Diskutera: Är issues realistiska?
 ├─ Vilka kan vi starta? Vilka behöver vänta?
 ├─ Är DoR uppfylld för var issue?
-└─ Uppdatera GitHub Project Board baserat på diskussion
+└─ Uppdatera GitHub Project Board
 
-TIMME 2 (10:00-11:00): PRIORITERING & ESTIMERING
+09:50-10:00 (10 min) — TEAM BREAKOUT INTRO
+├─ "Vi tar 10 min team-samtal nu"
+├─ Bakgrund: Hålla stormötet effektivt
+├─ Sedan: Kaffepaus + återsamling
+└─ Breakout-rum: Backend, Frontend, Native
 
-10:00-10:15 (15 min) — PRIORITERING TILLSAMMANS
+---
+
+## 🤝 TEAM BREAKOUT-SAMTALEN (10 MIN) — VÄL-FUNGERANDE PRAXIS
+
+**Varför 10 min eget team-samtal?**
+
+```
+NORMALT (utan breakout):
+├─ Stormöte 09:00-12:00 (3 timmar)
+├─ Allt diskuteras tillsammans
+├─ Många "väntar på sitt"
+├─ Svårt att hålla fokus
+└─ Mötet blir långt och utmattande
+
+MED TEAM BREAKOUTS:
+├─ Stormöte 09:00-09:50 (kort & fokuserad)
+├─ Team breakout 09:50-10:00 (10 min per team)
+├─ Kaffepaus 10:00-10:15 (peer-talk)
+├─ Samling 10:15-12:00 (fortsatt planering)
+└─ Mötet blir kortare, mer fokuserat
+```
+
+**Vad händer i team-breakouterna (10 min per team)?**
+
+```
+BACKEND-RUM:
+├─ Marco + Jana (Backend team)
+├─ Kort diskussion:
+│  ├─ "Risk Metrics - var behöver vi support?"
+│  ├─ "Blockeras vi av något?"
+│  ├─ "Vem gör vad denna vecka?"
+│  └─ Bestäm intern arbetsfördelning
+└─ Klar för nästa steg
+
+FRONTEND-RUM:
+├─ Anna + Kiran (Frontend team)
+├─ Kort diskussion:
+│  ├─ "Target Allocation - design klar?"
+│  ├─ "Behöver vi Backend-support?"
+│  ├─ "Vem börjar med vad?"
+│  └─ Intern planning
+└─ Klar för nästa steg
+
+NATIVE-RUM:
+├─ Kiran (Native)
+├─ Kort diskussion:
+│  ├─ "Calculation spec - har vi det?"
+│  ├─ "Blockeras vi?"
+│  ├─ "Vad behöver vi från Backend/Frontend?"
+│  └─ Plan för veckan
+└─ Klar för nästa steg
+```
+
+**Resultat av team-breakouts:**
+
+```
+✅ STORMÖTET:
+   • Kort & fokuserad (09:00-09:50)
+   • Big decisions & priorities
+   • Inte internproblematik
+
+✅ TEAM-BREAKOUTERNA:
+   • 10 min för att lösa sitt
+   • Intern arbetsfördelning
+   • Specifika frågor
+   • Inte störande för andra
+
+✅ KAFFEPAUSER:
+   • Peer-samtal naturligt
+   • "Hur går det för dig?"
+   • "Kan jag hjälpa?"
+   • Inte under mötet
+   • Naturlig paus
+
+✅ ÅTERSAMLINGEN:
+   • Team vet sitt
+   • Stormöte kan fortsätta fokuserat
+   • Estimering & tilldelning går snabbare
+```
+
+**TIDSPLAN MED BREAKOUTS:**
+
+```
+09:00-09:50   STORMÖTE (50 min) — Status & fokus
+              ├─ Check-in (10 min)
+              ├─ Förra veckan (10 min)
+              ├─ Denna veckas fokus (15 min)
+              ├─ Issue review (15 min)
+              └─ Intro breakouts (10 min)
+
+09:50-10:00   TEAM BREAKOUTS (10 min) — Intern plan
+              ├─ Backend rum: Vad behöver vi?
+              ├─ Frontend rum: Intern plan
+              └─ Native rum: Blockers?
+
+10:00-10:15   KAFFEPAUS (15 min) — Peer-samtal
+              ├─ Naturlig paus
+              ├─ "Hur går det?"
+              ├─ "Kan jag hjälpa?"
+              └─ Avkoppling
+
+10:15-11:00   STORMÖTE DEL 2 (45 min) — Prioritering
+              ├─ Prioritering tillsammans (15 min)
+              ├─ Estimering (30 min)
+              └─ Klart för nästa del
+
+11:00-12:00   STORMÖTE DEL 3 (60 min) — Tilldelning
+              ├─ Tilldela issues (30 min)
+              ├─ Framgångskriterier (20 min)
+              └─ Retrospektiv-prompt (10 min)
+
+TOTALT: 3 timmar
+- Stormöte: 2h 25 min (fokuserad)
+- Team-breakout: 10 min (intern)
+- Kaffepaus: 15 min (naturlig)
+```
+
+**VARFÖR ÄR DETTA BÄTTRE?**
+
+```
+Effektivitet:
+✅ Stormötet blir kortare (inte väntande)
+✅ Inte "alla diskuterar Backendsaker"
+✅ Fokus på gemensamma beslut, inte detaljer
+✅ Team-specifika diskussioner elsewhere
+
+Team-kultur:
+✅ Varje team får sin tid
+✅ Inte feltippad konversation
+✅ Team bygger intern enighet
+✅ Respekt för andras tid
+
+Peer-support:
+✅ Kaffepauser = naturlig paus
+✅ "Hur går det för dig?" uppstår naturligt
+✅ Inte "extra möte", bara paus
+✅ Supportsamtal utan att störa
+
+Psykologi:
+✅ Mötet känns mindre långt (två pauser!)
+✅ Energi återhämtas under kaffe
+✅ Fokus håller bättre
+✅ Alla får "sin stund" (inte förbisedd)
+
+Välfungerande möten använder denna struktur:
+- Google: Departmental meetings + squad breakouts
+- Spotify: All-hands + squad syncs
+- Netflix: Company meetings + team huddles
+- Amazon: Leadership meetings + working backwards docs review + team standups
+- Basecamp: Company meeting + departmental dives
+```
+
+**FRÅN VERKLIGA ARBETSPLATSER:**
+
+```
+Google (Durchschnittliche sprint planning):
+├─ 09:00-09:30: All teams — Goals & priorities
+├─ 09:30-09:40: Squad breakouts (10 min per team)
+│  └─ Backend, Frontend, Infra går separat
+├─ 09:40-10:00: Kaffepaus + peer-samtal
+├─ 10:00-11:30: Prioritering & estimering (alla)
+└─ Resultat: Fokuserat möte, korta breakouts
+
+Spotify (Squad-modell):
+├─ Måndags morgon 09:00-10:00: Whole tribe (alla squads)
+├─ 10:00-10:15: Squad breakouts (eget rum per squad)
+├─ 10:15-11:30: Squad planering (separat per squad)
+└─ Resultat: Flexibel struktur, egen tid
+
+Netflix (Letters of Intent-modell):
+├─ Möte på måndag är ganska kort
+├─ Varje team skriver sitt \"Letter of Intent\"
+├─ Feedback-runder mellan teams (inte i stormöte)
+├─ Möte är för decisions, inte diskussioner
+└─ Resultat: Mindre möte, mer offline-diskussion
+
+Amazon (Working Backwards):
+├─ Möte börjar med att läsa dokumentation (tyst läsning 10-15 min)
+├─ Sedan Q&A på dokumentet (inte fritt tal)
+├─ Breakout för detaljer (diskutera specifika punkter)
+├─ Feedback-samling (skriftligt, inte muntligt)
+└─ Resultat: Väl förberedd, fokuserad
+
+Basecamp (Remote-fokus):
+├─ Möte: 30 minuter (för stora beslut)
+├─ Team-chats: async (lösa sitt eget)
+├─ Breakouts: Only if needed (spara möte)
+├─ Slack: Kanaler för peer-support
+└─ Resultat: Minimal möte, mycket autonomi
+```
+
+**VARFÖR DENNA STRUKTUR FUNGERAR:**
+
+Psykologisk säkerhet:
+✅ Varje team får sin tid = \"vi värderas\"
+✅ Inte förbisedd = \"jag räknas\"
+✅ Egen diskussion = \"vi kan lösa det\"
+
+Fokus:
+✅ Stormöte = stora beslut (inte småtals-tid)
+✅ Breakouts = små beslut (intern)
+✅ Kaffepauser = återhämtning (inte stress)
+
+Effektivitet:
+✅ Mindre möte-tid totalt (fokus sparar tid)
+✅ Parallella diskussioner (3 team samtidigt)
+✅ Naturliga pauser (energi höjs)
+
+Praktik:
+✅ Välfungerande företag gör redan detta
+✅ Not \"new\" - proven struktur
+✅ Skalbar (fungerar från 10-1000 personer)
+```
+
+**HOW AI FÖRESLÅR DETTA:**
+
+```
+AI presenterar under mötet:
+
+"Vi tar en kort paus här för team-breakout-samtal.
+ Varje team går till sitt rum för 10 minuter:
+
+ 🔴 BACKEND: Vad behöver vi? Blockers?
+ 🔵 FRONTEND: Intern plan, support-behov?
+ 🟢 NATIVE: Spec klar? Blockers?
+
+ Sedan: Kaffepaus & återsamling för prioritering.
+
+ Syfte: Hålla stormötet fokuserat, ge varje team tid.
+ Mötets längd: Samma 3 timmar, men bättre struktur."
+```
+
+---
+
+TIMME 2 (10:15-11:15): PRIORITERING & ESTIMERING
+
+10:15-10:30 (15 min) — PRIORITERING TILLSAMMANS
 ├─ "Vilka issues är KRITISKA för denna vecka?"
 ├─ Diskutera: Backend vs Frontend prioritet
 ├─ Lösa prioriteringskonflikter (PL är tie-breaker)
 ├─ Uppdatera prioritering i GitHub
 └─ RESULTAT: Top issues för denna vecka klara
 
-10:15-10:45 (30 min) — ESTIMERING (Agile Planning Poker eller diskussion)
+10:30-11:00 (30 min) — ESTIMERING (Agile Planning Poker eller diskussion)
 ├─ För varje kritisk issue:
 │  ├─ "Hur många timmar? 5h? 10h? 16h?"
-│  ├─ Backend sällan, vad är er bedömning?
-│  ├─ Frontend, några höga-nivå estimat?
-│  └─ Native, ser ni något som tar längre än estimat?
+│  ├─ Backend, vad är er bedömning?
+│  ├─ Frontend, höga-nivå estimat?
+│  └─ Native, ser ni något som tar längre?
 ├─ Notera blockers under estimering
 ├─ Justera estimat baserat på team-feedback
 └─ RESULTAT: Alla kritiska issues har estimat
 
-10:45-11:00 (15 min) — KAPACITETSPLANERING
+11:00-11:15 (15 min) — KAPACITETSPLANERING
 ├─ "Vi har X timmar denna vecka (per person)"
 ├─ "Dessa issues tar Y timmar tillsammans"
 ├─ "Passar det? Eller behöver vi scope cut?"
 ├─ Beslut: Vilka issues är IN, vilka är BACKLOG?
 └─ RESULTAT: Sprint backlog är finaliserad
 
-TIMME 3 (11:00-12:00): TILLÄMPNING & LÄRDOM
+TIMME 3 (11:15-12:00): TILLÄMPNING & LÄRDOM
 
-11:00-11:30 (30 min) — TILLDELA ISSUES & KICKOFF
+11:15-11:40 (25 min) — TILLDELA ISSUES & KICKOFF
 ├─ "Vem gör vad denna vecka?"
 ├─ Tilldela issues till personer/pairs
 ├─ Notera blockers (vilka behöver support?)
@@ -534,7 +773,7 @@ TIMME 3 (11:00-12:00): TILLÄMPNING & LÄRDOM
 ├─ Uppdatera GitHub Project Board (assign issues)
 └─ RESULTAT: Varje person vet sitt jobb
 
-11:30-11:50 (20 min) — FRAMGÅNGSKRITERIER & RISKER
+11:40-11:55 (15 min) — FRAMGÅNGSKRITERIER & RISKER
 ├─ "Hur vet vi att denna sprint är lyckad?"
 ├─ Diskutera varningscenarios:
 │  ├─ "Om Risk Metrics tar längre tid?"
@@ -544,11 +783,10 @@ TIMME 3 (11:00-12:00): TILLÄMPNING & LÄRDOM
 ├─ Vem är on-call för blockers?
 └─ RESULTAT: Team vet vad som är framgång/misslyckande
 
-11:50-12:00 (10 min) — AVSLUT & RETROSPEKTIV-PROMPT
+11:55-12:00 (5 min) — AVSLUT & RETROSPEKTIV-PROMPT
 ├─ "Vad gick bra med detta möte?"
 ├─ "Vad kan vi göra annorlunda nästa vecka?"
-├─ Kort feedback-runda
-└─ "Håll humöret! Denna vecka fokuserar vi på..."
+└─ "Vi är redo! Denna vecka fokuserar vi på..."
 
 RESULTAT FRÅN MÖTET:
 ✅ Mötesprotokollet uppdaterat (vad var beslut?)
@@ -558,6 +796,7 @@ RESULTAT FRÅN MÖTET:
 ✅ Varje person vet sitt jobb
 ✅ Deadlines klara
 ✅ Team är motiverat för denna vecka
+✅ Teamens interna frågor lösta (breakout-samtal)
 ```
 
 ### MÖTESFASILITERING — LEDARENS ROLL
