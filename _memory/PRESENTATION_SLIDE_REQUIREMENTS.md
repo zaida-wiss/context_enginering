@@ -28,24 +28,36 @@ VISUELLA ELEMENT:
 
 ## 📌 Slide 2 — AGENDA (Innehållsförteckning över alla mötespunkter)
 
-```
-MÅSTE INNEHÅLLA - ALLA 12 MÖTESPUNKTER:
-✅ 📝① Status sedan förra möte
-✅ 📝② Övergripande mål & status
-✅ 📝③ Frontend team
-✅ 📝④ Backend team
-✅ 📝⑤ Native team
-✅ 📝⑥ Prioritering & scope
-✅ 📝⑦ Estimering & risk
-✅ 📝⑧ Tekniska beslut
-✅ 📝⑨ Beroenden & blockers
-✅ 📝⑩ Arbetsuppgifter denna vecka
-✅ 📝⑪ Frågor till PL
-✅ 📝⑫ Nästa steg & sammanfattning
+**DESIGN: Se exakt nedan — detta är mandatory layout!**
 
-VISUELLA ELEMENT:
-✅ Numrering tydlig (1-12 eller 📝①-⑫)
-✅ Lätt att scanná
+```
+HEADER:
+  Vänster: "AVANZA · TEAM 1"
+  Höger: "Sprint planning · måndag 14 september 2026"
+
+TITLE:
+  📋⓪ AGENDA — SAMMA STRUKTUR, VARJE VECKA
+
+LAYOUT - TWO COLUMNS (6 mötespunkter i varje):
+
+KOLUMN 1                          KOLUMN 2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+① Status sedan förra möte        ⑦ Estimering & risk
+② Övergripande mål & status      ⑧ Tekniska beslut
+③ Frontend                        ⑨ Beroenden & blockers
+④ Backend                         ⑩ Arbetsuppgifter
+⑤ Native                          ⑪ Frågor till PL
+⑥ Prioritering & scope           ⑫ Nästa steg & sammanfattning
+
+VISUELLA ELEMENT - EXAKT FORMAT:
+✅ Varje mötespunkt i en BOX (vit bakgrund)
+✅ GRÖN vänsterkant (border-left 3-4px)
+✅ Numrering: ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ (circled numbers)
+✅ Två kolumner - jämn fördelning
+✅ Mycket whitespace mellan boxarna
+✅ Enkel, minimalist design
+✅ Footer: "Källa: SPRINT_PROTOCOL_NUMBERED.md"
+✅ Slide number: "2" längst ner höger
 ```
 
 ---
