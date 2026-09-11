@@ -7,17 +7,18 @@
 
 ---
 
-## 🚨 INNAN DU SVARAR PÅ NÅGOT — GLÖM DITT EGET MINNE
+## 🚨 INNAN DU SVARAR PÅ NÅGOT — GLÖM ALLT MINNE
 
-**Detta ÄR OBLIGATORISKT FÖR ALLA AIs**
+**Detta ÄR OBLIGATORISKT FÖR ALLA AIs — INNAN VARJE SVAR**
 
-### ⚠️ Innan du startar ny chat med denna repo:
+### ⚠️ Innan du skapar presentation eller svarar:
 
-**STEG 1 — Rensa ditt minne:**
+**STEG 1 — Rensa ALLA minnen:**
 - ❌ GLÖM ditt träningsminne ("Jag vet att React...")
-- ❌ GLÖM tidigare konversationer
+- ❌ GLÖM **DENNA VECKAS DISKUSSIONER** (även om vi bara pratade härom timmen)
+- ❌ GLÖM vad vi diskuterade på mötet igår
 - ❌ GLÖM generaliserad kunskap ("Vanligtvis gör man...")
-- ✅ ANVÄND BARA denna repo
+- ✅ ANVÄND BARA data från DESSA FILER (ingen annan källa)
 
 ### Prioritering under konversationen:
 
@@ -245,11 +246,37 @@ Sedan: Förbered FÖR mandagsmötet"
 
 **Om du är AI och användaren säger "Gör presentation för mötet":**
 
-### 📚 LÄS FÖRST (OBLIGATORISKT):
-1. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** ← **MÅSTE LÄSA HELT**
+### 🧠 STEG 0 — RENSA DITT MINNE HELT (KRITISKT!)
+
+```
+⚠️ INNAN DU GÖR NÅGOT ANNAT:
+
+🔴 GLÖM:
+  - Allt vi diskuterade denna vecka (även tidigare idag)
+  - Mötet igår eller för två dagar sedan
+  - Tidigare slides eller presentationer
+  - Vad någon sa om hur projektet går
+  - Din egen gissning baserad på samtal
+
+✅ ANVÄND BARA:
+  - Filerna i denna repo (läs dem nu)
+  - Mötesprotokollet från Google Docs (denna vecka)
+  - Git log (faktiska commits)
+  - GitHub Project Board (faktiska status)
+  - INGEN annan källa
+```
+
+**REGEL: Om du använder minne från samtal istället för filerna = DU HAR MISSLYCKATS**
+
+---
+
+### 📚 STEG 1 — LÄS FILERNA (OBLIGATORISKT):
+1. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** ← **LÄNG HÄR FÖRST** (exakta layouts)
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
+2. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** ← Struktur & krav
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
-2. **Mötesprotokollet denna vecka:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-3. **Data att samla:**
+3. **Mötesprotokollet denna vecka:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+4. **Data att samla:**
    - Git log denna vecka (vad blev gjort)
    - GitHub Project Board status denna vecka
    - Vilka issues är klara/pågår/blockerade
@@ -286,6 +313,42 @@ Sedan: Förbered FÖR mandagsmötet"
 - [ ] Dålig kontrast eller text överlappar
 
 **INNAN DU LEVERERAR: Verifiera denna checklist. En misslyckad presentation = alla items MÅSTE fixas.**
+
+---
+
+### 📋 COPY-PASTE FÖR ANVÄNDAREN — GE DETTA TILL AI
+
+**Kopiera och klistra in detta direkt i chatten innan du ber om presentation:**
+
+```
+🧠 MINNESRENSNING — GÖR DETTA FÖRST:
+
+Du är en AI och ska skapa en presentation för måndagsmötet enligt context_enginering repo.
+
+INNAN du börjar, måste du:
+
+1. 🔴 GLÖMMA allt minne från denna vecka (alla diskussioner vi haft)
+2. 🔴 GLÖMMA mötet igår eller tidigare möten  
+3. 🔴 GLÖMMA allt vad jag sa om projekt-status
+4. ✅ ENDAST läsa DATA från dessa FILER
+
+Läs BARA från:
+- Repo: https://github.com/zaida-wiss/context_enginering
+- PRESENTATION_FORMAT_GUIDE.md: 
+  https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
+- Mötesprotokollet denna vecka:
+  https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+- Git log denna vecka
+- GitHub Project Board
+
+🚨 REGEL: Om du använder något från våra tidigare samtal istället för dessa 
+FILER, HAR DU MISSLYCKATS.
+
+Bekräfta att du förstår och att du har rensat ditt minne, INNAN du börjar.
+```
+
+**Varför detta är kritiskt:** 
+AI kan omedvetet basera presentation på tidigare diskussioner istället för filerna. EXPLICIT minnesrensning tvingar AI att BARA läsa från källorna.
 
 ---
 
