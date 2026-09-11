@@ -11,7 +11,7 @@
 
 Varje issue MÅSTE se ut såhär:
   #42 Portfolio overview (Jan)
-  #51 Rebalance (Jan föreslaget)
+  #51 Rebalance (Marco föreslaget)
   #48 Risk metrics (Anna)
 
 INTE såhär (MISSLYCKAD):
@@ -25,9 +25,27 @@ FORMAT EXAKT:
   Om GitHub visar assignee: Använd det
     Exempel: (#42 - Jan)
   
-  Om ingen assignee: FÖRESLÅ baserat på git log
-    Exempel: (#42 - Jan föreslaget, baserat på portfolio-arbete)
+  Om ingen assignee: FÖRESLÅ baserat på TVÅ FAKTORER:
+    1. Git log — vem jobbar redan på det?
+    2. KAPACITET — vem har mindre att göra?
+    
+    Exempel rätt: (#42 - Jan föreslaget, Jan jobbar på portfolio)
+    Exempel rätt: (#51 - Marco föreslaget, Marco har kapacitet)
+    Exempel fel: (#42 - Jan ALLTID, oavsett om Jan är överbelastad)
 ```
+
+**VIKTIGT: BALANS VÄL ÖVER EFFEKTIVITET**
+
+Målsättning är INTE att få längsta möjliga flöden för en person.
+Målsättning är att:
+✅ Hela teamet hjälps åt efter bästa förmåga
+✅ Arbetet distribueras rättvist
+✅ Ingen blir överbelastad
+✅ Alla får möjlighet att växa på olika områden
+
+**VÄGA BÅDA FAKTORER:**
+- 🔗 Flöde: Samma person → kontinuitet & kontext
+- ⚖️ Kapacitet: Mindre att göra → ta på dig mer denna vecka
 
 **DETTA MÅSTE VARA I VARJE SLIDE SOM NÄMNER ISSUES:**
 - Team status slides
@@ -39,6 +57,7 @@ FORMAT EXAKT:
 **INNAN DU LEVERERAR PRESENTATIONEN:**
 Scan VARJE slide för issue-nummer → verifiera att det har (Namn) efter sig
 Om ett issue SAKNAR namn = PRESENTATIONEN ÄR INTE KLAR
+Om assignee är uppenbart överbelastad = FRÅGA OM BALANS (denna vecka kan Marco ta det?)
 
 ---
 
