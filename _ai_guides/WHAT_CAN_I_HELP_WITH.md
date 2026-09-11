@@ -7,6 +7,70 @@
 
 ---
 
+## 🔴 MÖTESPROTOKOLLET — MÅSTE LÄSAS FÖRST
+
+**INNAN AI presenterar något om möte/status, MÅSTE den:**
+
+1. ✅ Läsa mötesprotokollet (raw-länk eller copy-pasta)
+2. ✅ Bekräfta att den läst det
+3. ✅ Citera vad den hittade (beslut, action items, fokus)
+4. ✅ **SEDAN** presentera allt annat
+
+**EXAKT ORDNING:**
+
+```
+Du: "Läs mötesprotokollet från denna länk:
+    https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+    
+    Sedan: Förbered FÖR mandagsmötet"
+```
+
+**AI SVARAR:**
+```
+✅ "Jag läser mötesprotokollet först...
+
+Läst från: [länk]
+
+Härifrån ser jag:
+├─ 🔵 BESLUT som togs:
+│  • Vi fokuserar på Risk Metrics denna vecka
+│  • CTO demo den 24 sep
+│
+├─ 📋 ACTION ITEMS från möte:
+│  • Backend prioriterar Risk Metrics
+│  • Frontend väntar på API
+│
+├─ 💡 FOKUS denna vecka (från protokoll):
+│  • Risk Metrics 100%
+│  • FX Converter 100%
+│  • Tests 70%+ coverage
+│
+└─ ⚠️ FEEDBACK från PL/CTO:
+   • Vi behöver mer test coverage
+   • Arkitektur-beslut från Backend okänd?
+
+NU presenterar jag mötet baserat på detta:"
+```
+
+**OM AI INTE KAN LÄSA mötesprotokollet:**
+```
+❌ "Jag kan inte läsa mötesprotokollet från länken 
+   (autentisering krävs eller länken nåbar).
+
+🔴 UTAN mötesprotokollet kan jag inte presentera ordentligt!
+
+LÖSNING: Copy-pasta innehållet från Google Docs här.
+Sedan kan jag se:
+- Vilka BESLUT togs
+- Vilka ACTION ITEMS gäller
+- Feedback från ledning
+- Denna veckas FOKUS
+
+Väntar på mötesprotokollet innan jag presenterar..."
+```
+
+---
+
 ## 🎨 PRESENTATION STANDARD (NPF-Vänlig)
 
 **VARJE gång du säger:** `"presentation"`, `"mötes-prep"`, `"status"`, `"förbered möte"`, etc.
@@ -126,12 +190,19 @@ SLIDE 3: ✅ LÖSNING
 "Status check"
 ```
 
-**AI läser (i denna ordning):**
-1. ✅ Mötesprotokollet (senaste beslut + action items)
+**🔴 AI LÄSER I DENNA ORDNING (mötesprotokollet FÖRST!):**
+
+1. ✅ **Mötesprotokollet** (senaste beslut + action items) ← FÖRST!
 2. ✅ GitHub Project Board (vilka issues är klara/WIP/blocked)
 3. ✅ Git log denna vecka (commits, PR merges)
 4. ✅ Google Sheets Risker (kritiska risker just nu)
 5. ✅ SPRINT_FOCUS_TIMELINE.md (deadlines)
+
+**Varför mötesprotokollet FÖRST?**
+- Det innehåller senaste BESLUT från teamet
+- Det har ACTION ITEMS från förra mötet
+- Det visar VÅ FOKUS denna vecka
+- Allt annat (git, GitHub) är bara TEKNISKA detaljer
 
 **🔴 KRITISKT — INNAN AI SVARAR:**
 

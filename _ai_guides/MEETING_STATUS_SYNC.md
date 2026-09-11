@@ -672,6 +672,46 @@ Start│ +API  │ +Test │ +Docs │ + deploy   │ time!
 
 ---
 
+## 🔴 KRITISKT — INNAN PRESENTATION: MÖTESPROTOKOLLET FÖRST!
+
+**Om du säger:** `"Ge mig en presentation till mötet"`
+
+**AI MÅSTE först:**
+1. Läsa mötesprotokollet (raw-länk)
+2. Bekräfta att den läst det
+3. SEDAN presentera
+
+**AI SKA SÄGA:**
+```
+"Jag läser mötesprotokollet först...
+✅ Läst från: [länk]
+
+Härifrån ser jag:
+- Senaste beslut (B = Beslut): [lista]
+- Action items från förra veckan: [lista]
+- Feedback från PL/CTO: [lista]
+- Denna veckas fokus: [lista]
+
+NU presenterar jag mötet:"
+```
+
+**OM AI INTE KAN LÄSA mötesprotokollet:**
+```
+"❌ Jag kan inte läsa mötesprotokollet från länken.
+
+🔴 UTAN det kan jag inte presentera ordentligt!
+
+Lösning: Copy-pasta innehållet här, så kan jag:
+- Se vilka BESLUT som togs
+- Se vilka ACTION ITEMS som gäller
+- Förstå feedback från ledning
+- Presentera baserat på överenskomst, inte bara git log
+
+Väntar på mötesprotokollet..."
+```
+
+---
+
 **SEDAN (efter VAD-VARFÖR-HUR-NÄR), visa AI visuella slides:**
 
 ```
