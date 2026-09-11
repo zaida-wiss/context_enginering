@@ -3,10 +3,28 @@
 **Syfte:** Se aktuell status mot deadlines, vad behöver vara klart, och impact av kommande PRs.
 **Publik:** HELA TEAMET (Backend, Frontend, Native/Systemutvecklare)
 
-**Frekvens:** Varje vecka (tisdag eller onsdag)  
+**Frekvens:** Varje tisdag  
 **Längd:** 45 min  
 **Facilitator:** AI (läser git, GitHub, deadlines, och presenterar struktur)
 **Beslut-fattar:** Produktledare + tech leads
+
+---
+
+## 🎯 COMMAND FOR AI
+
+**Du kan säga:**
+```
+"Förbered FÖR tisdagsmötet"
+```
+
+**AI kommer då att:**
+1. Läsa git log + GitHub Project Board
+2. Läsa deadline-status från SPRINT_FOCUS_TIMELINE.md
+3. Presentera struktur enligt denna guide
+4. Stämma av med PL: "Vilka punkter vill du fokusera på?"
+5. Förbereda mötet baserat på PL:s prioriteringar
+
+---
 
 ---
 
@@ -463,26 +481,33 @@ Du: "Gör en presentation av denna veckas status sync möte"
 AI: [Skapar visuell slide-presentation, 1 slide per sektion]
 ```
 
-**Presentation innehåller:**
-- Slide 1: Cover slide (Status Sync - Vecka X)
-- Slide 2: Deadlines & vad som måste vara klart
-- Slide 3: Performance Metrics (Lighthouse, coverage %)
-- Slide 4: Develop status (✅ klart, 🔄 pågår, ❌ inte startat)
-- Slide 5: Active branches (prioriterad ordning + blockers)
-- Slide 6: PRs under review (merge decisions)
-- Slide 7: Nyligen startade (vad förbättrar de)
-- Slide 8: BLOCKERS & lösningsförslag
-- Slide 9: Gap analysis mot deadlines
-- Slide 10: Action items & decisions
-- Slide 11: Next steps
+**Presentation innehåller (EN SLIDE PER PUNKT):**
 
-**Slide-design:**
-- ✅ Luftig layout (mycket whitespace)
-- ✅ Symboler/ikoner för varje punkt (✅ ❌ 🔴 🟡 🟢 ⏰)
-- ✅ En huvud-punkt per slide (max 3-5 bullet points)
-- ✅ Färger för prioriteter (röd=kritisk, gul=varning, grön=ok)
-- ✅ Tydlig typografi (stor rubrik, läsbar text)
-- ✅ Kontrastrik design (ljust/mörkt tema)
+| # | Slide | Symbol | Content |
+|---|-------|--------|---------|
+| 1 | Cover | 📊 | Status Sync - Vecka X |
+| 2 | Deadlines | ⏰ | Vad måste vara klart för CTO? |
+| 3 | Metrics | 📈 | Lighthouse scores, test coverage |
+| 4 | Develop | ✅ | Klart/pågår/inte startat |
+| 5 | Branches | 🔄 | Active branches + status |
+| 6 | PRs | 🚀 | Pull requests under review |
+| 7 | New Work | ✨ | Nyligen startade branches |
+| 8 | Blockers | 🚫 | Blockers + lösningsförslag |
+| 9 | Gap | ⚠️ | Gap mellan "måste" och "är klart" |
+| 10 | Actions | ☑️ | Action items & decisions |
+| 11 | Next | 📅 | Next steps & focus |
+
+**Slide-design (SAMMA FÖR ALLA SLIDES):**
+- ✅ Luftig layout (mycket whitespace, max 50% av sidan är text)
+- ✅ Stor symbol/ikon i toppen för varje slide (100px+)
+- ✅ En huvud-punkt per slide (3-5 bullet max)
+- ✅ Färger: 🔴 kritisk, 🟡 varning, 🟢 ok, 🔵 info
+- ✅ Tydlig typografi:
+  - Rubrik: 36-48pt, bold
+  - Body text: 20-24pt, regular
+  - Status: 16-18pt, muted
+- ✅ Kontrastrik (ljust/mörkt tema support)
+- ✅ Konsistent brand-färger (om tillämpligt)
 
 **Exempel på en slide (Deadlines):**
 ```
@@ -507,11 +532,37 @@ AI: [Skapar visuell slide-presentation, 1 slide per sektion]
 
 ---
 
-## 🎬 Mötesschema
+## 🎬 Mötesschema & Kommandon
 
-| Veckodag | Tid | Mötestyp | Facilitator | Focus |
-|----------|-----|----------|-------------|-------|
-| Tisdag | 13:00 | Status Sync | AI | Denna veckas progress + deadlines |
-| Torsdag | 15:00 | Sprint Review | AI | Vad blev klart? Vad learned vi? |
-| Måndag | 09:00 | Sprint Planning | AI | Nästa veckas prioritering |
+| Veckodag | Tid | Mötestyp | Kommando | Focus |
+|----------|-----|----------|----------|-------|
+| **Måndag** | 09:00 | Sprint Planning | "Förbered mandagsmötet" eller "Kör sprintplanering" | Nästa veckas prioritering |
+| **Tisdag** | 13:00 | Status Sync | "Förbered tisdagsmötet" eller "Kör status sync" | Denna veckas progress + deadlines |
+| **Torsdag** | 15:00 | Sprint Review | "Förbered torsdagsmötet" eller "Kör sprint review" | Vad blev klart? Feedback? |
+
+**Möteskommandon för AI:**
+
+```
+TISDAG (Status Sync) ← Du är här:
+Du: "Förbered FÖR tisdagsmötet" 
+    (AI läser git log, GitHub, deadlines — presenterar struktur)
+
+Du: "Kör status sync möte"
+    (AI faciliterar mötet enligt agenda)
+
+Du: "Presentation av status sync möte"
+    (AI skapar visuell slide-presentation)
+```
+
+⚠️ **VIKTIGT:** AI avstämmer med PL innan möte:
+```
+AI: "Vilka punkter vill du fokusera på denna tisdag?"
+PL: "Blockers på risk-calculations och FX-converter"
+AI: [Fokuserar på dessa i mötet, läser relevant kod/branches]
+```
+
+**Vilken guide vill du läsa?**
+- 👈 **Du är här:** MEETING_STATUS_SYNC.md (Tisdagsmötet)
+- 📋 **Se även:** SPRINT_PLANNING.md (Mandagsmötet)
+- 📊 **Se även:** SPRINT_REVIEW.md (Torsdagsmötet) - *kommer senare*
 
