@@ -19,10 +19,10 @@ Mötet: **09:00-10:30 (90 minuter) — Fokuserad planering**
 ║                                                               ║
 ║  PROJEKTETS ÖVERGRIPANDE MÅL denna vecka:                    ║
 ║  ┌─────────────────────────────────────────────────────────┐ ║
-║  │ ✅ Risk Metrics: 100% klar                              │ ║
-║  │ ✅ FX Converter: 100% klar                              │ ║
-║  │ ✅ Tests: 70%+ coverage                                 │ ║
-║  │ ✅ Kärnflödet: Testbar end-to-end                       │ ║
+║  │ ✅ Risk Metrics (#42 - Marco): 100% klar                │ ║
+║  │ ✅ FX Converter (#45 - Jana): 100% klar                 │ ║
+║  │ ✅ Tests (#48 - Anna): 70%+ coverage                    │ ║
+║  │ ✅ Kärnflödet (#51 - Kiran): Testbar end-to-end         │ ║
 ║  └─────────────────────────────────────────────────────────┘ ║
 ║                                                               ║
 ║  DEADLINES:                                                  ║
@@ -64,8 +64,9 @@ Mötet: **09:00-10:30 (90 minuter) — Fokuserad planering**
 ║                  🎯 PROJECT STATUS DENNA VECKA                ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║                                                               ║
-║  ÖVERGRIPANDEMÅLsättning:                                     ║
-║  Risk Metrics ✅ | FX Converter ✅ | Tests (70%+) ✅          ║
+║  ÖVERGRIPANDE MÅLSÄTTNING:                                     ║
+║  Risk Metrics (#42 - Marco) ✅ | FX Converter (#45 - Jana) ✅  ║
+║  Tests (#48 - Anna) (70%+) ✅ | Kärnflödet (#51 - Kiran) ✅   ║
 ║                                                               ║
 ║  ÖVERGRIPANDE STATUS:      🟢 GRÖN (i fas)                   ║
 ║  ├─ Tidsbudget: OK                                            ║
@@ -99,9 +100,9 @@ Mötet: **09:00-10:30 (90 minuter) — Fokuserad planering**
 ║  Blockers:              ❌ None                               ║
 ║                                                               ║
 ║  🟢 Status: ON TRACK                                          ║
-║  │  ✅ Target Allocation component working                    ║
-║  │  ✅ API integration done                                   ║
-║  │  ⏳ UI refinement (not blocking)                           ║
+║  │  ✅ Target Allocation component (#39 - Anna) working       ║
+║  │  ✅ API integration (#43 - Marco) done                     ║
+║  │  ⏳ UI refinement (#47 - Anna) (not blocking)              ║
 ║  │                                                            ║
 ║  └─ Kan vi hjälpa Backend? Vill ni jobba på något annat?      ║
 ╚═══════════════════════════════════════════════════════════════╝
@@ -116,9 +117,9 @@ Mötet: **09:00-10:30 (90 minuter) — Fokuserad planering**
 ║  Blockers:              ⚠️  Swagger docs (1 dag)               ║
 ║                                                               ║
 ║  🟠 Status: SLIGHT DELAY (recoverable denna vecka)            ║
-║  │  ✅ Risk Metrics API (80% done, klar torsdag)              ║
-║  │  ⚠️  FX Converter (30%, väntar på swagger)                 ║
-║  │  ❓ Tests (väntar på API klara)                            ║
+║  │  ✅ Risk Metrics API (#42 - Marco) (80% done, klar torsdag)║
+║  │  ⚠️  FX Converter (#45 - Jana) (30%, väntar på swagger)     ║
+║  │  ❓ Tests (#48 - Anna) (väntar på API klara)               ║
 ║  │                                                            ║
 ║  └─ Åtgärdsförslag:                                           ║
 ║     • Pair programming Backend+Native idag 14:00              ║
@@ -136,16 +137,16 @@ Mötet: **09:00-10:30 (90 minuter) — Fokuserad planering**
 ║  Blockers:              🔴 CRITICAL — Calculation spec         ║
 ║                                                               ║
 ║  🔴 Status: CRITICAL — BLOCKER RISK                           ║
-║  │  ✅ Volatility calculation (70% done)                      ║
-║  │  ❌ Sharpe ratio calc (STARTED — waiting spec)             ║
-║  │  ❌ Test coverage low (45% vs 70% target)                  ║
+║  │  ✅ Volatility calculation (#50 - Kiran) (70% done)        ║
+║  │  ❌ Sharpe ratio calc (#51 - Kiran) (STARTED — waiting)    ║
+║  │  ❌ Test coverage (#52 - Kiran) (45% vs 70% target)        ║
 ║  │                                                            ║
 ║  └─ 🚨 OMEDELBAR ÅTGÄRD (SAMMA DAG):                         ║
-║     • Backend + Native = pair programming 14:00 idag           ║
+║     • Backend (Marco/Jana) + Native (Kiran) pair prog 14:00   ║
 ║     • Skriva spec tillsammans (1 timme)                        ║
 ║     • Kiran implementerar därefter (3 timmar)                  ║
 ║     • Resultat: Sharpe ratio klar samma dag                   ║
-║     • Frontend + Native: Test-writing session onsdag 10:00     ║
+║     • Frontend (Anna) + Native: Test-writing onsdag 10:00      ║
 ║                                                               ║
 ║     "Kiran behöver OMEDELBAR support idag, inte vänta"        ║
 ╚═══════════════════════════════════════════════════════════════╝
@@ -227,7 +228,8 @@ NOTERA: Ingen rapport, ingen källcitat, bara mötesfasilitering!
 ### NIVÅ 1: ÖVERGRIPANDE PROJECT STATUS (Början av möte)
 ```
 🟢🟠🔴 Grön/Orange/Röd status för HELA projektet
-├─ Vad är målet denna vecka? (Risk Metrics, FX, Tests)
+├─ Vad är målet denna vecka? 
+│  (#42 - Marco, #45 - Jana, #48 - Anna, #51 - Kiran)
 ├─ När ska det vara klart? (Torsdag 15:00 + 24 sep)
 ├─ Vilka deadlines närmar sig? (Kvaldemo 15 okt)
 └─ Åtgärdsförslag om kritisk: Pair prog? Resource move? Scope cut?
@@ -240,19 +242,19 @@ NOTERA: Ingen rapport, ingen källcitat, bara mötesfasilitering!
 ```
 🟢 FRONTEND TEAM — ON TRACK (grön border)
    ├─ Progress: 80%
-   ├─ Vad är klart? (API integration done)
-   ├─ Vad pågår? (UI refinement)
+   ├─ Vad är klart? (#39 - Anna, #43 - Marco)
+   ├─ Vad pågår? (#47 - Anna)
    └─ Kan vi hjälpa andra team?
 
 🟠 BACKEND TEAM — SLIGHT DELAY (orange border)
    ├─ Progress: 60%
-   ├─ Vad är klart? (Risk Metrics 80%)
-   ├─ Vad är bakom? (FX Converter, waiting for spec)
+   ├─ Vad är klart? (#42 - Marco: 80%)
+   ├─ Vad är bakom? (#45 - Jana, waiting for spec)
    └─ Konkreta stödinsatser: Pair prog idag 14:00!
 
 🔴 NATIVE TEAM — CRITICAL (röd border)
    ├─ Progress: 40%
-   ├─ Blockers: Calculation spec missing
+   ├─ Blockers: #51 Sharpe ratio spec missing (Kiran)
    └─ OMEDELBAR ÅTGÄRD: Backend+Native pair 14:00 IDAG!
 ```
 
