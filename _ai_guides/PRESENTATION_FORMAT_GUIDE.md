@@ -843,13 +843,14 @@ REGLER:
 
 ---
 
-### **SLIDE 10 — 📝⑧ NÄSTA STEG & SUMMARY**
+### **SLIDE N-2 — 📝⑪ NÄSTA STEG (SEPARAT)**
 
 ```
 ╔════════════════════════════════════════════════╗
-║ 📝⑧ NÄSTA STEG & SUMMARY                       ║
+║ 📝⑪ NÄSTA STEG — VAD GÖR VI NU?               ║
 ║                                                ║
-║ NÄSTA STEG (IDAG):                            ║
+║                                                ║
+║ OMEDELBAR EFTER MÖTE (IDAG):                  ║
 ║                                                ║
 ║ ☐ GitHub Project Board uppdaterad             ║
 ║ ☐ Pair programming sessions bokade:           ║
@@ -858,29 +859,58 @@ REGLER:
 ║ ☐ Alla vet sitt jobb & timestimat            ║
 ║ ☐ Blockers documented i GitHub                ║
 ║                                                ║
-║ DENNA VECKAS DEADLINES:                       ║
+║ DENNA VECKAN — KONKRETA DEADLINES:            ║
 ║                                                ║
-║ MON 17:00  — Native spec done (KRITISK)       ║
-║ TUE 14:00  — #42 #45 klara (Frontend)         ║
-║ WED 09:00  — #48 #51 klara (Backend)          ║
-║ THU 15:00  — SPRINT END (allt klart)          ║
-║                                                ║
-║ DENNA VECKAS FOKUS:                           ║
-║ "Risk prioritization & team capacity"         ║
-║                                                ║
-║ ÖVERGRIPANDE STATUS: 🟢 ON TRACK (med        ║
-║ Native support från Backend)                  ║
-║                                                ║
-║ Lycka till denna vecka! 💪                    ║
+║ 🔴 MON 17:00  — Native spec done (KRITISK)   ║
+║ 📍 TUE 14:00  — #42 #45 klara (Frontend)     ║
+║ 📍 WED 09:00  — #48 #51 klara (Backend)      ║
+║ 🎯 THU 15:00  — SPRINT END (allt klart)      ║
 ║                                                ║
 ╚════════════════════════════════════════════════╝
 
 REGLER:
-- Checkboxes [ ] för actionitems
-- Deadlines tydliga (DAY HH:MM)
-- Färger för kritiska deadlines (🔴)
-- Sammanfattning: FOKUS + STATUS
-- Motiverande avslut
+- Checkboxes [ ] för actionitems (copy-paste ready)
+- Deadlines konkreta: DAY HH:MM
+- 🔴🟠🟢 för kritikalitet
+- FOKUSERAD på nästa steg (vad gör vi när vi lämnar mötet)
+- Svart border (neutral action-information)
+```
+
+---
+
+### **SLIDE N-1 — 📝⑫ SAMMANFATTNING (SEPARAT)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 📝⑫ SAMMANFATTNING — DENNA VECKA               ║
+║                                                ║
+║                                                ║
+║ 🎯 DENNA VECKAS FOKUS:                         ║
+║ Risk prioritization & team capacity           ║
+║                                                ║
+║ 📊 STATUS ÖVERGRIPANDE:                        ║
+║ 🟢 ON TRACK (med Native support från Backend) ║
+║                                                ║
+║ 📈 FRAMSTEG DENNA VECKA:                       ║
+║ • Kursmål: 14/17 → 16/17 ✅                   ║
+║ • Projekt: 75% → 85% MVP ✅                   ║
+║ • Alla team vet sitt jobb ✅                  ║
+║                                                ║
+║ 🚨 KRITISKT ATT LÖSA:                          ║
+║ Sharpe spec — Backend + Native pair prog idag ║
+║                                                ║
+║ 💪 LYCKA TILL DENNA VECKA!                     ║
+║ Vi löser detta tillsammans.                   ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- FOKUS på denna veckan (vad är vi här för att göra)
+- STATUS övergripande (grön/orange/röd)
+- FRAMSTEG visuellt (tal + pil: från X → Y)
+- KRITISKA åtgärder (vad MÅSTE lösas)
+- MOTIVERANDE avslut (lycka till, vi löser detta)
+- Svart border (neutral sammanfattning)
 ```
 
 ---

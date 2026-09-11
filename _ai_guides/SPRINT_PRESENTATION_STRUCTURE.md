@@ -45,7 +45,7 @@ RESULTAT: Presentation med alla 13 mötespunkter (📝⓪-⑫)
    - Branches/PRs/blockers
    - Vem jobbar på vad
    - Frågor för PL (från team eller mötesprotokollet)
-6. ✅ Skapa presentation **EXAKT enligt denna struktur** (16-20 slides)
+6. ✅ Skapa presentation **EXAKT enligt denna struktur** (17-21 slides)
    - Slide 0: Presentationsslide (enkel — bara typ, tid, syfte)
    - 🆕 Slide 0.1: PL-möte AGENDA denna vecka (VAD SKOLAN VILL DISKUTERA)
    - 🆕 Slide 0.1.5: VECKANS SCHEMA & MÅL (Kurser + Projekt, tidsplan)
@@ -54,9 +54,10 @@ RESULTAT: Presentation med alla 13 mötespunkter (📝⓪-⑫)
    - Slide 8: Status sedan förra veckan
    - 🆕 Slide 8.5: BLOCKERS — SEPARAT VISUELL SLIDE (hur blockar de arbetet)
    - Slides 9-12: Prioritering, Estimering, Tekniska beslut, Arbetsuppgifter
-   - Slide N-2: Frågor till PL (SLUTET — vad vi behöver från dem)
-   - Slide N-1: Nästa steg
-   - Slide N: Sammanfattning & Lycka till!
+   - Slide N-3: Frågor till PL (SLUTET — vad vi behöver från dem)
+   - Slide N-2: 📝⑪ Nästa steg (SEPARAT — vad gör vi efter mötet)
+   - Slide N-1: 📝⑫ Sammanfattning (SEPARAT — fokus, status, lycka till)
+   - Slide N: Mötesprotokollet länk (för noteringar)
 7. ✅ Symbol 📝 till VÄNSTER, copy-paste text till HÖGER
 8. ✅ NPF-vänlig design:
    - Samma struktur VARJE vecka (förutsägbar)
