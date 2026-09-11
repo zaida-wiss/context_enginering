@@ -873,25 +873,51 @@ Start│ +API  │ +Test │ +Docs │ + deploy   │ time!
 4. **RENSA BORT tidigare samtalhistorik från svaret** ← VIKTIGT!
 5. SEDAN presentera baserat ENDAST på källorna
 
-**AI SKA SÄGA:**
+**AI SKA ALLTID SÄGA (EXPLICIT KÄLLKONTROLL):**
 ```
-"Jag läser källorna för denna presentation...
+"Jag läser källorna före presentation...
 
-✅ LÄSTA KÄLLOR:
-   • Mötesprotokollet (från raw-länk)
-   • GitHub Project Board (denna vecka)
-   • Git log (commits denna vecka)
-   • SPRINT_FOCUS_TIMELINE.md
-   • Google Sheets Risker
+✅ KÄLLKONTROLL — MÖTESPROTOKOLLET:
+   
+   ✅ LÄST (Mötesprotokollet är åtkomligt)
+   └─ Läst från: https://docs.google.com/.../export?format=txt
+   └─ Senaste beslut (B): [lista från möte]
+   └─ Action items: [från förra möte]
+   └─ Denna veckas fokus: [från mötesprotokollet]
 
-FRÅN DESSA SER JAG:
-- Senaste beslut (B = Beslut): [lista]
-- Action items från förra veckan: [lista]
-- Feedback från PL/CTO: [lista]
-- Denna veckas fokus: [lista]
+   ELLER
 
-PRESENTATIONEN (baserad endast på ovan):"
+   ❌ INTE ÅTKOMLIGT (Mötesprotokollet kunde inte läsas)
+   └─ Anledning: Länken kräver autentisering / länk felaktig / server nere
+   └─ Impact: Vi saknar senaste mötebeslut & action items
+   └─ Fallback: Information från GitHub + Git log (ofullständig)
+   └─ Åtgärd: Läs mötesprotokollet manuellt eller share som copy-paste
+
+✅ ANDRA LÄSTA KÄLLOR:
+   ✅ GitHub Project Board (denna vecka status)
+   ✅ Git log (commits denna vecka)
+   ✅ SPRINT_FOCUS_TIMELINE.md
+   ✅ Google Sheets Risker
+
+PRESENTATIONEN (baserad på ovan):"
 ```
+
+**VIKTIGT — MÖTESPROTOKOLLET STATUS MÅSTE VARA EXPLICIT:**
+
+AI ska ALLTID säga om mötesprotokollet lästs eller inte. Inte:
+```
+❌ "Jag läser mötesprotokollet..."
+   (men sedan inte nämna om det gick eller inte)
+```
+
+Utan:
+```
+✅ "Mötesprotokollet LÄST från raw-länk ✅"
+   ELLER
+✅ "Mötesprotokollet kunde INTE läsas ❌ (autentisering krävd)"
+```
+
+Användaren måste veta direkt om denne har full kontext eller saknade mötebeslut!
 
 **🔴 VIKTIGT — RENSA SAMTALHISTORIK:**
 
