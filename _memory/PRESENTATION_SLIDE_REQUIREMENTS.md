@@ -54,6 +54,7 @@ VISUELLA ELEMENT:
 
 ```
 MÅSTE INNEHÅLLA:
+✅ ALLA COMMITS denna vecka — FRÅN ALLA TEAMMEDLEMMAR
 ✅ VAD SOM KOMMIT IN TILL DEVELOP senaste veckan
 ✅ VAD SOM FINNS PÅBÖRJAT I ANDRA BRANCHER
 ✅ Vilka branches är stale (> 3 dagar utan commit)
@@ -65,10 +66,19 @@ Kör dessa commands för faktisk data:
   git branch -a
   git diff develop..feature/[branch] --stat
 
-VISUELLA ELEMENT:
-🟢 Grön för mergade (done)
+VISUELLA ELEMENT - VISA ALLAS ARBETE:
+🟢 Grön för mergade (done) — Zaida, Björn, Tomac, Rasha, Erik, Pär, Henrik
 🟠 Orange för active branches (pågår)
 🔴 Röd för stale branches (inte aktivt denna vecka)
+
+EXEMPEL:
+✅ MERGAT DENNA VECKA (7 commits):
+   Zaida: #42 Portfolio overview
+   Tomac: #45 Risk metrics
+   Rasha: #51 API-spec
+   Erik: #52 Risk endpoint
+   Pär: #60 iOS test
+   etc...
 ```
 
 ---
@@ -93,7 +103,7 @@ VISUELLA ELEMENT:
 ## 📌 Slide 5 — 📝③ FRONTEND TEAM Fokus denna vecka
 
 ```
-MÅSTE INNEHÅLLA:
+MÅSTE INNEHÅLLA (Frontend: Zaida, Björn, Tomac):
 ✅ Alla Frontend-issues denna vecka (hele teamen tillsammans)
 ✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
 ✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
@@ -102,13 +112,13 @@ MÅSTE INNEHÅLLA:
 
 LAYOUT (MAX 5-6 issues per priority):
 📌 MÅSTE-HA:
-   ☐ #42 Portfolio (Jan - 5h)
-   ☐ #43 Risk calc (Anna - 8h)
+   ☐ #42 Portfolio (Zaida - 5h)
+   ☐ #43 Risk calc (Tomac - 8h)
    ☐ #44 Styling (Björn - 4h)
 
 📌 BÖR-HA:
-   ☐ #45 Testing (Anna - 6h)
-   ☐ #46 Error handling (Jan - 3h)
+   ☐ #45 Testing (Zaida - 6h)
+   ☐ #46 Error handling (Tomac - 3h)
 
 🔴 BLOCKERS: API-spec (#51)
 
@@ -123,7 +133,7 @@ VISUELLA ELEMENT:
 ## 📌 Slide 6 — 📝④ BACKEND TEAM Fokus denna vecka
 
 ```
-MÅSTE INNEHÅLLA:
+MÅSTE INNEHÅLLA (Backend: Rasha, Erik):
 ✅ Alla Backend-issues denna vecka (hele teamen tillsammans)
 ✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
 ✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
@@ -132,11 +142,11 @@ MÅSTE INNEHÅLLA:
 
 LAYOUT (MAX 4-5 issues per priority):
 📌 MÅSTE-HA:
-   ☐ #51 API-spec (David - 3h)
+   ☐ #51 API-spec (Rasha - 3h)
    ☐ #52 Risk endpoint (Erik - 8h)
 
 📌 BÖR-HA:
-   ☐ #54 Cache (David - 4h)
+   ☐ #54 Cache (Rasha - 4h)
 
 🔴 BLOCKERS: CTO arkitektur-feedback
 
@@ -151,7 +161,7 @@ VISUELLA ELEMENT:
 ## 📌 Slide 7 — 📝⑤ NATIVE/SYSTEMUTVECKLARE TEAM Fokus denna vecka
 
 ```
-MÅSTE INNEHÅLLA:
+MÅSTE INNEHÅLLA (Native/Systemutvecklare: Pär, Henrik):
 ✅ Alla Native-issues denna vecka (hele teamen tillsammans)
 ✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
 ✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
@@ -246,22 +256,28 @@ FORMAT: 2-3 beslut max, konkreta
 
 ---
 
-## 📌 Slide 12 — 📝⑩ Arbetsuppgifter denna vecka (per team)
+## 📌 Slide 12 — 📝⑩ Arbetsuppgifter denna vecka (ALLA teammedlemmar)
 
 ```
 MÅSTE INNEHÅLLA:
 ✅ Per-team boxar (Frontend / Backend / Native)
+✅ ALLA teammedlemmar har minst EN uppgift tilldelad
 ✅ Varje issue:
    - #XX nummer
    - Beskrivning
-   - (#XX - Namn) ASSIGNEE OBLIGATORISK
+   - (#XX - PERSONENS NAMN) OBLIGATORISK — ALLA ska synas!
    - Timestimat (h)
+
+TEAMMEDLEMMAR (säkerställ alla är representerade):
+Frontend: Zaida, Björn, Tomac
+Backend: Rasha, Erik
+Native: Pär, Henrik
 
 VISUELLA ELEMENT:
 ⬛ Svart border runt team-boxar
 ☐ Checkboxes för copy-paste
 #️⃣ Issue nummer
-👥 Assignee namn i parentes
+👥 Assignee namn i parentes — ALLA medlemmar!
 ⏰ Timestimat
 
 FORMAT: Kan copy-pastas direkt till protokoll
@@ -365,7 +381,8 @@ Totalt: 15 SLIDES REKOMMENDERAT (16 med reserve)
 
 ---
 
-**Senast uppdaterad:** 2026-09-11  
-**Status:** Editable requirements för 15-16 slides  
-**KRITISKT:** Slide 1 = FRAMSIDA, ALDRIG Slide 0 eller mötespunkt 0!  
+**Senast uppdaterad:** 2026-09-11
+**Status:** Editable requirements för 15-16 slides
+**KRITISKT:** Slide 1 = FRAMSIDA, ALDRIG Slide 0 eller mötespunkt 0!
 **NOTERING:** Slide 7 = NATIVE/SYSTEMUTVECKLARE team
+g
