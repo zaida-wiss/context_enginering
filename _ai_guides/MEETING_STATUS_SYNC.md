@@ -527,7 +527,7 @@ Du: "Gör en PEDAGOGISK presentation av denna veckas status sync möte"
 
 ---
 
-**SEDAN (efter VAD-VARFÖR-HUR-NÄR), visa AI:**
+**SEDAN (efter VAD-VARFÖR-HUR-NÄR), visa AI visuella slides:**
 
 ```
 AI: [Skapar visuell interaktiv slide-presentation]
@@ -538,6 +538,51 @@ AI: [Skapar visuell interaktiv slide-presentation]
 
 Resultat: En presentation som TVINGAR studenterna att tänka
 ```
+
+---
+
+## 🎨 MED ARKITEKTUR-DIAGRAM (för visuella tänkare)
+
+**Om du vill ha diagram tillsammans med slides, säg:**
+```
+Du: "Gör en PEDAGOGISK presentation med DIAGRAM över arkitektur"
+```
+
+**AI skapar då:**
+
+1. **System-arkitektur diagram**
+   ```
+   Frontend (React)  ←→  Backend (Java)  ←→  Native (C++)
+   ├─ LoginForm      ├─ API             ├─ Risk Calc
+   ├─ Portfolio      ├─ Auth            ├─ FX Conv
+   └─ Dashboard      └─ DB              └─ Backtest
+   ```
+
+2. **Sprint-flöde visuellt**
+   ```
+   VAD: Risk Metrics ──→ VARFÖR: CTO Deadline ──→ HUR: Pair Prog ──→ NÄR: Torsdag
+   ```
+
+3. **Risk-dashboard som bild**
+   ```
+   🟢 Frontend: On Track
+   🔴 Backend: Critical  ← Risk Metrics
+   🟠 Native: Slight Delay
+   ```
+
+4. **Team-ansvar diagram**
+   ```
+   Backend: Risk Metrics (PRIORITY)
+   Frontend: Tests + API integration
+   Native: Verify calculations + support Backend
+   ```
+
+**Varför diagram hjälper:**
+✅ Visuell tänkare förstår arkitektur direkt
+✅ Flöden blir tydliga (VAD → VARFÖR → HUR → NÄR)
+✅ Risk-status läses på en gång (färger)
+✅ Team-ansvar blir explicit
+✅ Mer än bara text = djupare förståelse
 
 **Hur presentationen fungerar:**
 
