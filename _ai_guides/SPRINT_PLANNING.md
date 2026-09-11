@@ -471,37 +471,73 @@ Lead: "Dokumenterar: Rebalance är BACKLOG nästa vecka, scope cut denna vecka"
 ### MÖTET — KONKRET AGENDA MED TIDER
 
 ```
-TIMME 1 (09:00-10:30): STATUS & FOKUS (Helgrupp + Team Breakouts)
+## 🚀 SPRINTMÖTE 09:00-10:30 (90 MINUTER) — Tight Schedule
 
-09:00-09:10 (10 min) — KOLLA IN & ENERGI-BOOST
-├─ Kort rundning: "Hur mår ni?"
-├─ Ingen deep-dive, bara check-in
-└─ Skapa gott mötesutrymme
+**Tidsplan för SNABBT möte med team-breakouts:**
 
-09:10-09:20 (10 min) — FÖRRA VECKAN (NULÄGE)
-├─ Team Lead presenterar vad som blev gjort
-├─ Vilka issues blev klara? (från GitHub)
-├─ Vilka blockers identifierades?
-└─ Feedback från PL/CTO? (från mötesprotokollet)
+```
+09:00-09:15 (15 min) — QUICK CHECK-IN & NULÄGE
+├─ Kort energi-boost (2 min)
+├─ Förra veckan: vad blev klart? (3 min)
+├─ Denna veckas fokus från mötesprotokollet (10 min)
+└─ Gör ready för breakouts
 
-09:20-09:35 (15 min) — DENNA VECKAS FOKUS (MÅL)
-├─ Team Lead läser från mötesprotokollet
-├─ VAD ska vi försöka uppnå denna vecka?
-├─ VARFÖR är detta prioriterat?
-├─ Deadline och risker?
-└─ Frågor från teamet?
+09:15-09:20 (5 min) — TEAM BREAKOUT INTRO
+├─ "Vi tar 5 min eget team-samtal nu"
+├─ Backend: Vad behöver ni? Blockers?
+├─ Frontend: Vad behöver ni? Blockers?
+└─ Native: Vad behöver ni? Blockers?
 
-09:35-09:50 (15 min) — ISSUE REVIEW & REFINEMENT (från förberedelsen)
-├─ AI presenterar förslag på ändringar
-├─ Vilka kan vi starta? Vilka behöver vänta?
-├─ Är DoR uppfylld för var issue?
-└─ Uppdatera GitHub Project Board
+09:20-09:25 (5 min) — TEAM BREAKOUTS (parallelt)
+├─ 🔴 Backend rum: Snabb intern plan
+├─ 🔵 Frontend rum: Snabb intern plan
+└─ 🟢 Native rum: Snabb intern plan
 
-09:50-10:00 (10 min) — TEAM BREAKOUT INTRO
-├─ "Vi tar 10 min team-samtal nu"
-├─ Bakgrund: Hålla stormötet effektivt
-├─ Sedan: Kaffepaus + återsamling
-└─ Breakout-rum: Backend, Frontend, Native
+09:25-09:30 (5 min) — KAFFEPAUS
+├─ Kort paus från mötet
+├─ Naturlig peer-samtal möjlig
+└─ "Behöver du hjälp?"
+
+09:30-10:25 (55 min) — ALL-HANDS PLANERING
+├─ 09:30-10:00 (30 min): PRIORITERING & SCOPE
+│  ├─ Vilka är KRITISKA denna vecka?
+│  ├─ Kan vi göra allt? Scope cut?
+│  └─ Tilldela huvudansvar per team
+│
+└─ 10:00-10:25 (25 min): ESTIMERING & RISK
+   ├─ Hurr många timmar per issue?
+   ├─ Vilka blockers behöver vi lösa?
+   ├─ Framgångskriterier & risk-mitigations
+   └─ Uppdatera GitHub Project Board
+
+10:25-10:30 (5 min) — AVSLUT
+├─ Action items (vem gör vad)
+├─ Deadline: TORSDAG KL 15:00
+├─ Sprint goal clart?
+└─ Nästa möte: nästa måndag 09:00
+```
+
+**Varför denna struktur funkar för 90 minuter:**
+
+```
+✅ Status: Kort & fokuserad (15 min alla tillsammans)
+✅ Breakouts: Snabb intern diskussion (5 min parallellt)
+✅ Kaffe: Naturlig paus + peer-support (5 min)
+✅ Planering: Huvudfokus (55 min alla tillsammans)
+✅ Totalt: 90 minuter, aldrig slö
+
+Struktur:
+└─ 20 min: Big picture (förra veckan + fokus)
+└─ 10 min: Team breakouts + kaffe (parallellt)
+└─ 60 min: Konkret planering (prioritering + estimering)
+```
+
+**Vad gör detta mötet effektivt:**
+- Kort all-hands = fokuserat (inte långa status-rapporter)
+- Team-breakouts = var team får sina frågor besvarade (parallellt)
+- Kaffe = naturlig paus mellan delar
+- Lång planering = tid för verklig diskussion
+- Klart på 90 min = inte utmattande
 
 ---
 
