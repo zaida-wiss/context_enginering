@@ -616,25 +616,47 @@ VARJE PRESENTATION:
 [TIMELINE] Exakt tidslinje (inte "denna vecka")
 ```
 
-### Exempel: Visuell Status-dashboard
+### Exempel: Visuell Status-dashboard (Snygg Design)
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     📊 STATUS DENNA VECKA                   │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Risk Metrics       ████████░░  80%  🔴 CRITICAL (1 dag)   │
-│  FX Converter       ██░░░░░░░░  20%  🟠 BEHIND (2 dagar)   │
-│  Tests             ████░░░░░░  40%  🟠 BEHIND (3 dagar)    │
-│  Documentation     ████████░░  80%  🟢 OK                   │
-│                                                             │
-│ ─────────────────────────────────────────────────────────  │
-│                                                             │
-│  🚨 BLOCKERS:     0  (All PRs green!)                        │
-│  ⏰ TIME UNTIL CTO:  5 dagar                                 │
-│  📌 PRIORITIES:    Risk → FX → Tests                         │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+╔═══════════════════════════════════════════════════════════╗
+║               📊 STATUS DENNA VECKA                       ║
+╠═══════════════════════════════════════════════════════════╣
+║                                                           ║
+║  Risk Metrics       ████████░░  80%  🔴 (CRITICAL: 1d)   ║
+║  FX Converter       ██░░░░░░░░  20%  🟠 (BEHIND: 2d)     ║
+║  Tests             ████░░░░░░  40%  🟠 (BEHIND: 3d)      ║
+║  Documentation     ████████░░  80%  🟢 (OK)               ║
+║                                                           ║
+║ ─────────────────────────────────────────────────────── ║
+║                                                           ║
+║  🚨 BLOCKERS:       0  (All PRs green!)                   ║
+║  ⏰ TIME UNTIL CTO:  5 dagar                              ║
+║  📌 PRIORITIES:     Risk → FX → Tests                     ║
+║                                                           ║
+╚═══════════════════════════════════════════════════════════╝
+
+(Design: Mjuka skuggor, färgade progress bars, ikoner,
+avrundade hörn, lekfull känsla)
+```
+
+### Exempel: Snygg Tabell (Active Issues)
+
+```
+╔═══════════════════════════════════════════════════════════╗
+║             ✅ ACTIVE ISSUES - DENNA VECKA                ║
+╠══════╦═══════════════════════╦═════════╦════════╦═══════╣
+║ ID   ║ ISSUE               ║ OWNER   ║ STATUS ║ %     ║
+╠══════╬═══════════════════════╬═════════╬════════╬═══════╣
+║ ✅   ║ #52 Risk Metrics    ║ Marco   ║ Done   ║ 100%  ║
+║ 🟠   ║ #53 FX Converter    ║ Jana    ║ In Prog║ 60%   ║
+║ 🟡   ║ #60 Target Alloc.   ║ Anna    ║ Ready  ║ 0%    ║
+║ ❌   ║ #61 Rebalance       ║ Marco   ║ Blocked║ 20%   ║
+║ 🔵   ║ #88 Tests           ║ QA Team ║ Ready  ║ 0%    ║
+╚══════╩═══════════════════════╩═════════╩════════╩═══════╝
+
+(Design: Färgad blå header, alternerade radfarger,
+status-ikoner, avrundade hörn, mjuka skuggor)
 ```
 
 ### Exempel: Team-ansvars diagram
@@ -855,7 +877,7 @@ SLIDE 3c: ✅ LÖSNING - Metrics
 | 10 | Info | ☑️ | Action items & decisions |
 | 11 | Next | 📅 | Next steps & focus |
 
-**Slide-design (SAMMA FÖR ALLA SLIDES) — NPF-OPTIMERAD:**
+**Slide-design (SAMMA FÖR ALLA SLIDES) — NPF-OPTIMERAD + SNYGG & LEKFULL:**
 
 ```
 LAYOUT-PRINCIPER (ADHD/Neurodiverse friendly):
@@ -876,18 +898,40 @@ TYPOGRAFI:
 └─ Radavstånd: 1.6-1.8 (läsbar, inte tätt)
 
 FÄRGKODNING:
-├─ 🔴 Kritisk/Blocker/Danger — Röd bakgrund
-├─ 🟠 Varning/Behind schedule — Orange bakgrund
-├─ 🟢 OK/On track — Grön text
-├─ 🔵 Info/Neutral — Blå text
-└─ ⚪ Normal — Svart text på vit/ljus bakgrund
+├─ 🔴 Kritisk/Blocker/Danger — Röd (#E53E3E)
+├─ 🟠 Varning/Behind schedule — Orange (#ED8936)
+├─ 🟢 OK/On track — Grön (#48BB78)
+├─ 🔵 Info/Neutral — Blå (#4299E1)
+└─ 🟣 Lekfull accent — Lila (#9F7AEA) för highlights
 
 VISUELLA ELEMENT (MÅSTE ingå):
-├─ Progress bars (████░░░░ 60%)
-├─ Diagram (boxes, arrows, timelines)
+├─ Progress bars (████░░░░ 60%) med avrundade hörn
+├─ Diagram (boxes, arrows, timelines) med mjuka former
 ├─ Ikoner för varje punkt (🎯 ⚠️ ✅)
-├─ Färgade boxes för varje sektion
-└─ Tydliga separatörer mellan sektioner (───────)
+├─ Färgade boxes för varje sektion (avrundade)
+├─ Tydliga separatörer mellan sektioner (───────)
+└─ Snygga tabeller med färgade headers
+
+🎨 SNYGGA TABELLER:
+├─ Header: Färgad bakgrund (blå/lila) + vit text, bold
+├─ Varje rad: Alterneras mellan vit + ljusgrå bakgrund
+├─ Ikonkolumn: Centered icons (✅ 🟠 ❌)
+├─ Siffror: Högerjusterade (alignment)
+├─ Ramar: Mjuka skuggor istället för harda linjer
+├─ Padding: Generöst utrymme mellan celler
+└─ Typografi: Konsistent, läsbar font (sans-serif)
+
+EXEMPEL TABELL (Snygg design):
+┌─────────────────────────────────────────┐
+│ 📊 ISSUE STATUS (Blå header, vit text) │
+├─────────────────────────────────────────┤
+│ # │ Issue             │ Status    │ %   │
+├─────────────────────────────────────────┤
+│ ✅│ Risk Metrics      │ Ready     │ 100%│
+│ 🟠│ FX Converter      │ In prog   │ 60% │
+│ ❌│ Rebalance Suggest │ Blocked   │ 20% │
+└─────────────────────────────────────────┘
+(Notera: varje rad har ljusgrå bakgrund, mjuk skugga)
 ```
 
 **Kontrastrik & Tillgänglig:**
@@ -895,6 +939,13 @@ VISUELLA ELEMENT (MÅSTE ingå):
 - ✅ Stöd för ljust & mörkt tema
 - ✅ Inga uttryck som endast förlitar sig på färg
 - ✅ Tydlig fokus-ordning
+
+**KÄNSLA & TON:**
+- ✅ Lekfull (ikoner, färger, mjuka former)
+- ✅ Behaglig (mycket whitespace, mjuka övergångar)
+- ✅ Lätt (inte tung eller formell)
+- ✅ Professionell (men varm och tillgänglig)
+- ✅ Inspirerande (färger uppmuntrar, inte skräcker)
 
 ---
 

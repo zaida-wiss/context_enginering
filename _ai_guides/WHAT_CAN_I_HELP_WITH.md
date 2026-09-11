@@ -201,15 +201,32 @@ SLIDE 3: ✅ LÖSNING
 
 ---
 
-**Designprinciper (NPF-Vänlig):**
+**Designprinciper (NPF-Vänlig + Snygg & Lekfull):**
 - ✅ Mycket whitespace (60-70%)
 - ✅ Kort text (max 3-4 bullets)
 - ✅ Stora symboler (80-100px)
 - ✅ Diagrams (inte bara text!)
-- ✅ Färgkodad (🔴🟠🟢)
+- ✅ Färgkodad med varmtoner (🔴🟠🟢🟣)
 - ✅ Tydliga separatörer (─────)
+- ✅ Mjuka former (avrundade hörn på boxes)
 - ✅ Problem → Tänk → Lösning
 - ✅ Källa citerad
+
+**Tabeller ska ha:**
+- ✅ Färgade headers (blå/lila bakgrund, vit text)
+- ✅ Alternerade radfarger (vit + ljusgrå)
+- ✅ Mjuka skuggor (inte harda linjer)
+- ✅ Generöst padding mellan celler
+- ✅ Ikoner för status (✅ 🟠 ❌)
+- ✅ Högerjusterade siffror
+- ✅ Snygg, läsbar typografi
+
+**Känsla & Ton:**
+- ✅ Lekfull (färger, ikoner, mjuka former)
+- ✅ Behaglig (inga spetsiga kanter)
+- ✅ Lätt (luftig, inte tung)
+- ✅ Inspirerande (uppmuntrande, inte skrämmande)
+- ✅ Professionell med värme
 
 ---
 
