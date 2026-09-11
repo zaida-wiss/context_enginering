@@ -331,34 +331,32 @@ TEAM:
 
 ## 🎬 SLIDE-FORMAT EXEMPEL
 
-### **SLIDE 0.1 — 📝⓪ PRESENTATIONSSLIDE**
+### **SLIDE 0.1 — 📝⓪ PRESENTATIONSSLIDE (ENKEL & KORT)**
 
 ```
 ╔════════════════════════════════════════════════╗
-║ 📝⓪ MÅNDAGSMÖTE — SPRINT PLANNING              ║
+║ 📝⓪ MÅNDAGSMÖTE                                ║
 ║                                                ║
 ║                                                ║
+║ Typ: SPRINT PLANNING                           ║
 ║ Tid: 09:00-10:30 (90 minuter)                  ║
 ║                                                ║
-║ Denna veckas tema:                             ║
-║ "Risk prioritization & team capacity"          ║
+║ Syfte denna vecka:                             ║
+║ Planera, prioritera & se vad som blockerar    ║
 ║                                                ║
-║ Vi täcker:                                     ║
-║ ✅ Status sedan förra veckan                   ║
-║ ✅ Tre målsystem (Kursen + Projekt + Kund)     ║
-║ ✅ Team-status med färgkodning                 ║
-║ ✅ Prioritering & support-förslag              ║
 ║                                                ║
-║ Nästa möte: TISDAG 13:00 (Halvtids-checkup)   ║
+║                                                ║
+║                                                ║
 ║                                                ║
 ╚════════════════════════════════════════════════╝
 
 REGLER:
+- ENKEL — bara möte-typ, tid, syfte
 - Symbol 📝⓪ ÖVERST VÄNSTER
-- Titel bold, 24pt
-- Innehål: 3-5 bullets max
-- Whitespace överallt (60% tom yta)
-- Ej for mycket text
+- Max 3 rader innehål
+- MYCKET whitespace (70% tom yta)
+- Ingen tema, ingen agenda, ingen long list
+- Detta är bara "här är mötet", sen kommer resten
 ```
 
 ---
