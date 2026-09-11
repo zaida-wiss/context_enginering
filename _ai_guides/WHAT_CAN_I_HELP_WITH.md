@@ -78,6 +78,13 @@ Väntar på mötesprotokollet innan jag presenterar..."
 **AI MÅSTE automatiskt leverera:**
 
 ```
+✅ STEG 0: LÄSA KÄLLOR & RENSA SAMTALHISTORIK
+   • Läs mötesprotokollet FÖRST
+   • Läs git log, GitHub, Google Sheets
+   • Bekräfta alla lästa kilder
+   • 🔴 RENSA bort tidigare samtalhistorik från svaret
+   • Svara ENDAST baserat på källorna
+
 ✅ STEG 1: VAD-VARFÖR-HUR-NÄR-VEM (kort, fokuserad prosa)
    • VAD? — Exakt lista med prioriteter (🔴🟡🟢)
    • VARFÖR? — Konsekvenser om vi missar/klarar
@@ -93,13 +100,40 @@ Väntar på mötesprotokollet innan jag presenterar..."
    • 60-70% whitespace (inte tätt text)
    • Problem → Tänk paus → Lösning (pedagogisk)
 
-✅ STEG 3: Pedagogisk Brödtext
-   • Varje slide: 📖 VAD? 🛠️ HUR? 💡 VARFÖR?
-   • Citat källa: "Från MEETING_PROTOCOL.md..." eller "GitHub säger..."
+✅ STEG 3: Källciteringar (Aldrig samtalhistorik!)
+   • Varje påstående: "Enligt mötesprotokollet..." eller "GitHub visar..."
+   • INTE: "Som vi diskuterade..." eller "Du nämnde att..."
+   • ALDRIG: "Från vår tidigare konversation..."
 ```
 
 **Du behöver INTE säga mer än:** `"Ge mig en presentation"`  
 **AI kommer automatiskt att inkludera allt ovan** ✅
+
+---
+
+**🔴 VIKTIGT — RENSA SAMTALHISTORIK:**
+
+**AI ska INTE referera till denna konversation:**
+- ❌ "Vi diskuterade tidigare att..."
+- ❌ "Du nämnde att..."
+- ❌ "Från vårt samtal..."
+- ❌ "Du sa att..."
+
+**AI ska referera till källorna:**
+- ✅ "Enligt mötesprotokollet..."
+- ✅ "GitHub Project Board visar..."
+- ✅ "Git log denna vecka..."
+- ✅ "SPRINT_FOCUS_TIMELINE.md säger..."
+
+**VARFÖR?**
+```
+Presentationen måste vara:
+✅ Fristående (kan delas utan denna konversation)
+✅ Källkontrollerad (baseras på dokumentation)
+✅ Reproducerbar (andra AI:er kan göra samma presentation)
+✅ Neutral (inte personlig eller baserad på samtal)
+✅ Stabil (inte beroende av transient konversationshistorik)
+```
 
 ### Exempel: Du frågar...
 

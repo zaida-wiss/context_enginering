@@ -678,22 +678,50 @@ Start│ +API  │ +Test │ +Docs │ + deploy   │ time!
 
 **AI MÅSTE först:**
 1. Läsa mötesprotokollet (raw-länk)
-2. Bekräfta att den läst det
-3. SEDAN presentera
+2. Läsa Git log, GitHub Project Board, Google Sheets, etc
+3. Bekräfta alla lästa källor
+4. **RENSA BORT tidigare samtalhistorik från svaret** ← VIKTIGT!
+5. SEDAN presentera baserat ENDAST på källorna
 
 **AI SKA SÄGA:**
 ```
-"Jag läser mötesprotokollet först...
-✅ Läst från: [länk]
+"Jag läser källorna för denna presentation...
 
-Härifrån ser jag:
+✅ LÄSTA KÄLLOR:
+   • Mötesprotokollet (från raw-länk)
+   • GitHub Project Board (denna vecka)
+   • Git log (commits denna vecka)
+   • SPRINT_FOCUS_TIMELINE.md
+   • Google Sheets Risker
+
+FRÅN DESSA SER JAG:
 - Senaste beslut (B = Beslut): [lista]
 - Action items från förra veckan: [lista]
 - Feedback från PL/CTO: [lista]
 - Denna veckas fokus: [lista]
 
-NU presenterar jag mötet:"
+PRESENTATIONEN (baserad endast på ovan):"
 ```
+
+**🔴 VIKTIGT — RENSA SAMTALHISTORIK:**
+
+AI SKA **INTE** säga:
+- ❌ "Som vi diskuterade tidigare..."
+- ❌ "Du nämnde att..."
+- ❌ "Vi pratade om..."
+- ❌ "Från vår tidigare konversation..."
+
+AI SKA säga:
+- ✅ "Enligt mötesprotokollet..."
+- ✅ "Från GitHub Project Board..."
+- ✅ "Git log visar..."
+- ✅ "Från SPRINT_TIMELINE.md..."
+
+**VARFÖR?**
+- Presentationen ska vara fristående (kan delas utan konversationshistorik)
+- Baseras på dokumentation, inte samtal
+- Är reproducerbar för andra AI:er
+- Är neutral och källkontrollerad
 
 **OM AI INTE KAN LÄSA mötesprotokollet:**
 ```
