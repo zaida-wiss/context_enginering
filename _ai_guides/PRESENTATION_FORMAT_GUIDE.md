@@ -1,5 +1,47 @@
 # 🎨 PRESENTATION FORMAT GUIDE — Exakt Layout för Varje Slide
 
+---
+
+## 🚨 MEGA-REGEL: VARJE ISSUE MÅSTE HA ASSIGNEE — LÄGG DETTA ÖVERST!
+
+**Du får ALDRIG skriva ett issue-nummer utan assignee i parentes.**
+
+```
+🔴 TVINGANDE FORMAT:
+
+Varje issue MÅSTE se ut såhär:
+  #42 Portfolio overview (Jan)
+  #51 Rebalance (Jan föreslaget)
+  #48 Risk metrics (Anna)
+
+INTE såhär (MISSLYCKAD):
+  ❌ #42 Portfolio overview (utan namn)
+  ❌ #51 Rebalance suggestions (ingen assignee)
+  ❌ #48 Risk metrics
+
+FORMAT EXAKT:
+  (#XX - Namn) eller (#XX - Namn föreslaget)
+  
+  Om GitHub visar assignee: Använd det
+    Exempel: (#42 - Jan)
+  
+  Om ingen assignee: FÖRESLÅ baserat på git log
+    Exempel: (#42 - Jan föreslaget, baserat på portfolio-arbete)
+```
+
+**DETTA MÅSTE VARA I VARJE SLIDE SOM NÄMNER ISSUES:**
+- Team status slides
+- Arbetsuppgifter slide
+- Blockers slide
+- Prioritering slide
+- Nästa steg slide
+
+**INNAN DU LEVERERAR PRESENTATIONEN:**
+Scan VARJE slide för issue-nummer → verifiera att det har (Namn) efter sig
+Om ett issue SAKNAR namn = PRESENTATIONEN ÄR INTE KLAR
+
+---
+
 ## 📍 DOKUMENTVÄGEN
 
 **Du är här:** PRESENTATION_FORMAT_GUIDE.md (Visuell formatering)
