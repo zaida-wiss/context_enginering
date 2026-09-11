@@ -59,19 +59,28 @@
   - Google Docs länk: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
   - **RAW-EXPORT LÄNK (för AI):** `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
   
-  **🟢 OPTIMAL: Dela Raw-länken med AI**
+  **🟢 DELA DIREKT MED AI — Google Docs ÄR redan öppen**
   ```
-  Du: "Läs detta mötesprotokollet från raw-länken:
+  Du: "Läs mötesprotokollet från denna raw-länk:
   https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
   
   Sedan: Förbered FÖR mandagsmötet"
   ```
   
-  **FÖRDELAR MED RAW-LÄNK:**
-  ✅ AI kan läsa direkt (ingen copy-pasta behövs)
-  ✅ Alltid aktuell (AI läser senaste version)
-  ✅ Öppen för alla som har länken
-  ✅ Snabbare och enklare
+  **✅ AI kan läsa det direkt — ingen autentisering behövs**
+  (Dokumentet är inställt på "vem som helst med länken kan se")
+  
+  **FÖRDELAR:**
+  ✅ AI läser mötesprotokollet direkt
+  ✅ Ingen copy-pasta behövs
+  ✅ Alltid aktuell (senaste versionen)
+  ✅ Fungerar med vilken AI som helst (ChatGPT, Gemini, Claude, etc)
+  
+  **OM AI inte kan läsa den (för någon anledning):**
+  ```
+  Du: Copy-pasta innehållet från Google Docs här,
+  så kan AI läsa det från texten istället
+  ```
 
   ---
 

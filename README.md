@@ -90,12 +90,24 @@ https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
 ```
 
 **🟢 OPTIMAL WAY TO SHARE WITH AI:**
+
+**Google Docs är redan öppen för länk-läsning** ✅  
+(Du har den inställd på "vem som helst med länken kan redigera")
+
+**DELA DIREKT MED AI:**
 ```
-Du: "Läs mötesprotokollet från raw-länken:
+Du: "Läs mötesprotokollet från denna raw-länk:
 https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
 
 Sedan: Förbered FÖR mandagsmötet"
 ```
+
+**RESULTAT:**
+✅ AI läser mötesprotokollet direkt (ingen autentisering)
+✅ Ingen copy-pasta behövs
+✅ Alltid aktuell (senaste versionen)
+✅ Snabbt & enkelt
+✅ Öppen för vilken AI som helst (ChatGPT, Gemini, Claude, etc)
 
 ### **2. Regler Medan Du Läser**
 
