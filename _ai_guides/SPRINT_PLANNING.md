@@ -69,6 +69,38 @@
   
   Sedan: Förbered FÖR mandagsmötet"
   ```
+
+  ---
+
+  **🔴 KRITISKT: AI MÅSTE SÄGA OM DEN INTE KAN LÄSA MÖTESPROTOKOLLET!**
+
+  **Om AI inte kan läsa mötesprotokollet, måste den TYDLIGT säga:**
+  
+  ```
+  ❌ "Jag kan inte läsa mötesprotokollet från länken (behöver autentisering).
+  
+  🔴 UTAN mötesprotokollet kan jag inte förbered mötet ordentligt!
+  
+  LÖSNING: Copy-pasta helt innehållet från Google Docs här, så kan jag:
+  - Se vilka BESLUT som togs
+  - Se vilka ACTION ITEMS som ska följas upp
+  - Se feedback från PL/CTO
+  - Förstå överenskomna prioriteringar
+  
+  Väntar på mötesprotokollet innan jag fortsätter."
+  ```
+
+  **AI SKA ALDRIG:**
+  - ❌ Fortsätta utan mötesprotokollet
+  - ❌ Låtsas att den läst det
+  - ❌ Gissa vad som diskuterades
+  - ❌ Skapa sprint-plan baserad på git log ensamt
+
+  **AI SKA ALLTID:**
+  - ✅ Säga tydligt "Jag behöver mötesprotokollet"
+  - ✅ Förklara VARFÖR det är kritiskt
+  - ✅ Vänta på mötesprotokollet
+  - ✅ SEDAN förbered mötet med full kontext
   
   - Format: I = Information, B = Beslut
   - **DETTA är källan till vad som diskuterades förra veckan**
