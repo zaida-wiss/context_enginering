@@ -127,13 +127,185 @@ MISSLYCKANDE (Sprint är FAILED om):
 
 ---
 
-#### Steg 1: Presentera Fokus (10 min)
+#### Steg 1: Presentera Fokus (15 min)
 Team Lead presenterar:
 - **NULÄGE:** Vad blev klart/ej klart förra veckan?
 - **MÅL:** Vad ska vi försöka uppnå denna vecka?
 - **FRAMGÅNGSKRITERIER:** Hur vet vi att vi lyckades?
+- **RISK DASHBOARD:** Status per team (färgkodad)
 - Vilka deadlines gäller?
-- Vilka risker identifieras? (Se Google Sheets Risker eller mötesprotokollet)
+
+---
+
+### 🚨 RISK DASHBOARD (Per Team + Färgkodning)
+
+**Presenteras på mötet som ett tydligt dashboard:**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│           🚨 RISK DASHBOARD — Vecka 6                   │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  FRONTEND TEAM                    Status               │
+│  ├─ LoginForm: ✅ 100% DONE        🟢 ON TRACK        │
+│  ├─ Portfolio Overview: 80% done   🟠 SLIGHT DELAY    │
+│  ├─ Test Coverage: 45% (need 70%)  🔴 CRITICAL        │
+│  ├─ Performance (Lighthouse): 75   🟠 NEEDS WORK      │
+│  └─ Blockers: Waiting on CSS vars  🟠 MINOR BLOCKER   │
+│                                                         │
+│  BACKEND TEAM                     Status               │
+│  ├─ Risk Metrics: 40% done         🔴 CRITICAL        │
+│  ├─ FX Converter: 30% done         🔴 CRITICAL        │
+│  ├─ API Endpoints: 60% done        🟠 ON TRACK        │
+│  ├─ Blockers: Swagger docs missing 🔴 BLOCKER         │
+│  └─ DB Migrations: Not started     🟠 RISK            │
+│                                                         │
+│  NATIVE TEAM                      Status               │
+│  ├─ Volatility Calc: 50% done      🟢 ON TRACK        │
+│  ├─ Max Drawdown: 30% done         🟠 SLIGHT DELAY    │
+│  ├─ Performance: Good              🟢 ON TRACK        │
+│  ├─ Blockers: None                 🟢 CLEAR           │
+│  └─ Tests: 80% coverage            🟢 GOOD            │
+│                                                         │
+│  OVERALL SPRINT STATUS:            🟠 AT RISK         │
+│  (Backend kritisk, andra ok)                           │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### Förklaring av Färgkoder:
+
+| Färg | Betydelse | Vad Det Betyder | Åtgärd |
+|------|-----------|-----------------|--------|
+| 🟢 GRÖN | ON TRACK | Ligger i fas, ingen risk | Fortsätt så! |
+| 🟠 ORANGE | SLIGHT DELAY | Börjar bli lite bråttom | Fokusera denna vecka |
+| 🔴 RÖD | CRITICAL | Kritisk, riskerar blocker | MÅSTE prioritera NU |
+
+**Exempel på varje nivå:**
+
+```
+🟢 GRÖN — LoginForm 100% done
+   Status: Klart, testat, merged, inga blockers
+   Risk: 0%
+   Åtgärd: Ingen, gå vidare
+
+🟠 ORANGE — Portfolio Overview 80% done
+   Status: Nästan klart men slow progress
+   Risk: Kan bli blocker om inte fokuseras
+   Åtgärd: Allokera extra timmar denna vecka
+
+🔴 RÖD — Risk Metrics 40% done (MÅSTE klart denna vecka!)
+   Status: Långt bakom, blockar andra
+   Risk: Kommer ALDRIG klart om ingenting ändras
+   Åtgärd: ALLT team fokuserar på detta IDAG
+          Pausera allt annat
+          Pair programming if needed
+          Escalera till PL om ej löst
+```
+
+---
+
+#### Vilka Risker Ska Visas?
+
+**Per team, visa:**
+- 📊 Varje issue + progress (% done)
+- 🎯 Beräknad färg (🟢/🟠/🔴)
+- 🚫 Blockers (explicit)
+- ⏱️ Estimat vs faktisk tid använd
+- 📅 Tid kvar till deadline
+
+**Exempel Risk-Analys:**
+
+```
+BACKEND: Risk Metrics
+
+📊 Status: 40% done (12h använt av 16h estimat)
+⏱️ Tid kvar: 3 dagar
+✅ Estimat vs faktisk: OK så långt (12h vs 12h)
+🚫 Blocker: Swagger docs från API team (ORANGE)
+🎯 Färg: 🔴 RÖD (kommer inte klart om ingenting ändras)
+
+VARFÖR RÖD?
+- 40% done × 3 dagar = max 50-60% done
+- Vi behöver 100% klart för CTO deadline
+- Blockern (Swagger) förhindrar full progress
+
+ÅTGÄRD:
+1. API team: PRIORITY! Swagger docs idag
+2. Backend team: Pair programming imorgon
+3. Cut scope om needed: Enbart kritiska metrics
+4. Update PL if still at risk på tisdag
+```
+
+---
+
+### 👥 VAD FÅR VARJE TEAM-MEDLEM VID MÖTET?
+
+**Varje team-medlem får FEEDBACK på sin status:**
+
+```
+HEJ @ALEX (Frontend Developer):
+
+DIN STATUS MOT TIDSPLAN:
+
+Issue: Portfolio Overview (#42)
+├─ Estimat: 16h
+├─ Tid använd så långt: 12h (3 dagar)
+├─ % Complete: 75%
+├─ Tid kvar: 3 dagar
+├─ Är du ON TRACK? 🟢 JA
+└─ Nästa steg: Finish tests + README
+
+Issue: Performance Optimization (#50)
+├─ Estimat: 8h
+├─ Tid använd: 10h (ÖVER budget!)
+├─ % Complete: 60%
+├─ Är du ON TRACK? 🟠 NEJ (bakom)
+└─ Rekommendation: Focus här denna vecka
+
+DIN TOTALA STATUS: 🟠 Lite i stress
+Avslutad denna vecka: ~75% av planerat
+Rekommendation: Cut nice-to-have features
+
+---
+
+HEJ @MARCUS (Backend Developer):
+
+DIN STATUS MOT TIDSPLAN:
+
+Issue: Risk Metrics (#52)
+├─ Estimat: 16h
+├─ Tid använd: 12h (2,5 dagar)
+├─ % Complete: 40%
+├─ Tid kvar: 2,5 dagar
+├─ Är du ON TRACK? 🔴 NEJ (kommer inte klart!)
+├─ Blocker: Swagger docs från API team
+└─ ÅTGÄRD BEHÖVS: Pair programming idag
+
+Issue: FX Converter (#53)
+├─ Estimat: 12h
+├─ Tid använd: 4h (0,5 dagar)
+├─ % Complete: 30%
+├─ Tid kvar: 2,5 dagar
+├─ Är du ON TRACK? 🟠 Knappt (risk om Risk Metrics drar tid)
+└─ Börja här imorgon efter Risk Metrics
+
+DIN TOTALA STATUS: 🔴 KRITISK
+Du kommer INTE klara båda i tid med nuvarande progress
+Behöver: Extra fokus, pair programming, möjliga scope cuts
+
+PLAN:
+1. Risk Metrics är PRIORITY idag (pair with team)
+2. Swagger docs måste komma from API team IDAG
+3. Tomorrow: Focus på FX Converter
+4. Tuesday: Status update med PL
+```
+
+---
+
+#### Steg 1b: Risk Dashboard Presentation (5 min extra)
 
 #### Steg 2: Diskutera Backlog (20 min)
 - Vilka 5-7 topprioritet-issues ska vi göra denna vecka?
