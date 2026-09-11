@@ -146,6 +146,39 @@ Sedan: Förbered FÖR mandagsmötet"
 - Säga "Enligt systemet" utan att cita källa
 - Anta status — fråga efter: "Jag behöver git log denna vecka + GitHub Project Board för aktuell status"
 
+---
+
+### **🎬 OM DU SKA SKAPA EN PRESENTATION**
+
+**Användare säger:** "Gör en presentation för måndagsmötet"
+
+**Du (AI) gör:**
+1. ✅ Läs denna README
+2. ✅ Läs **_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md** (DENNA FIL ÄR OBLIGATORISK!)
+3. ✅ Läs **_ai_guides/SPRINT_PROTOCOL_NUMBERED.md** (mötesprotokolls-struktur)
+4. ✅ Läs mötesprotokollet från Google Docs (raw-länk längre ner)
+5. ✅ Läs git log denna vecka (vad blev gjort)
+6. ✅ Skapa presentation **EXAKT enligt SPRINT_PRESENTATION_STRUCTURE.md**
+
+**KRITISKT:**
+- SPRINT_PRESENTATION_STRUCTURE.md innehåller TVINGANDE regler
+- Du MÅSTE följa den exakt (14 slides, tre målsystem, etc)
+- Avvikelse från denna struktur = misslyckad presentation
+
+**Raw-links för AI:**
+```
+PRESENTATION STRUCTURE (OBLIGATORISK!):
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+
+PROTOCOL STRUCTURE:
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PROTOCOL_NUMBERED.md
+
+MÖTESPROTOKOLLET (denna vecka):
+https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+```
+
+---
+
 ### **STEG 2: Läs Även Projekt-Repot (avanza-team1)**
 
 **Efter du läst context_enginering, gå till projekt-repot och läs:**
