@@ -187,41 +187,51 @@ Sedan: Förbered FÖR mandagsmötet"
 
 ---
 
-## 🚨 OM DU ÄR EN AI OCH SKA SKAPA PRESENTATION
+## 🚨 AI PRESENTATION CHECKLIST (KORT VERSION)
 
-**⚠️ EXTREMT VIKTIG — LÄS DETTA FÖRST ⚠️**
+**Om du är AI och användaren säger "Gör presentation för mötet":**
 
-**Användaren kommer säga:** "Gör en presentation för måndagsmötet"
+### 📚 LÄS FÖRST (OBLIGATORISKT):
+1. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** ← **MÅSTE LÄSA HELT**
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+2. **Mötesprotokollet denna vecka:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+3. **Data att samla:**
+   - Git log denna vecka (vad blev gjort)
+   - GitHub Project Board status denna vecka
+   - Vilka issues är klara/pågår/blockerade
 
-**DU MÅSTE GÖRA DETTA (OBLIGATORISKT):**
+### ✅ PRESENTATION MÅSTE INNEHÅLLA EXAKT DESSA 13 MÖTESPUNKTER:
 
-**STEG 1 — LÄS DENNA FIL FÖRST:**
-🔴 **SPRINT_PRESENTATION_STRUCTURE.md** (OBLIGATORISK!)
-📍 Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+| Slide | Mötespunkt | Innehål |
+|-------|-----------|---------|
+| 0 | 📝⓪ | Presentationsslide + Agenda |
+| 1-4 | 📝① | Tre målsystem (Kursen + Projektet + Avanza) + Progress Board |
+| 5-7 | 📝② | Frontend/Backend/Native team status (per team 1-2 slides) |
+| 8 | 📝③ | Status sedan förra möte |
+| 9 | 📝④ | Beroenden & Risker |
+| 10 | 📝⑤ | Team-support förslag |
+| 11-12 | 📝⑥-⑦ | Prioritering & Estimering |
+| 13+ | 📝⑧-⑫ | Tekniska beslut, Arbetsuppgifter, Nästa steg |
 
-**STEG 2 — Hämta data:**
-- Mötesprotokollet denna vecka: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-- Git log denna vecka
-- GitHub Project Board status denna vecka
+**TOTALT: 14-16 slides** (flera slides kan tillhöra samma mötespunkt 📝)
 
-**STEG 3 — Skapa presentation:**
-EXAKT enligt SPRINT_PRESENTATION_STRUCTURE.md
-- 14 slides (inte färre)
-- Symbol 📝 till VÄNSTER på varje slide
-- Tre målsystem på Slide 1 (Kursen + Projektet + Kunden)
-- Alla 12 sektioner inkluderade
+### ✅ VARJE SLIDE MÅSTE HA:
+- [ ] Symbol **📝① eller 📝②** etc till **VÄNSTER**
+- [ ] Copy-paste-friendly text (max 3-5 bullets per slide)
+- [ ] Status-färger där relevant: 🟢🟠🔴
+- [ ] Läsbar kontrast (WCAG AA 4.5:1 minimum)
+- [ ] Tillräckligt med padding (ingen text-overlap)
 
-**🔴 OM DU GÖR DETTA FEL: DU HAR MISSLYCKATS**
-- Færre än 14 slides = MISSLYCKAD
-- Hoppar över någon sektion = MISSLYCKAD
-- Ignorerar strukturen = MISSLYCKAD
-- Ändrar ordningen = MISSLYCKAD
+### ❌ MISSLYCKAD PRESENTATION OM:
+- [ ] Saknar någon 📝-punkt (⓪ och ①-⑫)
+- [ ] Färre än 14 slides
+- [ ] Symbol INTE till vänster
+- [ ] Hoppar över någon sektion
+- [ ] Text kan inte copy-pastas direkt till mötesprotokollet
+- [ ] Saknar tre målsystem på första 📝①-slidorna
+- [ ] Dålig kontrast eller text överlappar
 
-**LÄS SPRINT_PRESENTATION_STRUCTURE.md I SIN HELHET — DET ÄR OBLIGATORISKT**
-
----
-
-Read SPRINT_PRESENTATION_STRUCTURE.md in full - it contains your detailed instructions.
+**INNAN DU LEVERERAR: Verifiera denna checklist. En misslyckad presentation = alla items MÅSTE fixas.**
 
 ---
 
