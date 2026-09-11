@@ -215,13 +215,61 @@ LAYOUT SOM STRESSAR:
 ❌ Ingen struktur (kaotisk)
 ```
 
-### Borders & Frames
+### Borders & Frames — KRITISK REGEL
+
+**FÄRGADE BORDERS = STATUS-BEDÖMNING ENDAST**
+
 ```
-Team-status cards:
-  Border: 3px solid [status-färg]
-  Padding inuti: 16px
-  Border-radius: 4px (skarpa hörn, inte rundad)
-  Background: Ljus nyans av status-färg (10% opacity)
+🟢 GRÖN border (3px solid #2ecc71):
+   Betyder: ON TRACK / Vi når målet / Klart
+   Använd på: Team-status cards, progress bars
+   
+🟠 ORANGE border (3px solid #e67e22):
+   Betyder: SLIGHT DELAY / Försenat / Inte på målvägen än
+   Använd på: Team-status cards med problem
+   
+🔴 RÖD border (3px solid #e74c3c):
+   Betyder: CRITICAL / Behöver stärkas upp / Omedelbar åtgärd
+   Använd på: Team-status cards med kritisk status
+   
+Padding inuti färgade borders: 16px
+Border-radius: 4px (skarpa hörn)
+Background: Ljus nyans av status-färg (10% opacity)
+```
+
+**SVART/VIT BORDER = BARA INFORMATION (ingen bedömning)**
+
+```
+⬛ SVART eller VIT border (2px solid):
+   Betyder: Neutral information, ingen status-bedömning
+   Använd på: 
+     - Rubriker & innehål
+     - Listor av issues (som inte är om framsteg)
+     - Deadlines (information, inte status)
+     - Åtgärdsförslag (innehål, inte bedömning)
+   
+Kontrast: HIGH (4.5:1 minimum vs background)
+Padding inuti: 16px
+Border-radius: 4px
+
+EXEMPEL:
+- MÅSTE HA svart border: Arbetsuppgifter lista (#42, #45, etc)
+- MÅSTE HA svart border: Prioritering tabell (MÅSTE-HA | NICE-TO-HAVE)
+- MÅSTE HA svart border: Deadlines lista
+- MÅSTE HA färgad border: Team-status card (visar grön/orange/röd)
+```
+
+**REGEL: Blanda ALDRIG färgade borders med neutral information**
+
+```
+❌ FELAKTIGT (förvirrande):
+Röd border runt "Prioritering & Scope" → ser ut som det är kritiskt
+Grön border runt arbetslista → ser ut som allt är klart
+
+✅ KORREKT (klart):
+Svart border runt "Prioritering & Scope" (neutral info)
+Svart border runt arbetslista (neutral info)
+Röd border endast runt Native-teamstatus (visar faktisk kritisk status)
 ```
 
 ---
@@ -662,10 +710,13 @@ Färger & Status:
   [ ] Färgerna ANVÄND konsistent överallt
 
 Design & Layout:
-  [ ] Borders RUNT team-status (3px solid)
+  [ ] 🟢🟠🔴 Färgade borders (3px) ENDAST på team-status cards
+  [ ] ⬛ Svart/vit borders (2px) på neutral information (prioritering, deadlines, listor)
   [ ] Progress bars (████░░) på team-status slides
-  [ ] Tabeller (MÅSTE-HA | NICE-TO-HAVE) på prioritering
-  [ ] Checkboxes [ ] på arbetsuppgifter för copy-paste
+  [ ] Tabeller (MÅSTE-HA | NICE-TO-HAVE) på prioritering — svart border
+  [ ] Checkboxes [ ] på arbetsuppgifter för copy-paste — svart border
+  [ ] ALDRIG färgad border på non-status information
+  [ ] Hög kontrast (4.5:1) på alla borders
 
 Whitespace & Typografi:
   [ ] 60-70% tom yta på varje slide
