@@ -53,6 +53,111 @@ Mötet: **09:00-10:30 (90 minuter) — Fokuserad planering**
 
 ---
 
+## 📊 PRESENTATIONEN: ÖVERGRIPANDE + TEAM-LEVEL (BÅDA TILLSAMMANS!)
+
+**DENNA PRESENTATION visas I MÖTET och visar BÅDA nivåerna:**
+
+### DEL 1: ÖVERGRIPANDE PROJECT STATUS
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                  🎯 PROJECT STATUS DENNA VECKA                ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  ÖVERGRIPANDEMÅLsättning:                                     ║
+║  Risk Metrics ✅ | FX Converter ✅ | Tests (70%+) ✅          ║
+║                                                               ║
+║  ÖVERGRIPANDE STATUS:      🟢 GRÖN (i fas)                   ║
+║  ├─ Tidsbudget: OK                                            ║
+║  ├─ Risk: Låg                                                 ║
+║  └─ Alla team på track                                        ║
+║                                                               ║
+║  DEADLINES:                                                  ║
+║  ├─ Torsdag 15:00 (Sprint avslutas)                           ║
+║  ├─ 24 sep 16:00 (CTO-demo)                                   ║
+║  └─ 15 oktober (Kvaldemo)                                     ║
+║                                                               ║
+║  ÅTGÄRDSFÖRSLAG (om kritisk):                                 ║
+║  ├─ Pair programming på blockers                              ║
+║  ├─ Resource move mellan team                                 ║
+║  ├─ Scope cut (prioritera MÅSTE-ha)                           ║
+║  └─ Daily check-in (övervakning)                              ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+```
+
+### DEL 2: TEAM-LEVEL STATUS (Färgkodade Borders - VISAR INTE BORT!)
+
+```
+🟢 FRONTEND TEAM — ON TRACK
+╔═══════════════════════════════════════════════════════════════╗
+║  Frontend Team Status (Anna, Marco)                           ║
+║                                                               ║
+║  Progress denna vecka:  ████████░░  80%                       ║
+║  Issues completed:      4 / 5                                 ║
+║  Tests written:         ✅ All passing                        ║
+║  Blockers:              ❌ None                               ║
+║                                                               ║
+║  🟢 Status: ON TRACK                                          ║
+║  │  ✅ Target Allocation component working                    ║
+║  │  ✅ API integration done                                   ║
+║  │  ⏳ UI refinement (not blocking)                           ║
+║  │                                                            ║
+║  └─ Kan vi hjälpa Backend? Vill ni jobba på något annat?      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+🟠 BACKEND TEAM — SLIGHT DELAY (RECOVERABLE)
+╔═══════════════════════════════════════════════════════════════╗
+║  Backend Team Status (Marco, Jana)                            ║
+║                                                               ║
+║  Progress denna vecka:  ██████░░░░  60%                       ║
+║  Issues completed:      2 / 4                                 ║
+║  Tests written:         ✅ 65% coverage                       ║
+║  Blockers:              ⚠️  Swagger docs (1 dag)               ║
+║                                                               ║
+║  🟠 Status: SLIGHT DELAY (recoverable denna vecka)            ║
+║  │  ✅ Risk Metrics API (80% done, klar torsdag)              ║
+║  │  ⚠️  FX Converter (30%, väntar på swagger)                 ║
+║  │  ❓ Tests (väntar på API klara)                            ║
+║  │                                                            ║
+║  └─ Åtgärdsförslag:                                           ║
+║     • Pair programming Backend+Native idag 14:00              ║
+║     • Swagger docs skrivs direkt (ej vänta)                   ║
+║     • Resultat: Back on track torsdag                         ║
+╚═══════════════════════════════════════════════════════════════╝
+
+🔴 NATIVE TEAM — CRITICAL (OMEDELBAR ÅTGÄRD)
+╔═══════════════════════════════════════════════════════════════╗
+║  Native Team Status (Kiran)                                   ║
+║                                                               ║
+║  Progress denna vecka:  ████░░░░░░  40%                       ║
+║  Issues completed:      1 / 3                                 ║
+║  Tests written:         ⚠️  45% coverage (target 70%)          ║
+║  Blockers:              🔴 CRITICAL — Calculation spec         ║
+║                                                               ║
+║  🔴 Status: CRITICAL — BLOCKER RISK                           ║
+║  │  ✅ Volatility calculation (70% done)                      ║
+║  │  ❌ Sharpe ratio calc (STARTED — waiting spec)             ║
+║  │  ❌ Test coverage low (45% vs 70% target)                  ║
+║  │                                                            ║
+║  └─ 🚨 OMEDELBAR ÅTGÄRD (SAMMA DAG):                         ║
+║     • Backend + Native = pair programming 14:00 idag           ║
+║     • Skriva spec tillsammans (1 timme)                        ║
+║     • Kiran implementerar därefter (3 timmar)                  ║
+║     • Resultat: Sharpe ratio klar samma dag                   ║
+║     • Frontend + Native: Test-writing session onsdag 10:00     ║
+║                                                               ║
+║     "Kiran behöver OMEDELBAR support idag, inte vänta"        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+SAMMANFATTNING:
+🟢 Frontend: Kan stödja andra
+🟠 Backend: Recoverable denna vecka (actions taken idag)
+🔴 Native: OMEDELBAR support behövs IDAG (14:00 pair prog)
+```
+
+---
+
 ## ⏱️ MÖTESTRUKTUREN (90 MINUTER)
 
 **Följ denna struktur VARJE GÅNG — det är en återkommande mall.**
@@ -115,36 +220,43 @@ NOTERA: Ingen rapport, ingen källcitat, bara mötesfasilitering!
 
 ---
 
-## 🎯 VAD PRESENTATIONEN VISAR (INGET ANNAT!)
+## 🎯 VAD PRESENTATIONEN VISAR (BÅDA NIVÅERNA — INGENTING FÖRSVINNER!)
 
-**Visa BARA dessa två saker:**
+**Presentationen visar ALLTID två nivåer tillsammans:**
 
-### 1. ÖVERGRIPANDE STATUS (början av möte)
+### NIVÅ 1: ÖVERGRIPANDE PROJECT STATUS (Början av möte)
 ```
-Grön/Orange/Röd status för HELA projektet
-├─ Vad är målet denna vecka?
-├─ När ska det vara klart? (Torsdag 15:00)
-├─ Vilka andra deadlines närmar sig?
-└─ Pedagogisk förklaring: Varför är detta viktigt?
+🟢🟠🔴 Grön/Orange/Röd status för HELA projektet
+├─ Vad är målet denna vecka? (Risk Metrics, FX, Tests)
+├─ När ska det vara klart? (Torsdag 15:00 + 24 sep)
+├─ Vilka deadlines närmar sig? (Kvaldemo 15 okt)
+└─ Åtgärdsförslag om kritisk: Pair prog? Resource move? Scope cut?
 ```
 
-### 2. TEAM-LEVEL STATUS (under mötet)
-```
-🟢 Frontend Team: 80% progress — On track
-   ├─ Vad är klart?
-   ├─ Vad pågår?
-   └─ Behövs hjälp?
+### NIVÅ 2: TEAM-LEVEL STATUS MED FÄRGKODADE BORDERS (Samma möte)
 
-🟠 Backend Team: 60% progress — Slight delay
-   ├─ Vad är klart?
-   ├─ Vad är bakom?
-   └─ Konkreta stödinsatser? (Pair prog? Resource move?)
+**INGENTING försvinner! Varje team visas med sin färgkodade border:**
 
-🔴 Native Team: 40% progress — CRITICAL
-   ├─ Vad är klart?
-   ├─ Blockers?
-   └─ OMEDELBAR ÅTGÄRD BEHÖVS (vem hjälper?)
 ```
+🟢 FRONTEND TEAM — ON TRACK (grön border)
+   ├─ Progress: 80%
+   ├─ Vad är klart? (API integration done)
+   ├─ Vad pågår? (UI refinement)
+   └─ Kan vi hjälpa andra team?
+
+🟠 BACKEND TEAM — SLIGHT DELAY (orange border)
+   ├─ Progress: 60%
+   ├─ Vad är klart? (Risk Metrics 80%)
+   ├─ Vad är bakom? (FX Converter, waiting for spec)
+   └─ Konkreta stödinsatser: Pair prog idag 14:00!
+
+🔴 NATIVE TEAM — CRITICAL (röd border)
+   ├─ Progress: 40%
+   ├─ Blockers: Calculation spec missing
+   └─ OMEDELBAR ÅTGÄRD: Backend+Native pair 14:00 IDAG!
+```
+
+**BÅDA nivåerna visas tillsammans — INGENTING försvinner!**
 
 ---
 
