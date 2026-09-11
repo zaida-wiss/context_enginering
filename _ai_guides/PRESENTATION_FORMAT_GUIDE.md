@@ -32,6 +32,7 @@ RESULTAT: NPF-vänlig presentation med rätt design
 - ✅ Whitespace (60-70% tom yta)
 - ✅ Kontrast WCAG AA (4.5:1 minimum)
 - ✅ MAX 3-5 bullets per sektion
+- ✅ **VARJE issue nummer MÅSTE ha assignee:** (#XX - Namn) eller (#XX - Namn föreslaget)
 
 ### REGEL 2: SANNINGEN FÖRE KÄNSLAN ⚠️
 **Blanda ALDRIG ihop design-känslan med faktisk data!**
@@ -560,6 +561,7 @@ REGLER:
 ║ │ [ ] #42 Portfolio overview (Jan) - 3h  │   ║
 ║ │ [ ] #45 Risk dashboard (Marco) - 5h    │   ║
 ║ │ [ ] #51 Rebalance (Jan) - 7h            │   ║
+║ │ [ ] #52 Export CSV (Jan föreslaget) - 4h│   ║
 ║ └─────────────────────────────────────────┘   ║
 ║                                                ║
 ║ ┌─────────────────────────────────────────┐   ║
@@ -567,6 +569,7 @@ REGLER:
 ║ │ [ ] #48 Risk metrics (Anna) - 4h        │   ║
 ║ │ [ ] #51 FX conversion (Kiran) - 5h      │   ║
 ║ │ [ ] #52 Tests (Anna) - 9h               │   ║
+║ │ [ ] #53 Performance (Marco föreslaget) -2h│   ║
 ║ └─────────────────────────────────────────┘   ║
 ║                                                ║
 ║ ┌─────────────────────────────────────────┐   ║
@@ -581,8 +584,11 @@ REGLER:
 - Per-team boxes (borders)
 - Checkboxes [ ] för copy-paste
 - #issue-nummer
-- Assignee namn
-- Timestimat (h)
+- **ASSIGNEE namn TVINGANDE:**
+  - Om GitHub visar: (#XX - Namn)
+  - Om ingen assignee: (#XX - Namn föreslaget) baserat på git log
+  - SYFTE: Sammanlänka issues (samma person fortsätter sitt arbete)
+- Timestimat (h) — faktiska estimat
 - Kan copy-pastas direkt till protokollet
 ```
 
@@ -670,9 +676,19 @@ Whitespace & Typografi:
 Innehål:
   [ ] Max 3-5 bullets per sektion
   [ ] Deadlines med tid (HH:MM) — faktiska deadlines
-  [ ] Assignee namn på varje issue
+  [ ] **ASSIGNEE på VARJE issue:** (#XX - Namn)
   [ ] Timestimat på varje issue — faktiska estimat
   [ ] ÅTGÄRD-sektion på röda slides (CRITICAL) + konkreta steg
+
+📌 ASSIGNEE-REGEL (KRITISK):
+  [ ] **VARJE issue nummer MÅSTE ha assignee i parentes**
+  [ ] Format: (#42 - Jan) eller (#42 - Jan föreslaget)
+  [ ] Om GitHub visar assignee → använd det: (#42 - Jan)
+  [ ] Om ingen assignee → FÖRESLÅ baserat på git log:
+      • Vem har arbetat på liknande issues tidigare?
+      • Vem skrev commits för samma feature-område?
+      • Format då: (#42 - Jan föreslaget, baserat på portfolio-arbete)
+  [ ] SYFTE: Få sammanlänkade issues (samma person fortsätter sitt arbete)
 
 Format:
   [ ] PowerPoint eller Google Slides eller Markdown
