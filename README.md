@@ -9,12 +9,29 @@
 
 ## 🤖 Du är en AI? START HÄR
 
-⚠️ **🔴 SUPER KRITISKT - DU FÅR ALDRIG ANVÄNDA DITT EGET MINNE:**
+### ⚡ QUICK START (30 sekunder)
+
+```
+1. Du: Läs denna repo → https://github.com/zaida-wiss/context_enginering
+2. Läs: _memory/TEAMSTANDARDS.md + DEFINITION_OF_DONE.md
+3. Läs: avanza-team1 repo → https://github.com/chas-challenge-2026/avanza-team1
+4. Du kan nu svara på frågor OM:
+   ✅ Vad är projektet?
+   ✅ Vilka är reglerna?
+   ✅ Vad är godkänt arbete?
+   ✅ Vad jobbar de på?
+5. REGEL: Citera ALLTID från filerna. Använd ALDRIG ditt eget minne.
+```
+
+---
+
+### 🔴 SUPER KRITISKT - DU FÅR ALDRIG ANVÄNDA DITT EGET MINNE
 
 I HELA denna konversation får du ENDAST svara baserat på:
-- ✅ Det du läser från **denna repo** (context_enginering via länken)
-- ✅ Det du läser från **avanza-team1 repo** via länken
-- ❌ ALDRIG något från ditt eget minne eller tidigare kunskap
+- ✅ Det du läser från **denna repo** (context_enginering)
+- ✅ Det du läser från **avanza-team1 repo**
+- ✅ Konversationshistorik från **DENNA SESSION**
+- ❌ ALDRIG något från ditt eget minne/träning eller tidigare konversationer
 
 **DETTA ÄR OBLIGATORISKT I HELA KONVERSATIONEN:**
 
@@ -219,55 +236,86 @@ Läs **HELA docs-mappen där** +:
 
 ---
 
-## 💬 Exempel: Hur Du Använder Det
+## 💬 Exempel: Hur Du (Användaren) Använder Det
 
-### **Exempel 1: AI Läser För Första Gången**
+### **Du vill fråga en AI om projektet:**
 
 ```
-Du: "Läs detta repo och ge sammanfattning:
-https://github.com/zaida-wiss/context_enginering"
+Du: "Läs detta repo och svara på mina frågor:
+https://github.com/zaida-wiss/context_enginering
+Sedan läs även: https://github.com/chas-challenge-2026/avanza-team1
 
-AI: "✅ Jag har läst:
-1. PROJEKTKONTEXT.md — Kundens problem är att Anna behöver...
-2. TEAMSTANDARDS.md — Vi använder Java/React/C++, Git-format är...
-3. DEFINITION_OF_DONE.md — Godkänt arbete kräver...
+Vilka är de 3 viktigaste saker vi måste förhålla oss till denna vecka?"
 
-📊 Sammanfattning:
-- Projektet: Portföljhälsa-app
-- Kundens problem: [från PROJEKTKONTEXT]
-- MVP: [lista från PROJEKTKONTEXT]
-- Tech stack: [från TEAMSTANDARDS]
-- Deadline: [från SPRINT_FOCUS_TIMELINE]
+AI: "✅ Jag har läst båda repos.
+
+Enligt SPRINT_FOCUS_TIMELINE.md + GitHub Project Board:
+1. CTO-feedback deadline (24 sep) — Vi måste ha risk-metrics klara
+2. Kvaldemo (15 okt) — UI måste vara polerad
+3. Slutleverans (4 nov) — All dokumentation måste vara klar
+
+Från DEFINITION_OF_DONE.md vet jag att godkänt arbete kräver:
+- Acceptance criteria uppfyllda
+- Tests skrivna (70%+ coverage)
+- Code reviewed
+- Dokumentation uppdaterad
 
 Vad vill du diskutera vidare?"
 ```
 
-### **Exempel 2: Senare, Du Frågar Samma AI**
+### **Du vill få hjälp med en issue:**
 
 ```
-Du: "Baserat på repot: Vilka är nästa sprint-fokus?"
+Du: "Jag jobbar på denna issue [kopiera issue-body från GitHub].
+Hjälp mig tänka igenom arkitekturen.
 
-AI: "Enligt SPRINT_FOCUS_TIMELINE.md är denna vecka fokus på: [X]
+Enligt våra regler (DEFINITION_OF_DONE.md):
+- Vilken state behöver komponenten?
+- Vad bör ligga i modulen vs komponenten?
+- Vilka tester behövs?"
 
-För aktuell status denna vecka behöver jag:
-- git log denna vecka
-- GitHub Project Board status
-- Google Sheets Risker
+AI: "Enligt din issue-body:
+- Problem: [från issue]
+- AC: [från issue]
+- Technical details: [från issue]
 
-Kan du ge mig detta för exakt status?"
+Fundera på dessa frågor:
+1. State: Du säger [från issue] — är det rätt?
+2. Module vs component: Enligt TEAMSTANDARDS.md...
+3. Tests: Enligt DEFINITION_OF_DONE.md måste du ha [X]"
 ```
 
-### **Exempel 3: Du Delar Med Annan Person**
+### **Du vill ha en presentation:**
 
 ```
-Du: "Läs detta projekt-repo för kontext:
+Du: "Förbered FÖR tisdagsmötet
+Länk: https://github.com/zaida-wiss/context_enginering"
+
+AI: "✅ Jag har läst repos.
+Vilka punkter vill du fokusera på denna tisdag?
+- Deadlines?
+- Blockers?
+- PRs under review?
+- Performance metrics?
+
+Efter du svarar: [skapar visuell 11-slide presentation]"
+```
+
+### **Du delar länken med en helt annan AI:**
+
+```
+Du (till ChatGPT/Gemini/etc): "Läs detta repo och svara på mina frågor:
 https://github.com/zaida-wiss/context_enginering
 
-Sedan: https://github.com/chas-challenge-2026/avanza-team1
+Vilka är kodstandarder för frontend?"
 
-Vilka är de 3 viktigaste issue vi bör fokusera på denna vecka?"
-
-Annan AI: [läser båda repos, svarar med full kontext]
+Annan AI: [läser TEAMSTANDARDS.md]
+"Enligt TEAMSTANDARDS.md för Frontend:
+- TypeScript: interfaces för alla props
+- CSS: .module.css per komponent
+- Naming: PascalCase för komponenter, camelCase för variabler
+- Linting: ESLint + Prettier måste passa
+- [citerar mer från filen]"
 ```
 
 ---
