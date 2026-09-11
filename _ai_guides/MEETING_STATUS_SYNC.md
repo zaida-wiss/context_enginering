@@ -471,58 +471,203 @@ AI: [Faciliterar mötet enligt agenda ovan]
 
 ---
 
-## 🎨 SLIDE PRESENTATION FORMAT
-
-**Vill du ha mötet som visuell presentation istället för text?**
+## 🎨 SLIDE PRESENTATION FORMAT — NPF-Vänlig Pedagogisk Design
 
 **Kommando för AI:**
 ```
 Du: "Gör en PEDAGOGISK presentation av denna veckas status sync möte"
 ```
 
+**Resultatet blir:**
+- ✅ Först: VAD-VARFÖR-HUR-NÄR-VEM som PROSA (kort, fokuserad)
+- ✅ Sedan: Visuella slides med diagrams (inte bara text!)
+- ✅ Pedagogisk struktur: Problem → Tänk → Lösning
+- ✅ NPF-vänlig: Mycket whitespace, tydlig hierarki, symboler, färger
+- ✅ Interaktiv: Paus för diskussion efter varje "problem"-slide
+
 ---
 
-## 🔴 KRITISKT: AI PRESENTERAR FÖRST VAD-VARFÖR-HUR-NÄR
+## 🔴 KRITISKT: AI PRESENTERAR VAD-VARFÖR-HUR-NÄR-VEM (NPF-vänlig)
 
-**Innan slides visas, MÅSTE AI presentera:**
+**Innan slides visas, MÅSTE AI presentera i denna ordning (KORT, FOKUSERAD):**
 
-### 1️⃣ VAD SKA VI GÖRA?
-```
-"Denna vecka måste vi:
-├─ Risk Metrics: 100% klara (från mötesprotokollet + deadlines)
-├─ FX Converter: 100% klara (från mötesprotokollet + deadlines)
-├─ Test Coverage: 70%+ (från DEFINITION_OF_DONE)
-└─ Kärnflödet: Måste kunna demoas (för CTO deadline)"
-```
+### 1️⃣ VAD? — Vad ska vi göra denna vecka?
 
-### 2️⃣ VARFÖR SKA VI GÖRA DET?
 ```
-"Varför detta är kritiskt:
-├─ Risk Metrics & FX måste klara för CTO deadline (24 sep)
-├─ Utan dessa kan vi inte demoa kärnflödet för CTO
-├─ Test coverage är DoD-krav (70%+)
-├─ Om vi missar deadline: Sämre intryck på CTO
-└─ Detta är överenskommet från mötesprotokollet"
-```
-
-### 3️⃣ HUR SKA VI GÖRA DET?
-```
-"Plan för denna vecka:
-├─ Risk Metrics: PRIORITERA IDAG (pair programming?)
-├─ Backend + Native: Verify calculations tillsammans
-├─ Frontend: Test Risk Metrics API när den kommer
-├─ FX: Kan skjutas om Risk Metrics tar all tid (scope cut)
-└─ Daily standup: Följ progress"
+┌──────────────────────────────────────────────────────┐
+│ DENNA VECKA (prioriteringsordning):                  │
+├──────────────────────────────────────────────────────┤
+│ 🔴 MÅSTE KLARA (för CTO deadline 24 sep):            │
+│    • Risk Metrics: 100%                              │
+│    • FX Converter: 100%                              │
+│    • Tests: 70%+ coverage                            │
+│                                                      │
+│ 🟡 BORDE KLARA:                                      │
+│    • Kärnflödet end-to-end                           │
+│    • Dokumentation updated                           │
+│                                                      │
+│ 🟢 NICE TO HAVE:                                     │
+│    • UI polering                                     │
+│    • Performance optimization                        │
+└──────────────────────────────────────────────────────┘
 ```
 
-### 4️⃣ NÄR SKA VI GÖRA DET?
+### 2️⃣ VARFÖR? — Varför är detta viktigt?
+
 ```
-"Tidplan:
-├─ Idag (Tisdag): Swagger docs + starta Risk Metrics
-├─ Imorgon (Onsdag): Pair programming + API test
-├─ Torsdag: Finish Risk Metrics + test
-├─ Fredag: LIA (ingen kod) + finalize
-└─ DEADLINE: MÅSTE klart innan CTO session (24 sep kl 16:00)"
+┌──────────────────────────────────────────────────────┐
+│ KONSEKVENSER:                                        │
+├──────────────────────────────────────────────────────┤
+│ ❌ OM VI MISSAR:                                     │
+│    • CTO deadline missas → sämre intryck             │
+│    • Kvaldemo blir svagare → kunden blir nöjd       │
+│    • Slutleverans försenades → risker ökar          │
+│                                                      │
+│ ✅ OM VI KLARAR:                                     │
+│    • Visar leveransprecision (viktig i branchen)     │
+│    • CTO ser att vi förstår krav                     │
+│    • Team får confidence boost                       │
+│    • Kvaldemo blir strong pitch                      │
+└──────────────────────────────────────────────────────┘
+```
+
+### 3️⃣ HUR? — Hur ska vi jobba?
+
+```
+┌──────────────────────────────────────────────────────┐
+│ PLAN DENNA VECKA:                                    │
+├──────────────────────────────────────────────────────┤
+│ 🚀 PRIORITERING:                                     │
+│    1. Risk Metrics finish (pair programming idag)    │
+│    2. FX Converter finish (om tid finns)             │
+│    3. Tests add (parallellt med ovan)                │
+│                                                      │
+│ 👥 SAMARBETE:                                        │
+│    • Backend & Native jobbar tillsammans             │
+│    • Frontend testar API när den kommer              │
+│    • Daily standup 09:00 (5 min sync)                │
+│                                                      │
+│ ⚙️ VERKTYG:                                          │
+│    • GitHub Project Board (track status)             │
+│    • Slack #dev-updates (blockers)                   │
+│    • Pair programming (om stuck)                     │
+└──────────────────────────────────────────────────────┘
+```
+
+### 4️⃣ NÄR? — Når är deadline?
+
+```
+┌──────────────────────────────────────────────────────┐
+│ TIMELINE:                                            │
+├──────────────────────────────────────────────────────┤
+│ 📅 IDAG (Tisdag):    Swagger docs + start Risk       │
+│ 📅 IMORGON (Ons):    Pair programming + API test     │
+│ 📅 TORSDAG:          Finish Risk Metrics + test      │
+│ 📅 FREDAG:           Final touches + deployment prep │
+│                                                      │
+│ 🚨 HARD DEADLINE:    24 sep kl 16:00 (CTO session)   │
+│                                                      │
+│ ⏱️ BUFFER:           48 timmar för fixes              │
+└──────────────────────────────────────────────────────┘
+```
+
+### 5️⃣ VEM? — Vem gör vad?
+
+```
+┌──────────────────────────────────────────────────────┐
+│ TEAM-ANSVARSFÖRDELNING:                              │
+├──────────────────────────────────────────────────────┤
+│ 🔴 BACKEND TEAM:                                     │
+│    • Risk Metrics API (Marco) — PRIORITY             │
+│    • FX Converter (Jana) — if time                    │
+│    • Test setup (both) — parallel                    │
+│                                                      │
+│ 🔵 FRONTEND TEAM:                                    │
+│    • Wait for Risk API, then integrate               │
+│    • Write integration tests                         │
+│    • UI refinement (low priority)                     │
+│                                                      │
+│ 🟢 NATIVE/SYSTEMUTVECKLARE:                          │
+│    • Support Backend with calcs verification         │
+│    • QA testing                                      │
+│    • Performance checks                              │
+│                                                      │
+│ ⚠️ BLOCKER OWNER:                                    │
+│    • If PR #51 not approved → call backup reviewer   │
+│    • If Swagger missing → write it directly          │
+└──────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📊 NPF-VÄNLIG VISUELL LAYOUT
+
+**Presentationen följer denna layout för ADHD/neurodiverse users:**
+
+```
+VARJE PRESENTATION:
+
+[SYMBOL] BIG EMOJI (80-100px)
+[RUBRIK] Kort titel (max 5 ord)
+[VISUAL] Diagram/bild (inte bara text!)
+[POINTS] Max 4 bullet points
+[BRÖDTEXT] Kort förklaring (2-3 meningar)
+[HANDLINGAR] Vem gör vad (explicit!)
+[TIMELINE] Exakt tidslinje (inte "denna vecka")
+```
+
+### Exempel: Visuell Status-dashboard
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     📊 STATUS DENNA VECKA                   │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Risk Metrics       ████████░░  80%  🔴 CRITICAL (1 dag)   │
+│  FX Converter       ██░░░░░░░░  20%  🟠 BEHIND (2 dagar)   │
+│  Tests             ████░░░░░░  40%  🟠 BEHIND (3 dagar)    │
+│  Documentation     ████████░░  80%  🟢 OK                   │
+│                                                             │
+│ ─────────────────────────────────────────────────────────  │
+│                                                             │
+│  🚨 BLOCKERS:     0  (All PRs green!)                        │
+│  ⏰ TIME UNTIL CTO:  5 dagar                                 │
+│  📌 PRIORITIES:    Risk → FX → Tests                         │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Exempel: Team-ansvars diagram
+
+```
+                    ┌──────────────────┐
+                    │   CTO DEADLINE    │
+                    │   24 sep 16:00    │
+                    └────────┬──────────┘
+                             │
+                ┌────────────┼────────────┐
+                │            │            │
+           ┌────▼────┐  ┌───▼────┐  ┌───▼────┐
+           │ BACKEND │  │FRONTEND │  │ NATIVE │
+           │ (Marco) │  │ (Anna)  │  │(Kiran) │
+           └────┬────┘  └───┬────┘  └───┬────┘
+                │            │           │
+        ┌──────▼─┐    ┌─────▼──┐   ┌───▼────┐
+        │ Risk   │    │ Test   │   │ Verify │
+        │Metrics │    │ API    │   │ Calcs  │
+        └────────┘    └────────┘   └────────┘
+```
+
+### Exempel: Timeline visualisering
+
+```
+TIS  │  ONS  │  TOR  │  FRE  │  [BUFFER]  │ CTO
+─────┼───────┼───────┼───────┼────────────┼────
+✅✅ │ ✅    │ ✅    │ ✅✅   │    ✅✅     │ 📊
+     │       │       │       │            │
+Risk │ Risk  │ Risk  │ Tests │ Final fix  │ Demo
+Start│ +API  │ +Test │ +Docs │ + deploy   │ time!
+     │       │       │       │            │
 ```
 
 ---
@@ -642,20 +787,46 @@ SLIDE 3c: ✅ LÖSNING - Metrics
 | 10 | Info | ☑️ | Action items & decisions |
 | 11 | Next | 📅 | Next steps & focus |
 
-**Slide-design (SAMMA FÖR ALLA SLIDES):**
-- ✅ Luftig layout (mycket whitespace, max 50% av sidan är text)
-- ✅ Stor symbol/ikon i toppen för varje slide (100px+)
-- ✅ En huvud-punkt per slide (3-5 bullet max)
-- ✅ **Pedagogisk brödtext** (VAD/HUR/VARFÖR) under bullets
-- ✅ Färger: 🔴 kritisk, 🟡 varning, 🟢 ok, 🔵 info
-- ✅ Tydlig typografi:
-  - Symbolen: 80-100px
-  - Rubrik: 36-48pt, bold
-  - Bullets: 20-24pt, regular
-  - Pedagogisk text: 14-16pt, muted (lätt att läsa)
-  - Status/källa: 12pt, very muted
-- ✅ Kontrastrik (ljust/mörkt tema support)
-- ✅ Konsistent brand-färger (om tillämpligt)
+**Slide-design (SAMMA FÖR ALLA SLIDES) — NPF-OPTIMERAD:**
+
+```
+LAYOUT-PRINCIPER (ADHD/Neurodiverse friendly):
+├─ Luftig layout: 60-70% whitespace, max 30% text
+├─ En STOR symbol/ikon i toppen (80-100px)
+├─ Max 3-4 bullet points per slide
+├─ Tydliga visuella separatörer (boxes, lines, borders)
+├─ Färgkodning för prioritet (🔴🟡🟢)
+├─ Typography med tydlig hierarki
+└─ ALLTID ett DIAGRAM, BILD, eller VISUELL (inte bara text!)
+
+TYPOGRAFI:
+├─ Symbol/Ikon: 80-100px (första intryck)
+├─ Rubrik: 36-48pt, bold, tydlig
+├─ Bullets: 20-24pt, regular
+├─ Pedagogisk brödtext: 14-16pt, muted
+├─ Status/källa: 10-12pt, very muted
+└─ Radavstånd: 1.6-1.8 (läsbar, inte tätt)
+
+FÄRGKODNING:
+├─ 🔴 Kritisk/Blocker/Danger — Röd bakgrund
+├─ 🟠 Varning/Behind schedule — Orange bakgrund
+├─ 🟢 OK/On track — Grön text
+├─ 🔵 Info/Neutral — Blå text
+└─ ⚪ Normal — Svart text på vit/ljus bakgrund
+
+VISUELLA ELEMENT (MÅSTE ingå):
+├─ Progress bars (████░░░░ 60%)
+├─ Diagram (boxes, arrows, timelines)
+├─ Ikoner för varje punkt (🎯 ⚠️ ✅)
+├─ Färgade boxes för varje sektion
+└─ Tydliga separatörer mellan sektioner (───────)
+```
+
+**Kontrastrik & Tillgänglig:**
+- ✅ Minst WCAG AA kontrast (4.5:1)
+- ✅ Stöd för ljust & mörkt tema
+- ✅ Inga uttryck som endast förlitar sig på färg
+- ✅ Tydlig fokus-ordning
 
 ---
 
