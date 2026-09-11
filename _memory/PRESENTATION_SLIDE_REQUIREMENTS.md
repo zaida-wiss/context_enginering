@@ -94,32 +94,27 @@ VISUELLA ELEMENT:
 
 ```
 MÅSTE INNEHÅLLA:
-✅ ALLA FRONTEND-ISSUES denna vecka (HELA TEAMEN tillsammans, inte bara en person)
-✅ ISSUES lista (prioriterad ordning)
-✅ ASSIGNEE för varje issue (#XX - PERSONENS NAMN) — MEGA-REGEL 1
-   ❌ INTE (#XX - Frontend team)
-   ❌ INTE (#XX - Frontend)
-   ✅ JÅ (#XX - Jan) eller (#XX - Marco) eller (#XX - Anna)
-✅ RISKER & BLOCKERS specifika för Frontend
-✅ Status för teamen (🟢🟠🔴)
+✅ Alla Frontend-issues denna vecka (hele teamen tillsammans)
+✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
+✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
+✅ Risker & Blockers
+✅ Status: 🟢🟠🔴
 
-LAYOUT:
-📌 PRIORITY 1 (MÅSTE-HA):
-   ☐ #42 Portfolio overview (Jan - 5h)
-   ☐ #43 Risk calculation (Anna föreslaget - 8h)
-   ☐ #44 Dashboard styling (Marco - 3h)
+LAYOUT (MAX 5-6 issues per priority):
+📌 MÅSTE-HA:
+   ☐ #42 Portfolio (Jan - 5h)
+   ☐ #43 Risk calc (Anna - 8h)
+   ☐ #44 Styling (Björn - 4h)
 
-📌 PRIORITY 2 (BÖR-HA):
-   ☐ #45 Integrationstestning (Anna - 6h)
-   ☐ #46 Error handling (Jan - 4h)
+📌 BÖR-HA:
+   ☐ #45 Testing (Anna - 6h)
+   ☐ #46 Error handling (Jan - 3h)
 
-🔴 BLOCKERS:
-   → Väntar på Backend: API-spec (#51)
+🔴 BLOCKERS: API-spec (#51)
 
 VISUELLA ELEMENT:
-📊 Progress bar för Frontend-TEAMEN (övergripande status)
-🎯 Issues med (#PERSONENS NAMN) assignee — ALDRIG teamets namn!
-🔢 Timestimat per issue
+📊 Progress bar (övergripande)
+🎯 Issues + (#Namn)
 ➡️ Blocker-pilar
 ```
 
@@ -129,33 +124,26 @@ VISUELLA ELEMENT:
 
 ```
 MÅSTE INNEHÅLLA:
-✅ ALLA BACKEND-ISSUES denna vecka (HELA TEAMEN tillsammans, inte bara en person)
-✅ ISSUES lista (prioriterad ordning)
-✅ ASSIGNEE för varje issue (#XX - PERSONENS NAMN) — MEGA-REGEL 1
-   ❌ INTE (#XX - Backend team)
-   ❌ INTE (#XX - Backend)
-   ✅ JÅ (#XX - David) eller (#XX - Erik) eller (#XX - Maria)
-✅ RISKER & BLOCKERS specifika för Backend
-✅ Status för teamen (🟢🟠🔴)
+✅ Alla Backend-issues denna vecka (hele teamen tillsammans)
+✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
+✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
+✅ Risker & Blockers
+✅ Status: 🟢🟠🔴
 
-LAYOUT:
-📌 PRIORITY 1 (MÅSTE-HA):
-   ☐ #51 API-spec för portfolio (David - 3h)
-   ☐ #52 Risk calculation endpoint (Erik föreslaget - 8h)
-   ☐ #53 Database optimization (Maria - 6h)
+LAYOUT (MAX 4-5 issues per priority):
+📌 MÅSTE-HA:
+   ☐ #51 API-spec (David - 3h)
+   ☐ #52 Risk endpoint (Erik - 8h)
 
-📌 PRIORITY 2 (BÖR-HA):
-   ☐ #54 Cache layer (David föreslaget - 4h)
-   ☐ #55 Monitoring setup (Erik - 3h)
+📌 BÖR-HA:
+   ☐ #54 Cache (David - 4h)
 
-🔴 BLOCKERS:
-   → Väntar på: CTO feedback på arkitektur
+🔴 BLOCKERS: CTO arkitektur-feedback
 
 VISUELLA ELEMENT:
-📊 Progress bar för Backend-TEAMEN (övergripande status)
-🎯 Issues med (#PERSONENS NAMN) assignee — ALDRIG teamets namn!
-🔢 Timestimat per issue
-➡️ Blocker-pilar visar vad som blockerar andra team
+📊 Progress bar (övergripande)
+🎯 Issues + (#Namn)
+➡️ Blocker-pilar
 ```
 
 ---
@@ -164,34 +152,26 @@ VISUELLA ELEMENT:
 
 ```
 MÅSTE INNEHÅLLA:
-✅ ALLA NATIVE/SYSTEMUTVECKLARE-ISSUES denna vecka (HELA TEAMEN tillsammans, inte bara en person)
-✅ ISSUES lista (prioriterad ordning)
-✅ ASSIGNEE för varje issue (#XX - PERSONENS NAMN) — MEGA-REGEL 1
-   ❌ INTE (#XX - Native team)
-   ❌ INTE (#XX - Systemutvecklare)
-   ✅ JÅ (#XX - Sofia) eller (#XX - Kevin) eller (#XX - Anna)
-✅ RISKER & BLOCKERS specifika för Native
-✅ Status för teamen (🟢🟠🔴)
+✅ Alla Native-issues denna vecka (hele teamen tillsammans)
+✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
+✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
+✅ Risker & Blockers
+✅ Status: 🟢🟠🔴
 
-LAYOUT:
-📌 PRIORITY 1 (MÅSTE-HA):
-   ☐ #60 iOS integration test (Sofia - 5h)
-   ☐ #61 Android risk-widget (Kevin föreslaget - 7h)
-   ☐ #62 Push notification setup (Sofia - 4h)
+LAYOUT (MAX 4-5 issues per priority):
+📌 MÅSTE-HA:
+   ☐ #60 iOS test (Sofia - 5h)
+   ☐ #61 Android widget (Kevin - 7h)
 
-📌 PRIORITY 2 (BÖR-HA):
-   ☐ #63 Offline sync (Anna föreslaget - 6h)
-   ☐ #64 Performance testing (Kevin - 3h)
+📌 BÖR-HA:
+   ☐ #63 Offline sync (Anna - 6h)
 
-🔴 BLOCKERS:
-   → Väntar på Backend: API-spec (#51)
-   → Väntar på: Simulator setup (IT-support)
+🔴 BLOCKERS: API-spec (#51), Simulator setup
 
 VISUELLA ELEMENT:
-📊 Progress bar för Native-TEAMEN (övergripande status)
-🎯 Issues med (#PERSONENS NAMN) assignee — ALDRIG teamets namn!
-🔢 Timestimat per issue
-⚠️ Externa beroenden markerade tydligt
+📊 Progress bar (övergripande)
+🎯 Issues + (#Namn)
+⚠️ Externa beroenden tydliga
 ```
 
 ---
