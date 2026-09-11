@@ -166,38 +166,53 @@ Status denna vecka: 🟢 🟠 🔴 [välj EN]
 - Återstår: [Vilka behov återstår?]
 ```
 
-**Slide 1.4 — 📝① TIDSLINJE & CHECKLISTOR**
+**Slide 1.4 — 📝① PROGRESS BOARD — BIG TEAM vs SMALL TEAMS**
 ```
-📝① TIDSLINJE MED CHECKLISTOR
+📝① PROGRESS BOARD MED FÄRGKODNING
 
-INNAN DENNA VECKA SLUTAR (Torsdag 15:00):
-☐ Sprint goals 100% done
-☐ Tests at 70%+ coverage
-☐ All PRs merged
-☐ README updated
-☐ No Friday coding
+═══════════════════════════════════════════════════════════
 
-INNAN CTO-DEMO (24 sep 16:00):
-☐ Kärnflödet 100% stable
-☐ Risk Metrics + FX working
-☐ Dokumentation komplett
-☐ Git history tydlig
-☐ Demo plan klar
+🟢 BIG TEAM — VÄG TILL SLUTLEVERANS & KURSMÅL
 
-INNAN KVALDEMO (15 okt):
-☐ Kundfeedback implementerad
-☐ UI/UX polerad
-☐ Performance OK
+Deadline: 4 november 15:00
 
-INNAN SLUTLEVERANS (4 nov 15:00):
-☐ ALLT according to DoD
-☐ 17 kursmål adresserade
-☐ README complete
-☐ Tests passing
-☐ Git history clean
+Mål:
+  Kursmål: ████████░░ 80% (14/17 adresserade)
+  Projekt: ████████░░ 75% (MVP features)
+  Kund:    ████████░░ 70% (Annas behov)
+  
+Status: 🟢 ON TRACK (eller 🟠 SLIGHT DELAY / 🔴 CRITICAL)
 
-Nu: ████████░░ 70% på vägen
+═══════════════════════════════════════════════════════════
+
+SMALL TEAMS — VÄG TILL DENNA VECKAS DEADLINE
+
+Deadline: Torsdag 15:00
+
+🟢 FRONTEND TEAM — ON TRACK
+   Progress: ████████░░ 80%
+   Status: Grön ✅
+
+🟠 BACKEND TEAM — SLIGHT DELAY
+   Progress: ██████░░░░ 60%
+   Status: Orange ⚠️
+   Actions: [vad behövs]
+
+🔴 NATIVE TEAM — CRITICAL
+   Progress: ████░░░░░░ 40%
+   Status: Röd 🚨
+   Actions: [omedelbar åtgärd]
+
+═══════════════════════════════════════════════════════════
 ```
+
+**Design Notes (NPF-Vänlig):**
+- Samma struktur varje vecka (förutsägbar)
+- Tydliga färger (🟢🟠🔴) som visar status
+- Visuella progressbars (████░░) för snabb scan
+- Big team och small teams tydligt separerade
+- Deadlines tydliga
+- Whitespace mellan sektioner
 
 ---
 
