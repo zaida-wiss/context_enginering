@@ -506,30 +506,69 @@ Secretary vet: "Slide med 📝⑥ = Jag fyller in punkt 6 i protokollet"
    - Berätta vilket format du använder
    - Sätt in all text direkt (inte "add text manually")
 
-**WICHTIGT:**
-- ✅ SAMMA struktur varje vecka
-- ✅ VARJE slide får symbol 📝①②③ etc
-- ✅ Designkrav: WCAG AA, padding 12px/16px
-- ✅ Max 3-5 bullets per slide
-- ❌ Aldrig ändra ordningen på slides
-- ❌ Aldrig lägga till "kreativa" extra slides utan att fråga
-- ❌ Aldrig utelämna breakout/paus-slides
+**KRITISKT — DESSA REGLER ÄR TVINGANDE:**
 
-**Output:**
+✅ MÅSTE GÖRA:
+- [ ] EXAKT 14 slides (inte 10, inte 12, INTE FÄRRE)
+- [ ] Slide 0: Presentationsslide + Agenda
+- [ ] Slide 1: TRE MÅLSYSTEM (Kursen + Projektet + Avanza + Tidslinje)
+- [ ] Slides 2-4: Per-team status (Frontend/Backend/Native)
+- [ ] Slide 5: Vad gjordes förra veckan
+- [ ] Slide 6: Beroenden, Risker, Sårbarheter
+- [ ] Slide 7: Team-support förslag
+- [ ] Slides 8-13: Prioritering, Estimering, Beslut, Arbetsuppgifter, Nästa Steg
+- [ ] VARJE slide får symbol 📝⓪①②③ etc
+- [ ] Symbol till VÄNSTER, text till HÖGER
+- [ ] SAMMA struktur varje vecka (prediktibel)
+
+❌ ALDRIG GÖRA:
+- [ ] Aldrig färre än 14 slides
+- [ ] Aldrig hoppa över Slide 1 (tre målsystem är KRITISKT)
+- [ ] Aldrig utelämna någon sektion
+- [ ] Aldrig lägga till egna "kreativa" extra slides
+- [ ] Aldrig ändra ordningen på slides
+- [ ] Aldrig dölja deadlines eller kursmål
+- [ ] Aldrig för mycket text (max 3-5 bullets per slide)
+
+**Om du får denna instruktion och är en AI:**
+- Du MÅSTE skapa exakt 14 slides
+- Du MÅSTE följa denna struktur
+- Du MÅSTE sätta symbol på varje slide
+- Du MÅSTE inkludera alla tre målsystem (Kursen, Projektet, Avanza)
+- Avvikelse från denna struktur = MISSLYCKAD presentation
+
+**EXEMPEL-OUTPUT (vad AI ska leverera):**
 ```
-Presentation klar! Format: [PowerPoint / Google Slides / Markdown]
+✅ Presentation klar! Format: PowerPoint
 
-📝① Status — [summary]
-📝② Mål & Status — [summary]
-📝③ Frontend — [summary]
-📝④ Backend — [summary]
-📝⑤ Native — [summary]
-📝⑥ Prioritering — [summary]
-📝⑦ Estimering & Risk — [summary]
-📝⑧⑨⑩⑪ Tekniska beslut, nästa steg
+SLIDE-STRUKTUR (14 slides totalt):
+
+Slide 0.1: 📝⓪ PRESENTATIONSSLIDE
+Slide 0.2: 📝⓪ AGENDA & PÅMINNELSE
+
+Slide 1.1: 📝① KURSEN (17 mål → G/VG)
+Slide 1.2: 📝① PROJEKTET (MVP v2)
+Slide 1.3: 📝① AVANZA SOM KUND
+Slide 1.4: 📝① TIDSLINJE & CHECKLISTOR
+
+Slide 2: 📝② FRONTEND mot målen
+Slide 3: 📝③ BACKEND mot målen
+Slide 4: 📝④ NATIVE mot målen
+
+Slide 5: 📝⑤ Vad gjordes förra veckan
+Slide 6: 📝⑥ Beroenden, Risker, Sårbarheter
+Slide 7: 📝⑦ Team-support förslag
+
+Slide 8: 📝⑧ Prioritering & Scope
+Slide 9: 📝⑨ Estimering & Risk
+Slide 10: 📝⑩ Tekniska Beslut
+Slide 11: 📝⑪ Arbetsuppgifter denna vecka
+Slide 12: 📝⑫ Nästa Steg & Sammanfattning
+
+TOTALT: 14 slides (som föreskrivit)
 
 Du kan nu:
-- Kopiera denna presentation
-- Visa den under mötet
-- Secretary fyller in mötesprotokollet parallelt
+- Öppna denna presentation
+- Visa den under mötet (09:00-10:30)
+- Secretary använder symbolerna 📝 för att veta vad som ska fyllas in i protokollet
 ```
