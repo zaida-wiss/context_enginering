@@ -261,13 +261,33 @@ AI: Uppdaterar dokumenten direkt (VS Code) eller visar sammanfattning (Web)
 
 **Måndags Sprintplanering** (09:00-12:00, 3 tim)
 ```
-Du: "Förbered sprintplanering"
-AI: Läser denna veckas fokus, risker, top issues
-AI: Presenterar agenda
+Du: "Förbered sprintplanering" (eller "Förbered mandagsmötet")
+
+AI MÅSTE GÖRA (innan mötet startar):
+
+1️⃣ Läser mötesprotokollet (senaste beslut + action items)
+2️⃣ Läser git log denna vecka (commits, PRs mergade)
+3️⃣ Läser GitHub Project Board (status denna vecka)
+4️⃣ Läser SPRINT_FOCUS_TIMELINE.md (denna veckas fokus)
+5️⃣ Läser Google Sheets Risker (kritiska risker)
+
+6️⃣ 🔴 ISSUE REVIEW & REFINEMENT (15 min före möte):
+   AI granskar ALLA issues på backlog denna vecka:
+   ├─ ✅ Är Definition of Ready uppfylld?
+   ├─ ✅ Är issuen fortfarande aktuell?
+   ├─ ✅ Kan vi starta utan blockers?
+   ├─ ✅ Finns arkitekturbeslut redan?
+   ├─ ✅ Kan vi parallellisera?
+   └─ ✅ AI föreslår ändringar & prioritering
+
+   Resultat: Issue Review Rapport (se SPRINT_PLANNING.md)
+
+7️⃣ Presenterar agenda + issue-review förslag
 
 Du: "Kör sprintplanering"
 AI: Faciliterar mötet enligt struktur
-   - Denna veckas fokus
+   - Denna veckas fokus (från mötesprotokollet)
+   - Issue Review & Refinement (ändringsförslag från AI)
    - Diskutera & prioritera backlog
    - Estimera kapacitet per team
    - Tilldela issues åt personer

@@ -133,6 +133,82 @@
   - Är de lösta? Nya denna vecka?
   - Canvas-inlämningar denna vecka?
 
+- [ ] **6. ⚙️ ISSUE REVIEW & REFINEMENT — Granskar backlog för denna vecka (15 min)**
+
+  **SYFTE:** Se till att issues är aktuella, realistiska och inte leder till blockers
+  
+  **AI/Team läser ALLA issues på backlog denna vecka och verifierar:**
+  
+  ```
+  ✅ DEFINITION OF READY — Är varje issue startbar?
+     ├─ Titel följer [Category] format? ([Frontend], [Backend], [Native])
+     ├─ Problem är tydligt definierat?
+     ├─ Acceptanskriterier är klara (AC)?
+     ├─ Definition of Ready är uppfylld? (DoR checklist)
+     ├─ Inga kritiska blockers?
+     └─ Estimat är realistisk (story points eller timmar)?
+  
+  ✅ ÄR ISSUEN FORTFARANDE AKTUELL?
+     ├─ Har något ändrat sedan den skapades?
+     ├─ Är prioriteringen fortfarande rätt?
+     ├─ Behöver vi ta bort eller uppdatera något?
+     ├─ Matchar den denna veckas fokus?
+     └─ Finns det en bättre ordning att göra dem?
+  
+  ✅ ARKITEKTUR & BLOCKERS — Kan vi göra den utan stopp?
+     ├─ Hänger den på någon annan issues avslutande?
+     ├─ Behöver vi något från annan team?
+     ├─ Finns API/design/data redan, eller behöver vi vänta?
+     ├─ Är det möjligt att parallellisera med andra issues?
+     └─ Vad kan gå fel? (risk-analys)
+  
+  ✅ FÖRSLAG PÅ ÄNDRINGAR — AI föreslår förbättringar:
+     ├─ "DoR är ofullständig — lägg till: @person ansvarig för API?"
+     ├─ "Estimatet 8h verkar lågt — föreslår 12h baserat på komplexitet"
+     ├─ "Denna issue hänger på PR #51 — vi kan inte starta än"
+     ├─ "Denna issue kan göras parallellt med issue #52 — bra effektivitet"
+     ├─ "AC är vag — föreslår: 'Risk metrics visar volatilitet + Sharpe ratio'"
+     └─ "Issue #23 är redan delvis gjord i en annan branch — kan vi merge det först?"
+  ```
+  
+  **OUTPUT — Före sprintmöte börjar:**
+  
+  ```
+  ISSUE REVIEW RAPPORT:
+  
+  🟢 KLARA ATT STARTA (5 issues):
+  ├─ #52: Risk Metrics (Backend) — DoR OK, estimat 16h ✅
+  ├─ #53: FX Converter (Backend) — DoR OK, estimat 12h ✅
+  ├─ #60: Target Allocation (Frontend) — DoR OK, estimat 8h ✅
+  ├─ #61: Migrations (Backend) — DoR OK, estimat 16h ✅
+  └─ #88: Test Improvements (QA) — DoR OK, estimat 12h ✅
+  
+  🟡 BEHÖVER UPPDATERING (3 issues):
+  ├─ #54: Rebalance Suggestions
+  │  └─ ⚠️ AC är vag — föreslår: "Beräkna optimal portfolio drift"
+  │  └─ ⚠️ Estimat 20h är högt — Är detta för denna sprint?
+  │  └─ ⚠️ Hänger på Risk Metrics — Kan vi starta nästa vecka?
+  │
+  ├─ #62: UI Refinement
+  │  └─ ⚠️ Titel saknar [Category] — lägg till [Frontend]
+  │  └─ ⚠️ DoR saknar: Vilka Figma-designs finns redan?
+  │  └─ ⚠️ Kan vi göra lite av detta denna vecka, resten nästa?
+  │
+  └─ #89: Performance Testing
+     └─ ⚠️ Prioritering låg — men nästan CTO deadline. Bör vi skjuta?
+     └─ ⚠️ Behöver alla andra issues klara först (7 dagar fram)
+  
+  🔴 MÅSTE VÄNTA (2 issues):
+  ├─ #70: Advanced Analytics — Hänger på Risk Metrics (inte klar än)
+  └─ #71: Mobile Notifications — Scope unclear, behöver möte med PL först
+  
+  REKOMMENDATION:
+  • Prioritera #52, #53, #60 denna vecka (kritiska för CTO)
+  • Skjut #54 till nästa vecka (hänger på #52)
+  • Uppdatera #62 DoR innan vi startar
+  • Hoppa över #89 denna vecka (inte kritisk)
+  ```
+
 ---
 
 ### 🟡 SPRINTPLANERING (Måndag 09:00-12:00)
