@@ -125,6 +125,9 @@ Du läser detta repo för första gången? Följ denna guide:
   📝 SPRINT_PRESENTATION_STRUCTURE.md
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
   
+  🎨 PRESENTATION_FORMAT_GUIDE.md ⭐ EXAKTA SLIDE-LAYOUTS
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
+  
   📝 SPRINT_PROTOCOL_NUMBERED.md
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PROTOCOL_NUMBERED.md
   
@@ -148,8 +151,13 @@ _memory/KURSMAL_OCH_BETYG.md  ← Kursmål & betyg (SKILT från DoD!)
         ↓
 VILL DU SKAPA EN PRESENTATION?
   → _ai_guides/SPRINT_PRESENTATION_STRUCTURE.md (raw-link ovan)
+    → _ai_guides/PRESENTATION_FORMAT_GUIDE.md ⭐ EXAKTA SLIDE-LAYOUTS
+      (visar varje slide-typ med borders, färger, tonalitet)
     → SPRINT_PROTOCOL_NUMBERED.md (raw-link ovan)
     → mötesprotokollet (raw-link ovan)
+        ↓
+        RESULTAT: NPF-vänlig, inspirerande presentation
+                  som gör dig glad & motiverad 💪
         ↓
 VILL DU SKAPA ISSUES?
   → _memory/ISSUE_TEMPLATE.md
