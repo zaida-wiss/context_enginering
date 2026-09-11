@@ -76,14 +76,14 @@ INTE såhär (MISSLYCKAD):
 
 FORMAT EXAKT:
   (#XX - Namn) eller (#XX - Namn föreslaget)
-  
+
   Om GitHub visar assignee: Använd det
     Exempel: (#42 - Jan)
-  
+
   Om ingen assignee: FÖRESLÅ baserat på TVÅ FAKTORER:
     1. Git log — vem jobbar redan på det?
     2. KAPACITET — vem har mindre att göra?
-    
+
     Exempel rätt: (#42 - Jan föreslaget, Jan jobbar på portfolio)
     Exempel rätt: (#51 - Marco föreslaget, Marco har kapacitet)
     Exempel fel: (#42 - Jan ALLTID, oavsett om Jan är överbelastad)
@@ -223,7 +223,7 @@ BLOCKERS:
 - Färger som matchar verkligheten: 🟢 = faktisk ON TRACK
 ```
 
-**Användaren säger: "Om vårat projekt riskerar att inte gå i mål, 
+**Användaren säger: "Om vårat projekt riskerar att inte gå i mål,
 ska AI inte lura oss att tro att vi är på banan i texten som står."**
 
 Du har förvaret att vara helt ÄRLIG med data.
@@ -317,7 +317,7 @@ Sanningen: Vi är kritisk OCH vi gör något konkret
 **Exempel på GOD tonalitet:**
 ```
 ❌ "Native är bakom och det är ett problem"
-✅ "Native ligger bakom (40%) — Backend + Native pair prog 
+✅ "Native ligger bakom (40%) — Backend + Native pair prog
     IDAG 14:00 för spec-writing. Resultat: Vi kommer i fas."
 ```
 
@@ -325,7 +325,7 @@ Sanningen: Vi är kritisk OCH vi gör något konkret
 ```
 Framsteg denna vecka:
 ✅ Portfolio overview klar
-✅ Risk calc klar  
+✅ Risk calc klar
 ✅ Tests 80% klara
 ⏳ Rebalance i progress
 
@@ -395,15 +395,15 @@ LAYOUT SOM STRESSAR:
 🟢 GRÖN border (3px solid #2ecc71):
    Betyder: ON TRACK / Vi når målet / Klart
    Använd på: Team-status cards, progress bars
-   
+
 🟠 ORANGE border (3px solid #e67e22):
    Betyder: SLIGHT DELAY / Försenat / Inte på målvägen än
    Använd på: Team-status cards med problem
-   
+
 🔴 RÖD border (3px solid #e74c3c):
    Betyder: CRITICAL / Behöver stärkas upp / Omedelbar åtgärd
    Använd på: Team-status cards med kritisk status
-   
+
 Padding inuti färgade borders: 16px
 Border-radius: 4px (skarpa hörn)
 Background: Ljus nyans av status-färg (10% opacity)
@@ -414,12 +414,13 @@ Background: Ljus nyans av status-färg (10% opacity)
 ```
 ⬛ SVART eller VIT border (2px solid):
    Betyder: Neutral information, ingen status-bedömning
-   Använd på: 
+   Använd på:
      - Rubriker & innehål
      - Listor av issues (som inte är om framsteg)
      - Deadlines (information, inte status)
      - Åtgärdsförslag (innehål, inte bedömning)
-   
+     
+
 Kontrast: HIGH (4.5:1 minimum vs background)
 Padding inuti: 16px
 Border-radius: 4px

@@ -271,15 +271,22 @@ DU MÅSTE:
 ---
 
 ### 📚 STEG 1 — LÄS FILERNA (EFTER MINNESRENSNING):
-1. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** ← **LÄNG HÄR FÖRST** (exakta layouts)
+
+**PRESENTATION-FILERNA (MÅSTE LÄSA I DENNA ORDNING):**
+1. **[PRESENTATION_DESIGN.md](/_ai_guides/PRESENTATION_DESIGN.md)** — Design principer & MEGA-REGLER
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_DESIGN.md
+2. **[PRESENTATION_SLIDE_REQUIREMENTS.md](/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md)** — Vad varje slide MÅSTE innehålla
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md
+3. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** — Exakta layouts & exempel
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
-2. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** ← Struktur & krav
+4. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** — Struktur & ordning
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
-3. **Mötesprotokollet denna vecka:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-4. **Data att samla:**
-   - Git log denna vecka (vad blev gjort)
-   - GitHub Project Board status denna vecka
-   - Vilka issues är klara/pågår/blockerade
+
+**DATA ATT SAMLA:**
+5. **Mötesprotokollet denna vecka:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+6. **Git log denna vecka** (vad blev gjort)
+7. **GitHub Project Board status denna vecka**
+8. **Vilka issues är klara/pågår/blockerade**
 
 ### ✅ PRESENTATION MÅSTE INNEHÅLLA EXAKT DESSA 13 MÖTESPUNKTER:
 
