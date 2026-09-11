@@ -4,216 +4,254 @@
 
 ---
 
-## 📌 Slide 1 — Presentationsslide
+## 📌 Slide 1 — FRAMSIDA (Möte-info)
+
+```
+MÅSTE INNEHÅLLA (TRE ELEMENT):
+
+1️⃣ VÅD ÄR DET FÖR MÖTE?
+   Exempel: SPRINTPLANERING (MÅNDAGSMÖTE)
+
+2️⃣ TIDPUNKT
+   Exempel: Måndag 14 september 2026, 09:00-10:30
+
+3️⃣ SYFTE MED MÖTET
+   Exempel: "Planera denna vecka, säkerställa vi når målen"
+
+VISUELLA ELEMENT:
+✅ Möte-ikon överst (📅 eller 🎯)
+✅ Datum + tid väl synlig
+✅ Mycket whitespace (70% tom yta)
+```
+
+---
+
+## 📌 Slide 2 — AGENDA (Innehållsförteckning över alla mötespunkter)
+
+```
+MÅSTE INNEHÅLLA - ALLA 12 MÖTESPUNKTER:
+✅ 📝① Status sedan förra möte
+✅ 📝② Övergripande mål & status
+✅ 📝③ Frontend team
+✅ 📝④ Backend team
+✅ 📝⑤ Native team
+✅ 📝⑥ Prioritering & scope
+✅ 📝⑦ Estimering & risk
+✅ 📝⑧ Tekniska beslut
+✅ 📝⑨ Beroenden & blockers
+✅ 📝⑩ Arbetsuppgifter denna vecka
+✅ 📝⑪ Frågor till PL
+✅ 📝⑫ Nästa steg & sammanfattning
+
+VISUELLA ELEMENT:
+✅ Numrering tydlig (1-12 eller 📝①-⑫)
+✅ Lätt att scanná
+```
+
+---
+
+## 📌 Slide 3 — 📝① Status Sedan Förra Möte (Git Progress)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ Möte-typ (SPRINT PLANNING)
-✅ Tid (09:00-10:30)
-✅ Syfte (Planera, prioritera & se blockers)
+✅ VAD SOM KOMMIT IN TILL DEVELOP senaste veckan
+✅ VAD SOM FINNS PÅBÖRJAT I ANDRA BRANCHER
+✅ Vilka branches är stale (> 3 dagar utan commit)
+
+MEGA-REGEL 2: VERIFIERA GIT-STATUS
+Kör dessa commands för faktisk data:
+  git log develop --since="7 days ago" --oneline
+  git log --all --since="7 days ago" --oneline
+  git branch -a
+  git diff develop..feature/[branch] --stat
 
 VISUELLA ELEMENT:
-- Minimal text (max 3 rader)
-- Mycket whitespace (60% tom yta)
-
-FORMAT: PowerPoint/Google Slides/Markdown
+🟢 Grön för mergade (done)
+🟠 Orange för active branches (pågår)
+🔴 Röd för stale branches (inte aktivt denna vecka)
 ```
 
 ---
 
-## 📌 Slide 2 — Veckans kommande möten Agenda
+## 📌 Slide 4 — 📝② Övergripande Mål & Status (HELA TEAMET)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ Vad SKOLAN vill att vi gör denna vecka
-✅ Datum & tid för möte med PL, samt mötets syfte för veckan
-
-EXEMPEL INNEHÅL:
-- CTO Demo feedback & architecture
-- Risk assessment för slutleverans
-- Team capacity & support needs
+✅ HUR GÅR DET FÖR HELA TEAMET MOT MÅLEN?
+   → 🟢 ON TRACK | 🟠 SLIGHT DELAY | 🔴 CRITICAL
+✅ KURSMÅL DENNA VECKA (från KURSMAL_OCH_BETYG.md)
+✅ PROJEKTMÅL DENNA VECKA (från GitHub Project Board)
 
 VISUELLA ELEMENT:
-⬛ Svart border (neutral info)
-🔢 Numrerad lista (1, 2, 3)
+🟢 Stor färgad status-ikon
+📊 Progress bar: KURSMÅL (14/17 = 82%)
+📊 Progress bar: PROJEKT (75% → 85%)
 ```
 
 ---
 
-## 📌 Slide 3 — Veckans Schema & Mål
+## 📌 Slide 5 — 📝③ FRONTEND TEAM Fokus denna vecka
 
 ```
 MÅSTE INNEHÅLLA:
-✅ KURSMÅL denna vecka (från KURSMAL_OCH_BETYG.md)
-✅ PROJEKTMÅL denna vecka (från GitHub Project Board)
-✅ VECKANS TIDSPLAN (från mötesprotokollet)
+✅ VAD SKA FRONTEND FOKUSERA PÅ denna vecka?
+✅ ISSUES lista (prioriterad ordning)
+✅ ASSIGNEE för varje issue (#XX - Namn) — MEGA-REGEL 1
+✅ RISKER & BLOCKERS specifika för Frontend
+✅ Status för teamen (🟢🟠🔴)
+
+LAYOUT:
+📌 PRIORITY 1 (MÅSTE-HA):
+   ☐ #42 Portfolio overview (Jan - 5h)
+   ☐ #43 Risk calculation (Anna föreslaget - 8h)
+
+📌 PRIORITY 2 (BÖR-HA):
+   ☐ #44 Dashboard styling (Marco - 3h)
+
+🔴 BLOCKERS:
+   → Väntar på Backend: API-spec (#51)
 
 VISUELLA ELEMENT:
-📚 Ikon för kursmål
-🚀 Ikon för projektmål
-📍 Timeline med ikoner (MON, TUE, WED, THU)
-📊 Progress: från X → Y (14/17 → 16/17)
-
-FORMAT: Två spalter (KURSMÅL | PROJEKTMÅL)
+📊 Progress bar för teamen
+🎯 Issues med (#Namn) assignee
+➡️ Blocker-pilar
 ```
 
 ---
 
-## 📌 Slides 4-7 — Övergripande Mål & Status
-
-```
-SLIDE 1: KURSEN (17 kursmål → G/VG betyg)
-SLIDE 2: PROJEKTET (MVP v2)
-SLIDE 3: AVANZA SOM KUND (Annas behov)
-SLIDE 4: PROGRESS BOARD (Big team vs Small teams)
-
-VARJE SLIDE MÅSTE INNEHÅLLA:
-✅ 📝① Symbol
-✅ Mål / Syfte
-✅ Deadlines (konkreta datum + tid)
-✅ Status denna vecka (🟢🟠🔴)
-✅ Framsteg (tal eller %)
-
-VISUELLA ELEMENT:
-📊 Progress bars (████░░)
-🔢 Tal (14/17, 75%, etc)
-🟢🟠🔴 Färgad status
-📅 Deadlines med tid (4 nov 15:00)
-```
-
----
-
-## 📌 Slides 8-10 — Team-Status (Frontend/Backend/Native)
-
-```
-SLIDE 8: 📝② FRONTEND TEAM
-SLIDE 9: 📝③ BACKEND TEAM
-SLIDE 10: 📝④ NATIVE TEAM
-
-VARJE TEAM-SLIDE MÅSTE INNEHÅLLA:
-✅ 📝① Symbol
-✅ Team namn + Status färg (🟢 ON TRACK)
-✅ Progress bar (████░░)
-✅ Issues: X/Y done
-✅ Klart denna vecka
-✅ Pågår
-✅ Blockers (med assignee)
-
-VISUELLA ELEMENT:
-🎨 Färgad border (3px solid — status-färg)
-📊 Progress bar
-🏷️ Status-ord (ON TRACK / SLIGHT DELAY / CRITICAL)
-👥 Assignee namn
-⚠️ Blocker ikon om problem
-```
-
----
-
-## 📌 Slide 11 — Status Sedan Förra Veckan
+## 📌 Slide 6 — 📝④ BACKEND TEAM Fokus denna vecka
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝③ Symbol
-✅ Vad blev klart förra veckan
-✅ Vad pågår denna vecka
-✅ Vad är blockat
+✅ VAD SKA BACKEND FOKUSERA PÅ denna vecka?
+✅ ISSUES lista (prioriterad ordning)
+✅ ASSIGNEE för varje issue (#XX - Namn) — MEGA-REGEL 1
+✅ RISKER & BLOCKERS specifika för Backend
+✅ Status för teamen (🟢🟠🔴)
+
+LAYOUT:
+📌 PRIORITY 1 (MÅSTE-HA):
+   ☐ #51 API-spec för portfolio (David - 3h)
+   ☐ #52 Risk calculation endpoint (Erik föreslaget - 8h)
+
+📌 PRIORITY 2 (BÖR-HA):
+   ☐ #53 Database optimization (Maria - 6h)
+
+🔴 BLOCKERS:
+   → Väntar på: CTO feedback på arkitektur
 
 VISUELLA ELEMENT:
-✅ Ikon för klart
-⏳ Ikon för pågår
-⚠️ Ikon för blockat
-🔢 Tal (antal issues)
-
-FORMAT: 3-5 bullets max
+📊 Progress bar för teamen
+🎯 Issues med (#Namn) assignee
+➡️ Blocker-pilar visar vad som blockerar andra team
 ```
 
 ---
 
-## 📌 Slide 12 — Blockers (SEPARAT SLIDE)
+## 📌 Slide 7 — 📝⑤ NATIVE/SYSTEMUTVECKLARE TEAM Fokus denna vecka
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝④ Symbol
-✅ Varje blocker:
-   - Namn/beskrivning
-   - Väntar på vad/vem
-   - Blockerar vilka tasks
-   - Status (🔴 CRITICAL eller 🟠 DELAY)
-   - Förväntat löst: [datum tid]
-   - Åtgärd nu: [konkret]
+✅ VAD SKA NATIVE FOKUSERA PÅ denna vecka?
+✅ ISSUES lista (prioriterad ordning)
+✅ ASSIGNEE för varje issue (#XX - Namn) — MEGA-REGEL 1
+✅ RISKER & BLOCKERS specifika för Native
+✅ Status för teamen (🟢🟠🔴)
+
+LAYOUT:
+📌 PRIORITY 1 (MÅSTE-HA):
+   ☐ #60 iOS integration test (Sofia - 5h)
+   ☐ #61 Android risk-widget (Kevin föreslaget - 7h)
+
+📌 PRIORITY 2 (BÖR-HA):
+   ☐ #62 Push notification setup (Sofia - 4h)
+
+🔴 BLOCKERS:
+   → Väntar på Backend: API-spec (#51)
+   → Väntar på: Simulator setup (IT-support)
 
 VISUELLA ELEMENT:
-⬛ Svart border runt blockers (neutral info)
-🔴🟠 Status-färg INOM
-➡️ Pilar visar blockering (väntar på → blockerar)
-📍 Konkret tid när löst
+📊 Progress bar för teamen
+🎯 Issues med (#Namn) assignee
+⚠️ Externa beroenden markerade tydligt
 ```
 
 ---
 
-## 📌 Slide 13 — Prioritering & Scope
+## 📌 Slide 8 — 📝⑥ Blockers (VISUELL FLÖDESDIAGRAM)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝⑤ Symbol
-✅ MÅSTE-HA denna vecka (med #issues)
-✅ NICE-TO-HAVE (med #issues)
+✅ ALLA BLOCKERS denna vecka
+✅ VAD BLOCKERAR VAD (visuell pillar)
+✅ Vem som är blockerad
+✅ Förväntat löst (datum + tid)
+✅ Åtgärd NU (konkret)
+
+VISUELLA ELEMENT:
+➡️ FLÖDESDIAGRAM med pilar
+🔴 KRITISKA (löser IDAG)
+🟠 ALLVARLIGA (löser DENNA VECKA)
+```
+
+---
+
+## 📌 Slide 9 — 📝⑦ Prioritering & Scope denna vecka
+
+```
+MÅSTE INNEHÅLLA:
+✅ MÅSTE-HA denna vecka (med #issues + assignee)
+✅ BÖR-HA denna vecka
 ✅ "Kan vi göra allt?" → Ja/Nej
 ✅ Om nej: Scope cut (vad skips/väntar)
 
 VISUELLA ELEMENT:
-📊 Tabell (två spalter: MÅSTE-HA | NICE-TO-HAVE)
+📊 Tabell (två spalter: MÅSTE-HA | BÖR-HA)
 🟢 MÅSTE-HA in grön/bold
-🟠 NICE-TO-HAVE in orange
+🟠 BÖR-HA in orange
 #️⃣ Issue nummer MED assignee (#XX - Namn)
 ⏰ Timestimat (3h, 5h, etc)
-
-FORMAT: ⬛ Svart border runt tabell
 ```
 
 ---
 
-## 📌 Slide 14 — Estimering & Risk
+## 📌 Slide 10 — 📝⑧ Estimering & Risk denna vecka
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝⑥ Symbol
-✅ Kapacitet per team (available / needed)
+✅ KAPACITET per team (available vs needed)
 ✅ "Passar det?" → Ja/Nej
-✅ Kända blockers + mitigation
-✅ Risker + mitigation
-✅ Framgångskriterier denna vecka
+✅ KÄNDA RISKER + mitigation
+✅ FRAMGÅNGSKRITERIER denna vecka
+✅ Support-behov (om överbelastat)
 
 VISUELLA ELEMENT:
-📊 Tabell (Team | Available | Needed | Buffer)
-✅/❌ Visuell "passar det?" indikatör
-⚠️ Risk-ikon
-🎯 Framgångskriterier lista
+📊 Tabell (Team | Available | Needed | Buffer | Status)
+✅/⚠️ Visuell "passar det?" indikatör
+🟢🟠🔴 Kapacitet-status per team
 ```
 
 ---
 
-## 📌 Slide 15 — Tekniska Beslut
+## 📌 Slide 11 — 📝⑨ Tekniska Beslut denna vecka
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝⑦ Symbol
 ✅ Varje tekniskt beslut:
-   - Vad
-   - Vem bestämde
-   - Varför
-   - Impact (vad ändrar)
+   - VAD är beslutet
+   - VEM bestämde (team eller PL)
+   - VARFÖR är det viktigt
+   - IMPACT (vad ändrar, vilka påverkas)
 
-FORMAT: 3-5 bullets max per beslut
+FORMAT: 2-3 beslut max, konkreta
 ```
 
 ---
 
-## 📌 Slide 16 — Arbetsuppgifter (Issues denna vecka)
+## 📌 Slide 12 — 📝⑩ Arbetsuppgifter denna vecka (per team)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝⑧ Symbol
 ✅ Per-team boxar (Frontend / Backend / Native)
 ✅ Varje issue:
    - #XX nummer
@@ -233,31 +271,29 @@ FORMAT: Kan copy-pastas direkt till protokoll
 
 ---
 
-## 📌 Slide 17 — Frågor till PL
+## 📌 Slide 13 — 📝⑪ Frågor till PL
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝⑨ Symbol
-✅ Förslag på rimliga frågor från team (eller "Inga frågor denna vecka")
+✅ Rimliga frågor från team (eller "Inga frågor denna vecka")
 ✅ Vad behöver vi från PL denna vecka
 
-FORMAT: 3-5 frågor max
+FORMAT: 2-4 frågor max, konkreta
 ```
 
 ---
 
-## 📌 Slide 18 — Nästa Steg (SEPARAT)
+## 📌 Slide 14 — 📝⑫ Nästa Steg (ACTION ITEMS — SEPARAT)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝⑩ Symbol
-✅ Omedelbar efter möte (idag):
+✅ OMEDELBAR ACTION (efter möte IDAG):
    ☐ GitHub Project Board uppdaterad
    ☐ Pair sessions bokade
-   ☐ Alla vet sitt jobb
+   ☐ Alla vet sitt jobb och assignee
    ☐ Blockers dokumenterade
 
-✅ DENNA VECKAN - konkreta deadlines:
+✅ DENNA VECKA - konkreta deadlines:
    🔴 MON 17:00 — [action] (KRITISK)
    📍 TUE 14:00 — [action]
    📍 WED 09:00 — [action]
@@ -266,44 +302,68 @@ MÅSTE INNEHÅLLA:
 VISUELLA ELEMENT:
 ☐ Checkboxes (copy-paste ready)
 📍 Timeline med ikoner
-🔴 Rött för kritisk
+🔴 Rött för kritiska deadlines
 ```
 
 ---
 
-## 📌 Slide 19 — Sammanfattning (SEPARAT)
+## 📌 Slide 15 — 📝⑫ Sammanfattning (SEPARAT från Nästa Steg)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ 📝⑪ Symbol
 ✅ DENNA VECKAS FOKUS (från mötesprotokollet)
 ✅ ÖVERGRIPANDE STATUS (🟢🟠🔴)
-✅ FRAMSTEG (visuellt):
-   • Kursmål: 14/17 → 16/17 ✅
-   • Projekt: 75% → 85% MVP ✅
-
-✅ KRITISKT ATT LÖSA (om något):
-   [vad + tidline]
+✅ FRAMSTEG - visuellt från X → Y:
+   • Kursmål: 14/17 → 16/17 (denna vecka)
+   • Projekt MVP: 75% → 85% (target denna vecka)
 
 ✅ MOTIVERANDE AVSLUT:
-   "Lycka till denna vecka! Vi löser detta tillsammans."
+   "Vi gör detta tillsammans! Lycka till denna vecka!"
 
 VISUELLA ELEMENT:
 📊 Statistik visuell (pil från X → Y)
-🟢 Status färgad
+🟢 Status färgad (ON TRACK / DELAY / CRITICAL)
 💪 Motiverande ton
 ```
 
 ---
 
-## 📌 Ändringshistorik
+## 📌 Slide 16 (VALFRITT) — Extra Context eller Reserve
 
-**Du kan ändra innehållet här utan att behöva läsa PRESENTATION_FORMAT_GUIDE.md**
+```
+VALFRITT — använd denna om behövs för:
+✅ Veckans møter & deadlines
+✅ Viktiga externa events
+✅ Eller håll tom för framtida expansion
+```
 
-Om du vill att en slide ska ha MINDRE eller MER innehål:
-1. Redigera denna fil
-2. Säg till AI: "Använd PRESENTATION_SLIDE_REQUIREMENTS.md för att veta vad varje slide ska innehålla"
-3. AI läser denna fil ISTÄLLET för FORMAT_GUIDE för att veta vad som är required
+---
 
-**Senast uppdaterad:** 2026-09-11
-**Status:** Editable requirements för varje slide
+## 📌 SLIDE STRUCTURE SUMMARY
+
+```
+Totalt: 15 SLIDES REKOMMENDERAT (16 med reserve)
+
+1️⃣  FRAMSIDA
+2️⃣  AGENDA (alla 12 mötespunkter)
+3️⃣  Status sedan förra (Git progress + branches)
+4️⃣  Övergripande status (hele teamet → 🟢🟠🔴)
+5️⃣  FRONTEND fokus denna vecka
+6️⃣  BACKEND fokus denna vecka
+7️⃣  NATIVE fokus denna vecka
+8️⃣  BLOCKERS (visuell flödesdiagram)
+9️⃣  Prioritering & Scope
+🔟 Estimering & Risk
+1️⃣1️⃣ Tekniska Beslut
+1️⃣2️⃣ Arbetsuppgifter (per team)
+1️⃣3️⃣ Frågor till PL
+1️⃣4️⃣ Nästa Steg (ACTION ITEMS)
+1️⃣5️⃣ Sammanfattning
+[1️⃣6️⃣ Reserve/Extra info]
+```
+
+---
+
+**Senast uppdaterad:** 2026-09-11  
+**Status:** Editable requirements för 15-16 slides  
+**NOTERING:** Slide 7 = NATIVE/SYSTEMUTVECKLARE team
