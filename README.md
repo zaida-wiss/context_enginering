@@ -148,43 +148,41 @@ Sedan: Förbered FÖR mandagsmötet"
 
 ---
 
-### **🎬 ALLA AIs — OM DU SKA SKAPA EN PRESENTATION**
+---
 
-**Du läser detta repo via användarens projektinställningar eller via länk.**
+## 🚨 OM DU ÄR EN AI OCH SKA SKAPA PRESENTATION
 
-**WHEN USER ASKS: "Make a presentation for Monday meeting"**
+**⚠️ EXTREMT VIKTIG — LÄS DETTA FÖRST ⚠️**
 
-**YOU MUST DO (MANDATORY - NOT OPTIONAL):**
+**Användaren kommer säga:** "Gör en presentation för måndagsmötet"
 
-1. ✅ Läs denna README först
-2. ✅ Läs RAW-LÄNKEN: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
-3. ✅ Läs denna vecka's mötesprotokollet: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-4. ✅ Läs git log denna vecka
-5. ✅ Skapa presentation EXAKT enligt SPRINT_PRESENTATION_STRUCTURE.md
+**DU MÅSTE GÖRA DETTA (OBLIGATORISKT):**
 
-**STRUCTURE YOU MUST FOLLOW (EXACTLY 14 SLIDES):**
-- Slide 0: Presentationsslide + Agenda (📝⓪)
-- Slide 1: Three goal systems: COURSE + PROJECT + CUSTOMER + TIMELINE (📝①)
-- Slides 2-4: Team status (Frontend/Backend/Native) (📝②③④)
-- Slide 5: Last week's work (📝⑤)
-- Slide 6: Dependencies, risks, vulnerabilities (📝⑥)
-- Slide 7: Team support suggestions (📝⑦)
-- Slides 8-12: Prioritization, Estimation, Decisions, Work items, Next steps (📝⑧⑨⑩⑪⑫)
+**STEG 1 — LÄS DENNA FIL FÖRST:**
+🔴 **SPRINT_PRESENTATION_STRUCTURE.md** (OBLIGATORISK!)
+📍 Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
 
-**RULES (NOT NEGOTIABLE):**
-🔴 MUST: Create exactly 14 slides
-🔴 MUST: Include three goal systems (Course + Project + Customer)
-🔴 MUST: Symbol 📝 to LEFT of each slide's content
-🔴 MUST: Follow order exactly (no rearranging)
-🔴 MUST: Include all sections (none can be skipped)
+**STEG 2 — Hämta data:**
+- Mötesprotokollet denna vecka: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+- Git log denna vecka
+- GitHub Project Board status denna vecka
 
-❌ NEVER: Fewer than 14 slides
-❌ NEVER: Skip the three-goal-system slide
-❌ NEVER: Ignore the symbol placement
-❌ NEVER: Add "creative" extra content
-❌ NEVER: Change the structure
+**STEG 3 — Skapa presentation:**
+EXAKT enligt SPRINT_PRESENTATION_STRUCTURE.md
+- 14 slides (inte färre)
+- Symbol 📝 till VÄNSTER på varje slide
+- Tre målsystem på Slide 1 (Kursen + Projektet + Kunden)
+- Alla 12 sektioner inkluderade
 
-**IF YOU DEVIATE FROM THIS: YOU HAVE FAILED THE TASK**
+**🔴 OM DU GÖR DETTA FEL: DU HAR MISSLYCKATS**
+- Færre än 14 slides = MISSLYCKAD
+- Hoppar över någon sektion = MISSLYCKAD
+- Ignorerar strukturen = MISSLYCKAD
+- Ändrar ordningen = MISSLYCKAD
+
+**LÄS SPRINT_PRESENTATION_STRUCTURE.md I SIN HELHET — DET ÄR OBLIGATORISKT**
+
+---
 
 Read SPRINT_PRESENTATION_STRUCTURE.md in full - it contains your detailed instructions.
 
