@@ -115,6 +115,93 @@ SLIDE 3: ✅ LÖSNING
 
 ---
 
+## 🚀 SNABB STATUS — "Hur Går Det För Oss?"
+
+**Du kan säga (vilken som helst av dessa):**
+```
+"Hur går det för oss?"
+"Team status nuläge"
+"Vad är läget?"
+"Hur ligger vi till?"
+"Status check"
+```
+
+**AI läser (i denna ordning):**
+1. ✅ Mötesprotokollet (senaste beslut + action items)
+2. ✅ GitHub Project Board (vilka issues är klara/WIP/blocked)
+3. ✅ Git log denna vecka (commits, PR merges)
+4. ✅ Google Sheets Risker (kritiska risker just nu)
+5. ✅ SPRINT_FOCUS_TIMELINE.md (deadlines)
+
+**🔴 KRITISKT — INNAN AI SVARAR:**
+
+AI MÅSTE explicit bekräfta vilka källor den läst:
+```
+"Jag har läst:
+✅ Mötesprotokollet (från raw-länk)
+✅ GitHub Project Board (senaste status)
+✅ Git log denna vecka (X commits)
+✅ Google Sheets Risker (HIGH/CRITICAL)
+✅ SPRINT_FOCUS_TIMELINE.md (deadlines)
+
+Här är nulägesrapporten:"
+```
+
+**Om någon källa inte är tillgänglig, MÅSTE AI säga det:**
+```
+❌ "Jag kunde inte läsa Mötesprotokollet (autentisering krävd)
+    Presenting status baserat på: GitHub Project Board + Git log
+    (Observera: saknar senaste mötesbeslut — läs protokollet manuellt)"
+```
+
+**AI presenterar (KORT & VISUELL):**
+
+```
+┌─────────────────────────────────────────────────┐
+│         🎯 HUR GÅR DET FÖR OSS? (NULÄGE)        │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│ PROGRESS:                                       │
+│  Frontend Team    ████████░░  78%  🟢 On track │
+│  Backend Team     ██████░░░░  60%  🟠 Slight delay
+│  Native Team      ████░░░░░░  40%  🟠 Behind  │
+│                                                 │
+│ DEADLINES:                                      │
+│  🔴 CTO Demo:        5 dagar kvar               │
+│  🟡 Kvaldemo:       35 dagar kvar               │
+│  🟢 Slutleverans:   55 dagar kvar               │
+│                                                 │
+│ BLOCKERS RIGHT NOW:                             │
+│  ❌ PR #51 awaiting review (1 dag)              │
+│  ❌ Swagger docs missing (1 dag)                │
+│  ✅ No critical code blockers                   │
+│                                                 │
+│ BIGGEST RISK:                                   │
+│  🔴 Risk Metrics bakom schedule (40% av 16h)    │
+│                                                 │
+│ NÄSTA VECKA:                                    │
+│  👉 Prioritera Risk Metrics finish              │
+│  👉 Start FX Converter om tid finns             │
+│  👉 Add test coverage (target 70%)              │
+│                                                 │
+└─────────────────────────────────────────────────┘
+```
+
+**Format (NPF-vänligt):**
+- ✅ Progress per team (visuella bars)
+- ✅ Deadlines med dagar kvar
+- ✅ Blockers som hindrar oss
+- ✅ Största risk just nu
+- ✅ Nästa prioriteringar
+- ✅ Allt på EN sida!
+
+**Källa citerad:**
+```
+"Läst från: GitHub Project Board, Mötesprotokollet (24 sep), SPRINT_TIMELINE"
+```
+
+---
+
 ## 📝 MÖTESPROTOKOLLET - Primär Källa
 
 **FÖRE ALLA MÖTES-FRÅGOR - LÄSA FÖRST:**

@@ -334,6 +334,18 @@ Annan AI: [läser TEAMSTANDARDS.md]
 
 ## 🎯 VAD KAN JAG FRÅGA AI:N OM?
 
+### Snabb Status-check
+```
+"Hur går det för oss?"
+→ AI läser GitHub + Mötesprotokollet + Risker → Nulägesrapport (30 sek!)
+   Visar: Progress per team | Deadlines | Blockers | Nästa prioriteringar
+
+"Vad är läget?"
+"Team status check"
+"Hur ligger vi till?"
+→ Samma resultat — kort & fokuserad visuell rapport
+```
+
 ### Grundläggande Frågor
 ```
 "Vad är projektet?"
@@ -401,6 +413,9 @@ Annan AI: [läser TEAMSTANDARDS.md]
 
 ### 🤔 Om Du Inte Vet Vad Du Vill Fråga:
 ```
+"Hur går det för oss?" ← START HÄR! (Snabb nulägesbild)
+→ AI presenterar progress, deadlines, blockers, nästa prioriteringar
+
 "Vad kan jag be om?"
 → AI presenterar denna lista
 
