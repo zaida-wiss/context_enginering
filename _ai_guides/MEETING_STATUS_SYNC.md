@@ -643,21 +643,68 @@ VISUELLA LANDMARKS (samma design varje gång):
 └──────────────────────────────────────────────────────┘
 ```
 
-### 4️⃣ NÄR? — Når är deadline?
+### 4️⃣ NÄR? — Sprint Goal & Deadlines
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│ TIMELINE:                                            │
+│ SPRINT TIMELINE:                                     │
 ├──────────────────────────────────────────────────────┤
-│ 📅 IDAG (Tisdag):    Swagger docs + start Risk       │
-│ 📅 IMORGON (Ons):    Pair programming + API test     │
-│ 📅 TORSDAG:          Finish Risk Metrics + test      │
-│ 📅 FREDAG:           Final touches + deployment prep │
 │                                                      │
-│ 🚨 HARD DEADLINE:    24 sep kl 16:00 (CTO session)   │
+│ 📅 MÅNDAG 09:00      Sprintplanering + kickoff      │
+│ 📅 TISDAG-TORSDAG    Utveckling (3 dagar full-time) │
 │                                                      │
-│ ⏱️ BUFFER:           48 timmar för fixes              │
+│ 🎯 SPRINT GOAL (denna veckas mål):                   │
+│    Alla KRITISKA issues 100% klara                  │
+│    ✅ Risk Metrics: Done                             │
+│    ✅ FX Converter: Done                             │
+│    ✅ Tests: 70%+ coverage                           │
+│    ✅ Dokumentation: Updated                         │
+│                                                      │
+│ ⏰ TORSDAG KL 15:00 — SPRINT AVSLUTAS                │
+│    Sista commits denna vecka                        │
+│    Allt ska vara testtat & mergat                   │
+│    Inte: "Vi börjar jobba på fredagen"              │
+│                                                      │
+│ 📅 FREDAG            Ingen kodarbete                │
+│    • Learning & reflektion                          │
+│    • Mötesprotokollet från denna vecka              │
+│    • Feedback på sprinten                           │
+│    • Lugn dag före deadline                         │
+│    • Tankearbete, dokumentation (ej kod)            │
+│                                                      │
+│ 🔴 HÅRD DEADLINE:    24 sep kl 16:00 (CTO-demo)     │
+│    Externa deadline - kan INTE skjutas               │
+│    Med 48h buffer från torsdag 15:00                 │
+│                                                      │
+│ 📅 MÅNDAG 09:00      Nästa sprint startar            │
+│                                                      │
 └──────────────────────────────────────────────────────┘
+
+📊 DENNA VECKAS MÅLSÄTTNING:
+
+TORSDAG KL 15:00 = SPRINT KLAR
+├─ Inte "nästan klar"
+├─ Inte "merge på fredagen"
+├─ Utan: Helt testade, dokumenterade, production-ready
+└─ Fredag = review + vila, ej kodarbete
+
+🟢 OM VI KLARAR TORSDAG KL 15:00:
+   ✅ Fredagen blir fokuserad review (ej stress)
+   ✅ CTO-demot blir stabil (ej sista-minuten-fixes)
+   ✅ Team får vila (psykologisk vikt)
+   ✅ Nästa sprint börjar frisk och fokuserad
+
+🔴 OM VI INTE KLARAR TORSDAG KL 15:00:
+   ❌ Fredagen blir kodarbete (stress på fredagen)
+   ❌ Risk: Inte klart för CTO-demo
+   ❌ Team burnout (redan jobbat hela veckan)
+   ❌ Nästa sprint börjar utmattad
+
+💡 STRATEGI:
+   → Prioritera aggressive (vad är MÅSTE-ha?)
+   → Scope cut aggressiv om behövs (bättre done än perfect)
+   → Torsdag 15:00 är NOT NEGOTIABLE (external deadline)
+   → Fredag är vila-dag (vi förtjänar det)
 ```
 
 ### 5️⃣ VEM? — Vem gör vad?
