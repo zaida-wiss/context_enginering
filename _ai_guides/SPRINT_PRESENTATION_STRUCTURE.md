@@ -12,12 +12,21 @@
 
 ## 📋 KORT INSTRUKTION FÖR AI
 
-1. ✅ Läs denna fil (SPRINT_PRESENTATION_STRUCTURE.md)
-2. ✅ Läs møtesprotokollet (SPRINT_PROTOCOL_NUMBERED.md) för denna vecka
+1. ✅ Läs denna fil (SPRINT_PRESENTATION_STRUCTURE.md) från början
+2. ✅ Läs mötesprotokollet (SPRINT_PROTOCOL_NUMBERED.md) för denna vecka
 3. ✅ Läs mötesprotokollet från Google Docs (raw-export länk i README.md)
-4. ✅ Skapa presentation enligt denna struktur (samma ordning, samma format)
-5. ✅ Varje slide får rätt symbol (📝①②③ etc)
-6. ✅ Output: PowerPoint, Google Slides, eller Markdown (berätta vilket du använder)
+4. ✅ Läs KURSMAL_OCH_BETYG.md för kursdatum
+5. ✅ Samla data denna vecka:
+   - Git log (vad blev gjort)
+   - GitHub Project Board (status)
+   - Branches/PRs/blockers
+   - Vem jobbar på vad
+6. ✅ Skapa presentation **EXAKT enligt denna struktur**
+   - Slide 0: Presentationsslide + Agenda
+   - Slide 1: Övergripande (KURSEN + PROJEKTET + AVANZA + TIDSLINJE)
+   - Slides 2-14: Se schema nedan
+7. ✅ Symbol 📝 till VÄNSTER, copy-paste text till HÖGER
+8. ✅ Output: PowerPoint/Google Slides/Markdown (berätta vilket)
 
 ---
 
@@ -35,38 +44,187 @@
 
 ---
 
-## 🎬 SLIDE 0 — AGENDA (ALLTID FÖRSTA SLIDEN)
+## 🎬 SLIDE 0 — PRESENTATIONSSLIDE (ALLTID FÖRSTA)
 
-**Slide 0.1 — AGENDA**
-- Titel: "MÖTESPUNKTER DENNA VECKA"
-- Innehål: Lista alla 11 punkter
-
+**Slide 0.1 — PRESENTATIONSSLIDE**
 ```
-📝① STATUS SEDAN FÖRRA MÖTE
-📝② ÖVERGRIPANDE MÅL & STATUS
-📝③ FRONTEND TEAM
-📝④ BACKEND TEAM
-📝⑤ NATIVE TEAM
-📝⑥ PRIORITERING & SCOPE
-📝⑦ ESTIMERING & RISK
-📝⑧ TEKNISKA BESLUT
-📝⑨ BEROENDEN & BLOCKERS
-📝⑩ ARBETSUPPGIFTER
-📝⑪ NÄSTA STEG & SAMMANFATTNING
+📝⓪ MÅNDAGSMÖTE — SPRINT PLANNING
+
+Tid: 09:00-10:30 (90 minuter)
+Syfte: Planera denna vecka, säkerställa vi når målen
+
+Vi täcker:
+✅ Vad vi gjort
+✅ Var vi står nu (3 målsystem)
+✅ Vad som är kritiskt
+✅ Prioritering & planering för denna vecka
+```
+
+**Slide 0.2 — AGENDA & PÅMINNELSE**
+```
+📝⓪ AGENDA — VI GÅR IGENOM DETTA SYSTEMATISKT
+
+📝① Övergripande status (3 målsystem)
+📝② Team-status: Frontend, Backend, Native
+📝③ Vad gjordes förra veckan
+📝④ Beroenden, Risker, Sårbarheter
+📝⑤ Team-support förslag
+📝⑥ Prioritering & Scope denna vecka
+📝⑦ Estimering & Risk
+📝⑧ Tekniska Beslut
+📝⑨ Arbetsuppgifter denna vecka
+📝⑩ Nästa Steg & Sammanfattning
+
+💡 VI HÅLLER MÖTET KORT & KONCIST
+- En punkt åt gången
+- Fokuserat på beslut, inte pratet
+- 90 minuter = vi är klara 10:30
 ```
 
 ---
 
-## 📋 PRESENTATION FLOW (90 minuter)
+## 🎬 SLIDE 1 — ÖVERGRIPANDE STATUS (TRE MÅLSYSTEM)
+
+**Slide 1.1 — 📝① KURSEN (17 KURSMÅL + BETYG)**
+```
+📝① KURSEN — VAD BEHÖVER VI UPPNÅ?
+
+Mål: Uppfylla alla 17 kursmål → G/VG betyg
+Fokus: Individuell bedömning + slutleverans
+
+Deadlines:
+🔴 4 november 15:00 — SLUTLEVERANS
+🟠 5 november 09:00 — FINALDAG (om vi är bland topp 4)
+
+Vad behövs för godkänt:
+✅ Kärnflödet fungerar
+✅ Git-historia är tydlig (individuell bidrag)
+✅ Dokumentation är komplett (README, beslut, tester)
+✅ Alla 17 kursmål adresserade
+
+Status denna vecka: 🟢 🟠 🔴 [välj EN]
+- Fortskridande: [X av 17 kursmål adresserade]
+- Risker: [Om någon kursmål hoppad?]
+```
+
+**Slide 1.2 — 📝① PROJEKTET (MVP V2 + LEVERABLES)**
+```
+📝① PROJEKTET — VAD SKA VI LEVERERA?
+
+Mål: Funktionerande MVP v2 som löser Annas problem
+
+MVP Scope:
+✅ Portföljöversikt (alle sparformer)
+✅ Riskmått (volatilitet, Sharpe, allokering)
+✅ Back-testing motor
+✅ FX-justering
+✅ Rebalanserings-förslag
+
+Deadlines:
+🔴 24 september 16:00 — CTO-DEMO (kod + arkitektur)
+🟠 15 oktober 17:00 — KVALDEMO (kund ser det)
+🟢 4 november 15:00 — SLUTLEVERANS
+
+Vad behövs för accept:
+✅ Kärnflödet end-to-end testbar
+✅ README, tester, beslutslogg
+✅ Kan köras lokalt
+✅ Inte perfekt, men säker & stabil
+
+Status denna vecka: 🟢 🟠 🔴 [välj EN]
+- Fortskridande: [X av MVP-features klara]
+- Risker: [CTO-demo? Kundfeedback?]
+```
+
+**Slide 1.3 — 📝① AVANZA SOM KUND (BEHOV)**
+```
+📝① AVANZA SOM KUND — VAD BEHÖVER ANNA?
+
+Problem Anna lösa:
+"Förklara min portfölj utan att göra det för komplicerat"
+
+Vad Anna behöver se:
+✅ Portföljöversikt (total värde, alla sparformer)
+✅ Risk-analys (vad är riskerna?)
+✅ Allokering (hur är det fördelat?)
+✅ Förslag (hur blir det bättre?)
+✅ Back-testing (hur hade det gått förut?)
+
+Feedback från Anna (om vi har den):
+- [Vad tycker hon är bra?]
+- [Vad behöver förbättras?]
+
+Status denna vecka: 🟢 🟠 🔴 [välj EN]
+- Löst: [Vilka av Annas behov lösta?]
+- Återstår: [Vilka behov återstår?]
+```
+
+**Slide 1.4 — 📝① TIDSLINJE & CHECKLISTOR**
+```
+📝① TIDSLINJE MED CHECKLISTOR
+
+INNAN DENNA VECKA SLUTAR (Torsdag 15:00):
+☐ Sprint goals 100% done
+☐ Tests at 70%+ coverage
+☐ All PRs merged
+☐ README updated
+☐ No Friday coding
+
+INNAN CTO-DEMO (24 sep 16:00):
+☐ Kärnflödet 100% stable
+☐ Risk Metrics + FX working
+☐ Dokumentation komplett
+☐ Git history tydlig
+☐ Demo plan klar
+
+INNAN KVALDEMO (15 okt):
+☐ Kundfeedback implementerad
+☐ UI/UX polerad
+☐ Performance OK
+
+INNAN SLUTLEVERANS (4 nov 15:00):
+☐ ALLT according to DoD
+☐ 17 kursmål adresserade
+☐ README complete
+☐ Tests passing
+☐ Git history clean
+
+Nu: ████████░░ 70% på vägen
+```
+
+---
+
+## 📋 PRESENTATION FLOW (90 minuter — 14 SLIDES)
 
 ```
-09:00-09:15 (15 min) — SLIDES 📝①②
-09:15-09:20 (5 min)  — SLIDES 🎙️ BREAKOUT INFO
-09:20-09:25 (5 min)  — TEAM BREAKOUTS (ingen slide, team diskuterar)
-09:25-09:30 (5 min)  — PAUS / SLIDES 🎙️ PAUS INFO
-09:30-10:00 (30 min) — SLIDES 📝③④⑤⑥
-10:00-10:25 (25 min) — SLIDES 📝⑦⑧
-10:25-10:30 (5 min)  — SLIDES 📝⑨⑩⑪
+09:00-09:10 (10 min) — SLIDES 0-1
+   📝⓪ Presentationsslide + Agenda
+   📝⓪ Påminnelse (kort & koncist)
+   📝① Övergripande (Kursen + Projektet + Avanza + Tidslinje)
+
+09:10-09:25 (15 min) — SLIDES 2-4 (TEAM STATUS)
+   📝② Frontend mot målen
+   📝③ Backend mot målen
+   📝④ Native mot målen
+
+09:25-09:30 (5 min)  — SLIDES 5-6
+   📝⑤ Vad gjordes förra veckan
+   📝⑥ Beroenden, Risker, Sårbarheter
+
+09:30-09:40 (10 min) — SLIDE 7
+   📝⑦ Team-support förslag (issue-byte, bryta ner, etc)
+
+09:40-10:00 (20 min) — SLIDES 8-10
+   📝⑧ Prioritering & Scope denna vecka
+   📝⑨ Estimering & Risk
+
+10:00-10:25 (25 min) — SLIDES 11-13
+   📝⑩ Tekniska Beslut (om några)
+   📝⑪ Arbetsuppgifter denna vecka
+   📝⑫ Nästa Steg & Sammanfattning
+
+10:25-10:30 (5 min) — AVSLUT
+   Bekräfta alla vet sitt jobb
 ```
 
 ---
