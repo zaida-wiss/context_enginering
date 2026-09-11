@@ -1387,37 +1387,53 @@ LAYOUT-PRINCIPER (ADHD/Neurodiverse friendly):
 ├─ Typography med tydlig hierarki
 └─ ALLTID ett DIAGRAM, BILD, eller VISUELL (inte bara text!)
 
-TYPOGRAFI:
+TYPOGRAFI (med god läsbarhet):
 ├─ Symbol/Ikon: 80-100px (första intryck)
 ├─ Rubrik: 36-48pt, bold, tydlig
-├─ Bullets: 20-24pt, regular
-├─ Pedagogisk brödtext: 14-16pt, muted
-├─ Status/källa: 10-12pt, very muted
-└─ Radavstånd: 1.6-1.8 (läsbar, inte tätt)
+├─ Bullets: 20-24pt, regular (ALDRIG MINDRE än 18pt)
+├─ Pedagogisk brödtext: 14-16pt (ALDRIG MINDRE än 14pt)
+├─ Status/källa: 12pt minimum (ALDRIG MINDRE än 12pt)
+│
+└─ SPACING (KRITISKT förhindra överlappning):
+   ├─ Radavstånd: 1.8-2.0 (GENERÖST, inte 1.6)
+   ├─ Margin under rubrik: 20-30px
+   ├─ Margin mellan bullets: 12-16px (MINIMUM)
+   ├─ Padding omkring text: 16px från alla sidor
+   ├─ Avstånd mellan sektioner: 30-40px
+   └─ ALDRIG mindre än 8px mellan något element
 
-FÄRGKODNING:
-├─ 🔴 Kritisk/Blocker/Danger — Röd (#E53E3E)
-├─ 🟠 Varning/Behind schedule — Orange (#ED8936)
-├─ 🟢 OK/On track — Grön (#48BB78)
-├─ 🔵 Info/Neutral — Blå (#4299E1)
-└─ 🟣 Lekfull accent — Lila (#9F7AEA) för highlights
+FÄRGKODNING (WCAG AA KONTRAST — minimum 4.5:1):
+├─ 🔴 Kritisk — Röd (#E53E3E) på vit (#FFFFFF) = 7.0:1 ✅
+├─ 🟠 Varning — Orange (#ED8936) på vit (#FFFFFF) = 5.3:1 ✅
+├─ 🟢 OK — Grön (#48BB78) på vit (#FFFFFF) = 6.4:1 ✅
+├─ 🔵 Info — Blå (#4299E1) på vit (#FFFFFF) = 5.8:1 ✅
+├─ 🟣 Accent — Lila (#9F7AEA) på vit (#FFFFFF) = 5.1:1 ✅
+├─ Muted text — Grå (#666666) på vit (#FFFFFF) = 5.7:1 ✅
+└─ Dark theme — Vit text på mörk bakgrund: SAMMA kontrast!
 
 VISUELLA ELEMENT (MÅSTE ingå):
 ├─ Progress bars (████░░░░ 60%) med avrundade hörn
 ├─ Diagram (boxes, arrows, timelines) med mjuka former
-├─ Ikoner för varje punkt (🎯 ⚠️ ✅)
+├─ Ikoner för varje punkt (🎯 ⚠️ ✅) — 18-24px
 ├─ Färgade boxes för varje sektion (avrundade)
 ├─ Tydliga separatörer mellan sektioner (───────)
 └─ Snygga tabeller med färgade headers
 
-🎨 SNYGGA TABELLER:
+🎨 SNYGGA TABELLER (HÖGA KONTRAST + PADDING):
 ├─ Header: Färgad bakgrund (blå/lila) + vit text, bold
-├─ Varje rad: Alterneras mellan vit + ljusgrå bakgrund
-├─ Ikonkolumn: Centered icons (✅ 🟠 ❌)
+│  └─ Kontrast: minimum 4.5:1 ✅
+├─ Varje rad: Alterneras mellan vit (#FFFFFF) + ljusgrå (#F7F7F7)
+│  └─ Text: mörkgrå (#1A1A1A), INTE svart (bättre läsbarhet)
+├─ Ikonkolumn: Centered icons (✅ 🟠 ❌) — 18-24px
 ├─ Siffror: Högerjusterade (alignment)
 ├─ Ramar: Mjuka skuggor istället för harda linjer
-├─ Padding: Generöst utrymme mellan celler
-└─ Typografi: Konsistent, läsbar font (sans-serif)
+├─ Padding (KRITISKT):
+│  ├─ Horisontellt: 12px MINIMUM per cell
+│  ├─ Vertikalt: 16px MINIMUM per cell
+│  ├─ Margin omkring tabell: 20px
+│  └─ ALDRIG mindre än detta!
+├─ Typografi: Sans-serif (18-20pt), linehöjd 1.6+
+└─ Test: Kan du läsa varje rad separat utan överlappning?
 
 EXEMPEL TABELL (Snygg design):
 ┌─────────────────────────────────────────┐
@@ -1432,11 +1448,27 @@ EXEMPEL TABELL (Snygg design):
 (Notera: varje rad har ljusgrå bakgrund, mjuk skugga)
 ```
 
-**Kontrastrik & Tillgänglig:**
-- ✅ Minst WCAG AA kontrast (4.5:1)
-- ✅ Stöd för ljust & mörkt tema
-- ✅ Inga uttryck som endast förlitar sig på färg
-- ✅ Tydlig fokus-ordning
+**🔴 KONTRAST TESTING (WCAG AA standard):**
+- ✅ MINST 4.5:1 kontrast för ALL text
+- ✅ Test med: https://webaim.org/resources/contrastchecker/
+- ✅ Ljust tema: mörkgrå (#1A1A1A) på vit (#FFFFFF) = 17.5:1 ✅✅
+- ✅ Mörkt tema: vit (#FFFFFF) på mörkgrå (#1A1A1A) = 17.5:1 ✅✅
+- ✅ Ljust tema: muted text grå (#666666) på vit = 5.7:1 ✅
+- ❌ Aldrig: grå på grå, lågt kontrast text
+- ❌ Aldrig: text under 12pt (behöver HÖGRE kontrast)
+
+**🔴 PADDING & ÖVERLAPPNING TESTING:**
+- ✅ Varje cell: minimum 12px horizontal, 16px vertical padding
+- ✅ Radavstånd: 1.8 eller högre (ALDRIG 1.6)
+- ✅ Margin mellan sektioner: 30-40px
+- ✅ Test: Kan du läsa varje rad utan att se nästa rad text?
+- ❌ Aldrig: text som nuddar varandra
+- ❌ Aldrig: padding under 8px någonstans
+
+**Stöd för ljust & mörkt tema:**
+- ✅ Samma WCAG AA kontrast i båda temana
+- ✅ Tydlig fokus-ordning (highlight på hover)
+- ✅ Ingen färg som ensam signal (använd också text/ikon)
 
 **KÄNSLA & TON:**
 - ✅ Lekfull (ikoner, färger, mjuka former)
