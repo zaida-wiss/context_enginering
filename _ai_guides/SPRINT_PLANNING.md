@@ -55,7 +55,21 @@
 ---
 
 - [ ] **1. Läs Mötesprotokollet FÖRST**
+  - **🔴 KRITISKT:** Kopiera helt mötesprotokollet och paste till AI
   - Länk: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+  - Raw-export (om AI har åtkomst): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+  
+  **Hur man delar med AI:**
+  ```
+  Du: "Läs detta mötesprotokollet och förbered sedan för mandagsmötet:
+  
+  [KOPIERA HELT INNEHÅLLET FRÅN GOOGLE DOCS HÄR]
+  
+  Länk till original: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+  
+  Sedan: Förbered FÖR mandagsmötet"
+  ```
+  
   - Format: I = Information, B = Beslut
   - **DETTA är källan till vad som diskuterades förra veckan**
   - Vilka action items har vi?
