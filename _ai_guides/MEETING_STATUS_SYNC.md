@@ -705,28 +705,107 @@ VARJE PRESENTATION:
 [TIMELINE] Exakt tidslinje (inte "denna vecka")
 ```
 
-### Exempel: Visuell Status-dashboard (Snygg Design)
+### Exempel: Team Status Dashboard (Färgkodad Bedömning)
 
 ```
+🟢 FRONTEND TEAM — ON TRACK
 ╔═══════════════════════════════════════════════════════════╗
-║               📊 STATUS DENNA VECKA                       ║
-╠═══════════════════════════════════════════════════════════╣
+║  Frontend Team Status (Marco, Anna, Kiran)               ║
 ║                                                           ║
-║  Risk Metrics       ████████░░  80%  🔴 (CRITICAL: 1d)   ║
-║  FX Converter       ██░░░░░░░░  20%  🟠 (BEHIND: 2d)     ║
-║  Tests             ████░░░░░░  40%  🟠 (BEHIND: 3d)      ║
-║  Documentation     ████████░░  80%  🟢 (OK)               ║
+║  Progress denna vecka:  ████████░░  80%                  ║
+║  Issues completed:      3 / 5                            ║
+║  Tests written:         ✅ All passing                   ║
+║  Blockers:              ❌ None                          ║
 ║                                                           ║
-║ ─────────────────────────────────────────────────────── ║
-║                                                           ║
-║  🚨 BLOCKERS:       0  (All PRs green!)                   ║
-║  ⏰ TIME UNTIL CTO:  5 dagar                              ║
-║  📌 PRIORITIES:     Risk → FX → Tests                     ║
-║                                                           ║
+║  🟢 Status: ON TRACK                                     ║
+║  │  ✅ Risk Metrics integration done                     ║
+║  │  ✅ Target Allocation component working               ║
+║  │  ⏳ UI refinement (not blocking)                      ║
+║  │                                                       ║
+║  └─ Kan du hjälpa Backend? Vill du jobba på något?      ║
 ╚═══════════════════════════════════════════════════════════╝
 
-(Design: Mjuka skuggor, färgade progress bars, ikoner,
-avrundade hörn, lekfull känsla)
+🟠 BACKEND TEAM — SLIGHT DELAY
+╔═══════════════════════════════════════════════════════════╗
+║  Backend Team Status (Marco, Jana)                       ║
+║                                                           ║
+║  Progress denna vecka:  ██████░░░░  60%                  ║
+║  Issues completed:      2 / 4                            ║
+║  Tests written:         ✅ 65% coverage                  ║
+║  Blockers:              ⚠️  Swagger docs (1 dag)         ║
+║                                                           ║
+║  🟠 Status: SLIGHT DELAY (recoverable)                   ║
+║  │  ✅ Risk Metrics API (80% done, torsdag)              ║
+║  │  ⚠️  FX Converter (30% done, väntar på swagger)      ║
+║  │  ❓ Tests (väntar på API klara)                       ║
+║  │                                                       ║
+║  └─ Behöver ni support? Kan Frontend hjälpa?            ║
+╚═══════════════════════════════════════════════════════════╝
+
+🔴 NATIVE TEAM — CRITICAL (BLOCKER RISK)
+╔═══════════════════════════════════════════════════════════╗
+║  Native Team Status (Kiran)                              ║
+║                                                           ║
+║  Progress denna vecka:  ████░░░░░░  40%                  ║
+║  Issues completed:      1 / 3                            ║
+║  Tests written:         ⚠️  45% coverage (target 70%)    ║
+║  Blockers:              🔴 CRITICAL — Calculation spec   ║
+║                                                           ║
+║  🔴 Status: CRITICAL — BLOCKER RISK                      ║
+║  │  ✅ Volatility calculation (70% done)                 ║
+║  │  ❌ Sharpe ratio calc (NOT STARTED — waiting spec)    ║
+║  │  ❌ Test coverage low (45% vs 70% target)             ║
+║  │                                                       ║
+║  │  BLOCKER: Backend behöver spec för Sharpe calc        ║
+║  │  Impact: Kan inte testa Risk Metrics utan detta       ║
+║  │  Timeline: MÅSTE lösa IDAG för att hinna              ║
+║  │                                                       ║
+║  └─ 🚨 OMEDELBAR ÅTGÄRD:                                 ║
+║     Backend + Native = pair session 14:00 idag            ║
+║     Skriv spec tillsammans, Kiran implementerar 15-17     ║
+╚═══════════════════════════════════════════════════════════╝
+
+SUMMARY (3 Teams At a Glance):
+┌─────────────────────────────────────────────────────────┐
+│ 🟢 Frontend: On track (80%)                             │
+│ 🟠 Backend: Slight delay but recoverable (60%)          │
+│ 🔴 Native: CRITICAL — needs immediate help             │
+│                                                         │
+│ 🚨 ACTION: Backend+Native pair session 14:00 today     │
+│ 📅 DEADLINE: 24 sep 16:00 (CTO) — Still on track       │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Färgkodning — Vad Betyder Varje Färg?**
+
+```
+🟢 ON TRACK (Grön border)
+├─ Progress: 70%+ av veckan uppnådd
+├─ Issues: Blir klara enligt plan
+├─ Blockers: Inga kritiska
+├─ Tests: Skrivna & passande
+├─ Risk: Låg
+└─ Action: Håll denna fart! Kan du hjälpa någon annan?
+
+🟠 SLIGHT DELAY (Orange border)
+├─ Progress: 50-70% av veckan uppnådd
+├─ Issues: Lite bakom men kan återhämta
+├─ Blockers: Mindre (kan lösas denna vecka)
+├─ Tests: Okej, men inte optimalt
+├─ Risk: Medel (men managebar)
+└─ Action: Vad behöver ni? Kära möjligheter att accelerera?
+
+🔴 CRITICAL (Röd border)
+├─ Progress: <50% av veckan uppnådd
+├─ Issues: Kommer inte bli klara
+├─ Blockers: KRITISKA — blockerar andra team
+├─ Tests: Underskridande eller missande
+├─ Risk: HÖG — kan missa deadline
+└─ Action: 🚨 OMEDELBAR ÅTGÄRD — vad behöver ni nu?
+          ├─ Pair programming? 
+          ├─ Support från annan team?
+          ├─ Scope cut?
+          └─ Resurslyfting?
 ```
 
 ### Exempel: Snygg Tabell (Active Issues)

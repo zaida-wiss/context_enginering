@@ -98,14 +98,21 @@ Väntar på mötesprotokollet innan jag presenterar..."
    • Färgkodning (🔴 🟡 🟢)
    • Countdown till deadline
 
-✅ STEG 3: SNYGGA TABELLER (samma design ALLTID)
+✅ STEG 3: TEAM STATUS DASHBOARD (Färgkodad Bedömning)
+   • 🟢 ON TRACK (grön border) — Progress 70%+, inga blockers
+   • 🟠 SLIGHT DELAY (orange border) — Progress 50-70%, recovery möjlig
+   • 🔴 CRITICAL (röd border) — Progress <50%, omedelbar åtgärd behövs
+   • Varje team: progres%, issues completed, blockers, status
+   • Action items explicit (vad behöver denna team?)
+
+✅ STEG 4: SNYGGA TABELLER (samma design ALLTID)
    • Färgad header (blå/lila) - samma varje gång
    • Alternerad radförg (vit/grå) - samma varje gång
    • Status-ikoner vänster - samma varje gång
    • Procent höger - samma varje gång
    • Mjuka skuggor - samma varje gång
 
-✅ STEG 4: PEDAGOGISKA SLIDES (Problem → Tänk → Lösning)
+✅ STEG 5: PEDAGOGISKA SLIDES (Problem → Tänk → Lösning)
    • Slide 1: Cover (samma design)
    • Slide 2-10: Problem → TÄNK → Lösning (samma struktur)
    • Varje slide: 📖 VAD? 🛠️ HUR? 💡 VARFÖR?
