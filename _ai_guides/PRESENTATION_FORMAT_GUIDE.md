@@ -274,6 +274,61 @@ Röd border endast runt Native-teamstatus (visar faktisk kritisk status)
 
 ---
 
+## 🎨 SYMBOLER & STATISTIK — ANVÄND ÖVERALLT
+
+### Symboler för snabb överblick:
+
+```
+STATUS-SYMBOLER:
+✅ Klart / Done / Delivered
+⏳ Pågår / In Progress
+🔜 Planerat / Upcoming / Inte startad
+⚠️ Blocker / Problem / Risk
+🔴 Kritisk / Critical / Omedelbar åtgärd
+🟢🟠🔴 Status-färger (grön/orange/röd)
+
+KONTEXT-SYMBOLER:
+💪 Motiverande / Vi löser detta!
+🎯 Fokus denna vecka
+📊 Statistik / Data visar
+📈 Trend / Utveckling
+🔗 Beroende / Väntar på
+👥 Assignee / Person
+⏰ Deadline / Tid
+🚀 Launch / Ready to go
+🛠️ Under konstruktion / Building
+📋 Checklist / Plan
+🤝 Samarbete / Together
+🚨 Urgent / Immediate
+```
+
+### Statistik (alltid visa konkret data):
+
+```
+PROGRESS:
+████░░ Progress bar (visuell framsteg)
+80%, 60%, 40% (procenttal)
+4/5 issues done (ratio — vad/totalt)
+Fortskridande: 14/17 (framsteg mot mål)
+
+KAPACITET:
+18h needed / 20h available (timmar)
+Pass vi? Ja/Nej
+Buffer: 2h kvar
+
+DEADLINES:
+MON 14:00 (konkret tid, inte "snart")
+THU 15:00 (när måste det vara klart)
+I dag / Denna vecka / Nästa vecka
+
+TEAM:
+2/3 assignees working (vem jobbar)
+3 blockers identified (antal problem)
+1 critical issue (prioritet)
+```
+
+---
+
 ## 🎬 SLIDE-FORMAT EXEMPEL
 
 ### **SLIDE 0.1 — 📝⓪ PRESENTATIONSSLIDE**
@@ -638,6 +693,52 @@ REGLER:
   - SYFTE: Sammanlänka issues (samma person fortsätter sitt arbete)
 - Timestimat (h) — faktiska estimat
 - Kan copy-pastas direkt till protokollet
+```
+
+---
+
+### **SLIDE 8.5 — 🆕 BLOCKERS — VISUELL FLOWCHART (SEPARAT SLIDE)**
+
+```
+╔════════════════════════════════════════════════╗
+║ 🚨 BLOCKERS — HUR BLOCKAR DE OSS?              ║
+║                                                ║
+║ BLOCKER 1: Sharpe formula spec                 ║
+║ ┌────────────────────────────────────────┐    ║
+║ │ VÄNTAR PÅ: Backend API team            │    ║
+║ │ BLOCKERAR:                              │    ║
+║ │   → Native implementation (#40)         │    ║
+║ │   → Frontend testing (#51)              │    ║
+║ │                                         │    ║
+║ │ STATUS: 🔴 CRITICAL                    │    ║
+║ │ FÖRVÄNTAS: WED 14:00                    │    ║
+║ │ ÅTGÄRD: Backend + Native pair prog     │    ║
+║ │          MON 14:00-17:00               │    ║
+║ └────────────────────────────────────────┘    ║
+║                                                ║
+║ BLOCKER 2: Test data fixtures                 ║
+║ ┌────────────────────────────────────────┐    ║
+║ │ VÄNTAR PÅ: QA team (externa)           │    ║
+║ │ BLOCKERAR:                              │    ║
+║ │   → All integration testing             │    ║
+║ │   → Performance validation              │    ║
+║ │                                         │    ║
+║ │ STATUS: 🟠 SLIGHT DELAY                │    ║
+║ │ FÖRVÄNTAS: THU 09:00                    │    ║
+║ │ ÅTGÄRD: Mock fixtures denna dag        │    ║
+║ │          tills externa data kommer     │    ║
+║ └────────────────────────────────────────┘    ║
+║                                                ║
+╚════════════════════════════════════════════════╝
+
+REGLER:
+- Visuell blockeringskedja (vad blockeras av vad)
+- 🚨 VISUELL — pilar visar block-relationer
+- Vem blockerar vem / vilken team / vilken extern
+- Förväntat datum för lösning (konkret)
+- Åtgärd nu (vad gör vi medan vi väntar)
+- ⬛ Svart border (neutral information, inte status-bedömning)
+- Status-färger INOM blockers (🔴🟠 visar allvarlighetsgrad)
 ```
 
 ---
