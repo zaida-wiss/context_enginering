@@ -320,31 +320,84 @@ Annan AI: [läser TEAMSTANDARDS.md]
 
 ---
 
-## 🎯 Quick Commands För AI
+## 🎯 VAD KAN JAG FRÅGA AI:N OM?
 
-**"Vad är projektet?"**  
-→ Läs PROJEKTKONTEXT.md
+### Grundläggande Frågor
+```
+"Vad är projektet?"
+→ AI läser PROJEKTKONTEXT.md → Förklarar Annas problem + MVP
 
-**"Vilka är kodstandarder?"**  
-→ Läs TEAMSTANDARDS.md
+"Vilka är kodstandarder?"
+→ AI läser TEAMSTANDARDS.md → Visar Git-format, kodregler, branch-naming
 
-**"Är detta godkänt arbete?"**  
-→ Läs DEFINITION_OF_DONE.md
+"Vad är godkänt arbete?"
+→ AI läser DEFINITION_OF_DONE.md → Visar AC vs DoD, test-krav, dokumentation
 
-**"Vilka är arkitektur-beslut?"**  
-→ Läs DECISIONS.md
+"Vilka arkitektur-beslut tog ni?"
+→ AI läser DECISIONS.md → Varför Java? React? C++?
 
-**"Hur verifierar vi systemet?"**  
-→ Läs VERIFICATION_SYSTEM.md
+"Hur verifierar vi systemet?"
+→ AI läser VERIFICATION_SYSTEM.md → Veckovisa checkpoints
+```
 
-**"Vilka är denna veckas fokus?"**  
-→ Läs SPRINT_FOCUS_TIMELINE.md + ge mig git log + Project Board
+### Issue-hjälp
+```
+"Hjälp mig med denna issue [copypaste från GitHub]"
+→ AI läser issue → Ställer arkitektur-frågor → Guider tänkandet
 
-**"Hjälp mig planera sprint"**  
-→ Läs SPRINT_PLANNING.md
+"Är min implementering klar?"
+→ AI jämför mot DEFINITION_OF_DONE.md → Checkar AC, tests, dokumentation
 
-**"Kör möte"**  
-→ Läs AI_TEAMLEADER.md + relevant MEETING-fil
+"Ge mig en presentation av denna veckas status"
+→ AI läser git log + GitHub Project Board → Skapar 11 visuella slides
+```
+
+### Möten
+```
+"Förbered FÖR tisdagsmötet"
+→ AI läser git + deadlines → Presenterar status mot CTO deadline
+
+"Förbered FÖR mandagsmötet"
+→ AI läser denna veckas fokus → Planerar nästa vecka
+
+"Kör sprint review möte"
+→ AI läser vad blev klart denna vecka → Presenterar lärdomar
+```
+
+### Backlog & Planering
+```
+"Vilka är de viktigaste issues denna vecka?"
+→ AI läser GitHub Project Board + SPRINT_FOCUS_TIMELINE.md
+
+"Vilka issues är blockade?"
+→ AI läser Project Board + git branches → Identifierar blockers
+
+"Skapa nya issues enligt vår format"
+→ AI läser WHAT_CAN_I_HELP_WITH.md → Presenterar [Category] format + DoR/DoD
+```
+
+### Performance & Feedback
+```
+"Vilka är Lighthouse-scores denna vecka?"
+→ AI läser CI/CD reports + MEETING_STATUS_SYNC.md
+
+"Ge feedback på denna kod"
+→ AI läser TEAMSTANDARDS.md + DEFINITION_OF_DONE.md → Reviewar mot regler
+```
+
+---
+
+### 🤔 Om Du Inte Vet Vad Du Vill Fråga:
+```
+"Vad kan jag be om?"
+→ AI presenterar denna lista
+
+"Vad är viktigt denna vecka?"
+→ AI läser SPRINT_FOCUS_TIMELINE.md + GitHub Project Board
+
+"Vad bör vi fokusera på?"
+→ AI läser deadlines + Git-status → Presenterar prioriteringar
+```
 
 ---
 

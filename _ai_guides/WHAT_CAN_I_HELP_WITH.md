@@ -1,6 +1,9 @@
 # 🤖 Vad Kan Jag (AI) Hjälpa Dig Med?
 
-**Läs denna fil när du inte vet vad du ska be mig om.**
+**Läs denna fil för detaljerade instruktioner.**
+
+**Se även:** Root README.md har en meny över VAD KAN JAG FRÅGA AI:N OM?
+- Länk: https://github.com/zaida-wiss/context_enginering#-vad-kan-jag-fråga-ain-om
 
 ---
 

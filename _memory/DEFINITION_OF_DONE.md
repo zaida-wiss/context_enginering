@@ -72,7 +72,7 @@ DoD (Definition of Done)     = HUR säkerställer vi det är klart?
 ## ✅ Definition of Done - INNAN Vi Stänger
 
 En feature/fix är **DONE** när den uppfyller ALLT här (inklusive AC):
-ör
+örmc
 ## ⚠️ ALLRA VIKTIGASTE: TÄVLINGEN ≠ BETYGET
 
 **Läs detta först!**
