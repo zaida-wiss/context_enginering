@@ -453,6 +453,60 @@ AI: [Faciliterar mötet enligt agenda ovan]
 
 ---
 
+## 🎨 SLIDE PRESENTATION FORMAT
+
+**Vill du ha mötet som visuell presentation istället för text?**
+
+**Kommando för AI:**
+```
+Du: "Gör en presentation av denna veckas status sync möte"
+AI: [Skapar visuell slide-presentation, 1 slide per sektion]
+```
+
+**Presentation innehåller:**
+- Slide 1: Cover slide (Status Sync - Vecka X)
+- Slide 2: Deadlines & vad som måste vara klart
+- Slide 3: Performance Metrics (Lighthouse, coverage %)
+- Slide 4: Develop status (✅ klart, 🔄 pågår, ❌ inte startat)
+- Slide 5: Active branches (prioriterad ordning + blockers)
+- Slide 6: PRs under review (merge decisions)
+- Slide 7: Nyligen startade (vad förbättrar de)
+- Slide 8: BLOCKERS & lösningsförslag
+- Slide 9: Gap analysis mot deadlines
+- Slide 10: Action items & decisions
+- Slide 11: Next steps
+
+**Slide-design:**
+- ✅ Luftig layout (mycket whitespace)
+- ✅ Symboler/ikoner för varje punkt (✅ ❌ 🔴 🟡 🟢 ⏰)
+- ✅ En huvud-punkt per slide (max 3-5 bullet points)
+- ✅ Färger för prioriteter (röd=kritisk, gul=varning, grön=ok)
+- ✅ Tydlig typografi (stor rubrik, läsbar text)
+- ✅ Kontrastrik design (ljust/mörkt tema)
+
+**Exempel på en slide (Deadlines):**
+```
+┌─────────────────────────────────────────────────┐
+│         ⏰ DEADLINES & VÅ MÅSTE VARA KLART      │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│   🔴 CTO Deadline — 24 sep                      │
+│      ├─ Risk metrics: 40% ✅ (MUST finish)     │
+│      ├─ FX converter: 30% ✅ (MUST finish)     │
+│      └─ Tests: 45% ❌ (target 70%)             │
+│                                                 │
+│   🟡 Kvaldemo — 15 okt                         │
+│      ├─ UI polishing: On track ✅              │
+│      └─ Real Avanza data: Pending ⏳           │
+│                                                 │
+│   🟢 Slutleverans — 4 nov                      │
+│      └─ All customer feedback implemented ✅   │
+│                                                 │
+└─────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎬 Mötesschema
 
 | Veckodag | Tid | Mötestyp | Facilitator | Focus |
