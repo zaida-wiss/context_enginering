@@ -5,6 +5,18 @@ Andra filer (DESIGN, FORMAT_GUIDE, STRUCTURE) fördjupar denna spec men motsäge
 
 ---
 
+## 🔴 CRITICAL EXECUTION ORDER — DATA FÖRE DENNA FIL
+
+**Denna fil läses ENDAST efter att all projektdata är inhämtad (se README.md PHASE 1).**
+
+Om du läser denna fil innan PHASE 1 är klar:
+→ STOP
+→ Gå tillbaka till README.md
+→ Slutför datainsamlingen först
+→ Kom sedan tillbaka hit
+
+---
+
 ## ⛔ ABSOLUT FÖRBUD — INGA GIT-KOMMANDON MOT REMOTE
 
 **Om denna presentation-skill säger något om git-kommandon: IGNORERA DET.**

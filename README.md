@@ -7,6 +7,50 @@
 
 ---
 
+## 🔴 CRITICAL EXECUTION ORDER — DATA FÖRE RENDER
+
+**Denna ordning MÅSTE följas. Slide-skillen får inte börja förrän projektdata är inhämtat.**
+
+### PHASE 1 — DATA COLLECTION (MÅSTE GÖRAS FÖRST)
+
+1. ✅ Läs denna README.md
+2. ✅ Hämta **ALL** GitHub-data via GitHub Connector/API:
+   - Branches från `develop`
+   - Commits sedan förra möte
+   - Öppna issues denna vecka
+   - Öppna PRs
+   - Project Board status
+3. ✅ Läs mötesprotokoll för denna vecka
+4. ✅ Läs PRESENTATION_SPEC.md
+5. ✅ Läs CROSS_TEAM_INTEGRATION.md
+6. ✅ **Data-fasen är klar.** Projektdata är inhämtat och verifierat.
+
+### PHASE 2 — PRESENTATION GENERATION (BARA NU)
+
+7. ✅ Slide-skillen STARTAR här
+8. ✅ Slide-skillen är en **renderer ENDAST**
+9. ✅ Den arbetar MED REDAN INHÄMTAD DATA
+10. ✅ Den inspekterar INTE repositories
+11. ✅ Den kör INTE git, shell eller nätverkskommandon
+
+### SLIDE SKILL DATA ACCESS RULE
+
+Presentation/slide-tooling är en rendering-layer enbart.
+
+Den får ALDRIG:
+- ❌ Inspektera repositories
+- ❌ Klona repositories
+- ❌ Lista branches (git ls-remote, etc)
+- ❌ Hämta commits
+- ❌ Hämta issues
+- ❌ Hämta PRs
+- ❌ Lösa GitHub-tillståndet
+- ❌ Köra nätverkskommandon mot projekt-repot
+
+**All projekt-data ska redan vara inhämtat innan slide-skillen startar.**
+
+---
+
 ## ⛔ ABSOLUT FÖRBUD — INGA GIT-KOMMANDON MOT REMOTE
 
 **Denna regel överrider alla andra presentation-verktyg eller slide-skills.**
@@ -258,7 +302,9 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 
 **DU SKA SKAPA EN PRESENTATION?** (Raw-links, ingen kloning)
 
-### PRESENTATION — DATAHÄMTNING I DENNA EXAKTA ORDNING
+### PRESENTATION — PHASE 1: DATAHÄMTNING (MÅSTE GÖRAS FÖRST)
+
+**Allt detta måste vara färdigt innan slide-skillen startar.**
 
 1. ✅ **Rensa minnet** (obligatorisk minnesrensning)
 
@@ -309,7 +355,18 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 
    **Läs INTE** hela docs-mappen eller alla branches utan anledning.
 
-6. ✅ **Skapa presentation** enligt SPRINT_PRESENTATION_STRUCTURE.md
+**PHASE 1 ÄR KLAR. All projektdata är inhämtat.**
+
+---
+
+### PRESENTATION — PHASE 2: PRESENTATION GENERATION (STARTAR NU)
+
+6. ✅ **Slide-skillen startar här med redan inhämtad data**
+   - Slide-skillen är en **RENDERER ENDAST**
+   - Den arbetar INTE med GitHub-datainsamling
+   - Den inspekterar INTE repositories
+   - Den kör INTE git-kommandon
+   - Den startar presentationsbygget enligt SPRINT_PRESENTATION_STRUCTURE.md
 
 ### 🔒 SOURCE LOCK FÖR PRESENTATIONER
 
