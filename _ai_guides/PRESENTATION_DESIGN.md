@@ -4,7 +4,9 @@
 
 ## Design-Principer (TVINGANDE)
 
-### ✅ MEGA-REGEL 0: Visuell Pedagogik för Bildtänkare
+### ✅ MEGA-REGEL 0: Visual-First — Bilder Före Text
+
+**Man ska kunna förstå huvudbudskapet innan man läser brödtexten.**
 
 Presentationen är INTE bara text. Den är FÖR DE SOM TÄNKER BILDLIGT.
 
@@ -194,7 +196,66 @@ Definition of Done (checklist för färdigt arbete)
 - Möten blir lärtillfällen, inte bara rapporter
 - Vanlig ordbok byggas upp över tid
 
-### ✅ MEGA-REGEL 5: Färg Är Semantik, Inte Dekoratör
+### ✅ MEGA-REGEL 5: Layout Safety & Text Responsiveness (NPF/Dyslexia-First)
+
+**NPF/Dyslexia-first: Presentatören ska aldrig behöva säga "det är lite mycket text här".**
+
+#### Text Responsiveness — Prioritetsordning När Text Inte Får Plats
+
+```
+1. ✅ Förenkla formuleringen
+   Från: "Frontend väntar på Backend API-specifikation som ännu inte är dokumenterad"
+   Till: "Frontend väntar på API-spec"
+
+2. ✅ Gör element större
+   Från: Card 400px bred
+   Till: Card 600px bred
+
+3. ✅ Ändra layout
+   Från: Sex issues på en rad
+   Till: Tre issues på två rader
+
+4. ✅ Dela sliden
+   Från: Allt på en slide
+   Till: Split på två slides (båda märkta samma symbol)
+
+❌ ALDRIG: Krympa font
+Texten får ALDRIG skrumpas för att få plats.
+Om 14pt inte funkar → 18pt + större element eller dela sliden.
+```
+
+#### Minsta Fontstorlekar (Absolute Minimum)
+
+```
+☐ Rubrik: 28 pt
+☐ Huvudtext: 16 pt  
+☐ Metadata (issue #, assignee): 14 pt
+```
+
+#### 5-Sekunders-Test (Obligatorisk)
+
+```
+Titta på sliden i fem sekunder.
+Kan du svara på "Vad handlar detta om?" utan att läsa all text?
+
+✅ RÄTT: Ikonerna, rubriken och pilarna säger berättelsen
+❌ FEL: Du måste läsa all text
+```
+
+#### Render QA Checklist (Obligatorisk Innan Leverans)
+
+```
+❌ UNDERKÄNN OM:
+  - Text överlappar boxens kant
+  - Text är clipped (beskuren)
+  - Padding mindre än 12px
+  - Fontstorlek mindre än 14pt
+  - Textblock större än 4 rader (utan avsnittuppdelning)
+  - Kort verkar överfulla (<60 % tomt utrymme)
+  - En slide behöver ursäkt för att det är mycket text
+```
+
+### ✅ MEGA-REGEL 6: Färg Är Semantik, Aldrig Dekoratör
 
 **Varje färg måste betyda något konkret. Ingen dekorativ färgning.**
 
@@ -248,7 +309,10 @@ EXEMPEL PÅ KORREKT ANVÄNDNING:
 
 ## Checklist Innan Leverans
 
-**VISUELLA ELEMENT:**
+**VISUAL-FIRST:**
+- [ ] 5-Sekunders-test: Förstår du huvudbudskapet utan att läsa brödtext?
+- [ ] Finger-test: Kan presentatören peka och visa flödet?
+- [ ] Skumläsnings-test: Förstår du med bara rubriker + symboler + pilar?
 - [ ] Varje slide med DATA har minst ETT visuellt element
 - [ ] Progress bars visar ████░░ (inte bara tal)
 - [ ] Tidslinjer visar 📍 MON, 📍 TUE, etc (konkret tid)
@@ -256,6 +320,15 @@ EXEMPEL PÅ KORREKT ANVÄNDNING:
 - [ ] Inga slides som är BARA text
 - [ ] Progress visuell: från X → Y (inte bara "vi gör det")
 - [ ] Ikoner överallt för snabb läsning (📚💪🎯📊)
+
+**LAYOUT SAFETY (NPF/DYSLEXIA-FIRST):**
+- [ ] Padding synlig konsekvent (min 12px inuti boxar)
+- [ ] Ingen text överlappar eller är clipped
+- [ ] Minsta fontstorlek: 16pt (huvudtext), 14pt (metadata)
+- [ ] Textblock max 4 rader utan avsnittuppdelning
+- [ ] Kort innehåller ≤60% text (≥40% whitespace)
+- [ ] Marginaler är jämna mellan element
+- [ ] Ingen slide behöver ursäkt för att det är mycket text
 
 **FÄRGKODNING (SEMANTISK, INTE DEKORATIV):**
 - [ ] Marinblå/ljusblå/gråtoner för struktur & neutral info (majoriteten)

@@ -240,6 +240,16 @@ KAPACITET & AVLASTNING:
   ☐ Avlastning analyserad: Kan andra team ta arbete?
   ☐ Fallback-arbete listades för alla dependencies
 
+VISUAL-FIRST & LAYOUT SAFETY:
+  ☐ 5-Sekunders-test: Förstår du budskapet utan att läsa brödtext?
+  ☐ Finger-test: Kan presentatören peka vägen visuellt?
+  ☐ Skumläsnings-test: Förstår du med bara rubriker + symboler?
+  ☐ Padding synlig överallt (min 12px inuti boxar)
+  ☐ Fontstorlek min 16pt (huvudtext), 14pt (metadata)
+  ☐ Ingen text clipped eller överlappar
+  ☐ Textblock max 4 rader utan avsnittuppdelning
+  ☐ Kort innehåller ≤60% text (≥40% whitespace)
+
 LESBARHET:
   ☐ Ingen text går utanför sin box
   ☐ Min. 4.5:1 kontrast (WCAG AA)
