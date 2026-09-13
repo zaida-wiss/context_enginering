@@ -7,40 +7,61 @@
 
 ---
 
-## 🔴 SINGLE SOURCE OF TRUTH — Hierarki för Presentationer
+## 🔴 SINGLE SOURCE OF TRUTH — Presentation Read Order
 
-**När en presentation skapas gäller denna prioritet. Ingen annan ordning.**
+**There is ONE and only ONE read order. All other files are subordinate.**
 
-### 1️⃣ README.md (denna fil)
-- ✅ Vilka **datakällor** ska läsas
-- ✅ **Prioritet** mellan datakällor
-- ✅ **Fallback-strategi**
-- ✅ **Datakvalitets-krav** (assignees, status, etc)
+```
+README.md (this file)
+    ↓
+_ai_guides/PRESENTATION_SPEC.md (WHAT to show)
+    ↓
+_ai_guides/PRESENTATION_STRUCTURE.md (Slide order)
+    ↓
+_ai_guides/PRESENTATION_STYLE.md (Visual design)
+    ↓
+Generate presentation
+```
 
-### 2️⃣ PRESENTATION_SPEC.md
-- ✅ **VAD** presentationen ska innehålla
-- ✅ **Vilka slides** ska visas
-- ✅ **Obligatoriska fält** (assignee, status, etc)
-- ✅ **Data contract** — vad som är saknat = ofullständig
+### What Each File Owns
 
-### 3️⃣ SPRINT_PRESENTATION_STRUCTURE.md
-- ✅ **Ordning** på slides
-- ✅ **Informations-struktur**
-- ✅ **Mötespunkter** (①-⑭)
+**README.md (THIS FILE):**
+- ✅ What data sources to read
+- ✅ Data priorities
+- ✅ Fallback strategy
+- ✅ Data quality requirements (assignees, status, etc)
+- ✅ Read order (above)
 
-### 4️⃣ PRESENTATION_FORMAT_GUIDE.md
-- ✅ **Visuell form** — färger, typografi, layout
-- ✅ **NPF-regler**
-- ✅ **Design bara** — ingen presentationskontent
+**PRESENTATION_SPEC.md:**
+- ✅ WHAT the presentation should contain
+- ✅ Which slides to show
+- ✅ Issue/data contracts
+- ✅ Status definitions
+- ❌ How to get data (that's README's job)
+- ❌ Visual design (that's STYLE's job)
 
-### ❌ Alla andra .md-filer
-- Underordnade ovan fyra
-- Får **ALDRIG** motsäga dessa
-- Får **ALDRIG** introducera nya presentationsregler
-- Användes bara för kontext
+**PRESENTATION_STRUCTURE.md:**
+- ✅ Slide order
+- ✅ Information structure per slide
+- ✅ Mötespunkter (①-⑭)
+- ❌ Visual design
+- ❌ Data access
 
-**Om två filer motsäger varandra:**
-→ Följ ordningen ovan. README vinner över PRESENTATION_SPEC, etc.
+**PRESENTATION_STYLE.md:**
+- ✅ Colors, typography, layout
+- ✅ NPF/accessibility rules
+- ❌ What to show (that's SPEC's job)
+- ❌ How to get data (that's README's job)
+
+### All Other Files
+
+- **_project_context/** — Permanent project rules (DO NOT CHANGE)
+- **_snapshots/** — Cached fallback data ONLY (used if live fails)
+- **_ai_guides/other** — Reference & support only (CANNOT override above)
+- **_docs/** — Examples & mockups only (NEVER contains rules)
+- **_memory/** — Personal session notes only (NOT authoritative)
+
+**If two files conflict:** Follow the read order above. README wins.
 
 ---
 

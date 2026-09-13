@@ -1,22 +1,26 @@
-# 📋 PRESENTATION SPECIFICATION — Source of Truth
+# 📋 PRESENTATION SPECIFICATION — What To Show
 
-**Denna fil är den ENDA auktoritativa specifikationen för presentationer.**  
-Andra filer (DESIGN, FORMAT_GUIDE, STRUCTURE) fördjupar denna spec men motsäger aldrig den.
+**This file specifies ONLY the content and contracts.**
+
+**This file does NOT control:**
+- How to get data (that's README.md)
+- Read order (that's README.md)
+- Visual design (that's PRESENTATION_STYLE.md)
+- GitHub access method (that's README.md)
+- Fallback strategy (that's README.md)
+
+For those topics, see README.md.
 
 ---
 
-## 🔴 SLIDE SKILL READING — OK, BUT DON'T COLLECT DATA YET
+## 🔴 PREREQUISITE: Read README First
 
-**Denna fil kan läsas från slide-skillen, det är OK.**
+Before applying any rule in this file:
+1. Read README.md (data sources & read order)
+2. Collect all required data
+3. Then apply this spec (WHAT to show)
 
-Om slide-skillen läste denna fil:
-
-✅ Det är acceptabelt
-✅ Continue reading context_enginering README
-✅ THEN collect project data via GitHub Connector/API
-❌ NOT by cloning or using git-commands
-
-Se README.md för datainsamlingsregler som gäller även för slide-skillen.
+**This spec assumes all data is already collected and verified per README.**
 
 ---
 
