@@ -246,6 +246,48 @@ SUCCESS CRITERIA:
 
 ---
 
+## 🚨 UNKNOWN_NAME_GATE — FINAL VERIFICATION (innan output)
+
+**INNAN presentationen levereras måste denna sista gate passeras:**
+
+```
+UNKNOWN_NAME_GATE:
+
+1. Extract every human name from the final presentation
+   (Ctrl+F search för första/efternamn-mönster)
+
+2. For EACH name found:
+   ☐ Exists in TEAM_ROSTER.md active members? 
+   
+3. Allowed names ONLY:
+   ✅ Tomac Barin Jansson
+   ✅ Björn Boman
+   ✅ Zaida Wiss
+   ✅ Erik Berglund (also "rikexhx", "Svartakatten")
+   ✅ Rasha Knifdi
+   ✅ Pär Lundh
+   ✅ Henrik Westerlund
+
+4. NOT allowed names (render FAIL):
+   ❌ <EXAMPLE_MEMBER_A/B/C/D/E> (placeholder names)
+   ❌ Lisa, Marco, Ali, Anna, Jan (example names)
+   ❌ Any other human name not in TEAM_ROSTER
+
+FAILURE CRITERIA:
+  If ANY unknown name found → presentation is INVALID
+  Remove the name or verify it against TEAM_ROSTER
+  Do NOT render unknown names
+  
+PASS CRITERIA:
+  Only names from TEAM_ROSTER display names (or aliases like "Svartakatten" for Erik)
+  Zero example placeholder names
+  → OK to output presentation
+```
+
+**DENNA GATE MÅSTE PASSERAS. INGEN UNDANTAG.**
+
+---
+
 ## CRITICAL RULES SUMMARY
 
 **Från denna läsning, dessa är NOT-negotiable:**

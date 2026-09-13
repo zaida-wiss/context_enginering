@@ -8,6 +8,7 @@
 
 | Fil | Varför Deprecated | Ersätts Av | Status |
 |-----|---|---|---|
+| `presentations/structure/SPRINT_PRESENTATION_STRUCTURE.md` | Gammal presentation-struktur (14-punkt-model är nu i PRESENTATION_STRUCTURE.md) | `PRESENTATION_STRUCTURE.md` | 🔴 DELETE |
 | `UPDATE_SCHEDULE.md` | Enbart för uppdatering av gamla filer | `VERIFICATION_SYSTEM.md` | 🔴 DELETE |
 | `PREPARE_MEETING.md` | Instruktioner baserade på gamla kopiera-paste | `VERIFICATION_SYSTEM.md` | 🔴 DELETE |
 | `HOW_TO_RUN_MEETINGS.md` | Copy-paste av gamla filer | Direct instructions i mötes-filerna | 🟡 UPDATE |
