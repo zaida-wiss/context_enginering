@@ -53,19 +53,41 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 - Slide ①A.2: Backend PRs denna vecka (ALLA)
 - Slide ①A.3: Native/System PRs denna vecka (ALLA)
 
+**FORMAT (OBLIGATORISK STRUKTUR — se screenshot för exempel):**
+
+**DEL 1: PR-KORT (visuell snabbscan)**
+- Färgkodade kort: 🟢 grön (merged) eller 🟡 gul (pågår/open)
+- PR-nummer + titel
+- Vem ägde arbetet (issue-owner)
+- Commit-count + branch
+- En kort rad per PR
+- Visuell överblick: vad blev gjort?
+
+**DEL 2: PROGRESS BARS (ett ögonkast)**
+- "Merged/levererat denna vecka" — % klar
+- "Pågående PR-arbete" — % in progress
+
+**DEL 3: TABELL (detaljer för djupläsning)**
+- Kolumner: Område | Verifierat | Ägare | Effekt
+- En rad per arbetsområde/PR
+- Varför arbetet spelar roll (effekt)
+
 **Obligatoriska element:**
 - ✅ **HUVUDFOKUS: Vilka PRs blev MERGED in i develop denna vecka?**
 - ✅ **ALLA PRs denna vecka måste visas** — ingen får utelämnas för plats
+- ✅ PR-kort överst (snabb visuell scan)
+- ✅ Progress bars (hur stor andel färdig?)
+- ✅ Tabell med område, verifiering, ägare, effekt
 - ✅ För varje PR: **Vem ÄGde den issuen?** (issue assignee eller PR-author)
 - ✅ Visa länk mellan PR + issue-owner (dubbelt namn om samma person)
 - ✅ Alla teammedlemmar som hade arbete måste synas (med namn + verifierat bidrag)
 - ✅ Arbetsområden, inte bara issue-nummer (Frontend & Auth, Backend & Risk, etc)
-- ✅ Differentiera mellan "jobbar på" och "faktiskt klar" (DoD-verifierat)
-- ✅ Effektbeskrivning: varför detta arbete spelar roll
+- ✅ Effektbeskrivning: **varför detta arbete spelar roll** (kort, konkret)
 - ✅ **Om någon person HAR aktivitet denna vecka men INGEN PR synlig → investiga varför**
   - Kan vara branch utan PR än
   - Kan vara commits utan PR
   - Kan vara review-arbete på andra PRs
+- ✅ **FOOTER-TEXT:** Minst 11pt font (dyslexia-vänligt), förklara DoD-krav
 
 **Data från:** **Merged PRs in develop** (denna vecka) — repo-first reconstruction
 **INTE:** Bara "closed issues" eller "issues utan merge"
