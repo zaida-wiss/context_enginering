@@ -15,7 +15,7 @@ metadata:
 ## PROBLEM 1: Vissa Team-Medlemmar Saknas
 
 ### Symptom
-"Jan är inte med på sliden, men han hade arbete denna vecka"
+"En teammedlem är inte med på sliden, men han hade arbete denna vecka"
 
 ### Checklista
 
@@ -24,7 +24,7 @@ metadata:
   - Backend: Erik, Rasha
   - Native: Pär, Henrik
 
-- [ ] **Kollade GitHub denna vecka?** — Hade Jan faktisk aktivitet (commits/PR)?
+- [ ] **Kollade GitHub denna vecka?** — Hade denna medlem faktisk aktivitet (commits/PR)?
   - Bara issue-kommentarer räknas INTE som aktivitet
   - PR updates räknas
   - Commits räknas

@@ -481,8 +481,8 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 **Format för presentation:**
 ```
 Tomac — feature: live target (commit message)
-Lisa — refactor: auth module + tests
-Marco — fix: FX calculation edge case
+Zaida — refactor: auth module + tests
+Erik — fix: FX calculation edge case
 ```
 
 ### KÄLLA 2: GitHub Issues & Assignees
@@ -499,7 +499,7 @@ Marco — fix: FX calculation edge case
 
 **Format för presentation:**
 ```
-Lisa (#40 — Auth integration) → 80% done → nära färdigt denna vecka
+Zaida (#40 — Auth integration) → 80% done → nära färdigt denna vecka
 Ali (#52 — Responsive layout) → merged
 Erik (#48 — Unit tests) → 40+ nya test-cases
 ```
@@ -518,12 +518,12 @@ Erik (#48 — Unit tests) → 40+ nya test-cases
 **Format för presentation:**
 ```
 MERGED denna vecka:
-✅ feature/auth (#90 — Lisa)
+✅ feature/auth (#90 — Zaida)
 ✅ feature/responsive (#92 — Ali)
 ✅ feature/error-handling (#87 — Kris)
 
 PÅGÅR:
-🔄 feature/FX-integration (Marco)
+🔄 feature/FX-integration (Erik)
 🔄 feature/risk-metrics (Erik)
 
 STALE (>3 dagar):
@@ -1228,7 +1228,7 @@ Se **[CROSS_TEAM_INTEGRATION.md](_ai_guides/presentations/structure/PRESENTATION
 
 | Fil | Syfte |
 |-----|-------|
-| **PROJEKTKONTEXT.md** | Kundens problem (Anna), MVP-features, varför vi bygger |
+| **PROJEKTKONTEXT.md** | Kundens problem (projektbeskrivning), MVP-features, varför vi bygger |
 | **TEAMSTANDARDS.md** | Kodstandarder, Git workflow, commit-format, regler |
 | **DEFINITION_OF_DONE.md** | Vad är godkänt arbete? Tests, dokumentation, review |
 | **DECISIONS.md** | Arkitektur-beslut — varför Java? React? C++? |
@@ -1391,7 +1391,7 @@ Annan AI: [läser TEAMSTANDARDS.md]
 ### Grundläggande Frågor
 ```
 "Vad är projektet?"
-→ AI läser PROJEKTKONTEXT.md → Förklarar Annas problem + MVP
+→ AI läser PROJEKTKONTEXT.md → Förklarar projektbeskrivningen + MVP
 
 "Vilka är kodstandarder?"
 → AI läser TEAMSTANDARDS.md → Visar Git-format, kodregler, branch-naming

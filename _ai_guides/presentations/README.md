@@ -8,6 +8,13 @@ metadata:
 
 # 📊 PRESENTATIONS — Navigation Guide
 
+⛔ **EXEMPEL-DATA I DESSA FILER:**
+Alla exempelpersoner (<EXAMPLE_MEMBER_A>, etc), issue-nummer och branches i instruktionerna är ALDRIG verklig projektdata.
+Du får ALDRIG kopiera exempel till en presentation. Använd ENDAST verifierad data från TEAM_ROSTER.md och GitHub.
+Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
+
+---
+
 🚨 **INNAN DU BÖRJAR:** Två obligatoriska filer måste läsas i denna ordning
 
 1. **[DATA_COLLECTION_MANDATORY.md](DATA_COLLECTION_MANDATORY.md)** ← START HÄR

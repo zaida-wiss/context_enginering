@@ -8,6 +8,13 @@ metadata:
 
 # 🚨 MANDATORY DATA COLLECTION — INNAN PRESENTATION RENDERAS
 
+⛔ **EXEMPEL-DATA I DENNA FIL:**
+Alla exempelpersoner (<EXAMPLE_MEMBER_A>, <EXAMPLE_MEMBER_B>, etc) och issue-nummer i denna fil är INTE verklig projektdata.
+Du får ALDRIG kopiera exempel-namn eller issue-nummer till en presentation.
+Använd ENDAST GitHub-verifierad data från TEAM_ROSTER.md.
+
+---
+
 **DENNA CHECKLIST MÅSTE FÖLJA FÖRE NÅGON PRESENTATION GENERERAS.**
 
 Om denna checklist inte är slutförd kommer presentationen att dölja arbete (som login-sidor, designsystem, andra stängda arbeten).

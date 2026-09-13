@@ -36,7 +36,7 @@ metadata:
 
 | Display Name | Verified Email | GitHub Handle | Commit History | Status |
 |--------------|----------------|---------------|-----------------|--------|
-| Erik Berglund | rikexhx@gmail.com | (verified from commits) | ✅ Active | Active |
+| Erik Berglund | rikexhx@gmail.com | rikexhx (also commits as "Svartakatten") | ✅ Active | Active |
 | Rasha Knifdi | rasha.fi@hotmail.com | rashaknifdi | ✅ Active | Active |
 
 **Arbetsområden:**
