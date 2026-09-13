@@ -75,19 +75,20 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 
 ## 📝② PROJEKTETS NULÄGE & KRITISKA DEADLINES
 
-**Syfte:** Etablera referenspunkt för all kommande analys — VAR VI STÅR I TIDSPLANEN
+**Syfte:** Etablera referenspunkt för all kommande analys — VAR VI STÅR I TIDSPLANEN **OCH VAD VI MÅSTE GÖRA FÖR ATT LYCKAS**
 
 **Slides:**
 - **②A: Övergripande status** — var står vi mot slutleverans?
-- **②B: Kritiska deadlines denna sprint och framåt** — CTO, Kvaldemo, Final
+- **②B: Kritiska deadlines + VAD BEHÖVS** — CTO, Kvaldemo, Final + konkreta krav PER DEADLINE
 
 **Obligatoriska element (MÅSTE VISAS):**
-- ✅ **NÄSTA DEADLINE (denna sprint):** CTO-underlag ELLER aktuell fokus-deadline
-- ✅ **Kvaldemo-datum:** 22 oktober (denna månad)
-- ✅ **Slutleverans-deadline:** 4 november (slutcheck 15:00)
-- ✅ **Finaldag:** 5 november
+- ✅ **NÄSTA DEADLINE (denna sprint):** CTO-underlag (24 sep) med dagar kvar
+- ✅ **VAD BEHÖVS för CTO:** Risk-analysis, tekniska beslut, kapacitets-analys, test-strategi
+- ✅ **FOKUS DENNA VECKA:** Konkreta tasks som behövs för att lyckas på CTO-deadline
+- ✅ **Kvaldemo-datum:** 22 oktober + VAD det kräver (fungerande demo)
+- ✅ **Slutleverans-deadline:** 4 november + VAD det kräver (kod + dokumentation)
+- ✅ **Finaldag:** 5 november + VAD det kräver (presentation + jurybeslut)
 - ✅ **Status mot varje deadline:** 🟢 ON TRACK / 🟠 SLIGHT RISK / 🔴 CRITICAL
-- ✅ Projektets kundvärde/affärsbehov som bakgrund (varför gör vi det här?)
 - ✅ Dagar/veckor kvar till nästa kritisk deadline (framräknad från idag)
 
 **KRITISKA DEADLINES (dessa MÅSTE synas på slide ②B):**
@@ -100,7 +101,7 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 🎊 FINALDAG           — 5 nov 09:00   (V12)
 ```
 
-**Format för slide ②B (VISUELL TIDLINJE OBLIGATORISK):**
+**Format för slide ②B (VISUELL TIDSLINJE + KONKRETA KRAV):**
 
 ```
 IDAG: 13 sep (V4)
@@ -111,14 +112,38 @@ IDAG: 13 sep (V4)
 
 █████░░░░░░░░░░░░░ 25% framåt i kurs (8 veckor totalt)
 
-🔴 CTO-UNDERLAG (24 sep, 11 dagar kvar)
-   ↳ Fokus NU: Risk-analysis + tekniska beslut
-   
-🟠 Kvaldemo (22 okt, 39 dagar kvar)
-   ↳ Fokus senare: Stabilitet + presentation
-   
-🟢 Final (5 nov, 53 dagar kvar)
-   ↳ Fokus slutligen: Slutleverans + dokumentation
+═══════════════════════════════════════════════════════
+
+🎯 FOKUS NU NÄRMAST (Denna vecka V4)
+
+CTO-UNDERLAG måste levereras 24 sep (11 dagar)
+🔴 VAD VI BEHÖVER LEVERERA:
+   ✓ Tekniska risker identifierade & dokumenterade
+   ✓ Arkitektur-beslut fastslagna (API-kontrakt, integrations-plan)
+   ✓ Kapacitets-analys (vad kan vi klara på tid?)
+   ✓ Test-strategi dokumenterad
+
+🔴 VAD VI FOKUSERAR PÅ DENNA VECKA:
+   → Risk-workshop (identifiera TOP 5 risker)
+   → Tekniska beslut: API-kontrakt fastslagna
+   → Kapacitets-review: kan vi klara CTO-deadline?
+   → DoD för CTO-underlag: alla checklistor ifyllda
+
+═══════════════════════════════════════════════════════
+
+📊 EFTERFÖLJANDE DEADLINES & VAD DE KRÄVER:
+
+🟠 KVALDEMO (22 okt, 39 dagar kvar)
+   VAD: Fungerande demo för kund (login → portfolio → risk)
+   FOKUS: Stabilitet, bug-fixes, UI-polish
+
+🟢 SLUTLEVERANS (4 nov, 52 dagar kvar)
+   VAD: Fullständig kod + dokumentation + tester
+   FOKUS: Sista integreringar, slutcheck, deployment
+
+🎊 FINAL (5 nov, 53 dagar kvar)
+   VAD: Presentation + jurybeslut
+   FOKUS: Demo-timing, presentation-slides, Q&A-prep
 ```
 
 **Visuella element MÅSTE inkluderas:**
