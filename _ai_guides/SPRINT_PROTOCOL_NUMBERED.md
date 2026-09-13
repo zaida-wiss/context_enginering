@@ -254,16 +254,22 @@ Svar: 🟢 Ja, vi passar | 🟠 Knapp | 🔴 Nej
 ---
 
 ## 📝⑫ Sprintplan
-**Vem gör vad, i vilken ordning?**
+**Vem gör vad, i vilken ordning? Hur arbetar vi TILLSAMMANS för att nå målet?**
+
+🚨 **REGEL: Support/pairing är fullt legitimt sprintåtagande.**
+Om Björn exempelvis bäst hjälper sprintmålet genom att stötta Tomac på en kritisk integration,
+är "support/pair på #XX" ett fullt legitimt sprintåtagande. 
+Planen ska optimera teamets LEVERANS, inte maximera individuella arbetuppgifter.
 
 ### FRONTEND (Zaida, Björn, Tomac)
 - ☐ #XX [beskrivning] (Zaida - 5h)
-- ☐ #XX [beskrivning] (Tomac - 8h)
-- ☐ #XX [beskrivning] (Björn - 4h)
+- ☐ #XX [beskrivning] (Tomac - 8h, + Björn support)
+- ☐ #XX [beskrivning] (Björn - 4h support på #43)
 - ☐ #XX [beskrivning] (Zaida - 6h)
 - ☐ #XX [beskrivning] (Tomac - 3h)
 
 **Totalt:** XXh, XX% av kapaciteten
+**Teamstöd:** Björn backar upp Tomac på #43 för att säkra integrationstestningen
 
 ### BACKEND (Rasha, Erik)
 - ☐ #XX [beskrivning] (Rasha - 3h)
@@ -271,6 +277,7 @@ Svar: 🟢 Ja, vi passar | 🟠 Knapp | 🔴 Nej
 - ☐ #XX [beskrivning] (Rasha - 4h)
 
 **Totalt:** XXh, XX% av kapaciteten
+**Teamstöd:** [om något]
 
 ### NATIVE (Pär, Henrik)
 - ☐ #XX [beskrivning] (Pär - 5h)
@@ -278,6 +285,7 @@ Svar: 🟢 Ja, vi passar | 🟠 Knapp | 🔴 Nej
 - ☐ #XX [beskrivning] (Pär - 6h)
 
 **Totalt:** XXh, XX% av kapaciteten
+**Teamstöd:** [om något]
 
 ---
 
@@ -311,15 +319,33 @@ Svar: 🟢 Ja, vi passar | 🟠 Knapp | 🔴 Nej
 - [namn] + [namn] pair prog på #XX — [dag tid]
 - [namn] mentorerar [namn] på #XX — [dag tid]
 
-### Hållbarhet — behöver planen justeras?
-**Kontrollera arbetsbelastning och eliminer single points of failure:**
-- Fördelning per person/team — någon överbelastad? → flytta/pausa issue
-- Beroenden — skapar några väntetid för andra? → prioritera först
-- Single point of failure — finns någon som är enda experisen på något kritiskt? → pairing/mentoring
-- Framtida risker — om denna plan genomförs, skapar det tech-skuld eller nya blockers nästa vecka? → justera scope
-- Åtgärder — varje handlingsplanspost har **ansvarig person** och **konkret tidsram**
+### Teamstöd & Hållbarhet — Hur hjälps vi åt denna vecka?
+**Identifiera var teammedlemmar kan hjälpa, avlasta, paira eller täcka upp för varandra:**
 
-**Resultat: Planen är genomförbar utan att bryta ner teamet eller skapa framtida problem.**
+**BELASTNING:**
+- Är någon fullbelastad medan någon annan har utrymme? → **omfördela eller erbjud stöd**
+- Behöver någon hjälp för att få en sprint-kritisk issue över mållinjen? → **vem hjälper?**
+
+**BLOCKERANDE PERSON:**
+- Om någon sitter fast, vem kan faktiskt hjälpa till att lösa hindret? → **blockers är teamets problem, inte individens**
+- Behöver Frontend + Backend arbeta tillsammans på API-kontraktet först? → **parallellarbete istället för vänta**
+
+**KUNSKAPSRISK — Single Point of Failure:**
+- Finns en kritisk del som bara en person kan? → **pairing, review eller kunskapsöverföring planeras**
+- Vilka behöver sätta in sig på vad denna vecka?
+
+**BACKUP:**
+- På vilka kritiska uppgifter måste det vara synligt vem som kan täcka upp om huvudansvarig fastnar eller blir frånvarande?
+
+**FRAMTIDA RISKER:**
+- Om denna plan genomförs, skapar det tech-skuld eller nya blockers nästa vecka? → **justera scope nu**
+- Kan ett team hjälpa ett annat att undvika framtida problem? → **konkret action**
+
+**ÅTGÄRDER:**
+- Varje handlingsplan har **ansvarig person** och **konkret tidsram**
+- Stöd är inte "optional" — det är del av sprintplanen
+
+**Resultat: Planen är genomförbar OCH hållbar. Teamet når målet TILLSAMMANS, inte genom enskilda prestationer.**
 
 ### Kontrakt & beroenden som måste dokumenteras
 - API-spec för #XX → uppdatera i shared doc
@@ -378,6 +404,23 @@ Flödet är:
 
 ---
 
+## 📌 Presentationens Syfte — Teamtänk, inte Individuell Evaluering
+
+🚨 **KRITISK REGEL:**
+
+Presentationens syfte är INTE att utvärdera individer eller maximera individuellt ägarskap.
+Den ska hjälpa **teamet** att nå sprintmålet **tillsammans**.
+
+När kapacitet, blockers, kunskapsrisker eller beroenden identifieras ska presentationen aktivt undersöka:
+- Hur kan teammedlemmar hjälpa, avlasta, paira eller täcka upp för varandra?
+- Var finns kapacitet som kan omfördelas?
+- Vilka kunskapsrisker (single point of failure) måste åtgärdas?
+- Vilka överlämningar mellan team kan minimeras?
+
+**Huvudansvarig får aldrig betyda ENSAM ansvarig.**
+
+---
+
 ## 📌 Presentationen och Protokollet
 
 **Presentationen följer denna möteslogik men kan ha flera slides per mötespunkt.**
@@ -392,6 +435,14 @@ Exempel:
 Det viktiga är **mötespunktssymbolen**, inte slide-numret.
 
 Presentationen kan ha 20-30 slides — antalet varierar per vecka beroende på innehål.
+
+**Teamstöd går genom hela presentationen:**
+- ④–⑥: Var behövs hjälp eller pairing?
+- ⑦: Vilka gemensamma hinder finns?
+- ⑨: Var kan kapacitet omfördelas?
+- ⑩: Vilka person- och kunskapsrisker identifieras?
+- ⑫: Hur planerar vi gemensamt arbete?
+- ⑬: Vem hjälper vem, vad omfördelas, vilka backas upp?
 
 ---
 

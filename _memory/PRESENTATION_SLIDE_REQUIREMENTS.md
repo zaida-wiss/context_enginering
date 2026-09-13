@@ -1,5 +1,20 @@
 # 📋 Presentation Slide Requirements - Sprint Planning (14 mötepunkter)
 
+**🚨 ÖVERGRIPANDE REGEL: Presentationens Syfte är TEAMTÄNK, inte Individuell Evaluering**
+
+Presentationens syfte är INTE att utvärdera individer eller maximera individuellt ägarskap.
+Den ska hjälpa **teamet** att nå sprintmålet **tillsammans**.
+
+När kapacitet, blockers, kunskapsrisker eller beroenden identifieras ska presentationen aktivt undersöka:
+- Hur kan teammedlemmar hjälpa, avlasta, paira eller täcka upp för varandra?
+- Var finns kapacitet som kan omfördelas?
+- Vilka kunskapsrisker (single point of failure) måste åtgärdas?
+- Vilka överlämningar mellan team kan minimeras?
+
+**Huvudansvarig får aldrig betyda ENSAM ansvarig.**
+
+---
+
 **🚨 KRITISK REGEL: En mötespunkt ≠ en slide**
 
 En mötespunkt kan motsvaras av 1-3 (eller fler) slides.
@@ -242,19 +257,41 @@ Visa bara de beslut som faktiskt finns denna vecka.
 
 ---
 
-## 📌 📝⑫ Sprintplan (Vem gör vad — 1-2 slides)
+## 📌 📝⑫ Sprintplan (Vem gör vad? Hur arbetar vi TILLSAMMANS? — 1-2 slides)
 
 ```
 MÅSTE INNEHÅLLA:
 ✅ Per-team boxar (Frontend / Backend / Native)
-✅ ALLA teammedlemmar har minst EN uppgift
 ✅ Issues + assignee + timmar
+✅ SYNLIGT: Vilken support/pairing är planerad denna vecka
+
+🚨 REGEL: Support/pairing är fullt legitimt sprintåtagande.
+Om Björn bäst hjälper sprintmålet genom att stötta Tomac på en kritisk
+integration, är "support/pair på #43" ett fullt legitimt åtagande.
+Planen ska optimera teamets LEVERANS, inte maximera individuella arbetuppgifter.
+
+LAYOUT EXEMPEL:
+Frontend:
+- ☐ #42 Portfolio (Zaida - 5h)
+- ☐ #43 Risk calc (Tomac - 8h, + Björn support)
+- ☐ Stötta Tomac på #43 (Björn - 4h)
+
+Backend:
+- ☐ #51 API-spec (Rasha - 3h)
+- ☐ #52 Risk endpoint (Erik - 8h)
+- [teamstöd om behövs]
+
+Native:
+- ☐ #60 iOS test (Pär - 5h)
+- ☐ #61 Android widget (Henrik - 7h)
+- [teamstöd om behövs]
 
 VISUELLA ELEMENT:
 ⬛ Svart border per team-box
 ☐ Checkboxes (copy-paste till protokoll)
-👥 ALLA medlemmar måste finnas
+👥 Assignee på varje rad
 ⏰ Konkreta timmar
+🤝 Support/pairing tydligt märkt
 
 REGEL: ENDAST vem gör vad.
 Nästa steg ingår INTE här — det är egen mötespunkt.
@@ -295,14 +332,27 @@ MÅSTE INNEHÅLLA:
    - [namn] + [namn] pair prog på #XX — [dag tid]
    - [namn] mentorerar [namn] på #XX — [dag tid]
 
-7. HÅLLBARHET — BEHÖVER PLANEN JUSTERAS?
-   ✅ Arbetsbelastning per person/team — någon överbelastad? → flytta/pausa
-   ✅ Beroenden — skapar väntetid? → prioritera först
-   ✅ Single point of failure — någon är enda expert? → pairing/mentoring
-   ✅ Framtida risker — skapar detta tech-skuld? → justera scope
-   ✅ Åtgärder — alla poster har **ansvarig** och **tidsram**
-   
-   **Resultat: Planen är genomförbar utan att bryta ner teamet.**
+7. TEAMSTÖD & HÅLLBARHET — Hur hjälps vi åt denna vecka?
+   **Identifiera där teammedlemmar kan hjälpa, avlasta, paira eller täcka upp för varandra:**
+
+   ✅ BELASTNING: Är någon fullbelastad medan någon annan har utrymme?
+      → Omfördela eller erbjud stöd, inte bara konstatera siffrorna
+
+   ✅ BLOCKERANDE PERSON: Om någon sitter fast, vem kan faktiskt hjälpa?
+      → Blockers är teamets problem, inte individens
+
+   ✅ KUNSKAPSRISK: Finns kritisk kunskap hos bara en person?
+      → Pairing, review eller kunskapsöverföring planeras
+
+   ✅ ÖVERLÄMNINGAR: Behöver Frontend vänta på Backend?
+      → Arbeta tillsammans på kontraktet först, minimera väntan
+
+   ✅ BACKUP: Vilka kan täcka upp om huvudansvarig fastnar?
+      → Synligt på kritiska uppgifter
+
+   ✅ ÅTGÄRDER: Varje handlingsplansåtgärd har ansvarig och tidsram
+
+   **Resultat: Planen är genomförbar OCH hållbar. Vi når målet TILLSAMMANS, inte genom enskilda prestationer.**
 
 8. KONTRAKT & BEROENDEN FRÅN CODE REVIEW
    - API-spec för #XX → uppdatera i shared doc
