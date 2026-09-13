@@ -117,11 +117,12 @@ Presentationen måste kunna verifiera dessa fakta:
 - GitHub Projects/Board via Connector/API eller webben
 
 **Fallback ordning:**
-1. GitHub Connector/API — Project status om tillgänglig
-2. GitHub Project-webben (https://github.com/chas-challenge-2026/avanza-team1/projects/XX)
-3. GitHub Issues-vyn — filtrera på labels som motsvarar kolumner
-4. Dra slutsatser från issue-status + PR-status
-5. Mötesprotokoll från denna vecka
+1. GitHub Connector/API — Projects API v4
+2. GitHub Project-webben (https://github.com/orgs/chas-challenge-2026/projects/31/views/1)
+3. GitHub REST API /repos/issues med project-filter
+4. GitHub Issues-vyn — filtrera på labels som motsvarar kolumner
+5. Dra slutsatser från issue-status + PR-status
+6. Mötesprotokoll från denna vecka
 
 **Om board misslyckas:** Presentationen kan säga "Project Board kunde inte läsas direkt; status är baserad på issues + PRs"
 
@@ -138,8 +139,11 @@ Presentationen måste kunna verifiera dessa fakta:
 
 **Fallback ordning:**
 1. Google Drive Connector — om autentiserad
-2. Public shared Google Docs → TXT-export
-3. GitHub-data om protocol misslyckas
+2. Google Docs länk — läs direkt från webben
+3. TXT-export (?format=txt) — raw text
+4. HTML-export (?format=html) — strukturerad text
+5. PDF-export (?format=pdf) — om övriga misslyckas
+6. GitHub-data om protocol misslyckas totalt
 
 **Om all misslyckas:** Presentationen bygger på GitHub-data men noterar "mötesprotokoll kunde inte verifieras"
 
@@ -210,24 +214,32 @@ API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=a
 
 ### GitHub Project Board
 
+**Primär källa:**
 ```
 URL: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
-PROJECT ID: 31
 Status: Öppen för alla att läsa (ingen auth behövs)
-AI kan läsa: Ja, direkt från länken
 ```
 
-AI läser denna länk direkt för presentationen.
+**Fallback metoder:**
+1. GitHub Connector/API — Projects API v4
+2. Vanlig GitHub web-länk (ovan)
+3. GitHub REST API — /repos/{owner}/{repo}/issues med project-filter
+4. GitHub Issues view med kolumn-labels som mapping
 
 ### Meeting Protocol
 
+**Primär källa:**
 ```
 URL: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
 Status: Öppen för alla att läsa (ingen auth behövs)
-AI kan läsa: Ja, direkt från länken
 ```
 
-AI läser denna länk direkt för presentationen.
+**Fallback metoder:**
+1. Google Drive Connector (om autentiserad)
+2. Vanlig Google Docs länk (ovan)
+3. Raw-export: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+4. PDF-export: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf
+5. HTML-export: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=html
 
 ---
 
