@@ -264,10 +264,33 @@ Om underbelastat team:
 
 ---
 
-## 📝⑬ Nästa Steg
-**Vad händer direkt efter mötet? Under veckan?**
+## 📝⑫ Sprintplan + Nästa Steg
+**Vem gör vad, i vilken ordning? Vad händer direkt efter mötet?**
 
-### IDAG (efter möte)
+### FRONTEND (Zaida, Björn, Tomac)
+- ☐ #XX [beskrivning] (Zaida - 5h)
+- ☐ #XX [beskrivning] (Tomac - 8h)
+- ☐ #XX [beskrivning] (Björn - 4h)
+- ☐ #XX [beskrivning] (Zaida - 6h)
+- ☐ #XX [beskrivning] (Tomac - 3h)
+
+**Totalt:** XXh, XX% av kapaciteten
+
+### BACKEND (Rasha, Erik)
+- ☐ #XX [beskrivning] (Rasha - 3h)
+- ☐ #XX [beskrivning] (Erik - 8h)
+- ☐ #XX [beskrivning] (Rasha - 4h)
+
+**Totalt:** XXh, XX% av kapaciteten
+
+### NATIVE (Pär, Henrik)
+- ☐ #XX [beskrivning] (Pär - 5h)
+- ☐ #XX [beskrivning] (Henrik - 7h)
+- ☐ #XX [beskrivning] (Pär - 6h)
+
+**Totalt:** XXh, XX% av kapaciteten
+
+### NÄSTA STEG — OMEDELBAR ACTION
 - ☐ GitHub Project Board uppdaterad
 - ☐ Pair sessions bokade (om behövs)
 - ☐ Alla vet sitt jobb och assignee
@@ -288,7 +311,7 @@ Om underbelastat team:
 ---
 
 ## 📝⑬ Frågor till PL
-**Vad behöver vi få svar/beslut på från PL?**
+**Vad behöver vi få svar/beslut på från PL? (SISTA MÖTESPUNKT)**
 
 **Fråga 1: [kort fråga]**
 - Kontext: [varför frågar vi]
@@ -305,6 +328,10 @@ Om underbelastat team:
 - Behövs för: [vilken beslut/issue]
 - **Svar:** ________________________________
 
+**DENNA PUNKT ÄR ABSOLUT SISTA.**
+Presentationen slutar här. Denna slide ligger kvar under mötet
+för att diskutera frågorna med PL.
+
 ---
 
 ## 📌 Möteslogik — Berättelsen från mötet
@@ -320,13 +347,27 @@ Flödet är:
 9. **Kapacitet** → Har vi tid?
 10. **Risker** → Vad kan hindra oss?
 11. **Tekniska beslut** → Vad måste vi bestämma?
-12. **Sprintplan** → Lås planen
-13. **Frågor till PL** → Det vi behöver få svar på
+12. **Sprintplan + Nästa steg** → Lås planen och omedelbara åtgärder
+13. **Frågor till PL** → Det vi behöver få svar på (SISTA PUNKT)
 
-**Presentationen följer denna logik exakt. Varje slide motsvarar en punkt.**
+## 📌 Presentationen och Protokollet
+
+**Presentationen följer denna möteslogik men kan ha flera slides per mötespunkt.**
+
+En mötespunkt ≠ en slide.
+
+Exempel:
+- 📝④ Frontend kan vara Slides 5-7 (alla märkta 📝④)
+- 📝⑦ Beroenden kan vara två slides (båda märkta 📝⑦)
+
+Det viktiga är **mötespunktssymbolen**, inte slide-numret.
 
 ---
 
 **Senast uppdaterad:** 2026-09-13  
-**Status:** 13 mötepunkter, 1:1 med PRESENTATION_SLIDE_REQUIREMENTS.md  
-**VIKTIGT:** Punkt ① MÅSTE visa commits från ALLA teammedlemmar (7 dagar tillbaka)
+**Status:** 13 mötepunkter (①-⑬), 1:1 med PRESENTATION_SLIDE_REQUIREMENTS.md  
+**VIKTIGT:** 
+- Punkt ① MÅSTE visa commits från ALLA teammedlemmar (7 dagar tillbaka)
+- Punkt ⑬ är ABSOLUT SISTA punkt (Frågor till PL)
+- Nästa steg ingår i punkt ⑫ (inte egen punkt)
+- Presentationen kan ha fler än 13 slides (en punkt kan ha flera slides)
