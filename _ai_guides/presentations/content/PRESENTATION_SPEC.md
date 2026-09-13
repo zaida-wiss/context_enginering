@@ -237,6 +237,84 @@ Om nej → Ta bort texten från sliden.
 
 ---
 
+## 🚨 PROJECT LEAD REVIEW — MANDATORY BEFORE POINT ⑫ RENDERS
+
+**DENNA CHECKLISTA VISAS ALDRIG PÅ SLIDE — den är bara internt för AI.**
+
+Innan point ⑫ (Sprintplan) byggs ska AI:n genomföra följande kontrollfrågor på verifierad projektdata.
+
+Visa endast relevanta fynd på sliden, aldrig checklistan själv.
+
+### SCOPE REVIEW
+- ✅ Vad måste bli klart för sprintmålet?
+- ✅ Vad är nice-to-have (kan skjutas upp)?
+- ✅ Finns arbete utan tydlig koppling till målet?
+  → Om ja: föreslå att prioritera ned detta
+
+### DELIVERY REVIEW
+- ✅ Vad är kritisk väg? (vem → vem → vem)
+- ✅ Vad måste göras först för att andra ska kunna arbeta?
+- ✅ Finns en demonstrerbar vertikal slice denna vecka?
+  → Om nej: föreslå en eller justera prioritering
+
+### OWNERSHIP REVIEW
+- ✅ Har varje planerad issue en faktisk ägare?
+  → Om nej: markera som "Behöver ägare" eller föreslå assignee
+- ✅ Har någon för mycket kritiskt arbete?
+  → Om ja: föreslå omfördelning
+- ✅ Finns arbete utan ägare?
+  → Om ja: lägg till i "Beslut idag"
+
+### DEPENDENCIES REVIEW
+- ✅ Vem väntar på oss?
+- ✅ Vem väntar vi på?
+- ✅ Vad händer om beroendet blir en dag sent?
+  → Visar sig i fallback-arbete?
+- ✅ Vilket fallback-arbete finns?
+  → Om inget: markera som risk
+
+### QUALITY REVIEW
+- ✅ Är tester/review/docs planerade som ARBETE?
+  → Eller förväntas de bara "hända på slutet"?
+- ✅ Finns issues marked Board:Done / Issue:Open?
+  → Dessa måste stängas mot DoD denna vecka
+- ✅ Finns issues utan AC?
+  → Markera som "Behöver AC-klarificering"
+- ✅ Finns issues utan DoD?
+  → Markera som "DoD saknas"
+
+### BACKLOG HEALTH REVIEW
+- ✅ Saknas issue för verifierat arbete?
+  → Föreslå nya issues per kategori
+- ✅ Finns dubletter?
+  → Föreslå att slå ihop
+- ✅ Är någon issue för stor för att följa upp?
+  → Föreslå att dela upp (med konkreta deluppgifter)
+- ✅ Finns issue utan estimat?
+  → Markera "Ej estimerad"
+- ✅ Finns gamla backlog-items (>2 veckor utan aktivitet)?
+  → Föreslå omprioritering eller arkivering
+
+### RISK REVIEW
+- ✅ Vilken del av planen är mest sannolik att spricka?
+- ✅ Vad blir konsekvensen?
+- ✅ Kan ordningen ändras för att reducera risken?
+  → Om ja: föreslå ny ordning med orsak
+
+### OUTPUT
+
+Visa endast:
+- Relevanta fynd från review
+- Konkreta förslag för Board/Backlog-ändringar
+- Punkter som teamet måste bestämma på mötet
+
+VISA ALDRIG:
+- Checklistan själv
+- AI-instruktionerna
+- Generiska råd utan verifierad grund
+
+---
+
 ## 🎯 Presentationens Tre Syften
 
 1. **TEAMTÄNK** — Hjälpa teamet att nå sprintmålet tillsammans, inte rapportera individuella insatser

@@ -264,41 +264,203 @@ Efter denna slide ska teammedlemmen förstå:
 
 ---
 
-## 📝⑫ SPRINTPLAN
+## 📝⑫ SPRINTPLAN & PLANERINGSKONTROLL
 
-**Syfte:** Konkret kodning av sprintmålet
+**Syfte:** Översätta sprintmålet till en realistisk arbetsplan + kvalitetsgranska GitHub Project Board/backlog
 
-**Slides:**
-- **⑫A: Frontend sprintplan** — issues, ordning, assignees, pairing
-- **⑫B: Backend sprintplan** — (samma)
-- **⑫C: Native sprintplan** — (samma)
+**DENNA PUNKT GANSKA INTE BARA BESKRIVA PLANEN.**
 
-**Obligatoriska element:**
-- ✅ Issue-nummer + titel + assignee + estimat
-- ✅ Ordning (vad börjar vi med?)
-- ✅ Beroenden markerade
-- ✅ Pairing-sessioner inbokade
-- ✅ Clear DoD for each issue
+AI ska analysera om planen är genomförbar utifrån verifierad projektdata från tidigare mötespunkter (①–⑪).
+AI agerar som en erfaren projektledare och synliggör luckor, risker och förbättringar.
 
-**Data från:** GitHub issues, team input, previous decisions
+### ⑫A — PLANERINGSKONTROLL
+
+**MÅSTE svara på:**
+1. Är sprintmålet realistiskt med aktuell kapacitet?
+2. Vilka issues ligger på kritisk väg?
+3. Vilka beroenden styr ordningen?
+4. Vilka team blockerar andra team?
+5. Finns tillräckligt oberoende fallback-arbete?
+6. Finns DoD-arbete som ännu inte är planerat?
+7. Finns arbete i sprinten som inte bidrar till sprintmålet?
+8. Finns för mycket arbete jämfört med verifierad kapacitet?
+
+**Visa en sammanfattande bedömning:**
+
+| Kontroll | Bedömning | Varför |
+|----------|-----------|--------|
+| Sprintmål mot kapacitet | 🟢/🟡/🔴 | [2-4 verifierade orsaker] |
+| Kritisk väg | [status] | [vem → vem → vem] |
+| Fallback-arbete | ✓/⚠️ | [antal oberoende issues] |
+| Board-kvalitet | [status] | [antal issues med divergens] |
+| Backlog | [status] | [luckor eller gamla items] |
+
+**Färgkod (statussemantik):**
+- 🟢 RIMLIG — planen håller
+- 🟡 TIGHT / BEHÖVER BESLUT — resursöverkant eller beroenden krävs diskussion
+- 🔴 EJ REALISTISK — sprintmålet eller planen måste justeras
+
+### ⑫B–D — TEAMETS PRIORITERAD ARBETSKÖ
+
+**Varje team visas som en prioriterad kö:**
+
+| Ordning | Issue | Ägare | Estimat | Varför nu? | Beroende | Klart när |
+|---------|-------|-------|---------|-----------|----------|-----------|
+| 1 | #92 – Riskmotor | Anna | 13h | Sprintmål | Backend API | Tests + verifierad |
+| 2 | #93 – … | … | … | Frigör Frontend | Inte blockerad | DoD ✓ |
+
+**KRAV:**
+- Issue-nummer + titel + faktisk assignee
+- Verifierat estimat (om saknas: "Ej estimerad — behöver estimeras idag")
+- Prioriteringsordning
+- Varför arbetet ligger här (använd EN av: Sprintmål, Kritisk väg, Frigör annat team, Riskreduktion, DoD-stängning, Oberoende fallback, Kundvärde)
+- Dependency/blocker
+- Konkret DoD/färdigkriterium
+
+### ⑫E — PROJECT BOARD & BACKLOG REVIEW
+
+**AI jämför verifierat projektläge mot Project Board.**
+
+**Visa fyra kategorier:**
+
+#### 1. BOARD BÖR UPPDATERAS
+
+Issues där faktisk status och Board-status verkar skilja sig:
+
+```
+#XX – Titel · Assignee
+Nu: Board [kolumn] / Issue [state] / DoD [status]
+Förslag: flytta till [status]
+Orsak: [kort verifierad orsak]
+```
+
+#### 2. BÖR PRIORITERAS UPP
+
+Befintliga issues som bör göras tidigare därför att de:
+- ligger på kritisk väg
+- blockerar annat team
+- krävs för sprintmålet
+- reducerar konkret hög risk
+- behövs för demo/integration/DoD
+
+#### 3. BÖR PRIORITERAS NED
+
+Befintliga issues som:
+- inte bidrar till sprintmålet denna vecka
+- inte ligger på kritisk väg
+- kan vänta utan att blockera leverans
+
+*(Detta är ett FÖRSLAG, inte automatiskt beslut)*
+
+#### 4. FÖRESLAGNA NYA ISSUES
+
+AI får föreslå ett nytt issue ENDAST när verifierad projektdata visar ett konkret arbete som saknar motsvarande issue.
+
+**VARJE FÖRSLAG MARKERAS TYDLIGT: "FÖRSLAG — finns ännu inte i GitHub"**
+
+Format för varje förslag:
+
+```
+FÖRESLAGET ISSUE:
+
+Titel:
+Problem / behov:
+Varför behövs det:
+Acceptance criteria:
+Föreslagen assignee:
+Estimering: [eller "Behöver estimeras"]
+Prioritet:
+Blockerar / blockeras av:
+Koppling till sprintmål:
+```
+
+**OBLIGATORISKA ELEMENT:**
+- ✅ Prioriterad arbetskö per team (inte kalender)
+- ✅ Verifierade estimat (eller märkt "behöver estimeras")
+- ✅ Varför-kolumn länkad till sprintmål/kritisk väg/beroenden
+- ✅ Planeringskontroll med bedömning (🟢/🟡/🔴)
+- ✅ Board & Backlog Review med konkreta förbättringsförslag
+- ✅ Nya issue-förslag tydligt märkta som "FÖRSLAG"
+- ✅ Klart dödt för varje issue (DoD eller demo-kriterium)
+
+**Data från:** GitHub issues, estimat, DoD-status, verifierad kapacitet från ⑧, prioritering från ⑨, tekniska beslut från ⑩, sprintmål från ⑪
 
 ---
 
-## 📝⑬ NÄSTA STEG / ACTIONS
+## 📝⑬ NÄSTA STEG / ACTIONS — MÖTETS "COMMIT"
 
-**Syfte:** Konkreta åtgärder direkt efter mötet
+**Syfte:** Omvandla punkt ⑫ besluten till konkreta GitHub-actions
 
-**Slides:**
-- **⑬A: Denna dag före nästa möte**
-- **⑬B: Denna vecka före nästa sprint**
+**DENNA PUNKT ÄR KRITISK:** Det här är där mötet blir verklig arbetsplan, inte bara diskussion.
+
+### KOPPLING FRÅN ⑫ → ⑬
+
+**Punkt ⑫:** AI analyserar, teamet beslutar
+**Punkt ⑬:** Besluten omvandlas till konkreta GitHub-ändringar + ansvar
+
+### Exempel på koppling:
+
+⑫ Förslag: "#91 bör prioriteras före #87 därför att Native väntar på API-kontraktet"
+
+Efter diskussion i mötet:
+
+⑬ **BESLUT:** Flytta #91 till Position 1. Björn äger. Klart senast onsdag.
+   → Åtgärd: Uppdatera Board efter mötet (vem?)
+   → Åtgärd: Tilldela #91 till Björn + sätt förfallodatum (onsdag)
+
+### Slides
+
+- **⑬A: BESLUT DENNA MÖTE** — vad bestämde vi?
+- **⑬B: ÄNDRINGAR I GITHUB** — vad uppdaterar vi efter mötet?
+- **⑬C: PAIRING & BLOCKERS** — vem jobbar med vem? Vad löser vi idag?
+
+### ⑬A — BESLUT DENNA MÖTE
+
+Visa endast beslut som är nödvändiga för sprintplanen:
+
+| Beslut | Från punkt | Ansvar | Åtgärd |
+|--------|-----------|--------|--------|
+| Björn äger #91, prioriterat position 1 | ⑫ | Björn | Tilldela + deadline: onsdag |
+| Nytt issue för integrationstest behövs | ⑫E | PL | Skapa issue före nästa möte |
+| Frontend/Backend låser API-kontrakt i ⑩ | ⑩ | Tomac/Anna | Dokumentera kontrakt i issue |
+| Omprioritera #45 til senare sprint | ⑨ | PL | Flytta till backlog-sprinten |
+
+### ⑬B — ÄNDRINGAR I GITHUB
+
+**Vad uppdateras efter mötet och av vem?**
+
+| Åtgärd | Issue | Förslag från | Ansvar | Status |
+|--------|-------|------------|--------|--------|
+| Flytta status | #XX · Namn | ⑫E | PL | ☐ |
+| Prioritera upp | #YY · Namn | ⑫ | PL | ☐ |
+| Tilldela | #ZZ | ⑫ | Assignee | ☐ |
+| Skapa issue | Nytt · Integrationstest | ⑫E | PL | ☐ |
+| Dela issue | #AA · Namn | ⑫E | PL | ☐ |
+
+**Varje rad är en konkret GitHub-operation.**
+
+### ⑬C — PAIRING & BLOCKERS ATT LÖSA IDAG
+
+**Vad bokras in och vad behöver lösa innan nästa arbete kan börja?**
+
+**Pairing-sessioner:**
+- Datum, tid, vilka två personer, vad fokus är
+
+**Blockers att lösa:**
+- Vilken blocker
+- Vem äger att lösa den
+- Deadline för lösning
+- Fallback om det inte löses
 
 **Obligatoriska element:**
-- ✅ Issues som ska tilldelas / skapas / uppdateras
-- ✅ Pairing-sessioner att boka (datum + tid)
-- ✅ Blockers att lösa omedelbar (med ansvar)
-- ✅ GitHub Board uppdateras efter mötet
+- ✅ Konkreta beslut från mötet (inte åsikter)
+- ✅ Vem äger varje åtgärd?
+- ✅ Deadlines för ändringar i GitHub
+- ✅ Pairing-sessioner inbokade (datum + tid + syfte)
+- ✅ Blockers med ansvar och fallback
+- ✅ Koppling till punkt ⑫ (varifrån kom beslutet?)
 
-**Data från:** Mötes-decisions
+**Data från:** Diskussionerna under ①–⑫, besluten som fattades
 
 ---
 
