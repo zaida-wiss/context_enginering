@@ -145,6 +145,39 @@ Om nej → Ta bort texten från sliden.
 
 ---
 
+## 🚨 KRITISK DISTINKTION: Project Board Status ≠ GitHub Issue State
+
+**VIKTIGT:** Dessa är två OLIKA saker:
+
+```
+Project Board Status (Done/In Progress/Backlog)
+    ≠
+GitHub Issue State (Open/Closed)
+```
+
+**Exempel på möjliga kombinationer:**
+
+| Board | Issue | Betyder |
+|-------|-------|---------|
+| Done | Open | Arbetet är på boarden färdigt, men issuen är fortfarande öppen (kvar till DoD) |
+| Done | Closed | Arbetet är helt slutfört enligt DoD |
+| In Progress | Open | Normalt tillstånd — arbetet pågår |
+| In Progress | Closed | Onormalt — closed issues bör inte aktiveras igen |
+| Backlog | Open | Inte påbörjat ännu |
+| Backlog | Closed | Beslutad att inte göra denna sprint |
+
+**För presentation — visar ALLTID båda:**
+
+```
+❌ DÅLIGT: "#42 – Login page är klart"
+✅ RÄTT: "#42 – Login page (Zaida) · Board:Done · Issue:Open · DoD: Review✓ Tests✓ Docs⏳"
+```
+
+**DoD är vad som gör issuen faktiskt "färdig"** — inte bara Board:Done och inte bara Issue:Open.
+Se DEFINITION_OF_DONE.md för vad som krävs.
+
+---
+
 ## 📌 Issue Format — Enda Giltiga Format
 
 **VARJE issue-referens MÅSTE följa detta format, överallt:**
