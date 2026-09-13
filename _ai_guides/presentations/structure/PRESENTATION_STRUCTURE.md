@@ -53,36 +53,63 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 - Slide ①A.2: Backend PRs denna vecka (ALLA)
 - Slide ①A.3: Native/System PRs denna vecka (ALLA)
 
-**FORMAT (OBLIGATORISK STRUKTUR — se screenshot för exempel):**
+**FORMAT (OBLIGATORISK STRUKTUR):**
 
 **DEL 1: PR-KORT (visuell snabbscan)**
-- Färgkodade kort: 🟢 grön (merged) eller 🟡 gul (pågår/open)
+
+🟢 **GRÖN** = PR MERGED i develop + DoD COMPLETE
+- Alla 4 DoD-punkter uppfyllda: ✅ AC ✅ Tests ✅ Review ✅ Docs
+- Format: `🟢 #92 Auth integration (Zaida) — MERGED`
+
+🟡 **ORANGE** = PR MERGED i develop MEN DoD INCOMPLETE
+- Någon DoD-punkt saknas (ofta: Tests eller Docs)
+- Format: `🟡 #80 Drift banner (Tomac) — MERGED [⚠️ Tests saknas]`
+
+🟡 **ORANGE** = PR OPEN (pågår, väntar på review/merge)
+- Format: `🟡 #94 SQL injection (Rasha) — OPEN [Väntar på review]`
+
+🔴 **RÖD** = BLOCKERAD (väntar på annat, kan inte merga)
+- Format: `🔴 #77 Native integration (Henrik) — BLOCKED [Väntar på Backend API]`
+
 - PR-nummer + titel
 - Vem ägde arbetet (issue-owner)
 - Commit-count + branch
 - En kort rad per PR
-- Visuell överblick: vad blev gjort?
+- **KRITISK:** Visa DoD-status på VARJE PR (grön/orange/röd)
 
 **DEL 2: PROGRESS BARS (ett ögonkast)**
-- "Merged/levererat denna vecka" — % klar
-- "Pågående PR-arbete" — % in progress
+- "Merged & Done (🟢)" — % med komplett DoD
+- "Merged & Incomplete (🟡)" — % merged men något saknas
+- "Open (🟡)" — % i review/pågår
+- "Blocked (🔴)" — % blockerad
 
 **DEL 3: TABELL (detaljer för djupläsning) — STÖRRE FONT**
-- Kolumner: Område | Verifierat | Ägare | Effekt
-- En rad per arbetsområde/PR
+- Kolumner: PR/Issue | Status | Ägare | DoD-Status | Vad saknas?
+- En rad per PR denna vecka
+- **STATUS-FÄRG:** 🟢/🟡/🔴 motsvar merged/incomplete/blocked
+- **DoD-KOLUMN:** Visar exakt vilka av 4 punkter som är klara (AC/Tests/Review/Docs)
+- **"Vad saknas"-KOLUMN:** Om orange/röd, säg explicit vad (Ex: "Tests", "Docs uppdatering", "Väntar på Backend")
 - Varför arbetet spelar roll (effekt)
-- **FONT-SIZE:** Minimum 13pt för tabelltext (läsbar från mötesbord)
-- **RADHÖJD:** Minst 24px per rad (luftig, inte trångt)
-- **HEADER:** 14pt bold på marinblå bakgrund (vit text)
+- **FONT-SIZE:** 
+  - Header: 14pt BOLD marinblå bakgrund (vit text)
+  - Cell-content: 13pt regular
+  - Footer: 12pt (meta-info, sources)
+- **RADHÖJD:** Minst 24px per rad (luftig, NPF-vänlig)
 
 **Obligatoriska element:**
 - ✅ **HUVUDFOKUS: Vilka PRs blev MERGED in i develop denna vecka?**
 - ✅ **ALLA PRs denna vecka måste visas** — ingen får utelämnas för plats
-- ✅ PR-kort överst (snabb visuell scan)
-- ✅ Progress bars (hur stor andel färdig?)
-- ✅ Tabell med område, verifiering, ägare, effekt
+- ✅ **DoD-STATUS PÅ VARJE PR:**
+  - 🟢 GRÖN = Merged + ALL DoD complete (AC ✅ Tests ✅ Review ✅ Docs ✅)
+  - 🟡 ORANGE = Merged men något saknas (Ex: Tests eller Docs)
+  - 🟡 ORANGE = Open (väntar på review/merge)
+  - 🔴 RÖD = Blockerad (kan inte merga än)
+- ✅ **TABELL-KOLUMN: "Vad saknas?"** — Om orange/röd, säg EXAKT vad
+  - Ex: "Tests saknas för DoD" eller "Docs behöver uppdateras" eller "Väntar på Backend API"
+- ✅ PR-kort överst (snabb visuell scan med färgkodning)
+- ✅ Progress bars (fördelning: grön/orange/röd)
+- ✅ Tabell med område, status, ägare, DoD-status, vad saknas
 - ✅ För varje PR: **Vem ÄGde den issuen?** (issue assignee eller PR-author)
-- ✅ Visa länk mellan PR + issue-owner (dubbelt namn om samma person)
 - ✅ Alla teammedlemmar som hade arbete måste synas (med namn + verifierat bidrag)
 - ✅ Arbetsområden, inte bara issue-nummer (Frontend & Auth, Backend & Risk, etc)
 - ✅ Effektbeskrivning: **varför detta arbete spelar roll** (kort, konkret)
@@ -90,7 +117,7 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
   - Kan vara branch utan PR än
   - Kan vara commits utan PR
   - Kan vara review-arbete på andra PRs
-- ✅ **FOOTER-TEXT:** Minst 11pt font (dyslexia-vänligt), förklara DoD-krav
+- ✅ **FOOTER-TEXT:** Förklara legend: "🟢 = Merged & DoD Complete | 🟡 = Merged & DoD Incomplete | 🔴 = Blocked"
 
 **Data från:** **Merged PRs in develop** (denna vecka) — repo-first reconstruction
 **INTE:** Bara "closed issues" eller "issues utan merge"
