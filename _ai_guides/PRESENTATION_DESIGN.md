@@ -117,49 +117,57 @@ Varje siffra, datum, mål måste komma från:
 
 **ALDRIG:** Gissa, antag, eller "normalt skulle man..."
 
-### ✅ MEGA-REGEL 4: Pedagogisk Förklaring av Ord & Begrepp
+### ✅ MEGA-REGEL 4: Presentationen Lär Branschterminologi
 
-**Aldrig använd term utan att förklara vad den betyder.**
+**Presentationen är både statusrapport OCH lärtillfälle för branschbegrepp.**
+
+Aldrig använd term utan att förklara vad den betyder. Presentationen ska graduellt bygga upp teamets ordförråd inom domänen.
 
 ```
 ❌ DÅLIGT: "Vi säkrar kärnflödet denna vecka"
           (vad är kärnflödet? vilka commits visar det?)
 
 ✅ BÄTTRE: "Vi fokuserar på kärnflödet: portföljöversikten 
-          end-to-end. Git visar 5 commits denna vecka 
+          end-to-end (hela flödet från inmatning till visning).
+          Git visar 5 commits denna vecka 
           (#42 portfolio, #45 risk-calc, etc).
-          Status: 80% klar. API inte integrera ännu."
+          Status: 80% klar. API inte integrerad ännu."
 
 ❌ DÅLIGT: "Risk dashboard är i progress"
           (vad är risk dashboard? vem jobbar?)
 
-✅ BÄTTRE: "Risk dashboard (visar risk-mått: volatilitet, 
-          Sharpe-ratio). Jobbar på av: Marco (#45).
+✅ BÄTTRE: "Risk dashboard (visar risk-mått: volatilitet = 
+          prissvängningar, Sharpe-ratio = risk-justerad avkastning).
+          Jobbar på av: Marco (#45).
           Status: 60% klar. Väntar på: API-spec från backend."
 ```
 
 **ANVÄND DENNA STRUKTUR:**
 ```
-Begrepp: [vad är det]
-Varför: [varför är det viktigt]
-Status: [konkret progress]
-Blockers: [om det finns]
+📚 Branschterm: [ordet]
+   Definition: [vad betyder det enkelt förklarat]
+   Kontext: [varför är det relevant för detta projekt]
+   Status: [konkret progress på detta område]
 ```
 
-**EXEMPEL:**
+**EXEMPEL PÅ TERMER SOM BÖR FÖRKLARAS:**
 ```
-📊 Progress bar (visar procent)
-   Varför: Snabbt att se status utan att läsa tal
-   Status: Frontend 80% (████████░░)
-   
-🔴 Critical status (betyder: måste lösa IDAG)
-   Varför: Risk att inte få klart i tid
-   Status: Native team 40%, blocker från Backend API
+Portfolio (samling av investeringar)
+Risk-ratio (mätning av osäkerhet)
+Volatilitet (prissvängningar över tid)
+Sharpe-ratio (risk-justerad avkastning)
+API-kontrakt (överenskommelse mellan system)
+Integration (två system arbetar tillsammans)
+Branch (parallell utvecklingsväg i Git)
+Blocker (något som stoppar framsteg)
+Definition of Done (checklist för färdigt arbete)
+```
 
-#42 Issue nummer (kopplar till GitHub)
-   Varför: Kan klicka direkt och se full issue
-   Assignee: (#42 - Jan föreslaget, jobbar på portfolio)
-```
+**VARFÖR DET ÄR VIKTIGT:**
+- Teammedlemmar lär sig domänvokabulär samtidigt som de jobbar
+- Nykomlingar fångar upp termer organiskt
+- Möten blir lärtillfällen, inte bara rapporter
+- Vanlig ordbok byggas upp över tid
 
 ### ✅ MEGA-REGEL 5: Sanningen Före Känslan
 

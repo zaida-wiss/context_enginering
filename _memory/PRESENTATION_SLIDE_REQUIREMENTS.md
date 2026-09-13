@@ -1,17 +1,24 @@
 # 📋 Presentation Slide Requirements - Sprint Planning (14 mötepunkter)
 
-**🚨 ÖVERGRIPANDE REGEL: Presentationens Syfte är TEAMTÄNK, inte Individuell Evaluering**
+**🚨 ÖVERGRIPANDE REGEL: Presentationen Lär & Samarbetar, Rapporterar & Bygger Teamtänk**
 
-Presentationens syfte är INTE att utvärdera individer eller maximera individuellt ägarskap.
-Den ska hjälpa **teamet** att nå sprintmålet **tillsammans**.
+Presentationen fyller TRE syften:
 
-När kapacitet, blockers, kunskapsrisker eller beroenden identifieras ska presentationen aktivt undersöka:
-- Hur kan teammedlemmar hjälpa, avlasta, paira eller täcka upp för varandra?
-- Var finns kapacitet som kan omfördelas?
-- Vilka kunskapsrisker (single point of failure) måste åtgärdas?
-- Vilka överlämningar mellan team kan minimeras?
+1. **TEAMTÄNK** — Inte individuell evaluering
+   - Presentationens syfte är INTE att utvärdera individer eller maximera individuellt ägarskap
+   - Den ska hjälpa **teamet** att nå sprintmålet **tillsammans**
+   - Huvudansvarig får aldrig betyda ENSAM ansvarig
+   - När kapacitet, blockers, kunskapsrisker eller beroenden identifieras ska presentationen aktivt undersöka:
+     * Hur kan teammedlemmar hjälpa, avlasta, paira eller täcka upp för varandra?
+     * Var finns kapacitet som kan omfördelas?
+     * Vilka kunskapsrisker (single point of failure) måste åtgärdas?
+     * Vilka överlämningar mellan team kan minimeras?
 
-**Huvudansvarig får aldrig betyda ENSAM ansvarig.**
+2. **BRANSCHPEDAGOGIK** — Lär domänvokabulär medan vi arbetar
+   - Varje branschterm förklaras simpelt (volatilitet = prissvängningar, API-kontrakt = överenskommelse mellan system)
+   - Nykomlingar fångar upp ordförrådet organiskt genom möten
+   - Möten blir lärtillfällen, inte bara statusrapporter
+   - Viktiga termer markeras 📚 för att visa att detta är lärmål
 
 ---
 
