@@ -49,6 +49,74 @@ ARKITEKTUR & BEROENDEN:
   ❌ INTE bara text-beskrivningar
 ```
 
+### ✅ MEGA-REGEL 0B: Färg, Form & Symboler Bär Känslan — ALDRIG OMVÄNT
+
+**Presentationens känsla ska PRIMÄRT kommuniceras genom visuell design, INTE genom ord-ton.**
+
+Läsaren ska KÄNNA veckans energi innan hen läser texten.
+
+```
+REGEL: VISUELL DESIGN BÖR BÄRA KÄNSLAN
+
+🟢 STARK VECKA (mycket blev klart)
+  → Sliden är fylld, sammanhållen, många ✅ synliga
+  → Progressformerna är fyllda (████████░░)
+  → Pilar pekar framåt (→)
+  → Grön accent för faktiska resultat
+  → Checkmarks dominerar bilden
+  → Lågt antal "pågår"-markörer (🔄)
+  
+  KÄNSLA: "Vi tog tydliga steg framåt"
+  (Läsaren SKÄ detta utan att texten behöver säga det)
+
+🟡 BLANDAD VECKA (arbete gjordes, men allt nådde inte mål)
+  → Sliden är neutral, balanserad
+  → Progressformerna är delvis fyllda (██████░░░░ 60%)
+  → Gula/lila accenter för pågåande arbete
+  → Medel-många checkmarks, många "pågår"-markörer
+  → Visuell övergång mellan klart och pågående
+  
+  KÄNSLA: "Vi rör oss framåt, men allt är inte i mål"
+  (Läsaren SÄR denna balans utan att texten behöver säga det)
+
+🔴 SVAG VECKA (för lite blev klart)
+  → Sliden har mer whitespace, är "luftigare"
+  → Progressformerna är mindre fyllda (████░░░░░░ 40%)
+  → Neutral/dämpad basfärg, sparsam orange accent
+  → Färre checkmarks, fler öppna former
+  → Mindre visuell dominans av "done"-delen
+  → Tydlig visuell kontrast mellan planerat och faktiskt
+  
+  KÄNSLA: "Vi behöver mer fart"
+  (Läsaren KÄNNER behoven utan att sliden måste säga "dåligt tempo")
+```
+
+**KRITISK REGEL — Denna struktur gäller ALLA slides, inte bara "Vad gjordes förra veckan":**
+
+| Slide | Känsla Ska Bäras Av | Inte Av |
+|-------|---------------------|---------|
+| Status-slides | Färg + fyllnadsgrad + progress-bars | Stor negativ text |
+| Team-slides | Form (kort/boxar) + statusfärg innanför | Röd border |
+| Blocker-slides | Visuell blockering (pilar) + orange accent | Ord "kritisk blockerad" |
+| Prioritering-slides | Visuell storlek/viktighet + färg | Ordlista |
+| Tempo-slides | Visuell jämförelse (planerat vs faktiskt) | Bedöm-ord |
+
+**FÄRGER MÅSTE ALLTID VARA SEMANTISKA:**
+- 🟢 Grön = verifierat positivt framsteg
+- 🟠 Orange = pågående, avvikelse, behov av uppmärksamhet
+- 🔴 Röd = endast verkligt blockerade/kritisk (används sparsamt)
+- 🟣/🔵/🩷 = struktur, kategori, teamindelning (ALDRIG status)
+
+**ALDRIG:**
+❌ Använd grön för något osäkert
+❌ Använd röd för något orange
+❌ Använd färg bara för att se fin ut
+❌ Använd många färger för att "minska tristessen"
+❌ Säg "bra" när sliden visar "blandad" 
+❌ Säg "dåligt" när sliden redan visar det visuellt
+
+---
+
 ### ✅ MEGA-REGEL 1: Assignee på VARJE Issue (TVINGANDE FORMAT)
 
 **Format:** (#XX - Namn) eller (#XX - ??) om okänd

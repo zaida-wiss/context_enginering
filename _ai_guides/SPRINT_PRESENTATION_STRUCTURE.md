@@ -377,82 +377,183 @@ Färre/fler endast när informationen kräver det
   - Fråga 3: [Från PL:s updates]
 - Om inga frågor: "Inga frågor denna vecka ✅"
 
-### SEKTION 📝⑥ — VAD GJORDES FÖRRA VECKAN (5 min)
+### SEKTION 📝⑥ — VAD GJORDES FÖRRA VECKAN: RESULTAT, BIDRAG & TEMPO (5 min)
 
-**Slide 6 — 📝⑥ VAD GJORDES FÖRRA VECKAN — LYFTA FRAM ALLA**
+**Slide 6 — 📝⑥ VAD GJORDES FÖRRA VECKAN — RESULTAT & TEMPO**
 
-**SYFTE:** Ge VARJE MEDARBETARE en känsla av "klapp på axeln" för sitt bidrag
+**SYFTE:**
+Denna mötespunkt ska spegla VERKLIGHETEN från föregående vecka.
+AI:n ska inte automatiskt vara positiv, negativ eller neutral.
+Tonen ska bestämmas av verifierad projektdata.
 
-**OBLIGATORISK STRUKTUR — denna slide måste inkludera ALLA som varit aktiva:**
+Målet är att teamet ska känna rätt sak utifrån vad som faktiskt hände:
+- 🟢 Om mycket blev klart: "Bra jobbat — vi tog tydliga kliv framåt."
+- 🟡 Om veckan var blandad: "Vi gjorde bra saker, men nådde inte den förflyttning vi planerade."
+- 🔴 Om för lite blev klart: "Vi tappade fart förra veckan — nu behöver vi förstå varför och öka genomförandet."
+
+**Presentationen ska ALDRIG försöka skapa artificiell pepp.**
+
+---
+
+**STEG 1: ANALYSERA FÖRST — FORMULERA TONEN SEDAN**
+
+Innan sliden skrivs ska AI:n jämföra:
+
+1. Vad planerade vi att få klart?
+2. Vad blev faktiskt klart?
+3. Vad flyttade produkten/projektet framåt?
+4. Vad blev påbörjat men inte färdigt?
+5. Vilka blockers påverkade resultatet?
+6. Hur fördelades bidragen över teamet?
+7. Är vi närmare sprintmålet än för en vecka sedan?
+8. Är förflyttningen tillräcklig i förhållande till återstående tid?
+
+**Först efter denna analys får presentationen välja ton och visuell känsla.**
+
+---
+
+**STEG 2: VISA VARJE PERSON — BIDRAG & EFFEKT**
+
+För varje aktiv teammedlem:
+
+**NAMN → Vad personen faktiskt bidrog med → Vad detta tillförde projektet**
 
 ```
 📝⑥ VAD GJORDES FÖRRA VECKAN
 
 🎯 FRONTEND TEAM:
-  ✅ Lisa — #40 Auth-flow: 0% → 80% (nästan klar!)
-  ✅ Ali — #52 Responsive layout merged (användare på alla enheter!)
-  ✅ Jan — Code review för #50 + #51 (höll standarden)
+  Lisa
+  → Implementerade auth-flöde (80% klart)
+  → Unblockade backend integration; CTO-demo nästa vecka blir möjlig
+
+  Ali
+  → Uppdaterade responsive layout + tester
+  → Användare kan nu komma åt funktionen på alla enheter
+
+  Jan
+  → Codereview #50, #51 + dokumentation
+  → Höll kodkvalitet; teamet behövde inte redigera efteråt
 
 🎯 BACKEND TEAM:
-  ✅ Marco — #45 FX-integration: blockerat → resolved (löste kritisk blocker)
-  ✅ Jana — #48 Unit tests: 40 nya test cases (bättre coverage!)
-  ✅ Anna — #51 Core refactor: started (arkitektur)
+  Marco
+  → Löste FX-integrationsblocken (workaround implementerad)
+  → Native kunde inte starta sitt arbete — nu kan de det
+
+  Jana
+  → 40+ nya unit-tests skrivna
+  → Test-coverage från 62% → 68%; reduceradrisk vid deployment
+
+  Anna
+  → Core refactoring påbörjat
+  → Arkitekturen blir hållbar för nästa fas
 
 🎯 NATIVE TEAM:
-  ✅ Kris — #XX Error handling: 60% → merged (användare får bättre feedback!)
-  ✅ Sam — Design review + accessibility check (alla kan använda det)
+  Kris
+  → Error handling implementerat + merged
+  → Användare får nu bättre feedback när något går fel
 
-DENNA VECKA GJORDES:
-• 3 features merged (eller nära)
-• 4 blockers lösta
-• 6 människor bidrog aktivt
-• 40+ ny test-coverage
-• 0 producerade bugs
-
-💬 LEDNINGENS TANKE:
-\"Era insatser denna vecka bröt en kritisk blocker och tog oss närmare 
-veckans mål. Kris och Marco löste tillsammans något som hade bromsat 
-Native i två veckor. Bra jobbar, team!\"
+  Sam
+  → Accessibility review + design-konsistens
+  → Alla kan använda appen; ingen kvar utan möjligheter
 ```
 
-**VIKTIGT — INKLUDERA DESSA BIDRAG:**
-✅ Merged kod (förstås)
-✅ Nästan klara features ("80% → nästan klar!" betyder något)
-✅ Code reviews (QA är arbete)
-✅ Tester & test-coverage (osynlig men kritisk)
-✅ Dokumentation & arkitektur-arbete
-✅ Problem-löst & blockers avlägsnade
-✅ Tillgänglighet & design-review
+**VIKTIGT — DETTA RÄKNAS SOM VERKLIGT BIDRAG:**
+✅ Implementation ✅ Testning ✅ Code review ✅ Debugging ✅ Dokumentation
+✅ Arkitektur-beslut ✅ UX-arbete ✅ Kravarbete ✅ Research ✅ Pairing/support
+✅ Integration mellan team ✅ Blocker-lösning
 
-**PERSONALISERING — för VARJE person visa:**
-- Namn (inte bara team)
-- Vad de gjorde
-- Framsteg eller påverkan ("50% → 80%", "löste blocker", "nya tests")
-- Varför det spelar roll för teamet/kunden
+**AI:n ska INTE dra slutsatsen: "ingen commit = inget bidrag"**
 
-**DATA MÅSTE KOMMA FRÅN:**
-1. GitHub merged PRs + PR-status (vem gjorde vad)
-2. Closed + in-progress issues (vem jobbar på vad)
-3. Code-review historik (vem reviewade vad)
-4. Git log per person (commits, inte bara final merge)
-5. Project Board + Notes (vilka blockers löste vem)
-6. Mötesprotokollet (vilka jobb nämdes)
+Om verifierad data inte visar något konkret bidrag: skriv inte påhittat beröm.
+Visa istället neutralt: "Inget verifierat färdigställt bidrag hittades i tillgängliga källor."
+
+---
+
+**STEG 3: PROJEKTETS KLIV FRAMÅT**
+
+Efter individuella bidrag, sammanfatta:
+
+**DET HÄR KUNDE VI INTE FÖRRA MÅNDAGEN — MEN KAN NU**
+
+```
+✅ Auth-flödet kan testa end-to-end med backend
+✅ Driftindikator baseras på live-data (inte mock)
+✅ Test-coverage över 65% (högre än målsättning)
+✅ FX-beräkningen blockar inte längre Native
+✅ Användare på mobil får samma användarupplevelse
+✅ Koden passar inte längre på ett napkin
+```
+
+---
+
+**STEG 4: VECKANS HELHETSBILD & TEMPO**
+
+Presentationen gör en gemensam bedömning av TEAMETS leveranstempo, baserat på:
+- Planerat arbete ↔ faktiskt färdigställt arbete
+- Merged PRs & issues i Done
+- Integrationer som blivit möjliga
+- Blockers som lösts
+- Arbete som fortfarande står kvar
+
+**Välj en av dessa baserat på DATA:**
+
+```
+🟢 TYDLIG FRAMÅTRÖRELSE
+Majoriteten av det viktiga arbetet blev färdigt och projektet tog
+konkreta kliv mot sprintmålet.
+
+Visuell känsla: fyllda progressformer, gröna accenter, checkmarks, 
+sammanhållna grupper, framåtriktade pilar, visuell tyngd på färdigställt.
+
+🟡 BLANDAD VECKA
+Viktigt arbete gjordes, men flera planerade resultat nådde inte hela
+vägen till färdigt. Fokus behövs på att avsluta innan mer startas.
+
+Visuell känsla: neutrala basfärger, gula/lila accenter för pågående,
+delvis fyllda progressformer, färre checkmarks, övergångar mellan
+klart och pågående.
+
+🔴 FÖR LITEN FÖRFLYTTNING
+För lite av det prioriterade arbetet blev klart i relation till planen
+och återstående tid. Teamet behöver förstå orsakerna och justera tempo,
+scope eller arbetssätt.
+
+Visuell känsla: dämpad bas, sparsam orange accent, mindre fyllda
+progressytor, fler öppna former, mindre visuell dominans av "done".
+Undvik stora röda varningar om inget faktiskt är kritiskt.
+```
+
+**KRITISKT:** Detta är en TEAM-bedömning. Presentationen får aldrig peka ut en enskild person som "för långsam."
+
+---
+
+**OBLIGATORISK STRUKTUR:**
+
+1. 🎉 VECKANS KLIV FRAMÅT (vad kunde vi inte göra förra veckan, men kan nu?)
+2. 👥 VAD VAR OCH EN BIDROG MED (namn → bidrag → effekt)
+3. 📈 VECKANS TEMPO (planerat vs faktiskt, teamets helhetsbild)
+4. 🔎 Diskret verifiering: issue / PR / commit (visa inte som huvudbudskap)
+
+**Git-data får aldrig vara huvudbudskapet.** Använd det för att VERIFIERA påståenden, inte för att fylla slides.
+
+---
 
 **KÄNSLA OCH TON:**
+
 ✅ VARJE person är synlig, även om job inte är "helt klart"
-✅ Visa PÅVERKAN, inte bara "issues closed" ("användare på alla enheter!")
-✅ Både merged och pågåande arbete ("80% → nästan klar" är framsteg)
+✅ Visa PÅVERKAN, inte bara "issues closed"
+✅ Både merged och pågåande arbete är framsteg
 ✅ Lyfta fram svårt arbete (refactor, tester, reviews, blockers)
-✅ Känsla av "vi kom långt denna vecka, tack alla"
+✅ Tonen bestäms av DATA: stark vecka → glad ton; svag vecka → fokus på förbättring
 
 **ALDRIG:**
-❌ Bara merged — glöm inte nästan-klara eller pågåande
-❌ Bara kod — se även reviews, tester, dokumentation
-❌ Bara namn på issue — förklara vad personen GJORDE
-❌ För mycket text, men ALLA namn måste synas
-❌ Negativitet ("vi lag långsam") — visa istället frametstegen
+❌ Börja med "Bra jobbat!" innan veckan analyserats
+❌ Göra låg aktivitet positiv bara för att vara uppmuntrande
+❌ Bedöma tempo enbart från antal commits
+❌ Bedöma individer utifrån commit count
+❌ Bara antal öppna issues — visa rörelsen (vad var inte möjligt förra veckan)
 
-**SAMMA FORMAT VARJE VECKA** → varje vecka ser vart vi är, vem som gjorde vad, och att alla bidrag räknas
+**SAMMA FORMAT VARJE VECKA** → teamet ser tempo, förflyttning, och att alla bidrag räknas
 
 ---
 

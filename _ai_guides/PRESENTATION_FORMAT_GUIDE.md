@@ -45,6 +45,82 @@ Om en person måste gissa eller tolka = presentationen är INTE KLAR.
 
 ---
 
+## 🎨 MEGA-REGEL 0B PLUS: VISUELL KÄNSLA BÄRS AV FORM, INTE ORDALAG
+
+**Presentationens känsla ska primärt kommuniceras genom färg, form och fyllnadsgrad — inte genom stark positiv/negativ text.**
+
+Texten beskriver fakta. Färg, form och visuell tyngd uttrycker om veckan varit stark, blandad eller svag.
+
+### STARK VECKA (🟢 Mycket blev klart)
+
+```
+VISUELL STRUKTUR:
+✅ Tydligare gröna accenter för faktisk framgång
+✅ Fyllda progressformer (████████░░)
+✅ Framåtriktade pilar (→)
+✅ Tydliga checkmarks (✅)
+✅ Sammanhållna, täta grupper (alla är här, allt är kopplat)
+✅ Större visuell tyngd på färdigställt arbete
+✅ Minimalt med öppna eller "pågår"-markörer
+
+KÄNSLA UTAN ATT SÄGA DET EXPLICIT:
+"Vi tog tydliga steg framåt."
+```
+
+### BLANDAD VECKA (🟡 Arbete gjordes, men allt nådde inte mål)
+
+```
+VISUELL STRUKTUR:
+✅ Neutrala basfärger (marinblå, grå)
+✅ Gula/lila accenter för pågående arbete
+✅ Delvis fyllda progressformer (██████░░░░ 60%)
+✅ Färre checkmarks, mer "pågår"-markörer (🔄)
+✅ Visuella övergångar mellan klart och pågående
+✅ Medelstor visuell tyngd på både klart och pågående
+
+KÄNSLA UTAN ATT SÄGA DET EXPLICIT:
+"Vi rör oss framåt, men allt är inte i mål."
+```
+
+### SVAG VECKA (🔴 För lite blev klart)
+
+```
+VISUELL STRUKTUR:
+✅ Dämpad/neutral basfärg
+✅ Sparsam orange accent (INTE starkt rött om inget faktiskt är kritiskt)
+✅ Mindre fyllda progressytor (████░░░░░░ 40%)
+✅ Fler öppna former/whitespace
+✅ Tydlig visuell kontrast mellan planerat och klart
+✅ Mindre visuell dominans av "done"-delen
+✅ Mer luft mellan grupper
+
+KÄNSLA UTAN ATT SÄGA DET EXPLICIT:
+"Vi behöver mer fart — här är varför och vad vi kan ändra."
+```
+
+### REGEL: FÄRGER ÄR ALDRIG DEKORATION
+
+✅ **Grön** = verifierat positivt framsteg
+✅ **Orange/Gul** = pågående, avvikelse, eller behov av uppmärksamhet  
+✅ **Röd** = endast verkligt blockerande/kritiskt  
+✅ **Lila/Blå/Rosa** = neutrala kategorier, struktur eller teamindelning
+
+❌ Använd ALDRIG färg för att se fin ut
+❌ Använd ALDRIG grön för ett framsteg som inte är verifierat
+❌ Använd ALDRIG röd för något som bara är orange
+❌ Använd ALDRIG lila för status (lila är för struktur/kategorier)
+
+### VIKTIGT FÖR SLIDE ① ("VAD GJORDES FÖRRA VECKAN")
+
+Denna slide visar veckans helhetsbild primärt genom visuell känsla:
+
+- **Stark vecka** → sliden är fylld, sammanhållen, många checkmarks synliga
+- **Svag vecka** → sliden har mer whitespace, ofärdiga indikatorer, mindre visuell tyngd
+
+Texten kan säga "3 av 7 prioriterade leverabler klara" utan att säga "dåligt tempo" — läsaren KÄNNER det redan.
+
+---
+
 ## 🚨 MEGA-REGEL 0B: VISUELL PEDAGOGIK FÖR BILDTÄNKARE
 
 **Presentationen är FÖR DE SOM TÄNKER BILDLIGT.**
