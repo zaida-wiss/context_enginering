@@ -220,8 +220,9 @@ API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/projects  ←
 
 ### Meeting Protocol
 ```
-SOURCE: [TEAM MUST FILL IN — Google Docs link or TXT export URL]
-EXPORT: If Google Docs, use ?export=txt for raw text export
+SOURCE: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
+EXPORT TXT: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+PDF EXPORT: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf
 FALLBACK: _memory/PROTOCOL_SNAPSHOT.md (if live link fails)
 ```
 
