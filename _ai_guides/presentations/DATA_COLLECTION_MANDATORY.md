@@ -24,9 +24,16 @@ Innan du säger "datainsamlingen är ofullständig":
 1. FÖRSÖK: GitHub Issues/PRs/Commits (webben eller API)
    Failar? → Gå till fallback 1
 
-2. FALLBACK 1: Google Sheets denna vecka
-   https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-   Kan du läsa denna? JA → använd denna
+2. FALLBACK 1: Google Sheets denna vecka (COMMITS + ALL DATA)
+   🔗 https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?usp=sharing
+   
+   Denna sheet innehåller:
+     ✅ Commits denna vecka (primär fallback)
+     ✅ Merged PRs (för punkt ①)
+     ✅ Issues (öppna, stängda)
+     ✅ Project Board status
+   
+   Kan du läsa denna? JA → använd denna för alla data
    NEJ → Gå till fallback 2
 
 3. FALLBACK 2: Project Board denna vecka

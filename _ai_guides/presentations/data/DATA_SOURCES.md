@@ -215,20 +215,34 @@ Om en källa misslyckas:
 
 ## UNIVERSAL FALLBACK — Google Sheets
 
-**Om multiple live-sources failar, denna sheet innehåller fallback-data för:**
-- Commits denna vecka
-- Issues (öppna, stängda, assignees)
-- PRs (öppna, mergade)
-- Project Board status
-- Mötesprotokollet
+**OM GitHub web/API failar → använd denna sheet för ALL data:**
 
 ```
-URL: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-Status: Accessible, multiple sheets for different data types
-AI can read: Yes, via direct link or export
+🔗 FALLBACK URL (primary):
+   https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+
+✅ Denna sheet innehåller fallback-data för:
+   - Commits denna vecka (primär fallback för commit-historik)
+   - Issues (öppna, stängda, assignees)
+   - PRs (öppna, mergade, linked issues)
+   - Project Board status
+   - Mötesprotokollet (om tillgängligt)
+   - Merged PRs in develop (för punkt ①)
+
+📊 Status: Accessible, multiple sheets for different data types
+🤖 AI can read: Yes, via direct link or CSV export
 ```
 
-**Denna sheet är sista fallback innan presentationen säger "ej verifierat".**
+**USAGE:**
+1. GitHub live-sources ALWAYS tried first (web, API, Connector)
+2. If GitHub fails → use this Sheets URL as fallback
+3. If this sheet fails → use meeting protocol or manual entry
+4. Denna sheet är sista fallback innan presentationen säger "ej verifierat"
+
+**EXPORT FOR AI READING:**
+If direct access fails, download as:
+- CSV: `https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=csv`
+- Excel: `https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=xlsx`
 
 ---
 
