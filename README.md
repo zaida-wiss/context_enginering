@@ -5,16 +5,26 @@
 
 ---
 
+## 🚨 CRITICAL — READ THIS FIRST
+
+**If you're ANY AI model working with this project:**
+
+→ **[PROJEKTKONTEXT_AVANZA.md](PROJEKTKONTEXT_AVANZA.md)** ← REQUIRED READING
+
+This file defines how to work with this project and Avanza repo. Read it BEFORE doing anything else.
+
+---
+
 ## 🎯 QUICK START
 
 **Creating a presentation?**
-→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← START HERE
+→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← START HERE (after PROJEKTKONTEXT_AVANZA.md)
 
 **Understanding the project?**
 → **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** + **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)**
 
 **Sharing with another AI?**
-→ Link: https://github.com/zaida-wiss/context_enginering
+→ Link: https://github.com/zaida-wiss/context_enginering (tell them to read PROJEKTKONTEXT_AVANZA.md first)
 
 **Need help with code?**
 → Read **[_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md)** then project repo above
