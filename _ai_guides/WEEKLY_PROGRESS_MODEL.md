@@ -202,7 +202,36 @@ Med alla data samlad, organisera i **exakt tre grupper**:
 
 ```
 [SYMBOL] [FÄRG] #XX – Titel (Assignee)
-  Konkret status · Antal commits · Klar-datum eller ETA
+  Vad det innebär för projektet · Konkret status · Antal commits · Klar-datum eller ETA
+```
+
+**VIKTIGT: "Vad det innebär" måste alltid visas**
+
+Det är INTE tillräckligt att bara säga "4 commits" eller "klart".
+Vi måste förstå: **Vilken effekt hade det här bidraget?**
+
+Exempel på DÅLIGT (bara status):
+```
+✓ #52 – Portfolio summary (Rasha)
+  Merged PR · 4 commits · klart 11 sep
+```
+
+Exempel på BRA (status + effekt):
+```
+✓ #52 – Portfolio summary (Rasha)
+  🟢 Unblockade Frontend-integration · Merged PR #81 · 4 commits · klart 11 sep
+```
+
+Eller:
+```
+✓ #52 – Portfolio summary (Rasha)
+  🟢 Portfolio kan nu visas på alla enheter · Merged PR #81 · klart 11 sep
+```
+
+Eller:
+```
+→ #63 – Drift calculation (Tomac)
+  🔵 Gör att Native kan börja sitt arbete när klart · 3 commits denna vecka · PR öppen
 ```
 
 ### SYMBOL LEGEND
@@ -231,26 +260,39 @@ Text ska visa:
 - **Hur långt:** "X commits denna vecka" eller "PR öppen" eller "klart datum"
 - **Nästa steg:** "ETA torsdag" eller "väntar på review" eller "blockerad på X"
 
-### EXEMPEL — ALLTING TILLSAMMANS
+### EXEMPEL — ALLTING TILLSAMMANS (MED EFFEKT)
 
 ```
 KLART:
 ✓ #52 – Portfolio health summary · Rasha
-  🟢 Merged PR #81 · 4 commits · klart 11 sep
+  🟢 Gör att Front-end kan integrera med Backend
+  Merged PR #81 · 4 commits · klart 11 sep
+
+✓ #48 – Unit tests · Jana
+  🟢 Täcker kritiska paths; förhindrar regressions vid deployment
+  Merged PR #79 · 40+ nya test-cases · klart 10 sep
 
 PÅGÅR:
 → #63 – Drift calculation · Tomac
-  🔵 3 commits denna vecka · PR #82 öppen · 60% progress
+  🔵 Kommer att unblockera Native-teamet när klart
+  3 commits denna vecka · PR #82 öppen · 60% progress
+
+→ #71 – Legacy refactor · Marco
+  🔵 Gör koden lättare att underhålla och reducerar tech-debt
+  2 commits denna vecka · Pågår; inte blockerad
 
 BEHÖVER UPPMÄRKSAMHET:
 ! #45 – Auth schema · Lisa
-  🟡 Blockerad på Backend #48 · ETA torsdag
+  🟡 Blockerar Front-back integration
+  Väntar på Backend #48 · ETA torsdag
 
-! #67 – Documentation
-  🟡 Assignee saknas · behöver åtgärd nu
+! #67 – Documentation update
+  🟡 Kritiska för onboarding av nya team-medlemmar
+  Assignee saknas · behöver ägare NU
 
-× #71 – Legacy refactor · Marco
-  🔴 Står still 5 dagar · ingen nylig aktivitet · påminnelse behövs
+× #90 – Security compliance
+  🔴 KRITISK: blockar deployment till prod
+  Blockerad på juridisk review · ingen ETA · urgent
 ```
 
 ---
