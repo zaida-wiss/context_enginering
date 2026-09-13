@@ -1,128 +1,127 @@
-# 📋 Presentation Slide Requirements - Vad varje slide MÅSTE innehålla
+# 📋 Presentation Slide Requirements - Sprint Planning Structure (13 mötepunkter)
 
-**Du kan redigera denna fil för att specificera vad varje slide ska innehålla.**
-
----
-
-## 📌 Slide 1 — FRAMSIDA (Möte-info)
-
-```
-MÅSTE INNEHÅLLA (TRE ELEMENT):
-
-1️⃣ VÅD ÄR DET FÖR MÖTE?
-   Exempel: SPRINTPLANERING (MÅNDAGSMÖTE)
-
-2️⃣ TIDPUNKT
-   Exempel: Måndag 14 september 2026, 09:00-10:30
-
-3️⃣ SYFTE MED MÖTET
-   Exempel: "Planera denna vecka, säkerställa vi når målen"
-
-VISUELLA ELEMENT:
-✅ Möte-ikon överst (📅 eller 🎯)
-✅ Datum + tid väl synlig
-✅ Mycket whitespace (70% tom yta)
-```
+**OBS: Denna struktur motsvarar mötesprotokollet 1:1. Varje mötepunkt kan ha 1-3 slides beroende på innehål.**
 
 ---
 
-## 📌 Slide 2 — AGENDA (Innehållsförteckning över alla mötespunkter)
-
-**DESIGN: Se exakt nedan — detta är mandatory layout!**
+## 🎬 FRAMSIDA — Extremt enkel & ren
 
 ```
 HEADER:
-  Vänster: "AVANZA · TEAM 1"
-  Höger: "Sprint planning · måndag 14 september 2026"
+  Vänster: "SPRINTPLANERING · TEAM 1"
+  Höger: "Måndag 14 september · 09:00–10:30"
 
-TITLE:
-  📋⓪ AGENDA — SAMMA STRUKTUR, VARJE VECKA
+MAIN CONTENT (mycket whitespace):
 
-LAYOUT - TWO COLUMNS (6 mötespunkter i varje):
+Fokus med PL denna vecka
 
-KOLUMN 1                          KOLUMN 2
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-① Status sedan förra möte        ⑦ Estimering & risk
-② Övergripande mål & status      ⑧ Tekniska beslut
-③ Frontend                        ⑨ Beroenden & blockers
-④ Backend                         ⑩ Arbetsuppgifter
-⑤ Native                          ⑪ Frågor till PL
-⑥ Prioritering & scope           ⑫ Nästa steg & sammanfattning
+Säkerställa veckans prioriteringar, beroenden 
+och vägen mot CTO-demo.
 
-VISUELLA ELEMENT - EXAKT FORMAT:
-✅ Varje mötespunkt i en BOX (vit bakgrund)
-✅ GRÖN vänsterkant (border-left 3-4px)
-✅ Numrering: ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ (circled numbers)
-✅ Två kolumner - jämn fördelning
-✅ Mycket whitespace mellan boxarna
-✅ Enkel, minimalist design
-✅ Footer: "Källa: SPRINT_PROTOCOL_NUMBERED.md"
-✅ Slide number: "2" längst ner höger
+FOOTER (litet, 10-12pt, diskret):
+Underlag kontrollerat inför mötet:
+context_enginering · avanza-team1 · Git-status · Issues & PRs · Project Board
+Mötesprotokoll: [kontrolleras före möte]
+
+DESIGN:
+✅ 70% tom yta
+✅ Max 3 textblock
+✅ Ingen agenda, inga kort, ingen extra info
+✅ Fokus ligger på PL-fokus-texten
 ```
 
 ---
 
-## 📌 Slide 3 — 📝① Status Sedan Förra Möte (Git Progress)
+## 📌 Slide 1 — 📝① Sedan Förra Mötet (Done/Merged-vy)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ ALLA COMMITS denna vecka — FRÅN ALLA TEAMMEDLEMMAR
-✅ VAD SOM KOMMIT IN TILL DEVELOP senaste veckan
-✅ VAD SOM FINNS PÅBÖRJAT I ANDRA BRANCHER
-✅ Vilka branches är stale (> 3 dagar utan commit)
+✅ Vad blev FAKTISKT klart och mergat till develop denna vecka?
+✅ Konkreta commits från ALLA teammedlemmar
+✅ Issues som är Done
+✅ Active branches (pågår denna vecka)
 
-MEGA-REGEL 2: VERIFIERA GIT-STATUS
-Kör dessa commands för faktisk data:
+MEGA-REGEL 2: Verifiera git-status med commands:
   git log develop --since="7 days ago" --oneline
   git log --all --since="7 days ago" --oneline
   git branch -a
-  git diff develop..feature/[branch] --stat
 
-VISUELLA ELEMENT - VISA ALLAS ARBETE:
-🟢 Grön för mergade (done) — Zaida, Björn, Tomac, Rasha, Erik, Pär, Henrik
-🟠 Orange för active branches (pågår)
-🔴 Röd för stale branches (inte aktivt denna vecka)
+VISUELLA ELEMENT:
+✅ Grön för mergad (done)
+✅ Orange för pågår
+✅ Röd för stale (>3 dagar utan commit)
 
 EXEMPEL:
 ✅ MERGAT DENNA VECKA (7 commits):
    Zaida: #42 Portfolio overview
    Tomac: #45 Risk metrics
+   Björn: #44 Dashboard styling
    Rasha: #51 API-spec
    Erik: #52 Risk endpoint
    Pär: #60 iOS test
-   etc...
+   Henrik: #61 Android widget
 ```
 
 ---
 
-## 📌 Slide 4 — 📝② Övergripande Mål & Status (HELA TEAMET)
+## 📌 Slide 2 — 📝② Sprintmål (Stor målbild, få element)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ HUR GÅR DET FÖR HELA TEAMET MOT MÅLEN?
-   → 🟢 ON TRACK | 🟠 SLIGHT DELAY | 🔴 CRITICAL
-✅ KURSMÅL DENNA VECKA (från KURSMAL_OCH_BETYG.md)
-✅ PROJEKTMÅL DENNA VECKA (från GitHub Project Board)
+✅ Vad ska denna sprint åstadkomma?
+✅ Tydligt fokus (1-3 större mål)
+✅ Ingen detaljering — bara målbilden
+
+EXEMPEL:
+🎯 Sprint: "Säkra kärnflödet & integration mot CTO-demo"
+
+MÅL DENNA VECKA:
+1. Portfolio end-to-end (Frontend + Backend)
+2. Risk-dashboard integrerad
+3. Mobile-appen synkroniserad med API
 
 VISUELLA ELEMENT:
-🟢 Stor färgad status-ikon
-📊 Progress bar: KURSMÅL (14/17 = 82%)
-📊 Progress bar: PROJEKT (75% → 85%)
+🎯 Stort, tydligt
+📅 Deadline synlig (CTO-demo 24 sept)
+Mycket whitespace
 ```
 
 ---
 
-## 📌 Slide 5 — 📝③ FRONTEND TEAM Fokus denna vecka
+## 📌 Slide 3 — 📝③ Nuläge (Samlad statusbild)
 
 ```
-MÅSTE INNEHÅLLA (Frontend: Zaida, Björn, Tomac):
-✅ Alla Frontend-issues denna vecka (hele teamen tillsammans)
-✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
+MÅSTE INNEHÅLLA:
+✅ Var står projektet MOT sprintmålet?
+✅ Övergripande status: 🟢 ON TRACK | 🟠 DELAY | 🔴 CRITICAL
+✅ Framsteg denna vecka: från X → Y
+
+EXEMPEL:
+🟢 ÖVERGRIPANDE: ON TRACK
+
+Kursmål:  14/17 → 16/17 denna vecka (82% → 94%)
+Projekt:  75% → 85% MVP denna vecka
+Risk:     Två möjliga blockers (API-spec, simulator)
+
+VISUELLA ELEMENT:
+📊 Progress bars (████░░)
+🟢🟠🔴 Stor färgad status-ikon
+Minimal text
+```
+
+---
+
+## 📌 Slide 4 — 📝④ Frontend (Team-status)
+
+```
+MÅSTE INNEHÅLLA (Team: Zaida, Björn, Tomac):
+✅ Vad pågår och vad behöver teamet veta?
+✅ Prioriterad issue-lista (MÅSTE-HA | BÖR-HA)
 ✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
 ✅ Risker & Blockers
 ✅ Status: 🟢🟠🔴
 
-LAYOUT (MAX 5-6 issues per priority):
+LAYOUT (max 4-5 issues per priority):
 📌 MÅSTE-HA:
    ☐ #42 Portfolio (Zaida - 5h)
    ☐ #43 Risk calc (Tomac - 8h)
@@ -142,17 +141,17 @@ VISUELLA ELEMENT:
 
 ---
 
-## 📌 Slide 6 — 📝④ BACKEND TEAM Fokus denna vecka
+## 📌 Slide 5 — 📝⑤ Backend (Team-status)
 
 ```
-MÅSTE INNEHÅLLA (Backend: Rasha, Erik):
-✅ Alla Backend-issues denna vecka (hele teamen tillsammans)
-✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
+MÅSTE INNEHÅLLA (Team: Rasha, Erik):
+✅ Vad pågår och vad behöver teamet veta?
+✅ Prioriterad issue-lista (MÅSTE-HA | BÖR-HA)
 ✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
 ✅ Risker & Blockers
 ✅ Status: 🟢🟠🔴
 
-LAYOUT (MAX 4-5 issues per priority):
+LAYOUT (max 4-5 issues per priority):
 📌 MÅSTE-HA:
    ☐ #51 API-spec (Rasha - 3h)
    ☐ #52 Risk endpoint (Erik - 8h)
@@ -170,23 +169,23 @@ VISUELLA ELEMENT:
 
 ---
 
-## 📌 Slide 7 — 📝⑤ NATIVE/SYSTEMUTVECKLARE TEAM Fokus denna vecka
+## 📌 Slide 6 — 📝⑥ Native/Systemutvecklare (Team-status)
 
 ```
-MÅSTE INNEHÅLLA (Native/Systemutvecklare: Pär, Henrik):
-✅ Alla Native-issues denna vecka (hele teamen tillsammans)
-✅ Prioriterad lista (MÅSTE-HA | BÖR-HA)
+MÅSTE INNEHÅLLA (Team: Pär, Henrik):
+✅ Vad pågår och vad behöver teamet veta?
+✅ Prioriterad issue-lista (MÅSTE-HA | BÖR-HA)
 ✅ Assignee: (#XX - PERSONENS NAMN) — INTE teamets namn!
 ✅ Risker & Blockers
 ✅ Status: 🟢🟠🔴
 
-LAYOUT (MAX 4-5 issues per priority):
+LAYOUT (max 4-5 issues per priority):
 📌 MÅSTE-HA:
-   ☐ #60 iOS test (Sofia - 5h)
-   ☐ #61 Android widget (Kevin - 7h)
+   ☐ #60 iOS test (Pär - 5h)
+   ☐ #61 Android widget (Henrik - 7h)
 
 📌 BÖR-HA:
-   ☐ #63 Offline sync (Anna - 6h)
+   ☐ #63 Offline sync (Pär - 6h)
 
 🔴 BLOCKERS: API-spec (#51), Simulator setup
 
@@ -198,214 +197,263 @@ VISUELLA ELEMENT:
 
 ---
 
-## 📌 Slide 8 — 📝⑥ Blockers (VISUELL FLÖDESDIAGRAM)
+## 📌 Slide 7 — 📝⑦ Beroenden & Blockers (Flödesdiagram)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ ALLA BLOCKERS denna vecka
-✅ VAD BLOCKERAR VAD (visuell pillar)
-✅ Vem som är blockerad
-✅ Förväntat löst (datum + tid)
+✅ Vad väntar på vad? (VAD BLOCKERAR VAD)
+✅ Flödesschema med pilar
+✅ Förväntad lösning + tid
 ✅ Åtgärd NU (konkret)
 
 VISUELLA ELEMENT:
-➡️ FLÖDESDIAGRAM med pilar
-🔴 KRITISKA (löser IDAG)
-🟠 ALLVARLIGA (löser DENNA VECKA)
+➡️ FLÖDESDIAGRAM:
+   Backend API-spec → blockerar Frontend #42, #43
+   Simulator setup → blockerar Native all dev
+   CTO feedback → blockerar Backend #51
+
+🔴 KRITISKA (löses IDAG):
+   🔴 Backend API-spec (löses TUE 14:00)
+
+🟠 ALLVARLIGA (löses DENNA VECKA):
+   🟠 Simulator setup (löses WED 09:00)
+
+Pillarna ska visa tydligt vad som blockerar vad.
 ```
 
 ---
 
-## 📌 Slide 9 — 📝⑦ Prioritering & Scope denna vecka
+## 📌 Slide 8 — 📝⑧ Prioritering & Scope (Must/Next/Later)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ MÅSTE-HA denna vecka (med #issues + assignee)
-✅ BÖR-HA denna vecka
-✅ "Kan vi göra allt?" → Ja/Nej
-✅ Om nej: Scope cut (vad skips/väntar)
+✅ Vad gör vi FÖRST denna vecka (MUST)?
+✅ Vad kommer nästa vecka (NEXT)?
+✅ Vad kan vi inte göra nu (LATER/SKIP)?
+
+LAYOUT - TRE KATEGORIER:
+🔴 MUST (denna vecka):
+   #42, #43, #51, #52, #60, #61
+   (18 timmar kapacitet)
+
+🟠 NEXT (nästa vecka eller senare):
+   #44, #45, #54, #63
+   (14 timmar)
+
+⚪ LATER (kan skjutas):
+   #46, #62, #70
+   (släpper vi denna sprint)
 
 VISUELLA ELEMENT:
-📊 Tabell (två spalter: MÅSTE-HA | BÖR-HA)
-🟢 MÅSTE-HA in grön/bold
-🟠 BÖR-HA in orange
-#️⃣ Issue nummer MED assignee (#XX - Namn)
-⏰ Timestimat (3h, 5h, etc)
+📊 Kort/kolumner för varje kategori
+Färgad prioritet (🔴 MUST = rött/bold)
 ```
 
 ---
 
-## 📌 Slide 10 — 📝⑧ Estimering & Risk denna vecka
+## 📌 Slide 9 — 📝⑨ Kapacitet & Estimering (Kapacitetsvy)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ KAPACITET per team (available vs needed)
+✅ Är mängden planerat arbete realistisk?
+✅ Kapacitet per team (available vs needed)
 ✅ "Passar det?" → Ja/Nej
-✅ KÄNDA RISKER + mitigation
-✅ FRAMGÅNGSKRITERIER denna vecka
-✅ Support-behov (om överbelastat)
+✅ Buffer/risk?
+
+LAYOUT - TABELL:
+Team      | Available | Needed | Buffer | Status
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Frontend  | 40h       | 42h    | -2h    | ⚠️  (stretch)
+Backend   | 32h       | 30h    | +2h    | ✅  (OK)
+Native    | 24h       | 28h    | -4h    | 🔴 (under)
 
 VISUELLA ELEMENT:
-📊 Tabell (Team | Available | Needed | Buffer | Status)
-✅/⚠️ Visuell "passar det?" indikatör
-🟢🟠🔴 Kapacitet-status per team
+📊 Kapacitetsstapling
+✅/⚠️/🔴 Status per team
+Konkreta timmar
 ```
 
 ---
 
-## 📌 Slide 11 — 📝⑨ Tekniska Beslut denna vecka
+## 📌 Slide 10 — 📝⑩ Risker (Risk → konsekvens → hantering)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ Varje tekniskt beslut:
-   - VAD är beslutet
-   - VEM bestämde (team eller PL)
-   - VARFÖR är det viktigt
-   - IMPACT (vad ändrar, vilka påverkas)
+✅ Vilka risker kan göra att sprintplanen misslyckas?
+✅ Konsekvens av risk
+✅ Hantering/mitigation
 
-FORMAT: 2-3 beslut max, konkreta
+LAYOUT - RISKORT:
+🔴 RISK 1: API-spec inte klar på tid
+   Konsekvens: Frontend + Native blockerad, 4 dagar förlorad
+   Hantering: Rasha börjar TIE morgon, daily standup kl 10:00
+
+🟠 RISK 2: Simulator-setup-problem
+   Konsekvens: Native kan inte testa på enhet
+   Hantering: IT-support redan kontaktad, fallback: CI-testing
+
+⚠️ RISK 3: CTO-demo feedback på arkitektur
+   Konsekvens: Kan kräva omarbete vecka 3
+   Hantering: Pre-demo-möte THU 14:00
+
+VISUELLA ELEMENT:
+🔴🟠⚠️ Risk-kort
+Tydlig konsekvens
+Konkret hantering
 ```
 
 ---
 
-## 📌 Slide 12 — 📝⑩ Arbetsuppgifter denna vecka (ALLA teammedlemmar)
+## 📌 Slide 11 — 📝⑪ Tekniska Beslut (Beslutskort)
+
+```
+MÅSTE INNEHÅLLA:
+✅ Vilka beslut behöver tas eller dokumenteras?
+
+EN RUTA PER BESLUT:
+┌──────────────────────────────┐
+│ 🔧 BESLUT 1: React Router v6 │
+│ Beslutad av: Frontend team   │
+│ Varför: Modernare API        │
+│ Impact: #42, #44             │
+│ Approved av: PL (TUE)        │
+└──────────────────────────────┘
+
+┌──────────────────────────────┐
+│ 🔧 BESLUT 2: PostgreSQL pool │
+│ Beslutad av: Backend team    │
+│ Varför: Connection mgmt      │
+│ Impact: #51, #52             │
+│ Approved av: CTO             │
+└──────────────────────────────┘
+
+REGEL: En ruta = ett beslut. Fyll inte ut mallen,
+        visa bara de beslut som faktiskt finns.
+```
+
+---
+
+## 📌 Slide 12 — 📝⑫ Sprintplan (Vem gör vad, i vilken ordning?)
 
 ```
 MÅSTE INNEHÅLLA:
 ✅ Per-team boxar (Frontend / Backend / Native)
-✅ ALLA teammedlemmar har minst EN uppgift tilldelad
-✅ Varje issue:
-   - #XX nummer
-   - Beskrivning
-   - (#XX - PERSONENS NAMN) OBLIGATORISK — ALLA ska synas!
-   - Timestimat (h)
+✅ ALLA teammedlemmar har minst EN uppgift
+✅ Issues + assignee + timmar
 
-TEAMMEDLEMMAR (säkerställ alla är representerade):
-Frontend: Zaida, Björn, Tomac
-Backend: Rasha, Erik
-Native: Pär, Henrik
+LAYOUT - TRE TEAMBOXAR:
+┌─ FRONTEND ──────────────────┐
+│ ☐ #42 Portfolio (Zaida - 5h)│
+│ ☐ #43 Risk calc (Tomac - 8h)│
+│ ☐ #44 Styling (Björn - 4h)  │
+│ ☐ #45 Testing (Zaida - 6h)  │
+└─────────────────────────────┘
+
+┌─ BACKEND ───────────────────┐
+│ ☐ #51 API-spec (Rasha - 3h) │
+│ ☐ #52 Risk endpoint (Erik)  │
+│ ☐ #54 Cache (Rasha - 4h)    │
+└─────────────────────────────┘
+
+┌─ NATIVE ────────────────────┐
+│ ☐ #60 iOS test (Pär - 5h)   │
+│ ☐ #61 Android (Henrik - 7h) │
+│ ☐ #63 Offline (Pär - 6h)    │
+└─────────────────────────────┘
 
 VISUELLA ELEMENT:
-⬛ Svart border runt team-boxar
-☐ Checkboxes för copy-paste
-#️⃣ Issue nummer
-👥 Assignee namn i parentes — ALLA medlemmar!
-⏰ Timestimat
-
-FORMAT: Kan copy-pastas direkt till protokoll
+⬛ Svart border per team-box
+☐ Checkboxes (copy-paste till protokoll)
+👥 ALLA medlemmar måste finnas
+⏰ Konkreta timmar
 ```
 
 ---
 
-## 📌 Slide 13 — 📝⑪ Frågor till PL
+## 📌 Slide 13 — 📝⑬ Nästa Steg (Omedelbar handlingsplan)
 
 ```
 MÅSTE INNEHÅLLA:
-✅ Rimliga frågor från team (eller "Inga frågor denna vecka")
-✅ Vad behöver vi från PL denna vecka
+✅ Vad händer DIREKT efter mötet (idag)?
+✅ Vad händer under veckan (konkreta deadlines)?
 
-FORMAT: 2-4 frågor max, konkreta
-```
-
----
-
-## 📌 Slide 14 — 📝⑫ Nästa Steg (MÅSTE vara SEPARAT SLIDE)
-
-```
-🚨 KRITISK: ALDRIG tillsammans med Sammanfattning på samma slide!
-
-MÅSTE INNEHÅLLA:
-✅ OMEDELBAR ACTION (efter möte IDAG):
+LAYOUT:
+🔴 IDAG (efter möte):
    ☐ GitHub Project Board uppdaterad
    ☐ Pair sessions bokade
-   ☐ Alla vet sitt jobb och assignee
+   ☐ Alla vet sitt jobb
    ☐ Blockers dokumenterade
 
-✅ DENNA VECKA - konkreta deadlines:
-   🔴 MON 17:00 — [action] (KRITISK)
-   📍 TUE 14:00 — [action]
-   📍 WED 09:00 — [action]
-   🎯 THU 15:00 — SPRINT END
+📍 DENNA VECKA - konkreta deadlines:
+   🔴 TUE 14:00 — Backend pushes API-spec (KRITISK)
+   📍 WED 09:00 — Simulator setup OK
+   📍 THU 14:00 — Pre-demo-möte med CTO
+   🎯 FRI 16:00 — Sprint end review
 
 VISUELLA ELEMENT:
 ☐ Checkboxes (copy-paste ready)
-📍 Timeline med ikoner
-🔴 Rött för kritiska deadlines
-
-FOCUS: Fokusera på HANDLINGAR och TIDSLINJER
-DETTA ÄR SLIDE 14 — SLIDE 15 är Sammanfattning (separat)
+📍 Tydlig timeline
+🔴 Kritiska deadlines markerade
 ```
 
 ---
 
-## 📌 Slide 15 — 📝⑫ Sammanfattning (MÅSTE vara SEPARAT SLIDE)
+## 📌 Slide 14 — 📝⑬ Frågor till PL (Sista slide — diskussionsarbetsyta)
 
 ```
-🚨 KRITISK: ALDRIG tillsammans med Nästa Steg på samma slide!
-
 MÅSTE INNEHÅLLA:
-✅ DENNA VECKAS FOKUS (från mötesprotokollet)
-✅ ÖVERGRIPANDE STATUS (🟢🟠🔴)
-✅ FRAMSTEG - visuellt från X → Y:
-   • Kursmål: 14/17 → 16/17 (denna vecka)
-   • Projekt MVP: 75% → 85% (target denna vecka)
+✅ Vad behöver teamet få SVAR/BESLUT på från PL?
+✅ Stor, enkel layout (denna slide ligger kvar under diskussion)
 
-✅ KRITISKA PUNKTER (om något är bakom plan)
-✅ MOTIVERANDE AVSLUT:
-   "Vi gör detta tillsammans! Lycka till denna vecka!"
+LAYOUT - FRÅGOR MED PLATS FÖR SVAR:
+
+❓ FRÅGA 1: Arkitektur-feedback före CTO-demo?
+   Behöver vi pre-review eller kan vi presentera torsdag?
+   SVAR: ____________________________________
+
+❓ FRÅGA 2: Scope-justering om simulator inte fixas?
+   Kan vi skippa Native-testning eller behövs det?
+   SVAR: ____________________________________
+
+❓ FRÅGA 3: Resurs-support för underbelastad team?
+   Native är 4 timmar under. Kan de ta extra från todo-listan?
+   SVAR: ____________________________________
 
 VISUELLA ELEMENT:
-📊 Statistik visuell (pil från X → Y)
-🟢 Status färgad (ON TRACK / DELAY / CRITICAL)
-💪 Motiverande ton
-
-FOCUS: Motivera och summera veckan
-DETTA ÄR SLIDE 15 — SLIDE 14 är Nästa Steg (separat)
+❓ Stor fråge-symbol
+Mycket whitespace för anteckningar
+En fråga per rad
+Denna slide LIGGER KVAR medan ni diskuterar
 ```
 
 ---
 
-## 📌 Slide 16 (VALFRITT) — Extra Context eller Reserve
+## 📌 SLIDE STRUCTURE SUMMARY (14 slides totalt)
 
 ```
-VALFRITT — använd denna om behövs för:
-✅ Veckans møter & deadlines
-✅ Viktiga externa events
-✅ Eller håll tom för framtida expansion
-```
+🎬 FRAMSIDA — Fokus med PL denna vecka (extrem enkel)
 
----
+📝① Sedan förra mötet (Done/merged-vy)
+📝② Sprintmål (Stor målbild)
+📝③ Nuläge (Samlad statusbild — dashboard)
+📝④ Frontend (Team-status)
+📝⑤ Backend (Team-status)
+📝⑥ Native (Team-status)
+📝⑦ Beroenden & Blockers (Flödesdiagram)
+📝⑧ Prioritering & Scope (Must/Next/Later)
+📝⑨ Kapacitet & Estimering (Kapacitetsvy)
+📝⑩ Risker (Risk-kort)
+📝⑪ Tekniska Beslut (Beslutskort)
+📝⑫ Sprintplan (Vem gör vad)
+📝⑨ Frågor till PL (SISTA SLIDE — LÄMNAS UPPE)
 
-## 📌 SLIDE STRUCTURE SUMMARY
-
-```
-Totalt: 15 SLIDES REKOMMENDERAT (16 med reserve)
-
-🚨 VIKTIGT: PRESENTATIONEN BÖRJAR MED SLIDE 1 (FRAMSIDA)
-            ALDRIG någon "Slide 0" eller "mötespunkt 0" på presentationen!
-
-1️⃣  FRAMSIDA (Möte-typ, tid, syfte)
-2️⃣  AGENDA (alla 12 mötespunkter 📝①-⑫)
-3️⃣  Status sedan förra (Git progress + branches) — 📝①
-4️⃣  Övergripande status (hele teamet → 🟢🟠🔴) — 📝②
-5️⃣  FRONTEND fokus denna vecka — 📝③
-6️⃣  BACKEND fokus denna vecka — 📝④
-7️⃣  NATIVE fokus denna vecka — 📝⑤
-8️⃣  BLOCKERS (visuell flödesdiagram) — 📝⑥
-9️⃣  Prioritering & Scope — 📝⑦
-🔟 Estimering & Risk — 📝⑧
-1️⃣1️⃣ Tekniska Beslut — 📝⑨
-1️⃣2️⃣ Arbetsuppgifter (per team) — 📝⑩
-1️⃣3️⃣ Frågor till PL — 📝⑪
-1️⃣4️⃣ Nästa Steg (ACTION ITEMS) — 📝⑫
-1️⃣5️⃣ Sammanfattning — 📝⑫
-[1️⃣6️⃣ Reserve/Extra info — (ingen mötespunkt)]
+REGEL: Varje mötepunkt = en tydlig funktion
+       Slides varierar beroende på innehål (1-3 per punkt)
+       Presentationen leder: Bakåt → Nuläge → Problem → Plan → PL
 ```
 
 ---
 
-**Senast uppdaterad:** 2026-09-11
-**Status:** Editable requirements för 15-16 slides
-**KRITISKT:** Slide 1 = FRAMSIDA, ALDRIG Slide 0 eller mötespunkt 0!
-**NOTERING:** Slide 7 = NATIVE/SYSTEMUTVECKLARE team
-g
+**Senast uppdaterad:** 2026-09-13  
+**Status:** 13 mötepunkter, 1:1 med mötesprotokollet  
+**Teammedlemmar:** Zaida, Björn, Tomac (Frontend), Rasha, Erik (Backend), Pär, Henrik (Native)
