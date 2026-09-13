@@ -1,10 +1,31 @@
-# 🗂️ Mötesprotokoll — Sprint Planning (13 mötepunkter)
+# 🗂️ Mötesprotokoll — Sprint Planning (14 mötepunkter)
 
-**Denna struktur är 1:1 med presentationen. Varje punkt motsvarar en mötsfunktion, inte en rapportering.**
+**Denna struktur är 1:1 med presentationen. En mötespunkt kan ha 1-3+ slides (märkta med samma symbol).**
 
 ---
 
-## 📋 Framsida — Möte-info
+## 🔍 FÖRE MÖTET: Obligatorisk Cross-Team Code & Contract Review
+
+**AI:n måste granska actual code i alla aktiva branches/PRs innan presentation skapas.**
+
+Kontrollera:
+- ✅ API-kontrakt mellan Frontend och Backend (endpoints, request/response)
+- ✅ JNA/Native-kontrakt mellan Backend och Native
+- ✅ Auth/JWT-flöde — är implementationen samma överallt?
+- ✅ Datamodeller och DTOer — matchar allt?
+- ✅ Felhantering — olika strategier någonstans?
+- ✅ Andra gemensamma antaganden (naming, versioning, etc)
+
+**Resultat dokumenteras i relevanta mötespunkter:**
+- Blockande avvikelser → ⑦ Beroenden & blockers
+- Risk för dubbelarbete → ⑩ Risker
+- Kontrakt som behöver fastslås → ⑪ Tekniska beslut
+- Åtgärder efter möte → ⑬ Nästa steg
+- Externa beslut → ⑭ Frågor till PL
+
+---
+
+## 📋 Framsida — Möte-info (ingen/📝⓪)
 
 ```
 SPRINTPLANERING · TEAM 1
@@ -14,7 +35,9 @@ Fokus med PL denna vecka
 [Fokustext — kort och tydlig]
 
 Underlag kontrollerat inför mötet:
-[Källlista]
+context_enginering · avanza-team1 · Git-status · Issues & PRs · Project Board
+Code review: [status — kontrakt verifierade / avvikelser noterade]
+Mötesprotokoll: [kontrolleras före möte]
 ```
 
 ---
@@ -22,10 +45,7 @@ Underlag kontrollerat inför mötet:
 ## 📝① Sedan Förra Mötet
 **Vad blev faktiskt klart? (Done/merged-vy)**
 
-**VIKTIG:** Visar commits från ALLA teammedlemmar (7 dagar tillbaka):
-- Zaida, Björn, Tomac (Frontend)
-- Rasha, Erik (Backend)
-- Pär, Henrik (Native)
+**VIKTIGT: Visar commits från ALLA teammedlemmar (7 dagar)**
 
 Git-status denna vecka:
 - Mergade commits: 
@@ -144,7 +164,7 @@ Risk denna vecka:
 ---
 
 ## 📝⑦ Beroenden & Blockers
-**Vad väntar på vad?**
+**Vad väntar på vad? Vilka avvikelser blockerar framsteg?**
 
 Flöde 1: [blockare] → [vem påverkas]
 - Väntar på: [konkret action]
@@ -156,6 +176,10 @@ Flöde 2: [blockare] → [vem påverkas]
 - Förväntad lösning: [datum tid]
 - Åtgärd NU: [konkret]
 
+**Från code review:**
+- [Avvikelse som blockerar]: [beskrivning]
+- [Kontrakt-mismatch]: [vilka är påverkade]
+
 ---
 
 ## 📝⑧ Prioritering & Scope
@@ -164,15 +188,12 @@ Flöde 2: [blockare] → [vem påverkas]
 🔴 MUST denna vecka:
 - #XX, #XX, #XX
 - Totalt: XYh kapacitet
-- Denna vecka: Vi gör DET HÄR
 
 🟠 NEXT (nästa vecka eller senare):
 - #XX, #XX, #XX
-- Vi startar nästa vecka
 
 ⚪ LATER/SKIP:
 - #XX, #XX
-- Vi väljer bort detta denna sprint
 
 ---
 
@@ -187,10 +208,6 @@ Kapacitet denna vecka:
 | Native   | XXh       | XXh    | ±Xh    | ✅/⚠️  |
 
 Svar: 🟢 Ja, vi passar | 🟠 Knapp | 🔴 Nej
-
-Om underbelastat team:
-- Extra arbete från [lista]
-- Support till [team]
 
 ---
 
@@ -209,11 +226,9 @@ Om underbelastat team:
 - Hantering: [konkret åtgärd]
 - Ansvarig: [namn]
 
-**Risk 3: [risk]**
-- Konsekvens: [vad blir påverkat]
-- Sannolikhet: Låg / Medel / Hög
-- Hantering: [konkret åtgärd]
-- Ansvarig: [namn]
+**Från code review:**
+- Dubbelarbete-risk: [beskrivning]
+- Ohålbar riktning: [beskrivning]
 
 ---
 
@@ -225,14 +240,16 @@ Om underbelastat team:
 - Varför: [motivering]
 - Impact: [vilka issues/team påverkas]
 - Approved av: [namn]
-- Dokumenterat i: [länk]
 
 **Beslut 2: [kort titel]**
 - Vad: [beskrivning av beslutet]
 - Varför: [motivering]
 - Impact: [vilka issues/team påverkas]
 - Approved av: [namn]
-- Dokumenterat i: [länk]
+
+**Från code review:**
+- Kontrakt som måste fastslås: [API/JNA/Auth]
+- Datamodell-avvikelse som behöver lösa: [beskrivning]
 
 ---
 
@@ -264,53 +281,51 @@ Om underbelastat team:
 
 ---
 
-## 📝⑫ Sprintplan + Nästa Steg
-**Vem gör vad, i vilken ordning? Vad händer direkt efter mötet?**
+## 📝⑬ Nästa Steg
+**Vilka konkreta ändringar & justeringar krävs för att planen ska fungera?**
 
-### FRONTEND (Zaida, Björn, Tomac)
-- ☐ #XX [beskrivning] (Zaida - 5h)
-- ☐ #XX [beskrivning] (Tomac - 8h)
-- ☐ #XX [beskrivning] (Björn - 4h)
-- ☐ #XX [beskrivning] (Zaida - 6h)
-- ☐ #XX [beskrivning] (Tomac - 3h)
+### Tilldelning — vem tar vilken issue?
+- #XX → Zaida
+- #XX → Tomac
+- #XX → Rasha
+- etc
 
-**Totalt:** XXh, XX% av kapaciteten
+### Nya issues som behöver skapas
+- Ny issue: [namn] — [varför behövs den]
+- Ny issue: [namn] — [varför behövs den]
 
-### BACKEND (Rasha, Erik)
-- ☐ #XX [beskrivning] (Rasha - 3h)
-- ☐ #XX [beskrivning] (Erik - 8h)
-- ☐ #XX [beskrivning] (Rasha - 4h)
+### Befintliga issues som behöver uppdateras
+- #XX → förtydliga acceptance criteria
+- #XX → lägg till dependency på #YY
+- #XX → uppdatera scope efter möte
 
-**Totalt:** XXh, XX% av kapaciteten
+### Issues som måste flyttas/pausas
+- #XX flyttas från MUST till NEXT — [varför, ny owner eller kapacitet]
+- #XX pausas — [väntar på #YY eller blocker löses först]
 
-### NATIVE (Pär, Henrik)
-- ☐ #XX [beskrivning] (Pär - 5h)
-- ☐ #XX [beskrivning] (Henrik - 7h)
-- ☐ #XX [beskrivning] (Pär - 6h)
+### Blockers — löses de, hur och när?
+- [Blocker 1] — löses av [namn], TIE [tid]
+- [Blocker 2] — löses av [namn], WED [tid]
 
-**Totalt:** XXh, XX% av kapaciteten
+### Pairing/support som behöver bokas
+- [namn] + [namn] pair prog på #XX — [dag tid]
+- [namn] mentorerar [namn] på #XX — [dag tid]
 
-### NÄSTA STEG — OMEDELBAR ACTION
+### Kontrakt & beroenden som måste dokumenteras
+- API-spec för #XX → uppdatera i shared doc
+- JNA-kontrakt för #XX → fastslå och dokumentera
+- Auth-flow → dokumentera i [länk]
+
+### Direkt efter mötet — GitHub-actions
 - ☐ GitHub Project Board uppdaterad
-- ☐ Pair sessions bokade (om behövs)
-- ☐ Alla vet sitt jobb och assignee
-- ☐ Blockers dokumenterade i GitHub
-
-### DENNA VECKA — konkreta deadlines
-- **TUE 14:00** — [action] (KRITISK)
-- **WED 09:00** — [action]
-- **THU 14:00** — [action]
-- **FRI 16:00** — Sprint end review
-
-### MÖTEN DENNA VECKA
-- **MON 09:00** — Sprint planning (denna)
-- **TUE 10:00** — Daily standup (om behövs)
-- **THU 14:00** — CTO pre-demo-review
-- **FRI 16:00** — Sprint review & retro
+- ☐ Assignees satta
+- ☐ Blockers/dependencies dokumenterade
+- ☐ Issues på rätt sprint
+- ☐ Tekniska beslut dokumenterade
 
 ---
 
-## 📝⑬ Frågor till PL
+## 📝⑭ Frågor till PL
 **Vad behöver vi få svar/beslut på från PL? (SISTA MÖTESPUNKT)**
 
 **Fråga 1: [kort fråga]**
@@ -330,7 +345,7 @@ Om underbelastat team:
 
 **DENNA PUNKT ÄR ABSOLUT SISTA.**
 Presentationen slutar här. Denna slide ligger kvar under mötet
-för att diskutera frågorna med PL.
+för att diskutera frågorna med PL och dokumentera svaren.
 
 ---
 
@@ -342,13 +357,16 @@ Flödet är:
 2. **Sprintmål** → Vad försöker vi nå?
 3. **Nuläge** → Var står vi?
 4-6. **Teamstatus** → Vad händer i varje arbetsström?
-7. **Beroenden & blockers** → Hur påverkar arbetsströmmarna varandra?
+7. **Beroenden & blockers** → Hur påverkar arbetsströmmarna varandra? (Inkl. code-review-avvikelser)
 8. **Prioritering** → Vad prioriterar vi?
 9. **Kapacitet** → Har vi tid?
-10. **Risker** → Vad kan hindra oss?
-11. **Tekniska beslut** → Vad måste vi bestämma?
-12. **Sprintplan + Nästa steg** → Lås planen och omedelbara åtgärder
-13. **Frågor till PL** → Det vi behöver få svar på (SISTA PUNKT)
+10. **Risker** → Vad kan hindra oss? (Inkl. code-review-risker)
+11. **Tekniska beslut** → Vad måste vi bestämma? (Inkl. kontrakt från code review)
+12. **Sprintplan** → Vem gör vad i vilken ordning
+13. **Nästa steg** → Vilka konkreta ändringar krävs för att planen ska fungera?
+14. **Frågor till PL** → Det vi behöver få svar på (SISTA PUNKT)
+
+---
 
 ## 📌 Presentationen och Protokollet
 
@@ -358,16 +376,21 @@ En mötespunkt ≠ en slide.
 
 Exempel:
 - 📝④ Frontend kan vara Slides 5-7 (alla märkta 📝④)
-- 📝⑦ Beroenden kan vara två slides (båda märkta 📝⑦)
+- 📝⑦ Blockers kan vara två slides (båda märkta 📝⑦)
+- 📝⑬ Nästa steg kan vara två slides (båda märkta 📝⑬)
 
 Det viktiga är **mötespunktssymbolen**, inte slide-numret.
+
+Presentationen kan ha 20-30 slides — antalet varierar per vecka beroende på innehål.
 
 ---
 
 **Senast uppdaterad:** 2026-09-13  
-**Status:** 13 mötepunkter (①-⑬), 1:1 med PRESENTATION_SLIDE_REQUIREMENTS.md  
-**VIKTIGT:** 
-- Punkt ① MÅSTE visa commits från ALLA teammedlemmar (7 dagar tillbaka)
-- Punkt ⑬ är ABSOLUT SISTA punkt (Frågor till PL)
-- Nästa steg ingår i punkt ⑫ (inte egen punkt)
-- Presentationen kan ha fler än 13 slides (en punkt kan ha flera slides)
+**Status:** 14 mötepunkter (①-⑭), 1:1 med PRESENTATION_SLIDE_REQUIREMENTS.md  
+
+**KRITISKA KRAV:**
+- ① MÅSTE visa commits från ALLA teammedlemmar (7 dagar tillbaka)
+- FÖRE mötet: Obligatorisk Cross-Team Code & Contract Review
+- ⑬ Nästa steg = konkreta GitHub-ändringar & justeringar (INTE generisk checklista)
+- ⑭ Frågor till PL är ABSOLUT SISTA punkt
+- En mötespunkt kan ha 1-3+ slides — symbolen märker tillhörigheten
