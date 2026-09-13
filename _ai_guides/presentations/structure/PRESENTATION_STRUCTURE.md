@@ -67,10 +67,13 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 - "Merged/levererat denna vecka" — % klar
 - "Pågående PR-arbete" — % in progress
 
-**DEL 3: TABELL (detaljer för djupläsning)**
+**DEL 3: TABELL (detaljer för djupläsning) — STÖRRE FONT**
 - Kolumner: Område | Verifierat | Ägare | Effekt
 - En rad per arbetsområde/PR
 - Varför arbetet spelar roll (effekt)
+- **FONT-SIZE:** Minimum 13pt för tabelltext (läsbar från mötesbord)
+- **RADHÖJD:** Minst 24px per rad (luftig, inte trångt)
+- **HEADER:** 14pt bold på marinblå bakgrund (vit text)
 
 **Obligatoriska element:**
 - ✅ **HUVUDFOKUS: Vilka PRs blev MERGED in i develop denna vecka?**
