@@ -35,28 +35,48 @@ This file is an index only. It does not define read order or rules.
 
 ### AI Execution Guides — Presentations
 
-**→ presentations/README.md** — Navigation (vad vill du ändra?)
+**🚨 START HÄR:** presentations/MANDATORY_READING_ORDER.md — Exact sequence before rendering
+
+**Main Navigation:**
+→ presentations/README.md — What do you want to change?
+
+**Mandatory Files (MUST READ before rendering):**
+1. presentations/MANDATORY_READING_ORDER.md (this week's sequence)
+2. presentations/DATA_COLLECTION_MANDATORY.md (data collection checklist)
+3. presentations/structure/PRESENTATION_STRUCTURE.md (14 meeting points)
+4. presentations/content/PRESENTATION_SPEC.md (content rules)
+5. presentations/data/DATA_SOURCES.md (data sources)
+6. presentations/data/TEAM_ROSTER.md (team members)
+7. presentations/design/PRESENTATION_CONSISTENCY_FRAMEWORK.md (consistency rules)
 
 **Content (vad sliderna ska innehålla):**
 - presentations/content/PRESENTATION_SPEC.md
 
-**Structure (slide-ordning):**
+**Structure (slide-ordning & 14 mötespunkter):**
 - presentations/structure/PRESENTATION_STRUCTURE.md
 - presentations/structure/SPRINT_PROTOCOL_NUMBERED.md
+- presentations/structure/SPRINT_MEETING_PROTOCOL_TEMPLATE.md
 
-**Design (visuell utseende):**
+**Design (visuell utseende, färger, konsistens):**
 - presentations/design/PRESENTATION_STYLE.md
+- presentations/design/PRESENTATION_CONSISTENCY_FRAMEWORK.md
+- presentations/design/DESIGN_AUTHORITY.md
 
 **Data (sources & insamling):**
-- presentations/data/DATA_SOURCES.md
+- presentations/DATA_COLLECTION_MANDATORY.md (MUST READ)
+- presentations/data/DATA_SOURCES.md (fallback hierarchy)
 - presentations/data/DATA_COLLECTION_CHECKLIST.md
 - presentations/data/SOURCE_CHECK.md
+- presentations/data/TEAM_ROSTER.md
 
 **Verification (verifiering):**
+- presentations/verification/VERIFICATION_SYSTEM.md
+- presentations/verification/VERIFICATION_THIS_WEEK.md
 - presentations/verification/VISUAL_VERIFICATION.md
 - presentations/verification/VERIFICATION_BOARD_VS_GIT.md
 
 **Models (datamodeller):**
+- presentations/models/REPO_FIRST_RECONSTRUCTION.md
 - presentations/models/WEEKLY_PROGRESS_MODEL.md
 
 ### Project Context
