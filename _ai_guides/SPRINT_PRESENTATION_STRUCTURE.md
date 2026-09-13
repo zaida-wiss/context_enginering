@@ -369,14 +369,58 @@ Färre/fler endast när informationen kräver det
   - Fråga 3: [Från PL:s updates]
 - Om inga frågor: "Inga frågor denna vecka ✅"
 
-### SEKTION 📝② — STATUS SEDAN FÖREGÅENDE MÖTE (5 min)
+### SEKTION 📝⑥ — VAD GJORDES FÖRRA VECKAN (5 min)
 
-**Slide 2.1 — 📝②**
-- Titel: "Status Sedan Föregående Möte"
-- Innehål: 
-  - Git log denna vecka (vad blev done)
-  - GitHub Project Board (in progress / blocked)
-  - 2-3 bullets max
+**Slide 6 — 📝⑥ VAD GJORDES FÖRRA VECKAN — KONSEKVENT FORMAT**
+
+**SYFTE:** Ge teamet en känsla av framsteg och "klapp på axeln"
+
+**OBLIGATORISK STRUKTUR — denna slide måste vara identisk varje vecka:**
+
+```
+📝⑥ VAD GJORDES FÖRRA VECKAN
+
+✅ MERGED DENNA VECKA:
+  • #XX — Titel (Frontend — Lisa)
+  • #YY — Titel (Backend — Marco)
+  • #ZZ — Titel (Native — Kris)
+
+✓ AVSLUTADE ISSUES:
+  • #AA — Titel
+  • #BB — Titel
+
+→ FRAMSTEG I PÅGÅANDE ARBETE:
+  • #CC Frontend: 60% → 85% (Lisa på #40 Auth)
+  • #DD Backend: blockerat → avblockerat (Marco löste integration)
+
+🔓 BLOCKERS LÖSTA:
+  • #EE Som var blockerad av #FF — nu klart
+```
+
+**DENNA VECKA ÅTGÄRDES:**
+- X issues merged
+- Y blockers lösta
+- Z integrations lösta
+
+**DATA MÅSTE KOMMA FRÅN (i denna ordning):**
+1. GitHub merged PRs denna vecka (GitHub Connector/web)
+2. Closed issues denna vecka (GitHub Issues)
+3. Project Board transitions (moved from "blocked" to "done")
+4. Team-notiser från mötesprotokollet
+
+**KÄNSLA OCH TON:**
+✅ Fokusera på FRAMSTEG, inte bara "issues closed"
+✅ Visa vilka människor gjorde arbetet
+✅ Visa blockers som LÖSTA (negativ → positiv)
+✅ Känsla av momentum och framsteg
+
+**ALDRIG:**
+❌ Bara en slumpad lista på issues
+❌ Tekniska commit-messages utan kontext
+❌ Negativa framställningar ("vi var långsam")
+❌ För mycket text (max 10 bullets totalt)
+
+**SAMMA FORMAT VARJE VECKA** → framsteg blir synligt vecka för vecka
 
 ---
 
