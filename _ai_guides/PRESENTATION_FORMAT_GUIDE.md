@@ -1,5 +1,15 @@
 # 🎨 PRESENTATION FORMAT GUIDE — Exakt Layout för Varje Slide
 
+**⚠️ DENNA FIL KOMPLETTERAR PRESENTATION_SPEC.md**  
+Se PRESENTATION_SPEC.md för:
+- Issue-format (obligatoriska standarder)
+- Färgsemantik (strikt regel)
+- Risk/Dependency/Blocker-definitioner
+- Preflight-validator
+- Kapacitet & Fallback-arbete
+
+Denna fil visar BARA visuella layouts & designexempel.
+
 ---
 
 ## 🚨 MEGA-REGEL 0: VISUELL PEDAGOGIK FÖR BILDTÄNKARE
@@ -24,10 +34,11 @@ FLÖDEN & PROCESSER:
   ❌ INTE bara ord-listor
 
 TEAM STATUS:
-  ✅ Färgade kort (borders visar status)
+  ✅ Neutrala kort (marinblå/grå) för varje team
+  ✅ Status-indikatorer INNANFÖR kortet (små ikoner 🟢🟠🔴)
   ✅ Progress-bars per team
   ✅ Ikon-representationer av personer (👥 Jan, Marco, Anna)
-  ❌ INTE bara namn i text
+  ❌ INTE färgade borders (borders är status-märkning, se PRESENTATION_SPEC.md)
 
 PRIORITERING:
   ✅ Visuell tabell med olika kolumner

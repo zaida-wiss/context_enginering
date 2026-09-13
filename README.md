@@ -272,14 +272,21 @@ DU MÅSTE:
 
 ### 📚 STEG 1 — LÄS FILERNA (EFTER MINNESRENSNING):
 
-**PRESENTATION-FILERNA (MÅSTE LÄSA I DENNA ORDNING):**
-1. **[PRESENTATION_DESIGN.md](/_ai_guides/PRESENTATION_DESIGN.md)** — Design principer & MEGA-REGLER
+**PRESENTATION-FILERNA (LÄSORDNING):**
+
+**SOURCE OF TRUTH:**
+1. **[PRESENTATION_SPEC.md](/_ai_guides/PRESENTATION_SPEC.md)** ⭐ **LÄS DENNA FÖRST**
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+   - Issue-format, färgsemantik, risk/dependency/blocker-definitioner, kapacitet & fallback, preflight-validator
+
+**FÖRDJUPANDE FILER:**
+2. **[PRESENTATION_DESIGN.md](/_ai_guides/PRESENTATION_DESIGN.md)** — Design principer & MEGA-REGLER
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_DESIGN.md
-2. **[PRESENTATION_SLIDE_REQUIREMENTS.md](/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md)** — Vad varje slide MÅSTE innehålla
+3. **[PRESENTATION_SLIDE_REQUIREMENTS.md](/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md)** — Vad varje slide MÅSTE innehålla
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md
-3. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** — Exakta layouts & exempel
+4. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** — Exakta layouts & exempel
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
-4. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** — Struktur & ordning
+5. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** — Struktur & ordning
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
 
 **DATA ATT SAMLA:**
