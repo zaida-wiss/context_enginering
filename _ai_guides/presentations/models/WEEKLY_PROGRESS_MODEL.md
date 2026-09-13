@@ -10,6 +10,10 @@ metadata:
 
 **"Sedan förra mötet"-sliden är en ERKÄNNANDE-RETROSPEKTIV, inte en statusrapport.**
 
+🚨 **MANDATORY PREREQUISITE:** Läs först [REPO_FIRST_RECONSTRUCTION.md](REPO_FIRST_RECONSTRUCTION.md)
+
+Den filen förklarar varför vi samlar ALL repo-aktivitet FÖRST, sen klassificerar — inte issue-first eller person-first approach.
+
 Syftet är att ge teamet konkret feedback: "Det här gjorde ni faktiskt förra veckan. Bra jobbat."
 
 **TWÅ SLIDES för denna punkt:**
