@@ -49,7 +49,7 @@ MAIN CONTENT (mycket whitespace):
 
 Fokus med PL denna vecka
 
-Säkerställa veckans prioriteringar, beroenden 
+Säkerställa veckans prioriteringar, beroenden
 och vägen mot CTO-demo.
 
 FOOTER (litet, 10-12pt, diskret):
@@ -136,6 +136,7 @@ VISUELLT:
 - Assignee tydlig
 - DoD-checkboxar synliga
 ```
+
 
 ---
 
@@ -410,7 +411,7 @@ MÅSTE INNEHÅLLA:
    - API-spec för #XX → uppdatera i shared doc
    - JNA-kontrakt för #XX → fastslå och dokumentera
    - Auth-flow → dokumentera i [länk]
-   
+
    **DIREKT EFTER MÖTET:**
    ☐ GitHub Project Board uppdaterad
    ☐ Assignees satta
@@ -493,11 +494,11 @@ REGEL: Börja med förslagen, låt teamet forma sina egna frågor under mötet.
 TOTALT: ~20-30 slides (varierar per vecka)
 
 MÖTESLOGIK:
-Framsida → ① Bakåt → ② Målbild → ③ Nuläge 
-→ ④-⑥ Teamstatus → ⑦ Beroenden (+ code-review) 
+Framsida → ① Bakåt → ② Målbild → ③ Nuläge
+→ ④-⑥ Teamstatus → ⑦ Beroenden (+ code-review)
 → ⑧ Prioritering → ⑨ Kapacitet → ⑩ Risker (+ code-review)
-→ ⑪ Beslut (+ code-review) → ⑫ Plan 
-→ ⑬ Nästa steg (konkret handlingsplan) 
+→ ⑪ Beslut (+ code-review) → ⑫ Plan
+→ ⑬ Nästa steg (konkret handlingsplan)
 → ⑭ PL-Frågor (diskussion & svar)
 
 RULES:
@@ -509,8 +510,8 @@ RULES:
 
 ---
 
-**Senast uppdaterad:** 2026-09-13  
-**Status:** 14 mötepunkter (①-⑭), variabel slidantal  
+**Senast uppdaterad:** 2026-09-13
+**Status:** 14 mötepunkter (①-⑭), variabel slidantal
 
 **KRITISKA KRAV:**
 - ① MÅSTE visa commits från ALLA (7 dagar)
