@@ -25,16 +25,20 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 **Syfte:** Visa vad som faktiskt blev klart denna vecka
 
 **Slides:**
-- **①A: Levererat denna vecka** — merged PRs, closed issues, faktiska releases
+- **①A: Levererat denna vecka** — **MERGED PRs in develop** (primary focus)
 - **①B: Byggde vidare denna vecka** — pågående arbete med verifierad framdrift (commits)
 
 **Obligatoriska element:**
+- ✅ **HUVUDFOKUS: Vilka PRs blev MERGED in i develop denna vecka?**
+- ✅ För varje PR: **Vem ÄGde den issuen?** (issue assignee eller PR-author)
+- ✅ Visa länk mellan PR + issue-owner (dubbelt namn om samma person)
 - ✅ Alla teammedlemmar måste synas (med namn + verifierat bidrag)
 - ✅ Arbetsområden, inte bara issue-nummer (Frontend & Auth, Backend & Risk, etc)
 - ✅ Differentiera mellan "jobbar på" och "faktiskt klar" (DoD-verifierat)
 - ✅ Effektbeskrivning: varför detta arbete spelar roll
 
-**Data från:** Commits, merged PRs, closed issues (denna vecka) — repo-first reconstruction
+**Data från:** **Merged PRs in develop** (denna vecka) — repo-first reconstruction
+**INTE:** Bara "closed issues" eller "issues utan merge"
 
 ---
 

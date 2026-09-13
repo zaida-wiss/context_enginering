@@ -63,15 +63,16 @@ Innan du säger "datainsamlingen är ofullständig":
 
 **Innan du renderar någon slide, verifiera att du har:**
 
-### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs + closed issues)
-- [ ] Läst GitHub: **Vilka PRs mergades denna vecka?** (primär källa för arbete)
-- [ ] Läst GitHub: **Vilka issues stängdes denna vecka?** (sekundär verifiering)
-- [ ] Data innehåller: author, PR-nummer, merge-datum, linked issue, commits
-- [ ] **Exempel:** PR #90 Login (Zaida, merged 2026-09-10, links to #40, 4 commits)
-- [ ] **Exempel:** PR #95 Design System (Björn, merged 2026-09-10, 15 commits)
-- [ ] **VIKTIGT:** Fokus är ARBETE (commits + PRs), INTE issue-status
-- [ ] Om issue är stängt men PRn är mergad → visa arbetet
-- [ ] Om issue är öppet men PR är mergad → visa arbetet (den fortsätter)
+### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs in develop — PRIMARY)
+- [ ] Läst GitHub /pulls: **Vilka PRs är MERGADE in i develop denna vecka?** (DET ÄR HUVUDFOKUS)
+- [ ] För varje PR: Vem ÄGde den issuen? (issue assignee/PR author)
+- [ ] För varje PR: Vilket issue var länkat? (if any)
+- [ ] Data innehåller: PR-nummer, merge-datum, PR-author, linked issue, issue-owner
+- [ ] **Exempel:** PR #90 Login (Zaida mergade, #40 var ägd av Zaida)
+- [ ] **Exempel:** PR #95 Design System (Björn mergade, ingen länkad issue men Björn var owner)
+- [ ] **VIKTIGT:** Vi visar MERGED PRs in develop, inte bara "stängda issues"
+- [ ] **Regel:** Visa PR-author + linked issue-owner tillsammans
+- [ ] **Regel:** Fokus = merged code in develop, inte issue-status
 
 ### 2. COMMITS DENNA VECKA (grupperade per arbetsområde)
 - [ ] Läst GitHub Commits: **Vilka commits pushades denna vecka?** (primär bevis på arbete)
