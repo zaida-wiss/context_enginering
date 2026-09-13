@@ -309,9 +309,11 @@ FORMAT: 2-4 frågor max, konkreta
 
 ---
 
-## 📌 Slide 14 — 📝⑫ Nästa Steg (ACTION ITEMS — SEPARAT)
+## 📌 Slide 14 — 📝⑫ Nästa Steg (MÅSTE vara SEPARAT SLIDE)
 
 ```
+🚨 KRITISK: ALDRIG tillsammans med Sammanfattning på samma slide!
+
 MÅSTE INNEHÅLLA:
 ✅ OMEDELBAR ACTION (efter möte IDAG):
    ☐ GitHub Project Board uppdaterad
@@ -329,13 +331,18 @@ VISUELLA ELEMENT:
 ☐ Checkboxes (copy-paste ready)
 📍 Timeline med ikoner
 🔴 Rött för kritiska deadlines
+
+FOCUS: Fokusera på HANDLINGAR och TIDSLINJER
+DETTA ÄR SLIDE 14 — SLIDE 15 är Sammanfattning (separat)
 ```
 
 ---
 
-## 📌 Slide 15 — 📝⑫ Sammanfattning (SEPARAT från Nästa Steg)
+## 📌 Slide 15 — 📝⑫ Sammanfattning (MÅSTE vara SEPARAT SLIDE)
 
 ```
+🚨 KRITISK: ALDRIG tillsammans med Nästa Steg på samma slide!
+
 MÅSTE INNEHÅLLA:
 ✅ DENNA VECKAS FOKUS (från mötesprotokollet)
 ✅ ÖVERGRIPANDE STATUS (🟢🟠🔴)
@@ -343,6 +350,7 @@ MÅSTE INNEHÅLLA:
    • Kursmål: 14/17 → 16/17 (denna vecka)
    • Projekt MVP: 75% → 85% (target denna vecka)
 
+✅ KRITISKA PUNKTER (om något är bakom plan)
 ✅ MOTIVERANDE AVSLUT:
    "Vi gör detta tillsammans! Lycka till denna vecka!"
 
@@ -350,6 +358,9 @@ VISUELLA ELEMENT:
 📊 Statistik visuell (pil från X → Y)
 🟢 Status färgad (ON TRACK / DELAY / CRITICAL)
 💪 Motiverande ton
+
+FOCUS: Motivera och summera veckan
+DETTA ÄR SLIDE 15 — SLIDE 14 är Nästa Steg (separat)
 ```
 
 ---
