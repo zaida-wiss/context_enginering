@@ -121,7 +121,12 @@ Varje siffra, datum, mål måste komma från:
 
 **Presentationen är både statusrapport OCH lärtillfälle för branschbegrepp.**
 
-Aldrig använd term utan att förklara vad den betyder. Presentationen ska graduellt bygga upp teamets ordförråd inom domänen.
+Regel: **Förklara aldrig ett ord som INTE står på sliden.**
+
+Mängden: Aldrig använd term utan att förklara vad den betyder.
+Men: Förklaringen ska INTE introducera nya termer — endast förtydliga dem som redan förekommer.
+
+Presentationen ska graduellt bygga upp teamets ordförråd inom domänen, men utan att orsaka förvirring genom att nämna termer som inte är synliga.
 
 ```
 ❌ DÅLIGT: "Vi säkrar kärnflödet denna vecka"

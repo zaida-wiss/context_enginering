@@ -15,7 +15,8 @@ Presentationen fyller TRE syften:
      * Vilka överlämningar mellan team kan minimeras?
 
 2. **BRANSCHPEDAGOGIK** — Lär domänvokabulär medan vi arbetar
-   - Varje branschterm förklaras simpelt (volatilitet = prissvängningar, API-kontrakt = överenskommelse mellan system)
+   - **Förklara bara ord som står på sliden.** Aldrig introducera nya termer i förklaringar.
+   - Varje branschterm på sliden förklaras simpelt (volatilitet = prissvängningar, API-kontrakt = överenskommelse mellan system)
    - Nykomlingar fångar upp ordförrådet organiskt genom möten
    - Möten blir lärtillfällen, inte bara statusrapporter
    - Viktiga termer markeras 📚 för att visa att detta är lärmål
