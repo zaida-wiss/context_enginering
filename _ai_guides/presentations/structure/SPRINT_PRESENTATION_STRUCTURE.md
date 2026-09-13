@@ -31,8 +31,8 @@ RESULTAT: Presentation med alla 13 mötespunkter (📝⓪-⑫)
 
 **LÄSORDNING (MÅSTE följas):**
 1. Du läser denna fil HELT (SPRINT_PRESENTATION_STRUCTURE.md)
-2. Du läser PRESENTATION_DESIGN.md FÖR NPF-REGLER
-3. Du läser PRESENTATION_FORMAT_GUIDE.md FÖR EXAKT LAYOUT
+2. Du läser PRESENTATION_STYLE.md FÖR DESIGN & NPF-REGLER
+3. Du kopierar EXAKTA LAYOUT-exemplen från PRESENTATION_STYLE.md
 4. Du läser DATA_SOURCES.md FÖR FALLBACK-STRATEGI
 5. Du samlar projektdata
 6. **FÖRST DÅ** börjar du skapa presentationen enligt denna struktur
