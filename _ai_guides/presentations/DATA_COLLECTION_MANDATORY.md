@@ -63,23 +63,37 @@ Innan du säger "datainsamlingen är ofullständig":
 
 **Innan du renderar någon slide, verifiera att du har:**
 
-### 1. CLOSED ISSUES DENNA VECKA
-- [ ] Läst GitHub Issues API/Web för issues **stängda denna vecka**
-- [ ] Issue-listan innehåller: assignee, titel, stäng-datum, möjlig PR
-- [ ] **Exempel:** #40 Login Page (Zaida, stängd 2026-09-10)
-- [ ] **Exempel:** #44 Design System (Björn, stängd 2026-09-10)
+### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs + closed issues)
+- [ ] Läst GitHub: **Vilka PRs mergades denna vecka?** (primär källa för arbete)
+- [ ] Läst GitHub: **Vilka issues stängdes denna vecka?** (sekundär verifiering)
+- [ ] Data innehåller: author, PR-nummer, merge-datum, linked issue, commits
+- [ ] **Exempel:** PR #90 Login (Zaida, merged 2026-09-10, links to #40, 4 commits)
+- [ ] **Exempel:** PR #95 Design System (Björn, merged 2026-09-10, 15 commits)
+- [ ] **VIKTIGT:** Fokus är ARBETE (commits + PRs), INTE issue-status
+- [ ] Om issue är stängt men PRn är mergad → visa arbetet
+- [ ] Om issue är öppet men PR är mergad → visa arbetet (den fortsätter)
 
-### 2. MERGED PRs DENNA VECKA
-- [ ] Läst GitHub PRs API/Web för PRs **mergade denna vecka**
-- [ ] PR-listan innehåller: nummer, titel, author, merge-datum, linked issue
-- [ ] **Exempel:** PR #90 Login (Zaida, merged 2026-09-10, links to #40)
-- [ ] **Exempel:** PR #91 Design System (Björn, merged 2026-09-10, links to #44)
+### 2. COMMITS DENNA VECKA (grupperade per arbetsområde)
+- [ ] Läst GitHub Commits: **Vilka commits pushades denna vecka?** (primär bevis på arbete)
+- [ ] Commit-listan innehåller: hash, author, message, date, branch
+- [ ] Commits är grupperade per arbetsområde ELLER per person (inte enskilda commits på slide)
+- [ ] **Exempel:** Zaida: 4 commits on login-arbete denna vecka
+- [ ] **Exempel:** Björn: 15 commits on designsystem denna vecka
+- [ ] **VIKTIGT:** Commits = direkta bevis på arbete gjort, oavsett om issue är stängt
 
-### 3. COMMITS DENNA VECKA
-- [ ] Läst GitHub Commits API/Web för **commits på develop denna vecka**
-- [ ] Commit-listan innehåller: hash, author, message, date
-- [ ] Commits är grupperade per issue/arbetsområde (ej enskilda commits på slide)
-- [ ] **Exempel:** 4 commits från Zaida på login-arbete → "Frontend & Auth"
+### 3. ARBETE I PROGRESS DENNA VECKA (open PRs + open branches med nya commits)
+- [ ] Läst GitHub PRs: **Vilka PRs är öppna med uppdateringar denna vecka?** (under review/testing)
+- [ ] Läst GitHub Branches: **Vilka branches har nya commits denna vecka?** (även utan PR ännu)
+- [ ] Data innehåller: 
+  * För öppna PRs: person, PR-nummer, commits sedan förra, status
+  * För feature-branches: person, branch-namn, senaste commit, komit-antal denna vecka
+- [ ] **Exempel:** Tomac: #43 API-klient PR (3 commits denna vecka, under review)
+- [ ] **Exempel:** Marco: feature/#45-risk PR (5 commits denna vecka, ongoing)
+- [ ] **Exempel:** Anna: feature/#52-tests (2 commits denna vecka, not yet in PR)
+- [ ] **VIKTIGT:** Visa arbete från:
+  * Open PRs (under review)
+  * Feature branches med commits (even without PR)
+  * NOT comments — activation = commits, PR-updates, branch pushes
 
 ### 4. OPEN ISSUES MED AKTIVITET DENNA VECKA
 - [ ] Läst GitHub Issues API/Web för issues **öppna med aktivitet denna vecka**
