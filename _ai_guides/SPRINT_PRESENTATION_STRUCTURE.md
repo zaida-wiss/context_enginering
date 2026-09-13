@@ -408,6 +408,11 @@ DENNA VECKA GJORDES:
 • 6 människor bidrog aktivt
 • 40+ ny test-coverage
 • 0 producerade bugs
+
+💬 LEDNINGENS TANKE:
+\"Era insatser denna vecka bröt en kritisk blocker och tog oss närmare 
+veckans mål. Kris och Marco löste tillsammans något som hade bromsat 
+Native i två veckor. Bra jobbar, team!\"
 ```
 
 **VIKTIGT — INKLUDERA DESSA BIDRAG:**
