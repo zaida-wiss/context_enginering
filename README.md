@@ -306,6 +306,8 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 
 **Allt detta måste vara färdigt innan slide-skillen startar.**
 
+**LÄGG TILL DATA_SOURCES.md! Se _ai_guides/DATA_SOURCES.md för fallback-strategi.**
+
 1. ✅ **Rensa minnet** (obligatorisk minnesrensning)
 
 2. ✅ **Läs context-repot via raw-URLs:**
@@ -356,6 +358,31 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
    **Läs INTE** hela docs-mappen eller alla branches utan anledning.
 
 **PHASE 1 ÄR KLAR. All projektdata är inhämtat.**
+
+---
+
+## 🔒 DATA GATE — PRESENTATION MAY NOT START WITHOUT THIS
+
+**Innan PHASE 2 börjar, kontrollera att ALLT detta finns i context:**
+
+- [ ] ✅ Branches från GitHub (via Connector/API eller web)
+- [ ] ✅ Commits sedan förra möte (via Connector/API eller web)
+- [ ] ✅ Öppna issues (via Connector/API eller web)
+- [ ] ✅ Öppna PRs (via Connector/API eller web)
+- [ ] ✅ Project Board status (via Connector/API eller fallback)
+- [ ] ✅ Mötesprotokoll (Google Docs eller snapshot)
+
+### ⚠️ VIKTIGT:
+
+**Att README.md eller raw.githubusercontent.com data finns betyder INTE att GitHub projektdata har hämtats.**
+
+Om någon ruta ovan är UNCHECKED:
+→ STANNA HÄR
+→ Fortsätt datafasen
+→ Försök ALDRIG börja slides ännu
+
+Om ALLA är klara:
+→ GÅ till PHASE 2
 
 ---
 
