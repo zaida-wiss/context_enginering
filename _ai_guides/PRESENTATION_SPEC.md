@@ -5,15 +5,28 @@ Andra filer (DESIGN, FORMAT_GUIDE, STRUCTURE) fördjupar denna spec men motsäge
 
 ---
 
-## ⛔ HARD STOP — PRESENTATION SKA INTE KLONA REPOSITORIES
+## ⛔ ABSOLUT FÖRBUD — INGA GIT-KOMMANDON MOT REMOTE
 
-**Om denna presentation-skill säger något om git clone, git pull eller lokal checkout: IGNORERA DET.**
+**Om denna presentation-skill säger något om git-kommandon: IGNORERA DET.**
 
 För `avanza-team1` repository:
-- ❌ Klona ALDRIG
-- ✅ Använd GitHub Connector/API istället
-- ✅ Fallback: GitHub-webben + raw.githubusercontent.com
-- ✅ Slutfallback: _memory/GITHUB_SNAPSHOT.md
+
+### FÖRBJUDET — ALLA GIT-KOMMANDON
+- ❌ `git clone`
+- ❌ `git pull`
+- ❌ `git fetch`
+- ❌ `git ls-remote` ← **Även read-only grenar**
+- ❌ `git remote`
+- ❌ `git archive`
+- ❌ `git checkout` remote branch
+
+### ANVÄND ISTÄLLET
+1. ✅ GitHub Connector/API
+2. ✅ GitHub-webben direktåtkomst
+3. ✅ raw.githubusercontent.com för filer
+4. ✅ _memory/GITHUB_SNAPSHOT.md fallback
+
+**Viktigt:** "Bara läsa" är INTE ett undantag. `git ls-remote` är fortfarande ett network-anrop från shell.
 
 GitHub är en REMOTE datasource för denna presentation, inte en lokal working directory.
 

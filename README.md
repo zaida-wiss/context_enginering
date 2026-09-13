@@ -7,33 +7,72 @@
 
 ---
 
-## ⛔ HARD STOP — GIT CLONE ÄR FÖRBJUDET (gäller även presentation-skills)
+## ⛔ ABSOLUT FÖRBUD — INGA GIT-KOMMANDON MOT REMOTE
 
 **Denna regel överrider alla andra presentation-verktyg eller slide-skills.**
 
-### ABSOLUT FÖRBJUDET
+För projekt-repositories får AI:n ALDRIG använda git CLI för nätverksåtkomst.
+
+### FÖRBJUDET — ALLA GIT-KOMMANDON
 - ❌ `git clone`
 - ❌ `git pull`
 - ❌ `git fetch`
-- ❌ `git checkout`
+- ❌ `git ls-remote` ← **Även read-only grenar**
+- ❌ `git remote`
+- ❌ `git archive`
+- ❌ `git checkout` av remote branch
+- ❌ Alla shell-kommandon som kontaktar github.com
+
+### OCKSÅ FÖRBJUDET
 - ❌ Repository ZIP-download
 - ❌ wget/curl repository archive
 - ❌ GitHub Desktop eller lokala IDE-checkouts
 
-### ORSAK
-Om presentation-verktygen föreslår kloning för att "samla projektdata":
-→ IGNORERA DEN DELEN för `avanza-team1` repo
-→ Använd GitHub Connector/API istället
-→ GitHub är en REMOTE datasource, inte en lokal working directory
+### VIKTIGT — "BARA LÄSA" ÄR INTE ETT UNDANTAG
 
-### GILTIGT SKÄL FÖR KLONING
-Det finns INGET giltigt skäl att klona `avanza-team1`.
-- "Presentation-skill behöver lokala filer" = INTE ett giltigt skäl
-- "Det är enklare att klona" = INTE ett giltigt skäl
-- "Jag behöver skriva denna veckas commits" = ANVÄND GitHub Connector istället
+Agenten får INTE säga: "Jag klonar ju inte, jag läser bara remote refs med `git ls-remote`"
+
+Det är fortfarande ett shell-anrop mot GitHub från en miljö utan nätverkstillgång.
+
+```
+❌ DÅLIGT:
+git ls-remote --heads https://github.com/chas-challenge-2026/avanza-team1.git
+(= network call from shell)
+
+✅ BRA:
+GitHub Connector: list branches
+(= works from sandbox)
+```
+
+### ORSAK
+1. Shell-miljöns DNS/nätwerk kan failas (som i bilden)
+2. Fallback-strategi kräver att presentationen använder Connector/Web från början
+3. GitHub är en REMOTE datasource, inte en lokal working directory
+
+### VÄG ATT HÄMTA BRANCHES/COMMITS/PRs/ISSUES
+
+Använd DENNA ordning — aldrig git-kommandon:
+
+1. **GitHub Connector/API** ← MÅSTE provas först
+2. **GitHub webåtkomst** (webbläsare)
+   - Branches: `https://github.com/<owner>/<repo>/branches`
+   - Commits: `https://github.com/<owner>/<repo>/commits/develop`
+   - Issues: `https://github.com/<owner>/<repo>/issues`
+3. **raw.githubusercontent.com** (för filer)
+4. **_memory/GITHUB_SNAPSHOT.md** (cached fallback)
+
+### GILTIGT SKÄL FÖR GIT-KOMMANDON?
+
+Det finns INGET giltigt skäl att köra git mot `avanza-team1`:
+- "Presentation-skill behöver lokal branch-lista" = INTE giltigt
+- "Det är enklare med `git ls-remote`" = INTE giltigt
+- "Jag behöver bara läsa, inte skriva" = INTE giltigt
+- "Jag kontrollerar om repo är nåbart" = INTE giltigt
+
+→ Använd Connector istället
 
 ### RESULTAT
-Presentationen hämtar GitHub-data via Connector/web → fallback-strategi fungerar → presentation blir aldrig blockerad av Python-nätverksfel
+Presentationen hämtar GitHub-data via Connector/Web → fallback-strategi fungerar → presentation blir ALDRIG blockerad av shell-nätverksfel
 
 ---
 
