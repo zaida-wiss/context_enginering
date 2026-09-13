@@ -12,74 +12,57 @@ Denna fil visar BARA visuella layouts & designexempel.
 
 ---
 
-## 🚨 MEGA-REGEL 0 — KOPIERBAR MÖTESTEXT (RENDERING-KRITISK)
+## 🚨 MEGA-REGEL 0 — KOPIERBAR TEXT (RENDERING-KRAV, INTE SYNLIG PÅ SLIDE)
 
-**Presentationen MÅSTE innehålla text som kan markeras och kopieras direkt till mötesprotokoll.**
+**INTERN REGEL:** Presentationen måste innehålla text som kan markeras och kopieras direkt till mötesprotokoll.
+
+**VIKTIGT:** Denna regel syns INTE på sliderna. Det är bara ett tekniskt krav för hur PowerPoint-filerna ska byggas.
 
 ### Problem Vi Löser
-Du säger: "Här kan jag bara ta skärmdump nu, jag kan inte markera och kopiera texten"  
-Anledning: Texten var inbakad i PNG/SVG, inte riktigt PowerPoint-text
+- Text inbakad i PNG/SVG → kan inte markeras
+- Text i PowerPoint som SVG-paths → kan inte kopieras
+- Text som 10 separata textboxar → rörig att kopiera
 
-### Regel
-**Alla innehål som ska in i mötesprotokollet MÅSTE vara:**
+### Lösning
+**Alla arbetslistor måste innehålla:**
 ```
-✅ Vanlig PowerPoint-textbox (inte bild/rasteriserad/SVG-path)
-✅ Texten ska gå att markera → Ctrl+A → Ctrl+C → klistra in i Word/Google Docs
-✅ "Kopierbar mötestext" är ett ENDA sammanhängande textfält (inte 10 separata objekt)
-✅ Textinnehållet är identiskt med den visuella presentationen
-```
-
-### Format
-
-Varje slide som innehåller arbetslista ska ha **två lager:**
-
-**Övre delen:** Visuell mötesstöd (ikoner, färger, checklistor, diagram)  
-**Nedre delen:** Ett enda riktigt textfält med färdig protokolltext
-
-```
-EXEMPEL (Slide: Frontend — Var är vi?):
-
-VISUELLT (övre):
-✓ Zaida
-  ✅ #40 – Login page
-  ✅ #42 – Auth flow
-
-→ Tomac
-  🔵 #43 – API client
-  ☐ #44 – Error handling
-
-KOPIERBAR TEXT (nedre — ENDA textbox):
-Frontend — Var är vi?
-
-✓ Klart:
-#40 – Login page (Zaida)
-#42 – Auth flow (Zaida)
-
-→ Pågår:
-#43 – API client · Tomac
-#44 – Error handling · Tomac
+✅ Vanlig PowerPoint-textbox (inte bild/SVG/rasteriserad)
+✅ Texten ska gå att markera → Ctrl+A → Ctrl+C → klistra in i Docs/Word
+✅ Text på slides ska INTE ha etikett "Kopierbar mötestext" (det är bara en utvecklar-regel)
+✅ Presentationen ser normal ut; användarna ser bara innehållet
 ```
 
-### QA Checklist Före Leverans
+### Layout (Ingen speciell märkning)
 
-Presentationen får INTE levereras om denna checklist inte är grön:
+Varje slide med arbetslista kan ha två lager om det passar designen:
+
+**Visuell mötesstöd:** Ikoner, färger, checklistor, diagram  
+**Text-innehål:** Redigerbar text som går att kopiera
+
+Användaren ser bara ett samstämt möte, inte någon märkning av "kopierbar text".
+
+### QA Checklist (Intern — körs före leverans, visas INTE i presentation)
 
 ```
 ☐ Öppna .pptx i PowerPoint / Slides
-☐ Navigera till varje slide med arbetslista
-☐ Klicka i textrutan märkt "Kopierbar mötestext"
-☐ Ctrl+A (markera all text i rutan)
+☐ Navigera till varje arbetslista-slide
+☐ Klicka i texten
+☐ Ctrl+A (markera all text)
 ☐ Ctrl+C (kopiera)
 ☐ Öppna Google Docs / Word
 ☐ Ctrl+V (klistra in)
-☐ VERIFIERA: Ren text utan formattering kommer in
-☐ Återgå till presentation → nästa slide
-☐ Upprepa för: Slide ④⑤⑥⑦⑧⑨ (samtliga team-slides) + ⑫ (sprintplan) + ⑬ (nästa steg)
+☐ VERIFIERA: Ren text kommer in (ingen formatering-rot, ingen bilder)
+☐ Upprepa för alla team-slides + ⑫ + ⑬
 ```
 
 **Om kopieringen INTE fungerar:**
 - Presentationen är INTE KLAR
-- Texten måste åtgärdas så den blir vanlig PowerPoint-text, inte bild
+- Texten måste åtgärdas (PowerPoint-text, inte bild)
+
+**Efter leverans:**
+- Användaren ser inte denna QA-process
+- Användaren ser bara en presentationsmöte
+- Vid behov kan texto klippas direkt till protokoll utan att märka något
 
 ---
 
