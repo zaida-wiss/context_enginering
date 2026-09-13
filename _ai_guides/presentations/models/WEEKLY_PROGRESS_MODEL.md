@@ -12,11 +12,17 @@ metadata:
 
 Syftet är att ge teamet konkret feedback: "Det här gjorde ni faktiskt förra veckan. Bra jobbat."
 
-Sliden visar:
-- Allt substantiellt arbete som **påbörjades eller genomfördes** denna vecka
-- Grupperad per arbetsområde (inte enskilda commits)
-- Med **effekt** för varje bidrag (inte bara status)
-- Initierad från commit-historiken, kompletterad från PRs/issues
+**TWÅ SLIDES för denna punkt:**
+
+**Slide ①A: "Levererat denna vecka"**
+- Arbete som **mergades till develop** (verifierat i git)
+- Visar **arbetsområden**, inte bara issues (#42, #43, etc)
+- Format: Område → vad levererades → effekt för teamet
+
+**Slide ①B: "Byggde vidare på denna vecka"**
+- Arbete som **pågår med faktisk framdrift** (commits, PRs öppna)
+- Visar **arbetsområden** som fortskrider
+- Format: Område → vad jobbar vi på → nästa steg (inte blockers)
 
 Denna modell är **obligatorisk före presentation kan byggas**.
 
@@ -143,9 +149,19 @@ Exempel:
 
 ---
 
-## 🎯 STRUKTURERA I TVÅ GRUPPER ENDAST
+## 🎯 STRUKTURERA EFTER ARBETSOMRÅDEN (INTE ISSUES)
 
-Med alla data samlad, organisera i **exakt två grupper**:
+Med alla data samlad, organisera i **arbetsområden**, inte enskilda issues:
+
+**ARBETSOMRÅDE = En sammanhängande del av MVP som teamet arbetat med**
+
+Exempel på arbetsområden:
+- Frontend & Auth — login, mock auth, protected routes, accessibility
+- Backend & Session — centraliserad autentisering, controller-refaktorering  
+- Native & Risk Motor — riskberäkning, rolling estimates, tester
+- Infrastructure — deployment, CI/CD, database migrations
+
+Varje arbetsområde visar vad som levererades + vad som pågår inom samma område.
 
 **VIKTIGT:** Blockers, saker som behöver uppmärksamhet, och risker visas på ANDRA slides (Beroenden, Risker). Denna slide är ENBART erkännande och framsteg.
 
@@ -309,60 +325,73 @@ Text ska visa:
   - ❌ ALDRIG: "blockerad på X" — blockers visas på separat Beroenden-slide
   - ❌ ALDRIG: "väntar på..." — bara framåtriktade nästa steg
 
-### EXEMPEL — ALLTING TILLSAMMANS (EFTER CLUSTERING & EFFEKT TILLAGD)
+### EXEMPEL — TVÅ SLIDES MED ARBETSOMRÅDEN
 
-**OBS: Det här exemplet visar hur commits klusterats in i arbetsområden + effekt tilllagd. Bara två grupper.**
+**SLIDE ①A: "LEVERERAT DENNA VECKA"**
 
 ```
-Förra veckan flyttade teamet arbetet framåt inom 6 arbetsområden — 
-3 blev klara och 3 fortsätter in i nästa vecka.
+Förra veckan levererade teamet arbete inom 4 fokusområden.
 
 ═══════════════════════════════════════════════════════════════
 
-🟢 KLART DENNA VECKA
+🟢 FRONTEND & AUTHENTISERING
+Loginflödet är nu i develop och frontend kan arbeta mot riktig auth.
+   ✓ Login page + mocked token handling
+   ✓ Protected routes & session management
+   ✓ Accessibility improvements på form
+   Merged: PR #90 · 12 commits · klart 11 sep
 
-🟢 #52 – Portfolio health summary · Rasha
-  Unblockade Frontend-Backend integration
-  Merged PR #81 · 4 commits denna vecka · klart 11 sep
+🟢 BACKEND & SESSION SECURITY  
+SessionSecurityFilter minskar duplicerad auth-logik och ger backend en tydligare arkitektur.
+   ✓ Centraliserad authentication
+   ✓ Controller-refaktorering (duplicerad session-check borttagen)
+   ✓ API-kontakt dokumenterad
+   Merged: PR #91 · 8 commits · klart 12 sep
 
-🟢 #41 – Target allocation formulär · Anna + Erik
-  Formulär, validering och sparflöde färdigställdes
-  Merged PR #84 · 6 commits denna vecka · klart 12 sep
+🟢 NATIVE & INTEGRATION
+Kan nu börja testa riskmotor-integrationen.
+   ✓ Initial Risk Module setup
+   ✓ Test-foundation för Native-layer
+   Merged: PR #93 · 6 commits · klart 13 sep
 
-🟢 #48 – Unit tests · Jana
-  Täcker kritiska paths; förhindrar regressions vid deployment
-  Merged PR #79 · 40+ nya test-cases · klart 10 sep
+═══════════════════════════════════════════════════════════════
+Summa denna vecka: 3 arbetsområden mergade + extensive testing
+```
+
+---
+
+**SLIDE ①B: "BYGGDE VIDARE DENNA VECKA"**
+
+```
+Parallellt pågick omfattande arbete inom riskberäkning och integration.
 
 ═══════════════════════════════════════════════════════════════
 
-🟠 PÅBÖRJAT DENNA VECKA – FORTSÄTTER
+🟠 NATIVE & RISKMOTOR (pågår)
+Omfattande utbyggnad av riskberäkning — rolling estimates och utökade tester.
+   → Risk calculation logic utbyggd (rolling 3m, 12m, YTD)
+   → Additional tests för edge cases
+   → API-integration test-verktyg
+   Pågår: PR #92 · 14 commits denna vecka · Fortsätter nästa vecka
 
-🟠 #63 – Drift calculation · Tomac
-  Kommer att unblockera Native-teamet när klart
-  3 commits denna vecka · PR #82 öppen · ~60% progress
-
-🟠 #43 – API client · Tomac + Erik
-  Klientstruktur och mock-adapter påbörjades
-  2 commits denna vecka · Design-review denna vecka
-
-🟠 #44 – Dashboard styling · Zaida
-  Layout och CSS-moduler påbörjades  
-  5 commits denna vecka · Responsive breakpoints återstår
+🟠 FRONTEND & DASHBOARD
+Layout, CSS-moduler och responsivitet påbörjades.
+   → Dashboard-komponenter byggda
+   → Responsive layout för desktop/tablet/mobile
+   Pågår: 8 commits denna vecka · Design-review planerad
 
 ═══════════════════════════════════════════════════════════════
-
-[Blockers & risks shown on separate Beroenden/Risker slides]
+Summa denna vecka: Omfattande foundation för nästa iterations integration
 ```
 
 **Vad som är rätt här:**
-- ✅ Commits är klusterade (inte listor över individuella commits)
-- ✅ Effekt står överst (inte bara status)
-- ✅ "Denna vecka" är explicit
-- ✅ Alla team syns (inte bara de med Done-items)
-- ✅ Två grupper ENDAST — Klart + Pågår
-- ✅ Orange betyder "arbete framskrider", aldrig "risk"
-- ✅ Blockers är helt borta från denna slide (höra hemma elsewhere)
-- ✅ Känslan är positiv erkännande, inte statusrapport
+- ✅ Arbetsområden, inte issue-nummer (bredare och mer meningsfullt)
+- ✅ Två separata slides (inte tvingat samma sida)
+- ✅ Effekt för varje område (varför detta arbete spelar roll)
+- ✅ "Levererat" = mergat till develop (verifierat i git)
+- ✅ "Byggde vidare" = pågår med substantiell framdrift denna vecka
+- ✅ Orange betyder "framskridande", inte risk eller blocker
+- ✅ Känslan är: "Vi gjorde MYCKET arbete förra veckan" (inte "nästan ingenting")
 
 ---
 

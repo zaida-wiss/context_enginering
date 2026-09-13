@@ -563,7 +563,7 @@ AI ska skapa ett internt dataset för VARJE issue:
 
 **14 OFFICIELLA MÖTESPUNKTER** (från SPRINT_PROTOCOL_NUMBERED.md):
 
-1. **📝① Sedan förra mötet** — Retrospektiv arbetsöversikt & teamerkännande (1-2 slides)
+1. **📝① Sedan förra mötet** — Retrospektiv arbetsöversikt & teamerkännande (2 slides)
    
    **SYFTE:** Ge teamet konkret erkännande för vad de faktiskt arbetade med förra veckan. Sliden ska kännas positiv och visa att arbetet rört sig framåt. INTE en statusrapport — en arbetsverk-överblick.
    
