@@ -61,7 +61,7 @@ metadata:
 
 ---
 
-### STEG 3: FÖRSTÅ STRUKTUR & REGLER (5 min — nu kan du läsa detta)
+### STEG 3: FÖRSTÅ STRUKTUR & REGLER & VISUELL DESIGN (10 min — nu kan du läsa detta)
 
 #### 3a. structure/PRESENTATION_STRUCTURE.md
    - De 14 mötespunkterna
@@ -77,6 +77,12 @@ metadata:
    - Visuell konsistens
    - Röda trådar
    - Varning-signaler
+
+#### 3d. **design/VISUAL_DESIGN_MANDATORY.md** ← 🚨 KRITISK
+   - SYMBOL + FÄRG + TEXT (denna ordning)
+   - NPF/dyslexia-vänlig design
+   - PowerPoint-implementering
+   - WCAG-kontrast
 
 ---
 
@@ -164,7 +170,9 @@ Läs innan du renderar final version.
 **Före rendering, verifiera att ALLA dessa är LIVE_VERIFIED eller FALLBACK_VERIFIED:**
 
 ```
-RENDER_GATE_CHECKLIST:
+RENDER_GATE_CHECKLIST (10 SOURCES + 1 DESIGN RULE):
+
+DATA SOURCES (dessa 9 måste verifiera):
   ☐ Branches (develop) — status?
   ☐ Commits denna vecka — status?
   ☐ Merged PRs — status?
@@ -175,20 +183,30 @@ RENDER_GATE_CHECKLIST:
   ☐ DoD — status?
   ☐ Team roster — status?
 
-Alla 9 måste ha: LIVE_VERIFIED eller FALLBACK_VERIFIED
+DESIGN RULE (MÅSTE LÄSAS):
+  ☐ VISUAL_DESIGN_MANDATORY.md — Läst & förstått
+     (Symbol + Färg + Text, NPF/dyslexia-vänligt)
 
-Om NÅGON är MISSING:
+Alla 9 data-källor: LIVE_VERIFIED eller FALLBACK_VERIFIED
+Design rule: LÄST och FÖRSTÅTT
+
+Om NÅGON data-källa är MISSING:
   ❌ RENDER GATE CLOSED
   ❌ Presentation får INTE genereras
   ❌ Rapportera: "Källa X kunde inte verifieras"
+
+Om VISUAL_DESIGN_MANDATORY INTE är läst:
+  ❌ RENDER GATE CLOSED
+  ❌ Presentation får INTE genereras
+  ❌ Du måste läsa den först
   
-Om ALLA är VERIFIED:
+Om ALLA är VERIFIED + DESIGN läst:
   ✅ RENDER GATE OPEN
-  ✅ OK att läsa struktur/spec/design
   ✅ OK att generera slides
+  ✅ MEN: Du MÅSTE följa VISUAL_DESIGN_MANDATORY vid rendering
 ```
 
-**DENNA GATEN ÄR OBLIGATORISK.**
+**DENNA GATEN ÄR OBLIGATORISK. INGEN UNDANTAG.**
 
 ---
 
@@ -197,9 +215,17 @@ Om ALLA är VERIFIED:
 **Från denna läsning, dessa är NOT-negotiable:**
 
 ✅ **Data-insamling:** ALL data från GitHub denna vecka (repo-first)
+✅ **VISUAL DESIGN:** 🚨 Symbol + Färg + Text (denna ordning, innan rendering)
+   - NPF/dyslexia-vänligt
+   - WCAG-kontrast (minimum 4.5:1)
+   - DoD-status med ✅/◐/✕/? symbolen
+   - Whitespace: minimum 8px mellan element
+   - Font-size: minimum 12pt
 ✅ **Mötespunktsmarkörer:** Varje slide har 📝[NUM][TITLE] överst
 ✅ **Team-struktur:** Två slides per team (Var är vi? + Vad behöver vi göra?)
-✅ **Färger:** Semantiska BARA (🟢 klart, 🟡 pågår, 🔴 blockerat)
+✅ **Färger:** Semantiska BARA (🟢 klart, 🟡 pågår, 🔴 blockerat, ⚪ neutral)
+   - ALDRIG färg ensam (måste ha symbol + text)
+   - ALDRIG dekorativ färg
 ✅ **Namn:** BARA verifierade namn från GitHub denna vecka
 ✅ **Issue-tabeller:** Issue | Vad | Ägare | Status | AC | Tests | Review | Docs | PR
 ✅ **Handlingsplan:** Fyra separata tabeller (arbete, väntar på, blockerar, risker)
@@ -210,6 +236,7 @@ Om ALLA är VERIFIED:
 ✅ **Point ⑪:** Sprintmål EFTER kapacitet och prioritering
 ✅ **Point ⑫:** Senior PL-granskning, plan-bedömning 🟢/🟡/🔴
 ✅ **Point ⑬:** Beslut → konkreta GitHub-åtgärder
+✅ **VISUELL CHECKLIST:** Innan rendering — se VISUAL_DESIGN_MANDATORY.md
 
 ---
 

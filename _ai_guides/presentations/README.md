@@ -53,11 +53,20 @@ metadata:
 
 ## 🎨 **design/** — Visuell design & layout
 
-**Filer:**
+**OBLIGATORISKA FILER (måste läsas före rendering):**
+- `VISUAL_DESIGN_MANDATORY.md` — 🚨 **MÅSTE LÄSAS** — Symbol + Färg + Text (denna ordning), NPF/dyslexia-vänligt, WCAG-kontrast
+  - Konkret PowerPoint-implementering
+  - DoD-status rendering
+  - Progress bars, dependency diagrams
+  - Före rendering: VISUELL CHECKLIST
+  
+**REFERENSFILER:**
 - `PRESENTATION_STYLE.md` — Färger, typografi, layout, NPF-regler, QA-checklista
 - `PRESENTATION_CONSISTENCY_FRAMEWORK.md` — Röda trådar, repeterbara strukturer, content consistency
+- `DESIGN_AUTHORITY.md` — Design-källa autoritet
 
-**Använd denna om:** Du vill ändra hur sliderna ser ut (färger, typsnitt, spacing, visuella element)
+**Använd VISUAL_DESIGN_MANDATORY om:** Du renderar en presentation (det är tvingande före rendering)
+**Använd PRESENTATION_STYLE om:** Du vill förstå djupare design-principerna
 **Använd framework om:** Du vill förstå hur presentationen håller röd tråd från möte till möte
 
 ---
