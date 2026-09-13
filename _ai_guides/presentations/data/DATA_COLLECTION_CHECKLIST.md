@@ -16,18 +16,18 @@ Live sources only. No snapshots — all data from direct links to GitHub, Projec
 
 ## ✅ PHASE 1: CONTEXT REPO SOURCES
 
-**Dessa måste läsas från context_enginering repo innan något annat.**
+**READ IN THIS ORDER — mandatory guides before data collection:**
 
 ```
-[ ] README.md — läst via https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md
-[ ] PRESENTATION_SPEC.md — läst
-[ ] SPRINT_PRESENTATION_STRUCTURE.md — läst
-[ ] PRESENTATION_FORMAT_GUIDE.md — läst
-[ ] PRESENTATION_DESIGN.md — läst
-[ ] DATA_SOURCES.md — läst
-[ ] CROSS_TEAM_INTEGRATION.md — läst
-[ ] NAVIGATION.md — läst
-[ ] ORDBOK.md — läst
+[ ] README.md (root) — Läst via https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md
+[ ] _ai_guides/presentations/README.md — Navigation guide
+[ ] _ai_guides/presentations/design/DESIGN_AUTHORITY.md — Design source of truth
+[ ] _ai_guides/presentations/data/DATA_COLLECTION_MANDATORY.md — Mandatory checklist
+[ ] _ai_guides/presentations/content/PRESENTATION_SPEC.md — What to show
+[ ] _ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md — Slide structure
+[ ] _ai_guides/presentations/design/PRESENTATION_STYLE.md — Visual design rules
+[ ] _ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md — Data model
+[ ] _ai_guides/presentations/verification/VERIFICATION_THIS_WEEK.md — Verify sources
 ```
 
 **Om någon misslyckas:** Använd github.com webbåtkomst istället för raw.githubusercontent.com

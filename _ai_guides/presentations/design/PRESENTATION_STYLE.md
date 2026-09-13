@@ -424,20 +424,26 @@ EXEMPEL PÅ KORREKT ANVÄNDNING:
 
 ## 📍 DOKUMENTVÄGEN
 
-**Du är här:** PRESENTATION_FORMAT_GUIDE.md (Visuell formatering)
+**Du är här:** PRESENTATION_STYLE.md (Visuell formatering & design regler)
 
 ```
-START — README.md
+START — README.md (root)
         ↓
-SPRINT_PRESENTATION_STRUCTURE.md
+_ai_guides/presentations/README.md
         ↓
-🟢 DU ÄR HÄR: PRESENTATION_FORMAT_GUIDE.md (denna fil)
+_ai_guides/presentations/design/DESIGN_AUTHORITY.md (design source of truth)
+        ↓
+_ai_guides/presentations/content/PRESENTATION_SPEC.md (vad ska visas)
+        ↓
+_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md (slide-ordning)
+        ↓
+🟢 DU ÄR HÄR: PRESENTATION_STYLE.md (denna fil — visuell design)
         ↓
 ANVÄND MED:
-  • SPRINT_PROTOCOL_NUMBERED.md (vilka punkter?)
+  • SPRINT_PROTOCOL_NUMBERED.md (vilka mötespunkter?)
   • Dessa EXEMPEL-SLIDES (kopiera layout exakt)
         ↓
-RESULTAT: NPF-vänlig presentation med rätt design
+RESULTAT: NPF-vänlig presentation med rätt design & regler
 ```
 
 ---

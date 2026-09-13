@@ -39,23 +39,23 @@ metadata:
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känd)
 
-- [ ] **PRESENTATION_DESIGN.md**
-  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_DESIGN.md
+- [ ] **DESIGN_AUTHORITY.md**
+  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/design/DESIGN_AUTHORITY.md
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känd)
 
-- [ ] **PRESENTATION_FORMAT_GUIDE.md**
-  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
+- [ ] **PRESENTATION_STYLE.md**
+  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/design/PRESENTATION_STYLE.md
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känd)
 
-- [ ] **SPRINT_PRESENTATION_STRUCTURE.md**
-  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+- [ ] **PRESENTATION_STRUCTURE.md**
+  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känt)
 
-- [ ] **CROSS_TEAM_INTEGRATION.md**
-  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/CROSS_TEAM_INTEGRATION.md
+- [ ] **WEEKLY_PROGRESS_MODEL.md**
+  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känd)
 
@@ -138,10 +138,10 @@ SOURCES THAT FAILED (❌):
 
 - **Context README** → ✅ LÄST
 - **PRESENTATION_SPEC** → ✅ LÄST
-- **PRESENTATION_DESIGN** → ✅ LÄST
-- **PRESENTATION_FORMAT_GUIDE** → ✅ LÄST
-- **SPRINT_PRESENTATION_STRUCTURE** → ✅ LÄST
-- **CROSS_TEAM_INTEGRATION** → ✅ LÄST
+- **DESIGN_AUTHORITY** → ✅ LÄST
+- **PRESENTATION_STYLE** → ✅ LÄST
+- **PRESENTATION_STRUCTURE** → ✅ LÄST
+- **WEEKLY_PROGRESS_MODEL** → ✅ LÄST
 - **DATA_SOURCES** → ✅ LÄST
 - **GitHub branches** → ✅ LÄST via Connector
 - **GitHub commits** → ✅ LÄST via Connector
