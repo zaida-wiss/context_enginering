@@ -361,6 +361,86 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 
 ---
 
+## 📊 DATA FÖR SLIDE ① ("VAD GJORDES FÖRRA VECKAN") — KÄLLDATA
+
+**Denna slide bygger på FAKTISK verifierad data från tre källor. ALDRIG från gissningar.**
+
+### KÄLLA 1: Git-Commit Historik
+
+**Hämta från:**
+- GitHub Connector: Commits to `develop` branch denna vecka
+- GitHub Web: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop`
+- Git log ENDAST lokalt (INTE `git ls-remote` eller remote git-kommandon)
+
+**Extrahera:**
+- Vilka commits gjordes denna vecka (datum: förra måndag → nu)
+- Vem skrev varje commit (commit author)
+- Vad gjorde commiten (commit message)
+
+**Format för presentation:**
+```
+Tomac — feature: live target (commit message)
+Lisa — refactor: auth module + tests
+Marco — fix: FX calculation edge case
+```
+
+### KÄLLA 2: GitHub Issues & Assignees
+
+**Hämta från:**
+- GitHub Connector: Issues denna vecka
+- GitHub Web: `https://github.com/chas-challenge-2026/avanza-team1/issues`
+
+**Extrahera:**
+- Vilka issues är CLOSED denna vecka
+- Vem är assignee på varje (issue owner)
+- Issue-status (In Progress → Done)
+- Issue-titel (vad gjordes egentligen?)
+
+**Format för presentation:**
+```
+Lisa (#40 — Auth integration) → 80% done → nära färdigt denna vecka
+Ali (#52 — Responsive layout) → merged
+Erik (#48 — Unit tests) → 40+ nya test-cases
+```
+
+### KÄLLA 3: Pull Requests & Branches
+
+**Hämta från:**
+- GitHub Connector: PRs denna vecka
+- GitHub Web: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
+
+**Extrahera:**
+- Vilka PRs är MERGED denna vecka
+- Vilka branches är active (commits denna vecka)
+- Vilka branches är stale (>3 dagar utan commit)
+
+**Format för presentation:**
+```
+MERGED denna vecka:
+✅ feature/auth (#90 — Lisa)
+✅ feature/responsive (#92 — Ali)
+✅ feature/error-handling (#87 — Kris)
+
+PÅGÅR:
+🔄 feature/FX-integration (Marco)
+🔄 feature/risk-metrics (Erik)
+
+STALE (>3 dagar):
+⚠️ feature/old-refactor (5 dagar)
+```
+
+### KÄLLA 4: Mötesprotokollet
+
+**Hämta från:**
+- Mötesprotokollet från denna vecka
+
+**Extrahera:**
+- Vilka åtgärder genomfördes
+- Vilka blockers löstes
+- Vad sa teamet att de skulle göra
+
+---
+
 ## 🔒 DATA GATE — PRESENTATION MAY NOT START WITHOUT THIS
 
 **Innan PHASE 2 börjar, kontrollera att ALLT detta finns i context:**
@@ -414,6 +494,112 @@ FORBIDDEN:
 → Skriv: "Ej verifierat från projektkällorna"
 → GISSA INTE
 → SÖK INTE externt
+
+---
+
+## 📚 PEDAGOGI — PRESENTATIONEN SOM LÄRTILLFÄLLE
+
+**Presentationen lär teamet branschterminologi samtidigt som den rapporterar status.**
+
+### ORDBOK — Branschterm & Förklaringar
+
+Läs denna INNAN du skapar presentation:
+- **_ai_guides/ORDBOK.md** — All branschterminologi som presentationen använder
+- Varje term på en slide markeras 📚 (länk till ORDBOK)
+- Nya termer läggs till i ORDBOK före presentationen skapas
+
+### Läsväg för Pedagogi (För Läsare av Presentationen)
+
+```
+JAG VILL LÄRA MIG BRANSCHORD?
+
+1. Läs _memory/PRESENTATION_SLIDE_REQUIREMENTS.md (rad 17-22: BRANSCHPEDAGOGIK)
+2. Läs _ai_guides/ORDBOK.md (alla ord presentationen använder)
+3. Presentationen märker nya ord 📚 med länk till ORDBOK
+4. Slå upp ordet där och förstå vad det betyder
+5. Du bygger ordförråd organiskt genom möten
+```
+
+---
+
+## 🎨 FÄRGREGLER — SEMANTIK FÖRE DEKORATION
+
+**Färger är ALDRIG dekoration. Färg kommunicerar STATUS och KÄNSLA.**
+
+### Obligatoriska Färgreg ler
+
+```
+🟢 GRÖN = Verifierat positivt framsteg
+   Exempel: Feature merged, blocker solved, progress är större än planerat
+
+🟠 ORANGE = Pågående / Behov av uppmärksamhet / Avvikelse från plan
+   Exempel: In progress, slight delay, needs review, waiting for dependency
+
+🔴 RÖD = Kritisk blockering / Allvarlig avvikelse
+   Exempel: Blocker som stoppar arbete, critical delay, risk som måste åtgärdas omedelbar
+
+🟣 LILA / 🔵 BLÅ / 🩷 ROSA = Struktur & Kategorier (ALDRIG status)
+   Exempel: Frontend-team, Backend-team, Native-team, kategori-märkering
+
+⚪ VIT/GRÅ/NEUTRAL = Bakgrund & struktur (ALDRIG status)
+```
+
+### Visuell Känsla Före Ordalag
+
+**Presentationens känsla ska FÖRSTÅS från färg, form och fyllnadsgrad — INNAN texten läses.**
+
+```
+STARK VECKA (🟢 Mycket blev klart):
+Visuell design:
+- Sliden är fylld, sammanhållen
+- Många ✅ checkmarks synliga
+- Progressformerna är fyllda (████████░░)
+- Gröna accenter dominerar
+- Pilar pekar framåt (→)
+- Lågt antal "pågår"-markörer
+
+Känsla: "Vi tog tydliga steg framåt"
+(Läsaren KÄNNER detta utan att texten måste säga det)
+
+BLANDAD VECKA (🟡 Arbete gjordes, men inte allt nådde mål):
+Visuell design:
+- Sliden är neutral, balanserad
+- Progressformerna är delvis fyllda (██████░░░░ 60%)
+- Gula/lila accenter för pågåande arbete
+- Medel-många checkmarks
+- Visuell övergång mellan klart och pågående
+
+Känsla: "Vi rör oss framåt, men allt är inte i mål"
+
+SVAG VECKA (🔴 För lite blev klart):
+Visuell design:
+- Sliden har mer whitespace, är luftigare
+- Mindre fyllda progressformer (████░░░░░░ 40%)
+- Neutral/dämpad basfärg
+- Sparsam orange accent
+- Färre checkmarks
+- Mindre visuell dominans av "done"-delen
+
+Känsla: "Vi behöver mer fart"
+```
+
+### Färger på Presentationen — Inte Använda För Dekor
+
+```
+❌ FÖRBJUDET:
+- Använd grön för något osäkert
+- Använd röd för något orange
+- Använd många färger för att "minska tristessen"
+- Använd färg bara för att se fin ut
+- Säg "bra" när sliden visar "blandad"
+- Säg "dåligt" när sliden redan visar det visuellt
+
+✅ OBLIGATORISK:
+- Grön = verifierat positivt
+- Orange = pågår / behov av uppmärksamhet
+- Röd = kritisk (sparad användning)
+- Lila/blå = struktur/kategorier
+```
 
 ---
 
