@@ -14,6 +14,36 @@ Om denna checklist inte är slutförd kommer presentationen att dölja arbete (s
 
 ---
 
+## 🚨 MANDATORY FALLBACK RULE
+
+**OM GITHUB FAILAR — DU MÅSTE ANVÄNDA FALLBACKS**
+
+Innan du säger "datainsamlingen är ofullständig":
+
+```
+1. FÖRSÖK: GitHub Issues/PRs/Commits (webben eller API)
+   Failar? → Gå till fallback 1
+
+2. FALLBACK 1: Google Sheets denna vecka
+   https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+   Kan du läsa denna? JA → använd denna
+   NEJ → Gå till fallback 2
+
+3. FALLBACK 2: Project Board denna vecka
+   https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+   Kan du läsa denna? JA → använd status härifrån
+   
+4. FALLBACK 3: Meeting protocol denna vecka
+   (länk i README.md)
+
+5. ALLA FAILADE: Markera TYDLIGT "ej verifierat denna vecka"
+   Exempel: "Data kunde inte samlas denna vecka (GitHub web + Sheets + Board alla begränsade)"
+```
+
+**REGEL: Presentationen får ALDRIG säga "ofullständig" utan att ha försökt alla fallbacks först.**
+
+---
+
 ## ❌ PROBLEM VI LÖSER
 
 **Tidigare problem:** Presentationen visade bara öppna issues och PR:er.
