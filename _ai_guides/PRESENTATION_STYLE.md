@@ -95,9 +95,9 @@ När en slide visar ett problem MÅSTE den, när relevant, också visa konsekven
 
 🟢 BRA EXEMPEL:
 "Frontend är orange eftersom #40 Auth väntar på backend.
-Lisa fortsätter #40 med mockad integration.
-Ali fortsätter #52 Responsive Design eftersom den inte är blockerad.
-= I morgon kan Lisa börja integration när backend är klar."
+Björn fortsätter #40 med mockad integration.
+Tomac fortsätter #52 Responsive Design eftersom den inte är blockerad.
+= I morgon kan Björn börja integration när backend är klar."
 ```
 
 **INFORMATIONSKEDJAN SOM MÅSTE FINNAS:**

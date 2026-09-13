@@ -78,6 +78,25 @@ MINNESRENSNING (obligatorisk innan punkt 1):
 
 ---
 
+## ❌ EXEMPEL I INSTRUKTIONER ≠ EXEMPEL I PRESENTATION
+
+**Viktigt:** Exemplen här är BARA för att förklara reglerna. De är ALDRIG mall för presentationen.
+
+```
+🔴 FEL:
+"Instruktionerna säger 'Zaida fortsätter #42'"
+→ Presentationen visar "Zaida fortsätter #43" (kopierad struktur, byta nummer)
+
+✅ RÄTT:
+"Instruktionerna säger 'personen fortsätter #XX'"
+→ Presentationen visar aktuell faktisk data för alla teammedlemmar
+   (Tomac/Björn/Rasha/Erik/Pär/Henrik beroende på vem som faktiskt gör det)
+```
+
+Presentationen ska ha **faktiska data**, inte **exempel från instruktioner**.
+
+---
+
 ## 🚨 NO META-INSTRUCTIONS ON SLIDES
 
 **AI-regler, presentationsspecifikationer, formatteringsregler, validators och instruktioner om hur presentationen skapas får ALDRIG visas för mötesdeltagarna.**

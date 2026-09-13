@@ -267,7 +267,7 @@ VISUELLT:
 MÅSTE INNEHÅLLA (För Junior-Utvecklare — 5-10 Sekunder Förståelse):
 
 1️⃣ FORTSÄTT — Nästa Steg
-   "Tomac fortsätter #43 API-client. Zaida starter #87 testgrund."
+   "Tomac fortsätter #43 API-client. Björn startar #87 testgrund."
 
 2️⃣ BEHÖVER STÄNGAS — Saknad DoD
    "#42 Drift indicator – saknar review, test, docs. Tomac: kan du fixa?"
@@ -458,9 +458,9 @@ Planen ska optimera teamets LEVERANS, inte maximera individuella arbetuppgifter.
 
 LAYOUT EXEMPEL:
 Frontend:
-- ☐ #42 Portfolio (Zaida - 5h)
-- ☐ #43 Risk calc (Tomac - 8h, + Björn support)
-- ☐ Stötta Tomac på #43 (Björn - 4h)
+- ☐ #42 Portfolio (Björn - 5h)
+- ☐ #43 Risk calc (Tomac - 8h, + Zaida support)
+- ☐ Stötta Tomac på #43 (Zaida - 4h)
 
 Backend:
 - ☐ #51 API-spec (Rasha - 3h)
@@ -493,9 +493,9 @@ Nästa steg ingår INTE här — det är egen mötespunkt.
 MÅSTE INNEHÅLLA:
 
 1. TILLDELNING — Vem tar vilken issue?
-   - #XX → Zaida
    - #XX → Tomac
-   - etc
+   - #XX → Björn
+   - #XX → Zaida
 
 2. NYA ISSUES SOM BEHÖVER SKAPAS
    - Ny issue: [namn] — [varför]
