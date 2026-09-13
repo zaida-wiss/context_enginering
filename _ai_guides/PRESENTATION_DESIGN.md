@@ -47,25 +47,34 @@ ARKITEKTUR & BEROENDEN:
   ❌ INTE bara text-beskrivningar
 ```
 
-### ✅ MEGA-REGEL 1: Assignee på VARJE Issue
+### ✅ MEGA-REGEL 1: Assignee på VARJE Issue (TVINGANDE)
+
+**🚨 DENNA REGEL ÄR OBLIGATORISK. Presentationen är MISSLYCKAD utan detta.**
 
 **Format:** (#XX - Namn) eller (#XX - Namn föreslaget)
 
 ```
 EXEMPEL RÄTT:
-  #42 Portfolio overview (Jan)
-  #51 Rebalance (Marco föreslaget)
-  #48 Risk metrics (Anna)
+  ✅ #42 Portfolio overview (Zaida)
+  ✅ #51 Risk metrics (Erik föreslaget)
+  ✅ #48 Authentication (Marco)
 
-EXEMPEL FEL:
+EXEMPEL FEL — PRESENTATIONEN MISSLYCKADES OM:
   ❌ #42 Portfolio overview (utan namn)
-  ❌ #51 Rebalance suggestions (ingen assignee)
+  ❌ #51 Risk metrics  (bara nummer, ingen assignee)
+  ❌ #48 — namn saknas helt
 ```
 
-**Väg vid förslag:**
-1. Git log — vem jobbar redan på det?
-2. Kapacitet — vem har mindre att göra?
-3. Balans över effektivitet (alla hjälps åt, inte max-flöde)
+**Vägen när du föreslår assignee:**
+1. Läs Project Board — vem är redan assignee?
+2. Git log — vem jobbar redan på motsvarande branch?
+3. Kapacitet — vem har mindre att göra denna vecka?
+4. Balans — alla hjälps åt, inte max-flöde
+
+**Om du inte kan få assignee-data:**
+- Säg explicit: "Jag behöver läsa Project Board för assignees"
+- Presenteringen kan inte slutföras utan denna data
+- Aldrig presentera issues utan assignees
 
 ### ✅ MEGA-REGEL 2: Verifiera Git-Status & Jämför Med Project Board
 
@@ -260,8 +269,14 @@ EXEMPEL PÅ KORREKT ANVÄNDNING:
 **LAYOUT & LESBARHET:**
 - [ ] Ingen text går utanför sin ruta (hellre fler slides)
 - [ ] Min. 4.5:1 kontrast (WCAG AA)
-- [ ] Alla issues har (#Namn) assignee
+- [ ] **TVINGANDE: Alla issues har (#NAMN) assignee — ingen issue utan detta**
 - [ ] 60-70% whitespace (NPF-vänligt)
+
+**MISSLYCKAD PRESENTATION OM:**
+- [ ] ❌ En enda issue saknar assignee
+- [ ] ❌ Assignee är tom, oklart eller "TBD"
+- [ ] ❌ Förslagen är inte förtydligade med "(föreslaget)"
+- [ ] Då måste presentationen göras om
 
 ---
 
