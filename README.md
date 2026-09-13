@@ -7,6 +7,43 @@
 
 ---
 
+## 🔴 SINGLE SOURCE OF TRUTH — Hierarki för Presentationer
+
+**När en presentation skapas gäller denna prioritet. Ingen annan ordning.**
+
+### 1️⃣ README.md (denna fil)
+- ✅ Vilka **datakällor** ska läsas
+- ✅ **Prioritet** mellan datakällor
+- ✅ **Fallback-strategi**
+- ✅ **Datakvalitets-krav** (assignees, status, etc)
+
+### 2️⃣ PRESENTATION_SPEC.md
+- ✅ **VAD** presentationen ska innehålla
+- ✅ **Vilka slides** ska visas
+- ✅ **Obligatoriska fält** (assignee, status, etc)
+- ✅ **Data contract** — vad som är saknat = ofullständig
+
+### 3️⃣ SPRINT_PRESENTATION_STRUCTURE.md
+- ✅ **Ordning** på slides
+- ✅ **Informations-struktur**
+- ✅ **Mötespunkter** (①-⑭)
+
+### 4️⃣ PRESENTATION_FORMAT_GUIDE.md
+- ✅ **Visuell form** — färger, typografi, layout
+- ✅ **NPF-regler**
+- ✅ **Design bara** — ingen presentationskontent
+
+### ❌ Alla andra .md-filer
+- Underordnade ovan fyra
+- Får **ALDRIG** motsäga dessa
+- Får **ALDRIG** introducera nya presentationsregler
+- Användes bara för kontext
+
+**Om två filer motsäger varandra:**
+→ Följ ordningen ovan. README vinner över PRESENTATION_SPEC, etc.
+
+---
+
 ## 🔴 CRITICAL EXECUTION ORDER — DATA FÖRE RENDER
 
 **Denna ordning MÅSTE följas. Slide-skillen får inte börja förrän projektdata är inhämtat.**

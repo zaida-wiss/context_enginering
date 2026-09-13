@@ -428,6 +428,63 @@ Inte lista av issues — lista av ACTIONS.
 
 ---
 
+## 🔴 ISSUE DATA CONTRACT — Obligatorisk
+
+**Varje gång en issue visas i presentationen MÅSTE detta visas tillsammans:**
+
+```
+#42 — Implementera driftanalys
+Ansvarig: Lisa
+Status: 🟡 Pågår · 3 commits denna vecka
+```
+
+### Obligatoriska Fält
+
+- ✅ **Issue-nummer** (#XX)
+- ✅ **Titel** (Vad är uppgiften?)
+- ✅ **Assignee/Assignees** (Vem är ansvarig?)
+- ✅ **Status** (🟢/🟡/🔴 + ord)
+- ✅ **Framsteg** (Commits, PR-status, etc)
+
+### ALDRIG
+
+❌ Utelämna assignee för att spara plats  
+❌ Ersätt assignee med commit author (de är olika)  
+❌ Gissa ansvarig utifrån branch-namn  
+❌ Gruppera issues utan att visa vem som äger vilken  
+
+### Om Issue Saknar Assignee i GitHub
+
+Visa:
+```
+#42 — Implementera driftanalys
+Ansvarig: ⚪ Ej tilldelad
+Status: 🔴 Behöver ägare
+```
+
+### Innan Presentationen Renderas
+
+AI ska skapa ett internt dataset för VARJE issue:
+
+```
+- issue_number
+- issue_title
+- assignees
+- github_state (open/closed)
+- project_status (Backlog/Ready/In Progress/Review/Done)
+- labels
+- milestone
+- linked_pr
+- dod_status
+```
+
+**Om `assignees` inte har hämtats:**
+→ STOPPA presentationens issue-slides  
+→ Försök hämta GitHub-data igen  
+→ Presentationen får INTE byggas med ofullständig data
+
+---
+
 ## 📝 Mötespunkter (Struktur)
 
 **En mötespunkt ≠ en slide. Presentationen blir 20–30 slides.**
