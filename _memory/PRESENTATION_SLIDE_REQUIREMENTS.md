@@ -437,30 +437,35 @@ KAN BEHÖVA TVÅ SLIDES (båda märkta 📝⑬):
 ```
 🚨 DENNA SLIDE ÄR ABSOLUT SISTA. LIGGER KVAR UNDER MÖTET.
 
-MÅSTE INNEHÅLLA:
-✅ Vad behöver teamet få SVAR/BESLUT på från PL?
-✅ Stor, enkel layout
+⚠️ VIKTIGT: Dessa är FÖRSLAG på frågor som kan vara relevanta.
+Teamet formar sina egna frågor baserat på vad som behöver lösas denna vecka.
 
 LAYOUT:
-❓ FRÅGA 1: [kort fråga]
-   Kontext: [varför frågar vi]
+❓ FÖRESLAGEN FRÅGA 1: [kort fråga]
+   Kontext: [varför denna kan vara relevant]
+   TEAMETS FRÅGA: ____________________________________
    SVAR: ____________________________________
 
-❓ FRÅGA 2: [kort fråga]
-   Kontext: [varför frågar vi]
+❓ FÖRESLAGEN FRÅGA 2: [kort fråga]
+   Kontext: [varför denna kan vara relevant]
+   TEAMETS FRÅGA: ____________________________________
    SVAR: ____________________________________
 
-❓ FRÅGA 3: [kort fråga]
-   Kontext: [varför frågar vi]
+❓ FÖRESLAGEN FRÅGA 3: [kort fråga]
+   Kontext: [varför denna kan vara relevant]
+   TEAMETS FRÅGA: ____________________________________
    SVAR: ____________________________________
 
 VISUELLA ELEMENT:
 ❓ Stor fråge-symbol
 Mycket whitespace för anteckningar
 En fråga per rad
+Plats för teamets egen formulering
 
 DENNA SLIDE LIGGER KVAR under mötet.
 Det är arbetsytan för PL-diskussionen och dokumentation av svar.
+
+REGEL: Börja med förslagen, låt teamet forma sina egna frågor under mötet.
 ```
 
 ---

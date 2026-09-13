@@ -392,24 +392,30 @@ Planen ska optimera teamets LEVERANS, inte maximera individuella arbetuppgifter.
 ## 📝⑭ Frågor till PL
 **Vad behöver vi få svar/beslut på från PL? (SISTA MÖTESPUNKT)**
 
-**Fråga 1: [kort fråga]**
-- Kontext: [varför frågar vi]
-- Behövs för: [vilken beslut/issue]
+⚠️ **VIKTIGT:** Dessa är FÖRSLAG på frågor baserat på presentation & sprint.
+**Teamet formulerar sina egna frågor under mötet** baserat på vad som verkligen behöver lösas denna vecka.
+
+### Föreslagd fråga 1: [kort fråga]
+- Kontext: [varför denna kan vara relevant]
+- **TEAMETS FRÅGA:** ________________________________
 - **Svar:** ________________________________
 
-**Fråga 2: [kort fråga]**
-- Kontext: [varför frågar vi]
-- Behövs för: [vilken beslut/issue]
+### Föreslagd fråga 2: [kort fråga]
+- Kontext: [varför denna kan vara relevant]
+- **TEAMETS FRÅGA:** ________________________________
 - **Svar:** ________________________________
 
-**Fråga 3: [kort fråga]**
-- Kontext: [varför frågar vi]
-- Behövs för: [vilken beslut/issue]
+### Föreslagd fråga 3: [kort fråga]
+- Kontext: [varför denna kan vara relevant]
+- **TEAMETS FRÅGA:** ________________________________
 - **Svar:** ________________________________
 
 **DENNA PUNKT ÄR ABSOLUT SISTA.**
 Presentationen slutar här. Denna slide ligger kvar under mötet
 för att diskutera frågorna med PL och dokumentera svaren.
+
+**REGEL:** Börja med förslagen, låt teamet omformulera eller ersätta med egna frågor
+baserat på vad som faktiskt behövs denna vecka.
 
 ---
 
