@@ -100,14 +100,36 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 🎊 FINALDAG           — 5 nov 09:00   (V12)
 ```
 
-**Format för slide ②B (deadline-timeline):**
-Visuell timeline (eller tabell) som visar:
-- Deadline-namn
-- Datum
-- Vecka
-- Dagar kvar från idag
-- Status (🟢/🟠/🔴)
-- Vad som behövs (CTO-underlag = risk-analysis + technical decisions, osv)
+**Format för slide ②B (VISUELL TIDLINJE OBLIGATORISK):**
+
+```
+IDAG: 13 sep (V4)
+    ↓
+    
+[Vecka 4-6]  [Vecka 7-10]    [Vecka 11-12]
+   BUILD        DEMO            FINAL
+
+█████░░░░░░░░░░░░░ 25% framåt i kurs (8 veckor totalt)
+
+🔴 CTO-UNDERLAG (24 sep, 11 dagar kvar)
+   ↳ Fokus NU: Risk-analysis + tekniska beslut
+   
+🟠 Kvaldemo (22 okt, 39 dagar kvar)
+   ↳ Fokus senare: Stabilitet + presentation
+   
+🟢 Final (5 nov, 53 dagar kvar)
+   ↳ Fokus slutligen: Slutleverans + dokumentation
+```
+
+**Visuella element MÅSTE inkluderas:**
+- 📍 Tidslinje med veckor markerade
+- 🟢/🟠/🔴 färgkodade deadlines
+- Progress bar (hur långt i kursen vi är)
+- **Fokusruta HÖGST UP:** Vad vi behöver fokusera på NU närmast
+- Dagar kvar för varje deadline
+- Korta beskrivningar av vad varje deadline kräver
+
+**Data från:** SCHEDULE.md (officiell kursschema) — idag automatiskt framräknat
 
 **Data från:** SCHEDULE.md (officiell kursschema), Project Board, meeting protocol
 
