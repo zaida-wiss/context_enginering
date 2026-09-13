@@ -434,7 +434,28 @@ Inte lista av issues — lista av ACTIONS.
 
 **14 OFFICIELLA MÖTESPUNKTER** (från SPRINT_PROTOCOL_NUMBERED.md):
 
-1. **📝① Sedan förra mötet** — Commits från alla team (7 dagar)
+1. **📝① Sedan förra mötet** — Veckans arbete (allt som gjordes, pågår eller behöver uppmärksamhet)
+   
+   **OBLIGATORISK DATAKÄLLA:** WEEKLY_PROGRESS_MODEL.md
+   
+   Måste inkludera:
+   - ✓ KLART: Merged PRs + Closed Issues denna vecka
+   - → PÅGÅR: Open Issues/PRs med aktivitet denna vecka
+   - ! BEHÖVER UPPMÄRKSAMHET: Blockerat/Saknar ägare/Står still
+   
+   Format: Symbol (✓/→/!) + Färg (🟢/🔵/🟡) + Text (konkret status)
+   
+   Exempel:
+   ```
+   ✓ #52 – Portfolio summary (Rasha) · Merged PR #81 · klart 11 sep
+   → #63 – Drift calculation (Tomac) · 3 commits · PR öppen
+   ! #45 – Auth schema (Lisa) · Blockerad på Backend #48
+   ```
+   
+   Se WEEKLY_PROGRESS_MODEL.md för exakt instruktioner om:
+   - Vilka datum räknas som "denna vecka"
+   - Hur commits + PRs + issues korsrefereras
+   - NPF/dyslexia-formattering (symbol + färg + text)
 
 2. **📝② Sprintmål** — Big picture denna vecka
 
