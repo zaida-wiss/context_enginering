@@ -63,17 +63,63 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 ## 📝③ FRONTEND TEAM
 
 **Slides (kan vara 2-3):**
-- **③A: Var är vi?** — status per person, open issues med aktivitet, pågående PRs
-- **③B: Vad behöver vi göra?** — prioriterade issues, estimat, blockers
+- **③A: Var är vi? — Issue- och DoD-status**
+- **③B: Vad behöver vi göra? — Handlingsplan, in/utgående beroenden och teamrisker**
 - (Eventuellt) **③C: Visuell verifiering** — skärmdump från dev-environment
 
-**Obligatoriska element:**
-- ✅ Alla Frontend-medlemmar måste synas (namn + aktivitet denna vecka)
-- ✅ Tydlig separation mellan "pågår" och "blockerad"
-- ✅ DoD-status för varje issue som ligger på "nästan klart"
-- ✅ Ansvar + kapacitet per person
+### ③A: Issue Status Table (OBLIGATORISKT FORMAT)
 
-**Data från:** GitHub commits, open issues, PRs, team roster
+MÅSTE visas som en tabell, aldrig som lista eller generell text.
+
+**Varje relevant aktiv issue ska visa:**
+- issue-nummer + faktisk titel från GitHub
+- kort beskrivning av vad issuen innebär
+- faktisk assignee (flera om flera ansvariga)
+- Board-status + GitHub Issue state (skildt)
+- DoD-checkpoints som separata kolumner:
+  **AC | Tests | Review | Docs**
+- relevant PR/Git-aktivitet denna vecka
+
+**Ingen generell lista såsom "Öppna: #89, #88, #87..." är tillåten.**
+**Ingen generell DoD-förklaring får ersätta DoD-status för enskilda issues.**
+
+Om tabellen inte ryms läsbart:
+→ dela ③A på flera slides: ③A.1, ③A.2, etc
+→ Ta ALDRIG bort kolumner eller assignees för att få plats
+
+**Se PRESENTATION_SPEC.md för exakt tabell-format.**
+
+### ③B: Handlingsplan + Beroenden + Risker (OBLIGATORISKT)
+
+Efter denna slide ska teammedlemmen förstå:
+- Vad är nästa prioriterade arbete per person?
+- Vem väntar vi på?
+- Vem väntar på oss?
+- Vilka risker påverkar teamets plan?
+
+**Fyra obligatoriska sektioner:**
+1. **Nästa arbete** — prioriterad ordning per issue + assignee
+2. **Vi väntar på** — inkommande beroenden (dependency vs blocker)
+3. **Andra väntar på oss** — utgående beroenden (vem väntade vi på?)
+4. **Risker att diskutera** — teamspecifika risker som kräver beslut/uppmärksamhet
+
+**Allt måste kopplas till verkliga issues, personer, beroenden och risker.**
+
+**Ingen generell lista är tillåten** (t.ex. "Fortsätt med tester", "Stäng DoD").
+
+**See PRESENTATION_SPEC.md for exact table formats.**
+
+**Obligatoriska element:**
+- ✅ Prioriterat nästa arbete per issue och assignee
+- ✅ Konkret nästa steg och verifierbart färdigkriterium
+- ✅ INKOMMANDE beroenden: vem/vad blockerar eller fördröjer oss?
+- ✅ UTGÅENDE beroenden: vilka team/personer väntar på oss?
+- ✅ Fallback-arbete för varje kritiskt dependency
+- ✅ Risker som specifikt påverkar teamets plan
+- ✅ Ägare och nästa åtgärd för varje blocker/risk
+- ✅ Beslut som måste fattas på mötet tydligt markerade
+
+**Data från:** GitHub commits, open issues, PRs, DoD status per issue, team roster
 
 ---
 
@@ -82,9 +128,12 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 **Samma struktur och visuell utrymme som Frontend (③)**
 
 **Slides (kan vara 2-3):**
-- **④A: Var är vi?**
-- **④B: Vad behöver vi göra?**
+- **④A: Var är vi? — Issue- och DoD-status** (issue-tabell format)
+- **④B: Vad behöver vi göra? — Handlingsplan, in/utgående beroenden och teamrisker**
 - (Eventuellt) **④C: Visuell verifiering**
+
+**Exakt samma regler som ③A och ③B.**
+**Se PRESENTATION_SPEC.md för tabell-format och obligatoriska sektioner.**
 
 ---
 
@@ -93,9 +142,12 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 **Samma struktur och visuell utrymme som Frontend (③) och Backend (④)**
 
 **Slides (kan vara 2-3):**
-- **⑤A: Var är vi?**
-- **⑤B: Vad behöver vi göra?**
+- **⑤A: Var är vi? — Issue- och DoD-status** (issue-tabell format)
+- **⑤B: Vad behöver vi göra? — Handlingsplan, in/utgående beroenden och teamrisker**
 - (Eventuellt) **⑤C: Visuell verifiering**
+
+**Exakt samma regler som ③A/④A och ③B/④B.**
+**Se PRESENTATION_SPEC.md för tabell-format och obligatoriska sektioner.**
 
 ---
 

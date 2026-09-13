@@ -548,46 +548,178 @@ OM NÅGON KONTROLL MISSLYCKAS:
 
 **För Frontend, Backend och Native: Två slides per team.**
 
-### Slide A: "Var är vi?"
+### Slide A: "Var är vi?" — ISSUE STATUS TABLE (OBLIGATORISKT FORMAT)
+
+**MÅSTE VISAS SOM EN TABELL — ALDRIG som lista eller generell text.**
+
+Varje aktiv eller relevant issue måste ha en egen rad.
+
+#### OBLIGATORISKA KOLUMNER (i denna ordning):
+
+| Issue | Vad handlar den om? | Ansvarig | Status | AC | Tests | Review | Docs | Git/PR |
+|-------|----------------------|----------|--------|----|----|--------|------|--------|
+
+**1. Issue**
+- Formatet: `#XX – Faktisk titel från GitHub`
+- Titeln hämtas från GitHub Issue, ALDRIG gissad
+- Exempel: `#89 – Login page`
+
+**2. Vad handlar den om?**
+- En kort mening på vanlig svenska
+- VAD som byggs/fixas och gärna VARFÖR det behövs
+- Max 1-2 korta rader
+- Härledas från issue title + description + acceptance criteria
+- Exempel: "Bygger användarens inloggningsflöde och felhantering"
+
+**3. Ansvarig**
+- Faktisk GitHub assignee/assignees
+- Om flera: visa alla namn
+- Om ingen assignee: `⚪ Ej tilldelad`
+- Commit author får ALDRIG användas som ersättning för assignee
+
+**4. Status**
+- Visa BÅDE Project Board status OCH GitHub Issue state
+- Exempel:
+  - `Pågår · Open`
+  - `Board: Done · Issue: Open`
+  - `Klart · Closed`
+- Använd 🟢/🟡/🔴 för tydlighet om relevant
+
+**5-8. DoD-Checkpoints (separata kolumner)**
+
+Använd:
+- `✓` = verifierat uppfyllt
+- `◐` = delvis / pågår
+- `✕` = verifierat saknas
+- `?` = kunde inte verifieras
+
+En check får ALDRIG sättas utifrån antagande. Om du är osäker: `?`
+
+**9. Git/PR**
+- Relevant PR-status och/eller verifierad aktivitet denna vecka
+- Exempel: `PR #104 open`, `PR #98 merged`, `3 commits denna vecka`
+
+#### EXEMPEL PÅ RÄTT FORMAT:
+
+| Issue | Vad handlar den om? | Ansvarig | Status | AC | Tests | Review | Docs | Git/PR |
+|-------|----------------------|----------|--------|----|----|--------|------|--------|
+| #89 – Login page | Bygger användarens inloggningsflöde och felhantering | Zaida | Pågår · Open | ✓ | ◐ | ? | ✕ | PR #104 open |
+| #88 – Risk dashboard | Visar riskindikatorer per projekt | Tomac, Marco | Board: Done · Open | ✓ | ✓ | ◐ | ✕ | PR #101 merged |
+
+#### FÖRBJUDET FORMAT:
+
+❌ `Aktiva issues: #89, #88, #87, #86` (bara lista)
+❌ `"Alla issues kräver tester, review och dokumentation"` (generell text)
+❌ En gemensam DoD-status för hela teamet (per-issue-basis krävs)
+
+#### VIKTIGT:
+
+- DoD är PER ISSUE, aldrig en generell text för hela teamet
+- AC och DoD får inte blandas ihop
+- "Board: Done" ger INTE automatiskt ✓ på DoD
+- Issue: Closed ger INTE bevis för enskilda DoD-steg
+- Om tabellen inte ryms läsbart → dela på flera slides (③A.1, ③A.2, etc)
+- Ta ALDRIG bort kolumner eller assignees för att få plats
+
+#### 5-10 SEKUNDERS REGEL:
+
+En person som inte känner till issuen ska på 5-10 sekunder kunna förstå:
+- Vad gör vi?
+- Vem äger arbetet?
+- Hur långt har det kommit?
+- Vad återstår innan det faktiskt uppfyller DoD?
+
+### Slide B: "Vad behöver vi göra?" — OPERATIV HANDLINGSPLAN (OBLIGATORISKT)
+
+**SYFTE:**
+Efter denna slide ska teammedlemmen direkt förstå:
+1. Vad gör vi först?
+2. Vem gör det?
+3. Vad måste bli klart innan nästa steg?
+4. Vem väntar vi på?
+5. Vem väntar på oss?
+6. Vad kan vi göra om beroendet inte blir klart?
+7. Vilka risker behöver diskuteras eller bevakas?
+
+#### OBLIGATORISK STRUKTUR — FYRA SEKTIONER
+
+**A. NÄSTA ARBETE (prioriterad ordning)**
+
+| Prio | Issue | Ansvarig | Nästa konkreta steg | Klart när |
+|------|-------|----------|---------------------|-----------|
+| 1 | #92 – Riskmotor | Anna | Integrera med Backend API | Tests ✓ + integration verifierad |
+| 2 | #93 – … | … | … | … |
+
+- Issue måste följa formatet: `#XX – Titel · Assignee`
+- "Nästa konkreta steg" ska vara en faktisk aktivitet (inte "fortsätt arbeta")
+- "Klart när" ska kopplas till AC/DoD eller verifierbart resultat
+
+**B. VI VÄNTAR PÅ (inkommande beroenden)**
+
+| Vi behöver | Från team/person | Blockerar | Läge | Förväntat klart | Fallback |
+|------------|------------------|-----------|------|-----------------|----------|
+| API-kontrakt | Backend (Kiran) | Integration | 🟡 | Fredag 13:00 | Vi börjar med mock-data |
+| … | … | … | … | … | … |
+
+VIKTIGT:
+- **Dependency** = vi kan fortfarande göra annat produktivt arbete
+- **Blocker** = arbetet kan faktiskt inte fortsätta
+- Skillnaden är KRITISK för handlingsplanen
+
+**C. ANDRA VÄNTAR PÅ OSS (utgående beroenden)**
+
+| Vi måste leverera | Väntande team | Vad de inte kan göra ännu | Ägare | Deadline |
+|-------------------|--------------|----------------------------|-------|----------|
+| Riskdata-format | Frontend | Riskvy-gränssnittet | Anna | Torsdag EOD |
+| … | … | … | … | … |
+
+Denna sektion är OBLIGATORISK även om teamet självt inte är blockerat.
+
+Om inget verifierat utgående beroende finns:
 ```
-MÅSTE INNEHÅLLA:
-✅ Issues med assignee (#XX – Namn)
-✅ Git-status denna vecka (commits, branches, stale/active)
-✅ Dependencies och blockers (vad väntar på vad)
-✅ DoD-status för varje issue (AC ✓, Tests ✓, Review ✓, Docs ✓)
+Saknar verifierade team som väntar på oss
+```
+(INTE en tom ruta)
 
-VISUELLT:
-- Issues i kolonner (KLAR, PÅGÅR, BLOCKERAD)
-- Git-verifiering synlig (commits från vem, denna vecka)
-- 🔴🟠🟢 status för varje issue
+**D. RISKER ATT DISKUTERA (teamspecifika)**
+
+| Risk | Påverkan | Sannolikhet | Åtgärd | Ägare | Diskutera idag? |
+|------|----------|-------------|--------|-------|-----------------|
+| Kontrakt ändras sent | Integrationsarbete måste göras om | 🟡 Medel | Lås kontrakt i punkt ⑩ | Anna | 🟢 Ja |
+| Backendet blir inte klart i tid | Frontend väntar | 🟠 Hög | Börja med mock-data | Tomac | 🟢 Ja |
+
+VIKTIGT:
+- **Risk** ≠ **Blocker**
+- Risk: något som KAN inträffa
+- Blocker: något som redan hindrar arbete
+- "Diskutera idag?" = JA endast om mötet behöver fatta beslut, fördela ansvar eller ändra plan
+
+#### FÖRBJUDET FORMAT:
+
+❌ Generella råd ("Fortsätt med tester", "Stäng DoD", "Ta oberoende arbete")
+❌ Lista utan verifierbar koppling till issues eller personer
+❌ Samma innehål för två olika team
+❌ Tömda beroendsektion ("Inget verifierat beroende") utan att det är faktiskt verifierat
+
+#### EMPTY-STATE RULE:
+
+En kategori får ALDRIG fyllas med generell text bara för att skapa innehåll.
+
+Om verifierad data saknas:
+```
+Ingen verifierad blocker denna vecka
+Inget verifierat utgående beroende
+Ingen ny risk identifierad i underlaget
 ```
 
-### Slide B: "Vad gör vi åt det?" (ACTIONBAR GUIDE)
-```
-MÅSTE SVARA PÅ DESSA FYRA FRÅGOR TYDLIGT:
-
-1️⃣ FORTSÄTT — Vad är nästa steg?
-   Exempel: "Tomac fortsätter med #43 API-client, lämnar #42 för review"
-
-2️⃣ BEHÖVER STÄNGAS — Vad har vi missat?
-   Exempel: "#42 Drift indicator – saknar review, test, docs. Tomac: kan du stänga detta?"
-
-3️⃣ KAN TAS NU — Vad kan vi göra oberoende?
-   Exempel: "#87 Frontend test foundation – oberoende av Backend, Zaida kan ta detta"
-
-4️⃣ AGERA PÅ — Vad kräver möte/decision?
-   Exempel: "Måndagsmöte: Frontend + Backend måste komma överens om auth-kontrakt"
-
-FORMAT:
-Mycket kort, tydligt, actionbar language.
-Inte lista av issues — lista av ACTIONS.
-```
+Hellre detta än ett generellt råd som ser projektspecifikt ut men är generellt.
 
 **5-10 sekunders regel:** Någon som precis började i teamet ska på 5-10 sekunder kunna svara:
 - "Vad ska jag göra nästa?"
 - "Vad kan jag ta på mig?"
-- "Vad behöver ändras?"
-- "Vad måste vi prata om?"
+- "Vem blockar oss?"
+- "Vem väntar på oss?"
+- "Vad måste vi diskutera på mötet?"
 
 ---
 
