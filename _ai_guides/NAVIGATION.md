@@ -1,18 +1,65 @@
 ---
 name: navigation
-description: Guided reading paths for AI — which files to read for specific tasks
+description: Quick index — all guidance starts in README.md
 metadata:
   type: reference
   updated: 2026-09-13
 ---
 
-# 🧭 NAVIGATION — Vilka Filer Att Läsa för Varje Uppgift
+# 🧭 NAVIGATION — Index Only
 
-**Du behöver inte läsa ALLT. Läs bara vad du behöver för din uppgift.**
+**All task routing and read order is defined in README.md**
+
+This file is an index only. It does not define read order or rules.
 
 ---
 
-## 🎯 HUVUDUPPGIFTER
+## 📍 Quick Links
+
+**Presentation:**  
+→ README.md#presentation
+
+**Risk & Decisions:**  
+→ README.md#project-context
+
+**Snapshots & Fallback Data:**  
+→ README.md#snapshots
+
+**Terminology:**  
+→ _ai_guides/ORDBOK.md
+
+**Project Context:**  
+→ _project_context/
+
+---
+
+## 📚 All Guides
+
+### AI Execution Guides
+- PRESENTATION_SPEC.md — What should be shown
+- PRESENTATION_STRUCTURE.md — Slide order & content
+- PRESENTATION_STYLE.md — Visual design only
+- DATA_SOURCES.md — Where to read from
+- DATA_COLLECTION_CHECKLIST.md — Gate before rendering
+- SOURCE_CHECK.md — Source verification
+
+### Project Context
+- _project_context/DEFINITION_OF_DONE.md
+- _project_context/COURSE_REQUIREMENTS.md
+- _project_context/DECISIONS.md
+- _project_context/PROJECT.md
+
+### Snapshots & Fallback
+- _snapshots/GITHUB_SNAPSHOT.md
+- _snapshots/PROJECT_BOARD_SNAPSHOT.md
+- _snapshots/PROTOCOL_SNAPSHOT.md
+- _snapshots/PRESENTATION_DATA_FALLBACK.md
+
+---
+
+## 🚫 Old Task Router Below — IGNORE
+
+(The sections below duplicate README.md. Use README instead.)
 
 ### TASK 1: "Skapa En Presentation Till Måndagsmötet"
 
