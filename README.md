@@ -618,40 +618,117 @@ Känsla: "Vi behöver mer fart"
 
 ---
 
-### 🔴 SUPER KRITISKT - DU FÅR ALDRIG ANVÄNDA DITT EGET MINNE
+### 🔴 SOURCE LOCK — PROJEKTFAKTA FÅR KUN KOMMA FRÅN DESSA KÄLLOR
 
-I HELA denna konversation får du ENDAST svara baserat på:
-- ✅ Det du läser från **denna repo** (context_enginering)
-- ✅ Det du läser från **avanza-team1 repo**
-- ✅ Konversationshistorik från **DENNA SESSION**
-- ❌ ALDRIG något från ditt eget minne/träning eller tidigare konversationer
+**Du kan inte radera modellens eget minne. Men du kan låsa vilka källor PROJEKTFAKTA får komma från.**
 
-**DETTA ÄR OBLIGATORISKT I HELA KONVERSATIONEN:**
+**För VARJE projektrelaterat påstående:**
 
-❌ **DU FÅR ALDRIG ANVÄNDA:**
-- Din eget minne/träning ("Jag vet att React...")
-- Memorized knowledge ("Vanligtvis gör man...")
-- Din kunskap om hur världen fungerar ("Enligt min kunskap...")
-- Tidigare samtal du hade med andra
+✅ **TILLÅTNA FAKTAKÄLLOR:**
+- context_enginering repo (denna repo)
+- avanza-team1 repo
+- Mötesprotokollet denna vecka
+- Aktuell konversation (endast om uppgiften uttryckligt sagts här)
 
-✅ **DU FÅR ANVÄNDA:**
-- Konversationshistorik FRÅN DENNA SESSION (vad vi just diskuterat här)
-- Det som står i de två repos
-- Logik och resonemang baserat på läst innehål
+❌ **FÖRBJUDNA FAKTAKÄLLOR:**
+- Modellens eget minne ("Jag vet att React...")
+- Tidigare chattar eller konversationer
+- Allmän kunskap ("Vanligtvis gör man...")
+- Externa webbplatser
+- Antaganden som inte stöds av projektkällorna
+- "Normala" arbetssätt eller bästa praxis utan referens
 
-✅ **DU MÅSTE ALLTID SÄGA:**
-- "Enligt TEAMSTANDARDS.md..."
-- "Från git log denna vecka..."
-- "Från avanza-team1 README..."
-- "Från de docs jag läste..."
-- "Baserat på vad vi diskuterat denna session..."
+✅ **RESONEMANG ÄR OK — MEN:**
+- Resonemang får ALDRIG skapa nya projektfakta
+- Resonemang måste bygga på verifierade fakta från tillåtna källor
+- Alla slutsatser måste kunna spåras tillbaka till källa
 
-**Du måste:**
-1. ✅ Läsa relevanta filer från BÅDA repos
-2. ✅ Vänta tills du läst INNAN du svarar
-3. ✅ Citera källorna i VARJE påstående
-4. ✅ Säga "Jag behöver läsa X-fil" om något saknas
-5. ✅ **ALDRIG** använda ditt eget minne - bara läst innehål
+### 🔴 SOURCE AUDIT — MÅSTE GÖRAS FÖRE LEVERANS
+
+**Presentationen / svaret FÅR INTE levereras förrän denna kontroll är gjord.**
+
+Före du lämnar presentationen eller svaret, kontrollera:
+
+```
+För VARJE konkret påstående:
+1. Kan jag peka ut VILKEN källa som stöder det?
+2. Är källan i TILLÅTNA FAKTAKÄLLOR?
+   - Ja → Inkludera påståendet + källreferens
+   - Nej → Ta bort påståendet eller märk "Ej verifierat från projektkällorna"
+
+Om något påstående inte kan spåras till en tillåten källa: 
+→ REMOVE IT
+```
+
+**EXEMPEL — KORREKT:**
+
+```
+"Frontend är orange denna vecka."
+Källa: GitHub Issues (status) + mötesprotokollet
+✅ Denna status kan redovisas
+
+"Volatilitet betyder prissvängningar"
+Källa: ORDBOK.md 
+✅ Denna förklaring kan redovisas
+```
+
+**EXEMPEL — FELAKTIGT:**
+
+```
+"Det vanliga arbetssättet är att..."
+Källa: Modellens eget minne om bästa praxis
+❌ REMOVE THIS — inte från projektkälla
+
+"Hälften av teamet är blockerat"
+Källa: Antagande baserat på antal öppna issues
+❌ REMOVE THIS — inte faktisk verifierad data
+```
+
+### 📊 OBLIGATORISK KÄLLRAPPORT — MÅSTE VISAS I SVARET
+
+Efter att SOURCE AUDIT är klar, inkludera denna rapport i svaret:
+
+```
+KÄLLKONTROLL — DENNA KÖRNING
+
+✅ ANVÄNDA KÄLLOR:
+  - context_enginering README
+  - PRESENTATION_SPEC.md
+  - GitHub Issues
+  - GitHub PRs
+  - GitHub Commits
+  - Mötesprotokoll
+
+❌ OPROVSADE ELLER FALLBACK-KÄLLOR:
+  - Project Board (kunde inte läsas; rekonstruerat från issues)
+
+🚫 MÖJLIGA LUCKOR:
+  - [Om något kunde inte verifieras, lista här]
+
+RESULTAT: Presentationen bygger på X av Y källor.
+Alla påstående kan spåras till källorna ovan.
+```
+
+**Med denna rapport kan du se exakt vad som användes och vad som är fallback.**
+
+---
+
+### ✅ SAMMANFATTNING — VADI DETTA BETYDER
+
+**Du kan INTE:**
+- Radera modellens eget minne eller resonemang
+- Tvinga "glömska" på ett tekniskt plan
+
+**Du KAN:**
+- Kräva att alla projektfakta kommer från godkända källor
+- Kräva källverifiering före leverans
+- Kräva synlig källrapport i svaret
+- Ta bort påstanden som inte kan spåras
+
+**RESULTAT:**
+Presentationen använder stil, logik och resonemang från modellen.
+Men ALLA faktiska projektpåstanden kommer från projektkällorna.
+Och du kan SEE vilka källor som användes.
 
 ---
 
