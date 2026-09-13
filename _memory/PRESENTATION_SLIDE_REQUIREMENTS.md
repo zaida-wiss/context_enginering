@@ -295,12 +295,21 @@ MÅSTE INNEHÅLLA:
    - [namn] + [namn] pair prog på #XX — [dag tid]
    - [namn] mentorerar [namn] på #XX — [dag tid]
 
-7. KONTRAKT & BEROENDEN FRÅN CODE REVIEW
+7. HÅLLBARHET — BEHÖVER PLANEN JUSTERAS?
+   ✅ Arbetsbelastning per person/team — någon överbelastad? → flytta/pausa
+   ✅ Beroenden — skapar väntetid? → prioritera först
+   ✅ Single point of failure — någon är enda expert? → pairing/mentoring
+   ✅ Framtida risker — skapar detta tech-skuld? → justera scope
+   ✅ Åtgärder — alla poster har **ansvarig** och **tidsram**
+   
+   **Resultat: Planen är genomförbar utan att bryta ner teamet.**
+
+8. KONTRAKT & BEROENDEN FRÅN CODE REVIEW
    - API-spec för #XX → uppdatera i shared doc
    - JNA-kontrakt för #XX → fastslå och dokumentera
    - Auth-flow → dokumentera i [länk]
 
-8. DIREKT EFTER MÖTET — GITHUB ACTIONS
+9. DIREKT EFTER MÖTET — GITHUB ACTIONS
    ☐ GitHub Project Board uppdaterad
    ☐ Assignees satta
    ☐ Blockers/dependencies dokumenterade

@@ -311,6 +311,16 @@ Svar: 🟢 Ja, vi passar | 🟠 Knapp | 🔴 Nej
 - [namn] + [namn] pair prog på #XX — [dag tid]
 - [namn] mentorerar [namn] på #XX — [dag tid]
 
+### Hållbarhet — behöver planen justeras?
+**Kontrollera arbetsbelastning och eliminer single points of failure:**
+- Fördelning per person/team — någon överbelastad? → flytta/pausa issue
+- Beroenden — skapar några väntetid för andra? → prioritera först
+- Single point of failure — finns någon som är enda experisen på något kritiskt? → pairing/mentoring
+- Framtida risker — om denna plan genomförs, skapar det tech-skuld eller nya blockers nästa vecka? → justera scope
+- Åtgärder — varje handlingsplanspost har **ansvarig person** och **konkret tidsram**
+
+**Resultat: Planen är genomförbar utan att bryta ner teamet eller skapa framtida problem.**
+
 ### Kontrakt & beroenden som måste dokumenteras
 - API-spec för #XX → uppdatera i shared doc
 - JNA-kontrakt för #XX → fastslå och dokumentera
