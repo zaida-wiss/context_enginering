@@ -5,6 +5,39 @@ Andra filer (DESIGN, FORMAT_GUIDE, STRUCTURE) fördjupar denna spec men motsäge
 
 ---
 
+## 🚨 NO META-INSTRUCTIONS ON SLIDES
+
+**AI-regler, presentationsspecifikationer, formatteringsregler, validators och instruktioner om hur presentationen skapas får ALDRIG visas för mötesdeltagarna.**
+
+ENDAST resultatet av reglerna får synas.
+
+**Exempel på vad som är INSTRUKTION (får inte på slide):**
+- "Assignee på varje aktiv issue och särskilt (#XX - Namn)"
+- "5-sekunders-testet för visual-first"
+- "Render QA checklist"
+- "Verifiera brancher mot develop"
+- "Denna regel är tvingande"
+- "AI ska analysera integrations-kedjor"
+
+**Exempel på vad som är MÖTESINNEHÅL (får vara på slide):**
+- "#43 – API client · ?? (Beslut idag: vem tar detta?)"
+- Integration-diagram med Zaida, Rasha, Pär + branches
+- "🟠 Behöver synkas: login request/response"
+- "Backend-branch ligger 75 commits efter develop"
+- "Fallback-arbete: Frontend testning (oberoende)"
+
+**Publiktest för varje textrad:**
+```
+"Skulle en projektledare säga detta till teamet på mötet,
+utan att förklara att en AI skapade presentationen?"
+
+Om nej → Ta bort texten från sliden.
+```
+
+---
+
+---
+
 ## 🎯 Presentationens Tre Syften
 
 1. **TEAMTÄNK** — Hjälpa teamet att nå sprintmålet tillsammans, inte rapportera individuella insatser
@@ -249,6 +282,12 @@ VISUAL-FIRST & LAYOUT SAFETY:
   ☐ Ingen text clipped eller överlappar
   ☐ Textblock max 4 rader utan avsnittuppdelning
   ☐ Kort innehåller ≤60% text (≥40% whitespace)
+
+CONTENT SEPARATION (NO META-INSTRUCTIONS):
+  ☐ Publiktest: Skulle en PL säga denna textrad på mötet?
+  ☐ Ingen AI-instruktioner exponerad (5-sekunders-test, render QA, etc)
+  ☐ Inga presentationsregler synliga för teamet
+  ☐ Endast resultat av reglerna syns, inte reglerna själva
 
 LESBARHET:
   ☐ Ingen text går utanför sin box
