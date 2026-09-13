@@ -310,6 +310,16 @@ VISUAL-FIRST & LAYOUT SAFETY:
   ☐ Textblock max 4 rader utan avsnittuppdelning
   ☐ Kort innehåller ≤60% text (≥40% whitespace)
 
+TEAM-SLIDES ACTIONABILITY (FÖR JUNIOR-UTVECKLARE):
+  ☐ Varje team har TWÅ slides: "Var är vi?" + "Vad gör vi?"
+  ☐ "Vad gör vi?"-slide svarar på FYRA frågor:
+    • FORTSÄTT: nästa steg?
+    • BEHÖVER STÄNGAS: saknad DoD-krav?
+    • KAN TAS NU: oberoende arbete?
+    • AGERA PÅ: möte/decision?
+  ☐ 5-10 sekundersregel: Junior förstår vad de ska göra utan att läsa allt
+  ☐ DoD-status synlig per issue (AC, Tests, Review, Docs checkboxes)
+
 CONTENT SEPARATION (NO META-INSTRUCTIONS):
   ☐ Publiktest: Skulle en PL säga denna textrad på mötet?
   ☐ Ingen AI-instruktioner exponerad (5-sekunders-test, render QA, etc)
@@ -329,7 +339,54 @@ OM NÅGON KONTROLL MISSLYCKAS:
 
 ---
 
-## 📝 14 Mötespunkter (Struktur)
+## 📌 Team-Slides: Två-Slide Struktur (Nyckelbeskrivning)
+
+**För Frontend, Backend och Native: Två slides per team.**
+
+### Slide A: "Var är vi?"
+```
+MÅSTE INNEHÅLLA:
+✅ Issues med assignee (#XX – Namn)
+✅ Git-status denna vecka (commits, branches, stale/active)
+✅ Dependencies och blockers (vad väntar på vad)
+✅ DoD-status för varje issue (AC ✓, Tests ✓, Review ✓, Docs ✓)
+
+VISUELLT:
+- Issues i kolonner (KLAR, PÅGÅR, BLOCKERAD)
+- Git-verifiering synlig (commits från vem, denna vecka)
+- 🔴🟠🟢 status för varje issue
+```
+
+### Slide B: "Vad gör vi åt det?" (ACTIONBAR GUIDE)
+```
+MÅSTE SVARA PÅ DESSA FYRA FRÅGOR TYDLIGT:
+
+1️⃣ FORTSÄTT — Vad är nästa steg?
+   Exempel: "Tomac fortsätter med #43 API-client, lämnar #42 för review"
+
+2️⃣ BEHÖVER STÄNGAS — Vad har vi missat?
+   Exempel: "#42 Drift indicator – saknar review, test, docs. Tomac: kan du stänga detta?"
+
+3️⃣ KAN TAS NU — Vad kan vi göra oberoende?
+   Exempel: "#87 Frontend test foundation – oberoende av Backend, Zaida kan ta detta"
+
+4️⃣ AGERA PÅ — Vad kräver möte/decision?
+   Exempel: "Måndagsmöte: Frontend + Backend måste komma överens om auth-kontrakt"
+
+FORMAT:
+Mycket kort, tydligt, actionbar language.
+Inte lista av issues — lista av ACTIONS.
+```
+
+**5-10 sekunders regel:** Någon som precis började i teamet ska på 5-10 sekunder kunna svara:
+- "Vad ska jag göra nästa?"
+- "Vad kan jag ta på mig?"
+- "Vad behöver ändras?"
+- "Vad måste vi prata om?"
+
+---
+
+## 📝 Mötespunkter (Struktur)
 
 **En mötespunkt ≠ en slide. Presentationen blir 20–30 slides.**
 
@@ -337,9 +394,12 @@ Mötespunkterna är:
 1. **Sedan förra mötet** — Commits från alla team
 2. **Sprintmål** — Big picture
 3. **Nuläge** — Övergripande status
-4. **Frontend status** — Issues, progress, risk
-5. **Backend status** — Issues, progress, risk
-6. **Native status** — Issues, progress, risk
+4. **Frontend: Var är vi?** — Issues, assignees, Git-status, dependencies
+5. **Frontend: Vad gör vi?** — Actionbar guide för vad varje medlem ska göra
+6. **Backend: Var är vi?** — Issues, assignees, Git-status, dependencies
+7. **Backend: Vad gör vi?** — Actionbar guide för vad varje medlem ska göra
+8. **Native: Var är vi?** — Issues, assignees, Git-status, dependencies
+9. **Native: Vad gör vi?** — Actionbar guide för vad varje medlem ska göra
 7. **Integration Map** ⭐ **NYTT & TVINGANDE** — Cross-team-analys från CROSS_TEAM_INTEGRATION.md
    - Vilka kedjor (Frontend → API → Backend → Native)?
    - Varje kedjans status: VERIFIERAD/TROLIG/BEHÖVER SYNKAS/MISMATCH/KAN INTE VERIFIERAS

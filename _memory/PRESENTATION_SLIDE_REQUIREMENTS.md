@@ -121,52 +121,96 @@ Minimal text
 
 ---
 
-## 📌 📝④ Frontend (Team-status — 1-3 slides)
+## 📌 📝④ Frontend — Var är vi? (Nuläge & Status)
 
 ```
 MÅSTE INNEHÅLLA (Team: Zaida, Björn, Tomac):
-✅ Vad pågår och vad behöver teamet veta?
-✅ Prioriterad issue-lista (MÅSTE-HA | BÖR-HA)
-✅ Assignee: (#XX - PERSONENS NAMN)
-✅ Risker & Blockers
-✅ Status: 🟢🟠🔴
+✅ Issues med assignee (#XX – Name)
+✅ Git-status denna vecka (commits, branches, active/stale)
+✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
+✅ Dependencies och blockers (vad väntar på vad)
+✅ Status 🟢🟠🔴 per issue
 
-OBS: Kan behöva flera slides
-- Slide X: 📝④ Frontend — nuläge
-- Slide Y: 📝④ Frontend — prioriterade issues
-- Slide Z: 📝④ Frontend — blockers
-
-Alla märkta 📝④ så det är tydligt de tillhör samma mötespunkt.
+VISUELLT:
+- Issues i kolonner eller tabeller
+- Assignee tydlig
+- DoD-checkboxar synliga
 ```
 
 ---
 
-## 📌 📝⑤ Backend (Team-status — 1-3 slides)
+## 📌 📝⑤ Frontend — Vad gör vi åt det? (Actionbar Guide)
+
+```
+MÅSTE INNEHÅLLA (För Junior-Utvecklare — 5-10 Sekunder Förståelse):
+
+1️⃣ FORTSÄTT — Nästa Steg
+   "Tomac fortsätter #43 API-client. Zaida starter #87 testgrund."
+
+2️⃣ BEHÖVER STÄNGAS — Saknad DoD
+   "#42 Drift indicator – saknar review, test, docs. Tomac: kan du fixa?"
+
+3️⃣ KAN TAS NU — Oberoende Arbete
+   "#87 Frontend test foundation – oberoende av Backend, kan startas nu"
+
+4️⃣ AGERA PÅ — Möte/Decision
+   "Frontend + Backend möte: auth-kontrakt kräver avtal på träff"
+
+FORMAT: Mycket kort, actionbar, ingen lång text.
+```
+
+---
+
+## 📌 📝⑥ Backend — Var är vi? (Nuläge & Status)
+
+---
 
 ```
 MÅSTE INNEHÅLLA (Team: Rasha, Erik):
-✅ Vad pågår och vad behöver teamet veta?
-✅ Prioriterad issue-lista (MÅSTE-HA | BÖR-HA)
-✅ Assignee: (#XX - PERSONENS NAMN)
-✅ Risker & Blockers
-✅ Status: 🟢🟠🔴
-
-OBS: Kan behöva flera slides, alla märkta 📝⑤
+✅ Issues med assignee (#XX – Name)
+✅ Git-status denna vecka (commits, branches, active/stale)
+✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
+✅ Dependencies och blockers (vad väntar på vad)
+✅ Status 🟢🟠🔴 per issue
 ```
 
 ---
 
-## 📌 📝⑥ Native/Systemutvecklare (Team-status — 1-3 slides)
+## 📌 📝⑦ Backend — Vad gör vi åt det? (Actionbar Guide)
+
+```
+MÅSTE INNEHÅLLA (För Junior-Utvecklare — 5-10 Sekunder Förståelse):
+
+1️⃣ FORTSÄTT — Nästa Steg
+2️⃣ BEHÖVER STÄNGAS — Saknad DoD
+3️⃣ KAN TAS NU — Oberoende Arbete
+4️⃣ AGERA PÅ — Möte/Decision
+```
+
+---
+
+## 📌 📝⑧ Native — Var är vi? (Nuläge & Status)
 
 ```
 MÅSTE INNEHÅLLA (Team: Pär, Henrik):
-✅ Vad pågår och vad behöver teamet veta?
-✅ Prioriterad issue-lista (MÅSTE-HA | BÖR-HA)
-✅ Assignee: (#XX - PERSONENS NAMN)
-✅ Risker & Blockers
-✅ Status: 🟢🟠🔴
+✅ Issues med assignee (#XX – Name)
+✅ Git-status denna vecka (commits, branches, active/stale)
+✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
+✅ Dependencies och blockers (vad väntar på vad)
+✅ Status 🟢🟠🔴 per issue
+```
 
-OBS: Kan behöva flera slides, alla märkta 📝⑥
+---
+
+## 📌 📝⑨ Native — Vad gör vi åt det? (Actionbar Guide)
+
+```
+MÅSTE INNEHÅLLA (För Junior-Utvecklare — 5-10 Sekunder Förståelse):
+
+1️⃣ FORTSÄTT — Nästa Steg
+2️⃣ BEHÖVER STÄNGAS — Saknad DoD
+3️⃣ KAN TAS NU — Oberoende Arbete
+4️⃣ AGERA PÅ — Möte/Decision
 ```
 
 ---
