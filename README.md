@@ -126,6 +126,63 @@ Rapport istället: "Kunde inte läsa [URL], presentationen är klar med [dessa] 
 
 ---
 
+## 🚫 GITHUB DATA ACCESS — PYTHON/SHELL FÖRBJUDET
+
+**AI får ALDRIG använda Python, shell, curl, wget, urllib eller direkt API-anrop som primär metod för GitHub-data.**
+
+Ett nätverksfel från Python-miljön (`Temporary failure in name resolution`) betyder INTE att GitHub är otillgängligt.
+
+### FALLBACK-STRATEGI (MÅSTE PROVAS I DENNA ORDNING)
+
+**För alla GitHub-data (commits, issues, PR:er, branches, filer):**
+
+1. **LIVE — GitHub Connector/API**
+   - Använd om tillgänglig
+   
+2. **LIVE — Direkt GitHub-åtkomst via webläsare**
+   - Commits: `https://github.com/<owner>/<repo>/commits/develop`
+   - Issues: `https://github.com/<owner>/<repo>/issues`
+   - PR:er: `https://github.com/<owner>/<repo>/pulls`
+   - Branches: `https://github.com/<owner>/<repo>/branches`
+   - Filer: `https://github.com/<owner>/<repo>/blob/main/<path>` eller raw: `https://raw.githubusercontent.com/...`
+
+3. **LIVE — GitHub API via webåtkomst**
+   - Inte direkt socket-anrop, utan via webbläsare/gateway
+
+4. **CACHED — Snapshot från context_enginering**
+   - Se `_memory/GITHUB_SNAPSHOT.md`
+   - Använd ENDAST om båda live-metoderna failat
+   - Markera tydligt: "Per snapshot 2026-09-13 12:45"
+
+5. **SENAST VERIFIERAD**
+   - Information från mötesprotokollet
+   - Information från denna konversation
+
+### KRITISK REGEL — "EJ VERIFIERAT" KRÄVER TVÅ FÖRSÖK
+
+**Presentationen får ALDRIG skriva "Git log kunde inte verifieras"** efter endast ett misslyckat försök.
+
+Minst TVÅ oberoende GitHub-metoder måste provas innan data markeras som unverifierad:
+
+```
+❌ MISSLYCKAD FALLBACK:
+Försök 1: Python urllib/direct API → Failure
+→ Resultat: "Git log ej verifierat"
+
+✅ KORREKT FALLBACK:
+Försök 1: Python urllib → Failure
+Försök 2: GitHub Connector → Success
+→ Resultat: "Git log verifierat" (använd Connector-data)
+
+✅ KORREKT SNAPSHOT-FALLBACK:
+Försök 1: GitHub Connector → Failure
+Försök 2: GitHub-webben → Failure
+Försök 3: GITHUB_SNAPSHOT.md → Success
+→ Resultat: "Git log per snapshot 2026-09-13 12:45"
+```
+
+---
+
 ## 🤖 Du är en AI? START HÄR
 
 ### ⚡ QUICK START — Välj Din Väg

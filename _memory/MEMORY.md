@@ -18,8 +18,9 @@ Denna index pekar till alla minnesarkiv-filer. Läs denna för att hitta rätt k
 
 - [SCHEDULE.md](SCHEDULE.md) — Kursschemat, viktiga deadlines, vecko-fokus
 
-## Project Status
+## Project Status & GitHub Data
 
+- [GITHUB_SNAPSHOT.md](GITHUB_SNAPSHOT.md) — Cached commits, issues, PRs, branches (fallback när live-access failar)
 - [CURRENT_PROJECT_STATUS.md](CURRENT_PROJECT_STATUS.md) — GitHub Project Board snapshot (fallback när API ej tillgängligt)
 
 ---
