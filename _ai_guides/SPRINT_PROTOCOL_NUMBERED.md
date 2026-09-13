@@ -1,263 +1,332 @@
-# 📝 Mötesprotokollet — Numrerad Mall
+# 🗂️ Mötesprotokoll — Sprint Planning (13 mötepunkter)
 
-## 📍 DOKUMENTVÄGEN
+**Denna struktur är 1:1 med presentationen. Varje punkt motsvarar en mötsfunktion, inte en rapportering.**
 
-**Du är här:** SPRINT_PROTOCOL_NUMBERED.md (Mötespunktstruktur)
+---
+
+## 📋 Framsida — Möte-info
 
 ```
-START — README.md (denna repo)
-        ↓
-        VILL DU FÖRSTÅ MÖTESSTRUKTUREN?
-        ↓
-🟢 DU ÄR HÄR: SPRINT_PROTOCOL_NUMBERED.md (denna fil)
-        ↓
-ANVÄND MED:
-  • SPRINT_PRESENTATION_STRUCTURE.md ← Hur presentationen ska se ut
-  • mötesprotokollet (Google Docs) ← Denna veckas data
-        ↓
-RESULTAT: Möte med alla 12 mötespunkter (📝①-⑫) + intro (📝⓪)
+SPRINTPLANERING · TEAM 1
+Måndag [datum] · 09:00–10:30
+
+Fokus med PL denna vecka
+[Fokustext — kort och tydlig]
+
+Underlag kontrollerat inför mötet:
+[Källlista]
 ```
 
-**GÅ TILLBAKA TILL:** SPRINT_PRESENTATION_STRUCTURE.md om du skapar presentation  
-**GÅ TILL:** mötesprotokollet för denna veckas status
+---
+
+## 📝① Sedan Förra Mötet
+**Vad blev faktiskt klart? (Done/merged-vy)**
+
+**VIKTIG:** Visar commits från ALLA teammedlemmar (7 dagar tillbaka):
+- Zaida, Björn, Tomac (Frontend)
+- Rasha, Erik (Backend)
+- Pär, Henrik (Native)
+
+Git-status denna vecka:
+- Mergade commits: 
+  - Zaida: #[XX] [beskrivning]
+  - Tomac: #[XX] [beskrivning]
+  - Björn: #[XX] [beskrivning]
+  - Rasha: #[XX] [beskrivning]
+  - Erik: #[XX] [beskrivning]
+  - Pär: #[XX] [beskrivning]
+  - Henrik: #[XX] [beskrivning]
+
+- Active branches (pågår denna vecka):
+  - feature/#42-[person]
+  - feature/#51-[person]
+  - feature/#60-[person]
+
+- Stale branches (>3 dagar, ingen commit):
+  - [branch] — senaste commit: [datum]
 
 ---
 
-**Använd denna struktur varje möte. Presentationen har samma numrering (📝①②③ etc)**
+## 📝② Sprintmål
+**Vad ska denna sprint åstadkomma?**
 
-**Datum:** [Veckodag, datum]  
-**Tid:** 09:00-10:30  
-**Närvaro:** [Lista namn]
+Överordnat tema:
+[Kort beskrivning av sprintens huvudsakliga fokus]
 
----
+Tre huvudmål denna vecka:
+1. [Mål]
+2. [Mål]
+3. [Mål]
 
-## 📝① STATUS SEDAN FÖREGÅENDE MÖTE
-
-[Copy från presentation — Slide med 📝①]
-
-Vad hände förra veckan?
-- Vilka issues blev DONE?
-- Vilka är IN PROGRESS denna vecka?
-- Vilka är BLOCKED?
+Deadline: [CTO-demo, release, etc]
 
 ---
 
-## 📝② ÖVERGRIPANDE MÅL & STATUS DENNA VECKA
+## 📝③ Nuläge
+**Var står projektet mot sprintmålet?**
 
-[Copy från presentation — Slides med 📝②]
+Övergripande status:
+- 🟢 ON TRACK | 🟠 SLIGHT DELAY | 🔴 CRITICAL
 
-**Målsättning:**
-- Risk Metrics (#42 - Marco): [%]
-- FX Converter (#45 - Jana): [%]
-- Tests (#48 - Anna): [%]
-- Kärnflödet (#51 - Kiran): [status]
+Framsteg denna vecka:
+- Kursmål: [X/Y] → [Y/Y] denna vecka
+- Projekt: [X%] → [Y%]
 
-**Status:** 🟢 GRÖN / 🟠 ORANGE / 🔴 RÖD
-
-**Deadlines:**
-- Torsdag 15:00 (Sprint end)
-- 24 sep 16:00 (CTO-demo)
-- 15 oktober (Kvaldemo)
-
-**Åtgärdsförslag (om orange/red):**
-- [Åtgärd 1]
-- [Åtgärd 2]
+Två möjliga blockers:
+- [blocker 1]
+- [blocker 2]
 
 ---
 
-## 📝③ FRONTEND TEAM — [STATUS]
+## 📝④ Frontend
+**Vad pågår? Vad behöver teamet veta?**
 
-[Copy från presentation — Slide med 📝③]
-
-**Progress:** [%] (████░░)
-
-**Issues completed:** [antal] / [total]
-
-**Vad är klart denna vecka:**
-- [Issue #XX - Person]: [beskrivning]
-- [Issue #XX - Person]: [beskrivning]
-
-**Vad pågår:**
-- [Issue #XX - Person]: [beskrivning]
-
-**Blockers:** ❌ Ingen / ⚠️ [beskrivning]
-
-**Åtgärdsförslag (om orange/red):**
-- [Åtgärd]
-
----
-
-## 📝④ BACKEND TEAM — [STATUS]
-
-[Copy från presentation — Slide med 📝④]
-
-**Progress:** [%] (██░░░░)
-
-**Issues completed:** [antal] / [total]
-
-**Vad är klart denna vecka:**
-- [Issue #XX - Person]: [beskrivning]
-
-**Vad är bakom plan:**
-- [Issue #XX - Person]: [beskrivning]
-
-**Blockers:** ⚠️ [beskrivning] / ❌ Ingen
-
-**Åtgärdsförslag (om orange/red):**
-- [Åtgärd]
-
----
-
-## 📝⑤ NATIVE TEAM — [STATUS]
-
-[Copy från presentation — Slide med 📝⑤]
-
-**Progress:** [%] (████░░░░░░)
-
-**Issues completed:** [antal] / [total]
-
-**Vad är klart denna vecka:**
-- [Issue #XX - Person]: [beskrivning]
-
-**Vad är blockat:**
-- [Issue #XX - Person]: [beskrivning]
-
-**Kritiska blockers:** 🔴 [beskrivning] / ⚠️ [beskrivning]
-
-**OMEDELBAR ÅTGÄRD (om kritisk):**
-- [Åtgärd + timeline]
-
----
-
-## 📝⑥ PRIORITERING & SCOPE
-
-[Copy från presentation — Slides med 📝⑥]
+Team: Zaida, Björn, Tomac
 
 **MÅSTE-HA denna vecka:**
-- [Issue]
-- [Issue]
+- #XX [beskrivning] (Zaida - Xh)
+- #XX [beskrivning] (Tomac - Xh)
+- #XX [beskrivning] (Björn - Xh)
 
-**NICE-TO-HAVE:**
-- [Issue]
-- [Issue]
+**BÖR-HA (om tid):**
+- #XX [beskrivning] (Zaida - Xh)
+- #XX [beskrivning] (Tomac - Xh)
 
-**Kan vi göra allt?** Ja / Nej → Scope cut behövs
+Blockers:
+- Väntar på: [vad]
+- Påverkar: [vilka issues]
 
-**Scope cut (om behövs):**
-- Skipped: [Issue - Why?]
-- Shifted: [Issue - To when?]
-
----
-
-## 📝⑦ ESTIMERING & RISK
-
-[Copy från presentation — Slides med 📝⑦]
-
-**Estimat per team:**
-- Frontend: [total hours] available / [issues hours needed]
-- Backend: [total hours] available / [issues hours needed]
-- Native: [total hours] available / [issues hours needed]
-
-**Passar det inom kapacitet?** Ja / Nej → Action?
-
-**Kända blockers & mitigering:**
-- Blocker X: [beskrivning] → Åtgärd: [vad gör vi?]
-
-**Framgångskriterier denna vecka:**
-- [Kriterium 1]
-- [Kriterium 2]
-
-**Risker & mitigation:**
-- Risk X: [beskrivning] → Mitigering: [vad gör vi?]
+Risk denna vecka:
+- [risk beskrivning]
 
 ---
 
-## 📝⑧ TEKNISKA BESLUT
+## 📝⑤ Backend
+**Vad pågår? Vad behöver teamet veta?**
 
-[Copy från presentation — Slide med 📝⑧ (om den finns)]
+Team: Rasha, Erik
 
-**Beslut X:** [Beskrivning]
-- Vem bestämde: [Person/Team]
-- Varför: [Reasoning]
-- Impact: [Vad ändrar?]
+**MÅSTE-HA denna vecka:**
+- #XX [beskrivning] (Rasha - Xh)
+- #XX [beskrivning] (Erik - Xh)
 
----
+**BÖR-HA (om tid):**
+- #XX [beskrivning] (Rasha - Xh)
 
-## 📝⑨ BEROENDEN & BLOCKERS
+Blockers:
+- Väntar på: [vad]
+- Blockerar: [vilka team/issues]
 
-[Copy från presentation — Slide med 📝⑨ (om den finns)]
-
-**Frontend väntar på:**
-- [Vad] från [Team] → Status: Ready / Not ready
-
-**Backend väntar på:**
-- [Vad] från [Team] → Status: Ready / Not ready
-
-**Native väntar på:**
-- [Vad] från [Team] → Status: Ready / Not ready
+Risk denna vecka:
+- [risk beskrivning]
 
 ---
 
-## 📝⑩ ARBETSUPPGIFTER (Issues som startas denna vecka)
+## 📝⑥ Native/Systemutvecklare
+**Vad pågår? Vad behöver teamet veta?**
 
-[Copy från presentation — Slide med 📝⑩ (om den finns)]
+Team: Pär, Henrik
 
-**Frontend:**
-- [ ] #XX: [Beskrivning] - [Person] - [Tidsestimering]
-- [ ] #YY: [Beskrivning] - [Person] - [Tidsestimering]
+**MÅSTE-HA denna vecka:**
+- #XX [beskrivning] (Pär - Xh)
+- #XX [beskrivning] (Henrik - Xh)
 
-**Backend:**
-- [ ] #XX: [Beskrivning] - [Person] - [Tidsestimering]
-- [ ] #YY: [Beskrivning] - [Person] - [Tidsestimering]
+**BÖR-HA (om tid):**
+- #XX [beskrivning] (Pär - Xh)
 
-**Native:**
-- [ ] #XX: [Beskrivning] - [Person] - [Tidsestimering]
+Blockers:
+- Väntar på: [vad]
+- Externa beroenden: [IT-support, etc]
 
----
-
-## 📝⑪ FRÅGOR TILL PROJEKTLEDAREN
-
-[Copy från presentation — Slide med 📝⑪]
-
-**Frågor från team:**
-- Q: [Fråga 1]
-- Q: [Fråga 2]
-- Q: [Fråga 3]
-
-**Svar från PL:**
-- A: [Svar 1]
-- A: [Svar 2]
-- A: [Svar 3]
-
-Eller: Inga frågor denna vecka ✅
+Risk denna vecka:
+- [risk beskrivning]
 
 ---
 
-## 📝⑫ NÄSTA STEG & SAMMANFATTNING
+## 📝⑦ Beroenden & Blockers
+**Vad väntar på vad?**
 
-[Copy från presentation — Slide med 📝⑪]
+Flöde 1: [blockare] → [vem påverkas]
+- Väntar på: [konkret action]
+- Förväntad lösning: [datum tid]
+- Åtgärd NU: [konkret]
 
-**Nästa steg omedelbar efter möte:**
-- [ ] GitHub Project Board uppdaterad
-- [ ] Pair programming sessions bokade
-- [ ] Alla vet sitt jobb
-- [ ] Blockers documented
-
-**Denna vecka deadlines:**
-- MON 14:00: [Action]
-- TUE 09:00: [Action]
-- TUE 14:00: [Action]
-- WED 09:00: [Action]
-- THU 15:00: [Sprint end — allt klart]
-
-**Sammanfattning:**
-- Fokus denna vecka: [...]
-- Kritiska actions: [...]
-- Övergripande status: 🟢 / 🟠 / 🔴
-- Nästa möte: TIS 13:00
+Flöde 2: [blockare] → [vem påverkas]
+- Väntar på: [konkret action]
+- Förväntad lösning: [datum tid]
+- Åtgärd NU: [konkret]
 
 ---
 
-**Mötesprotokollet upprättat av:** [Namn sekreterare]  
-**Datum slutfört:** [Datum]  
-**Länk:** [Google Docs raw-export link]
+## 📝⑧ Prioritering & Scope
+**Vad gör vi först? Vad kan vänta?**
+
+🔴 MUST denna vecka:
+- #XX, #XX, #XX
+- Totalt: XYh kapacitet
+- Denna vecka: Vi gör DET HÄR
+
+🟠 NEXT (nästa vecka eller senare):
+- #XX, #XX, #XX
+- Vi startar nästa vecka
+
+⚪ LATER/SKIP:
+- #XX, #XX
+- Vi väljer bort detta denna sprint
+
+---
+
+## 📝⑨ Kapacitet & Estimering
+**Är planen realistisk?**
+
+Kapacitet denna vecka:
+| Team     | Available | Needed | Buffer | Status |
+|----------|-----------|--------|--------|--------|
+| Frontend | XXh       | XXh    | ±Xh    | ✅/⚠️  |
+| Backend  | XXh       | XXh    | ±Xh    | ✅/⚠️  |
+| Native   | XXh       | XXh    | ±Xh    | ✅/⚠️  |
+
+Svar: 🟢 Ja, vi passar | 🟠 Knapp | 🔴 Nej
+
+Om underbelastat team:
+- Extra arbete från [lista]
+- Support till [team]
+
+---
+
+## 📝⑩ Risker
+**Vad kan göra att sprintplanen misslyckas?**
+
+**Risk 1: [risk]**
+- Konsekvens: [vad blir påverkat]
+- Sannolikhet: Låg / Medel / Hög
+- Hantering: [konkret åtgärd]
+- Ansvarig: [namn]
+
+**Risk 2: [risk]**
+- Konsekvens: [vad blir påverkat]
+- Sannolikhet: Låg / Medel / Hög
+- Hantering: [konkret åtgärd]
+- Ansvarig: [namn]
+
+**Risk 3: [risk]**
+- Konsekvens: [vad blir påverkat]
+- Sannolikhet: Låg / Medel / Hög
+- Hantering: [konkret åtgärd]
+- Ansvarig: [namn]
+
+---
+
+## 📝⑪ Tekniska Beslut
+**Vad behöver beslutas eller dokumenteras?**
+
+**Beslut 1: [kort titel]**
+- Vad: [beskrivning av beslutet]
+- Varför: [motivering]
+- Impact: [vilka issues/team påverkas]
+- Approved av: [namn]
+- Dokumenterat i: [länk]
+
+**Beslut 2: [kort titel]**
+- Vad: [beskrivning av beslutet]
+- Varför: [motivering]
+- Impact: [vilka issues/team påverkas]
+- Approved av: [namn]
+- Dokumenterat i: [länk]
+
+---
+
+## 📝⑫ Sprintplan
+**Vem gör vad, i vilken ordning?**
+
+### FRONTEND (Zaida, Björn, Tomac)
+- ☐ #XX [beskrivning] (Zaida - 5h)
+- ☐ #XX [beskrivning] (Tomac - 8h)
+- ☐ #XX [beskrivning] (Björn - 4h)
+- ☐ #XX [beskrivning] (Zaida - 6h)
+- ☐ #XX [beskrivning] (Tomac - 3h)
+
+**Totalt:** XXh, XX% av kapaciteten
+
+### BACKEND (Rasha, Erik)
+- ☐ #XX [beskrivning] (Rasha - 3h)
+- ☐ #XX [beskrivning] (Erik - 8h)
+- ☐ #XX [beskrivning] (Rasha - 4h)
+
+**Totalt:** XXh, XX% av kapaciteten
+
+### NATIVE (Pär, Henrik)
+- ☐ #XX [beskrivning] (Pär - 5h)
+- ☐ #XX [beskrivning] (Henrik - 7h)
+- ☐ #XX [beskrivning] (Pär - 6h)
+
+**Totalt:** XXh, XX% av kapaciteten
+
+---
+
+## 📝⑬ Nästa Steg
+**Vad händer direkt efter mötet? Under veckan?**
+
+### IDAG (efter möte)
+- ☐ GitHub Project Board uppdaterad
+- ☐ Pair sessions bokade (om behövs)
+- ☐ Alla vet sitt jobb och assignee
+- ☐ Blockers dokumenterade i GitHub
+
+### DENNA VECKA — konkreta deadlines
+- **TUE 14:00** — [action] (KRITISK)
+- **WED 09:00** — [action]
+- **THU 14:00** — [action]
+- **FRI 16:00** — Sprint end review
+
+### MÖTEN DENNA VECKA
+- **MON 09:00** — Sprint planning (denna)
+- **TUE 10:00** — Daily standup (om behövs)
+- **THU 14:00** — CTO pre-demo-review
+- **FRI 16:00** — Sprint review & retro
+
+---
+
+## 📝⑬ Frågor till PL
+**Vad behöver vi få svar/beslut på från PL?**
+
+**Fråga 1: [kort fråga]**
+- Kontext: [varför frågar vi]
+- Behövs för: [vilken beslut/issue]
+- **Svar:** ________________________________
+
+**Fråga 2: [kort fråga]**
+- Kontext: [varför frågar vi]
+- Behövs för: [vilken beslut/issue]
+- **Svar:** ________________________________
+
+**Fråga 3: [kort fråga]**
+- Kontext: [varför frågar vi]
+- Behövs för: [vilken beslut/issue]
+- **Svar:** ________________________________
+
+---
+
+## 📌 Möteslogik — Berättelsen från mötet
+
+Flödet är:
+
+1. **Sedan förra mötet** → Vad blev faktiskt klart? (VISA ALLAS ARBETE)
+2. **Sprintmål** → Vad försöker vi nå?
+3. **Nuläge** → Var står vi?
+4-6. **Teamstatus** → Vad händer i varje arbetsström?
+7. **Beroenden & blockers** → Hur påverkar arbetsströmmarna varandra?
+8. **Prioritering** → Vad prioriterar vi?
+9. **Kapacitet** → Har vi tid?
+10. **Risker** → Vad kan hindra oss?
+11. **Tekniska beslut** → Vad måste vi bestämma?
+12. **Sprintplan** → Lås planen
+13. **Frågor till PL** → Det vi behöver få svar på
+
+**Presentationen följer denna logik exakt. Varje slide motsvarar en punkt.**
+
+---
+
+**Senast uppdaterad:** 2026-09-13  
+**Status:** 13 mötepunkter, 1:1 med PRESENTATION_SLIDE_REQUIREMENTS.md  
+**VIKTIGT:** Punkt ① MÅSTE visa commits från ALLA teammedlemmar (7 dagar tillbaka)
