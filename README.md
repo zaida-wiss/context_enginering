@@ -53,12 +53,26 @@ Generate presentation
 - ❌ What to show (that's SPEC's job)
 - ❌ How to get data (that's README's job)
 
+### External & Dynamic Sources
+
+**Course Requirements & Grading:**
+- 📋 Länk i _memory/ (från kursplattform/LMS)
+
+**Architecture Decisions:**
+- 📋 DECISIONS.md i avanza-team1 repo (BESLUT.md för varje team)
+- 📍 README länk: https://github.com/chas-challenge-2026/avanza-team1
+
+**Project Vision & Goals:**
+- 📋 Länk i _memory/ (från PL/projektbeskrivning)
+
+**Definition of Done (DoD):**
+- 📋 Länk i _memory/ (från projektets regler)
+
 ### All Other Files
 
-- **_project_context/** — Permanent project rules (DO NOT CHANGE)
 - **_ai_guides/other** — Reference & support only (CANNOT override above)
 - **_docs/** — Examples & mockups only (NEVER contains rules)
-- **_memory/** — Personal session notes only (NOT authoritative)
+- **_memory/** — Länkad information: kursmål, DoD, vision (hämtas live)
 
 **If two files conflict:** Follow the read order above. README wins.
 

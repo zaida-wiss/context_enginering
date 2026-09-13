@@ -290,6 +290,134 @@ Om assignee är uppenbart överbelastad = FRÅGA OM BALANS (denna vecka kan Marc
 
 ---
 
+## 🚨 MEGA-REGEL 2: Verifiera Git-Status & Jämför Med Project Board
+
+**AI MÅSTE:** 
+1. Köra git-commands för FAKTISK data (inte gissa)
+2. Jämföra mot Project Board
+3. Märka diskrepanser (Board kan stale)
+
+```
+🔴 TVINGANDE VERIFICERING FÖRE STATUS-PÅSTÅENDE:
+
+RESULTAT du MÅSTE visa i presentationen:
+✅ Konkreta commits (hash + message) från Git
+✅ Vilka branches är aktiva denna vecka
+✅ Vilka branches är stale (>3 dagar utan commit)
+✅ Vem jobbar på vad (commit author)
+✅ Total "delta" mellan develop och feature-branches
+✅ Märka där Board-status motsäger Git-bevis
+
+❌ ALDRIG säga: "Teamet jobbar på kärnflödet"
+✅ ALLTID säga: "Git visar X commits denna vecka:
+            • #42 (Jan - portfolio), #45 (Marco - risk-calc)
+            • Branches active: feature/#42, feature/#45
+            • Stale: feature/#40 (5 dagar, ingen commit)"
+```
+
+---
+
+## 🚨 MEGA-REGEL 3: Ingenting Fabriceras
+
+Varje siffra, datum, mål måste komma från:
+- DEFINITION_OF_DONE.md (projekt-regler)
+- GitHub Project Board (projektmål)
+- Mötesprotokollet (tidsplan, åtgärder)
+- **Git log (VERIFIERA — kör git commands!)**
+- **Git branches (vad pågår — vilka är aktiva?)**
+
+**ALDRIG:** Gissa, antag, eller "normalt skulle man..."
+
+---
+
+## 🚨 MEGA-REGEL 4: Presentationen Lär Branschterminologi
+
+**Presentationen är både statusrapport OCH lärtillfälle för branschbegrepp.**
+
+**Regel: Förklara aldrig ett ord som INTE står på sliden.**
+
+```
+❌ DÅLIGT: "Vi säkrar kärnflödet denna vecka"
+
+✅ BÄTTRE: "Vi fokuserar på kärnflödet: 
+           portföljöversikten end-to-end (hela flödet från inmatning till visning).
+           Git visar 5 commits denna vecka."
+
+📚 FORMAT:
+   Branschterm: [ordet]
+   Definition: [vad betyder det enkelt]
+   Kontext: [varför relevant för projektet]
+   Status: [konkret progress]
+```
+
+---
+
+## 🚨 MEGA-REGEL 5: Layout Safety & Text Responsiveness (NPF/Dyslexia-First)
+
+**NPF/Dyslexia-first: Presentatören ska aldrig behöva säga "det är lite mycket text här".**
+
+### Text Responsiveness — Prioritetsordning När Text Inte Får Plats
+
+```
+1. ✅ Förenkla formuleringen
+2. ✅ Gör element större
+3. ✅ Ändra layout
+4. ✅ Dela sliden (märka båda med samma symbol)
+
+❌ ALDRIG: Krympa font
+Texten får ALDRIG skrumpas för att få plats.
+Om 14pt inte funkar → 18pt + större element eller dela sliden.
+```
+
+### Minsta Fontstorlekar (Absolute Minimum)
+
+```
+☐ Rubrik: 28 pt
+☐ Huvudtext: 16 pt  
+☐ Metadata (issue #, assignee): 14 pt
+```
+
+### 5-Sekunders-Test (Obligatorisk)
+
+```
+Titta på sliden i fem sekunder.
+Kan du svara på "Vad handlar detta om?" utan att läsa all text?
+
+✅ RÄTT: Ikonerna, rubriken och pilarna säger berättelsen
+❌ FEL: Du måste läsa all text
+```
+
+---
+
+## 🚨 MEGA-REGEL 6: Färg Är Semantik, Aldrig Dekoratör
+
+**Varje färg måste betyda något konkret. Ingen dekorativ färgning.**
+
+```
+FÄRGPALETT MED BETYDELSE:
+
+NEUTRALA (STRUKTURFÄRGER):
+  🔵 Marinblå — huvudrubriker, viktig struktur
+  ⚫ Blågrå / Ljusgrå — vanliga informationskort
+  ⚪ Vit — luft, huvudytor, negativt utrymme
+
+ACCENTFÄRGER (ICKE-STATUS):
+  💜 Lila — sprintplanering, beslut, prioriteringar
+  🌸 Dämpad rosa — människor, ägarskap, assignee
+
+STATUSFÄRGER (ENDAST NÄR STATUS FINNS):
+  🟢 Grön — klart, på plan, låg risk
+  🟠 Orange — behöver uppmärksamhet, risk
+  🔴 Röd — blockerad, kritisk risk
+
+EXEMPEL PÅ KORREKT ANVÄNDNING:
+  ❌ DÅLIGT: Backend-kort är helt orange
+  ✅ RÄTT: Backend-kort är blågrå. Inne i kortet 
+           markeras risken med en liten orange indikator.
+```
+
+---
+
 ## 📍 DOKUMENTVÄGEN
 
 **Du är här:** PRESENTATION_FORMAT_GUIDE.md (Visuell formatering)
