@@ -5,15 +5,18 @@ Andra filer (DESIGN, FORMAT_GUIDE, STRUCTURE) fördjupar denna spec men motsäge
 
 ---
 
-## 🔴 CRITICAL EXECUTION ORDER — DATA FÖRE DENNA FIL
+## 🔴 SLIDE SKILL READING — OK, BUT DON'T COLLECT DATA YET
 
-**Denna fil läses ENDAST efter att all projektdata är inhämtad (se README.md PHASE 1).**
+**Denna fil kan läsas från slide-skillen, det är OK.**
 
-Om du läser denna fil innan PHASE 1 är klar:
-→ STOP
-→ Gå tillbaka till README.md
-→ Slutför datainsamlingen först
-→ Kom sedan tillbaka hit
+Om slide-skillen läste denna fil:
+
+✅ Det är acceptabelt
+✅ Continue reading context_enginering README
+✅ THEN collect project data via GitHub Connector/API
+❌ NOT by cloning or using git-commands
+
+Se README.md för datainsamlingsregler som gäller även för slide-skillen.
 
 ---
 
