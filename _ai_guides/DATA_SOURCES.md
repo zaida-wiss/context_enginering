@@ -100,7 +100,7 @@ Presentationen måste kunna verifiera dessa fakta:
 **Fallback ordning:**
 1. GitHub Connector/API — commits to develop + date range
 2. GitHub /commits tab — filter by date
-3. Google Sheets commit-historik: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=77162861#gid=77162861
+3. Google Sheets (universal fallback): https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
 4. Merged PRs (se WORK COMPLETED) — de visar commits utan att behöva log
 5. Mötesprotokoll — vad sade vi implementerade?
 
@@ -179,6 +179,25 @@ Om en källa misslyckas:
 
 ✅ Bättre:
 "Lisa är assignad #40 (verifiera från GitHub); hennes uppdaterade handlingar från mötet kunde inte verifieras från protokoll"
+
+---
+
+## UNIVERSAL FALLBACK — Google Sheets
+
+**Om multiple live-sources failar, denna sheet innehåller fallback-data för:**
+- Commits denna vecka
+- Issues (öppna, stängda, assignees)
+- PRs (öppna, mergade)
+- Project Board status
+- Mötesprotokollet
+
+```
+URL: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+Status: Accessible, multiple sheets for different data types
+AI can read: Yes, via direct link or export
+```
+
+**Denna sheet är sista fallback innan presentationen säger "ej verifierat".**
 
 ---
 
