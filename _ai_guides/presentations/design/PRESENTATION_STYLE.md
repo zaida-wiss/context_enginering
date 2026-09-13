@@ -204,7 +204,7 @@ TEAM STATUS:
   ✅ Neutrala kort (marinblå/grå) för varje team
   ✅ Status-indikatorer INNANFÖR kortet (små ikoner 🟢🟠🔴)
   ✅ Progress-bars per team
-  ✅ Ikon-representationer av personer (👥 Jan, Marco, Anna)
+  ✅ Ikon-representationer av personer (👥 med verkliga namn från TEAM_ROSTER, ALDRIG exempel-namn)
   ❌ INTE färgade borders (borders är status-märkning, se PRESENTATION_SPEC.md)
 
 PRIORITERING:
@@ -243,9 +243,9 @@ Inga slides som är BARA text ✋
 🔴 TVINGANDE FORMAT:
 
 Varje issue MÅSTE se ut såhär:
-  #42 Portfolio overview (Jan)
-  #51 Rebalance (Marco föreslaget)
-  #48 Risk metrics (Anna)
+  #42 Portfolio overview (Tomac)
+  #51 Rebalance (Erik föreslaget)
+  #48 Risk metrics (Rasha)
 
 INTE såhär (MISSLYCKAD):
   ❌ #42 Portfolio overview (utan namn)
@@ -262,9 +262,9 @@ FORMAT EXAKT:
     1. Git log — vem jobbar redan på det?
     2. KAPACITET — vem har mindre att göra?
 
-    Exempel rätt: (#42 - Jan föreslaget, Jan jobbar på portfolio)
-    Exempel rätt: (#51 - Marco föreslaget, Marco har kapacitet)
-    Exempel fel: (#42 - Jan ALLTID, oavsett om Jan är överbelastad)
+    Exempel rätt: (#42 - Jan föreslaget, Tomac jobbar på portfolio)
+    Exempel rätt: (#51 - Marco föreslaget, Erik har kapacitet)
+    Exempel fel: (#42 - Jan ALLTID, oavsett om Tomac är överbelastad)
 ```
 
 **VIKTIGT: BALANS VÄL ÖVER EFFEKTIVITET**
@@ -314,7 +314,7 @@ RESULTAT du MÅSTE visa i presentationen:
 
 ❌ ALDRIG säga: "Teamet jobbar på kärnflödet"
 ✅ ALLTID säga: "Git visar X commits denna vecka:
-            • #42 (Jan - portfolio), #45 (Marco - risk-calc)
+            • #42 (Tomac - portfolio), #45 (Erik - risk-calc)
             • Branches active: feature/#42, feature/#45
             • Stale: feature/#40 (5 dagar, ingen commit)"
 ```
@@ -1010,7 +1010,7 @@ REGLER:
 ║ └──────────────────────────────────────────┘  ║
 ║                                                ║
 ║ Klart denna vecka:                            ║
-║ ✅ #42 Portfolio overview (Jan)               ║
+║ ✅ #42 Portfolio overview (Tomac)               ║
 ║ ✅ #45 Risk dashboard (Marco)                 ║
 ║                                                ║
 ║ Pågår:                                        ║
@@ -1045,7 +1045,7 @@ REGLER:
 ║ └──────────────────────────────────────────┘  ║
 ║                                                ║
 ║ Klart denna vecka:                            ║
-║ ✅ #48 Risk metrics (Anna)                    ║
+║ ✅ #48 Risk metrics (Rasha)                    ║
 ║                                                ║
 ║ Bakom plan:                                   ║
 ║ ⏳ #51 FX conversion (Kiran) — väntar data  ║
@@ -1190,7 +1190,7 @@ REGLER:
 ║                                                ║
 ║ ┌─────────────────────────────────────────┐   ║
 ║ │ FRONTEND                                │   ║
-║ │ [ ] #42 Portfolio overview (Jan) - 3h  │   ║
+║ │ [ ] #42 Portfolio overview (Tomac) - 3h  │   ║
 ║ │ [ ] #45 Risk dashboard (Marco) - 5h    │   ║
 ║ │ [ ] #51 Rebalance (Jan) - 7h            │   ║
 ║ │ [ ] #52 Export CSV (Jan föreslaget) - 4h│   ║
@@ -1198,10 +1198,10 @@ REGLER:
 ║                                                ║
 ║ ┌─────────────────────────────────────────┐   ║
 ║ │ BACKEND                                 │   ║
-║ │ [ ] #48 Risk metrics (Anna) - 4h        │   ║
+║ │ [ ] #48 Risk metrics (Rasha) - 4h        │   ║
 ║ │ [ ] #51 FX conversion (Kiran) - 5h      │   ║
 ║ │ [ ] #52 Tests (Anna) - 9h               │   ║
-║ │ [ ] #53 Performance (Marco föreslaget) -2h│   ║
+║ │ [ ] #53 Performance (Erik föreslaget) -2h│   ║
 ║ └─────────────────────────────────────────┘   ║
 ║                                                ║
 ║ ┌─────────────────────────────────────────┐   ║

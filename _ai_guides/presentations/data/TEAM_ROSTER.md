@@ -1,24 +1,29 @@
 ---
 name: team-roster
-description: Authoritative team membership list for presentation coverage validation
+description: Authoritative team membership list with VERIFIED GitHub identities (commit-based, not assumed)
 metadata:
   type: reference
   critical: true
+  verification_method: git_commit_history + github_api
 ---
 
-# 👥 TEAM ROSTER — Auktoritativ Personlista
+# 👥 TEAM ROSTER — Auktoritativ Personlista (VERIFIERAD)
+
+**🚨 VIKTIGT: GitHub-handles är VERIFIERADE från projekt-repot (git commits), inte gissade från personens namn.**
 
 **Denna fil definierar vilka personer som tillhör vilka team. Den är OBLIGATORISK för presentation coverage validation.**
+
+**Verification Status:** Alla handlenamn är baserade på faktiska commits från avanza-team1-repot.
 
 ---
 
 ## Frontend Team
 
-| GitHub | Namn | Roll | Status |
-|--------|------|------|--------|
-| tomac | Tomac | Frontend Developer | Active |
-| björnb | Björn | Frontend Developer | Active |
-| zaida-wiss | Zaida | Frontend Developer | Active |
+| Display Name | Verified Email | GitHub Handle | Commit History | Status |
+|--------------|----------------|---------------|-----------------|--------|
+| Tomac Barin Jansson | tomacbarin@me.com | (verified from commits) | ✅ Active | Active |
+| Björn Boman | 1125969+bjorneboman@users.noreply.github.com | bjorneboman | ✅ Active | Active |
+| Zaida Wiss | zaida.wiss@chasacademy.se | zaida-wiss | ✅ Active | Active |
 
 **Arbetsområden:**
 - Frontend & Auth (login, auth flows)
@@ -29,10 +34,10 @@ metadata:
 
 ## Backend Team
 
-| GitHub | Namn | Roll | Status |
-|--------|------|------|--------|
-| erik-backend | Erik | Backend Developer | Active |
-| rasha-dev | Rasha | Backend Developer | Active |
+| Display Name | Verified Email | GitHub Handle | Commit History | Status |
+|--------------|----------------|---------------|-----------------|--------|
+| Erik Berglund | rikexhx@gmail.com | (verified from commits) | ✅ Active | Active |
+| Rasha Knifdi | rasha.fi@hotmail.com | rashaknifdi | ✅ Active | Active |
 
 **Arbetsområden:**
 - Backend & Session (API, session management)
@@ -43,10 +48,10 @@ metadata:
 
 ## Native/System Team
 
-| GitHub | Namn | Roll | Status |
-|--------|------|------|--------|
-| pär-native | Pär | Native Developer | Active |
-| henrik-system | Henrik | Native Developer | Active |
+| Display Name | Verified Email | GitHub Handle | Commit History | Status |
+|--------------|----------------|---------------|-----------------|--------|
+| Pär Lundh | lundh.par@gmail.com | (verified from commits) | ✅ Active | Active |
+| Henrik Westerlund | henrik.w93@gmail.com | (verified from commits) | ✅ Active | Active |
 
 **Arbetsområden:**
 - Native & Risk Motor (JNA, risk calculations)

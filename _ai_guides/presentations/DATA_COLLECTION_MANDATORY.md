@@ -113,9 +113,9 @@ Exempel (om idag är 2026-09-13):
 - [ ] Data innehåller: 
   * För öppna PRs: person, PR-nummer, commits sedan förra, status
   * För feature-branches: person, branch-namn, senaste commit, komit-antal denna vecka
-- [ ] **Exempel:** Tomac: #43 API-klient PR (3 commits denna vecka, under review)
-- [ ] **Exempel:** Marco: feature/#45-risk PR (5 commits denna vecka, ongoing)
-- [ ] **Exempel:** Anna: feature/#52-tests (2 commits denna vecka, not yet in PR)
+- [ ] **Exempel:** <EXAMPLE_MEMBER_A>: #43 API-klient PR (3 commits denna vecka, under review)
+- [ ] **Exempel:** <EXAMPLE_MEMBER_B>: feature/#45-risk PR (5 commits denna vecka, ongoing)
+- [ ] **Exempel:** <EXAMPLE_MEMBER_C>: feature/#52-tests (2 commits denna vecka, not yet in PR)
 - [ ] **VIKTIGT:** Visa arbete från:
   * Open PRs (under review)
   * Feature branches med commits (even without PR)
@@ -237,17 +237,22 @@ Verifierings-slide visar:
 - Zaida: PR #68
 - Tomac: PR #80
 - Björn: Review PR #90
-- Jan: (Ingen verifierad GitHub-aktivitet)
-- Marco: (Ingen verifierad GitHub-aktivitet)
+- Pär: (Ingen verifierad GitHub-aktivitet denna vecka)
+- Henrik: (Ingen verifierad GitHub-aktivitet denna vecka)
 
 → Senare i presentationen:
 - ✅ Kan nämna Zaida, Tomac, Björn
-- ❌ Får INTE nämna Jan eller Marco (hade ingen aktivitet denna vecka)
-- ❌ Får INTE använda exempel-namn från instruktioner
+- ❌ Får INTE nämna Pär eller Henrik (hade ingen aktivitet denna vecka)
+- ❌ Får ALDRIG använda exempel-namn från instruktioner — de är platshållare, inte riktiga personer
 
 **KRITISK:** Presentationen kan INTE växla mellan "verifierad data" och "exempel".
 
-Om Jan eller Marco saknar aktivitet denna vecka → de syns på verifierings-sliden som "(Ingen aktivitet)" och nämns inte senare SÅVIDA de inte får ny GitHub-data.
+Om Pär eller Henrik saknar aktivitet denna vecka → de syns på verifierings-sliden som "(Ingen aktivitet)" och nämns inte senare SÅVIDA de inte får ny GitHub-data.
+
+⛔ **EXEMPEL-NAMN I INSTRUKTIONER:**
+Denna fil innehåller ofta exempel som `<EXAMPLE_MEMBER_A>`, `<EXAMPLE_MEMBER_B>`, etc.
+**DESSA ÄR ALDRIG VERKLIGA PERSONERNA.**
+Du får ALDRIG kopiera exempel-namn till en presentation.
 
 **DENNA CHECKLIST ÄR OBLIGATORISK.**
 

@@ -309,18 +309,18 @@ Röd tråd: **Från estimat → kapacitet → möjligt sprintmål → verifierad
 
 ③ FRONTEND TEAM — Var är vi?
   | #87 – Tests | Zaida | 🟡 PR open | ✓ | ◐ | ? | ✕ | PR #104
-  | #89 – Dashboard | Marco | 🟡 Open | ✓ | ✓ | ◐ | ✕ | 5 commits
+  | #89 – Risk Calculation | Erik | 🟡 Open | ✓ | ✓ | ◐ | ✕ | 5 commits
 
 ⑫ PLANERINGSKONTROLL
   🟡 Tight — två issues (#87, #89) behöver reviews denna vecka
   
   Nästa arbete:
   1. #87 – Tests (Zaida) — Review denna vecka innan merge
-  2. #89 – Dashboard (Marco) — Tester denna vecka
+  2. #89 – Risk Calculation (Erik) — Tester denna vecka
 
 ⑬ ACTIONS
   ☐ Zaida: Begär review på PR #104 (onsdag)
-  ☐ Marco: Kör tester på #89 (tisdag)
+  ☐ Erik: Kör tester på #89 (tisdag)
   ☐ Frontend lead: Uppdatera PR-status på Board efter mötet
 ```
 

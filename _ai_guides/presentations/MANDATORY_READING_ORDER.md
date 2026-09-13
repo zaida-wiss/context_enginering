@@ -43,7 +43,32 @@ metadata:
 
 ---
 
-### STEG 2: SAMLA ALL DATA (10-30 min — INNAN något annat)
+### STEG 2A: IDENTITY VERIFICATION (5 min — FÖRE datainsamling)
+
+🚨 **DETTA STEG MÅSTE GÖRAS FÖRE STEG 2B — annars kan team-medlemmar försvinna**
+
+**IDENTITY RESOLUTION GATE:**
+
+För varje team-medlem i TEAM_ROSTER.md:
+- [ ] Verifiera Display Name
+- [ ] Verifiera verifierad email (från git commits)
+- [ ] Verifiera GitHub handle (från commits, INTE gissat)
+- [ ] Dokumentera några exempel-commits från denna medlem
+
+**REGEL: GitHub-handlenamn får ALDRIG konstrueras från personens namn.**
+
+Exempel på FEL matching:
+- ❌ Erik Berglund → "erik-backend" (gissat)
+- ❌ Rasha Knifdi → "rasha-dev" (gissat)
+- ✅ Erik Berglund → verifierad från commits som "rikexhx" eller "Svartakatten"
+
+**Om någon medlem INTE kan matchas:**
+- Rapportera: "Identity unresolved for X — investigate commit history"
+- STOPP — rendering tillåts INTE
+
+---
+
+### STEG 2B: SAMLA ALL DATA (10-30 min — EFTER identity verification)
 
 **Denna steg måste slutföras FULLSTÄNDIGT innan du går vidare.**
 
@@ -55,9 +80,10 @@ metadata:
 - [ ] Project Board status — LIVE_VERIFIED eller FALLBACK_VERIFIED
 - [ ] Meeting protocol denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
 - [ ] DoD denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
-- [ ] Team roster — LIVE_VERIFIED
+- [ ] Team roster — LIVE_VERIFIED + IDENTITY_VERIFIED
 
 **Om NÅGON källa är MISSING:** → STOPP. Gör inte presentation.
+**Om någon team-medlem inte kunde IDENTITY_VERIFIED:** → STOPP. Gör inte presentation.
 
 ---
 
@@ -170,7 +196,7 @@ Läs innan du renderar final version.
 **Före rendering, verifiera att ALLA dessa är LIVE_VERIFIED eller FALLBACK_VERIFIED:**
 
 ```
-RENDER_GATE_CHECKLIST (10 SOURCES + 1 DESIGN RULE):
+RENDER_GATE_CHECKLIST (10 SOURCES + 2 DESIGN RULES + 2 QA CHECKS):
 
 DATA SOURCES (dessa 9 måste verifiera):
   ☐ Branches (develop) — status?
@@ -181,32 +207,42 @@ DATA SOURCES (dessa 9 måste verifiera):
   ☐ Project Board — status?
   ☐ Meeting protocol — status?
   ☐ DoD — status?
-  ☐ Team roster — status?
+  ☐ Team roster — status? + IDENTITY_VERIFIED?
 
-DESIGN RULE (MÅSTE LÄSAS):
+DESIGN RULES (MÅSTE LÄSAS):
   ☐ VISUAL_DESIGN_MANDATORY.md — Läst & förstått
      (Symbol + Färg + Text, NPF/dyslexia-vänligt)
+  ☐ TEAM_ROSTER.md — IDENTITY VERIFICATION completed for all 7 members
 
-Alla 9 data-källor: LIVE_VERIFIED eller FALLBACK_VERIFIED
-Design rule: LÄST och FÖRSTÅTT
+QA CHECKS (MÅSTE PASSERAS):
+  ☐ TEAM COVERAGE CHECK:
+     Active roster: 7 (Tomac, Björn, Zaida, Erik, Rasha, Pär, Henrik)
+     People represented in presentation: ?
+     Missing: ? (måste vara 0)
+     
+  ☐ UNKNOWN NAME CHECK:
+     Scan entire presentation for human names.
+     Every name MUST exist in TEAM_ROSTER.
+     Unknown names: ? (måste vara 0)
 
-Om NÅGON data-källa är MISSING:
-  ❌ RENDER GATE CLOSED
-  ❌ Presentation får INTE genereras
-  ❌ Rapportera: "Källa X kunde inte verifieras"
+FAILURE CRITERIA:
+  ❌ Any data source MISSING → RENDER GATE CLOSED
+  ❌ Any team member NOT identity-verified → RENDER GATE CLOSED  
+  ❌ TEAM COVERAGE < 7 → RENDER GATE CLOSED (someone missing)
+  ❌ UNKNOWN NAMES > 0 → RENDER GATE CLOSED (example names in presentation)
+  ❌ VISUAL_DESIGN not read → RENDER GATE CLOSED
 
-Om VISUAL_DESIGN_MANDATORY INTE är läst:
-  ❌ RENDER GATE CLOSED
-  ❌ Presentation får INTE genereras
-  ❌ Du måste läsa den först
+SUCCESS CRITERIA:
+  ✅ All 9 data-sources VERIFIED
+  ✅ All 7 team members IDENTITY_VERIFIED
+  ✅ TEAM COVERAGE = 7/7
+  ✅ UNKNOWN NAMES = 0
+  ✅ VISUAL_DESIGN read & understood
   
-Om ALLA är VERIFIED + DESIGN läst:
-  ✅ RENDER GATE OPEN
-  ✅ OK att generera slides
-  ✅ MEN: Du MÅSTE följa VISUAL_DESIGN_MANDATORY vid rendering
+  → RENDER GATE OPEN → OK to generate slides
 ```
 
-**DENNA GATEN ÄR OBLIGATORISK. INGEN UNDANTAG.**
+**DENNA GATEN ÄR OBLIGATORISK. INGEN UNDANTAG. DESSA QA-CHECKS ÄR MÅSTA-FEL.**
 
 ---
 
