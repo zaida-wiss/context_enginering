@@ -103,10 +103,18 @@ VARFÖR: Symbolerna navigerar mötet. Utan dem kan inte mötesledaren
 ❌ FÖRBJUDET: Antaganden utan GitHub-verifiering
    Exempel: "Frontend-teamet verkar vara på rätt väg"
    
-✅ TILLÅTET: GitHub commits, PRs, issues (verifierad data)
+✅ TILLÅTET: GitHub commits, PRs, issues (verifierad data från denna vecka)
 ✅ TILLÅTET: Meeting protocol från denna vecka
 ✅ TILLÅTET: Context-repo regler och templates
 ✅ TILLÅTET: Project Board status (med filter för Board vs Issues divergens)
+
+❌ FÖRBJUDET: Presentationen uppfinner eller skapar nya issues
+   Exempel: "Vi borde ha en issue för..." → INTE på presentation-slides
+   
+✅ TILLÅTET: Förslag på nya issues → ENDAST på en separat sida märkt TYDLIGT "Förslag"
+   Regel: Issue-förslag får ALDRIG blandas med verifierad GitHub-data
+   Regel: Varje förslag-issue MÅSTE ha "FÖRSLAG:" prefix
+   Regel: Förslag-sidan är OPTIONAL och kommer EFTER all GitHub-data
 ```
 
 **VARFÖR DENNA REGEL FINNS:**

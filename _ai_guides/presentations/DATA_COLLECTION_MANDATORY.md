@@ -143,6 +143,29 @@ Gör inte presentation förrän du kan svara på alla fem.
 
 ---
 
+## 🚨 RULE: Presentationen uppfinner ALDRIG nya issues
+
+**OM DU TÄNKER:** "Vi borde ha en issue för X"
+
+**GÖR DU:** ALDRIG lägg det på presentations-slides
+
+**ISTÄLLET:**
+- Gör ett GitHub issue själv FÖRST (om det är verkligt behov)
+- ELLER märk det som FÖRSLAG på en separat, explicit märkt sida
+- ELLER ta upp det i nästa möte + dokumentera i mötesprotokoll
+
+**REGEL:** Alla issues på presentation-slides MÅSTE redan finnas på GitHub denna vecka.
+Inga "skulle kunna vara", "kanske behöves", "föreslår att vi..."
+
+**UNDANTAG:** Om du har separat FÖRSLAG-sida (märkt som 📝 FÖRSLAG eller likande):
+- MÅSTE vara helt separerad från GitHub-data
+- MÅSTE ha "FÖRSLAG:" prefix på varje item
+- MÅSTE komma EFTER all verifierad GitHub-data
+
+---
+
+---
+
 ## PRESENTATION DATA STRUCTURE
 
 **Efter datainsamlingen bygger du MEETING_STATE med:**
