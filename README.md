@@ -392,7 +392,7 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 
 **Allt detta måste vara färdigt innan slide-skillen startar.**
 
-**LÄGG TILL DATA_SOURCES.md! Se _ai_guides/DATA_SOURCES.md för fallback-strategi.**
+**LÄGG TILL DATA_SOURCES.md! Se _ai_guides/presentations/data/SOURCES.md för fallback-strategi.**
 
 1. ✅ **Rensa minnet** (obligatorisk minnesrensning)
 
@@ -400,8 +400,8 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
    - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md
    - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/content/PRESENTATION_SPEC.md
    - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
-   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
-   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/CROSS_TEAM_INTEGRATION.md
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/design/PRESENTATION_STYLE.md
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md
 
 3. ✅ **Läs mötesprotokollet** (länk i context_enginering README)
 
@@ -921,7 +921,7 @@ Du läser detta repo för första gången? Följ denna guide:
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
   
   🎨 PRESENTATION_FORMAT_GUIDE.md ⭐ EXAKTA SLIDE-LAYOUTS
-     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
+     https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/design/PRESENTATION_STYLE.md
   
   📝 SPRINT_PROTOCOL_NUMBERED.md
      https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PROTOCOL_NUMBERED.md
@@ -946,7 +946,7 @@ _memory/KURSMAL_OCH_BETYG.md  ← Kursmål & betyg (SKILT från DoD!)
         ↓
 VILL DU SKAPA EN PRESENTATION?
   → _ai_guides/SPRINT_PRESENTATION_STRUCTURE.md (raw-link ovan)
-    → _ai_guides/PRESENTATION_FORMAT_GUIDE.md ⭐ EXAKTA SLIDE-LAYOUTS
+    → _ai_guides/presentations/design/PRESENTATION_STYLE.md ⭐ EXAKTA SLIDE-LAYOUTS
       (visar varje slide-typ med borders, färger, tonalitet)
     → SPRINT_PROTOCOL_NUMBERED.md (raw-link ovan)
     → mötesprotokollet (raw-link ovan)
@@ -960,7 +960,7 @@ VILL DU SKAPA ISSUES?
         ↓
 VILL DU VERIFIERA ARBETE?
   → _memory/DEFINITION_OF_DONE.md (raw-link ovan)
-  → _ai_guides/VERIFICATION_SYSTEM.md (hur verifierar vi?)
+  → _ai_guides/presentations/verification/VERIFICATION_BOARD_VS_GIT.md (hur verifierar vi?)
 ```
 
 **REGEL: Varje fil länkar till nästa fil du behöver läsa. Raw-links överst för AI.**
@@ -978,7 +978,7 @@ VILL DU VERIFIERA ARBETE?
 2. _memory/TEAMSTANDARDS.md         — Regler, Git-format, kodstandarder
 3. _memory/DEFINITION_OF_DONE.md    — Vad är en SLUTFÖRD GitHub-issue? (tester, review, docs)
 4. _memory/KURSMAL_OCH_BETYG.md     — ⚠️ SKILT! Kursmål, betyg, deadlines (INTE DoD)
-5. _ai_guides/VERIFICATION_SYSTEM.md — Hur verifierar vi systemet?
+5. _ai_guides/presentations/verification/VERIFICATION_BOARD_VS_GIT.md — Hur verifierar vi systemet?
 ```
 
 Raw-links för direkt AI-läsning:
@@ -987,7 +987,7 @@ REPO FILES:
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/PROJEKTKONTEXT.md
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/TEAMSTANDARDS.md
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/DEFINITION_OF_DONE.md
-https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/VERIFICATION_SYSTEM.md
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/verification/VERIFICATION_BOARD_VS_GIT.md
 
 🔴 MÖTESPROTOKOLLET (RAW-LÄNK - öppen för alla med länken):
 https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
@@ -1173,7 +1173,7 @@ Innan varje sprintmöte läser AI **verklig kod i pågående brancher** för att
 
 **Resultatet:** En integration-slide i presentationen som visar verkligt arbete från verkliga människor.
 
-Se **[CROSS_TEAM_INTEGRATION.md](_ai_guides/CROSS_TEAM_INTEGRATION.md)** för detaljer.
+Se **[CROSS_TEAM_INTEGRATION.md](_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md)** för detaljer.
 
 ---
 
