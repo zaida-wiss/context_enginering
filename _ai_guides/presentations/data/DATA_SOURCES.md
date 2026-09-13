@@ -44,11 +44,18 @@ Presentationen måste kunna verifiera dessa fakta:
    - FILTER: Exkludera labels "test", "duplicate", "wontfix", "archived"
    - Inklud: både issues och linked PRs
    
-2. **GitHub /issues tab** → filter "closed:2026-09-08..2026-09-14"
-   - FILTER: Samma som ovan (exkludera test-issues)
+2. **GitHub /issues tab (WebFetch-compatible)**
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:2026-09-06..2026-09-13`
+   - FILTER: Sama som ovan (exkludera test-issues)
+   - Returnerar: Closed issues denna vecka med linked PRs
    
-3. **GitHub /pulls tab** → filter "merged:2026-09-08..2026-09-14"
-   - Linked issues automatiskt inclusion
+3. **GitHub /pulls tab (WebFetch-compatible)**
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13`
+   - Returnerar: Merged PRs denna vecka
+   
+4. **Individual PR detail pages (WebFetch-compatible)**
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pull/[PR_NUMBER]`
+   - Returns: PR title, author, approver, merge-date, linked issues, commits
    
 4. **Google Sheets fallback** — https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
    - CSV export eller manual entry

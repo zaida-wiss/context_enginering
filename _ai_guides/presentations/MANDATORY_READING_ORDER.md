@@ -73,14 +73,39 @@ Exempel på FEL matching:
 **Denna steg måste slutföras FULLSTÄNDIGT innan du går vidare.**
 
 - [ ] Branches från develop — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/chas-challenge-2026/avanza-team1/branches`
+  
 - [ ] Commits denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
-- [ ] Merged PRs — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop`
+  
+- [ ] **CLOSED ISSUES denna vecka** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:2026-09-06..2026-09-13`
+  
+- [ ] **MERGED PRs denna vecka** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13`
+  
+- [ ] **PR DETAILS (review/approval info)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/chas-challenge-2026/avanza-team1/pull/[PR_NUMBER]`
+  Hämta för varje merged PR: approver, commits, linked issues
+  
 - [ ] Open PRs med aktivitet — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
+  
 - [ ] Open issues med aktivitet — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/chas-challenge-2026/avanza-team1/issues`
+  
 - [ ] Project Board status — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://github.com/orgs/chas-challenge-2026/projects/31/views/1`
+  Fallback: Använd PR/issue status från GitHub istället
+  
 - [ ] Meeting protocol denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  URL: `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+  
 - [ ] DoD denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  Källa: PR descriptions + review approvals (från PR DETAILS ovan)
+  
 - [ ] Team roster — LIVE_VERIFIED + IDENTITY_VERIFIED
+  File: `_ai_guides/presentations/data/TEAM_ROSTER.md`
 
 **Om NÅGON källa är MISSING:** → STOPP. Gör inte presentation.
 **Om någon team-medlem inte kunde IDENTITY_VERIFIED:** → STOPP. Gör inte presentation.
