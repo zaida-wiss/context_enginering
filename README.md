@@ -429,7 +429,7 @@ Läs **HELA docs-mappen där** +:
 | **Backend (Java)** | `backend/BESLUT.md` | ⚠️ Behöver skapas |
 | **Native (C/C++)** | `native/docs/BESLUT.md` | ⚠️ Behöver skapas |
 
-**Format för varje beslut:**
+**Format för varje beslut (TEAMNEUTRALT EXEMPEL):**
 ```
 ## [DATUM] — [Beslut]
 - Beslut: Vad beslöts?
@@ -439,15 +439,8 @@ Läs **HELA docs-mappen där** +:
 - Beslutsfattare: Namn
 ```
 
-**Exempel (Frontend):**
-```
-## 2026-09-02 — Mock före Java-API
-- Beslut: UI läser src/data/portfolio.json tills GET /api/portfolio finns
-- Varför: Backend inte redo, men MVP-översikt kan byggas ändå
-- Konsekvenser: Typ-kontraktet är Portfolio. Risk R-24.
-- Bevis: Issue #24, PR #46
-- Beslutsfattare: Tomac
-```
+**Notering:** Varderas faktiska beslut hittar du i respektive teams BESLUT.md-fil  
+(Frontend, Backend, Native — läs den relevanta för ditt arbete).
 
 ---
 

@@ -67,9 +67,12 @@ EXEMPEL FEL:
 2. Kapacitet — vem har mindre att göra?
 3. Balans över effektivitet (alla hjälps åt, inte max-flöde)
 
-### ✅ MEGA-REGEL 2: Verifiera Faktisk Git-Status
+### ✅ MEGA-REGEL 2: Verifiera Git-Status & Jämför Med Project Board
 
-**AI MÅSTE köra dessa git-commands för att få FAKTISK data (inte gissa):**
+**AI MÅSTE:** 
+1. Köra git-commands för FAKTISK data (inte gissa)
+2. Jämföra mot Project Board
+3. Märka diskrepanser (Board kan stale)
 
 ```
 🔴 TVINGANDE VERIFICERING:
@@ -77,13 +80,13 @@ EXEMPEL FEL:
 FÖRE du säger något om "status" eller "framsteg":
 
 1. git log develop --since="7 days ago" --oneline
-   → Vilka commits är mergade till develop DENNA VECKA?
+   → Vilka commits är FAKTISKT mergade till develop?
 
 2. git branch -a
    → Vilka branches existerar?
 
 3. git log --all --since="7 days ago" --oneline
-   → Vilka commits är gjorda DENNA VECKA (i alla branches)?
+   → Vilka commits är gjorda denna vecka (i alla branches)?
 
 4. För varje branch: git log -1 --format="%ai" [branch-name]
    → När var senaste commit? (Stale eller aktiv?)
@@ -91,18 +94,26 @@ FÖRE du säger något om "status" eller "framsteg":
 5. git diff develop..feature/[branch-name] --stat
    → Vilka filer ändrades? Hur mycket arbete?
 
+6. Jämför med GitHub Project Board denna vecka
+   → Stämmer Board status överens med Git?
+   → Vilka issues visar "In Progress" men är redan mergade?
+
 RESULTAT du MÅSTE visa i presentationen:
-✅ Konkreta commits (hash + message)
+✅ Konkreta commits (hash + message) från Git
 ✅ Vilka branches är aktiva denna vecka
 ✅ Vilka branches är stale (>3 dagar utan commit)
 ✅ Vem jobbar på vad (commit author)
 ✅ Total "delta" mellan develop och feature-branches
+✅ Märka där Board-status motsäger Git-bevis
 
 ❌ ALDRIG säga: "Teamet jobbar på kärnflödet"
 ✅ ALLTID säga: "Git visar X commits denna vecka:
             • #42 (Jan - portfolio), #45 (Marco - risk-calc)
             • Branches active: feature/#42, feature/#45
-            • Stale: feature/#40 (5 dagar, ingen commit)"
+            • Stale: feature/#40 (5 dagar, ingen commit)
+            • Board-uppdatering: #40 visar 'In Progress' men ej aktiv"
+
+SE ÄVEN: VERIFICATION_BOARD_VS_GIT.md för status-koder
 ```
 
 ### ✅ MEGA-REGEL 3: Ingenting Fabriceras
