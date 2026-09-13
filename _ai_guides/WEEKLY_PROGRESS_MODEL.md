@@ -297,6 +297,46 @@ BEHÖVER UPPMÄRKSAMHET:
 
 ---
 
+## 📸 VISUELL VERIFIERING — Skärmdumpar från Dev
+
+**Skärmdumparna är del av "Vad gjordes"-sliden, inte separat.**
+
+### Format
+
+För varje feature/arbete som är klart eller framskridande:
+
+```
+✓ #52 – Portfolio summary (Rasha)
+  🟢 Gör Frontend-integration möjlig
+  Merged PR #81 · 4 commits · klart 11 sep
+  
+  [SCREENSHOT: Inloggning fungerar]
+  [SCREENSHOT: Portfolio-dashboard visas korrekt]
+```
+
+### Var Skärmdumparna Sparas
+
+```
+_memory/screenshots/
+├── 01-login.png              ← Frontend denna vecka
+├── 02-portfolio-dashboard.png ← Frontend denna vecka
+├── 03-api-response.png        ← Backend denna vecka
+└── 04-mobile-view.png         ← Native denna vecka
+```
+
+### Process Före Möte
+
+1. Developer kör dev-miljön från developer-branchen
+2. Loggar in, testar funktionen
+3. Tar skärmdumpar (login, portfolio, API-svar, mobile)
+4. Sparar i _memory/screenshots/
+5. Commit & push
+6. Säger till AI: "Ge mig en presentation"
+7. Presentationen letar själv efter skärmdumparna
+8. Inkluderar dem på rätt team-slide under "Vad gjordes"
+
+---
+
 ## 🔄 KORSREFERENS-EXEMPEL: Hur All Data Hänger Ihop
 
 **Scenario:** #52 (Portfolio health summary) var klart denna vecka.
