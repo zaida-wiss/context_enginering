@@ -220,6 +220,15 @@ FÄRGKODNING:
   ☐ Inga statusfärgade borders på neutral info
   ☐ Neutral information använder marinblå/grå/vit
 
+INTEGRATION-ANALYS:
+  ☐ Läst CROSS_TEAM_INTEGRATION.md
+  ☐ Läst aktiva brancher (frontend, backend, native)
+  ☐ Identifierat integrations-kedjor (Frontend API → Backend → Native)
+  ☐ Klassificerat varje kedja (VERIFIERAD/TROLIG/BEHÖVER SYNKAS/MISMATCH/KAN INTE VERIFIERAS)
+  ☐ Integration-slide(r) skapade med konkreta branch-namn + personerna
+  ☐ Varningr om divergerade brancher (långt efter develop)
+  ☐ Kritiska synk-punkter identifierade
+
 RISK/BLOCKER/DEPENDENCY:
   ☐ Varje risk har: Nuläge + Konsekvens + Nivå + Åtgärd + Ägare
   ☐ Varje dependency har: Fallback-arbete identifierat
@@ -255,14 +264,19 @@ Mötespunkterna är:
 4. **Frontend status** — Issues, progress, risk
 5. **Backend status** — Issues, progress, risk
 6. **Native status** — Issues, progress, risk
-7. **Beroenden & Blockers** — Vad väntar på vad + fallback-arbete
-8. **Prioritering & Scope** — Must/Next/Later
-9. **Kapacitet & Estimering** — Tillgängligt vs Behövt
-10. **Risker** — Risk-matrix med åtgärder
-11. **Tekniska Beslut** — Arkitektur-beslut denna vecka
-12. **Sprintplan** — Konkret vem gör vad denna vecka (visar support/pairing)
-13. **Nästa Steg** — Action plan + Teamstöd & Hållbarhet
-14. **Frågor till PL** — Discussion board
+7. **Integration Map** ⭐ **NYTT & TVINGANDE** — Cross-team-analys från CROSS_TEAM_INTEGRATION.md
+   - Vilka kedjor (Frontend → API → Backend → Native)?
+   - Varje kedjans status: VERIFIERAD/TROLIG/BEHÖVER SYNKAS/MISMATCH/KAN INTE VERIFIERAS
+   - Branch-läsning (vilka brancher, hur långt efter develop)
+   - Kritiska synk-punkter
+8. **Beroenden & Blockers** — Vad väntar på vad + fallback-arbete
+9. **Prioritering & Scope** — Must/Next/Later
+10. **Kapacitet & Estimering** — Tillgängligt vs Behövt
+11. **Risker** — Risk-matrix med åtgärder
+12. **Tekniska Beslut** — Arkitektur-beslut denna vecka
+13. **Sprintplan** — Konkret vem gör vad denna vecka (visar support/pairing)
+14. **Nästa Steg** — Action plan + Teamstöd & Hållbarhet
+15. **Frågor till PL** — Discussion board
 
 ---
 

@@ -360,7 +360,25 @@ Läs **HELA docs-mappen där** +:
 
 ---
 
-### **3. Efter Du Läst Båda Repos — MENTORSHIP MODELL**
+### **3. AI Som Senior Tech Lead — Innan Mötet**
+
+⚠️ **DETTA CONTEXT-REPO ÄR INTE BARA EN PRESENTATIONSMALL**
+
+Innan varje sprintmöte läser AI **verklig kod i pågående brancher** för att:
+
+- **Upptäcka integrationsproblem** innan teamet springer in i dem
+- **Läsa API-kontrakt** från båda sidor (Frontend skickar vad? Backend förväntar vad?)
+- **Visualisera integrations-kedjor** som konkreta mensen + branch-namn, inte abstrakt arkitektur
+- **Klassificera status** för varje kedja: VERIFIERAD MATCH, TROLIG MATCH, BEHÖVER SYNKAS, MISMATCH, KAN INTE VERIFIERAS
+- **Identifiera branch-divergence** — vilka ligger långt efter develop? Modifierar två brancher samma filer?
+
+**Resultatet:** En integration-slide i presentationen som visar verkligt arbete från verkliga människor.
+
+Se **[CROSS_TEAM_INTEGRATION.md](_ai_guides/CROSS_TEAM_INTEGRATION.md)** för detaljer.
+
+---
+
+### **4. Efter Du Läst Båda Repos — MENTORSHIP MODELL**
 
 ⚠️ **DETTA ÄR HANDS OFF — AI GUIDER, DU BYGGER!**
 
