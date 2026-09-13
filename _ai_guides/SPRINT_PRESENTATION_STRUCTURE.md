@@ -672,14 +672,71 @@ Blockers ownare: Marco (Backend) — status uppdateras dagligen
 
 ---
 
-### SEKTION 📝⑩ — ARBETSUPPGIFTER (Vid behov)
+### SEKTION 📝⑩ — DENNA VECKAS ARBETE — VAD BIDRAR DET TILL?
 
-**Slide 11.1 — 📝⑩** (om detta behöver visas)
-- Titel: "Issues Denna Vecka"
-- Innehål:
-  - Frontend: #XX, #YY (med assignee + timmar)
-  - Backend: #XX, #YY
-  - Native: #XX
+**Slide 10 — 📝⑩ DENNA VECKAS ARBETE OCH DESS SYFTE**
+
+**SYFTE:** Visa VARJE issues bidrag till projektet — inte bara en lista
+
+**OBLIGATORISK STRUKTUR — visa BÅDE issue OCH why it matters:**
+
+```
+📝⑩ DENNA VECKAS ARBETE
+
+🎯 FRONTEND:
+  #40 Auth flow (Lisa, 16h)
+  → Enables users to log in securely
+  → Unblocks Backend #45 (API integration)
+  → Required for MVP demo to CTO
+
+  #52 Responsive layout (Ali, 12h)
+  → Users can access portfolio on all devices
+  → Dependency for Native #60 (mobile UI)
+
+🎯 BACKEND:
+  #45 FX integration (Marco, 20h)
+  → Calculates currency conversions correctly
+  → Blocks Frontend #40 AND Native #60
+  → Critical for customer demo (Avanza meeting)
+
+  #48 Unit tests (Jana, 8h)
+  → Increases code coverage to 70%+
+  → Prevents regressions in #45 deployment
+
+🎯 NATIVE:
+  #60 Mobile auth screen (Kris, 16h)
+  → Users can log in on phone
+  → Blocked by Backend #45 (API ready)
+  → After that: can parallelize with Frontend
+```
+
+**VID VARJE ISSUE, VISA:**
+✅ Issue-nummer + titel
+✅ Assignee
+✅ Estimated hours
+✅ **VAD det bidrar till** (customer value, enables other work, etc)
+✅ **Blocking/blocked by** (dependencies)
+✅ **Varför det spelar roll denna vecka**
+
+**DATA MÅSTE KOMMA FRÅN:**
+1. GitHub issues + descriptions (vad varje issue är)
+2. Project Board dependencies (vem väntar på vem)
+3. Meeting notes (varför var denna prioriterad)
+4. Team's assessment (customer impact)
+
+**KÄNSLA OCH TON:**
+✅ Inte bara en lista — show the WHY
+✅ Connect issues to project goals ("enables MVP demo")
+✅ Show cross-team dependencies (Frontend waits on Backend → show both)
+✅ Help teams understand what OTHER teams are doing and why it matters
+
+**ALDRIG:**
+❌ Bara issue-nummret utan kontext
+❌ Tekniska detaljer utan customer/project value
+❌ Silofält (Frontend lista skild från Backend lista)
+❌ Glömma dependencies — visa alltid vem som blockerar vem
+
+**RESULT:** Teams förstår inte bara VAD alla gör, utan VARFÖR och HUR det hänger ihop
 
 ---
 
