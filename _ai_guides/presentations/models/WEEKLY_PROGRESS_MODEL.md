@@ -24,9 +24,36 @@ Syftet är att ge teamet konkret feedback: "Det här gjorde ni faktiskt förra v
 - Format: Område → vad levererades → effekt för teamet
 
 **Slide ①B: "Byggde vidare på denna vecka"**
-- Arbete som **pågår med faktisk framdrift** (commits, PRs öppna)
+- Arbete som **pågår med faktisk framdrift** (commits, PRs öppna denna vecka)
 - Visar **arbetsområden** som fortskrider
-- Format: Område → vad jobbar vi på → nästa steg (inte blockers)
+- **SAMMA STRUKTUR SOM ①A:** En ruta per litet team (Frontend, Backend, Native)
+
+### Format för ①B (Pågår denna vecka)
+
+```
+[ORANGE BAR] ← status: pågår
+┌──────────────────────────────────┐
+│ Frontend — API Client #43 · Tomac │
+│                                  │
+│ Openapi integration, 3 commits   │
+│ denna vecka. Väntar på auth från │
+│ Backend. Nästa: integration      │
+│ testing när Backend klar.        │
+└──────────────────────────────────┘
+
+TABELL UNDER (valfritt):
+| PR    | Issue/område     | Status  | Commits denna vecka |
+|-------|------------------|---------|---------------------|
+| #82   | #63 Drift calc   | 🟡 Open | 3 commits           |
+```
+
+**Obligatorisk struktur per ruta:**
+1. **Header:** Team — Issue-nummer · Titel · Person
+2. **Beskrivning:** Vad gjörs denna vecka + commits + vad blockerar + nästa steg
+3. **Valfritt:** Tabell med PR + commits + status
+4. **Färg-bar:** 🟡 Orange (pågår/ongoing)
+
+**VIKTIGT:** Samma antalet detaljer som ①A — inte mindre.
 
 Denna modell är **obligatorisk före presentation kan byggas**.
 
