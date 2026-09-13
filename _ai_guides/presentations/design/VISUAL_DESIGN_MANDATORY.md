@@ -227,12 +227,14 @@ Om denna fil inte följs → presentationen blir utan färg, utan symboler, utan
    - Padding: 8px (inuti marinblå bak)
    - Avskiljning: 2px grå linje under header
 
-3. **Tabell inuti card:**
+3. **Tabell inuti card (KRITISK — TEXT MÅSTE VARA STOR):**
+   - **Issue-nummer: 14pt BOLD** (läsbar från mötesbord)
+   - **Titel: 13pt regular** (samma storlek)
+   - Assignee: 12pt regular grå (lätt mindre)
+   - **Radhöjd: minst 24px** (NPF-vänlig spacing)
+   - **Padding per cell: 12px** (luftig, ej trångt)
    - Border mellan rader: 1px ljusgrå
-   - Padding per cell: 8px
-   - Issue-nummer: 12pt bold
    - Status-symbol: 24x24px, högerställd
-   - Assignee: 11pt regular grå
 
 ---
 
@@ -316,8 +318,10 @@ ALLA SLIDES:
 WCAG ACCESSIBILITY:
   ☐ Text-kontrast minimum 4.5:1 (test med webaim.org)
   ☐ Färg+symbol tillsammans (ej färg ensam för status)
-  ☐ Font-size minimum 12pt (dyslexia-vänligt)
-  ☐ Line-height minimum 1.5 (NPF-vänligt)
+  ☐ Font-size TABLE HEADERS: 14pt BOLD (läsbar från mötesbord)
+  ☐ Font-size TABLE CELLS: 13pt regular (samma hierarki)
+  ☐ Font-size META/labels: 12pt (mindre än content)
+  ☐ Line-height minimum 1.8 för tabeller (24px radhöjd) — NPF-vänligt
 ```
 
 **Om NÅGON checkbox är UNCHECKED:**
@@ -345,8 +349,11 @@ WCAG ACCESSIBILITY:
 
 **3. WHITESPACE & TILLGÄNGLIGHET**
 - Minst 8px mellan element (NPF/ADHD-vänligt)
-- Minst 12pt font (dyslexia-vänligt)
-- Minst 1.5 line-height (läsbar)
+- **Tabell-headers: 14pt BOLD** (läsbar från mötesbord)
+- **Tabell-content: 13pt** (samma som headers, ej för litet)
+- **Tabell radhöjd: minst 24px** (ej för trångt)
+- Meta-text: 12pt (mindre än content)
+- Line-height minimum 1.8 för tabeller (NPF-vänligt)
 - Minst 4.5:1 kontrast (WCAG AA)
 
 ---
