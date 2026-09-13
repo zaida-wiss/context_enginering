@@ -55,8 +55,10 @@ metadata:
 
 **Filer:**
 - `PRESENTATION_STYLE.md` — Färger, typografi, layout, NPF-regler, QA-checklista
+- `PRESENTATION_CONSISTENCY_FRAMEWORK.md` — Röda trådar, repeterbara strukturer, content consistency
 
 **Använd denna om:** Du vill ändra hur sliderna ser ut (färger, typsnitt, spacing, visuella element)
+**Använd framework om:** Du vill förstå hur presentationen håller röd tråd från möte till möte
 
 ---
 
