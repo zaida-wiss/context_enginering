@@ -69,22 +69,32 @@ DESIGN:
 
 ## 📌 📝① Sedan Förra Mötet (Done/Merged — 1-2 slides)
 
+**ÖVERGRIPANDE REGEL: LIFT ALLA NAMN**
+
+Denna slide celebrerar vad ALLA teammedlemmar bidragit med denna vecka.
+
 ```
 MÅSTE INNEHÅLLA:
 ✅ Vad blev FAKTISKT klart denna vecka?
-✅ Konkreta commits från ALLA (7 dagar)
-✅ Active branches
-✅ Stale branches
+✅ Konkreta commits från ALLA teammedlemmar (7 dagar)
+✅ Vilka issues stängdes
+✅ Vilka PRs mergades
+✅ Vem gjorde vad (konkret bidrag per person)
 
-ALLA TEAMMEDLEMMAR MÅSTE SYNAS:
-- Zaida, Björn, Tomac (Frontend)
-- Rasha, Erik (Backend)
-- Pär, Henrik (Native)
+ALLA TEAMMEDLEMMAR MÅSTE SYNAS (även utan aktuell issue):
+- Zaida, Björn, Tomac (Frontend) — ALLA tre
+- Rasha, Erik (Backend) — BÅDA
+- Pär, Henrik (Native) — BÅDA
+
+OM medlem saknar verifierat arbete denna vecka:
+- Visa: "?? [Namn] — Inget verifikat arbete hittades denna vecka"
+- INTE: Utelämna personen helt
 
 VISUELLA ELEMENT:
-✅ Grön för mergad (done)
-✅ Orange för pågår
-✅ Röd för stale (>3 dagar)
+✅ Grön för mergad (done) — med namn på vem
+✅ Orange för pågår — med namn på vem
+✅ Röd för stale (>3 dagar) — med namn på vem
+✅ VARJE rad ska innehålla personens namn och deras bidrag
 ```
 
 ---
@@ -242,6 +252,10 @@ Alltid kontrollera commits + branches innan slutsats "inget arbete".
 
 ## 📌 📝④ Frontend — Var är vi? (Nuläge & Status)
 
+**ÖVERGRIPANDE REGEL: LIFT ALLA NAMN**
+
+Denna slide visar vad VARJE Frontend-medlem arbetar på denna vecka.
+
 ```
 MÅSTE INNEHÅLLA (Team: Zaida, Björn, Tomac):
 ✅ Issues med assignee (#XX – Name)
@@ -249,13 +263,22 @@ MÅSTE INNEHÅLLA (Team: Zaida, Björn, Tomac):
 ✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
 ✅ Dependencies och blockers (vad väntar på vad)
 ✅ Status 🟢🟠🔴 per issue
-✅ ALLA teammedlemmar måste synas (även om de saknar öppna issues)
+
+ALLA TEAMMEDLEMMAR MÅSTE SYNAS — INGEN MÅ UTELÄMNAS:
+✅ Zaida — [vad arbetar hen på? Eller "?? Inget aktiv arbete hittades"]
+✅ Björn — [samma]
+✅ Tomac — [samma]
+
+Om medlem saknar öppna issues:
+- Verifiera: commits denna vecka? branches? PR-review?
+- Om ingenting: märk ?? [Namn] och säg "kontrollera nedan"
+- ALDRIG: hoppa över personen helt
 
 VISUELLT:
-- Issues i kolonner eller tabeller
-- Assignee tydlig
-- DoD-checkboxar synliga
-- Varje person representerad (eller tydligt markerad ?? om inget arbete hittades)
+- Varje person får egen sektion/rad
+- Personens namn MYCKET TYDLIGT
+- Vad personen gör KONKRET
+- Status 🟢🟠🔴 för deras arbete
 ```
 
 
@@ -285,6 +308,10 @@ FORMAT: Mycket kort, actionbar, ingen lång text.
 
 ## 📌 📝⑥ Backend — Var är vi? (Nuläge & Status)
 
+**ÖVERGRIPANDE REGEL: LIFT ALLA NAMN**
+
+Denna slide visar vad VARJE Backend-medlem arbetar på denna vecka.
+
 ```
 MÅSTE INNEHÅLLA (Team: Rasha, Erik):
 ✅ Issues med assignee (#XX – Name)
@@ -292,13 +319,16 @@ MÅSTE INNEHÅLLA (Team: Rasha, Erik):
 ✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
 ✅ Dependencies och blockers (vad väntar på vad)
 ✅ Status 🟢🟠🔴 per issue
-✅ ALLA teammedlemmar måste synas (även om de saknar öppna issues)
+
+ALLA TEAMMEDLEMMAR MÅSTE SYNAS — INGEN MÅ UTELÄMNAS:
+✅ Rasha — [vad arbetar hen på? Eller "?? Inget aktiv arbete hittades"]
+✅ Erik — [samma]
 
 VISUELLT:
-- Issues i kolonner eller tabeller
-- Assignee tydlig
-- DoD-checkboxar synliga
-- Varje person representerad (eller tydligt markerad ?? om inget arbete hittades)
+- Varje person får egen sektion/rad
+- Personens namn MYCKET TYDLIGT
+- Vad personen gör KONKRET
+- Status 🟢🟠🔴 för deras arbete
 ```
 
 ---
@@ -318,6 +348,10 @@ MÅSTE INNEHÅLLA (För Junior-Utvecklare — 5-10 Sekunder Förståelse):
 
 ## 📌 📝⑧ Native — Var är vi? (Nuläge & Status)
 
+**ÖVERGRIPANDE REGEL: LIFT ALLA NAMN**
+
+Denna slide visar vad VARJE Native-medlem arbetar på denna vecka.
+
 ```
 MÅSTE INNEHÅLLA (Team: Pär, Henrik):
 ✅ Issues med assignee (#XX – Name)
@@ -325,13 +359,16 @@ MÅSTE INNEHÅLLA (Team: Pär, Henrik):
 ✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
 ✅ Dependencies och blockers (vad väntar på vad)
 ✅ Status 🟢🟠🔴 per issue
-✅ ALLA teammedlemmar måste synas (även om de saknar öppna issues)
+
+ALLA TEAMMEDLEMMAR MÅSTE SYNAS — INGEN MÅ UTELÄMNAS:
+✅ Pär — [vad arbetar hen på? Eller "?? Inget aktiv arbete hittades"]
+✅ Henrik — [samma]
 
 VISUELLT:
-- Issues i kolonner eller tabeller
-- Assignee tydlig
-- DoD-checkboxar synliga
-- Varje person representerad (eller tydligt markerad ?? om inget arbete hittades)
+- Varje person får egen sektion/rad
+- Personens namn MYCKET TYDLIGT
+- Vad personen gör KONKRET
+- Status 🟢🟠🔴 för deras arbete
 ```
 
 ---

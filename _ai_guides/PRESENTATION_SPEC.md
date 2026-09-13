@@ -83,17 +83,24 @@ MINNESRENSNING (obligatorisk innan punkt 1):
 **Viktigt:** Exemplen här är BARA för att förklara reglerna. De är ALDRIG mall för presentationen.
 
 ```
-🔴 FEL:
+🔴 FEL — Kopierade namn:
 "Instruktionerna säger 'Zaida fortsätter #42'"
 → Presentationen visar "Zaida fortsätter #43" (kopierad struktur, byta nummer)
 
+🔴 FEL — Kopierade team:
+"Instruktionerna visar 'Frontend, Backend, Native' i den ordningen"
+→ Presentationen visar samma team i samma ordning (bara för att så är exemplet)
+
 ✅ RÄTT:
-"Instruktionerna säger 'personen fortsätter #XX'"
-→ Presentationen visar aktuell faktisk data för alla teammedlemmar
-   (Tomac/Björn/Rasha/Erik/Pär/Henrik beroende på vem som faktiskt gör det)
+"Instruktionerna visar HUR man skriver"
+→ Presentationen visar ALLA medlemmar för ALLA team
+→ Ordning och fokus baserad på faktisk data, inte exempel-ordning
 ```
 
-Presentationen ska ha **faktiska data**, inte **exempel från instruktioner**.
+Presentationen ska ha:
+- **Faktiska namn** (inte exempel-namn)
+- **Faktiska team** (inte exempel-team-ordning)
+- **Balanserad täckning** (alla medlemmar, inte bara de i exempel)
 
 ---
 
