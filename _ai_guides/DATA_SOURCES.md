@@ -210,21 +210,25 @@ API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=a
 ```
 
 ### GitHub Project Board
+
 ```
-EXACT URL: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
-PROJECT ID: 31 (Organization-level project)
-Web: https://github.com/orgs/chas-challenge-2026/projects/31
-View: /views/1 (standard view, can use /views/2, /views/3 for other perspectives)
-API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/projects  ← Lists linked projects
+URL: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+PROJECT ID: 31
+Status: Öppen för alla att läsa (ingen auth behövs)
+AI kan läsa: Ja, direkt från länken
 ```
 
+AI läser denna länk direkt för presentationen. Ingen snapshot-process behövs.
+
 ### Meeting Protocol
+
 ```
-SOURCE: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
-EXPORT TXT: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-PDF EXPORT: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf
-FALLBACK: _memory/PROTOCOL_SNAPSHOT.md (if live link fails)
+URL: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
+Status: Öppen för alla att läsa (ingen auth behövs)
+AI kan läsa: Ja, direkt från länken
 ```
+
+AI läser denna länk direkt för presentationen. Ingen snapshot-process behövs.
 
 ### Fallback Snapshot Files (when live sources fail)
 ```

@@ -357,21 +357,15 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 
    **Läs INTE** hela docs-mappen eller alla branches utan anledning.
 
-**BEFORE PHASE 1 STARTS — SNAPSHOTS MUST BE CURRENT**
+**LIVE-LÄNKARNA ÄR TILLGÄNGLIGA FÖR BÅDA:**
 
-Dessa två snapshots MÅSTE uppdateras före mötet (eller omedelbar efter förra möte):
+- **Google Docs mötesprotokollet** (öppen för alla att läsa):
+  https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
 
-1. **_memory/PROTOCOL_SNAPSHOT.md**
-   - Exportera Google Docs → Plain Text
-   - Klistra in innehål här
-   - Commit & push
+- **GitHub Project Board** (öppen för alla att läsa):
+  https://github.com/orgs/chas-challenge-2026/projects/31/views/1
 
-2. **_memory/PROJECT_BOARD_SNAPSHOT.md**
-   - Kopiera status från GitHub Project Board
-   - Organisera per kolumn (Backlog, Ready, In Progress, Review, Done)
-   - Commit & push
-
-**Varför:** AI-agenter kan inte läsa Google Docs eller GitHub Project Board direkt via länkar. Snapshots är den enda tillförlitliga vägen.
+**AI kan läsa dessa direkt.** Ingen snapshot-process behövs.
 
 **PHASE 1 ÄR KLAR. All projektdata är inhämtat.**
 
