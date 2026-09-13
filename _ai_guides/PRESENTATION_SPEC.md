@@ -5,6 +5,33 @@ Andra filer (DESIGN, FORMAT_GUIDE, STRUCTURE) fördjupar denna spec men motsäge
 
 ---
 
+## 📋 READING CHECKLIST — Innan Du Börjar Presentationen
+
+**Du behöver läsa ENDAST dessa filer för att skapa presentation (sparar tokens):**
+
+```
+☐ DENNA FIL (PRESENTATION_SPEC.md) — du läser den nu
+☐ CROSS_TEAM_INTEGRATION.md — för integrationsanalysen
+☐ avanza-team1 projekt-repot (GitHub branches + Git log denna vecka)
+☐ Mötesprotokollet (raw-export länk från mötet)
+☐ GitHub Project Board status denna vecka
+
+DU BEHÖVER INTE LÄSA:
+  ✗ README.md (redan vet du vad du söker)
+  ✗ DEFINITION_OF_DONE.md (du behöver inte förstå all projektkontekst)
+  ✗ KURSMAL_OCH_BETYG.md (bara relevant för kursöversikt)
+  ✗ TEAMSTANDARDS.md (inte relevant för presentation)
+  ✗ Gamla möten/protokoll (bara denna vecka räknas)
+
+MINNESRENSNING (obligatorisk innan punkt 1):
+  1. Glöm allt minne från denna vecka
+  2. Glöm möten, diskussioner, tidigare presentationer
+  3. Läs ENDAST dessa filer, ingenting annat
+  4. Börja helt clean
+```
+
+---
+
 ## 🚨 NO META-INSTRUCTIONS ON SLIDES
 
 **AI-regler, presentationsspecifikationer, formatteringsregler, validators och instruktioner om hur presentationen skapas får ALDRIG visas för mötesdeltagarna.**

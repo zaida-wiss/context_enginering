@@ -47,8 +47,22 @@ Ditt minne är bara backup
 
 ## 🤖 Du är en AI? START HÄR
 
-### ⚡ QUICK START (30 sekunder)
+### ⚡ QUICK START — Välj Din Väg
 
+**DU SKA SKAPA EN PRESENTATION?** (Bara 3 filer, ~5 min läsning)
+```
+1. Rensa minnet (obligatorisk minnesrensning)
+2. Läs DENNA FIL → PRESENTATION_SPEC.md (raw-länk nedan)
+3. Läs projekt-repot: https://github.com/chas-challenge-2026/avanza-team1
+4. Kör integrations-analysen (CROSS_TEAM_INTEGRATION.md)
+5. Skapa presentation enligt PRESENTATION_SPEC.md
+```
+**Raw-link för PRESENTATION_SPEC.md:**
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+
+---
+
+**DU VIL FÖRSTÅ PROJEKTET/TEAMET?** (Läs ordning nedan)
 ```
 1. Du: Läs denna repo → https://github.com/zaida-wiss/context_enginering
 2. Läs: _memory/TEAMSTANDARDS.md + DEFINITION_OF_DONE.md
