@@ -27,14 +27,17 @@
 - Läs avanza-team1 repo
 - Läs mötesprotokollet
 
-**2️⃣ ANDRA HAND — Eget minne?**
-- KUN om repot inte täcker det
-- KUN för logik/resonemang
+**2️⃣ ANDRA HAND — Logik & analys (INTE nya fakta)**
+- Använd logik för att ANALYSERA redan verifierad projektdata
+- Gör INTE slutsatser baserat på träning/eget minne
+- LÄGG ALDRIG till nya fakta från modellkunskap
 
-**3️⃣ ALDRIG — Din träning**
+**3️⃣ ALDRIG — Din träning eller extern sökning**
 - Aldrig använd ditt minne istället för repot
 - Aldrig "jag vet från träningen att..."
 - Aldrig generaliserad kunskap
+- Aldrig extern webbsökning för "context"
+- Se EXTERN WEBBSÖKNING ÄR FÖRBJUDEN längre ner
 
 ### 🔴 REGEL:
 ```
@@ -52,11 +55,39 @@ Ditt minne är bara backup
 **DU SKA SKAPA EN PRESENTATION?** (Bara 3 filer, ~5 min läsning)
 ```
 1. Rensa minnet (obligatorisk minnesrensning)
-2. Läs DENNA FIL → PRESENTATION_SPEC.md (raw-länk nedan)
-3. Läs projekt-repot: https://github.com/chas-challenge-2026/avanza-team1
-4. Kör integrations-analysen (CROSS_TEAM_INTEGRATION.md)
-5. Skapa presentation enligt PRESENTATION_SPEC.md
+2. 🔒 LOCK SOURCES (se nedan — ingen extern sökning!)
+3. Läs DENNA FIL → PRESENTATION_SPEC.md (raw-länk nedan)
+4. Läs projekt-repot: https://github.com/chas-challenge-2026/avanza-team1
+5. Kör integrations-analysen (CROSS_TEAM_INTEGRATION.md)
+6. Skapa presentation enligt PRESENTATION_SPEC.md
 ```
+
+🔒 **SOURCE LOCK FÖR PRESENTATIONER**
+```
+ALLOWED:
+✅ context_enginering repo (denna)
+✅ avanza-team1 repo (GitHub + branches + issues + PRs)
+✅ Mötesprotokollet (explicit länk från context_enginering)
+✅ Git log denna vecka
+✅ GitHub Project Board & issues
+✅ Explicit länkade projektfiler
+
+FORBIDDEN:
+❌ LinkedIn
+❌ Wikipedia
+❌ Avanza.se eller externa webbplatser
+❌ Akademiska databaser (arXiv, etc)
+❌ Nyhetssidor
+❌ Stack Overflow eller bloggar
+❌ Google-sökning
+❌ Andra GitHub-repon
+
+Om presentationen behöver info som INTE finns i ALLOWED-källorna:
+→ Skriv "Ej verifierat från projektkällorna"
+→ GISSA INTE
+→ SÖK INTE externt
+```
+
 **Raw-link för PRESENTATION_SPEC.md:**
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
 
@@ -111,6 +142,72 @@ I HELA denna konversation får du ENDAST svara baserat på:
 3. ✅ Citera källorna i VARJE påstående
 4. ✅ Säga "Jag behöver läsa X-fil" om något saknas
 5. ✅ **ALDRIG** använda ditt eget minne - bara läst innehål
+
+---
+
+## 🚫 EXTERN WEBBSÖKNING ÄR FÖRBJUDEN SOM STANDARD
+
+**WHITELIST-REGEL (Allt är förbjudet utom dessa källor):**
+
+### TILLÅTNA KÄLLOR — BARA DESSA
+AI får ENDAST läsa:
+1. ✅ **Detta repo:** `zaida-wiss/context_enginering` (alla filer)
+2. ✅ **Projekt-repo:** `chas-challenge-2026/avanza-team1` (GitHub + branches + issues + PR)
+3. ✅ **Mötesprotokollet:** Explicit Google Docs-länk från context_enginering
+4. ✅ **Filer från användare:** Allt som användaren laddar upp eller delar direkt i chatten
+5. ✅ **Denna session:** Konversationshistorik från bara denna chatt
+
+### FÖRBJUDET — ALLT ANNAT
+AI får ALDRIG göra generell extern webbsökning, t.ex.:
+- ❌ LinkedIn, Wikipedia, arXiv
+- ❌ Avanza.se eller företagets externa webbplats
+- ❌ Stack Overflow, bloggar, nyhetssidor
+- ❌ Binance eller finanssidor
+- ❌ Google-sökning
+- ❌ Andra GitHub-repon (utom de två listade ovan)
+- ❌ Akademiska databaser
+- ❌ "Best practice"-sökning på internet
+
+AI får INTE söka för att:
+- "förstå sammanhanget bättre"
+- "hitta inspiration"
+- "verifiera sådant som redan finns i projektets källor"
+- "komplettera saknade uppgifter"
+- "hitta branschstandarder"
+- "fylla luckor i presentationen"
+
+### OM INFORMATION SAKNAS
+
+Istället för extern sökning:
+```
+→ SKRIV att informationen saknas: "Ej verifierat från projektkällorna"
+→ GISSA ALDRIG
+→ SÖK ALDRIG PÅ WEBBEN
+→ FRÅGA användaren: "Vilken fil har denna info?"
+```
+
+### UNDANTAG — ENDAST DESSA FALL
+
+Extern webb får användas ENDAST när:
+
+**1. ANVÄNDAREN EXPLICERAR BEGÄR DET**
+   - "Sök på LinkedIn för..." → då får du söka
+   - "Läs från Avanza.se..." → då får du läsa just den sidan
+   - Men ALDRIG bredare sökning än vad som begärdes
+
+**2. CONTEXT-REPOT INSTRUERAR EXPLICIT**
+   - Om en fil säger: "Läs från URL: https://..."
+   - Då får du öppna BARA den länken
+   - Inte relaterad sökning omkring den
+
+### VIKTIGASTE EXEMPLET
+
+En presentation om Avanza-projektet ska:
+- ✅ Läsa från: context_enginering + avanza-team1 + mötesprotokollet
+- ✅ Hämta data från: Git, Issues, Project Board
+- ❌ INTE söka på: Avanza.se, investerarsidor, LinkedIn-profiler, fintech-nyheter
+
+Projektstatus kommer från projektkoden och dokumentation, INTE från internet.
 
 ---
 
