@@ -84,7 +84,7 @@ This file is an index only. It does not define read order or rules.
    - Sektion: "INFORMATION NEEDED" (vilken info behövs)
    - Sektion: "FALLBACK HANDLING" (vad gör man om en källa failar)
    
-7. ✅ **_memory/PRESENTATION_SLIDE_REQUIREMENTS.md** (struktur)
+7. ✅ **_ai_guides/PRESENTATION_STRUCTURE.md** (14 mötespunkter & struktur)
    - Sektion: "14 mötepunkter" (vilka slides behövs)
 
 **SLIPP (Läs INTE dessa för presentation):**
@@ -130,7 +130,7 @@ This file is an index only. It does not define read order or rules.
 | Färg-regler | PRESENTATION_DESIGN.md | MEGA-REGEL 0B |
 | Hur man hämtar GitHub-data | README.md | GITHUB DATA ACCESS |
 | Format på slides | PRESENTATION_FORMAT_GUIDE.md | Alla mega-regler |
-| Vilka slides behövs | PRESENTATION_SLIDE_REQUIREMENTS.md | 14 mötepunkter |
+| Vilka slides behövs | PRESENTATION_STRUCTURE.md | 14 mötepunkter |
 | Vilka frågor ska varje person kunna svara på | SPRINT_PRESENTATION_STRUCTURE.md | HUVUDMÅL |
 | Om-commit-status-visar-vad | PRESENTATION_DESIGN.md | MEGA-REGEL 2 |
 | Branschtermer | ORDBOK.md | Sök ordet |
@@ -159,7 +159,7 @@ This file is an index only. It does not define read order or rules.
 
 | Fil | Syfte | Läs Om Du... |
 |-----|-------|------------|
-| **PRESENTATION_SLIDE_REQUIREMENTS.md** | Övergripande krav (14 mötepunkter) | Vill förstå struktur övergripande |
+| **PRESENTATION_STRUCTURE.md** | Övergripande krav (14 mötepunkter) | Vill förstå struktur övergripande |
 | **PRESENTATION_DATA.md** | Snapshot för denna veckans presentation | Presentationen behöver färdig data |
 | **GITHUB_SNAPSHOT.md** | Fallback för GitHub när API failar | GitHub är otillgänglig |
 | **CURRENT_PROJECT_STATUS.md** | Fallback för Project Board | Project Board är otillgänglig |
@@ -189,7 +189,7 @@ This file is an index only. It does not define read order or rules.
 ### "Jag Behöver Veta Vilka Slides"
 
 ```
-PRESENTATION_SLIDE_REQUIREMENTS.md → "14 mötepunkter struktur"
+PRESENTATION_STRUCTURE.md → "14 mötepunkter struktur"
 ```
 
 ### "Jag Vill Bara Förstå Status-Färgerna"

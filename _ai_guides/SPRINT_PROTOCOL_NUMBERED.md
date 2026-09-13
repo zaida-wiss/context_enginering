@@ -481,7 +481,7 @@ Presentationen kan ha 20-30 slides — antalet varierar per vecka beroende på i
 ---
 
 **Senast uppdaterad:** 2026-09-13  
-**Status:** 14 mötepunkter (①-⑭), 1:1 med PRESENTATION_SLIDE_REQUIREMENTS.md  
+**Status:** 14 mötepunkter (①-⑭), 1:1 med PRESENTATION_STRUCTURE.md  
 
 **KRITISKA KRAV:**
 - ① MÅSTE visa commits från ALLA teammedlemmar (7 dagar tillbaka)

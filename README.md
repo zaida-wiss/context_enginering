@@ -580,7 +580,7 @@ Läs denna INNAN du skapar presentation:
 ```
 JAG VILL LÄRA MIG BRANSCHORD?
 
-1. Läs _memory/PRESENTATION_SLIDE_REQUIREMENTS.md (rad 17-22: BRANSCHPEDAGOGIK)
+1. Läs _ai_guides/PRESENTATION_STRUCTURE.md (BRANSCHPEDAGOGIK, 14 mötespunkter)
 2. Läs _ai_guides/ORDBOK.md (alla ord presentationen använder)
 3. Presentationen märker nya ord 📚 med länk till ORDBOK
 4. Slå upp ordet där och förstå vad det betyder
@@ -1047,7 +1047,7 @@ DU MÅSTE:
 **FÖRDJUPANDE FILER:**
 2. **[PRESENTATION_DESIGN.md](/_ai_guides/PRESENTATION_DESIGN.md)** — Design principer & MEGA-REGLER
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_DESIGN.md
-3. **[PRESENTATION_SLIDE_REQUIREMENTS.md](/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md)** — Vad varje slide MÅSTE innehålla
+3. **[PRESENTATION_STRUCTURE.md](_ai_guides/PRESENTATION_STRUCTURE.md)** — 14 mötespunkter & vad varje slide MÅSTE innehålla
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md
 4. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** — Exakta layouts & exempel
    - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
