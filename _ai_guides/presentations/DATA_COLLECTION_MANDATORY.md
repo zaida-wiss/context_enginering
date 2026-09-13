@@ -72,6 +72,7 @@ Innan du säger "datainsamlingen är ofullständig":
 
 ### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs in develop — PRIMARY)
 - [ ] Läst GitHub /pulls: **Vilka PRs är MERGADE in i develop denna vecka?** (DET ÄR HUVUDFOKUS)
+- [ ] **RÄKNA:** Totalt antal PRs denna vecka
 - [ ] För varje PR: Vem ÄGde den issuen? (issue assignee/PR author)
 - [ ] För varje PR: Vilket issue var länkat? (if any)
 - [ ] Data innehåller: PR-nummer, merge-datum, PR-author, linked issue, issue-owner
@@ -80,6 +81,9 @@ Innan du säger "datainsamlingen är ofullständig":
 - [ ] **VIKTIGT:** Vi visar MERGED PRs in develop, inte bara "stängda issues"
 - [ ] **Regel:** Visa PR-author + linked issue-owner tillsammans
 - [ ] **Regel:** Fokus = merged code in develop, inte issue-status
+- [ ] **KRITISK REGEL:** Inget arbete får utelämnas för att det inte får plats på sliden
+- [ ] **Om många PRs denna vecka (>5):** Dela på flera slides (①A.1, ①A.2, etc)
+- [ ] **CHECKLIST:** Räkna GitHub PRs. Matcha antal på slide mot GitHub. Noll får försvinna.
 
 ### 2. COMMITS DENNA VECKA (grupperade per arbetsområde)
 - [ ] Läst GitHub Commits: **Vilka commits pushades denna vecka?** (primär bevis på arbete)

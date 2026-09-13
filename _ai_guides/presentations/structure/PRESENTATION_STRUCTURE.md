@@ -22,23 +22,46 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 
 ## 📝① SEDAN FÖRRA MÖTET — Erkännande-retrospektiv
 
-**Syfte:** Visa vad som faktiskt blev klart denna vecka
+**Syfte:** Visa ALLT vad som faktiskt blev klart denna vecka
 
-**Slides:**
-- **①A: Levererat denna vecka** — **MERGED PRs in develop** (primary focus)
+**Slides — MÅSTE visa ALLA PRs + ALLA team-medlemmar:**
+
+- **①A: Levererat denna vecka — sammanfattning** 
+  - Totalt antal PRs mergade
+  - Per team: antal PRs + vilka personer
+  - Övergripande status
+  
+- **①A.1, ①A.2, ... (om många PRs):** Detaljerade tabeller
+  - Om > 5 PRs: dela på flera slides
+  - Varje slide visar ALLA PRs för den sektionen
+  
 - **①B: Byggde vidare denna vecka** — pågående arbete med verifierad framdrift (commits)
+
+**KRITISK REGEL: INGET ARBETE FÅR UTELÄMNAS för att det inte får plats på sliden.**
+
+**Om många PRs denna vecka:**
+- Slide ①A: Sammanfattning (antal PRs per team)
+- Slide ①A.1: Frontend PRs denna vecka (ALLA)
+- Slide ①A.2: Backend PRs denna vecka (ALLA)
+- Slide ①A.3: Native/System PRs denna vecka (ALLA)
 
 **Obligatoriska element:**
 - ✅ **HUVUDFOKUS: Vilka PRs blev MERGED in i develop denna vecka?**
+- ✅ **ALLA PRs denna vecka måste visas** — ingen får utelämnas för plats
 - ✅ För varje PR: **Vem ÄGde den issuen?** (issue assignee eller PR-author)
 - ✅ Visa länk mellan PR + issue-owner (dubbelt namn om samma person)
-- ✅ Alla teammedlemmar måste synas (med namn + verifierat bidrag)
+- ✅ Alla teammedlemmar som hade arbete måste synas (med namn + verifierat bidrag)
 - ✅ Arbetsområden, inte bara issue-nummer (Frontend & Auth, Backend & Risk, etc)
 - ✅ Differentiera mellan "jobbar på" och "faktiskt klar" (DoD-verifierat)
 - ✅ Effektbeskrivning: varför detta arbete spelar roll
+- ✅ **Om någon person HAR aktivitet denna vecka men INGEN PR synlig → investiga varför**
+  - Kan vara branch utan PR än
+  - Kan vara commits utan PR
+  - Kan vara review-arbete på andra PRs
 
 **Data från:** **Merged PRs in develop** (denna vecka) — repo-first reconstruction
 **INTE:** Bara "closed issues" eller "issues utan merge"
+**CHECKLIST:** Före ①A renderas — räkna faktiska PRs. Matcha antal PRs på slide mot GitHub.
 
 ---
 
