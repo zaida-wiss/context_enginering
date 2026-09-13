@@ -209,9 +209,38 @@ Inga "skulle kunna vara", "kanske behöves", "föreslår att vi..."
 
 ---
 
+---
+
+## 🚨 NAMING RULE AFTER VERIFICATION
+
+**Efter att verifierings-sliden "Alla i teamet" körs:**
+
+Presentationen får BARA nämna namn som finns på verifierings-sliden.
+
+**Exempel:**
+
+Verifierings-slide visar:
+- Zaida: PR #68
+- Tomac: PR #80
+- Björn: Review PR #90
+- Jan: (Ingen verifierad GitHub-aktivitet)
+- Marco: (Ingen verifierad GitHub-aktivitet)
+
+→ Senare i presentationen:
+- ✅ Kan nämna Zaida, Tomac, Björn
+- ❌ Får INTE nämna Jan eller Marco (hade ingen aktivitet denna vecka)
+- ❌ Får INTE använda exempel-namn från instruktioner
+
+**KRITISK:** Presentationen kan INTE växla mellan "verifierad data" och "exempel".
+
+Om Jan eller Marco saknar aktivitet denna vecka → de syns på verifierings-sliden som "(Ingen aktivitet)" och nämns inte senare SÅVIDA de inte får ny GitHub-data.
+
 **DENNA CHECKLIST ÄR OBLIGATORISK.**
 
-Om du hoppar över den kommer du att dölja arbete som login, designsystem och annat stängd arbete.
+Om du hoppar över den kommer du att:
+- Dölja arbete (login, designsystem, osv)
+- ELLER blanda exempel-namn med faktiska namn
+- ELLER nämna personer som inte hade arbete denna vecka
 
 ---
 

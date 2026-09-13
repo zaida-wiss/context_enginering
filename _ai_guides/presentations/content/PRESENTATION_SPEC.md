@@ -180,27 +180,39 @@ MINNESRENSNING (obligatorisk före läsning):
 
 ## ❌ EXEMPEL I INSTRUKTIONER ≠ EXEMPEL I PRESENTATION
 
-**Viktigt:** Exemplen här är BARA för att förklara reglerna. De är ALDRIG mall för presentationen.
+**Kritisk regel:** Exemplen i denna fil är BARA för att förklara reglerna. De är ALDRIG mall för presentationen.
 
 ```
-🔴 FEL — Kopierade namn:
+🔴 FEL — Kopierade namn från instruktioner:
 "Instruktionerna säger 'Zaida fortsätter #42'"
 → Presentationen visar "Zaida fortsätter #43" (kopierad struktur, byta nummer)
+→ PROBLEM: Zaida kanske inte ens hade aktivitet denna vecka!
 
-🔴 FEL — Kopierade team:
-"Instruktionerna visar 'Frontend, Backend, Native' i den ordningen"
-→ Presentationen visar samma team i samma ordning (bara för att så är exemplet)
+🔴 FEL — Kopierade team-ordning:
+"Instruktionerna visar 'Frontend, Backend, Native'"
+→ Presentationen visar samma team i samma ordning
+→ PROBLEM: Det är instruktions-ordning, inte faktisk prioritering denna vecka
 
 ✅ RÄTT:
 "Instruktionerna visar HUR man skriver"
-→ Presentationen visar ALLA medlemmar för ALLA team
+→ Presentationen visar BARA namn från verifierad GitHub-aktivitet denna vecka
 → Ordning och fokus baserad på faktisk data, inte exempel-ordning
+→ Exempel-namn slötas helt efter verifiering-sliden
 ```
 
+**MANDATORY RULE:**
+
+Efter att "Alla i teamet" verifiering-sliden körs:
+
+1. ✅ Slut på exempel-namn — använd BARA verifierade namn från denna slide
+2. ✅ Om Zaida finns på verifiering-sliden → kan nämnas senare
+3. ❌ Om Jan INTE finns på verifiering-sliden → får INTE nämnas senare (om inte ny GitHub-data dök upp)
+4. ❌ Presentationen får ALDRIG växla mellan "verifierad" och "exempel"
+
 Presentationen ska ha:
-- **Faktiska namn** (inte exempel-namn)
-- **Faktiska team** (inte exempel-team-ordning)
-- **Balanserad täckning** (alla medlemmar, inte bara de i exempel)
+- **Faktiska namn från GitHub denna vecka** (inte exempel-namn från instruktioner)
+- **Faktiska team-ordning denna vecka** (inte instruktions-ordning)
+- **Balanserad täckning** (alla medlemmar som HAD aktivitet)
 
 ---
 
