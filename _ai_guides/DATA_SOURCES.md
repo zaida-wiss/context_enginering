@@ -211,10 +211,11 @@ API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=a
 
 ### GitHub Project Board
 ```
-EXACT URL: [TEAM MUST FILL IN — ask project lead for exact project URL]
-PROJECT ID: [TEAM MUST FILL IN — if using GitHub Projects, provide project number]
-Web: https://github.com/chas-challenge-2026/avanza-team1/projects/[PROJECT_ID]
-API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/projects/[PROJECT_ID]/columns
+EXACT URL: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+PROJECT ID: 31 (Organization-level project)
+Web: https://github.com/orgs/chas-challenge-2026/projects/31
+View: /views/1 (standard view, can use /views/2, /views/3 for other perspectives)
+API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/projects  ← Lists linked projects
 ```
 
 ### Meeting Protocol
