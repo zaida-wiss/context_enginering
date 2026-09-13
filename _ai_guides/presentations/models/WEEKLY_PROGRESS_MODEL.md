@@ -170,15 +170,29 @@ Med alla data samlad, organisera i **exakt två grupper**:
 
 ---
 
-### 🟠 PÅBÖRJAT FÖRRA VECKAN – FORTSÄTTER — Issue är ÖPPEN med denna veckas aktivitet
+### 🟠 PÅBÖRJAT FÖRRA VECKAN – FORTSÄTTER — Issue är ÖPPEN med denna veckas ARBETSAKTIVITET
 
-**Definition:** Arbete som påbörjades eller fortsatte denna vecka men som inte är färdigt ännu. Måste ha faktisk commit- eller PR-aktivitet denna vecka.
+**Definition:** Arbete som påbörjades eller fortsatte denna vecka med FAKTISK ARBETSAKTIVITET (kod/commits), men som inte är färdigt än.
+
+**KRITISK: Vad räknas som "påbörjat denna vecka"?**
+
+✅ **RÄKNAS SOM PÅBÖRJAT:**
+- Commit på denna vecka (verifierad arbete i git)
+- Push/branch med kodändringar
+- PR skapad eller uppdaterad denna vecka (kod under granskning)
+- Dokumentationscommit denna vecka
+
+❌ **RÄKNAS INTE SOM PÅBÖRJAT:**
+- Issue-kommentar ensam ("jag är på det" utan kod)
+- Status-uppdatering på Project Board
+- Diskussion i GitHub
+- Issue öppnad men helt orörd denna vecka
 
 **Verifiera:**
 - Issue är open
-- Det finns commits eller PR-aktivitet denna vecka (minst en commit eller kommentar)
-- Senaste aktivitet denna vecka (commit, comment, push)
-- Arbetet har faktisk framdrift (inte bara öppnat utan att röra det)
+- Minst ett av ovan ✅-punkter är uppfyllt denna vecka
+- Senaste aktivitet denna vecka är ARBETSAKTIVITET (commit/PR), INTE bara diskussion
+- Arbetet har faktisk framdrift (kod förflyttad framåt)
 
 **Format:**
 ```
@@ -291,7 +305,9 @@ Text ska visa:
 - **Vad:** Issue title
 - **Vem:** Assignee
 - **Hur långt:** "X commits denna vecka" eller "PR öppen" eller "klart datum"
-- **Nästa steg:** "ETA torsdag" eller "väntar på review" eller "blockerad på X"
+- **Nästa steg för 🟠 Påbörjat:** "PR öppen", "test återstår", "fortsätter med responsivitet"
+  - ❌ ALDRIG: "blockerad på X" — blockers visas på separat Beroenden-slide
+  - ❌ ALDRIG: "väntar på..." — bara framåtriktade nästa steg
 
 ### EXEMPEL — ALLTING TILLSAMMANS (EFTER CLUSTERING & EFFEKT TILLAGD)
 

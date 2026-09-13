@@ -298,7 +298,7 @@ https://github.com/zaida-wiss/context_enginering
 
 🟢 Raw-filer från context-repo:
 https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md
-https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/content/PRESENTATION_SPEC.md
 
 🟢 Projekt-repo:
 https://github.com/chas-challenge-2026/avanza-team1
@@ -398,7 +398,7 @@ Försök 3: GITHUB_SNAPSHOT.md → Success
 
 2. ✅ **Läs context-repot via raw-URLs:**
    - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md
-   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/content/PRESENTATION_SPEC.md
    - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
    - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
    - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/CROSS_TEAM_INTEGRATION.md
