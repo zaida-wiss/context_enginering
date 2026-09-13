@@ -12,6 +12,77 @@ Denna fil visar BARA visuella layouts & designexempel.
 
 ---
 
+## 🚨 MEGA-REGEL 0 — KOPIERBAR MÖTESTEXT (RENDERING-KRITISK)
+
+**Presentationen MÅSTE innehålla text som kan markeras och kopieras direkt till mötesprotokoll.**
+
+### Problem Vi Löser
+Du säger: "Här kan jag bara ta skärmdump nu, jag kan inte markera och kopiera texten"  
+Anledning: Texten var inbakad i PNG/SVG, inte riktigt PowerPoint-text
+
+### Regel
+**Alla innehål som ska in i mötesprotokollet MÅSTE vara:**
+```
+✅ Vanlig PowerPoint-textbox (inte bild/rasteriserad/SVG-path)
+✅ Texten ska gå att markera → Ctrl+A → Ctrl+C → klistra in i Word/Google Docs
+✅ "Kopierbar mötestext" är ett ENDA sammanhängande textfält (inte 10 separata objekt)
+✅ Textinnehållet är identiskt med den visuella presentationen
+```
+
+### Format
+
+Varje slide som innehåller arbetslista ska ha **två lager:**
+
+**Övre delen:** Visuell mötesstöd (ikoner, färger, checklistor, diagram)  
+**Nedre delen:** Ett enda riktigt textfält med färdig protokolltext
+
+```
+EXEMPEL (Slide: Frontend — Var är vi?):
+
+VISUELLT (övre):
+✓ Zaida
+  ✅ #40 – Login page
+  ✅ #42 – Auth flow
+
+→ Tomac
+  🔵 #43 – API client
+  ☐ #44 – Error handling
+
+KOPIERBAR TEXT (nedre — ENDA textbox):
+Frontend — Var är vi?
+
+✓ Klart:
+#40 – Login page (Zaida)
+#42 – Auth flow (Zaida)
+
+→ Pågår:
+#43 – API client · Tomac
+#44 – Error handling · Tomac
+```
+
+### QA Checklist Före Leverans
+
+Presentationen får INTE levereras om denna checklist inte är grön:
+
+```
+☐ Öppna .pptx i PowerPoint / Slides
+☐ Navigera till varje slide med arbetslista
+☐ Klicka i textrutan märkt "Kopierbar mötestext"
+☐ Ctrl+A (markera all text i rutan)
+☐ Ctrl+C (kopiera)
+☐ Öppna Google Docs / Word
+☐ Ctrl+V (klistra in)
+☐ VERIFIERA: Ren text utan formattering kommer in
+☐ Återgå till presentation → nästa slide
+☐ Upprepa för: Slide ④⑤⑥⑦⑧⑨ (samtliga team-slides) + ⑫ (sprintplan) + ⑬ (nästa steg)
+```
+
+**Om kopieringen INTE fungerar:**
+- Presentationen är INTE KLAR
+- Texten måste åtgärdas så den blir vanlig PowerPoint-text, inte bild
+
+---
+
 ## 🎯 MEGA-REGEL 0A: INDIVIDPERSPEKTIV — KRITISK REGEL
 
 **En teammedlem ska aldrig behöva tolka projektstatus för att förstå vad den själv ska göra.**

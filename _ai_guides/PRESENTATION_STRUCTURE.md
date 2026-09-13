@@ -121,6 +121,125 @@ Minimal text
 
 ---
 
+---
+
+## 🚨 OBLIGATORISK TEAM-SEPARATION — ABSOLUT REGEL
+
+**Frontend, Backend och Native är ALDRIG samma slide.**
+
+```
+FÖRBJUDET:
+❌ "Backend & Native — var är vi?"
+❌ Gemensam statusruta för flera team
+❌ Komprimering för att spara slides
+❌ Sammanslagning när ett team har mindre data
+
+OBLIGATORISK STRUKTUR:
+📝④ Frontend — Var är vi?
+📝⑤ Frontend — Vad gör vi åt det?
+
+📝⑥ Backend — Var är vi?
+📝⑦ Backend — Vad gör vi åt det?
+
+📝⑧ Native — Var är vi?
+📝⑨ Native — Vad gör vi åt det?
+```
+
+**Om ett team har lite verifierad data:**
+→ Visa ändå egen slide  
+→ Skriv tydligt vad som kunde respektive inte kunde verifieras  
+→ Slå INTE ihop med annat team
+
+---
+
+## 🚨 OBLIGATORISK TEAM COVERAGE — INGEN MEDLEM DÅL UTELÄMNAS
+
+**Varje team-slide måste visa ALLA teammedlemmar, oavsett om de har öppna issues.**
+
+```
+TEAM MEDLEMSKAP (FAST):
+Frontend:  Zaida, Björn, Tomac
+Backend:   Rasha, Erik
+Native:    Pär, Henrik
+```
+
+**För VARJE medlem i "Var är vi?"-slide:**
+
+1. Kontrollera öppna issues där personen är assignee
+2. Kontrollera commits denna vecka
+3. Kontrollera aktiva branches
+4. Kontrollera öppna PRs
+5. Kontrollera nyligen mergade PRs
+
+**Om medlem saknar verifierad aktivitet:**
+- Visa: `?? Inget aktivt arbete kunde verifieras (check commits/branches/PRs)`
+- INTE: Utelämna personen
+
+**Exempel på rätt format:**
+```
+Frontend — Var är vi?
+
+Zaida
+  ✓ #40 Login page (mergad)
+  → #42 Auth flow (pågår)
+  
+Tomac
+  → #43 API client (PR #82 väntar review)
+  → #44 Error handling (3 commits denna vecka)
+  
+Björn
+  ?? Inget aktivt GitHub-arbete denna vecka
+     (Verifiera: commits? supportarbete? review?)
+```
+
+---
+
+## 🚨 DATA SOURCES FOR TEAM SLIDES — OBLIGATORISK DATASAM
+
+**"Var är vi?"-slide för varje team ska byggas från ALLA dessa källor, aldrig bara öppna issues.**
+
+```
+För varje teammedlem ska AI kontrollera (i denna ordning):
+
+1. GITHUB ISSUES
+   - Öppna issues: assignee saknas → märk ??
+   - Öppna issues med denna veckas aktivitet
+   - Stängda issues denna vecka
+
+2. GIT COMMITS
+   - Commits från denna person denna vecka (develop + aktiva branches)
+   - Commit-meddelanden (vad gjorde de?)
+   - Commit-datum
+
+3. BRANCHES
+   - Aktiva branches (har commits denna vecka)
+   - Stale branches (>3 dagar utan aktivitet)
+   - Branches kopplade till öppna PRs
+
+4. PULL REQUESTS
+   - Öppna PRs från denna person
+   - Öppna PRs väntande på denna persons review
+   - Nyligen mergade PRs (denna vecka)
+   - PR-status: draft/review/ready/blocked
+
+5. DEPENDENCIES
+   - Vilken PR/issue blockerar denna persons arbete?
+   - Vilka PRs/issues är denna person blockerad på?
+
+REGEL: Saknad GitHub-data (no issues, no PRs) är INTE samma som "ingen aktivitet".
+Alltid kontrollera commits + branches innan slutsats "inget arbete".
+```
+
+**Verifiera datasam innan slide byggs:**
+```
+☐ Alla teammedlemmar kollade?
+☐ Issues + Commits + Branches + PRs alla lästa?
+☐ Ingen medlem utelämnad?
+☐ Saknad data markerad tydligt (??)?
+```
+
+---
+
 ## 📌 📝④ Frontend — Var är vi? (Nuläge & Status)
 
 ```
@@ -130,11 +249,13 @@ MÅSTE INNEHÅLLA (Team: Zaida, Björn, Tomac):
 ✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
 ✅ Dependencies och blockers (vad väntar på vad)
 ✅ Status 🟢🟠🔴 per issue
+✅ ALLA teammedlemmar måste synas (även om de saknar öppna issues)
 
 VISUELLT:
 - Issues i kolonner eller tabeller
 - Assignee tydlig
 - DoD-checkboxar synliga
+- Varje person representerad (eller tydligt markerad ?? om inget arbete hittades)
 ```
 
 
@@ -164,8 +285,6 @@ FORMAT: Mycket kort, actionbar, ingen lång text.
 
 ## 📌 📝⑥ Backend — Var är vi? (Nuläge & Status)
 
----
-
 ```
 MÅSTE INNEHÅLLA (Team: Rasha, Erik):
 ✅ Issues med assignee (#XX – Name)
@@ -173,6 +292,13 @@ MÅSTE INNEHÅLLA (Team: Rasha, Erik):
 ✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
 ✅ Dependencies och blockers (vad väntar på vad)
 ✅ Status 🟢🟠🔴 per issue
+✅ ALLA teammedlemmar måste synas (även om de saknar öppna issues)
+
+VISUELLT:
+- Issues i kolonner eller tabeller
+- Assignee tydlig
+- DoD-checkboxar synliga
+- Varje person representerad (eller tydligt markerad ?? om inget arbete hittades)
 ```
 
 ---
@@ -199,6 +325,13 @@ MÅSTE INNEHÅLLA (Team: Pär, Henrik):
 ✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
 ✅ Dependencies och blockers (vad väntar på vad)
 ✅ Status 🟢🟠🔴 per issue
+✅ ALLA teammedlemmar måste synas (även om de saknar öppna issues)
+
+VISUELLT:
+- Issues i kolonner eller tabeller
+- Assignee tydlig
+- DoD-checkboxar synliga
+- Varje person representerad (eller tydligt markerad ?? om inget arbete hittades)
 ```
 
 ---
@@ -520,3 +653,72 @@ RULES:
 - ⑬ Nästa steg = konkret handlingsplan (INTE generisk checklista)
 - ⑭ Frågor till PL är ABSOLUT SISTA punkt
 - En mötespunkt kan ha flera slides — symbolen märker tillhörigheten
+
+---
+
+## ✅ PREFLIGHT CHECKLIST — Team Slides (④⑤⑥⑦⑧⑨)
+
+**Presentationen får ALDRIG levereras om denna checklist inte är grön.**
+
+### TEAM SEPARATION (Absolut regel)
+```
+☐ Slide ④ ENDAST Frontend (INTE Backend/Native)
+☐ Slide ⑤ ENDAST Frontend
+☐ Slide ⑥ ENDAST Backend (INTE Frontend/Native)
+☐ Slide ⑦ ENDAST Backend
+☐ Slide ⑧ ENDAST Native (INTE Frontend/Backend)
+☐ Slide ⑨ ENDAST Native
+
+☐ INGA kombinerade slides ("Backend & Native" = REGELBROTT)
+```
+
+### TEAM COVERAGE (Alla medlemmar måste synas)
+```
+☐ Slide ④ visar ALLA: Zaida, Björn, Tomac
+☐ Slide ⑥ visar ALLA: Rasha, Erik
+☐ Slide ⑧ visar ALLA: Pär, Henrik
+
+☐ Om medlem saknar öppna issues: märkerad ?? (inget arbete hittades)
+☐ Ingen medlem är helt utelämnad
+```
+
+### DATA SOURCES (Alla kilder kontrollerade)
+```
+☐ Git commits denna vecka kontrollerade (för varje person)
+☐ Öppna issues kontrollerade (för varje person)
+☐ Aktiva branches kontrollerade (för varje person)
+☐ Öppna PRs kontrollerade
+☐ Nyligen mergade PRs kontrollerade
+☐ Saknad data är explicit markerad (??)
+```
+
+### ASSIGNEE VISIBILITY (Ingen issue utan namn)
+```
+☐ Varje issue har assignee-namn i parentes
+☐ Format exakt: #42 – Login page · Zaida
+☐ Ingen issue utan assignee (eller ?? om okänd)
+```
+
+### KOPIERBAR TEXT (QA-krav)
+```
+☐ Se PRESENTATION_STYLE.md: MEGA-REGEL 0 — KOPIERBAR MÖTESTEXT
+☐ Varje team-slide har ett textfält märkt "Kopierbar mötestext"
+☐ Textfältet är en ENDA box (inte 10 separata objekt)
+☐ Texten går att markera och kopiera (testad Ctrl+A → Ctrl+C)
+```
+
+### IF CHECKLIST INTE ÄR GRÖN
+
+Presentationen får INTE levereras.
+
+```
+🔴 Regelbrott → fixas innan leverans
+❓ Oklar data → markeras ?? och dokumenteras varför
+⚠️ Saknad medlem → måste finnas på slide (även om ?? om inget arbete)
+```
+
+**Resultat av denna checklist:** 
+✅ Teamstatus är åtkomlig  
+✅ Alla medlemmar är synliga  
+✅ Text kan kopieras direkt till protokoll  
+✅ Ingen regel är bruten
