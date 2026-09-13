@@ -56,7 +56,6 @@ Generate presentation
 ### All Other Files
 
 - **_project_context/** — Permanent project rules (DO NOT CHANGE)
-- **_snapshots/** — Cached fallback data ONLY (used if live fails)
 - **_ai_guides/other** — Reference & support only (CANNOT override above)
 - **_docs/** — Examples & mockups only (NEVER contains rules)
 - **_memory/** — Personal session notes only (NOT authoritative)

@@ -10,7 +10,7 @@ metadata:
 
 **PRESENTATIONEN FÅR INTE BÖRJA BYGGAS FÖRRÄN DETTA ÄR KLART.**
 
-Om någon källa failar: prova fallback omedelbar. Presentationen blir ALDRIG ofullständig för att en källa misslyckas.
+Live sources only. No snapshots — all data from direct links to GitHub, Project Board, Google Docs.
 
 ---
 
@@ -50,13 +50,9 @@ Källa 1: GitHub Connector/API
 Källa 2: Fallback — GitHub web
   [ ] https://github.com/chas-challenge-2026/avanza-team1/branches
   Status: ✅ LÄST / ❌ MISSLYCKAD
-
-Källa 3: Fallback — Snapshot
-  [ ] _memory/GITHUB_SNAPSHOT.md
-  Status: ✅ LÄST / ❌ SAKNAS
 ```
 
-**STATUS:** ✅ Vi har branch-data eller ⚠️ från snapshot
+**STATUS:** ✅ Vi har branch-data
 
 ---
 
@@ -77,13 +73,9 @@ Källa 3: Fallback — Merged PRs denna vecka (om commits-listan failar)
   [ ] Se issue 3 nedan för PR-data
   [ ] Använd merged PRs för att rekonstruera commits
   Status: ✅ REKONSTRUERAT / ❌ MISSLYCKAD
-
-Källa 4: Fallback — Snapshot
-  [ ] _memory/GITHUB_SNAPSHOT.md
-  Status: ✅ LÄST / ❌ SAKNAS
 ```
 
-**STATUS:** ✅ Vi har commit-data eller ⚠️ rekonstruerat från PRs eller snapshots
+**STATUS:** ✅ Vi har commit-data eller ⚠️ rekonstruerat från PRs
 
 ---
 
@@ -102,13 +94,9 @@ Källa 1: GitHub Connector/API
 Källa 2: Fallback — GitHub web
   [ ] https://github.com/chas-challenge-2026/avanza-team1/issues
   Status: ✅ LÄST / ❌ MISSLYCKAD
-
-Källa 3: Fallback — Snapshot
-  [ ] _memory/GITHUB_SNAPSHOT.md
-  Status: ✅ LÄST / ❌ SAKNAS
 ```
 
-**STATUS:** ✅ Vi har issue-data eller ⚠️ från snapshot
+**STATUS:** ✅ Vi har issue-data
 
 ---
 
@@ -127,13 +115,9 @@ Källa 1: GitHub Connector/API
 Källa 2: Fallback — GitHub web
   [ ] https://github.com/chas-challenge-2026/avanza-team1/pulls
   Status: ✅ LÄST / ❌ MISSLYCKAD
-
-Källa 3: Fallback — Snapshot
-  [ ] _memory/GITHUB_SNAPSHOT.md
-  Status: ✅ LÄST / ❌ SAKNAS
 ```
 
-**STATUS:** ✅ Vi har PR-data eller ⚠️ från snapshot
+**STATUS:** ✅ Vi har PR-data
 
 ---
 
@@ -156,13 +140,9 @@ Källa 3: Fallback — Rekonstruera från Issues + PRs
   [ ] Använd issue-status för att säga vilket kolumn
   [ ] Använd PR-status för att säga in-review
   Status: ✅ REKONSTRUERAT / ❌ MISSLYCKAD
-
-Källa 4: Fallback — Snapshot
-  [ ] _memory/PROJECT_BOARD_SNAPSHOT.md
-  Status: ✅ LÄST / ❌ SAKNAS
 ```
 
-**STATUS:** ✅ Vi har Board-data eller ⚠️ rekonstruerat eller från snapshot
+**STATUS:** ✅ Vi har Board-data eller ⚠️ rekonstruerat
 
 ---
 
@@ -180,17 +160,9 @@ Källa 1: Google Docs eller TXT-export (URL från DATA_SOURCES.md)
 Källa 2: Fallback — TXT-export från Google Docs
   [ ] Försök export?export=txt från Google Docs URL
   Status: ✅ LÄST / ❌ MISSLYCKAD
-
-Källa 3: Fallback — Snapshot
-  [ ] _memory/PROTOCOL_SNAPSHOT.md
-  Status: ✅ LÄST / ❌ SAKNAS
-
-Källa 4: Fallback — Denna sessions konversation
-  [ ] Använd redan diskuterat innehål från mötet
-  Status: ✅ ANVÄNDT / ❌ MISSLYCKAD
 ```
 
-**STATUS:** ✅ Vi har protocol eller ⚠️ från snapshot/konversation
+**STATUS:** ✅ Vi har protocol
 
 ---
 
@@ -245,10 +217,8 @@ Fallback-ordningen MÅSTE följas:
 
 ```
 1. Primär källa failar? → Prova källa 2
-2. Källa 2 failar? → Prova källa 3
-3. Alla live-källor failar? → Använd snapshot
-4. Snapshot saknas? → Rekonstruera från annan info
-5. Ingenting fungerar? → Markera som "ej verifierat denna vecka" + rapportera vilken källa
+2. Källa 2 failar? → Prova källa 3 (rekonstruktion)
+3. Ingenting fungerar? → Markera som "ej verifierat denna vecka" + rapportera vilken källa
 ```
 
 **EXEMPEL:**
@@ -258,8 +228,8 @@ Fallback-ordningen MÅSTE följas:
 GitHub Connector failar → Presentationen säger "commits ej verifierade"
 
 ✅ KORREKT FALLBACK:
-GitHub Connector failar → Försök GitHub web → Försök snapshot → 
-Rekonstruera från merged PRs → Använd en av dessa
+GitHub Connector failar → Försök GitHub web → 
+Rekonstruera från merged PRs eller annan källa → Använd en av dessa
 ```
 
 ---
@@ -273,15 +243,15 @@ CHECKLIST DATUM: [YYYY-MM-DD]
 CHECKLIST TIDSPUNKT: [HH:MM TIMEZONE]
 
 ✅ Context repo: COMPLETE
-✅ Branches: SOURCE [Connector/Web/Snapshot]
-✅ Commits: SOURCE [Connector/Web/Snapshot/Reconstructed]
-✅ Issues: SOURCE [Connector/Web/Snapshot]
-✅ PRs: SOURCE [Connector/Web/Snapshot]
-✅ Board: SOURCE [Connector/Web/Reconstructed/Snapshot]
-✅ Protocol: SOURCE [Google Docs/Snapshot/Conversation]
+✅ Branches: SOURCE [Connector/Web]
+✅ Commits: SOURCE [Connector/Web/Reconstructed]
+✅ Issues: SOURCE [Connector/Web]
+✅ PRs: SOURCE [Connector/Web]
+✅ Board: SOURCE [Connector/Web/Reconstructed]
+✅ Protocol: SOURCE [Google Docs]
 ✅ Code Review: [DONE/SKIPPED]
 
-GATE STATUS: ✅ PASSED eller ⚠️ PARTIAL (om något är från snapshot/fallback)
+GATE STATUS: ✅ PASSED eller ⚠️ PARTIAL (om något är rekonstruerat)
 
 Presentation kan börja byggas.
 ```

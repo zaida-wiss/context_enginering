@@ -139,8 +139,7 @@ Presentationen måste kunna verifiera dessa fakta:
 **Fallback ordning:**
 1. Google Drive Connector — om autentiserad
 2. Public shared Google Docs → TXT-export
-3. Cached snapshot i context_enginering (_memory/PROTOCOL_SNAPSHOT.md)
-4. Lösen från presentation-begäran — använd det som angavs
+3. GitHub-data om protocol misslyckas
 
 **Om all misslyckas:** Presentationen bygger på GitHub-data men noterar "mötesprotokoll kunde inte verifieras"
 
@@ -218,7 +217,7 @@ Status: Öppen för alla att läsa (ingen auth behövs)
 AI kan läsa: Ja, direkt från länken
 ```
 
-AI läser denna länk direkt för presentationen. Ingen snapshot-process behövs.
+AI läser denna länk direkt för presentationen.
 
 ### Meeting Protocol
 
@@ -228,14 +227,7 @@ Status: Öppen för alla att läsa (ingen auth behövs)
 AI kan läsa: Ja, direkt från länken
 ```
 
-AI läser denna länk direkt för presentationen. Ingen snapshot-process behövs.
-
-### Fallback Snapshot Files (when live sources fail)
-```
-Commits/Branches/Issues/PRs: _memory/GITHUB_SNAPSHOT.md
-Project Board: _memory/PROJECT_BOARD_SNAPSHOT.md
-Meeting Protocol: _memory/PROTOCOL_SNAPSHOT.md
-```
+AI läser denna länk direkt för presentationen.
 
 ---
 

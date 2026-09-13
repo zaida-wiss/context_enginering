@@ -22,8 +22,6 @@ This file is an index only. It does not define read order or rules.
 **Risk & Decisions:**  
 → README.md#project-context
 
-**Snapshots & Fallback Data:**  
-→ README.md#snapshots
 
 **Terminology:**  
 → _ai_guides/ORDBOK.md
@@ -49,11 +47,6 @@ This file is an index only. It does not define read order or rules.
 - _project_context/DECISIONS.md
 - _project_context/PROJECT.md
 
-### Snapshots & Fallback
-- _snapshots/GITHUB_SNAPSHOT.md
-- _snapshots/PROJECT_BOARD_SNAPSHOT.md
-- _snapshots/PROTOCOL_SNAPSHOT.md
-- _snapshots/PRESENTATION_DATA_FALLBACK.md
 
 ---
 
