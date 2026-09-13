@@ -100,8 +100,9 @@ Presentationen måste kunna verifiera dessa fakta:
 **Fallback ordning:**
 1. GitHub Connector/API — commits to develop + date range
 2. GitHub /commits tab — filter by date
-3. Merged PRs (se WORK COMPLETED) — de visar commits utan att behöva log
-4. Mötesprotokoll — vad sade vi implementerade?
+3. Google Sheets commit-historik: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=77162861#gid=77162861
+4. Merged PRs (se WORK COMPLETED) — de visar commits utan att behöva log
+5. Mötesprotokoll — vad sade vi implementerade?
 
 **VIKTIGT:** Git-kloning är ALDRIG ett krav för commit-historik. Det behövs inte för statusrapportering.
 

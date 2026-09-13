@@ -69,7 +69,11 @@ Källa 2: Fallback — GitHub web
   [ ] https://github.com/chas-challenge-2026/avanza-team1/commits/develop
   Status: ✅ LÄST / ❌ MISSLYCKAD
 
-Källa 3: Fallback — Merged PRs denna vecka (om commits-listan failar)
+Källa 3: Fallback — Google Sheets historik
+  [ ] https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=77162861#gid=77162861
+  Status: ✅ LÄST / ❌ MISSLYCKAD
+
+Källa 4: Fallback — Merged PRs denna vecka (om commits-listan failar)
   [ ] Se issue 3 nedan för PR-data
   [ ] Använd merged PRs för att rekonstruera commits
   Status: ✅ REKONSTRUERAT / ❌ MISSLYCKAD
