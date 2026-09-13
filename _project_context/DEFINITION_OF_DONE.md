@@ -107,6 +107,7 @@ En feature/fix är **DONE** när den uppfyller ALLT här (inklusive AC):
 
 ### Kod
 - [ ] **AC är uppfyllda** - Allt som AC säger ska fungera gör det
+- [ ] **TypeScript OK** - Ingen `any`, `@ts-ignore`, eller build-fel
 - [ ] **Ingen console.log** - Debug-kod är borttagen
 - [ ] **Ingen TODO/FIXME** - Eller tydligt dokumenterat varför det finns
 - [ ] **Formatterad kod** - Linting passerar (ESLint, Prettier)
@@ -217,10 +218,15 @@ Måste dokumentera:
 
 Måste ha tester för:
 
-### Frontend
-- [ ] Unit tests för komponenter (Vitest/Jest)
-- [ ] Test för varje kritisk user-interaction
-- [ ] E2E test för kärnflödet (Cypress/Playwright)
+### Frontend (NOT "TypeScript tests" — TypeScript är typning, inte testverktyg)
+- [ ] **Unit tests** (Vitest/Jest) — testa komponent-logik, funktioner, edge cases
+  - Exempel: `render(<MyComponent />)` → assertera output
+- [ ] **Interaction tests** — testa användarens handlingar (klick, input, etc)
+  - Exempel: user.click(button) → verifiera state ändrade
+- [ ] **E2E tests** (Cypress/Playwright) — testa kompletta flöden från UI
+  - Exempel: login → navigera → data visas
+- [ ] **Alla tests passerar lokalt OCH i CI**
+- [ ] **60%+ kod-täckning** för componenter och logik
 
 ### Backend
 - [ ] Unit tests för service-lager (JUnit)
