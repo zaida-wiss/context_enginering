@@ -98,68 +98,96 @@ Två möjliga blockers:
 
 ---
 
-## 📝④ Frontend
-**Vad pågår? Vad behöver teamet veta?**
+## 📝④ Frontend — Var är vi? & Vad gör vi?
 
-Team: Zaida, Björn, Tomac
+**Team: Zaida, Björn, Tomac**
 
-**MÅSTE-HA denna vecka:**
-- #XX [beskrivning] (Zaida - Xh)
-- #XX [beskrivning] (Tomac - Xh)
-- #XX [beskrivning] (Björn - Xh)
+### 📝④A — Var är vi? (Status & Git)
+**Issues denna vecka:**
+- #XX [beskrivning] (Zaida - Xh) — AC✓ Tests✓ Review✓ Docs✓
+- #XX [beskrivning] (Tomac - Xh) — AC✓ Tests○ Review✓ Docs✓
+- #XX [beskrivning] (Björn - Xh) — AC✓ Tests✓ Review○ Docs○
 
-**BÖR-HA (om tid):**
-- #XX [beskrivning] (Zaida - Xh)
-- #XX [beskrivning] (Tomac - Xh)
+**Git-status denna vecka:**
+- Mergade: [commits från vem denna vecka]
+- Pågår: feature/#XX (Zaida), feature/#YY (Tomac)
+- Stale: [branches >3 dagar utan commit]
 
-Blockers:
-- Väntar på: [vad]
+**Blockers/Dependencies:**
+- Väntar på: [vad/vem]
 - Påverkar: [vilka issues]
 
-Risk denna vecka:
-- [risk beskrivning]
+### 📝④B — Vad gör vi åt det? (Actionbar Guide för Teamet)
+**För Frontend-medlemmar — vad är nästa steg?**
+
+1️⃣ **FORTSÄTT** — Nästa prioriterat arbete
+   - Tomac fortsätter #43 API-client
+   - Zaida startar #87 testgrund
+
+2️⃣ **BEHÖVER STÄNGAS** — Saknad Definition of Done
+   - #42 Drift indicator – saknar review, test, docs. Tomac: kan du stänga detta?
+
+3️⃣ **KAN TAS NU** — Oberoende arbete om något blockerar
+   - #87 Frontend test foundation – oberoende av Backend, kan startas nu
+
+4️⃣ **AGERA PÅ** — Möte/Decision denna vecka
+   - Frontend + Backend möte: auth-kontrakt behöver fastslås
 
 ---
 
-## 📝⑤ Backend
-**Vad pågår? Vad behöver teamet veta?**
+## 📝⑤ Backend — Var är vi? & Vad gör vi?
 
-Team: Rasha, Erik
+**Team: Rasha, Erik**
 
-**MÅSTE-HA denna vecka:**
-- #XX [beskrivning] (Rasha - Xh)
-- #XX [beskrivning] (Erik - Xh)
+### 📝⑤A — Var är vi? (Status & Git)
+**Issues denna vecka:**
+- #XX [beskrivning] (Rasha - Xh) — AC✓ Tests✓ Review✓ Docs✓
+- #XX [beskrivning] (Erik - Xh) — AC✓ Tests✓ Review○ Docs○
 
-**BÖR-HA (om tid):**
-- #XX [beskrivning] (Rasha - Xh)
+**Git-status denna vecka:**
+- Mergade: [commits från vem denna vecka]
+- Pågår: feature/#XX (Rasha), feature/#YY (Erik)
+- Stale: [branches >3 dagar utan commit]
 
-Blockers:
-- Väntar på: [vad]
+**Blockers/Dependencies:**
+- Väntar på: [vad/vem]
 - Blockerar: [vilka team/issues]
 
-Risk denna vecka:
-- [risk beskrivning]
+### 📝⑤B — Vad gör vi åt det? (Actionbar Guide för Teamet)
+**För Backend-medlemmar — vad är nästa steg?**
+
+1️⃣ **FORTSÄTT** — Nästa prioriterat arbete
+2️⃣ **BEHÖVER STÄNGAS** — Saknad Definition of Done
+3️⃣ **KAN TAS NU** — Oberoende arbete om något blockerar
+4️⃣ **AGERA PÅ** — Möte/Decision denna vecka
 
 ---
 
-## 📝⑥ Native/Systemutvecklare
-**Vad pågår? Vad behöver teamet veta?**
+## 📝⑥ Native — Var är vi? & Vad gör vi?
 
-Team: Pär, Henrik
+**Team: Pär, Henrik**
 
-**MÅSTE-HA denna vecka:**
-- #XX [beskrivning] (Pär - Xh)
-- #XX [beskrivning] (Henrik - Xh)
+### 📝⑥A — Var är vi? (Status & Git)
+**Issues denna vecka:**
+- #XX [beskrivning] (Pär - Xh) — AC✓ Tests✓ Review✓ Docs✓
+- #XX [beskrivning] (Henrik - Xh) — AC✓ Tests✓ Review○ Docs○
 
-**BÖR-HA (om tid):**
-- #XX [beskrivning] (Pär - Xh)
+**Git-status denna vecka:**
+- Mergade: [commits från vem denna vecka]
+- Pågår: feature/#XX (Pär), feature/#YY (Henrik)
+- Stale: [branches >3 dagar utan commit]
 
-Blockers:
-- Väntar på: [vad]
+**Blockers/Dependencies:**
+- Väntar på: [vad/vem]
 - Externa beroenden: [IT-support, etc]
 
-Risk denna vecka:
-- [risk beskrivning]
+### 📝⑥B — Vad gör vi åt det? (Actionbar Guide för Teamet)
+**För Native-medlemmar — vad är nästa steg?**
+
+1️⃣ **FORTSÄTT** — Nästa prioriterat arbete
+2️⃣ **BEHÖVER STÄNGAS** — Saknad Definition of Done
+3️⃣ **KAN TAS NU** — Oberoende arbete om något blockerar
+4️⃣ **AGERA PÅ** — Möte/Decision denna vecka
 
 ---
 
