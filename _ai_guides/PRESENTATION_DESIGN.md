@@ -47,22 +47,21 @@ ARKITEKTUR & BEROENDEN:
   ❌ INTE bara text-beskrivningar
 ```
 
-### ✅ MEGA-REGEL 1: Assignee på VARJE Issue (TVINGANDE)
+### ✅ MEGA-REGEL 1: Assignee på VARJE Issue (TVINGANDE FORMAT)
 
-**🚨 DENNA REGEL ÄR OBLIGATORISK. Presentationen är MISSLYCKAD utan detta.**
-
-**Format:** (#XX - Namn) eller (#XX - Namn föreslaget)
+**Format:** (#XX - Namn) eller (#XX - ??) om okänd
 
 ```
 EXEMPEL RÄTT:
   ✅ #42 Portfolio overview (Zaida)
   ✅ #51 Risk metrics (Erik föreslaget)
   ✅ #48 Authentication (Marco)
+  ✅ #52 API schema (??)  ← okänd assignee — visar att det behöver beslutas
 
 EXEMPEL FEL — PRESENTATIONEN MISSLYCKADES OM:
-  ❌ #42 Portfolio overview (utan namn)
-  ❌ #51 Risk metrics  (bara nummer, ingen assignee)
-  ❌ #48 — namn saknas helt
+  ❌ #42 Portfolio overview (utan parentes)
+  ❌ #51 Risk metrics — nummer utan format
+  ❌ #48 Tom assignee-cell
 ```
 
 **Vägen när du föreslår assignee:**
@@ -70,11 +69,12 @@ EXEMPEL FEL — PRESENTATIONEN MISSLYCKADES OM:
 2. Git log — vem jobbar redan på motsvarande branch?
 3. Kapacitet — vem har mindre att göra denna vecka?
 4. Balans — alla hjälps åt, inte max-flöde
+5. Om ingen → markera med (??) och flagga för mötet
 
-**Om du inte kan få assignee-data:**
-- Säg explicit: "Jag behöver läsa Project Board för assignees"
-- Presenteringen kan inte slutföras utan denna data
-- Aldrig presentera issues utan assignees
+**(??) betyder:**
+- Assignee ännu ej beslutad
+- Flagga på mötet för snabb tilldelning
+- Visar accountability-lucket visuellt
 
 ### ✅ MEGA-REGEL 2: Verifiera Git-Status & Jämför Med Project Board
 
@@ -269,14 +269,14 @@ EXEMPEL PÅ KORREKT ANVÄNDNING:
 **LAYOUT & LESBARHET:**
 - [ ] Ingen text går utanför sin ruta (hellre fler slides)
 - [ ] Min. 4.5:1 kontrast (WCAG AA)
-- [ ] **TVINGANDE: Alla issues har (#NAMN) assignee — ingen issue utan detta**
+- [ ] **TVINGANDE: Alla issues har format (#XX - NAMN) eller (#XX - ??)**
 - [ ] 60-70% whitespace (NPF-vänligt)
 
 **MISSLYCKAD PRESENTATION OM:**
-- [ ] ❌ En enda issue saknar assignee
-- [ ] ❌ Assignee är tom, oklart eller "TBD"
+- [ ] ❌ Issue saknar parentes helt (bara "#42 Portfolio")
+- [ ] ❌ Assignee-parentes är tom eller otydlig
 - [ ] ❌ Förslagen är inte förtydligade med "(föreslaget)"
-- [ ] Då måste presentationen göras om
+- [ ] ✅ Okänd assignee markeras med (??) — det är OK
 
 ---
 
