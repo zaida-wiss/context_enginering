@@ -9,11 +9,22 @@ metadata:
 
 # GitHub Snapshot — Live Data Cache
 
-**⚠️ DENNA FIL ÄR EN FALLBACK ENDAST**
+## ⚠️ STATUS: PLACEHOLDER — NOT VERIFIED
 
-Använd denna ENDAST om:
+**Data nedan är EXEMPELDATA, INTE verifierad från GitHub.**
+
+**DENNA FIL FÅR INTE ANVÄNDAS I PRESENTATIONER** tills:
+- [ ] STATUS: VERIFIED (ändra ovanstående)
+- [ ] Snapshot Date är fylld med verklig tid
+- [ ] Data är kopierad från live GitHub denna vecka
+- [ ] Commit-hasharna är verkliga
+
+---
+
+**Använd denna ENDAST om:**
 1. GitHub Connector/API misslyckas, OCH
-2. Direkt GitHub-webåtkomst misslyckas
+2. Direkt GitHub-webåtkomst misslyckas, OCH
+3. STATUS: VERIFIED
 
 Om båda live-metoderna fungerar → använd live-data, INTE denna snapshot.
 

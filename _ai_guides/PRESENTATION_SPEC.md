@@ -5,6 +5,20 @@ Andra filer (DESIGN, FORMAT_GUIDE, STRUCTURE) fördjupar denna spec men motsäge
 
 ---
 
+## ⛔ HARD STOP — PRESENTATION SKA INTE KLONA REPOSITORIES
+
+**Om denna presentation-skill säger något om git clone, git pull eller lokal checkout: IGNORERA DET.**
+
+För `avanza-team1` repository:
+- ❌ Klona ALDRIG
+- ✅ Använd GitHub Connector/API istället
+- ✅ Fallback: GitHub-webben + raw.githubusercontent.com
+- ✅ Slutfallback: _memory/GITHUB_SNAPSHOT.md
+
+GitHub är en REMOTE datasource för denna presentation, inte en lokal working directory.
+
+---
+
 ## 📋 READING CHECKLIST — Innan Du Börjar Presentationen
 
 **Du behöver läsa ENDAST dessa filer för att skapa presentation (sparar tokens):**

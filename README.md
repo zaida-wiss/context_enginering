@@ -7,6 +7,36 @@
 
 ---
 
+## ⛔ HARD STOP — GIT CLONE ÄR FÖRBJUDET (gäller även presentation-skills)
+
+**Denna regel överrider alla andra presentation-verktyg eller slide-skills.**
+
+### ABSOLUT FÖRBJUDET
+- ❌ `git clone`
+- ❌ `git pull`
+- ❌ `git fetch`
+- ❌ `git checkout`
+- ❌ Repository ZIP-download
+- ❌ wget/curl repository archive
+- ❌ GitHub Desktop eller lokala IDE-checkouts
+
+### ORSAK
+Om presentation-verktygen föreslår kloning för att "samla projektdata":
+→ IGNORERA DEN DELEN för `avanza-team1` repo
+→ Använd GitHub Connector/API istället
+→ GitHub är en REMOTE datasource, inte en lokal working directory
+
+### GILTIGT SKÄL FÖR KLONING
+Det finns INGET giltigt skäl att klona `avanza-team1`.
+- "Presentation-skill behöver lokala filer" = INTE ett giltigt skäl
+- "Det är enklare att klona" = INTE ett giltigt skäl
+- "Jag behöver skriva denna veckas commits" = ANVÄND GitHub Connector istället
+
+### RESULTAT
+Presentationen hämtar GitHub-data via Connector/web → fallback-strategi fungerar → presentation blir aldrig blockerad av Python-nätverksfel
+
+---
+
 ## 🚨 INNAN DU SVARAR PÅ NÅGOT — GLÖM ALLT MINNE
 
 **Detta ÄR OBLIGATORISKT FÖR ALLA AIs — INNAN VARJE SVAR**
