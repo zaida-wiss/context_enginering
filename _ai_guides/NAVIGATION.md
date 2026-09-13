@@ -33,13 +33,31 @@ This file is an index only. It does not define read order or rules.
 
 ## 📚 All Guides
 
-### AI Execution Guides
-- PRESENTATION_SPEC.md — What should be shown
-- PRESENTATION_STRUCTURE.md — Slide order & content
-- PRESENTATION_STYLE.md — Visual design only
-- DATA_SOURCES.md — Where to read from
-- DATA_COLLECTION_CHECKLIST.md — Gate before rendering
-- SOURCE_CHECK.md — Source verification
+### AI Execution Guides — Presentations
+
+**→ presentations/README.md** — Navigation (vad vill du ändra?)
+
+**Content (vad sliderna ska innehålla):**
+- presentations/content/PRESENTATION_SPEC.md
+
+**Structure (slide-ordning):**
+- presentations/structure/PRESENTATION_STRUCTURE.md
+- presentations/structure/SPRINT_PROTOCOL_NUMBERED.md
+
+**Design (visuell utseende):**
+- presentations/design/PRESENTATION_STYLE.md
+
+**Data (sources & insamling):**
+- presentations/data/DATA_SOURCES.md
+- presentations/data/DATA_COLLECTION_CHECKLIST.md
+- presentations/data/SOURCE_CHECK.md
+
+**Verification (verifiering):**
+- presentations/verification/VISUAL_VERIFICATION.md
+- presentations/verification/VERIFICATION_BOARD_VS_GIT.md
+
+**Models (datamodeller):**
+- presentations/models/WEEKLY_PROGRESS_MODEL.md
 
 ### Project Context
 - _project_context/DEFINITION_OF_DONE.md
