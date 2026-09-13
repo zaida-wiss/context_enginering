@@ -33,6 +33,51 @@ RESULTAT: Presentation med alla 13 mötespunkter (📝⓪-⑫)
 
 ---
 
+## 🎯 HUVUDMÅL — VARJE PERSON SKA KUNNA SVARA PÅ ÅTTA FRÅGOR
+
+**Presentationens viktigaste uppgift är INTE bara att rapportera projektstatus.**
+
+När måndagsmötet är slut ska VARJE teammedlem själv kunna svara på dessa frågor **UTAN ATT TOLKA ELLER GISSA**:
+
+1. **Är mitt team på väg mot veckans mål?** (Grön/Orange/Röd och varför)
+2. **Är min egen nuvarande uppgift fortfarande rätt prioriterad?** (Ja/Nej/Behöver ändras)
+3. **Ligger mitt eget arbete enligt plan?** (Ja/Nej/Blockerad)
+4. **Vad ska jag göra direkt efter mötet?** (Konkret issue-nummer + handling)
+5. **Vilket issue äger jag denna vecka?** (Issue #XX, namn, deadline)
+6. **När ska min uppgift vara klar?** (Konkret datum/tid)
+7. **Är någon beroende av min leverans — och ska jag hjälpa någon annan?** (Ja/Nej + namn)
+8. **Är jag blockerad — och vad gör jag i så fall istället?** (Blockad av vad / alternativ handling)
+
+### ⚠️ KRITISKT KRAV:
+
+**Det räcker INTE att presentationen SÄGER att mötets mål är att alla ska veta sitt jobb.**
+
+Presentationens innehål måste innehålla tillräcklig information för att varje deltagare faktiskt kan besvara frågorna ovan.
+
+Om en person efter mötet säger: "Jag förstår att statusen är orange, men vet inte om det påverkar mitt arbete eller vad jag ska göra nästa" — **då är presentationen INTE KLAR.**
+
+**INFORMATIONSKEDJAN SOM MÅSTE FINNAS:**
+```
+Projektets status → Teamets läge → Min personliga situation → Min nästa handling
+```
+
+Om någon länk saknas är presentationen ofullständig.
+
+### ✅ KONTROLL VID PRESENTATION-SLUT:
+
+Mötet får INTE avslutas förrän för VARJE person kan presentation/protokollet visa:
+- [ ] Vilken issue personen äger denna vecka
+- [ ] Vad personen ska göra härnäst (konkret handling)
+- [ ] Om arbetets ligger enligt plan eller är blockerat
+- [ ] När uppgiften ska vara klar
+- [ ] Vad personen är beroende av
+- [ ] Om någon är beroende av denna persons leverans
+- [ ] Om personen kan/bör avlasta någon annan
+
+**Ingen person får lämnas med endast:** "Mitt team är grönt/orange/rött."
+
+---
+
 ## 📋 KORT INSTRUKTION FÖR AI
 
 1. ✅ Läs denna fil (SPRINT_PRESENTATION_STRUCTURE.md) från början
@@ -45,18 +90,16 @@ RESULTAT: Presentation med alla 13 mötespunkter (📝⓪-⑫)
    - Branches/PRs/blockers
    - Vem jobbar på vad
    - Frågor för PL (från team eller mötesprotokollet)
-6. ✅ Skapa presentation **EXAKT enligt denna struktur** (17-21 slides)
+6. ✅ Skapa presentation **EXAKT enligt denna struktur** (normalt 16-22 slides)
    - Slide 0: Presentationsslide (enkel — bara typ, tid, syfte)
-   - 🆕 Slide 0.1: PL-möte AGENDA denna vecka (VAD SKOLAN VILL DISKUTERA)
-   - 🆕 Slide 0.1.5: VECKANS SCHEMA & MÅL (Kurser + Projekt, tidsplan)
+   - Slide 0.1: Agenda denna vecka
    - Slide 1-4: Övergripande (KURSEN + PROJEKTET + AVANZA + Progress Board)
    - Slides 5-7: Per-team status (Frontend/Backend/Native)
+     - ⚠️ NYTT: Varje team-slide MÅSTE ha: STATUS → VARFÖR → VAD BETYDER DET FÖR ER → VEM GÖR VAD NU
    - Slide 8: Status sedan förra veckan
-   - 🆕 Slide 8.5: BLOCKERS — SEPARAT VISUELL SLIDE (hur blockar de arbetet)
-   - Slides 9-12: Prioritering, Estimering, Tekniska beslut, Arbetsuppgifter
-   - Slide N-3: Frågor till PL (SLUTET — vad vi behöver från dem)
-   - Slide N-2: 📝⑪ Nästa steg (SEPARAT — vad gör vi efter mötet)
-   - Slide N-1: 📝⑫ Sammanfattning (SEPARAT — fokus, status, lycka till)
+   - Slides 9-12: Prioritering, Estimering, Tekniska beslut, Blockers/Beroenden
+   - 🆕 Slide N-2: 📝⑪ NÄR VI LÄMNAR MÖTET (TABELL: Person | Team | Issue | Gör nu | Klar när | Deadline | Beroende)
+   - Slide N-1: 📝⑫ Sammanfattning (fokus, status, lycka till)
    - Slide N: Mötesprotokollet länk (för noteringar)
 7. ✅ Symbol 📝 till VÄNSTER, copy-paste text till HÖGER
 8. ✅ NPF-vänlig design:
@@ -247,37 +290,49 @@ Deadline: Torsdag 15:00
 
 ---
 
-## 📋 PRESENTATION FLOW (90 minuter — 14 SLIDES)
+## 📋 PRESENTATION FLOW (90 minuter — FLEXIBELT ANTAL SLIDES)
+
+**ANTALET SLIDES ÄR INTE ETT MÅL I SIG SJÄLV.**
+
+Normalt: 16-22 slides  
+Färre/fler endast när informationen kräver det
+
+**Prioritetsordning när du bygger:**
+1. ✅ Alla förstår nuläget (projektstatus, teamstatus)
+2. ✅ Alla förstår sin egen situation (är jag blockerad? vad gör jag nu?)
+3. ✅ Alla vet nästa handling (konkret issue + deadline)
+4. ✅ Ingen text överlappar eller blir för tät (WCAG AA)
+5. ➜ Därefter minimeras antal slides
 
 ```
 09:00-09:10 (10 min) — SLIDES 0-1
    📝⓪ Presentationsslide + Agenda
-   📝⓪ Påminnelse (kort & koncist)
    📝① Övergripande (Kursen + Projektet + Avanza + Tidslinje)
 
-09:10-09:25 (15 min) — SLIDES 2-4 (TEAM STATUS)
-   📝② Frontend mot målen
-   📝③ Backend mot målen
-   📝④ Native mot målen
+09:10-09:25 (15 min) — SLIDES 2-7 (TEAM STATUS = 2 slides per team!)
+   📝③ Frontend: Status & Varför
+   📝③ Frontend: VAD BETYDER DET FÖR ER + VEM GÖR VAD NU
+   📝④ Backend: Status & Varför
+   📝④ Backend: VAD BETYDER DET FÖR ER + VEM GÖR VAD NU
+   📝⑤ Native: Status & Varför
+   📝⑤ Native: VAD BETYDER DET FÖR ER + VEM GÖR VAD NU
 
-09:25-09:30 (5 min)  — SLIDES 5-6
-   📝⑤ Vad gjordes förra veckan
-   📝⑥ Beroenden, Risker, Sårbarheter
+09:25-09:35 (10 min) — SLIDES 8-9
+   📝⑥ Vad gjordes förra veckan
+   📝⑦ Beroenden, Risker, Blocker-status
 
-09:30-09:40 (10 min) — SLIDE 7
-   📝⑦ Team-support förslag (issue-byte, bryta ner, etc)
-
-09:40-10:00 (20 min) — SLIDES 8-10
+09:35-10:00 (25 min) — SLIDES 10-12
    📝⑧ Prioritering & Scope denna vecka
-   📝⑨ Estimering & Risk
-
-10:00-10:25 (25 min) — SLIDES 11-13
+   📝⑨ Estimering & Kapacitet
    📝⑩ Tekniska Beslut (om några)
-   📝⑪ Arbetsuppgifter denna vecka
-   📝⑫ Nästa Steg & Sammanfattning
+
+10:00-10:25 (25 min) — SLIDES 13-14
+   🆕 📝⑪ NÄR VI LÄMNAR MÖTET (TABELL MED PERSON | TEAM | ISSUE | GÖR NU | KLAR NÄR)
+   📝⑫ Sammanfattning (fokus, status, lycka till)
 
 10:25-10:30 (5 min) — AVSLUT
-   Bekräfta alla vet sitt jobb
+   Bekräfta alla vet sitt jobb ✓
+   Alla har tydlig nästa handling ✓
 ```
 
 ---
@@ -356,51 +411,112 @@ Deadlines:
 
 ---
 
-### SEKTION 📝③ — FRONTEND TEAM STATUS (Per team 5-10 min)
+### SEKTION 📝③ — FRONTEND TEAM STATUS (OBLIGATORISK STRUKTUR)
 
-**Slide 3.1 — 📝③**
-- Titel: "🟢 Frontend Team — ON TRACK"
-- Innehål:
-  - Progress: 80% (████████░░)
-  - Issues: 4 / 5 done
-  - Vad är klart: [Issues]
-  - Vad pågår: [Issues]
-  - Blockers: None / [Beskrivning]
+**Slide 3.1 — 📝③ FRONTEND: STATUS & VARFÖR**
+```
+📝③ Frontend — [🟢 GRÖN / 🟠 ORANGE / 🔴 RÖD]
+
+STATUS:
+Progress: [XX%] (████░░░░░░)
+Denna vecka: [X av Y] issues done
+
+VARFÖR denna status?
+✅ Klart: #XX, #YY [namn]
+🔄 Pågår: #ZZ [namn] — väntar på backend
+🔴 Blockerad: [vad?] [namn]
+```
+
+**Slide 3.2 — 📝③ FRONTEND: VAD BETYDER DET FÖR ER + VEM GÖR VAD**
+```
+📝③ För varje person i Frontend:
+
+VAD BETYDER DET FÖR ER?
+Lisa (#40 Auth): Fortsätt med mockad integration → backend kommer torsdag
+Ali (#52 Responsive): Kan jobba fullt ut → ingen blocker, prioritera tester
+Kir (#XX): Ledig kapacitet → kan ta på sig extra test
+
+FOKUS DENNA VECKA:
+Lisa → #40 Auth (måste klart torsdag för integration)
+Ali → #52 Responsive (kan avslutas, sen test #XX)
+Kir → #XX Tester (kan ta extra om behövs)
+
+Behöver vi hjälp? → Nej
+Kan vi avlasta? → Ja, Ali kan ta backlog-test efter #52
+```
 
 ---
 
-### SEKTION 📝④ — BACKEND TEAM STATUS
+### SEKTION 📝④ — BACKEND TEAM STATUS (OBLIGATORISK STRUKTUR)
 
-**Slide 4.1 — 📝④**
-- Titel: "🟠 Backend Team — SLIGHT DELAY"
-- Innehål:
-  - Progress: 60% (██████░░░░)
-  - Issues: 2 / 4 done
-  - Vad är klart: [Issues]
-  - Vad är bakom: [Issues]
-  - Blockers: [Beskrivning]
-  - Åtgärd: [Vad gör vi?]
+**Slide 4.1 — 📝④ BACKEND: STATUS & VARFÖR**
+```
+📝④ Backend — [🟢 GRÖN / 🟠 ORANGE / 🔴 RÖD]
+
+STATUS:
+Progress: [XX%] (████░░░░░░)
+Denna vecka: [X av Y] issues done
+
+VARFÖR denna status?
+✅ Klart: #XX [namn]
+🔄 Pågår: #YY [namn]
+🔴 Blockerad: FX-integrationstester väntar på möte med Avanza
+```
+
+**Slide 4.2 — 📝④ BACKEND: VAD BETYDER DET FÖR ER + VEM GÖR VAD**
+```
+📝④ För varje person i Backend:
+
+VAD BETYDER DET FÖR ER?
+Marco (#45 FX): Blockerad på Avanza-möte → kan jobba med fallback: risk-metriken istället
+Jana (#48 Tests): Fokus på unit-tests (inte integration än) → kan jobba fullt ut
+Anna (#51 Core): Väntar på Marco → kan börja refaktor medan du väntar
+
+FOKUS DENNA VECKA:
+Marco → #45 FX (blockerad) + #48 Risk parallellt
+Jana → #48 Tests (ej blockerad, fortsätt)
+Anna → Refaktor parallellt (#51) medan Marco löser FX
+
+Behöver vi hjälp? → Ja, behöver 4h från Frontend för integration-review torsdag
+Kan vi avlasta? → Nej, alla är blockerade/fokuserade
+```
 
 ---
 
-### SEKTION 📝⑤ — NATIVE TEAM STATUS
+### SEKTION 📝⑤ — NATIVE TEAM STATUS (OBLIGATORISK STRUKTUR)
 
-**Slide 5.1 — 📝⑤**
-- Titel: "🔴 Native Team — CRITICAL"
-- Innehål:
-  - Progress: 40% (████░░░░░░)
-  - Issues: 1 / 3 done
-  - Vad är klart: [Issues]
-  - Vad är blockat: [Issues]
-  - KRITISK BLOCKER: [Beskrivning]
+**Slide 5.1 — 📝⑤ NATIVE: STATUS & VARFÖR**
+```
+📝⑤ Native — [🟢 GRÖN / 🟠 ORANGE / 🔴 RÖD]
 
-**Slide 5.2 — 📝⑤**
-- Titel: "🚨 Omedelbar Åtgärd Behövs"
-- Innehål:
-  - Backend + Native pair prog IDAG 14:00
-  - Sharpe spec writing (1 hour)
-  - Implementation (3 hours)
-  - Deadline: SAME DAY
+STATUS:
+Progress: [XX%] (████░░░░░░)
+Denna vecka: [X av Y] issues done
+
+VARFÖR denna status?
+✅ Klart: [—]
+🔄 Pågår: #XX [namn]
+🔴 KRITISK BLOCKER: Väntar på API-schema från Backend (blockerar allt)
+```
+
+**Slide 5.2 — 📝⑤ NATIVE: VAD BETYDER DET FÖ ER + VEM GÖR VAD + OMEDELBAR ÅTGÄRD**
+```
+📝⑤ För varje person i Native:
+
+VAD BETYDER DET FÖR ER?
+Kris: Du kan inte starta #XX tills Backend är klar → fallback-arbete: infrastruktur-setup
+Sam: Samma blocker
+
+FOKUS DENNA VECKA:
+Kris → Vänta på #XX (blockerad av Backend) → jobba med infrastruktur-setup istället
+Sam → Vänta på schema → review och design (kan göras offline)
+
+⚠️ OMEDELBAR ÅTGÄRD:
+Backend + Native pair-prog IDAG 14:00-17:00 → API-schema klart
+= Då kan Native börja bygga i morgon 09:00
+
+Blockers ownare: Marco (Backend) — status uppdateras dagligen
+```
 
 ---
 
@@ -491,22 +607,60 @@ Deadlines:
 
 ---
 
-### SEKTION 📝⑪ — NÄSTA STEG & SAMMANFATTNING
+### SEKTION 📝⑪ — NÄR VI LÄMNAR MÖTET (MÖTETS VIKTIGASTE SLIDE!)
 
-**Slide 12.1 — 📝⑪**
-- Titel: "Nästa Steg"
-- Innehål:
-  - GitHub Project Board updated
-  - Pair sessions booked
-  - Deadlines clear
+**Slide 11 — 📝⑪ NÄR VI LÄMNAR MÖTET**
 
-**Slide 12.2 — 📝⑪**
-- Titel: "Sammanfattning"
+🆕 **DENNA SLIDE ÄR MÖTETS VIKTIGASTE — DEN ÄR EN FAKTISK INDIVIDUELL UTCHECKLING, INTE EN RAPPORT**
+
+```
+📝⑪ NÄR VI LÄMNAR MÖTET — VARJE PERSON KAN SVARA PÅ DENNA
+
+Obligatorisk tabell (MÅSTE visas):
+
+┌──────────┬────────┬────────┬──────────────────┬──────────┬──────────┬──────────────────┐
+│ Person   │ Team   │ Issue  │ Gör nu            │ Klar när │ Deadline │ Beroende av      │
+├──────────┼────────┼────────┼──────────────────┼──────────┼──────────┼──────────────────┤
+│ Lisa     │Frontend│ #40    │ Frontend auth     │ Torsdag  │ 15:00    │ Backend #45      │
+│ Ali      │Frontend│ #52    │ Responsive test   │ Torsdag  │ 15:00    │ —                │
+│ Marco    │Backend │ #45    │ FX integration    │ Torsdag  │ 15:00    │ Avanza möte      │
+│ Kris     │Native  │ #XX    │ Väntar på #45     │ Fredag   │ 17:00    │ Backend #45      │
+└──────────┴────────┴────────┴──────────────────┴──────────┴──────────┴──────────────────┘
+
+EXTRA SEKTIONER (om relevant denna vecka):
+
+⚠️ SAKNAR TYDLIG UPPGIFT:
+- [Namn] — ej assignad än, fördela under mötet
+- [Namn] — blockerad, planera fallback-arbete
+
+🤝 KAN AVLASTA:
+- Ali (Frontend) — har 3h kapacitet efter #52 → kan ta backlog-test
+- [Namn] — kan hjälpa [team] med [vad]
+
+🔗 VÄNTAR PÅ:
+- Kris (Native) blockerad av Backend #45 → arbetar med infrastruktur-setup istället
+- Marco blockerad av Avanza-möte → arbetar med risk-metrics parallellt
+```
+
+**Mötet får INTE avslutas förrän:**
+- [ ] Alla personer i tabellen är listade
+- [ ] Alla aktiva issues har assignee
+- [ ] Alla vet vad "klart" betyder för sin uppgift
+- [ ] Alla blockers har owner + status
+- [ ] Alla vet om de ska fortsätta, byta fokus eller hjälpa någon annan
+- [ ] Saknade assignments är planerade eller delagda under mötet
+
+---
+
+### SEKTION 📝⑫ — SAMMANFATTNING & LYCKA TILL
+
+**Slide 12 — 📝⑫ SAMMANFATTNING**
+- Titel: "Sammanfattning & Lycka Till"
 - Innehål:
-  - Fokus denna vecka: [...]
-  - Kritiska actions: [...]
-  - Status: 🟢 / 🟠 / 🔴
-  - "Lycka till denna vecka!"
+  - Fokus denna vecka: [1-2 saker]
+  - Kritiska actions: [Lista 2-3]
+  - Status: 🟢 / 🟠 / 🔴 (kort förklaring)
+  - "Lycka till denna vecka!" + emoji
 
 ---
 
@@ -592,39 +746,44 @@ Secretary vet: "Slide med 📝⑥ = Jag fyller in punkt 6 i protokollet"
 **KRITISKT — DESSA REGLER ÄR TVINGANDE:**
 
 ✅ MÅSTE GÖRA:
-- [ ] EXAKT 14 slides (inte 10, inte 12, INTE FÄRRE)
+- [ ] Normalt 16-22 slides (fler/färre endast om information kräver det)
+- [ ] Varje team-slide MÅSTE ha TVÅ sub-slides: STATUS & VARFÖR + VAD BETYDER DET FÖR OSS
 - [ ] Slide 0: Presentationsslide + Agenda
 - [ ] Slide 1: TRE MÅLSYSTEM (Kursen + Projektet + Avanza + Tidslinje)
-- [ ] Slides 2-4: Per-team status (Frontend/Backend/Native)
-- [ ] Slide 5: Vad gjordes förra veckan
-- [ ] Slide 6: Beroenden, Risker, Sårbarheter
-- [ ] Slide 7: Team-support förslag
-- [ ] Slides 8-13: Prioritering, Estimering, Beslut, Arbetsuppgifter, Nästa Steg
+- [ ] Slides med team-status (Frontend/Backend/Native) — minst 2 slides per team
+- [ ] Slide: Vad gjordes förra veckan
+- [ ] Slide: Beroenden, Risker, Blockers
+- [ ] Slide: Prioritering & Scope
+- [ ] Slide: Estimering & Kapacitet
+- [ ] 🆕 Slide: NÄR VI LÄMNAR MÖTET (TABELL: Person | Team | Issue | Gör nu | Klar när | Deadline)
+- [ ] Slide: Sammanfattning
 - [ ] VARJE slide får symbol 📝⓪①②③ etc
 - [ ] Symbol till VÄNSTER, text till HÖGER
 - [ ] SAMMA struktur varje vecka (prediktibel)
 
 ❌ ALDRIG GÖRA:
-- [ ] Aldrig färre än 14 slides
-- [ ] Aldrig hoppa över Slide 1 (tre målsystem är KRITISKT)
-- [ ] Aldrig utelämna någon sektion
-- [ ] Aldrig lägga till egna "kreativa" extra slides
+- [ ] Aldrig hoppa över Slide 0 eller Slide 1 (tre målsystem är KRITISKT)
+- [ ] Aldrig utelämna någon team eller göra bara EN slide per team
+- [ ] Aldrig utelämna "NÄR VI LÄMNAR MÖTET" — den är mötets viktigaste slide
+- [ ] Aldrig lägga till egna "kreativa" extra slides utan mål
 - [ ] Aldrig ändra ordningen på slides
 - [ ] Aldrig dölja deadlines eller kursmål
 - [ ] Aldrig för mycket text (max 3-5 bullets per slide)
+- [ ] Aldrig sälj en presentation utan tydlig tabell över vem som gör vad när
 
 **Om du får denna instruktion och är en AI:**
-- Du MÅSTE skapa exakt 14 slides
 - Du MÅSTE följa denna struktur
+- Du MÅSTE ha minst två slides per team (Status & Varför + Betydelse & Handling)
 - Du MÅSTE sätta symbol på varje slide
 - Du MÅSTE inkludera alla tre målsystem (Kursen, Projektet, Avanza)
+- Du MÅSTE inkludera "NÄR VI LÄMNAR MÖTET" tabell
 - Avvikelse från denna struktur = MISSLYCKAD presentation
 
 **EXEMPEL-OUTPUT (vad AI ska leverera):**
 ```
 ✅ Presentation klar! Format: PowerPoint
 
-SLIDE-STRUKTUR (14 slides totalt):
+SLIDE-STRUKTUR (18-20 slides — FLEXIBELT antal):
 
 Slide 0.1: 📝⓪ PRESENTATIONSSLIDE
 Slide 0.2: 📝⓪ AGENDA & PÅMINNELSE
@@ -634,24 +793,42 @@ Slide 1.2: 📝① PROJEKTET (MVP v2)
 Slide 1.3: 📝① AVANZA SOM KUND
 Slide 1.4: 📝① TIDSLINJE & CHECKLISTOR
 
-Slide 2: 📝② FRONTEND mot målen
-Slide 3: 📝③ BACKEND mot målen
-Slide 4: 📝④ NATIVE mot målen
+Slide 3.1: 📝③ FRONTEND: Status & Varför
+Slide 3.2: 📝③ FRONTEND: VAD BETYDER DET FÖR ER + VEM GÖR VAD NU
 
-Slide 5: 📝⑤ Vad gjordes förra veckan
-Slide 6: 📝⑥ Beroenden, Risker, Sårbarheter
-Slide 7: 📝⑦ Team-support förslag
+Slide 4.1: 📝④ BACKEND: Status & Varför
+Slide 4.2: 📝④ BACKEND: VAD BETYDER DET FÖR ER + VEM GÖR VAD NU
+
+Slide 5.1: 📝⑤ NATIVE: Status & Varför
+Slide 5.2: 📝⑤ NATIVE: VAD BETYDER DET FÖR ER + VEM GÖR VAD NU
+
+Slide 6: 📝⑥ Vad gjordes förra veckan
+Slide 7: 📝⑦ Beroenden, Risker, Blockers
 
 Slide 8: 📝⑧ Prioritering & Scope
-Slide 9: 📝⑨ Estimering & Risk
-Slide 10: 📝⑩ Tekniska Beslut
-Slide 11: 📝⑪ Arbetsuppgifter denna vecka
-Slide 12: 📝⑫ Nästa Steg & Sammanfattning
+Slide 9: 📝⑨ Estimering & Kapacitet
+Slide 10: 📝⑩ Tekniska Beslut (om några)
 
-TOTALT: 14 slides (som föreskrivit)
+🆕 Slide 11: 📝⑪ NÄR VI LÄMNAR MÖTET
+   ┌──────────┬────────┬────────┬──────────┬──────────┬──────────┐
+   │ Person   │ Team   │ Issue  │ Gör nu   │ Klar när │ Deadline │
+   ├──────────┼────────┼────────┼──────────┼──────────┼──────────┤
+   │ Lisa     │Frontend│ #40    │ Auth     │ Torsdag  │ 15:00    │
+   │ Marco    │Backend │ #45    │ FX       │ Torsdag  │ 15:00    │
+   │ Kris     │Native  │ #XX    │ Väntar   │ Fredag   │ 17:00    │
+   └──────────┴────────┴────────┴──────────┴──────────┴──────────┘
+
+Slide 12: 📝⑫ Sammanfattning & Lycka Till
+
+TOTALT: 18-20 slides (normalt antal för denna struktur)
 
 Du kan nu:
 - Öppna denna presentation
 - Visa den under mötet (09:00-10:30)
 - Secretary använder symbolerna 📝 för att veta vad som ska fyllas in i protokollet
+- ALLA DELTAGARE vet att:
+  ✓ Deras team-status (grön/orange/röd och varför)
+  ✓ Vad det betyder för dem personligen
+  ✓ Vad de ska göra näst
+  ✓ Deadline för deras arbete
 ```

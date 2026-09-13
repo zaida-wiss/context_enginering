@@ -12,7 +12,40 @@ Denna fil visar BARA visuella layouts & designexempel.
 
 ---
 
-## 🚨 MEGA-REGEL 0: VISUELL PEDAGOGIK FÖR BILDTÄNKARE
+## 🎯 MEGA-REGEL 0A: INDIVIDPERSPEKTIV — KRITISK REGEL
+
+**En teammedlem ska aldrig behöva tolka projektstatus för att förstå vad den själv ska göra.**
+
+När en slide visar ett problem MÅSTE den, när relevant, också visa konsekvensen för arbetets och nästa handling:
+
+```
+🔴 DÅLIGT EXEMPEL:
+"Frontend är orange. Auth är blockerad."
+
+🟢 BRA EXEMPEL:
+"Frontend är orange eftersom #40 Auth väntar på backend.
+Lisa fortsätter #40 med mockad integration.
+Ali fortsätter #52 Responsive Design eftersom den inte är blockerad.
+= I morgon kan Lisa börja integration när backend är klar."
+```
+
+**INFORMATIONSKEDJAN SOM MÅSTE FINNAS:**
+```
+Projektets status → Teamets läge → Min personliga situation → Min nästa handling
+```
+
+Om någon länk saknas är presentationen ofullständig.
+
+**KRITIK TEST:** Efter mötet bör varje person kunna säga:
+- "Mitt team är [grön/orange/röd] och här är varför"
+- "Mig påverkar det så här"
+- "Nästa dag gör jag detta"
+
+Om en person måste gissa eller tolka = presentationen är INTE KLAR.
+
+---
+
+## 🚨 MEGA-REGEL 0B: VISUELL PEDAGOGIK FÖR BILDTÄNKARE
 
 **Presentationen är FÖR DE SOM TÄNKER BILDLIGT.**
 
@@ -68,7 +101,7 @@ Inga slides som är BARA text ✋
 
 ---
 
-## 🚨 MEGA-REGEL 1: VARJE ISSUE MÅSTE HA ASSIGNEE — LÄGG DETTA ÖVERST!
+## 🚨 MEGA-REGEL 1: VARJE ISSUE MÅSTE HA ASSIGNEE
 
 **Du får ALDRIG skriva ett issue-nummer utan assignee i parentes.**
 
