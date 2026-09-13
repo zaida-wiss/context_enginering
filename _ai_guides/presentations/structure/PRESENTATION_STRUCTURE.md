@@ -73,21 +73,43 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 
 ---
 
-## 📝② PROJEKTETS NULÄGE & NÄSTA DEADLINE
+## 📝② PROJEKTETS NULÄGE & KRITISKA DEADLINES
 
-**Syfte:** Etablera referenspunkt för all kommande analys
+**Syfte:** Etablera referenspunkt för all kommande analys — VAR VI STÅR I TIDSPLANEN
 
 **Slides:**
 - **②A: Övergripande status** — var står vi mot slutleverans?
-- **②B: Nästa externa checkpoint** — nästa deadline/demo/milstolpe och hur långt ifrån vi är
+- **②B: Kritiska deadlines denna sprint och framåt** — CTO, Kvaldemo, Final
 
-**Obligatoriska element:**
-- ✅ Slutleverans-deadline synlig och framräknad
-- ✅ Nästa delpunkt/checkpoint (demo, review, integration-test)
-- ✅ Status mot deadline: 🟢 ON TRACK / 🟠 SLIGHT RISK / 🔴 CRITICAL
+**Obligatoriska element (MÅSTE VISAS):**
+- ✅ **NÄSTA DEADLINE (denna sprint):** CTO-underlag ELLER aktuell fokus-deadline
+- ✅ **Kvaldemo-datum:** 22 oktober (denna månad)
+- ✅ **Slutleverans-deadline:** 4 november (slutcheck 15:00)
+- ✅ **Finaldag:** 5 november
+- ✅ **Status mot varje deadline:** 🟢 ON TRACK / 🟠 SLIGHT RISK / 🔴 CRITICAL
 - ✅ Projektets kundvärde/affärsbehov som bakgrund (varför gör vi det här?)
+- ✅ Dagar/veckor kvar till nästa kritisk deadline (framräknad från idag)
 
-**Data från:** Project Board, meeting protocol, course requirements
+**KRITISKA DEADLINES (dessa MÅSTE synas på slide ②B):**
+```
+🔴 CTO-underlag       — 24 sep 16:00  (V6)
+🟠 Kvaldemo-plan      — 15 okt 17:00  (V9)
+🟢 KVALDEMO           — 22 okt 09:00  (V10) ← FINALISTVAL
+🟠 Omtagsplan         — 26 okt 16:00  (V11)
+🟢 SLUTLEVERANS       — 4 nov 15:00   (V12)
+🎊 FINALDAG           — 5 nov 09:00   (V12)
+```
+
+**Format för slide ②B (deadline-timeline):**
+Visuell timeline (eller tabell) som visar:
+- Deadline-namn
+- Datum
+- Vecka
+- Dagar kvar från idag
+- Status (🟢/🟠/🔴)
+- Vad som behövs (CTO-underlag = risk-analysis + technical decisions, osv)
+
+**Data från:** SCHEDULE.md (officiell kursschema), Project Board, meeting protocol
 
 ---
 
