@@ -285,35 +285,33 @@ Eller:
 × = Blockerad/Kritisk (stoppsymbol)
 ```
 
-### FÄRG SEMANTIK — DENNA SLIDE BARA
+### FÄRG SEMANTIK — KONSEKVENT ÖVERALLT
 
-**⚠️ KRITISK REGEL: Orange på denna slide betyder INTE risk/varning.**
+**REGEL: Färger betyder alltid samma sak i HELA presentationen**
 
 ```
-ENDAST PÅ "SEDAN FÖRRA MÖTET"-SLIDEN:
-
-🟢 Grön = KLART DENNA VECKA (verifierat färdigt enligt DoD)
-🟠 Orange = PÅBÖRJAT — FORTSÄTTER (arbete med faktisk framdrift denna vecka)
-
-Orange betyder här: "Arbete som rör sig framåt och kan förväntas framskrida nästa vecka"
-
-ALDRIG på denna slide: gul/gul = risk, eller röd = blocker
+🟢 Grön = KLART denna vecka (verifierat färdigt enligt DoD)
+🔵 Blå = PÅGÅR denna vecka (arbete med faktisk framdrift, fortsätter nästa vecka)
+🟠 Orange = RISK/OSÄKERHET överallt (varning, ej på Slide ①)
+🔴 Röd = BLOCKER/KRITISK överallt
 ```
 
-**Varför detta är nödvändigt:**
-- Denna slides syfte är ERKÄNNANDE ("Vi gjorde detta!")
-- Orange på denna slide = neutralt, faktisk framdrift
-- Orange på risk/beroende-slides = varning/uppmärksamhet
-- Dessa är två helt olika semantiker och måste hållas åtskilda
+**Varför detta är viktigt:**
+- Orange betyder **enbart** risk/uppmärksamhet i presentationen
+- "Pågår" används blått för att skilja från risk
+- Slide ① visar bara två färger: grön (levererat) + blå (pågår)
+- Risker och blockers visas på separata Beroenden/Risker-slides
 
-**I presentationen måste detta förklaras explicit:**
+**I presentationen förklaras detta:**
 ```
 Förra veckan − status på teamets arbete:
 🟢 KLART denna vecka (färdigt enligt DoD)
-🟠 PÅBÖRJAT denna vecka (fortsätter nästa vecka med framdrift)
+🔵 BYGGDE VIDARE denna vecka (faktisk framdrift, fortsätter)
+
+[Risker, blockers och beroenden visas på senare slides]
 ```
 
-Detta säkerställer att tittare förstår färgernas specifika betydelse på denna slide.
+Resultat: Färger är aldrig tvetydiga. Tittare förstår direkt vad som är levererat, pågår, eller behöver uppmärksamhet.
 
 ### KONKRET TEXT
 
@@ -367,14 +365,14 @@ Parallellt pågick omfattande arbete inom riskberäkning och integration.
 
 ═══════════════════════════════════════════════════════════════
 
-🟠 NATIVE & RISKMOTOR (pågår)
+🔵 NATIVE & RISKMOTOR (pågår)
 Omfattande utbyggnad av riskberäkning — rolling estimates och utökade tester.
    → Risk calculation logic utbyggd (rolling 3m, 12m, YTD)
    → Additional tests för edge cases
    → API-integration test-verktyg
    Pågår: PR #92 · 14 commits denna vecka · Fortsätter nästa vecka
 
-🟠 FRONTEND & DASHBOARD
+🔵 FRONTEND & DASHBOARD
 Layout, CSS-moduler och responsivitet påbörjades.
    → Dashboard-komponenter byggda
    → Responsive layout för desktop/tablet/mobile
