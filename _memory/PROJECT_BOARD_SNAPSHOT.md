@@ -1,18 +1,30 @@
 ---
 name: project_board_snapshot
-description: Snapshot of GitHub Project Board — AI reads this when Board API is not directly accessible
+description: Snapshot of GitHub Project Board — FALLBACK ONLY (AI reads live board by default)
 metadata:
   type: data
   snapshot_date: 2026-09-13
   snapshot_time: "08:42"
   snapshot_tz: "CEST"
-  source: "GitHub Project Board export"
-  instructions: "Update by: 1) Visit board URL, 2) Screenshot or copy column status, 3) Paste here organized by column"
+  source: "GitHub Project Board (fallback only)"
+  status: "OPTIONAL — not needed if live link works"
+  instructions: "Only update if live Project Board link fails. Otherwise leave empty."
 ---
 
 # 📊 PROJECT BOARD SNAPSHOT — Status [DATUM]
 
-**STATUS: TEMPLATE — FYLLA IN FÖRE MÖTET**
+**STATUS: FALLBACK ONLY — Behövs bara om live-länken failar**
+
+**LIVE-LÄNKEN (primär):**
+https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+
+AI läser denna direkt. Denna snapshot behövs INTE om länken fungerar.
+
+---
+
+## Om länken failar — använd denna fallback
+
+(Uppdatera bara om GitHub Project Board länken inte går att läsa)
 
 Använd denna process:
 1. Öppna: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
