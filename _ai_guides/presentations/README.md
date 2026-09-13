@@ -8,9 +8,16 @@ metadata:
 
 # 📊 PRESENTATIONS — Navigation Guide
 
-🚨 **INNAN DU BÖRJAR:** Läs [DATA_COLLECTION_MANDATORY.md](DATA_COLLECTION_MANDATORY.md)
+🚨 **INNAN DU BÖRJAR:** Två obligatoriska filer måste läsas i denna ordning
 
-Denna checklist är obligatorisk för alla presentationer. Om du hoppar över den kommer du att dölja arbete (som login-sidor, designsystem, stängd arbete).
+1. **[DATA_COLLECTION_MANDATORY.md](DATA_COLLECTION_MANDATORY.md)** ← START HÄR
+   - Checklist för datainsamling (stängda issues, mergade PRs, commits)
+   - Om denna hoppar över → arbete blir dolt (login-arbete, designsystem, etc)
+
+2. **[design/DESIGN_AUTHORITY.md](design/DESIGN_AUTHORITY.md)** ← SEDAN DESIGN-REGLER
+   - Designkällor kommer ENDAST från context_enginering (aldrig från avanza-team1)
+   - PRESENTATION_STYLE.md är auktoritativ över presentationsverktygets defaults
+   - Presentationsverktygets defaults MÅSTE åsidosättas om de strider mot reglerna
 
 ---
 

@@ -1,14 +1,18 @@
-# 🎨 PRESENTATION FORMAT GUIDE — Exakt Layout för Varje Slide
+# 🎨 PRESENTATION STYLE GUIDE — Design Rules & Layout
 
-**⚠️ DENNA FIL KOMPLETTERAR PRESENTATION_SPEC.md**  
-Se PRESENTATION_SPEC.md för:
-- Issue-format (obligatoriska standarder)
-- Färgsemantik (strikt regel)
-- Risk/Dependency/Blocker-definitioner
-- Preflight-validator
-- Kapacitet & Fallback-arbete
+**🚨 VIKTIGT: Läs [DESIGN_AUTHORITY.md](DESIGN_AUTHORITY.md) FÖRST**
 
-Denna fil visar BARA visuella layouts & designexempel.
+That file defines the SOURCE OF TRUTH for design:
+- Designreglerna i denna fil är AUKTORITATIVA
+- Presentationsverktygets defaults MÅSTE åsidosättas om de strider mot denna fil
+- Designinspiration från avanza-team1 är FÖRBJUDEN
+- context_enginering är ENSAM designkälla för presentationen
+
+**Denna fil kompletterar PRESENTATION_SPEC.md:**
+- PRESENTATION_SPEC.md: Issue-format, färgsemantik, risk/dependency-definitioner
+- PRESENTATION_STYLE.md (denna fil): Visuella layouts, designregler, detaljerade exempel
+
+Denna fil visar EXAKTA layouts & designexempel som måste följas.
 
 ---
 
