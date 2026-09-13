@@ -379,56 +379,75 @@ Färre/fler endast när informationen kräver det
 
 ### SEKTION 📝⑥ — VAD GJORDES FÖRRA VECKAN (5 min)
 
-**Slide 6 — 📝⑥ VAD GJORDES FÖRRA VECKAN — KONSEKVENT FORMAT**
+**Slide 6 — 📝⑥ VAD GJORDES FÖRRA VECKAN — LYFTA FRAM ALLA**
 
-**SYFTE:** Ge teamet en känsla av framsteg och "klapp på axeln"
+**SYFTE:** Ge VARJE MEDARBETARE en känsla av "klapp på axeln" för sitt bidrag
 
-**OBLIGATORISK STRUKTUR — denna slide måste vara identisk varje vecka:**
+**OBLIGATORISK STRUKTUR — denna slide måste inkludera ALLA som varit aktiva:**
 
 ```
 📝⑥ VAD GJORDES FÖRRA VECKAN
 
-✅ MERGED DENNA VECKA:
-  • #XX — Titel (Frontend — Lisa)
-  • #YY — Titel (Backend — Marco)
-  • #ZZ — Titel (Native — Kris)
+🎯 FRONTEND TEAM:
+  ✅ Lisa — #40 Auth-flow: 0% → 80% (nästan klar!)
+  ✅ Ali — #52 Responsive layout merged (användare på alla enheter!)
+  ✅ Jan — Code review för #50 + #51 (höll standarden)
 
-✓ AVSLUTADE ISSUES:
-  • #AA — Titel
-  • #BB — Titel
+🎯 BACKEND TEAM:
+  ✅ Marco — #45 FX-integration: blockerat → resolved (löste kritisk blocker)
+  ✅ Jana — #48 Unit tests: 40 nya test cases (bättre coverage!)
+  ✅ Anna — #51 Core refactor: started (arkitektur)
 
-→ FRAMSTEG I PÅGÅANDE ARBETE:
-  • #CC Frontend: 60% → 85% (Lisa på #40 Auth)
-  • #DD Backend: blockerat → avblockerat (Marco löste integration)
+🎯 NATIVE TEAM:
+  ✅ Kris — #XX Error handling: 60% → merged (användare får bättre feedback!)
+  ✅ Sam — Design review + accessibility check (alla kan använda det)
 
-🔓 BLOCKERS LÖSTA:
-  • #EE Som var blockerad av #FF — nu klart
+DENNA VECKA GJORDES:
+• 3 features merged (eller nära)
+• 4 blockers lösta
+• 6 människor bidrog aktivt
+• 40+ ny test-coverage
+• 0 producerade bugs
 ```
 
-**DENNA VECKA ÅTGÄRDES:**
-- X issues merged
-- Y blockers lösta
-- Z integrations lösta
+**VIKTIGT — INKLUDERA DESSA BIDRAG:**
+✅ Merged kod (förstås)
+✅ Nästan klara features ("80% → nästan klar!" betyder något)
+✅ Code reviews (QA är arbete)
+✅ Tester & test-coverage (osynlig men kritisk)
+✅ Dokumentation & arkitektur-arbete
+✅ Problem-löst & blockers avlägsnade
+✅ Tillgänglighet & design-review
 
-**DATA MÅSTE KOMMA FRÅN (i denna ordning):**
-1. GitHub merged PRs denna vecka (GitHub Connector/web)
-2. Closed issues denna vecka (GitHub Issues)
-3. Project Board transitions (moved from "blocked" to "done")
-4. Team-notiser från mötesprotokollet
+**PERSONALISERING — för VARJE person visa:**
+- Namn (inte bara team)
+- Vad de gjorde
+- Framsteg eller påverkan ("50% → 80%", "löste blocker", "nya tests")
+- Varför det spelar roll för teamet/kunden
+
+**DATA MÅSTE KOMMA FRÅN:**
+1. GitHub merged PRs + PR-status (vem gjorde vad)
+2. Closed + in-progress issues (vem jobbar på vad)
+3. Code-review historik (vem reviewade vad)
+4. Git log per person (commits, inte bara final merge)
+5. Project Board + Notes (vilka blockers löste vem)
+6. Mötesprotokollet (vilka jobb nämdes)
 
 **KÄNSLA OCH TON:**
-✅ Fokusera på FRAMSTEG, inte bara "issues closed"
-✅ Visa vilka människor gjorde arbetet
-✅ Visa blockers som LÖSTA (negativ → positiv)
-✅ Känsla av momentum och framsteg
+✅ VARJE person är synlig, även om job inte är "helt klart"
+✅ Visa PÅVERKAN, inte bara "issues closed" ("användare på alla enheter!")
+✅ Både merged och pågåande arbete ("80% → nästan klar" är framsteg)
+✅ Lyfta fram svårt arbete (refactor, tester, reviews, blockers)
+✅ Känsla av "vi kom långt denna vecka, tack alla"
 
 **ALDRIG:**
-❌ Bara en slumpad lista på issues
-❌ Tekniska commit-messages utan kontext
-❌ Negativa framställningar ("vi var långsam")
-❌ För mycket text (max 10 bullets totalt)
+❌ Bara merged — glöm inte nästan-klara eller pågåande
+❌ Bara kod — se även reviews, tester, dokumentation
+❌ Bara namn på issue — förklara vad personen GJORDE
+❌ För mycket text, men ALLA namn måste synas
+❌ Negativitet ("vi lag långsam") — visa istället frametstegen
 
-**SAMMA FORMAT VARJE VECKA** → framsteg blir synligt vecka för vecka
+**SAMMA FORMAT VARJE VECKA** → varje vecka ser vart vi är, vem som gjorde vad, och att alla bidrag räknas
 
 ---
 
