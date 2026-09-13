@@ -51,6 +51,89 @@ GitHub är en REMOTE datasource för denna presentation, inte en lokal working d
 
 ---
 
+## 🚨 OBLIGATORISK REGEL 1 — MÖTESPUNKTSMARKÖRER
+
+**VARJE slide MÅSTE märkas med mötespunktssymbol överst vänster.**
+
+```
+KRAVSPECIFIKATION:
+
+RÄTT:
+  ✅ 📝① SEDAN FÖRRA MÖTET — Levererat denna vecka
+  ✅ 📝① SEDAN FÖRRA MÖTET — Byggde vidare denna vecka
+  ✅ 📝② SPRINTMÅL & FOKUS
+  ✅ 📝③ NULÄGE — Övergripande status
+
+FEL:
+  ❌ "SEDAN FÖRRA MÖTET — Levererat denna vecka" (ingen symbol)
+  ❌ "Nuläge" (saknas symbol, rubrik tydlig men inte märkad)
+  ❌ 📝⑤ "Något helt annat" (helt vit symbol)
+
+RULE: Om presentationen har slide utan symbol = presentationen är FELBYGGD
+      även om innehållet råkar matcha rätt mötespunkt
+
+VARFÖR: Symbolerna navigerar mötet. Utan dem kan inte mötesledaren
+        snabbt hitta rätt del av presentationen.
+```
+
+**Source:** PRESENTATION_STRUCTURE.md definierar alla 14 mötespunkter (📝①-⑭)
+
+---
+
+## 🚨 OBLIGATORISK REGEL 2 — DATA SOURCES ENDAST FRÅN REPO & GITHUB
+
+**Presentationen MÅSTE rekonstrueras ENDAST från:**
+- ✅ context_enginering repo (PRESENTATION_SPEC.md, STYLE.md, etc)
+- ✅ GitHub Project data denna vecka (issues, PRs, commits)
+- ✅ Meeting protocol denna vecka (Google Docs från README)
+- ✅ Google Sheets fallback (från DATA_SOURCES.md)
+
+**Presentationen MÅSTE ALDRIG använd:**
+
+```
+❌ FÖRBJUDET: Tidigare konversationer eller chathistorik
+   Exempel: "Vi diskuterade att containers borde..."
+   
+❌ FÖRBJUDET: Design-intuition från andra presentationer
+   Exempel: "Det här såg bra ut på föregående möte..."
+   
+❌ FÖRBJUDET: Personliga minnesanteckningar
+   Exempel: "Jag tror Jan arbetade på..."
+   
+❌ FÖRBJUDET: Antaganden utan GitHub-verifiering
+   Exempel: "Frontend-teamet verkar vara på rätt väg"
+   
+✅ TILLÅTET: GitHub commits, PRs, issues (verifierad data)
+✅ TILLÅTET: Meeting protocol från denna vecka
+✅ TILLÅTET: Context-repo regler och templates
+✅ TILLÅTET: Project Board status (med filter för Board vs Issues divergens)
+```
+
+**VARFÖR DENNA REGEL FINNS:**
+
+ChatGPT-presentationen från förra veckan:
+- Saknade Björn's design system arbete (#79)
+- Saknade Native risk motor arbete (#92)
+- Saknade andra commits/PRs som inte var explicita issues
+
+Root cause: Modellen läste "intuitiv kontext" från konversation
+           istället för att metodiskt gå genom alla GitHub-data
+
+**MEKANISK KONTROLL:**
+
+Presentationen kan verifiera sig själv:
+```
+För varje issue/PR/commit som visas:
+  ☐ Kan jag citera GitHub-länken?
+  ☐ Kan jag se issue/PR/commit-hash på GitHub?
+  ☐ Kan jag visa merge-datum från GitHub?
+  
+Om något svar är NEJ → datan kom från konversation, inte repo
+  → Presentationen är INVALID och måste byggas om från GitHub
+```
+
+---
+
 ## 📋 READING CHECKLIST — Innan Du Börjar Presentationen
 
 **Du behöver läsa DESSA filer för att skapa presentation:**
