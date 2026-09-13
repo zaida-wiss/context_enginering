@@ -461,17 +461,23 @@ Inte lista av issues — lista av ACTIONS.
 
 3. **📝③ Nuläge** — Övergripande status mot sprint-mål
 
-4. **📝④ Frontend-Team** (2 slides — Var är vi? + Vad gör vi?)
+4. **📝④ Frontend-Team** (2-3 slides — Var är vi? + Vad gör vi? + Visual Verification)
    - Slide ④A: Issues, assignees, Git-status, DoD-status
    - Slide ④B: FORTSÄTT/BEHÖVER STÄNGAS/KAN TAS NU/AGERA PÅ
+   - Slide ④C: Screenshots från dev (om _memory/screenshots/01-login.png finns)
+     * Visar arbetet som faktiskt gjort (login flow, dashboard, etc)
 
-5. **📝⑤ Backend-Team** (2 slides — Var är vi? + Vad gör vi?)
+5. **📝⑤ Backend-Team** (2-3 slides — Var är vi? + Vad gör vi? + Visual Verification)
    - Slide ⑤A: Issues, assignees, Git-status, DoD-status
    - Slide ⑤B: FORTSÄTT/BEHÖVER STÄNGAS/KAN TAS NU/AGERA PÅ
+   - Slide ⑤C: Screenshots från dev (om _memory/screenshots/03-api-response.png finns)
+     * Visar API-svar, data-flöde, integration
 
-6. **📝⑥ Native-Team** (2 slides — Var är vi? + Vad gör vi?)
+6. **📝⑥ Native-Team** (2-3 slides — Var är vi? + Vad gör vi? + Visual Verification)
    - Slide ⑥A: Issues, assignees, Git-status, DoD-status
    - Slide ⑥B: FORTSÄTT/BEHÖVER STÄNGAS/KAN TAS NU/AGERA PÅ
+   - Slide ⑥C: Screenshots från dev (om _memory/screenshots/04-mobile-view.png finns)
+     * Visar mobile-vyn, responsive design, user experience
 
 7. **📝⑦ Beroenden & Blockers + Integration Map** (1-3 slides)
    - Flödesdiagram: vad väntar på vad + fallback-arbete
