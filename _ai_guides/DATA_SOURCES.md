@@ -178,36 +178,57 @@ Om en källa misslyckas:
 
 ---
 
-## CANONICAL URLS
+## CANONICAL URLS — DETERMINISTIC DATA SOURCES
 
 ### GitHub Repository
 ```
 https://github.com/chas-challenge-2026/avanza-team1
 ```
 
-### GitHub Issues
+### GitHub Branches (develop + active)
 ```
-https://github.com/chas-challenge-2026/avanza-team1/issues
-```
-
-### GitHub Pull Requests
-```
-https://github.com/chas-challenge-2026/avanza-team1/pulls
+https://github.com/chas-challenge-2026/avanza-team1/branches
+API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/branches
 ```
 
-### GitHub Commits (develop branch)
+### GitHub Commits (develop branch — THIS WEEK)
 ```
-https://github.com/chas-challenge-2026/avanza-team1/commits/develop
+WEB: https://github.com/chas-challenge-2026/avanza-team1/commits/develop
+API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/commits?sha=develop&since=[MONDAY]&until=[NOW]
+```
+
+### GitHub Issues (open + closed this week)
+```
+WEB: https://github.com/chas-challenge-2026/avanza-team1/issues
+API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=all&since=[MONDAY]
+```
+
+### GitHub Pull Requests (open + merged this week)
+```
+WEB: https://github.com/chas-challenge-2026/avanza-team1/pulls
+API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=all&since=[MONDAY]
 ```
 
 ### GitHub Project Board
 ```
-[PROJECT URL TBD — ADD EXACT LINK]
+EXACT URL: [TEAM MUST FILL IN — ask project lead for exact project URL]
+PROJECT ID: [TEAM MUST FILL IN — if using GitHub Projects, provide project number]
+Web: https://github.com/chas-challenge-2026/avanza-team1/projects/[PROJECT_ID]
+API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/projects/[PROJECT_ID]/columns
 ```
 
 ### Meeting Protocol
 ```
-[PROTOCOL LINK — Google Docs or TXT export]
+SOURCE: [TEAM MUST FILL IN — Google Docs link or TXT export URL]
+EXPORT: If Google Docs, use ?export=txt for raw text export
+FALLBACK: _memory/PROTOCOL_SNAPSHOT.md (if live link fails)
+```
+
+### Fallback Snapshot Files (when live sources fail)
+```
+Commits/Branches/Issues/PRs: _memory/GITHUB_SNAPSHOT.md
+Project Board: _memory/PROJECT_BOARD_SNAPSHOT.md
+Meeting Protocol: _memory/PROTOCOL_SNAPSHOT.md
 ```
 
 ---
