@@ -48,6 +48,36 @@ Ditt minne är bara backup
 
 ---
 
+## 📋 INSTRUKTIONSHIERARKI — ROLLEN FÖR VARJE FIL
+
+**README.md bestämmer DATAHÄMTNING. PRESENTATION_SPEC.md bestämmer PRESENTATION-BYGGE.**
+
+### Vem bestämmer vad?
+
+**README.md (denna fil):**
+- ✅ Vilka källor som finns
+- ✅ Hur GitHub-data ska hämtas (Connector/API först, HTML sista)
+- ✅ Fallback-files (_memory/CURRENT_PROJECT_STATUS.md)
+- ✅ Om ett anrop failar: vad betyder det
+- ✅ Vad som gör att något kan markeras som "ej verifierat"
+
+**PRESENTATION_SPEC.md:**
+- ✅ Hur presentationen ska byggas från redan hämtad data
+- ✅ Layout, format, slides, färger
+- ❌ INTE vilka datakällor som ska läsas
+- ❌ INTE hur GitHub-data ska hämtas
+- ❌ INTE hur README-instruktioner ska ignoreras
+
+### Viktig regel
+
+Om PRESENTATION_SPEC.md säger något om datahämtning som MOTSÄGER README.md:
+→ README.md vinner
+→ Datahämtning ALLTID enligt README.md
+
+Detta säkerställer att en enda källa bestämmer hur man får tillgång till information.
+
+---
+
 ## 🚨 REPO-ACCESS — KRITISK REGEL
 
 **Repositories ska ALDRIG klonas lokalt av AI:n.**
@@ -115,13 +145,35 @@ Rapport istället: "Kunde inte läsa [URL], presentationen är klar med [dessa] 
 
 3. ✅ **Läs mötesprotokollet** (länk i context_enginering README)
 
-4. ✅ **Hämta projekt-data från GitHub** (KLONA ALDRIG):
-   - Gå till: https://github.com/chas-challenge-2026/avanza-team1
-   - Läs: README.md
-   - Hämta denna veckas issues (se GitHub Issues-fliken)
-   - Hämta denna veckas PR:er och branches (se PR-fliken)
-   - Hämta commits sedan förra sprintmöte (se Commits-fliken)
-   - Hämta Project Board-status (se Projects-fliken)
+4. ✅ **Hämta projekt-data från GitHub** (PRIORITERAD ÅTKOMSTORDNING)
+
+   Repository: https://github.com/chas-challenge-2026/avanza-team1
+   
+   **A. GIT LOG — Commits sedan förra möte**
+   - Branch: `develop`
+   - Använd GitHub Connector/API FÖRST
+   - Om Connector failar: försök direkt API-URL
+   - Endast HTML-navegering som sista fallback
+   - Om alla misslyckas: rapportera vilken källa som saknas
+   - MISSLYCKAD HTML-läsning = GitHub-data är inte otillgänglig
+   
+   **B. ISSUES**
+   - Använd GitHub Connector/API FÖRST
+   - Hämta: number, title, state, assignees, labels, milestone
+   
+   **C. PULL REQUESTS**
+   - Använd GitHub Connector/API FÖRST
+   - Hämta: number, title, state, head branch, base branch, linked issues
+   
+   **D. BRANCHES**
+   - Använd GitHub Connector/API FÖRST
+   - Jämför aktivt använda brancher mot `develop`
+   
+   **E. PROJECT BOARD STATUS**
+   - Exakt Project-länk: [SERÁ FYLLA I]
+   - Använd GitHub Connector/API FÖRST
+   - Fallback endast: `_memory/CURRENT_PROJECT_STATUS.md`
+   - Först därefter får status anges som "ej verifierad"
 
 5. ✅ **Läs RELEVANT kod ENDAST om behövs för:**
    - ett konkret beroende mellan team
