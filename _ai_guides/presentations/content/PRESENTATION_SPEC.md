@@ -477,14 +477,14 @@ FÄRGKODNING:
   ☐ Inga statusfärgade borders på neutral info
   ☐ Neutral information använder marinblå/grå/vit
 
-INTEGRATION-ANALYS:
-  ☐ Läst PRESENTATION_STRUCTURE.md för integration-slides
-  ☐ Läst aktiva brancher (frontend, backend, native)
+INTEGRATION-ANALYS (inbyggd i punkt ⑥ och ⑩):
+  ☐ Läst PRESENTATION_STRUCTURE.md punkt ⑥ (Beroenden & blockers)
+  ☐ Läst PRESENTATION_STRUCTURE.md punkt ⑩ (Tekniska beslut)
   ☐ Identifierat integrations-kedjor (Frontend API → Backend → Native)
-  ☐ Klassificerat varje kedja (VERIFIERAD/TROLIG/BEHÖVER SYNKAS/MISMATCH/KAN INTE VERIFIERAS)
-  ☐ Integration-slide(r) skapade med konkreta branch-namn + personerna
-  ☐ Varningr om divergerade brancher (långt efter develop)
-  ☐ Kritiska synk-punkter identifierade
+  ☐ API-kontrakt mellan team har avskrivits (punkt ⑩)
+  ☐ Beroenden mellan team är märkta (punkt ⑥)
+  ☐ Branches som påverkar integration är namngivna
+  ☐ Kritiska synk-punkter identifierade och åtgärdade
 
 RISK/BLOCKER/DEPENDENCY:
   ☐ Varje risk har: Nuläge + Konsekvens + Nivå + Åtgärd + Ägare
