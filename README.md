@@ -48,48 +48,110 @@ Ditt minne är bara backup
 
 ---
 
+## 🚨 REPO-ACCESS — KRITISK REGEL
+
+**Repositories ska ALDRIG klonas lokalt av AI:n.**
+
+### FÖRBJUDET
+- ❌ `git clone`
+- ❌ `git pull`
+- ❌ Nedladdning av hela repositoryn
+- ❌ Shell-kommandon för att hämta repot
+- ❌ Att checka ut branches lokalt
+
+### OBLIGATORISK ÅTKOMSTMETOD
+
+Läs filer direkt via HTTP-URL:er:
+
+```
+🟢 Context-repo (denna):
+https://github.com/zaida-wiss/context_enginering
+
+🟢 Raw-filer från context-repo:
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md
+https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+
+🟢 Projekt-repo:
+https://github.com/chas-challenge-2026/avanza-team1
+
+🟢 GitHub-data (issues, PRs, commits, branches):
+Hämta direkt från GitHub via webbläsare eller GitHub Connector/API
+```
+
+AI ska:
+1. ✅ Följa länkarna från README och läsa endast behövliga filer
+2. ✅ Hämta GitHub-data (Issues, PRs, commits, branches) direkt via GitHub
+3. ✅ Läsa raw-filer när links till HTML-sidor inte går
+4. ✅ Om en källa inte går att läsa: säg det, och fortsätt med övriga
+5. ✅ Aldrig kasta bort redan läst data för att kloning failade
+
+### VIKTIGT
+
+Ett misslyckat anrop (404, timeout, access denied) får ALDRIG göra att:
+- redan hämtad projektkontext kastas bort
+- presentationen skapas med ofullständig data
+- agenten ge upp utan att rapportera vad som saknas
+
+Rapport istället: "Kunde inte läsa [URL], presentationen är klar med [dessa] källor"
+
+---
+
 ## 🤖 Du är en AI? START HÄR
 
 ### ⚡ QUICK START — Välj Din Väg
 
-**DU SKA SKAPA EN PRESENTATION?** (Bara 3 filer, ~5 min läsning)
-```
-1. Rensa minnet (obligatorisk minnesrensning)
-2. 🔒 LOCK SOURCES (se nedan — ingen extern sökning!)
-3. Läs DENNA FIL → PRESENTATION_SPEC.md (raw-länk nedan)
-4. Läs projekt-repot: https://github.com/chas-challenge-2026/avanza-team1
-5. Kör integrations-analysen (CROSS_TEAM_INTEGRATION.md)
-6. Skapa presentation enligt PRESENTATION_SPEC.md
-```
+**DU SKA SKAPA EN PRESENTATION?** (Raw-links, ingen kloning)
 
-🔒 **SOURCE LOCK FÖR PRESENTATIONER**
-```
+### PRESENTATION — DATAHÄMTNING I DENNA EXAKTA ORDNING
+
+1. ✅ **Rensa minnet** (obligatorisk minnesrensning)
+
+2. ✅ **Läs context-repot via raw-URLs:**
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/README.md
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
+   - https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/CROSS_TEAM_INTEGRATION.md
+
+3. ✅ **Läs mötesprotokollet** (länk i context_enginering README)
+
+4. ✅ **Hämta projekt-data från GitHub** (KLONA ALDRIG):
+   - Gå till: https://github.com/chas-challenge-2026/avanza-team1
+   - Läs: README.md
+   - Hämta denna veckas issues (se GitHub Issues-fliken)
+   - Hämta denna veckas PR:er och branches (se PR-fliken)
+   - Hämta commits sedan förra sprintmöte (se Commits-fliken)
+   - Hämta Project Board-status (se Projects-fliken)
+
+5. ✅ **Läs RELEVANT kod ENDAST om behövs för:**
+   - ett konkret beroende mellan team
+   - en blocker som ska visas i presentationen
+   - ett API-kontrakt som behöver verifieras
+   - en integrationsrisk
+
+   **Läs INTE** hela docs-mappen eller alla branches utan anledning.
+
+6. ✅ **Skapa presentation** enligt SPRINT_PRESENTATION_STRUCTURE.md
+
+### 🔒 SOURCE LOCK FÖR PRESENTATIONER
+
 ALLOWED:
-✅ context_enginering repo (denna)
-✅ avanza-team1 repo (GitHub + branches + issues + PRs)
-✅ Mötesprotokollet (explicit länk från context_enginering)
-✅ Git log denna vecka
-✅ GitHub Project Board & issues
-✅ Explicit länkade projektfiler
+✅ context_enginering (via raw-URLs)
+✅ avanza-team1 GitHub-data (issues, PRs, commits, Project Board)
+✅ Mötesprotokollet
+✅ Relevant kod (endast vid verifiering av beroenden/blockers)
 
 FORBIDDEN:
-❌ LinkedIn
-❌ Wikipedia
-❌ Avanza.se eller externa webbplatser
-❌ Akademiska databaser (arXiv, etc)
-❌ Nyhetssidor
-❌ Stack Overflow eller bloggar
-❌ Google-sökning
+❌ git clone, git pull, repository checkout
+❌ LinkedIn, Wikipedia, Avanza.se, externa webbplatser
+❌ Akademiska databaser, nyhetssidor, Stack Overflow
+❌ Google-sökning för "kontext"
 ❌ Andra GitHub-repon
 
-Om presentationen behöver info som INTE finns i ALLOWED-källorna:
-→ Skriv "Ej verifierat från projektkällorna"
+**Om presentationen behöver info som INTE finns i dessa källor:**
+→ Skriv: "Ej verifierat från projektkällorna"
 → GISSA INTE
 → SÖK INTE externt
-```
-
-**Raw-link för PRESENTATION_SPEC.md:**
-https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
 
 ---
 
@@ -456,16 +518,23 @@ DU MÅSTE:
 
 ### **STEG 2: Läs Även Projekt-Repot (avanza-team1)**
 
-**Efter du läst context_enginering, gå till projekt-repot och läs:**
+**Efter du läst context_enginering, hämta projekt-data från:**
 
 ```
 https://github.com/chas-challenge-2026/avanza-team1
 ```
 
-Läs **HELA docs-mappen där** +:
+KLONA INTE REPOT. Hämta istället direkt från GitHub:
 - README.md (projekt-överblick)
-- Git log denna vecka (commits & branches)
-- GitHub Project Board denna vecka (status)
+- Git log denna vecka (commits & branches status)
+- GitHub Project Board denna vecka (aktuell status)
+- Issues denna vecka (se Issues-fliken)
+- PR:er och branches (se PR-fliken)
+
+**Läs ENDAST relevant kod när du behöver verifiera:**
+- Ett konkret beroende mellan team
+- En blocker eller integrationsproblem
+- Ett API-kontrakt som saknas
 
 **NU har du FULL kontext från båda repos och kan svara!**
 
