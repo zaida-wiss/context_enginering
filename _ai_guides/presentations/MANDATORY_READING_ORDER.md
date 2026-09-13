@@ -14,25 +14,69 @@ metadata:
 
 ---
 
-## FASE 1: FÖRSTÅ SYSTEMET (5-10 min)
+## 🚨 SINGLE EXECUTION SEQUENCE — ALDRIG FÖR IN DENNA ORDNING
 
-Läs i denna ordning. Allt är obligatoriskt.
+**Du måste följa DENNA ordning. Avvikelse = presentation blir felaktig.**
 
-### 1. **START HÄR: README.md** (denna mapp)
+**DENNA SEKVENS ÄR ABSOLUT OCH FÅR INTE ÄNDRAS:**
+
+### STEG 1: LÄSA INSTRUKTIONER (5 min — MÅSTE göras först)
+
+#### 1a. README.md (denna mapp)
    - Vad är presentations-systemet?
    - Var finns vad?
-   - Länka direkt till nästa fil
 
-### 2. **DATA_COLLECTION_MANDATORY.md** (denna mapp)
-   - INNAN du renderar någon slide, samla denna data
+#### 1b. DATA_COLLECTION_MANDATORY.md (denna mapp)
+   - INNAN något annat — läs detta
    - Checklista för komplett datainsamling
    - Fallback-hierarki
+   - Render-gate (slides får INTE genereras utan denna)
 
-### 3. **structure/PRESENTATION_STRUCTURE.md**
+#### 1c. data/DATA_SOURCES.md (denna mapp)
+   - Vilka sources finns för varje datatyp
+   - Fallback-ordning
+   - Canonical URLs
+
+#### 1d. data/TEAM_ROSTER.md (denna mapp)
+   - Vilka är de 7 team-medlemmarna
+   - Coverage-validation
+
+---
+
+### STEG 2: SAMLA ALL DATA (10-30 min — INNAN något annat)
+
+**Denna steg måste slutföras FULLSTÄNDIGT innan du går vidare.**
+
+- [ ] Branches från develop — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] Commits denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] Merged PRs — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] Open PRs med aktivitet — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] Open issues med aktivitet — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] Project Board status — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] Meeting protocol denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] DoD denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] Team roster — LIVE_VERIFIED
+
+**Om NÅGON källa är MISSING:** → STOPP. Gör inte presentation.
+
+---
+
+### STEG 3: FÖRSTÅ STRUKTUR & REGLER (5 min — nu kan du läsa detta)
+
+#### 3a. structure/PRESENTATION_STRUCTURE.md
    - De 14 mötespunkterna
    - Vad varje punkt ska innehålla
    - Obligatoriska element per punkt
-   - Varför ordningen fungerar
+
+#### 3b. content/PRESENTATION_SPEC.md
+   - Vad sliderna måste innehålla
+   - Färg-semantik
+   - Issue-format
+
+#### 3c. design/PRESENTATION_CONSISTENCY_FRAMEWORK.md
+   - Visuell konsistens
+   - Röda trådar
+   - Varning-signaler
 
 ---
 
@@ -115,15 +159,36 @@ Läs innan du renderar final version.
 
 ---
 
-## SNABB REFERENCE
+## 🚨 RENDER GATE — PRESENTATION FÅR INTE GENERERAS UTAN DETTA
 
-**Om du bara har 5 minuter:** Läs dessa i ordning:
-1. README.md (denna mapp)
-2. DATA_COLLECTION_MANDATORY.md
-3. PRESENTATION_STRUCTURE.md
-4. PRESENTATION_SPEC.md
+**Före rendering, verifiera att ALLA dessa är LIVE_VERIFIED eller FALLBACK_VERIFIED:**
 
-**Dessa är MINIMUM för en presentation.**
+```
+RENDER_GATE_CHECKLIST:
+  ☐ Branches (develop) — status?
+  ☐ Commits denna vecka — status?
+  ☐ Merged PRs — status?
+  ☐ Open PRs med aktivitet — status?
+  ☐ Open issues med aktivitet — status?
+  ☐ Project Board — status?
+  ☐ Meeting protocol — status?
+  ☐ DoD — status?
+  ☐ Team roster — status?
+
+Alla 9 måste ha: LIVE_VERIFIED eller FALLBACK_VERIFIED
+
+Om NÅGON är MISSING:
+  ❌ RENDER GATE CLOSED
+  ❌ Presentation får INTE genereras
+  ❌ Rapportera: "Källa X kunde inte verifieras"
+  
+Om ALLA är VERIFIED:
+  ✅ RENDER GATE OPEN
+  ✅ OK att läsa struktur/spec/design
+  ✅ OK att generera slides
+```
+
+**DENNA GATEN ÄR OBLIGATORISK.**
 
 ---
 
