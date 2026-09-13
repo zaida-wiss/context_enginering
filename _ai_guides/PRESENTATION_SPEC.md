@@ -390,29 +390,44 @@ Inte lista av issues — lista av ACTIONS.
 
 **En mötespunkt ≠ en slide. Presentationen blir 20–30 slides.**
 
-Mötespunkterna är:
-1. **Sedan förra mötet** — Commits från alla team
-2. **Sprintmål** — Big picture
-3. **Nuläge** — Övergripande status
-4. **Frontend: Var är vi?** — Issues, assignees, Git-status, dependencies
-5. **Frontend: Vad gör vi?** — Actionbar guide för vad varje medlem ska göra
-6. **Backend: Var är vi?** — Issues, assignees, Git-status, dependencies
-7. **Backend: Vad gör vi?** — Actionbar guide för vad varje medlem ska göra
-8. **Native: Var är vi?** — Issues, assignees, Git-status, dependencies
-9. **Native: Vad gör vi?** — Actionbar guide för vad varje medlem ska göra
-7. **Integration Map** ⭐ **NYTT & TVINGANDE** — Cross-team-analys från CROSS_TEAM_INTEGRATION.md
-   - Vilka kedjor (Frontend → API → Backend → Native)?
-   - Varje kedjans status: VERIFIERAD/TROLIG/BEHÖVER SYNKAS/MISMATCH/KAN INTE VERIFIERAS
-   - Branch-läsning (vilka brancher, hur långt efter develop)
-   - Kritiska synk-punkter
-8. **Beroenden & Blockers** — Vad väntar på vad + fallback-arbete
-9. **Prioritering & Scope** — Must/Next/Later
-10. **Kapacitet & Estimering** — Tillgängligt vs Behövt
-11. **Risker** — Risk-matrix med åtgärder
-12. **Tekniska Beslut** — Arkitektur-beslut denna vecka
-13. **Sprintplan** — Konkret vem gör vad denna vecka (visar support/pairing)
-14. **Nästa Steg** — Action plan + Teamstöd & Hållbarhet
-15. **Frågor till PL** — Discussion board
+**14 OFFICIELLA MÖTESPUNKTER** (från SPRINT_PROTOCOL_NUMBERED.md):
+
+1. **📝① Sedan förra mötet** — Commits från alla team (7 dagar)
+
+2. **📝② Sprintmål** — Big picture denna vecka
+
+3. **📝③ Nuläge** — Övergripande status mot sprint-mål
+
+4. **📝④ Frontend-Team** (2 slides — Var är vi? + Vad gör vi?)
+   - Slide ④A: Issues, assignees, Git-status, DoD-status
+   - Slide ④B: FORTSÄTT/BEHÖVER STÄNGAS/KAN TAS NU/AGERA PÅ
+
+5. **📝⑤ Backend-Team** (2 slides — Var är vi? + Vad gör vi?)
+   - Slide ⑤A: Issues, assignees, Git-status, DoD-status
+   - Slide ⑤B: FORTSÄTT/BEHÖVER STÄNGAS/KAN TAS NU/AGERA PÅ
+
+6. **📝⑥ Native-Team** (2 slides — Var är vi? + Vad gör vi?)
+   - Slide ⑥A: Issues, assignees, Git-status, DoD-status
+   - Slide ⑥B: FORTSÄTT/BEHÖVER STÄNGAS/KAN TAS NU/AGERA PÅ
+
+7. **📝⑦ Beroenden & Blockers + Integration Map** (1-3 slides)
+   - Flödesdiagram: vad väntar på vad + fallback-arbete
+   - Integration Map (vid behov): Frontend → API → Backend → Native kedjor med status
+   - Code-review avvikelser som blockerar
+
+8. **📝⑧ Prioritering & Scope** — Must/Next/Later
+
+9. **📝⑨ Kapacitet & Estimering** — Tillgängligt vs Behövt
+
+10. **📝⑩ Risker** — Risk-matrix med åtgärder + code-review risker
+
+11. **📝⑪ Tekniska Beslut** — Arkitektur-beslut denna vecka + contracts
+
+12. **📝⑫ Sprintplan** — Konkret vem gör vad + support/pairing
+
+13. **📝⑬ Nästa Steg** — Action plan + Teamstöd & Hållbarhet
+
+14. **📝⑭ Frågor till PL** — Discussion board
 
 ---
 
