@@ -361,12 +361,12 @@ MÅSTE INNEHÅLLA:
 
    **Resultat: Planen är genomförbar OCH hållbar. Vi når målet TILLSAMMANS, inte genom enskilda prestationer.**
 
-8. KONTRAKT & BEROENDEN FRÅN CODE REVIEW
+8. KONTRAKT & BEROENDEN FRÅN CODE REVIEW + GITHUB ACTIONS
    - API-spec för #XX → uppdatera i shared doc
    - JNA-kontrakt för #XX → fastslå och dokumentera
    - Auth-flow → dokumentera i [länk]
-
-9. DIREKT EFTER MÖTET — GITHUB ACTIONS
+   
+   **DIREKT EFTER MÖTET:**
    ☐ GitHub Project Board uppdaterad
    ☐ Assignees satta
    ☐ Blockers/dependencies dokumenterade
