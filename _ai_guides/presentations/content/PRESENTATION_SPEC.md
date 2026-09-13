@@ -53,28 +53,37 @@ GitHub är en REMOTE datasource för denna presentation, inte en lokal working d
 
 ## 📋 READING CHECKLIST — Innan Du Börjar Presentationen
 
-**Du behöver läsa ENDAST dessa filer för att skapa presentation (sparar tokens):**
+**Du behöver läsa DESSA filer för att skapa presentation:**
 
 ```
 ☐ DENNA FIL (PRESENTATION_SPEC.md) — du läser den nu
+☐ _ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md — för "Sedan förra mötet"-sliden
+☐ _memory/DEFINITION_OF_DONE.md — FÖR DENNA VECKA (krävs för att verifiera "klart")
 ☐ CROSS_TEAM_INTEGRATION.md — för integrationsanalysen
-☐ avanza-team1 projekt-repot (GitHub branches + Git log denna vecka)
-☐ Mötesprotokollet (raw-export länk från mötet)
+☐ GitHub-data denna vecka (via GitHub Connector/API per README.md)
+  - Commits sedan förra möte
+  - Merged PRs
+  - Closed Issues
+  - Open Issues/PRs med aktivitet
+☐ Mötesprotokollet från denna vecka (Google Docs-länk från README.md)
 ☐ GitHub Project Board status denna vecka
+  - https://github.com/orgs/chas-challenge-2026/projects/31/views/1
 
-DU BEHÖVER INTE LÄSA:
-  ✗ README.md (redan vet du vad du söker)
-  ✗ DEFINITION_OF_DONE.md (du behöver inte förstå all projektkontekst)
-  ✗ KURSMAL_OCH_BETYG.md (bara relevant för kursöversikt)
-  ✗ TEAMSTANDARDS.md (inte relevant för presentation)
-  ✗ Gamla möten/protokoll (bara denna vecka räknas)
+DU BEHÖVER INTE LÄSA (dessa är referens endast):
+  ✗ avanza-team1 README (bara läs vid behov för specifik kod)
+  ✗ KURSMAL_OCH_BETYG.md (inte relevant för presentation)
+  ✗ Gamla möten/protokoll (bara DENNA vecka räknas)
 
-MINNESRENSNING (obligatorisk innan punkt 1):
+MINNESRENSNING (obligatorisk före läsning):
   1. Glöm allt minne från denna vecka
   2. Glöm möten, diskussioner, tidigare presentationer
-  3. Läs ENDAST dessa filer, ingenting annat
+  3. Läs ENDAST filerna ovan, ingenting annat
   4. Börja helt clean
 ```
+
+**KRITISKT: Definition of Done (DoD) är obligatorisk läsning.**
+- Varje issue klassificerad som 🟢 KLART DENNA VECKA måste verifiera mot denna veckas DoD
+- DoD avgör om något är faktiskt färdigt eller bara "moved to Done on board"
 
 ---
 
@@ -554,28 +563,53 @@ AI ska skapa ett internt dataset för VARJE issue:
 
 **14 OFFICIELLA MÖTESPUNKTER** (från SPRINT_PROTOCOL_NUMBERED.md):
 
-1. **📝① Sedan förra mötet** — Veckans arbete (allt som gjordes, pågår eller behöver uppmärksamhet)
+1. **📝① Sedan förra mötet** — Retrospektiv arbetsöversikt & teamerkännande (1-2 slides)
    
-   **OBLIGATORISK DATAKÄLLA:** WEEKLY_PROGRESS_MODEL.md
+   **SYFTE:** Ge teamet konkret erkännande för vad de faktiskt arbetade med förra veckan. Sliden ska kännas positiv och visa att arbetet rört sig framåt. INTE en statusrapport — en arbetsverk-överblick.
    
-   Måste inkludera:
-   - ✓ KLART: Merged PRs + Closed Issues denna vecka
-   - → PÅGÅR: Open Issues/PRs med aktivitet denna vecka
+   **PRIMÄR DATAKÄLLA:** Commits sedan förra mötet (från SOURCES.md: GitHub API / commits?sha=develop&since=[MONDAY])
+   
+   **DATAINSAMLING:**
+   1. Läs ALLA commits sedan förra mötet (denna vecka)
+   2. Gruppera commits efter issue/branch/arbetsområde (kluster, inte enskilda commits)
+   3. Koppla varje cluster mot PRs, issues, Project Board för kontext
+   4. Visa ALLT substantiellt arbete som påbörjades eller genomfördes denna vecka
+   5. Visa INTE backlog-items utan aktivitet denna vecka
+   
+   **REGEL: Commit count is evidence, not presentation content**
+   - Läs hela commit-historiken för perioden
+   - Visa INTE varje commit som egen punkt
+   - Sammanfatta arbete per område: "Dashboard — komponenter, styling och responsivitet arbetades vidare med"
+   - Format: statusikon + issue/område + beskrivning + person/personer
+   
+   **Måste inkludera:**
+   - 🟢 KLART denna vecka: Merged PRs + Closed Issues med verifiering att arbete faktiskt avslutades
+   - 🟠 PÅBÖRJAT denna vecka – FORTSÄTTER: Open Issues/PRs med konkret aktivitet (commits/comments)
    - ! BEHÖVER UPPMÄRKSAMHET: Blockerat/Saknar ägare/Står still
    
-   Format: Symbol (✓/→/!) + Färg (🟢/🔵/🟡) + Text (konkret status)
+   **FÄRGKOD FÖR DENNA SLIDE (VIKTIGT UNDANTAG):**
+   - 🟢 = KLART förra veckan (arbete verifierat avslutad: merged, closed eller DoD-markerad)
+   - 🟠 = PÅBÖRJAT förra veckan – FORTSÄTTER (pågående arbete med konkret framdrift denna vecka)
+   - Orange betyder INTE varning här — det är pågående arbete, inte risk
    
-   Exempel:
+   **Öppning:** En kort positiv sammanfattning överst, tex:
    ```
-   ✓ #52 – Portfolio summary (Rasha) · Merged PR #81 · klart 11 sep
-   → #63 – Drift calculation (Tomac) · 3 commits · PR öppen
-   ! #45 – Auth schema (Lisa) · Blockerad på Backend #48
+   Förra veckan flyttade teamet arbetet framåt inom 8 arbetsområden — 
+   4 blev klara och 4 fortsätter in i nästa vecka.
+   ```
+   
+   **Format för varje rad:**
+   ```
+   🟢 #41 Target allocation — formulär, validering och sparflöde färdigställdes — Anna / Erik
+   🟠 #43 API client — klientstruktur och mock-adapter påbörjades, fortsätter nästa vecka — Tomac
+   ! #45 Auth schema — blockerad på Backend #48, behöver prioriteras
    ```
    
    Se WEEKLY_PROGRESS_MODEL.md för exakt instruktioner om:
    - Vilka datum räknas som "denna vecka"
    - Hur commits + PRs + issues korsrefereras
    - NPF/dyslexia-formattering (symbol + färg + text)
+   - Datumformat för "klart 11 sep"
 
 2. **📝② Sprintmål** — Big picture denna vecka
 

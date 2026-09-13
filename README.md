@@ -14,11 +14,15 @@
 ```
 README.md (this file)
     ↓
-_ai_guides/PRESENTATION_SPEC.md (WHAT to show)
+_ai_guides/presentations/README.md (Navigation guide)
     ↓
-_ai_guides/PRESENTATION_STRUCTURE.md (Slide order)
+_ai_guides/presentations/content/PRESENTATION_SPEC.md (WHAT to show)
     ↓
-_ai_guides/PRESENTATION_STYLE.md (Visual design)
+_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md (Slide order)
+    ↓
+_ai_guides/presentations/design/PRESENTATION_STYLE.md (Visual design)
+    ↓
+_ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md (Data model for slides)
     ↓
 Generate presentation
 ```
@@ -32,7 +36,11 @@ Generate presentation
 - ✅ Data quality requirements (assignees, status, etc)
 - ✅ Read order (above)
 
-**PRESENTATION_SPEC.md:**
+**presentations/README.md:**
+- ✅ Navigation guide (which file to change for what task)
+- ✅ Directory structure explanation
+
+**presentations/content/PRESENTATION_SPEC.md:**
 - ✅ WHAT the presentation should contain
 - ✅ Which slides to show
 - ✅ Issue/data contracts
@@ -40,23 +48,33 @@ Generate presentation
 - ❌ How to get data (that's README's job)
 - ❌ Visual design (that's STYLE's job)
 
-**PRESENTATION_STRUCTURE.md:**
+**presentations/structure/PRESENTATION_STRUCTURE.md:**
 - ✅ Slide order
 - ✅ Information structure per slide
 - ✅ Mötespunkter (①-⑭)
 - ❌ Visual design
 - ❌ Data access
 
-**PRESENTATION_STYLE.md:**
+**presentations/design/PRESENTATION_STYLE.md:**
 - ✅ Colors, typography, layout
 - ✅ NPF/accessibility rules
 - ❌ What to show (that's SPEC's job)
 - ❌ How to get data (that's README's job)
 
+**presentations/models/WEEKLY_PROGRESS_MODEL.md:**
+- ✅ Data model for reconstructing weekly work from commits/PRs/issues
+- ✅ Clustering rules (multiple commits = one work area)
+- ✅ Effect annotation (why this work matters)
+
 ### External & Dynamic Sources
 
 **Course Requirements & Grading:**
 - 📋 Länk i _memory/ (från kursplattform/LMS)
+
+**Definition of Done (DoD) — KRITISK för presentationen:**
+- 📋 [_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md) — Checklist för när en issue är faktiskt färdig
+- 🚨 **MÅSTE läsas för Slide ①** — För att verifiera issues klassificerade som 🟢 KLART DENNA VECKA
+- Gäller även för WEEKLY_PROGRESS_MODEL data-verifiering
 
 **Architecture Decisions:**
 - 📋 DECISIONS.md i avanza-team1 repo (BESLUT.md för varje team)
@@ -64,9 +82,6 @@ Generate presentation
 
 **Project Vision & Goals:**
 - 📋 Länk i _memory/ (från PL/projektbeskrivning)
-
-**Definition of Done (DoD):**
-- 📋 Länk i _memory/ (från projektets regler)
 
 ### All Other Files
 
@@ -1054,19 +1069,17 @@ DU MÅSTE:
 **PRESENTATION-FILERNA (LÄSORDNING):**
 
 **SOURCE OF TRUTH:**
-1. **[PRESENTATION_SPEC.md](/_ai_guides/PRESENTATION_SPEC.md)** ⭐ **LÄS DENNA FÖRST**
-   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+1. **[PRESENTATION_SPEC.md](_ai_guides/presentations/content/PRESENTATION_SPEC.md)** ⭐ **LÄS DENNA FÖRST**
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/content/PRESENTATION_SPEC.md
    - Issue-format, färgsemantik, risk/dependency/blocker-definitioner, kapacitet & fallback, preflight-validator
 
 **FÖRDJUPANDE FILER:**
-2. **[PRESENTATION_DESIGN.md](/_ai_guides/PRESENTATION_DESIGN.md)** — Design principer & MEGA-REGLER
-   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_DESIGN.md
-3. **[PRESENTATION_STRUCTURE.md](_ai_guides/PRESENTATION_STRUCTURE.md)** — 14 mötespunkter & vad varje slide MÅSTE innehålla
-   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_memory/PRESENTATION_SLIDE_REQUIREMENTS.md
-4. **[PRESENTATION_FORMAT_GUIDE.md](/_ai_guides/PRESENTATION_FORMAT_GUIDE.md)** — Exakta layouts & exempel
-   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
-5. **[SPRINT_PRESENTATION_STRUCTURE.md](/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md)** — Struktur & ordning
-   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+2. **[PRESENTATION_STYLE.md](_ai_guides/presentations/design/PRESENTATION_STYLE.md)** — Design principer & MEGA-REGLER
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/design/PRESENTATION_STYLE.md
+3. **[PRESENTATION_STRUCTURE.md](_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md)** — 14 mötespunkter & vad varje slide MÅSTE innehålla
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md
+4. **[WEEKLY_PROGRESS_MODEL.md](_ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md)** — Data model för "Sedan förra mötet"-sliden
+   - Raw-länk: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md
 
 **DATA ATT SAMLA:**
 5. **Mötesprotokollet denna vecka:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt

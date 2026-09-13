@@ -26,8 +26,18 @@ Presentationen fyller TRE syften:
 **🚨 KRITISK REGEL: En mötespunkt ≠ en slide**
 
 En mötespunkt kan motsvaras av 1-3 (eller fler) slides.
-Varje slide märks med samma 📝-symbol för den mötespunkt den tillhör.
-Presentationen kan ha 20-30 slides — antalet varierar per vecka.
+
+**OBLIGATORISK:** Varje slide MÅSTE märkas med samma 📝-symbol för den mötespunkt den tillhör.
+
+Exempel:
+```
+Mötespunkt ④ (Frontend — Var är vi?) kan ha 3 slides:
+  Slide 1: 📝④ Frontend — Var är vi? (issues + status)
+  Slide 2: 📝④ Frontend — Vad gör vi åt det? (actionbar guide)
+  Slide 3: 📝④ Frontend — Visuell verifiering (screenshots)
+```
+
+Mötespunkten (symbolen) är navigation genom mötet. Tittare måste kunna följa: "Vi är på mötespunkt ④". Presentationen kan ha 20-30 slides — antalet varierar per vecka, men symbolen märker alltid tillhörigheten.
 
 **Innan presentationen skapas: Obligatorisk Cross-Team Code & Contract Review**
 - Granska actual code i alla aktiva branches/PRs
