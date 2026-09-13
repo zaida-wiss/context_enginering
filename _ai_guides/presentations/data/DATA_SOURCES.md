@@ -40,13 +40,30 @@ Presentationen måste kunna verifiera dessa fakta:
 - GitHub Issues/PRs med status "done" eller "closed" + merge-datum denna vecka
 
 **Fallback ordning:**
-1. GitHub Connector/API — issues & PRs med closed-date denna vecka
-2. GitHub /issues tab → filter "closed:2026-09-08..2026-09-14"
-3. GitHub /pulls tab → filter "merged:2026-09-08..2026-09-14"
-4. Projekt-board status (se PROJECT BOARD)
-5. Mötesprotokoll från denna vecka — vad sade vi var klart?
+1. **GitHub Issues API** — alla closed issues denna vecka
+   - FILTER: Exkludera labels "test", "duplicate", "wontfix", "archived"
+   - Inklud: både issues och linked PRs
+   
+2. **GitHub /issues tab** → filter "closed:2026-09-08..2026-09-14"
+   - FILTER: Samma som ovan (exkludera test-issues)
+   
+3. **GitHub /pulls tab** → filter "merged:2026-09-08..2026-09-14"
+   - Linked issues automatiskt inclusion
+   
+4. **Google Sheets fallback** — https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+   - CSV export eller manual entry
+   - FILTER: Samma som GitHub (exkludera test-issues)
+   
+5. **Projekt-board "Done"-kolumn** (se PROJECT BOARD)
+   - Risk: kan missa issues som INTE är på board
+   - Använd endast om alla andra failar
+   
+6. **Mötesprotokoll från denna vecka** — vad sade vi var klart?
+   - Fältdata, kan missa issues från veckan
 
 **Om all misslyckas:** Presentationen kan säga "saknad verifiering av denna veckas avslutade arbete" men INTE "Git log kunde inte läsas"
+
+**VIKTIGT:** GitHub Issues är mer komplett än Project Board (inte alla issues synkas till board). Ignorera ALDRIG issues bara för att de saknas från board.
 
 ---
 
@@ -57,16 +74,30 @@ Presentationen måste kunna verifiera dessa fakta:
 **Fakta:** Vilka issues är öppna? Vilka PRs är under review? Vem är assignad?
 
 **Primär källa:**
-- GitHub Issues med status "open" + assignee
+- GitHub Issues med status "open" + activity denna vecka (commits, PR updates)
 
 **Fallback ordning:**
-1. GitHub Connector/API — open issues + PR list
-2. GitHub /issues tab
-3. GitHub /pulls tab
-4. Projekt-board "In Progress"-kolumn
-5. Mötesprotokoll från denna vecka
+1. **GitHub Issues API** — open issues + activity denna vecka
+   - FILTER: Exkludera "test", "duplicate", "wontfix"
+   - Kräv: commits eller PR-updates (NOT bara issue-comments)
+   
+2. **GitHub /issues tab** — filter "is:open"
+   - FILTER: Samma som ovan
+   
+3. **GitHub /pulls tab** — open PRs
+   - Linked issues automatiskt inclusion
+   
+4. **Google Sheets fallback** — samma URL som ovan
+   - För open items med aktivitet
+   
+5. **Projekt-board "In Progress"-kolumn**
+   - Risk: kan missa open issues som INTE är på board
+   
+6. **Mötesprotokoll från denna vecka**
 
 **Viktigt:** Vi behöver name + issue-number för varje person
+
+**RULE:** Om issue är öppen men SAKNAS från Project Board — det är FORTFARANDE aktuellt arbete och måste visas.
 
 ---
 
