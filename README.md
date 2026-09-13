@@ -9,23 +9,28 @@
 
 ## 🔴 SINGLE SOURCE OF TRUTH — Presentation Read Order
 
-**There is ONE and only ONE read order. All other files are subordinate.**
+**MANDATORY_READING_ORDER.md definierar den enda läsordningen för presentationer.**
 
+**For AI building presentations:**
 ```
-README.md (this file)
+_ai_guides/presentations/MANDATORY_READING_ORDER.md (THIS WEEK'S READ SEQUENCE)
     ↓
-_ai_guides/presentations/README.md (Navigation guide)
-    ↓
-_ai_guides/presentations/content/PRESENTATION_SPEC.md (WHAT to show)
-    ↓
-_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md (Slide order)
-    ↓
-_ai_guides/presentations/design/PRESENTATION_STYLE.md (Visual design)
-    ↓
-_ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md (Data model for slides)
-    ↓
-Generate presentation
+Follow the 5 phases in that file (data collection → design → content → sources → verification)
 ```
+
+**For humans presenting:**
+```
+_ai_guides/PRESENTER_GUIDE.md (I'm about to present — what do I need to know?)
+    ↓
+_ai_guides/TROUBLESHOOTING.md (Something went wrong — where do I look?)
+```
+
+**Hierarchy (if two files conflict):**
+1. **MANDATORY_READING_ORDER.md** — Latest sequence (updated weekly)
+2. **PRESENTATION_SPEC.md** — Content rules
+3. **PRESENTATION_STRUCTURE.md** — Slide order (14 mötespunkter)
+4. **PRESENTATION_STYLE.md** — Visual design
+5. All other files — Reference only
 
 ### What Each File Owns
 
