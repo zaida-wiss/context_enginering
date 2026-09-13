@@ -395,7 +395,7 @@ FÄRGKODNING:
   ☐ Neutral information använder marinblå/grå/vit
 
 INTEGRATION-ANALYS:
-  ☐ Läst CROSS_TEAM_INTEGRATION.md
+  ☐ Läst PRESENTATION_STRUCTURE.md för integration-slides
   ☐ Läst aktiva brancher (frontend, backend, native)
   ☐ Identifierat integrations-kedjor (Frontend API → Backend → Native)
   ☐ Klassificerat varje kedja (VERIFIERAD/TROLIG/BEHÖVER SYNKAS/MISMATCH/KAN INTE VERIFIERAS)
