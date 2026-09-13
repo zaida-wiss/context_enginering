@@ -58,8 +58,10 @@ metadata:
 ## 📊 **data/** — Datainsamling & källor
 
 **Filer:**
+- `TEAM_ROSTER.md` — **MANDATORY:** Auktoritativ lista över team-medlemmar (Frontend/Backend/System)
 - `DATA_SOURCES.md` — Vilka sources att läsa från (GitHub, Project Board, Google Docs, Sheets fallback)
 - `DATA_COLLECTION_CHECKLIST.md` — Checklist innan presentation börjas
+- `DATA_COLLECTION_MANDATORY.md` — Obligatorisk checklista som förhindrar att arbete försvinner
 - `SOURCE_CHECK.md` — Källverifiering & timestamp
 
 **Använd denna om:** Du vill ändra VILKA SOURCES presentationen läser från, eller HUR data samlas in
@@ -80,6 +82,7 @@ metadata:
 ## 🧮 **models/** — Datamodeller
 
 **Filer:**
+- `REPO_FIRST_RECONSTRUCTION.md` — **MANDATORY:** Varför vi samlar ALL repo-aktivitet först, inte issue-first
 - `WEEKLY_PROGRESS_MODEL.md` — Hur vi kategoriserar arbete (✓ KLART / → PÅGÅR / ! BEHÖVER UPPMÄRKSAMHET)
 
 **Använd denna om:** Du vill ändra HUR vi klassificerar och presenterar arbete
