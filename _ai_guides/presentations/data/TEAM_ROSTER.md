@@ -16,14 +16,14 @@ metadata:
 
 | GitHub | Namn | Roll | Status |
 |--------|------|------|--------|
+| tomac | Tomac | Frontend Developer | Active |
+| björnb | Björn | Frontend Developer | Active |
 | zaida-wiss | Zaida | Frontend Developer | Active |
-| janstrom | Jan | Frontend Developer | Active |
-| marcodev | Marco | Frontend Developer | Active |
 
 **Arbetsområden:**
-- Frontend – Auth & Login
-- Frontend – Dashboard & UI
-- Frontend – Design System & Components
+- Frontend & Auth (login, auth flows)
+- Frontend & Design System (components, design)
+- Frontend & Dashboard (UI, data visualization)
 
 ---
 
@@ -31,57 +31,55 @@ metadata:
 
 | GitHub | Namn | Roll | Status |
 |--------|------|------|--------|
-| anna-backend | Anna | Backend Developer | Active |
-| kiran-dev | Kiran | Backend Developer | Active |
-| tomac | Tomac | Backend Developer | Active |
+| erik-backend | Erik | Backend Developer | Active |
+| rasha-dev | Rasha | Backend Developer | Active |
 
 **Arbetsområden:**
-- Backend – API & Integration
-- Backend – Risk Calculations
-- Backend – FX & Portfolio Logic
+- Backend & Session (API, session management)
+- Backend & Risk Calculations (risk engine)
+- Backend & Integrations (third-party APIs)
 
 ---
 
-## System/Native Team
+## Native/System Team
 
 | GitHub | Namn | Roll | Status |
 |--------|------|------|--------|
-| björnb | Björn | System/Native Developer | Active |
-| sam-native | Sam | System/Native Developer | Active |
+| pär-native | Pär | Native Developer | Active |
+| henrik-system | Henrik | Native Developer | Active |
 
 **Arbetsområden:**
-- System/Native – Risk Motor
-- System/Native – Native App
-- System/Native – JNA Integration
+- Native & Risk Motor (JNA, risk calculations)
+- Native & App Integration (native modules)
+- System & Performance (optimization)
 
 ---
 
 ## Coverage Validation Rule
 
-**Innan Slide ①A och ①B kan skapas:**
+**Innan Slide ①A, ①B, ①C kan skapas:**
 
 ```
 FRONTEND COVERAGE CHECK:
+  ☐ Tomac — commits/PRs denna vecka: [ ] found / [ ] not found
+  ☐ Björn — commits/PRs denna vecka: [ ] found / [ ] not found
   ☐ Zaida — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Jan — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Marco — commits/PRs denna vecka: [ ] found / [ ] not found
 
 BACKEND COVERAGE CHECK:
-  ☐ Anna — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Kiran — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Tomac — commits/PRs denna vecka: [ ] found / [ ] not found
+  ☐ Erik — commits/PRs denna vecka: [ ] found / [ ] not found
+  ☐ Rasha — commits/PRs denna vecka: [ ] found / [ ] not found
 
-SYSTEM/NATIVE COVERAGE CHECK:
-  ☐ Björn — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Sam — commits/PRs denna vecka: [ ] found / [ ] not found
+NATIVE/SYSTEM COVERAGE CHECK:
+  ☐ Pär — commits/PRs denna vecka: [ ] found / [ ] not found
+  ☐ Henrik — commits/PRs denna vecka: [ ] found / [ ] not found
 ```
 
 **RULE:** Om någon medlem INTE har verifierbar aktivitet → presentationen måste uttryckligt rapportera det:
-- `Zaida — ✅ 4 commits + PR #90 (Login) + PR #91 (Auth)`
-- `Jan — ⏳ 3 commits (Dashboard) + PR #92 (mockdata)`
-- `Marco — ❌ Ingen aktivitet denna vecka`
+- `Tomac — ✅ 4 commits + PR #80 (Frontend)`
+- `Björn — ⏳ 3 commits (Design System) + Review PR #90`
+- `Zaida — ❌ Ingen aktivitet denna vecka`
 
-**Presentationen får INTE bara utelämna Marco.** Den måste visa att Marco inte hade verifierbar GitHub-aktivitet denna vecka.
+**Presentationen får INTE bara utelämna Zaida.** Den måste visa att Zaida inte hade verifierbar GitHub-aktivitet denna vecka.
 
 ---
 
@@ -89,9 +87,17 @@ SYSTEM/NATIVE COVERAGE CHECK:
 
 Gamla problemet: Björn's design system arbete försvann från presentationen för att modellen fokuserade på "issues" istället för att systematiskt gå genom alla team-medlemmar.
 
-Denna fil säger: **Dessa 8 personer måste alla kontrolleras innan presentationen är klar.**
+Denna fil säger: **Dessa 7 personer måste alla kontrolleras innan presentationen är klar.**
 
-Om Björn saknas från presentationen = PROBLEM. Presentationen är inte komplett.
+| Team | Members |
+|------|---------|
+| Frontend | Tomac, Björn, Zaida |
+| Backend | Erik, Rasha |
+| Native/System | Pär, Henrik |
+
+Om någon saknas från presentationen = PROBLEM. Presentationen måste visa varför (aktivitet eller ingen aktivitet denna vecka).
+
+Presentation är INTE komplett utan att alla 7 har blivit kontrollerade.
 
 ---
 
