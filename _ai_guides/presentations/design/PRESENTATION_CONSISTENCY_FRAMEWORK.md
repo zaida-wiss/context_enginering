@@ -248,7 +248,10 @@ Röd tråd: **Från estimat → kapacitet → möjligt sprintmål → verifierad
 
 ### Röda trådar som kan gå förlorade
 
-- ❌ Punkt ① (förra veckan) är tom → vi vet inte vad som gjordes
+- ❌ Punkt ①A-C (förra veckan) är tom eller saknar arbete → vi vet inte vad som gjordes
+  - **OBS:** Punkt ① har FYRA slides (①A Frontend, ①B Backend, ①C Native, ①D pågår)
+  - ALLA arbete som gjordes denna vecka MÅSTE synas
+  - Inget får utelämnas för att det inte fick plats
 - ❌ Punkt ②B (nästa deadline) saknas → mötet vet inte varför det bryr sig
 - ❌ Punkt ③B (handlingsplan) är generell → vi vet inte vem som gör vad
 - ❌ Punkt ⑥ (beroenden) saknas → vi ser inte helhetsbilden

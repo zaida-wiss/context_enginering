@@ -26,16 +26,24 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 
 **Slides — MÅSTE visa ALLA PRs + ALLA team-medlemmar:**
 
-- **①A: Levererat denna vecka — sammanfattning** 
-  - Totalt antal PRs mergade
-  - Per team: antal PRs + vilka personer
-  - Övergripande status
-  
-- **①A.1, ①A.2, ... (om många PRs):** Detaljerade tabeller
-  - Om > 5 PRs: dela på flera slides
-  - Varje slide visar ALLA PRs för den sektionen
-  
-- **①B: Byggde vidare denna vecka** — pågående arbete med verifierad framdrift (commits)
+**Struktur: En slide per arbetsområde + en för pågående**
+
+- **①A: Frontend — Levererat denna vecka**
+  - ALLA PRs mergade in i develop denna vecka (Frontend & Auth arbetsområde)
+  - För varje PR: issue-owner, commits, DoD-status
+  - Alla Frontend-personer som had work synliga
+
+- **①B: Backend — Levererat denna vecka**
+  - ALLA PRs mergade in i develop denna vecka (Backend & Session arbetsområde)
+  - För varje PR: issue-owner, commits, DoD-status
+  - Alla Backend-personer som hade work synliga
+
+- **①C: Native/System — Levererat denna vecka**
+  - ALLA PRs mergade in i develop denna vecka (Native & Risk Motor arbetsområde)
+  - För varje PR: issue-owner, commits, DoD-status
+  - Alla Native-personer som hade work synliga
+
+- **①D: Byggde vidare denna vecka** — pågående arbete med verifierad framdrift (commits)
 
 **KRITISK REGEL: INGET ARBETE FÅR UTELÄMNAS för att det inte får plats på sliden.**
 
