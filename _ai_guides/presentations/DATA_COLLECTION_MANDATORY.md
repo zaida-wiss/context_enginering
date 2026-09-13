@@ -103,10 +103,13 @@ Innan du säger "datainsamlingen är ofullständig":
   * Feature branches med commits (even without PR)
   * NOT comments — activation = commits, PR-updates, branch pushes
 
-### 4. OPEN ISSUES MED AKTIVITET DENNA VECKA
+### 4. OPEN ISSUES MED AKTIVITET + DoD STATUS
 - [ ] Läst GitHub Issues API/Web för issues **öppna med aktivitet denna vecka**
 - [ ] Aktivitet = commits eller PR-updates, INTE bara kommentarer
-- [ ] **Exempel:** #43 API Client (Tomac, 3 commits denna vecka)
+- [ ] **För varje issue: läst issue-description för DoD-status**
+- [ ] DoD-kolumner (AC, Tests, Review, Docs) fylld från issue-meddelandet
+- [ ] Om DoD saknas i issue: markerat med `?` (inte antagande)
+- [ ] **Exempel:** #43 API Client (Tomac, 3 commits denna vecka, DoD: AC✓ Tests◐ Review? Docs✕)
 
 ### 5. GITHUB PROJECT BOARD STATUS
 - [ ] Läst Project Board för denna vecka

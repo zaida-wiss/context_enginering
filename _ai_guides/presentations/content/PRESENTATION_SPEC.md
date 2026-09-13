@@ -587,13 +587,28 @@ Varje aktiv eller relevant issue måste ha en egen rad.
 
 **5-8. DoD-Checkpoints (separata kolumner)**
 
-Använd:
-- `✓` = verifierat uppfyllt
-- `◐` = delvis / pågår
-- `✕` = verifierat saknas
-- `?` = kunde inte verifieras
+**KÄLLA: Läs DoD från issue-meddelandet på GitHub**
 
-En check får ALDRIG sättas utifrån antagande. Om du är osäker: `?`
+För varje issue:
+1. Öppna GitHub issue
+2. Läs issue-description/body
+3. Hitta "Definition of Done" eller "DoD" sektion
+4. Extrahera status för: AC, Tests, Review, Docs
+5. Använd för att fylla kolumnerna
+
+Använd:
+- `✓` = verifierat uppfyllt (från issue-DoD)
+- `◐` = delvis / pågår (från issue-DoD)
+- `✕` = verifierat saknas (från issue-DoD)
+- `?` = kunde inte verifieras eller DoD saknas i issue-meddelandet
+
+**REGEL:** En check får ALDRIG sättas utifrån antagande. Om DoD-status inte finns i issue-meddelandet: `?`
+
+**VIKTIGT:** AC (Acceptance Criteria) och DoD är OLIKA:
+- AC = vad kunden/PO förväntar sig
+- DoD = vad utvecklare kräver innan "klart"
+
+Båda kan finnas i samma issue-meddelande, men i separata sektion
 
 **9. Git/PR**
 - Relevant PR-status och/eller verifierad aktivitet denna vecka
