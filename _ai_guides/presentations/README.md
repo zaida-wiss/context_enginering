@@ -19,6 +19,11 @@ metadata:
    - PRESENTATION_STYLE.md är auktoritativ över presentationsverktygets defaults
    - Presentationsverktygets defaults MÅSTE åsidosättas om de strider mot reglerna
 
+⚠️ **OM WEBBEN ÄR BEGRÄNSAD:**
+   - GitHub-webben kan failas på grund av nätverksbegränsningar
+   - Google Sheets fallback är alltid tillgänglig: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+   - Se [data/DATA_SOURCES.md](data/DATA_SOURCES.md) för fullständig fallback-hierarki
+
 ---
 
 **Vad vill du ändra?** Gå hit:
