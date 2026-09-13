@@ -169,17 +169,40 @@ Definition of Done (checklist för färdigt arbete)
 - Möten blir lärtillfällen, inte bara rapporter
 - Vanlig ordbok byggas upp över tid
 
-### ✅ MEGA-REGEL 5: Sanningen Före Känslan
+### ✅ MEGA-REGEL 5: Färg Är Semantik, Inte Dekoratör
 
-Design ska vara organiserad och lätt att läsa.
-Men DATA måste ALLTID vara ärlig.
+**Varje färg måste betyda något konkret. Ingen dekorativ färgning.**
 
 ```
-❌ FALSKT: "Vi löser detta! 💪" (känsla) 
-           + "Bakom plan 40%" (data mismatch)
+FÄRGPALETT MED BETYDELSE:
 
-✅ RÄTT: "🔴 CRITICAL: 40% på plan
-         ÅTGÄRD: Backend + Native pair prog idag 14:00"
+NEUTRALA (STRUKTURFÄRGER):
+  🔵 Marinblå — huvudrubriker, viktig struktur, navigering
+  🔵 Ljusblå — neutral information, processer, tekniska samband
+  ⚫ Blågrå / Ljusgrå — vanliga informationskort, team-kortens baskort
+  ⚪ Vit — luft, huvudytor, negativt utrymme
+
+ACCENTFÄRGER (ICKE-STATUS):
+  💜 Lila — sprintplanering, beslut, prioriteringar, "nästa steg"
+  🌸 Dämpad rosa — människor, ägarskap, assignee, samarbete, variation mellan kort
+
+STATUSFÄRGER (ENDAST NÄR STATUS FINNS):
+  🟢 Grön — klart, på plan, låg risk
+  🟠 Orange — behöver uppmärksamhet, osäkerhet, kapacitets-/beroenderisk
+  🔴 Röd — blockerad, kritisk risk, måste agera omedelbar
+
+EXEMPEL PÅ KORREKT ANVÄNDNING:
+  ❌ DÅLIGT: Backend-kort är helt orange för att det är "riskigt"
+  ✅ RÄTT: Backend-kort är blågrå (neutral). Inne i kortet markeras 
+           just kapacitetsrisken med en liten orange indikator.
+
+  ❌ DÅLIGT: NEXT-kategori är orange för att det är inte MUST
+  ✅ RÄTT: NEXT-kategori använder marinblå eller lila. Status-färgning 
+           reserveras för faktiska statusar (risk, blockering, etc).
+
+  ❌ DÅLIGT: Assignee-namn i varierande färger för visuell variation
+  ✅ RÄTT: Assignee-namn i dämpad rosa för att visa ägarskap. 
+           Status-färgning reserveras för risk/blockering på själva uppgiften.
 ```
 
 ---
@@ -200,16 +223,29 @@ Men DATA måste ALLTID vara ärlig.
 
 ## Checklist Innan Leverans
 
+**VISUELLA ELEMENT:**
 - [ ] Varje slide med DATA har minst ETT visuellt element
 - [ ] Progress bars visar ████░░ (inte bara tal)
-- [ ] Färger matchar verklighet (🟢 ON TRACK, 🟠 DELAY, 🔴 CRITICAL)
 - [ ] Tidslinjer visar 📍 MON, 📍 TUE, etc (konkret tid)
 - [ ] Blockers visar visuellt HUR de blockerar (pilar)
-- [ ] Alla issues har (#Namn) assignee
 - [ ] Inga slides som är BARA text
 - [ ] Progress visuell: från X → Y (inte bara "vi gör det")
 - [ ] Ikoner överallt för snabb läsning (📚💪🎯📊)
-- [ ] Färgade kort för team-status (border visar färg)
+
+**FÄRGKODNING (SEMANTISK, INTE DEKORATIV):**
+- [ ] Marinblå/ljusblå/gråtoner för struktur & neutral info (majoriteten)
+- [ ] 🟢 Grön ENDAST för faktisk god status (på plan, klart)
+- [ ] 🟠 Orange ENDAST för faktisk risk/osäkerhet (kapacitet, beroende, blocker)
+- [ ] 🔴 Röd ENDAST för faktisk blockering/kritisk status
+- [ ] Lila för sprintplanering & prioritering (inget status-värde)
+- [ ] Rosa för ägarskap/assignee (inget status-värde)
+- [ ] Ingen dekorativ färgning av NEXT, team-namn, etc
+
+**LAYOUT & LESBARHET:**
+- [ ] Ingen text går utanför sin ruta (hellre fler slides)
+- [ ] Min. 4.5:1 kontrast (WCAG AA)
+- [ ] Alla issues har (#Namn) assignee
+- [ ] 60-70% whitespace (NPF-vänligt)
 
 ---
 
