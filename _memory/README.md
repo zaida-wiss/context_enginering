@@ -50,7 +50,8 @@
 
 | Fil | Syfte |
 |-----|-------|
-| **CTO_FEED_FORWARD_INSTRUCTIONS.md** | CTO-feedback assignment: vad ska videon innehålla? |
+| **CTO_FEED_FORWARD.md** | **VIKTIGT** — CTO Feed Forward deadline (24 sept), filminspelning om risk-arbete, impact på Slide ⑫⑬ |
+| CTO_FEED_FORWARD_INSTRUCTIONS.md | (Legacy) CTO-feedback assignment: vad ska videon innehålla? |
 
 ## 🎨 Design & Referens
 
