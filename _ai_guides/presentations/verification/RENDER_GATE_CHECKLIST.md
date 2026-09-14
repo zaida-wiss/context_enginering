@@ -242,14 +242,14 @@ OM du INTE kan nå mötesprotokollet:
 
 **GAMMALT (BRUTEN REGEL):**
 ```
-❌ "Erik är inte i issues → STOPP, rendering nekad"
-→ Orsakade att Erik "försvann" från presentationer
+❌ "[PERSON] är inte i issues → STOPP, rendering nekad"
+→ Orsakade att [PERSON] "försvann" från presentationer
 ```
 
 **NYTT (KORREKT):**
 ```
-✅ Erik är inte i open issues denna vecka
-   → Visas som: "Erik Berglund — Tilldelads ingen ny issue denna vecka"
+✅ [PERSON] är inte i open issues denna vecka
+   → Visas som: "[PERSON NAME] — Tilldelads ingen ny issue denna vecka"
    → INFORMATION, inte blocker
    → Presentationen renderas ändå
 
@@ -265,11 +265,11 @@ OM du INTE kan nå mötesprotokollet:
 
 ```
 STATUS denna vecka:
-- 14 merged PRs ✅
-- 8 commits denna vecka ✅
-- 3 open issues med aktivitet ✅
-- Alla issues har assignee ✅
-- Mötesprotokollet nåbar ✅
+- [N>0] merged PRs ✅
+- [N>0] commits denna vecka ✅
+- [N>0] open issues med aktivitet ✅
+- Alla issues har assignee (eller ??) ✅
+- External sources nåbara ✅
 - Data verifierad från GitHub ✅
 
 RESULTAT: ✅ PRESENTATION RENDERAS
@@ -293,14 +293,14 @@ Meddelande: "Inget arbete denna vecka — presentationen blir tom"
 **SCENARIO 2: Mötesprotokollet inte nåbar — MEN OK**
 ```
 STATUS denna vecka:
-- 5 merged PRs ✅
-- 2 commits ✅
-- Mötesprotokollet inte nåbar 🟡
-- Issue #42 SAKNAR assignee (OK — visas som ??)
+- [N] merged PRs ✅
+- [N] commits ✅
+- External protocol/document inte nåbar 🟡
+- Issue #XX SAKNAR assignee (OK — visas som ??)
 
 RESULTAT: ✅ PRESENTATION RENDERAS (med fallback)
-Meddelande: "Kunde inte nå mötesprotokollet. 
-            Kan du klistra in texten från mötet?"
+Meddelande: "Kunde inte nå [EXTERNAL_SOURCE]. 
+            Kan du klistra in data från [SOURCE]?"
 ```
 
 **Notering:** Missing assignee (shown as `??`) är ALDRIG blocker. Presentationen renderas ändå.
