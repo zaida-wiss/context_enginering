@@ -16,9 +16,9 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 ## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1-3 slides)
 
-### SLIDE ①A: Frontend — Merged + Pågår denna vecka
+### SLIDE ①A: Frontend — Merged + Pågår + Väntar på review denna vecka
 
-**FORMAT:** Tabell med två grupper (Merged | Pågår)
+**FORMAT:** Tabell med tre grupper (Merged | Pågår | Väntar på review)
 
 **KOLUMNER:**
 | Issue # | Titel | Assignad | Status | Merged/Branch |
@@ -29,6 +29,9 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 | **PÅGÅR DENNA VECKA** | | | | |
 | #88 | Critical interactions | Björn Boman | ◐ PÅG | feature/#88 |
 | #89 | E2E happy path | Tomac Barin | ◐ PÅG | feature/#89 |
+| **VÄNTAR PÅ REVIEW** | | | | |
+| #90 | Auth flow refactor | Lisa Andersson | ⏳ REVIEW | PR #142 |
+| #91 | Cache optimization | Kalle Ström | ⏳ REVIEW | PR #143 |
 
 **REGLER:**
 - **Del 1: Merged denna vecka** (sortera på merge-datum, nyast först)
@@ -42,8 +45,15 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
   - Branch-kolumn = branch-namn (feature/#88)
   - Verifiera mot Project Board: Issue är "In Progress" ELLER branch har commits senaste 3 dagarna
 
-- **Arbetet från alla 7 team-medlemmar måste synas** (antingen i Merged eller Pågår)
-  - Om medlem har 0 commits denna vecka: Lägg till "Inget arbete i koden denan vecka"
+- **Del 3: Väntar på review** (KRITISK textruta för gruppens uppmärksamhet)
+  - Visa ALLA öppna PRs som väntar på review (status: "awaiting review" eller ingen approval än)
+  - Status = ⏳ REVIEW (påminn gruppen om att reviewa)
+  - Branch-kolumn = PR-nummer (#142, #143)
+  - Sortera på skapningsdatum (äldst först — längst väntan)
+  - **VISUELL MARKERING:** Denna sektion ska ha en 🟠 orange eller 🔴 röd bakgrund för att dra uppmärksamhet
+
+- **Arbetet från alla 7 team-medlemmar måste synas** (antingen i Merged, Pågår eller Väntar på review)
+  - Om medlem har 0 commits denna vecka: Lägg till "Inget arbete i koden denna vecka"
 
 - Assignad = GitHub handle + display name (från TEAM_ROSTER.md)
 
@@ -51,26 +61,28 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 - ✅ Issue-nummer (#XX)
 - ✅ Kort titel (2-5 ord)
 - ✅ Assignad person (fullständig namn)
-- ✅ Status (✓ DONE eller ◐ PÅG)
-- ✅ Datum (merge-datum eller branch-namn)
+- ✅ Status (✓ DONE eller ◐ PÅG eller ⏳ REVIEW)
+- ✅ Datum (merge-datum, branch-namn, eller PR-nummer)
 - ✅ ALLA 7 team-medlemmar (även om 0 arbete denna vecka)
+- ✅ **Väntar på review-sektion** (ska synas tydligt för gruppens uppmärksamhet)
 
 **FÅR INTE innehålla:**
 - ❌ Commit-hash
-- ❌ Endast merged (måste visa pågår också)
-- ❌ "Nästan klar" eller "väntar på review" (bara ✓ DONE eller ◐ PÅG)
+- ❌ Endast merged (måste visa pågår + review också)
 - ❌ Stale branches (>3 dagar utan push)
+- ❌ PRs som redan är mergead (de hör hemma i "Merged" sektion)
 
 **DATA-SOURCES:**
 - 📊 **Merged:** GitHub PRs API (merged till develop denna vecka)
 - 📊 **Pågår:** GitHub branches (commits senaste 7 dagar) + Project Board (status: In Progress)
+- 📊 **Väntar på review:** GitHub PRs API (open PRs utan approval, skapade denna vecka)
 - 🔍 **Jämförelse:** Branch mot Project Board — visa discrepancy om Board och Git inte stämmer
 
-**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅`
+**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: #90, #91`
 
 ---
 
-### SLIDE ①B: Backend — Merged + Pågår denna vecka
+### SLIDE ①B: Backend — Merged + Pågår + Väntar på review denna vecka
 
 **FORMAT:** Tabell (identisk struktur som ①A)
 
@@ -82,7 +94,7 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 ---
 
-### SLIDE ①C: Native — Merged + Pågår denna vecka
+### SLIDE ①C: Native — Merged + Pågår + Väntar på review denna vecka
 
 **FORMAT:** Tabell (identisk struktur som ①A)
 
