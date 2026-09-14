@@ -5,29 +5,39 @@
 
 ---
 
-## 🚨 START HERE — Två steg bara
+## 🚨 START HERE — Enligt vad du gör
 
-### STEG 1: LÄS DETTA FÖRST (2 minuter)
+### Om du gör ett vanligt arbete:
 → **[PROJEKTKONTEXT_AVANZA.md](PROJEKTKONTEXT_AVANZA.md)** ← MANDATORY
+- HOW to work with this project
+- WHERE to get data
+- WHAT to do if something fails
 
-This file says:
-- HOW to work with this project (two-step workflow)
-- WHERE to get data (GitHub only, no shell commands)
-- WHAT to do if something fails (fallback strategies)
+### Om du skapar en PRESENTATION:
+→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← STANDARD
+- ALLT du behöver för presentation
+- NPF/Dyslexia/Autism-vänlig design AUTOMATIC
+- 14 mötespunkter, struktur, verifikation — allt här
+- **DU BEHÖVER INTE SÖKA LÄNGRE** — läs bara denna fil
 
-### STEG 2: Gå till _ai_guides
-→ **[_ai_guides/README.md](_ai_guides/README.md)** ← Länka vidare till presentationer
+### För allt annat:
+→ **[_ai_guides/README.md](_ai_guides/README.md)** ← Övriga guider
 
-### STEG 3: Presentationer
-→ **[_ai_guides/presentations/README.md](_ai_guides/presentations/README.md)** ← ALLT FRÅN BÖRJAN
+---
 
-Denna README innehåller:
-- ✅ Läsordning för presentationer
-- ✅ Länk till MANDATORY_READING_ORDER.md (allt du behöver)
-- ✅ Länk till PRESENTATION_FORMAT_GUIDE.md
-- ✅ Länk till alla övriga presentation-filer
+## 🎯 Kom ihåg:
 
-**ALLT ÄR LÄNKAT DÄR — ingenting mer att söka efter.**
+```
+Du behöver INTE be AI:n om något.
+Du behöver INTE instruera vilken fil den ska läsa.
+
+AI:n läser automatiskt:
+  1. Root README (denna)
+  2. PROJEKTKONTEXT_AVANZA (sedan PROJEKTKONTEXT_AVANZA säger nästa steg)
+  3. För presentation → MANDATORY_READING_ORDER (allt från början)
+
+Systemet är självförklarande.
+```
 
 ---
 
