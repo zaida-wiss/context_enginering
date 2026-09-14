@@ -50,6 +50,10 @@ VERIFIERA DATAN:
    └─ "Klassificering av arbete (levererat, pågår, blockerat)"
 
 BAKGRUND & FÖRSTÅELSE:
+├─ design/ACCESSIBILITY_NEURODIVERSITY.md 🧠
+│  └─ "VARFÖR färg + symbol + text? Dyslexi & ADHD-vänlig design"
+│  └─ (LÄS DETTA för att förstå varför designen är som den är)
+│
 ├─ models/REPO_FIRST_RECONSTRUCTION.md
 │  └─ "Varför vi använder commits/PRs som primär källa"
 │

@@ -29,6 +29,24 @@ Om denna fil inte följs → presentationen blir utan färg, utan symboler, utan
 
 ---
 
+## 🧠 VARFÖR? — Dyslexi & ADHD-Vänligt Design
+
+**Den här designen är inte bara tillgänglig — den är bättre för ALLA.**
+
+Färger och symboler bär budskap **FÖRE** text. Det gör presentationen:
+- **Snabbare att läsa** (1 sekund för status, inte 30 sekunder)
+- **Lättare för dyslektiker** (kan förstå utan att stava)
+- **Bättre för ADHD-fokus** (visuell struktur hjälper fokusering)
+- **Vackrare design** (visuell hierarki är estetisk)
+
+**Se [ACCESSIBILITY_NEURODIVERSITY.md](ACCESSIBILITY_NEURODIVERSITY.md)** för:
+- Varför varje färg betyder vad den betyder
+- Vad varje symbol signalerar
+- Hur whitespace och typografi gör detta möjligt
+- Checklista innan rendering
+
+---
+
 ## 📋 KONKRET IMPLEMENTERING PER ELEMENT
 
 ### A. DoD-Status (Definition of Done)
