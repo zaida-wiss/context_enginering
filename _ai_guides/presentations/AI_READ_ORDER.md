@@ -92,13 +92,15 @@ metadata:
    - Färger = budskap, symboler = signaler
    - Whitespace = fokus
 
-2. **[design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md)** — 8 min
+2. **[design/DESIGN_MODERN.md](design/DESIGN_MODERN.md)** — 8 min
    - MÅSTE LÄSAS FÖRE RENDERING
-   - Konkret PowerPoint-implementering
-   - DoD-status rendering
-   - Progress bars, dependency diagrams
-   - RGB-värden, fonts, spacing
-   - WCAG AA kontrast
+   - Vacker design (inte tråkiga tabeller)
+   - Rundade hörn, modern stil
+   - Semantiska färger (grön=färdig, orange=pågår, röd=blockerad)
+   - Läsbara textstorlekar (32pt titel → 16pt innehål)
+   - Whitespace-fokus (ADHD-vänligt)
+   - Cards istället för tabeller
+   - Konkreta CSS-regler
 
 3. **[design/PRESENTATION_FORMAT_GUIDE.md](design/PRESENTATION_FORMAT_GUIDE.md)** — 5 min
    - Konkreta slide-exempel för alla 7 slide-typer
