@@ -80,12 +80,13 @@ metadata:
 | **Issues (OPEN)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open |
 | **Pull Requests (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
 | **Merged PRs (filter by date)** | `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[IDAG-7d]` |
+| **Merged PRs (ALL — fallback)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+state%3Amerged |
 
 ### Project Board & Fallback
 | Resource | Primary | Fallback | Notes |
 |----------|---------|----------|-------|
 | **Project Board** | https://github.com/orgs/chas-challenge-2026/projects/31 | Issues URL (above) | If Board API unavailable → read Issues directly |
-| **Merged PRs** | `pulls?q=is:pr+is:merged+merged:>=[DATE]` | Google Sheets fallback | If GitHub filter fails → use Sheets |
+| **Merged PRs** | `pulls?q=is:pr+is:merged+merged:>=[DATE]` | [All merged PRs](https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+state%3Amerged) → then filter by date | If date filter fails → use all-merged link, then manually filter by week |
 | **Commits** | GitHub commits API | Sheets commits tab | If API unavailable → Sheets data |
 
 ### Reference
