@@ -66,15 +66,19 @@ execution_sequence:
     time_estimate_minutes: 20
 
   step_2:
-    name: "Fetch LIVE GitHub Data"
+    name: "Fetch LIVE GitHub Data — COMPLETE REPOSITORY AUDIT"
+    critical_rules:
+      - "Fetch REPOSITORY-WIDE data, not current-user data only"
+      - "For every branch candidate, verify HEAD commit timestamp falls inside reporting period"
+      - "Collect raw details, not just IDs: PR authors, assignees, linked issues, timestamps"
     blocking_sources:
       - "Team roster (identity verification)"
-      - "Merged PRs from develop (primary deliverable marker)"
-      - "Open issues with activity (in-progress work)"
+      - "Merged PRs from develop (primary deliverable marker) — REPOSITORY-WIDE"
+      - "Open issues with activity (in-progress work) — ALL, not filtered by user"
     non_blocking_sources:
-      - "Project Board (fallback: reconstruct from Issues/PRs)"
-      - "Meeting protocol (fallback: use GitHub data)"
-      - "Commits list (fallback: derive from PR data)"
+      - "Project Board (use ONLY for enrichment/verification; reconstruct from Issues/PRs if unavailable)"
+      - "Meeting protocol (prefer Google Drive connector; fallback to GitHub if needed)"
+      - "Commits list (derive from PR data if direct access unavailable)"
     rule: "Fetch ALL. If BLOCKING source unreachable even with fallback → STOP. If NON-BLOCKING fails → use fallback, do NOT stop."
 
   step_3:
@@ -168,7 +172,57 @@ data_audit:
       expected: 7
       verified: "N/7 (how many identity-verified from GitHub)"
 
-  validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again."
+    raw_verified_data:
+      description: "Complete raw data lists for slide building (not just summaries)"
+
+      merged_prs:
+        - number: "[#XX]"
+          title: "[string]"
+          author: "[GitHub username]"
+          assignee: "[GitHub username or null]"
+          merged_at: "[ISO timestamp]"
+          base_branch: "[branch name, typically develop]"
+          linked_issue: "[#YY or null]"
+
+      open_prs:
+        - number: "[#XX]"
+          title: "[string]"
+          author: "[GitHub username]"
+          assignee: "[GitHub username or null]"
+          created_at: "[ISO timestamp]"
+          updated_at: "[ISO timestamp]"
+          review_status: "[pending/approved/changes-requested]"
+
+      active_issues:
+        - number: "[#XX]"
+          title: "[string]"
+          assignee: "[GitHub username or null]"
+          updated_at: "[ISO timestamp]"
+          labels: "[array of labels or empty]"
+          status: "[open/closed]"
+
+      active_branches:
+        - name: "[branch name]"
+          head_sha: "[commit SHA]"
+          last_commit_at: "[ISO timestamp within reporting period]"
+          last_commit_author: "[GitHub username]"
+
+      commits_to_develop:
+        - sha: "[commit SHA]"
+          message: "[commit message]"
+          committed_at: "[ISO timestamp]"
+          author: "[GitHub username]"
+
+      meeting_protocol:
+        date: "[meeting date, ISO format]"
+        decisions: "[list of documented decisions]"
+        blockers: "[list of identified blockers]"
+        risks: "[list of identified risks]"
+        sprint_goals: "[documented goals for the sprint]"
+        next_steps: "[action items with owners]"
+        questions_to_pl: "[open questions needing PL input]"
+
+  validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again. Raw data lists prevent missed data and duplicates."
   checksums:
     count: "repository_total_merged_prs MUST == sum(frontend + backend + native + cross_team + other counts)"
     set: "repository_merged_pr_ids MUST == union(all work_area merged_pr_ids)"

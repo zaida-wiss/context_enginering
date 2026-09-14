@@ -136,7 +136,8 @@ Presentationen måste kunna verifiera dessa fakta:
 **Fakta:** Vilka ändringar har gjorts i develop/main sedan förra möte?
 
 **Primär källa:**
-- GitHub Connector/API — commits to develop since last Tuesday
+- GitHub Connector/API — commits to develop within REPORTING_PERIOD (see SYSTEM_CONTRACT.yaml)
+- Rule: Previous Monday 00:00 through current Monday 00:00 (exclusive), Europe/Stockholm timezone
 
 **Fallback ordning:**
 1. GitHub Connector/API — commits to develop + date range
