@@ -21,15 +21,19 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 ## 🤖 **START HÄR FÖR AI:**
 
-👉 **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← ENDA ORDNINGEN FÖR AI
+👉 **[SYSTEM_CONTRACT.yaml](SYSTEM_CONTRACT.yaml) ← KÄLLAN TILL SANNING (läs detta FÖRST)**
+
+Denna fil innehåller maskinläsbar definition av hela systemet. Om någon annan fil motsäger denna → **SYSTEM_CONTRACT vinner alltid**.
+
+👉 **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md) ← EXEKVERINGSORDNINGEN**
 
 Denna fil säger:
 - STEG 1: Läs system-filer (README, DATA_COLLECTION, DATA_SOURCES)
-- STEG 2: Verifiera (AI_VERIFICATION_WORKFLOW, RENDER_GATE_CHECKLIST)
+- STEG 2: Verifiera (AI_VERIFICATION_WORKFLOW, RENDER_GATE_CHECKLIST, DATA_AUDIT)
 - STEG 3: Design & spec (SLIDE_DETAIL_SPEC, VISUAL_DESIGN_MANDATORY, PRESENTATION_STRUCTURE)
 - STEG 4: Final render-gate innan presentation byggs
 
-**En ordning. Ingen variation. Denna ordning.**
+**En ordning. Ingen variation. Denna ordning. Följ SYSTEM_CONTRACT om något krockar.**
 
 ---
 

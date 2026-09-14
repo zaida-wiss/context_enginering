@@ -122,13 +122,21 @@ data_audit:
         merged_pr_ids: "[#XX, #YY] or empty"
         open_pr_ids: "[#XX] or empty"
         active_issue_ids: "[#XX, #YY] or empty"
+      cross_team:
+        merged_pr_ids: "[#XX, #YY] or empty (work affecting multiple teams)"
+        open_pr_ids: "[#XX] or empty"
+        active_issue_ids: "[#XX, #YY] or empty"
+      other:
+        merged_pr_ids: "[#XX] or empty (docs, infra, chores, etc)"
+        open_pr_ids: "[] or empty"
+        active_issue_ids: "[#XX] or empty"
 
     member_coverage:
       expected: 7
       verified: "N/7 (how many identity-verified from GitHub)"
 
   validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again."
-  checksum: "repository_total_merged_prs MUST == sum(frontend + backend + native merged_pr_ids). If FALSE → render gate FAIL."
+  checksum: "repository_total_merged_prs MUST == sum(frontend + backend + native + cross_team + other merged_pr_ids). If FALSE → render gate FAIL."
 
 ###############################################################################
 # HARD RULES — Never break these

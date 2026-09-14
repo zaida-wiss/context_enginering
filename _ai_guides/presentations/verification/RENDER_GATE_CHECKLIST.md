@@ -45,13 +45,23 @@ WORK AREAS (Classification):
     Merged PRs: [#XX] (count: N)
     Open PRs: [] (count: 0)
     Active issues: [#XX] (count: N)
+  
+  Cross-team:
+    Merged PRs: [#XX] (count: N, work affecting multiple teams)
+    Open PRs: [#XX] (count: N)
+    Active issues: [#XX] (count: N)
+  
+  Other:
+    Merged PRs: [#XX] (count: N, docs/infra/chores)
+    Open PRs: [] (count: 0)
+    Active issues: [] (count: 0)
 
 TEAM MEMBER COVERAGE:
   Expected: 7
   Verified: N/7 (list: Person1, Person2, ... or "Ingen aktivitet denna vecka" if 0 work)
 
 CHECKSUMS (MUST PASS):
-  ✅ sum(Frontend + Backend + Native merged_prs) == repository_total_merged_prs
+  ✅ sum(Frontend + Backend + Native + Cross_team + Other merged_prs) == repository_total_merged_prs
   ✅ All 7 team members identity-verified or marked "no activity"
 ```
 
