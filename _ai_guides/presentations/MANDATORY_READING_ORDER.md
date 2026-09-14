@@ -218,6 +218,54 @@ Den filen säger:
 
 ---
 
+### 🚨 SLIDES ③④⑤ FORMAT-REGEL: PER TEAM, ALDRIG SAMMANFATTNING
+
+**SLIDES ③④⑤ (Frontend/Backend/Native) MÅSTE VARA DENNA STRUKTUR:**
+
+```
+SLIDE ③A (Frontend — denna sprint):
+┌──────┬───────────────────────┬──────────────┬────────┬──────────────┐
+│ Issue│ Titel                 │ Assignad     │ Status │ Blocker      │
+├──────┼───────────────────────┼──────────────┼────────┼──────────────┤
+│ #88  │ Critical interactions │ Björn Boman  │ ◐ PÅG  │ API-kontrakt │
+│ #89  │ E2E happy path        │ Tomac Barin  │ ◐ PÅG  │ API-kontrakt │
+│ #85  │ Responsive header     │ Zaida Wiss   │ ✓ DONE │ —            │
+└──────┴───────────────────────┴──────────────┴────────┴──────────────┘
+
+SLIDE ④A (Backend — denna sprint):
+┌──────┬──────────────────────┬──────────────┬────────┬────────────┐
+│ Issue│ Titel                │ Assignad     │ Status │ Blocker    │
+├──────┼──────────────────────┼──────────────┼────────┼────────────┤
+│ #87  │ API-definition       │ Erik Bergl.  │ ◐ PÅG  │ —          │
+│ #95  │ Security review      │ Rasha Knifdi │ ✓ DONE │ —          │
+└──────┴──────────────────────┴──────────────┴────────┴────────────┘
+
+SLIDE ⑤A (Native — denna sprint):
+┌──────┬──────────────────────┬──────────────┬────────┬──────────────┐
+│ Issue│ Titel                │ Assignad     │ Status │ Blocker      │
+├──────┼──────────────────────┼──────────────┼────────┼──────────────┤
+│ #86  │ Support capacity     │ Pär Lundh    │ ◐ PÅG  │ API-kontrakt │
+│ #92  │ Performance testing  │ Henrik W.    │ ◐ PÅG  │ —            │
+└──────┴──────────────────────┴──────────────┴────────┴──────────────┘
+```
+
+**REGLER:**
+- ✅ EN SLIDE PER TEAM (③A, ④A, ⑤A)
+- ✅ **Alla 7 team-medlemmar distribuerade enligt faktiskt arbete** — inte en gemensam sammanfattning
+- ✅ Sortera på status (DONE sist)
+- ✅ Blocker = vad väntar vi på (issue-nummer eller kort text, eller "—" om ingen)
+- ✅ Status: ✓ DONE | ◐ PÅG | ⏳ VÄNTAR
+
+**FÅR INTE SES:**
+- ❌ En gemensam "Teamtäckning" slide med alla 7 medlemmar
+- ❌ Sammanfattnings-tabell (Område | Fokus)
+- ❌ Commit-hashar
+- ❌ PR-nummer (vi visar issues, inte PRs)
+- ❌ Estimat i timmar
+- ❌ "Nästan klart" (antingen DONE eller PÅG)
+
+---
+
 ### STEG 4: FINAL RENDER GATE
 
 Läs: **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLIST.md)**
