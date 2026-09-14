@@ -342,25 +342,39 @@ RISK:
 - 📊 GitHub Project Board
 - 🔍 Code review från alla aktiva branches/PRs
 
-**FORMAT:**
+**FORMAT:** Se [DEPENDENCY_CHAIN_PLANNING.md](../models/DEPENDENCY_CHAIN_PLANNING.md) för mall
 
-### ⑦A: Blockers & Dependencies
+### ⑦A: Blockers & Dependencies — MAP-FORMAT (Blockerträd)
+
+**Visuellt blockerträd (REKOMMENDERAT FORMAT):**
+
 ```
-KRITISKA BLOCKERS (MÅSTE LÖSAS):
-  🔴 #88 Frontend väntar på Backend API-definition
-       → Löses idag 14:00 (Erik-möte)
+🔴 KRITISKA KEDJOR:
 
-  🔴 #86 Native väntar på Backend API-kontrakt
-       → Löses imorgon (JNA-möte)
+[Foundation Issue]
+   ├──→ [Dependent Issue A]
+   └──→ [Dependent Issue B]
+             ↑
+        [Förprovision C] måste mergas först
 
-DELBEROENDEN (GÅR ATT ARBETA RUNT):
-  🟠 #87 Test foundation väntar på design-review
-       → Rasha kan börja implementation, design-review imorgon
-
-LÖSTA BLOCKERS:
-  ✅ #95 Security review — mergad
-  ✅ #85 Responsive header — mergad
+[Another Foundation]
+   └──→ [Dependent Issue]
 ```
+
+**Eller som tabell (alternativ):**
+
+```
+Issue | Blockerats av | Låser upp | Prioritet | Status
+------|---------------|-----------|-----------|--------
+#XX   | Ingenting     | #YY, #ZZ  | 🔴 Hög   | ◐ PÅG
+#YY   | #XX           | #AA       | 🔴 Hög   | ⏳ Väntar
+```
+
+**MÅSTE innehålla:**
+- ✅ Vilka är Foundation-issues (låga risker, låser upp mycket)
+- ✅ Vilka är Dependenter (startar när Foundation mergad)
+- ✅ Vilka är Secondary-dependencies (kan parallelleras, låg konflikt)
+- ✅ Vilka är redan lösta (✅ markerade)
 
 ### ⑦B: Code Review Findings (om behövs)
 ```
@@ -382,43 +396,71 @@ REKOMMENDATION:
 
 ---
 
-## 📝⑧ PRIORITERING & SCOPE (1 slide)
+## 📝⑧ PRIORITERING & SCOPE (1-2 slides) — FAS-BASERAD ORDNING
 
-**Syfte:** Vad gör vi FÖRST? Vad kommer senare? Vem gör vad?
+**Syfte:** Vad gör vi FÖRST? Vad kommer senare? Vem gör vad? I VILKEN ORDNING?
 
 **MÅSTE INNEHÅLLA:**
-- ✅ MUST denna vecka (måste göras denna vecka)
-- ✅ NEXT nästa vecka (nästa prioritet)
-- ✅ LATER (kan vänta)
+- ✅ Fas-baserad ordning (Fas 1 → 2 → 3 osv)
 - ✅ **VARJE ITEM: Team + Assignad person**
+- ✅ **Varför denna ordning?** (blockers, beroenden, konfliktrisker)
+- ✅ Teamregel: "Max 1 aktiv + 1 queued per person"
 
-**FORMAT:**
+**STRUKTUR:** Se [DEPENDENCY_CHAIN_PLANNING.md](../models/DEPENDENCY_CHAIN_PLANNING.md) för mall
+
+**FORMAT (Fas-baserad tabell):**
 
 ```
-🔴 MUST DENNA VECKA (Måste göras):
+📅 PLANERAD ORDNING (Fas-baserad, blockers + beroenden):
 
-  #95 Security review + merge (Backend, Assignad: Erik) ✓
-  #87 Test foundation (Backend, Assignad: Rasha) ◐
-  #88 Critical interactions (Frontend, Assignad: Björn) ◐
-  CTO-underlag dokumentation (Backend, Assignad: Erik)
-
-🟠 NEXT VECKA (Nästa prioritet):
-
-  #89 E2E happy path (Frontend, Assignad: Tomac)
-  #86 Responsive dashboard (Native, Assignad: Henrik)
-  Backend/Frontend API-kontrakt (Backend ↔ Frontend, Ägare: Erik)
-
-⚪ LATER (KAN VÄNTA):
-
-  #84 Asset allocation chart (Frontend, Assignad: —)
-  #85 Responsive header (Frontend, Assignad: Zaida) [nästan klar]
-  Extra polish om demo stabil (Native, Ägare: Pär)
+Fas     | Person A          | Person B          | Person C          | Varför denna ordning?
+--------|-------------------|-------------------|-------------------|-------------------------------------------
+1. Nu   | #87 Test (Zaida)  | #43 API (Tomac)   | #81 Link (Björn)  | Tre kedjor, låg konflikt. #43/#87 låser upp mycket.
+2. Merge| #88 Tests (Zaida) | #82 Portfolio     | #85 Responsive    | #82 kräver #43 merged. #85 kan parallelleras.
+3. Stab | Stabilisering #88 | #83 Allocation    | #86 Dashboard     | #83 kan startas när #81 mergad (ingen konflikt).
 ```
 
-**REGEL:**
-- Varje item visar: `#XX Titel (Team: X, Assignad: Namn) Status`
-- Om assignad saknas → `(Team: X, Assignad: —)`
-- Statusmarkörer: ✓ DONE, ◐ PÅG, ? BLOCKERAD, — EJ STARTAD
+**Eller med textuell format:**
+
+```
+🔴 FAS 1 — Foundation Issues (Nu):
+  ✅ Person A: #87 Test foundation (låser upp #88/#89)
+  ✅ Person B: #43 API client + mock (låser upp #82/#83)
+  ✅ Person C: #81 Linked allocation (låg konflikt, egen komponent)
+  
+  Varför: Tre kedjor. Låg mergekonfliktrisk. #43/#87 låser upp mycket efterföljande arbete.
+
+🟠 FAS 2 — Efter Fas 1 mergad (pull develop först!):
+  Person A: #88 Critical interaction tests
+  Person B: #82 usePortfolio (kräver #43 merged)
+  Person C: #85 Responsive header (kan parallelleras)
+  
+  Varför: #82 kräver #43. #85 oberoende av dataflödet.
+
+🟡 FAS 3+ — Beroenden lösta:
+  Person A: Stabilisering #88
+  Person B: #83 saveAllocation (kan NOW startas utan #81 konflikt)
+  Person C: #86 Responsive dashboard
+```
+
+**KRITISK TEAMREGEL:**
+```
+🚨 MAX 1 ACTIVE + 1 QUEUED PER PERSON
+
+  Ingen börjar nästa issue innan dependency är merged i develop.
+  
+  Exempel ordning för Person A:
+    1. #87 → merge → pull develop
+    2. #88 (depender på #87) → merge → pull develop
+    3. #89 (depender på #88)
+    
+  Före varje ny issue:
+    ☐ Pull/rebase mot develop
+    ☐ Kontrollera öppna PRs (vem rör samma komponenter?)
+    ☐ Bekräfta dependency är mergad (inte bara "nästan klar")
+```
+
+**POÄNG:** Maximalt genomflöde för TEAMET, inte maximalt antal parallella issues.
 
 ---
 
