@@ -15,7 +15,7 @@ metadata:
 
 ## 🎯 DESIGN PRINCIPER
 
-### 1. KÄNSLA: Modernt + Luftigt + Glatt + Uppmuntrande
+### 1. KÄNSLA: Modernt + Luftigt + Glatt + Uppmuntrande + Autist-Vänligt
 
 ```
 ✨ Känslan ska vara:
@@ -23,6 +23,28 @@ metadata:
    - Luftigt: Mycket whitespace, inget trångt
    - Glatt: Varma färger, emojis, celebratory copy
    - Uppmuntrande: Fokus på framsteg, inte problem
+   - Autist-vänligt: Förutsägbar, konsistent, sensory-friendly
+
+🧩 AUTISM-VÄNLIGHET (kritiskt för presentationen):
+   
+   FÖRUTSÄGBAR STRUKTUR:
+   - Samma layout för samma typ av innehål
+   - Ingen överraskningar (känd ordning)
+   - Tydliga övergångar mellan sektioner
+   - Samma ikoner/färger = samma betydelse ALLTID
+
+   SENSORY-FRIENDLY:
+   - INGEN blinkande, flimmrande eller snabb animering
+   - MAX 6 färger per presentation (inte många variationer)
+   - Konsistent typography (en font-family)
+   - Ingen plötslig ljus-/mörkväxling
+   - Minimal rörelse (stillbilder, inte animationer)
+
+   TYDLIG INFORMATION:
+   - Explicit labels (inte gissningar)
+   - Tydlig hierarki (stor → liten, aldrig omvänt)
+   - Många visuella pausen (whitespace mellan section)
+   - Konsistenta ikoner (🟢 ALLTID = färdig)
 
 Exempel uppmuntrande copy:
    ✓ "Vi fixade #95 och är på vägen!" (inte "issue #95 är klar")
@@ -353,6 +375,7 @@ FÄRG:
   [ ] Innehåller färg endast för BETYDELSE (inte dekoration)?
   [ ] Grön för färdig? Orange för pågår? Röd för blockerad?
   [ ] Maximalt 2-3 färger per slide?
+  [ ] SAMMA färg = SAMMA betydelse på ALLA slides (autism-vänligt)?
 
 TEXT:
   [ ] Titlar är 32pt, headers är 20pt?
@@ -366,10 +389,24 @@ LAYOUT:
   [ ] Spacing mellan element: 16-24px?
 
 ADHD-VÄNLIG:
-  [ ] Kan läsaren scanна denna slide på 3 sekunder?
+  [ ] Kan läsaren scanna denna slide på 3 sekunder?
   [ ] Finns visuell hierarki (stor → små)?
   [ ] Ögonen har vilpunkter (whitespace)?
   [ ] Maximalt 3-4 textblock per slide?
+
+DYSLEXIA-VÄNLIG:
+  [ ] Är linjer luftiga (line-height 1.6+)?
+  [ ] Är texten läsbar (14pt+)?
+  [ ] Finns god kontrast (4.5:1 minst)?
+
+AUTISM-VÄNLIG (KRITISKT):
+  [ ] INGEN animation, blinking eller flimmrande?
+  [ ] Samma layout som tidigare slides (förutsägbar)?
+  [ ] Samma ikoner/färger = samma betydelse ALLTID?
+  [ ] TYDLIGA övergångar mellan sektioner (whitespace)?
+  [ ] Minimal visuell stimuli (inte för många färger/element)?
+  [ ] Explicit labels (inte gissningar)?
+  [ ] Konsistent typography (bara en font-family)?
 
 PROFESSIONELL:
   [ ] Ingen AI-instruktioner synliga?

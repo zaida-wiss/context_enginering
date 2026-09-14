@@ -1,21 +1,23 @@
 ---
 name: accessibility_neurodiversity
-description: Dyslexi- och ADHD-vänlig design — Färger, Former och Symboler levererar budskap FÖRE text
+description: Neurodiverse-vänlig design — Dyslexi, ADHD & Autism. Färger, Former och Symboler levererar budskap FÖRE text
 metadata:
   type: process
   critical: true
   for_ai: true
 ---
 
-# 🧠 DYSLEXI & ADHD-VÄNLIG DESIGN — Färger, Former & Symboler
+# 🧠 NEURODIVERSE-VÄNLIG DESIGN — Dyslexi, ADHD & Autism
 
-**DENNA FIL FÖRKLARAR varför presentationen är utformad som den är.**
+**DENNA FIL FÖRKLARAR varför presentationen är utformad som den är — för TRE neurologiska profiler.**
 
-En presentation som är vänlig för dyslekti och ADHD är **inte bara tillgänglig** — det är **bättre för ALLA läsare**. Färger och former bär meningar. Text bekräftar bara det som redan är tydligt.
+En presentation som är vänlig för dyslekti, ADHD och autism är **inte bara tillgänglig** — det är **bättre för ALLA läsare**. 
+
+Principen: Färger och former bär meningar. Text bekräftar bara det som redan är tydligt.
 
 ---
 
-## 🎯 VAD BETYDER "DYSLEXI/ADHD-VÄNLIGT"?
+## 🎯 VAD BETYDER "NEURODIVERSE-VÄNLIGT"?
 
 ### För dyslektiker:
 - **Text är ansträngande att läsa** — kan ta 2-3x längre tid än för andra
@@ -28,6 +30,13 @@ En presentation som är vänlig för dyslekti och ADHD är **inte bara tillgäng
 - **Visuell stimulans behövs** — men INTE kaos (det distraherar)
 - **Snabb visuell sammanfattning är kritisk** — "vad är det här slide-om?" på 1 sekund
 - **Strukturerad layout** — tydliga separationer mellan element gör det lättare att inte hoppa omkring
+
+### För Autism (Sensory Processing):
+- **Överflödet av stimuli är överväldigt** — många färger/ljus/rörelse kan orsaka stress
+- **Förutsägbarhet är KRITISK** — samma layout, samma ikoner, samma färger = lugn
+- **Explicit information** — gissningar och dolda betydelser är stressande
+- **Minimal rörelse/animation** — blinking, flimmrande eller snabb animation kan vara obehagligt
+- **Tydlig struktur** — hierarki och ordning gör det möjligt att förstå
 
 ### För ALLA:
 - **Mänsklig hjärn läser bilder före text** — på ~1 sekund
