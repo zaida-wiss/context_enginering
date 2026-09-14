@@ -170,11 +170,51 @@ Den filen säger:
    
 3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
    - EXAKT innehål för VARJE SLIDE (①-⑭)
+   - **KRITISK FORMAT-REGEL:** Slide ①A-C är TABELLER med tre sektioner (Merged | Pågår | Review), INTE sammanfattning-tabeller
+   - Se exempel längre ned under "SLIDE ①A-C FORMAT"
    
 4. **[monday_meeting/structure/PRESENTATION_STRUCTURE.md](monday_meeting/structure/PRESENTATION_STRUCTURE.md)**
    - 14 mötespunkter (①-⑭) definitioner
 
 **Om två filer motsäger varandra:** SLIDE_DETAIL_SPEC.md VINNER.
+
+---
+
+### 🚨 KRITISKA FORMAT-REGLER — LÄS FÖRE RENDERING
+
+**SLIDE ①A-C (Frontend/Backend/Native) MÅSTE VARA DENNA FORMAT:**
+
+```
+| Issue # | Titel (2-5 ord) | Assignad | Status | Merged/Branch |
+|---------|-----------------|----------|--------|---------------|
+| ✅ MERGED DENNA VECKA |
+| #95 | Security review | Zaida Wiss | ✓ DONE | 2026-09-13 |
+| #87 | Test foundation | Björn Boman | ✓ DONE | 2026-09-12 |
+|
+| ◐ PÅGÅR DENNA VECKA |
+| #88 | Critical interactions | Björn Boman | ◐ PÅG | feature/#88 |
+| #89 | E2E happy path | Tomac Barin | ◐ PÅG | feature/#89 |
+|
+| ⏳ VÄNTAR PÅ REVIEW (🟠 eller 🔴 bakgrund för att dra uppmärksamhet) |
+| #90 | Auth flow refactor | Lisa Andersson | ⏳ REVIEW | PR #142 |
+| #91 | Session storage | Erik Berglund | ⏳ REVIEW | PR #143 |
+```
+
+**REGLER:**
+- ✅ TRE SEKTIONER: Merged (sortera datum, nyast först) | Pågår (senast pushad först) | Review (äldst först)
+- ✅ **Assignad = ÄGARE av arbetet** (GitHub issue assignee), INTE reviewer eller merger
+- ✅ **FAKTISK GitHub-data**, ALDRIG exempel eller placeholders
+- ✅ **Väntar på review-sektion** måste ha tydlig visuell markering (orange/röd bakgrund)
+- ✅ **ALLA 7 team-medlemmar** måste synas (även om 0 arbete denna vecka)
+- ✅ **Footer:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska issues]`
+
+**FÅR INTE SES:**
+- ❌ Team-områdena som sammanfattning (Frontend/Backend/Native/Team)
+- ❌ Commit-hashar
+- ❌ Bara merged (måste visa pågår + review också)
+- ❌ Stale branches (>3 dagar utan push)
+- ❌ Reviewer-namn som assignee
+- ❌ Exempel-issue-nummer (#90, #91, etc) från denna spec — använd FAKTISK GitHub-data!
 
 ---
 
