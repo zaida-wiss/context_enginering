@@ -172,8 +172,8 @@ if (showWarning) {
 
 ## Länk Denna Memory från Dokumenten
 
-**Från:** [_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)  
-**Från:** [_ai_guides/WHAT_CAN_I_HELP_WITH.md](_ai_guides/WHAT_CAN_I_HELP_WITH.md)  
+**Från:** [DEFINITION_OF_DONE.md](DEFINITION_OF_DONE.md)  
+**Från:** [WHAT_CAN_I_HELP_WITH.md](../_ai_guides/WHAT_CAN_I_HELP_WITH.md)  
 **Från:** Frontend issue-beskrivningar i GitHub
 
 ## Frontend-Checklist Från Design

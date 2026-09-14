@@ -10,7 +10,7 @@ metadata:
 
 **Denna fil definierar vilken information som behövs, inte vilka tekniska metoder som MÅSTE användas.**
 
-🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
+🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
 
 ---
 

@@ -67,9 +67,9 @@ Enligt mockup [XX_namn.webp] (_docs/XX_namn.webp) behöver komponenten:
 - [ ] CSS modules (en per komponent)
 
 ### Se även
-- [UI_DESIGN_REFERENCE.md](../  UI_DESIGN_REFERENCE.md) - Full spec för denna komponent
-- [DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md) - Acceptance criteria
-- [TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md) - Code standards
+- [UI_DESIGN_REFERENCE.md](../_memory/UI_DESIGN_REFERENCE.md) - Full spec för denna komponent
+- [DEFINITION_OF_DONE.md](../_memory/DEFINITION_OF_DONE.md) - Acceptance criteria
+- [TEAMSTANDARDS.md](../_memory/TEAMSTANDARDS.md) - Code standards
 ```
 
 ---
@@ -131,9 +131,9 @@ Enligt mockup [02_overview.webp](_docs/02_overview.webp):
 
 **För varje frontend-fråga, referera även till:**
 
-1. **[UI_DESIGN_REFERENCE.md](_memory/UI_DESIGN_REFERENCE.md)** - Full mockup-spec
-2. **[DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)** - Acceptance criteria
-3. **[TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** - Code standards (TypeScript, CSS modules, etc.)
+1. **[UI_DESIGN_REFERENCE.md](../_memory/UI_DESIGN_REFERENCE.md)** - Full mockup-spec
+2. **[DEFINITION_OF_DONE.md](../_memory/DEFINITION_OF_DONE.md)** - Acceptance criteria
+3. **[TEAMSTANDARDS.md](../_memory/TEAMSTANDARDS.md)** - Code standards (TypeScript, CSS modules, etc.)
 
 ---
 
