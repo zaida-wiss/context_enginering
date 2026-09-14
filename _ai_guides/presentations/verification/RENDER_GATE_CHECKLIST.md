@@ -128,94 +128,27 @@ CHECKSUMS (ALL MUST PASS):
 
 ---
 
-## 🚨 KRITISK: INGEN AI-INSTRUKTIONER PÅ SLIDES (OBLIGATORISK CHECK)
+## 🚨 KRITISK: DESIGN & CONTENT COMPLIANCE CHECK
 
-**INNAN någon slide renderas: SCAN för meta-instruktioner**
+**Refer to authoritative files — do NOT repeat their rules:**
 
-### ❌ FÖRBJUDET — dessa får ALDRIG synas på slides:
+- 📊 **Content rules** → see [`SLIDE_DETAIL_SPEC.md`](../../monday_meeting/design/SLIDE_DETAIL_SPEC.md)
+- 🎨 **NPF/accessibility rules** → see [`ACCESSIBILITY_NEURODIVERSITY.md`](../../design/ACCESSIBILITY_NEURODIVERSITY.md)
+- 🖼️ **Design rules** → see [`VISUAL_DESIGN_MANDATORY.md`](../../design/VISUAL_DESIGN_MANDATORY.md)
 
-```
-🔴 INSTRUKTIONER FÖR AI (förbjudna exempel):
-  ❌ "Repo-first: visa bara det som går att koppla till..."
-  ❌ "Måste räknas mot develop"
-  ❌ "Ej live-låst här"
-  ❌ "Verifiera brancher mot develop"
-  ❌ "Denna regel är tvingande"
-  ❌ "Render QA checklist"
-  ❌ "AI ska analysera..."
+**Mechanical check before rendering:**
 
-🔴 CHECKLISTOR (förbjudna):
-  ❌ "Område | Faktiskt underlag | Status | Mötesåtgärd"
-  ❌ "Merged PRs | Måste räknas mot develop"
-  ❌ Något som börjar med "☐" eller "✅" som inte är faktiskt arbete
+Q: **Is every slide derived from DATA_AUDIT and SLIDE_DETAIL_SPEC?**
+- ✅ Yes → continue
+- ❌ No → STOP, fix slides first
 
-🔴 PROCESSMETALANGUAGE (förbjudna):
-  ❌ "Senaste 7 dagar"
-  ❌ "Kan inte sättas utan repo"
-  ❌ "Identifiera risk-brancher"
-  ❌ "Kontrollera DoD innan klart"
-```
+Q: **Does the slide follow VISUAL_DESIGN_MANDATORY?**
+- ✅ Yes → continue
+- ❌ No → STOP, fix design first
 
-### ✅ TILLÅTET — detta ska synas på slides:
-
-```
-🟢 FAKTISKA DATA (från GitHub):
-  ✅ "#95 Security review · Zaida · ✓ DONE · merged 2026-09-13"
-  ✅ "🔴 API-kontrakt inte låst — Frontend blockerad"
-  ✅ "Backend måste leverera API-spec idag"
-  ✅ "3 merged PRs denna vecka (Frontend), 2 open (under review)"
-  ✅ "Erik: 4 commits, Zaida: 3 commits denna vecka"
-  ✅ Integration diagram med faktiska branches
-
-🟢 MÖTESBESLUT OCH ÅTGÄRDER:
-  ✅ "Behöver synkas: login request/response"
-  ✅ "Fallback-arbete: Frontend testning (oberoende)"
-  ✅ "Backend-branch ligger 75 commits efter develop"
-
-🔴 FÖRBJUDET — detta får ALDRIG synas:
-  ❌ "Frontend 55% ready" (utan exakt definition från GitHub)
-  ❌ "Kapacitet 70%" (utan verifierbar källa)
-  ❌ "Risk-nivå hög" (utan konkret blockerande issue)
-  ❌ "Förväntat 80% klar nästa vecka" (prognos/uppskattning)
-```
-
-### MEKANISK KONTROLL — Tre tester per textrad på sliden:
-
-**Test 1: Källkontroll**
-```
-Q: "Kan jag belägga denna text från GitHub-data denna vecka?"
-
-Ja → texten får vara på sliden
-Nej → ta bort eller ändra till "enligt GitHub X"
-```
-
-**Test 2: AI-instruktioner**
-```
-Q: "Är detta en instruktion för AI, eller faktiskt innehål för mötet?"
-
-Instruktion (❌) → ta bort innan rendering
-Faktiskt innehål (✅) → får vara på sliden
-```
-
-**Test 3: Uppskattningar & procent**
-```
-Q: "Är detta en AI-gissning eller faktiska GitHub-data?"
-
-Gissning/procent (❌) → ta bort
-GitHub-data (✅) → får vara på sliden
-
-Exempel FÖRBJUDET:
-  ❌ "Frontend 55% ready"
-  ❌ "Kapacitet 70% utnyttjad"
-  ❌ "Förväntas klart nästa vecka"
-
-Exempel TILLÅTET:
-  ✅ "3 merged PRs denna vecka (Frontend)"
-  ✅ "5 commits denna vecka från Erik"
-  ✅ "#88 blockerad av Backend API-spec"
-```
-
-**REGEL: Om någon AI-instruktion, uppskattning eller opåverifierad procent hittas på slide = STOPP, rendering INTE tillåten.**
+Q: **Are all sources verifiable from GitHub?**
+- ✅ Yes → continue
+- ❌ No → STOP, remove unverified content
 
 ---
 
