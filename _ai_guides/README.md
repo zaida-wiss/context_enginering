@@ -11,34 +11,37 @@ Dessa dokument innehåller **konkreta guider** för att skapa presentationer, m�
 ```
 VILL DU SKAPA EN PRESENTATION?
         ↓
-🟢 START HÄR: SPRINT_PRESENTATION_STRUCTURE.md
-   (grundläggande struktur & krav)
+🟢 START HÄR: presentations/MANDATORY_READING_ORDER.md ← LÄSOBLIGATORISK
+   (allt du behöver veta innan rendering)
         ↓
-SEDAN: PRESENTATION_FORMAT_GUIDE.md ⭐ EXAKTA SLIDE-LAYOUTS
-   (visar varje slide-typ med borders, färger, tonalitet)
+SEDAN: presentations/design/PRESENTATION_FORMAT_GUIDE.md ⭐ EXAKTA SLIDE-LAYOUTS
+   (visar varje slide-typ med borders, färger, tonalitet, exempel)
         ↓
-SEDAN: SPRINT_PROTOCOL_NUMBERED.md
-   (vilka mötespunkter — 📝①-⑫)
+SEDAN: presentations/structure/PRESENTATION_STRUCTURE.md
+   (14 mötespunkter — 📝①-⑧)
+        ↓
+SEDAN: presentations/verification/RENDER_GATE_CHECKLIST.md
+   (när KAN/INTE kan presentationen renderas)
         ↓
 SEDAN: mötesprotokollet från Google Docs
-   (denna veckas faktiska data)
+   (denna veckas faktiska data från mötet)
         ↓
 RESULTAT: NPF-vänlig presentation som gör dig glad & motiverad
 ```
 
 ---
 
-## 📁 Alla Guider (Alfabetisk ordning)
+## 📁 Presentation-Guider (Läsordning)
 
 | Fil | Syfte | Läs när... |
 |-----|-------|-----------|
-| **PRESENTATION_FORMAT_GUIDE.md** ⭐ | **EXAKTA SLIDE-LAYOUTS** — visar varje slide-typ med borders, färger, whitespace, tonalitet | Du ska skapa en presentation |
-| **SPRINT_PRESENTATION_STRUCTURE.md** | Grundstruktur för presentationer — 13 mötespunkter (📝①-⑫) | Du ska förstå presentation-strukturen |
-| **SPRINT_PROTOCOL_NUMBERED.md** | Mötesprotokolls mall — vilka mötespunkter finns? | Du fyller i mötesprotokollet |
-| VERIFICATION_SYSTEM.md | Hur verifierar vi systemet? Veckovis checklist | Du ska verifiera arbete |
-| SPRINT_MEETING_PROTOCOL_TEMPLATE.md | Förenklad mötesprotokoll-mall | Du ska fylla i mötesprotokollet snabbt |
-| AI_TEAMLEADER.md | Mötesfacilitator-prompt | Du är facilitator på mötet |
-| WHAT_CAN_I_HELP_WITH.md | Meny — vad kan AI göra? | Du är osäker på vad AI kan hjälpa till med |
+| **presentations/MANDATORY_READING_ORDER.md** 🚨 | **MÅSTE LÄSAS FÖRST** — Hela systemet förklarat + data-hämtning + render-gate | Du ska bygga en presentation |
+| **presentations/design/PRESENTATION_FORMAT_GUIDE.md** ⭐ | **EXAKTA SLIDE-LAYOUTS** — 7 slide-exempel med borders, färger, whitespace, tonalitet | Du ska designa slidorna |
+| **presentations/structure/PRESENTATION_STRUCTURE.md** | 14 mötespunkter (📝①-⑧) — vad varje punkt MÅSTE innehålla | Du ska förstå struktur |
+| **presentations/verification/RENDER_GATE_CHECKLIST.md** | Korrekt render-gate — när KAN/INTE kan presentationen renderas | Innan du renderar |
+| **presentations/structure/SPRINT_PROTOCOL_NUMBERED.md** | Mötesprotokolls mall — vilka mötespunkter finns? | Du fyller i mötet |
+| presentations/content/PRESENTATION_SPEC.md | Innehålls-regler, färg-semantik, issue-format | Du ska verifiera innehål |
+| presentations/data/DATA_SOURCES.md | Vilka GitHub-URLs + fallback-strategier | Du hämtar data |
 
 ---
 
@@ -52,9 +55,10 @@ RESULTAT: NPF-vänlig presentation som gör dig glad & motiverad
 4. ✅ Fyll i med denna veckas data
 5. ✅ Verifiera mot checklist före leverans
 
-**Raw-links för direkt läsning:**
-- 🎨 PRESENTATION_FORMAT_GUIDE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_FORMAT_GUIDE.md
-- 📝 SPRINT_PRESENTATION_STRUCTURE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/SPRINT_PRESENTATION_STRUCTURE.md
+**Raw-links för direkt läsning (om länk inte fungerar):**
+- 🚨 MANDATORY_READING_ORDER.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/MANDATORY_READING_ORDER.md
+- 🎨 PRESENTATION_FORMAT_GUIDE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/design/PRESENTATION_FORMAT_GUIDE.md
+- 📝 PRESENTATION_STRUCTURE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md
 
 ---
 
