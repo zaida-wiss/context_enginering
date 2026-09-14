@@ -63,6 +63,33 @@ RENDER-GATE CHECK:
 
 ---
 
+## 🚨 KRITISK REGEL: DATA ACCESS
+
+**INNAN något annat — DESSA REGLER FÅR ALDRIG BRYTAS:**
+
+```
+✅ DATA SOURCES (endast dessa):
+  • GitHub API (raw.githubusercontent.com)
+  • GitHub webben direkt (WebFetch)
+  • Google Sheets (fallback)
+  • Google Docs (fallback)
+
+❌ ALDRIG DETTA:
+  ✗ Web search (Google, Bing, etc) — SECURITY VIOLATION
+  ✗ External APIs
+  ✗ git clone, git ls-remote
+  ✗ Söka projektdata på publika webbsidor
+
+📋 OM GitHub failar:
+  → Använd fallbacks från DATA_SOURCES.md
+  → ALDRIG externa websökningar
+  → Visa status i presentation (transparent)
+```
+
+**Om du börjar söka på webben → DU GJORDE NÅGOT FEL.**
+
+---
+
 ## 🚀 AI EXECUTION WORKFLOW — DENNA ORDNING MÅSTE FÖLJAS
 
 **DENNA FIL SÄGER DEN EXAKTA ORDNINGEN för AI:**
@@ -70,7 +97,7 @@ RENDER-GATE CHECK:
 👉 **LÄS FÖRST:** [AI_VERIFICATION_WORKFLOW.md](verification/AI_VERIFICATION_WORKFLOW.md)
 
 Den filen säger:
-- FASE 1: Datainsamling & Identity verification
+- FASE 1: Datainsamling & Identity verification (GitHub API endast!)
 - FASE 2: Render gate check
 - FASE 3: Bygga presentation & final verification
 - **AI gör ALLT — levererar presentation KLAR (ingen human-loop)**
