@@ -16,9 +16,10 @@
 - WHAT to do if something fails
 
 ### 🎨 Jag skapar en PRESENTATION
-→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← ENDA körordningen
-- Läs denna fil för ALLA instruktioner (data, design, render-gate)
-- Se denna fil för detaljer om VISUAL_DESIGN_MANDATORY, SLIDE_DETAIL_SPEC, etc
+→ **[_ai_guides/presentations/README.md](_ai_guides/presentations/README.md)** ← Navigation guide
+   ↓ Sedan: **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)**
+   ↓ Sedan: **[_ai_guides/presentations/SYSTEM_CONTRACT.yaml](_ai_guides/presentations/SYSTEM_CONTRACT.yaml)** ← Execution order & authority
+- SYSTEM_CONTRACT.yaml definierar vilka filer som ska läsas och i vilken ordning
 
 ### 📚 Jag behöver projektinformation
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
@@ -38,21 +39,20 @@ AI MÅSTE följa denna ordning (ALDRIG något annat):
   1️⃣ Root README (denna fil)
   
   2️⃣ OM PRESENTATION:
-     _ai_guides/presentations/MANDATORY_READING_ORDER.md
-     ↓
-     FRÅN DEN FILEN → SLIDE_DETAIL_SPEC (AI_READ_ORDER säger detta)
-     FRÅN DEN FILEN → VISUAL_DESIGN_MANDATORY (AI_READ_ORDER säger detta)
-     FRÅN DEN FILEN → RENDER_GATE_CHECKLIST (AI_READ_ORDER säger detta)
+     README.md → MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml → execution_sequence
+     
+     SYSTEM_CONTRACT.yaml definierar vilka filer som ska läsas och i vilken ordning.
+     MANDATORY_READING_ORDER.md är ENDAST entry point.
   
   3️⃣ OM PROJEKTINFO:
      _memory/README.md (central hub för alla projektkällor)
 
 ✅ Denna ordning är ABSOLUT — ingen annan ordning tillåten
-✅ MANDATORY_READING_ORDER.md är ENDA körordningen för presentations
-✅ Ingen fil ska läsa från fler än en plats samtidigt
+✅ För presentationer: MANDATORY_READING_ORDER.md är ENDAST entry point
+✅ För presentationer: SYSTEM_CONTRACT.yaml definierar execution order och authority hierarchy
 ```
 
-**VIKTIG REGEL:** Om två filer säger olika saker → MANDATORY_READING_ORDER.md VINNER.
+**VIKTIG REGEL:** För presentationer läs SYSTEM_CONTRACT.yaml för auktoritativ körordning.
 
 ---
 
