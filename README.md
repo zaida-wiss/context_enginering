@@ -8,7 +8,7 @@
 ## 🚨 START HERE — Enligt vad du gör
 
 ### Om du gör ett vanligt arbete:
-→ **[PROJEKTKONTEXT_AVANZA.md](PROJEKTKONTEXT_AVANZA.md)** ← MANDATORY
+→ **[PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md)** ← MANDATORY
 - HOW to work with this project
 - WHERE to get data
 - WHAT to do if something fails
@@ -110,7 +110,7 @@ Read **MANDATORY_READING_ORDER.md** first. It contains:
 
 **MEN VÄGEN ÄR ALLTID DENSAMMA:**
 
-1. ✅ Läs [PROJEKTKONTEXT_AVANZA.md](PROJEKTKONTEXT_AVANZA.md) (2 min)
+1. ✅ Läs [PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md) (2 min)
 2. ✅ Gör vad du behöver — all info är redan länkad från dess instruktioner
 
 ---
