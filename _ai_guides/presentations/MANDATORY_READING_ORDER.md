@@ -1,297 +1,167 @@
 ---
 name: mandatory_reading_order
-description: Exact order AI must read files before rendering presentation — NO EXCEPTIONS
+description: THE ONLY execution order for generating presentations — machine-readable contract + orchestration
 metadata:
   type: process
   critical: true
 ---
 
-# 🚨 MANDATORY READING ORDER — INNAN PRESENTATION RENDERAS
+# 🚨 MANDATORY READING ORDER — ORCHESTRATION + CONTRACT
 
-## 📋 SYSTEM CONTRACT (Läs omedelbar efter denna fil)
+## 📋 MACHINE-READABLE CONTRACT (PARSE THIS FIRST)
 
-Se [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) — **maskinläsbar definition av hela systemet**.
-
-YAML-filen är källan till sanning. Den innehåller:
-- ✅ Auktoritativa källor
-- ✅ Execution sequence (8 steg) — detta definierar resten av arbetet
-- ✅ Hard rules (aldrig brytas)
-- ✅ GitHub status definitions (mekaniska)
-- ✅ Deprecated files (ta bort alla references)
-- ✅ Success criteria
-
-**Läs SYSTEM_CONTRACT.yaml omedelbar efter denna fil, innan något annat.**
-
-Därefter: följ `execution_sequence` från SYSTEM_CONTRACT.yaml för resten av processen.
-
----
-
-🤖 **FÖR AI: Kopiera denna prompt direkt till vilken AI som helst:**
-```
-Läs: https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/AI_PROMPT_GENERATE_PRESENTATION.md
-Följ den exakt. Fetcha LIVE GitHub-data. Rapportera om något failar.
-```
-
----
-
-🚫 **KRITISK REGEL ÖVERST — AI MÅSTE VERIFIERA INNAN RENDERING:**
-```
-DO NOT CREATE PPTX UNTIL AI HAS:
-
-✅ IDENTITY VERIFICATION: Alla 7 team-medlemmar verifierade från GitHub
-✅ DATA COLLECTION: Hämtat alla källor (GitHub PRs, branches, commits, 
-   Project Board, Google Sheets fallback, mötesprotokollet)
-✅ DATA VERIFICATION REPORT: Visat användaren vilka källor som var nåbara/ej nåbara
-✅ SLIDE_DETAIL_SPEC: Varje slide matchar specifikationen exakt
-✅ VISUAL_DESIGN_MANDATORY: Alla 13 render-gate checkpoints passerade
-✅ RENDER_GATE_CHECKLIST: Godkänt innan rendering
-
-AI:s ansvar: Verifiera ALLT och rapportera status till användaren.
-Användaren behöver INTE bekräfta — AI ansvarar för verifieringen.
-
-BLOCKING SOURCES — Om båda primär + fallback failar → STOPP (ingen presentation):
-  ✅ Team roster → fallback: GitHub commits (måste verifiera alla 7)
-  ✅ GitHub merged PRs/issues → fallback: Google Sheets (säkerhetskopierad data)
-  ✅ Commits to develop → fallback: härled från PR data
+```yaml
+presentation_contract:
+  # Authority hierarchy
+  orchestration_authority: this_file
+  system_truth_authority: SYSTEM_CONTRACT.yaml
+  content_authority: design/SLIDE_DETAIL_SPEC.md
+  design_authority: design/VISUAL_DESIGN_MANDATORY.md
+  data_authority: data/DATA_SOURCES.md
+  verification_authority: verification/RENDER_GATE_CHECKLIST.md
+  workflow_authority: verification/AI_VERIFICATION_WORKFLOW.md
   
-  Om BLOCKING fails → rapportera: "❌ RENDER GATE FAIL — kunde inte verifiera [källa]"
-
-NON-BLOCKING SOURCES — Om primär failar → använd fallback, ALDRIG stopp:
-  ✅ Project Board (projects/31) → fallback: https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue
-  ✅ Mötesprotokollet → fallback: GitHub meeting notes / Slack summary
+  # Meeting definition
+  meeting_type: monday_team_meeting
+  reporting_period: previous_calendar_week (Monday 00:00 - Sunday 23:59 Europe/Stockholm)
+  reporting_period_calculation: dynamic (never hardcoded)
   
-  Om NON-BLOCKING fallback används → visa tydligt i presentation:
-    "ℹ️ Project Board kunde inte nås — data rekonstruerad från Issues"
-    "ℹ️ Mötesprotokollet kunde inte nås — GitHub data användes"
-
-MANDATORY DATA_AUDIT (innan slides byggs):
-  AI måste generera och visa denna rapport:
-  - Totalt antal merged PRs per arbetsområde (Frontend/Backend/Native/Cross/Other)
-  - Alla öppna issues + aktivt arbete
-  - Alla 7 team members: verifierade eller "Ingen aktivitet denna vecka"
-  - Data sources status: vilka var nåbara ✅, vilka krävde fallback ⚠️
+  # Requirements
+  required_team_coverage: 7/7 (all members or explicit "no activity")
+  required_data_verification: FAS_1_and_FAS_2_reports_before_slides
+  required_design_compliance: NPF_mandatory (Symbol + Färg + Text)
   
-  TRIPLE CHECKSUM-REGEL (alla måste passa):
-    1. COUNT: sum(areas) == repository_total_merged_prs
-    2. SET: repository_merged_pr_ids == union(all areas)
-    3. UNIQUENESS: no PR ID in multiple areas
+  # Blocking behavior
+  render_gate_behavior:
+    closes_on_missing_blocking_source: true
+    closes_on_missing_optional_source: false
+    allow_fallback_substitution: true
   
-  Om NÅGON checksum failar → RENDER GATE FAIL, ingen presentation byggs
-```
-
----
-
-**DENNA FIL MÅSTE LÄSAS FÖRE PRESENTATION.**
-
-🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
-
-**Om denna ordning inte följs → presentation blir inkomplett eller bryter mot regler.**
-
----
-
-## 🚨 KRITISK REGEL #0 — LÄSA INSTRUKTIONER ≠ VISA INSTRUKTIONER
-
-**INNAN du läser NÅGOT annat:**
-
-```
-⭐ DENNA REGEL ÄR TVINGANDE ⭐
-
-Du ska LÄSA dessa instruktioner för att FÖRSTÅ vad presentationen behöver.
-Du ska ANVÄNDA dessa instruktioner för att BYGGA presentationen.
-Du ska ALDRIG VISA dessa instruktioner ON SLIDES.
-
-EXEMPEL:
-
-🔴 FEL:
-  Slide visar: "Repo-first: visa bara det som går att koppla till PR, commit..."
-  Slide visar: "Måste räknas mot develop"
-  Slide visar: "Ej live-låst här"
-  → Dessa är instruktioner för DIG, inte innehål för mötet
-
-✅ RÄTT:
-  Slide visar: "#95 Security review · Zaida · ✓ DONE · merged 2026-09-13"
-  Slide visar: "🔴 API-kontrakt inte låst — Frontend blockerad"
-  Slide visar: "Backend måste leverera API-spec idag"
-  → Dessa är RESULTAT av att följa instruktionerna
-
-MECKANISK KONTROLL (efter rendering):
-  För varje slide:
-    Q: "Skulle en projektledare säga detta till teamet?"
-    Ja → texten får vara på sliden
-    Nej → ta bort texten
-
-RENDER-GATE CHECK:
-  ☐ Presentationen innehåller INGEN instruktioner?
-  ☐ Presentationen innehåller INGEN checklista?
-  ☐ Presentationen innehåller INGEN AI-process?
+  # Data validation
+  data_validation:
+    - name: DATA_AUDIT_COUNT
+      rule: "sum(Frontend + Backend + Native + Cross + Other) == repository_total"
+      consequence: "If false → RENDER GATE FAIL"
+    
+    - name: DATA_AUDIT_SET
+      rule: "repository_merged_pr_ids == union(all work_area IDs)"
+      consequence: "If false → RENDER GATE FAIL"
+    
+    - name: DATA_AUDIT_UNIQUENESS
+      rule: "No PR ID in multiple work_areas"
+      consequence: "If false → RENDER GATE FAIL"
   
-  Om något är NEJ → STOPP, ta bort det innan rendering
-```
-
-**Se även:**
-- [PRESENTATION_SPEC.md — NO META-INSTRUCTIONS ON SLIDES](content/PRESENTATION_SPEC.md#L219)
-- [RENDER_GATE_CHECKLIST.md — KRITISK: INGEN AI-INSTRUKTIONER PÅ SLIDES](verification/RENDER_GATE_CHECKLIST.md)
-
----
-
----
-
-## 🚨 KRITISK REGEL: DATA ACCESS
-
-**INNAN något annat — DESSA REGLER FÅR ALDRIG BRYTAS:**
-
-```
-✅ DATA SOURCES (endast dessa):
-  • GitHub API (raw.githubusercontent.com)
-  • GitHub webben direkt (WebFetch)
-  • Google Sheets (fallback)
-  • Google Docs (fallback)
-
-❌ ALDRIG DETTA:
-  ✗ Web search (Google, Bing, etc) — SECURITY VIOLATION
-  ✗ External APIs
-  ✗ git clone, git ls-remote
-  ✗ Söka projektdata på publika webbsidor
-
-📋 OM GitHub failar:
-  → Använd fallbacks från DATA_SOURCES.md
-  → ALDRIG externa websökningar
-  → Visa status i presentation (transparent)
-```
-
-**Om du börjar söka på webben → DU GJORDE NÅGOT FEL.**
-
----
-
-## 🚀 AI EXECUTION WORKFLOW — DENNA ORDNING MÅSTE FÖLJAS
-
-**DENNA FIL SÄGER DEN EXAKTA ORDNINGEN för AI:**
-
-👉 **LÄS FÖRST:** [AI_VERIFICATION_WORKFLOW.md](verification/AI_VERIFICATION_WORKFLOW.md)
-
-Den filen säger:
-- FASE 1: Datainsamling & Identity verification (GitHub API endast!)
-- FASE 2: Render gate check
-- FASE 3: Bygga presentation & final verification
-- **AI gör ALLT — levererar presentation KLAR (ingen human-loop)**
-
-**UTAN denna ordning → presentation blir felaktig eller ej verifierad.**
-
----
-
----
-
-### STEG 0: PROJEKTKONTEXT — LÄS FÖRST (innan GitHub-data)
-
-**INNAN du börjar samla GitHub-data — läs dessa för att förstå projektkontexten:**
-
-1. **[../../_memory/PROJEKTKONTEXT_AVANZA.md](../../_memory/PROJEKTKONTEXT_AVANZA.md)** 
-   - Projekt-overview & styrning
-   - Fallback-hierarki om något failar
-   
-2. **[../../_memory/TEAM_ROSTER.md](../../_memory/TEAM_ROSTER.md)**
-   - Auktoritativ team-lista (för identity verification)
-   
-3. **[../../_memory/SCHEDULE.md](../../_memory/SCHEDULE.md)**
-   - Vecko-fokus & kurschema
-   - Relevanta för att förstå sprint-tema
-   
-4. **[../../_memory/COURSE_DEADLINES.md](../../_memory/COURSE_DEADLINES.md)** (om relevant för slide ⑫⑬)
-   - Kurs-deadlines & specifikationer
-   - Kan behövas för "realism check" på plan
-
-**SEDAN gå till STEG 1 nedan.**
-
----
-
-### STEG 1: LÄS DESSA FILER (i ordning)
-
-**Läs INTE något mer — dessa filer säger allt:**
-
-1. **[README.md](README.md)** — Vad är presentations-systemet?
-2. **[monday_meeting/README.md](monday_meeting/README.md)** — 14 mötespunkter overview
-3. **[monday_meeting/data/DATA_COLLECTION_MANDATORY.md](monday_meeting/data/DATA_COLLECTION_MANDATORY.md)** — Datainsamling & identity-verifikation
-4. **[data/DATA_SOURCES.md](data/DATA_SOURCES.md)** — Vilka GitHub-URLs, fallback-ordning
-
-**Sedan gå till STEG 2 (nedan).**
-
----
-
-### STEG 2: VERIFIERA
-
-**Läs dessa filer för verifikations-processen:**
-
-1. **[verification/AI_VERIFICATION_WORKFLOW.md](verification/AI_VERIFICATION_WORKFLOW.md)** 
-   - AI gör ALLT: hämta → verifiera → leverera
-   
-2. **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLIST.md)** 
-   - KAN presentationen renderas? 13 checkpoints MÅSTE passeras
-
----
-
-### STEG 3: DESIGN & SPECIFIKATION — OBLIGATORISK LÄSNING
-
-🚨 **DETTA STEG ÄR INTE VALFRITT — PRESENTATION ÄR FELAKTIG UTAN DET**
-
-**Läs DESSA filer i denna ordning:**
-
-1. **[design/ACCESSIBILITY_NEURODIVERSITY.md](design/ACCESSIBILITY_NEURODIVERSITY.md)** 🧠 LÄS FÖRST
-   - VARFÖR Symbol + Färg + Text? (för dyslektiker, ADHD, autism — och alla andra)
-   
-2. **[design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md)** 🚨 OBLIGATORISK FÖRE RENDERING
-   - **LAGLIG REQUIREMENT — PRESENTATION RENDERAS ALDRIG UTAN DET**
-   - 13 render-gate checkpoints MÅSTE passeras
-   
-3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
-   - **DENNA FIL DEFINIERAR EXAKT INNEHÅL FÖR VARJE SLIDE (①-⑭)**
-   - Se även: [`TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) för visuell referens
-
-**RULE HIERARCHY (när regler krockar):**
-```
-NPF-REGLER (ACCESSIBILITY_NEURODIVERSITY.md) — HÖGSTA PRIORITET
-   ↓ (NPF VINNER alltid om de krockar)
-VISUAL_DESIGN_MANDATORY.md — Designregler
-   ↓ (Design vinner över innehål)
-SLIDE_DETAIL_SPEC.md — AUKTORITATIV innehål
+  # Forbidden content
+  forbidden_on_slides:
+    - progress_percentages_without_github_source
+    - estimates_or_forecasts
+    - ai_instructions_or_meta_commentary
+    - example_data_from_documentation
+    - fabricated_numbers
+  
+  # Files to never read
+  deprecated_files_must_not_be_read:
+    - PRESENTATION_FORMAT_GUIDE.md
+    - PRESENTATION_CONSISTENCY_FRAMEWORK.md
+    - PRESENTATION_DESIGN_SPEC.md
 ```
 
 ---
 
-### STEG 4: FINAL RENDER GATE
+## 🤖 EXECUTION SEQUENCE — FOLLOW THIS EXACTLY
 
-🚨 **INNAN DU RENDERAR — VERIFIERA ATT DU LÄST ALLT:**
+**This is the ONLY sequence. No variations. No alternatives.**
 
-**Checklista före rendering:**
-- ☐ Läst STEG 0? (Läs _memory/)
-- ☐ Läst STEG 1? (GitHub-data)
-- ☐ Läst STEG 2? (Verifikation)
-- ☐ **Läst STEG 3?** (Design — MANDATORY_READING_ORDER + ACCESSIBILITY_NEURODIVERSITY + **VISUAL_DESIGN_MANDATORY**)
-  - Om NEJ → **STOPP, läs den nu**
-  - Om JA → fortsätt
+### STEP 1: READ AUTHORITIES (in order)
+1. ✅ `SYSTEM_CONTRACT.yaml` — machine-readable system definition
+2. ✅ `presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md` — what each slide contains
+3. ✅ `presentations/design/VISUAL_DESIGN_MANDATORY.md` — how slides look
+4. ✅ `presentations/verification/AI_VERIFICATION_WORKFLOW.md` — what you do
 
-Läs: **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLIST.md)**
-- 13 checkpoints MÅSTE passeras innan rendering
-- Om någon checkpoint failas → presentation renderas INTE
-- **RENDER_GATE checklist inkluderar VISUAL_DESIGN_MANDATORY verifyas**
+### STEP 2: EXECUTE FAS 1 (Data collection + identity verification)
+- Fetch all BLOCKING_SOURCES (GitHub commits, PRs, issues, team roster)
+- Use fallbacks if primary fails
+- Generate and show: DATA_AUDIT report with triple checksums
+- Stop if any BLOCKING_SOURCE + fallback fails
+
+### STEP 3: EXECUTE FAS 2 (Render gate verification)
+- Verify all 7 team members (identity-verified or explicit "no activity")
+- Verify DATA_AUDIT triple checksums pass
+- Generate and show: RENDER_GATE_VERIFICATION report
+- If any REQUIRED check fails → STOP, do not build presentation
+
+### STEP 4: EXECUTE FAS 3 (Build presentation)
+- Build slides ONLY from DATA_AUDIT object (never re-query GitHub)
+- Verify against SLIDE_DETAIL_SPEC (structure must match exactly)
+- Verify against VISUAL_DESIGN_MANDATORY (design must match exactly)
+- Generate and show: FINAL_VERIFICATION report
+
+### STEP 5: DELIVER
+- If all steps passed: present slides
+- If any step failed: report failure + reason (do not present)
 
 ---
 
-### 🚨 SLUTREGEL — STRUCTURE vs CONTENT
+## 🔗 EXTERNAL SOURCES
 
-**If the generated presentation output differs from SLIDE_DETAIL_SPEC.md:**
-- Structurally (wrong columns, wrong order, wrong sections)
-- Visually (wrong colors, wrong fonts, wrong spacing, wrong symbols)
-- Even if the factual data (GitHub commits, PRs, etc.) is correct
+All external data URLs are in: [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md)
 
-→ **Presentation is INVALID. Do not deliver. Show report to user. Stop.**
-
-Structure matters as much as content. A presentation with correct data but wrong structure is broken, not good enough.
-
-This is not a design preference — it is a specification requirement.
+**Do NOT hardcode URLs. Reference EXTERNAL_SOURCES.md instead.**
 
 ---
 
-**MANDATORY_READING_ORDER.md — Denna fil är den ENDA körordningen.**
+## 🚨 CRITICAL RULES (Non-negotiable)
 
-**Status:** 2026-09-14 — ORCHESTRATION FIXED (human verification removed, single workflow)
+```
+BLOCKING_SOURCES (STOP if both primary + fallback fail):
+  • GitHub commits to develop
+  • GitHub merged PRs
+  • GitHub issues
+  • Team roster (7 members)
+  → If blocked: report "RENDER GATE FAIL — [source] unavailable"
 
+OPTIONAL_CONTEXT (never stop, always use fallback):
+  • Project Board → fallback: Issues API
+  • Meeting protocol → fallback: GitHub notes
+  → If fallback used: show "ℹ️ [source] unavailable — using fallback"
+
+DATA VALIDATION:
+  1. COUNT checksum: sum(areas) == total
+  2. SET checksum: repository_IDs == union(areas)
+  3. UNIQUENESS: no PR in multiple areas
+  → If ANY checksum fails: STOP
+
+CONTENT RULES:
+  • No percentages without GitHub source
+  • No estimates or forecasts
+  • No AI instructions on slides
+  • Missing assignee shows "??" (never blocks rendering)
+  • All 7 members shown (work or "no activity")
+
+DESIGN RULES:
+  • NPF mandatory: Symbol + Färg + Text
+  • No tables
+  • All slides per SLIDE_DETAIL_SPEC exactly
+```
+
+---
+
+## 📋 WHAT EACH FILE OWNS (do NOT duplicate)
+
+| File | Owns |
+|------|------|
+| `SYSTEM_CONTRACT.yaml` | Definitions, hard rules, checksums |
+| `SLIDE_DETAIL_SPEC.md` | Content for slides ①–⑭ (only source of truth for content) |
+| `VISUAL_DESIGN_MANDATORY.md` | Layout, colors, fonts, NPF rules (only source of truth for design) |
+| `DATA_SOURCES.md` | All GitHub/Google URLs, fallback chains (only source of truth for data) |
+| `RENDER_GATE_CHECKLIST.md` | Verification checkpoints (only source of truth for render gate) |
+| `AI_VERIFICATION_WORKFLOW.md` | What AI does step-by-step (only source of truth for process) |
+| **This file** | Orchestration + contract (only source of truth for order) |
+
+**RULE: If a rule appears in two files, the authoritative file listed above wins. Remove the duplicate.**
+
+---
+
+**Version:** 3.0 (Refactored: removed contradictions, added machine-readable contract)  
+**Status:** PRODUCTION — THE ONLY execution order for presentations  
+**Last updated:** 2026-09-15
