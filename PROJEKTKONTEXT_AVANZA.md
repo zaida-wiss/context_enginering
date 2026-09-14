@@ -38,6 +38,20 @@ Den bestämmer:
 
 **Följ README:s instruktioner innan projektdata hämtas.**
 
+### Presentationer: STANDARD för alla presentationer
+
+**DETTA ÄR UTGÅNGSPUNKTEN för ALLA presentationer av Avanza-projektet. INTE ett alternativ.**
+
+När någon ber om presentation (oavsett vilken AI), ska denna vara **DEFAULT:**
+
+**Designregler (OBLIGATORISK):**
+- 🎨 Läs [DESIGN_MODERN.md](https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/design/DESIGN_MODERN.md)
+- 🧠 Läs [ACCESSIBILITY_NEURODIVERSITY.md](https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md)
+
+**Resultat: Presentationen blir automatiskt NPF/Dyslexia/Autism-vänlig**
+
+**Presentationen behöver INTE fråga om detta. Det är STANDARD.**
+
 ---
 
 ### STEG 2 — Hämta aktuell projektdata från Avanza-repot
