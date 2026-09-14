@@ -15,17 +15,33 @@ metadata:
 
 ## 🎯 DESIGN PRINCIPER
 
-### 1. FÄRGER = BETYDELSE (Semantisk)
+### 1. KÄNSLA: Modernt + Luftigt + Glatt + Uppmuntrande
 
 ```
-🟢 GRÖN (#4CAF50)      = FÄRDIG, KLART, LEVERERAT
-🟡 ORANGE (#FF9800)    = PÅGÅR, WORK IN PROGRESS, VÄNTAR
-🔴 RÖD (#F44336)       = BLOCKERAD, PROBLEM, KRITISK
-⚪ GRÅ (#E0E0E0)       = OKÄND, INGEN AKTIVITET, INFORMATION
-🔵 BLÅ (#2196F3)       = STRUKTUR, KATEGORI, GRUPPERING
-🟣 LILA (#9C27B0)      = FOKUS, VIKTIG INFO, HIGHLIGHT
+✨ Känslan ska vara:
+   - Modernt: System-fonts, rundade hörn, minimal design
+   - Luftigt: Mycket whitespace, inget trångt
+   - Glatt: Varma färger, emojis, celebratory copy
+   - Uppmuntrande: Fokus på framsteg, inte problem
 
-Regel: Färger är ALDRIG dekoration. Varje färg = ett budskap.
+Exempel uppmuntrande copy:
+   ✓ "Vi fixade #95 och är på vägen!" (inte "issue #95 är klar")
+   ✓ "Nästa vecka låser vi upp mycket!" (inte "blockerat på X")
+   ✓ "Bra framsteg denna vecka!" (inte "50% klart")
+```
+
+### 2. FÄRGER = BETYDELSE (Semantisk + Varm)
+
+```
+🟢 GRÖN (#66BB6A)      = FÄRDIG, KLART, LEVERERAT ✨ Glädje!
+🟡 ORANGE (#FFA726)    = PÅGÅR, WORK IN PROGRESS, VÄNTAR 💪 Fokus!
+🔴 RÖD (#EF5350)       = BLOCKERAD, PROBLEM, KRITISK ⚠️ Uppmärksamhet
+⚪ GRÅ (#BDBDBD)       = OKÄND, INGEN AKTIVITET, INFORMATION ℹ️
+🔵 BLÅ (#42A5F5)       = STRUKTUR, KATEGORI, GRUPPERING 📊
+🌟 GULT (#FFEB3B)      = HIGHLIGHT, "HÖJ DEN HÄR!"  ⭐ FOKUS
+
+Regel: Färger är ALDRIG dekoration. Varje färg = ett budskap + en känsla.
+Varmare ton än tidigare (mer positivt, glatt).
 ```
 
 ### 2. TEXTSTORLEKAR (Läsbara)
@@ -84,25 +100,26 @@ Font-familie:             System font stack:
 
 ## 📊 SLIDE LAYOUTS (Inte tabeller!)
 
-### Layout 1: Issue/Task CARD (Ersätter tabell-rad)
+### Layout 1: Issue/Task CARD — Glatt & Uppmuntrande
 
 ```
-┌─────────────────────────────────────────────────┐
-│ 🟢 #95 Security review + merge                 │  ← färg = status
-├─────────────────────────────────────────────────┤
-│ Team: Backend      Assignad: Erik Berglund      │  ← info, mindre text
-│ Status: ✓ DONE    Merged: 2026-09-13           │
-│                                                  │
-│ Vad: Verifikation av JWT-implementation        │  ← beskrivning
-│ Risk: Låg          Review: 2 godkännanden       │
-└─────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────┐
+│ ✨ #95 Security review + merge — VI FIXADE DET! │  ← glatt, celebratory
+├──────────────────────────────────────────────────┤
+│ Team: Backend      Assignad: Erik Berglund ✓    │  ← checkmark!
+│ 🎉 Merged 2026-09-13    Review: 👍👍 2 likes    │  ← emojis, positiv
+│                                                   │
+│ Vad: Verifikation av JWT-implementation         │  ← fokus på vad
+│ Risk: Låg    Code-review: Utmärkt arbete! ⭐   │  ← uppmuntrande
+└──────────────────────────────────────────────────┘
 
 CSS:
   border-left: 4px solid [färg];
   border-radius: 12px;
   padding: 16px;
-  background: #F5F5F5;
+  background: #F5F5F5 (eller ljus-grön #F1F8E9 för klara issues);
   margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 ```
 
 ### Layout 2: Risk-BLOCK (Ersätter tabell)
