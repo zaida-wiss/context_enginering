@@ -197,6 +197,7 @@ Den filen säger:
    
 3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
    - EXAKT innehål för VARJE SLIDE (①-⑭)
+   - **VISUELL REFERENS:** Se [`TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) för konkret visuell exempel (färger, fonts, spacing, rundade hörn)
    - **KRITISK FORMAT-REGEL:** Slide ①A-C är TABELLER med tre sektioner (Merged | Pågår | Review), INTE sammanfattning-tabeller
    - Se exempel längre ned under "SLIDE ①A-C FORMAT"
    

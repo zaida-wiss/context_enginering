@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Template Reference — Slide ①A Frontend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-box {
+            background: #fff3cd;
+            border-left: 4px solid #ff9800;
+            padding: 16px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .slide {
+            background: white;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .slide-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #323232;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .section-header.pagar {
+            background-color: #ff9800;
+        }
+
+        .section-header.review {
+            background-color: #ff9800;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: bold;
+            color: #323232;
+            border-bottom: 2px solid #ddd;
+            height: 24px;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 13px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            height: 24px;
+        }
+
+        tr {
+            height: 24px;
+        }
+
+        .status-symbol {
+            font-size: 16px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .status-symbol.pagar {
+            color: #ff9800;
+        }
+
+        .status-symbol.review {
+            color: #ff9800;
+        }
+
+        .meta-text {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .note {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+        }
+
+        .color-swatch {
+            border-radius: 6px;
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .color-label {
+            font-size: 12px;
+            margin-top: 8px;
+            color: #666;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #323232;
+        }
+
+        .key-points {
+            background: #f9f9f9;
+            border-left: 4px solid #4caf50;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .key-points ul {
+            margin-left: 20px;
+        }
+
+        .key-points li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Presentation Template Reference</h1>
+        <p style="color: #666; margin-bottom: 30px;">Denna sida visar EXAKT hur slidorna ska se ut. Använd den som referens när du bygger presentationen i PowerPoint/Slides.</p>
+
+        <div class="info-box">
+            <strong>💡 Så använder du denna referens:</strong><br>
+            1. Öppna denna HTML-fil i webbläsare<br>
+            2. Se exakt färger, fonts, spacing och rundade hörn<br>
+            3. Återskapa samma design i PowerPoint/Google Slides<br>
+            4. Använd RGB-värdena från COLOR PALETTE nedan
+        </div>
+
+        <h2>🎨 COLOR PALETTE</h2>
+        <div class="color-palette">
+            <div>
+                <div class="color-swatch" style="background-color: rgb(76, 175, 80);">
+                    MERGED
+                </div>
+                <div class="color-label">RGB 76, 175, 80<br>(Grön)</div>
+            </div>
+            <div>
+                <div class="color-swatch" style="background-color: rgb(255, 152, 0);">
+                    PÅGÅR / REVIEW
+                </div>
+                <div class="color-label">RGB 255, 152, 0<br>(Orange)</div>
+            </div>
+            <div>
+                <div class="color-swatch" style="background-color: rgb(244, 67, 54);">
+                    CRITICAL
+                </div>
+                <div class="color-label">RGB 244, 67, 54<br>(Röd)</div>
+            </div>
+        </div>
+
+        <h2>📋 Slide ①A — Frontend denna vecka</h2>
+
+        <div class="slide">
+            <div class="slide-header">📝①A Frontend — denna vecka</div>
+
+            <div class="section">
+                <div class="section-header">✅ MERGED DENNA VECKA</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Titel</th>
+                            <th>Assignad</th>
+                            <th>Status</th>
+                            <th>Merged/Branch</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#81</td>
+                            <td>Linked allocation 100%</td>
+                            <td>Björn Boman</td>
+                            <td><span class="status-symbol">✓</span> DONE</td>
+                            <td><span class="meta-text">merged 2026-09-14</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <div class="section-header pagar">◐ PÅGÅR DENNA VECKA</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Titel</th>
+                            <th>Assignad</th>
+                            <th>Status</th>
+                            <th>Merged/Branch</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#87</td>
+                            <td>Test foundation</td>
+                            <td>Zaida Wiss</td>
+                            <td><span class="status-symbol pagar">◐</span> PÅG</td>
+                            <td><span class="meta-text">feature/#87</span></td>
+                        </tr>
+                        <tr>
+                            <td>#43</td>
+                            <td>API client mock</td>
+                            <td>Tomac Barin Jansson</td>
+                            <td><span class="status-symbol pagar">◐</span> PÅG</td>
+                            <td><span class="meta-text">feature/#43</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <div class="section-header review">⏳ VÄNTAR PÅ REVIEW</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Titel</th>
+                            <th>Assignad</th>
+                            <th>Status</th>
+                            <th>Merged/Branch</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#87</td>
+                            <td>Vitest + RTL</td>
+                            <td>Zaida Wiss</td>
+                            <td><span class="status-symbol review">⏳</span> REVIEW</td>
+                            <td><span class="meta-text">PR #105 · no reviews</span></td>
+                        </tr>
+                        <tr>
+                            <td>#68</td>
+                            <td>#67 README status</td>
+                            <td>Zaida Wiss</td>
+                            <td><span class="status-symbol review">⏳</span> REVIEW</td>
+                            <td><span class="meta-text">PR #68</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note">
+                <strong>Källa:</strong> GitHub PRs + branches (senaste 7 dagarna) + Project Board ✅ | ⏳ Reviews behövs på: #87, #68
+            </div>
+        </div>
+
+        <div class="key-points">
+            <strong>🎯 Key Design Points:</strong>
+            <ul>
+                <li><strong>Färgade sektion-headers:</strong> 🟢 Grön för Merged, 🟡 Orange för Pågår & Review</li>
+                <li><strong>Statussymboler:</strong> ✓ (DONE), ◐ (PÅG), ⏳ (REVIEW) - symbolen kommer före texten</li>
+                <li><strong>Rundade hörn:</strong> 6-8px på alla textboxar och sektion-headers</li>
+                <li><strong>Radhöjd:</strong> Minst 24px för varje tabellrad (läsbar från mötesbord)</li>
+                <li><strong>Font-storlekar:</strong> 14pt bold för headers, 13pt regular för innehål, 12pt för meta-text</li>
+                <li><strong>Whitespace:</strong> 12px padding, 8px mellan sektioner</li>
+                <li><strong>Kontrast:</strong> Vit text på färgad bakgrund (4.5:1 minimum)</li>
+            </ul>
+        </div>
+
+        <h2>📝 Slide ①B — Backend denna vecka</h2>
+        <p style="color: #666;">Samma struktur och design som ①A, men med Backend-specifika issues.</p>
+        <p style="color: #666; margin-top: 10px;">Design-regler är identiska: 3 sektioner (Merged/Pågår/Review), samma färger, samma fonts, samma radhöjd.</p>
+
+        <div class="key-points" style="margin-top: 40px;">
+            <strong>✅ ANVÄND DENNA REFERENS FÖR:</strong>
+            <ul>
+                <li>Exakt färgvärden (copy-pasta RGB från COLOR PALETTE ovan)</li>
+                <li>Font-storlekar och weights</li>
+                <li>Radhöjd och spacing</li>
+                <li>Rundade hörn på alla element</li>
+                <li>Statussymboler-placering</li>
+                <li>Section-header styling</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -10,7 +10,40 @@ metadata:
 
 **Denna fil säger EXAKT vad varje slide ska innehålla — ingen gissning.**
 
+🔗 **VISUELL REFERENS:** Se [`TEMPLATE_REFERENCE.html`](TEMPLATE_REFERENCE.html) för hur varje slide ska se ut visuellt (färger, fonts, spacing, rundade hörn).
+
 Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punkt-nivå-overview.
+
+---
+
+## 🎨 COLOR PALETTE & DESIGN CONSTANTS
+
+**Dessa värden används överallt i presentationen:**
+
+### Färger (RGB)
+```
+MERGED-sektion bakgrund:     RGB 76, 175, 80     (🟢 Grön)
+PÅGÅR-sektion bakgrund:      RGB 255, 152, 0     (🟡 Orange)
+VÄNTAR PÅ REVIEW bakgrund:   RGB 255, 152, 0     (🟡 Orange) eller RGB 244, 67, 54 (🔴 Röd)
+Text på färgad bakgrund:     Vit (RGB 255, 255, 255)
+Neutral bakgrund:            Ljusgrå (RGB 245, 245, 245)
+Header text:                 Mörkgrå (RGB 50, 50, 50)
+Body text:                   Mörkgrå (RGB 100, 100, 100)
+```
+
+### Font & Spacing
+```
+Section headers:             Arial 14pt BOLD
+Issue nummer & titel:        Arial 13pt regular
+Meta-text (datum/branch):    Arial 12pt regular
+Row height (tabeller):       24px MINIMUM (NPF för dyslektiker)
+Padding per cell:            12px
+Margin mellan sektioner:     8px minimum
+Corner radius (textboxar):   6-8px (rundade hörn)
+Kontrast minimum:            4.5:1 (WCAG AA)
+```
+
+---
 
 ---
 
