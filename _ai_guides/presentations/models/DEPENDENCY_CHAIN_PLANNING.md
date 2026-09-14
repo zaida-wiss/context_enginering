@@ -4,7 +4,7 @@ description: Fas-baserad planering med blockerträd, risk-register och teamregle
 metadata:
   type: reference
   for_presentations: true
-  applies_to: "Punkt ⑦ Beroenden & Blockers, Punkt ⑧ Prioritering & Scope"
+  applies_to: "Punkt ⑥ Blockers & Dependencies, Punkt ⑨ Prioritering & Scope"
 ---
 
 # 🔗 DEPENDENCY CHAIN PLANNING — Fas-baserad Ordning
@@ -89,10 +89,10 @@ Innan varje ny issue:
 
 ## 📋 PRESENTATION FORMAT (för slide)
 
-### Slide Format för Punkt ⑦ (Beroenden & Blockers)
+### Slide Format för Punkt ⑥ (Blockers & Dependencies)
 
 ```
-📝⑦ BEROENDEN & BLOCKERS — Fas-baserad Ordning
+📝⑥ BLOCKERS & DEPENDENCIES — Fas-baserad Ordning
 
 🔗 VERIFIERADE KEDJOR:
 
@@ -117,10 +117,10 @@ Fas 3+ (Stab)  | ...               |                   |
 🚨 TEAMREGEL: Max 1 active issue per person. Nästa fas startar när fas N är merged.
 ```
 
-### Slide Format för Punkt ⑧ (Prioritering & Scope) — Baserat på Chains
+### Slide Format för Punkt ⑨ (Prioritering & Scope) — Baserat på Chains
 
 ```
-📝⑧ PRIORITERING & SCOPE — Chain-baserat
+📝⑨ PRIORITERING & SCOPE — Chain-baserat
 
 🔴 KRITISKA VÄGEN (måste lösa först denna vecka):
   [Foundation issue #XX] (Person A)

@@ -110,10 +110,20 @@ metadata:
 ### SEDAN Läs STRUKTUR:
 
 4. **[structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md)** — 8 min
-   - 14 mötespunkter (①-⑭)
-   - EXAKTA krav för varje
-   - Punkt ⑦ = blockerträd i map-format
-   - Punkt ⑧ = fas-baserad ordning
+   - 14 mötespunkter (①-⑭) i ny logisk ordning
+   - EXAKTA krav för varje punkt
+   - Punkt ① = Retrospekt (vad blev klart?)
+   - Punkt ② = Nuläge & deadline (status + urgency)
+   - Punkt ③-⑤ = Teams (Frontend/Backend/Native)
+   - Punkt ⑥ = Blockers & dependencies (blockerträd)
+   - Punkt ⑦ = Risker (vad kan gå fel?)
+   - Punkt ⑧ = Kapacitet (passar detta på en vecka?)
+   - Punkt ⑨ = Prioritering (Fas 1→2→3 ordning)
+   - Punkt ⑩ = Tekniska beslut (arkitektur)
+   - Punkt ⑪ = Sprintmål (HÄRLEDD från ①-⑩)
+   - Punkt ⑫ = Sprintplan (timplan)
+   - Punkt ⑬ = Nästa steg (konkreta åtgärder)
+   - Punkt ⑭ = Frågor till PL (öppna frågor)
    - Pedagogiska förklaringar (📚 märkade ord)
    - Käll-status i footer
 
@@ -235,8 +245,12 @@ STAGE 5:
   [ ] VERIFICATION_SYSTEM läst
 
 STAGE 6:
-  [ ] Presentation byggd enligt PRESENTATION_STRUCTURE
-  [ ] Punkt ⑦⑧ använder DEPENDENCY_CHAIN_PLANNING
+  [ ] Presentation byggd enligt PRESENTATION_STRUCTURE (ny ordning ①-⑭)
+  [ ] Punkt ① visar alla 7 team-medlemmar
+  [ ] Punkt ③-⑤ visar team-arbete med Team + Assignad + Blocker
+  [ ] Punkt ⑥ visar blockerträd med DEPENDENCY_CHAIN_PLANNING
+  [ ] Punkt ⑨ visar prioritering (Fas 1→2→3) med DEPENDENCY_CHAIN_PLANNING
+  [ ] Punkt ⑪ visar sprintmål HÄRLEDD från data (④-⑩), inte gissad
   [ ] Fonts/colors från VISUAL_DESIGN_MANDATORY
   [ ] Käll-status visad i footer
   [ ] RENDER_GATE_CHECKLIST passar (ALLT ✅)

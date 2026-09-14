@@ -1431,10 +1431,12 @@ TOTALT:
 
 - Punkt ① är ALLTID övergripande (med 3 målsystem)
 - Punkt ②③④ är ALLTID team-status (med borders & färger)
-- Punkt ⑤ är ALLTID prioritering (tabell-layout)
-- Punkt ⑥ är ALLTID estimering (kapacitet-tabell)
-- Punkt ⑦ är ALLTID issues (per-team boxes)
-- Punkt ⑧ är ALLTID nästa steg (deadlines + summary)
+- Punkt ③-⑤ är ALLTID issues (per-team boxes: Frontend/Backend/Native)
+- Punkt ⑥ är ALLTID blockers (blockerträd)
+- Punkt ⑦ är ALLTID risker (risk-register)
+- Punkt ⑧ är ALLTID kapacitet (kapacitet-tabell)
+- Punkt ⑨ är ALLTID prioritering (fas-baserad ordning)
+- Punkt ⑬ är ALLTID nästa steg (deadlines + summary)
 
 **Resultat:** Mötet flyter snabbt, desigben är tydlig, protokollet blir korrekt.
 

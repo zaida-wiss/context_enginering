@@ -274,7 +274,7 @@ NATIVE — Levererat denna vecka
    (starts nästa fas)
 ```
 
-### Punkt ⑦ — Beroenden & Blockers
+### Punkt ⑥ — Blockers & Dependencies
 
 ```
 BLOCKERTRÄD:
