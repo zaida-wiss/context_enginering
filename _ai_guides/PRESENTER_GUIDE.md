@@ -1,14 +1,29 @@
 ---
 name: presenter-guide
-description: Guide for humans presenting — what you need to know before the meeting
+description: DEPRECATED — Use SLIDE_DETAIL_SPEC.md instead
 metadata:
   type: reference
   audience: presenters (not AI)
+  status: deprecated
+  deprecation_date: 2026-09-14
 ---
 
-# 🎤 PRESENTER GUIDE — Before You Present
+# 🚫 DEPRECATED — PRESENTER_GUIDE
 
-**Du ska presentera denna vecka? Läs detta innan mötet.**
+**DENNA FIL ÄR INAKTUELL** — Presentatörer bör läsa [`SLIDE_DETAIL_SPEC.md`](presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md) istället för denna fil.
+
+**Varför inaktuell?**
+- Motsäger SLIDE_DETAIL_SPEC.md format-regler
+- Beskriver gamla slide-strukturer
+- Inte uppdaterad för nuvarande 14-punkts-system
+
+**För presentatörer:** Läs SLIDE_DETAIL_SPEC.md — den är auktoritativ för all slide-format.
+
+---
+
+**[DEPRECATED] PRESENTER GUIDE — Before You Present**
+
+**Du ska presentera denna vecka? Läs SLIDE_DETAIL_SPEC.md istället.**
 
 ---
 

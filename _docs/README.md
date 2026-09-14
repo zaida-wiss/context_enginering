@@ -39,7 +39,7 @@ metadata:
 
 **För presentationer:** → `_ai_guides/presentations/MANDATORY_READING_ORDER.md`
 **För troubleshooting:** → `_ai_guides/TROUBLESHOOTING.md`
-**För att presentera:** → `_ai_guides/PRESENTER_GUIDE.md`
+**För slide-format (presentatörer):** → `_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md`
 
 ---
 
