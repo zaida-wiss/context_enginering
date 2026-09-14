@@ -75,7 +75,7 @@ AI MÅSTE följa denna ordning (ALDRIG något annat):
 ## 🚨 CRITICAL RULES — Överordnade
 
 **For presentations:**
-- ✅ **Läs MANDATORY_READING_ORDER.md för ALLA detaljer** (data access, quality, design)
+- ✅ **Följ: MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml → execution_sequence**
 - ✅ Verifiera alla datakällor innan rendering
 - ✅ Alla 7 teammedlemmar måste vara representerade
 
