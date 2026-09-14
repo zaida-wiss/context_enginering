@@ -22,6 +22,12 @@
 - 14 mötespunkter, struktur, verifikation — allt här
 - **DU BEHÖVER INTE SÖKA LÄNGRE** — läs bara denna fil
 
+### För all projektinformation (_memory/):
+→ **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
+- Alla projektfakta, deadlines, standarder
+- Auktoritativt för projektet
+- Länka till specifik fil från denna index
+
 ### För allt annat:
 → **[_ai_guides/README.md](_ai_guides/README.md)** ← Övriga guider
 
@@ -34,11 +40,13 @@ Du behöver INTE be AI:n om något.
 Du behöver INTE instruera vilken fil den ska läsa.
 
 AI:n läser automatiskt:
-  1. Root README (denna)
-  2. PROJEKTKONTEXT_AVANZA (sedan PROJEKTKONTEXT_AVANZA säger nästa steg)
-  3. För presentation → MANDATORY_READING_ORDER (allt från början)
+  1. Root README (denna fil)
+  2. För presentation → _ai_guides/presentations/MANDATORY_READING_ORDER
+     (SEDAN länkas från MANDATORY_READING_ORDER till SLIDE_DETAIL_SPEC)
+  3. För projektinfo → _memory/README.md
+     (HUB för all projektdata, deadlines, standards)
 
-Systemet är självförklarande.
+Systemet är självförklarande — alla links är på plats.
 ```
 
 ---
