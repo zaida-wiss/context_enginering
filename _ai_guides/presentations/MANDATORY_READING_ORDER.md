@@ -448,6 +448,58 @@ PASS CRITERIA:
 
 ---
 
+## 🎬 STEG 4: RENDER PRESENTATION (20-30 min — EFTER ALLA GATES)
+
+**🚨 KRITISK REGEL: PRESENTATION = BARA ARBETESRESULTAT, INTE AI-PROCESS**
+
+Efter att RENDER_GATE_CHECKLIST och UNKNOWN_NAME_GATE har **PASSERAT**:
+
+### ✅ RENDER DESSA SLIDES (från PRESENTATION_STRUCTURE.md):
+
+**Punkt ①-⑭ enligt strukturen:**
+- ① SEDAN FÖRRA MÖTET (1-2 slides): Merged PRs, commits, branches, alla 7 teammedlemmar
+- ② SPRINTMÅL (1 slide): Övergripande mål
+- ③ NULÄGE (1 slide): Progress-status
+- ④-⑥ TEAM-SLIDES (3 slides): Frontend, Backend, Native
+- ⑦ RISKER (1-2 slides): Risk-register
+- ⑧ BLOCKERS & BEROENDEN (1 slide): Vad väntar vi på?
+- ⑨-⑪ NÄSTA STEG (3 slides): Nästa vecka planering
+- ⑫ PRIORITERING (1 slide): Vad fokuserar vi på?
+- ⑬ HANDLINGSPLAN (1 slide): Actions med ägare
+- ⑭ AVSLUT (1 slide): Sammanfattning
+
+### ❌ VISA INTE (detta är AI-instruktioner, inte möte-innehål):
+
+- ❌ "Verifieringslåge innan status"
+- ❌ "Team roster: 7 medlemmar verifierade"
+- ❌ "GitHub PRs inte läsbart via API"
+- ❌ "Render gate checklist"
+- ❌ "Verification report"
+- ❌ "Identity verification status"
+- ❌ "Data collection status"
+- ❌ "AI process information"
+
+### ✅ ANVÄND DENNA DATA (men VISA INTE verifikations-info):
+
+- Commits denna vecka → från data (VISA det faktiska arbetet)
+- Merged PRs → från data (VISA vad som blev klart)
+- Team roster (för att VERIFIERA namn) → VISA bara namn + arbete, inte "verifierat"
+- Fallback-strategier → använd om primär källa failas, men VISA inte att fallback användes
+- Data sources (GitHub) → ANVÄND dem för presentationen, VISA inte käll-status
+
+### 🎯 MÖTE-PRESENTATIONEN ska visa:
+
+✅ Vad som arbetades med denna vecka  
+✅ Vem som var ansvarig för vad  
+✅ Vad som blev klart  
+✅ Vad som är pågår  
+✅ Vad som blockerar oss  
+✅ Nästa prioriteringar  
+
+❌ INTE: AI-verifikations-process, data-samlings-status, eller verifikations-rapporter
+
+---
+
 ## CRITICAL RULES SUMMARY
 
 **Från denna läsning, dessa är NOT-negotiable:**
