@@ -21,17 +21,18 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 ## 🤖 **START HÄR FÖR AI:**
 
-👉 **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← THE ONLY execution order
+**Route:** [`MANDATORY_READING_ORDER.md`](MANDATORY_READING_ORDER.md) → [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) → follow execution_sequence
 
-Then read [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) — everything else follows from that.
+**Key point:** 
+- MANDATORY_READING_ORDER.md is entry point only (2 min read)
+- SYSTEM_CONTRACT.yaml defines execution order and authority hierarchy
+- Everything else is reference/helper
 
-That file contains:
-- ✅ **Machine-readable contract**
-- ✅ **Authority hierarchy** (who owns what domain)
-- ✅ **Execution sequence** (what you do in order)
-- ✅ **Hard rules** (non-negotiable)
-
-**Follow SYSTEM_CONTRACT.yaml. Everything else is reference.**
+**Do this:**
+1. Read MANDATORY_READING_ORDER.md
+2. Read SYSTEM_CONTRACT.yaml (contains execution_sequence)
+3. Follow execution_sequence step by step
+4. Use authority hierarchy to find what each step needs
 
 ---
 
