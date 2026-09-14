@@ -21,16 +21,13 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 ## 🤖 **START HÄR FÖR AI:**
 
-**Route:** [`MANDATORY_READING_ORDER.md`](MANDATORY_READING_ORDER.md) → [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) → follow execution_sequence
+**Hierarki:** [`README.md`](.) → [`MANDATORY_READING_ORDER.md`](MANDATORY_READING_ORDER.md) → [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) → `execution_sequence`
 
-**Key point:** 
-- MANDATORY_READING_ORDER.md is entry point only (2 min read)
-- SYSTEM_CONTRACT.yaml defines execution order and authority hierarchy
-- Everything else is reference/helper
+**KRITISK:** För presentationer är MANDATORY_READING_ORDER.md endast entry point. SYSTEM_CONTRACT.yaml definierar execution order och authority hierarchy.
 
 **Do this:**
-1. Read MANDATORY_READING_ORDER.md
-2. Read SYSTEM_CONTRACT.yaml (contains execution_sequence)
+1. Read MANDATORY_READING_ORDER.md (2 min)
+2. Read SYSTEM_CONTRACT.yaml (contains execution_sequence + authority)
 3. Follow execution_sequence step by step
 4. Use authority hierarchy to find what each step needs
 
