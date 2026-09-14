@@ -40,7 +40,7 @@ RESULTAT: NPF-vänlig presentation som gör dig glad & motiverad
 - **`COURSE_DEADLINES.md`** — Kurs-deadlines (CTO Feed Forward, etc)
 - **`SCHEDULE.md`** — Kurschema & vecko-fokus
 
-👉 **Läs denna först:** [`_memory/README.md`](_memory/../../../_memory/README.md)
+👉 **Läs denna först:** [`_memory/README.md`](../../_memory/README.md)
 
 ---
 

@@ -50,7 +50,7 @@ Systemet är självförklarande.
 → Link: https://github.com/zaida-wiss/context_enginering (they'll follow the README from top)
 
 **Need help with code?**
-→ Read **[_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md)** then project repo above
+→ Read **[_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md)** then project repo above
 
 ---
 
@@ -59,7 +59,7 @@ Systemet är självförklarande.
 **För kodning:**
 - [_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md) — Git format, coding rules
 - [_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md) — När är arbetet klart?
-- [_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md) — Projekt-overview
+- [_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md) — Projekt-overview & AI-instruktioner
 
 **För presentationer (allt ligger redan i MANDATORY_READING_ORDER.md):**
 - [_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md](_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md) — Mötespunkter
