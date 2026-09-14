@@ -110,7 +110,18 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 - ✅ Progress bars (fördelning: grön/orange/röd)
 - ✅ Tabell med område, status, ägare, DoD-status, vad saknas
 - ✅ För varje PR: **Vem ÄGde den issuen?** (issue assignee eller PR-author)
-- ✅ Alla teammedlemmar som hade arbete måste synas (med namn + verifierat bidrag)
+- ✅ **Alla teammedlemmar som hade arbete måste synas MED ARBETSBESKRIVNING**
+  Format: `Namn (X commits/PRs — vad de gjorde)`
+  Exempel:
+    - Tomac Barin Jansson (2 commits — target allocation)
+    - Björn Boman (10 commits — design system styling)
+    - Zaida Wiss (13 commits — auth feature implementation)
+    - Erik Berglund (0 commits denna vecka — väntar på review PR #94)
+    - Rasha Knifdi (3 merged PRs — controllers + migrations)
+    - Pär Lundh (8 commits — rolling values calculations)
+    - Henrik Westerlund (1 PR merged — risk module)
+  
+  **Regel:** Namn ALDRIG utan arbete-context. Varje person ska kunna se vad de bidrog med denna vecka.
 - ✅ Arbetsområden, inte bara issue-nummer (Frontend & Auth, Backend & Risk, etc)
 - ✅ Effektbeskrivning: **varför detta arbete spelar roll** (kort, konkret)
 - ✅ **Om någon person HAR aktivitet denna vecka men INGEN PR synlig → investiga varför**
