@@ -15,9 +15,42 @@ metadata:
 
 ---
 
-## 🔍 FÖRVÄGSTÄMMNING PER SLIDE (OBLIGATORISK FÖRE RENDERING)
+## 🔍 STEG 1: DATA COMPLETENESS VERIFICATION (FÖRE ALLA SLIDES)
 
-**Innan en slide visas måste data VERIFIERAS:**
+**OBLIGATORISK — måste passa innan slides byggs alls.**
+
+**Presentera denna DATA SUMMARY för användaren:**
+
+```
+COLLECTED DATA (week of [DATE]):
+  Merged PRs: N (list: #XX, #XX, #XX...)
+  Open PRs: N (list: #XX, #XX, #XX...)
+  Open issues: N
+  Total commits to develop: N
+  Team members verified: 7/7
+  
+PER TEAM:
+  Frontend: M merged, O open PRs, I issues
+  Backend: M merged, O open PRs, I issues
+  Native: M merged, O open PRs, I issues
+```
+
+**Failure detection (STOP if):**
+- ❌ Any team has merged PRs = 0 when multiple PRs should exist
+- ❌ Any team member cannot be found in any PR/issue/commit
+- ❌ Total dataset looks suspiciously small (likely incomplete fetch)
+
+**SUCCESS criteria:**
+- ✅ Each team has visible merged work
+- ✅ All 7 members appear in at least one issue/PR/commit
+- ✅ Numbers are non-zero for active areas
+- ✅ Data matches what's visible on GitHub web manually
+
+---
+
+## 🔍 STEG 2: FÖRVÄGSTÄMMNING PER SLIDE (EFTER DATA VERIFIED)
+
+**Innan en slide visas måste innehål VERIFIERAS:**
 
 ### Varje slide måste kontrollera:
 
