@@ -61,8 +61,8 @@ Denna fil innehåller:
 - ✅ Data-hämtning från GitHub (exakta URLs)
 - ✅ Designregler (Symbol + Färg + Text från VISUAL_DESIGN_MANDATORY.md)
 - ✅ Render-gate checklist (när presentation är klart)
-- ✅ Länk till **[design/SLIDE_DETAIL_SPEC.md](design/SLIDE_DETAIL_SPEC.md)** — exakt innehål & format per slide
-- ✅ Länk till **[structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md)** 
+- ✅ Länk till **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** — exakt innehål & format per slide
+- ✅ Länk till **[monday_meeting/structure/PRESENTATION_STRUCTURE.md](monday_meeting/structure/PRESENTATION_STRUCTURE.md)** 
   - 14 mötespunkter (①-⑭) med EXAKTA krav för varje:
   - Fas-baserad ordning (punkt ⑧)
   - Blockerträd i map-format (punkt ⑦)
