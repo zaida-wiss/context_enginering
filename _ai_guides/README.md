@@ -31,11 +31,25 @@ RESULTAT: NPF-vänlig presentation som gör dig glad & motiverad
 
 ---
 
+## ⚠️ INNAN DU BÖRJAR: LÄS `_memory/`
+
+**`_memory/` innehåller PROJEKTKONTEXT som AI måste förstå:**
+
+- **`TEAMSTANDARDS.md`** — Kodstandarder, Git workflow
+- **`DEFINITION_OF_DONE.md`** — Vad är "DONE" för en GitHub-issue?
+- **`COURSE_DEADLINES.md`** — Kurs-deadlines (CTO Feed Forward, etc)
+- **`SCHEDULE.md`** — Kurschema & vecko-fokus
+
+👉 **Läs denna först:** [`_memory/README.md`](_memory/../../../_memory/README.md)
+
+---
+
 ## 📁 Presentation-Guider (Läsordning)
 
 | Fil | Syfte | Läs när... |
 |-----|-------|-----------|
-| **presentations/MANDATORY_READING_ORDER.md** 🚨 | **MÅSTE LÄSAS FÖRST** — Hela systemet förklarat + data-hämtning + render-gate | Du ska bygga en presentation |
+| **_memory/README.md** 🚨 | **MÅSTE LÄSAS FÖRST** — Projektkontext & team-standards | Innan du börjar någon presentation |
+| **presentations/MANDATORY_READING_ORDER.md** 🚨 | **MÅSTE LÄSAS** — Hela systemet förklarat + data-hämtning + render-gate | Du ska bygga en presentation |
 | **presentations/design/PRESENTATION_FORMAT_GUIDE.md** ⭐ | **EXAKTA SLIDE-LAYOUTS** — 7 slide-exempel med borders, färger, whitespace, tonalitet | Du ska designa slidorna |
 | **presentations/structure/PRESENTATION_STRUCTURE.md** | 14 mötespunkter (📝①-⑧) — vad varje punkt MÅSTE innehålla | Du ska förstå struktur |
 | **presentations/verification/RENDER_GATE_CHECKLIST.md** | Korrekt render-gate — när KAN/INTE kan presentationen renderas | Innan du renderar |

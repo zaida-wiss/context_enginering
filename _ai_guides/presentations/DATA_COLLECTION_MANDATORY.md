@@ -21,6 +21,22 @@ Om denna checklist inte är slutförd kommer presentationen att dölja arbete (s
 
 ---
 
+## ⏰ KURS-KONTEXT: DEADLINES & TIDSPLAN
+
+**Presentationen måste också förstå kurs-tidskontext:**
+
+📌 Se [`_memory/COURSE_DEADLINES.md`](../../../../_memory/COURSE_DEADLINES.md) för:
+- Vilka kurs-deadlines påverkar denna vecka?
+- Vad ska teamet fokusera på framåt? (kursuniquely)
+- CTO-feedback? (sept 24 @ 4 PM)
+
+**Använd denna kontext för att:**
+- Förstå varför vissa arbeten prioriteras
+- Se om denna vecka är pre-deadline-push (sprint, crunch)
+- Markera om arbete kopplas till kursdeadlines
+
+---
+
 ## 🚨 MANDATORY FALLBACK RULE
 
 **OM GITHUB FAILAR — DU MÅSTE ANVÄNDA FALLBACKS**
