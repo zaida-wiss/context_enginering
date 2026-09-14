@@ -108,6 +108,29 @@ Den filen säger:
 
 ---
 
+### STEG 0: PROJEKTKONTEXT — LÄS FÖRST (innan GitHub-data)
+
+**INNAN du börjar samla GitHub-data — läs dessa för att förstå projektkontexten:**
+
+1. **[../../_memory/PROJEKTKONTEXT_AVANZA.md](../../_memory/PROJEKTKONTEXT_AVANZA.md)** 
+   - Projekt-overview & styrning
+   - Fallback-hierarki om något failar
+   
+2. **[../../_memory/TEAM_ROSTER.md](../../_memory/TEAM_ROSTER.md)**
+   - Auktoritativ team-lista (för identity verification)
+   
+3. **[../../_memory/SCHEDULE.md](../../_memory/SCHEDULE.md)**
+   - Vecko-fokus & kurschema
+   - Relevanta för att förstå sprint-tema
+   
+4. **[../../_memory/COURSE_DEADLINES.md](../../_memory/COURSE_DEADLINES.md)** (om relevant för slide ⑫⑬)
+   - Kurs-deadlines & specifikationer
+   - Kan behövas för "realism check" på plan
+
+**SEDAN gå till STEG 1 nedan.**
+
+---
+
 ### STEG 1: LÄS DESSA FILER (i ordning)
 
 **Läs INTE något mer — dessa filer säger allt:**

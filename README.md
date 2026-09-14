@@ -16,11 +16,12 @@
 - WHAT to do if something fails
 
 ### Om du skapar en PRESENTATION:
-→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← STANDARD
-- ALLT du behöver för presentation
+→ **STEG 1:** Läs [`_memory/README.md`](_memory/README.md) först (projektkontexten)  
+→ **STEG 2:** Läs **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← ENDA körordningen
+- Innehåller STEG 0 (läs _memory/) + STEG 1-4 (presentation)
 - NPF/Dyslexia/Autism-vänlig design AUTOMATIC
-- 14 mötespunkter, struktur, verifikation — allt här
-- **DU BEHÖVER INTE SÖKA LÄNGRE** — läs bara denna fil
+- 14 mötespunkter, datainsamling, verifikation — allt här
+- **DU BEHÖVER INTE SÖKA LÄNGRE** — följ bara denna ordning
 
 ### För all projektinformation (_memory/):
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB

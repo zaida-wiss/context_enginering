@@ -50,10 +50,10 @@ RESULTAT: Live GitHub-data + verifierad design = presentationen är klar
 **Om någon säger: "Läs detta repo och skapa en presentation"**
 
 1. ✅ Läs root `README.md` först
-2. ✅ Läs **PRESENTATION_FORMAT_GUIDE.md** (denna mapp)
-3. ✅ Kopiera exakta slide-layouts från guiden
-4. ✅ Fyll i med denna veckas data
-5. ✅ Verifiera mot checklist före leverans
+2. ✅ Läs **`_memory/`-mappen** (projektkontexten)
+3. ✅ Läs **presentations/MANDATORY_READING_ORDER.md** (ENDA körordningen för presentation)
+4. ✅ Föl ordningen → slutligen render presentation
+5. ✅ Verifiera mot render-gate checklist före leverans
 
 **Raw-links för direkt läsning (om länk inte fungerar):**
 - 🚨 MANDATORY_READING_ORDER.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/MANDATORY_READING_ORDER.md
