@@ -454,19 +454,23 @@ PASS CRITERIA:
 
 Efter att RENDER_GATE_CHECKLIST och UNKNOWN_NAME_GATE har **PASSERAT**:
 
-### ✅ RENDER DESSA SLIDES (från PRESENTATION_STRUCTURE.md):
+### ✅ RENDER DESSA SLIDES (från [PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md)):
 
-**Punkt ①-⑭ enligt strukturen:**
-- ① SEDAN FÖRRA MÖTET (1-2 slides): Merged PRs, commits, branches, alla 7 teammedlemmar
-- ② SPRINTMÅL (1 slide): Övergripande mål
-- ③ NULÄGE (1 slide): Progress-status
-- ④-⑥ TEAM-SLIDES (3 slides): Frontend, Backend, Native
-- ⑦ RISKER (1-2 slides): Risk-register
-- ⑧ BLOCKERS & BEROENDEN (1 slide): Vad väntar vi på?
-- ⑨-⑪ NÄSTA STEG (3 slides): Nästa vecka planering
-- ⑫ PRIORITERING (1 slide): Vad fokuserar vi på?
-- ⑬ HANDLINGSPLAN (1 slide): Actions med ägare
-- ⑭ AVSLUT (1 slide): Sammanfattning
+**Se [PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md) för AUKTORITATIV definition av alla 14 mötespunkter (①-⑭).**
+
+Kort översikt:
+- ① SEDAN FÖRRA MÖTET (1-2 slides)
+- ② SPRINTMÅL (1 slide)
+- ③ NULÄGE (1 slide)
+- ④-⑥ TEAM-SLIDES: Frontend, Backend, Native (1-3 slides var)
+- ⑦ BEROENDEN & BLOCKERS (1-2 slides)
+- ⑧ PRIORITERING & SCOPE (1-2 slides)
+- ⑨ KAPACITET & ESTIMERING (1 slide)
+- ⑩ RISKER (1-2 slides)
+- ⑪ TEKNISKA BESLUT (1 slide)
+- ⑫ SPRINTPLAN (1-2 slides)
+- ⑬ NÄSTA STEG (1-2 slides)
+- ⑭ FRÅGOR TILL PL (1 slide)
 
 ### ❌ VISA INTE (detta är AI-instruktioner, inte möte-innehål):
 
