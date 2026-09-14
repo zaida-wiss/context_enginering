@@ -79,10 +79,9 @@ AI MÅSTE följa denna ordning (ALDRIG något annat):
 - [_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md) — När är arbetet klart?
 - [_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md) — Projekt-overview & AI-instruktioner
 
-**För presentationer (allt ligger redan i MANDATORY_READING_ORDER.md):**
-- [_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md](_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md) — Mötespunkter
-- [_ai_guides/presentations/design/PRESENTATION_FORMAT_GUIDE.md](_ai_guides/presentations/design/PRESENTATION_FORMAT_GUIDE.md) — Slide-format
-- [_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md](_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md) — Render-gate
+**För presentationer (läs MANDATORY_READING_ORDER.md — den säger allt):**
+- Alla presentationsfiler länkas från MANDATORY_READING_ORDER.md
+- Gå INTE direkt till dessa — följ ordningen i MANDATORY_READING_ORDER.md istället
 
 ---
 
@@ -136,14 +135,7 @@ See: [RENDER_GATE_CHECKLIST.md — KRITISK: INGEN AI-INSTRUKTIONER PÅ SLIDES](_
 
 ---
 
-**MEN VÄGEN ÄR ALLTID DENSAMMA:**
-
-1. ✅ Läs [PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md) (2 min)
-2. ✅ Gör vad du behöver — all info är redan länkad från dess instruktioner
-
----
-
-**Last updated:** 2026-09-13  
+**Last updated:** 2026-09-14 — Orchestration fixed: single execution path for all  
 **Team repos:**
 - Team process & AI guides: https://github.com/zaida-wiss/context_enginering
 - Project code: https://github.com/chas-challenge-2026/avanza-team1
