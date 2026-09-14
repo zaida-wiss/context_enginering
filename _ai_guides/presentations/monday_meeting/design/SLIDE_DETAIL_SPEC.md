@@ -81,7 +81,17 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 ### SLIDE ①A: Avklarat sedan förra mötet — Frontend
 
-**FORMAT:** Tabell med tre grupper (Merged | Pågår | Väntar på review)
+🚨 **NO POWERPOINT TABLES** — Use visual rows/status cards instead (NPF requirement)
+
+**FORMAT:** Visuella rader klassificerad i tre serier: Merged | Pågår | Väntar på review
+
+**STRUKTUR-REFERENS** (Markdown för att visa layout, ALDRIG som PowerPoint-tabell):
+
+| Team | Issue # | Titel | Assignad | Status | Merged/Branch |
+|------|---------|-------|----------|--------|---------------|
+| [från TEAM_ROSTER] | #[GitHub] | [GitHub] | [GitHub eller 🔄 UNASSIGNED] | ✓/◐/⏳ | [GitHub] |
+
+**RENDERING:** Varje rad visas som ett status-card eller visuell box, INTE som cellerna i en PowerPoint-tabell.
 
 **FORMAT OCH STRUKTUR:**
 
@@ -97,12 +107,6 @@ Din presentation måste innehålla:
 
 **ALDRIG ANVÄND EXEMPEL-DATA I FAKTISK PRESENTATION.**
 Alla data måste hämtas LIVE från GitHub när presentationen byggas.
-
-Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
-
-| Team | Issue # | Titel | Assignad | Status | Merged/Branch |
-|------|---------|-------|----------|--------|---------------|
-| [från TEAM_ROSTER] | #[GitHub] | [GitHub] | [GitHub eller 🔄 UNASSIGNED] | ✓/◐/⏳ | [GitHub] |
 
 **REGLER:**
 - **Del 1: Merged denna vecka** (sortera på merge-datum, äldst först — veckan börjar överst, slutar längst ner)
@@ -166,7 +170,7 @@ Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
 
 ### SLIDE ①B: Avklarat sedan förra mötet — Backend
 
-**FORMAT:** Tabell (identisk struktur som ①A)
+**FORMAT:** Visuella rader (identisk struktur som ①A — NO POWERPOINT TABLES)
 
 **KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
 
@@ -189,7 +193,7 @@ Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
 
 ### SLIDE ①C: Avklarat sedan förra mötet — Native
 
-**FORMAT:** Tabell (identisk struktur som ①A)
+**FORMAT:** Visuella rader (identisk struktur som ①A — NO POWERPOINT TABLES)
 
 **KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
 
@@ -299,7 +303,9 @@ Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
 
 🚨 **KRITISK: Denna mötespunkt visar ALLA issues denna sprint — både kommande backlog + pågående arbete + blockers + risker**
 
-**FORMAT:** Tabell klassificerad på dependencies + status
+🚨 **NO POWERPOINT TABLES** — Use visual cards/rows instead (NPF requirement)
+
+**FORMAT:** Visuella status-cards klassificerad på dependencies + status
 
 **STRUKTUR:**
 

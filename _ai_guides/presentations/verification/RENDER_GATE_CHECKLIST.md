@@ -290,28 +290,20 @@ RESULTAT: ❌ STOPP
 Meddelande: "Inget arbete denna vecka — presentationen blir tom"
 ```
 
-**SCENARIO 2: Issue utan assignee**
-```
-STATUS denna vecka:
-- 5 merged PRs ✅
-- 2 commits ✅
-- Issue #42 SAKNAR assignee ❌
-
-RESULTAT: ❌ STOPP
-Meddelande: "Issue #42 har ingen assignee. Lägg till i GitHub först."
-```
-
-**SCENARIO 3: Mötesprotokollet inte nåbar — MEN OK**
+**SCENARIO 2: Mötesprotokollet inte nåbar — MEN OK**
 ```
 STATUS denna vecka:
 - 5 merged PRs ✅
 - 2 commits ✅
 - Mötesprotokollet inte nåbar 🟡
+- Issue #42 SAKNAR assignee (OK — visas som ??)
 
 RESULTAT: ✅ PRESENTATION RENDERAS (med fallback)
 Meddelande: "Kunde inte nå mötesprotokollet. 
             Kan du klistra in texten från mötet?"
 ```
+
+**Notering:** Missing assignee (shown as `??`) är ALDRIG blocker. Presentationen renderas ändå.
 
 ---
 
@@ -321,7 +313,7 @@ Meddelande: "Kunde inte nå mötesprotokollet.
 |------------------|----------------|--------|
 | Erik saknar issue → STOPP | Erik → "Ingen issue denna vecka" | Fokus PROJEKT, inte individer |
 | Möte MÅSTE nås → STOPP | Möte: try/report/fallback | Mötet är CONTEXT, inte kritisk DATA |
-| Alla 7 MÅSTE synas | Visa de som hade arbete | Transparens: "Inget" är OK |
+| Alla 7 MÅSTE synas | Alla 7 accounted for — arbete OR "Ingen issue denna vecka" | Fokus PROJEKT; person utan arbete = neutral info |
 | Presentationen om INDIVIDER | Presentationen om PROJEKTET | Ändrar fokus från bedömning till framsteg |
 
 ---
