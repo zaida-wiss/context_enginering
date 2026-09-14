@@ -351,21 +351,40 @@ WCAG ACCESSIBILITY:
 
 ---
 
+## 🚨 HIERARKI: NPF > DESIGN > CONTENT
+
+**Om NPF-regler och design-regler krockar: NPF VINNER ALLTID**
+
+Exempel:
+- Design säger: "20px radhöjd ser bra ut"
+- NPF säger: "Dyslektiker behöver minst 24px"
+- **Resultat:** 24px. NPF vinner.
+
+- Design säger: "Bara text är tillräckligt"
+- NPF säger: "Symbol → Färg behövs innan text"
+- **Resultat:** Lägg på Symbol och Färg. NPF vinner.
+
+- Design säger: "Ingen orange bakgrund här"
+- NPF säger: "Orange bakgrund drar uppmärksamhet för Väntar på review"
+- **Resultat:** Orange bakgrund. NPF vinner.
+
+---
+
 ## 🎯 SUMMARY: TRE PRINCIPER
 
-**1. SYMBOL FÖRE FÄRG FÖRE TEXT**
+**1. SYMBOL FÖRE FÄRG FÖRE TEXT** (NPF-regel)
 - Du ska förstå status på 1 sekund från symbol
 - Färg bekräftar status på 2-3 sekunder
 - Text ger detaljer på 5+ sekunder
 
-**2. FÄRG ÄR ALDRIG DEKORATION**
+**2. FÄRG ÄR ALDRIG DEKORATION** (NPF-regel)
 - 🟢 = klart/verifierat
 - 🟡 = pågår/avvikelse
 - 🔴 = blockerat/kritisk
 - ⚪ = okänd/neutral
 - Lila/blå = struktur/kategorier (ALDRIG status)
 
-**3. WHITESPACE & TILLGÄNGLIGHET**
+**3. WHITESPACE & TILLGÄNGLIGHET** (NPF-regel)
 - Minst 8px mellan element (NPF/ADHD-vänligt)
 - **Tabell-headers: 14pt BOLD** (läsbar från mötesbord)
 - **Tabell-content: 13pt** (samma som headers, ej för litet)
@@ -393,3 +412,12 @@ WCAG ACCESSIBILITY:
 **DENNA FIL ÄR MANDATORY FÖRE RENDERING**
 
 INGEN PRESENTATION UTAN DENNA DESIGN. PERIOD.
+
+---
+
+## 🔗 Relaterade Filer
+
+Se även:
+- **[../MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md)** — Läsordning för alla steg innan rendering
+- **[ACCESSIBILITY_NEURODIVERSITY.md](ACCESSIBILITY_NEURODIVERSITY.md)** — VARFÖR denna design är NPF-vänlig
+- **[PRESENTATION_RED_THREADS.md](PRESENTATION_RED_THREADS.md)** — Röda trådar mellan möten (konsistens)

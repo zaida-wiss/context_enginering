@@ -1,13 +1,21 @@
 ---
 name: verification_report_template
-description: Struktur för AI:s verifierings-rapporter (FASE 1-3)
+description: 🟡 UNDER REVIEW — Struktur för AI:s verifierings-rapporter (använd oklar, markerad för nästa rensning)
 metadata:
   type: report_template
-  critical: true
+  status: under_review
   version: 1.0
 ---
 
-# 📋 VERIFICATION REPORT TEMPLATE — Struktur för AI:s Rapporter
+# 🟡 VERIFICATION REPORT TEMPLATE — Struktur för AI:s Rapporter (UNDER REVIEW)
+
+**⚠️ STATUS:** Denna fil är markerad för granskning i nästa cleanup-pass.  
+Syfte är oklart — inte länkad någonstans och inte aktivt använd.  
+Behålls för nu men kan tas bort om ingen använder den.
+
+---
+
+## Ursprungligt innehål:
 
 **Denna fil visar STRUKTUREN på rapporter som AI ger till människan.**
 

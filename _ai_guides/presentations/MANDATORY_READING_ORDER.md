@@ -173,6 +173,7 @@ Den filen säger:
    - RGB-värden, px-storlekar, font-specs, whitespace — ALLT konkret
    - **RENDERING-CHECKLIST:** 13 punkter som MÅSTE passeras innan presentation kan visas
    - **FÖRBJUDNA PATTERNS:** Textlistor, bara färg (utan symbol), ingen whitespace, liten text
+   - **HIERARKI:** NPF-regler > Design-regler (se denna fil för prioritering om de krockar)
    
 3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
    - EXAKT innehål för VARJE SLIDE (①-⑭)
@@ -182,7 +183,32 @@ Den filen säger:
 4. **[monday_meeting/structure/PRESENTATION_STRUCTURE.md](monday_meeting/structure/PRESENTATION_STRUCTURE.md)**
    - 14 mötespunkter (①-⑭) definitioner
 
-**Om två filer motsäger varandra:** SLIDE_DETAIL_SPEC.md VINNER.
+**HIERARKI när regler krockar:**
+
+```
+🚨 NPF-REGLER (ACCESSIBILITY_NEURODIVERSITY.md) — HÖGSTA PRIORITET
+   ↓
+VISUAL_DESIGN_MANDATORY.md — Designregler
+   ↓
+SLIDE_DETAIL_SPEC.md — Innehållsformat
+   ↓
+PRESENTATION_STRUCTURE.md — Ordning
+
+OM NPF och DESIGN krockar → NPF VINNER ALLTID
+OM DESIGN och CONTENT krockar → DESIGN VINNER
+OM CONTENT och STRUCTURE krockar → CONTENT VINNER
+```
+
+**VIKTIG REGEL:** Om NPF-reglerna säger "detta behövs för dyslektiker" men designen säger "det ser inte bra ut" → **NPF VINNER. Alltid.**
+
+Exempel:
+- ❌ FALSKT: "Design säger ingen färg här, men NPF säger 🟢🟡🔴 behövs"
+- ✅ RÄTT: Lägg på färgerna. NPF vinner.
+
+Samma med:
+- ✅ RÄTT: 24px radhöjd (NPF) > 20px (Design)
+- ✅ RÄTT: Symbol → Färg → Text (NPF) > bara Text (Design)
+- ✅ RÄTT: Orange bakgrund för Review-sektion (NPF) > ingen bakgrund (Design)
 
 ---
 

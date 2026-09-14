@@ -1,4 +1,10 @@
-# ⚠️ Deprecated Files - Migrationsguide
+# 🟡 Deprecated Files - Migrationsguide (UNDER REVIEW)
+
+**⚠️ STATUS:** Denna fil är markerad för granskning i nästa cleanup-pass.  
+Syfte: Förklara migration från gamla system → nytt. Historisk värde men inte aktivt använd.  
+Behålls för nu men kan tas bort om ingen behöver referera till migration.
+
+---
 
 **Dessa filer refererar till det gamla systemet (CURRENT_STATUS.md, RISKS.md) som inte längre existerar.**
 
