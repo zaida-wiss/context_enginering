@@ -30,8 +30,8 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 | #88 | Critical interactions | Björn Boman | ◐ PÅG | feature/#88 |
 | #89 | E2E happy path | Tomac Barin | ◐ PÅG | feature/#89 |
 | **VÄNTAR PÅ REVIEW** | | | | |
-| #90 | Auth flow refactor | Lisa Andersson | ⏳ REVIEW | PR #142 |
-| #91 | Cache optimization | Kalle Ström | ⏳ REVIEW | PR #143 |
+| [Issue från GitHub] | [Faktisk titel] | [Team-medlem] | ⏳ REVIEW | [PR-nr] |
+| [Exempel: #90] | [Auth flow refactor] | [Lisa Andersson] | ⏳ REVIEW | [PR #142] |
 
 **REGLER:**
 - **Del 1: Merged denna vecka** (sortera på merge-datum, nyast först)
@@ -73,12 +73,17 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 - ❌ PRs som redan är mergead (de hör hemma i "Merged" sektion)
 
 **DATA-SOURCES:**
-- 📊 **Merged:** GitHub PRs API (merged till develop denna vecka)
-- 📊 **Pågår:** GitHub branches (commits senaste 7 dagar) + Project Board (status: In Progress)
-- 📊 **Väntar på review:** GitHub PRs API (open PRs utan approval, skapade denna vecka)
+- 📊 **Merged:** GitHub PRs API (merged till develop denna vecka) — FAKTISK GitHub-data, inte exempel
+- 📊 **Pågår:** GitHub branches (commits senaste 7 dagar) + Project Board (status: In Progress) — FAKTISK data
+- 📊 **Väntar på review:** GitHub PRs API (open PRs utan approval, skapade denna vecka) — **MÅSTE HÄMTAS FRÅN GITHUB**, inte exempel
+  - Sortera på skapningsdatum (längst väntan först)
+  - Inkludera ENDAST team-medlemmars PRs (match issue-owner mot TEAM_ROSTER.md)
+  - Status: ⏳ REVIEW (ingen approval än)
 - 🔍 **Jämförelse:** Branch mot Project Board — visa discrepancy om Board och Git inte stämmer
 
-**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: #90, #91`
+**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska issues från GitHub]`
+
+⚠️ **KRITISK PÅMINNELSE:** Exemplen (#90, #91, PR #142) är PLACEHOLDERS. Använd faktisk GitHub-data när du renderar presentationen!
 
 ---
 
