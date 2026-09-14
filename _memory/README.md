@@ -26,6 +26,12 @@
 |-----|-------|
 | **RISK_REGISTER.md** | Projektrisker, sannolikhet, påverkan, mitigering |
 
+## 🔗 Externa Källor & Fallbacks
+
+| Fil | Syfte |
+|-----|-------|
+| **EXTERNAL_SOURCES.md** | Centraliserad register över alla externa datakällor, IDs, fallback-URLs (Google Sheets, Google Docs, GitHub, etc.) |
+
 ## 📅 Schema & Deadlines
 
 | Fil | Syfte |
