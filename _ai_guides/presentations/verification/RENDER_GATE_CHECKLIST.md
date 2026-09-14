@@ -153,20 +153,22 @@ OM FABRICERAD DATA:
 → STOPP, använd endast verifierad data
 ```
 
-### 4. MÖTESPROTOKOLLET — TRY → REPORT → FALLBACK
+### 4. MÖTESPROTOKOLLET — OPTIONAL CONTEXT (INTE BLOCKERANDE)
 
 ```
-🟡 OM du INTE kan nå mötesprotokollet:
-   → Rapportera: "Kunde inte nå Google Docs. Kan du klistra in texten?"
-   → VÄNTA på användarens svar
-   → OM user ger texten: använd den
-   → OM user säger "skippa": bygga utan mötet
+🟡 Mötesprotokollet är CONTEXT, inte DATA → aldrig blockerande
 
-✅ FALLBACK: Presentationen renderas ÄNDÅ
-   (mötet är CONTEXT, inte DATA)
+OM du kan nå Google Docs:
+   → Läs det för bakgrundskontext
+   → Använd för att validera GitHub-data
    
-✅ RESULTAT: Presentation klar, men med notering:
-   "Mötesprotokollet verifierat från: [GitHub data]"
+OM du INTE kan nå mötesprotokollet:
+   → Byggpresentationen ÄNDÅ (ingen väntan på användare)
+   → Använd GitHub data som primär källa
+   → Visa i footer: "GitHub data verifierat, mötesprotokollet ej nåbar"
+
+✅ RESULTAT: Presentation renderas ALLTID
+   (Mötesprotokollet är optional context, fallback = GitHub data)
 ```
 
 ---

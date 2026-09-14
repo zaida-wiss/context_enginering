@@ -95,13 +95,12 @@ Innan du säger "datainsamlingen är ofullständig":
 
 **Denna vecka = exakt 7 dagar bakåt från IDAG**
 
-Exempel (om idag är 2026-09-13):
-- Denna vecka = 2026-09-06 till 2026-09-13
-- INTE förra veckan
-- INTE denna kalendervecka (mon-sun)
-- INTE "sedan förra mötet" (som kan vara olika långt)
+**REGEL: Datumfiltret är ALLTID [IDAG-7d] till [IDAG] (ingen hårdkodad datum)**
 
-**REGEL: Datumfiltret är ALLTID [idag - 7 dagar] till [idag]**
+Exempel på hur regeln fungerar:
+- Om idag är 2026-09-14: denna vecka = 2026-09-07 till 2026-09-14
+- Om idag är 2026-09-21: denna vecka = 2026-09-14 till 2026-09-21
+- Alltid senaste 7 dagar, aldrig hårdkodat
 
 ---
 
