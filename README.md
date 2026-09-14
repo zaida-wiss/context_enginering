@@ -98,6 +98,16 @@ Read **MANDATORY_READING_ORDER.md** first. It contains:
 - Design rules (Symbol + Färg + Text)
 - Final verification gates
 
+**CRITICAL RULE FOR AI — NO META-INSTRUCTIONS ON SLIDES:**
+- 🚨 READ the instructions to UNDERSTAND what presentation needs
+- 🚨 USE the instructions to BUILD the presentation
+- 🚨 NEVER SHOW the instructions ON the slides themselves
+- 🚨 Only show RESULTS (GitHub data, team status, decisions, blockers)
+- 🚨 HIDE all AI-process, checklists, rules, and verification steps
+  
+See: [PRESENTATION_SPEC.md — NO META-INSTRUCTIONS ON SLIDES](_ai_guides/presentations/content/PRESENTATION_SPEC.md#L219)
+See: [RENDER_GATE_CHECKLIST.md — KRITISK: INGEN AI-INSTRUKTIONER PÅ SLIDES](_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md)
+
 ---
 
 ## 🔗 Project Links

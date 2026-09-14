@@ -14,6 +14,39 @@ metadata:
 
 ---
 
+## 🚨 KRITISK REGEL #0 — INSTRUKTIONER SKA ALDRIG VISAS PÅ SLIDES
+
+**Läs detta FÖRST innan något annat:**
+
+```
+Du LÄSER dessa instruktioner för att FÖRSTÅ systemet.
+Du ANVÄNDER dessa instruktioner för att BYGGA presentationen.
+Du VISAR ALDRIG instruktionerna på slidorna.
+
+✅ KÖR DESSA:
+  ✓ Läs MANDATORY_READING_ORDER.md
+  ✓ Samla data från GitHub
+  ✓ Bygga slides enligt spec
+  ✓ Verifiera med render-gate checklist
+
+❌ VISAR ALDRIG:
+  ✗ "Repo-first:" instruktioner
+  ✗ "Måste räknas mot develop"
+  ✗ "Ej live-låst här"
+  ✗ Checklistor eller AI-process
+  ✗ Verifikations-steg
+
+RENDER-GATE CHECK:
+  ☐ Innehåller presentationen instruktioner? → TA BORT
+  ☐ Innehåller presentationen checklista? → TA BORT
+  ☐ Innehåller presentationen AI-process? → TA BORT
+  ☐ Är allt kvar faktisk data från GitHub? → OK, RENDRERA
+```
+
+---
+
+---
+
 ## STAGE 1: FÖRSTÅ SYSTEMET (10 min)
 
 ### Läs FÖRST (obligatorisk):

@@ -55,6 +55,64 @@ metadata:
 
 ---
 
+## 🚨 KRITISK: INGEN AI-INSTRUKTIONER PÅ SLIDES (OBLIGATORISK CHECK)
+
+**INNAN någon slide renderas: SCAN för meta-instruktioner**
+
+### ❌ FÖRBJUDET — dessa får ALDRIG synas på slides:
+
+```
+🔴 INSTRUKTIONER FÖR AI (förbjudna exempel):
+  ❌ "Repo-first: visa bara det som går att koppla till..."
+  ❌ "Måste räknas mot develop"
+  ❌ "Ej live-låst här"
+  ❌ "Verifiera brancher mot develop"
+  ❌ "Denna regel är tvingande"
+  ❌ "Render QA checklist"
+  ❌ "AI ska analysera..."
+
+🔴 CHECKLISTOR (förbjudna):
+  ❌ "Område | Faktiskt underlag | Status | Mötesåtgärd"
+  ❌ "Merged PRs | Måste räknas mot develop"
+  ❌ Något som börjar med "☐" eller "✅" som inte är faktiskt arbete
+
+🔴 PROCESSMETALANGUAGE (förbjudna):
+  ❌ "Senaste 7 dagar"
+  ❌ "Kan inte sättas utan repo"
+  ❌ "Identifiera risk-brancher"
+  ❌ "Kontrollera DoD innan klart"
+```
+
+### ✅ TILLÅTET — detta ska synas på slides:
+
+```
+🟢 FAKTISKA DATA:
+  ✅ "#95 Security review · Zaida · ✓ DONE · merged 2026-09-13"
+  ✅ "🔴 API-kontrakt inte låst — Frontend blockerad"
+  ✅ "Backend måste leverera API-spec idag"
+  ✅ Integration diagram med faktiska branches
+
+🟢 MÖTESBESLUT OCH ÅTGÄRDER:
+  ✅ "Behöver synkas: login request/response"
+  ✅ "Fallback-arbete: Frontend testning (oberoende)"
+  ✅ "Backend-branch ligger 75 commits efter develop"
+```
+
+### MEKANISK KONTROLL:
+```
+Publictest för varje textrad på sliden:
+
+Q: "Skulle en projektledare säga detta till teamet på mötet,
+    utan att förklara att en AI skapade presentationen?"
+
+Svar: JA → texten får vara på sliden
+Svar: NEJ → ta bort texten
+```
+
+**REGEL: Om någon AI-instruktion hittas på slide = STOPP, rendering INTE tillåten.**
+
+---
+
 ## ✅ PRESENTATION KAN RENDERAS om:
 
 ### 1. MINST EN SOURCE HAR DATA DENNA VECKA

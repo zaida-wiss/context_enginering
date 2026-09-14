@@ -16,6 +16,53 @@ metadata:
 
 ---
 
+## 🚨 KRITISK REGEL #0 — LÄSA INSTRUKTIONER ≠ VISA INSTRUKTIONER
+
+**INNAN du läser NÅGOT annat:**
+
+```
+⭐ DENNA REGEL ÄR TVINGANDE ⭐
+
+Du ska LÄSA dessa instruktioner för att FÖRSTÅ vad presentationen behöver.
+Du ska ANVÄNDA dessa instruktioner för att BYGGA presentationen.
+Du ska ALDRIG VISA dessa instruktioner ON SLIDES.
+
+EXEMPEL:
+
+🔴 FEL:
+  Slide visar: "Repo-first: visa bara det som går att koppla till PR, commit..."
+  Slide visar: "Måste räknas mot develop"
+  Slide visar: "Ej live-låst här"
+  → Dessa är instruktioner för DIG, inte innehål för mötet
+
+✅ RÄTT:
+  Slide visar: "#95 Security review · Zaida · ✓ DONE · merged 2026-09-13"
+  Slide visar: "🔴 API-kontrakt inte låst — Frontend blockerad"
+  Slide visar: "Backend måste leverera API-spec idag"
+  → Dessa är RESULTAT av att följa instruktionerna
+
+MECKANISK KONTROLL (efter rendering):
+  För varje slide:
+    Q: "Skulle en projektledare säga detta till teamet?"
+    Ja → texten får vara på sliden
+    Nej → ta bort texten
+
+RENDER-GATE CHECK:
+  ☐ Presentationen innehåller INGEN instruktioner?
+  ☐ Presentationen innehåller INGEN checklista?
+  ☐ Presentationen innehåller INGEN AI-process?
+  
+  Om något är NEJ → STOPP, ta bort det innan rendering
+```
+
+**Se även:**
+- [PRESENTATION_SPEC.md — NO META-INSTRUCTIONS ON SLIDES](content/PRESENTATION_SPEC.md#L219)
+- [RENDER_GATE_CHECKLIST.md — KRITISK: INGEN AI-INSTRUKTIONER PÅ SLIDES](verification/RENDER_GATE_CHECKLIST.md)
+
+---
+
+---
+
 ## 🚀 AI EXECUTION WORKFLOW — DENNA ORDNING MÅSTE FÖLJAS
 
 **DENNA FIL SÄGER DEN EXAKTA ORDNINGEN för AI:**
