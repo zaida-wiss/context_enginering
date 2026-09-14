@@ -45,6 +45,31 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 ---
 
+## 🚨 KRITISK REGEL — MÖTESPUNKTS-SYMBOLER
+
+**VARJE slide-rubrik MÅSTE börja med mötespunkts-symbolen så det är OMEDELBAR VISUELL klar vilken mötespunkt sliden tillhör.**
+
+```
+❌ FEL:   "Avklarat sedan förra mötet — Frontend"
+✅ RÄTT:  "① Avklarat sedan förra mötet — Frontend"
+
+❌ FEL:   "Aktuell status"
+✅ RÄTT:  "② Aktuell status"
+
+❌ FEL:   "Frontend"
+✅ RÄTT:  "③ Frontend"
+```
+
+**REGLER:**
+- Symbolen måste vara FÖRST i rubriken
+- Två mellanslag mellan symbol och rubrik-text
+- Samma symbol för alla sub-slides (t.ex. ①A, ①B, ①C använder alla ①)
+- Font: Arial 14pt BOLD (samma som andra headers)
+
+**VARFÖR:** NPF-designen kräver att läsaren omedelbar ser STRUKTUR. Symbolen är visuell ankare.
+
+---
+
 ---
 
 ## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1-3 slides)

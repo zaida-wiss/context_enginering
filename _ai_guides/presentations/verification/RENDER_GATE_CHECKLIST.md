@@ -340,12 +340,14 @@ INNEHÅL:
   [ ] Varje issue/PR har assignee (#XX - Namn)
   [ ] Team-medlemmar utan arbete: "Ingen issue denna vecka"
   [ ] Fokus på PROJEKT, inte individer
+  [ ] ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ — ALLA slides har mötespunkts-symbol i rubrik
 
 DESIGN:
   [ ] 14 mötespunkter representerade
   [ ] Rätt färger + borders
   [ ] Whitespace 60-70%
   [ ] Fonts enligt VISUAL_DESIGN_MANDATORY
+  [ ] Symbols først i alla slide-rubriker (NPF struktur)
 
 RESULT:
   [ ] Om ALLA checkboxes är OK → RENDERAR
