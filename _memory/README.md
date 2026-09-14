@@ -4,6 +4,14 @@
 
 ---
 
+## 🚨 KRITISK INSTRUKTION (Läs först!)
+
+| Fil | Syfte |
+|-----|-------|
+| **PROJEKTKONTEXT_AVANZA.md** | **MÅSTE LÄSAS FÖRST** — Kritisk instruktion för ALL AI-arbete (styrning, källhierarki, transparensregler, fallbacks) |
+
+---
+
 ## 📋 Arbetsstandarder & Definition
 
 | Fil | Syfte |
