@@ -78,7 +78,8 @@ metadata:
 | **Project Repo** | https://github.com/chas-challenge-2026/avanza-team1 |
 | **Issues (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue |
 | **Issues (OPEN)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open |
-| **Pull Requests** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
+| **Pull Requests (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
+| **Merged PRs (filter by date)** | `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[IDAG-7d]` |
 
 ### Project Board & Fallback
 | Resource | Primary | Fallback | Notes |
