@@ -14,6 +14,22 @@ metadata:
 
 ---
 
+## 🚀 AI EXECUTION WORKFLOW — DENNA ORDNING MÅSTE FÖLJAS
+
+**DENNA FIL SÄGER DEN EXAKTA ORDNINGEN för AI:**
+
+👉 **LÄS FÖRST:** [AI_VERIFICATION_WORKFLOW.md](verification/AI_VERIFICATION_WORKFLOW.md)
+
+Den filen säger:
+- FASE 1: Datainsamling & Identity verification → RAPPORT
+- FASE 2: Render gate check → RAPPORT
+- FASE 3: Bygga presentation & final verification → RAPPORT
+- Människan ser ALLA rapporter FÖRE presentationen
+
+**UTAN denna ordning → presentation blir felaktig eller ej verifierad.**
+
+---
+
 ## 📚 SYSTEMÖVERSIKT — ALLA FILER HÄNGER IHOP
 
 **Presentationssystemet består av MÅNGA filer som beskriver samma sak från olika vinklar:**

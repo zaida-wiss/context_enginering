@@ -51,6 +51,30 @@ Presentationen fyller TRE syften:
 - Slidorna fylls med verklig GitHub-data, inte tomma checkboxes
 - Se [MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md) för vilka GitHub-åtgärder som behövs
 
+**KÄLLREFERENSER — Mycket liten text (footer), inte i fokus**
+- Varje slide som visar GitHub-data MAY ha käll-referens i 8-10pt grå text längst ner
+- Exempel: `Källa: GitHub PR #95, merged 2026-09-13`
+- Denna text DIÄ INTE ta fokus från innehål — den är för verifikation, inte läsning
+- Placering: Footer eller margin (aldrig i slide-innehål)
+- Syfte: Möjliggör för människan att verifiera (om hon vill) utan att distrahera
+
+**PEDAGOGISKA FÖRKLARINGAR — 📚 märkta ord & begrepp**
+- Varje branschterm eller okänd term MÅSTE förklaras på samma slide
+- Märka med 📚 för att visa att det är ett lärmål
+- Exempel på slide ④ (Frontend):
+  ```
+  📝④ FRONTEND — Denna sprint
+  
+  | Issue | Titel | Assignad | Status | Blocker |
+  |-------|-------|----------|--------|---------|
+  | #88 | Critical interactions 📚 | Björn | ◐ PÅG | API-kontrakt |
+  
+  📚 "Critical interactions" = användares viktigaste workflows i appen
+                               (login, payment, data-entry)
+  ```
+- ADHD/Dyslektiker sparar tid — kan läsa ordet OCH förklaringen tillsammans
+- Mötet blir lärmöte, inte bara statusrapport
+
 ---
 
 ## 🎬 FRAMSIDA (Ingen 📝-symbol)
