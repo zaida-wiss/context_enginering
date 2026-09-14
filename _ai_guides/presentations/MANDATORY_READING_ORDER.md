@@ -72,11 +72,16 @@ Exempel på FEL matching:
 
 **Denna steg måste slutföras FULLSTÄNDIGT innan du går vidare.**
 
-- [ ] Branches från develop — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/chas-challenge-2026/avanza-team1/branches`
+- [ ] **Branches från develop** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/branches`
+  FALLBACK: GitHub web-sida (WebFetch compatible)
+  DATA NEEDED: branch names, last commit date, last contributor
   
-- [ ] Commits denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop`
+- [ ] **Commits denna vecka (sept 6-13)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop`
+  FILTER: commits from Sept 6-13, 2026
+  FALLBACK: GitHub web history, then git log from local repo
+  DATA NEEDED: author, date, message, linked issues/PRs per commit
   
 - [ ] **CLOSED ISSUES denna vecka** — LIVE_VERIFIED eller FALLBACK_VERIFIED
   URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:2026-09-06..2026-09-13`
@@ -94,12 +99,23 @@ Exempel på FEL matching:
 - [ ] Open issues med aktivitet — LIVE_VERIFIED eller FALLBACK_VERIFIED
   URL: `https://github.com/chas-challenge-2026/avanza-team1/issues`
   
-- [ ] Project Board status — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/orgs/chas-challenge-2026/projects/31/views/1`
-  Fallback: Använd PR/issue status från GitHub istället
+- [ ] **Project Board status** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  PRIMARY URL: `https://github.com/orgs/chas-challenge-2026/projects/31/views/1`
+  ⚠️ NOTE: This URL may return 404 or require auth via WebFetch
+  MANDATORY FALLBACK: Rekonstruera status från:
+    - GitHub Issues API (open/closed status)
+    - GitHub PRs API (merged status)
+    - Issue labels (status field)
+  → Use PR/Issue status as source of truth instead of Project Board
+  DATA NEEDED: Per issue: status (to do/in progress/done), priority, assignee
   
-- [ ] Meeting protocol denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+- [ ] **Meeting protocol denna vecka** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  PRIMARY URL: `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+  ALT URL (raw-export): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt` → may redirect
+  FALLBACK: If both Google Docs URLs fail:
+    - Use GitHub Issues/PR data as factual source instead
+    - Use meeting context from context-repot cache
+  DATA NEEDED: decisions made, blockers identified, action items, next priorities
   
 - [ ] DoD denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
   Källa: PR descriptions + review approvals (från PR DETAILS ovan)
