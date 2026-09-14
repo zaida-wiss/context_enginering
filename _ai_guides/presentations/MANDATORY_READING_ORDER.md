@@ -93,11 +93,41 @@ Exempel på FEL matching:
   URL: `https://github.com/chas-challenge-2026/avanza-team1/pull/[PR_NUMBER]`
   Hämta för varje merged PR: approver, commits, linked issues
   
-- [ ] Open PRs med aktivitet — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
+- [ ] **OPEN PRs denna vecka (NULÄGE)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
+  DATA NEEDED PER PR:
+    • PR-nummer
+    • Titel
+    • Författare (GitHub handle)
+    • Vilka reviewers är assignerade? (KRITISK — ofta tomt)
+    • Status: open/draft/ready for review
+    • Länkade issues (#XX)
+    • Skapningsdatum
+  PRESENTATION USE: Slide ①D eller ②A — visa vad som väntar på review/merge
   
-- [ ] Open issues med aktivitet — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/chas-challenge-2026/avanza-team1/issues`
+- [ ] **OPEN ISSUES denna vecka (NULÄGE)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/issues`
+  DATA NEEDED PER ISSUE:
+    • Issue-nummer
+    • Titel
+    • Assignerad till (vem jobbar med det?)
+    • Labels (team-område: frontend, backend, native)
+    • Status (öppen, pågår)
+    • Uppdaterad senast (när var senaste aktivitet?)
+  PRESENTATION USE: Slide ①D — visa aktiv arbete per team-medlem
+  SORTERING: Sortera per assignee för att se vem som jobbar med vad
+  
+- [ ] **COMMITS DENNA VECKA (FAKTISK ARBETE)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop`
+  FILTER: Senaste 7 dagar
+  DATA NEEDED PER COMMIT:
+    • Datum
+    • Författare (GitHub handle + namn)
+    • Commit-meddelande (första raden)
+    • Länkade PR-nummer (om någon)
+    • Länkade issue-nummer (om någon)
+  PRESENTATION USE: Slide ①D — visar vem som faktiskt gjort vad denna vecka
+  VARNING: Om INGA commits denna vecka → teamet har inte pushat (möjligt blockeringsproblem)
   
 - [ ] **Project Board status** — LIVE_VERIFIED eller FALLBACK_VERIFIED
   PRIMARY URL: `https://github.com/orgs/chas-challenge-2026/projects/31/views/1`
