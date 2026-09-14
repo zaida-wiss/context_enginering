@@ -21,17 +21,15 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 ## 🤖 **START HÄR FÖR AI:**
 
-👉 **[AI_READ_ORDER.md](AI_READ_ORDER.md)** ← EXAKT ORDNING FÖR AI
+👉 **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← ENDA ORDNINGEN FÖR AI
 
 Denna fil säger:
-- STAGE 1: Förstå systemet (root README → MANDATORY_READING_ORDER → presentations README)
-- STAGE 2: Samla data (TEAM_ROSTER → DATA_SOURCES → DATA_COLLECTION_MANDATORY → GitHub)
-- STAGE 3: Planera arbetet (DEPENDENCY_CHAIN_PLANNING för punkt ⑦⑧)
-- STAGE 4: Design slidorna (ACCESSIBILITY_NEURODIVERSITY → VISUAL_DESIGN_MANDATORY → PRESENTATION_FORMAT_GUIDE → PRESENTATION_STRUCTURE)
-- STAGE 5: Verifiera (AI_VERIFICATION_WORKFLOW → RENDER_GATE_CHECKLIST)
-- STAGE 6: Build & deliver
+- STEG 1: Läs system-filer (README, DATA_COLLECTION, DATA_SOURCES)
+- STEG 2: Verifiera (AI_VERIFICATION_WORKFLOW, RENDER_GATE_CHECKLIST)
+- STEG 3: Design & spec (SLIDE_DETAIL_SPEC, VISUAL_DESIGN_MANDATORY, PRESENTATION_STRUCTURE)
+- STEG 4: Final render-gate innan presentation byggs
 
-**Ingen annan ordning. Denna ordning.**
+**En ordning. Ingen variation. Denna ordning.**
 
 ---
 
@@ -61,9 +59,9 @@ Denna fil säger:
 Denna fil innehåller:
 - ✅ Systemöversikt (hur allt hänger ihop)
 - ✅ Data-hämtning från GitHub (exakta URLs)
-- ✅ Designregler (Symbol + Färg + Text)
+- ✅ Designregler (Symbol + Färg + Text från VISUAL_DESIGN_MANDATORY.md)
 - ✅ Render-gate checklist (när presentation är klart)
-- ✅ Länk till PRESENTATION_FORMAT_GUIDE.md (konkreta slide-exempel)
+- ✅ Länk till **[design/SLIDE_DETAIL_SPEC.md](design/SLIDE_DETAIL_SPEC.md)** — exakt innehål & format per slide
 - ✅ Länk till **[structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md)** 
   - 14 mötespunkter (①-⑭) med EXAKTA krav för varje:
   - Fas-baserad ordning (punkt ⑧)
@@ -131,8 +129,7 @@ Denna fil innehåller:
 - `ACCESSIBILITY_NEURODIVERSITY.md` — **NYTT & KRITISK:** VARFÖR färg+symbol+text? Dyslexi/ADHD-vänlig design explained. Färger = budskap, symboler = signaler, whitespace = fokus
   
 **REFERENSFILER:**
-- `PRESENTATION_STYLE.md` — Färger, typografi, layout, NPF-regler, QA-checklista
-- `PRESENTATION_CONSISTENCY_FRAMEWORK.md` — Röda trådar, repeterbara strukturer, content consistency
+- `PRESENTATION_RED_THREADS.md` (i monday_meeting/design/) — Röda trådar, repeterbara strukturer, content consistency
 - `DESIGN_AUTHORITY.md` — Design-källa autoritet
 
 **Använd VISUAL_DESIGN_MANDATORY om:** Du renderar en presentation (det är tvingande före rendering)
@@ -197,4 +194,4 @@ Denna fil innehåller:
 
 ---
 
-**Senast uppdaterad:** 2026-09-13
+**Senast uppdaterad:** 2026-09-14 — Fixed: removed deprecated file references, single reading order

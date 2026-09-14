@@ -11,22 +11,10 @@ Dessa dokument innehåller **konkreta guider** för att skapa presentationer, m�
 ```
 VILL DU SKAPA EN PRESENTATION?
         ↓
-🟢 START HÄR: presentations/MANDATORY_READING_ORDER.md ← LÄSOBLIGATORISK
-   (allt du behöver veta innan rendering)
+🟢 START HÄR: presentations/MANDATORY_READING_ORDER.md ← ENDA ORDNINGEN
+   (hela systemet från datahämtning till leverans)
         ↓
-SEDAN: presentations/design/PRESENTATION_FORMAT_GUIDE.md ⭐ EXAKTA SLIDE-LAYOUTS
-   (visar varje slide-typ med borders, färger, tonalitet, exempel)
-        ↓
-SEDAN: presentations/structure/PRESENTATION_STRUCTURE.md
-   (14 mötespunkter — 📝①-⑧)
-        ↓
-SEDAN: presentations/verification/RENDER_GATE_CHECKLIST.md
-   (när KAN/INTE kan presentationen renderas)
-        ↓
-SEDAN: mötesprotokollet från Google Docs
-   (denna veckas faktiska data från mötet)
-        ↓
-RESULTAT: NPF-vänlig presentation som gör dig glad & motiverad
+RESULTAT: Live GitHub-data + verifierad design = presentationen är klar
 ```
 
 ---
@@ -48,13 +36,11 @@ RESULTAT: NPF-vänlig presentation som gör dig glad & motiverad
 
 | Fil | Syfte | Läs när... |
 |-----|-------|-----------|
-| **_memory/README.md** 🚨 | **MÅSTE LÄSAS FÖRST** — Projektkontext & team-standards | Innan du börjar någon presentation |
-| **presentations/MANDATORY_READING_ORDER.md** 🚨 | **MÅSTE LÄSAS** — Hela systemet förklarat + data-hämtning + render-gate | Du ska bygga en presentation |
-| **presentations/design/PRESENTATION_FORMAT_GUIDE.md** ⭐ | **EXAKTA SLIDE-LAYOUTS** — 7 slide-exempel med borders, färger, whitespace, tonalitet | Du ska designa slidorna |
-| **presentations/structure/PRESENTATION_STRUCTURE.md** | 14 mötespunkter (📝①-⑧) — vad varje punkt MÅSTE innehålla | Du ska förstå struktur |
-| **presentations/verification/RENDER_GATE_CHECKLIST.md** | Korrekt render-gate — när KAN/INTE kan presentationen renderas | Innan du renderar |
-| **presentations/structure/SPRINT_PROTOCOL_NUMBERED.md** | Mötesprotokolls mall — vilka mötespunkter finns? | Du fyller i mötet |
-| presentations/content/PRESENTATION_SPEC.md | Innehålls-regler, färg-semantik, issue-format | Du ska verifiera innehål |
+| **presentations/MANDATORY_READING_ORDER.md** 🚨 | **MÅSTE LÄSAS** — 4 steg från start till klar presentation | Du ska bygga en presentation |
+| **presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md** ⭐ | **EXAKTA SLIDE-SPEC** — format, kolumner, regler, datakällor för varje slide ①-⑭ | Du designar slidorna |
+| **presentations/design/VISUAL_DESIGN_MANDATORY.md** | Symbol + Färg + Text — NPF/dyslexia-vänlig, konkret PowerPoint-implementering | Innan du renderar |
+| **presentations/monday_meeting/structure/PRESENTATION_STRUCTURE.md** | 14 mötespunkter (①-⑭) — vad varje punkt MÅSTE innehålla | Du ska förstå struktur |
+| **presentations/verification/RENDER_GATE_CHECKLIST.md** | Korrekt render-gate — 13 checkpoints innan rendering | Innan du renderar |
 | presentations/data/DATA_SOURCES.md | Vilka GitHub-URLs + fallback-strategier | Du hämtar data |
 
 ---
@@ -71,8 +57,8 @@ RESULTAT: NPF-vänlig presentation som gör dig glad & motiverad
 
 **Raw-links för direkt läsning (om länk inte fungerar):**
 - 🚨 MANDATORY_READING_ORDER.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/MANDATORY_READING_ORDER.md
-- 🎨 PRESENTATION_FORMAT_GUIDE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/design/PRESENTATION_FORMAT_GUIDE.md
-- 📝 PRESENTATION_STRUCTURE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md
+- 📊 SLIDE_DETAIL_SPEC.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md
+- 📝 PRESENTATION_STRUCTURE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/monday_meeting/structure/PRESENTATION_STRUCTURE.md
 
 ---
 
