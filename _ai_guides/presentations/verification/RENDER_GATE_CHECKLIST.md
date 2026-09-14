@@ -15,36 +15,57 @@ metadata:
 
 ---
 
-## 🔍 STEG 1: DATA COMPLETENESS VERIFICATION (FÖRE ALLA SLIDES)
+## 🔍 STEG 1: MANDATORY DATA_AUDIT (FÖRE ALLA SLIDES)
 
-**OBLIGATORISK — måste passa innan slides byggs alls.**
+**OBLIGATORISK mellanresultat — måste fullörs innan slides byggs.**
 
-**Presentera denna DATA SUMMARY för användaren:**
+**Generera denna DATA_AUDIT struktur för användaren:**
 
 ```
-COLLECTED DATA (week of [DATE]):
-  Merged PRs: N (list: #XX, #XX, #XX...)
-  Open PRs: N (list: #XX, #XX, #XX...)
-  Open issues: N
+DATA_AUDIT — Week of [REPORTING_PERIOD_START] to [REPORTING_PERIOD_END]
+
+REPOSITORY TOTALS:
+  Total merged PRs: N
+  Total open PRs: N
   Total commits to develop: N
-  Team members verified: 7/7
+  Total open issues with activity: N
+
+WORK AREAS (Classification):
+  Frontend:
+    Merged PRs: [#XX, #YY, #ZZ] (count: N)
+    Open PRs: [#XX, #YY] (count: N)
+    Active issues: [#XX, #YY, #ZZ] (count: N)
   
-PER TEAM:
-  Frontend: M merged, O open PRs, I issues
-  Backend: M merged, O open PRs, I issues
-  Native: M merged, O open PRs, I issues
+  Backend:
+    Merged PRs: [#XX, #YY] (count: N)
+    Open PRs: [#XX] (count: N)
+    Active issues: [#XX, #YY] (count: N)
+  
+  Native:
+    Merged PRs: [#XX] (count: N)
+    Open PRs: [] (count: 0)
+    Active issues: [#XX] (count: N)
+
+TEAM MEMBER COVERAGE:
+  Expected: 7
+  Verified: N/7 (list: Person1, Person2, ... or "Ingen aktivitet denna vecka" if 0 work)
+
+CHECKSUMS (MUST PASS):
+  ✅ sum(Frontend + Backend + Native merged_prs) == repository_total_merged_prs
+  ✅ All 7 team members identity-verified or marked "no activity"
 ```
 
-**Failure detection (STOP if):**
-- ❌ Any team has merged PRs = 0 when multiple PRs should exist
-- ❌ Any team member cannot be found in any PR/issue/commit
-- ❌ Total dataset looks suspiciously small (likely incomplete fetch)
+**Failure detection (RENDER GATE FAIL if):**
+- ❌ Checksum fails (sum of teams ≠ total)
+- ❌ Any team has merged PRs = 0 when work should exist
+- ❌ Any team member cannot be found in GitHub
+- ❌ Data looks incomplete (sudden jump to 0 in active area)
 
 **SUCCESS criteria:**
-- ✅ Each team has visible merged work
-- ✅ All 7 members appear in at least one issue/PR/commit
-- ✅ Numbers are non-zero for active areas
-- ✅ Data matches what's visible on GitHub web manually
+- ✅ Checksum passes (totals match)
+- ✅ Each active team has visible merged work
+- ✅ All 7 members verified or have explicit "no activity"
+- ✅ Data matches GitHub when manually spot-checked
 
 ---
 

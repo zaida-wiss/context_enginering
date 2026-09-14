@@ -36,21 +36,21 @@ metadata:
 │  ├─ Meeting protocol (om nåbar)                          │
 │  └─ DoD checklist (definition of done)                   │
 │                                                            │
-│  STEG 2: VERIFIERA DATAN mot FLERA KÄLLOR (triangulation)│
-│  ├─ Datum från Git matchar med GitHub issue-dates?       │
-│  ├─ Assignee från GitHub matchar issue-tilldelning?      │
-│  ├─ Status från Project Board matchar Git-reality?       │
-│  ├─ Team-medlemmar identifierade från git commits?       │
-│  └─ Noll okända namn? (bara TEAM_ROSTER.md-medlemmar)   │
+│  STEG 2: GENERERA MANDATORY DATA_AUDIT                    │
+│  ├─ Klassificera PRs per arbetsområde (Frontend/Backend)  │
+│  ├─ Verifiera checksumma: sum(areas) == total             │
+│  ├─ Identifiera alla 7 team members                       │
+│  ├─ Presentera data_audit före slides byggs               │
+│  └─ STOPP om checksumma failar eller medlem saknas        │
 │                                                            │
-│  STEG 3: ANALYSERA DATAN                                 │
+│  STEG 3: VERIFIERA & ANALYSERA                            │
+│  ├─ Verifiera checksumma är korrekt                       │
 │  ├─ Vad blev klart denna vecka? (commits + PRs)          │
 │  ├─ Vad pågår? (open issues + branches)                  │
 │  ├─ Vad är blockerat? (dependencies + blockers)          │
-│  ├─ Vilka risker syns i koden? (code review)             │
-│  └─ Hur många timmar kvar? (kapacitet vs planerat)       │
+│  └─ Identifiera risker från code review                   │
 │                                                            │
-│  STEG 4: LEVERERA PRESENTATION                           │
+│  STEG 4: BYGGA PRESENTATION från DATA_AUDIT               │
 │  ├─ 14 mötespunkter enligt PRESENTATION_STRUCTURE.md    │
 │  ├─ Design enligt VISUAL_DESIGN_MANDATORY.md            │
 │  ├─ Pedagogiska förklaringar (📚 ord markerade)          │

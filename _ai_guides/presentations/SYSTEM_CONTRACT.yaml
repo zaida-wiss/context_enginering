@@ -34,13 +34,15 @@ execution_sequence:
 
   step_2:
     name: "Fetch LIVE GitHub Data"
-    sources:
-      - "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[REPORTING_PERIOD_START]"
-      - "https://github.com/chas-challenge-2026/avanza-team1/commits/develop?since=[REPORTING_PERIOD_START]&until=[REPORTING_PERIOD_END]"
-      - "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:open+updated:>=[REPORTING_PERIOD_START]"
-      - "https://github.com/orgs/chas-challenge-2026/projects/31"
-      - "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open+updated:>=[REPORTING_PERIOD_START]"
-    rule: "ALL sources must be fetched. If ANY is unreachable, STOP and report ⚠️"
+    blocking_sources:
+      - "Team roster (identity verification)"
+      - "Merged PRs from develop (primary deliverable marker)"
+      - "Open issues with activity (in-progress work)"
+    non_blocking_sources:
+      - "Project Board (fallback: reconstruct from Issues/PRs)"
+      - "Meeting protocol (fallback: use GitHub data)"
+      - "Commits list (fallback: derive from PR data)"
+    rule: "Fetch ALL. If BLOCKING source unreachable even with fallback → STOP. If NON-BLOCKING fails → use fallback, do NOT stop."
 
   step_3:
     name: "Verify All 7 Team Members"
@@ -77,44 +79,93 @@ execution_sequence:
 # REPORTING PERIOD — When slides report "denna vecka" / "this week"
 ###############################################################################
 reporting_period:
-  definition: "Monday 00:00 → Sunday 23:59 (week before Monday meeting)"
+  definition: "Exactly 7 days backwards from today (generation time)"
   timezone: "Europe/Stockholm"
-  note: "NOT 'last 7 days from generation time'. Fixed calendar week."
+  calculation: "REPORTING_PERIOD_END = today at 23:59:59, REPORTING_PERIOD_START = 7 days earlier at 00:00:00"
+  example: "If generated 2026-09-14: period is 2026-09-07 00:00 through 2026-09-14 23:59"
+  rule: "ALWAYS dynamic (never hardcoded dates). Use [IDAG-7d] and [IDAG] in all URLs."
+  variables:
+    REPORTING_PERIOD_START: "[IDAG-7d] at 00:00 Europe/Stockholm"
+    REPORTING_PERIOD_END: "[IDAG] at 23:59 Europe/Stockholm"
 
 current_state:
   definition: "Live GitHub state at generation time"
   note: "Used for 'In Progress', 'Awaiting Review', 'Open Issues'. Timestamped."
 
 ###############################################################################
+# MANDATORY DATA AUDIT — Machine-readable intermediate checkpoint
+###############################################################################
+data_audit:
+  requirement: "MUST be generated before ANY slides are built. Shows AI what it collected."
+  output_format:
+    reporting_period:
+      start: "[IDAG-7d] 00:00"
+      end: "[IDAG] 23:59"
+
+    repository_totals:
+      merged_prs: "N (count of PRs merged in reporting period)"
+      open_prs: "N (count of open PRs with recent activity)"
+      commits: "N (count of commits to develop in reporting period)"
+      open_issues: "N (count of open issues with activity)"
+      branches_active: "N (count of branches with commits this period)"
+
+    work_areas:
+      frontend:
+        merged_pr_ids: "[#XX, #YY, #ZZ] or empty if none"
+        open_pr_ids: "[#XX, #YY] or empty"
+        active_issue_ids: "[#XX, #YY] or empty"
+      backend:
+        merged_pr_ids: "[#XX, #YY] or empty"
+        open_pr_ids: "[#XX, #YY] or empty"
+        active_issue_ids: "[#XX, #YY] or empty"
+      native:
+        merged_pr_ids: "[#XX, #YY] or empty"
+        open_pr_ids: "[#XX] or empty"
+        active_issue_ids: "[#XX, #YY] or empty"
+
+    member_coverage:
+      expected: 7
+      verified: "N/7 (how many identity-verified from GitHub)"
+
+  validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again."
+  checksum: "repository_total_merged_prs MUST == sum(frontend + backend + native merged_pr_ids). If FALSE → render gate FAIL."
+
+###############################################################################
 # HARD RULES — Never break these
 ###############################################################################
 hard_rules:
+  - rule: "Generate DATA_AUDIT before building ANY slides"
+    consequence: "Intermediate report shows what was collected. Slide building uses ONLY this audit object."
+
+  - rule: "Blocking sources: Team roster + GitHub Issues/PRs data"
+    consequence: "If both primary AND all fallbacks fail → STOP. Otherwise use fallback."
+
+  - rule: "Non-blocking sources: Project Board, meeting protocol"
+    consequence: "If fails → use fallback, NEVER stop rendering"
+
+  - rule: "Merged means: PR.merged_at != null AND PR.base.ref == 'develop' AND within reporting period"
+    consequence: "Mechanically verifiable. No interpretation."
+
+  - rule: "Verify data completeness: repository_total == sum(classified by area)"
+    consequence: "If FALSE → render gate FAIL. No presentation built."
+
+  - rule: "All 7 team members must be accounted for (with work OR marked 'no activity')"
+    consequence: "Cannot render if any member cannot be identity-verified"
+
   - rule: "Never invent data"
-    consequence: "Stop and report if source unreachable"
+    consequence: "If source unreachable, use documented fallback. If all fallbacks exhausted → STOP."
 
   - rule: "Never use example values from documentation"
-    consequence: "Use only LIVE data from GitHub"
-
-  - rule: "Merged means merged to develop in reporting period"
-    consequence: "Closed issue without merge ≠ delivered"
-
-  - rule: "All 7 team members must be accounted for"
-    consequence: "Cannot render if anyone is missing"
-
-  - rule: "If required data is missing, STOP before render"
-    consequence: "Never skip a GitHub source"
-
-  - rule: "If GitHub is unreachable, report and stop"
-    consequence: "Never use cached/snapshot data"
+    consequence: "Use only LIVE data from GitHub, verified this week"
 
   - rule: "NPF-friendly design mandatory"
-    consequence: "No tables. Symbol + Färg + Text."
+    consequence: "No tables. Symbol + Färg + Text only."
 
-  - rule: "Timestamp every slide"
-    consequence: "Show when data was fetched"
+  - rule: "Timestamp every slide with data fetch time"
+    consequence: "Show generation time + which sources succeeded/failed"
 
   - rule: "Assessment never presented as fact"
-    consequence: "Separate FACT from ASSESSMENT visually"
+    consequence: "Separate FACT (GitHub data) from ASSESSMENT (AI analysis) visually"
 
 ###############################################################################
 # DEFINITIONS — No interpretation allowed, these are mechanical

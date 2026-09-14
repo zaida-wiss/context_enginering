@@ -47,14 +47,24 @@ DO NOT CREATE PPTX UNTIL AI HAS:
 AI:s ansvar: Verifiera ALLT och rapportera status till användaren.
 Användaren behöver INTE bekräfta — AI ansvarar för verifieringen.
 
-STOPP ENDAST OM:
-- Identity verification MISSLYCKAS för någon team member (även efter fallbacks)
-- GitHub Issues/PRs data är FULLSTÄNDIGT OÅTKOMLIG (primär + fallback misslyckas)
+BLOCKING SOURCES (STOPP om båda primär + fallback failar):
+  ✅ Team roster (identity verification)
+  ✅ GitHub Issues/PRs/commits (core deliverable data)
 
-FALLBACKS RÄKNAS SOM LYCKAT:
-- Project Board misslyckas → rekonstruera från Issues/PRs
-- Mötesprotokollet misslyckas → bygg från GitHub data
-- Övriga källor misslyckas → använd best-available fallback
+NON-BLOCKING SOURCES (aldrig stopp — använd fallback):
+  ✅ Project Board → fallback: rekonstruera från Issues/PRs
+  ✅ Mötesprotokollet → fallback: bygg från GitHub data
+  ✅ Commits list → fallback: härled från PR data
+
+MANDATORY DATA_AUDIT (innan slides byggs):
+  AI måste generera och visa:
+  - Totalt antal merged PRs per arbetsområde (Frontend/Backend/Native)
+  - Alla öppna issues + aktivt arbete
+  - Alla 7 team members: verifierade eller "Ingen aktivitet denna vecka"
+  
+  CHECKSUM-REGEL:
+  repository_total_merged_prs == sum(Frontend + Backend + Native)
+  Om FALSE → RENDER GATE FAIL
 ```
 
 ---

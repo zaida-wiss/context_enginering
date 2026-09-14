@@ -91,16 +91,21 @@ Innan du säger "datainsamlingen är ofullständig":
 
 ---
 
-## 🚨 DEFINITION: "DENNA VECKA" = SENASTE 7 DAGAR
+## 🚨 DEFINITION: "DENNA VECKA" = SENASTE 7 DAGAR (ALDRIG HÅRDKODAD)
 
-**Denna vecka = exakt 7 dagar bakåt från IDAG**
+**Denna vecka = exakt 7 dagar bakåt från IDAG** (generation time)
 
-**REGEL: Datumfiltret är ALLTID [IDAG-7d] till [IDAG] (ingen hårdkodad datum)**
+**REGEL: Datumfiltret är ALLTID [IDAG-7d] till [IDAG] — ALDRIG hårdkodade datum**
 
-Exempel på hur regeln fungerar:
-- Om idag är 2026-09-14: denna vecka = 2026-09-07 till 2026-09-14
-- Om idag är 2026-09-21: denna vecka = 2026-09-14 till 2026-09-21
-- Alltid senaste 7 dagar, aldrig hårdkodat
+**Variabler måste användas i alla GitHub-URLs:**
+- `[IDAG-7d]` = 7 dagar före generation time, 00:00:00
+- `[IDAG]` = generation date, 23:59:59
+- `Europe/Stockholm` = timezone för alla datum
+
+Exempel:
+- Om idag är 2026-09-14 kl 10:00: denna vecka = 2026-09-07 00:00 till 2026-09-14 23:59
+- Om idag är 2026-09-21 kl 14:00: denna vecka = 2026-09-14 00:00 till 2026-09-21 23:59
+- ALDRIG hårdkodat → varje körning ger aktuell vecka
 
 ---
 
