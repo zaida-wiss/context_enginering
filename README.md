@@ -107,11 +107,12 @@ AI MÅSTE följa denna ordning (ALDRIG något annat):
 
 **For AI building presentations:**
 Read **MANDATORY_READING_ORDER.md** first. It contains:
-- Data collection requirements (9 sources)
+- 4-step execution workflow (clear path to render)
+- Data collection requirements
 - Identity verification gate (7 team members)
-- Render gate checklist (11 items)
+- Render gate checklist (13 mandatory checkpoints)
 - Design rules (Symbol + Färg + Text)
-- Final verification gates
+- Final verification before delivery
 
 **CRITICAL RULE FOR AI — NO META-INSTRUCTIONS ON SLIDES:**
 - 🚨 READ the instructions to UNDERSTAND what presentation needs
