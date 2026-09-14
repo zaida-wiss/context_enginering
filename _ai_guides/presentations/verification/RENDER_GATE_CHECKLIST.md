@@ -234,16 +234,16 @@ OM INGET av detta finns:
 → STOPP, rendering INTE tillåten
 ```
 
-### 2. ASSIGNEE PÅ VARJE ISSUE
+### 2. ASSIGNEE PÅ VARJE ISSUE/PR
 
 ```
-MÅSTE uppfyllas:
-✅ Varje open issue: (#XX - Namn)
-✅ Varje merged PR: (#XX - Namn)
+VISAR MED ASSIGNEE:
+✅ (#XX - Namn) — PR/issue har assignee
 
-OM SAKNAS:
-❌ "Issue #XX har ingen assignee — vem äger det?"
-→ STOPP, lägg till assignee i GitHub först
+VISAR MED "??":
+✅ (#XX - ??) — PR/issue saknar assignee, men är ändå valid
+
+REGEL: Saknad assignee är ALDRIG blocker. Visa alltid "??" istället.
 ```
 
 ### 3. DATA ÄR VERIFIERAD (INTE FABRICERAD)
@@ -292,17 +292,7 @@ OM du INTE kan nå mötesprotokollet:
    Presentationen blir tom → ingen poäng att rendrera
 ```
 
-### 2. ISSUE UTAN ASSIGNEE
-
-```
-❌ STOPP om:
-   Issue #XX saknar assignee
-   
-   Varje issue MÅSTE ha ägare
-   (Assignee kan läggas till i GitHub innan rendering)
-```
-
-### 3. FABRICERAD DATA
+### 2. FABRICERAD DATA
 
 ```
 ❌ STOPP om:

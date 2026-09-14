@@ -164,6 +164,9 @@ hard_rules:
   - rule: "All 7 team members must be accounted for (with work OR marked 'no activity')"
     consequence: "Cannot render if any member cannot be identity-verified"
 
+  - rule: "Missing PR/issue assignee shows as '??', never blocks rendering"
+    consequence: "Display (#XX - ??) for unassigned work, presentation still renders"
+
   - rule: "Never invent data"
     consequence: "If source unreachable, use documented fallback. If all fallbacks exhausted → STOP."
 
