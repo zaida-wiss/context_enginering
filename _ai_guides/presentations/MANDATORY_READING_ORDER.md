@@ -158,28 +158,36 @@ Exempel på FEL matching:
 
 ---
 
-### STEG 3: FÖRSTÅ STRUKTUR & REGLER & VISUELL DESIGN (10 min — nu kan du läsa detta)
+### STEG 3: FÖRSTÅ STRUKTUR & REGLER & VISUELL DESIGN (20 min — KRITISK LÄSNING)
 
-#### 3a. structure/PRESENTATION_STRUCTURE.md
-   - De 14 mötespunkterna
-   - Vad varje punkt ska innehålla
+**🚨 DESSA FYRA FILER MÅSTE LÄSAS I DENNA ORDNING:**
+
+#### 3a. [structure/PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) — OBLIGATORISK
+   - De 14 mötespunkterna (①-⑧ eller ①-⑭)
+   - Vad varje punkt **MÅSTE** innehålla
+   - Vilka data-källor att hämta
    - Obligatoriska element per punkt
+   - **LÄNK:** Här säger vi VILKA GitHub-URLs att använda
 
-#### 3b. content/PRESENTATION_SPEC.md
-   - Vad sliderna måste innehålla
-   - Färg-semantik
-   - Issue-format
-
-#### 3c. design/PRESENTATION_CONSISTENCY_FRAMEWORK.md
-   - Visuell konsistens
-   - Röda trådar
-   - Varning-signaler
-
-#### 3d. **design/VISUAL_DESIGN_MANDATORY.md** ← 🚨 KRITISK
+#### 3b. [design/PRESENTATION_FORMAT_GUIDE.md](../design/PRESENTATION_FORMAT_GUIDE.md) — 🚨 KRITISK
+   - **Exakt layout för varje slide-typ**
+   - **Border-regler:** Färgade (status) vs neutrala (information)
+   - **7 konkreta slide-exempel** — kopiera dessa layouts exakt
+   - **Checklist för AI** innan leverans (20+ checkpunkter)
+   - **LÄNK:** Här säger vi HUR slidorna ska se ut
+   
+#### 3c. [content/PRESENTATION_SPEC.md](../content/PRESENTATION_SPEC.md) — OBLIGATORISK
+   - Issue-format (TVINGANDE)
+   - Färg-semantik (strikt regel)
+   - Risk/Blocker/Dependency-definitioner
+   - Preflight-validator
+   
+#### 3d. [design/VISUAL_DESIGN_MANDATORY.md](../design/VISUAL_DESIGN_MANDATORY.md) — OBLIGATORISK
    - SYMBOL + FÄRG + TEXT (denna ordning)
    - NPF/dyslexia-vänlig design
-   - PowerPoint-implementering
-   - WCAG-kontrast
+   - PowerPoint konkreta inställningar
+   - WCAG AA kontrast (4.5:1 minimum)
+   - Font-storlekar för tabeller
 
 ---
 
