@@ -20,6 +20,12 @@
 | **DEFINITION_OF_DONE.md** | Vad gör en GitHub-issue "DONE"? (tester, review, docs) |
 | **DEFINITION_OF_DONE_TEMPLATE.md** | Mall för DoD-checklist i issues |
 
+## ⚠️ Risk & Kvalitet
+
+| Fil | Syfte |
+|-----|-------|
+| **RISK_REGISTER.md** | Projektrisker, sannolikhet, påverkan, mitigering |
+
 ## 📅 Schema & Deadlines
 
 | Fil | Syfte |
