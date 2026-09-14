@@ -65,8 +65,13 @@ Innan du säger "datainsamlingen är ofullständig":
    https://github.com/orgs/chas-challenge-2026/projects/31/views/1
    Kan du läsa denna? JA → använd status härifrån
    
+   OM Project Board API inte fungerar:
+   FALLBACK 2b: Issues direkt
+   https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue
+   → Rekonstruera Board-status från Issues-state direkt
+   
 4. FALLBACK 3: Meeting protocol denna vecka
-   (länk i README.md)
+   (länk i README.md / EXTERNAL_SOURCES.md)
 
 5. ALLA FAILADE: Markera TYDLIGT "ej verifierat denna vecka"
    Exempel: "Data kunde inte samlas denna vecka (GitHub web + Sheets + Board alla begränsade)"

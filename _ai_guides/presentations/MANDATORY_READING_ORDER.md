@@ -55,7 +55,7 @@ BLOCKING SOURCES — Om båda primär + fallback failar → STOPP (ingen present
   Om BLOCKING fails → rapportera: "❌ RENDER GATE FAIL — kunde inte verifiera [källa]"
 
 NON-BLOCKING SOURCES — Om primär failar → använd fallback, ALDRIG stopp:
-  ✅ Project Board → fallback: rekonstruera från Issues/PRs via GitHub API
+  ✅ Project Board (projects/31) → fallback: https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue
   ✅ Mötesprotokollet → fallback: GitHub meeting notes / Slack summary
   
   Om NON-BLOCKING fallback används → visa tydligt i presentation:

@@ -72,12 +72,24 @@ metadata:
 
 ## 🔗 GitHub Sources
 
+### Primary
 | Resource | URL |
 |----------|-----|
 | **Project Repo** | https://github.com/chas-challenge-2026/avanza-team1 |
-| **Project Board** | https://github.com/orgs/chas-challenge-2026/projects/31 |
-| **Issues** | https://github.com/chas-challenge-2026/avanza-team1/issues |
+| **Issues (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue |
+| **Issues (OPEN)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open |
 | **Pull Requests** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
+
+### Project Board & Fallback
+| Resource | Primary | Fallback | Notes |
+|----------|---------|----------|-------|
+| **Project Board** | https://github.com/orgs/chas-challenge-2026/projects/31 | Issues URL (above) | If Board API unavailable → read Issues directly |
+| **Merged PRs** | `pulls?q=is:pr+is:merged+merged:>=[DATE]` | Google Sheets fallback | If GitHub filter fails → use Sheets |
+| **Commits** | GitHub commits API | Sheets commits tab | If API unavailable → Sheets data |
+
+### Reference
+| Resource | URL |
+|----------|-----|
 | **Context Engineering** | https://github.com/zaida-wiss/context_enginering |
 
 ---
