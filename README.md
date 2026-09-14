@@ -5,20 +5,28 @@
 
 ---
 
-## 🚨 CRITICAL — READ THIS FIRST
+## 🚨 START HERE — Två steg bara
 
-**If you're ANY AI model working with this project:**
+### STEG 1: LÄS DETTA FÖRST (2 minuter)
+→ **[PROJEKTKONTEXT_AVANZA.md](PROJEKTKONTEXT_AVANZA.md)** ← MANDATORY
 
-→ **[PROJEKTKONTEXT_AVANZA.md](PROJEKTKONTEXT_AVANZA.md)** ← REQUIRED READING
+This file says:
+- HOW to work with this project (two-step workflow)
+- WHERE to get data (GitHub only, no shell commands)
+- WHAT to do if something fails (fallback strategies)
 
-This file defines how to work with this project and Avanza repo. Read it BEFORE doing anything else.
+### STEG 2: Gör vad du behöver
 
----
+**VIL DU BYGGA EN PRESENTATION?**
+→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← ALLT DU BEHÖVER
 
-## 🎯 QUICK START
+This file contains:
+- ✅ Data collection (vilka GitHub-sources att hämta)
+- ✅ Design rules (hur slidorna ska se ut)
+- ✅ Render-gate checklist (när presentation är klar)
+- ✅ Konkreta exempel på slide-layouts
 
-**Creating a presentation?**
-→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← START HERE (after PROJEKTKONTEXT_AVANZA.md)
+**ALLT ÄR DOKUMENTERAT DÄR — ingenting mer att söka efter.**
 
 **Understanding the project?**
 → **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** + **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)**
@@ -31,17 +39,17 @@ This file defines how to work with this project and Avanza repo. Read it BEFORE 
 
 ---
 
-## 📚 Key Documentation Files
+## 📚 Övriga filer (om du behöver dem)
 
-| File | Purpose |
-|------|---------|
-| **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** | Git format, coding rules, standards |
-| **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)** | When is work complete? |
-| **[_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md)** | Project overview & customer problem |
-| **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** | **AI: read this first for presentations** |
-| **[_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md](_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md)** | 14 meeting points structure |
-| **[_ai_guides/presentations/content/PRESENTATION_SPEC.md](_ai_guides/presentations/content/PRESENTATION_SPEC.md)** | Content & format rules |
-| **[_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md](_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md)** | Concrete visual templates |
+**För kodning:**
+- [_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md) — Git format, coding rules
+- [_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md) — När är arbetet klart?
+- [_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md) — Projekt-overview
+
+**För presentationer (allt ligger redan i MANDATORY_READING_ORDER.md):**
+- [_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md](_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md) — Mötespunkter
+- [_ai_guides/presentations/design/PRESENTATION_FORMAT_GUIDE.md](_ai_guides/presentations/design/PRESENTATION_FORMAT_GUIDE.md) — Slide-format
+- [_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md](_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md) — Render-gate
 
 ---
 
@@ -83,19 +91,12 @@ Read **MANDATORY_READING_ORDER.md** first. It contains:
 
 ---
 
-## 📍 For Different Roles
+---
 
-**"I'm building a presentation"**
-→ [MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)
+**MEN VÄGEN ÄR ALLTID DENSAMMA:**
 
-**"I'm presenting at a meeting"**
-→ [_ai_guides/PRESENTER_GUIDE.md](_ai_guides/PRESENTER_GUIDE.md)
-
-**"I'm writing code"**
-→ [_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md) + project repo
-
-**"Something went wrong"**
-→ [_ai_guides/TROUBLESHOOTING.md](_ai_guides/TROUBLESHOOTING.md)
+1. ✅ Läs [PROJEKTKONTEXT_AVANZA.md](PROJEKTKONTEXT_AVANZA.md) (2 min)
+2. ✅ Gör vad du behöver — all info är redan länkad från dess instruktioner
 
 ---
 
