@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentation Template Reference — Slide ①A Frontend</title>
+    <title>NPF Design Reference — Accessibility & Neurodiversity</title>
     <style>
         * {
             margin: 0;
@@ -19,159 +19,114 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
+        .warning-box {
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #c62828;
+        }
+
+        .warning-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
         .info-box {
-            background: #fff3cd;
-            border-left: 4px solid #ff9800;
-            padding: 16px;
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
             margin-bottom: 30px;
             border-radius: 6px;
             font-size: 14px;
-            color: #333;
+            color: #2e7d32;
         }
 
-        .slide {
+        h1 {
+            color: #323232;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #323232;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .link-section {
             background: white;
-            padding: 40px;
-            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 30px 0;
+            border: 2px solid #2196f3;
+        }
+
+        .link-section a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .link-section a:hover {
+            text-decoration: underline;
+        }
+
+        .principles {
+            background: white;
+            padding: 30px;
             border-radius: 8px;
+            margin: 20px 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .slide-header {
-            font-size: 20px;
-            font-weight: bold;
-            color: #323232;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ddd;
+        .principles ul {
+            list-style: none;
+            margin-left: 0;
         }
 
-        .section {
-            margin-bottom: 24px;
+        .principles li {
+            padding: 12px 0;
+            font-size: 15px;
+            line-height: 1.8;
         }
 
-        .section-header {
-            background-color: #4caf50;
-            color: white;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 6px;
-            margin-bottom: 12px;
+        .principles li strong {
+            color: #2e7d32;
         }
 
-        .section-header.pagar {
-            background-color: #ff9800;
-        }
-
-        .section-header.review {
-            background-color: #ff9800;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 8px;
-        }
-
-        th {
-            background-color: #f5f5f5;
-            padding: 12px;
-            text-align: left;
-            font-size: 13px;
-            font-weight: bold;
-            color: #323232;
-            border-bottom: 2px solid #ddd;
-            height: 24px;
-        }
-
-        td {
-            padding: 12px;
-            font-size: 13px;
-            color: #333;
-            border-bottom: 1px solid #eee;
-            height: 24px;
-        }
-
-        tr.unassigned {
-            background-color: #fff9e6;
-        }
-
-        tr.unassigned td {
-            color: #d79b1f;
-            font-style: italic;
-        }
-
-        .unassigned-badge {
-            color: #d79b1f;
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        tr {
-            height: 24px;
-        }
-
-        .status-symbol {
-            font-size: 16px;
-            font-weight: bold;
-            color: #4caf50;
-        }
-
-        .status-symbol.pagar {
-            color: #ff9800;
-        }
-
-        .status-symbol.review {
-            color: #ff9800;
-        }
-
-        .meta-text {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .team-badge {
-            display: inline-block;
-            padding: 2px 8px;
+        .do-example {
+            background: #f1f8e9;
+            border-left: 4px solid #8bc34a;
+            padding: 15px;
+            margin: 15px 0;
             border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
-            color: white;
-            margin-right: 8px;
+            font-size: 14px;
         }
 
-        .team-frontend {
-            background-color: #1976d2;
-        }
-
-        .team-backend {
-            background-color: #388e3c;
-        }
-
-        .team-native {
-            background-color: #7b1fa2;
-        }
-
-        .note {
-            background: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 12px;
-            margin-top: 20px;
-            border-radius: 6px;
-            font-size: 12px;
-            color: #555;
+        .dont-example {
+            background: #ffebee;
+            border-left: 4px solid #ef5350;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 14px;
         }
 
         .color-palette {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
-            margin: 30px 0;
+            margin: 20px 0;
         }
 
         .color-swatch {
@@ -188,53 +143,103 @@
             color: #666;
             font-weight: normal;
         }
-
-        h2 {
-            font-size: 18px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #323232;
-        }
-
-        .key-points {
-            background: #f9f9f9;
-            border-left: 4px solid #4caf50;
-            padding: 16px;
-            border-radius: 6px;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .key-points ul {
-            margin-left: 20px;
-        }
-
-        .key-points li {
-            margin-bottom: 8px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📊 Presentation Template Reference</h1>
-        <p style="color: #666; margin-bottom: 30px;">Denna sida visar EXAKT hur slidorna ska se ut. Använd den som referens när du bygger presentationen i PowerPoint/Slides.</p>
+        <h1>🎨 NPF Design Reference</h1>
+        <p style="color: #666; font-size: 15px;">Tillgänglighets- och neurodiversitets-vänlig design för presentationer</p>
 
-        <div class="info-box" style="background: #ffebee; border-left-color: #d32f2f;">
-            <strong style="color: #d32f2f;">⚠️ KRITISKT: DESIGN-REFERENS ONLY — ALDRIG ANVÄND EXEMPEL-DATA</strong><br>
-            <br>
-            Denna fil visar HOW-DESIGN (färger, fonts, spacing), INTE WHAT-DATA.<br>
-            <br>
-            ✅ ANVÄND denna för:<br>
-            1. Se RGB-värden (grön 76,175,80 | orange 255,152,0)<br>
-            2. Kopiera font-storlekar (14pt bold headers, 13pt content)<br>
-            3. Se spacing (24px radhöjd, 12px padding, 6-8px corner-radius)<br>
-            <br>
-            ❌ ANVÄND ALDRIG denna för:<br>
-            1. Exempel-data (#95, #87, etc) — dessa är FAKE<br>
-            2. Att bygga presentation utan LIVE GitHub-data<br>
-            3. Att kopiera tabeller direkt — måste fetcha LIVE data<br>
-            <br>
-            <strong>REGEL:</strong> All DATA i faktisk presentation MÅSTE hämtas LIVE från GitHub när presentationen byggas. Aldrig från snapshot, aldrig från exempel.
+        <div class="warning-box">
+            <strong>⚠️ INTE TABELL-EXEMPEL</strong>
+            Denna sida visar DESIGNPRINCIPER för NPF-vänlighet, inte tabell-layouts (tabeller är svåra för dyslektiker att scanna).
+        </div>
+
+        <div class="link-section">
+            <strong>📖 LÄS DETTA FÖRST:</strong><br>
+            <a href="../../design/ACCESSIBILITY_NEURODIVERSITY.md">ACCESSIBILITY_NEURODIVERSITY.md</a>
+            <br><span style="font-size: 13px; color: #555; margin-top: 10px; display: block;">Fullständiga NPF-regler, filosofi, och implementering</span>
+        </div>
+
+        <h2>🎯 Nyckelprinciper för NPF-vänlighet</h2>
+
+        <div class="principles">
+            <strong style="font-size: 16px; color: #323232;">Symbol + Färg + Text</strong>
+            <p style="margin: 10px 0; color: #666;">Information ska alltid presenteras via TRIO — aldrig bara text, aldrig bara färg.</p>
+
+            <div class="do-example">
+                <strong>✅ RÄTT:</strong><br>
+                🟢 <span style="background: #4caf50; color: white; padding: 4px 8px; border-radius: 3px;">MERGED</span> <span style="font-weight: bold;">Denna vecka</span>
+                <br><br>
+                Läsare ser: symbol (🟢) + färg (grön bakgrund) + text ("MERGED")
+            </div>
+
+            <div class="dont-example">
+                <strong>❌ FEL:</strong><br>
+                Endast text: "Issues merged denna vecka"
+                <br><br>
+                Dyslektiker måste läsa texten. Ingen visuell signal.
+            </div>
+        </div>
+
+        <div class="principles">
+            <strong style="font-size: 16px; color: #323232;">Radhöjd & Whitespace</strong>
+            <p style="margin: 10px 0; color: #666;">Måste vara stor för läsbarhet och för att ge hjärnan tid att bearbeta.</p>
+
+            <div class="do-example">
+                <strong>✅ RÄTT:</strong><br>
+                24px+ radhöjd mellan element<br>
+                12px padding per cell<br>
+                8px margin mellan sektioner<br><br>
+                Mycket luft runt text gör det lätt att fokusera.
+            </div>
+
+            <div class="dont-example">
+                <strong>❌ FEL:</strong><br>
+                16px radhöjd i tabeller<br>
+                Kompakt layout<br>
+                Text trängt tillsammans<br><br>
+                Svårt att scanna. Stimulerande för ADHD/autism.
+            </div>
+        </div>
+
+        <div class="principles">
+            <strong style="font-size: 16px; color: #323232;">Font-storlekar</strong>
+            <p style="margin: 10px 0; color: #666;">Text måste vara stor, särskilt för tabell-data.</p>
+
+            <ul>
+                <li><strong>14pt BOLD</strong> — Sektion-headers ("MERGED DENNA VECKA")</li>
+                <li><strong>13pt regular</strong> — Issue-data, namn, status</li>
+                <li><strong>12pt</strong> — Meta-text (datum, branch-namn)</li>
+                <li><strong style="color: #d32f2f;">ALDRIG <10pt</strong> — Otillåtet för NPF</li>
+            </ul>
+        </div>
+
+        <div class="principles">
+            <strong style="font-size: 16px; color: #323232;">Visuell gruppering</strong>
+            <p style="margin: 10px 0; color: #666;">Färgade sektioner hjälper hjärnan att organisera information.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0;">
+                <div style="background: #4caf50; color: white; padding: 20px; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 24px; margin-bottom: 8px;">✅</div>
+                    <div style="font-weight: bold;">MERGED</div>
+                </div>
+                <div style="background: #ff9800; color: white; padding: 20px; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 24px; margin-bottom: 8px;">◐</div>
+                    <div style="font-weight: bold;">PÅGÅR</div>
+                </div>
+                <div style="background: #ff9800; color: white; padding: 20px; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 24px; margin-bottom: 8px;">⏳</div>
+                    <div style="font-weight: bold;">REVIEW</div>
+                </div>
+            </div>
+
+            <p style="font-size: 13px; color: #666;">Varje sektion har egen färg + symbol. Läsaren VET omedelbar vad det är utan att läsa texten.</p>
+        </div>
+
+        <div class="principles">
+            <strong style="font-size: 16px; color: #323232;">Rundade hörn</strong>
+            <p style="margin: 10px 0; color: #666;">6-8px corner-radius på alla boxar — mjukare, mindre stressande visuellt.</p>
         </div>
 
         <h2>🎨 COLOR PALETTE</h2>
@@ -253,153 +258,24 @@
             </div>
             <div>
                 <div class="color-swatch" style="background-color: rgb(244, 67, 54);">
-                    CRITICAL
+                    KRITISK
                 </div>
                 <div class="color-label">RGB 244, 67, 54<br>(Röd)</div>
             </div>
         </div>
 
-        <h2>📋 Slide ①A — Frontend denna vecka</h2>
-
-        <div class="slide">
-            <div class="slide-header">📝①A Frontend — denna vecka</div>
-
-            <div class="section">
-                <div class="section-header">✅ MERGED DENNA VECKA</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Team</th>
-                            <th>Issue</th>
-                            <th>Titel</th>
-                            <th>Assignad</th>
-                            <th>Status</th>
-                            <th>Merged/Branch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="team-badge team-frontend">Frontend</span></td>
-                            <td>#81</td>
-                            <td>Linked allocation 100%</td>
-                            <td>Björn Boman</td>
-                            <td><span class="status-symbol">✓</span> DONE</td>
-                            <td><span class="meta-text">merged 2026-09-14</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="section">
-                <div class="section-header pagar">◐ PÅGÅR DENNA VECKA</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Team</th>
-                            <th>Issue</th>
-                            <th>Titel</th>
-                            <th>Assignad</th>
-                            <th>Status</th>
-                            <th>Merged/Branch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="team-badge team-frontend">Frontend</span></td>
-                            <td>#87</td>
-                            <td>Test foundation</td>
-                            <td>Zaida Wiss</td>
-                            <td><span class="status-symbol pagar">◐</span> PÅG</td>
-                            <td><span class="meta-text">feature/#87</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="team-badge team-backend">Backend</span></td>
-                            <td>#43</td>
-                            <td>API client mock</td>
-                            <td>Tomac Barin Jansson</td>
-                            <td><span class="status-symbol pagar">◐</span> PÅG</td>
-                            <td><span class="meta-text">feature/#43</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="section">
-                <div class="section-header review">⏳ VÄNTAR PÅ REVIEW</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Team</th>
-                            <th>Issue</th>
-                            <th>Titel</th>
-                            <th>Assignad</th>
-                            <th>Status</th>
-                            <th>Merged/Branch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="team-badge team-frontend">Frontend</span></td>
-                            <td>#87</td>
-                            <td>Vitest + RTL</td>
-                            <td>Zaida Wiss</td>
-                            <td><span class="status-symbol review">⏳</span> REVIEW</td>
-                            <td><span class="meta-text">PR #105 · no reviews</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="team-badge team-native">Native</span></td>
-                            <td>#68</td>
-                            <td>#67 README status</td>
-                            <td>Zaida Wiss</td>
-                            <td><span class="status-symbol review">⏳</span> REVIEW</td>
-                            <td><span class="meta-text">PR #68</span></td>
-                        </tr>
-                        <tr class="unassigned">
-                            <td><span class="team-badge team-frontend">Frontend</span></td>
-                            <td>#90</td>
-                            <td>Performance optimization</td>
-                            <td><span class="unassigned-badge">🔄 UNASSIGNED</span></td>
-                            <td><span class="status-symbol review">⏳</span> REVIEW</td>
-                            <td><span class="meta-text">PR #112</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="note">
-                <strong>Källa:</strong> GitHub PRs + branches (senaste 7 dagarna) + Project Board ✅ | ⏳ Reviews behövs på: #87, #68
-            </div>
+        <div class="warning-box" style="background: #fff9e6; border-left-color: #ff9800; color: #e65100; margin-top: 40px;">
+            <strong>🚫 FÖRBJUDNA PATTERNS (NPF-VIOLATIONS):</strong><br><br>
+            ❌ Tabeller med >3 kolumner (lätt att tappa raden när man scannar)<br>
+            ❌ Text <13pt i tabeller<br>
+            ❌ Radhöjd <24px<br>
+            ❌ Färg UTAN symbol + text (måste vara trio)<br>
+            ❌ >5 objekt per sektion utan gruppering<br>
+            ❌ Rundade hörn <6px (ser oprofessionellt ut och är mindre effektivt)
         </div>
 
-        <div class="key-points">
-            <strong>🎯 Key Design Points:</strong>
-            <ul>
-                <li><strong>Team-märking:</strong> Varje rad visar team-badge (🔵 Frontend, 🟢 Backend, 🟣 Native)</li>
-                <li><strong>Assignad-status:</strong> Visar namn om assignad; gul highlight + 🔄 UNASSIGNED om ingen är tilldelad arbetet</li>
-                <li><strong>Färgade sektion-headers:</strong> 🟢 Grön för Merged, 🟡 Orange för Pågår & Review</li>
-                <li><strong>Statussymboler:</strong> ✓ (DONE), ◐ (PÅG), ⏳ (REVIEW) - symbolen kommer före texten</li>
-                <li><strong>Rundade hörn:</strong> 6-8px på alla textboxar och sektion-headers</li>
-                <li><strong>Radhöjd:</strong> Minst 24px för varje tabellrad (läsbar från mötesbord)</li>
-                <li><strong>Font-storlekar:</strong> 14pt bold för headers, 13pt regular för innehål, 12pt för meta-text</li>
-                <li><strong>Whitespace:</strong> 12px padding, 8px mellan sektioner</li>
-                <li><strong>Kontrast:</strong> Vit text på färgad bakgrund (4.5:1 minimum)</li>
-            </ul>
-        </div>
-
-        <h2>📝 Slide ①B — Backend denna vecka</h2>
-        <p style="color: #666;">Samma struktur och design som ①A, men med Backend-specifika issues.</p>
-        <p style="color: #666; margin-top: 10px;">Design-regler är identiska: 3 sektioner (Merged/Pågår/Review), samma färger, samma fonts, samma radhöjd.</p>
-
-        <div class="key-points" style="margin-top: 40px;">
-            <strong>✅ ANVÄND DENNA REFERENS FÖR:</strong>
-            <ul>
-                <li>Exakt färgvärden (copy-pasta RGB från COLOR PALETTE ovan)</li>
-                <li>Font-storlekar och weights</li>
-                <li>Radhöjd och spacing</li>
-                <li>Rundade hörn på alla element</li>
-                <li>Statussymboler-placering</li>
-                <li>Section-header styling</li>
-            </ul>
+        <div class="info-box" style="margin-top: 40px;">
+            <strong>Sammanfattning:</strong> NPF-vänlig design är INTE bara om större text. Det handlar om att presentera information på ett sätt som barnets lätt kan procesera — med Symbol + Färg + Text tillsammans, mycket whitespace, och visuell gruppering. Läs ACCESSIBILITY_NEURODIVERSITY.md för fullständig filosofi.
         </div>
     </div>
 </body>
