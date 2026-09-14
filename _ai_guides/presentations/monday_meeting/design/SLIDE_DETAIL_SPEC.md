@@ -53,18 +53,21 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 **FORMAT:** Tabell med tre grupper (Merged | Pågår | Väntar på review)
 
-**KOLUMNER:**
+**FORMAT OCH STRUKTUR:**
+
+Din presentation måste innehålla:
+- ✅ MERGED DENNA VECKA (faktiska merged PRs från GitHub denna vecka)
+- ✅ PÅGÅR DENNA VECKA (faktiska branches med commits från GitHub denna vecka)
+- ✅ VÄNTAR PÅ REVIEW (faktiska öppna PRs från GitHub utan approval)
+
+**ALDRIG ANVÄND EXEMPEL-DATA I FAKTISK PRESENTATION.**
+Alla data måste hämtas LIVE från GitHub när presentationen byggas.
+
+Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
+
 | Issue # | Titel | Assignad | Status | Merged/Branch |
 |---------|-------|----------|--------|---------------|
-| **MERGED DENNA VECKA** | | | | |
-| #95 | Security review + merge | Zaida Wiss | ✓ DONE | 2026-09-13 |
-| #87 | Test foundation | Björn Boman | ✓ DONE | 2026-09-12 |
-| **PÅGÅR DENNA VECKA** | | | | |
-| #88 | Critical interactions | Björn Boman | ◐ PÅG | feature/#88 |
-| #89 | E2E happy path | Tomac Barin | ◐ PÅG | feature/#89 |
-| **VÄNTAR PÅ REVIEW** | | | | |
-| [Issue från GitHub] | [Faktisk titel] | [Team-medlem] | ⏳ REVIEW | [PR-nr] |
-| [Exempel: #90] | [Auth flow refactor] | [Lisa Andersson] | ⏳ REVIEW | [PR #142] |
+| #[från GitHub] | [från GitHub] | [från GitHub] | ✓/◐/⏳ | [från GitHub] |
 
 **REGLER:**
 - **Del 1: Merged denna vecka** (sortera på merge-datum, nyast först)
@@ -120,9 +123,9 @@ Kontrast minimum:            4.5:1 (WCAG AA)
   - Status: ⏳ REVIEW (ingen approval än)
 - 🔍 **Jämförelse:** Branch mot Project Board — visa discrepancy om Board och Git inte stämmer
 
-**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska issues från GitHub]`
+**FOOTER:** `Källa: GitHub PRs + branches (LIVE från [UTC-TIDSSTÄMPEL]) ✅`
 
-⚠️ **KRITISK PÅMINNELSE:** Exemplen (#90, #91, PR #142) är PLACEHOLDERS. Använd faktisk GitHub-data när du renderar presentationen!
+🚨 **KRITISK REGEL:** All data i denna slide MÅSTE hämtas LIVE från GitHub när presentationen byggas. Aldrig från exempel, aldrig från snapshot. Inkludera tidsstämpel (t.ex. "2026-09-14 14:00:32 UTC") så det är tydligt att data är aktuell.
 
 ---
 
