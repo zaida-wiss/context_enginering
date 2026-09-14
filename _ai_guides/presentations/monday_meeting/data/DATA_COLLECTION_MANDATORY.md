@@ -8,7 +8,7 @@ metadata:
 
 # 🚨 MANDATORY DATA COLLECTION — INNAN PRESENTATION RENDERAS
 
-🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
+🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
 
 ⛔ **EXEMPEL-DATA I DENNA FIL:**
 Alla exempelpersoner (<EXAMPLE_MEMBER_A>, <EXAMPLE_MEMBER_B>, etc) och issue-nummer i denna fil är INTE verklig projektdata.
@@ -27,7 +27,7 @@ Om denna checklist inte är slutförd kommer presentationen att dölja arbete (s
 
 **Presentationen måste också förstå kurs-tidskontext:**
 
-📌 Se [`_memory/COURSE_DEADLINES.md`](../../_memory/COURSE_DEADLINES.md) för:
+📌 Se [`_memory/COURSE_DEADLINES.md`](../../../../_memory/COURSE_DEADLINES.md) för:
 - Vilka kurs-deadlines påverkar denna vecka?
 - Vad ska teamet fokusera på framåt? (kursuniquely)
 - CTO-feedback? (sept 24 @ 4 PM)

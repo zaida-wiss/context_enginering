@@ -49,7 +49,7 @@ Presentationen fyller TRE syften:
 
 **Ingen checklista — bara faktisk data**
 - Slidorna fylls med verklig GitHub-data, inte tomma checkboxes
-- Se [MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md) för vilka GitHub-åtgärder som behövs
+- Se [MANDATORY_READING_ORDER.md](../../MANDATORY_READING_ORDER.md) för vilka GitHub-åtgärder som behövs
 
 **KÄLLREFERENSER — Mycket liten text (footer), inte i fokus**
 - Varje slide som visar data MÅSTE visa käll-status i 8-10pt grå text längst ner
@@ -124,9 +124,9 @@ Mötesprotokollet: [status]
 - ✅ **ALLA 7 team-medlemmar måste synas** — antingen med arbete eller "Ingen issue denna vecka"
 
 **DATA-KILDER (MANDATORY):**
-- 📊 [Merged PRs denna vecka](../data/DATA_SOURCES.md) — GitHub
-- 📊 [Commits denna vecka](../data/DATA_SOURCES.md) — GitHub
-- 📊 [Branches develop + active](../data/DATA_SOURCES.md) — GitHub
+- 📊 [Merged PRs denna vecka](../../data/DATA_SOURCES.md) — GitHub
+- 📊 [Commits denna vecka](../../data/DATA_SOURCES.md) — GitHub
+- 📊 [Branches develop + active](../../data/DATA_SOURCES.md) — GitHub
 
 **Se [SLIDE_DETAIL_SPEC.md](../design/SLIDE_DETAIL_SPEC.md) för exakt format och exempel.**
 

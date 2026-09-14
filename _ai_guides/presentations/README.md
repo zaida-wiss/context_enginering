@@ -57,8 +57,8 @@ Denna fil säger:
 ## 📚 Om Presentationen Inte Blir Rätt — Hjälp
 
 **Något går fel?**
-- 🔧 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — Presentation-relaterade problem (missing members, wrong data, etc.)
-- 📚 [ORDBOK.md](ORDBOK.md) — Branschterminologi & förklaringar som visas på slides
+- 🔧 [TROUBLESHOOTING.md](../TROUBLESHOOTING.md) — Presentation-relaterade problem (missing members, wrong data, etc.)
+- 📚 [ORDBOK.md](../ORDBOK.md) — Branschterminologi & förklaringar som visas på slides
 
 ---
 
@@ -90,14 +90,9 @@ Denna fil innehåller:
 ---
 
 **OM DU VIL ÄNDRA SYSTEMET** (inte bygga presentation):
-1. Läs [DATA_COLLECTION_MANDATORY.md](DATA_COLLECTION_MANDATORY.md) för att förstå datahämtning
+1. Läs [DATA_COLLECTION_MANDATORY.md](monday_meeting/data/DATA_COLLECTION_MANDATORY.md) för att förstå datahämtning
 2. Läs [design/DESIGN_AUTHORITY.md](design/DESIGN_AUTHORITY.md) för design-principer
-3. Navigera via "Vad vill du ändra?" sektion nedan
-
-⚠️ **OM WEBBEN ÄR BEGRÄNSAD:**
-   - GitHub-webben kan failas på grund av nätverksbegränsningar
-   - Google Sheets fallback är alltid tillgänglig: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-   - Se [data/DATA_SOURCES.md](data/DATA_SOURCES.md) för fullständig fallback-hierarki
+3. Se [data/DATA_SOURCES.md](data/DATA_SOURCES.md) för fullständig fallback-hierarki
 
 ---
 

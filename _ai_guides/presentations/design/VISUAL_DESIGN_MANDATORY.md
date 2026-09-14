@@ -420,4 +420,4 @@ INGEN PRESENTATION UTAN DENNA DESIGN. PERIOD.
 Se även:
 - **[../MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md)** — Läsordning för alla steg innan rendering
 - **[ACCESSIBILITY_NEURODIVERSITY.md](ACCESSIBILITY_NEURODIVERSITY.md)** — VARFÖR denna design är NPF-vänlig
-- **[PRESENTATION_RED_THREADS.md](PRESENTATION_RED_THREADS.md)** — Röda trådar mellan möten (konsistens)
+- **[../monday_meeting/design/PRESENTATION_RED_THREADS.md](../monday_meeting/design/PRESENTATION_RED_THREADS.md)** — Röda trådar mellan möten (konsistens)
