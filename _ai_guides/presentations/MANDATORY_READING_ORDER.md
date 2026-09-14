@@ -10,6 +10,8 @@ metadata:
 
 **DENNA FIL MÅSTE LÄSAS FÖRE PRESENTATION.**
 
+🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
+
 **Om denna ordning inte följs → presentation blir inkomplett eller bryter mot regler.**
 
 ---

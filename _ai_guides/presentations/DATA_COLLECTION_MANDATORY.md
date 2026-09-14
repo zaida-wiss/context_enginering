@@ -8,6 +8,8 @@ metadata:
 
 # 🚨 MANDATORY DATA COLLECTION — INNAN PRESENTATION RENDERAS
 
+🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
+
 ⛔ **EXEMPEL-DATA I DENNA FIL:**
 Alla exempelpersoner (<EXAMPLE_MEMBER_A>, <EXAMPLE_MEMBER_B>, etc) och issue-nummer i denna fil är INTE verklig projektdata.
 Du får ALDRIG kopiera exempel-namn eller issue-nummer till en presentation.

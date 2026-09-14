@@ -3,6 +3,8 @@
 **Team process, AI guidelines, and decision logs.**  
 **Project code:** https://github.com/chas-challenge-2026/avanza-team1
 
+🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+
 ---
 
 ## 🚨 START HERE — Enligt vad du gör

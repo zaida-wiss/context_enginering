@@ -11,6 +11,8 @@ metadata:
 
 **DENNA INSTRUKTION MÅSTE FÖLJAS av vilken AI-modell som helst som arbetar med Avanza-projektet.**
 
+🔗 **Alla externa datakällor:** Se [`EXTERNAL_SOURCES.md`](EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+
 ---
 
 ## TVÅ STEG — ALLTID I DENNA ORDNING

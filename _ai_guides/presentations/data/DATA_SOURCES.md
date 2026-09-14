@@ -3,12 +3,14 @@ name: data_sources
 description: Canonical information needs and fallback access strategies for presentations
 metadata:
   type: reference
-  updated: 2026-09-13
+  updated: 2026-09-14
 ---
 
 # 📊 DATA SOURCES — Information Needs & Fallback Strategy
 
 **Denna fil definierar vilken information som behövs, inte vilka tekniska metoder som MÅSTE användas.**
+
+🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
 
 ---
 
