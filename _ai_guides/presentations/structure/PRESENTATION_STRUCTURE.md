@@ -164,50 +164,75 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 🎊 FINALDAG           — 5 nov 09:00   (V12)
 ```
 
-**Format för slide ②B (VISUELL TIDSLINJE + KONKRETA KRAV):**
+**Format för slide ②B (VISUELL TIDSLINJE + STATUS + KONKRETA KRAV):**
+
+### TIDSLINJE MED ALLA DEADLINES
 
 ```
-IDAG: 13 sep (V4)
-    ↓
-    
-[Vecka 4-6]  [Vecka 7-10]    [Vecka 11-12]
-   BUILD        DEMO            FINAL
+IDAG: 14 sep 2026 (Vecka 4)
 
-█████░░░░░░░░░░░░░ 25% framåt i kurs (8 veckor totalt)
-
-═══════════════════════════════════════════════════════
-
-🎯 FOKUS NU NÄRMAST (Denna vecka V4)
-
-CTO-UNDERLAG måste levereras 24 sep (11 dagar)
-🔴 VAD VI BEHÖVER LEVERERA:
-   ✓ Tekniska risker identifierade & dokumenterade
-   ✓ Arkitektur-beslut fastslagna (API-kontrakt, integrations-plan)
-   ✓ Kapacitets-analys (vad kan vi klara på tid?)
-   ✓ Test-strategi dokumenterad
-
-🔴 VAD VI FOKUSERAR PÅ DENNA VECKA:
-   → Risk-workshop (identifiera TOP 5 risker)
-   → Tekniska beslut: API-kontrakt fastslagna
-   → Kapacitets-review: kan vi klara CTO-deadline?
-   → DoD för CTO-underlag: alla checklistor ifyllda
-
-═══════════════════════════════════════════════════════
-
-📊 EFTERFÖLJANDE DEADLINES & VAD DE KRÄVER:
-
-🟠 KVALDEMO (22 okt, 39 dagar kvar)
-   VAD: Fungerande demo för kund (login → portfolio → risk)
-   FOKUS: Stabilitet, bug-fixes, UI-polish
-
-🟢 SLUTLEVERANS (4 nov, 52 dagar kvar)
-   VAD: Fullständig kod + dokumentation + tester
-   FOKUS: Sista integreringar, slutcheck, deployment
-
-🎊 FINAL (5 nov, 53 dagar kvar)
-   VAD: Presentation + jurybeslut
-   FOKUS: Demo-timing, presentation-slides, Q&A-prep
+VECKA 4      VECKA 5-10           VECKA 11-12
+BUILD        DEMO & STABILISERING  FINALISERING
+├──────────────────────────────────────────────────────┤
+│          ⏱️ CTO (24 sep)        │ ⏱️ Kval (22 okt)  │ ⏱️ Final (5 nov)
+│
+V Idag (14 sep)
 ```
+
+### STATUS FÖR VARJE DEADLINE
+
+| Deadline | Datum | Dagar kvar | Vad det kräver | Status | Risk |
+|----------|-------|-----------|---|--------|------|
+| **CTO-underlag** | 24 sep | 10 | Tekniska risker, arkitektur-beslut, kapacitets-analys, test-strategi | 🟠 PÅGÅR | Medium — många beslut kvar |
+| **Kvaldemo** | 22 okt | 38 | Fungerande end-to-end demo (login → portfölj → risk-analys) | 🟡 BEROENDE | Beror på CTO-beslut |
+| **Slutleverans** | 4 nov | 51 | Fullständig kod + tester + dokumentation + deployment | 🟡 TIDIGT | Tidigt att bedöma |
+| **Final** | 5 nov | 52 | Presentation + demo för jury | 🟢 LÅNGT | Långt fram |
+
+### 🎯 FOKUS NU NÄRMAST — VAD BEHÖVS DENNA VECKA (V4)
+
+**CTO-deadline 24 sep (10 dagar kvar)**
+
+Denna deadline bepamer resten av projektet. Vi måste ha:
+- ✓ **Risk-analys:** Top 5 tekniska risker identifierade + mitigerings-strategi
+- ✓ **Arkitektur-beslut:** API-kontrakt mellan frontend/backend/native fastslagna
+- ✓ **Kapacitets-plan:** Realitetscheck — kan vi klara Kvaldemo & Final?
+- ✓ **Test-strategi:** Vilka tester (unit/integration/e2e) är obligatoriska?
+- ✓ **Integrations-plan:** Hur hänger frontend/backend/native ihop?
+
+**Om vi INTE levererar detta:** Resten av projektet blir oklart och vi kan missa Kvaldemo-deadline.
+
+### 📊 Efter CTO — VAD HÄNDER SEDAN
+
+**Vecka 5-9: BUILD & STABILISERING**
+- Implementera enligt arkitektur-beslut från CTO
+- Integrera frontend/backend/native enligt plan
+- Byggarbete: features, bugfixes, stabilisering
+
+**Vecka 10-11: KVALDEMO SPRINT**
+- Datum: **22 oktober** — slutgiltig demo för kund
+- Krav: End-to-end fungerande, inga kritiska buggar, UI-polished
+- Om detta misslyckas: Kan bli omtagning innan Final
+
+**Vecka 12: SLUTLEVERANS & FINAL**
+- Datum: **4 nov** — slutleverans (kod + docs)
+- Datum: **5 nov** — Final presentation för jury
+- Krav: Allt är deployat, dokumenterat och presentabelt
+
+### VISUELL STATUSÖVERSIKT
+
+```
+Progress i kurs:           ████░░░░░░░░░░░░░░░░░  14% (14/56 dagar)
+CTO-deadline:              ████████░░░░░░░░░░░░░   38% (10/26 dagar till CTO)
+Vägen till Kvaldemo:       ░░░░░░░░░░░░░░░░░░░░░   0% (38 dagar kvar)
+Vägen till Final:          ░░░░░░░░░░░░░░░░░░░░░   0% (52 dagar kvar)
+
+Legend: ████ = Avklarad  |  ░░░░ = Kvar
+```
+
+**Vad som avgör om vi lyckas:**
+1. **CTO-deadline → ON TRACK?** Blir det andra deadlines realistiska
+2. **Integration-risk?** Kan frontend/backend/native kombineras i tid?
+3. **DoD-begreppet:** Testat + dokumenterat + demot? Eller bara "färdigt"?
 
 **Visuella element MÅSTE inkluderas:**
 - 📍 Tidslinje med veckor markerade
