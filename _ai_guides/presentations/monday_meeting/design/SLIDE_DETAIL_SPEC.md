@@ -427,7 +427,7 @@ RISK:
 
 ### SLIDE ④A: Backend — Denna sprint
 
-**FORMAT:** Tabell (identisk som ③A)
+**FORMAT:** Visuella status-cards (identisk som ③A — NO POWERPOINT TABLES)
 
 **KOLUMNER:** Issue # | Titel | Assignad | Status | Blocker
 
@@ -437,7 +437,7 @@ RISK:
 
 ### SLIDE ④B: Backend — API-kontrakt-status (om behövs)
 
-**FORMAT:** Tabell
+**FORMAT:** Visuella status-cards med kolumner (NO POWERPOINT TABLES)
 
 **KOLUMNER:**
 | Endpoint | Status | Frontend blockar? | Nästa |
@@ -462,7 +462,7 @@ RISK:
 
 ### SLIDE ⑤A: Native — Denna sprint
 
-**FORMAT:** Tabell (identisk som ③A)
+**FORMAT:** Visuella status-cards (identisk som ③A — NO POWERPOINT TABLES)
 
 ---
 
@@ -698,7 +698,7 @@ Före varje ny issue:
 
 ### SLIDE ⑩A: Arkitektur-beslut denna vecka
 
-**FORMAT:** Tabell
+**FORMAT:** Visuella cards/rader (NO POWERPOINT TABLES)
 
 **INNEHÅL:**
 ```
