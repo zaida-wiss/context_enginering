@@ -93,7 +93,7 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 **KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
 
-**REGLER:** 
+**REGLER:**
 - (Identiska som ①A, men ENDAST Backend-issues)
 - Filtrera: Visa bara issues där Team = "Backend" (från TEAM_ROSTER.md labels)
 - Merged: Backend PRs merged denna vecka
@@ -147,84 +147,72 @@ Dessa tre slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
 
 ---
 
-### SLIDE ①D: Commits denna vecka — Alla team-medlemmar
-
-**FORMAT:** Tabell
-
-**KOLUMNER:**
-| Person | Commits | Senaste | Status |
-|--------|---------|---------|--------|
-| Zaida Wiss | 5 | 2026-09-14 09:30 | ✅ Aktiv |
-| Björn Boman | 3 | 2026-09-13 18:00 | ✅ Aktiv |
-| [Namn] | 0 | — | — Ingen issue denna vecka |
-
-**REGLER:**
-- En rad per team-medlem (ALLA 7, även om 0 commits)
-- Sortera på antal commits (flest först)
-- "Commits" = antal commits denna vecka (7 dagar)
-- "Senaste" = datum + tid för senast pushad commit
-- "Status" = ✅ Aktiv ELLER "— Ingen issue denna vecka"
-- Om stale branch (>3 dagar): Lägg till 🟡 VARNING
-
-**MÅSTE innehålla:**
-- ✅ Alla 7 team-medlemmar (namn från TEAM_ROSTER.md)
-- ✅ Commit-antal
-- ✅ Senaste commit-tid
-- ✅ Status för var och en
-
-**FÅR INTE innehålla:**
-- ❌ Commit-hash
-- ❌ Commit-meddelande (bara antal)
-- ❌ Branch-namn
-
-**FOOTER:** `Källa: GitHub commit history (develop branch) ✅`
-
----
-
 ## 📝② NULÄGE & DEADLINE (1 slide)
 
-### SLIDE ②A: Status denna sprint — Nuläge + Deadlines
+### SLIDE ②A: Nuläge + Deadline Tracker & Risk
 
-**FORMAT:** Mix av text + progress bars + tabell
+**FORMAT:** Två delar: (1) Progress bars per team, (2) Deadline Tracker med Risk-nivå
 
-**INNEHÅL:**
+**INNEHÅL - DEL 1: NULÄGE denna sprint (compact)**
 
 ```
-NULÄGE DENNA SPRINT:
+PROGRESS:
 
 Frontend:  ████████░░ 80% (API-kontrakt väntar på Backend)
 Backend:   ██████░░░░ 60% (Fokus denna vecka)
 Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
+```
 
-KRITISKA DEADLINES:
-🔴 Idag: API-kontrakt måste fastslås
-🟠 I morgon: API formell dokumenterad
-🟡 Fredag: Feature-complete eller fallback
+**INNEHÅL - DEL 2: DEADLINE TRACKER (fokuserat på risk)**
 
-KRITISKA SAKNADE BITAR:
-  🔴 Backend API-definition
-  🟠 Test-ramverk
+```
+🔴 KRITISK (Idag 14:00) — API-kontrakt fastslås
+   VAD: Frontend + Backend fastslår format, endpoints, types
+   VARFÖR: Låser upp Frontend #88-#89 + Native #86
+   STATUS: ⏳ INGEN AKTIVITET än
+   RISK: Om inte klart idag → 2 dagar försening för 2 teams
+   ACTION: Erik möte 14:00 — kan vi unblockera NU?
+
+🟠 HÖGT (Imorgon) — API dokumenterad i GitHub
+   VAD: Formell dokumentation i issue #99 (JSON-schema, endpoints)
+   VARFÖR: Frontend + Native behöver detta för integration-test
+   STATUS: ⏳ Beror på idag's möte
+   RISK: 1 dag sen → test börjar på onsdag istället
+   ACTION: Vilka kan hjälpa Erik dokumentera?
+
+🟡 MEDEL (Fredag) — Feature-complete eller fallback
+   VAD: Alla features klara ELLER fallback för CTO-demo
+   VARFÖR: CTO-demo denna vecka
+   STATUS: 🟢 ON TRACK (Frontend 80%, Backend 60%)
+   BUFFER: 1 dag kvar
+   ACTION: Hålla fokus på blockers denna vecka
 ```
 
 **REGLER:**
-- Progress bars = procent (inte timmar)
-- En rad per team (Frontend, Backend, Native)
-- Deadlines = tidsorder (närmaste först)
-- Färger: 🔴 = idag, 🟠 = denna vecka, 🟡 = senare
-- "Kritiska saknade" = max 3-4 items
+- **Del 1 (Progress):** Kompakt — progress bars per team, max 3 rader
+- **Del 2 (Deadlines):** Primär fokus — vilken deadline, vad innebär den, vilken risk, vad gör vi
+- Deadlines i prioritetsordning: 🔴 Kritisk → 🟠 Högt → 🟡 Medel
+- Varje deadline: VAD | VARFÖR | STATUS | RISK | ACTION
+- STATUS-märken: ⏳ = väntar, 🟢 = on track, 🔴 = behind, 🟠 = risk
+- ACTION = konkret nästa steg (inte "vi hoppas")
 
 **MÅSTE innehålla:**
 - ✅ Progress % per team
-- ✅ Vad som blockerar varje team
-- ✅ Nästa deadline
-- ✅ Vilka bitar saknas
+- ✅ Vilka deadlines vi har (prioriterade)
+- ✅ VAD varje deadline innebär (inte bara datum)
+- ✅ VARFÖR deadline är viktig (påverkan)
+- ✅ Nuläge mot deadline (STATUS)
+- ✅ RISK om vi missar (KONKRET konsekvens)
+- ✅ KONKRET nästa handling (ACTION)
 
 **FÅR INTE innehålla:**
 - ❌ Detaljerade issue-listor (se punkt ③-⑤)
 - ❌ Historiska data ("förra veckan var vi...")
 - ❌ Försäljnings-språk ("Vi är på vägen!")
+- ❌ Vaga risks ("vi kan bli sen") — måste vara KONKRET
+- ❌ Vaga actions ("vi ska jobba på det") — måste ha ÄGA och TIDRAM
 
-**FOOTER:** `Källa: GitHub issues + Project Board ✅`
+**FOOTER:** `Källa: GitHub issues + Project Board + Sprint planning ✅`
 
 ---
 
