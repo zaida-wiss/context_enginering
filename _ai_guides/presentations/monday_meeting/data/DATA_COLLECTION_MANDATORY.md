@@ -109,6 +109,13 @@ Exempel på hur regeln fungerar:
 **Innan du renderar någon slide, verifiera att du har:**
 
 ### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs in develop — PRIMARY)
+
+🔗 **LIVE DATA SOURCE — Hämta härifrån:**
+```
+https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[IDAG-7d]
+```
+(Byt ut [IDAG-7d] mot senaste 7 dagars datum)
+
 - [ ] Läst GitHub /pulls: **Vilka PRs är MERGADE in i develop denna vecka?** (DET ÄR HUVUDFOKUS)
 - [ ] **RÄKNA:** Totalt antal PRs denna vecka
 - [ ] För varje PR: **Vem ÄGde den issuen?** (issue assignee, INTE reviewer eller merger!)
@@ -130,6 +137,12 @@ Exempel på hur regeln fungerar:
 - [ ] **CHECKLIST:** Räkna GitHub PRs. Matcha antal på slide mot GitHub. Noll får försvinna.
 
 ### 2. COMMITS DENNA VECKA (grupperade per arbetsområde)
+
+🔗 **LIVE DATA SOURCE — Hämta härifrån:**
+```
+https://github.com/chas-challenge-2026/avanza-team1/commits/develop?since=[IDAG-7d]&until=[IDAG]
+```
+
 - [ ] Läst GitHub Commits: **Vilka commits pushades denna vecka?** (primär bevis på arbete)
 - [ ] Commit-listan innehåller: hash, author, message, date, branch
 - [ ] Commits är grupperade per arbetsområde ELLER per person (inte enskilda commits på slide)
@@ -138,6 +151,17 @@ Exempel på hur regeln fungerar:
 - [ ] **VIKTIGT:** Commits = direkta bevis på arbete gjort, oavsett om issue är stängt
 
 ### 3. ARBETE I PROGRESS DENNA VECKA (open PRs + open branches med nya commits)
+
+🔗 **LIVE DATA SOURCES — Hämta härifrån:**
+```
+OPEN PRs (under review):
+https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:open+updated:>=[IDAG-7d]
+
+BRANCHES med aktivitet:
+https://github.com/chas-challenge-2026/avanza-team1/branches
+(Sortera på senaste push-datum, filtrera senaste 7 dagar)
+```
+
 - [ ] Läst GitHub PRs: **Vilka PRs är öppna med uppdateringar denna vecka?** (under review/testing)
 - [ ] Läst GitHub Branches: **Vilka branches har nya commits denna vecka?** (även utan PR ännu)
 - [ ] Data innehåller: 
@@ -151,7 +175,21 @@ Exempel på hur regeln fungerar:
   * Feature branches med commits (even without PR)
   * NOT comments — activation = commits, PR-updates, branch pushes
 
-### 4. OPEN ISSUES MED AKTIVITET + DoD STATUS
+### 4. PROJECT BOARD STATUS (denna vecka)
+
+🔗 **LIVE DATA SOURCE — Hämta härifrån:**
+```
+https://github.com/orgs/chas-challenge-2026/projects/31
+(Visa: vilka issues är i "Done" denna vecka? Vilka i "In Progress"? Vilka i "Review"?)
+```
+
+### 5. OPEN ISSUES MED AKTIVITET + DoD STATUS
+
+🔗 **LIVE DATA SOURCE — Hämta härifrån:**
+```
+https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open+updated:>=[IDAG-7d]
+```
+
 - [ ] Läst GitHub Issues API/Web för issues **öppna med aktivitet denna vecka**
 - [ ] Aktivitet = commits eller PR-updates, INTE bara kommentarer
 - [ ] **För varje issue: läst issue-description för DoD-status**
