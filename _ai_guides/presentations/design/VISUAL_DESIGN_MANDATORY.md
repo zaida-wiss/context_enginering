@@ -245,7 +245,7 @@ Färger och symboler bär budskap **FÖRE** text. Det gör presentationen:
    - Padding: 8px (inuti marinblå bak)
    - Avskiljning: 2px grå linje under header
 
-3. **Tabell inuti card (KRITISK — TEXT MÅSTE VARA STOR):**
+3. **Visuella statusrader inuti card (KRITISK — TEXT MÅSTE VARA STOR):**
    - **Issue-nummer: 14pt BOLD** (läsbar från mötesbord)
    - **Titel: 13pt regular** (samma storlek)
    - Assignee: 12pt regular grå (lätt mindre)
@@ -306,7 +306,7 @@ Slides ① (Sedan förra mötet):
   ☐ Kontrast OK (testa med contrast checker)
 
 Slides ③④⑤ (Team Status):
-  ☐ Issue-tabell har DoD-kolumn med ✅/◐/✕/?
+  ☐ Issue-rader har DoD-status med ✅/◐/✕/?
   ☐ Varje DoD-symbol har motsvarande färg (🟢/🟡/🔴/⚪)
   ☐ Team-kort har marinblå border
   ☐ Whitespace omkring element (minst 8px)
@@ -336,10 +336,10 @@ ALLA SLIDES:
 WCAG ACCESSIBILITY:
   ☐ Text-kontrast minimum 4.5:1 (test med webaim.org)
   ☐ Färg+symbol tillsammans (ej färg ensam för status)
-  ☐ Font-size TABLE HEADERS: 14pt BOLD (läsbar från mötesbord)
-  ☐ Font-size TABLE CELLS: 13pt regular (samma hierarki)
+  ☐ Font-size ROW HEADERS: 14pt BOLD (läsbar från mötesbord)
+  ☐ Font-size ROW CONTENT: 13pt regular (samma hierarki)
   ☐ Font-size META/labels: 12pt (mindre än content)
-  ☐ Line-height minimum 1.8 för tabeller (24px radhöjd) — NPF-vänligt
+  ☐ Line-height minimum 1.8 för statusrader (24px radhöjd) — NPF-vänligt
 ```
 
 **Om NÅGON checkbox är UNCHECKED:**
@@ -386,11 +386,11 @@ Exempel:
 
 **3. WHITESPACE & TILLGÄNGLIGHET** (NPF-regel)
 - Minst 8px mellan element (NPF/ADHD-vänligt)
-- **Tabell-headers: 14pt BOLD** (läsbar från mötesbord)
-- **Tabell-content: 13pt** (samma som headers, ej för litet)
-- **Tabell radhöjd: minst 24px** (ej för trångt)
+- **Row-headers: 14pt BOLD** (läsbar från mötesbord)
+- **Row-content: 13pt** (samma som headers, ej för litet)
+- **Row-height: minst 24px** (ej för trångt)
 - Meta-text: 12pt (mindre än content)
-- Line-height minimum 1.8 för tabeller (NPF-vänligt)
+- Line-height minimum 1.8 för statusrader (NPF-vänligt)
 - Minst 4.5:1 kontrast (WCAG AA)
 
 ---
