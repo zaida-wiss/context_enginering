@@ -43,7 +43,7 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
   - För varje PR: issue-owner, commits, DoD-status
   - Alla Native-personer som hade work synliga
 
-- **①D: Byggde vidare denna vecka** — pågående arbete med verifierad framdrift (commits)
+- **①D: Byggde vidare denna vecka** — NULÄGESBILD: vad jobbes med just nu, av vem, och status
 
 **KRITISK REGEL: INGET ARBETE FÅR UTELÄMNAS för att det inte får plats på sliden.**
 
@@ -133,6 +133,67 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 **Data från:** **Merged PRs in develop** (denna vecka) — repo-first reconstruction
 **INTE:** Bara "closed issues" eller "issues utan merge"
 **CHECKLIST:** Före ①A renderas — räkna faktiska PRs. Matcha antal PRs på slide mot GitHub.
+
+---
+
+### ①D DETALJER: NULÄGESBILD — ÖPPNA PRs, ÖPPNA ISSUES, COMMITS
+
+**DENNA SEKTION VISAR VAD JOBBES MED JUST NU:**
+
+**DEL 1: ÖPPNA PRs (Väntar på review/merge)**
+
+TABELL:
+| # | Titel | Författare | Reviewer assignerad? | Status | Issue-länk |
+|---|-------|-----------|---------------------|--------|-----------|
+| #95 | Fix SQL-injection i login | Rasha Knifdi | ❌ **INGEN** | Väntar på review | #93 |
+| #80 | Drift banner från live target | Tomac Barin | ❌ **INGEN** | Väntar på review | #42 |
+| #68 | Docs: Uppdatera README v2 | Zaida Wiss | ❌ **INGEN** | Väntar på review | — |
+
+**KRITISK OBSERVATION:** Om PR-kolumnen "Reviewer assignerad?" visar ❌ för ALLA eller MÅNGA PRs → detta är en blocker. PRs kan inte mergas utan godkännare.
+
+**DEL 2: ÖPPNA ISSUES (Aktiv arbete denna vecka)**
+
+TABELL (sorterad per assignee):
+| # | Titel | Assignerad till | Team | Labels | Senast uppdaterad |
+|---|-------|-----------------|------|--------|------------------|
+| #89 | E2E test MVP core-flow | Zaida Wiss | Frontend | frontend | Sep 10 |
+| #88 | Täck kritiska MVP-interaktioner | Zaida Wiss | Frontend | frontend | Sep 10 |
+| #87 | Etablera test-foundation | Zaida Wiss | Frontend | frontend | Sep 10 |
+| #86 | Responsive dashboard | Zaida Wiss | Frontend | frontend, styling | Sep 10 |
+| #93 | SQL-injection i login (Java) | Rasha Knifdi | Backend | backend | Sep 10 |
+| #78 | Rolling Volatility (long period) | Pär Lundh | Native | native | Sep 10 |
+
+**MÖNSTER ATT LETA EFTER:**
+- En person har för många issues assignade (överbelastad?)
+- Ingen har aktivitet denna vecka (teamet är pausat?)
+- Gamla uppdaterings-datum (arbete står still?)
+
+**DEL 3: COMMITS DENNA VECKA (Verifierat arbete)**
+
+TABELL (senaste först):
+| Datum | Författare | Meddelande (första raden) | Issue-länk | PR-länk |
+|-------|-----------|-------------------------|-----------|---------|
+| 10 sep | Björn Boman | Merge login-page PR (#90) | #40 | #90 |
+| 10 sep | Zaida Wiss | Tillgänglighet på login-form | #40 | #40 |
+| 10 sep | Henrik Westerlund | Merge Native PR (#92) | — | #92 |
+| 10 sep | Pär Lundh | Rolling values-funktioner | #75, #77, #78 | — |
+
+**KRITISK OBSERVATION:**
+- Senaste commit är från **10 sep** (tidigare denna vecka)
+- Idag är **14 sep** → **4 dagar utan ny kod**
+- Möjlig tolkning: Teamet pushade på fredagen, inget över helgen/måndag
+
+**VARNING-SIGNALER:**
+- ❌ Inga commits denna vecka = teamet har inte pushat alls
+- ❌ Alla öppna PRs utan reviewer = arbetet fastnar i review
+- ❌ En person assignerad för många issues = risk för overload
+- ❌ Gamla uppdaterings-datum = arbete står still
+
+**RENDERING-REGEL FÖR ①D:**
+- MÅSTE visa minst en tabell (PRs eller Issues eller Commits)
+- Alla tre rekommenderas för att visa full nulägesbild
+- Flagga kritiska varningar-signaler med 🚨
+- **Font:** 12pt-13pt för tabellar (mindre än ①A-C för att få plats med mer data)
 
 ---
 
