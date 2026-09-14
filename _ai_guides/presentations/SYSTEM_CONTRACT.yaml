@@ -6,8 +6,11 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 1.0
-last_updated: 2026-09-14
+version: 2.0
+last_updated: 2026-09-15
+
+# All paths relative to repo root, under this base directory:
+base_path: "_ai_guides/presentations"
 
 ###############################################################################
 # AUTHORITATIVE SOURCES — Endast dessa filer definierar vad som gäller
