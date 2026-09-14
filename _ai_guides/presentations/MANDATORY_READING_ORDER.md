@@ -8,6 +8,26 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER — INNAN PRESENTATION RENDERAS
 
+🚫 **KRITISK REGEL ÖVERST — AI MÅSTE VERIFIERA INNAN RENDERING:**
+```
+DO NOT CREATE PPTX UNTIL AI HAS:
+
+✅ IDENTITY VERIFICATION: Alla 7 team-medlemmar verifierade från GitHub
+✅ DATA COLLECTION: Hämtat alla källor (GitHub PRs, branches, commits, 
+   Project Board, Google Sheets fallback, mötesprotokollet)
+✅ DATA VERIFICATION REPORT: Visat användaren vilka källor som var nåbara/ej nåbara
+✅ SLIDE_DETAIL_SPEC: Varje slide matchar specifikationen exakt
+✅ VISUAL_DESIGN_MANDATORY: Alla 13 render-gate checkpoints passerade
+✅ RENDER_GATE_CHECKLIST: Godkänt innan rendering
+
+AI:s ansvar: Verifiera ALLT och rapportera status till användaren.
+Användaren behöver INTE bekräfta — AI ansvarar för verifieringen.
+
+If ANY verification fails → AI STOPS, presents report, gör INTE PPTX.
+```
+
+---
+
 **DENNA FIL MÅSTE LÄSAS FÖRE PRESENTATION.**
 
 🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
@@ -326,6 +346,21 @@ Läs: **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLI
 - 13 checkpoints MÅSTE passeras innan rendering
 - Om någon checkpoint failas → presentation renderas INTE
 - **RENDER_GATE checklist inkluderar VISUAL_DESIGN_MANDATORY verifyas**
+
+---
+
+### 🚨 SLUTREGEL — STRUCTURE vs CONTENT
+
+**If the generated presentation output differs from SLIDE_DETAIL_SPEC.md:**
+- Structurally (wrong columns, wrong order, wrong sections)
+- Visually (wrong colors, wrong fonts, wrong spacing, wrong symbols)
+- Even if the factual data (GitHub commits, PRs, etc.) is correct
+
+→ **Presentation is INVALID. Do not deliver. Show report to user. Stop.**
+
+Structure matters as much as content. A presentation with correct data but wrong structure is broken, not good enough.
+
+This is not a design preference — it is a specification requirement.
 
 ---
 
