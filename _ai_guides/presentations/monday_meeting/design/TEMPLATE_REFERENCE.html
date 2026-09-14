@@ -97,6 +97,21 @@
             height: 24px;
         }
 
+        tr.unassigned {
+            background-color: #fff9e6;
+        }
+
+        tr.unassigned td {
+            color: #d79b1f;
+            font-style: italic;
+        }
+
+        .unassigned-badge {
+            color: #d79b1f;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
         tr {
             height: 24px;
         }
@@ -118,6 +133,28 @@
         .meta-text {
             font-size: 12px;
             color: #999;
+        }
+
+        .team-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            margin-right: 8px;
+        }
+
+        .team-frontend {
+            background-color: #1976d2;
+        }
+
+        .team-backend {
+            background-color: #388e3c;
+        }
+
+        .team-native {
+            background-color: #7b1fa2;
         }
 
         .note {
@@ -232,6 +269,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Team</th>
                             <th>Issue</th>
                             <th>Titel</th>
                             <th>Assignad</th>
@@ -241,6 +279,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td><span class="team-badge team-frontend">Frontend</span></td>
                             <td>#81</td>
                             <td>Linked allocation 100%</td>
                             <td>Björn Boman</td>
@@ -256,6 +295,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Team</th>
                             <th>Issue</th>
                             <th>Titel</th>
                             <th>Assignad</th>
@@ -265,6 +305,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td><span class="team-badge team-frontend">Frontend</span></td>
                             <td>#87</td>
                             <td>Test foundation</td>
                             <td>Zaida Wiss</td>
@@ -272,6 +313,7 @@
                             <td><span class="meta-text">feature/#87</span></td>
                         </tr>
                         <tr>
+                            <td><span class="team-badge team-backend">Backend</span></td>
                             <td>#43</td>
                             <td>API client mock</td>
                             <td>Tomac Barin Jansson</td>
@@ -287,6 +329,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Team</th>
                             <th>Issue</th>
                             <th>Titel</th>
                             <th>Assignad</th>
@@ -296,6 +339,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td><span class="team-badge team-frontend">Frontend</span></td>
                             <td>#87</td>
                             <td>Vitest + RTL</td>
                             <td>Zaida Wiss</td>
@@ -303,11 +347,20 @@
                             <td><span class="meta-text">PR #105 · no reviews</span></td>
                         </tr>
                         <tr>
+                            <td><span class="team-badge team-native">Native</span></td>
                             <td>#68</td>
                             <td>#67 README status</td>
                             <td>Zaida Wiss</td>
                             <td><span class="status-symbol review">⏳</span> REVIEW</td>
                             <td><span class="meta-text">PR #68</span></td>
+                        </tr>
+                        <tr class="unassigned">
+                            <td><span class="team-badge team-frontend">Frontend</span></td>
+                            <td>#90</td>
+                            <td>Performance optimization</td>
+                            <td><span class="unassigned-badge">🔄 UNASSIGNED</span></td>
+                            <td><span class="status-symbol review">⏳</span> REVIEW</td>
+                            <td><span class="meta-text">PR #112</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -321,6 +374,8 @@
         <div class="key-points">
             <strong>🎯 Key Design Points:</strong>
             <ul>
+                <li><strong>Team-märking:</strong> Varje rad visar team-badge (🔵 Frontend, 🟢 Backend, 🟣 Native)</li>
+                <li><strong>Assignad-status:</strong> Visar namn om assignad; gul highlight + 🔄 UNASSIGNED om ingen är tilldelad arbetet</li>
                 <li><strong>Färgade sektion-headers:</strong> 🟢 Grön för Merged, 🟡 Orange för Pågår & Review</li>
                 <li><strong>Statussymboler:</strong> ✓ (DONE), ◐ (PÅG), ⏳ (REVIEW) - symbolen kommer före texten</li>
                 <li><strong>Rundade hörn:</strong> 6-8px på alla textboxar och sektion-headers</li>
