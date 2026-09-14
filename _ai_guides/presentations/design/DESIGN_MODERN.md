@@ -302,7 +302,7 @@ RISKER:
    Mitigation: Strikta merge-regler
 ```
 
-### Punkt ⑧ — Prioritering & Scope
+### Punkt ⑨ — Prioritering & Scope
 
 ```
 FAS 1 — Nu (Starta nu)

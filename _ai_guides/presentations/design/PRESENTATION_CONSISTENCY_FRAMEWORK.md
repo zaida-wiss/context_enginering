@@ -253,12 +253,12 @@ Röd tråd: **Från estimat → kapacitet → möjligt sprintmål → verifierad
   - ALLA arbete som gjordes denna vecka MÅSTE synas
   - Inget får utelämnas för att det inte fick plats
 - ❌ Punkt ②B (nästa deadline) saknas → mötet vet inte varför det bryr sig
-- ❌ Punkt ③B (handlingsplan) är generell → vi vet inte vem som gör vad
-- ❌ Punkt ⑥ (beroenden) saknas → vi ser inte helhetsbilden
+- ❌ Punkt ③-⑤ (teams) saknar "väntar på..." → vi ser inte vilka är blockerade
+- ❌ Punkt ⑥ (blockers) saknas → vi ser inte helhetsbilden av beroenden
 - ❌ Punkt ⑧ (kapacitet) ej jämfört mot ⑨ → planen kan vara omöjlig
-- ❌ Punkt ⑪ (sprintmål) är från förra mötet, inte nytt → målet är inte realistisk-baserat
-- ❌ Punkt ⑫ (plan-kontroll) saknas → vi vet inte om planen håller
-- ❌ Punkt ⑬ (actions) är lösa idéer, inte konkreta GitHub-åtgärder → mötet blir inte arbete
+- ❌ Punkt ⑪ (sprintmål) är från förra mötet, inte HÄRLEDD från ①-⑩ → målet är inte realistisk-baserat
+- ❌ Punkt ⑫ (sprintplan) saknas → vi vet inte om tidsplanen håller
+- ❌ Punkt ⑬ (nästa steg) är lösa idéer, inte konkreta GitHub-åtgärder → mötet blir inte arbete
 
 **Var och en av dessa är KRITISK för röda tråden.**
 
