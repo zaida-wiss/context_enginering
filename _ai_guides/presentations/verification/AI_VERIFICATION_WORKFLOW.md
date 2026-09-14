@@ -1,75 +1,75 @@
 ---
 name: ai_verification_workflow
-description: Iterativ process — AI hämtar + verifierar → presenterar. Människan rättar manuellt tills klart.
+description: AI gör ALLT — hämtar data, verifierar från olika källor, analyserar, levererar presentation
 metadata:
   type: process
   critical: true
   required_before: rendering
 ---
 
-# 🔍 AI VERIFICATION WORKFLOW — IterativProcess
+# 🔍 AI VERIFICATION WORKFLOW — End-to-End AI Process
 
-**DENNA FIL SÄGER PROCESSEN:**
+**DENNA FIL SÄGER VAD AI MÅSTE GÖRA, FRÅN START TILL SLUT:**
 
-1. **AI:** Hämtar data från GitHub → Verifierar varje slide → PRESENTERAR
-2. **Människan:** Läser presentation → Gör MANUELLA RÄTTNINGAR
-3. **AI:** Uppdaterar → Presenterar ny version
-4. **REPEAT** tills allt stämmer
+1. **AI hämtar data** från GitHub + fallback-källor
+2. **AI verifierar datan** FRÅN FLERA KÄLLOR (triangulation)
+3. **AI analyserar datan** (vad betyder det? vilka mönster?)
+4. **AI levererar presentation** (KLAR, inte för redigering)
 
-**Poängen:** AI är inte blocker. AI presenterar direkt. Människan rättar.
+**Poängen:** AI gör ALLT. Ingen iteration, ingen human-verifikation. KLART.
 
 ---
 
-## 🔄 ITERATIV PROCESS — THE FLOW
+## 🎯 END-TO-END AI PROCESS — FRÅN START TILL SLUT
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                       AI STARTS HERE                               │
-│                                                                     │
-│  1. Hämta data från GitHub (Branches, Commits, PRs, Issues, etc)  │
-│  2. Verifiera identitet (7 team-medlemmar från git commits)        │
-│  3. Verifiera varje slide-data (är datum korrekt? assignee ok?)    │
-│                                                                     │
-│                    → PRESENTATION READY                            │
-│                           ↓                                        │
-│  4. Presentera (visa presentationen till människan)                │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-                              ↓
-              ┌───────────────────────────────────┐
-              │    HUMAN REVIEWS PRESENTATION     │
-              │                                   │
-              │  "Denna datum är fel"             │
-              │  "Denna person är inte assignad"  │
-              │  "Denna status stämmer inte"      │
-              │                                   │
-              │  → SEND CORRECTIONS TO AI         │
-              └───────────────────────────────────┘
-                              ↓
-              ┌───────────────────────────────────┐
-              │   AI UPDATES PRESENTATION         │
-              │                                   │
-              │  Applies all corrections          │
-              │  Re-verifies updated data         │
-              │  Shows updated version            │
-              └───────────────────────────────────┘
-                              ↓
-              ┌───────────────────────────────────┐
-              │  HUMAN APPROVES OR CORRECTS AGAIN │
-              │                                   │
-              │  "OK" → DONE                      │
-              │  OR "Fixa även..." → REPEAT       │
-              └───────────────────────────────────┘
-                              ↓
-                       ✅ PRESENTATION READY
-                      (för möte/användning)
+┌────────────────────────────────────────────────────────────┐
+│                   AI STARTS HERE                          │
+│                                                            │
+│  STEG 1: HÄMTA DATA från GitHub + fallback-sources       │
+│  ├─ Branches (develop status)                             │
+│  ├─ Commits denna vecka (från vilka team-medlemmar?)     │
+│  ├─ Merged PRs (vad var klart?)                          │
+│  ├─ Open PRs (vad väntar?)                               │
+│  ├─ Open issues (vad jobbar folk på?)                    │
+│  ├─ Project Board (status per kolumn)                    │
+│  ├─ Meeting protocol (om nåbar)                          │
+│  └─ DoD checklist (definition of done)                   │
+│                                                            │
+│  STEG 2: VERIFIERA DATAN mot FLERA KÄLLOR (triangulation)│
+│  ├─ Datum från Git matchar med GitHub issue-dates?       │
+│  ├─ Assignee från GitHub matchar issue-tilldelning?      │
+│  ├─ Status från Project Board matchar Git-reality?       │
+│  ├─ Team-medlemmar identifierade från git commits?       │
+│  └─ Noll okända namn? (bara TEAM_ROSTER.md-medlemmar)   │
+│                                                            │
+│  STEG 3: ANALYSERA DATAN                                 │
+│  ├─ Vad blev klart denna vecka? (commits + PRs)          │
+│  ├─ Vad pågår? (open issues + branches)                  │
+│  ├─ Vad är blockerat? (dependencies + blockers)          │
+│  ├─ Vilka risker syns i koden? (code review)             │
+│  └─ Hur många timmar kvar? (kapacitet vs planerat)       │
+│                                                            │
+│  STEG 4: LEVERERA PRESENTATION                           │
+│  ├─ 14 mötespunkter enligt PRESENTATION_STRUCTURE.md    │
+│  ├─ Design enligt VISUAL_DESIGN_MANDATORY.md            │
+│  ├─ Pedagogiska förklaringar (📚 ord markerade)          │
+│  ├─ Små käll-referenser (footer, ej fokus)              │
+│  ├─ Färg+Symbol+Text (dyslexi/ADHD-vänlig)              │
+│  └─ OM källa inte nåbar → visa i presentationen         │
+│     Exempel: "Mötesprotokollet: ⚠️ INTE NÅBAR"          │
+│                                                            │
+│                    ✅ PRESENTATION KLAAR                 │
+│                  (Klar för möte, inte för edit)          │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
 ```
 
-**Denna iterativa process löser problemet:**
-- ✅ AI använder automatisk verifikation
-- ✅ Människan har slutord (kan alltid korrigera)
-- ✅ Presentationen blir rätt efter iteration
-- ✅ Ingen data "stoppas" — AI presenterar direkt
+**AI gör ALLT — Ingen iteration, ingen human-verifikation:**
+- ✅ AI verifierar från FLERA KÄLLOR (triangulation)
+- ✅ AI analyserar vad datan betyder
+- ✅ AI levererar presentation KLAR
+- ✅ Ingen human-loop — presentationen är DONE
 
 ---
 

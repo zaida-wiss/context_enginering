@@ -52,11 +52,14 @@ Presentationen fyller TRE syften:
 - Se [MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md) för vilka GitHub-åtgärder som behövs
 
 **KÄLLREFERENSER — Mycket liten text (footer), inte i fokus**
-- Varje slide som visar GitHub-data MAY ha käll-referens i 8-10pt grå text längst ner
-- Exempel: `Källa: GitHub PR #95, merged 2026-09-13`
-- Denna text DIÄ INTE ta fokus från innehål — den är för verifikation, inte läsning
+- Varje slide som visar data MÅSTE visa käll-status i 8-10pt grå text längst ner
+- Exempel: `Källa: GitHub PR #95 ✅ | Mötesprotokollet ⚠️ INTE NÅBAR`
+- Denna text får INTE ta fokus från innehål — den är för verifikation, inte läsning
 - Placering: Footer eller margin (aldrig i slide-innehål)
-- Syfte: Möjliggör för människan att verifiera (om hon vill) utan att distrahera
+- **KRITISKT:** Om någon källa INTE är nåbar → MÅSTE visas i presentationen (ej gömt)
+  - Exempel: `Mötesprotokollet: ⚠️ Inte nåbar (fallback: Slack summary)`
+  - Syfte: Människan kan se vad som är verifierat vs vad som är fallback
+- Syfte: Möjliggör transparens utan att distrahera från innehål
 
 **PEDAGOGISKA FÖRKLARINGAR — 📚 märkta ord & begrepp**
 - Varje branschterm eller okänd term MÅSTE förklaras på samma slide
