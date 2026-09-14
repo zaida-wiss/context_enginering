@@ -20,6 +20,7 @@
    ↓ Sedan: **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)**
    ↓ Sedan: **[_ai_guides/presentations/SYSTEM_CONTRACT.yaml](_ai_guides/presentations/SYSTEM_CONTRACT.yaml)** ← Execution order & authority
 - SYSTEM_CONTRACT.yaml definierar vilka filer som ska läsas och i vilken ordning
+- 🚨 Extern åtkomst är **allowlist-only** — ingen generell webbsökning är tillåten
 
 ### 📚 Jag behöver projektinformation
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
