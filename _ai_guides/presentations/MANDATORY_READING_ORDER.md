@@ -8,19 +8,21 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER — INNAN PRESENTATION RENDERAS
 
-## 📋 SYSTEM CONTRACT (Read first)
+## 📋 SYSTEM CONTRACT (Läs omedelbar efter denna fil)
 
 Se [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) — **maskinläsbar definition av hela systemet**.
 
 YAML-filen är källan till sanning. Den innehåller:
 - ✅ Auktoritativa källor
-- ✅ Execution sequence (8 steg)
+- ✅ Execution sequence (8 steg) — detta definierar resten av arbetet
 - ✅ Hard rules (aldrig brytas)
 - ✅ GitHub status definitions (mekaniska)
 - ✅ Deprecated files (ta bort alla references)
 - ✅ Success criteria
 
-**Läs denna FÖRST, innan du läser något annat.**
+**Läs SYSTEM_CONTRACT.yaml omedelbar efter denna fil, innan något annat.**
+
+Därefter: följ `execution_sequence` från SYSTEM_CONTRACT.yaml för resten av processen.
 
 ---
 

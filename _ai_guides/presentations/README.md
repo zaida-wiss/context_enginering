@@ -19,21 +19,24 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 🚨 **DU ÄR HÄR FÖR ATT BYGGA EN PRESENTATION**
 
-## 🤖 **START HÄR FÖR AI:**
+## 🤖 **START HÄR FÖR AI — EXAKT ORDNING:**
 
-👉 **[SYSTEM_CONTRACT.yaml](SYSTEM_CONTRACT.yaml) ← KÄLLAN TILL SANNING (läs detta FÖRST)**
+**FÖLJ DENNA ORDNING MEKANISKT:**
 
-Denna fil innehåller maskinläsbar definition av hela systemet. Om någon annan fil motsäger denna → **SYSTEM_CONTRACT vinner alltid**.
+1️⃣ **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← Körordningen (börja här)
+   - Säger vilka steg som måste köras och i vilken ordning
 
-👉 **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md) ← EXEKVERINGSORDNINGEN**
+2️⃣ **[SYSTEM_CONTRACT.yaml](SYSTEM_CONTRACT.yaml)** ← Källan till sanning (läs omedelbar efter steg 1)
+   - Maskinläsbar definition av hela systemet
+   - Om någon fil motsäger denna → **SYSTEM_CONTRACT vinner alltid**
+   - Innehåller `execution_sequence` som definierar steg 3+
 
-Denna fil säger:
-- STEG 1: Läs system-filer (README, DATA_COLLECTION, DATA_SOURCES)
-- STEG 2: Verifiera (AI_VERIFICATION_WORKFLOW, RENDER_GATE_CHECKLIST, DATA_AUDIT)
-- STEG 3: Design & spec (SLIDE_DETAIL_SPEC, VISUAL_DESIGN_MANDATORY, PRESENTATION_STRUCTURE)
-- STEG 4: Final render-gate innan presentation byggs
+3️⃣ **Följ `execution_sequence` från SYSTEM_CONTRACT.yaml**
+   - Steg 1: Läs obligatoriska filer
+   - Steg 2: Hämta och verifiera data
+   - Steg 3-8: Verifiera, analysera, bygga, leverera
 
-**En ordning. Ingen variation. Denna ordning. Följ SYSTEM_CONTRACT om något krockar.**
+**En ordning. Ingen variation. Denna ordning.**
 
 ---
 
