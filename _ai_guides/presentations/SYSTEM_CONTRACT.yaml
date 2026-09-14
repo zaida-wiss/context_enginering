@@ -240,6 +240,9 @@ forbidden:
   - "Copy example values from this file"
   - "Invent data when source is unavailable"
   - "Render without all 7 members accounted for"
+  - "Show progress/capacity/status percentages without GitHub-verifiable definition"
+  - "Use estimates, forecasts, or AI-guesses as presentation data"
+  - "Mix FACT (GitHub data) with ASSESSMENT (AI analysis) without clear separation"
 
 ###############################################################################
 # SUCCESS CRITERIA — Presentation is ready to deliver ONLY if:

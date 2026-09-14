@@ -47,24 +47,34 @@ DO NOT CREATE PPTX UNTIL AI HAS:
 AI:s ansvar: Verifiera ALLT och rapportera status till användaren.
 Användaren behöver INTE bekräfta — AI ansvarar för verifieringen.
 
-BLOCKING SOURCES (STOPP om båda primär + fallback failar):
-  ✅ Team roster (identity verification)
-  ✅ GitHub Issues/PRs/commits (core deliverable data)
+BLOCKING SOURCES — Om båda primär + fallback failar → STOPP (ingen presentation):
+  ✅ Team roster → fallback: GitHub commits (måste verifiera alla 7)
+  ✅ GitHub merged PRs/issues → fallback: Google Sheets (säkerhetskopierad data)
+  ✅ Commits to develop → fallback: härled från PR data
+  
+  Om BLOCKING fails → rapportera: "❌ RENDER GATE FAIL — kunde inte verifiera [källa]"
 
-NON-BLOCKING SOURCES (aldrig stopp — använd fallback):
-  ✅ Project Board → fallback: rekonstruera från Issues/PRs
-  ✅ Mötesprotokollet → fallback: bygg från GitHub data
-  ✅ Commits list → fallback: härled från PR data
+NON-BLOCKING SOURCES — Om primär failar → använd fallback, ALDRIG stopp:
+  ✅ Project Board → fallback: rekonstruera från Issues/PRs via GitHub API
+  ✅ Mötesprotokollet → fallback: GitHub meeting notes / Slack summary
+  
+  Om NON-BLOCKING fallback används → visa tydligt i presentation:
+    "ℹ️ Project Board kunde inte nås — data rekonstruerad från Issues"
+    "ℹ️ Mötesprotokollet kunde inte nås — GitHub data användes"
 
 MANDATORY DATA_AUDIT (innan slides byggs):
-  AI måste generera och visa:
-  - Totalt antal merged PRs per arbetsområde (Frontend/Backend/Native)
+  AI måste generera och visa denna rapport:
+  - Totalt antal merged PRs per arbetsområde (Frontend/Backend/Native/Cross/Other)
   - Alla öppna issues + aktivt arbete
   - Alla 7 team members: verifierade eller "Ingen aktivitet denna vecka"
+  - Data sources status: vilka var nåbara ✅, vilka krävde fallback ⚠️
   
-  CHECKSUM-REGEL:
-  repository_total_merged_prs == sum(Frontend + Backend + Native)
-  Om FALSE → RENDER GATE FAIL
+  TRIPLE CHECKSUM-REGEL (alla måste passa):
+    1. COUNT: sum(areas) == repository_total_merged_prs
+    2. SET: repository_merged_pr_ids == union(all areas)
+    3. UNIQUENESS: no PR ID in multiple areas
+  
+  Om NÅGON checksum failar → RENDER GATE FAIL, ingen presentation byggs
 ```
 
 ---

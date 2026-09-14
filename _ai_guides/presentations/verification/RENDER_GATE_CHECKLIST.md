@@ -159,30 +159,63 @@ CHECKSUMS (ALL MUST PASS):
 ### ✅ TILLÅTET — detta ska synas på slides:
 
 ```
-🟢 FAKTISKA DATA:
+🟢 FAKTISKA DATA (från GitHub):
   ✅ "#95 Security review · Zaida · ✓ DONE · merged 2026-09-13"
   ✅ "🔴 API-kontrakt inte låst — Frontend blockerad"
   ✅ "Backend måste leverera API-spec idag"
+  ✅ "3 merged PRs denna vecka (Frontend), 2 open (under review)"
+  ✅ "Erik: 4 commits, Zaida: 3 commits denna vecka"
   ✅ Integration diagram med faktiska branches
 
 🟢 MÖTESBESLUT OCH ÅTGÄRDER:
   ✅ "Behöver synkas: login request/response"
   ✅ "Fallback-arbete: Frontend testning (oberoende)"
   ✅ "Backend-branch ligger 75 commits efter develop"
+
+🔴 FÖRBJUDET — detta får ALDRIG synas:
+  ❌ "Frontend 55% ready" (utan exakt definition från GitHub)
+  ❌ "Kapacitet 70%" (utan verifierbar källa)
+  ❌ "Risk-nivå hög" (utan konkret blockerande issue)
+  ❌ "Förväntat 80% klar nästa vecka" (prognos/uppskattning)
 ```
 
-### MEKANISK KONTROLL:
+### MEKANISK KONTROLL — Tre tester per textrad på sliden:
+
+**Test 1: Källkontroll**
 ```
-Publictest för varje textrad på sliden:
+Q: "Kan jag belägga denna text från GitHub-data denna vecka?"
 
-Q: "Skulle en projektledare säga detta till teamet på mötet,
-    utan att förklara att en AI skapade presentationen?"
-
-Svar: JA → texten får vara på sliden
-Svar: NEJ → ta bort texten
+Ja → texten får vara på sliden
+Nej → ta bort eller ändra till "enligt GitHub X"
 ```
 
-**REGEL: Om någon AI-instruktion hittas på slide = STOPP, rendering INTE tillåten.**
+**Test 2: AI-instruktioner**
+```
+Q: "Är detta en instruktion för AI, eller faktiskt innehål för mötet?"
+
+Instruktion (❌) → ta bort innan rendering
+Faktiskt innehål (✅) → får vara på sliden
+```
+
+**Test 3: Uppskattningar & procent**
+```
+Q: "Är detta en AI-gissning eller faktiska GitHub-data?"
+
+Gissning/procent (❌) → ta bort
+GitHub-data (✅) → får vara på sliden
+
+Exempel FÖRBJUDET:
+  ❌ "Frontend 55% ready"
+  ❌ "Kapacitet 70% utnyttjad"
+  ❌ "Förväntas klart nästa vecka"
+
+Exempel TILLÅTET:
+  ✅ "3 merged PRs denna vecka (Frontend)"
+  ✅ "5 commits denna vecka från Erik"
+  ✅ "#88 blockerad av Backend API-spec"
+```
+
+**REGEL: Om någon AI-instruktion, uppskattning eller opåverifierad procent hittas på slide = STOPP, rendering INTE tillåten.**
 
 ---
 
