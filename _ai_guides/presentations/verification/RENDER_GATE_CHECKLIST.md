@@ -60,9 +60,18 @@ TEAM MEMBER COVERAGE:
   Expected: 7
   Verified: N/7 (list: Person1, Person2, ... or "Ingen aktivitet denna vecka" if 0 work)
 
-CHECKSUMS (MUST PASS):
-  ✅ sum(Frontend + Backend + Native + Cross_team + Other merged_prs) == repository_total_merged_prs
-  ✅ All 7 team members identity-verified or marked "no activity"
+CHECKSUMS (ALL MUST PASS):
+  ✅ COUNT: sum(Frontend + Backend + Native + Cross_team + Other) == repository_total_merged_prs
+  ✅ SET: repository_merged_pr_ids == union(all work_areas)
+  ✅ UNIQUENESS: No PR ID appears in multiple work_areas (each PR classified exactly once)
+  ✅ TEAM: All 7 members identity-verified or marked "no activity"
+  
+  EXAMPLE FAILURE:
+    ❌ Repository shows 12 merged PRs (#90, #79, #72, #66, #53, #50, #95, #87, #80, #75, #60, #55)
+    ❌ Frontend: 6 + Backend: 4 + Native: 2 = 12 ✅ count passes
+    ❌ BUT #90 is missing from union (appears in Frontend list but forgotten in total)
+    ❌ OR #95 appears in both Backend AND Cross_team (counted twice)
+    ✅ ID-SET CHECK FAILS → RENDER GATE FAIL
 ```
 
 **Failure detection (RENDER GATE FAIL if):**

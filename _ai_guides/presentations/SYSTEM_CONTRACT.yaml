@@ -136,7 +136,11 @@ data_audit:
       verified: "N/7 (how many identity-verified from GitHub)"
 
   validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again."
-  checksum: "repository_total_merged_prs MUST == sum(frontend + backend + native + cross_team + other merged_pr_ids). If FALSE → render gate FAIL."
+  checksums:
+    count: "repository_total_merged_prs MUST == sum(frontend + backend + native + cross_team + other counts)"
+    set: "repository_merged_pr_ids MUST == union(all work_area merged_pr_ids)"
+    uniqueness: "No PR ID may occur in more than one work_area"
+  failure_condition: "If ANY checksum fails → render gate FAIL. Do not build presentation."
 
 ###############################################################################
 # HARD RULES — Never break these
