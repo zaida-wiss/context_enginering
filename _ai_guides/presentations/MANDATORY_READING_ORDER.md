@@ -14,6 +14,56 @@ metadata:
 
 ---
 
+## 📚 SYSTEMÖVERSIKT — ALLA FILER HÄNGER IHOP
+
+**Presentationssystemet består av MÅNGA filer som beskriver samma sak från olika vinklar:**
+
+```
+VAD SKA I PRESENTATIONEN?
+  ↓
+├─ structure/PRESENTATION_STRUCTURE.md
+│  └─ "14 mötespunkter + vilka data-källor"
+│
+├─ design/PRESENTATION_FORMAT_GUIDE.md
+│  └─ "Exakt layout + borders + slide-exempel"
+│
+├─ content/PRESENTATION_SPEC.md
+│  └─ "Regler för innehål + färg-semantik + issue-format"
+│
+├─ design/VISUAL_DESIGN_MANDATORY.md
+│  └─ "Fonts + kontrast + NPF-regler + PowerPoint-inställningar"
+│
+└─ structure/SPRINT_PROTOCOL_NUMBERED.md
+   └─ "Länk mellan slidorna och mötesprotokollmötespunkterna"
+
+VERIFIERA DATAN:
+├─ data/DATA_SOURCES.md
+│  └─ "Vilka GitHub-URLs och fallback-sources"
+│
+├─ data/TEAM_ROSTER.md
+│  └─ "Vilka är de 7 team-medlemmarna (verifierade från git)"
+│
+├─ verification/VERIFICATION_SYSTEM.md
+│  └─ "Hur verifiera att data är korrekt"
+│
+└─ models/WEEKLY_PROGRESS_MODEL.md
+   └─ "Klassificering av arbete (levererat, pågår, blockerat)"
+
+BAKGRUND & FÖRSTÅELSE:
+├─ models/REPO_FIRST_RECONSTRUCTION.md
+│  └─ "Varför vi använder commits/PRs som primär källa"
+│
+├─ design/PRESENTATION_CONSISTENCY_FRAMEWORK.md
+│  └─ "Hur presentations-design är konsistent vecka till vecka"
+│
+└─ design/DESIGN_AUTHORITY.md
+   └─ "Vem beslutar om design, vad kan ändras"
+```
+
+**NÄR DU LÄSER:** Dessa filer refererar VARANDRA. Om du är osäker — följa länkarna!
+
+---
+
 ## 🚨 SINGLE EXECUTION SEQUENCE — ALDRIG FÖR IN DENNA ORDNING
 
 **Du måste följa DENNA ordning. Avvikelse = presentation blir felaktig.**
