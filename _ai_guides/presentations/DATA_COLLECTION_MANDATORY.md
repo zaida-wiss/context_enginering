@@ -112,14 +112,20 @@ Exempel (om idag är 2026-09-13):
 ### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs in develop — PRIMARY)
 - [ ] Läst GitHub /pulls: **Vilka PRs är MERGADE in i develop denna vecka?** (DET ÄR HUVUDFOKUS)
 - [ ] **RÄKNA:** Totalt antal PRs denna vecka
-- [ ] För varje PR: Vem ÄGde den issuen? (issue assignee/PR author)
+- [ ] För varje PR: **Vem ÄGde den issuen?** (issue assignee, INTE reviewer eller merger!)
+  - 🚨 KRITISK DISTINKTION:
+    - ASSIGNEE (visas) = Vem som ÄGde/GJORDE arbetet
+    - REVIEWER (döljs) = Vem som checkade koden
+    - MERGER (döljs) = Vem som mergade (ofta samma som reviewer)
+  - Exempel: ✅ "PR #90 Login · Zaida" (Zaida ÄGde det, även om Erik reviewade)
+  - Exempel: ❌ "PR #90 Login · Erik" (FELAKTIG — Erik reviewade men Zaida ägde det)
 - [ ] För varje PR: Vilket issue var länkat? (if any)
-- [ ] Data innehåller: PR-nummer, merge-datum, PR-author, linked issue, issue-owner
-- [ ] **Exempel:** PR #90 Login (Zaida mergade, #40 var ägd av Zaida)
-- [ ] **Exempel:** PR #95 Design System (Björn mergade, ingen länkad issue men Björn var owner)
-- [ ] **VIKTIGT:** Vi visar MERGED PRs in develop, inte bara "stängda issues"
-- [ ] **Regel:** Visa PR-author + linked issue-owner tillsammans
-- [ ] **Regel:** Fokus = merged code in develop, inte issue-status
+- [ ] Data innehåller: PR-nummer, merge-datum, **issue-assignee**, linked issue, issue-owner
+- [ ] **Exempel:** PR #90 Login (assignee: Zaida, #40 var ägd av Zaida) — visar Zaida
+- [ ] **Exempel:** PR #95 Design System (assignee: Björn, reviewer: Erik) — visar Björn INTE Erik
+- [ ] **VIKTIGT:** Vi visar MERGED PRs in develop, INTE bara "stängda issues"
+- [ ] **Regel:** Visa ASSIGNEE (ägare), INTE reviewer eller merger
+- [ ] **Regel:** Fokus = merged code in develop, och VEMS JOBB det var
 - [ ] **KRITISK REGEL:** Inget arbete får utelämnas för att det inte får plats på sliden
 - [ ] **Om många PRs denna vecka (>5):** Dela på flera slides (①A.1, ①A.2, etc)
 - [ ] **CHECKLIST:** Räkna GitHub PRs. Matcha antal på slide mot GitHub. Noll får försvinna.

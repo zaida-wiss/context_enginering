@@ -55,12 +55,17 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 - **Arbetet från alla 7 team-medlemmar måste synas** (antingen i Merged, Pågår eller Väntar på review)
   - Om medlem har 0 commits denna vecka: Lägg till "Inget arbete i koden denna vecka"
 
-- Assignad = GitHub handle + display name (från TEAM_ROSTER.md)
+- **Assignad = Ägare av arbetet** (GitHub issue/PR assignee, inte reviewer eller merger)
+  - VIKTIGT: Visar VEMS JOBB det är, inte vem som checkade det
+  - ASSIGNEE från GitHub = källan (inte reviewer, inte "merged by")
+  - Format: GitHub handle + display name (från TEAM_ROSTER.md)
+  - Exempel: ✅ "#95 Security review · Zaida Wiss" (Zaida ÄGde det)
+  - Exempel: ❌ "#95 Security review · Erik Berglund" (Erik reviewade det, men Zaida ägde det)
 
 **MÅSTE innehålla:**
 - ✅ Issue-nummer (#XX)
 - ✅ Kort titel (2-5 ord)
-- ✅ Assignad person (fullständig namn)
+- ✅ **Assignad person** (ägaren av arbetet, från GitHub issue/PR assignee) — INTE reviewer
 - ✅ Status (✓ DONE eller ◐ PÅG eller ⏳ REVIEW)
 - ✅ Datum (merge-datum, branch-namn, eller PR-nummer)
 - ✅ ALLA 7 team-medlemmar (även om 0 arbete denna vecka)
@@ -71,6 +76,7 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 - ❌ Endast merged (måste visa pågår + review också)
 - ❌ Stale branches (>3 dagar utan push)
 - ❌ PRs som redan är mergead (de hör hemma i "Merged" sektion)
+- ❌ **Reviewer namn som assignee** (visa ägare, inte vem som checkade)
 
 **DATA-SOURCES:**
 - 📊 **Merged:** GitHub PRs API (merged till develop denna vecka) — FAKTISK GitHub-data, inte exempel
