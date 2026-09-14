@@ -8,6 +8,22 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER — INNAN PRESENTATION RENDERAS
 
+## 📋 SYSTEM CONTRACT (Read first)
+
+Se [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) — **maskinläsbar definition av hela systemet**.
+
+YAML-filen är källan till sanning. Den innehåller:
+- ✅ Auktoritativa källor
+- ✅ Execution sequence (8 steg)
+- ✅ Hard rules (aldrig brytas)
+- ✅ GitHub status definitions (mekaniska)
+- ✅ Deprecated files (ta bort alla references)
+- ✅ Success criteria
+
+**Läs denna FÖRST, innan du läser något annat.**
+
+---
+
 🤖 **FÖR AI: Kopiera denna prompt direkt till vilken AI som helst:**
 ```
 Läs: https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/AI_PROMPT_GENERATE_PRESENTATION.md

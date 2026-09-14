@@ -1,0 +1,194 @@
+###############################################################################
+# SYSTEM CONTRACT — Maskinläsbar definition av presentationspipelinen
+#
+# Detta YAML-block är källan till sanning för vilken AI som helst
+# Läs detta FÖRE du läser något annat i context-repot
+###############################################################################
+
+task: monday_meeting_presentation
+version: 1.0
+last_updated: 2026-09-14
+
+###############################################################################
+# AUTHORITATIVE SOURCES — Endast dessa filer definierar vad som gäller
+###############################################################################
+authoritative_sources:
+  content_specification: "presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+  visual_design: "presentations/design/VISUAL_DESIGN_MANDATORY.md"
+  data_collection: "presentations/monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
+  render_gate: "presentations/verification/RENDER_GATE_CHECKLIST.md"
+  team_roster: "_memory/TEAM_ROSTER.md"
+  external_urls: "_memory/EXTERNAL_SOURCES.md"
+
+###############################################################################
+# EXECUTION SEQUENCE — Följ dessa steg i exakt denna ordning
+###############################################################################
+execution_sequence:
+  step_1:
+    name: "Read Mandatory Files"
+    files:
+      - "presentations/MANDATORY_READING_ORDER.md"
+      - "presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+      - "presentations/monday_meeting/design/TEMPLATE_REFERENCE.html"
+    time_estimate_minutes: 20
+
+  step_2:
+    name: "Fetch LIVE GitHub Data"
+    sources:
+      - "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[REPORTING_PERIOD_START]"
+      - "https://github.com/chas-challenge-2026/avanza-team1/commits/develop?since=[REPORTING_PERIOD_START]&until=[REPORTING_PERIOD_END]"
+      - "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:open+updated:>=[REPORTING_PERIOD_START]"
+      - "https://github.com/orgs/chas-challenge-2026/projects/31"
+      - "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open+updated:>=[REPORTING_PERIOD_START]"
+    rule: "ALL sources must be fetched. If ANY is unreachable, STOP and report ⚠️"
+
+  step_3:
+    name: "Verify All 7 Team Members"
+    requirement: "Every team member from TEAM_ROSTER must have work listed OR marked 'Ingen aktivitet denna vecka'"
+    rule: "Cannot proceed to rendering if anyone is missing"
+
+  step_4:
+    name: "Build Slides Following Spec"
+    source: "SLIDE_DETAIL_SPEC.md (is authoritative)"
+    rule: "If output differs from SLIDE_DETAIL_SPEC → output is INVALID even if data is correct"
+
+  step_5:
+    name: "Verify Visual Design"
+    source: "VISUAL_DESIGN_MANDATORY.md and TEMPLATE_REFERENCE.html"
+    rule: "NPF-friendly only. NO TABLES. Symbol + Färg + Text mandatory."
+
+  step_6:
+    name: "Pass Render Gate"
+    source: "RENDER_GATE_CHECKLIST.md"
+    checkpoints: 13
+    rule: "All 13 must pass before rendering"
+
+  step_7:
+    name: "Timestamp Every Slide"
+    format: "Data från [DATE] [TIME] UTC | Källa: GitHub + Project Board ✅"
+    rule: "If GitHub source failed → mark with ⚠️ and note which source"
+
+  step_8:
+    name: "Deliver Presentation"
+    output: "PowerPoint/Slides deck"
+    rule: "Only if all previous steps passed"
+
+###############################################################################
+# REPORTING PERIOD — When slides report "denna vecka" / "this week"
+###############################################################################
+reporting_period:
+  definition: "Monday 00:00 → Sunday 23:59 (week before Monday meeting)"
+  timezone: "Europe/Stockholm"
+  note: "NOT 'last 7 days from generation time'. Fixed calendar week."
+
+current_state:
+  definition: "Live GitHub state at generation time"
+  note: "Used for 'In Progress', 'Awaiting Review', 'Open Issues'. Timestamped."
+
+###############################################################################
+# HARD RULES — Never break these
+###############################################################################
+hard_rules:
+  - rule: "Never invent data"
+    consequence: "Stop and report if source unreachable"
+
+  - rule: "Never use example values from documentation"
+    consequence: "Use only LIVE data from GitHub"
+
+  - rule: "Merged means merged to develop in reporting period"
+    consequence: "Closed issue without merge ≠ delivered"
+
+  - rule: "All 7 team members must be accounted for"
+    consequence: "Cannot render if anyone is missing"
+
+  - rule: "If required data is missing, STOP before render"
+    consequence: "Never skip a GitHub source"
+
+  - rule: "If GitHub is unreachable, report and stop"
+    consequence: "Never use cached/snapshot data"
+
+  - rule: "NPF-friendly design mandatory"
+    consequence: "No tables. Symbol + Färg + Text."
+
+  - rule: "Timestamp every slide"
+    consequence: "Show when data was fetched"
+
+  - rule: "Assessment never presented as fact"
+    consequence: "Separate FACT from ASSESSMENT visually"
+
+###############################################################################
+# DEFINITIONS — No interpretation allowed, these are mechanical
+###############################################################################
+github_status_definitions:
+  delivered:
+    definition: "PR merged to develop during reporting period"
+    sources:
+      - "GitHub PR with 'merged' status"
+      - "Linked to closed issue in reporting period"
+    counterexample: "Closed issue WITHOUT merge = NOT delivered"
+
+  in_progress:
+    definition: "Open PR with recent commits OR open issue with assignee + activity"
+    sources:
+      - "Open PR with commits this week"
+      - "Open issue with assignee and recent comment/update"
+      - "Branch with commits but no PR yet"
+    counterexample: "Old branch with no recent commits = NOT in progress"
+
+  not_a_status:
+    - "Branch existence alone"
+    - "Single commit without PR or issue"
+    - "Issue comment without assignee"
+    - "Closed issue without merge"
+
+fact_vs_assessment:
+  fact: "Comes ONLY from verified LIVE source (GitHub API, Project Board, etc)"
+  derived: "Mechanically calculated from FACT (e.g., count PRs, sum commits)"
+  assessment: "AI analysis/interpretation (e.g., 'this person seems overloaded')"
+  rule: "Assessment can NEVER be presented as status. Always separate."
+
+###############################################################################
+# DEPRECATED FILES — Do NOT use these, DELETE all references
+###############################################################################
+deprecated_files:
+  - name: "PRESENTATION_FORMAT_GUIDE.md"
+    reason: "Superseded by SLIDE_DETAIL_SPEC.md"
+    action: "DELETE or ARCHIVE"
+
+  - name: "PRESENTATION_CONSISTENCY_FRAMEWORK.md"
+    reason: "Superseded by VISUAL_DESIGN_MANDATORY.md"
+    action: "DELETE or ARCHIVE"
+
+  - name: "PRESENTATION_DESIGN_SPEC.md"
+    reason: "Superseded by TEMPLATE_REFERENCE.html"
+    action: "DELETE or ARCHIVE"
+
+note: "ALL references to these files removed from active instructions"
+
+###############################################################################
+# WHAT NOT TO DO
+###############################################################################
+forbidden:
+  - "Use cached or snapshot data"
+  - "Skip GitHub sources because they're slow"
+  - "Use tables (NPF violation)"
+  - "Show team members without team badge"
+  - "Hide data verification failures"
+  - "Copy example values from this file"
+  - "Invent data when source is unavailable"
+  - "Render without all 7 members accounted for"
+
+###############################################################################
+# SUCCESS CRITERIA — Presentation is ready to deliver ONLY if:
+###############################################################################
+success_criteria:
+  - "✅ All data fetched LIVE from GitHub (not cached)"
+  - "✅ All 7 team members verified or marked 'no activity'"
+  - "✅ Slide ① titles follow 'Avklarat sedan förra mötet — [Team]'"
+  - "✅ NPF-friendly design (no tables, Symbol+Färg+Text)"
+  - "✅ Every slide timestamped with data fetch time"
+  - "✅ All GitHub sources either ✅ verified or ⚠️ marked failed"
+  - "✅ Render-gate checklist passed (all 13 points)"
+  - "✅ No invented data, no example values"
+
+###############################################################################
