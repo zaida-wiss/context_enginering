@@ -110,13 +110,18 @@ Den filen säger:
 
 **Läs DESSA filer (de innehåller ALLT):**
 
-1. **[design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
-   - EXAKT innehål för VARJE SLIDE (①-⑭)
+1. **[design/ACCESSIBILITY_NEURODIVERSITY.md](design/ACCESSIBILITY_NEURODIVERSITY.md)** 🧠 LÄS FÖRST
+   - VARFÖR Symbol + Färg + Text? (för dyslektiker, ADHD, autism — och alla andra)
+   - Påtvingad läsning för att förstå designfilosofin
    
 2. **[design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md)** ⭐ DESIGN
-   - Symbol + Färg + Text (NPF/dyslexia-vänlig)
+   - Symbol + Färg + Text (mekanisk implementering)
+   - RGB-värden, px-storlekar, font-specs, whitespace — ALLT konkret
    
-3. **[structure/PRESENTATION_STRUCTURE.md](monday_meeting/structure/PRESENTATION_STRUCTURE.md)**
+3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
+   - EXAKT innehål för VARJE SLIDE (①-⑭)
+   
+4. **[monday_meeting/structure/PRESENTATION_STRUCTURE.md](monday_meeting/structure/PRESENTATION_STRUCTURE.md)**
    - 14 mötespunkter (①-⑭) definitioner
 
 **Om två filer motsäger varandra:** SLIDE_DETAIL_SPEC.md VINNER.
