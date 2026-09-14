@@ -47,9 +47,15 @@ This file defines how to work with this project and Avanza repo. Read it BEFORE 
 
 ## 🚨 CRITICAL RULES
 
-**For presentations:**
-- Never use `git clone`, `git ls-remote`, or shell commands against project repo
-- Use GitHub Connector/API or web browser only
+**For presentations — DATA ACCESS:**
+- ✅ Use ONLY these sources: GitHub (github.com), Google Docs/Sheets, raw.githubusercontent.com, GitHub API
+- ❌ **NEVER use `git clone`, `git ls-remote`, or shell commands**
+- ❌ **NEVER search Google/Bing/web for Avanza data** — this is a security boundary violation
+- ❌ **NEVER use external APIs** (cryptocurrency exchanges, stock markets, blockchain explorers, etc.)
+- ✅ Use GitHub Connector/API or web browser only
+- ✅ If a source fails → use fallback URL (DATA_SOURCES.md), NOT web search
+
+**For presentations — QUALITY:**
 - Verify all data sources before rendering
 - Ensure all 7 team members are represented and identity-verified
 - No example names in output

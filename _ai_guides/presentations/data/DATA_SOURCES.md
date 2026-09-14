@@ -188,6 +188,26 @@ Presentationen måste kunna verifiera dessa fakta:
 
 ---
 
+## ⚠️ FORBIDDEN SOURCES — NEVER USE THESE
+
+**AI skal ALDRIG sök på dessa sources för Avanza-data:**
+
+- ❌ Google/Bing/DuckDuckGo (web search)
+- ❌ GitHub Search API (`api.github.com/search`)
+- ❌ Stack Overflow, Reddit, eller community-forums
+- ❌ Blockchain explorers (blockstream.info, etherscan.io, tronscan.org)
+- ❌ Cryptocurrency exchanges (banxa.com, 1inch.com, bitref.com)
+- ❌ Stock exchanges (live.deutsche-boerse.de, etc.)
+- ❌ Finance/trading data sites
+- ❌ AI "knowledge cutoff" eller modellens eget kunnande för faktiska Avanza-data
+- ❌ Generella API-aggregatorer eller scrape-services
+
+**WHY:** Dessa sources kan innehålla FELAKTIG eller VILSELEDANDE data om Avanza-projektet. Enda källan för Avanza-faktum är GitHub + Google Docs/Sheets.
+
+**IF YOU SEARCH THESE SOURCES:** Presentationen MISSLYCKADES. Du sökte utanför tillåtna sources.
+
+---
+
 ## FAILURE HANDLING
 
 ### ❌ TEKNISKA FEL HÖRS ALDRIG I PRESENTATIONEN

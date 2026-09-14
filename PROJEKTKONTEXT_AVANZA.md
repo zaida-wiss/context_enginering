@@ -116,21 +116,25 @@ Vid konflikt mellan sources gäller denna ordning:
 **Följ alltid den access- och fallback-strategi som anges i context-repots README.**
 
 **Använd ALDRIG:**
-- ❌ `git clone`
-- ❌ `git pull`
-- ❌ `git fetch`
-- ❌ `git ls-remote`
-- ❌ Repository-ZIP
-- ❌ Python-baserade nätverksanrop (urllib, requests)
-- ❌ Shell-kommandon mot GitHub
+- ❌ `git clone`, `git pull`, `git fetch`, `git ls-remote`
+- ❌ Repository-ZIP eller downloads
+- ❌ Python/shell-kommandon (urllib, requests, curl, wget)
+- ❌ **GOOGLE/BING/DuckDuckGo-sökning** — aldrig sök på webben efter Avanza-data
+- ❌ Externa webbplatser (coinbase, blockchain explorers, stock exchanges, etc.)
+- ❌ GitHub Search API eller "search the web"
 
-**Använd ISTÄLLET:**
-- ✅ GitHub Connector/API (om tillgänglig)
-- ✅ GitHub webåtkomst (via WebFetch eller webbläsare)
-- ✅ raw.githubusercontent.com för filer
-- ✅ Fallback enligt README
+**Använd ENDAST dessa URL-familjer:**
+- ✅ `https://github.com/chas-challenge-2026/avanza-team1/*` (GitHub web)
+- ✅ `https://api.github.com/repos/chas-challenge-2026/avanza-team1/*` (GitHub API)
+- ✅ `https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/*` (raw files)
+- ✅ `https://docs.google.com/document/*` (Google Docs)
+- ✅ `https://docs.google.com/spreadsheets/*` (Google Sheets)
+- ✅ `https://raw.githubusercontent.com/zaida-wiss/context_enginering/*` (context-repo files)
+- ✅ GitHub Connector (om tillgänglig)
 
-Om en GitHub-källa inte går att läsa ska **fallback-strategin i README följas innan information markeras som ej verifierad.**
+**Om en källa misslyckas → använd nästa i fallback-listan (DATA_SOURCES.md), INTE "sök på webben".**
+
+**PROHIBITION: Sök ALDRIG på externa webbplatser för Avanza-data. Fallback betyder "nästa hårdkodad URL", inte "sök på Google".**
 
 ---
 
