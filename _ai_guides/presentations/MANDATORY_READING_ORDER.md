@@ -244,9 +244,11 @@ Exempel på FEL matching:
 **🚨 DESSA FYRA FILER MÅSTE LÄSAS I DENNA ORDNING:**
 
 #### 3a. [structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md) — OBLIGATORISK
-   - De 14 mötespunkterna (①-⑧ eller ①-⑭)
+   - De 14 mötespunkterna (①-⑭) i logisk ordning: retrospekt → status → plan → åtgärd
+   - Ny ordning: Avklarat → Nuläge → Teams → Blockers → Risker → Kapacitet → Prioritering → Tekniska beslut → Sprintmål → Sprintplan → Nästa steg → Frågor
    - Vad varje punkt **MÅSTE** innehålla
-   - Vilka data-källor att hämta
+   - Vilka data-kilder att hämta
+   - Varje punkt kan ha 1-3+ slides
    - Obligatoriska element per punkt
    - **LÄNK:** Här säger vi VILKA GitHub-URLs att använda
 
