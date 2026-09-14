@@ -513,7 +513,7 @@ REKOMMENDATION:
 
 **DATA-KILDER:**
 - 🔍 Code review findings (från punkt ⑦)
-- 📊 Risk Register från `_memory/` (om teamet har en)
+- 📊 [Risk Register](../../_memory/RISK_REGISTER.md) (om finns)
 - 📊 GitHub Project Board divergens (Board status ≠ faktisk Git-status)
 
 **FORMAT:**
