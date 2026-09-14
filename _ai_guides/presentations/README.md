@@ -54,6 +54,14 @@ Denna fil säger:
 
 ---
 
+## 📚 Om Presentationen Inte Blir Rätt — Hjälp
+
+**Något går fel?**
+- 🔧 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — Presentation-relaterade problem (missing members, wrong data, etc.)
+- 📚 [ORDBOK.md](ORDBOK.md) — Branschterminologi & förklaringar som visas på slides
+
+---
+
 **START HÄR → [MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← ALLT DU BEHÖVER
 
 Denna fil innehåller:

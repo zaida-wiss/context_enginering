@@ -62,6 +62,19 @@ RESULTAT: Live GitHub-data + verifierad design = presentationen är klar
 
 ---
 
+## 📚 Referensmaterial & Guider
+
+**Om du behöver hjälp med...**
+
+| Vad | Fil | Syfte |
+|-----|-----|-------|
+| **Typiska AI-uppgifter** | [SKILLS.md](SKILLS.md) | Commit-format, arkitektur-beslut, etc. |
+| **Köra möten med AI** | [HOW_TO_RUN_MEETINGS.md](HOW_TO_RUN_MEETINGS.md) | Web-based AI vs VS Code workflow |
+| **Kodexempel-krav** | [ACCESSIBILITY_AND_SECURITY.md](ACCESSIBILITY_AND_SECURITY.md) | TypeScript, Accessibility, Security |
+| **Presentationsfelsökning** | [presentations/TROUBLESHOOTING.md](presentations/TROUBLESHOOTING.md) | Missing team members, Wrong data, etc. |
+
+---
+
 ## 🚀 Quick Links
 
 👉 **Gå till:** Root `README.md` för övergripande instruktioner och två-stegs läsordning  
