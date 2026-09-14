@@ -201,17 +201,22 @@ Den filen säger:
 ```
 
 **REGLER:**
-- ✅ TRE SEKTIONER: Merged (sortera datum, nyast först) | Pågår (senast pushad först) | Review (äldst först)
+- ✅ **TRE SLIDES, EN PER TEAM:**
+  - **①A = ENDAST Frontend-issues** (filtrera: Team = "Frontend" från GitHub)
+  - **①B = ENDAST Backend-issues** (filtrera: Team = "Backend" från GitHub)
+  - **①C = ENDAST Native-issues** (filtrera: Team = "Native" från GitHub)
+- ✅ **TRE SEKTIONER per slide:** Merged (sortera datum, nyast först) | Pågår (senast pushad först) | Review (äldst först)
 - ✅ **Assignad = ÄGARE av arbetet** (GitHub issue assignee), INTE reviewer eller merger
 - ✅ **FAKTISK GitHub-data**, ALDRIG exempel eller placeholders
 - ✅ **Väntar på review-sektion** måste ha tydlig visuell markering (orange/röd bakgrund)
-- ✅ **ALLA 7 team-medlemmar** måste synas (även om 0 arbete denna vecka)
+- ✅ **ALLA 7 team-medlemmar** måste synas distribuerade över ①A-C (även om 0 arbete denna vecka)
 - ✅ **Footer:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska issues]`
 
 **FÅR INTE SES:**
+- ❌ **EN gemensam slide för alla team** (detta är fel!)
+- ❌ Bara "Väntar på review"-sektion (måste visa Merged + Pågår också)
 - ❌ Team-områdena som sammanfattning (Frontend/Backend/Native/Team)
 - ❌ Commit-hashar
-- ❌ Bara merged (måste visa pågår + review också)
 - ❌ Stale branches (>3 dagar utan push)
 - ❌ Reviewer-namn som assignee
 - ❌ Exempel-issue-nummer (#90, #91, etc) från denna spec — använd FAKTISK GitHub-data!
