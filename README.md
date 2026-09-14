@@ -9,38 +9,24 @@
 
 ## 🚨 START HERE — Enligt vad du gör
 
-### Om du gör ett vanligt arbete:
-→ **[PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md)** ← MANDATORY
+### 👤 Jag gör vanligt arbete (kodning, issues, etc)
+→ **[_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md)** ← MANDATORY
 - HOW to work with this project
 - WHERE to get data
 - WHAT to do if something fails
 
-### Om du skapar en PRESENTATION:
-→ **STEG 1:** Läs [`_memory/README.md`](_memory/README.md) först (projektkontexten)  
-→ **STEG 2:** Läs **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← ENDA körordningen
+### 🎨 Jag skapar en PRESENTATION
+→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← ENDA körordningen
+- Läs denna fil för ALLA instruktioner (data, design, render-gate)
+- Se denna fil för detaljer om VISUAL_DESIGN_MANDATORY, SLIDE_DETAIL_SPEC, etc
 
-**KRITISKA KRAV innan rendering:**
-- ✅ Läst _memory/ (deadlines, schema)
-- ✅ **Läst VISUAL_DESIGN_MANDATORY.md** (obligatorisk!) — NPF/Dyslexia-vänlig design
-- ✅ Läst SLIDE_DETAIL_SPEC.md (exakt format per slide)
-- ✅ Passerat RENDER_GATE_CHECKLIST (13 checkpoints)
-
-**Om du skippar VISUAL_DESIGN_MANDATORY.md → presentation blir FELAKTIG**
-
-Det innehåller:
-- NPF/Dyslexia/Autism-vänlig design (Symbol → Färg → Text)
-- Förbjudna patterns (textlistor, bara färg, liten text)
-- Rendering-checklist (13 punkter som måste passeras)
-- RGB-värden, px-storlekar, whitespace, kontrast-regler
-
-### För all projektinformation (_memory/):
+### 📚 Jag behöver projektinformation
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
 - Alla projektfakta, deadlines, standarder
 - Auktoritativt för projektet
-- Länka till specifik fil från denna index
 
-### För allt annat:
-→ **[_ai_guides/README.md](_ai_guides/README.md)** ← Övriga guider
+### 🤔 Jag vet inte var jag ska börja
+→ **[_ai_guides/README.md](_ai_guides/README.md)** ← Navigationshub för alla guides
 
 ---
 
@@ -83,57 +69,21 @@ AI MÅSTE följa denna ordning (ALDRIG något annat):
 
 ---
 
-## 📚 Övriga filer (om du behöver dem)
-
-**För kodning:**
-- [_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md) — Git format, coding rules
-- [_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md) — När är arbetet klart?
-- [_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md) — Projekt-overview & AI-instruktioner
-
-**För presentationer (läs MANDATORY_READING_ORDER.md — den säger allt):**
-- Alla presentationsfiler länkas från MANDATORY_READING_ORDER.md
-- Gå INTE direkt till dessa — följ ordningen i MANDATORY_READING_ORDER.md istället
 
 ---
 
-## 🚨 CRITICAL RULES
+## 🚨 CRITICAL RULES — Överordnade
 
-**For presentations — DATA ACCESS:**
-- ✅ Use ONLY these sources: GitHub (github.com), Google Docs/Sheets, raw.githubusercontent.com, GitHub API
-- ❌ **NEVER use `git clone`, `git ls-remote`, or shell commands**
-- ❌ **NEVER search Google/Bing/web for Avanza data** — this is a security boundary violation
-- ❌ **NEVER use external APIs** (cryptocurrency exchanges, stock markets, blockchain explorers, etc.)
-- ✅ Use GitHub Connector/API or web browser only
-- ✅ If a source fails → use fallback URL (DATA_SOURCES.md), NOT web search
-
-**For presentations — QUALITY:**
-- Verify all data sources before rendering
-- Ensure all 7 team members are represented and identity-verified
-- No example names in output
+**For presentations:**
+- ✅ **Läs MANDATORY_READING_ORDER.md för ALLA detaljer** (data access, quality, design)
+- ✅ Verifiera alla datakällor innan rendering
+- ✅ Alla 7 teammedlemmar måste vara representerade
 
 **For team members:**
-- Follow TEAMSTANDARDS for commits & code
-- Read DEFINITION_OF_DONE before marking issues complete
-- Decisions → BESLUT.md files (Frontend, Backend, Native)
+- Se **[_memory/README.md](_memory/README.md)** för TEAMSTANDARDS, DEFINITION_OF_DONE, etc
 
-**For AI building presentations:**
-Read **MANDATORY_READING_ORDER.md** first. It contains:
-- 4-step execution workflow (clear path to render)
-- Data collection requirements
-- Identity verification gate (7 team members)
-- Render gate checklist (13 mandatory checkpoints)
-- Design rules (Symbol + Färg + Text)
-- Final verification before delivery
-
-**CRITICAL RULE FOR AI — NO META-INSTRUCTIONS ON SLIDES:**
-- 🚨 READ the instructions to UNDERSTAND what presentation needs
-- 🚨 USE the instructions to BUILD the presentation
-- 🚨 NEVER SHOW the instructions ON the slides themselves
-- 🚨 Only show RESULTS (GitHub data, team status, decisions, blockers)
-- 🚨 HIDE all AI-process, checklists, rules, and verification steps
-  
-See: [PRESENTATION_SPEC.md — NO META-INSTRUCTIONS ON SLIDES](_ai_guides/presentations/content/PRESENTATION_SPEC.md#L219)
-See: [RENDER_GATE_CHECKLIST.md — KRITISK: INGEN AI-INSTRUKTIONER PÅ SLIDES](_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md)
+**For AI guides & all other work:**
+- Se **[_ai_guides/README.md](_ai_guides/README.md)** för navigation
 
 ---
 
