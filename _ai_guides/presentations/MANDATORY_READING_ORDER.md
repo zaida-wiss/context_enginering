@@ -189,13 +189,22 @@ Exempel på FEL matching:
   → Use PR/Issue status as source of truth instead of Project Board
   DATA NEEDED: Per issue: status (to do/in progress/done), priority, assignee
   
-- [ ] **Meeting protocol denna vecka** — LIVE_VERIFIED eller FALLBACK_VERIFIED
+- [ ] **Meeting protocol denna vecka** — TRY → REPORT → FALLBACK (INTE blocker)
   PRIMARY URL: `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
-  ALT URL (raw-export): `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt` → may redirect
-  FALLBACK: If both Google Docs URLs fail:
-    - Use GitHub Issues/PR data as factual source instead
-    - Use meeting context from context-repot cache
-  DATA NEEDED: decisions made, blockers identified, action items, next priorities
+  
+  **KRITISK REGEL: Mötesprotokollet är CONTEXT, inte DATA**
+  
+  🔴 OM du INTE kan nå det:
+    → Rapportera: "Kunde inte nå mötesprotokollet. Kan du klistra in texten från mötet?"
+    → VÄNTA på användarens svar
+    → ELLER bygga presentationen utan detta (använd GitHub-data)
+  
+  ✅ FALLBACK (om mötet inte nås):
+    - Använd GitHub Issues/PRs som faktisk källa
+    - Använd möte-context från cache om tillgängligt
+    - Presentationen renderas ÄNDÅ (mötet är inte obligatoriskt)
+  
+  DATA BEHÖVS (om tillgängligt): beslut fattade, blockers identifierade, action items, nästa prioriteter
   
 - [ ] DoD denna vecka — LIVE_VERIFIED eller FALLBACK_VERIFIED
   Källa: PR descriptions + review approvals (från PR DETAILS ovan)

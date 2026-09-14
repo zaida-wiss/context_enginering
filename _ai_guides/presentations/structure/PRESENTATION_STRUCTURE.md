@@ -1,874 +1,691 @@
 ---
 name: presentation_structure
-description: Sprint meeting structure — 14 mötespunkter i pedagogisk ordning (Fakta → Analys → Beslut)
+description: 14 mötespunkter — konkret struktur, data-källor och handlingsplan
 metadata:
   type: reference
   critical: true
+  version: 2.0
 ---
 
-# 📋 PRESENTATION STRUCTURE — 14 Mötespunkter
+# 📋 PRESENTATION STRUCTURE — 14 Mötepunkter (①-⑭)
 
-**Denna struktur följer en tydlig logik: FAKTA → ANALYS → BESLUT**
+**🚨 ÖVERGRIPANDE REGEL: Presentationen Lär & Samarbetar, Rapporterar & Bygger Teamtänk**
 
-Mötet samlar först information, analyserar därefter situationen, och bestämmer först sedan planen.
+Presentationen fyller TRE syften:
+
+1. **TEAMTÄNK** — Inte individuell evaluering
+   - Huvudansvarig får ALDRIG betyda ENSAM ansvarig
+   - Presentationen ska undersöka: Hur kan teammedlemmar hjälpa, avlasta, paira eller täcka upp för varandra?
+   - Fokus: **Vägen till gemensam leverans, inte individuella prestationer**
+
+2. **BRANSCHPEDAGOGIK** — Lär domänvokabulär medan vi arbetar
+   - Förklara bara ord som står på sliden
+   - Varje branschterm markeras 📚 för att visa lärmål
+   - Möten blir lärtillfällen, inte bara statusrapporter
+
+3. **ACTIONBAR HANDLINGSPLAN** — Konkreta nästa steg
+   - Punkt ⑬ är inte en checklista utan en faktisk **handlingsplan med ansvarig och tidsram**
+   - Allt som sägs ska kunna omsättas direkt på GitHub
 
 ---
 
-## 🎯 MÖTESPRUNKTERNA — Ordning & Syfte
+## 🚨 KRITISKA REGLER
 
-Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc).
+**En mötespunkt ≠ en slide**
+- En mötespunkt kan motsvaras av 1-3 (eller fler) slides
+- Varje slide märks med samma 📝-symbol för mötespunkten den tillhör
+- Presentationen kan ha 20-30 slides — antalet varierar per vecka
+
+**Innan presentationen skapas: Obligatorisk Cross-Team Code & Contract Review**
+- Granska actual code i alla aktiva branches/PRs
+- Verifiera API-kontrakt (Frontend ↔ Backend)
+- Verifiera JNA-kontrakt (Backend ↔ Native)
+- Dokumentera avvikelser i relevanta mötespunkter (⑦, ⑩, ⑪)
+
+**Ingen checklista — bara faktisk data**
+- Slidorna fylls med verklig GitHub-data, inte tomma checkboxes
+- Se [MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md) för vilka GitHub-åtgärder som behövs
 
 ---
 
-## 📝① SEDAN FÖRRA MÖTET — Erkännande-retrospektiv
+## 🎬 FRAMSIDA — Extremt enkel & ren (ingen/📝⓪)
 
-**Syfte:** Visa ALLT vad som faktiskt blev klart denna vecka
+```
+HEADER:
+  Vänster: "SPRINTPLANERING · TEAM 1"
+  Höger: "Måndag 14 september · 09:00–10:30"
 
-**🚨 KRITISK REGEL: SLIDORNA MÅSTE FYLLAS MED FAKTISK DATA FRÅN GITHUB, INTE CHECKLISTOR**
+MAIN CONTENT (mycket whitespace):
 
-**Slides — MÅSTE visa ALLA PRs + ALLA team-medlemmar:**
+Fokus med PL denna vecka
 
-**Struktur: En slide per arbetsområde + en för pågående**
+Säkerställa veckans prioriteringar, beroenden
+och vägen mot CTO-demo.
+
+FOOTER (litet, 10-12pt, diskret):
+Underlag kontrollerat inför mötet:
+context_engineering · avanza-team1 · Git-status · Issues & PRs · Project Board
+Code review: [status — kontrakt verifierade]
+Mötesprotokoll: [status]
+
+DESIGN:
+✅ 70% tom yta
+✅ Max 3 textblock
+✅ Ingen agenda, inga kort, ingen extra info
+✅ Fokus ligger på PL-fokus-texten
+```
+
+---
+
+## 📝① SEDAN FÖRRA MÖTET — Done/Merged (1-2 slides)
+
+**Syfte:** Vad blev FAKTISKT klart denna vecka?
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Vad blev faktiskt klart denna vecka? (ALLA team-medlemmar från 7 dagar)
+- ✅ Konkreta commits från GitHub
+- ✅ Active branches
+- ✅ Stale branches (>3 dagar utan push)
+- ✅ Alla 7 team-medlemmar måste synas med arbete
+
+**DATA-KÄLLOR (MANDATORY):**
+- 📊 [Merged PRs denna vecka](../data/DATA_SOURCES.md#merged-prs) — GitHub URL
+- 📊 [Commits denna vecka](../data/DATA_SOURCES.md#commit-history) — GitHub URL
+- 📊 [Branches develop + active](../data/DATA_SOURCES.md#github-branches) — GitHub URL
+- 📋 [Team-medlemmar](../data/TEAM_ROSTER.md) — verifierade från git commits
+
+**FORMAT (MÅSTE VARA TABELLER, INTE CHECKLISTOR):**
 
 ### ①A: Frontend — Levererat denna vecka
 
-**DATA-KÄLLA (MANDATORY):**
-- GitHub URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13+label:frontend`
-- Fallback: `https://github.com/chas-challenge-2026/avanza-team1/pulls` → filter manually by merged + frontend label
-- Hämta: ALLA merged PRs denna vecka i Frontend arbetsområde
+| PR | Titel | Författare | Datum | Issues | DoD |
+|----|-------|-----------|-------|--------|-----|
+| #90 | Login page + token handling | Zaida | Sep 10 | #40 | 🟢 ✅ |
+| #79 | Design system + top bar | Björn | Sep 10 | #44, #45 | 🟡 Docs |
+| #72 | Save target allocation | Tomac | Sep 9 | #41 | 🟢 ✅ |
 
-**SLIDANS INNEHÅL (MÅSTE INNEHÅLLA FAKTISK DATA, INTE CHECKLISTOR):**
-- ALLA PRs mergade in i develop denna vecka (Frontend & Auth arbetsområde) — med PR-nummer, titel, författare
-- För varje PR: issue-owner, commits, DoD-status (🟢/🟡/🔴)
-- Alla Frontend-personer som hade work synliga — formaterat som "Namn (X PRs/commits — arbete)"
-
-**EXEMPEL PÅ RÄTT FORMAT (TABELL, INTE CHECKLISTA):**
-| PR | Titel | Författare | DoD | Issues |
-|----|-------|-----------|-----|--------|
-| #90 | feat(frontend): login page | Zaida | 🟢 ✅ | #40 |
-| #45 | styling: portföljhälsa-rubrik | Björn | 🟡 Docs saknas | #45 |
-
-**❌ FELAKTIGT FORMAT (CHECKLISTA):**
-```
-Vilka PRs är mergade? 
-[ ] Fyll i
-Vilka issues är closed?
-[ ] Fyll i
-```
+**Team-medlemmar denna vecka:**
+- Zaida Wiss (2 PRs — login page, dashboard)
+- Björn Boman (1 PR — design system)
+- Tomac Barin Jansson (2 PRs — allocation, portfolio)
 
 ### ①B: Backend — Levererat denna vecka
 
-**DATA-KÄLLA (MANDATORY):**
-- GitHub URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13+label:backend`
-- Fallback: Manual filter från `/pulls` sida
-- Hämta: ALLA merged PRs denna vecka i Backend arbetsområde
+| PR | Titel | Författare | Datum | Issues | DoD |
+|----|-------|-----------|-------|--------|-----|
+| #91 | Clean controllers | Rasha | Sep 10 | #76 | 🟢 ✅ |
+| #71 | Flyway migration + schema | Rasha | Sep 10 | #56 | 🟢 ✅ |
+| #63 | SessionSecurityFilter | Rasha | Sep 7 | #57 | 🟡 Tests |
 
-**SLIDANS INNEHÅL (FAKTISK DATA):**
-- ALLA PRs mergade in i develop denna vecka (Backend & Session arbetsområde) — med PR-nummer, titel, författare
-- För varje PR: issue-owner, commits, DoD-status (🟢/🟡/🔴)
-- Alla Backend-personer som hade work synliga
-
-**FORMAT:** Tabell (se ①A ovan)
+**Team-medlemmar denna vecka:**
+- Rasha Knifdi (5 PRs — security, migrations, controllers)
+- Erik Berglund (0 PRs denna vecka)
 
 ### ①C: Native/System — Levererat denna vecka
 
-**DATA-KÄLLA (MANDATORY):**
-- GitHub URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13+label:native`
-- Fallback: Manual filter
-- Hämta: ALLA merged PRs denna vecka i Native arbetsområde
+| PR | Titel | Författare | Datum | Issues | DoD |
+|----|-------|-----------|-------|--------|-----|
+| #92 | Risk-module extensive additions | Pär | Sep 10 | #61, #65, #74 | 🟢 ✅ |
+| #64 | FX and risk modules | Henrik | Sep 7 | — | 🟡 Docs |
 
-**SLIDANS INNEHÅL (FAKTISK DATA):**
-- ALLA PRs mergade in i develop denna vecka (Native & Risk Motor arbetsområde) — med PR-nummer, titel, författare
-- För varje PR: issue-owner, commits, DoD-status (🟢/🟡/🔴)
-- Alla Native-personer som hade work synliga
+**Team-medlemmar denna vecka:**
+- Pär Lundh (1 PR — risk module)
+- Henrik Westerlund (1 PR — FX module)
 
-**FORMAT:** Tabell (se ①A ovan)
+### ①D: Byggde vidare denna vecka (NULÄGESBILD)
 
-### ①D: Byggde vidare denna vecka — NULÄGESBILD
+**Öppna PRs (väntar på review):**
 
-**DATA-KÄLLOR (MANDATORY):**
-1. Öppna PRs: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
-2. Öppna issues: `https://github.com/chas-challenge-2026/avanza-team1/issues`
-3. Commits denna vecka: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop` (filter senaste 7 dagar)
+| # | Titel | Författare | Reviewer? | Status |
+|---|-------|-----------|-----------|--------|
+| #95 | Fix SQL-injection | Rasha | ❌ INGEN | 🔴 BLOCKERAD |
+| #80 | Drift banner | Tomac | ❌ INGEN | 🔴 BLOCKERAD |
+| #68 | Update README | Zaida | ❌ INGEN | 🔴 BLOCKERAD |
 
-**SLIDANS INNEHÅL (FAKTISK DATA):**
-- ALLA öppna PRs denna vecka — med PR-nummer, titel, författare, reviewer-status
-- ALLA öppna issues denna vecka — med issue-nummer, titel, assignee
-- Commits denna vecka — med datum, författare, meddelande
+**🚨 OBSERVATION:** Alla 3 öppna PRs saknar reviewer — de kan inte mergas!
 
-**FORMAT:** Tabeller (se ①D-detaljer nedan)
+**Öppna issues denna vecka (aktiv arbete):**
 
-**KRITISK REGEL: INGET ARBETE FÅR UTELÄMNAS för att det inte får plats på sliden.**
+| # | Titel | Assignerad | Team | Upd |
+|---|-------|-----------|------|-----|
+| #89 | E2E test MVP | Zaida | Frontend | Sep 10 |
+| #88 | Täck kritiska interactions | Zaida | Frontend | Sep 10 |
+| #93 | SQL-injection (Java) | Rasha | Backend | Sep 10 |
+| #78 | Rolling Volatility | Pär | Native | Sep 10 |
 
-**Om många PRs denna vecka:**
-- Slide ①A: Sammanfattning (antal PRs per team)
-- Slide ①A.1: Frontend PRs denna vecka (ALLA)
-- Slide ①A.2: Backend PRs denna vecka (ALLA)
-- Slide ①A.3: Native/System PRs denna vecka (ALLA)
+**Senaste commits denna vecka:**
 
-**FORMAT (OBLIGATORISK STRUKTUR):**
+| Datum | Författare | Meddelande | Issue |
+|-------|-----------|-----------|-------|
+| 10 sep | Björn | Merge login-page (#90) | #40 |
+| 10 sep | Zaida | Auth integration + logout | #40 |
+| 10 sep | Pär | Rolling values-funktioner | #75, #77, #78 |
 
-**DEL 1: PR-KORT (visuell snabbscan)**
-
-🟢 **GRÖN** = PR MERGED i develop + DoD COMPLETE
-- Alla 4 DoD-punkter uppfyllda: ✅ AC ✅ Tests ✅ Review ✅ Docs
-- Format: `🟢 #92 Auth integration (Zaida) — MERGED`
-
-🟡 **ORANGE** = PR MERGED i develop MEN DoD INCOMPLETE
-- Någon DoD-punkt saknas (ofta: Tests eller Docs)
-- Format: `🟡 #80 Drift banner (Tomac) — MERGED [⚠️ Tests saknas]`
-
-🟡 **ORANGE** = PR OPEN (pågår, väntar på review/merge)
-- Format: `🟡 #94 SQL injection (Rasha) — OPEN [Väntar på review]`
-
-🔴 **RÖD** = BLOCKERAD (väntar på annat, kan inte merga)
-- Format: `🔴 #77 Native integration (Henrik) — BLOCKED [Väntar på Backend API]`
-
-- PR-nummer + titel
-- Vem ägde arbetet (issue-owner)
-- Commit-count + branch
-- En kort rad per PR
-- **KRITISK:** Visa DoD-status på VARJE PR (grön/orange/röd)
-
-**DEL 2: PROGRESS BARS (ett ögonkast)**
-- "Merged & Done (🟢)" — % med komplett DoD
-- "Merged & Incomplete (🟡)" — % merged men något saknas
-- "Open (🟡)" — % i review/pågår
-- "Blocked (🔴)" — % blockerad
-
-**DEL 3: TABELL (detaljer för djupläsning) — STÖRRE FONT**
-- Kolumner: PR/Issue | Status | Ägare | DoD-Status | Vad saknas?
-- En rad per PR denna vecka
-- **STATUS-FÄRG:** 🟢/🟡/🔴 motsvar merged/incomplete/blocked
-- **DoD-KOLUMN:** Visar exakt vilka av 4 punkter som är klara (AC/Tests/Review/Docs)
-- **"Vad saknas"-KOLUMN:** Om orange/röd, säg explicit vad (Ex: "Tests", "Docs uppdatering", "Väntar på Backend")
-- Varför arbetet spelar roll (effekt)
-- **FONT-SIZE:** 
-  - Header: 14pt BOLD marinblå bakgrund (vit text)
-  - Cell-content: 13pt regular
-  - Footer: 12pt (meta-info, sources)
-- **RADHÖJD:** Minst 24px per rad (luftig, NPF-vänlig)
-
-**Obligatoriska element:**
-- ✅ **HUVUDFOKUS: Vilka PRs blev MERGED in i develop denna vecka?**
-- ✅ **ALLA PRs denna vecka måste visas** — ingen får utelämnas för plats
-- ✅ **DoD-STATUS PÅ VARJE PR:**
-  - 🟢 GRÖN = Merged + ALL DoD complete (AC ✅ Tests ✅ Review ✅ Docs ✅)
-  - 🟡 ORANGE = Merged men något saknas (Ex: Tests eller Docs)
-  - 🟡 ORANGE = Open (väntar på review/merge)
-  - 🔴 RÖD = Blockerad (kan inte merga än)
-- ✅ **TABELL-KOLUMN: "Vad saknas?"** — Om orange/röd, säg EXAKT vad
-  - Ex: "Tests saknas för DoD" eller "Docs behöver uppdateras" eller "Väntar på Backend API"
-- ✅ PR-kort överst (snabb visuell scan med färgkodning)
-- ✅ Progress bars (fördelning: grön/orange/röd)
-- ✅ Tabell med område, status, ägare, DoD-status, vad saknas
-- ✅ För varje PR: **Vem ÄGde den issuen?** (issue assignee eller PR-author)
-- ✅ **Alla teammedlemmar som hade arbete måste synas MED ARBETSBESKRIVNING**
-  Format: `Namn (X commits/PRs — vad de gjorde)`
-  Exempel:
-    - Tomac Barin Jansson (2 commits — target allocation)
-    - Björn Boman (10 commits — design system styling)
-    - Zaida Wiss (13 commits — auth feature implementation)
-    - Erik Berglund (0 commits denna vecka — väntar på review PR #94)
-    - Rasha Knifdi (3 merged PRs — controllers + migrations)
-    - Pär Lundh (8 commits — rolling values calculations)
-    - Henrik Westerlund (1 PR merged — risk module)
-  
-  **Regel:** Namn ALDRIG utan arbete-context. Varje person ska kunna se vad de bidrog med denna vecka.
-- ✅ Arbetsområden, inte bara issue-nummer (Frontend & Auth, Backend & Risk, etc)
-- ✅ Effektbeskrivning: **varför detta arbete spelar roll** (kort, konkret)
-- ✅ **Om någon person HAR aktivitet denna vecka men INGEN PR synlig → investiga varför**
-  - Kan vara branch utan PR än
-  - Kan vara commits utan PR
-  - Kan vara review-arbete på andra PRs
-- ✅ **FOOTER-TEXT:** Förklara legend: "🟢 = Merged & DoD Complete | 🟡 = Merged & DoD Incomplete | 🔴 = Blocked"
-
-**Data från:** **Merged PRs in develop** (denna vecka) — repo-first reconstruction
-**INTE:** Bara "closed issues" eller "issues utan merge"
-**CHECKLIST:** Före ①A renderas — räkna faktiska PRs. Matcha antal PRs på slide mot GitHub.
+**⚠️ VARNING:** Senaste commits 10 sep → ingen kod sedan dess (4 dagar)
 
 ---
 
-### ①D DETALJER: NULÄGESBILD — ÖPPNA PRs, ÖPPNA ISSUES, COMMITS
+## 📝② SPRINTMÅL (Big picture — 1 slide)
 
-**DENNA SEKTION VISAR VAD JOBBES MED JUST NU:**
+**Syfte:** Vad ska denna sprint åstadkomma?
 
-**DEL 1: ÖPPNA PRs (Väntar på review/merge)**
+**MÅSTE INNEHÅLLA:**
+- ✅ 1-3 tydliga fokusområden
+- ✅ Deadline synlig
+- ✅ Koppling till CTO-deadline
 
-TABELL:
-| # | Titel | Författare | Reviewer assignerad? | Status | Issue-länk |
-|---|-------|-----------|---------------------|--------|-----------|
-| #95 | Fix SQL-injection i login | Rasha Knifdi | ❌ **INGEN** | Väntar på review | #93 |
-| #80 | Drift banner från live target | Tomac Barin | ❌ **INGEN** | Väntar på review | #42 |
-| #68 | Docs: Uppdatera README v2 | Zaida Wiss | ❌ **INGEN** | Väntar på review | — |
+**DATA-KÄLLOR:**
+- 📊 [Kritiska deadlines](../structure/PRESENTATION_STRUCTURE.md#kritiska-deadlines) från mötet
+- 📊 GitHub Project Board (manuell läsning)
 
-**KRITISK OBSERVATION:** Om PR-kolumnen "Reviewer assignerad?" visar ❌ för ALLA eller MÅNGA PRs → detta är en blocker. PRs kan inte mergas utan godkännare.
-
-**DEL 2: ÖPPNA ISSUES (Aktiv arbete denna vecka)**
-
-TABELL (sorterad per assignee):
-| # | Titel | Assignerad till | Team | Labels | Senast uppdaterad |
-|---|-------|-----------------|------|--------|------------------|
-| #89 | E2E test MVP core-flow | Zaida Wiss | Frontend | frontend | Sep 10 |
-| #88 | Täck kritiska MVP-interaktioner | Zaida Wiss | Frontend | frontend | Sep 10 |
-| #87 | Etablera test-foundation | Zaida Wiss | Frontend | frontend | Sep 10 |
-| #86 | Responsive dashboard | Zaida Wiss | Frontend | frontend, styling | Sep 10 |
-| #93 | SQL-injection i login (Java) | Rasha Knifdi | Backend | backend | Sep 10 |
-| #78 | Rolling Volatility (long period) | Pär Lundh | Native | native | Sep 10 |
-
-**MÖNSTER ATT LETA EFTER:**
-- En person har för många issues assignade (överbelastad?)
-- Ingen har aktivitet denna vecka (teamet är pausat?)
-- Gamla uppdaterings-datum (arbete står still?)
-
-**DEL 3: COMMITS DENNA VECKA (Verifierat arbete)**
-
-TABELL (senaste först):
-| Datum | Författare | Meddelande (första raden) | Issue-länk | PR-länk |
-|-------|-----------|-------------------------|-----------|---------|
-| 10 sep | Björn Boman | Merge login-page PR (#90) | #40 | #90 |
-| 10 sep | Zaida Wiss | Tillgänglighet på login-form | #40 | #40 |
-| 10 sep | Henrik Westerlund | Merge Native PR (#92) | — | #92 |
-| 10 sep | Pär Lundh | Rolling values-funktioner | #75, #77, #78 | — |
-
-**KRITISK OBSERVATION:**
-- Senaste commit är från **10 sep** (tidigare denna vecka)
-- Idag är **14 sep** → **4 dagar utan ny kod**
-- Möjlig tolkning: Teamet pushade på fredagen, inget över helgen/måndag
-
-**VARNING-SIGNALER:**
-- ❌ Inga commits denna vecka = teamet har inte pushat alls
-- ❌ Alla öppna PRs utan reviewer = arbetet fastnar i review
-- ❌ En person assignerad för många issues = risk för overload
-- ❌ Gamla uppdaterings-datum = arbete står still
-
-**RENDERING-REGEL FÖR ①D:**
-- MÅSTE visa minst en tabell (PRs eller Issues eller Commits)
-- Alla tre rekommenderas för att visa full nulägesbild
-- Flagga kritiska varningar-signaler med 🚨
-- **Font:** 12pt-13pt för tabellar (mindre än ①A-C för att få plats med mer data)
-
----
-
-## 📝② PROJEKTETS NULÄGE & KRITISKA DEADLINES
-
-**Syfte:** Etablera referenspunkt för all kommande analys — VAR VI STÅR I TIDSPLANEN **OCH VAD VI MÅSTE GÖRA FÖR ATT LYCKAS**
-
-**Slides:**
-- **②A: Övergripande status** — var står vi mot slutleverans?
-- **②B: Kritiska deadlines + VAD BEHÖVS** — CTO, Kvaldemo, Final + konkreta krav PER DEADLINE
-
-**Obligatoriska element (MÅSTE VISAS):**
-- ✅ **NÄSTA DEADLINE (denna sprint):** CTO-underlag (24 sep) med dagar kvar
-- ✅ **VAD BEHÖVS för CTO:** Risk-analysis, tekniska beslut, kapacitets-analys, test-strategi
-- ✅ **FOKUS DENNA VECKA:** Konkreta tasks som behövs för att lyckas på CTO-deadline
-- ✅ **Kvaldemo-datum:** 22 oktober + VAD det kräver (fungerande demo)
-- ✅ **Slutleverans-deadline:** 4 november + VAD det kräver (kod + dokumentation)
-- ✅ **Finaldag:** 5 november + VAD det kräver (presentation + jurybeslut)
-- ✅ **Status mot varje deadline:** 🟢 ON TRACK / 🟠 SLIGHT RISK / 🔴 CRITICAL
-- ✅ Dagar/veckor kvar till nästa kritisk deadline (framräknad från idag)
-
-**KRITISKA DEADLINES (dessa MÅSTE synas på slide ②B):**
+**FORMAT:**
 ```
-🔴 CTO-underlag       — 24 sep 16:00  (V6)
-🟠 Kvaldemo-plan      — 15 okt 17:00  (V9)
-🟢 KVALDEMO           — 22 okt 09:00  (V10) ← FINALISTVAL
-🟠 Omtagsplan         — 26 okt 16:00  (V11)
-🟢 SLUTLEVERANS       — 4 nov 15:00   (V12)
-🎊 FINALDAG           — 5 nov 09:00   (V12)
-```
+🎯 SPRINT 4 MÅL (14-20 sep)
 
-**Format för slide ②B (VISUELL TIDSLINJE + STATUS + KONKRETA KRAV):**
+1. Säkerställa CTO-underlag klart 24 sep
+   - Tekniska risker dokumenterade
+   - Arkitektur-beslut fastslagna
+   - Kapacitets-plan realistisk
 
-### TIDSLINJE MED ALLA DEADLINES
+2. Stabilisera Frontend-Backend integration
+   - API-kontrakt mellan systemen
+   - End-to-end login flow fungerar
 
-```
-IDAG: 14 sep 2026 (Vecka 4)
+3. Native Risk-module production-ready
+   - Rolling values-beräkningar verifierade
+   - Performance-tests OK
 
-VECKA 4      VECKA 5-10           VECKA 11-12
-BUILD        DEMO & STABILISERING  FINALISERING
-├──────────────────────────────────────────────────────┤
-│          ⏱️ CTO (24 sep)        │ ⏱️ Kval (22 okt)  │ ⏱️ Final (5 nov)
-│
-V Idag (14 sep)
-```
-
-### STATUS FÖR VARJE DEADLINE
-
-| Deadline | Datum | Dagar kvar | Vad det kräver | Status | Risk |
-|----------|-------|-----------|---|--------|------|
-| **CTO-underlag** | 24 sep | 10 | Tekniska risker, arkitektur-beslut, kapacitets-analys, test-strategi | 🟠 PÅGÅR | Medium — många beslut kvar |
-| **Kvaldemo** | 22 okt | 38 | Fungerande end-to-end demo (login → portfölj → risk-analys) | 🟡 BEROENDE | Beror på CTO-beslut |
-| **Slutleverans** | 4 nov | 51 | Fullständig kod + tester + dokumentation + deployment | 🟡 TIDIGT | Tidigt att bedöma |
-| **Final** | 5 nov | 52 | Presentation + demo för jury | 🟢 LÅNGT | Långt fram |
-
-### 🎯 FOKUS NU NÄRMAST — VAD BEHÖVS DENNA VECKA (V4)
-
-**CTO-deadline 24 sep (10 dagar kvar)**
-
-Denna deadline bepamer resten av projektet. Vi måste ha:
-- ✓ **Risk-analys:** Top 5 tekniska risker identifierade + mitigerings-strategi
-- ✓ **Arkitektur-beslut:** API-kontrakt mellan frontend/backend/native fastslagna
-- ✓ **Kapacitets-plan:** Realitetscheck — kan vi klara Kvaldemo & Final?
-- ✓ **Test-strategi:** Vilka tester (unit/integration/e2e) är obligatoriska?
-- ✓ **Integrations-plan:** Hur hänger frontend/backend/native ihop?
-
-**Om vi INTE levererar detta:** Resten av projektet blir oklart och vi kan missa Kvaldemo-deadline.
-
-### 📊 Efter CTO — VAD HÄNDER SEDAN
-
-**Vecka 5-9: BUILD & STABILISERING**
-- Implementera enligt arkitektur-beslut från CTO
-- Integrera frontend/backend/native enligt plan
-- Byggarbete: features, bugfixes, stabilisering
-
-**Vecka 10-11: KVALDEMO SPRINT**
-- Datum: **22 oktober** — slutgiltig demo för kund
-- Krav: End-to-end fungerande, inga kritiska buggar, UI-polished
-- Om detta misslyckas: Kan bli omtagning innan Final
-
-**Vecka 12: SLUTLEVERANS & FINAL**
-- Datum: **4 nov** — slutleverans (kod + docs)
-- Datum: **5 nov** — Final presentation för jury
-- Krav: Allt är deployat, dokumenterat och presentabelt
-
-### VISUELL STATUSÖVERSIKT
-
-```
-Progress i kurs:           ████░░░░░░░░░░░░░░░░░  14% (14/56 dagar)
-CTO-deadline:              ████████░░░░░░░░░░░░░   38% (10/26 dagar till CTO)
-Vägen till Kvaldemo:       ░░░░░░░░░░░░░░░░░░░░░   0% (38 dagar kvar)
-Vägen till Final:          ░░░░░░░░░░░░░░░░░░░░░   0% (52 dagar kvar)
-
-Legend: ████ = Avklarad  |  ░░░░ = Kvar
-```
-
-**Vad som avgör om vi lyckas:**
-1. **CTO-deadline → ON TRACK?** Blir det andra deadlines realistiska
-2. **Integration-risk?** Kan frontend/backend/native kombineras i tid?
-3. **DoD-begreppet:** Testat + dokumenterat + demot? Eller bara "färdigt"?
-
-**Visuella element MÅSTE inkluderas:**
-- 📍 Tidslinje med veckor markerade
-- 🟢/🟠/🔴 färgkodade deadlines
-- Progress bar (hur långt i kursen vi är)
-- **Fokusruta HÖGST UP:** Vad vi behöver fokusera på NU närmast
-- Dagar kvar för varje deadline
-- Korta beskrivningar av vad varje deadline kräver
-
-**Data från:** SCHEDULE.md (officiell kursschema) — idag automatiskt framräknat
-
-**Data från:** SCHEDULE.md (officiell kursschema), Project Board, meeting protocol
-
----
-
-## 📝③ FRONTEND TEAM
-
-**Slides (kan vara 2-3):**
-- **③A: Var är vi? — Issue- och DoD-status**
-- **③B: Vad behöver vi göra? — Handlingsplan, in/utgående beroenden och teamrisker**
-- (Eventuellt) **③C: Visuell verifiering** — skärmdump från dev-environment
-
-### ③A: Issue Status Table (OBLIGATORISKT FORMAT)
-
-MÅSTE visas som en tabell, aldrig som lista eller generell text.
-
-**Varje relevant aktiv issue ska visa:**
-- issue-nummer + faktisk titel från GitHub
-- kort beskrivning av vad issuen innebär
-- faktisk assignee (flera om flera ansvariga)
-- Board-status + GitHub Issue state (skildt)
-- DoD-checkpoints som separata kolumner:
-  **AC | Tests | Review | Docs**
-- relevant PR/Git-aktivitet denna vecka
-
-**Ingen generell lista såsom "Öppna: #89, #88, #87..." är tillåten.**
-**Ingen generell DoD-förklaring får ersätta DoD-status för enskilda issues.**
-
-Om tabellen inte ryms läsbart:
-→ dela ③A på flera slides: ③A.1, ③A.2, etc
-→ Ta ALDRIG bort kolumner eller assignees för att få plats
-
-**Se PRESENTATION_SPEC.md för exakt tabell-format.**
-
-### ③B: Handlingsplan + Beroenden + Risker (OBLIGATORISKT)
-
-Efter denna slide ska teammedlemmen förstå:
-- Vad är nästa prioriterade arbete per person?
-- Vem väntar vi på?
-- Vem väntar på oss?
-- Vilka risker påverkar teamets plan?
-
-**Fyra obligatoriska sektioner:**
-1. **Nästa arbete** — prioriterad ordning per issue + assignee
-2. **Vi väntar på** — inkommande beroenden (dependency vs blocker)
-3. **Andra väntar på oss** — utgående beroenden (vem väntade vi på?)
-4. **Risker att diskutera** — teamspecifika risker som kräver beslut/uppmärksamhet
-
-**Allt måste kopplas till verkliga issues, personer, beroenden och risker.**
-
-**Ingen generell lista är tillåten** (t.ex. "Fortsätt med tester", "Stäng DoD").
-
-**See PRESENTATION_SPEC.md for exact table formats.**
-
-**Obligatoriska element:**
-- ✅ Prioriterat nästa arbete per issue och assignee
-- ✅ Konkret nästa steg och verifierbart färdigkriterium
-- ✅ INKOMMANDE beroenden: vem/vad blockerar eller fördröjer oss?
-- ✅ UTGÅENDE beroenden: vilka team/personer väntar på oss?
-- ✅ Fallback-arbete för varje kritiskt dependency
-- ✅ Risker som specifikt påverkar teamets plan
-- ✅ Ägare och nästa åtgärd för varje blocker/risk
-- ✅ Beslut som måste fattas på mötet tydligt markerade
-
-**Data från:** GitHub commits, open issues, PRs, DoD status per issue, team roster
-
----
-
-## 📝④ BACKEND TEAM
-
-**Samma struktur och visuell utrymme som Frontend (③)**
-
-**Slides (kan vara 2-3):**
-- **④A: Var är vi? — Issue- och DoD-status** (issue-tabell format)
-- **④B: Vad behöver vi göra? — Handlingsplan, in/utgående beroenden och teamrisker**
-- (Eventuellt) **④C: Visuell verifiering**
-
-**Exakt samma regler som ③A och ③B.**
-**Se PRESENTATION_SPEC.md för tabell-format och obligatoriska sektioner.**
-
----
-
-## 📝⑤ NATIVE / SYSTEM TEAM
-
-**Samma struktur och visuell utrymme som Frontend (③) och Backend (④)**
-
-**Slides (kan vara 2-3):**
-- **⑤A: Var är vi? — Issue- och DoD-status** (issue-tabell format)
-- **⑤B: Vad behöver vi göra? — Handlingsplan, in/utgående beroenden och teamrisker**
-- (Eventuellt) **⑤C: Visuell verifiering**
-
-**Exakt samma regler som ③A/④A och ③B/④B.**
-**Se PRESENTATION_SPEC.md för tabell-format och obligatoriska sektioner.**
-
----
-
-## 📝⑥ BEROENDEN & BLOCKERS
-
-**Syfte:** Identifiera vad som hindrar framsteg och vad vi kan göra åt det
-
-**Slides:**
-- **⑥A: Blocker-flödesdiagram** — vem väntar på vem? (visuell)
-- **⑥B: Åtgärd denna vecka** — vad gör vi medan vi väntar?
-
-**Obligatoriska element:**
-- ✅ Varje blocker visar: VAD väntar, PÅ VAD, VEM påverkas
-- ✅ Sannolikhet att lösas denna vecka
-- ✅ Alternativ väg framåt (går något annat att göra?)
-- ✅ Ägarskap för att lösa blockern
-
-**Data från:** GitHub issues, PRs, meeting protocol
-
----
-
-## 📝⑦ RISKER
-
-**Syfte:** Identifiera vad som kan hindra leveransen
-
-**Slides:**
-- **⑦A: Riskmatris** — Sannolikhet × Konsekvens
-- **⑦B: Åtgärder** — vad gör vi proaktivt?
-
-**Obligatoriska element:**
-- ✅ Varje risk visar: TYP (teknisk, kapacitet, extern), SANNOLIKHET, KONSEKVENS
-- ✅ Åtgärd (förebyggande eller beredskapplan)
-- ✅ Ansvar för att monitorera
-- ✅ Tidshorizon
-
-**Data från:** Team input, meeting protocol, technical decisions
-
----
-
-## 📝⑧ KAPACITET & ESTIMERING
-
-**Syfte:** Verifiera att planen är realistisk
-
-**Slides:**
-- **⑧A: Timmar tillgänglig vs behövd** per team
-- **⑧B: Överbelastning eller buffert** — kan vi klara det här?
-
-**Obligatoriska element:**
-- ✅ Tillgänglig kapacitet denna vecka (personer × timmar)
-- ✅ Estimerad behov (alla issues + viss buffer)
-- ✅ Skillnad: buffer eller överbelastning?
-- ✅ Om överbelastning: vad skjuts upp?
-
-**Data från:** Team estimates, issue estimates, available hours
-
----
-
-## 📝⑨ PRIORITERING & SCOPE
-
-**Syfte:** Besluta vad som FAKTISKT ska göras baserat på kapacitet & risker
-
-**Slides:**
-- **⑨A: Must / Next / Later-matris** — kategorisera issues
-- **⑨B: Denna vecka Definitivt + Denna vecka Gärna** — vad är finalists?
-
-**Obligatoriska element:**
-- ✅ MUST-HA (blockar annars andra team eller slut-deadline)
-- ✅ NEXT (viktigt men kan skjutas upp en vecka)
-- ✅ LATER (nice-to-have, kan vänta)
-- ✅ Avgöring: vilka MUST går in i sprintplanen?
-
-**Data från:** Previous analysis (kapacitet, blockers, risker, kundvärde)
-
----
-
-## 📝⑩ TEKNISKA BESLUT
-
-**Syfte:** Fastställa kontrakt mellan team
-
-**Slides:**
-- **⑩A: API-kontrakt mellan Frontend-Backend** (om relevant)
-- **⑩B: Native-integration & JNA (om relevant)**
-- **⑩C: Andra kritiska avtal** (database schema, deployment procedure, etc)
-
-**Obligatoriska element:**
-- ✅ BESLUT (vad är fastslaget?)
-- ✅ IMPLEMENTERAD I (vem bygger vad?)
-- ✅ VERIFIERING (hur vet vi det fungerar tillsammans?)
-- ✅ Deadline för implementering
-
-**Data från:** Technical discussions, active branches, architecture decisions
-
----
-
-## 📝⑪ SPRINTMÅL
-
-**Syfte:** Formulera målet EFTER vi förstår läget, kapaciteten och prioriteringarna
-
-**Denna punkt avgör:** Vad ska funktionera när sprinten är slut?
-
-**Slides:**
-- **⑪A: Sprintmål (text)** — kort formulering av veckans fokus
-- **⑪B: Success criteria** — hur verifierar vi att målet är uppnått?
-
-**Obligatoriska element:**
-- ✅ Mål formulerat utifrån faktisk kapacitet (inte idealt)
-- ✅ Success criteria som kan verifieras (demobara funktioner, tester klara, etc)
-- ✅ Referens till slutleverans-deadline (hur bidrar detta till målet?)
-- ✅ Kundbehov / affärslogik tydlig
-
-**Format:** "Vid slutet av veckan ska [X] fungera så att [Y] kan [Z]"
-
-**Exempel:** "Vid slutet av veckan ska login med två-faktor fungera så att säkerhetstesten kan passa."
-
----
-
-## 📝⑫ SPRINTPLAN & PLANERINGSKONTROLL
-
-**Syfte:** Översätta sprintmålet till en realistisk arbetsplan + kvalitetsgranska GitHub Project Board/backlog
-
-**DENNA PUNKT GANSKA INTE BARA BESKRIVA PLANEN.**
-
-AI ska analysera om planen är genomförbar utifrån verifierad projektdata från tidigare mötespunkter (①–⑪).
-AI agerar som en erfaren projektledare och synliggör luckor, risker och förbättringar.
-
-### ⑫A — PLANERINGSKONTROLL
-
-**MÅSTE svara på:**
-1. Är sprintmålet realistiskt med aktuell kapacitet?
-2. Vilka issues ligger på kritisk väg?
-3. Vilka beroenden styr ordningen?
-4. Vilka team blockerar andra team?
-5. Finns tillräckligt oberoende fallback-arbete?
-6. Finns DoD-arbete som ännu inte är planerat?
-7. Finns arbete i sprinten som inte bidrar till sprintmålet?
-8. Finns för mycket arbete jämfört med verifierad kapacitet?
-
-**Visa en sammanfattande bedömning:**
-
-| Kontroll | Bedömning | Varför |
-|----------|-----------|--------|
-| Sprintmål mot kapacitet | 🟢/🟡/🔴 | [2-4 verifierade orsaker] |
-| Kritisk väg | [status] | [vem → vem → vem] |
-| Fallback-arbete | ✓/⚠️ | [antal oberoende issues] |
-| Board-kvalitet | [status] | [antal issues med divergens] |
-| Backlog | [status] | [luckor eller gamla items] |
-
-**Färgkod (statussemantik):**
-- 🟢 RIMLIG — planen håller
-- 🟡 TIGHT / BEHÖVER BESLUT — resursöverkant eller beroenden krävs diskussion
-- 🔴 EJ REALISTISK — sprintmålet eller planen måste justeras
-
-### ⑫B–D — TEAMETS PRIORITERAD ARBETSKÖ
-
-**Varje team visas som en prioriterad kö:**
-
-| Ordning | Issue | Ägare | Estimat | Varför nu? | Beroende | Klart när |
-|---------|-------|-------|---------|-----------|----------|-----------|
-| 1 | #92 – Riskmotor | Anna | 13h | Sprintmål | Backend API | Tests + verifierad |
-| 2 | #93 – … | … | … | Frigör Frontend | Inte blockerad | DoD ✓ |
-
-**KRAV:**
-- Issue-nummer + titel + faktisk assignee
-- Verifierat estimat (om saknas: "Ej estimerad — behöver estimeras idag")
-- Prioriteringsordning
-- Varför arbetet ligger här (använd EN av: Sprintmål, Kritisk väg, Frigör annat team, Riskreduktion, DoD-stängning, Oberoende fallback, Kundvärde)
-- Dependency/blocker
-- Konkret DoD/färdigkriterium
-
-### ⑫E — PROJECT BOARD & BACKLOG REVIEW
-
-**AI jämför verifierat projektläge mot Project Board.**
-
-**Visa fyra kategorier:**
-
-#### 1. BOARD BÖR UPPDATERAS
-
-Issues där faktisk status och Board-status verkar skilja sig:
-
-```
-#XX – Titel · Assignee
-Nu: Board [kolumn] / Issue [state] / DoD [status]
-Förslag: flytta till [status]
-Orsak: [kort verifierad orsak]
-```
-
-#### 2. BÖR PRIORITERAS UPP
-
-Befintliga issues som bör göras tidigare därför att de:
-- ligger på kritisk väg
-- blockerar annat team
-- krävs för sprintmålet
-- reducerar konkret hög risk
-- behövs för demo/integration/DoD
-
-#### 3. BÖR PRIORITERAS NED
-
-Befintliga issues som:
-- inte bidrar till sprintmålet denna vecka
-- inte ligger på kritisk väg
-- kan vänta utan att blockera leverans
-
-*(Detta är ett FÖRSLAG, inte automatiskt beslut)*
-
-#### 4. FÖRESLAGNA NYA ISSUES
-
-AI får föreslå ett nytt issue ENDAST när verifierad projektdata visar ett konkret arbete som saknar motsvarande issue.
-
-**VARJE FÖRSLAG MARKERAS TYDLIGT: "FÖRSLAG — finns ännu inte i GitHub"**
-
-Format för varje förslag:
-
-```
-FÖRESLAGET ISSUE:
-
-Titel:
-Problem / behov:
-Varför behövs det:
-Acceptance criteria:
-Föreslagen assignee:
-Estimering: [eller "Behöver estimeras"]
-Prioritet:
-Blockerar / blockeras av:
-Koppling till sprintmål:
-```
-
-**OBLIGATORISKA ELEMENT:**
-- ✅ Prioriterad arbetskö per team (inte kalender)
-- ✅ Verifierade estimat (eller märkt "behöver estimeras")
-- ✅ Varför-kolumn länkad till sprintmål/kritisk väg/beroenden
-- ✅ Planeringskontroll med bedömning (🟢/🟡/🔴)
-- ✅ Board & Backlog Review med konkreta förbättringsförslag
-- ✅ Nya issue-förslag tydligt märkta som "FÖRSLAG"
-- ✅ Klart dödt för varje issue (DoD eller demo-kriterium)
-
-**Data från:** GitHub issues, estimat, DoD-status, verifierad kapacitet från ⑧, prioritering från ⑨, tekniska beslut från ⑩, sprintmål från ⑪
-
----
-
-## 📝⑬ NÄSTA STEG / ACTIONS — MÖTETS "COMMIT"
-
-**Syfte:** Omvandla punkt ⑫ besluten till konkreta GitHub-actions
-
-**DENNA PUNKT ÄR KRITISK:** Det här är där mötet blir verklig arbetsplan, inte bara diskussion.
-
-### KOPPLING FRÅN ⑫ → ⑬
-
-**Punkt ⑫:** AI analyserar, teamet beslutar
-**Punkt ⑬:** Besluten omvandlas till konkreta GitHub-ändringar + ansvar
-
-### Exempel på koppling:
-
-⑫ Förslag: "#91 bör prioriteras före #87 därför att Native väntar på API-kontraktet"
-
-Efter diskussion i mötet:
-
-⑬ **BESLUT:** Flytta #91 till Position 1. Björn äger. Klart senast onsdag.
-   → Åtgärd: Uppdatera Board efter mötet (vem?)
-   → Åtgärd: Tilldela #91 till Björn + sätt förfallodatum (onsdag)
-
-### Slides
-
-- **⑬A: BESLUT DENNA MÖTE** — vad bestämde vi?
-- **⑬B: ÄNDRINGAR I GITHUB** — vad uppdaterar vi efter mötet?
-- **⑬C: PAIRING & BLOCKERS** — vem jobbar med vem? Vad löser vi idag?
-
-### ⑬A — BESLUT DENNA MÖTE
-
-Visa endast beslut som är nödvändiga för sprintplanen:
-
-| Beslut | Från punkt | Ansvar | Åtgärd |
-|--------|-----------|--------|--------|
-| Björn äger #91, prioriterat position 1 | ⑫ | Björn | Tilldela + deadline: onsdag |
-| Nytt issue för integrationstest behövs | ⑫E | PL | Skapa issue före nästa möte |
-| Frontend/Backend låser API-kontrakt i ⑩ | ⑩ | Tomac/Anna | Dokumentera kontrakt i issue |
-| Omprioritera #45 til senare sprint | ⑨ | PL | Flytta till backlog-sprinten |
-
-### ⑬B — ÄNDRINGAR I GITHUB
-
-**Vad uppdateras efter mötet och av vem?**
-
-| Åtgärd | Issue | Förslag från | Ansvar | Status |
-|--------|-------|------------|--------|--------|
-| Flytta status | #XX · Namn | ⑫E | PL | ☐ |
-| Prioritera upp | #YY · Namn | ⑫ | PL | ☐ |
-| Tilldela | #ZZ | ⑫ | Assignee | ☐ |
-| Skapa issue | Nytt · Integrationstest | ⑫E | PL | ☐ |
-| Dela issue | #AA · Namn | ⑫E | PL | ☐ |
-
-**Varje rad är en konkret GitHub-operation.**
-
-### ⑬C — PAIRING & BLOCKERS ATT LÖSA IDAG
-
-**Vad bokras in och vad behöver lösa innan nästa arbete kan börja?**
-
-**Pairing-sessioner:**
-- Datum, tid, vilka två personer, vad fokus är
-
-**Blockers att lösa:**
-- Vilken blocker
-- Vem äger att lösa den
-- Deadline för lösning
-- Fallback om det inte löses
-
-**Obligatoriska element:**
-- ✅ Konkreta beslut från mötet (inte åsikter)
-- ✅ Vem äger varje åtgärd?
-- ✅ Deadlines för ändringar i GitHub
-- ✅ Pairing-sessioner inbokade (datum + tid + syfte)
-- ✅ Blockers med ansvar och fallback
-- ✅ Koppling till punkt ⑫ (varifrån kom beslutet?)
-
-**Data från:** Diskussionerna under ①–⑫, besluten som fattades
-
----
-
-## 📝⑭ FRÅGOR FRÅN PL / STAKEHOLDERS
-
-**Syfte:** Bara sådant teamet INTE kan lösa självt
-
-**Slides:**
-- **⑭A: Öppna frågor** — vad behöver vi input på?
-- **⑭B: Gällande beslut från ledningen** — vad är ändrat sedan förra mötet?
-
-**Obligatoriska element:**
-- ✅ Tydlig fråga (inte bara "vad tycker du?")
-- ✅ Varför det spelar roll
-- ✅ Tidsgräns för svar (om relevant)
-- ✅ Vem från PL som kan svara
-
----
-
-## 🎯 SEX KRITISKA ELEMENT SOM ALDRIG FÅR FÖRSVINNA
-
-**Dessa måste finnas någonstans i presentationen, inte dölda:**
-
-1. **NÄSTA DEADLINE tidigt** (punkt ②)
-   - Projektets övergripande slutdatum
-   - Nästa delpunkt/checkpoint
-   - Status mot deadline redan på slide två
-
-2. **PROJEKTETS KUNDVÄRDE som referenspunkt**
-   - Varför gör vi det här? Vem behöver det?
-   - Används för att bedöma prioritering
-
-3. **DEFINITION OF DONE (DoD) som skillnad**
-   - "Jobbar på" (commits, PR öppet) ≠ "faktiskt klart" (merged, tests pass, DoD)
-   - Måste synas på slide ①
-
-4. **ALLA TEAMMEDLEMMAR med namn och verifierat bidrag**
-   - Eller explicit: "[Namn] — ingen verifierad GitHub-aktivitet denna vecka"
-   - Ingen person får försvinna bara för att de inte är assignee
-
-5. **BESLUT från DISKUSSIONER**
-   - Klart märkat: "Vi bestämde att..." eller "BESLUT: ..."
-   - Kan skiljas från "Vi diskuterade möjligheten att..."
-   - Mötet ska veta vad som är faktisk beslut
-
-6. **TYDLIG HANDLINGSPLAN för varje person**
-   - "Vad gör JAG härnäst?"
-   - "Vad ska mitt TEAM åstadkomma?"
-   - "Vad försöker PROJEKTET nå?"
-
----
-
-## 🧠 VARFÖR DENNA ORDNING FUNGERAR
-
-```
-GAMLA ORDNING (problem):
-  1. Sprintmål first (innan teamläget är känt)
-  2. Sen status (kan motsäga målet)
-  3. Resultat: Målet är ofta orealistiskt
-  
-NYA ORDNING (logisk):
-  ① Faktarapporten (vad hände?)
-  ② Referenspunkt (slutdatum, nästa checkpoint)
-  ③④⑤ Teamstatus (var står vi?)
-  ⑥ Blockers (vad hindrar oss?)
-  ⑦ Risker (vad kan brista?)
-  ⑧ Kapacitet (realistiska timmar?)
-  ⑨ Prioritering (vad är viktigast?)
-  ⑩ Tekniska beslut (vilka kontrakt?)
-  ⑪ SPRINTMÅL (nu kan vi sätta ett realistiskt mål)
-  ⑫ Plan (hur genomför vi det?)
-  ⑬ Actions (vem gör vad?)
-  ⑭ PL-input (vad behöver vi från ledningen?)
-  
-RESULTAT: Målet är grundat i fakta, inte idealism
+📅 DEADLINE: 24 september 16:00 (CTO-underlag)
 ```
 
 ---
 
-## 📐 VARJE MÖTESPUNKT KAN HA FLERA SLIDES
+## 📝③ NULÄGE (Dashboard — 1 slide)
 
+**Syfte:** Var står projektet MOT sprintmålet?
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Övergripande status: 🟢 ON TRACK | 🟠 DELAY | 🔴 CRITICAL
+- ✅ Framsteg denna vecka (från X → Y)
+
+**FORMAT:**
 ```
-Exempel:
-  📝③ FRONTEND
-    ③A Var är vi?
-    ③B Vad behöver vi göra?
-    ③C Visuell verifiering (optional)
-    
-Alla tre slides märks 📝③ men A/B/C visar vilken av dem det är.
-En mötespunkt kan ha 1-3 slides beroende på innehål.
+PROGRESS: ████████░░░░░░░░░░░░  40% av sprint
+BLOCKERS: 3 öppna PRs väntar på review
+RISK: CTO-deadline på 10 dagar — många beslut kvar
+
+STATUS: 🟠 SLIGHT DELAY
+- Risk-analys inte påbörjad än
+- Backend-Frontend API-kontrakt inte fastslaget
 ```
 
 ---
 
-## 🚨 DETTA ÄR EN FÖRÄNDRING FRÅN TIDIGARE STRUKTUR
+## 📝④ FRONTEND TEAM — VAR ÄR VI? (1-2 slides)
 
-**Om du körs gamla presentationer:**
-- De kan ha sprintmålet på punkt ②
-- De kan ha blockers / risker blandade i teamstatus
-- De kan missa deadlines eller kundvärde
+**Team:** Zaida Wiss, Björn Boman, Tomac Barin Jansson
 
-**Nya presentationer ska:**
-- Följa denna ordning (① → ②→ ... → ⑭)
-- Säkerställa de sex kritiska elementen
-- Märka varje slide med rätt symbol (📝①, 📝②, etc)
+**MÅSTE INNEHÅLLA (Nuläge & Status):**
+- ✅ Issues med assignee (#XX – Name)
+- ✅ Git-status denna vecka (commits, branches)
+- ✅ DoD-status per issue (AC✓ Tests✓ Review✓ Docs✓)
+- ✅ Dependencies och blockers
+- ✅ Status 🟢🟠🔴 per issue
+
+**DATA-KÄLLOR:**
+- 📊 [Open issues](../data/DATA_SOURCES.md#work-in-progress) — GitHub
+- 📊 [Commits denna vecka](../data/DATA_SOURCES.md#commit-history) — GitHub
+- 📊 [Team-medlemmar](../data/TEAM_ROSTER.md) — TEAM_ROSTER.md
+
+**FORMAT:**
+| # | Titel | Assignerad | DoD | Status | Blockers |
+|---|-------|-----------|-----|--------|----------|
+| #89 | E2E test | Zaida | ◐ Tests | 🟡 PÅGÅR | Väntar på Backend API |
+| #84 | Asset chart | Zaida | ✓ | 🟢 KLAR | — |
 
 ---
 
-**Senast uppdaterad:** 2026-09-13
+## 📝⑤ FRONTEND TEAM — VAD GÖR VI ÅT DET? (Actionbar guide — 1 slide)
+
+**Format för Junior-Utvecklare — 5-10 sekunder förståelse:**
+
+```
+1️⃣ FORTSÄTT — Nästa Steg
+   "Tomac fortsätter #43 API-client. Zaida startar #87 testgrund."
+
+2️⃣ BEHÖVER STÄNGAS — Saknad DoD
+   "#42 Drift indicator – saknar review, test, docs. Tomac: kan du fixa?"
+
+3️⃣ KAN TAS NU — Oberoende Arbete
+   "#87 Frontend test foundation – oberoende av Backend, kan startas nu"
+
+4️⃣ AGERA PÅ — Möte/Decision
+   "Frontend + Backend möte: auth-kontrakt kräver avtal på träff tis 14:00"
+```
+
+---
+
+## 📝⑥ BACKEND TEAM — VAR ÄR VI? (1-2 slides)
+
+**Team:** Rasha Knifdi, Erik Berglund
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Issues med assignee
+- ✅ Git-status denna vecka
+- ✅ DoD-status per issue
+- ✅ Dependencies och blockers
+- ✅ Status 🟢🟠🔴
+
+**DATA-KÄLLOR:**
+- 📊 [Open issues](../data/DATA_SOURCES.md#work-in-progress) — GitHub
+- 📊 [Team-medlemmar](../data/TEAM_ROSTER.md)
+
+---
+
+## 📝⑦ BACKEND TEAM — VAD GÖR VI ÅT DET? (Actionbar guide — 1 slide)
+
+**Format för Junior-Utvecklare:**
+
+```
+1️⃣ FORTSÄTT
+2️⃣ BEHÖVER STÄNGAS
+3️⃣ KAN TAS NU
+4️⃣ AGERA PÅ
+```
+
+---
+
+## 📝⑧ NATIVE TEAM — VAR ÄR VI? (1-2 slides)
+
+**Team:** Pär Lundh, Henrik Westerlund
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Issues med assignee
+- ✅ Git-status denna vecka
+- ✅ DoD-status per issue
+- ✅ Status 🟢🟠🔴
+
+---
+
+## 📝⑨ NATIVE TEAM — VAD GÖR VI ÅT DET? (Actionbar guide — 1 slide)
+
+**Format för Junior-Utvecklare:**
+
+```
+1️⃣ FORTSÄTT
+2️⃣ BEHÖVER STÄNGAS
+3️⃣ KAN TAS NU
+4️⃣ AGERA PÅ
+```
+
+---
+
+## 📝⑩ BEROENDEN & BLOCKERS (Flödesdiagram — 1-2 slides)
+
+**Syfte:** Vad väntar på vad? VAD BLOCKERAR VAD?
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Flödesschema med pilar (VAD → VÄNTAR PÅ → VAD)
+- ✅ Förväntad lösning + tid
+- ✅ Åtgärd NU (konkret)
+
+**DATA-KÄLLOR:**
+- 📊 [Blockers från GitHub issues](../data/DATA_SOURCES.md#blockers--dependencies)
+- 🔍 **CODE REVIEW FINDINGS** (MÅSTE INKLUDERAS):
+  - API-avvikelser som blockerar
+  - Kontrakt-missmatchningar
+  - Vilka är påverkade
+
+**FORMAT:**
+
+```
+Frontend #89 (E2E test)
+    ↓ VÄNTAR PÅ
+Backend #XX (Auth-endpoint fungerande)
+    ↓ LÖSES AV: Rasha, tis 15 sep
+
+Frontend #84 (Asset chart)
+    ↓ VÄNTAR PÅ
+Backend API-kontrakt fastslaget
+    ↓ LÖSES AV: Frontend+Backend möte, mån 14:00
+```
+
+---
+
+## 📝⑪ PRIORITERING & SCOPE (Must/Next/Later — 1 slide)
+
+**Syfte:** Vad gör vi FÖRST? Vad kommer senare?
+
+**MÅSTE INNEHÅLLA:**
+- ✅ MUST denna vecka (måste göras)
+- ✅ NEXT nästa vecka (prioriterat)
+- ✅ LATER (kan vänta)
+
+**DATA-KÄLLA:**
+- 📊 GitHub Project Board — manual läsning
+
+**FORMAT:**
+
+```
+🔴 MUST DENNA VECKA
+   ☐ #93 SQL-injection fix
+   ☐ #40 Auth-flow end-to-end
+   ☐ CTO-underlag döcumentation
+
+🟠 NEXT VECKA
+   ☐ #42 Drift indicator
+   ☐ #78 Rolling calculations
+
+⚪ LATER (MÅ VÄNTA)
+   ☐ #99 Admin-panel (låg prioritet)
+```
+
+---
+
+## 📝⑫ KAPACITET & ESTIMERING (Kapacitetsvy — 1 slide)
+
+**Syfte:** Är mängden planerat arbete realistisk?
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Kapacitet per team (available vs needed)
+- ✅ "Passar det?" → Ja/Nej/Knapp
+
+**FORMAT:**
+
+```
+Frontend: 45h tillgängligt → 48h planerat = 🟠 LITE STRAMT
+Backend: 40h tillgängligt → 35h planerat = 🟢 OK
+Native: 30h tillgängligt → 32h planerat = 🟠 STRAMT
+
+RESULTAT: Något stramt — kan behöva justeras
+```
+
+---
+
+## 📝⑬ RISKER (Risk-kort — 1-2 slides)
+
+**Syfte:** Vilka risker kan göra att sprintplanen misslyckas?
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Risken (vad kan gå fel?)
+- ✅ Konsekvens (vad händer?)
+- ✅ Hantering/mitigation (vad gör vi åt det?)
+
+**DATA-KÄLLOR:**
+- 🔍 **CODE REVIEW FINDINGS** (MÅSTE INKLUDERAS):
+  - Dubbelarbete-risk (teamen jobbar olika)
+  - Ohålbar riktning
+  - Framtida tech-skuld
+- 📊 [Risk Register](../../_memory/RISK_REGISTER.md)
+
+**FORMAT:**
+
+```
+🔴 RISK: Backend API-kontrakt inte klart
+   KONSEKVENS: Frontend kan inte integreras
+   MITIGATION: Frontend+Backend möte måndag 14:00 för att fastslå kontrakt
+
+🟠 RISK: Zaida överbelastad (9 issues)
+   KONSEKVENS: Arbete försenas
+   MITIGATION: Björn + Tomac pairing på #89-#91 denna vecka
+```
+
+---
+
+## 📝⑭ TEKNISKA BESLUT (Beslutskort — 1 slide)
+
+**Syfte:** Vilka beslut behöver tas denna vecka?
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Beslutet (vad behöver fastslås?)
+- ✅ Påverkade team
+- ✅ Deadline för beslut
+
+**DATA-KÄLLOR:**
+- 🔍 **CODE REVIEW FINDINGS** (MÅSTE INKLUDERAS):
+  - API-kontrakt som behöver fastslås
+  - JNA-kontrakt som behöver dokumenteras
+  - Auth-flow som behöver vara samma överallt
+- 📋 [BESLUT-filer per team](../../_memory/)
+
+**FORMAT:**
+
+```
+🔷 BESLUT 1: Frontend-Backend API-kontrakt
+   PÅVERKADE: Frontend, Backend
+   DEADLINE: Mån 14 sep 15:00
+   DECISION-OWNER: Rasha + Zaida
+
+🔷 BESLUT 2: Error-handling standardisering
+   PÅVERKADE: Alla team
+   DEADLINE: Tis 15 sep
+   DECISION-OWNER: Rasha (Backend leder)
+```
+
+---
+
+## 📝⑮ SPRINTPLAN (Vem gör vad? Hur arbetar vi TILLSAMMANS? — 1-2 slides)
+
+**Syfte:** Veckans konkreta uppdrag + teamsamarbete
+
+**🚨 REGEL: Support/pairing är fullt legitimt sprintåtagande.**
+Om Björn bäst hjälper sprintmålet genom att stötta Tomac på en kritisk integration, är "support/pair på #43" ett fullt legitimt åtagande. Planen ska optimera teamets LEVERANS, inte maximera individuella arbetuppgifter.
+
+**MÅSTE INNEHÅLLA:**
+- ✅ Per-team boxar (Frontend / Backend / Native)
+- ✅ Issues + assignee + timmar
+- ✅ SYNLIGT: Vilken support/pairing är planerad denna vecka
+- ✅ Teamstöd & hållbarhet — Hur hjälps vi åt?
+
+**FORMAT:**
+
+```
+Frontend:
+- ☐ #42 Portfolio (Zaida - 5h)
+- ☐ #43 Risk calc (Tomac - 8h, + Björn support 4h)
+- ☐ Stötta Tomac på #43 (Björn - 4h)
+
+Backend:
+- ☐ #51 API-spec (Rasha - 3h)
+- ☐ #52 Risk endpoint (Erik - 8h)
+
+Native:
+- ☐ #60 iOS test (Pär - 5h)
+- ☐ #61 Android widget (Henrik - 7h)
+
+🤝 TEAMSAMARBETE & HÅLLBARHET:
+✅ BELASTNING: Zaida lite högt — Björn pairing låser in stöd
+✅ BLOCKERANDE PERSON: Rasha on API-spec — Erik kan pair för kunskapsöverföring
+✅ KUNSKAPSRISK: Risk-calculations bara Pär — Henrik mentorerad
+✅ BACKUP: Henrik som backup för Pär om något händer
+```
+
+**VISUELLA ELEMENT:**
+- ⬛ Svart border per team-box
+- ☐ Checkboxes (copy-paste till mötesprotokollet)
+- 👥 Assignee på varje rad
+- ⏰ Konkreta timmar
+- 🤝 Support/pairing tydligt märkt
+
+**DATA-KÄLLA:**
+- 📊 GitHub Project Board + manual läsning
+- 📋 Team-diskussion under mötet
+
+---
+
+## 📝⑯ NÄSTA STEG (Konkret handlingsplan — 2 slides)
+
+**🚨 DENNA PUNKT ÄR INTE EN CHECKLISTA — DET ÄR HANDLINGSPLAN**
+
+**MÅSTE INNEHÅLLA (8 numrerade sektioner):**
+
+### 1️⃣ TILLDELNING — Vem tar vilken issue?
+```
+#89 → Zaida
+#93 → Rasha
+#78 → Pär
+etc.
+```
+
+### 2️⃣ NYA ISSUES SOM BEHÖVER SKAPAS
+```
+Ny issue: [namn] — [varför]
+Ny issue: [namn] — [varför]
+```
+
+### 3️⃣ BEFINTLIGA ISSUES SOM BEHÖVER UPPDATERAS
+```
+#XX → förtydliga AC
+#XX → lägg till dependency på #YY
+#XX → uppdatera scope
+```
+
+### 4️⃣ ISSUES SOM MÅSTE PAUSAS/FLYTTAS
+```
+#XX flyttas från MUST till NEXT — [varför]
+#XX pausas — [väntar på vad]
+```
+
+### 5️⃣ BLOCKERS — LÖSES HUR, NÄR, AV VEM
+```
+[Blocker] löses av [namn], [dag tid]
+[Blocker] löses av [namn], [dag tid]
+```
+
+### 6️⃣ PAIRING/SUPPORT SOM BEHÖVER BOKAS
+```
+[namn] + [namn] pair prog på #XX — [dag tid]
+[namn] mentorerar [namn] på #XX — [dag tid]
+```
+
+### 7️⃣ TEAMSTÖD & HÅLLBARHET
+**Identifiera där teammedlemmar kan hjälpa, avlasta, paira eller täcka upp för varandra:**
+
+```
+✅ BELASTNING: Är någon fullbelastad medan någon annan har utrymme?
+   → Omfördela eller erbjud stöd
+
+✅ BLOCKERANDE PERSON: Om någon sitter fast, vem kan faktiskt hjälpa?
+   → Blockers är teamets problem, inte individens
+
+✅ KUNSKAPSRISK: Finns kritisk kunskap hos bara en person?
+   → Pairing, review eller kunskapsöverföring planeras
+
+✅ ÖVERLÄMNINGAR: Behöver Frontend vänta på Backend?
+   → Arbeta tillsammans på kontraktet först
+
+✅ BACKUP: Vilka kan täcka upp om huvudansvarig fastnar?
+   → Synligt på kritiska uppgifter
+
+✅ ÅTGÄRDER: Varje handlingsplansåtgärd har ansvarig och tidsram
+```
+
+**Resultat: Planen är genomförbar OCH hållbar. Vi når målet TILLSAMMANS.**
+
+### 8️⃣ KONTRAKT & BEROENDEN (från Code Review + GitHub)
+```
+API-spec för #XX → uppdatera i shared doc
+JNA-kontrakt för #XX → fastslå och dokumentera
+Auth-flow → dokumentera i [länk]
+```
+
+**DIREKT EFTER MÖTET:**
+```
+☐ GitHub Project Board uppdaterad
+☐ Assignees satta
+☐ Blockers/dependencies dokumenterade
+☐ Issues på rätt sprint
+☐ Tekniska beslut dokumenterade
+```
+
+**DATA-KÄLLOR:**
+- 📊 GitHub Issues API
+- 📊 GitHub Project Board
+- 📊 Mötesprotokollet
+- 📋 [BESLUT-filer per team](../../_memory/)
+
+---
+
+## 📝⑰ FRÅGOR FRÅN PL / STAKEHOLDERS (Sista slide — diskussionsarbetsyta)
+
+**🚨 DENNA SLIDE ÄR ABSOLUT SISTA. LIGGER KVAR UNDER MÖTET.**
+
+⚠️ **VIKTIGT:** Dessa är FÖRSLAG på frågor. Teamet formar sina egna frågor baserat på vad som behöver lösas denna vecka.
+
+**LAYOUT:**
+
+```
+❓ FÖRESLAGEN FRÅGA 1: Är CTO-deadlinen realistisk givet nuläget?
+   Kontext: Vi är 10 dagar bort och risk-analys inte påbörjad
+   TEAMETS FRÅGA: ____________________________________
+   SVAR: ____________________________________
+
+❓ FÖRESLAGEN FRÅGA 2: Vilka kunskapsrisker (single point of failure) har vi?
+   Kontext: Pär ensam på risk-beräkningar, Zaida överbelastad
+   TEAMETS FRÅGA: ____________________________________
+   SVAR: ____________________________________
+
+❓ FÖRESLAGEN FRÅGA 3: Hur organiserar vi Backend-Frontend integrationsmötet?
+   Kontext: API-kontrakt behöver fastslås för framsteg
+   TEAMETS FRÅGA: ____________________________________
+   SVAR: ____________________________________
+```
+
+**DENNA SLIDE LIGGER KVAR under mötet.**
+Det är arbetsytan för PL-diskussionen och dokumentation av svar.
+
+**REGEL: Börja med förslagen, låt teamet forma sina egna frågor under mötet.**
+
+---
+
+## 📋 STRUKTUR SUMMARY
+
+**14 mötepunkter (①-⑰), variabel slidantal:**
+
+```
+🎬 FRAMSIDA (0)
+📝① Sedan förra mötet (1-2)
+📝② Sprintmål (1)
+📝③ Nuläge (1)
+📝④-⑤ Frontend (2-3)
+📝⑥-⑦ Backend (2-3)
+📝⑧-⑨ Native (2-3)
+📝⑩ Beroenden & Blockers (1-2)
+📝⑪ Prioritering (1)
+📝⑫ Kapacitet (1)
+📝⑬ Risker (1-2)
+📝⑭ Tekniska Beslut (1)
+📝⑮ Sprintplan (1-2)
+📝⑯ Nästa Steg (2)
+📝⑰ Frågor från PL (1)
+
+TOTALT: ~22-30 slides (varierar per vecka)
+```
+
+**MÖTESLOGIK:**
+Framsida → ① Bakåt → ② Målbild → ③ Nuläge → ④-⑨ Teams → ⑩ Beroenden → ⑪ Prioritering → ⑫ Kapacitet → ⑬ Risker → ⑭ Beslut → ⑮ Plan → ⑯ Nästa steg → ⑰ PL-frågor (diskussion)
+
+---
+
+## 🔗 LÄNKAD STRUKTUR — Data flödar från dessa filer
+
+| Mötespunkt | Data-källa | Länk |
+|-----------|-----------|------|
+| ① | Merged PRs, commits, open issues | [MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md), [DATA_SOURCES.md](../data/DATA_SOURCES.md) |
+| ② | CTO-deadline, sprintmål | Mötesprotokollet, GitHub Project Board |
+| ③ | Progress-status | GitHub Issues/PRs, commit-historik |
+| ④-⑨ | Issues, branches, DoD-status | [TEAM_ROSTER.md](../data/TEAM_ROSTER.md), GitHub Issues |
+| ⑩ | Blockers från GitHub + Code Review | [DATA_SOURCES.md](../data/DATA_SOURCES.md#blockers--dependencies) |
+| ⑪ | Prioritering från möte | GitHub Project Board, mötesprotokollet |
+| ⑫ | Kapacitets-uppskattning | Möte-diskussion, issue-estimat |
+| ⑬ | Identifierade risker | Code Review findings, mötesprotokollet |
+| ⑭ | Tekniska beslut | Code Review findings, [BESLUT-filer](../../_memory/) |
+| ⑮ | Sprint-plan | GitHub Project Board, möte-diskussion |
+| ⑯ | Handlingsplan | Möte-resultat, GitHub |
+| ⑰ | PL-frågor | Möte-diskussion |
+
+---
+
+**Version:** 2.0  
+**Senast uppdaterad:** 2026-09-14  
+**Status:** PRODUCTION — Lämnar från detta när all struktur länkad och verifierad
