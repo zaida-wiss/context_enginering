@@ -14,62 +14,83 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 ---
 
-## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1-2 slides)
+## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1-3 slides)
 
-### SLIDE ①A: Frontend — Merged denna vecka
+### SLIDE ①A: Frontend — Merged + Pågår denna vecka
 
-**FORMAT:** Tabell
+**FORMAT:** Tabell med två grupper (Merged | Pågår)
 
 **KOLUMNER:**
-| Issue # | Titel | Assignad | Merged |
-|---------|-------|----------|--------|
-| #95 | Security review + merge | Zaida Wiss | 2026-09-13 |
+| Issue # | Titel | Assignad | Status | Merged/Branch |
+|---------|-------|----------|--------|---------------|
+| **MERGED DENNA VECKA** | | | | |
+| #95 | Security review + merge | Zaida Wiss | ✓ DONE | 2026-09-13 |
+| #87 | Test foundation | Björn Boman | ✓ DONE | 2026-09-12 |
+| **PÅGÅR DENNA VECKA** | | | | |
+| #88 | Critical interactions | Björn Boman | ◐ PÅG | feature/#88 |
+| #89 | E2E happy path | Tomac Barin | ◐ PÅG | feature/#89 |
 
 **REGLER:**
-- En rad per merged PR denna vecka
-- Sortera på merge-datum (nyast först)
-- Visa ALLA team-medlemmar som har commits denna vecka
-- Om 0 PRs: Tabell med 1 rad: `(0 items denna vecka)` + team-namn
-- Assignad = GitHub handle + display name
-- Merged = Datum endast (YYYY-MM-DD)
+- **Del 1: Merged denna vecka** (sortera på merge-datum, nyast först)
+  - Visa ALLA merged PRs denna vecka
+  - Status = ✓ DONE
+  - Datum = merge-datum (YYYY-MM-DD)
+
+- **Del 2: Pågår denna vecka** (sortera på branch-aktivitet, senast pushad först)
+  - Visa ALLA öppna branches med commits denna vecka (även utan PR än)
+  - Status = ◐ PÅG
+  - Branch-kolumn = branch-namn (feature/#88)
+  - Verifiera mot Project Board: Issue är "In Progress" ELLER branch har commits senaste 3 dagarna
+
+- **Arbetet från alla 7 team-medlemmar måste synas** (antingen i Merged eller Pågår)
+  - Om medlem har 0 commits denna vecka: Lägg till "Inget arbete i koden denan vecka"
+
+- Assignad = GitHub handle + display name (från TEAM_ROSTER.md)
 
 **MÅSTE innehålla:**
 - ✅ Issue-nummer (#XX)
 - ✅ Kort titel (2-5 ord)
-- ✅ Assignad person (fullständig namn från TEAM_ROSTER.md)
-- ✅ Merge-datum
+- ✅ Assignad person (fullständig namn)
+- ✅ Status (✓ DONE eller ◐ PÅG)
+- ✅ Datum (merge-datum eller branch-namn)
+- ✅ ALLA 7 team-medlemmar (även om 0 arbete denna vecka)
 
 **FÅR INTE innehålla:**
 - ❌ Commit-hash
-- ❌ Branch-namn
-- ❌ PR-beskrivning eller detaljer
-- ❌ "Väntar på review" (det är inte merged)
+- ❌ Endast merged (måste visa pågår också)
+- ❌ "Nästan klar" eller "väntar på review" (bara ✓ DONE eller ◐ PÅG)
+- ❌ Stale branches (>3 dagar utan push)
 
-**FOOTER:** `Källa: GitHub PRs (merged denna vecka) ✅`
+**DATA-SOURCES:**
+- 📊 **Merged:** GitHub PRs API (merged till develop denna vecka)
+- 📊 **Pågår:** GitHub branches (commits senaste 7 dagar) + Project Board (status: In Progress)
+- 🔍 **Jämförelse:** Branch mot Project Board — visa discrepancy om Board och Git inte stämmer
 
----
-
-### SLIDE ①B: Backend — Merged denna vecka
-
-**FORMAT:** Tabell (identisk struktur som ①A)
-
-**KOLUMNER:** Issue # | Titel | Assignad | Merged
-
-**REGLER:** (identiska som ①A)
-
-**FOOTER:** `Källa: GitHub PRs (merged denna vecka) ✅`
+**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅`
 
 ---
 
-### SLIDE ①C: Native — Merged denna vecka
+### SLIDE ①B: Backend — Merged + Pågår denna vecka
 
 **FORMAT:** Tabell (identisk struktur som ①A)
 
-**KOLUMNER:** Issue # | Titel | Assignad | Merged
+**KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
 
 **REGLER:** (identiska som ①A)
 
-**FOOTER:** `Källa: GitHub PRs (merged denna vecka) ✅`
+**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅`
+
+---
+
+### SLIDE ①C: Native — Merged + Pågår denna vecka
+
+**FORMAT:** Tabell (identisk struktur som ①A)
+
+**KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
+
+**REGLER:** (identiska som ①A)
+
+**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅`
 
 ---
 
@@ -459,14 +480,14 @@ REKOMMENDATION:
   ✅ Zaida: #87 Test foundation (låser upp #88/#89)
   ✅ Tomac: #43 API client + mock (låser upp #82/#83)
   ✅ Björn: #81 Linked allocation (låg konflikt, egen komponent)
-  
+
   Varför: Tre kedjor, låg mergekonfliktrisk. #43/#87 låser upp mycket.
 
 🟠 FAS 2 — Efter Fas 1 mergad (pull develop först!):
   Zaida: #88 Critical interaction tests
   Tomac: #82 usePortfolio (kräver #43 merged)
   Björn: #85 Responsive header (kan parallelleras)
-  
+
   Varför: #82 kräver #43. #85 oberoende av dataflödet.
 
 🟡 FAS 3+ — Beroenden lösta:
@@ -718,31 +739,31 @@ HANDLINGSPLAN:
 INOM 1 TIMMA EFTER MÖTET:
 [ ] 1. Erik: Uppdatera GitHub issue #99 med API-kontrakt
     Verifikation: Issue-description innehåller JSON-schema
-    
+
 [ ] 2. Zaida: Uppdatera Project Board — flytta #85 till "Next"
     Verifikation: Project Board visar #85 i Next-kolumnen
 
 IDAG (före 14:00 möte):
 [ ] 3. Björn: Review mock-API-setup för #88 testing
     Verifikation: Björn säger "ready" i #88-kommentarer
-    
+
 [ ] 4. Erik: Genomför security-testing på #95
     Verifikation: Erik mergear #95 eller sätter label "blocked-security"
 
 IMORGON:
 [ ] 5. Rasha: Starta #87 test-framework-implementation
     Verifikation: Branch #87-branch skapad + första commit pushad
-    
+
 [ ] 6. Tomac: Börja pairing-session med Björn på #88
     Verifikation: Commit pushad från #88-branch
 
 DENNA VECKA:
 [ ] 7. Erik: Genomför JNA-kontrakt-möte med Native (idag eller imorgon)
     Verifikation: Issue-comment i GitHub med mötes-summering
-    
+
 [ ] 8. Zaida: Code-review alla inkommande PRs från Frontend
     Verifikation: Alla PRs har review-kommentar (lgtm eller ändringar)
-    
+
 [ ] 9. PL: Verifiera Project Board stämmer med Git-branch-status
     Verifikation: Board-kolumner matchar faktisk arbete
 ```
@@ -784,11 +805,11 @@ IDAG-SVAR BEHÖVS (höga prioriteten):
 1. SCOPE — Ska #84 (Asset allocation chart) in i denna sprint?
    VARFÖR VIKTIG: Påverkar Frontend-kapacitet (+ 8 timmar)
    IMPAKT: Om JA → flytta #85 till nästa vecka
-   
+
 2. PRIORITERING — Om #95 mergea idag, kan vi skippa #87?
    VARFÖR VIKTIG: Kan spara 8 timmar Backend-testning
    IMPAKT: Säkerhets-testing vs testramverk-investering
-   
+
 3. SCOPE — Responsive dashboard (#86): krävs desktop-version också?
    VARFÖR VIKTIG: Påverkar Native-tidsuppskattning (+ 12 timmar)
    IMPAKT: Om JA → omöjligt denna vecka
@@ -797,7 +818,7 @@ IDAG-SVAR NICE-TO-HAVE (diskussions-frågor):
 
 4. PROCESS — Ska mötet nästa vecka starta med Code Review eller Retrospekt?
    VARFÖR VIKTIG: Påverkar agenda (40min skillnad)
-   
+
 5. PROCESS — Ska vi döpa om branches enligt naming-convention?
    VARFÖR VIKTIG: CI/CD-fokus eller flexibilitet?
 ```
@@ -860,6 +881,6 @@ FEL:
 
 ---
 
-**Version:** 1.0  
-**Status:** KRITISK SPECIFIKATION  
+**Version:** 1.0
+**Status:** KRITISK SPECIFIKATION
 **Senast uppdaterad:** 2026-09-14
