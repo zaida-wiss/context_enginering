@@ -10,6 +10,8 @@ metadata:
 
 **Något ser fel ut i presentationen? Hitta ditt problem här.**
 
+🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+
 ---
 
 ## PROBLEM 1: Vissa Team-Medlemmar Saknas

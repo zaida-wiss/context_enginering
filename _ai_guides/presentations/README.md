@@ -8,6 +8,8 @@ metadata:
 
 # 📊 PRESENTATIONS — Navigation Guide
 
+🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+
 ⛔ **EXEMPEL-DATA I DESSA FILER:**
 Alla exempelpersoner (<EXAMPLE_MEMBER_A>, etc), issue-nummer och branches i instruktionerna är ALDRIG verklig projektdata.
 Du får ALDRIG kopiera exempel till en presentation. Använd ENDAST verifierad data från TEAM_ROSTER.md och GitHub.

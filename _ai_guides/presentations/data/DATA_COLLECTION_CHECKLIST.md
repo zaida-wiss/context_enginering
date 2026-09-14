@@ -12,6 +12,8 @@ metadata:
 
 Live sources only. No snapshots — all data from direct links to GitHub, Project Board, Google Docs.
 
+🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+
 ---
 
 ## ✅ PHASE 1: CONTEXT REPO SOURCES

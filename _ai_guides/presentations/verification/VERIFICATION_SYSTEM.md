@@ -1,5 +1,7 @@
 # ✅ Verification System - Source of Truth
 
+🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../../../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+
 ## 📍 DOKUMENTVÄGEN
 
 **Du är här:** VERIFICATION_SYSTEM.md (Verifiering av arbete)

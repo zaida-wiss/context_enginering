@@ -5,6 +5,8 @@
 **Se även:** Root README.md har en meny över VAD KAN JAG FRÅGA AI:N OM?
 - Länk: https://github.com/zaida-wiss/context_enginering#-vad-kan-jag-fråga-ain-om
 
+🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+
 ---
 
 ## 🔴 MÖTESPROTOKOLLET — MÅSTE LÄSAS FÖRST
