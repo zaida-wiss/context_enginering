@@ -171,15 +171,16 @@ RESULT: ✅ FASE 1 PASSED — OK to proceed to FASE 2
 Före presentation byggs — PASS dessa 3 checks:
 
 CHECK 1: DATA COMPLETENESS
-  ✅ All 9 data sources accessible? (or have fallback)
-  ✅ All 7 team members identity-verified?
-  ✅ Any data MISSING? → STOP (report problem)
+  ✅ All required sources attempted (primary + fallbacks)?
+  ✅ All 7 team members identity-verified from GitHub?
+  ⚠️ If source fails, fallback used automatically — only STOP if primary + ALL fallbacks fail
 
 CHECK 2: TEAM COVERAGE
   Active roster: 7 members
-  Expected in presentation: 7 (alla måste synas)
-  Will presentation cover all 7? YES/NO?
-  ☐ If NO → STOP (figure out who's missing, why)
+  Expected in presentation: 7 (alla måste synas eller markerade "ingen aktivitet")
+  Can all 7 be identity-verified? YES/NO?
+  ☐ If NO → STOP (figure out who cannot be verified)
+  ☐ If YES → continue (even if some members have 0 commits, they must be shown)
   
 CHECK 3: DESIGN RULES UNDERSTOOD
   ✅ Read VISUAL_DESIGN_MANDATORY.md?

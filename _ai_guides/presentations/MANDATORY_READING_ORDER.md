@@ -47,7 +47,14 @@ DO NOT CREATE PPTX UNTIL AI HAS:
 AI:s ansvar: Verifiera ALLT och rapportera status till användaren.
 Användaren behöver INTE bekräfta — AI ansvarar för verifieringen.
 
-If ANY verification fails → AI STOPS, presents report, gör INTE PPTX.
+STOPP ENDAST OM:
+- Identity verification MISSLYCKAS för någon team member (även efter fallbacks)
+- GitHub Issues/PRs data är FULLSTÄNDIGT OÅTKOMLIG (primär + fallback misslyckas)
+
+FALLBACKS RÄKNAS SOM LYCKAT:
+- Project Board misslyckas → rekonstruera från Issues/PRs
+- Mötesprotokollet misslyckas → bygg från GitHub data
+- Övriga källor misslyckas → använd best-available fallback
 ```
 
 ---
