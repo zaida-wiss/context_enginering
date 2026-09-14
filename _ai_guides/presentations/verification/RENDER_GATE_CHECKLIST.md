@@ -15,6 +15,46 @@ metadata:
 
 ---
 
+## 🔍 FÖRVÄGSTÄMMNING PER SLIDE (OBLIGATORISK FÖRE RENDERING)
+
+**Innan en slide visas måste data VERIFIERAS:**
+
+### Varje slide måste kontrollera:
+
+1. ✅ **Data stämmer med develop-merges**
+   - Issue-nummer i slide = faktisk merged PR i develop?
+   - Datum i slide = faktisk merge-datum?
+   - INTE data från lokala branches eller outvecklad
+
+2. ✅ **Issues är korrekt öppnade + assignade**
+   - Issue är tilldelad någon? (om öppen)
+   - Assignee matchar actual GitHub-issue?
+   - Är issue fortfarande öppen eller är den redan stängd?
+
+3. ✅ **AC (Acceptance Criteria) är ordentlig**
+   - Issue har AC definierade?
+   - AC är testbara (inte vaga)?
+   - AC matchar faktiskt arbete i PR?
+
+4. ✅ **Test-coverage är tydlig**
+   - Finns tester för detta arbete?
+   - Vilka test-typer (unit/integration/e2e)?
+   - Är tester mergade eller bara planerade?
+
+5. ✅ **PR-review status är uppdaterad**
+   - Vem reviewade PR:en?
+   - Är review-kommentarer lösta?
+   - Status: approved/requested-changes/pending?
+
+### Resultat av verifikation:
+```
+✅ PASS: Data stämmer → slide visas
+❌ FAIL: Data matchar inte → slide UPPDATERAS innan rendering
+⚠️ WARN: Data saknas (ex ingen tests än) → slide märks tydligt "pågår"
+```
+
+---
+
 ## ✅ PRESENTATION KAN RENDERAS om:
 
 ### 1. MINST EN SOURCE HAR DATA DENNA VECKA
