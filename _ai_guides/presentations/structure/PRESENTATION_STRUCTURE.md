@@ -24,26 +24,79 @@ Varje punkt kan ha **en eller flera slides** (markerade 📝①A, 📝①B, etc)
 
 **Syfte:** Visa ALLT vad som faktiskt blev klart denna vecka
 
+**🚨 KRITISK REGEL: SLIDORNA MÅSTE FYLLAS MED FAKTISK DATA FRÅN GITHUB, INTE CHECKLISTOR**
+
 **Slides — MÅSTE visa ALLA PRs + ALLA team-medlemmar:**
 
 **Struktur: En slide per arbetsområde + en för pågående**
 
-- **①A: Frontend — Levererat denna vecka**
-  - ALLA PRs mergade in i develop denna vecka (Frontend & Auth arbetsområde)
-  - För varje PR: issue-owner, commits, DoD-status
-  - Alla Frontend-personer som had work synliga
+### ①A: Frontend — Levererat denna vecka
 
-- **①B: Backend — Levererat denna vecka**
-  - ALLA PRs mergade in i develop denna vecka (Backend & Session arbetsområde)
-  - För varje PR: issue-owner, commits, DoD-status
-  - Alla Backend-personer som hade work synliga
+**DATA-KÄLLA (MANDATORY):**
+- GitHub URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13+label:frontend`
+- Fallback: `https://github.com/chas-challenge-2026/avanza-team1/pulls` → filter manually by merged + frontend label
+- Hämta: ALLA merged PRs denna vecka i Frontend arbetsområde
 
-- **①C: Native/System — Levererat denna vecka**
-  - ALLA PRs mergade in i develop denna vecka (Native & Risk Motor arbetsområde)
-  - För varje PR: issue-owner, commits, DoD-status
-  - Alla Native-personer som hade work synliga
+**SLIDANS INNEHÅL (MÅSTE INNEHÅLLA FAKTISK DATA, INTE CHECKLISTOR):**
+- ALLA PRs mergade in i develop denna vecka (Frontend & Auth arbetsområde) — med PR-nummer, titel, författare
+- För varje PR: issue-owner, commits, DoD-status (🟢/🟡/🔴)
+- Alla Frontend-personer som hade work synliga — formaterat som "Namn (X PRs/commits — arbete)"
 
-- **①D: Byggde vidare denna vecka** — NULÄGESBILD: vad jobbes med just nu, av vem, och status
+**EXEMPEL PÅ RÄTT FORMAT (TABELL, INTE CHECKLISTA):**
+| PR | Titel | Författare | DoD | Issues |
+|----|-------|-----------|-----|--------|
+| #90 | feat(frontend): login page | Zaida | 🟢 ✅ | #40 |
+| #45 | styling: portföljhälsa-rubrik | Björn | 🟡 Docs saknas | #45 |
+
+**❌ FELAKTIGT FORMAT (CHECKLISTA):**
+```
+Vilka PRs är mergade? 
+[ ] Fyll i
+Vilka issues är closed?
+[ ] Fyll i
+```
+
+### ①B: Backend — Levererat denna vecka
+
+**DATA-KÄLLA (MANDATORY):**
+- GitHub URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13+label:backend`
+- Fallback: Manual filter från `/pulls` sida
+- Hämta: ALLA merged PRs denna vecka i Backend arbetsområde
+
+**SLIDANS INNEHÅL (FAKTISK DATA):**
+- ALLA PRs mergade in i develop denna vecka (Backend & Session arbetsområde) — med PR-nummer, titel, författare
+- För varje PR: issue-owner, commits, DoD-status (🟢/🟡/🔴)
+- Alla Backend-personer som hade work synliga
+
+**FORMAT:** Tabell (se ①A ovan)
+
+### ①C: Native/System — Levererat denna vecka
+
+**DATA-KÄLLA (MANDATORY):**
+- GitHub URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13+label:native`
+- Fallback: Manual filter
+- Hämta: ALLA merged PRs denna vecka i Native arbetsområde
+
+**SLIDANS INNEHÅL (FAKTISK DATA):**
+- ALLA PRs mergade in i develop denna vecka (Native & Risk Motor arbetsområde) — med PR-nummer, titel, författare
+- För varje PR: issue-owner, commits, DoD-status (🟢/🟡/🔴)
+- Alla Native-personer som hade work synliga
+
+**FORMAT:** Tabell (se ①A ovan)
+
+### ①D: Byggde vidare denna vecka — NULÄGESBILD
+
+**DATA-KÄLLOR (MANDATORY):**
+1. Öppna PRs: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
+2. Öppna issues: `https://github.com/chas-challenge-2026/avanza-team1/issues`
+3. Commits denna vecka: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop` (filter senaste 7 dagar)
+
+**SLIDANS INNEHÅL (FAKTISK DATA):**
+- ALLA öppna PRs denna vecka — med PR-nummer, titel, författare, reviewer-status
+- ALLA öppna issues denna vecka — med issue-nummer, titel, assignee
+- Commits denna vecka — med datum, författare, meddelande
+
+**FORMAT:** Tabeller (se ①D-detaljer nedan)
 
 **KRITISK REGEL: INGET ARBETE FÅR UTELÄMNAS för att det inte får plats på sliden.**
 
