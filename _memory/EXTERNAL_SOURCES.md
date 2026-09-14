@@ -6,7 +6,17 @@ metadata:
   critical: true
 ---
 
-# 🔗 External Sources — Centralized Registry
+# 🔗 External Sources — ALLOWLIST (NOT JUST REGISTRY)
+
+🚨 **CRITICAL:** Detta är en WHITELIST av godkända externa källor för presentationsgenerering.
+
+**ENDAST källorna i denna fil får kontaktas externt.** Att en URL går att nå betyder INTE att den är tillåten.
+
+Presentation generation:
+- ✅ MAY use registered sources listed below
+- ❌ MUST NOT use general web search
+- ❌ MUST NOT use unregistered websites
+- ❌ MUST NOT substitute arbitrary web sources
 
 **Alla externa datakällor, IDs och fallback-strategier ligger här. INGEN annan fil ska ha raw IDs/URLs — länka hit istället.**
 

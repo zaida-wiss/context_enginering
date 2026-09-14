@@ -8,6 +8,20 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER
 
+## 🚨 CRITICAL — NO WEB SEARCH
+
+**Never search the public web during presentation generation.**
+
+Only use sources explicitly registered in [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md).  
+Only use the two project repositories (project code + context).  
+Only use user-provided project files.
+
+If required data cannot be found in allowed sources, report the source as unavailable and follow the documented fallback. Never substitute an arbitrary web source.
+
+**See SYSTEM_CONTRACT.yaml `external_sources_policy` for full details.**
+
+---
+
 ## 1️⃣ READ THIS FILE
 You are reading it now.
 

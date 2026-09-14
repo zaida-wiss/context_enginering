@@ -16,6 +16,44 @@ base_path: "_ai_guides/presentations"
 # Do not duplicate it here. Remove this section to avoid drift.
 
 ###############################################################################
+# EXTERNAL SOURCES POLICY — ALLOWLIST ONLY (TVINGANDE)
+###############################################################################
+external_sources_policy:
+  mode: "ALLOWLIST_ONLY"
+
+  rule: >
+    Presentation generation uses ONLY registered external sources.
+    NO general web search. NO unregistered websites.
+    If data cannot be found in allowed sources, report as unavailable
+    and follow documented fallback. Never substitute an arbitrary web source.
+
+  allowed_sources:
+    primary_repositories:
+      - "github.com/chas-challenge-2026/avanza-team1 (project code + issues + PRs + Project Board)"
+      - "github.com/zaida-wiss/context_enginering (this context repository)"
+
+    project_documents:
+      - "Google Docs/Sheets registered in _memory/EXTERNAL_SOURCES.md"
+      - "User-uploaded project files"
+
+    internal_sources:
+      - "All YAML/Markdown files in this repository"
+      - "TEAM_ROSTER.md (team identity verification)"
+
+  forbidden:
+    - "General web search (Google, Bing, DuckDuckGo, etc.)"
+    - "Search engines"
+    - "Unregistered websites, blogs, forums, tutorials"
+    - "GitHub URLs not explicitly in EXTERNAL_SOURCES.md"
+    - "Stack Overflow, Medium, dev.to, GitHub Gists, or similar"
+    - "External design guidance, examples, or templates"
+    - "Arbitrary web sources as fallback or substitute"
+
+  verification:
+    - "If using external URL, verify it appears in _memory/EXTERNAL_SOURCES.md"
+    - "If URL is not listed, DO NOT use it — report source as unavailable instead"
+
+###############################################################################
 # EXECUTION SEQUENCE — Följ dessa steg i exakt denna ordning
 ###############################################################################
 execution_sequence:
