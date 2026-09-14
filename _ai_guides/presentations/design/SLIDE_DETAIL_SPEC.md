@@ -93,9 +93,20 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 **KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
 
-**REGLER:** (identiska som ①A)
+**REGLER:** 
+- (Identiska som ①A, men ENDAST Backend-issues)
+- Filtrera: Visa bara issues där Team = "Backend" (från TEAM_ROSTER.md labels)
+- Merged: Backend PRs merged denna vecka
+- Pågår: Backend branches med commits denna vecka
+- Väntar på review: Backend PRs som väntar på approval
 
-**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅`
+**DATA-SOURCES:**
+- 📊 **Merged:** GitHub PRs API (Backend-issues, merged denna vecka)
+- 📊 **Pågår:** GitHub branches (Backend-issues, commits senaste 7 dagar)
+- 📊 **Väntar på review:** GitHub PRs API (Backend-issues, open, no approval)
+- 🔍 **Jämförelse:** Backend-issues mot Project Board — visa discrepancy
+
+**FOOTER:** `Källa: GitHub PRs + branches (Backend denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska Backend-issues]`
 
 ---
 
@@ -105,9 +116,34 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 **KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
 
-**REGLER:** (identiska som ①A)
+**REGLER:**
+- (Identiska som ①A, men ENDAST Native-issues)
+- Filtrera: Visa bara issues där Team = "Native" (från TEAM_ROSTER.md labels)
+- Merged: Native PRs merged denna vecka
+- Pågår: Native branches med commits denna vecka
+- Väntar på review: Native PRs som väntar på approval
 
-**FOOTER:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅`
+**DATA-SOURCES:**
+- 📊 **Merged:** GitHub PRs API (Native-issues, merged denna vecka)
+- 📊 **Pågår:** GitHub branches (Native-issues, commits senaste 7 dagar)
+- 📊 **Väntar på review:** GitHub PRs API (Native-issues, open, no approval)
+- 🔍 **Jämförelse:** Native-issues mot Project Board — visa discrepancy
+
+**FOOTER:** `Källa: GitHub PRs + branches (Native denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska Native-issues]`
+
+---
+
+**JÄMFÖRELSE MELLAN TEAMEN (①A-C):**
+
+Dessa tre slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
+
+| | Frontend | Backend | Native |
+|---|----------|---------|--------|
+| Merged | X PRs | Y PRs | Z PRs |
+| Pågår | X branches | Y branches | Z branches |
+| Väntar på review | X PRs | Y PRs | Z PRs |
+
+**Syftet:** Se hur det gick för varje team denna vecka — klart arbete, aktivt arbete, och vad som väntar på uppmärksamhet.
 
 ---
 
