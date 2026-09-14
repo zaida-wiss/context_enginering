@@ -102,10 +102,16 @@ metadata:
    - Cards istället för tabeller
    - Konkreta CSS-regler
 
-3. **[design/PRESENTATION_FORMAT_GUIDE.md](design/PRESENTATION_FORMAT_GUIDE.md)** — 5 min
-   - Konkreta slide-exempel för alla 7 slide-typer
-   - Hur varje format ska se ut
-   - Borders, colors, layout, whitespace
+3. **[design/SLIDE_DETAIL_SPEC.md](design/SLIDE_DETAIL_SPEC.md)** ⭐ NYTT — 10 min 🚨 LÄSGRÄS DETTA
+   - EXAKT innehål för VARJE SLIDE (①-⑭)
+   - KOLUMNER per slide
+   - FORMAT per slide
+   - REGLER per slide
+   - DATA-SOURCES per slide
+   - MÅSTE/FÅR INTE innehålla per slide
+   - FOOTER per slide
+
+   ❌ (DEPRECATED: PRESENTATION_FORMAT_GUIDE.md — använd SLIDE_DETAIL_SPEC.md istället)
 
 ### SEDAN Läs STRUKTUR:
 
@@ -133,9 +139,13 @@ metadata:
    - Färger, typografi, layout, NPF-regler
    - QA-checklista
 
-6. **[design/PRESENTATION_CONSISTENCY_FRAMEWORK.md](design/PRESENTATION_CONSISTENCY_FRAMEWORK.md)** — 2 min
-   - Röda trådar vecka-till-vecka
-   - Repeterbara strukturer
+6. **[design/PRESENTATION_RED_THREADS.md](design/PRESENTATION_RED_THREADS.md)** ⭐ NYTT — 5 min
+   - Röda trådar (Arbete, Blockers, Risker, Kapacitet)
+   - Varning-signaler (vad saknas = presentationen är felaktig?)
+   - Checklista för röda trådar
+   - Exempel på röda trådar i action
+
+   ❌ (DEPRECATED: PRESENTATION_CONSISTENCY_FRAMEWORK.md — använd PRESENTATION_RED_THREADS.md istället)
 
 7. **[design/DESIGN_AUTHORITY.md](design/DESIGN_AUTHORITY.md)** — 1 min
    - Vem beslutar om design?

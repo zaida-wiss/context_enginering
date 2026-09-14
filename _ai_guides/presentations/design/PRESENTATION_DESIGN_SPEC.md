@@ -1,17 +1,29 @@
 ---
 name: presentation_design_spec
-description: Design-regler för presentationen — färger, typografi, layout, spacing
+description: DEPRECATED — innehål flyttat till VISUAL_DESIGN_MANDATORY.md och DESIGN_AUTHORITY.md
 metadata:
   type: design_specification
-  critical: true
+  deprecated: true
   version: 1.0
 ---
 
-# 🎨 PRESENTATION DESIGN SPECIFICATION
+# 🚨 DEPRECATED — LÄSNING REKOMMENDERAS EJ
 
-**Denna fil definierar ENBART design-regler för presentationen.**
+**DENNA FIL INNEHÖLL DESIGN-REGLER SOM NU ÄR GAMLA OCH ÖVERFLÖDIGA.**
 
-**Se `PRESENTATION_FORMAT_GUIDE.md` för konkreta slide-layouts.**
+**Nya, authoritative källor:**
+- **Design-regler** → [VISUAL_DESIGN_MANDATORY.md](./VISUAL_DESIGN_MANDATORY.md)
+- **Färg-semantik** → [DESIGN_AUTHORITY.md](./DESIGN_AUTHORITY.md)
+
+**Denna fil sparas för historisk referens men ska INTE användas för nya presentationer.**
+
+---
+
+# 🎨 PRESENTATION DESIGN SPECIFICATION (DEPRECATED)
+
+**Denna fil definierar ENBART design-regler för presentationen — MEN ÄR NU FÖRÅLDRAD.**
+
+**Se `VISUAL_DESIGN_MANDATORY.md` för konkreta design-regler.**
 
 ---
 

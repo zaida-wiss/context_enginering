@@ -1,14 +1,35 @@
 ---
 name: presentation_consistency_framework
-description: Visual and content consistency rules — every presentation looks and feels the same, with clear narrative thread
+description: DEPRECATED — innehål flyttat till SLIDE_DETAIL_SPEC.md och PRESENTATION_RED_THREADS.md
 metadata:
   type: reference
-  critical: true
+  deprecated: true
 ---
 
-# PRESENTATION CONSISTENCY FRAMEWORK
+# 🚨 DEPRECATED — LÄSNING REKOMMENDERAS EJ
+
+**DENNA FIL INNEHÖLL REGLER SOM NU ÄR GAMLA OCH STRIDER MOT NYA SPECIFIKATIONER.**
+
+**🔴 VIKTIGT:** Denna fil definierade gamla KOLUMNER för slide-tabeller:
+```
+GAMMAL (föråldrad):      | Issue | Vad | Ägare | Status | AC | Tests | Review | Docs | PR |
+NY (authoritative):      | Issue # | Titel | Assignad | Status | Merged/Branch |
+```
+
+**Nya, authoritative källor:**
+- **Slide-level format** → [SLIDE_DETAIL_SPEC.md](./SLIDE_DETAIL_SPEC.md) ✅ ANVÄND DENNA
+- **Röda trådar** → [PRESENTATION_RED_THREADS.md](./PRESENTATION_RED_THREADS.md) ✅ ANVÄND DENNA
+- **Gamla tabellregler** → RADERA (strider mot SLIDE_DETAIL_SPEC.md)
+
+**Denna fil sparas för historisk referens men ska INTE användas för nya presentationer.**
+
+---
+
+# PRESENTATION CONSISTENCY FRAMEWORK (DEPRECATED)
 
 **Mål:** Varje presentation ser likadan ut, följer samma logik, och har en tydlig röd tråd.
+
+⚠️ **OBSERVERA:** Se PRESENTATION_RED_THREADS.md för uppdaterade röda-trådar.
 
 ---
 

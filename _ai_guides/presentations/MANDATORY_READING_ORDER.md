@@ -32,57 +32,47 @@ Den filen säger:
 
 ---
 
-## 📚 SYSTEMÖVERSIKT — ALLA FILER HÄNGER IHOP
+## 📚 SYSTEMÖVERSIKT — FÖRENKLAD ARKITEKTUR (NYT)
 
-**Presentationssystemet består av MÅNGA filer som beskriver samma sak från olika vinklar:**
+**Presentationssystemet är nu konsoliderat för att undvika konflikter:**
 
 ```
-VAD SKA I PRESENTATIONEN?
-  ↓
-├─ structure/PRESENTATION_STRUCTURE.md
-│  └─ "14 mötespunkter + vilka data-källor"
-│
-├─ design/PRESENTATION_FORMAT_GUIDE.md
-│  └─ "Exakt layout + borders + slide-exempel"
-│
-├─ content/PRESENTATION_SPEC.md
-│  └─ "Regler för innehål + färg-semantik + issue-format"
-│
-├─ design/VISUAL_DESIGN_MANDATORY.md
-│  └─ "Fonts + kontrast + NPF-regler + PowerPoint-inställningar"
-│
-└─ structure/SPRINT_PROTOCOL_NUMBERED.md
-   └─ "Länk mellan slidorna och mötesprotokollmötespunkterna"
+🎯 SOURCE OF TRUTH (Läs dessa):
+  ├─ design/SLIDE_DETAIL_SPEC.md ⭐
+  │  └─ "EXAKT innehål för VARJE SLIDE ①-⑭"
+  │  └─ Kolumner, format, regler, data-sources, footer PER SLIDE
+  │
+  ├─ design/VISUAL_DESIGN_MANDATORY.md
+  │  └─ "SYMBOL + FÄRG + TEXT, NPF-vänlig, PowerPoint-regler"
+  │
+  ├─ design/PRESENTATION_RED_THREADS.md ⭐ NYT
+  │  └─ "Röda trådar, varning-signaler, checklista"
+  │
+  └─ design/DESIGN_AUTHORITY.md
+     └─ "Designkällor, deprecated filer, vad vinner vid konflikt"
 
-VERIFIERA DATAN:
-├─ data/DATA_SOURCES.md
-│  └─ "Vilka GitHub-URLs och fallback-sources"
-│
-├─ data/TEAM_ROSTER.md
-│  └─ "Vilka är de 7 team-medlemmarna (verifierade från git)"
-│
-├─ verification/VERIFICATION_SYSTEM.md
-│  └─ "Hur verifiera att data är korrekt"
-│
-└─ models/WEEKLY_PROGRESS_MODEL.md
-   └─ "Klassificering av arbete (levererat, pågår, blockerat)"
+📚 REFERENSFILER (För kontext, INTE authoritative):
+  ├─ structure/PRESENTATION_STRUCTURE.md
+  │  └─ "14 mötespunkter i ordning"
+  │
+  ├─ content/PRESENTATION_SPEC.md
+  │  └─ "Innehålls-regler, färg-semantik"
+  │
+  └─ data/DATA_SOURCES.md
+     └─ "Vilka GitHub-URLs och fallback-sources"
 
-BAKGRUND & FÖRSTÅELSE:
-├─ design/ACCESSIBILITY_NEURODIVERSITY.md 🧠
-│  └─ "VARFÖR färg + symbol + text? Dyslexi & ADHD-vänlig design"
-│  └─ (LÄS DETTA för att förstå varför designen är som den är)
-│
-├─ models/REPO_FIRST_RECONSTRUCTION.md
-│  └─ "Varför vi använder commits/PRs som primär källa"
-│
-├─ design/PRESENTATION_CONSISTENCY_FRAMEWORK.md
-│  └─ "Hur presentations-design är konsistent vecka till vecka"
-│
-└─ design/DESIGN_AUTHORITY.md
-   └─ "Vem beslutar om design, vad kan ändras"
+🚫 DEPRECATED (LÄS INTE DESSA):
+  ├─ design/PRESENTATION_CONSISTENCY_FRAMEWORK.md ❌
+  │  └─ "Gamla kolumn-regler, använd SLIDE_DETAIL_SPEC.md istället"
+  │
+  ├─ design/PRESENTATION_FORMAT_GUIDE.md ❌
+  │  └─ "Överflödiga, använd SLIDE_DETAIL_SPEC.md + VISUAL_DESIGN_MANDATORY.md istället"
+  │
+  └─ design/PRESENTATION_DESIGN_SPEC.md ❌
+     └─ "Överflödiga, använd VISUAL_DESIGN_MANDATORY.md istället"
 ```
 
-**NÄR DU LÄSER:** Dessa filer refererar VARANDRA. Om du är osäker — följa länkarna!
+**REGEL: Om två filer säger olika saker → SLIDE_DETAIL_SPEC.md och VISUAL_DESIGN_MANDATORY.md VINNER.**
 
 ---
 
@@ -241,9 +231,19 @@ Exempel på FEL matching:
 
 ### STEG 3: FÖRSTÅ STRUKTUR & REGLER & VISUELL DESIGN (20 min — KRITISK LÄSNING)
 
-**🚨 DESSA FYRA FILER MÅSTE LÄSAS I DENNA ORDNING:**
+**🚨 DESSA FEM FILER MÅSTE LÄSAS I DENNA ORDNING:**
 
-#### 3a. [structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md) — OBLIGATORISK
+#### 3a. [design/SLIDE_DETAIL_SPEC.md](design/SLIDE_DETAIL_SPEC.md) — 🚨 AUTHORITATIVE (LÄS FÖRST!)
+   - **EXAKT innehål för VARJE SLIDE (①-⑭)**
+   - **KOLUMNER per slide** (Issue # | Titel | Assignad | Status | Merged/Branch)
+   - **DATA-SOURCES per slide** (varifrån hämtas data?)
+   - **MÅSTE/FÅR INTE innehålla** (regler per slide)
+   - **FOOTER per slide** (vad ska stå längst ned?)
+   - **REGLER för sortering, filtrering, visuell markering**
+   - ⚠️ **KRITISK:** Om denna fil säger X och en annan fil säger Y → denna fil VINNER
+   - **LÄNK:** Denna fil säger EXAKT format för VARJE SLIDE
+
+#### 3b. [structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md) — OBLIGATORISK
    - De 14 mötespunkterna (①-⑭) i logisk ordning: retrospekt → status → plan → åtgärd
    - Ny ordning: Avklarat → Nuläge → Teams → Blockers → Risker → Kapacitet → Prioritering → Tekniska beslut → Sprintmål → Sprintplan → Nästa steg → Frågor
    - Vad varje punkt **MÅSTE** innehålla
@@ -252,53 +252,56 @@ Exempel på FEL matching:
    - Obligatoriska element per punkt
    - **LÄNK:** Här säger vi VILKA GitHub-URLs att använda
 
-#### 3b. [design/PRESENTATION_FORMAT_GUIDE.md](design/PRESENTATION_FORMAT_GUIDE.md) — 🚨 KRITISK
-   - **Exakt layout för varje slide-typ**
-   - **Border-regler:** Färgade (status) vs neutrala (information)
-   - **7 konkreta slide-exempel** — kopiera dessa layouts exakt
-   - **Checklist för AI** innan leverans (20+ checkpunkter)
-   - **LÄNK:** Här säger vi HUR slidorna ska se ut
-   
-#### 3c. [content/PRESENTATION_SPEC.md](content/PRESENTATION_SPEC.md) — OBLIGATORISK
-   - Issue-format (TVINGANDE)
-   - Färg-semantik (strikt regel)
-   - Risk/Blocker/Dependency-definitioner
-   - Preflight-validator
-   
-#### 3d. [design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md) — OBLIGATORISK
+#### 3c. [design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md) — 🚨 KRITISK (LÄS TIDIGT!)
    - SYMBOL + FÄRG + TEXT (denna ordning)
    - NPF/dyslexia-vänlig design
    - PowerPoint konkreta inställningar
    - WCAG AA kontrast (4.5:1 minimum)
    - Font-storlekar för tabeller
+   - **LÄNK:** Här säger vi HUR (visuellt) slidorna ska se ut
+
+#### 3d. [content/PRESENTATION_SPEC.md](content/PRESENTATION_SPEC.md) — OBLIGATORISK
+   - Issue-format (TVINGANDE)
+   - Färg-semantik (strikt regel)
+   - Risk/Blocker/Dependency-definitioner
+   - Preflight-validator
+   
+#### 3e. [design/PRESENTATION_FORMAT_GUIDE.md](design/PRESENTATION_FORMAT_GUIDE.md) — REFERENS (GAMMAL)
+   - ⚠️ DEPRECATED: Många regler överlappar SLIDE_DETAIL_SPEC.md
+   - DENNA FIL MÅ UPPDATERAS eller RADERAS för att undvika konflikter
+   - **LÄS INTE DENNA innan du läst 3a-3d ovan**
 
 ---
 
-## FASE 2: DESIGN & FORM (5 min)
+## FASE 2: RÖDA TRÅDAR & DESIGN AUTHORITY (5 min)
 
-Dessa styr VISUELLa regler.
+### 4. **design/PRESENTATION_RED_THREADS.md** — NYTT (LÄSGRÄS DENNA)
+   - Röda trådar (Arbete, Blockers, Risker, Kapacitet)
+   - Varning-signaler (vad saknas = presentationen är felaktig?)
+   - Checklista för röda trådar
+   - Exempel på röda trådar i action
 
-### 4. **design/PRESENTATION_STYLE.md**
+### 5. **design/PRESENTATION_STYLE.md**
    - Färger (semantisk BARA)
    - Typografi
    - Layout
    - NPF-regler
 
-### 5. **design/PRESENTATION_CONSISTENCY_FRAMEWORK.md**
-   - Visuell konsistens
-   - Innehålls-konsistens
-   - Röda trådar
-   - Varning-signaler
-
 ### 6. **design/DESIGN_AUTHORITY.md**
-   - Designkällor
+   - Designkällor (SLIDE_DETAIL_SPEC är #1)
+   - Deprecated filer (PRESENTATION_CONSISTENCY_FRAMEWORK.md, PRESENTATION_FORMAT_GUIDE.md, etc)
    - Vad måste åsidosättas från verktyg-defaults
+
+### ❌ DEPRECATED FILER (LÄS INTE DESSA)
+   - ❌ `design/PRESENTATION_CONSISTENCY_FRAMEWORK.md` — gamla kolumn-regler, använd SLIDE_DETAIL_SPEC.md istället
+   - ❌ `design/PRESENTATION_FORMAT_GUIDE.md` — använd SLIDE_DETAIL_SPEC.md och VISUAL_DESIGN_MANDATORY.md istället
+   - ❌ `design/PRESENTATION_DESIGN_SPEC.md` — använd VISUAL_DESIGN_MANDATORY.md och DESIGN_AUTHORITY.md istället
 
 ---
 
 ## FASE 3: INNEHÅL PER PUNKT (10-15 min)
 
-Läs den relevanta för vilken punkt du bygger.
+**HUVUDKÄLLA:** SLIDE_DETAIL_SPEC.md innehåller ALLT. Dessa är referensfiler.
 
 ### 7. **content/PRESENTATION_SPEC.md**
    - ALLA regler för innehål
@@ -314,6 +317,8 @@ Läs den relevanta för vilken punkt du bygger.
 ### 9. **models/REPO_FIRST_RECONSTRUCTION.md**
    - Varför repo-first (inte issue-first)
    - Mekaniska regler
+
+**Notering:** WEEKLY_PROGRESS_MODEL.md och REPO_FIRST_RECONSTRUCTION.md kan överlappar med SLIDE_DETAIL_SPEC.md. Om det finns en konflikt → SLIDE_DETAIL_SPEC.md VINNER.
 
 ---
 

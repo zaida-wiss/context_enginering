@@ -1,15 +1,28 @@
 ---
 name: presentation_format_guide
-description: Exakt layout för varje slide — visuell formatering, design-regler, konkreta exempel
+description: DEPRECATED — innehål flyttat till SLIDE_DETAIL_SPEC.md och VISUAL_DESIGN_MANDATORY.md
 metadata:
   type: reference
-  critical: true
+  deprecated: true
   version: 1.0
 ---
 
-# 🎨 PRESENTATION FORMAT GUIDE — Layout & Design för Varje Slide
+# 🚨 DEPRECATED — LÄSNING REKOMMENDERAS EJ
 
-**⚠️ DENNA FIL KOMPLETTERAR PRESENTATION_STRUCTURE.md**  
+**DENNA FIL INNEHÖLL REGLER SOM NU ÄR GAMLA OCH ÖVERFLÖDIGA.**
+
+**Nya, authoritative källor:**
+- **SLIDE-LEVEL format** → [SLIDE_DETAIL_SPEC.md](./SLIDE_DETAIL_SPEC.md)
+- **Visuell design** → [VISUAL_DESIGN_MANDATORY.md](./VISUAL_DESIGN_MANDATORY.md)
+- **Röda trådar** → [PRESENTATION_RED_THREADS.md](./PRESENTATION_RED_THREADS.md)
+
+**Denna fil sparas för historisk referens men ska INTE användas för nya presentationer.**
+
+---
+
+# 🎨 PRESENTATION FORMAT GUIDE — Layout & Design för Varje Slide (DEPRECATED)
+
+**⚠️ DENNA FIL ÄR FÖRÅLDRAD — LÄSNING INTE REKOMMENDERAD**  
 
 Se PRESENTATION_STRUCTURE.md för:
 - 14 mötespunkter (①-⑧ eller ①-⑭)

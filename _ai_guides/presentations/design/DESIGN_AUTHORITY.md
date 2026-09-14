@@ -18,9 +18,20 @@ metadata:
 
 ```
 DESIGN AUTHORITY (ranked by priority):
-  1️⃣ _ai_guides/presentations/design/PRESENTATION_STYLE.md (AUTHORITATIVE)
-  2️⃣ _ai_guides/presentations/design/REFERENCE_SLIDES/ (visual examples)
-  3️⃣ _ai_guides/presentations/content/PRESENTATION_SPEC.md (structure rules)
+  
+  🎯 SLIDE-LEVEL SPECIFICATION (NEW — AUTHORITATIVE):
+  1️⃣ _ai_guides/presentations/design/SLIDE_DETAIL_SPEC.md 
+     (EXAKT innehål per slide — format, kolumner, regler, data-sources, footer)
+  
+  🎨 DESIGN RULES (apply to all slides):
+  2️⃣ _ai_guides/presentations/design/PRESENTATION_STYLE.md (typografi, layout, spacing)
+  3️⃣ _ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md (PowerPoint-tekniska regler)
+  4️⃣ _ai_guides/presentations/design/REFERENCE_SLIDES/ (visual examples)
+  
+  ⚠️ DEPRECATED/CONFLICTING (DO NOT USE):
+  ❌ PRESENTATION_CONSISTENCY_FRAMEWORK.md (gamla kolumn-regler, strid med SLIDE_DETAIL_SPEC)
+  ❌ PRESENTATION_DESIGN_SPEC.md (ersätts av SLIDE_DETAIL_SPEC + PRESENTATION_STYLE)
+  ❌ PRESENTATION_FORMAT_GUIDE.md (ersätts av SLIDE_DETAIL_SPEC + VISUAL_DESIGN_MANDATORY)
   
 NOT FROM:
   ❌ avanza-team1 repo (project repo, data source ONLY)
@@ -30,7 +41,14 @@ NOT FROM:
   ❌ imitation of Avanza-app visual identity
 ```
 
-**Rule:** If a design choice is not in one of these three files, it is not authorized.
+**CRITICAL RULE:** If SLIDE_DETAIL_SPEC.md says X and another file says Y → SLIDE_DETAIL_SPEC.md WINS.
+
+**Reason:** SLIDE_DETAIL_SPEC.md is the ONLY file with:
+- Explicit KOLUMNER (columns) for each slide
+- Explicit DATA-SOURCES (where to fetch real data)
+- Explicit MÅSTE/FÅR INTE (what must/must not appear)
+- FOOTER specifications per slide
+- REGLER (how to sort, how to filter, visual markers)
 
 ---
 
