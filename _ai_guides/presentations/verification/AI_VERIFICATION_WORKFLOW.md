@@ -1,17 +1,75 @@
 ---
 name: ai_verification_workflow
-description: Explicit ordning för AI-verifikation FÖRE presentation visas — med rapport till människan
+description: Iterativ process — AI hämtar + verifierar → presenterar. Människan rättar manuellt tills klart.
 metadata:
   type: process
   critical: true
   required_before: rendering
 ---
 
-# 🔍 AI VERIFICATION WORKFLOW — Innan Presentation Visas
+# 🔍 AI VERIFICATION WORKFLOW — IterativProcess
 
-**DENNA FIL SÄGER EXAKT ORDNINGEN för AI-verifikation.**
+**DENNA FIL SÄGER PROCESSEN:**
 
-**Resultat: Människan ser RAPPORT (✅/❌) FÖRE presentationen, så hon/han vet vad som är verifierat.**
+1. **AI:** Hämtar data från GitHub → Verifierar varje slide → PRESENTERAR
+2. **Människan:** Läser presentation → Gör MANUELLA RÄTTNINGAR
+3. **AI:** Uppdaterar → Presenterar ny version
+4. **REPEAT** tills allt stämmer
+
+**Poängen:** AI är inte blocker. AI presenterar direkt. Människan rättar.
+
+---
+
+## 🔄 ITERATIV PROCESS — THE FLOW
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                       AI STARTS HERE                               │
+│                                                                     │
+│  1. Hämta data från GitHub (Branches, Commits, PRs, Issues, etc)  │
+│  2. Verifiera identitet (7 team-medlemmar från git commits)        │
+│  3. Verifiera varje slide-data (är datum korrekt? assignee ok?)    │
+│                                                                     │
+│                    → PRESENTATION READY                            │
+│                           ↓                                        │
+│  4. Presentera (visa presentationen till människan)                │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+                              ↓
+              ┌───────────────────────────────────┐
+              │    HUMAN REVIEWS PRESENTATION     │
+              │                                   │
+              │  "Denna datum är fel"             │
+              │  "Denna person är inte assignad"  │
+              │  "Denna status stämmer inte"      │
+              │                                   │
+              │  → SEND CORRECTIONS TO AI         │
+              └───────────────────────────────────┘
+                              ↓
+              ┌───────────────────────────────────┐
+              │   AI UPDATES PRESENTATION         │
+              │                                   │
+              │  Applies all corrections          │
+              │  Re-verifies updated data         │
+              │  Shows updated version            │
+              └───────────────────────────────────┘
+                              ↓
+              ┌───────────────────────────────────┐
+              │  HUMAN APPROVES OR CORRECTS AGAIN │
+              │                                   │
+              │  "OK" → DONE                      │
+              │  OR "Fixa även..." → REPEAT       │
+              └───────────────────────────────────┘
+                              ↓
+                       ✅ PRESENTATION READY
+                      (för möte/användning)
+```
+
+**Denna iterativa process löser problemet:**
+- ✅ AI använder automatisk verifikation
+- ✅ Människan har slutord (kan alltid korrigera)
+- ✅ Presentationen blir rätt efter iteration
+- ✅ Ingen data "stoppas" — AI presenterar direkt
 
 ---
 
@@ -242,26 +300,40 @@ RESULT: ✅✅✅ PRESENTATION VERIFIED & READY TO SHOW
 
 ---
 
-## 📋 MÄNNISKANS ROLL (Efter AI visar rapport)
+## 📋 MÄNNISKANS ROLL (Efter AI visar presentation)
 
-**Människan läser rapporten och:**
+**Människan får presentationen och:**
 
 ```
-1. Läser FASE 1-3 rapporter
-   → Ser vad som är verifierat (✅) och vad som är osäkert (⚠️)
-
-2. Stämmer resultaten med verkligheten?
-   → Ja: "OK, visa presentationen"
-   → Nej/Osäker: "Verifiera X igen" eller "Jag hämtar data själv"
-
-3. Ser presentationen
-   → Känner sig säker (redan verifierad av AI)
+1. Läser presentationen
+   → AI har redan verifierat varje slide
    → Kan fokusera på innehål, inte på "stämmer detta?"
 
-4. Mötet
+2. RÄTTAR MANUELLT vad som inte stämmer
+   → "Denna datum är fel, det var 12 sept inte 13 sept"
+   → "Denna person är inte assignad, det är någon annan"
+   → "Denna status är redan blockerad, inte pågår"
+   → Skriver tillbaka: "Fixa rad X på slide Y"
+
+3. AI tar rättningarna
+   → Uppdaterar presentationen
+   → Visar uppdaterad version
+   → Människan godkänner eller gör fler rättningar
+
+4. ITERATION: Tills allt stämmer
+   → Presentationen blir riktig
+   → Kan då användas i möte
+   
+5. Mötet
    → Använda presentation med tillit
-   → Veta att varje datum/namn/status är verifierat
+   → Veta att varje datum/namn/status är verifierat & godkänt av människan
 ```
+
+**VIKTIGT:** Denna process är ITERATIV, inte blockering:
+- AI presenterar först (ej vänta på godkännande)
+- Människan rättar (aktiv roll)
+- AI uppdaterar
+- Repeat tills klart
 
 ---
 
