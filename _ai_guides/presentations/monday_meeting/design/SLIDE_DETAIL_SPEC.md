@@ -130,8 +130,8 @@ Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
   - VIKTIGT: Visar VEMS JOBB det är, inte vem som checkade det
   - ASSIGNEE från GitHub = källan (inte reviewer, inte "merged by")
   - Format: GitHub handle + display name (från TEAM_ROSTER.md)
-  - Exempel: ✅ "#95 Security review · Zaida Wiss" (Zaida ÄGde det)
-  - Exempel: ❌ "#95 Security review · Erik Berglund" (Erik reviewade det, men Zaida ägde det)
+  - Exempel: ✅ "#95 Security review · [PERSON_A]" ([PERSON_A] ÄGde det)
+  - Exempel: ❌ "#95 Security review · [PERSON_B]" ([PERSON_B] reviewade det, men [PERSON_A] ägde det)
 
 **MÅSTE innehålla:**
 - ✅ Issue-nummer (#XX)
@@ -243,19 +243,19 @@ Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
 **INNEHÅL - DEL 2: DEADLINE TRACKER (fokuserat på risk)**
 
 ```
-🔴 KRITISK (Idag 14:00) — API-kontrakt fastslås
-   VAD: Frontend + Backend fastslår format, endpoints, types
-   VARFÖR: Låser upp Frontend #88-#89 + Native #86
+🔴 KRITISK (Idag 14:00) — [MILESTONE_A]
+   VAD: [TEAM_A] + [TEAM_B] fastslår [DECISION]
+   VARFÖR: Låser upp [FEATURE_1], [FEATURE_2], [FEATURE_3]
    STATUS: ⏳ INGEN AKTIVITET än
-   RISK: Om inte klart idag → 2 dagar försening för 2 teams
-   ACTION: Erik möte 14:00 — kan vi unblockera NU?
+   RISK: Om inte klart idag → [N] dagar försening för [M] teams
+   ACTION: [PERSON] möte 14:00 — kan vi unblockera NU?
 
-🟠 HÖGT (Imorgon) — API dokumenterad i GitHub
-   VAD: Formell dokumentation i issue #99 (JSON-schema, endpoints)
-   VARFÖR: Frontend + Native behöver detta för integration-test
+🟠 HÖGT (Imorgon) — [MILESTONE_B]
+   VAD: Formell dokumentation i issue #XX ([FORMAT], [DETAILS])
+   VARFÖR: [TEAM_C] + [TEAM_D] behöver detta för [PHASE]
    STATUS: ⏳ Beror på idag's möte
-   RISK: 1 dag sen → test börjar på onsdag istället
-   ACTION: Vilka kan hjälpa Erik dokumentera?
+   RISK: [N] dag sen → [IMPACT]
+   ACTION: Vilka kan hjälpa [PERSON] med [TASK]?
 
 🟡 MEDEL (Fredag) — Feature-complete eller fallback
    VAD: Alla features klara ELLER fallback för CTO-demo
@@ -293,40 +293,71 @@ Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
 
 ---
 
-## 📝③ FRONTEND (1-3 slides)
+## 📝③ FRONTEND (2-3 slides per mötespunkt)
 
-### SLIDE ③A: Frontend — Denna sprint
+### MÖTESPUNKT ③ — FRONTEND: DENNA SPRINT & NULÄGE
 
-**FORMAT:** Tabell
+🚨 **KRITISK: Denna mötespunkt visar ALLA issues denna sprint — både kommande backlog + pågående arbete + blockers + risker**
 
-**KOLUMNER:**
-| Issue # | Titel | Assignad | Status | Blocker |
-|---------|-------|----------|--------|---------|
-| #88 | Critical interactions | Björn Boman | ◐ PÅG | API-kontrakt |
-| #89 | E2E happy path | Tomac Barin | ◐ PÅG | API-kontrakt |
-| #85 | Responsive header/nav | Zaida Wiss | ✓ DONE | — |
+**FORMAT:** Tabell klassificerad på dependencies + status
+
+**STRUKTUR:**
+
+```
+PÅGÅR DENNA VECKA (fortsätt från senaste mötet):
+  #XX | [FEATURE_A] | [PERSON_A] | ◐ PÅG | Blocker: [FEATURE_B] (#YY)
+  #YY | [FEATURE_C] | [PERSON_B] | ◐ PÅG | Blocker: Backend API (#ZZ)
+
+KOMMANDE DENNA SPRINT (från backloggen):
+  #AA | [FEATURE_D] | [PERSON_C] | ⏳ BACKLOG | Beror på: #XX
+  #BB | [FEATURE_E] | ?? | ⏳ BACKLOG | Beror på: #XX (review)
+  #CC | [FEATURE_F] | ?? | ⏳ BACKLOG | Beror på: External blocker
+
+INTE TILLDELAT (Förslag baserat på tidigare arbete):
+  [PERSON_X]: [FEATURE_G] — nära tidigare arbete denna område
+  [PERSON_Y] + [PERSON_Z]: [FEATURE_H] — pairing för snabbare progress
+  [PERSON_W]: Flexibel support — täcka blockers om de dyker upp
+```
+
+**KOLUMNER:** Issue # | Titel | Assignad | Status | Blocker/Beroenden
+
+**STATUS-MÄRKEN:**
+- ✓ DONE (redan mergad denna vecka)
+- ◐ PÅG (aktivt arbete nu)
+- ⏳ BACKLOG (väntar på detta sprint, ej startat ännu)
+- ?? UNASSIGNED (vi föreslår assignee baserat på tidigare mönster)
 
 **REGLER:**
-- En rad per issue denna sprint (öppen eller pågår)
-- Sortera på status (DONE sist)
-- Status-märken: ✓ = DONE, ◐ = PÅG, ⏳ = VÄNTAR
-- "Blocker" = vad väntar vi på (issue-nummer eller kort beskrivning)
-- Om ingen blocker: använd "—"
+- Sortera på DEPENDENCIES (vad måste göras först?)
+- Visa ALLA issues denna sprint, klassificerat per status
+- **Assignad = vem som ÄGer arbetet**
+  - Om redan assignad i GitHub: visa namn
+  - Om INTE assignad: visa "??" + förslag baserat på tidigare commits
+- "Blocker" = vad väntar vi på (issue-nummer eller PR)
+- **BEROENDEN MÅSTE VISAS** — använd "Beror på: #X" för clarity
 
 **MÅSTE innehålla:**
-- ✅ Issue-nummer
+- ✅ Issue-nummer (#XX)
 - ✅ Titel (2-5 ord)
-- ✅ Assignad (personens namn)
+- ✅ Assignad (namn eller "??" + förslag)
 - ✅ Status (✓/◐/⏳)
-- ✅ Blocker (eller "—")
+- ✅ Blocker/Beroenden (tydligt vilken issue som blockerar vilken)
+- ✅ **ALLA 7 team-medlemmar — vem gör vad eller "pairing X+Y"**
 
 **FÅR INTE innehålla:**
 - ❌ Commit-hash
-- ❌ PR-nummer (det är issues vi visar)
+- ❌ PR-nummer (det är issues vi visar, inte PRs)
 - ❌ Estimat i timmar
-- ❌ "Nästan klart" (antingen DONE eller PÅG)
+- ❌ Issues från förra veckan som redan är klara
+- ❌ Vaga assignee-förslag ("kanske [PERSON_X]")
 
-**FOOTER:** `Källa: GitHub issues + Project Board ✅`
+**DATA-SOURCES:**
+- 📊 **Pågår:** GitHub issues with status "In Progress" + branches with commits senaste 7 dagar
+- 📊 **Backlog denna sprint:** GitHub issues labeled "Sprint-X" eller Project Board "Sprint" column
+- 📊 **Assignee-förslag:** Git blame + git log för varje issue-kategori (vem jobbade senast på liknande?)
+- 📊 **Beroenden:** DEPENDENCY_CHAIN_PLANNING.md klassificering
+
+**FOOTER:** `Källa: GitHub issues + Project Board + Git history ✅ | Assignee-förslag baserat på tidigare arbete`
 
 ---
 
@@ -337,9 +368,9 @@ Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
 **INNEHÅL:**
 ```
 NÄSTA STEG:
-1. Björn ↔ Backend (Erik): API-kontrakt möte idag 14:00
-2. Tomac pairing med Zaida: Testa happy path mot mock-API
-3. Zaida: Code review #85 innan merge
+1. [PERSON_A] ↔ Backend ([PERSON_B]): API-kontrakt möte idag 14:00
+2. [PERSON_C] pairing med [PERSON_D]: Testa [FEATURE] mot mock-API
+3. [PERSON_E]: Code review #XX innan merge
 ```
 
 **REGLER:**
@@ -368,11 +399,11 @@ NÄSTA STEG:
 **INNEHÅL:**
 ```
 VÄNTAR PÅ:
-  🔴 Backend API-definition för #88, #89
-  🟠 Möjlig: Test-ramverk från Rasha
+  🔴 Backend API-definition för #XX, #YY (blockerar Frontend #AA)
+  🟠 Möjlig: [EXTERNAL_RESOURCE] från [TEAM/PERSON]
 
 RISK:
-  🟠 Om API inte klart i morgon → 1-2 dagar försening
+  🟠 Om [BLOCKER] inte klart [WHEN] → [DAYS] dagar försening på [FEATURES]
 ```
 
 **REGLER:**
@@ -405,8 +436,8 @@ RISK:
 **KOLUMNER:**
 | Endpoint | Status | Frontend blockar? | Nästa |
 |----------|--------|-------------------|-------|
-| POST /user/login | ✅ Dokumenterad | Nej | Testning |
-| POST /transaction/execute | 🟠 I review | JA (#88-#89) | Erik review idag |
+| [ENDPOINT_A] | ✅ Dokumenterad | Nej | Testning |
+| [ENDPOINT_B] | 🟠 I review | JA (#XX-#YY) | [PERSON] review idag |
 
 **REGLER:**
 - Status: ✅ = klart, 🟠 = in progress, ❌ = ej påbörjad
@@ -436,10 +467,10 @@ RISK:
 **INNEHÅL:**
 ```
 VÄNTAR PÅ:
-  🔴 Backend API-kontrakt för #86
+  🔴 Backend API-kontrakt för #XX
 
 MÖJLIG SUPPORT:
-  Pär kan stödja Frontend denna vecka medan väntar
+  [PERSON_N] kan stödja [TEAM] denna vecka medan väntar
 ```
 
 ---
@@ -454,13 +485,13 @@ MÖJLIG SUPPORT:
 ```
 🔴 KRITISKA KEDJOR:
 
-[#43 API Foundation]
-   ├──→ [#82 Portfolio reads]
-   └──→ [#83 Allocation saves]
+[#XX API Foundation]
+   ├──→ [#YY Feature A]
+   └──→ [#ZZ Feature B]
 
-[#87 Test Foundation]
-   └──→ [#88 Critical interactions]
-        └──→ [#89 E2E tests]
+[#AA Test Foundation]
+   └──→ [#BB Feature C]
+        └──→ [#CC Feature D]
 ```
 
 **REGLER:**
@@ -490,13 +521,13 @@ MÖJLIG SUPPORT:
 ```
 KRITISKA FYND:
 
-🔴 Backend PR #95 — SQL-injection risk
+🔴 Backend PR #XX — [SECURITY_ISSUE]
    STATUS: Åtgärdad + testning igång
    LÖST: Ja, ready för merge
 
-🟠 Frontend PR #88 — API saknas dokumentation
-   STATUS: Väntar på Erik API-definition
-   NÄSTA: Björn reviewar igen när API klart
+🟠 Frontend PR #YY — [DESIGN_ISSUE]
+   STATUS: Väntar på [PERSON/TEAM] [DEPENDENCY]
+   NÄSTA: [PERSON] reviewar igen när [CONDITION] klart
 ```
 
 **REGLER:**
@@ -515,8 +546,8 @@ KRITISKA FYND:
 **KOLUMNER:**
 | Risk | Sannolikhet | Konsekvens | Mitigation | Status |
 |------|-------------|-----------|-----------|--------|
-| API-kontrakt ej klart | Låg | Frontend får 2d försening | Erik + Björn möte idag 14:00 | Pågår |
-| Zaida överbelastad | Medel | Kvalitetsfall | Pairing Tomac+Björn | Planerat |
+| [RISK_A] ej klart | Låg | [TEAM] får [N]d försening | [PERSON_A] + [PERSON_B] möte idag 14:00 | Pågår |
+| [RISK_B] | Medel | [IMPACT] | Pairing [PERSON_C]+[PERSON_D] | Planerat |
 
 **REGLER:**
 - Sannolikhet: Låg/Medel/Hög
@@ -563,8 +594,8 @@ Native:
   Status: 🟢 OK — extra kapacitet för support
 
 REKOMMENDATION:
-  Flytta #85 till nästa vecka för att ge Frontend andrum.
-  Pär kan stödja Frontend #88 under API-väntan.
+  Flytta #XX till nästa vecka för att ge [TEAM] andrum.
+  [PERSON_N] kan stödja [TEAM] #YY under [BLOCKER]-väntan.
 ```
 
 **REGLER:**
@@ -595,23 +626,23 @@ REKOMMENDATION:
 **INNEHÅL:**
 ```
 🔴 FAS 1 — Foundation Issues (starta nu):
-  ✅ Zaida: #87 Test foundation (låser upp #88/#89)
-  ✅ Tomac: #43 API client + mock (låser upp #82/#83)
-  ✅ Björn: #81 Linked allocation (låg konflikt, egen komponent)
+  ✅ [PERSON_A]: #XX [FEATURE_A] (låser upp #YY/#ZZ)
+  ✅ [PERSON_B]: #AA [FEATURE_B] (låser upp #BB/#CC)
+  ✅ [PERSON_C]: #DD [FEATURE_C] (låg konflikt, egen komponent)
 
-  Varför: Tre kedjor, låg mergekonfliktrisk. #43/#87 låser upp mycket.
+  Varför: Tre kedjor, låg mergekonfliktrisk. #XX/#AA låser upp mycket.
 
 🟠 FAS 2 — Efter Fas 1 mergad (pull develop först!):
-  Zaida: #88 Critical interaction tests
-  Tomac: #82 usePortfolio (kräver #43 merged)
-  Björn: #85 Responsive header (kan parallelleras)
+  [PERSON_A]: #EE [FEATURE_D]
+  [PERSON_B]: #FF [FEATURE_E] (kräver #XX merged)
+  [PERSON_C]: #GG [FEATURE_F] (kan parallelleras)
 
-  Varför: #82 kräver #43. #85 oberoende av dataflödet.
+  Varför: #FF kräver #XX. #GG oberoende av dataflödet.
 
 🟡 FAS 3+ — Beroenden lösta:
-  Zaida: Stabilisering #88
-  Tomac: #83 saveAllocation (kan NOW startas utan #81 konflikt)
-  Björn: #86 Responsive dashboard
+  [PERSON_A]: Stabilisering #EE
+  [PERSON_B]: #HH [FEATURE_G] (kan NOW startas)
+  [PERSON_C]: #II [FEATURE_H]
 ```
 
 **REGLER:**
@@ -644,10 +675,10 @@ REKOMMENDATION:
 
 Ingen börjar nästa issue innan dependency är merged i develop.
 
-Exempel ordning för Person A (Zaida):
-  1. #87 → merge → pull develop
-  2. #88 (depender på #87) → merge → pull develop
-  3. #89 (depender på #88)
+Exempel ordning för [PERSON_A]:
+  1. #XX → merge → pull develop
+  2. #YY (depender på #XX) → merge → pull develop
+  3. #ZZ (depender på #YY)
 
 Före varje ny issue:
   ☐ Pull/rebase mot develop
@@ -665,25 +696,25 @@ Före varje ny issue:
 
 **INNEHÅL:**
 ```
-🟢 BESLUT ① — API-kontrakt format
-   FORMAT: RESTful JSON (redan validerat)
-   ÄGARE: Erik (Backend-lead)
+🟢 BESLUT ① — [DECISION_A]
+   FORMAT: [CHOICE_1] (redan validerat)
+   ÄGARE: [PERSON_X] (Backend-lead)
    DEADLINE: Idag 14:00
-   DOKUMENTATION: #99 GitHub issue
-   PÅVERKAN: Frontend (#88-#89), Native (#86)
+   DOKUMENTATION: #XX GitHub issue
+   PÅVERKAN: [TEAM_A] (#YY-#ZZ), [TEAM_B] (#AA)
 
-🟠 BESLUT ② — Test-ramverk
-   FORMAT: Vitest (unit) + Playwright (E2E)
-   ÄGARE: Rasha (Backend-lead)
+🟠 BESLUT ② — [DECISION_B]
+   FORMAT: [CHOICE_2] + [CHOICE_3]
+   ÄGARE: [PERSON_Y] (Backend-lead)
    DEADLINE: Denna dag
-   DOKUMENTATION: #87 GitHub issue
+   DOKUMENTATION: #BB GitHub issue
    PÅVERKAN: Alla teams
 
-🟡 DISKUSSION — Branch-strategi vid merge
-   FRÅGA: Merge #95 till main direkt eller via release-branch?
-   ÄGARE: Erik + PL
-   DEADLINE: Innan #95 klar (idag)
-   PÅVERKAN: Release-process
+🟡 DISKUSSION — [DECISION_C]
+   FRÅGA: [QUESTION] direkt eller via [ALTERNATIVE]?
+   ÄGARE: [PERSON_X] + PL
+   DEADLINE: Innan #CC klar (idag)
+   PÅVERKAN: [IMPACT]
 ```
 
 **REGLER:**
@@ -716,19 +747,19 @@ Före varje ny issue:
 ```
 SPRINTMÅL DENNA VECKA (baserat på prioritering + kapacitet):
 
-✅ Bekräfta API-kontrakt Frontend ↔ Backend innan vecka-slut (KRITISK)
-   Varför: Låser upp Frontend #88-#89 och Native #86
-   Ägare: Erik (Backend) + Björn (Frontend)
-   Deadline: Fredag EOD (eller idag för att ha buffer)
+✅ Bekräfta [DECISION_A] innan vecka-slut (KRITISK)
+   Varför: Låser upp [TEAM_A] och [TEAM_B]
+   Ägare: [PERSON_X] ([TEAM_X]) + [PERSON_Y] ([TEAM_Y])
+   Deadline: Fredag EOD (eller denna dag för att ha buffer)
 
-✅ Etablera testramverk för end-to-end-flow (FOUNDATION)
-   Varför: Backend + Frontend behöver detta för integration-testning
-   Ägare: Rasha (Backend)
+✅ Etablera [FOUNDATION_RESOURCE] (FOUNDATION)
+   Varför: [TEAM_A] + [TEAM_B] behöver detta för [PHASE]
+   Ägare: [PERSON_Z] ([TEAM_Z])
    Deadline: Denna dag eller imorgon
 
-✅ Ge Frontend + Native möjlighet att börja integration-testning
-   Varför: Två teams kan parallellisera när API är klart
-   Ägare: Erik + Björn + Henrik
+✅ Ge [TEAM_A] + [TEAM_B] möjlighet att börja [NEXT_PHASE]
+   Varför: Två teams kan parallellisera när [BLOCKER] är klart
+   Ägare: [PERSON_X] + [PERSON_Y] + [PERSON_W]
    Deadline: Vecka-slut
 
 FEASIBILITY-CHECK:
@@ -767,31 +798,31 @@ FEASIBILITY-CHECK:
 
 **INNEHÅL:**
 ```
-MÅNDAGEN 14 SEPT:
+MÅNDAG [DATE_1]:
   09:00-10:30  Sprint Planning-möte
-  14:00-14:30  Erik ↔ Frontend API-kontrakt-möte
-  Deadline: #95 security-testing klar
+  14:00-14:30  [PERSON_A] ↔ [TEAM_A] [DECISION]-möte
+  Deadline: #XX [TASK] klar
 
-TISDAGEN 15 SEPT:
-  10:00-10:30  Erik ↔ Native JNA-kontrakt-möte
-  Deadline: API-kontrakt formell dokumenterad i GitHub
+TISDAG [DATE_2]:
+  10:00-10:30  [PERSON_B] ↔ [TEAM_B] [TASK]-möte
+  Deadline: [MILESTONE] formell dokumenterad i GitHub
 
-ONSDAGEN 16 SEPT:
-  08:00-09:00  Code review för #88-#89 (nya API-versionen)
+ONSDAG [DATE_3]:
+  08:00-09:00  Code review för #YY-#ZZ ([DESCRIPTION])
   14:00-14:30  Team-synk på progress
-  Deadline: #88 ready för user-testing
+  Deadline: #YY ready för [NEXT_PHASE]
 
-TORSDAGEN 17 SEPT:
-  09:00-12:00  User-testing av #88-#89 flow
-  14:00-15:00  Bug-fix session
+TORSDAG [DATE_4]:
+  09:00-12:00  [ACTIVITY] av #ZZ flow
+  14:00-15:00  [TASK]-session
 
-FREDAGEN 18 SEPT:
-  09:00-10:00  Final testing
-  14:00-16:00  CTO-DEMO KÖRNING
-  Deadline: Allt feature-complete eller känd fallback
+FREDAG [DATE_5]:
+  09:00-10:00  Final [QA]
+  14:00-16:00  [DEMO/REVIEW] KÖRNING
+  Deadline: Allt [STATE] eller känd fallback
 
 VECKA-SLUT:
-  18:00+  Post-mortem + nästa sprint planning förberedelse
+  18:00+  [RETROSPECTIVE] + nästa sprint planning förberedelse
 ```
 
 **REGLER:**
@@ -821,25 +852,25 @@ VECKA-SLUT:
 ```
 MILESTONES:
 
-✅ Idag (Måndag): API-kontrakt möte avklarat
-   Vad: Erik + Björn fastslår format, typ, endpoints
-   Ägare: Erik
-   Verifikation: #99 issue innehåller JSON-schema
+✅ Idag (Måndag): [MILESTONE_A] avklarat
+   Vad: [PERSON_A] + [PERSON_B] fastslår [DECISION]
+   Ägare: [PERSON_A]
+   Verifikation: #XX issue innehåller [PROOF]
 
-⚠️ Imorgon (Tisdag): API dokumenterad i GitHub
+⚠️ Imorgon (Tisdag): [MILESTONE_B] dokumenterad i GitHub
    Vad: Formell dokumentation (inte bara PR)
-   Ägare: Erik
-   Verifikation: Frontend kan läsa specifikationen
+   Ägare: [PERSON_C]
+   Verifikation: [TEAM] kan läsa specifikationen
 
-🟢 Denna vecka (Onsdag): #88-#89 ready för test
-   Vad: Testbar kod, inga större bugs
-   Ägare: Björn + Tomac
-   Verifikation: User-testing kan börja onsdag 08:00
+🟢 Denna vecka (Onsdag): #YY-#ZZ ready för [PHASE]
+   Vad: [STATE], inga större bugs
+   Ägare: [PERSON_D] + [PERSON_E]
+   Verifikation: [ACTIVITY] kan börja onsdag 08:00
 
-🎯 Vecka-slut (Fredag): CTO-demo körbar
-   Vad: Feature-complete eller känd fallback
+🎯 Vecka-slut (Fredag): [DELIVERABLE] körbar
+   Vad: [STATE] eller känd fallback
    Ägare: Alla
-   Verifikation: Demo-körning lyckas
+   Verifikation: [VERIFICATION_METHOD] lyckas
 ```
 
 ---
@@ -855,32 +886,32 @@ MILESTONES:
 HANDLINGSPLAN:
 
 INOM 1 TIMMA EFTER MÖTET:
-[ ] 1. Erik: Uppdatera GitHub issue #99 med API-kontrakt
-    Verifikation: Issue-description innehåller JSON-schema
+[ ] 1. [PERSON_A]: Uppdatera GitHub issue #XX med [DECISION]
+    Verifikation: Issue-description innehåller [PROOF]
 
-[ ] 2. Zaida: Uppdatera Project Board — flytta #85 till "Next"
-    Verifikation: Project Board visar #85 i Next-kolumnen
+[ ] 2. [PERSON_B]: Uppdatera Project Board — flytta #YY till "[STATUS]"
+    Verifikation: Project Board visar #YY i rätt kolumn
 
-IDAG (före 14:00 möte):
-[ ] 3. Björn: Review mock-API-setup för #88 testing
-    Verifikation: Björn säger "ready" i #88-kommentarer
+IDAG (före [TIDPUNKT] möte):
+[ ] 3. [PERSON_C]: Review [RESOURCE] för #ZZ
+    Verifikation: [PERSON_C] säger "ready" i GitHub-kommentarer
 
-[ ] 4. Erik: Genomför security-testing på #95
-    Verifikation: Erik mergear #95 eller sätter label "blocked-security"
+[ ] 4. [PERSON_D]: Genomför [TASK] på #AA
+    Verifikation: [PERSON_D] mergear #AA eller sätter label "[STATUS]"
 
 IMORGON:
-[ ] 5. Rasha: Starta #87 test-framework-implementation
-    Verifikation: Branch #87-branch skapad + första commit pushad
+[ ] 5. [PERSON_E]: Starta #BB [TASK]-implementation
+    Verifikation: Branch #BB-branch skapad + första commit pushad
 
-[ ] 6. Tomac: Börja pairing-session med Björn på #88
-    Verifikation: Commit pushad från #88-branch
+[ ] 6. [PERSON_F]: Börja pairing-session med [PERSON_G] på #CC
+    Verifikation: Commit pushad från #CC-branch
 
 DENNA VECKA:
-[ ] 7. Erik: Genomför JNA-kontrakt-möte med Native (idag eller imorgon)
+[ ] 7. [PERSON_H]: Genomför [MEETING] med [TEAM] ([WHEN])
     Verifikation: Issue-comment i GitHub med mötes-summering
 
-[ ] 8. Zaida: Code-review alla inkommande PRs från Frontend
-    Verifikation: Alla PRs har review-kommentar (lgtm eller ändringar)
+[ ] 8. [PERSON_I]: Code-review alla inkommande PRs från [TEAM]
+    Verifikation: Alla PRs har review-kommentar
 
 [ ] 9. PL: Verifiera Project Board stämmer med Git-branch-status
     Verifikation: Board-kolumner matchar faktisk arbete
@@ -920,12 +951,12 @@ DENNA VECKA:
 
 IDAG-SVAR BEHÖVS (höga prioriteten):
 
-1. SCOPE — Ska #84 (Asset allocation chart) in i denna sprint?
-   VARFÖR VIKTIG: Påverkar Frontend-kapacitet (+ 8 timmar)
-   IMPAKT: Om JA → flytta #85 till nästa vecka
+1. SCOPE — Ska #XX ([FEATURE_A]) in i denna sprint?
+   VARFÖR VIKTIG: Påverkar [TEAM]-kapacitet (+ [N] timmar)
+   IMPAKT: Om JA → flytta #YY till nästa vecka
 
-2. PRIORITERING — Om #95 mergea idag, kan vi skippa #87?
-   VARFÖR VIKTIG: Kan spara 8 timmar Backend-testning
+2. PRIORITERING — Om #ZZ mergea idag, kan vi skippa #AA?
+   VARFÖR VIKTIG: Kan spara [N] timmar [TASK]
    IMPAKT: Säkerhets-testing vs testramverk-investering
 
 3. SCOPE — Responsive dashboard (#86): krävs desktop-version också?
