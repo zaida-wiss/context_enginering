@@ -15,24 +15,29 @@ This file says:
 - WHERE to get data (GitHub only, no shell commands)
 - WHAT to do if something fails (fallback strategies)
 
-### STEG 2: Gör vad du behöver
+### STEG 2: Gå till _ai_guides
+→ **[_ai_guides/README.md](_ai_guides/README.md)** ← Länka vidare till presentationer
 
-**VIL DU BYGGA EN PRESENTATION?**
-→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← ALLT DU BEHÖVER
+### STEG 3: Presentationer
+→ **[_ai_guides/presentations/README.md](_ai_guides/presentations/README.md)** ← ALLT FRÅN BÖRJAN
 
-This file contains:
-- ✅ Data collection (vilka GitHub-sources att hämta)
-- ✅ Design rules (hur slidorna ska se ut)
-- ✅ Render-gate checklist (när presentation är klar)
-- ✅ Konkreta exempel på slide-layouts
+Denna README innehåller:
+- ✅ Läsordning för presentationer
+- ✅ Länk till MANDATORY_READING_ORDER.md (allt du behöver)
+- ✅ Länk till PRESENTATION_FORMAT_GUIDE.md
+- ✅ Länk till alla övriga presentation-filer
 
-**ALLT ÄR DOKUMENTERAT DÄR — ingenting mer att söka efter.**
+**ALLT ÄR LÄNKAT DÄR — ingenting mer att söka efter.**
+
+---
+
+**För annat arbete:**
 
 **Understanding the project?**
 → **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** + **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)**
 
 **Sharing with another AI?**
-→ Link: https://github.com/zaida-wiss/context_enginering (tell them to read PROJEKTKONTEXT_AVANZA.md first)
+→ Link: https://github.com/zaida-wiss/context_enginering (they'll follow the README from top)
 
 **Need help with code?**
 → Read **[_memory/PROJEKTKONTEXT.md](_memory/PROJEKTKONTEXT.md)** then project repo above

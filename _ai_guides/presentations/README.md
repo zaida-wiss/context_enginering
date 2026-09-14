@@ -15,16 +15,25 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 ---
 
-🚨 **INNAN DU BÖRJAR:** Två obligatoriska filer måste läsas i denna ordning
+🚨 **DU ÄR HÄR FÖR ATT BYGGA EN PRESENTATION**
 
-1. **[DATA_COLLECTION_MANDATORY.md](DATA_COLLECTION_MANDATORY.md)** ← START HÄR
-   - Checklist för datainsamling (stängda issues, mergade PRs, commits)
-   - Om denna hoppar över → arbete blir dolt (login-arbete, designsystem, etc)
+**START HÄR** → **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← ALLT DU BEHÖVER
 
-2. **[design/DESIGN_AUTHORITY.md](design/DESIGN_AUTHORITY.md)** ← SEDAN DESIGN-REGLER
-   - Designkällor kommer ENDAST från context_enginering (aldrig från avanza-team1)
-   - PRESENTATION_STYLE.md är auktoritativ över presentationsverktygets defaults
-   - Presentationsverktygets defaults MÅSTE åsidosättas om de strider mot reglerna
+Denna fil innehåller:
+- ✅ Systemöversikt (hur allt hänger ihop)
+- ✅ Data-hämtning från GitHub (exakta URLs)
+- ✅ Designregler (Symbol + Färg + Text)
+- ✅ Render-gate checklist (när presentation är klart)
+- ✅ Länk till PRESENTATION_FORMAT_GUIDE.md (konkreta slide-exempel)
+
+**ALLT är länkat därifrån. Ingenting mer att söka efter.**
+
+---
+
+**OM DU VIL ÄNDRA SYSTEMET** (inte bygga presentation):
+1. Läs [DATA_COLLECTION_MANDATORY.md](DATA_COLLECTION_MANDATORY.md) för att förstå datahämtning
+2. Läs [design/DESIGN_AUTHORITY.md](design/DESIGN_AUTHORITY.md) för design-principer
+3. Navigera via "Vad vill du ändra?" sektion nedan
 
 ⚠️ **OM WEBBEN ÄR BEGRÄNSAD:**
    - GitHub-webben kan failas på grund av nätverksbegränsningar
