@@ -1,5 +1,11 @@
 # 🤖 AI Team Lead - Universal Facilitator Prompt
 
+🚨 **DETTA ÄR FÖR MÖTE-FACILITATION, INTE PRESENTATIONSGENERERING**
+
+Denna fil är för att **köra möten tillsammans med AI i en chat** — interaktiv, dynamisk, copy-paste data.
+
+**INTE** för att generera presentationer. För presentations, se [`MANDATORY_READING_ORDER.md`](presentations/MANDATORY_READING_ORDER.md).
+
 **Använd denna fil som systemPrompt när du kopierar den till vilken AI-modell som helst**
 
 ---

@@ -77,7 +77,7 @@ RESULTAT: Live GitHub-data + verifierad design = presentationen är klar
 | **Vad kan AI hjälpa med** | [WHAT_CAN_I_HELP_WITH.md](WHAT_CAN_I_HELP_WITH.md) | Exempelprompts och vanliga AI-uppgifter |
 | **Frontend AI-instruktioner** | [FRONTEND_AI_INSTRUCTIONS.md](FRONTEND_AI_INSTRUCTIONS.md) | Specifika regler för Frontend-arbete |
 | **PR-uppdateringar** | [PR_UPDATES.md](PR_UPDATES.md) | Hur man förbereder och presenterar PR:er |
-| **Team-ledning med AI** | [AI_TEAMLEADER.md](AI_TEAMLEADER.md) | AI som teamledare — planerning, riskanalys |
+| **Team-ledning med AI** | [AI_TEAMLEADER.md](AI_TEAMLEADER.md) | 🎙️ MÖTE-FACILITATION (interaktiv i chat, copy-paste data) — INTE presentation |
 | **Cross-team integration** | [CROSS_TEAM_INTEGRATION.md](CROSS_TEAM_INTEGRATION.md) | Beroenden mellan Frontend/Backend/Native |
 | **Backlog-template** | [BACKLOG_TEMPLATE.md](BACKLOG_TEMPLATE.md) | Hur man skriver och strukturerar GitHub-issues |
 | **Pedagogiska riktlinjer** | [PEDAGOGICAL_GUIDANCE.md](PEDAGOGICAL_GUIDANCE.md) | Lärande & feedback-filosofi för möten |
