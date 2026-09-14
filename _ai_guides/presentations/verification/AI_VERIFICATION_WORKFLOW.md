@@ -16,7 +16,7 @@ metadata:
 3. **AI analyserar datan** (vad betyder det? vilka mönster?)
 4. **AI levererar presentation** (KLAR, inte för redigering)
 
-**Poängen:** AI gör ALLT. Ingen iteration, ingen human-verifikation. KLART.
+**Poängen:** AI gör ALLT själv. Presentationen är KLAR utan att invänta godkännande. Människan kan korrigera efteråt om något är fel.
 
 ---
 
@@ -65,11 +65,12 @@ metadata:
 └────────────────────────────────────────────────────────────┘
 ```
 
-**AI gör ALLT — Ingen iteration, ingen human-verifikation:**
+**AI gör ALLT — Levererar färdig presentation utan väntan:**
 - ✅ AI verifierar från FLERA KÄLLOR (triangulation)
 - ✅ AI analyserar vad datan betyder
 - ✅ AI levererar presentation KLAR
-- ✅ Ingen human-loop — presentationen är DONE
+- ✅ Presentation är färdig för möte omedelbar (ingen väntan på godkännande)
+- ✅ Människan kan korrigera efteråt om något ändå är fel
 
 ---
 
@@ -300,40 +301,27 @@ RESULT: ✅✅✅ PRESENTATION VERIFIED & READY TO SHOW
 
 ---
 
-## 📋 MÄNNISKANS ROLL (Efter AI visar presentation)
+## 📋 EFTER AI LEVERERAR — Valfri mänsklig efterkontroll
 
-**Människan får presentationen och:**
+**AI levererar presentationen. Därefter kan människan (valfritt):**
 
 ```
 1. Läser presentationen
    → AI har redan verifierat varje slide
    → Kan fokusera på innehål, inte på "stämmer detta?"
 
-2. RÄTTAR MANUELLT vad som inte stämmer
+2. Om något är fel → Meddela AI
    → "Denna datum är fel, det var 12 sept inte 13 sept"
    → "Denna person är inte assignad, det är någon annan"
-   → "Denna status är redan blockerad, inte pågår"
-   → Skriver tillbaka: "Fixa rad X på slide Y"
-
-3. AI tar rättningarna
-   → Uppdaterar presentationen
-   → Visar uppdaterad version
-   → Människan godkänner eller gör fler rättningar
-
-4. ITERATION: Tills allt stämmer
-   → Presentationen blir riktig
-   → Kan då användas i möte
    
-5. Mötet
-   → Använda presentation med tillit
-   → Veta att varje datum/namn/status är verifierat & godkänt av människan
+3. AI korrigerar och levererar uppdaterad version
 ```
 
-**VIKTIGT:** Denna process är ITERATIV, inte blockering:
-- AI presenterar först (ej vänta på godkännande)
-- Människan rättar (aktiv roll)
-- AI uppdaterar
-- Repeat tills klart
+**VIKTIGT:** Denna feedback är VALFRI, inte obligatorisk:
+- AI levererar färdig presentation omedelbar
+- Människan kan använda presentationen direkt
+- Om korrigering behövs, kan den göras efteråt
+- AI kan iterera tills det är perfekt, men blockerar inte mötet
 
 ---
 

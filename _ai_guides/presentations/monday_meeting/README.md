@@ -1,17 +1,8 @@
 # 📅 Monday Meeting Presentation — Måndagsmöte
 
-**Complete guide for AI to build the Monday sprint planning presentation (14 mötespunkter).**
+Execution order is defined exclusively in [`../MANDATORY_READING_ORDER.md`](../MANDATORY_READING_ORDER.md).
 
----
-
-## 🎯 READING ORDER
-
-**⚠️ DO NOT DEFINE YOUR OWN READING ORDER HERE.**
-
-**Follow ONLY:** [`../MANDATORY_READING_ORDER.md`](../MANDATORY_READING_ORDER.md)
-
-This README describes the contents of the `monday_meeting/` folder only.
-It does not define execution order for AI.
+This file is descriptive, not procedural.
 
 ---
 
