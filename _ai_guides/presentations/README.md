@@ -19,24 +19,33 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 🚨 **DU ÄR HÄR FÖR ATT BYGGA EN PRESENTATION**
 
-## 🤖 **START HÄR FÖR AI — EXAKT ORDNING:**
+## 🤖 **START HÄR FÖR AI:**
 
-**FÖLJ DENNA ORDNING MEKANISKT:**
+👉 **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← THE ONLY execution order
 
-1️⃣ **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← Körordningen (börja här)
-   - Säger vilka steg som måste köras och i vilken ordning
+Den filen innehåller:
+- ✅ **Machine-readable contract** (parse this first)
+- ✅ **5-step orchestration** (execute this exactly)
+- ✅ **Authority hierarchy** (which file owns what)
+- ✅ **Critical rules** (blocking/optional sources, data validation)
 
-2️⃣ **[SYSTEM_CONTRACT.yaml](SYSTEM_CONTRACT.yaml)** ← Källan till sanning (läs omedelbar efter steg 1)
-   - Maskinläsbar definition av hela systemet
-   - Om någon fil motsäger denna → **SYSTEM_CONTRACT vinner alltid**
-   - Innehåller `execution_sequence` som definierar steg 3+
+**Follow that file. Nothing else.**
 
-3️⃣ **Följ `execution_sequence` från SYSTEM_CONTRACT.yaml**
-   - Steg 1: Läs obligatoriska filer
-   - Steg 2: Hämta och verifiera data
-   - Steg 3-8: Verifiera, analysera, bygga, leverera
+---
 
-**En ordning. Ingen variation. Denna ordning.**
+## 📊 WHO OWNS WHAT (no duplication, no contradictions)
+
+| File | Owns | Authority |
+|------|------|-----------|
+| `MANDATORY_READING_ORDER.md` | **Orchestration + contract** | Everything else references this |
+| `SYSTEM_CONTRACT.yaml` | System definitions, hard rules, checksums | If conflict: this wins |
+| `SLIDE_DETAIL_SPEC.md` | Content for each slide (①–⑭) | Only source for content |
+| `VISUAL_DESIGN_MANDATORY.md` | Layout, colors, fonts, NPF | Only source for design |
+| `DATA_SOURCES.md` | All GitHub/Google URLs, fallbacks | Only source for data |
+| `RENDER_GATE_CHECKLIST.md` | Verification checkpoints | Only source for verification |
+| `AI_VERIFICATION_WORKFLOW.md` | Process steps (FAS 1-3) | Only source for process |
+
+**RULE: If same rule appears in two files → keep it in authoritative file, delete from other.**
 
 ---
 
