@@ -123,41 +123,11 @@ Den filen säger:
 
 ---
 
-### STEG 4: VERIFIERA PRESENTATION FÖRE RENDERING
+### STEG 4: FINAL RENDER GATE
 
 Läs: **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLIST.md)**
-- KAN presentationen renderas?
-- 13 checkpoints MÅSTE passeras
-
-### ❌ VISA INTE (detta är AI-instruktioner, inte möte-innehål):
-
-- ❌ "Verifieringslåge innan status"
-- ❌ "Team roster: 7 medlemmar verifierade"
-- ❌ "GitHub PRs inte läsbart via API"
-- ❌ "Render gate checklist"
-- ❌ "Verification report"
-- ❌ "Identity verification status"
-- ❌ "Data collection status"
-- ❌ "AI process information"
-
-### ✅ ANVÄND DENNA DATA (men VISA INTE verifikations-info):
-
-- Commits denna vecka → från data (VISA det faktiska arbetet)
-- Merged PRs → från data (VISA vad som blev klart)
-- Team roster (för att VERIFIERA namn) → VISA bara namn + arbete, inte "verifierat"
-- Fallback-strategier → använd om primär källa failas, men VISA inte att fallback användes
-- Data sources (GitHub) → ANVÄND dem för presentationen, VISA inte käll-status
-
-### 🎯 MÖTE-PRESENTATIONEN ska visa:
-
-✅ Vad som arbetades med denna vecka  
-✅ Vem som var ansvarig för vad  
-✅ Vad som blev klart  
-✅ Vad som är pågår  
-✅ Vad som blockerar oss  
-✅ Nästa prioriteringar  
-
-❌ INTE: AI-verifikations-process, data-samlings-status, eller verifikations-rapporter
+- 13 checkpoints MÅSTE passeras innan rendering
+- Om någon checkpoint failas → presentation renderas INTE
 
 ---
 
