@@ -60,14 +60,19 @@ Din presentation måste innehålla:
 - ✅ PÅGÅR DENNA VECKA (faktiska branches med commits från GitHub denna vecka)
 - ✅ VÄNTAR PÅ REVIEW (faktiska öppna PRs från GitHub utan approval)
 
+**MÅSTE VISAS VISUELLT:**
+- 🔵 Team-märke (Frontend/Backend/Native) per rad — från TEAM_ROSTER.md
+- ✓ Assignad-status — namn om assignad, gul highlight + 🔄 UNASSIGNED om ingen
+- 📅 Tidsstämpel — "Data från 2026-09-14 14:00:32 UTC"
+
 **ALDRIG ANVÄND EXEMPEL-DATA I FAKTISK PRESENTATION.**
 Alla data måste hämtas LIVE från GitHub när presentationen byggas.
 
 Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
 
-| Issue # | Titel | Assignad | Status | Merged/Branch |
-|---------|-------|----------|--------|---------------|
-| #[från GitHub] | [från GitHub] | [från GitHub] | ✓/◐/⏳ | [från GitHub] |
+| Team | Issue # | Titel | Assignad | Status | Merged/Branch |
+|------|---------|-------|----------|--------|---------------|
+| [från TEAM_ROSTER] | #[GitHub] | [GitHub] | [GitHub eller 🔄 UNASSIGNED] | ✓/◐/⏳ | [GitHub] |
 
 **REGLER:**
 - **Del 1: Merged denna vecka** (sortera på merge-datum, nyast först)
