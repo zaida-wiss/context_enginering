@@ -156,17 +156,23 @@ Den filen säger:
 
 ---
 
-### STEG 3: DESIGN & SPECIFIKATION
+### STEG 3: DESIGN & SPECIFIKATION — OBLIGATORISK LÄSNING
 
-**Läs DESSA filer (de innehåller ALLT):**
+🚨 **DETTA STEG ÄR INTE VALFRITT — PRESENTATION ÄR FELAKTIG UTAN DET**
+
+**Läs DESSA filer i denna ordning (de innehåller ALLT):**
 
 1. **[design/ACCESSIBILITY_NEURODIVERSITY.md](design/ACCESSIBILITY_NEURODIVERSITY.md)** 🧠 LÄS FÖRST
    - VARFÖR Symbol + Färg + Text? (för dyslektiker, ADHD, autism — och alla andra)
    - Påtvingad läsning för att förstå designfilosofin
+   - **KRITIK:** Utan denna förståelse kommer designen bli felaktig
    
-2. **[design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md)** ⭐ DESIGN
+2. **[design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md)** 🚨 OBLIGATORISK FÖRE RENDERING
+   - **DEN HÄR FILEN ÄR LAGLIG REQUIREMENT — PRESENTATION RENDERAS ALDRIG UTAN DET**
    - Symbol + Färg + Text (mekanisk implementering)
    - RGB-värden, px-storlekar, font-specs, whitespace — ALLT konkret
+   - **RENDERING-CHECKLIST:** 13 punkter som MÅSTE passeras innan presentation kan visas
+   - **FÖRBJUDNA PATTERNS:** Textlistor, bara färg (utan symbol), ingen whitespace, liten text
    
 3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
    - EXAKT innehål för VARJE SLIDE (①-⑭)
@@ -280,9 +286,20 @@ SLIDE ⑤A (Native — denna sprint):
 
 ### STEG 4: FINAL RENDER GATE
 
+🚨 **INNAN DU RENDERAR — VERIFIERA ATT DU LÄST ALLT:**
+
+**Checklista före rendering:**
+- ☐ Läst STEG 0? (Läs _memory/)
+- ☐ Läst STEG 1? (GitHub-data)
+- ☐ Läst STEG 2? (Verifikation)
+- ☐ **Läst STEG 3?** (Design — MANDATORY_READING_ORDER + ACCESSIBILITY_NEURODIVERSITY + **VISUAL_DESIGN_MANDATORY**)
+  - Om NEJ → **STOPP, läs den nu**
+  - Om JA → fortsätt
+
 Läs: **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLIST.md)**
 - 13 checkpoints MÅSTE passeras innan rendering
 - Om någon checkpoint failas → presentation renderas INTE
+- **RENDER_GATE checklist inkluderar VISUAL_DESIGN_MANDATORY verifyas**
 
 ---
 

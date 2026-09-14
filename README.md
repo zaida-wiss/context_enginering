@@ -18,10 +18,20 @@
 ### Om du skapar en PRESENTATION:
 → **STEG 1:** Läs [`_memory/README.md`](_memory/README.md) först (projektkontexten)  
 → **STEG 2:** Läs **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← ENDA körordningen
-- Innehåller STEG 0 (läs _memory/) + STEG 1-4 (presentation)
-- NPF/Dyslexia/Autism-vänlig design AUTOMATIC
-- 14 mötespunkter, datainsamling, verifikation — allt här
-- **DU BEHÖVER INTE SÖKA LÄNGRE** — följ bara denna ordning
+
+**KRITISKA KRAV innan rendering:**
+- ✅ Läst _memory/ (deadlines, schema)
+- ✅ **Läst VISUAL_DESIGN_MANDATORY.md** (obligatorisk!) — NPF/Dyslexia-vänlig design
+- ✅ Läst SLIDE_DETAIL_SPEC.md (exakt format per slide)
+- ✅ Passerat RENDER_GATE_CHECKLIST (13 checkpoints)
+
+**Om du skippar VISUAL_DESIGN_MANDATORY.md → presentation blir FELAKTIG**
+
+Det innehåller:
+- NPF/Dyslexia/Autism-vänlig design (Symbol → Färg → Text)
+- Förbjudna patterns (textlistor, bara färg, liten text)
+- Rendering-checklist (13 punkter som måste passeras)
+- RGB-värden, px-storlekar, whitespace, kontrast-regler
 
 ### För all projektinformation (_memory/):
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
