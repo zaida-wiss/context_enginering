@@ -96,21 +96,25 @@ Innan du säger "datainsamlingen är ofullständig":
 
 ---
 
-## 🚨 DEFINITION: "DENNA VECKA" = SENASTE 7 DAGAR (ALDRIG HÅRDKODAD)
+## 🚨 DEFINITION: "DENNA VECKA" = REPORTING PERIOD (FRÅN SYSTEM_CONTRACT.yaml)
 
-**Denna vecka = exakt 7 dagar bakåt från IDAG** (generation time)
+**🔗 Auktoritativ källa: [SYSTEM_CONTRACT.yaml](../../SYSTEM_CONTRACT.yaml) `reporting_period` sektion**
 
-**REGEL: Datumfiltret är ALLTID [IDAG-7d] till [IDAG] — ALDRIG hårdkodade datum**
+För MÅNDAGSMÖTEN definieras "denna vecka" som:
+```
+Föregående måndag 00:00 → denna måndag 00:00 (exclusive)
+Timezone: Europe/Stockholm
+```
 
-**Variabler måste användas i alla GitHub-URLs:**
-- `[IDAG-7d]` = 7 dagar före generation time, 00:00:00
-- `[IDAG]` = generation date, 23:59:59
-- `Europe/Stockholm` = timezone för alla datum
+**Exempel för möte 14 september 2026:**
+- Start: 7 september 2026, 00:00:00 (föregående måndag)
+- End: 14 september 2026, 00:00:00 (denna måndag, exclusive)
+- Resultat: Allt arbete från veckan som just slutade (mån-mån)
 
-Exempel:
-- Om idag är 2026-09-14 kl 10:00: denna vecka = 2026-09-07 00:00 till 2026-09-14 23:59
-- Om idag är 2026-09-21 kl 14:00: denna vecka = 2026-09-14 00:00 till 2026-09-21 23:59
-- ALDRIG hårdkodat → varje körning ger aktuell vecka
+**REGEL: ALDRIG hårdkodade datum**
+- Beräkna alltid: `meeting_date - 7 days (00:00)` till `meeting_date (00:00, exclusive)`
+- Resultat är samma som "7 dagar bakåt" för måndagsmöten
+- Men MONDAY-till-MONDAY är mer exakt och förhindrar gränsfelsfel
 
 ---
 
@@ -120,14 +124,23 @@ Exempel:
 
 ### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs in develop — PRIMARY)
 
+🚨 **TVINGANDE: Använd REPORTING_PERIOD från SYSTEM_CONTRACT.yaml**
+
 🔗 **LIVE DATA SOURCE — Hämta härifrån:**
 ```
-https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[IDAG-7d]
+https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[REPORTING_PERIOD_START]
 ```
-(Byt ut [IDAG-7d] mot senaste 7 dagars datum)
+
+**För möte 14 september 2026:**
+```
+https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=2026-09-07
+```
+
+⚠️ **KRITISK:** Datumfiltret måste täcka HELA veckan (7 dagar), inte bara sista dygnet!
 
 - [ ] Läst GitHub /pulls: **Vilka PRs är MERGADE in i develop denna vecka?** (DET ÄR HUVUDFOKUS)
-- [ ] **RÄKNA:** Totalt antal PRs denna vecka
+- [ ] **RÄKNA:** Totalt antal PRs denna vecka (skall vara flera om projektet är aktivt)
+- [ ] ⚠️ **VERIFIERA:** Om resultatet är <3 PRs, kontrollera att datumfiltret täcker HELA veckan (not just 1 day!)
 - [ ] För varje PR: **Vem ÄGde den issuen?** (issue assignee, INTE reviewer eller merger!)
   - 🚨 KRITISK DISTINKTION:
     - ASSIGNEE (visas) = Vem som ÄGde/GJORDE arbetet
