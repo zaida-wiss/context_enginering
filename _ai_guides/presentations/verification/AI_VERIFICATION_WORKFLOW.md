@@ -172,15 +172,18 @@ Före presentation byggs — PASS dessa 3 checks:
 
 CHECK 1: DATA COMPLETENESS
   ✅ All required sources attempted (primary + fallbacks)?
-  ✅ All 7 team members identity-verified from GitHub?
+  ✅ All 7 team members identity-verifiable from GitHub? (can we prove they exist in repo?)
   ⚠️ If source fails, fallback used automatically — only STOP if primary + ALL fallbacks fail
 
 CHECK 2: TEAM COVERAGE
   Active roster: 7 members
-  Expected in presentation: 7 (alla måste synas eller markerade "ingen aktivitet")
-  Can all 7 be identity-verified? YES/NO?
-  ☐ If NO → STOP (figure out who cannot be verified)
-  ☐ If YES → continue (even if some members have 0 commits, they must be shown)
+  Expected in presentation: 7 (alla måste visas)
+  Can all 7 be identity-verified (GitHub profile/commits/issues exist)? YES/NO?
+  ☐ If NO → STOP (someone cannot be found in GitHub at all)
+  ☐ If YES → continue (show all 7, including those with "Ingen aktivitet denna vecka")
+  
+  NOTE: "Ingen aktivitet denna vecka" (sick leave, vacation, no work assigned) = OK, not STOP
+        STOP ONLY if person cannot be identity-verified (not in GitHub, unknown person)
   
 CHECK 3: DESIGN RULES UNDERSTOOD
   ✅ Read VISUAL_DESIGN_MANDATORY.md?
