@@ -15,62 +15,48 @@ metadata:
 
 ## Vad filmen ska innehålla
 
-**Fokus:** INTE bara vilka risker ni listat, utan **hur riskanalysen påverkat era BESLUT**
+Underlaget till Victors ska vara en inspelad film på max 5 minuter där ni delar skärm och visar hur ni har arbetat med risk i projektet. Fokusera på hur riskanalysen har påverkat era beslut—inte bara vilka risker ni har listat.
 
-### Trade-offs
-Vilka val har teamet gjort med hänsyn till identifierade risker?
-- Valt bort något för att minska risk?
-- Förenkligt något?
-- Förändrat approach?
+• **Trade-offs:** Vilka val har ni gjort med hänsyn till identifierade risker? Har ni valt bort, förenkligt eller förändrat något för att minska en risk?
 
-### Mitigations  
-Hur realistiska, genomförbara och kontrollerbara är åtgärderna?
-- Hur vet vi om de fungerar?
-- Är insatsen rimlig i relation till riskminskningen?
+• **Mitigations:** Hur realistiska, genomförbara och kontrollerbara är era åtgärder? Hur vet ni om de fungerar, och är insatsen rimlig i förhållande till riskminskningen?
 
-### Påverkan på lösningen
-Har riskanalysen lett till andra tekniska val, annan arkitektur, eller annan approach än planerat?
-- Visa konkreta exempel
-- Var skulle vi ha gjort annorlunda utan riskanalysen?
+• **Påverkan på lösningen:** Har riskanalysen lett till andra tekniska val, annan arkitektur eller en annan approach än ni först planerade? Visa gärna ett konkret exempel.
 
-### Osäkerheter
-Vilka områden behöver mer undersökning, testning eller verifikation innan beslut kan fattas?
+• **Osäkerheter:** Finns områden där ni fortfarande behöver undersöka, testa eller verifiera mer innan ni kan fatta ett bra beslut?
+
+**Tips:** Utgå gärna från er uppdaterad riskanalys på skärmen, men välj de exempel som bäst visar hur riskarbetet faktiskt har påverkat projektet.
 
 ---
 
-## Inspelning & Inlämning
+## Spela in
 
-**Verktyg:** Rekommenderas Loom (gratis, enkel skärm + ljud). Zoom eller annan skärminspelning går också.
-- Ingen PowerPoint, redigering eller "snygg produktion" behövs
-- Visa vad ni pratar om och resonera fritt
+Vi rekommenderar Loom. Det är gratis och gör det enkelt att spela in skärm och ljud. Ingen PowerPoint, redigering eller snygg produktion behövs—visa det ni pratar om och resonera fritt. Om Looms strular går Zoom eller annan skärminspelning lika bra.
 
-**Inlämning:**
-1. Spela in film
-2. Skapa delningslänk
-3. Öppna Google Sheet: "Chas Extended Challenge – Specialist Feed Forward"
-4. Lokalisera ert teams rad
-5. Klistra in länk under "CTO – teamfilm"
-6. **Verifiera att länken går att öppna utan att begära behörighet**
+## Lämna in
 
-**Inlämningsfrist:** Torsdag 24 september kl. 16.00  
-Ni ska INTE skicka något separat till Victor eller Chas.
+All inlämning och all feed forward samlas i samma Google Sheet:
+
+**Chas Extended Challenge – Specialist Feed Forward**
+
+1. Spela in filmen och skapa en delningslänk.
+2. Öppna Google Sheet och leta upp ert team.
+3. Klistra in länken under "CTO – teamfilm".
+4. Kontrollera att länken går att öppna utan att begära behörighet.
+
+**Deadline: Torsdag 24 september kl. 16.00.** Ni ska inte skicka något separat till Victor eller Chas.
 
 ---
 
-## Feed Forward från Victor (CTO)
+## När feed forwarden kommer
 
-**Datum:** Senast måndag 28 september kl. 16.00  
-**Var:** Google Sheet, kolumn "Victor – feed forward" (er rad)
+Senast måndag 28 september kl. 16.00 hittar ni Victors film på er egen rad i samma Google Sheet, under "Victor – feed forward".
 
-**Viktigt:** Victor kan ge MER feedback än teamet rimligt hinner genomföra.
+Här kommer PL tillbaka in i processen. Tillsammans tittar ni på Victors feed forward och avgör vad ni ska prioritera framåt.
 
-**Del av uppgiften:** 
-- Tolka rekommendationerna
-- Uppskatta tidsåtgång
-- Prioritera vad som är viktigast
-- **Välja bort** vad som är "good enough"
+**Viktigt:** Victor kan medvetet ge er mer feed forward än ni rimligen hinner genomföra. En del av uppgiften är att tolka rekommendationerna, uppskattat tidsåtgången, prioritera och välja bort.
 
-**Mål:** Inte att göra allt — utan att **fatta bra beslut om vad som är viktigast**
+**Målet är inte att göra allt—utan att fatta bra beslut om vad som är viktigast och vad som är good enough.**
 
 ---
 
