@@ -49,7 +49,12 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 ## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1-3 slides)
 
-### SLIDE ①A: Frontend — Merged + Pågår + Väntar på review denna vecka
+**Rubriker per team (måste matcha mötesprotokollet):**
+- Slide ①A: **"Avklarat sedan förra mötet — Frontend"**
+- Slide ①B: **"Avklarat sedan förra mötet — Backend"**
+- Slide ①C: **"Avklarat sedan förra mötet — Native"**
+
+### SLIDE ①A: Avklarat sedan förra mötet — Frontend
 
 **FORMAT:** Tabell med tre grupper (Merged | Pågår | Väntar på review)
 
@@ -134,7 +139,7 @@ Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
 
 ---
 
-### SLIDE ①B: Backend — Merged + Pågår + Väntar på review denna vecka
+### SLIDE ①B: Avklarat sedan förra mötet — Backend
 
 **FORMAT:** Tabell (identisk struktur som ①A)
 
@@ -157,7 +162,7 @@ Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
 
 ---
 
-### SLIDE ①C: Native — Merged + Pågår + Väntar på review denna vecka
+### SLIDE ①C: Avklarat sedan förra mötet — Native
 
 **FORMAT:** Tabell (identisk struktur som ①A)
 
