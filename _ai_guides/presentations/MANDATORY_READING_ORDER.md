@@ -205,12 +205,19 @@ Den filen säger:
   - **①A = ENDAST Frontend-issues** (filtrera: Team = "Frontend" från GitHub)
   - **①B = ENDAST Backend-issues** (filtrera: Team = "Backend" från GitHub)
   - **①C = ENDAST Native-issues** (filtrera: Team = "Native" från GitHub)
+
+- ✅ **TIDSPERIOD: SENASTE 7 DAGARNA** (sedan förra mötet)
+  - Merged: PRs mergade senaste 7 dagarna
+  - Pågår: Branches med commits senaste 7 dagarna
+  - Väntar på review: PRs skapade/uppdaterade senaste 7 dagarna
+  - Stale branches: >3 dagar utan push (risk-flagg)
+
 - ✅ **TRE SEKTIONER per slide:** Merged (sortera datum, nyast först) | Pågår (senast pushad först) | Review (äldst först)
 - ✅ **Assignad = ÄGARE av arbetet** (GitHub issue assignee), INTE reviewer eller merger
 - ✅ **FAKTISK GitHub-data**, ALDRIG exempel eller placeholders
 - ✅ **Väntar på review-sektion** måste ha tydlig visuell markering (orange/röd bakgrund)
 - ✅ **ALLA 7 team-medlemmar** måste synas distribuerade över ①A-C (även om 0 arbete denna vecka)
-- ✅ **Footer:** `Källa: GitHub PRs + branches (denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska issues]`
+- ✅ **Footer:** `Källa: GitHub PRs + branches (senaste 7d) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska issues]`
 
 **FÅR INTE SES:**
 - ❌ **EN gemensam slide för alla team** (detta är fel!)
