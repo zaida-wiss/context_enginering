@@ -72,6 +72,18 @@ RESULTAT: Live GitHub-data + verifierad design = presentationen är klar
 | **Köra möten med AI** | [HOW_TO_RUN_MEETINGS.md](HOW_TO_RUN_MEETINGS.md) | Web-based AI vs VS Code workflow |
 | **Kodexempel-krav** | [ACCESSIBILITY_AND_SECURITY.md](ACCESSIBILITY_AND_SECURITY.md) | TypeScript, Accessibility, Security |
 | **Presentationsfelsökning** | [presentations/TROUBLESHOOTING.md](presentations/TROUBLESHOOTING.md) | Missing team members, Wrong data, etc. |
+| **Ordbok & Terminologi** | [ORDBOK.md](ORDBOK.md) | Förklaringar av begrepp (NPF, møtespunkter, etc.) |
+| **Navigationshjalp** | [NAVIGATION.md](NAVIGATION.md) | Överblick över repo-struktur och filvägar |
+| **Vad kan AI hjälpa med** | [WHAT_CAN_I_HELP_WITH.md](WHAT_CAN_I_HELP_WITH.md) | Exempelprompts och vanliga AI-uppgifter |
+| **Frontend AI-instruktioner** | [FRONTEND_AI_INSTRUCTIONS.md](FRONTEND_AI_INSTRUCTIONS.md) | Specifika regler för Frontend-arbete |
+| **PR-uppdateringar** | [PR_UPDATES.md](PR_UPDATES.md) | Hur man förbereder och presenterar PR:er |
+| **Team-ledning med AI** | [AI_TEAMLEADER.md](AI_TEAMLEADER.md) | AI som teamledare — planerning, riskanalys |
+| **Cross-team integration** | [CROSS_TEAM_INTEGRATION.md](CROSS_TEAM_INTEGRATION.md) | Beroenden mellan Frontend/Backend/Native |
+| **Backlog-template** | [BACKLOG_TEMPLATE.md](BACKLOG_TEMPLATE.md) | Hur man skriver och strukturerar GitHub-issues |
+| **Pedagogiska riktlinjer** | [PEDAGOGICAL_GUIDANCE.md](PEDAGOGICAL_GUIDANCE.md) | Lärande & feedback-filosofi för möten |
+| **Presenter guide** | [PRESENTER_GUIDE.md](PRESENTER_GUIDE.md) | Tips för att presentera resultaten |
+| **Rutiner & levande dokument** | [ROUTINE_LIVING_DOCS.md](ROUTINE_LIVING_DOCS.md) | Hur man uppdaterar dokumenten över tid |
+| **Deprecated files** | [DEPRECATED_FILES_MIGRATION.md](DEPRECATED_FILES_MIGRATION.md) | Gamla system & migrationsvägar |
 
 ---
 
