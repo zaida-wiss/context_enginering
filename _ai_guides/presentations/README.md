@@ -23,29 +23,37 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 👉 **[MANDATORY_READING_ORDER.md](MANDATORY_READING_ORDER.md)** ← THE ONLY execution order
 
-Den filen innehåller:
-- ✅ **Machine-readable contract** (parse this first)
-- ✅ **5-step orchestration** (execute this exactly)
-- ✅ **Authority hierarchy** (which file owns what)
-- ✅ **Critical rules** (blocking/optional sources, data validation)
+Then read [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) — everything else follows from that.
 
-**Follow that file. Nothing else.**
+That file contains:
+- ✅ **Machine-readable contract**
+- ✅ **Authority hierarchy** (who owns what domain)
+- ✅ **Execution sequence** (what you do in order)
+- ✅ **Hard rules** (non-negotiable)
+
+**Follow SYSTEM_CONTRACT.yaml. Everything else is reference.**
 
 ---
 
-## 📊 WHO OWNS WHAT (no duplication, no contradictions)
+## 📊 THE ONLY HIERARCHY
 
-| File | Owns | Authority |
-|------|------|-----------|
-| `MANDATORY_READING_ORDER.md` | **Orchestration + contract** | Everything else references this |
-| `SYSTEM_CONTRACT.yaml` | System definitions, hard rules, checksums | If conflict: this wins |
-| `SLIDE_DETAIL_SPEC.md` | Content for each slide (①–⑭) | Only source for content |
-| `VISUAL_DESIGN_MANDATORY.md` | Layout, colors, fonts, NPF | Only source for design |
-| `DATA_SOURCES.md` | All GitHub/Google URLs, fallbacks | Only source for data |
-| `RENDER_GATE_CHECKLIST.md` | Verification checkpoints | Only source for verification |
-| `AI_VERIFICATION_WORKFLOW.md` | Process steps (FAS 1-3) | Only source for process |
+```
+1️⃣ MANDATORY_READING_ORDER.md (read this, 2 min)
+   ↓
+2️⃣ SYSTEM_CONTRACT.yaml (execution + authority)
+   │
+   ├── DATA_COLLECTION_MANDATORY.md (what + how to collect)
+   ├── DATA_SOURCES.md (where + fallback chain)
+   ├── SLIDE_DETAIL_SPEC.md (content for slides ①–⑭)
+   ├── ACCESSIBILITY_NEURODIVERSITY.md (NPF rules)
+   ├── VISUAL_DESIGN_MANDATORY.md (layout + design)
+   └── RENDER_GATE_CHECKLIST.md (final verification)
+```
 
-**RULE: If same rule appears in two files → keep it in authoritative file, delete from other.**
+**RULE:** A file may ONLY define rules within its own domain.  
+If a rule appears in two files → keep in authoritative file, DELETE from other.
+
+**Everything else** (DESIGN_MODERN, REPO_FIRST, templates, etc.) is reference/helper, not execution.
 
 ---
 

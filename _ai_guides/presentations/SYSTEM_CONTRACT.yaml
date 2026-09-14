@@ -143,6 +143,23 @@ data_audit:
   failure_condition: "If ANY checksum fails → render gate FAIL. Do not build presentation."
 
 ###############################################################################
+# AUTHORITY HIERARCHY — Which file owns what domain
+###############################################################################
+authority:
+  execution_order: "SYSTEM_CONTRACT.yaml (this file)"
+  slide_content: "presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+  data_collection: "presentations/monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
+  data_sources: "presentations/data/DATA_SOURCES.md"
+  accessibility: "presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
+  visual_design: "presentations/design/VISUAL_DESIGN_MANDATORY.md"
+  final_verification: "presentations/verification/RENDER_GATE_CHECKLIST.md"
+
+conflict_resolution:
+  rule: "A file may ONLY define rules within its own authority domain"
+  consequence: "If a rule appears in multiple files, keep it in authoritative file, DELETE from all others"
+  example: "NPF rules belong in ACCESSIBILITY_NEURODIVERSITY.md, not in RENDER_GATE_CHECKLIST"
+
+###############################################################################
 # HARD RULES — Never break these
 ###############################################################################
 hard_rules:
