@@ -33,21 +33,29 @@
 
 ---
 
-## 🎯 Kom ihåg:
+## 🎯 SINGLE EXECUTION PATH — INGEN ALTERNATIV:
 
 ```
-Du behöver INTE be AI:n om något.
-Du behöver INTE instruera vilken fil den ska läsa.
+AI MÅSTE följa denna ordning (ALDRIG något annat):
 
-AI:n läser automatiskt:
-  1. Root README (denna fil)
-  2. För presentation → _ai_guides/presentations/MANDATORY_READING_ORDER
-     (SEDAN länkas från MANDATORY_READING_ORDER till SLIDE_DETAIL_SPEC)
-  3. För projektinfo → _memory/README.md
-     (HUB för all projektdata, deadlines, standards)
+  1️⃣ Root README (denna fil)
+  
+  2️⃣ OM PRESENTATION:
+     _ai_guides/presentations/MANDATORY_READING_ORDER.md
+     ↓
+     FRÅN DEN FILEN → SLIDE_DETAIL_SPEC (AI_READ_ORDER säger detta)
+     FRÅN DEN FILEN → VISUAL_DESIGN_MANDATORY (AI_READ_ORDER säger detta)
+     FRÅN DEN FILEN → RENDER_GATE_CHECKLIST (AI_READ_ORDER säger detta)
+  
+  3️⃣ OM PROJEKTINFO:
+     _memory/README.md (central hub för alla projektkällor)
 
-Systemet är självförklarande — alla links är på plats.
+✅ Denna ordning är ABSOLUT — ingen annan ordning tillåten
+✅ MANDATORY_READING_ORDER.md är ENDA körordningen för presentations
+✅ Ingen fil ska läsa från fler än en plats samtidigt
 ```
+
+**VIKTIG REGEL:** Om två filer säger olika saker → MANDATORY_READING_ORDER.md VINNER.
 
 ---
 

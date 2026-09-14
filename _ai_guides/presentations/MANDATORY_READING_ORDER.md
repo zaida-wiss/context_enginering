@@ -70,10 +70,10 @@ RENDER-GATE CHECK:
 👉 **LÄS FÖRST:** [AI_VERIFICATION_WORKFLOW.md](verification/AI_VERIFICATION_WORKFLOW.md)
 
 Den filen säger:
-- FASE 1: Datainsamling & Identity verification → RAPPORT
-- FASE 2: Render gate check → RAPPORT
-- FASE 3: Bygga presentation & final verification → RAPPORT
-- Människan ser ALLA rapporter FÖRE presentationen
+- FASE 1: Datainsamling & Identity verification
+- FASE 2: Render gate check
+- FASE 3: Bygga presentation & final verification
+- **AI gör ALLT — levererar presentation KLAR (ingen human-loop)**
 
 **UTAN denna ordning → presentation blir felaktig eller ej verifierad.**
 
@@ -129,109 +129,26 @@ Den filen säger:
 
 **DENNA SEKVENS ÄR ABSOLUT OCH FÅR INTE ÄNDRAS:**
 
-### STEG 1: LÄSA INSTRUKTIONER (5 min — MÅSTE göras först)
+### STEG 1: LÄS DESSA FILER (i ordning)
 
-#### 1a. README.md (denna mapp)
-   - Vad är presentations-systemet?
-   - Var finns vad?
+**Läs INTE något mer — dessa filer säger allt:**
 
-#### 1b. DATA_COLLECTION_MANDATORY.md (denna mapp)
-   - INNAN något annat — läs detta
-   - Checklista för komplett datainsamling
-   - Fallback-hierarki
-   - Render-gate (slides får INTE genereras utan denna)
+1. **[README.md](README.md)** — Vad är presentations-systemet?
+2. **[monday_meeting/README.md](monday_meeting/README.md)** — 14 mötespunkter overview
+3. **[monday_meeting/data/DATA_COLLECTION_MANDATORY.md](monday_meeting/data/DATA_COLLECTION_MANDATORY.md)** — Datainsamling & identity-verifikation
+4. **[data/DATA_SOURCES.md](data/DATA_SOURCES.md)** — Vilka GitHub-URLs, fallback-ordning
 
-#### 1c. data/DATA_SOURCES.md (denna mapp)
-   - Vilka sources finns för varje datatyp
-   - Fallback-ordning
-   - Canonical URLs
-
-#### 1d. data/TEAM_ROSTER.md (denna mapp)
-   - Vilka är de 7 team-medlemmarna
-   - Coverage-validation
+**Sedan gå till STEG 2 (nedan).**
 
 ---
 
-### STEG 2A: IDENTITY VERIFICATION (5 min — FÖRE datainsamling)
+### STEG 2: VERIFIERA & RENDERA
 
-🚨 **DETTA STEG MÅSTE GÖRAS FÖRE STEG 2B — annars kan team-medlemmar försvinna**
+**Läs dessa filer:**
 
-**IDENTITY RESOLUTION GATE:**
-
-För varje team-medlem i TEAM_ROSTER.md:
-- [ ] Verifiera Display Name
-- [ ] Verifiera verifierad email (från git commits)
-- [ ] Verifiera GitHub handle (från commits, INTE gissat)
-- [ ] Dokumentera några exempel-commits från denna medlem
-
-**REGEL: GitHub-handlenamn får ALDRIG konstrueras från personens namn.**
-
-Exempel på FEL matching:
-- ❌ Erik Berglund → "erik-backend" (gissat)
-- ❌ Rasha Knifdi → "rasha-dev" (gissat)
-- ✅ Erik Berglund → verifierad från commits som "rikexhx" eller "Svartakatten"
-
-**Om någon medlem INTE kan matchas:**
-- Rapportera: "Identity unresolved for X — investigate commit history"
-- STOPP — rendering tillåts INTE
-
----
-
-### STEG 2B: SAMLA ALL DATA (10-30 min — EFTER identity verification)
-
-**Denna steg måste slutföras FULLSTÄNDIGT innan du går vidare.**
-
-- [ ] **Branches från develop** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/branches`
-  FALLBACK: GitHub web-sida (WebFetch compatible)
-  DATA NEEDED: branch names, last commit date, last contributor
-  
-- [ ] **Commits denna vecka (sept 6-13)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop`
-  FILTER: commits from Sept 6-13, 2026
-  FALLBACK: GitHub web history, then git log from local repo
-  DATA NEEDED: author, date, message, linked issues/PRs per commit
-  
-- [ ] **CLOSED ISSUES denna vecka** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:2026-09-06..2026-09-13`
-  
-- [ ] **MERGED PRs denna vecka** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13`
-  
-- [ ] **PR DETAILS (review/approval info)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  URL: `https://github.com/chas-challenge-2026/avanza-team1/pull/[PR_NUMBER]`
-  Hämta för varje merged PR: approver, commits, linked issues
-  
-- [ ] **OPEN PRs denna vecka (NULÄGE)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
-  DATA NEEDED PER PR:
-    • PR-nummer
-    • Titel
-    • Författare (GitHub handle)
-    • Vilka reviewers är assignerade? (KRITISK — ofta tomt)
-    • Status: open/draft/ready for review
-    • Länkade issues (#XX)
-    • Skapningsdatum
-  PRESENTATION USE: Slide ①D eller ②A — visa vad som väntar på review/merge
-  
-- [ ] **OPEN ISSUES denna vecka (NULÄGE)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/issues`
-  DATA NEEDED PER ISSUE:
-    • Issue-nummer
-    • Titel
-    • Assignerad till (vem jobbar med det?)
-    • Labels (team-område: frontend, backend, native)
-    • Status (öppen, pågår)
-    • Uppdaterad senast (när var senaste aktivitet?)
-  PRESENTATION USE: Slide ①D — visa aktiv arbete per team-medlem
-  SORTERING: Sortera per assignee för att se vem som jobbar med vad
-  
-- [ ] **COMMITS DENNA VECKA (FAKTISK ARBETE)** — LIVE_VERIFIED eller FALLBACK_VERIFIED
-  PRIMARY URL: `https://github.com/chas-challenge-2026/avanza-team1/commits/develop`
-  FILTER: Senaste 7 dagar
-  DATA NEEDED PER COMMIT:
-    • Datum
-    • Författare (GitHub handle + namn)
+1. **[verification/AI_VERIFICATION_WORKFLOW.md](verification/AI_VERIFICATION_WORKFLOW.md)** — AI gör ALLT (hämta → verifiera → leverera)
+2. **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLIST.md)** — KAN presentationen renderas?
+3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** — EXAKT innehål per slide
     • Commit-meddelande (första raden)
     • Länkade PR-nummer (om någon)
     • Länkade issue-nummer (om någon)
@@ -276,255 +193,28 @@ Exempel på FEL matching:
 
 ---
 
-### STEG 3: FÖRSTÅ STRUKTUR & REGLER & VISUELL DESIGN (20 min — KRITISK LÄSNING)
+### STEG 3: DESIGN & SPECIFIKATION
 
-**🚨 DESSA FEM FILER MÅSTE LÄSAS I DENNA ORDNING:**
+**Läs DESSA filer (de innehåller ALLT):**
 
-#### 3a. [design/SLIDE_DETAIL_SPEC.md](design/SLIDE_DETAIL_SPEC.md) — 🚨 AUTHORITATIVE (LÄS FÖRST!)
-   - **EXAKT innehål för VARJE SLIDE (①-⑭)**
-   - **KOLUMNER per slide** (Issue # | Titel | Assignad | Status | Merged/Branch)
-   - **DATA-SOURCES per slide** (varifrån hämtas data?)
-   - **MÅSTE/FÅR INTE innehålla** (regler per slide)
-   - **FOOTER per slide** (vad ska stå längst ned?)
-   - **REGLER för sortering, filtrering, visuell markering**
-   - ⚠️ **KRITISK:** Om denna fil säger X och en annan fil säger Y → denna fil VINNER
-   - **LÄNK:** Denna fil säger EXAKT format för VARJE SLIDE
-
-#### 3b. [structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md) — OBLIGATORISK
-   - De 14 mötespunkterna (①-⑭) i logisk ordning: retrospekt → status → plan → åtgärd
-   - Ny ordning: Avklarat → Nuläge → Teams → Blockers → Risker → Kapacitet → Prioritering → Tekniska beslut → Sprintmål → Sprintplan → Nästa steg → Frågor
-   - Vad varje punkt **MÅSTE** innehålla
-   - Vilka data-kilder att hämta
-   - Varje punkt kan ha 1-3+ slides
-   - Obligatoriska element per punkt
-   - **LÄNK:** Här säger vi VILKA GitHub-URLs att använda
-
-#### 3c. [design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md) — 🚨 KRITISK (LÄS TIDIGT!)
-   - SYMBOL + FÄRG + TEXT (denna ordning)
-   - NPF/dyslexia-vänlig design
-   - PowerPoint konkreta inställningar
-   - WCAG AA kontrast (4.5:1 minimum)
-   - Font-storlekar för tabeller
-   - **LÄNK:** Här säger vi HUR (visuellt) slidorna ska se ut
-
-#### 3d. [content/PRESENTATION_SPEC.md](content/PRESENTATION_SPEC.md) — OBLIGATORISK
-   - Issue-format (TVINGANDE)
-   - Färg-semantik (strikt regel)
-   - Risk/Blocker/Dependency-definitioner
-   - Preflight-validator
+1. **[design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
+   - EXAKT innehål för VARJE SLIDE (①-⑭)
    
-#### 3e. [design/PRESENTATION_FORMAT_GUIDE.md](design/PRESENTATION_FORMAT_GUIDE.md) — REFERENS (GAMMAL)
-   - ⚠️ DEPRECATED: Många regler överlappar SLIDE_DETAIL_SPEC.md
-   - DENNA FIL MÅ UPPDATERAS eller RADERAS för att undvika konflikter
-   - **LÄS INTE DENNA innan du läst 3a-3d ovan**
-
----
-
-## FASE 2: RÖDA TRÅDAR & DESIGN AUTHORITY (5 min)
-
-### 4. **design/PRESENTATION_RED_THREADS.md** — NYTT (LÄSGRÄS DENNA)
-   - Röda trådar (Arbete, Blockers, Risker, Kapacitet)
-   - Varning-signaler (vad saknas = presentationen är felaktig?)
-   - Checklista för röda trådar
-   - Exempel på röda trådar i action
-
-### 5. **design/PRESENTATION_STYLE.md**
-   - Färger (semantisk BARA)
-   - Typografi
-   - Layout
-   - NPF-regler
-
-### 6. **design/DESIGN_AUTHORITY.md**
-   - Designkällor (SLIDE_DETAIL_SPEC är #1)
-   - Deprecated filer (PRESENTATION_CONSISTENCY_FRAMEWORK.md, PRESENTATION_FORMAT_GUIDE.md, etc)
-   - Vad måste åsidosättas från verktyg-defaults
-
-### ❌ DEPRECATED FILER (LÄS INTE DESSA)
-   - ❌ `design/PRESENTATION_CONSISTENCY_FRAMEWORK.md` — gamla kolumn-regler, använd SLIDE_DETAIL_SPEC.md istället
-   - ❌ `design/PRESENTATION_FORMAT_GUIDE.md` — använd SLIDE_DETAIL_SPEC.md och VISUAL_DESIGN_MANDATORY.md istället
-   - ❌ `design/PRESENTATION_DESIGN_SPEC.md` — använd VISUAL_DESIGN_MANDATORY.md och DESIGN_AUTHORITY.md istället
-
----
-
-## FASE 3: INNEHÅL PER PUNKT (10-15 min)
-
-**HUVUDKÄLLA:** SLIDE_DETAIL_SPEC.md innehåller ALLT. Dessa är referensfiler.
-
-### 7. **content/PRESENTATION_SPEC.md**
-   - ALLA regler för innehål
-   - Issue-format
-   - Färger och status
-   - NO META-INSTRUCTIONS on slides
-   - PROJECT LEAD REVIEW checklist
-
-### 8. **models/WEEKLY_PROGRESS_MODEL.md**
-   - Två slides för ① (Levererat + Byggde vidare)
-   - Hur klassificera arbete
-
-### 9. **models/REPO_FIRST_RECONSTRUCTION.md**
-   - Varför repo-first (inte issue-first)
-   - Mekaniska regler
-
-**Notering:** WEEKLY_PROGRESS_MODEL.md och REPO_FIRST_RECONSTRUCTION.md kan överlappar med SLIDE_DETAIL_SPEC.md. Om det finns en konflikt → SLIDE_DETAIL_SPEC.md VINNER.
-
----
-
-## FASE 4: DATA & KÄLLOR (5 min)
-
-Läs detta INNAN du försöker samla data.
-
-### 10. **data/DATA_SOURCES.md**
-   - Vilken information behövs
-   - Fallback-ordning
-   - Canonical URLs
-   - Failure handling
-
-### 11. **data/TEAM_ROSTER.md**
-   - Vem tillhör vilka team
-   - Coverage validation
-   - Alla team-medlemmar måste kontrolleras
-
-### 12. **data/SOURCE_CHECK.md**
-   - Hur verifiera att data är från rätt källa
-   - Timestamps
-   - GitHub-länk struktur
-
----
-
-## FASE 5: VERIFIERING (5 min)
-
-Läs innan du renderar final version.
-
-### 13. **verification/VERIFICATION_SYSTEM.md**
-   - QA-process
-   - Vad kontrollera
-
-### 14. **verification/VERIFICATION_THIS_WEEK.md**
-   - Denna veckas specifika verifiering
-   - Vilka rules gäller nu
-
----
-
-## 🚨 RENDER GATE — PRESENTATION FÅR INTE GENERERAS UTAN DETTA
-
-**Före rendering, verifiera att ALLA dessa är LIVE_VERIFIED eller FALLBACK_VERIFIED:**
-
-```
-RENDER_GATE_CHECKLIST (10 SOURCES + 2 DESIGN RULES + 2 QA CHECKS):
-
-DATA SOURCES (dessa 9 måste verifiera):
-  ☐ Branches (develop) — status?
-  ☐ Commits denna vecka — status?
-  ☐ Merged PRs — status?
-  ☐ Open PRs med aktivitet — status?
-  ☐ Open issues med aktivitet — status?
-  ☐ Project Board — status?
-  ☐ Meeting protocol — status?
-  ☐ DoD — status?
-  ☐ Team roster — status? + IDENTITY_VERIFIED?
-
-DESIGN RULES (MÅSTE LÄSAS):
-  ☐ VISUAL_DESIGN_MANDATORY.md — Läst & förstått
-     (Symbol + Färg + Text, NPF/dyslexia-vänligt)
-  ☐ TEAM_ROSTER.md — IDENTITY VERIFICATION completed for all 7 members
-
-QA CHECKS (MÅSTE PASSERAS):
-  ☐ TEAM COVERAGE CHECK:
-     Active roster: 7 (Tomac, Björn, Zaida, Erik, Rasha, Pär, Henrik)
-     People represented in presentation: ?
-     Missing: ? (måste vara 0)
-     
-  ☐ UNKNOWN NAME CHECK:
-     Scan entire presentation for human names.
-     Every name MUST exist in TEAM_ROSTER.
-     Unknown names: ? (måste vara 0)
-
-FAILURE CRITERIA:
-  ❌ Any data source MISSING → RENDER GATE CLOSED
-  ❌ Any team member NOT identity-verified → RENDER GATE CLOSED  
-  ❌ TEAM COVERAGE < 7 → RENDER GATE CLOSED (someone missing)
-  ❌ UNKNOWN NAMES > 0 → RENDER GATE CLOSED (example names in presentation)
-  ❌ VISUAL_DESIGN not read → RENDER GATE CLOSED
-
-SUCCESS CRITERIA:
-  ✅ All 9 data-sources VERIFIED
-  ✅ All 7 team members IDENTITY_VERIFIED
-  ✅ TEAM COVERAGE = 7/7
-  ✅ UNKNOWN NAMES = 0
-  ✅ VISUAL_DESIGN read & understood
-  
-  → RENDER GATE OPEN → OK to generate slides
-```
-
-**DENNA GATEN ÄR OBLIGATORISK. INGEN UNDANTAG. DESSA QA-CHECKS ÄR MÅSTA-FEL.**
-
----
-
-## 🚨 UNKNOWN_NAME_GATE — FINAL VERIFICATION (innan output)
-
-**INNAN presentationen levereras måste denna sista gate passeras:**
-
-```
-UNKNOWN_NAME_GATE:
-
-1. Extract every human name from the final presentation
-   (Ctrl+F search för första/efternamn-mönster)
-
-2. For EACH name found:
-   ☐ Exists in TEAM_ROSTER.md active members? 
+2. **[design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md)** ⭐ DESIGN
+   - Symbol + Färg + Text (NPF/dyslexia-vänlig)
    
-3. Allowed names ONLY:
-   ✅ Tomac Barin Jansson
-   ✅ Björn Boman
-   ✅ Zaida Wiss
-   ✅ Erik Berglund (also "rikexhx", "Svartakatten")
-   ✅ Rasha Knifdi
-   ✅ Pär Lundh
-   ✅ Henrik Westerlund
+3. **[structure/PRESENTATION_STRUCTURE.md](monday_meeting/structure/PRESENTATION_STRUCTURE.md)**
+   - 14 mötespunkter (①-⑭) definitioner
 
-4. NOT allowed names (render FAIL):
-   ❌ <EXAMPLE_MEMBER_A/B/C/D/E> (placeholder names)
-   ❌ Lisa, Marco, Ali, Anna, Jan (example names)
-   ❌ Any other human name not in TEAM_ROSTER
-
-FAILURE CRITERIA:
-  If ANY unknown name found → presentation is INVALID
-  Remove the name or verify it against TEAM_ROSTER
-  Do NOT render unknown names
-  
-PASS CRITERIA:
-  Only names from TEAM_ROSTER display names (or aliases like "Svartakatten" for Erik)
-  Zero example placeholder names
-  → OK to output presentation
-```
-
-**DENNA GATE MÅSTE PASSERAS. INGEN UNDANTAG.**
+**Om två filer motsäger varandra:** SLIDE_DETAIL_SPEC.md VINNER.
 
 ---
 
-## 🎬 STEG 4: RENDER PRESENTATION (20-30 min — EFTER ALLA GATES)
+### STEG 4: VERIFIERA PRESENTATION FÖRE RENDERING
 
-**🚨 KRITISK REGEL: PRESENTATION = BARA ARBETESRESULTAT, INTE AI-PROCESS**
-
-Efter att RENDER_GATE_CHECKLIST och UNKNOWN_NAME_GATE har **PASSERAT**:
-
-### ✅ RENDER DESSA SLIDES (från [PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md)):
-
-**Se [PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md) för AUKTORITATIV definition av alla 14 mötespunkter (①-⑭).**
-
-Kort översikt:
-- ① SEDAN FÖRRA MÖTET (1-2 slides)
-- ② SPRINTMÅL (1 slide)
-- ③ NULÄGE (1 slide)
-- ④-⑥ TEAM-SLIDES: Frontend, Backend, Native (1-3 slides var)
-- ⑦ BEROENDEN & BLOCKERS (1-2 slides)
-- ⑧ PRIORITERING & SCOPE (1-2 slides)
-- ⑨ KAPACITET & ESTIMERING (1 slide)
-- ⑩ RISKER (1-2 slides)
-- ⑪ TEKNISKA BESLUT (1 slide)
-- ⑫ SPRINTPLAN (1-2 slides)
-- ⑬ NÄSTA STEG (1-2 slides)
-- ⑭ FRÅGOR TILL PL (1 slide)
+Läs: **[verification/RENDER_GATE_CHECKLIST.md](verification/RENDER_GATE_CHECKLIST.md)**
+- KAN presentationen renderas?
+- 13 checkpoints MÅSTE passeras
 
 ### ❌ VISA INTE (detta är AI-instruktioner, inte möte-innehål):
 

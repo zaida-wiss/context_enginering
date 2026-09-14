@@ -47,12 +47,13 @@ Presentationen måste kunna verifiera dessa fakta:
    - Inklud: både issues och linked PRs
    
 2. **GitHub /issues tab (WebFetch-compatible)**
-   - URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:2026-09-06..2026-09-13`
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:[IDAG-7d]..[IDAG]`
    - FILTER: Sama som ovan (exkludera test-issues)
    - Returnerar: Closed issues denna vecka med linked PRs
+   - **REGEL:** [IDAG-7d] = exakt 7 dagar före IDAG, [IDAG] = idag klockan 23:59
    
 3. **GitHub /pulls tab (WebFetch-compatible)**
-   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:2026-09-06..2026-09-13`
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:[IDAG-7d]..[IDAG]`
    - Returnerar: Merged PRs denna vecka
    
 4. **Individual PR detail pages (WebFetch-compatible)**
