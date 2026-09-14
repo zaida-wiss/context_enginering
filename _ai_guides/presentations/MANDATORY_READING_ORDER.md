@@ -8,6 +8,14 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER — INNAN PRESENTATION RENDERAS
 
+🤖 **FÖR AI: Kopiera denna prompt direkt till vilken AI som helst:**
+```
+Läs: https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/AI_PROMPT_GENERATE_PRESENTATION.md
+Följ den exakt. Fetcha LIVE GitHub-data. Rapportera om något failar.
+```
+
+---
+
 🚫 **KRITISK REGEL ÖVERST — AI MÅSTE VERIFIERA INNAN RENDERING:**
 ```
 DO NOT CREATE PPTX UNTIL AI HAS:
