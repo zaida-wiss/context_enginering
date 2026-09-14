@@ -77,7 +77,7 @@ reporting_period:
   definition: "Previous Monday 00:00 through current Monday 00:00 (exclusive)"
   timezone: "Europe/Stockholm"
   calculation: "For a Monday meeting: report the week that just ended (previous Mon-Sun)"
-  example: "Meeting on Monday 2026-09-16: report period is 2026-09-09 00:00 through 2026-09-16 00:00 (Mon-Sun inclusive)"
+  example: "Meeting on Monday 2026-09-14: report period is 2026-09-07 00:00 through 2026-09-14 00:00 (exclusive)"
   rule: "ALWAYS dynamic. Calculate: meeting_date - 7 days (00:00) through meeting_date (00:00, exclusive)"
   variables:
     REPORTING_PERIOD_START: "current_meeting_date - 7 days at 00:00 Europe/Stockholm"
@@ -94,8 +94,8 @@ data_audit:
   requirement: "MUST be generated before ANY slides are built. Shows AI what it collected."
   output_format:
     reporting_period:
-      start: "[IDAG-7d] 00:00"
-      end: "[IDAG] 23:59"
+      start: "REPORTING_PERIOD_START (Monday 00:00)"
+      end: "REPORTING_PERIOD_END (next Monday 00:00, exclusive)"
 
     repository_totals:
       merged_prs: "N (count of PRs merged in reporting period)"
@@ -142,12 +142,12 @@ data_audit:
 ###############################################################################
 authority:
   execution_order: "SYSTEM_CONTRACT.yaml (this file)"
-  slide_content: "presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
-  data_collection: "presentations/monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
-  data_sources: "presentations/data/DATA_SOURCES.md"
-  accessibility: "presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
-  visual_design: "presentations/design/VISUAL_DESIGN_MANDATORY.md"
-  final_verification: "presentations/verification/RENDER_GATE_CHECKLIST.md"
+  slide_content: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+  data_collection: "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
+  data_sources: "data/DATA_SOURCES.md"
+  accessibility: "design/ACCESSIBILITY_NEURODIVERSITY.md"
+  visual_design: "design/VISUAL_DESIGN_MANDATORY.md"
+  final_verification: "verification/RENDER_GATE_CHECKLIST.md"
 
 conflict_resolution:
   rule: "A file may ONLY define rules within its own authority domain"
