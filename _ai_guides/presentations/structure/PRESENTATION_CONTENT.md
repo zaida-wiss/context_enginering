@@ -13,7 +13,7 @@ metadata:
 
 **Denna fil definierar INTE:**
 - Hur AI ska tänka (se `AI_BUILD_CHECKLIST.md`)
-- Design-regler (se `PRESENTATION_DESIGN_SPEC.md`)
+- Design-regler (se `VISUAL_DESIGN_MANDATORY.md` och `ACCESSIBILITY_NEURODIVERSITY.md`)
 - AI-process (se `AI_VERIFICATION_WORKFLOW.md`)
 
 ---

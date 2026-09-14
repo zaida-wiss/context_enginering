@@ -263,7 +263,6 @@ FOKUS:
 
 **Se även:**
 - [VISUAL_DESIGN_MANDATORY.md](VISUAL_DESIGN_MANDATORY.md) — Konkret implementering (PowerPoint-inställningar, RGB-värden)
-- [PRESENTATION_FORMAT_GUIDE.md](PRESENTATION_FORMAT_GUIDE.md) — Slide-exempel som visar detta i praktiken
 - [MANDATORY_READING_ORDER.md](../MANDATORY_READING_ORDER.md) — Var denna fil passar in i läsordningen
 
 ---

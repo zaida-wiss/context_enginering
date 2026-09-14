@@ -28,10 +28,7 @@ DESIGN AUTHORITY (ranked by priority):
   3️⃣ _ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md (PowerPoint-tekniska regler)
   4️⃣ _ai_guides/presentations/design/REFERENCE_SLIDES/ (visual examples)
   
-  ⚠️ DEPRECATED/CONFLICTING (DO NOT USE):
-  ❌ PRESENTATION_CONSISTENCY_FRAMEWORK.md (gamla kolumn-regler, strid med SLIDE_DETAIL_SPEC)
-  ❌ PRESENTATION_DESIGN_SPEC.md (ersätts av SLIDE_DETAIL_SPEC + PRESENTATION_STYLE)
-  ❌ PRESENTATION_FORMAT_GUIDE.md (ersätts av SLIDE_DETAIL_SPEC + VISUAL_DESIGN_MANDATORY)
+  ⚠️ DEPRECATED/CONFLICTING (DO NOT USE — see SYSTEM_CONTRACT.yaml):
   
 NOT FROM:
   ❌ avanza-team1 repo (project repo, data source ONLY)

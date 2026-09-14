@@ -225,7 +225,7 @@ RESULT: ✅ RENDER GATE PASSED — OK to build presentation
 ```
 Nu börja bygga presentationen enligt:
   PRESENTATION_STRUCTURE.md (14 mötespunkter)
-  PRESENTATION_FORMAT_GUIDE.md (konkreta slide-layouts)
+  SLIDE_DETAIL_SPEC.md (konkreta slide-specifikationer)
   VISUAL_DESIGN_MANDATORY.md (fonts, colors, spacing)
 
 UNDER BUILDING:
