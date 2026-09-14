@@ -12,6 +12,12 @@
 
 ---
 
+## 👥 Team & Medlemmar
+
+| Fil | Syfte |
+|-----|-------|
+| **TEAM_ROSTER.md** | Auktoritativ lista över team-medlemmar (Frontend/Backend/System) |
+
 ## 📋 Arbetsstandarder & Definition
 
 | Fil | Syfte |

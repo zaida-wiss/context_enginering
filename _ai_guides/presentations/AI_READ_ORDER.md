@@ -36,7 +36,7 @@ metadata:
 
 ### Läs OCH HÄM DATA:
 
-1. **[data/TEAM_ROSTER.md](data/TEAM_ROSTER.md)** — 2 min
+1. **[TEAM_ROSTER.md](../../_memory/TEAM_ROSTER.md)** — 2 min
    - Vilka är de 7 team-medlemmarna?
    - Verifiera från git commits (INTE gissat)
 
