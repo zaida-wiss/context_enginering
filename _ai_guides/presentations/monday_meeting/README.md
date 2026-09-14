@@ -4,14 +4,14 @@
 
 ---
 
-## 🎯 START HERE
+## 🎯 READING ORDER
 
-**For Monday Meeting presentations, read in this order:**
+**⚠️ DO NOT DEFINE YOUR OWN READING ORDER HERE.**
 
-1. **[PRESENTATION_STRUCTURE.md](./structure/PRESENTATION_STRUCTURE.md)** — 14 mötespunkter overview
-2. **[SLIDE_DETAIL_SPEC.md](./design/SLIDE_DETAIL_SPEC.md)** — Exact format per slide
-3. **[PRESENTATION_RED_THREADS.md](./design/PRESENTATION_RED_THREADS.md)** — Red threads through presentation
-4. **[DATA_COLLECTION_MANDATORY.md](./data/DATA_COLLECTION_MANDATORY.md)** — Data collection checklist
+**Follow ONLY:** [`../MANDATORY_READING_ORDER.md`](../MANDATORY_READING_ORDER.md)
+
+This README describes the contents of the `monday_meeting/` folder only.
+It does not define execution order for AI.
 
 ---
 

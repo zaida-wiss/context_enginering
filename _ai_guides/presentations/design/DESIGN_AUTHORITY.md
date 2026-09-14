@@ -20,7 +20,7 @@ metadata:
 DESIGN AUTHORITY (ranked by priority):
   
   🎯 SLIDE-LEVEL SPECIFICATION (NEW — AUTHORITATIVE):
-  1️⃣ _ai_guides/presentations/design/SLIDE_DETAIL_SPEC.md 
+  1️⃣ _ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md 
      (EXAKT innehål per slide — format, kolumner, regler, data-sources, footer)
   
   🎨 DESIGN RULES (apply to all slides):

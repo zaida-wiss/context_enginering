@@ -204,154 +204,27 @@ Den filen säger:
 
 🚨 **DETTA STEG ÄR INTE VALFRITT — PRESENTATION ÄR FELAKTIG UTAN DET**
 
-**Läs DESSA filer i denna ordning (de innehåller ALLT):**
+**Läs DESSA filer i denna ordning:**
 
 1. **[design/ACCESSIBILITY_NEURODIVERSITY.md](design/ACCESSIBILITY_NEURODIVERSITY.md)** 🧠 LÄS FÖRST
    - VARFÖR Symbol + Färg + Text? (för dyslektiker, ADHD, autism — och alla andra)
-   - Påtvingad läsning för att förstå designfilosofin
-   - **KRITIK:** Utan denna förståelse kommer designen bli felaktig
    
 2. **[design/VISUAL_DESIGN_MANDATORY.md](design/VISUAL_DESIGN_MANDATORY.md)** 🚨 OBLIGATORISK FÖRE RENDERING
-   - **DEN HÄR FILEN ÄR LAGLIG REQUIREMENT — PRESENTATION RENDERAS ALDRIG UTAN DET**
-   - Symbol + Färg + Text (mekanisk implementering)
-   - RGB-värden, px-storlekar, font-specs, whitespace — ALLT konkret
-   - **RENDERING-CHECKLIST:** 13 punkter som MÅSTE passeras innan presentation kan visas
-   - **FÖRBJUDNA PATTERNS:** Textlistor, bara färg (utan symbol), ingen whitespace, liten text
-   - **HIERARKI:** NPF-regler > Design-regler (se denna fil för prioritering om de krockar)
+   - **LAGLIG REQUIREMENT — PRESENTATION RENDERAS ALDRIG UTAN DET**
+   - 13 render-gate checkpoints MÅSTE passeras
    
 3. **[monday_meeting/design/SLIDE_DETAIL_SPEC.md](monday_meeting/design/SLIDE_DETAIL_SPEC.md)** ⭐ AUKTORITATIV
-   - EXAKT innehål för VARJE SLIDE (①-⑭)
-   - **VISUELL REFERENS:** Se [`TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) för konkret visuell exempel (färger, fonts, spacing, rundade hörn)
-   - **KRITISK FORMAT-REGEL:** Slide ①A-C är TABELLER med tre sektioner (Merged | Pågår | Review), INTE sammanfattning-tabeller
-   - Se exempel längre ned under "SLIDE ①A-C FORMAT"
-   
-4. **[monday_meeting/structure/PRESENTATION_STRUCTURE.md](monday_meeting/structure/PRESENTATION_STRUCTURE.md)**
-   - 14 mötespunkter (①-⑭) definitioner
+   - **DENNA FIL DEFINIERAR EXAKT INNEHÅL FÖR VARJE SLIDE (①-⑭)**
+   - Se även: [`TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) för visuell referens
 
-**HIERARKI när regler krockar:**
-
+**RULE HIERARCHY (när regler krockar):**
 ```
-🚨 NPF-REGLER (ACCESSIBILITY_NEURODIVERSITY.md) — HÖGSTA PRIORITET
-   ↓
+NPF-REGLER (ACCESSIBILITY_NEURODIVERSITY.md) — HÖGSTA PRIORITET
+   ↓ (NPF VINNER alltid om de krockar)
 VISUAL_DESIGN_MANDATORY.md — Designregler
-   ↓
-SLIDE_DETAIL_SPEC.md — Innehållsformat
-   ↓
-PRESENTATION_STRUCTURE.md — Ordning
-
-OM NPF och DESIGN krockar → NPF VINNER ALLTID
-OM DESIGN och CONTENT krockar → DESIGN VINNER
-OM CONTENT och STRUCTURE krockar → CONTENT VINNER
+   ↓ (Design vinner över innehål)
+SLIDE_DETAIL_SPEC.md — AUKTORITATIV innehål
 ```
-
-**VIKTIG REGEL:** Om NPF-reglerna säger "detta behövs för dyslektiker" men designen säger "det ser inte bra ut" → **NPF VINNER. Alltid.**
-
-Exempel:
-- ❌ FALSKT: "Design säger ingen färg här, men NPF säger 🟢🟡🔴 behövs"
-- ✅ RÄTT: Lägg på färgerna. NPF vinner.
-
-Samma med:
-- ✅ RÄTT: 24px radhöjd (NPF) > 20px (Design)
-- ✅ RÄTT: Symbol → Färg → Text (NPF) > bara Text (Design)
-- ✅ RÄTT: Orange bakgrund för Review-sektion (NPF) > ingen bakgrund (Design)
-
----
-
-### 🚨 KRITISKA FORMAT-REGLER — LÄS FÖRE RENDERING
-
-**SLIDE ①A-C (Frontend/Backend/Native) MÅSTE VARA DENNA FORMAT:**
-
-```
-| Issue # | Titel (2-5 ord) | Assignad | Status | Merged/Branch |
-|---------|-----------------|----------|--------|---------------|
-| ✅ MERGED DENNA VECKA |
-| #95 | Security review | Zaida Wiss | ✓ DONE | 2026-09-13 |
-| #87 | Test foundation | Björn Boman | ✓ DONE | 2026-09-12 |
-|
-| ◐ PÅGÅR DENNA VECKA |
-| #88 | Critical interactions | Björn Boman | ◐ PÅG | feature/#88 |
-| #89 | E2E happy path | Tomac Barin | ◐ PÅG | feature/#89 |
-|
-| ⏳ VÄNTAR PÅ REVIEW (🟠 eller 🔴 bakgrund för att dra uppmärksamhet) |
-| #90 | Auth flow refactor | Lisa Andersson | ⏳ REVIEW | PR #142 |
-| #91 | Session storage | Erik Berglund | ⏳ REVIEW | PR #143 |
-```
-
-**REGLER:**
-- ✅ **TRE SLIDES, EN PER TEAM:**
-  - **①A = ENDAST Frontend-issues** (filtrera: Team = "Frontend" från GitHub)
-  - **①B = ENDAST Backend-issues** (filtrera: Team = "Backend" från GitHub)
-  - **①C = ENDAST Native-issues** (filtrera: Team = "Native" från GitHub)
-
-- ✅ **TIDSPERIOD: SENASTE 7 DAGARNA** (sedan förra mötet)
-  - Merged: PRs mergade senaste 7 dagarna
-  - Pågår: Branches med commits senaste 7 dagarna
-  - Väntar på review: PRs skapade/uppdaterade senaste 7 dagarna
-  - Stale branches: >3 dagar utan push (risk-flagg)
-
-- ✅ **TRE SEKTIONER per slide:** Merged (sortera datum, nyast först) | Pågår (senast pushad först) | Review (äldst först)
-- ✅ **Assignad = ÄGARE av arbetet** (GitHub issue assignee), INTE reviewer eller merger
-- ✅ **FAKTISK GitHub-data**, ALDRIG exempel eller placeholders
-- ✅ **Väntar på review-sektion** måste ha tydlig visuell markering (orange/röd bakgrund)
-- ✅ **ALLA 7 team-medlemmar** måste synas distribuerade över ①A-C (även om 0 arbete denna vecka)
-- ✅ **Footer:** `Källa: GitHub PRs + branches (senaste 7d) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska issues]`
-
-**FÅR INTE SES:**
-- ❌ **EN gemensam slide för alla team** (detta är fel!)
-- ❌ Bara "Väntar på review"-sektion (måste visa Merged + Pågår också)
-- ❌ Team-områdena som sammanfattning (Frontend/Backend/Native/Team)
-- ❌ Commit-hashar
-- ❌ Stale branches (>3 dagar utan push)
-- ❌ Reviewer-namn som assignee
-- ❌ Exempel-issue-nummer (#90, #91, etc) från denna spec — använd FAKTISK GitHub-data!
-
----
-
-### 🚨 SLIDES ③④⑤ FORMAT-REGEL: PER TEAM, ALDRIG SAMMANFATTNING
-
-**SLIDES ③④⑤ (Frontend/Backend/Native) MÅSTE VARA DENNA STRUKTUR:**
-
-```
-SLIDE ③A (Frontend — denna sprint):
-┌──────┬───────────────────────┬──────────────┬────────┬──────────────┐
-│ Issue│ Titel                 │ Assignad     │ Status │ Blocker      │
-├──────┼───────────────────────┼──────────────┼────────┼──────────────┤
-│ #88  │ Critical interactions │ Björn Boman  │ ◐ PÅG  │ API-kontrakt │
-│ #89  │ E2E happy path        │ Tomac Barin  │ ◐ PÅG  │ API-kontrakt │
-│ #85  │ Responsive header     │ Zaida Wiss   │ ✓ DONE │ —            │
-└──────┴───────────────────────┴──────────────┴────────┴──────────────┘
-
-SLIDE ④A (Backend — denna sprint):
-┌──────┬──────────────────────┬──────────────┬────────┬────────────┐
-│ Issue│ Titel                │ Assignad     │ Status │ Blocker    │
-├──────┼──────────────────────┼──────────────┼────────┼────────────┤
-│ #87  │ API-definition       │ Erik Bergl.  │ ◐ PÅG  │ —          │
-│ #95  │ Security review      │ Rasha Knifdi │ ✓ DONE │ —          │
-└──────┴──────────────────────┴──────────────┴────────┴────────────┘
-
-SLIDE ⑤A (Native — denna sprint):
-┌──────┬──────────────────────┬──────────────┬────────┬──────────────┐
-│ Issue│ Titel                │ Assignad     │ Status │ Blocker      │
-├──────┼──────────────────────┼──────────────┼────────┼──────────────┤
-│ #86  │ Support capacity     │ Pär Lundh    │ ◐ PÅG  │ API-kontrakt │
-│ #92  │ Performance testing  │ Henrik W.    │ ◐ PÅG  │ —            │
-└──────┴──────────────────────┴──────────────┴────────┴──────────────┘
-```
-
-**REGLER:**
-- ✅ EN SLIDE PER TEAM (③A, ④A, ⑤A)
-- ✅ **Alla 7 team-medlemmar distribuerade enligt faktiskt arbete** — inte en gemensam sammanfattning
-- ✅ Sortera på status (DONE sist)
-- ✅ Blocker = vad väntar vi på (issue-nummer eller kort text, eller "—" om ingen)
-- ✅ Status: ✓ DONE | ◐ PÅG | ⏳ VÄNTAR
-
-**FÅR INTE SES:**
-- ❌ En gemensam "Teamtäckning" slide med alla 7 medlemmar
-- ❌ Sammanfattnings-tabell (Område | Fokus)
-- ❌ Commit-hashar
-- ❌ PR-nummer (vi visar issues, inte PRs)
-- ❌ Estimat i timmar
-- ❌ "Nästan klart" (antingen DONE eller PÅG)
 
 ---
 
