@@ -25,6 +25,12 @@ Denna fil innehåller:
 - ✅ Designregler (Symbol + Färg + Text)
 - ✅ Render-gate checklist (när presentation är klart)
 - ✅ Länk till PRESENTATION_FORMAT_GUIDE.md (konkreta slide-exempel)
+- ✅ Länk till **[structure/PRESENTATION_STRUCTURE.md](structure/PRESENTATION_STRUCTURE.md)** 
+  - 14 mötespunkter (①-⑧) med EXAKTA krav för varje:
+  - Övergripande regler (TEAMTÄNK, BRANSCHPEDAGOGIK)
+  - Konkreta krav per slide
+  - Visuella element
+  - Struktur-summary
 
 **ALLT är länkat därifrån. Ingenting mer att söka efter.**
 
