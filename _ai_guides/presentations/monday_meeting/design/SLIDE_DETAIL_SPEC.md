@@ -80,7 +80,7 @@ Referens-tabell-FORMAT (använd denna som struktur, INTE som data):
 | [från TEAM_ROSTER] | #[GitHub] | [GitHub] | [GitHub eller 🔄 UNASSIGNED] | ✓/◐/⏳ | [GitHub] |
 
 **REGLER:**
-- **Del 1: Merged denna vecka** (sortera på merge-datum, nyast först)
+- **Del 1: Merged denna vecka** (sortera på merge-datum, äldst först — veckan börjar överst, slutar längst ner)
   - Visa ALLA merged PRs denna vecka
   - Status = ✓ DONE
   - Datum = merge-datum (YYYY-MM-DD)
