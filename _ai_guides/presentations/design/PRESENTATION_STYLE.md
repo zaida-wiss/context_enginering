@@ -1429,9 +1429,9 @@ TOTALT:
 
 **Samma design varje vecka = Teamet känner igen den**
 
-- Punkt ① är ALLTID övergripande (med 3 målsystem)
-- Punkt ②③④ är ALLTID team-status (med borders & färger)
-- Punkt ③-⑤ är ALLTID issues (per-team boxes: Frontend/Backend/Native)
+- Punkt ① är ALLTID överblick (avklarat denna vecka)
+- Punkt ② är ALLTID status (nuläge + deadline)
+- Punkt ③-⑤ är ALLTID team-uppdateringar (per-team issues: Frontend/Backend/Native)
 - Punkt ⑥ är ALLTID blockers (blockerträd)
 - Punkt ⑦ är ALLTID risker (risk-register)
 - Punkt ⑧ är ALLTID kapacitet (kapacitet-tabell)

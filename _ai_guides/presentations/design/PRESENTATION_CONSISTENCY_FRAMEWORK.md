@@ -248,11 +248,11 @@ Röd tråd: **Från estimat → kapacitet → möjligt sprintmål → verifierad
 
 ### Röda trådar som kan gå förlorade
 
-- ❌ Punkt ①A-C (förra veckan) är tom eller saknar arbete → vi vet inte vad som gjordes
-  - **OBS:** Punkt ① har FYRA slides (①A Frontend, ①B Backend, ①C Native, ①D pågår)
+- ❌ Punkt ① (förra veckan) är tom eller saknar arbete → vi vet inte vad som gjordes
+  - **OBS:** Punkt ① kan ha 1-2 slides (tabeller per team: Frontend, Backend, Native)
   - ALLA arbete som gjordes denna vecka MÅSTE synas
   - Inget får utelämnas för att det inte fick plats
-- ❌ Punkt ②B (nästa deadline) saknas → mötet vet inte varför det bryr sig
+- ❌ Punkt ② (nuläge & deadline) saknar tidsplan → mötet vet inte varför det bryr sig
 - ❌ Punkt ③-⑤ (teams) saknar "väntar på..." → vi ser inte vilka är blockerade
 - ❌ Punkt ⑥ (blockers) saknas → vi ser inte helhetsbilden av beroenden
 - ❌ Punkt ⑧ (kapacitet) ej jämfört mot ⑨ → planen kan vara omöjlig
