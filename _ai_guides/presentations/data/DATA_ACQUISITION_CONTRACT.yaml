@@ -146,3 +146,81 @@ validation_rules:
   team_roster: "Exactly 7, or STOP"
 
   rule: "Zero activity in a category is valid. Missing data sources are not."
+
+###############################################################################
+# DATA_ACQUISITION_RECEIPT — Machine-Readable Diagnostic Logging
+###############################################################################
+data_acquisition_receipt:
+  purpose: >
+    Log exact status per source for each required dataset.
+    Enable diagnosis of why DATA_AUDIT passed or failed.
+    Must record source URL, status, failure_reason, and payload_summary.
+
+  required_structure:
+    execution_id: "Links to EXECUTION_RECEIPT_MACHINE.execution_id"
+    attempted_at: "ISO 8601 timestamp when acquisition began"
+    reporting_period: "REPORTING_PERIOD_START ... REPORTING_PERIOD_END"
+
+  per_dataset_log:
+    dataset_name: "team_roster | merged_prs | active_issues"
+    canonical_source: "Primary source (e.g., 'GitHub API /repos/.../pulls')"
+
+    sources_tested_array:
+      - source_url: "Full URL attempted (including query params)"
+        http_method: "GET | POST | etc"
+        status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT | EMPTY_RESPONSE | PARSE_ERROR | TOOL_UNAVAILABLE"
+        http_code: "200 | 403 | 404 | 401 | 500 | null (if tool unavailable)"
+        failure_reason: "Human-readable description if status != SUCCESS"
+        payload_summary: "Number of items returned, or 'empty', or parse error details"
+        tried_at: "ISO 8601 timestamp"
+        fallback_reason: "If trying next source: why previous failed (e.g., 'API rate limit exceeded')"
+
+    selected_source: "Which source was finally used"
+    final_status: "SUCCESS | INCOMPLETE"
+    final_payload_count: "Number of items acquired"
+
+    rule: >
+      If final_status == INCOMPLETE: must list all attempted sources with their statuses.
+      If final_status == SUCCESS: must document selected_source and payload_count.
+      Never omit failure_reason — it is how future runs know what to fix.
+
+  example_log:
+    dataset: "merged_prs"
+    sources_tested:
+      - source_url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
+        status: "HTTP_ERROR"
+        http_code: 403
+        failure_reason: "API rate limit exceeded (X-RateLimit-Remaining: 0)"
+        tried_at: "2026-09-15T10:30:45Z"
+
+      - source_url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
+        status: "EMPTY_RESPONSE"
+        failure_reason: "Web page loaded but no PR data extracted (selector mismatch or page layout changed)"
+        tried_at: "2026-09-15T10:31:12Z"
+        fallback_reason: "GitHub API rate-limited, trying web fallback"
+
+      - source_url: "https://docs.google.com/spreadsheets/d/SHEET_ID/export?format=csv&gid=0"
+        status: "AUTH_ERROR"
+        http_code: 403
+        failure_reason: "Permission denied on Google Sheets (Sheet not shared with connector, or token expired)"
+        tried_at: "2026-09-15T10:31:45Z"
+        fallback_reason: "GitHub web fallback failed, trying Sheets"
+
+    final_status: "INCOMPLETE"
+    selected_source: "none (all failed)"
+
+    diagnostic: >
+      All three sources failed. API: rate-limited. Web: selector mismatch (possible GitHub UI change).
+      Sheets: permission denied. Suggest: check API key renewal, verify web scraping selectors,
+      verify Sheets sharing permissions and connector authentication.
+
+  gate_rule: >
+    If ANY required_dataset has final_status == INCOMPLETE:
+      → DATA_AUDIT marks that dataset as INCOMPLETE
+      → Presentation generation STOPS (per SYSTEM_CONTRACT.yaml)
+      → Report to user: "[dataset] acquisition failed. Last attempt [tried_at]. Reason: [failure_reason]."
+
+    Else:
+      → DATA_AUDIT proceeds
+      → DATA_AUDIT checksums verify completeness
+      → build_gate may proceed
