@@ -48,12 +48,10 @@ required_datasets:
 
   merged_prs:
     canonical_method:
-      endpoint: "/repos/chas-challenge-2026/avanza-team1/pulls"
+      source: "GitHub API (canonical — see EXTERNAL_SOURCES.md 'Merged PRs (API — CANONICAL)')"
+      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
       http_method: "GET"
-      params:
-        state: "closed"
-        base: "develop"
-        per_page: 100
+      connector_method: "GitHub Connector (preferred) or direct HTTPS"
 
       pagination:
         required: true
@@ -61,15 +59,16 @@ required_datasets:
         collect_all: true
 
       local_filter:
-        - "merged_at != null"
+        - "merged_at != null (CRITICAL: exclude unmerged PRs)"
         - "merged_at >= REPORTING_PERIOD_START"
         - "merged_at < REPORTING_PERIOD_END"
-        - "base.ref == 'develop'"
+        - "base.ref == 'develop' (only develop branch)"
+        - "use assignees[] for attribution (person who worked on code, not merger)"
 
     fallback_order:
-      1: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
-      2: "Repository home + manual /pulls navigation: https://github.com/chas-challenge-2026/avanza-team1"
-      3: "Google Sheets: see EXTERNAL_SOURCES.md"
+      1: "GitHub web (see EXTERNAL_SOURCES.md): https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged"
+      2: "Repository home (see EXTERNAL_SOURCES.md): https://github.com/chas-challenge-2026/avanza-team1 → /pulls tab"
+      3: "Google Sheets (see EXTERNAL_SOURCES.md)"
 
     verification_only:
       - "Individual PR pages (verification only, not for completeness discovery)"
@@ -96,11 +95,10 @@ required_datasets:
 
   active_issues:
     canonical_method:
-      endpoint: "/repos/chas-challenge-2026/avanza-team1/issues"
+      source: "GitHub API (canonical — see EXTERNAL_SOURCES.md 'Issues (OPEN)')"
+      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
       http_method: "GET"
-      params:
-        state: "open"
-        per_page: 100
+      connector_method: "GitHub Connector (preferred) or direct HTTPS"
 
       pagination:
         required: true
@@ -108,15 +106,15 @@ required_datasets:
         collect_all: true
 
       local_filter:
-        - "exclude if key 'pull_request' exists in object"
-        - "assignees.length > 0"
+        - "exclude if key 'pull_request' exists (API includes pull requests; filter them out)"
+        - "assignees.length > 0 (only issues with assigned owner)"
         - "updated_at >= REPORTING_PERIOD_START"
         - "updated_at < REPORTING_PERIOD_END"
 
     fallback_order:
-      1: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
-      2: "Google Sheets: see EXTERNAL_SOURCES.md"
-      3: "Project Board: reconstruct from column view"
+      1: "GitHub web (see EXTERNAL_SOURCES.md): https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
+      2: "Google Sheets (see EXTERNAL_SOURCES.md)"
+      3: "Project Board (see EXTERNAL_SOURCES.md): reconstruct from column view"
 
     requirement: "ALL open issues with activity in reporting period, assigned to someone"
     fields:

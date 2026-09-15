@@ -89,11 +89,10 @@ Presentation generation:
 | **Issues (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue |
 | **Issues (OPEN)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open |
 | **Pull Requests (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
-| **Merged PRs (@today-1w)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=merged%3A%3E%40today-1w |
-| **Merged PRs (API — canonical)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&per_page=100 (filter by merged_at ≠ null and within REPORTING_PERIOD, use assignees[] for work owner) |
-| **Merged PRs (Web fallback 1)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+state%3Amerged |
-| **Merged PRs (Repo fallback 2)** | https://github.com/chas-challenge-2026/avanza-team1 → navigate to /pulls |
-| **Merged PRs (Raw fallback 3)** | https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/.github/workflows/pr-list.json (if branch metadata available) |
+| **Merged PRs (API — CANONICAL)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100 |
+| **Merged PRs (API — notes)** | Filter by merged_at ≠ null and within REPORTING_PERIOD. Use assignees[] for work owner attribution. Paginate until < 100 results. |
+| **Merged PRs (Web fallback)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged |
+| **Merged PRs (Repo home)** | https://github.com/chas-challenge-2026/avanza-team1 → navigate to /pulls tab |
 
 ### Project Board & Fallback
 | Resource | Primary | Fallback | Notes |
