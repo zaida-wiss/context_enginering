@@ -238,20 +238,21 @@ data_acquisition_receipt:
 
   example_log:
     dataset: "merged_prs"
+    source_id: "GITHUB_MERGED_PRS (see EXTERNAL_SOURCES.yaml for actual URL)"
     sources_tested:
-      - source_url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
+      - source: "GITHUB_MERGED_PRS.primary (github_connector)"
         status: "HTTP_ERROR"
         http_code: 403
         failure_reason: "API rate limit exceeded (X-RateLimit-Remaining: 0)"
         tried_at: "2026-09-15T10:30:45Z"
 
-      - source_url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
+      - source: "GITHUB_MERGED_PRS.fallbacks[0] (github_web, see EXTERNAL_SOURCES.yaml)"
         status: "EMPTY_RESPONSE"
         failure_reason: "Web page loaded but no PR data extracted (selector mismatch or page layout changed)"
         tried_at: "2026-09-15T10:31:12Z"
         fallback_reason: "GitHub API rate-limited, trying web fallback"
 
-      - source_url: "https://docs.google.com/spreadsheets/d/SHEET_ID/export?format=csv&gid=0"
+      - source: "GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET, see EXTERNAL_SOURCES.yaml)"
         status: "AUTH_ERROR"
         http_code: 403
         failure_reason: "Permission denied on Google Sheets (Sheet not shared with connector, or token expired)"

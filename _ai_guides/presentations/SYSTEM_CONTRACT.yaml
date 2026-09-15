@@ -263,15 +263,17 @@ external_sources_policy:
       - "All YAML/Markdown files in _ai_guides/presentations/ (authoritative)"
       - "TEAM_ROSTER.md (team identity verification)"
       - "TEMPLATE_REFERENCE.html (visual reference — read, don't download)"
-      - "_memory/EXTERNAL_SOURCES.md (whitelist of external URLs)"
+      - "_memory/EXTERNAL_SOURCES.yaml (authoritative registry of URLs, IDs, access methods)"
 
   access_methods:
-    - "✅ GitHub web: https://github.com/chas-challenge-2026/avanza-team1/pulls (direct URL)"
-    - "✅ GitHub API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls (REST API)"
-    - "✅ GitHub Connector: Authorized connector integration (if available, preferred)"
-    - "✅ Raw GitHub: raw.githubusercontent.com (fallback if web fails)"
+    - "See EXTERNAL_SOURCES.yaml for complete list of allowed access methods per source"
+    - "✅ GitHub Connector: Authorized connector integration (preferred)"
+    - "✅ GitHub API: REST API (allowed for merged_prs, open_issues)"
+    - "✅ GitHub web: Direct web access (fallback only)"
     - "✅ Google Drive Connector: For Sheets/Docs (if authorized)"
-    - "✅ Direct Sheets/Docs: CSV/Excel export if API fails"
+    - "🚫 Raw GitHub (raw.githubusercontent.com): FORBIDDEN"
+    - "🚫 CSV/Excel export without Google Connector: FORBIDDEN"
+    - "🚫 Web search: FORBIDDEN"
     - "❌ git clone (repositories cannot be cloned)"
     - "❌ Web download (no downloading files from internet)"
 
@@ -365,9 +367,9 @@ execution_sequence:
 
     must_understand_allowed:
       - "✅ Read local files from repository"
-      - "✅ GitHub web: https://github.com/chas-challenge-2026/avanza-team1/"
-      - "✅ GitHub API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/"
-      - "✅ Registered external sources only (see _memory/EXTERNAL_SOURCES.md)"
+      - "✅ GitHub web (see EXTERNAL_SOURCES.yaml for URLs)"
+      - "✅ GitHub API (see EXTERNAL_SOURCES.yaml for URLs)"
+      - "✅ Registered external sources only (see _memory/EXTERNAL_SOURCES.yaml — authoritative registry)"
       - "✅ Documented fallback chain (GitHub → Sheets → Board → Issues)"
 
     critical_checkpoint: >
