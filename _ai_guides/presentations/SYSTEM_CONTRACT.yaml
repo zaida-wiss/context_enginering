@@ -451,39 +451,43 @@ execution_sequence:
 
   step_2:
     name: "Fetch LIVE GitHub Data — Follow DATA_ACQUISITION_CONTRACT"
-    source: "data/DATA_ACQUISITION_CONTRACT.yaml (canonical method per dataset)"
+    prerequisite: "step_1c (ALLOWLIST GATE) must pass before this step"
 
-    critical_rule: >
-      For each required dataset (team_roster, merged_prs, active_issues):
-      1. Follow the CANONICAL METHOD in DATA_ACQUISITION_CONTRACT.yaml
-      2. If primary method fails, try fallbacks in specified order
-      3. Mark outcome in DATA_AUDIT (COMPLETE or INCOMPLETE)
-      4. STOP rendering only if any required dataset is INCOMPLETE
+    REQUIRED_ACTION_SEQUENCE:
+      dataset_1_team_roster:
+        action: "Read local file _memory/TEAM_ROSTER.md"
+        on_success: "Proceed to dataset_2_merged_prs"
+        on_missing: "STOP (cannot verify team identity)"
+        record_in_receipt: "teams_roster.status = SUCCESS | INCOMPLETE"
 
-    required_information:
-      team_roster: "7 team members identity-verified (TEAM_ROSTER.md, local authoritative source)"
-      merged_prs: "All PRs merged to develop in reporting period (GitHub API canonical method, fallbacks listed)"
-      active_issues: "All open issues with assignee+activity in reporting period (GitHub API canonical method, fallbacks listed)"
+      dataset_2_merged_prs:
+        action: "Use github_connector to call https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
+        on_success: "Proceed to dataset_3_active_issues"
+        on_tool_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
+        on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
+        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to data_audit"
+        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = github_connector | sheets | github_web"
 
-    optional_enrichment:
-      - "Commit list (can derive from PR metadata)"
-      - "Branch inventory (can derive from PR/issue data)"
-      - "Project Board (reconstruction from Issues/PRs)"
-      - "Meeting protocol (context only)"
+      dataset_3_active_issues:
+        action: "Use github_connector to call https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
+        on_success: "Proceed to step_2b"
+        on_tool_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
+        on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
+        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to step_2b"
+        record_in_receipt: "active_issues.status = SUCCESS | INCOMPLETE, active_issues.source_used = github_connector | sheets | github_web"
 
-    rule: >
-      ENDPOINT FAILURE ≠ DATA FAILURE.
+    CRITICAL_VALIDITY_RULE: >
+      "GitHub API failed" is ONLY a valid report if github_connector
+      (or the explicitly named native GitHub REST API tool) was actually invoked.
 
-      STOP rendering only when:
-        team_roster.complete == false
-        OR merged_prs.complete == false
-        OR active_issues.complete == false
+      A DNS error, connection timeout, or generic HTTP failure from shell/bash/curl
+      does NOT count as an attempted GitHub API acquisition.
 
-      A specific GitHub endpoint failing is NOT a STOP condition if the same information
-      can be acquired through a fallback source listed in DATA_ACQUISITION_CONTRACT.yaml.
+      If github_connector cannot be invoked, record TOOL_UNAVAILABLE in receipt
+      and proceed directly to the next registered fallback (Sheets).
 
-      Enrichment-only sources failing (commits, branches, board, protocol) never stop rendering.
-      Mark missing enrichment data with ⚠️ in presentation notes.
+      Do NOT attempt to work around github_connector unavailability by using
+      shell network commands, generic web access, or improvised HTTP tools.
 
   step_2b:
     name: "Record DATA_ACQUISITION_RECEIPT — MANDATORY before DATA_AUDIT"
