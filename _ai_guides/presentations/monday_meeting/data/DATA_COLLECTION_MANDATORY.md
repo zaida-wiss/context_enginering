@@ -22,39 +22,29 @@ For each required piece of information, use the source priority listed there:
 
 ### 1. Team Roster
 ```
-Method: Read TEAM_ROSTER.md file
+Source: TEAM_ROSTER.md (local file in this repo)
 Format: [Name, GitHub username, team designation]
-Verify: All 7 members present
+Requirement: All 7 members verified
 ```
 
-### 2. Merged PRs (reporting period)
+### 2. Merged PRs (REPORTING_PERIOD)
 ```
-Method 1 (primary): GitHub PRs API or web
-  https://github.com/chas-challenge-2026/avanza-team1/pulls
-
-Method 2 (fallback): Google Sheets
-  https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-
-Method 3 (fallback): Individual PR pages
-  https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]
+Sources: See DATA_SOURCES.md section "WORK COMPLETED THIS WEEK"
+Primary: GitHub API or web pulls tab
+Fallback: Google Sheets (see EXTERNAL_SOURCES.md for link)
 
 Collect: PR#, title, author, assignee, merged_at timestamp, base branch
-Verify: timestamp is within reporting period (SYSTEM_CONTRACT.yaml)
+Verify: merged_at is within REPORTING_PERIOD (see SYSTEM_CONTRACT.yaml)
 ```
 
-### 3. Active Issues (reporting period)
+### 3. Active Issues (REPORTING_PERIOD)
 ```
-Method 1 (primary): GitHub Issues API or web
-  https://github.com/chas-challenge-2026/avanza-team1/issues
-
-Method 2 (fallback): Google Sheets
-  https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-
-Method 3 (fallback): Reconstruct from Project Board
-  https://github.com/orgs/chas-challenge-2026/projects/31/
+Sources: See DATA_SOURCES.md section "WORK IN PROGRESS"
+Primary: GitHub API or web issues tab
+Fallback: Google Sheets or reconstructed from Project Board
 
 Collect: Issue#, title, assignee, updated_at timestamp, labels
-Verify: has assignee, recent activity (comment or update in reporting period)
+Verify: has assignee, recent activity (comment/update) in REPORTING_PERIOD
 ```
 
 ---
@@ -67,26 +57,26 @@ Collect if available. If unavailable, note in footer with ⚠️. Never stop ren
 
 ### Commits (optional)
 ```
-Derive from: merged PR metadata (each PR contains commits)
-If additional commits needed: https://github.com/chas-challenge-2026/avanza-team1/commits/develop
+Primary: Derive from merged PR metadata (each PR contains commits)
+If needed: See EXTERNAL_SOURCES.md for GitHub commits endpoint
 ```
 
 ### Branches (optional)
 ```
-Derive from: active PR and issue data (branches are from these)
-If direct list needed: https://github.com/chas-challenge-2026/avanza-team1/branches
+Primary: Derive from active PR and issue data
+If needed: See EXTERNAL_SOURCES.md for GitHub branches endpoint
 ```
 
 ### Project Board (optional)
 ```
-Source: https://github.com/orgs/chas-challenge-2026/projects/31/
-Fallback: Reconstruct from Issues and PRs
+Source: See EXTERNAL_SOURCES.md for board link
+Fallback: Reconstruct from Issues and PRs data
 ```
 
 ### Meeting Protocol (optional)
 ```
-Source: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
-Use for: context only, never influences required-information collection
+Source: See EXTERNAL_SOURCES.md for Google Docs link
+Use for: Context only — never influences required-information decisions
 ```
 
 ---

@@ -46,48 +46,45 @@ Presentationen måste kunna verifiera dessa fakta:
 - GitHub Issues/PRs med status "done" eller "closed" + merge-datum denna vecka
 
 **Fallback ordning:**
-1. **GitHub Issues API** — alla closed issues denna vecka
-   - FILTER: Exkludera labels "test", "duplicate", "wontfix", "archived"
-   - Inklud: både issues och linked PRs
+1. **GitHub Issues API** — alla closed issues (REPORTING_PERIOD_START → REPORTING_PERIOD_END)
+   - Filter: Exkludera labels "test", "duplicate", "wontfix", "archived"
+   - Include: issues + linked PRs
 
-2. **GitHub /issues tab (WebFetch-compatible)**
-   - URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:[IDAG-7d]..[IDAG]`
-   - FILTER: Sama som ovan (exkludera test-issues)
-   - Returnerar: Closed issues denna vecka med linked PRs
-   - **REGEL:** [IDAG-7d] = exakt 7 dagar före IDAG, [IDAG] = idag klockan 23:59
+2. **GitHub web: Issues tab**
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed`
+   - Then filter results by REPORTING_PERIOD manually if date-filter fails
 
-3. **GitHub /pulls tab (WebFetch-compatible)**
-   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:[IDAG-7d]..[IDAG]`
-   - Returnerar: Merged PRs denna vecka
+3. **GitHub web: Pulls tab (merged)**
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged`
+   - Use @today-1w syntax: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=merged%3A%3E%40today-1w`
 
-4. **GitHub /pulls — @today-1w syntax (fallback)**
-   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=merged%3A%3E%40today-1w`
-   - Returnerar: Merged PRs from last 7 days (GitHub native query syntax)
-   - Use if: Date-range filter above fails
+4. **GitHub API (JSON)**
+   - URL: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&per_page=100`
+   - Filter results: merged_at ≠ null AND merged_at within REPORTING_PERIOD
 
-5. **GitHub API — Merged PRs (JSON)**
-   - URL: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=merged&per_page=100`
-   - Returnerar: Raw JSON with full PR metadata
-   - Use if: Web queries fail; parse JSON for merged_at timestamps to filter by week
+5. **Raw GitHub URLs (if web fails)**
+   - Commits: `https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/develop/...`
+   - Individual PRs: Parse from GitHub web directly
 
-6. **Individual PR detail pages (WebFetch-compatible)**
+6. **Individual PR detail pages**
    - URL: `https://github.com/chas-challenge-2026/avanza-team1/pull/[PR_NUMBER]`
-   - Returns: PR title, author, approver, merge-date, linked issues, commits
+   - Returns: Title, author, approver, merge-date, linked issues, commits
 
-7. **Google Sheets fallback** — https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-   - CSV export eller manual entry
-   - FILTER: Samma som GitHub (exkludera test-issues)
+7. **Google Sheets fallback**
+   - URL: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+   - Use if: All GitHub methods fail
+   - Filter: Exclude test-issues (same as GitHub rules)
 
-8. **Projekt-board "Done"-kolumn** (se PROJECT BOARD)
-   - Risk: kan missa issues som INTE är på board
-   - Använd endast om alla andra failar
-   ö
-9. **Mötesprotokoll från denna vecka** — vad sade vi var klart?
-   - Fältdata, kan missa issues från veckan
+8. **Project Board (reconstruction only)**
+   - Use ONLY if issues/PRs data unavailable
+   - May be incomplete; Issues list is more authoritative
 
-**Om all misslyckas:** Presentationen kan säga "saknad verifiering av denna veckas avslutade arbete" men INTE "Git log kunde inte läsas"
+9. **Meeting Protocol (context only)**
+   - Use for verification context, never as primary source
 
-**VIKTIGT:** GitHub Issues är mer komplett än Project Board (inte alla issues synkas till board). Ignorera ALDRIG issues bara för att de saknas från board.
+**REPORTING_PERIOD standard:** Previous Monday 00:00 → Current Monday 00:00 (exclusive), Europe/Stockholm timezone
+
+**If GitHub completely unavailable:** Use Sheets + Protocol; mark sources in presentation footer with ⚠️
 
 ---
 

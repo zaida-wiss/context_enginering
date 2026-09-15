@@ -30,6 +30,7 @@ external_sources_policy:
   allowed_sources:
     primary_repositories:
       - "github.com/chas-challenge-2026/avanza-team1 (project code + issues + PRs + Project Board)"
+        - "Access methods: GitHub web (pulls/issues tabs), GitHub API (REST), authorized GitHub connector"
       - "github.com/zaida-wiss/context_enginering (this context repository)"
 
     project_documents:
@@ -39,6 +40,14 @@ external_sources_policy:
     internal_sources:
       - "All YAML/Markdown files in this repository"
       - "TEAM_ROSTER.md (team identity verification)"
+
+  access_methods:
+    - "GitHub web: Direct URL access to /pulls, /issues, /pull/[N] pages"
+    - "GitHub REST API v3: Direct API calls (preferred for bulk data)"
+    - "GitHub Connector/OAuth: Authorized connector integration (preferred, no rate limits)"
+    - "Raw GitHub: raw.githubusercontent.com (fallback if web fails)"
+    - "Google Drive Connector: For Sheets/Docs (if authorized)"
+    - "Direct Google Docs/Sheets links: CSV/Excel export if API fails"
 
   forbidden:
     - "General web search (Google, Bing, DuckDuckGo, etc.)"

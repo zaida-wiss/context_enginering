@@ -88,42 +88,38 @@ CHECKSUMS (ALL MUST PASS):
 
 ---
 
-## 🔍 STEG 2: FÖRVÄGSTÄMMNING PER SLIDE (EFTER DATA VERIFIED)
+## 🔍 STEG 2: SLIDE CONTENT VERIFICATION (after data verified)
 
-**Innan en slide visas måste innehål VERIFIERAS:**
+**Verify that slide content is accurate and derived from authoritative data:**
 
-### Varje slide måste kontrollera:
+### Critical verifications (MUST PASS):
 
-1. ✅ **Data stämmer med develop-merges**
-   - Issue-nummer i slide = faktisk merged PR i develop?
-   - Datum i slide = faktisk merge-datum?
-   - INTE data från lokala branches eller outvecklad
+1. ✅ **Data matches GitHub source**
+   - Issue-nummer på slide = faktisk GitHub-ID?
+   - Timestamps = faktisk merge-datum eller update-datum?
+   - Data kommer från GitHub (eller allowed fallback, INTE lokala branches)?
 
-2. ✅ **Issues är korrekt öppnade + assignade**
-   - Issue är tilldelad någon? (om öppen)
-   - Assignee matchar actual GitHub-issue?
-   - Är issue fortfarande öppen eller är den redan stängd?
+2. ✅ **Assignment is accurate**
+   - Assignee på slide = faktisk GitHub assignee?
+   - Issue är öppen eller stängd såsom angiven?
+   - Namn från TEAM_ROSTER.md (eller "??") om assignee saknas?
 
-3. ✅ **AC (Acceptance Criteria) är ordentlig**
-   - Issue har AC definierade?
-   - AC är testbara (inte vaga)?
-   - AC matchar faktiskt arbete i PR?
+### Information details (OPTIONAL — only verify if SLIDE_DETAIL_SPEC requires):
 
-4. ✅ **Test-coverage är tydlig**
-   - Finns tester för detta arbete?
-   - Vilka test-typer (unit/integration/e2e)?
-   - Är tester mergade eller bara planerade?
+3. ⚠️ **Acceptance Criteria** (enrichment only if SLIDE_DETAIL_SPEC says)
+   - If slide includes AC: Is AC defined and testable?
 
-5. ✅ **PR-review status är uppdaterad**
-   - Vem reviewade PR:en?
-   - Är review-kommentarer lösta?
-   - Status: approved/requested-changes/pending?
+4. ⚠️ **Test Coverage** (enrichment only if SLIDE_DETAIL_SPEC says)
+   - If slide includes tests: Are tests merged? Which types?
 
-### Resultat av verifikation:
+5. ⚠️ **PR Review Status** (enrichment only if SLIDE_DETAIL_SPEC says)
+   - If slide includes review: Who approved? Status: approved/pending/changes?
+
+### Verification results:
 ```
-✅ PASS: Data stämmer → slide visas
-❌ FAIL: Data matchar inte → slide UPPDATERAS innan rendering
-⚠️ WARN: Data saknas (ex ingen tests än) → slide märks tydligt "pågår"
+✅ PASS: Data accurate → slide renders
+❌ FAIL: Data mismatch → FIX before rendering
+⚠️ WARN: Optional details missing → OK, mark with ⚠️ footer note
 ```
 
 ---
