@@ -56,7 +56,7 @@ metadata:
 - All slides marked with ① ② ③ etc. to show which point they belong to
 
 **For exact content of each slide → [SLIDE_DETAIL_SPEC.md](../design/SLIDE_DETAIL_SPEC.md)**  
-**For design/layout rules → [VISUAL_DESIGN_MANDATORY.md](../design/VISUAL_DESIGN_MANDATORY.md)**  
+**For design/layout rules → [VISUAL_DESIGN_MANDATORY.md](../../design/VISUAL_DESIGN_MANDATORY.md)**  
 **For data sources → [DATA_SOURCES.md](../data/DATA_SOURCES.md)**
 
 ---
