@@ -151,8 +151,15 @@
         <p style="color: #666; font-size: 15px;">Tillgänglighets- och neurodiversitets-vänlig design för presentationer</p>
 
         <div class="warning-box">
-            <strong>⚠️ INTE TABELL-EXEMPEL</strong>
-            Denna sida visar DESIGNPRINCIPER för NPF-vänlighet, inte tabell-layouts (tabeller är svåra för dyslektiker att scanna).
+            <strong>🚨 PRESENTATION ≠ DASHBOARD</strong>
+            En mötes-presentation är INTE en Jira-export, GitHub-dashboard, eller datatabell.
+            <br><br>
+            ❌ Aldrig: Många kort/rader i grid eller tabell-layout (även shapes, inte bara &lt;table&gt;)<br>
+            ❌ Aldrig: Upprepade metadata-kolumner (Issue # | Title | Assignee | Status)<br>
+            ❌ Aldrig: 5+ visuella objekt på samma nivå<br>
+            ✅ Istället: Max 3–5 huvudobjekt + 60–70% whitespace
+            <br><br>
+            Data finns i audit. Presentationen berättar en HISTORIA om data.
         </div>
 
         <div class="link-section">
@@ -205,14 +212,26 @@
 
         <div class="principles">
             <strong style="font-size: 16px; color: #323232;">Font-storlekar</strong>
-            <p style="margin: 10px 0; color: #666;">Text måste vara stor, särskilt för tabell-data.</p>
+            <p style="margin: 10px 0; color: #666;">Text måste vara stor för läsbarhet från mötesbord (3+ meter bort).</p>
 
             <ul>
-                <li><strong>14pt BOLD</strong> — Sektion-headers ("MERGED DENNA VECKA")</li>
-                <li><strong>13pt regular</strong> — Issue-data, namn, status</li>
-                <li><strong>12pt</strong> — Meta-text (datum, branch-namn)</li>
-                <li><strong style="color: #d32f2f;">ALDRIG <10pt</strong> — Otillåtet för NPF</li>
+                <li><strong>14pt BOLD</strong> — Sektion-headers ("MERGED DENNA VECKA"), slide-title</li>
+                <li><strong>13pt regular</strong> — Huvudkontent (issue-nummer, namn, status-beskrivning)</li>
+                <li><strong>12pt</strong> — Meta-text (datum, branch-namn, källreferens)</li>
+                <li><strong style="color: #d32f2f;">ALDRIG <13pt för innehål</strong> — Otillåtet för NPF</li>
+                <li><strong style="color: #d32f2f;">ALDRIG <12pt för meta</strong> — För litet att läsa</li>
             </ul>
+
+            <div class="do-example" style="margin-top: 15px;">
+                <strong>✅ RÄTT — Max 3 objekt per slide:</strong><br>
+                Rubrik (14pt BOLD) + 1–2 visuella grupper (13pt) + metadata under (12pt)<br>
+                = ~200 ord total, läsbar på 30 sekunder
+            </div>
+
+            <div class="dont-example">
+                <strong>❌ FEL — Dashboard med många rader:</strong><br>
+                10+ "Issue # | Title | Status | Assignee" rader = 1000+ ord = omöjligt att läsa vid möte
+            </div>
         </div>
 
         <div class="principles">
@@ -265,17 +284,38 @@
         </div>
 
         <div class="warning-box" style="background: #fff9e6; border-left-color: #ff9800; color: #e65100; margin-top: 40px;">
-            <strong>🚫 FÖRBJUDNA PATTERNS (NPF-VIOLATIONS):</strong><br><br>
-            ❌ Tabeller med >3 kolumner (lätt att tappa raden när man scannar)<br>
-            ❌ Text <13pt i tabeller<br>
+            <strong>🚫 ABSOLUT FÖRBJUDNA PATTERNS:</strong><br><br>
+            <strong style="color: #d32f2f;">PRESENTATION-LAYOUT:</strong><br>
+            ❌ <strong>ALLA tabell-liknande layouts</strong> (PowerPoint tables, HTML tables, grids av cards, shapes i grid)<br>
+            ❌ <strong>Dashboard-layout</strong> (många kort/rader bredvid varandra, ser ut som Jira/GitHub)<br>
+            ❌ <strong>Grid av många likvärdiga objekt</strong> (5+ items på samma visuell nivå)<br>
+            ❌ <strong>Upprepade metadata-rader</strong> ("Issue # | Title | Assignee | Status" x10)<br>
+            ❌ <strong>Scrollbar-områden</strong> (det är en presentation, inte ett verktyg)<br><br>
+            <strong style="color: #d32f2f;">TEXT OCH WHITESPACE:</strong><br>
+            ❌ Text <13pt i statusrader<br>
             ❌ Radhöjd <24px<br>
+            ❌ Padding <12px mellan element<br>
+            ❌ Whitespace <60% av slide (ofta måste det vara 70%)<br>
             ❌ Färg UTAN symbol + text (måste vara trio)<br>
-            ❌ >5 objekt per sektion utan gruppering<br>
-            ❌ Rundade hörn <6px (ser oprofessionellt ut och är mindre effektivt)
+            ❌ Rundade hörn <6px<br><br>
+            <strong style="color: #d32f2f;">MÖTETS BUDSKAP:</strong><br>
+            ❌ Alla data på EN slide (split till ①A.1, ①A.2 istället)<br>
+            ❌ Metadata har samma visuell vikt som huvudbudskapet<br>
+            ❌ Ingen visuell hierarki — allt ser lika viktigt ut
         </div>
 
         <div class="info-box" style="margin-top: 40px;">
-            <strong>Sammanfattning:</strong> NPF-vänlig design är INTE bara om större text. Det handlar om att presentera information på ett sätt som barnets lätt kan procesera — med Symbol + Färg + Text tillsammans, mycket whitespace, och visuell gruppering. Läs ACCESSIBILITY_NEURODIVERSITY.md för fullständig filosofi.
+            <strong>Filosofi:</strong> NPF-vänlig design gör presentationen:
+            <ul style="margin: 10px 0 0 20px;">
+                <li>✅ <strong>Läsbar från mötesbord</strong> (stor text, hög kontrast)</li>
+                <li>✅ <strong>Möjlig att förstå på 30 sekunder</strong> (max 3–5 objekt, inte 20)</li>
+                <li>✅ <strong>Hierarkisk</strong> (visuell prioritering, inte alla-lika-viktiga)</li>
+                <li>✅ <strong>Luftig</strong> (60–70% whitespace, inte tätt packad)</li>
+                <li>✅ <strong>Symbol-first</strong> (se status på 1 sekund utan att läsa)</li>
+                <li>✅ <strong>En berättelse</strong> (presentation, inte dashboard)</li>
+            </ul>
+            <br>
+            <strong>Resultat:</strong> Presentationen fungerar för alla — dyslektiker, ADHD, autism, och neurotypiska. Läs ACCESSIBILITY_NEURODIVERSITY.md för fullständig filosofi och kognitiv vetenskap bakom dessa regler.
         </div>
     </div>
 </body>
