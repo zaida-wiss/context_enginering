@@ -31,17 +31,19 @@ Header text:                 Mörkgrå (RGB 50, 50, 50)
 Body text:                   Mörkgrå (RGB 100, 100, 100)
 ```
 
-### Font & Spacing
+### Font & Spacing (FIXED VALUES — NEVER CHANGE)
 ```
 Section headers:             Arial 14pt BOLD
 Issue nummer & titel:        Arial 13pt regular
 Meta-text (datum/branch):    Arial 12pt regular
-Row height (tabeller):       24px MINIMUM (NPF för dyslektiker)
-Padding per cell:            12px
-Margin mellan sektioner:     8px minimum
-Corner radius (textboxar):   6-8px (rundade hörn)
+Row height:                  24px MINIMUM
+Padding per element:         12px
+Margin mellan element:       8px minimum
+Corner radius:               6-8px
 Kontrast minimum:            4.5:1 (WCAG AA)
 ```
+
+**NOTE:** These values are AI instructions, not slide content. Never display them in the presentation.
 
 ---
 
@@ -60,13 +62,13 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 ✅ RÄTT:  "③ Frontend"
 ```
 
-**REGLER:**
-- Symbolen måste vara FÖRST i rubriken
-- Två mellanslag mellan symbol och rubrik-text
-- Samma symbol för alla sub-slides (t.ex. ①A, ①B, ①C använder alla ①)
-- Font: Arial 14pt BOLD (samma som andra headers)
+**REGLER (Mechanical — no variation):**
+- Symbolen måste vara FÖRST i rubriken (no exceptions)
+- Exakt två mellanslag mellan symbol och rubrik-text
+- Samma symbol för alla sub-slides (①A, ①B, ①C använder alla ①)
+- Font: Arial 14pt BOLD (never smaller, never different font)
 
-**VARFÖR:** NPF-designen kräver att läsaren omedelbar ser STRUKTUR. Symbolen är visuell ankare.
+**NOTE:** These are rendering rules for AI, not content to display.
 
 ---
 
