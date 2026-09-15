@@ -87,11 +87,33 @@ non_negotiable_execution:
 
 ###############################################################################
 # AUTHORITY HIERARCHY — Single Source Per Domain (ZERO DUPLICATION)
+# Revised 2026-09-16: Clarified roles to distinguish between requirements, implementation, and content
 ###############################################################################
 authority:
   execution_and_contract:
     file: "SYSTEM_CONTRACT.yaml (this file)"
-    owns: "Execution sequence, required vs optional data, when to STOP, delivery format"
+    owns: "Execution sequence, process, gates, required vs optional data, when to STOP, delivery format"
+    role: "Overarching orchestration and conflict resolution"
+
+  slide_structure_and_content:
+    file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md (🚨 CRITICAL)"
+    owns: "Which slides exist, their order, meeting-point symbols (①-⑭), slide titles, required content per slide, continuation rules"
+    rule: "This is the SLIDE BLUEPRINT. Other files may style but CANNOT rename, reorder, merge, or omit slides unless explicitly permitted here"
+    does_not_own: "Visual design, layout, typography (those belong to VISUAL_DESIGN_MANDATORY)"
+
+  accessibility_and_neurodiversity:
+    file: "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL)"
+    owns: "Quality requirements that design MUST meet: NPF principles, color semantics, symbol consistency, cognitive load, whitespace, large text, low visual density"
+    role: "BOUNDARY CONDITIONS — these are non-negotiable constraints that visual design must never violate"
+    wins_over: "Nothing, because it defines minimum quality, not implementation"
+    note: "Defines WHY and WHAT MUST BE, not HOW to build it"
+
+  visual_design_implementation:
+    file: "design/VISUAL_DESIGN_MANDATORY.md (AUTHORITATIVE)"
+    owns: "ENDA source of truth for exakt layout, form, typography, spacing, margins, block structure, PowerPoint implementation, rounded corners vs rectangles, color placement"
+    must_implement: "All ACCESSIBILITY_NEURODIVERSITY.md requirements"
+    rule: "If this conflicts with SLIDE_DETAIL_SPEC (content), VISUAL_DESIGN_MANDATORY wins on form; if conflicts with ACCESSIBILITY_NEURODIVERSITY, revise to meet accessibility first"
+    note: "Defines HOW to build within quality boundaries"
 
   data_sources:
     file: "data/DATA_SOURCES.md"
@@ -105,38 +127,44 @@ authority:
     file: "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
     owns: "Validation, audit structure, completeness checking"
 
-  accessibility_and_neurodiversity:
-    file: "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL)"
-    owns: "NPF rules, cognitive accessibility, hierarchy, focus, triple-redundancy"
-    rule: "These rules OVERRIDE all other design rules when they conflict"
-
-  visual_design_implementation:
-    file: "design/VISUAL_DESIGN_MANDATORY.md"
-    owns: "Concrete implementation of NPF constraints (typography, spacing, CANONICAL LAYOUT)"
-    depends_on: "Must implement ACCESSIBILITY_NEURODIVERSITY.md rules"
-
-  slide_content:
-    file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
-    owns: "What content goes where, exact format per slide"
-    does_not_own: "Design, layout, typography (those are VISUAL_DESIGN_MANDATORY)"
-
   visual_reference:
     file: "monday_meeting/design/TEMPLATE_REFERENCE.html"
     owns: "Illustrations of the visual result only"
-    does_not_own: "Any rule, value, or constraint (reference only)"
+    does_not_own: "Any rule, value, or constraint (reference only; NEVER authoritative)"
 
   verification_and_quality:
     file: "verification/RENDER_GATE_CHECKLIST.md"
     owns: "Verification checkpoints before delivery"
 
 conflict_resolution:
-  rule: >
-    When two files conflict, follow this priority:
-    1. ACCESSIBILITY_NEURODIVERSITY.md (NPF rules always win)
-    2. VISUAL_DESIGN_MANDATORY.md (implementation rules)
-    3. SLIDE_DETAIL_SPEC.md (content rules)
-    4. TEMPLATE_REFERENCE.html (reference only, never wins)
-    If SYSTEM_CONTRACT.yaml contradicts any file, SYSTEM_CONTRACT.yaml wins.
+  principle: >
+    Domain separation prevents most conflicts. When conflicts occur despite separation, follow this priority:
+
+    LEVEL 1 — SYSTEM_CONTRACT.yaml (orchestration and process)
+      → Always wins on execution sequence, gates, when to STOP
+
+    LEVEL 2 — ACCESSIBILITY_NEURODIVERSITY.md (quality boundaries)
+      → Wins on any quality/accessibility constraint (cannot be overridden by layout choices)
+
+    LEVEL 3 — VISUAL_DESIGN_MANDATORY.md (implementation authority)
+      → Wins on HOW to build (form, layout, typography, spacing)
+      → Wins over SLIDE_DETAIL_SPEC on visual appearance
+      → MUST NOT violate Level 2 boundaries
+
+    LEVEL 4 — SLIDE_DETAIL_SPEC.md (content blueprint)
+      → Wins on WHAT content exists and WHERE it goes
+      → MUST NOT be renamed, reordered, merged, or omitted by visual design
+      → Visual design styles content according to this structure
+
+    LEVEL 5 — TEMPLATE_REFERENCE.html (inspiration only)
+      → Never wins any conflict; illustrates possibilities only
+
+  resolution_algorithm: >
+    If File A and File B conflict:
+    1. Check both are in same domain (e.g., layout). If not, conflict is false (domains separate).
+    2. If both claim same domain, map to Authority Hierarchy level.
+    3. Higher level always wins.
+    4. If same level, STOP and report: "Authority conflict requires clarification at [LEVEL]"
 
 ###############################################################################
 # EXECUTION RECEIPT — MANDATORY GATE
