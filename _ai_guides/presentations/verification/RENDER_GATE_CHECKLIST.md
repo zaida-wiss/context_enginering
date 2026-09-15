@@ -388,13 +388,21 @@ STEP D: Only after ALL slides pass visual check:
 
 **NEVER deliver a presentation without rendering it to PPTX and visually checking every single slide.**
 
-**FINAL CHECK:**
+**FINAL CHECK — ALWAYS RENDER:**
 ```
   If ALL checkboxes passed:
-    ✅ Render and deliver
+    ✅ Render and deliver (full verification)
   
-  If ANY checkbox failed:
-    ❌ Do not render. Report which checkboxes failed and why.
+  If REQUIRED data present but some enrichment missing:
+    ⚠️ Mark missing sources in footer, then render anyway
+    Example: "GitHub verified ✅ | Board unavailable ⚠️ | Commits derived ✅"
+  
+  If REQUIRED sources all failed (no fallback worked):
+    ⚠️ Mark all sources as UNVERIFIED, render with ⚠️ WARNING
+    Example: "⚠️ All data sources unavailable this week"
+  
+  NEVER: Stop rendering because "data is incomplete"
+  ALWAYS: Render with whatever data exists + mark accuracy in footer
 ```
 
 ---

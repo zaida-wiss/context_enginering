@@ -39,45 +39,69 @@ Om denna checklist inte är slutförd kommer presentationen att dölja arbete (s
 
 ---
 
-## 🚨 MANDATORY FALLBACK RULE
+## 🚨 MANDATORY FALLBACK RULE — NEVER STOP RENDERING
 
-**OM GITHUB FAILAR — DU MÅSTE ANVÄNDA FALLBACKS**
+**YOU MUST ALWAYS DELIVER A PRESENTATION. NEVER STOP FOR DATA ACCESS.**
 
-Innan du säger "datainsamlingen är ofullständig":
+Follow this sequence EXACTLY:
 
 ```
-1. FÖRSÖK: GitHub Issues/PRs/Commits (webben eller API)
-   Failar? → Gå till fallback 1
+STEP 1: Try GitHub (API, web, or direct URLs)
+        ├─ Can read merged PRs? YES → Use GitHub
+        ├─ Can read open issues? YES → Use GitHub
+        ├─ Can read commits? YES → Use GitHub
+        └─ ALL github data retrieved? YES → CONTINUE TO RENDERING
+        
+        ANY failed? → Go to STEP 2
 
-2. FALLBACK 1: Google Sheets denna vecka (COMMITS + ALL DATA)
-   🔗 https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?usp=sharing
-   
-   Denna sheet innehåller:
-     ✅ Commits denna vecka (primär fallback)
-     ✅ Merged PRs (för punkt ①)
-     ✅ Issues (öppna, stängda)
-     ✅ Project Board status
-   
-   Kan du läsa denna? JA → använd denna för alla data
-   NEJ → Gå till fallback 2
+STEP 2: Try Google Sheets fallback
+        URL: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+        
+        ├─ Can read Commits tab? YES → Use it
+        ├─ Can read PRs tab? YES → Use it
+        ├─ Can read Issues tab? YES → Use it
+        ├─ Can read Board tab? YES → Use it
+        └─ Got all needed data? YES → CONTINUE TO RENDERING
+        
+        Any failed? → Go to STEP 3
 
-3. FALLBACK 2: Project Board denna vecka
-   https://github.com/orgs/chas-challenge-2026/projects/31/views/1
-   Kan du läsa denna? JA → använd status härifrån
-   
-   OM Project Board API inte fungerar:
-   FALLBACK 2b: Issues direkt
-   https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue
-   → Rekonstruera Board-status från Issues-state direkt
-   
-4. FALLBACK 3: Meeting protocol denna vecka
-   (länk i README.md / EXTERNAL_SOURCES.md)
+STEP 3: Try Project Board
+        URL: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+        
+        ├─ Can read board columns? YES → Reconstruct data from board
+        └─ Success? YES → CONTINUE TO RENDERING
+        
+        Failed? → Go to STEP 4
 
-5. ALLA FAILADE: Markera TYDLIGT "ej verifierat denna vecka"
-   Exempel: "Data kunde inte samlas denna vecka (GitHub web + Sheets + Board alla begränsade)"
+STEP 4: Reconstruct from GitHub Issues directly
+        URL: https://github.com/chas-challenge-2026/avanza-team1/issues
+        
+        ├─ Can read issues list? YES → Use it
+        └─ Got data? YES → CONTINUE TO RENDERING
+        
+        Failed? → Go to STEP 5
+
+STEP 5: Use meeting protocol (final source)
+        URL: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+        
+        ├─ Can read? YES → Use meeting notes for context
+        └─ Data available? YES → CONTINUE TO RENDERING
+
+STEP 6: Render with what you have + mark missing data
+        ├─ If GitHub worked: ✅ Full data
+        ├─ If Sheets worked: ✅ Full data from fallback
+        ├─ If Board/Issues worked: ✅ Partial data from reconstruction
+        ├─ If only meeting protocol: ⚠️ Context data only
+        └─ RENDER ANYWAY. Mark sources as ⚠️ in presentation footer.
 ```
 
-**REGEL: Presentationen får ALDRIG säga "ofullständig" utan att ha försökt alla fallbacks först.**
+**CRITICAL RULES:**
+- 🚫 YOU MUST NOT STOP RENDERING. EVER.
+- ✅ If GitHub fails but Sheets works → use Sheets, continue
+- ✅ If Sheets fails but Board works → reconstruct, continue
+- ✅ If everything fails → show ⚠️ UNVERIFIED in footer, render anyway
+- 🚫 NEVER say "datainsamlingen är ofullständig" without trying all 5 steps
+- 🚫 NEVER block presentation because GitHub API had issues
 
 ---
 
