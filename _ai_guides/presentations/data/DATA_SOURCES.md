@@ -55,20 +55,30 @@ Presentationen måste kunna verifiera dessa fakta:
 3. **GitHub /pulls tab (WebFetch-compatible)**
    - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:[IDAG-7d]..[IDAG]`
    - Returnerar: Merged PRs denna vecka
-   
-4. **Individual PR detail pages (WebFetch-compatible)**
+
+4. **GitHub /pulls — @today-1w syntax (fallback)**
+   - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=merged%3A%3E%40today-1w`
+   - Returnerar: Merged PRs from last 7 days (GitHub native query syntax)
+   - Use if: Date-range filter above fails
+
+5. **GitHub API — Merged PRs (JSON)**
+   - URL: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=merged&per_page=100`
+   - Returnerar: Raw JSON with full PR metadata
+   - Use if: Web queries fail; parse JSON for merged_at timestamps to filter by week
+
+6. **Individual PR detail pages (WebFetch-compatible)**
    - URL: `https://github.com/chas-challenge-2026/avanza-team1/pull/[PR_NUMBER]`
    - Returns: PR title, author, approver, merge-date, linked issues, commits
    
-4. **Google Sheets fallback** — https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+7. **Google Sheets fallback** — https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
    - CSV export eller manual entry
    - FILTER: Samma som GitHub (exkludera test-issues)
    
-5. **Projekt-board "Done"-kolumn** (se PROJECT BOARD)
+8. **Projekt-board "Done"-kolumn** (se PROJECT BOARD)
    - Risk: kan missa issues som INTE är på board
    - Använd endast om alla andra failar
    
-6. **Mötesprotokoll från denna vecka** — vad sade vi var klart?
+9. **Mötesprotokoll från denna vecka** — vad sade vi var klart?
    - Fältdata, kan missa issues från veckan
 
 **Om all misslyckas:** Presentationen kan säga "saknad verifiering av denna veckas avslutade arbete" men INTE "Git log kunde inte läsas"

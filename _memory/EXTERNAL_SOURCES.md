@@ -90,7 +90,9 @@ Presentation generation:
 | **Issues (OPEN)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open |
 | **Pull Requests (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
 | **Merged PRs (filter by date)** | `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[IDAG-7d]` |
+| **Merged PRs (@today-1w)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=merged%3A%3E%40today-1w |
 | **Merged PRs (ALL — fallback)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+state%3Amerged |
+| **Merged PRs (API — JSON)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=merged&per_page=100 |
 
 ### Project Board & Fallback
 | Resource | Primary | Fallback | Notes |
