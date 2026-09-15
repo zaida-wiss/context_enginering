@@ -50,28 +50,19 @@ required_datasets:
     source_id: "GITHUB_MERGED_PRS"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS (canonical source of truth for URL, access methods, fallback chain)"
 
-    allowed_access_methods:
-      - "github_connector (preferred)"
-      - "github_api (direct HTTPS GET)"
+    access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_MERGED_PRS (all allowed/forbidden methods defined there)"
 
-    primary_method_binding: "EXTERNAL_SOURCES.yaml defines primary.method = github_connector. This is BINDING and MUST be used first. Do NOT use github_api unless primary fails."
-
-    forbidden_access_methods:
-      - "web_search"
-      - "general_web_access"
-      - "raw_github (raw.githubusercontent.com)"
-      - "csv_export"
+    execution_sequence:
+      1_primary: "Use EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.primary.method (github_connector)"
+      2_fallback_1: "If primary fails, use EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[0] (github_web)"
+      3_fallback_2: "If fallback_1 fails, use EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
 
     enforcement:
       rule: >
-        For CANONICAL (primary) source: MUST use only [github_connector, github_api].
-        For FALLBACKS: github_web and google_drive_connector are explicitly allowed (see fallback_chain).
-        Do NOT attempt web_search, raw GitHub, or CSV export for this dataset.
-      on_violation: "STOP. Report: forbidden access method attempted for merged_prs canonical source"
-
-    fallback_chain:
-      1: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[0] (github_web) — allowed when primary fails"
-      2: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET) — allowed when github_web fails"
+        Use methods in sequence per EXTERNAL_SOURCES.yaml.
+        Do not attempt web_search, general_web_access, raw_github, or csv_export — these are forbidden per registry.
+        If all sources fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE for this dataset.
+      on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
 
     pagination:
       required: true
@@ -112,28 +103,19 @@ required_datasets:
     source_id: "GITHUB_OPEN_ISSUES"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES (canonical source of truth for URL, access methods, fallback chain)"
 
-    allowed_access_methods:
-      - "github_connector (preferred)"
-      - "github_api (direct HTTPS GET)"
+    access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_OPEN_ISSUES (all allowed/forbidden methods defined there)"
 
-    primary_method_binding: "EXTERNAL_SOURCES.yaml defines primary.method = github_connector. This is BINDING and MUST be used first. Do NOT use github_api unless primary fails."
-
-    forbidden_access_methods:
-      - "web_search"
-      - "general_web_access"
-      - "raw_github (raw.githubusercontent.com)"
-      - "csv_export"
+    execution_sequence:
+      1_primary: "Use EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.primary.method (github_connector)"
+      2_fallback_1: "If primary fails, use EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[0] (github_web)"
+      3_fallback_2: "If fallback_1 fails, use EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
 
     enforcement:
       rule: >
-        For CANONICAL (primary) source: MUST use only [github_connector, github_api].
-        For FALLBACKS: github_web and google_drive_connector are explicitly allowed (see fallback_chain).
-        Do NOT attempt web_search, raw GitHub, or CSV export for this dataset.
-      on_violation: "STOP. Report: forbidden access method attempted for active_issues canonical source"
-
-    fallback_chain:
-      1: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[0] (github_web) — allowed when primary fails"
-      2: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET) — allowed when github_web fails"
+        Use methods in sequence per EXTERNAL_SOURCES.yaml.
+        Do not attempt web_search, general_web_access, raw_github, or csv_export — these are forbidden per registry.
+        If all sources fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE for this dataset.
+      on_violation: "STOP. Report: forbidden access method attempted for active_issues"
 
     pagination:
       required: true
