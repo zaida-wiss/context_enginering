@@ -20,6 +20,12 @@
    - MANDATORY_READING_ORDER.md routes to SYSTEM_CONTRACT.yaml (the only authority for execution order)
    - Follow execution_sequence from SYSTEM_CONTRACT.yaml exactly
    - No presentation artifact may be generated before execution_receipt and data_audit gates pass
+   
+   **Snapshot-at-Start Policy:**
+   1. Read README from default branch
+   2. Register repo commit SHA
+   3. Read all subsequent files from same SHA
+   4. This ensures execution stays deterministic across AI models
 
 ### 📚 Jag behöver projektinformation
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB

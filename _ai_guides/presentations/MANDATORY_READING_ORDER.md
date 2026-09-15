@@ -91,14 +91,35 @@ All external URLs (GitHub, Google Sheets, Google Docs) are in: [`_memory/EXTERNA
 
 ---
 
-## 🚨 KEY PRINCIPLE: Positive Instructions Only
+## THIS Execution — Definition
 
-**Instructions focus on WHAT TO DO, never on WHAT NOT TO DO.**
+**An execution:**
+- **STARTS** when user requests new presentation
+- **RECEIVES** unique execution_id (e.g., `exec_20260916_001`)
+- **CONTINUES** through subsequent chat turns until DELIVER, STOP, or RESTART
+- **INVALIDATES** any resume after STOP — next request = NEW execution from README
+- **DOES NOT REUSE** old receipts, old execution_ids, or prior execution contexts
+
+---
+
+## Resume Policy
+
+- **STOP**: Terminates execution_id. Next presentation request = NEW execution from README.
+- **PAUSE**: Preserves execution_id. Next request resumes WITH SAME RECEIPT and DATA_AUDIT.
+- **RESTART**: Explicit keyword to invalidate current execution_id and start NEW.
+
+---
+
+## 🚨 KEY PRINCIPLE: Positive Construction Instructions (for Design)
+
+**Design instructions focus on WHAT TO DO, never on WHAT NOT TO DO.**
 
 Instead of: "Don't make a dashboard, don't use cards, don't compress text"  
 We say: "Use CANONICAL LAYOUT: 1 header + 1 message + 1–3 fullwidth blocks, vertically stacked, with fixed spacing."
 
 This prevents misinterpretation. AI builds to the positive spec, not away from negatives.
+
+**Note:** Process and security gates still use explicit negative rules (FORBIDDEN, NEVER, STOP) — these are not design instructions and must be unambiguous.
 
 ---
 

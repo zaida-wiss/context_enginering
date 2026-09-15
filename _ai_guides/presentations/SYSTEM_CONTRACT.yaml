@@ -14,6 +14,39 @@ last_updated: 2026-09-16
 base_path: "_ai_guides/presentations"
 
 ###############################################################################
+# EXECUTION LIFECYCLE — Explicit definition to prevent interpretation variance
+###############################################################################
+execution_lifecycle:
+  starts: "When user requests new presentation"
+  receives: "Unique execution_id (e.g., 'exec_20260916_001')"
+  continues: "Through subsequent chat turns until DELIVER, STOP, or RESTART"
+  ends: "At DELIVER (artifact delivered), STOP (terminated), or RESTART (new execution_id)"
+  invalidates: "Any resume after STOP requires NEW execution from README (not from cached state)"
+  no_reuse: "old receipts, old execution_ids, other execution contexts"
+
+###############################################################################
+# EXECUTION_RECEIPT_MACHINE — Machine-readable verification structure
+###############################################################################
+execution_receipt_machine:
+  required_fields:
+    - execution_id: "Unique identifier for this execution run (e.g., 'exec_20260916_001')"
+    - started_at: "ISO 8601 timestamp when execution began (e.g., '2026-09-16T14:30:00Z')"
+    - repo_commit_sha: "Git commit SHA at README read (snapshots repo version for determinism)"
+
+  files_read_array:
+    - path: "Path to file in repo"
+    - blob_sha: "Git blob SHA of file at this execution (proves version consistency)"
+    - read_at: "ISO 8601 timestamp when file was read"
+    - status: "'CONFIRMED' if read and verified, 'SKIPPED' if intentionally skipped"
+
+  gates_passed_array:
+    - gate_name: "Name of gate (e.g., 'execution_receipt', 'instruction_audit', 'data_acquisition_receipt', 'data_audit')"
+    - status: "'PASS' or 'FAIL'"
+    - verified_at: "ISO 8601 timestamp when gate was verified"
+
+  purpose: "Make AI execution verifiable: models cannot just say 'READ' — it becomes a checksum against repo version"
+
+###############################################################################
 # NON-NEGOTIABLE EXECUTION RULE
 ###############################################################################
 non_negotiable_execution:
@@ -134,6 +167,30 @@ artifact_gates:
       Delivery formats:
       - PDF: default (read-only, safe for review)
       - PPTX: only if user explicitly requests "editable", "PowerPoint", "redigerbar", etc
+
+###############################################################################
+# ARTIFACT CREATION DISTINCTION — What is allowed BEFORE build_gate passes
+###############################################################################
+artifact_creation_distinction:
+  rule: >
+    No presentation FILE, PPTX, PDF, image, or rendered slide may be CREATED before build_gate passes.
+
+  permitted_before_build_gate:
+    - "Invoking artifact tool itself (platform-required handoff call)"
+    - "Preflight validation checks (no artifact created)"
+    - "Internal verification passes (checksums, schemas, completeness)"
+    - "Receipt documentation (writing EXECUTION_RECEIPT_MACHINE content)"
+
+  forbidden_before_build_gate:
+    - "Creating PPTX file (internal or for delivery)"
+    - "Creating PDF file (any version)"
+    - "Creating PNG/JPG screenshot or image"
+    - "Rendering HTML slide preview"
+    - "Creating any artifact that can be viewed or delivered to user"
+
+  purpose: >
+    Artifact creation proof: prevent false positives where AI claims success but no file was built.
+    Checkpoint at build_gate ensures data integrity before any visual rendering begins.
     failure_action: "STOP. Report RENDER_GATE_CHECKLIST failures or visual verification issues"
 
 # Note: Authority hierarchy is defined once near the top of this file.
