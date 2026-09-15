@@ -47,28 +47,43 @@ required_datasets:
     fallback: "None — local file is authoritative"
 
   merged_prs:
-    canonical_method:
-      source: "GitHub API (canonical — see EXTERNAL_SOURCES.md 'Merged PRs (API — CANONICAL)')"
+    canonical_source:
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
-      http_method: "GET"
-      connector_method: "GitHub Connector (preferred) or direct HTTPS"
+      reference: "EXTERNAL_SOURCES.md: GitHub Sources → REQUIRED → Merged PRs (API)"
 
-      pagination:
-        required: true
-        stop_when: "response contains < per_page results"
-        collect_all: true
+    allowed_access_methods:
+      - "github_connector (preferred)"
+      - "github_api (direct HTTPS GET)"
 
-      local_filter:
-        - "merged_at != null (CRITICAL: exclude unmerged PRs)"
-        - "merged_at >= REPORTING_PERIOD_START"
-        - "merged_at < REPORTING_PERIOD_END"
-        - "base.ref == 'develop' (only develop branch)"
-        - "use assignees[] for attribution (person who worked on code, not merger)"
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+      - "raw_github (raw.githubusercontent.com)"
+      - "csv_export"
+      - "any_non_api_method"
 
-    fallback_order:
-      1: "GitHub web (see EXTERNAL_SOURCES.md): https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged"
-      2: "Repository home (see EXTERNAL_SOURCES.md): https://github.com/chas-challenge-2026/avanza-team1 → /pulls tab"
-      3: "Google Sheets (see EXTERNAL_SOURCES.md)"
+    enforcement:
+      rule: >
+        MUST use only allowed_access_methods for canonical_source.
+        Do NOT substitute any other retrieval mechanism.
+        Do NOT attempt CSV export, web search, or raw GitHub links for PR data.
+      on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
+
+    fallback_chain:
+      1: "github_web (only if canonical fails): https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged"
+      2: "google_sheets (only if GitHub connector available AND canonical+web both failed)"
+
+    pagination:
+      required: true
+      stop_when: "response contains < per_page results"
+      collect_all: true
+
+    local_filter:
+      - "merged_at != null (CRITICAL: exclude unmerged PRs)"
+      - "merged_at >= REPORTING_PERIOD_START"
+      - "merged_at < REPORTING_PERIOD_END"
+      - "base.ref == 'develop' (only develop branch)"
+      - "use assignees[] for attribution (person who worked on code, not merger)"
 
     verification_only:
       - "Individual PR pages (verification only, not for completeness discovery)"
@@ -94,27 +109,43 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
   active_issues:
-    canonical_method:
-      source: "GitHub API (canonical — see EXTERNAL_SOURCES.md 'Issues (OPEN)')"
+    canonical_source:
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
-      http_method: "GET"
-      connector_method: "GitHub Connector (preferred) or direct HTTPS"
+      reference: "EXTERNAL_SOURCES.md: GitHub Sources → REQUIRED → Open Issues (API)"
 
-      pagination:
-        required: true
-        stop_when: "response contains < per_page results"
-        collect_all: true
+    allowed_access_methods:
+      - "github_connector (preferred)"
+      - "github_api (direct HTTPS GET)"
 
-      local_filter:
-        - "exclude if key 'pull_request' exists (API includes pull requests; filter them out)"
-        - "assignees.length > 0 (only issues with assigned owner)"
-        - "updated_at >= REPORTING_PERIOD_START"
-        - "updated_at < REPORTING_PERIOD_END"
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+      - "raw_github (raw.githubusercontent.com)"
+      - "csv_export"
+      - "any_non_api_method"
 
-    fallback_order:
-      1: "GitHub web (see EXTERNAL_SOURCES.md): https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
-      2: "Google Sheets (see EXTERNAL_SOURCES.md)"
-      3: "Project Board (see EXTERNAL_SOURCES.md): reconstruct from column view"
+    enforcement:
+      rule: >
+        MUST use only allowed_access_methods for canonical_source.
+        Do NOT substitute any other retrieval mechanism.
+        Do NOT attempt web search or raw GitHub links for issue data.
+      on_violation: "STOP. Report: forbidden access method attempted for active_issues"
+
+    fallback_chain:
+      1: "github_web (only if canonical fails): https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
+      2: "google_sheets (only if Google connector available AND canonical+web both failed)"
+      3: "project_board (only as last resort if all else fails)"
+
+    pagination:
+      required: true
+      stop_when: "response contains < per_page results"
+      collect_all: true
+
+    local_filter:
+      - "exclude if key 'pull_request' exists (API includes pull requests; filter them out)"
+      - "assignees.length > 0 (only issues with assigned owner)"
+      - "updated_at >= REPORTING_PERIOD_START"
+      - "updated_at < REPORTING_PERIOD_END"
 
     requirement: "ALL open issues with activity in reporting period, assigned to someone"
     fields:
