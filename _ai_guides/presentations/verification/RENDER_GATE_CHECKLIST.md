@@ -318,32 +318,55 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
 
 ---
 
-## ✅ CHECKLISTA FÖR AI INNAN RENDERING
+## ✅ MECHANICAL RENDER-GATE CHECKLIST (Before Rendering)
 
+**DATA COMPLETENESS:**
 ```
-Före du säger "presentationen är klar":
+  [ ] DATA_AUDIT generated and passed (all checksums: COUNT, SET, UNIQUENESS, TEAM_COMPLETENESS)
+  [ ] Minimum 1 verified activity this week (PR/issue/commit/branch)
+  [ ] All 7 team members accounted for (with work OR marked "no activity")
+  [ ] All data from GitHub (no invented/cached data)
+```
 
-DATA-KILDER:
-  [ ] Minst 1 arbete denna vecka (commit/PR/issue)
-  [ ] Mötesprotokollet: try/report/fallback (ej blocker)
-  [ ] Alla data verifierad från GitHub (ej fabricerad)
+**CONTENT INTEGRITY:**
+```
+  [ ] Each work item has owner (#XX - Name or ## - ??)
+  [ ] Team members without work: explicit "Ingen issue denna vecka"
+  [ ] Presentation focuses on PROJECT work, not individual evaluation
+  [ ] All 14 meeting points (①-⑭) present in structure
+  [ ] Each slide header starts with meeting-point symbol (①②③ etc)
+```
 
-INNEHÅL:
-  [ ] Varje issue/PR har assignee (#XX - Namn)
-  [ ] Team-medlemmar utan arbete: "Ingen issue denna vecka"
-  [ ] Fokus på PROJEKT, inte individer
-  [ ] ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ — ALLA slides har mötespunkts-symbol i rubrik
+**LAYOUT COMPLIANCE — CANONICAL FORM ONLY:**
+```
+  [ ] Every slide has exactly: 1 header + 1 main message + 1–3 content blocks
+  [ ] No horizontal layouts (all content stacked vertically)
+  [ ] No small cards in grid (all blocks are 100% width)
+  [ ] No compression of typography or spacing (use FIXED values from VISUAL_DESIGN_MANDATORY)
+  [ ] If slide has 4+ work items → continues automatically to ①A.1, ①A.2 (never summarized)
+  [ ] All block dimensions match spec: 18pt title, 14pt effect, 12pt owner
+  [ ] Whitespace: 20px margin between blocks, 16px padding around content
+```
 
-DESIGN:
-  [ ] 14 mötespunkter representerade
-  [ ] Rätt färger + borders
-  [ ] Whitespace 60-70%
-  [ ] Fonts enligt VISUAL_DESIGN_MANDATORY
-  [ ] Symbols først i alla slide-rubriker (NPF struktur)
+**RENDERED OUTPUT VERIFICATION (CRITICAL):**
+```
+  [ ] PPTX rendered without text clipping or overlap
+  [ ] All text fully visible within its block
+  [ ] No blocks pushed off-slide or wrapped unexpectedly
+  [ ] Visual appearance matches CANONICAL LAYOUT (not dashboard, not grid, not cards)
+  [ ] Each slide displays exactly as specified: vertical stack, fixed spacing, clear hierarchy
+  
+  🚨 IF ANY TEXT IS CLIPPED → STOP. Do not deliver. Adjust content and re-render.
+  🚨 IF ANY BLOCK OVERFLOWS → STOP. Split to continuation slide (①A.1) and re-render.
+```
 
-RESULT:
-  [ ] Om ALLA checkboxes är OK → RENDERAR
-  [ ] Om NÅGON MÅSTE-HA är miss → RAPPORTERAR varför
+**FINAL CHECK:**
+```
+  If ALL checkboxes passed:
+    ✅ Render and deliver
+  
+  If ANY checkbox failed:
+    ❌ Do not render. Report which checkboxes failed and why.
 ```
 
 ---

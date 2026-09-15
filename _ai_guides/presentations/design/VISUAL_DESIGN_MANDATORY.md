@@ -47,28 +47,79 @@ Färger och symboler bär budskap **FÖRE** text. Det gör presentationen:
 
 ---
 
-## 🚨 FORBIDDEN — PRESENTATION ≠ DASHBOARD
+## 🎯 CANONICAL SLIDE LAYOUT — The Only Allowed Form
 
-**En presentation för mötet är INTE en dashboard, Jira-export, eller rapport.**
+**En mötes-presentation använder DENNA layout. Inget annat är tillåtet.**
+
+### Varje Slide Innehåller:
+
+```
+┌─────────────────────────────────────┐
+│  ① RUBRIK — Team/Mötespunkt        │  14pt BOLD, symbol först
+├─────────────────────────────────────┤
+│                                     │
+│  HUVUDBUDSKAP                       │  13pt, clear one-liner
+│  (vad hände denna vecka?)           │
+│                                     │
+│  [BLOCK 1]                          │  Fullbredds innehållsblock
+│                                     │  vertikalt staplade
+│                                     │
+│  [BLOCK 2]                          │  Max 1–3 block per slide
+│                                     │
+│  (IF FLER: skapa ①A.1, ①A.2)       │
+└─────────────────────────────────────┘
+```
+
+### Varje Innehållsblock Är:
+
+**STRUCTURE: Statussymbol → Färgad statuslinje → Titel → Effektbeskrivning → Ägare**
+
+```
+✅ [4px grön statuslinje]
+   #107 BCrypt login fix
+   Säkrar loginflödet. Rasha · väntar på review
+
+◐  [4px orange statuslinje]
+   #104 Spring Security integration
+   Fokus denna vecka. Erik · 60% progress
+
+🔴 [4px röd statuslinje]
+   #108 Auth contract
+   Blockerad på Backend-API. Tomac · waiting
+```
+
+**DIMENSIONER (FIX — ÄNDRAS ALDRIG):**
+- Blockbredd: 100% av slide (inget småkort-grid)
+- Blochöjd: auto (ca 4 rader, max 6 rader per block)
+- Padding: 16px runt innehål
+- Margin under block: 20px
+- Linjebeslut: 1.8 (NPF-standard)
+- Typografi: 
+  - Titel: 18pt BOLD
+  - Effekt: 14pt regular
+  - Ägare/Status: 12pt grå
+
+### Per Slide:
+
+✅ **MÅSTE:**
+- Exakt 1 rubrik överst (med symbol)
+- Exakt 1 huvudbudskap (1-2 meningar)
+- 1–3 innehållsblock (vertikalt staplade, aldrig bredvid varandra)
+- Fasta spacing-värden (0 buskningar, auto-split vid overflow)
 
 ❌ **ALDRIG:**
-- Många likvärdiga kort/rader bredvid varandra (grid-layout)
-- Små textrutor som ser ut som datatabeller (även om de är shapes, inte tables)
-- Upprepade metadata-rader ("Issue #XX | Title | Assignee | Status | Progress")
-- Täta listor som liknar GitHub-export
-- 5+ poster på samma visuella nivå (information overload)
-- Metadata-kolumner som har samma visuell vikt som huvudbudskapet
-- Scrollbara områden med många items (det är en PRESENTATION, inte ett verktyg)
+- Meer than 3 blocks på EN slide (vid 4:e → skapa fortsättningsslide automatiskt)
+- Små kort (< 100% bredd)
+- Horisontell layout (allt är vertical)
+- Komprimerad text eller spacing (använd EXAKT de värden som står ovan)
+- Metadata med samma vikt som huvudbudskap (metadata: 12pt, title: 18pt)
 
-**VARFÖR:** En mötes-presentation ska berätta EN BERÄTTELSE, inte visa ALLA DATA.
+### Automatisk Fortsättningsslide:
 
-✅ **ISTÄLLET:**
-- Max 3–5 visuella huvudobjekt per slide
-- Ett stort rubrik-budskap + 1–3 visuella grupper
-- Om fler än 3–5 poster finns: split till ①A.1, ①A.2, etc — aldrig sammanfattas bort
-- Metadata (issue-nummer, assignee, dates) är STÖD för huvudbudskapet, inte primär information
-- Stora vita områden runt varje grupp (60–70% whitespace)
-- Fokus på MÖTETS BUDSKAP, inte DATANS FULLSTÄNDIGHET på EN slide
+IF block_count > 3 → skapa ①A.1, ①A.2, etc AUTOMATISKT
+- Samma layout: rubrik + huvudbudskap + 1–3 block
+- Aldrig sammanfattning eller "se föregående slide"
+- Varje slide är självständig men del av samma mötespunkt
 
 ---
 
