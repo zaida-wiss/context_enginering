@@ -117,11 +117,12 @@ artifact_gates:
     name: "May build internal PPTX?"
     requires:
       - "execution_receipt is COMPLETE (all mandatory files read in this execution)"
-      - "data_audit is COMPLETE (data collection verified)"
+      - "data_acquisition_receipt is COMPLETE (every dataset source attempted, outcomes recorded)"
+      - "data_audit is COMPLETE (data collection verified, checksums passed)"
     rule: >
-      AI may build internal PPTX only after BOTH gates pass.
+      AI may build internal PPTX only after ALL THREE gates pass.
       This PPTX is for verification and rendering only — not for delivery.
-    failure_action: "STOP. Report missing execution_receipt or data_audit"
+    failure_action: "STOP. Report which gate failed: execution_receipt, data_acquisition_receipt, or data_audit"
 
   delivery_gate:
     name: "May deliver PDF/PPTX to user?"
@@ -283,17 +284,84 @@ execution_sequence:
       Enrichment-only sources failing (commits, branches, board, protocol) never stop rendering.
       Mark missing enrichment data with ⚠️ in presentation notes.
 
+  step_2b:
+    name: "Record DATA_ACQUISITION_RECEIPT — MANDATORY before DATA_AUDIT"
+    prerequisite: "MUST complete BEFORE proceeding to data_audit"
+
+    must_record_for_each_required_dataset:
+      team_roster:
+        - "Source attempted: TEAM_ROSTER.md (local file)"
+        - "Result: Success | Failure (specify error)"
+        - "Members verified: N/7"
+        - "Complete: true | false"
+
+      merged_prs:
+        - "Source 1 attempted: GitHub API /pulls?state=closed"
+        - "Result: Success | Failure (specify error code/timeout)"
+        - "PRs collected: N"
+        - "Source 2 attempted: GitHub web /pulls?q=is:pr+state:merged"
+        - "Result: Success | Failure"
+        - "PRs collected: N"
+        - "Source 3 attempted: Google Sheets (CSV export)"
+        - "Result: Success | Failure"
+        - "PRs collected: N"
+        - "Selected source: GitHub API | GitHub web | Sheets"
+        - "Complete: true | false (only after all fallbacks exhausted)"
+
+      active_issues:
+        - "Source 1 attempted: GitHub API /issues?state=open"
+        - "Result: Success | Failure"
+        - "Issues collected: N"
+        - "Source 2 attempted: GitHub web /issues?q=is:open"
+        - "Result: Success | Failure"
+        - "Issues collected: N"
+        - "Source 3 attempted: Google Sheets"
+        - "Result: Success | Failure"
+        - "Issues collected: N"
+        - "Selected source: GitHub API | GitHub web | Sheets"
+        - "Complete: true | false (only after all fallbacks exhausted)"
+
+    critical_rule: >
+      A required dataset may ONLY be marked INCOMPLETE after EVERY fallback
+      defined in DATA_ACQUISITION_CONTRACT.yaml has been attempted and failed.
+
+      Endpoint failure (e.g., GitHub API 503) is NOT dataset incompleteness.
+      Try the next fallback immediately.
+
+      DATA_AUDIT may NOT begin without a complete acquisition receipt showing:
+      - Which sources were attempted (in order)
+      - Which sources succeeded/failed (with error details)
+      - Which source was ultimately selected
+      - Which datasets are complete/incomplete
+
+    failure_action: >
+      If any required dataset is INCOMPLETE after all fallbacks:
+      STOP and report:
+      - Which dataset is incomplete
+      - Which sources were attempted
+      - Which error stopped each fallback
+      Do NOT proceed to data_audit or build_gate.
+
   step_3:
     name: "Verify All 7 Team Members"
     requirement: "Every team member from TEAM_ROSTER must have work listed OR marked 'Ingen aktivitet denna vecka'"
     rule: "Cannot proceed to rendering if anyone is missing"
 
   step_4:
+    name: "Generate DATA_AUDIT — Machine-readable verification"
+    requirement: "MUST be shown before slides are built"
+    source: "data/DATA_ACQUISITION_CONTRACT.yaml and DATA_ACQUISITION_RECEIPT from step_2b"
+
+    rule: >
+      DATA_AUDIT validates that data was correctly collected and deduplicated.
+      This step CANNOT begin until step_2b (acquisition receipt) is complete.
+
+  step_5:
     name: "Build Slides Following Spec"
     source: "SLIDE_DETAIL_SPEC.md (is authoritative)"
     rule: "If output differs from SLIDE_DETAIL_SPEC → output is INVALID even if data is correct"
 
-  step_5:
+  step_6:
     name: "Verify Visual Design"
     source: "VISUAL_DESIGN_MANDATORY.md (authoritative)"
     reference: "TEMPLATE_REFERENCE.html (reference only)"
@@ -304,18 +372,18 @@ execution_sequence:
       If content exceeds 3 blocks → create new slide, never summarize.
       If TEMPLATE_REFERENCE conflicts with VISUAL_DESIGN_MANDATORY → VISUAL_DESIGN_MANDATORY always wins.
 
-  step_6:
+  step_7:
     name: "Pass Render Gate"
     source: "RENDER_GATE_CHECKLIST.md"
     checkpoints: 13
     rule: "All 13 must pass before rendering"
 
-  step_7:
+  step_8:
     name: "Timestamp Every Slide"
     format: "Data från [DATE] [TIME] UTC | Källa: GitHub + Project Board ✅"
     rule: "If GitHub source failed → mark with ⚠️ and note which source"
 
-  step_8:
+  step_9:
     name: "Deliver Presentation"
 
     prerequisite: >
