@@ -19,7 +19,7 @@ Every slide contains:
 
 ```
 ┌─────────────────────────────────────┐
-│  ① RUBRIK — Team/Mötespunkt        │  14pt BOLD, symbol first
+│  ① RUBRIK — Team/Mötespunkt        │  28pt BOLD (NPF: large hierarchy)
 ├─────────────────────────────────────┤
 │                                     │
 │  HUVUDBUDSKAP (one-liner)           │  13pt, clear statement
@@ -77,7 +77,8 @@ These values NEVER change. Use them exactly.
 
 | Element | Font Size | Weight | Color |
 |---------|-----------|--------|-------|
-| Slide header | 14pt | BOLD | #323232 (dark gray) |
+| Slide header (meeting point ①②③) | 28pt | BOLD | #323232 (dark gray) |
+| Section header (Frontend, Backend, etc) | 14pt | BOLD | #323232 |
 | Main message | 13pt | Regular | #323232 |
 | Work item title | 13pt | Regular | #323232 |
 | Owner/Status | 12pt | Regular | #666666 (medium gray) |
