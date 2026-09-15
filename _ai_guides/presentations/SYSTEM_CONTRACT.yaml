@@ -14,6 +14,34 @@ last_updated: 2026-09-16
 base_path: "_ai_guides/presentations"
 
 ###############################################################################
+# PLATFORM HANDOFF — Preflight operation (NOT a gate)
+###############################################################################
+platform_handoff:
+  classification: "preflight_only"
+  creates_artifact: false
+  satisfies_no_gate: true
+
+  rule: >
+    Platform-required presentation handoff may occur before execution_receipt.
+    A successful handoff MUST NOT be interpreted as permission to build,
+    render, or collect project data.
+
+  required_next_step: >
+    Immediately continue with README.md → snapshot-SHA registration →
+    MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml →
+    execution_sequence step_1.
+
+  failure_prevention: >
+    Handoff does not establish execution_receipt, build_gate,
+    data_audit, or delivery_gate. It is a preflight-only operation.
+    No presentation building occurs until execution_receipt PASSES.
+
+  receipt_logging:
+    event: "platform_handoff_completed"
+    status: "COMPLETED"
+    note: "Preflight operation only; no gate satisfied; no artifact created."
+
+###############################################################################
 # EXECUTION LIFECYCLE — Explicit definition to prevent interpretation variance
 ###############################################################################
 execution_lifecycle:
@@ -148,13 +176,25 @@ execution_receipt:
 artifact_gates:
   build_gate:
     name: "May build internal PPTX?"
+
+    prerequisite_invariant: >
+      artifact handoff state MUST NOT be used as evidence that execution_receipt
+      or any other gate has passed. Platform handoff is a preflight operation only.
+
+      Handoff success does NOT permit building, rendering, or collecting project data.
+      All gates below MUST be independently verified before any artifact creation.
+
     requires:
       - "execution_receipt is COMPLETE (all mandatory files read in this execution)"
       - "data_acquisition_receipt is COMPLETE (every dataset source attempted, outcomes recorded)"
       - "data_audit is COMPLETE (data collection verified, checksums passed)"
+
     rule: >
-      AI may build internal PPTX only after ALL THREE gates pass.
+      AI may build internal PPTX only after ALL THREE gates pass independently.
       This PPTX is for verification and rendering only — not for delivery.
+
+      A successful platform handoff does NOT satisfy any of these gates.
+
     failure_action: "STOP. Report which gate failed: execution_receipt, data_acquisition_receipt, or data_audit"
 
   delivery_gate:
