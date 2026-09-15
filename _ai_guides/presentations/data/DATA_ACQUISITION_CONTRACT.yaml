@@ -54,15 +54,21 @@ required_datasets:
 
     execution_sequence:
       1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
-      2_fallback_1: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
-      3_fallback_2: "GitHub web UI (last resort; requires HTML parsing)"
+        url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
+      2_fallback_1: "GitHub web UI (merged PRs filter)"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
+      3_fallback_2: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
+        url: "EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET"
+      4_fallback_3: "Individual PR pages (verification only, not for completeness discovery)"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]"
 
     enforcement:
       rule: >
         1. Try GitHub REST API with any available implementation
-        2. If API fails: try Google Sheets ONLY if freshness can be verified
-        3. If Sheets unavailable or stale: try GitHub web
-        4. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+        2. If API fails: try GitHub web UI
+        3. If web UI fails: try Google Sheets ONLY if freshness can be verified
+        4. If Sheets unavailable or stale: use individual PR pages for verification
+        5. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
         Do not attempt web_search, general_web_access, raw_github, or csv_export.
       on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
 
@@ -113,15 +119,21 @@ required_datasets:
 
     execution_sequence:
       1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
-      2_fallback_1: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
-      3_fallback_2: "GitHub web UI (last resort; requires HTML parsing and manual issue filtering)"
+        url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
+      2_fallback_1: "GitHub web UI (open issues filter)"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
+      3_fallback_2: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
+        url: "EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET"
+      4_fallback_3: "Project Board (reconstruct from column view)"
+        url: "https://github.com/orgs/chas-challenge-2026/projects/31"
 
     enforcement:
       rule: >
         1. Try GitHub REST API with any available implementation
-        2. If API fails: try Google Sheets ONLY if freshness can be verified
-        3. If Sheets unavailable or stale: try GitHub web
-        4. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+        2. If API fails: try GitHub web UI
+        3. If web UI fails: try Google Sheets ONLY if freshness can be verified
+        4. If Sheets unavailable or stale: reconstruct from Project Board
+        5. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
         Do not attempt web_search, general_web_access, raw_github, or csv_export.
       on_violation: "STOP. Report: forbidden access method attempted for active_issues"
 
