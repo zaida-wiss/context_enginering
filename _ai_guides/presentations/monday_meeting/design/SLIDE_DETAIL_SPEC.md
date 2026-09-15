@@ -110,31 +110,38 @@ If mismatch → both audit and slides note the discrepancy. Never silently drop 
 
 ### SLIDE ①A: Avklarat sedan förra mötet — Frontend
 
-🚨 **NO POWERPOINT TABLES** — Use visual rows/status cards instead (NPF requirement)
+**USES CANONICAL LAYOUT** — 1 header + 1 main message + 1–3 fullwidth vertical content blocks
 
-**FORMAT:** Visuella rader klassificerad i tre serier: Merged | Pågår | Väntar på review
+**CONTENT STRUCTURE (5 work categories, stacked vertically):**
 
-**STRUKTUR-REFERENS** (Markdown för att visa layout, ALDRIG som PowerPoint-tabell):
+Slide ①A displays Frontend work in 5 sections, each as a FULLWIDTH BLOCK:
 
-| Team | Issue # | Titel | Assignad | Status | Merged/Branch |
-|------|---------|-------|----------|--------|---------------|
-| [från TEAM_ROSTER] | #[GitHub] | [GitHub] | [GitHub eller 🔄 UNASSIGNED] | ✓/◐/⏳ | [GitHub] |
+1. **MERGED denna vecka** (block 1)
+   - List: all merged PRs this week, each as: ✅ #XX Title · Owner
+   
+2. **PÅGÅR denna vecka** (block 2)
+   - List: all active branches/issues with activity, each as: ◐ #XX Title · Owner
+   
+3. **VÄNTAR PÅ REVIEW** (block 3)
+   - List: all open PRs awaiting review, each as: ⏳ #XX Title · Owner
+   
+4. **STÄNGDA ISSUES (no merge)** (if any; add as block 4)
+   - List: all closed issues without linked merge, each as: 🔵 #XX Title
+   
+5. **COMMIT-ARBETE** (if any; add as block 5)
+   - List: relevant commits not in PRs, each as: 💾 SHA…message · Author
 
-**RENDERING:** Varje rad visas som ett status-card eller visuell box, INTE som cellerna i en PowerPoint-tabell.
+**IF MORE THAN 3 BLOCKS → AUTO-SPLIT**
+- Block 1 + 2 + 3 → stays on ①A
+- Block 4 + 5 → move to ①A.1 (new continuation slide)
 
-**FORMAT OCH STRUKTUR:**
-
-Din presentation måste innehålla:
-- ✅ MERGED DENNA VECKA (faktiska merged PRs från GitHub denna vecka)
-- ✅ PÅGÅR DENNA VECKA (faktiska branches med commits från GitHub denna vecka)
-- ✅ VÄNTAR PÅ REVIEW (faktiska öppna PRs från GitHub utan approval)
-- ✅ STÄNGDA ISSUES (faktiska stängda issues från GitHub denna vecka — kan sakna merge)
-- ✅ COMMIT-ARBETE (relevanta commits från denna vecka — dokumentation, refaktorering, chores)
-
-**MÅSTE VISAS VISUELLT:**
-- 🔵 Team-märke (Frontend/Backend/Native) per rad — från TEAM_ROSTER.md
-- ✓ Assignad-status — namn om assignad, gul highlight + 🔄 UNASSIGNED om ingen
-- 📅 Tidsstämpel — "Data från 2026-09-14 14:00:32 UTC"
+**LAYOUT RULES (MANDATORY):**
+- Each work item = ONE line within its block
+- Format per item: Symbol · Issue# Title · Owner (or ?? if unassigned)
+- No nested tables, no grid, no cards
+- Vertical stack only (never horizontal)
+- Fixed spacing: 20px between blocks, 16px padding inside each block
+- Block height auto (fills with content), never compress
 
 **ALDRIG ANVÄND EXEMPEL-DATA I FAKTISK PRESENTATION.**
 Alla data måste hämtas LIVE från GitHub när presentationen byggas.

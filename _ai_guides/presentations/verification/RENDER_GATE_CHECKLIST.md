@@ -348,17 +348,45 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
   [ ] Whitespace: 20px margin between blocks, 16px padding around content
 ```
 
-**RENDERED OUTPUT VERIFICATION (CRITICAL):**
+**RENDERED OUTPUT VERIFICATION (MANDATORY BEFORE DELIVERY):**
+
+🚨 **YOU MUST RENDER PPTX AND VISUALLY CHECK EVERY SLIDE.**
+
+Do not skip this. Do not claim "it looks good in theory". Render it.
+
 ```
-  [ ] PPTX rendered without text clipping or overlap
-  [ ] All text fully visible within its block
-  [ ] No blocks pushed off-slide or wrapped unexpectedly
-  [ ] Visual appearance matches CANONICAL LAYOUT (not dashboard, not grid, not cards)
-  [ ] Each slide displays exactly as specified: vertical stack, fixed spacing, clear hierarchy
+STEP A: Render presentation to PPTX (PowerPoint/Google Slides export)
+
+STEP B: Open PPTX file and page through every slide visually. For each slide:
   
-  🚨 IF ANY TEXT IS CLIPPED → STOP. Do not deliver. Adjust content and re-render.
-  🚨 IF ANY BLOCK OVERFLOWS → STOP. Split to continuation slide (①A.1) and re-render.
+  [ ] Header is at top (symbol first)
+  [ ] Main message is clearly visible below header
+  [ ] Content blocks stack vertically (never side-by-side)
+  [ ] No blocks pushed off-slide or cut at bottom
+  [ ] No text clipping or overlap
+  [ ] All text fully visible in its block (no truncation)
+  [ ] Work items display as single lines (not wrapped into grid)
+  [ ] Spacing between blocks matches spec (20px visual gap visible)
+  [ ] Slide is NOT dense/cramped (60-70% whitespace visible)
+  [ ] Slide does NOT look like dashboard/grid/card-layout
+  
+STEP C: If ANY check fails:
+  [ ] Fix the content (split to continuation slide ①A.1, etc.)
+  [ ] Re-render PPTX
+  [ ] Re-check visually
+  [ ] Repeat until all checks pass
+  
+STEP D: Only after ALL slides pass visual check:
+  [ ] Presentation is ready for delivery
 ```
+
+**IF YOU FIND PROBLEMS DURING VISUAL CHECK:**
+- Text clipping → reduce text length, split to new slide
+- Block overflow → split to continuation slide automatically
+- Dense layout → already at max 3 blocks per slide; if still dense → reformat work items as single lines
+- Dashboard appearance → check that blocks are 100% width and stacked vertically, not in grid
+
+**NEVER deliver a presentation without rendering it to PPTX and visually checking every single slide.**
 
 **FINAL CHECK:**
 ```
