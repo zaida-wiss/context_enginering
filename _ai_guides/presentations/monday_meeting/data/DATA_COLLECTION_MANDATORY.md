@@ -1,381 +1,116 @@
 ---
 name: data-collection-mandatory
-description: MANDATORY — Complete data collection before any presentation rendering
+description: HOW to collect required information — follow SYSTEM_CONTRACT.yaml requirements
 metadata:
   type: process
   critical: true
 ---
 
-# 🚨 MANDATORY DATA COLLECTION — INNAN PRESENTATION RENDERAS
+# 🚨 DATA COLLECTION — MECHANICAL EXECUTION
 
-🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
+**This file describes HOW to collect information that SYSTEM_CONTRACT.yaml requires.**
 
-⛔ **EXEMPEL-DATA I DENNA FIL:**
-Alla exempelpersoner (<EXAMPLE_MEMBER_A>, <EXAMPLE_MEMBER_B>, etc) och issue-nummer i denna fil är INTE verklig projektdata.
-Du får ALDRIG kopiera exempel-namn eller issue-nummer till en presentation.
-Använd ENDAST GitHub-verifierad data från TEAM_ROSTER.md.
+**SYSTEM_CONTRACT.yaml owns WHAT is required and WHETHER to STOP. This file owns HOW.**
 
 ---
 
-**DENNA CHECKLIST MÅSTE FÖLJA FÖRE NÅGON PRESENTATION GENERERAS.**
+## Required Information Collection
 
-Om denna checklist inte är slutförd kommer presentationen att dölja arbete (som login-sidor, designsystem, andra stängda arbeten).
+See [`SYSTEM_CONTRACT.yaml`](../SYSTEM_CONTRACT.yaml) for required_information list.
+
+For each required piece of information, use the source priority listed there:
+
+### 1. Team Roster
+```
+Method: Read TEAM_ROSTER.md file
+Format: [Name, GitHub username, team designation]
+Verify: All 7 members present
+```
+
+### 2. Merged PRs (reporting period)
+```
+Method 1 (primary): GitHub PRs API or web
+  https://github.com/chas-challenge-2026/avanza-team1/pulls
+
+Method 2 (fallback): Google Sheets
+  https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+
+Method 3 (fallback): Individual PR pages
+  https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]
+
+Collect: PR#, title, author, assignee, merged_at timestamp, base branch
+Verify: timestamp is within reporting period (SYSTEM_CONTRACT.yaml)
+```
+
+### 3. Active Issues (reporting period)
+```
+Method 1 (primary): GitHub Issues API or web
+  https://github.com/chas-challenge-2026/avanza-team1/issues
+
+Method 2 (fallback): Google Sheets
+  https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+
+Method 3 (fallback): Reconstruct from Project Board
+  https://github.com/orgs/chas-challenge-2026/projects/31/
+
+Collect: Issue#, title, assignee, updated_at timestamp, labels
+Verify: has assignee, recent activity (comment or update in reporting period)
+```
 
 ---
 
-## ⏰ KURS-KONTEXT: DEADLINES & TIDSPLAN
+## Optional Enrichment (non-blocking)
 
-**Presentationen måste också förstå kurs-tidskontext:**
+See [`SYSTEM_CONTRACT.yaml`](../SYSTEM_CONTRACT.yaml) for optional_enrichment list.
 
-📌 Se [`_memory/COURSE_DEADLINES.md`](../../../../_memory/COURSE_DEADLINES.md) för:
-- Vilka kurs-deadlines påverkar denna vecka?
-- Vad ska teamet fokusera på framåt? (kursuniquely)
-- CTO-feedback? (sept 24 @ 4 PM)
+Collect if available. If unavailable, note in footer with ⚠️. Never stop rendering.
 
-**Använd denna kontext för att:**
-- Förstå varför vissa arbeten prioriteras
-- Se om denna vecka är pre-deadline-push (sprint, crunch)
-- Markera om arbete kopplas till kursdeadlines
+### Commits (optional)
+```
+Derive from: merged PR metadata (each PR contains commits)
+If additional commits needed: https://github.com/chas-challenge-2026/avanza-team1/commits/develop
+```
+
+### Branches (optional)
+```
+Derive from: active PR and issue data (branches are from these)
+If direct list needed: https://github.com/chas-challenge-2026/avanza-team1/branches
+```
+
+### Project Board (optional)
+```
+Source: https://github.com/orgs/chas-challenge-2026/projects/31/
+Fallback: Reconstruct from Issues and PRs
+```
+
+### Meeting Protocol (optional)
+```
+Source: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+Use for: context only, never influences required-information collection
+```
 
 ---
 
-## 🚨 MANDATORY FALLBACK RULE — NEVER STOP RENDERING
+## Data Organization → data_audit
 
-**YOU MUST ALWAYS DELIVER A PRESENTATION. NEVER STOP FOR DATA ACCESS.**
+Organize collected data into data_audit format specified in SYSTEM_CONTRACT.yaml.
 
-Follow this sequence EXACTLY:
-
-```
-STEP 1: Try GitHub (API, web, or direct URLs)
-        ├─ Can read merged PRs? YES → Use GitHub
-        ├─ Can read open issues? YES → Use GitHub
-        ├─ Can read commits? YES → Use GitHub
-        └─ ALL github data retrieved? YES → CONTINUE TO RENDERING
-        
-        ANY failed? → Go to STEP 2
-
-STEP 2: Try Google Sheets fallback
-        URL: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-        
-        ├─ Can read Commits tab? YES → Use it
-        ├─ Can read PRs tab? YES → Use it
-        ├─ Can read Issues tab? YES → Use it
-        ├─ Can read Board tab? YES → Use it
-        └─ Got all needed data? YES → CONTINUE TO RENDERING
-        
-        Any failed? → Go to STEP 3
-
-STEP 3: Try Project Board
-        URL: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
-        
-        ├─ Can read board columns? YES → Reconstruct data from board
-        └─ Success? YES → CONTINUE TO RENDERING
-        
-        Failed? → Go to STEP 4
-
-STEP 4: Reconstruct from GitHub Issues directly
-        URL: https://github.com/chas-challenge-2026/avanza-team1/issues
-        
-        ├─ Can read issues list? YES → Use it
-        └─ Got data? YES → CONTINUE TO RENDERING
-        
-        Failed? → Go to STEP 5
-
-STEP 5: Use meeting protocol (final source)
-        URL: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
-        
-        ├─ Can read? YES → Use meeting notes for context
-        └─ Data available? YES → CONTINUE TO RENDERING
-
-STEP 6: Render with what you have + mark missing data
-        ├─ If GitHub worked: ✅ Full data
-        ├─ If Sheets worked: ✅ Full data from fallback
-        ├─ If Board/Issues worked: ✅ Partial data from reconstruction
-        ├─ If only meeting protocol: ⚠️ Context data only
-        └─ RENDER ANYWAY. Mark sources as ⚠️ in presentation footer.
-```
-
-**CRITICAL RULES:**
-- 🚫 YOU MUST NOT STOP RENDERING. EVER.
-- ✅ If GitHub fails but Sheets works → use Sheets, continue
-- ✅ If Sheets fails but Board works → reconstruct, continue
-- ✅ If everything fails → show ⚠️ UNVERIFIED in footer, render anyway
-- 🚫 NEVER say "datainsamlingen är ofullständig" without trying all 5 steps
-- 🚫 NEVER block presentation because GitHub API had issues
+See `data_audit` section in SYSTEM_CONTRACT.yaml for exact format.
 
 ---
 
-## ❌ PROBLEM VI LÖSER
+## Fallback Strategy
 
-**Tidigare problem:** Presentationen visade bara öppna issues och PR:er.
-
-**Resultat:** All stängd arbete försvann ur bilden.
-
-**Exempel på döldt arbete:**
-- ❌ Login page (#40 / PR #90) — Zaida stängde den, visades inte
-- ❌ Design system (#44) — Björn stängde den, visades inte  
-- ❌ Top bar (#45) — Björn stängde den, visades inte
-
-**Anledning:** Presentationen läste inte `closed issues denna vecka`.
+For each required information item:
+1. Try primary method
+2. If primary fails, try next method in priority list
+3. If all fail, report to SYSTEM_CONTRACT.yaml execution logic (step_2 rule)
+   - SYSTEM_CONTRACT.yaml decides: STOP or CONTINUE
+   - This file does NOT make that decision
 
 ---
 
-## 🚨 DEFINITION: "DENNA VECKA" = REPORTING PERIOD (FRÅN SYSTEM_CONTRACT.yaml)
+**This file is ONLY HOW. SYSTEM_CONTRACT.yaml owns WHAT and WHETHER.**
 
-**🔗 Auktoritativ källa: [SYSTEM_CONTRACT.yaml](../../SYSTEM_CONTRACT.yaml) `reporting_period` sektion**
-
-För MÅNDAGSMÖTEN definieras "denna vecka" som:
-```
-Föregående måndag 00:00 → denna måndag 00:00 (exclusive)
-Timezone: Europe/Stockholm
-```
-
-**Exempel för möte 14 september 2026:**
-- Start: 7 september 2026, 00:00:00 (föregående måndag)
-- End: 14 september 2026, 00:00:00 (denna måndag, exclusive)
-- Resultat: Allt arbete från veckan som just slutade (mån-mån)
-
-**REGEL: ALDRIG hårdkodade datum**
-- Beräkna alltid: `meeting_date - 7 days (00:00)` till `meeting_date (00:00, exclusive)`
-- Resultat är samma som "7 dagar bakåt" för måndagsmöten
-- Men MONDAY-till-MONDAY är mer exakt och förhindrar gränsfelsfel
-
----
-
-## ✅ MANDATORY CHECKLIST — Du måste göra ALLT detta
-
-**Innan du renderar någon slide, verifiera att du har:**
-
-### 1. ARBETE SOM LEVERERADES DENNA VECKA (merged PRs in develop — PRIMARY)
-
-🚨 **TVINGANDE: Använd REPORTING_PERIOD från SYSTEM_CONTRACT.yaml**
-
-🔗 **LIVE DATA SOURCE — Hämta härifrån:**
-```
-https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[REPORTING_PERIOD_START]
-```
-
-**För möte 14 september 2026:**
-```
-https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=2026-09-07
-```
-
-⚠️ **KRITISK:** Datumfiltret måste täcka HELA veckan (7 dagar), inte bara sista dygnet!
-
-- [ ] Läst GitHub /pulls: **Vilka PRs är MERGADE in i develop denna vecka?** (DET ÄR HUVUDFOKUS)
-- [ ] **RÄKNA:** Totalt antal PRs denna vecka (skall vara flera om projektet är aktivt)
-- [ ] ⚠️ **VERIFIERA:** Om resultatet är <3 PRs, kontrollera att datumfiltret täcker HELA veckan (not just 1 day!)
-- [ ] För varje PR: **Vem ÄGde den issuen?** (issue assignee, INTE reviewer eller merger!)
-  - 🚨 KRITISK DISTINKTION:
-    - ASSIGNEE (visas) = Vem som ÄGde/GJORDE arbetet
-    - REVIEWER (döljs) = Vem som checkade koden
-    - MERGER (döljs) = Vem som mergade (ofta samma som reviewer)
-  - Exempel: ✅ "PR #90 Login · Zaida" (Zaida ÄGde det, även om Erik reviewade)
-  - Exempel: ❌ "PR #90 Login · Erik" (FELAKTIG — Erik reviewade men Zaida ägde det)
-- [ ] För varje PR: Vilket issue var länkat? (if any)
-- [ ] Data innehåller: PR-nummer, merge-datum, **issue-assignee**, linked issue, issue-owner
-- [ ] **Exempel:** PR #90 Login (assignee: Zaida, #40 var ägd av Zaida) — visar Zaida
-- [ ] **Exempel:** PR #95 Design System (assignee: Björn, reviewer: Erik) — visar Björn INTE Erik
-- [ ] **VIKTIGT:** Vi visar MERGED PRs in develop, INTE bara "stängda issues"
-- [ ] **Regel:** Visa ASSIGNEE (ägare), INTE reviewer eller merger
-- [ ] **Regel:** Fokus = merged code in develop, och VEMS JOBB det var
-- [ ] **KRITISK REGEL:** Inget arbete får utelämnas för att det inte får plats på sliden
-- [ ] **Om många PRs denna vecka (>5):** Dela på flera slides (①A.1, ①A.2, etc)
-- [ ] **CHECKLIST:** Räkna GitHub PRs. Matcha antal på slide mot GitHub. Noll får försvinna.
-
-### 2. COMMITS DENNA VECKA (grupperade per arbetsområde)
-
-🔗 **LIVE DATA SOURCE — Hämta härifrån:**
-```
-https://github.com/chas-challenge-2026/avanza-team1/commits/develop?since=[IDAG-7d]&until=[IDAG]
-```
-
-- [ ] Läst GitHub Commits: **Vilka commits pushades denna vecka?** (primär bevis på arbete)
-- [ ] Commit-listan innehåller: hash, author, message, date, branch
-- [ ] Commits är grupperade per arbetsområde ELLER per person (inte enskilda commits på slide)
-- [ ] **Exempel:** Zaida: 4 commits on login-arbete denna vecka
-- [ ] **Exempel:** Björn: 15 commits on designsystem denna vecka
-- [ ] **VIKTIGT:** Commits = direkta bevis på arbete gjort, oavsett om issue är stängt
-
-### 3. ARBETE I PROGRESS DENNA VECKA (open PRs + open branches med nya commits)
-
-🔗 **LIVE DATA SOURCES — Hämta härifrån:**
-```
-OPEN PRs (under review):
-https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:open+updated:>=[IDAG-7d]
-
-BRANCHES med aktivitet:
-https://github.com/chas-challenge-2026/avanza-team1/branches
-(Sortera på senaste push-datum, filtrera senaste 7 dagar)
-```
-
-- [ ] Läst GitHub PRs: **Vilka PRs är öppna med uppdateringar denna vecka?** (under review/testing)
-- [ ] Läst GitHub Branches: **Vilka branches har nya commits denna vecka?** (även utan PR ännu)
-- [ ] Data innehåller: 
-  * För öppna PRs: person, PR-nummer, commits sedan förra, status
-  * För feature-branches: person, branch-namn, senaste commit, komit-antal denna vecka
-- [ ] **Exempel:** <EXAMPLE_MEMBER_A>: #43 API-klient PR (3 commits denna vecka, under review)
-- [ ] **Exempel:** <EXAMPLE_MEMBER_B>: feature/#45-risk PR (5 commits denna vecka, ongoing)
-- [ ] **Exempel:** <EXAMPLE_MEMBER_C>: feature/#52-tests (2 commits denna vecka, not yet in PR)
-- [ ] **VIKTIGT:** Visa arbete från:
-  * Open PRs (under review)
-  * Feature branches med commits (even without PR)
-  * NOT comments — activation = commits, PR-updates, branch pushes
-
-### 4. PROJECT BOARD STATUS (denna vecka)
-
-🔗 **LIVE DATA SOURCE — Hämta härifrån:**
-```
-https://github.com/orgs/chas-challenge-2026/projects/31
-(Visa: vilka issues är i "Done" denna vecka? Vilka i "In Progress"? Vilka i "Review"?)
-```
-
-### 5. OPEN ISSUES MED AKTIVITET + DoD STATUS
-
-🔗 **LIVE DATA SOURCE — Hämta härifrån:**
-```
-https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open+updated:>=[IDAG-7d]
-```
-
-- [ ] Läst GitHub Issues API/Web för issues **öppna med aktivitet denna vecka**
-- [ ] Aktivitet = commits eller PR-updates, INTE bara kommentarer
-- [ ] **För varje issue: läst issue-description för DoD-status**
-- [ ] DoD-kolumner (AC, Tests, Review, Docs) fylld från issue-meddelandet
-- [ ] Om DoD saknas i issue: markerat med `?` (inte antagande)
-- [ ] **Exempel:** #43 API Client (Tomac, 3 commits denna vecka, DoD: AC✓ Tests◐ Review? Docs✕)
-
-### 5. GITHUB PROJECT BOARD STATUS
-- [ ] Läst Project Board för denna vecka
-- [ ] Status per issue: DONE, IN PROGRESS, BACKLOG
-- [ ] **Notering:** Board status ≠ Issue state ≠ DoD
-
-### 6. MÖTESPROTOKOLLET
-- [ ] Läst aktuellt mötesprotokollet från denna vecka
-- [ ] Finns det tidigare beslut om fokus eller blockade?
-
----
-
-## VERIFIKATION FÖRE RENDERING
-
-**Innan du startar slide-renderingen, svara på dessa:**
-
-```
-Q1: Hur många issues stängdes denna vecka?
-    Svar: [ ]
-    (Exempel: 4 issues)
-
-Q2: Vilka är assignees för dessa stängda issues?
-    Svar: [ ]
-    (Exempel: Zaida, Björn)
-
-Q3: Hur många PRs mergades denna vecka?
-    Svar: [ ]
-    (Exempel: 3 PRs)
-
-Q4: Vilka arbetsområden kan du identifiera?
-    Svar: [ ]
-    (Exempel: Frontend & Auth, Backend & Session, Native & Risk)
-
-Q5: Skulle login-arbetet, designsystemet och topbar visas i presentationen?
-    Svar: [ ]
-    (Rätt svar: JA — alla tre stängdes denna vecka och ska visas)
-```
-
-**Om du INTE kan svara på dessa frågor → datainsamlingen är INTE komplett.**
-
-Gör inte presentation förrän du kan svara på alla fem.
-
----
-
-## 🚨 RULE: Presentationen uppfinner ALDRIG nya issues
-
-**OM DU TÄNKER:** "Vi borde ha en issue för X"
-
-**GÖR DU:** ALDRIG lägg det på presentations-slides
-
-**ISTÄLLET:**
-- Gör ett GitHub issue själv FÖRST (om det är verkligt behov)
-- ELLER märk det som FÖRSLAG på en separat, explicit märkt sida
-- ELLER ta upp det i nästa möte + dokumentera i mötesprotokoll
-
-**REGEL:** Alla issues på presentation-slides MÅSTE redan finnas på GitHub denna vecka.
-Inga "skulle kunna vara", "kanske behöves", "föreslår att vi..."
-
-**UNDANTAG:** Om du har separat FÖRSLAG-sida (märkt som 📝 FÖRSLAG eller likande):
-- MÅSTE vara helt separerad från GitHub-data
-- MÅSTE ha "FÖRSLAG:" prefix på varje item
-- MÅSTE komma EFTER all verifierad GitHub-data
-
----
-
----
-
-## PRESENTATION DATA STRUCTURE
-
-**Efter datainsamlingen bygger du MEETING_STATE med:**
-
-- `closed_issues_this_week`: Lista av stängda issues (med assignee, DoD-status)
-- `merged_prs_this_week`: Lista av mergade PRs (med linked issues)
-- `commits_this_week`: Commits grupperade per arbetsområde
-- `open_issues_with_activity`: Öppna issues med faktisk arbetsaktivitet denna vecka
-- `work_areas`: Grupperingar av arbete per område (Frontend & Auth, etc)
-
-**Först SEDAN du har MEETING_STATE → du renderar slides.**
-
----
-
-## RESULTAT
-
-**Med denna checklist kommer presentationen att visa:**
-
-✅ Login page + auth (Zaida)  
-✅ Design system + topbar (Björn)  
-✅ Alla andra stängda arbeten denna vecka  
-✅ Pågående arbete med faktisk framdrift  
-✅ Arbetsområden, inte bara issues  
-
-**Istället för:** "Presentationen ser tom ut, vi gjorde nästan ingenting" → **Sant:** "Vi gjorde mycket arbete denna vecka"
-
----
-
----
-
-## 🚨 NAMING RULE AFTER VERIFICATION
-
-**Efter att verifierings-sliden "Alla i teamet" körs:**
-
-Presentationen får BARA nämna namn som finns på verifierings-sliden.
-
-**Exempel:**
-
-Verifierings-slide visar:
-- Zaida: PR #68
-- Tomac: PR #80
-- Björn: Review PR #90
-- Pär: (Ingen verifierad GitHub-aktivitet denna vecka)
-- Henrik: (Ingen verifierad GitHub-aktivitet denna vecka)
-
-→ Senare i presentationen:
-- ✅ Kan nämna Zaida, Tomac, Björn
-- ❌ Får INTE nämna Pär eller Henrik (hade ingen aktivitet denna vecka)
-- ❌ Får ALDRIG använda exempel-namn från instruktioner — de är platshållare, inte riktiga personer
-
-**KRITISK:** Presentationen kan INTE växla mellan "verifierad data" och "exempel".
-
-Om Pär eller Henrik saknar aktivitet denna vecka → de syns på verifierings-sliden som "(Ingen aktivitet)" och nämns inte senare SÅVIDA de inte får ny GitHub-data.
-
-⛔ **EXEMPEL-NAMN I INSTRUKTIONER:**
-Denna fil innehåller ofta exempel som `<EXAMPLE_MEMBER_A>`, `<EXAMPLE_MEMBER_B>`, etc.
-**DESSA ÄR ALDRIG VERKLIGA PERSONERNA.**
-Du får ALDRIG kopiera exempel-namn till en presentation.
-
-**DENNA CHECKLIST ÄR OBLIGATORISK.**
-
-Om du hoppar över den kommer du att:
-- Dölja arbete (login, designsystem, osv)
-- ELLER blanda exempel-namn med faktiska namn
-- ELLER nämna personer som inte hade arbete denna vecka
-
----
-
-**Senast uppdaterad:** 2026-09-13
+**Version:** 2.0 (simplified to execution only)
+**Status:** PRODUCTION

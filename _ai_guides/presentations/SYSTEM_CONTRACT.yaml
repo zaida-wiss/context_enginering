@@ -77,15 +77,15 @@ execution_sequence:
       - "Collect raw details, not just IDs: PR authors, assignees, linked issues, timestamps"
 
     required_information:
-      - "Team roster (identity verification from TEAM_ROSTER.md)"
-      - "Merged PRs from develop in reporting period (primary deliverable marker) — ANY GitHub endpoint that returns this"
-      - "Open issues with assignee + activity in reporting period (in-progress work) — ANY GitHub endpoint that returns this"
+      team_roster: "7 team members identity-verified (from TEAM_ROSTER.md, ANY GitHub endpoint)"
+      merged_prs: "All PRs merged to develop in reporting period (ANY GitHub endpoint, Sheets fallback, individual PR pages)"
+      active_issues: "All open issues with assignee+activity in reporting period (ANY GitHub endpoint, Sheets fallback, reconstructed from Board)"
 
-    enrichment_only:
-      - "Commit list (can be derived from verified PR data; fetch if available, but commit-endpoint failure is NOT a STOP)"
-      - "Branch inventory (can be derived from active PR and issue data; if direct branch-list unavailable, reconstruct from other GitHub data)"
-      - "Project Board (use ONLY for cross-check; reconstruct from Issues/PRs if unavailable)"
-      - "Meeting protocol (prefer Google Drive connector; fallback to GitHub; optional context)"
+    optional_enrichment:
+      - "Commit list (can derive from PR metadata; /commits endpoint optional)"
+      - "Branch inventory (can derive from active PR/issue data; branch-list optional)"
+      - "Project Board (verification only; reconstruct from Issues/PRs if unavailable)"
+      - "Meeting protocol (context only; never blocks)"
 
     rule: >
       STOP rendering only if REQUIRED INFORMATION cannot be reconstructed from ANY allowed source.
