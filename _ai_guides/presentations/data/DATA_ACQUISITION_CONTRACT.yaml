@@ -159,19 +159,21 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
 reporting_period:
-  definition: "7 days prior to meeting time through meeting time (exclusive), Europe/Stockholm"
+  definition: "7 calendar days (one full week)"
   timezone: "Europe/Stockholm"
-  meeting_time: "Monday 09:00"
+  format: "meeting_date - 7 days at 00:00 (inclusive) through meeting_date at 00:00 (exclusive)"
 
-  calculation:
-    REPORTING_PERIOD_START: "meeting_date at 09:00 minus 7 calendar days, Europe/Stockholm (inclusive)"
-    REPORTING_PERIOD_END: "meeting_date at 09:00 Europe/Stockholm (exclusive)"
+  AUTHORITATIVE_DEFINITION: |
+    REPORTING_PERIOD_START = meeting_date at 00:00 minus 7 calendar days (inclusive)
+    REPORTING_PERIOD_END = meeting_date at 00:00 (exclusive)
+    Example: Meeting on Monday 2026-09-22
+      START: 2026-09-15 00:00 Europe/Stockholm (Monday one week prior)
+      END: 2026-09-22 00:00 Europe/Stockholm (meeting date at midnight)
+      Coverage: All work completed between these timestamps
 
-  example:
-    meeting_date: "2026-09-22 (Monday)"
-    REPORTING_PERIOD_START: "2026-09-15 09:00 Europe/Stockholm (last Monday 09:00)"
-    REPORTING_PERIOD_END: "2026-09-22 09:00 Europe/Stockholm (this Monday 09:00, not included)"
-    coverage: "Work completed between these two timepoints"
+  compare_fields:
+    merged_pr: "merged_at"
+    open_issue: "updated_at"
 
   compare_fields:
     merged_pr: "merged_at"
