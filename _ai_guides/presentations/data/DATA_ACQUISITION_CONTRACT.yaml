@@ -45,10 +45,11 @@ required_datasets:
         - "base.ref == 'develop'"
 
     fallback_order:
-      1: "GitHub API (above)"
-      2: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
-      3: "Individual PR pages: https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]"
-      4: "Google Sheets: see EXTERNAL_SOURCES.md"
+      1: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
+      2: "Google Sheets: see EXTERNAL_SOURCES.md"
+
+    verification_only:
+      - "Individual PR pages (verification only, not for completeness discovery)"
 
     requirement: "ALL merged PRs in reporting period"
     fields:
@@ -81,10 +82,9 @@ required_datasets:
         - "updated_at < REPORTING_PERIOD_END"
 
     fallback_order:
-      1: "GitHub API (above)"
-      2: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
-      3: "Google Sheets: see EXTERNAL_SOURCES.md"
-      4: "Project Board: reconstruct from column view"
+      1: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
+      2: "Google Sheets: see EXTERNAL_SOURCES.md"
+      3: "Project Board: reconstruct from column view"
 
     requirement: "ALL open issues with activity in reporting period, assigned to someone"
     fields:

@@ -211,7 +211,8 @@ execution_sequence:
     time_estimate_minutes: 30
     rule: >
       Read in this order. EXTERNAL_SOURCES.md contains ALL external data URLs and must be read BEFORE collecting data.
-      DATA_SOURCES.md defines WHERE to find information. DATA_COLLECTION_MANDATORY.md defines HOW to collect.
+      DATA_SOURCES.md defines WHERE sources exist. DATA_ACQUISITION_CONTRACT.yaml defines HOW data is acquired exactly.
+      DATA_COLLECTION_MANDATORY.md defines HOW completeness is validated and structured.
       VISUAL_DESIGN_MANDATORY and RENDER_GATE_CHECKLIST enforce CANONICAL LAYOUT and render verification.
       All instructions are POSITIVE (describe what to do) — never "don't" but always "use X instead".
 
