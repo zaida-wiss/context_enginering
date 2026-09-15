@@ -61,5 +61,129 @@ metadata:
 
 ---
 
+## Modular Composition Architecture
+
+**Each meeting point (①-⑭) is a composable module that can be rendered independently, then assembled into final presentation.**
+
+### Module Dependencies
+
+```
+Framsida (no dependencies)
+  ↓
+① Avklarat (depends on: GitHub data, team roster)
+  ↓
+② Nuläge (depends on: ①, deadline/sprint data)
+  ↓
+③④⑤ Teams (each depends on: ①, same deadline/sprint data)
+  ↓
+⑥⑦ Blockers+Risks (depend on: ③④⑤)
+  ↓
+⑧⑨ Capacity+Prioritization (depend on: ③④⑤, sprint data)
+  ↓
+⑩ Tech Decisions (independent of other modules)
+  ↓
+⑪ Sprint Goal (depends on: ①-⑨)
+  ↓
+⑫ Sprint Plan (depends on: ⑪)
+  ↓
+⑬ Next Steps (depends on: ⑫)
+  ↓
+⑭ Questions (independent of other modules)
+```
+
+### Required vs Optional Modules
+
+**REQUIRED (presentation cannot render without these):**
+- ① Avklarat (must show verified activity)
+- ③④⑤ Teams (must show all 3 team breakdowns)
+- ⑪ Sprint Goal (must have documented goal)
+
+**OPTIONAL (may be empty or skipped if data unavailable):**
+- ⑥ Blockers (empty state: "Inga identifierade blockers denna vecka")
+- ⑦ Risks (empty state: "Inga kända risker denna vecka")
+- ⑩ Tech Decisions (empty state: "Inga beslut krävda denna vecka")
+- ⑭ Questions (empty state: "Ingen input från team")
+
+**PRESENTATION RULES:**
+- If ANY required module fails → presentation STOPS (do not render)
+- If optional module fails → render as empty state with ⚠️ marker
+- Framsida always renders (header slide)
+
+### Shared Data Inputs
+
+**These data sources are fetched ONCE and shared by multiple modules:**
+
+| Data | Modules Using | Cached By |
+|------|---------------|-----------|
+| GitHub PRs/issues/commits | ①②③④⑤⑥⑦⑧⑨⑪⑫ | DATA_AUDIT (shared across all) |
+| Team roster + GitHub handles | ①③④⑤⑧⑨⑪ | TEAM_ROSTER.md (local) |
+| Sprint dates + deadlines | ②⑧⑨⑪⑫ | External source (Sheets/Board/Issues) |
+| Project board status | ②⑥⑦⑧⑨ | External source (GitHub Projects/Board) |
+
+**Key rule:** Data is acquired ONCE per execution (step_2 of SYSTEM_CONTRACT), not re-fetched per module.
+
+### Module-Level Render Gates
+
+**Before rendering each module, verify:**
+
+| Module | Must Verify | Failure Behavior |
+|--------|------------|-----------------|
+| ① | GitHub data complete + all team members checked | STOP (required) |
+| ② | Sprint dates exist + deadline tracker data present | STOP (required) |
+| ③④⑤ | Team has activity OR explicitly zero data | STOP if no team roster (required) |
+| ⑥ | Blocker identification method functional | Render empty state if none found (optional) |
+| ⑦ | Risk assessment data available | Render empty state if none found (optional) |
+| ⑧ | Capacity/velocity data present | STOP (required for sprint planning) |
+| ⑨ | Prioritization schema defined | STOP (required) |
+| ⑩ | Tech decision list exists | Render empty state if none (optional) |
+| ⑪ | Sprint goal documented | STOP (required) |
+| ⑫ | Timeline + milestones defined | STOP (required) |
+| ⑬ | Action items from ⑫ exist | Render with standard template if none (optional) |
+| ⑭ | Open questions submitted | Render empty state if none (optional) |
+
+### Skip Semantics & Empty States
+
+**When module data is missing or incomplete:**
+
+```
+REQUIRED module with missing data:
+  → STOP rendering entire presentation
+  → Report: "Module ① failed: GitHub data incomplete"
+
+OPTIONAL module with missing data:
+  → Render as empty state slide
+  → Format: "⑦ Risker\n\n⚠️ Inga identifierade risker denna vecka"
+  → Still counts as rendered slide (maintains slide numbering)
+```
+
+### Composition Order (Rendering)
+
+1. Fetch + audit ALL shared data (DATA_AUDIT gate)
+2. Render Framsida (no dependencies)
+3. Render ① (required, gates ②)
+4. Render ②-⑤ in parallel (all depend on ①)
+5. Render ⑥-⑨ in parallel (depend on ③④⑤)
+6. Render ⑩ (independent)
+7. Render ⑪-⑫ in sequence (⑪ → ⑫)
+8. Render ⑬ (depends on ⑫)
+9. Render ⑭ (independent)
+10. RENDER_GATE verifies all modules + assembly
+11. Assemble all modules into final PDF
+
+### Verification Checklist (before delivery)
+
+**Before assembling final presentation, verify:**
+
+- [ ] All required modules (①②③④⑤⑧⑨⑪⑫) rendered successfully
+- [ ] All optional modules either rendered or marked with ⚠️
+- [ ] No module data leaked between teams/contexts
+- [ ] Slide numbering continuous (①①A①B②③... etc)
+- [ ] All slides have correct meeting-point symbol at start
+- [ ] DATA_AUDIT checksums match slides (no data lost/added)
+- [ ] Visual render gate passed (VISUAL_DESIGN_MANDATORY checked)
+- [ ] Total slide count 15-30 (reasonable for 90-min meeting)
+
+---
+
 **Status:** Simplified (detail moved to SLIDE_DETAIL_SPEC)  
 **Last updated:** 2026-09-15
