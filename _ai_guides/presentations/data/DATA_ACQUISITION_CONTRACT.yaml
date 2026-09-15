@@ -218,9 +218,28 @@ data_acquisition_receipt:
     If ANY required_dataset has final_status == INCOMPLETE:
       → DATA_AUDIT marks that dataset as INCOMPLETE
       → Presentation generation STOPS (per SYSTEM_CONTRACT.yaml)
-      → Report to user: "[dataset] acquisition failed. Last attempt [tried_at]. Reason: [failure_reason]."
+      → MUST report to user the COMPLETE sources_tested_array (all attempts), not just last failure
+      → Format:
+         [dataset] acquisition INCOMPLETE. Sources tried:
+         1. [source_url]: [status] [http_code] — [failure_reason]
+         2. [source_url]: [status] [http_code] — [failure_reason]
+         3. [source_url]: [status] [http_code] — [failure_reason]
+
+         This enables diagnosis: rate limiting (429), auth (401/403), DNS errors, timeouts, etc.
 
     Else:
       → DATA_AUDIT proceeds
       → DATA_AUDIT checksums verify completeness
       → build_gate may proceed
+
+  terminal_vs_data_problems: >
+    ENDPOINT_FAILURE (DNS, TERM variable, path issues, network timeout) ≠ DATA_FAILURE.
+
+    If a terminal/shell problem occurs (TERM not set, environment variable missing),
+    and registered fallbacks remain untried, continue to next fallback source.
+
+    Do NOT classify shell/terminal errors as "data unavailable".
+    Continue through all registered fallbacks per DATA_ACQUISITION_CONTRACT.yaml.
+
+    Only after ALL registered fallbacks fail with actual data-fetch attempts does
+    final_status = INCOMPLETE become valid.
