@@ -19,16 +19,20 @@ metadata:
 ```
 DESIGN AUTHORITY (ranked by priority):
   
-  🎯 SLIDE-LEVEL SPECIFICATION (NEW — AUTHORITATIVE):
-  1️⃣ _ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md 
-     (EXAKT innehål per slide — format, kolumner, regler, data-sources, footer)
+  🎯 RENDERING-LEVEL SPECIFICATION (MANDATORY):
+  1️⃣ _ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md 
+     (CANONICAL LAYOUT: header + message + 1–3 fullwidth blocks; NPF rules; typography fixed; render-gate rules)
   
-  🎨 DESIGN RULES (apply to all slides):
-  2️⃣ _ai_guides/presentations/design/PRESENTATION_STYLE.md (typografi, layout, spacing)
-  3️⃣ _ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md (PowerPoint-tekniska regler)
+  🎯 SLIDE-LEVEL SPECIFICATION (CONTENT AUTHORITY):
+  2️⃣ _ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md 
+     (EXAKT innehål per slide — format, data-sources, footer, what goes where)
+  
+  🎨 DESIGN CONTEXT (reference/understanding only):
+  3️⃣ _ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md (why design rules exist)
   4️⃣ _ai_guides/presentations/design/REFERENCE_SLIDES/ (visual examples)
+  5️⃣ _ai_guides/presentations/design/PRESENTATION_STYLE.md (historical reference — deprecated for rendering)
   
-  ⚠️ DEPRECATED/CONFLICTING (DO NOT USE — see SYSTEM_CONTRACT.yaml):
+  ⚠️ DO NOT USE FOR RENDERING:
   
 NOT FROM:
   ❌ avanza-team1 repo (project repo, data source ONLY)
@@ -191,26 +195,27 @@ Q5: Does the visual style feel like Avanza-app rather than a standalone presenta
 
 **You MUST follow this hierarchy EXACTLY:**
 
-### Before you write ANY slide code:
+### Before you render ANY presentation:
 
-1. ✅ Read PRESENTATION_STYLE.md (rules 0-6)
-2. ✅ Read REFERENCE_SLIDES/ folder (visual examples)
-3. ✅ Read PRESENTATION_SPEC.md (content rules)
-4. ✅ Read DATA_COLLECTION_MANDATORY.md (data rules)
+1. ✅ Read SYSTEM_CONTRACT.yaml (authority hierarchy)
+2. ✅ Read VISUAL_DESIGN_MANDATORY.md (CANONICAL LAYOUT + render rules)
+3. ✅ Read SLIDE_DETAIL_SPEC.md (content per slide)
+4. ✅ Read ACCESSIBILITY_NEURODIVERSITY.md (why design works this way)
 
 ### When making ANY design choice:
 
-1. ✅ Is it in PRESENTATION_STYLE.md? Use it.
-2. ✅ Is it shown in a REFERENCE_SLIDE? Copy it.
-3. ✅ Is it the tool's default? Override it if PRESENTATION_STYLE.md says to.
-4. ✅ Is it from avanza-team1? FORBIDDEN. Use context_enginering design only.
-5. ✅ Is it your own design taste? FORBIDDEN. PRESENTATION_STYLE.md is authoritative.
+1. ✅ Is it in VISUAL_DESIGN_MANDATORY.md? Use it.
+2. ✅ Is it in SLIDE_DETAIL_SPEC.md? Apply it.
+3. ✅ Is it shown in REFERENCE_SLIDES? Visual reference only (MANDATORY takes precedence).
+4. ✅ Is it the tool's default? Override it per VISUAL_DESIGN_MANDATORY.md.
+5. ✅ Is it from avanza-team1? FORBIDDEN. Use context_enginering design only.
+6. ✅ Is it your own design taste? FORBIDDEN. VISUAL_DESIGN_MANDATORY.md is authoritative.
 
 ### If there's a conflict between:
 
-- ✅ PRESENTATION_STYLE.md vs tool defaults → PRESENTATION_STYLE wins
-- ✅ REFERENCE_SLIDES vs tool suggestions → REFERENCE_SLIDES win
-- ✅ PRESENTATION_SPEC.md vs PRESENTATION_STYLE.md → Both apply (content & design together)
+- ✅ VISUAL_DESIGN_MANDATORY.md vs tool defaults → VISUAL_DESIGN_MANDATORY wins
+- ✅ SLIDE_DETAIL_SPEC.md vs VISUAL_DESIGN_MANDATORY.md → Both apply (content + rendering rules together)
+- ✅ ACCESSIBILITY_NEURODIVERSITY.md rules vs other design rules → NPF rules WIN when they conflict
 - ❌ avanza-team1 design vs context_enginering rules → NEVER use avanza-team1 design
 
 ---
@@ -220,15 +225,17 @@ Q5: Does the visual style feel like Avanza-app rather than a standalone presenta
 Before any presentation is delivered:
 
 ```
-☐ PRESENTATION_STYLE.md rules followed
+☐ VISUAL_DESIGN_MANDATORY.md rules followed (CANONICAL LAYOUT)
+☐ SLIDE_DETAIL_SPEC.md content applied per slide
+☐ ACCESSIBILITY_NEURODIVERSITY.md rules respected (NPF takes precedence)
 ☐ NO default tool template used
 ☐ NO avanza-team1 styling imported
-☐ Borders: colored (status) vs black/white (neutral info) — correct usage
-☐ Whitespace: 60-70% empty space on each slide
+☐ Layout: exactly 1 header + 1 message + 1–3 fullwidth blocks (vertical stack)
+☐ Whitespace: 20px margin between blocks, 16px padding inside
 ☐ Colors: semantic only (green/orange/red for status, never decorative)
-☐ Typography: hierarchy clear (title > subtitle > body)
-☐ Symbols: 📝①②③ etc. present and consistent
-☐ Visual identity: standalone presentation, not product-UI mockup
+☐ Typography: fixed sizes (14pt title, 13pt content, 12pt metadata)
+☐ Symbols: ①②③④⑤ meeting-point markers present and consistent
+☐ Rendered visually: PPTX must be viewed before delivery (RENDER_GATE mandatory)
 ☐ Data: from context_enginering data sources ONLY
 ```
 

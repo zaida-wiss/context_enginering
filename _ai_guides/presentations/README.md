@@ -40,7 +40,7 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
    ↓
 2️⃣ SYSTEM_CONTRACT.yaml (execution + authority)
    │
-   ├── DATA_COLLECTION_MANDATORY.md (what + how to collect)
+   ├── DATA_COLLECTION_MANDATORY.md (how to collect only)
    ├── DATA_SOURCES.md (where + fallback chain)
    ├── SLIDE_DETAIL_SPEC.md (content for slides ①–⑭)
    ├── ACCESSIBILITY_NEURODIVERSITY.md (NPF rules)
