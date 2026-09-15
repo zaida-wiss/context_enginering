@@ -26,11 +26,19 @@ metadata:
 **✅ THESE ACTIONS ARE ALLOWED — AND ONLY THESE:**
 
 ✅ **Read local files** from this repository (`_ai_guides/presentations/`, `_memory/`, etc)  
-✅ **Fetch GitHub data** ONLY via:
-   - GitHub REST API: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/...`
-   - GitHub web: `https://github.com/chas-challenge-2026/avanza-team1/...` (direct navigation)
-   - Individual PR/issue pages: `https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]`  
-✅ **Access registered external sources** from [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md) ONLY  
+✅ **Fetch GitHub data** via any available platform tool that implements these access methods:
+   - **GitHub REST API** access method: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/...`
+     (May be implemented via GitHub Connector, WebFetch, or other HTTP tool)
+   - **GitHub web** access method: `https://github.com/chas-challenge-2026/avanza-team1/...` (direct navigation)
+     (May be implemented via web access, WebFetch, or GitHub Connector)
+   - **Individual PR/issue pages**: `https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]`
+   
+   **IMPORTANT:** The repository specifies ACCESS METHODS (what endpoint/source), not tool names. 
+   Any platform tool that can fetch the registered endpoint is allowed. Example: 
+   - If access_method is "GitHub API", use any available tool (GitHub Connector, WebFetch, etc) to call `api.github.com`
+   - Do NOT reject an access_method because a specific tool name is missing if another tool can implement it
+   
+✅ **Access registered external sources** from [`_memory/EXTERNAL_SOURCES.yaml`](../../_memory/EXTERNAL_SOURCES.yaml) ONLY  
 ✅ **Use documented fallback chain** (GitHub API → GitHub web → Sheets → Board → Issues → Protocol)  
    - Fallbacks are tried IN ORDER
    - Each fallback is listed in `DATA_ACQUISITION_CONTRACT.yaml`
@@ -46,6 +54,12 @@ metadata:
 - If all fallbacks fail, mark dataset INCOMPLETE
 - **STOP rendering** (incomplete data is reported, not hidden)
 
+**🚨 CRITICAL: Before declaring TOOL_UNAVAILABLE, verify actual availability:**
+1. Do not assume a tool (GitHub Connector, Google Drive Connector, WebFetch) is unavailable without attempting to use it
+2. A missing tool NAME does not equal missing access METHOD — if multiple tools can implement the same access method (e.g., GitHub API via WebFetch or GitHub Connector), try the available option
+3. Only mark a data source TOOL_UNAVAILABLE after confirming that NO available platform tool can implement the required access method from EXTERNAL_SOURCES.yaml
+4. Example: If GitHub API is required and GitHub Connector is unavailable, try WebFetch on the api.github.com endpoint. Only if all HTTP tools fail → mark TOOL_UNAVAILABLE
+
 **See [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) sections `external_sources_policy` and `step_1c` (ALLOWLIST GATE) for full details.**
 
 ---
@@ -60,6 +74,12 @@ See `execution_receipt` section in SYSTEM_CONTRACT.yaml:
 - You must confirm: "I have read file X"
 
 If any file is unread → STOP and report which files are missing.
+
+**🚨 CLARIFICATION on initial restrictions:**
+- You ARE allowed to read files from this GitHub repository (context_enginering) during execution_receipt
+- You ARE allowed to read from the project repository (avanza-team1) if that is part of the execution path
+- You are NOT allowed to start fetching project data (PRs, issues, commits) UNTIL the execution_receipt gate is complete
+- In other words: read the GitHub files needed to establish execution path, but don't start the DATA_ACQUISITION step until authorized by execution_sequence
 
 ## 2️⃣ READ SYSTEM_CONTRACT.yaml
 Location: [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml)
@@ -101,6 +121,22 @@ Example:
 All external URLs (GitHub, Google Sheets, Google Docs) are in: [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md)
 
 ---
+
+---
+
+## 🚨 CRITICAL: When to STOP for Incomplete Data
+
+**STOP presentation rendering if and only if:**
+- A REQUIRED dataset (team_roster, merged_prs, or active_issues) cannot be acquired
+- ALL documented access methods and fallbacks have been attempted
+- And NO available platform tool can implement any of the remaining access methods
+
+**Do NOT stop if:**
+- A specific tool name is missing (if another tool implements the same access method, use it)
+- A single endpoint fails (try registered fallbacks first)
+- Optional enrichment data is unavailable (commits, branches, board metadata)
+
+**Exact rule:** Mark dataset INCOMPLETE only when: (access_method in EXTERNAL_SOURCES.yaml) AND (all platform tools implementing that method have been attempted) AND (all are unavailable).
 
 ---
 
