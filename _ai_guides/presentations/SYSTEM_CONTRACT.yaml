@@ -55,37 +55,30 @@ execution_receipt:
   gate_status: "MUST PASS BEFORE PROCEEDING TO ARTIFACT_GATE"
 
 ###############################################################################
-# ARTIFACT GATES — ORCHESTRATE BUILD → VERIFY → DELIVER
+# ARTIFACT GATES — TWO CHECKPOINTS
 ###############################################################################
 artifact_gates:
-  before_build:
-    name: "Gate before internal PPTX build"
+  build_gate:
+    name: "May build internal PPTX?"
     requires:
       - "execution_receipt is COMPLETE (all mandatory files read in this execution)"
       - "data_audit is COMPLETE (data collection verified)"
     rule: >
-      Do not build slides or internal PPTX until BOTH conditions pass.
-    failure_action: "STOP and report which files not read or data_audit missing"
+      AI may build internal PPTX only after BOTH gates pass.
+      This PPTX is for verification and rendering only — not for delivery.
+    failure_action: "STOP. Report missing execution_receipt or data_audit"
 
-  before_visual_verification:
-    name: "Gate before visual rendering check"
+  delivery_gate:
+    name: "May deliver PDF/PPTX to user?"
     requires:
-      - "PPTX built (from before_build gate)"
-      - "Render internal PPTX to visual format for per-slide verification"
+      - "build_gate is COMPLETE"
+      - "internal PPTX has been rendered and visually verified (RENDER_GATE_CHECKLIST passed)"
     rule: >
-      Internal PPTX must be rendered and visually verified per RENDER_GATE_CHECKLIST.
-      This is the visual check step: view each slide, confirm layout/content.
-
-  before_delivery:
-    name: "Gate before final artifact delivery"
-    requires:
-      - "execution_receipt is COMPLETE"
-      - "data_audit is COMPLETE"
-      - "internal PPTX visually verified (render_gate checks passed)"
-    rule: >
-      Do not generate final PDF or PPTX for delivery until all gates pass.
-      Final step: export PDF (default) or PPTX (if explicitly requested).
-    failure_action: "STOP and report which gate failed"
+      AI may export and deliver PDF (default) or PPTX (if requested) only after BOTH pass.
+      Delivery formats:
+      - PDF: default (read-only, safe for review)
+      - PPTX: only if user explicitly requests "editable", "PowerPoint", "redigerbar", etc
+    failure_action: "STOP. Report RENDER_GATE_CHECKLIST failures or visual verification issues"
 
 # Note: Authority hierarchy is defined below in the AUTHORITY HIERARCHY section
 # Do not duplicate it here. Remove this section to avoid drift.
