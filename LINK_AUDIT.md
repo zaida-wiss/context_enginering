@@ -70,6 +70,14 @@ metadata:
 |--------|--------------|----------|--------|--------|
 | **Raw fallback (pr-list.json)** | https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/.github/workflows/pr-list.json | Removed from EXTERNAL_SOURCES.yaml | File not found (404), wrong branch | ❌ DELETED |
 
+## Fixed Links (2026-09-15)
+
+| Source | Old URL | New URL | Location | Status |
+|--------|---------|---------|----------|--------|
+| **PRESENTATION_SPEC.md** | `_ai_guides/PRESENTATION_SPEC.md` | `_ai_guides/presentations/content/PRESENTATION_SPEC.md` | SOURCE_CHECK.md | ✅ FIXED |
+| **PRESENTATION_STRUCTURE.md** | `_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md` | `_ai_guides/presentations/monday_meeting/structure/PRESENTATION_STRUCTURE.md` | SOURCE_CHECK.md | ✅ FIXED |
+| **DATA_SOURCES.md** | `_ai_guides/DATA_SOURCES.md` | `_ai_guides/presentations/data/DATA_SOURCES.md` | SOURCE_CHECK.md | ✅ FIXED |
+
 ---
 
 ## Status Summary
@@ -80,7 +88,8 @@ metadata:
 | **Google Sheets** | 6 | 0 | 6 | 0 | 0 |
 | **Google Docs** | 4 | 0 | 4 | 0 | 0 |
 | **Utilities** | 2 | 1 | 0 | 0 | 1 |
-| **TOTAL** | 21 | 9 | 10 | 0 | 2 |
+| **Raw GitHub Links (context_enginering)** | 9 | 9 | 0 | 0 | 0 |
+| **TOTAL** | 30 | 18 | 10 | 0 | 2 |
 
 ---
 
@@ -90,6 +99,7 @@ metadata:
 - **GitHub API & web**: All endpoints for avanza-team1 verified working
 - **GitHub Connector**: Can read context_enginering and avanza-team1 repositories
 - **Fallback chain logic**: API → Web → Sheets order is correct (Sheets just blocked by tool restrictions)
+- **Raw GitHub links (raw.githubusercontent.com)**: All 9 links verified working after path corrections (PRESENTATION_SPEC.md, DATA_SOURCES.md, PRESENTATION_STRUCTURE.md paths fixed)
 
 ### ⚠️ Blocked (Not Broken)
 - **Google Sheets & Docs**: Blocked by ChatGPT's `tool safe-open` rule, not by actual connection/auth issues

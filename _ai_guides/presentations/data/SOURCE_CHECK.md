@@ -35,7 +35,7 @@ metadata:
   - Fallback: N/A (lokalt känd)
 
 - [ ] **PRESENTATION_SPEC.md**
-  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/PRESENTATION_SPEC.md
+  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/content/PRESENTATION_SPEC.md
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känd)
 
@@ -50,7 +50,7 @@ metadata:
   - Fallback: N/A (lokalt känd)
 
 - [ ] **PRESENTATION_STRUCTURE.md**
-  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md
+  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/monday_meeting/structure/PRESENTATION_STRUCTURE.md
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känt)
 
@@ -60,7 +60,7 @@ metadata:
   - Fallback: N/A (lokalt känd)
 
 - [ ] **DATA_SOURCES.md**
-  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/DATA_SOURCES.md
+  - URL: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/data/DATA_SOURCES.md
   - Status: ✅ / ⚠️ / ❌
   - Fallback: N/A (lokalt känd)
 
