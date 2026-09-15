@@ -34,6 +34,7 @@ sources:
     allowed_access_methods:
       - "github_connector"
       - "github_api"
+      - "github_web"
     forbidden_access_methods:
       - "web_search"
       - "general_web_access"
@@ -219,18 +220,6 @@ access_methods:
   local:
     definition: "Local server (development only)"
     supported_sources: ["LOCALHOST_DEV_SERVER"]
-
-# REPORTING PERIOD
-
-reporting_period:
-  definition: "7 calendar days"
-  timezone: "Europe/Stockholm"
-  format: "meeting_date - 7 days at 00:00 (inclusive) through meeting_date at 00:00 (exclusive)"
-  example:
-    meeting_date: "2026-09-22 (Monday)"
-    start: "2026-09-15 00:00 Europe/Stockholm (inclusive)"
-    end: "2026-09-22 00:00 Europe/Stockholm (exclusive)"
-    coverage: "All work completed between these timestamps"
 
 ---
 
