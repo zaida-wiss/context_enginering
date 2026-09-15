@@ -76,7 +76,14 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 **CRITICAL RULE:** Point ① completeness = union of ALL verified activity during reporting period, not merged PRs alone.
 
-**VERIFIED ACTIVITY = {merged PRs, closed issues, active branches, open PRs with activity, relevant commits}**
+**VERIFIED ACTIVITY = {merged PRs, closed issues, open issues with activity, active branches, open PRs with activity, relevant commits}**
+
+**DEDUPLICATION RULE:**
+- Same work MUST NOT appear twice (e.g., issue + branch + PR)
+- If issue has linked PR and branch → show as ONE row in merged/pågår/review (use PR as primary, note issue link)
+- If issue has no PR yet but has active branch → show as ONE row in pågår (branch + issue link)
+- If branch has no PR and no issue → show as ONE row in pågår
+- Count only ONCE in audit and slides (unique identifiers: issue#, PR#, branch-name, or commit-sha)
 
 **If team's verified activity exceeds slide capacity:**
 - Split to ①A.1, ①A.2, ①B.1, ①B.2, etc.
@@ -138,9 +145,11 @@ Alla data måste hämtas LIVE från GitHub när presentationen byggas.
 
 - **Del 2: Pågår denna vecka** (sortera på branch-aktivitet, senast pushad först)
   - Visa ALLA öppna branches med commits denna vecka (även utan PR än)
+  - Visa ALLA öppna issues med assignee + recent activity (comments, updates) — ENDAST om ej redan i PR/branch
   - Status = ◐ PÅG
-  - Branch-kolumn = branch-namn (feature/#88)
-  - Verifiera mot Project Board: Issue är "In Progress" ELLER branch har commits senaste 3 dagarna
+  - Branch/Issue-kolumn = branch-namn ELLER issue-nummer (#XXX) — visa båda om båda finns
+  - **DEDUP:** Om samma issue redan visas via PR eller branch → visa INTE igen här
+  - Verifiera mot Project Board: Issue är "In Progress" ELLER branch/issue har activity senaste 3 dagarna
 
 - **Del 3: Väntar på review** (KRITISK textruta för gruppens uppmärksamhet)
   - Visa ALLA öppna PRs som väntar på review (status: "awaiting review" eller ingen approval än)

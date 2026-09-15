@@ -216,6 +216,7 @@ data_audit:
           updated_at: "[ISO timestamp]"
           labels: "[array of labels or empty]"
           status: "[open]"
+          note: "For point ①: ONLY open issues with assignee AND recent activity (comment/update) in reporting period. Issues without assignee or without recent activity do NOT count as verified_activity."
 
       closed_issues:
         - number: "[#XX]"
@@ -302,7 +303,7 @@ hard_rules:
   - rule: "Every verified activity assigned to exactly one team: Frontend, Backend, Native, Cross-team, or Other"
     consequence: "No activity may be omitted because it lacks clear team ownership. Cross-team and Other must be represented. If team cannot be determined → cross-team."
 
-  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①-A/B/C)"
+  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①A/B/C/D/E)"
     consequence: "If mismatch → audit and slide both show the discrepancy. Never silently drop data."
 
   - rule: "All 7 team members must be accounted for (with work OR marked 'no activity')"
