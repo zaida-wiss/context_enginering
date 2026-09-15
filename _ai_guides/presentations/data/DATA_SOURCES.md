@@ -6,17 +6,21 @@ metadata:
   updated: 2026-09-14
 ---
 
-# 📊 DATA SOURCES — Information Needs & Fallback Strategy
+# 📊 DATA SOURCES — Where to Find Information
 
-**Denna fil definierar vilken information som behövs, inte vilka tekniska metoder som MÅSTE användas.**
+**Authority:**
+- **SYSTEM_CONTRACT.yaml**: Definierar vilken information som KRÄVS och NÄR det ska stoppa
+- **DATA_SOURCES.md** (denna fil): Definierar VAR informationen kan hämtas och fallback-ordningen
+
+**This file does NOT decide whether information is required or whether rendering stops.**
 
 🔗 **NOTE:** Alla externa URLs (Google Sheets, Google Docs, GitHub) är centraliserade i [`_memory/EXTERNAL_SOURCES.md`](../../../_memory/EXTERNAL_SOURCES.md). Se den filen för aktuella IDs och fallback-URLs.
 
 ---
 
-## PRINCIPLE: Information > Technology
+## PRINCIPLE: Source Priority > Specific Technology
 
-Målet är att presentationen innehåller **verifierade fakta**, inte att en **specifik URL-metod** fungerar.
+Målet är att hitta **verifierad information**, inte att en **specifik URL/API** fungerar.
 
 Exempel:
 
@@ -45,13 +49,13 @@ Presentationen måste kunna verifiera dessa fakta:
 1. **GitHub Issues API** — alla closed issues denna vecka
    - FILTER: Exkludera labels "test", "duplicate", "wontfix", "archived"
    - Inklud: både issues och linked PRs
-   
+
 2. **GitHub /issues tab (WebFetch-compatible)**
    - URL: `https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:closed+closed:[IDAG-7d]..[IDAG]`
    - FILTER: Sama som ovan (exkludera test-issues)
    - Returnerar: Closed issues denna vecka med linked PRs
    - **REGEL:** [IDAG-7d] = exakt 7 dagar före IDAG, [IDAG] = idag klockan 23:59
-   
+
 3. **GitHub /pulls tab (WebFetch-compatible)**
    - URL: `https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:merged+merged:[IDAG-7d]..[IDAG]`
    - Returnerar: Merged PRs denna vecka
@@ -69,15 +73,15 @@ Presentationen måste kunna verifiera dessa fakta:
 6. **Individual PR detail pages (WebFetch-compatible)**
    - URL: `https://github.com/chas-challenge-2026/avanza-team1/pull/[PR_NUMBER]`
    - Returns: PR title, author, approver, merge-date, linked issues, commits
-   
+
 7. **Google Sheets fallback** — https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
    - CSV export eller manual entry
    - FILTER: Samma som GitHub (exkludera test-issues)
-   
+
 8. **Projekt-board "Done"-kolumn** (se PROJECT BOARD)
    - Risk: kan missa issues som INTE är på board
    - Använd endast om alla andra failar
-   
+   ö
 9. **Mötesprotokoll från denna vecka** — vad sade vi var klart?
    - Fältdata, kan missa issues från veckan
 
@@ -100,19 +104,19 @@ Presentationen måste kunna verifiera dessa fakta:
 1. **GitHub Issues API** — open issues + activity denna vecka
    - FILTER: Exkludera "test", "duplicate", "wontfix"
    - Kräv: commits eller PR-updates (NOT bara issue-comments)
-   
+
 2. **GitHub /issues tab** — filter "is:open"
    - FILTER: Samma som ovan
-   
+
 3. **GitHub /pulls tab** — open PRs
    - Linked issues automatiskt inclusion
-   
+
 4. **Google Sheets fallback** — samma URL som ovan
    - För open items med aktivitet
-   
+
 5. **Projekt-board "In Progress"-kolumn**
    - Risk: kan missa open issues som INTE är på board
-   
+
 6. **Mötesprotokoll från denna vecka**
 
 **Viktigt:** Vi behöver name + issue-number för varje person
@@ -139,66 +143,56 @@ Presentationen måste kunna verifiera dessa fakta:
 
 ---
 
-### 4. COMMIT HISTORY
+### OPTIONAL ENRICHMENT: COMMIT HISTORY
 
-**Behövs för:** "Vi har gjort följande denna vecka"
+**Status:** Optional (SYSTEM_CONTRACT.yaml lists as optional_enrichment)
 
-**Fakta:** Vilka ändringar har gjorts i develop/main sedan förra möte?
+**If available:** Provides timeline detail for already-verified delivery (from merged PRs)
 
-**Primär källa:**
-- GitHub Connector/API — commits to develop within REPORTING_PERIOD (see SYSTEM_CONTRACT.yaml)
-- Rule: Previous Monday 00:00 through current Monday 00:00 (exclusive), Europe/Stockholm timezone
+**If unavailable:** Rendering continues; commit detail omitted from presentation
 
-**Fallback ordning:**
-1. GitHub Connector/API — commits to develop + date range
+**Sources (for reference):**
+1. GitHub Connector/API — commits to develop within REPORTING_PERIOD
 2. GitHub /commits tab — filter by date
-3. Google Sheets (universal fallback): https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
-4. Merged PRs (se WORK COMPLETED) — de visar commits utan att behöva log
-5. Mötesprotokoll — vad sade vi implementerade?
+3. Google Sheets: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+4. Merged PRs metadata (already in required data)
 
-**VIKTIGT:** Git-kloning är ALDRIG ett krav för commit-historik. Det behövs inte för statusrapportering.
-
----
-
-### 5. PROJECT BOARD STATUS
-
-**Behövs för:** Kolumn-vy av arbete (backlog, ready, in progress, review, done)
-
-**Fakta:** Vilka issues är i vilken kolumn?
-
-**Primär källa:**
-- GitHub Projects/Board via Connector/API eller webben
-
-**Fallback ordning:**
-1. GitHub Connector/API — Projects API v4
-2. GitHub Project-webben (https://github.com/orgs/chas-challenge-2026/projects/31/views/1)
-3. GitHub REST API /repos/issues med project-filter
-4. GitHub Issues-vyn — filtrera på labels som motsvarar kolumner
-5. Dra slutsatser från issue-status + PR-status
-6. Mötesprotokoll från denna vecka
-
-**Om board misslyckas:** Presentationen kan säga "Project Board kunde inte läsas direkt; status är baserad på issues + PRs"
+**Note:** Commits are derived from merged PR data; endpoint failure is never a STOP condition.
 
 ---
 
-### 6. MEETING PROTOCOL / DECISIONS
+### OPTIONAL ENRICHMENT: PROJECT BOARD STATUS
 
-**Behövs för:** Vad sade vi att vi skulle göra?
+**Status:** Optional (SYSTEM_CONTRACT.yaml lists as optional_enrichment)
 
-**Fakta:** Tidigare beslut, frågor till ledning, anteckningar
+**If available:** Provides column-view for cross-verification of issue workflow
 
-**Primär källa:**
-- Google Docs-protokoll (veckan-X.txt eller motsvarande länk)
+**If unavailable:** Rendering continues; reconstruct from issue-status + PR-status
 
-**Fallback ordning:**
-1. Google Drive Connector — om autentiserad
-2. Google Docs länk — läs direkt från webben
-3. TXT-export (?format=txt) — raw text
-4. HTML-export (?format=html) — strukturerad text
-5. PDF-export (?format=pdf) — om övriga misslyckas
-6. GitHub-data om protocol misslyckas totalt
+**Sources (for reference):**
+1. GitHub Project: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
+2. GitHub REST API /repos/issues med project-filter
+3. Reconstruct from GitHub Issues view (labels as column mapping)
 
-**Om all misslyckas:** Presentationen bygger på GitHub-data men noterar "mötesprotokoll kunde inte verifieras"
+**Note:** Board is verification-only; can always be reconstructed from required data sources.
+
+---
+
+### OPTIONAL ENRICHMENT: MEETING PROTOCOL / DECISIONS
+
+**Status:** Optional (SYSTEM_CONTRACT.yaml lists as optional_enrichment)
+
+**If available:** Provides context for decisions and action items
+
+**If unavailable:** Rendering continues; presentation uses GitHub data as primary source
+
+**Sources (for reference):**
+1. Google Docs: https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/
+2. TXT-export (?format=txt)
+3. HTML-export (?format=html)
+4. PDF-export (?format=pdf)
+
+**Note:** Context only; never required for rendering. GitHub data sufficient if unavailable.
 
 ---
 
