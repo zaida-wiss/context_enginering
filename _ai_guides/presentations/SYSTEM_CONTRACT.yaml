@@ -6,11 +6,67 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 2.0
-last_updated: 2026-09-15
+version: 3.0
+last_updated: 2026-09-16
 
 # All paths relative to repo root, under this base directory:
 base_path: "_ai_guides/presentations"
+
+###############################################################################
+# NON-NEGOTIABLE EXECUTION RULE
+###############################################################################
+non_negotiable_execution:
+  - "READ MANDATORY_READING_ORDER.md first (routes to this file)"
+  - "AUDIT data collection second (DATA_AUDIT before slides)"
+  - "BUILD slides third (following SLIDE_DETAIL_SPEC)"
+  - "RENDER and verify fourth (VISUAL_DESIGN_MANDATORY + RENDER_GATE)"
+  - "DELIVER last (PDF by default, PPTX if explicitly requested)"
+  - "⚠️ No artifact tool may be invoked before READ and AUDIT are complete"
+
+###############################################################################
+# EXECUTION RECEIPT — MANDATORY GATE
+###############################################################################
+execution_receipt:
+  required_before_artifact_generation: true
+
+  prerequisite: >
+    In THIS execution (this conversation/run), every file below must be READ.
+    Previous conversation context, saved memory, or earlier runs do NOT count.
+    The AI must confirm reading each file in THIS execution.
+
+  must_read_and_confirm:
+    - "README.md or _ai_guides/presentations/README.md (navigation)"
+    - "MANDATORY_READING_ORDER.md (entry point)"
+    - "SYSTEM_CONTRACT.yaml (this file — authority + execution sequence)"
+    - "../../_memory/EXTERNAL_SOURCES.md (allowlist of ALL external sources)"
+    - "data/DATA_SOURCES.md (WHERE to find data + fallback chain)"
+    - "design/VISUAL_DESIGN_MANDATORY.md (CANONICAL LAYOUT rules)"
+    - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content per slide)"
+    - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (HOW to collect data)"
+    - "verification/RENDER_GATE_CHECKLIST.md (verification gates)"
+
+  rule: >
+    STOP if any file above has not been read in THIS execution.
+    Report: "Mandatory presentation instructions not fully read.
+    Must read [FILES] before generation can begin."
+
+  gate_status: "MUST PASS BEFORE PROCEEDING TO ARTIFACT_GATE"
+
+###############################################################################
+# ARTIFACT GATE — PREVENTS PREMATURE GENERATION
+###############################################################################
+artifact_gate:
+  rule: >
+    Do not create PPTX, PDF, or any presentation artifact UNTIL:
+    1. execution_receipt is COMPLETE (all files read in this execution)
+    2. data_audit is COMPLETE (available and verified)
+    3. RENDER_GATE_CHECKLIST checklist PASSED
+
+  failure_action: >
+    STOP artifact generation. Report which gate failed:
+    - execution_receipt: "Files not yet read: [LIST]"
+    - data_audit: "DATA_AUDIT not available; run data collection first"
+    - render_gate: "RENDER_GATE checks failed: [LIST]"
 
 # Note: Authority hierarchy is defined below in the AUTHORITY HIERARCHY section
 # Do not duplicate it here. Remove this section to avoid drift.
@@ -150,8 +206,37 @@ execution_sequence:
 
   step_8:
     name: "Deliver Presentation"
-    output: "PowerPoint/Slides deck"
-    rule: "Only if all previous steps passed"
+
+    prerequisite: >
+      MUST pass artifact_gate (execution_receipt + data_audit + render_gate).
+      Do not generate any artifact before this gate is complete.
+
+    default_output: "PDF"
+    default_rule: >
+      When user requests "presentation", "slide deck", "slides", or
+      "Monday meeting presentation" WITHOUT specifying format, deliver PDF.
+      PDF is read-only, prevents accidental editing before review.
+
+    editable_output:
+      format: "PPTX"
+      triggered_by:
+        - "Can you make it editable?"
+        - "I need the PowerPoint file"
+        - "jag vill kunna redigera"
+        - "redigerbar"
+        - "PowerPoint"
+        - "pptx"
+        - "editable presentation"
+      rule: >
+        Deliver PPTX ONLY when user explicitly requests editable format
+        (PowerPoint, PPTX, redigerbar, editable, etc).
+
+    both_outputs:
+      rule: >
+        If user explicitly requests both "PDF and PowerPoint" or
+        "PDF and editable", deliver both formats.
+
+    rule: "Only if all previous steps passed AND artifact_gate cleared"
 
 ###############################################################################
 # REPORTING PERIOD — When slides report "denna vecka" / "this week"

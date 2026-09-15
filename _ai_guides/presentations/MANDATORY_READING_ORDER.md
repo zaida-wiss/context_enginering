@@ -22,26 +22,39 @@ If required data cannot be found in allowed sources, report the source as unavai
 
 ---
 
-## 1️⃣ READ THIS FILE
-You are reading it now.
+## 1️⃣ EXECUTION RECEIPT GATE (this file + SYSTEM_CONTRACT.yaml)
+
+Before ANYTHING else: SYSTEM_CONTRACT.yaml defines which files MUST be read in THIS execution.
+
+See `execution_receipt` section in SYSTEM_CONTRACT.yaml:
+- Every file listed must be READ in this execution
+- Previous context, memory, or earlier runs DO NOT count
+- You must confirm: "I have read file X"
+
+If any file is unread → STOP and report which files are missing.
 
 ## 2️⃣ READ SYSTEM_CONTRACT.yaml
 Location: [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml)
 
 This file contains:
-- ✅ Machine-readable contract
+- ✅ non_negotiable_execution (read-audit-build-render-deliver sequence)
+- ✅ execution_receipt gate (which files must be read)
+- ✅ artifact_gate (prevents premature artifact generation)
 - ✅ Authority hierarchy (who owns what domain)
-- ✅ Execution sequence (what you do in order)
-- ✅ Hard rules (non-negotiable)
+- ✅ Execution sequence (what you do in order, step by step)
 - ✅ Data validation checksums
-- ✅ Forbidden content
-- ✅ Deprecated files (do NOT read)
+- ✅ Delivery rules (PDF default, PPTX only if requested)
 
 ## 3️⃣ FOLLOW EXECUTION_SEQUENCE FROM SYSTEM_CONTRACT.yaml
 
 The `execution_sequence` section tells you exactly what to do next.
 
-Follow it. Nothing else.
+Follow it step by step. Do not skip. Do not deviate.
+
+⚠️ If any gate fails (execution_receipt, data_audit, render_gate, artifact_gate):
+   - STOP immediately
+   - Report which gate failed and why
+   - Do not generate any artifact
 
 ---
 

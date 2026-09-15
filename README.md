@@ -16,11 +16,10 @@
 - WHAT to do if something fails
 
 ### 🎨 Jag skapar en PRESENTATION
-→ **[_ai_guides/presentations/README.md](_ai_guides/presentations/README.md)** ← Navigation guide
-   ↓ Sedan: **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)**
-   ↓ Sedan: **[_ai_guides/presentations/SYSTEM_CONTRACT.yaml](_ai_guides/presentations/SYSTEM_CONTRACT.yaml)** ← Execution order & authority
-- SYSTEM_CONTRACT.yaml definierar vilka filer som ska läsas och i vilken ordning
-- 🚨 Extern åtkomst är **allowlist-only** — ingen generell webbsökning är tillåten
+→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← START HERE
+   - MANDATORY_READING_ORDER.md routes to SYSTEM_CONTRACT.yaml (the only authority for execution order)
+   - Follow execution_sequence from SYSTEM_CONTRACT.yaml exactly
+   - No presentation artifact may be generated before execution_receipt and data_audit gates pass
 
 ### 📚 Jag behöver projektinformation
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
@@ -29,31 +28,6 @@
 
 ### 🤔 Jag vet inte var jag ska börja
 → **[_ai_guides/README.md](_ai_guides/README.md)** ← Navigationshub för alla guides
-
----
-
-## 🎯 SINGLE EXECUTION PATH — INGEN ALTERNATIV:
-
-```
-AI MÅSTE följa denna ordning (ALDRIG något annat):
-
-  1️⃣ Root README (denna fil)
-  
-  2️⃣ OM PRESENTATION:
-     README.md → MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml → execution_sequence
-     
-     SYSTEM_CONTRACT.yaml definierar vilka filer som ska läsas och i vilken ordning.
-     MANDATORY_READING_ORDER.md är ENDAST entry point.
-  
-  3️⃣ OM PROJEKTINFO:
-     _memory/README.md (central hub för alla projektkällor)
-
-✅ Denna ordning är ABSOLUT — ingen annan ordning tillåten
-✅ För presentationer: MANDATORY_READING_ORDER.md är ENDAST entry point
-✅ För presentationer: SYSTEM_CONTRACT.yaml definierar execution order och authority hierarchy
-```
-
-**VIKTIG REGEL:** För presentationer läs SYSTEM_CONTRACT.yaml för auktoritativ körordning.
 
 ---
 

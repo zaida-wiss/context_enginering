@@ -19,39 +19,22 @@ Om ett namn inte finns i TEAM_ROSTER → det är inte en verklig teammedlem.
 
 🚨 **DU ÄR HÄR FÖR ATT BYGGA EN PRESENTATION**
 
-## 🤖 **START HÄR FÖR AI:**
+## 🤖 **START HÄR:**
 
-**Hierarki:** [`README.md`](.) → [`MANDATORY_READING_ORDER.md`](MANDATORY_READING_ORDER.md) → [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) → `execution_sequence`
+**Read ONLY this file:**
+→ **[`MANDATORY_READING_ORDER.md`](MANDATORY_READING_ORDER.md)**
 
-**KRITISK:** För presentationer är MANDATORY_READING_ORDER.md endast entry point. SYSTEM_CONTRACT.yaml definierar execution order och authority hierarchy.
+This file will:
+1. Route you to SYSTEM_CONTRACT.yaml (the authoritative execution contract)
+2. SYSTEM_CONTRACT.yaml contains execution_sequence and all authority hierarchy
+3. Follow execution_sequence exactly — stop if any gate fails
 
-**Do this:**
-1. Read MANDATORY_READING_ORDER.md (2 min)
-2. Read SYSTEM_CONTRACT.yaml (contains execution_sequence + authority)
-3. Follow execution_sequence step by step
-4. Use authority hierarchy to find what each step needs
+**No presentation artifact may be generated before:**
+- execution_receipt gate passes (all mandatory files read in this execution)
+- data_audit is complete (data collection verified)
+- render_gate checklist passes (design + data verified)
 
----
-
-## 📊 THE ONLY HIERARCHY
-
-```
-1️⃣ MANDATORY_READING_ORDER.md (read this, 2 min)
-   ↓
-2️⃣ SYSTEM_CONTRACT.yaml (execution + authority)
-   │
-   ├── DATA_COLLECTION_MANDATORY.md (how to collect only)
-   ├── DATA_SOURCES.md (where + fallback chain)
-   ├── SLIDE_DETAIL_SPEC.md (content for slides ①–⑭)
-   ├── ACCESSIBILITY_NEURODIVERSITY.md (NPF rules)
-   ├── VISUAL_DESIGN_MANDATORY.md (layout + design)
-   └── RENDER_GATE_CHECKLIST.md (final verification)
-```
-
-**RULE:** A file may ONLY define rules within its own domain.  
-If a rule appears in two files → keep in authoritative file, DELETE from other.
-
-**Everything else** (DESIGN_MODERN, REPO_FIRST, templates, etc.) is reference/helper, not execution.
+See SYSTEM_CONTRACT.yaml for the mechanical gates that enforce this.
 
 ---
 
