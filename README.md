@@ -57,7 +57,10 @@
 
 **For presentations:**
 - ✅ **Följ: MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml → execution_sequence**
-- ✅ Verifiera alla datakällor innan rendering
+- ✅ **Verifiera alla REQUIRED datakällor innan rendering** (se [`_memory/EXTERNAL_SOURCES.md`](_memory/EXTERNAL_SOURCES.md) för klassificering: REQUIRED/FALLBACK/OPTIONAL)
+  - REQUIRED: GitHub API, local team roster → must succeed or STOP
+  - FALLBACK: GitHub web, Sheets, Docs → try in order if primary fails
+  - OPTIONAL: Project Board, Risk Register → nice-to-have if connector available
 - ✅ Alla 7 teammedlemmar måste vara representerade
 
 **For team members:**
