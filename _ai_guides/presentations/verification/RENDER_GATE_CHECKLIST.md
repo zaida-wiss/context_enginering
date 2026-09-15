@@ -75,16 +75,15 @@ CHECKSUMS (ALL MUST PASS):
 ```
 
 **Failure detection (RENDER GATE FAIL if):**
-- ❌ Checksum fails (sum of teams ≠ total)
-- ❌ Any team has merged PRs = 0 when work should exist
-- ❌ Any team member cannot be found in GitHub
-- ❌ Data looks incomplete (sudden jump to 0 in active area)
+- ❌ DATA_AUDIT checksum fails (merged_pr_count, merged_pr_set, activity_union, team_completeness mismatch)
+- ❌ Required information unavailable from ANY allowed source (required_information from SYSTEM_CONTRACT.yaml cannot be verified)
+- ❌ Any team member from TEAM_ROSTER cannot be found in GitHub
 
-**SUCCESS criteria:**
-- ✅ Checksum passes (totals match)
-- ✅ Each active team has visible merged work
-- ✅ All 7 members verified or have explicit "no activity"
-- ✅ Data matches GitHub when manually spot-checked
+**SUCCESS criteria (mechanical only):**
+- ✅ All DATA_AUDIT checksums pass (per SYSTEM_CONTRACT.yaml)
+- ✅ All required_information verified from GitHub or allowed fallback
+- ✅ All 7 members verified or marked "Ingen aktivitet denna vecka"
+- ✅ Zero work for a team is valid (repository audit confirms it)
 
 ---
 

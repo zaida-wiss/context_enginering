@@ -30,7 +30,6 @@ external_sources_policy:
   allowed_sources:
     primary_repositories:
       - "github.com/chas-challenge-2026/avanza-team1 (project code + issues + PRs + Project Board)"
-        - "Access methods: GitHub web (pulls/issues tabs), GitHub API (REST), authorized GitHub connector"
       - "github.com/zaida-wiss/context_enginering (this context repository)"
 
     project_documents:

@@ -9,7 +9,7 @@ metadata:
 # 📊 DATA SOURCES — Where to Find Information
 
 **Authority:**
-- **SYSTEM_CONTRACT.yaml**: Definierar vilken information som KRÄVS och NÄR det ska stoppa
+- **[`SYSTEM_CONTRACT.yaml`](../SYSTEM_CONTRACT.yaml)**: Definierar vilken information som KRÄVS och NÄR det ska stoppa
 - **DATA_SOURCES.md** (denna fil): Definierar VAR informationen kan hämtas och fallback-ordningen
 
 **This file does NOT decide whether information is required or whether rendering stops.**

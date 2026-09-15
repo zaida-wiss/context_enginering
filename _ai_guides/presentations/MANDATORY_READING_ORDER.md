@@ -18,7 +18,7 @@ Only use user-provided project files.
 
 If required data cannot be found in allowed sources, report the source as unavailable and follow the documented fallback. Never substitute an arbitrary web source.
 
-**See SYSTEM_CONTRACT.yaml `external_sources_policy` for full details.**
+**See [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) `external_sources_policy` for full details.**
 
 ---
 
