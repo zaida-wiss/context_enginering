@@ -191,7 +191,9 @@ artifact_creation_distinction:
   purpose: >
     Artifact creation proof: prevent false positives where AI claims success but no file was built.
     Checkpoint at build_gate ensures data integrity before any visual rendering begins.
-    failure_action: "STOP. Report RENDER_GATE_CHECKLIST failures or visual verification issues"
+
+  failure_action: >
+    STOP. Report the relevant artifact/build gate failure and do not create an artifact.
 
 # Note: Authority hierarchy is defined once near the top of this file.
 # Do not duplicate it elsewhere. This section enforces the gates only.
