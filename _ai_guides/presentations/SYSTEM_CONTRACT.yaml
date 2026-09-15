@@ -257,7 +257,7 @@ data_audit:
     open_pr_count: "Every open PR with activity appears in exactly one work_area"
     branch_count: "Every active branch (with commits this period) appears in exactly one work_area"
     commit_count: "Every relevant commit appears in exactly one work_area (even if not in PR)"
-    activity_union: "Verified activity count = sum(merged_pr + closed_issue + open_pr + branch + commit per team)"
+    activity_union: "Verified unique activity count = deduplicated union of (merged_pr + closed_issue + active_issue + open_pr + branch + commit) per team. One work item may appear as issue+branch+PR — count as ONE."
     team_completeness: "For each team's slide: count(audit data) == count(represented on slide). No omissions."
   failure_condition: "If ANY checksum fails → render gate FAIL with detailed mismatch report. Do not build presentation."
 
