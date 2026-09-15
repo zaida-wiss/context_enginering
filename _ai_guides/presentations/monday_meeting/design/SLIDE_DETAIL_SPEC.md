@@ -202,61 +202,126 @@ Alla data måste hämtas LIVE från GitHub när presentationen byggas.
 
 ### SLIDE ①B: Avklarat sedan förra mötet — Backend
 
-**FORMAT:** Visuella rader (identisk struktur som ①A — NO POWERPOINT TABLES)
+🚨 **IDENTICAL STRUCTURE TO ①A** — Backend version
 
-**KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
+**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
 
-**REGLER:**
-- (Identiska som ①A, men ENDAST Backend-issues)
-- Filtrera: Visa bara issues där Team = "Backend" (från TEAM_ROSTER.md labels)
-- Merged: Backend PRs merged denna vecka
-- Pågår: Backend branches med commits denna vecka
-- Väntar på review: Backend PRs som väntar på approval
+**REGLER - EXAKT SOM ①A, MEN ENDAST BACKEND:**
+- Del 1: ALLA merged Backend-PRs denna vecka (status = ✓ DONE)
+- Del 2: ALLA öppna Backend-branches med commits denna vecka (status = ◐ PÅG)
+- Del 3: ALLA öppna Backend-PRs som väntar på review (status = ⏳ REVIEW)
+- Del 4: ALLA stängda Backend-issues UTAN merge denna vecka (status = 🔵 CLOSED)
+- Del 5: Backend-relaterat commit-arbete som inte är länkat till issue (status = 💾 COMMIT)
+
+**FILTRERA:**
+- Visa bara arbete där Team = "Backend" (från TEAM_ROSTER.md labels eller inferred från PR/issue content)
+- Visa ALLA 5 kategorier — ingen kan utelämnas
 
 **DATA-SOURCES:**
 - 📊 **Merged:** GitHub PRs API (Backend-issues, merged denna vecka)
 - 📊 **Pågår:** GitHub branches (Backend-issues, commits senaste 7 dagar)
 - 📊 **Väntar på review:** GitHub PRs API (Backend-issues, open, no approval)
-- 🔍 **Jämförelse:** Backend-issues mot Project Board — visa discrepancy
+- 📊 **Stängda utan merge:** GitHub Issues API (Backend-issues, closed this week, no linked merge)
+- 📊 **Commits:** GitHub Commits API (Backend-related commits, not in any PR)
+- 🔍 **Jämförelse:** Audit count == slide representation count (checksum)
 
-**FOOTER:** `Källa: GitHub PRs + branches (Backend denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska Backend-issues]`
+**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
 
 ---
 
 ### SLIDE ①C: Avklarat sedan förra mötet — Native
 
-**FORMAT:** Visuella rader (identisk struktur som ①A — NO POWERPOINT TABLES)
+🚨 **IDENTICAL STRUCTURE TO ①A** — Native version
 
-**KOLUMNER:** Issue # | Titel | Assignad | Status | Merged/Branch
+**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
 
-**REGLER:**
-- (Identiska som ①A, men ENDAST Native-issues)
-- Filtrera: Visa bara issues där Team = "Native" (från TEAM_ROSTER.md labels)
-- Merged: Native PRs merged denna vecka
-- Pågår: Native branches med commits denna vecka
-- Väntar på review: Native PRs som väntar på approval
+**REGLER - EXAKT SOM ①A, MEN ENDAST NATIVE:**
+- Del 1: ALLA merged Native-PRs denna vecka (status = ✓ DONE)
+- Del 2: ALLA öppna Native-branches med commits denna vecka (status = ◐ PÅG)
+- Del 3: ALLA öppna Native-PRs som väntar på review (status = ⏳ REVIEW)
+- Del 4: ALLA stängda Native-issues UTAN merge denna vecka (status = 🔵 CLOSED)
+- Del 5: Native-relaterat commit-arbete som inte är länkat till issue (status = 💾 COMMIT)
+
+**FILTRERA:**
+- Visa bara arbete där Team = "Native" (från TEAM_ROSTER.md labels eller inferred från PR/issue content)
+- Visa ALLA 5 kategorier — ingen kan utelämnas
 
 **DATA-SOURCES:**
 - 📊 **Merged:** GitHub PRs API (Native-issues, merged denna vecka)
 - 📊 **Pågår:** GitHub branches (Native-issues, commits senaste 7 dagar)
 - 📊 **Väntar på review:** GitHub PRs API (Native-issues, open, no approval)
-- 🔍 **Jämförelse:** Native-issues mot Project Board — visa discrepancy
+- 📊 **Stängda utan merge:** GitHub Issues API (Native-issues, closed this week, no linked merge)
+- 📊 **Commits:** GitHub Commits API (Native-related commits, not in any PR)
+- 🔍 **Jämförelse:** Audit count == slide representation count (checksum)
 
-**FOOTER:** `Källa: GitHub PRs + branches (Native denna vecka) + Project Board ✅ | ⏳ Reviews behövs på: [faktiska Native-issues]`
+**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
 
 ---
 
-**JÄMFÖRELSE MELLAN TEAMEN (①A-C):**
+### SLIDE ①D: Avklarat sedan förra mötet — Cross-team
 
-Dessa tre slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
+🚨 **IDENTICAL STRUCTURE TO ①A** — Cross-team version
 
-| | Frontend | Backend | Native |
-|---|----------|---------|--------|
-| Merged | X PRs | Y PRs | Z PRs |
-| Pågår | X branches | Y branches | Z branches |
-| Väntar på review | X PRs | Y PRs | Z PRs |
+**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
 
-**Syftet:** Se hur det gick för varje team denna vecka — klart arbete, aktivt arbete, och vad som väntar på uppmärksamhet.
+**REGLER - EXAKT SOM ①A, MEN ENDAST CROSS-TEAM:**
+- Del 1: ALLA merged Cross-team-PRs denna vecka (work affecting multiple teams)
+- Del 2: ALLA öppna Cross-team-branches med commits denna vecka
+- Del 3: ALLA öppna Cross-team-PRs som väntar på review
+- Del 4: ALLA stängda Cross-team-issues UTAN merge denna vecka
+- Del 5: Cross-team commit-arbete som inte är länkat till issue
+
+**FILTRERA:**
+- Visa bara arbete klassificerat som Cross-team (PRs/issues affecting Frontend + Backend, or Frontend + Native, etc)
+- Visa ALLA 5 kategorier — ingen kan utelämnas
+
+**DATA-SOURCES:**
+- 📊 All 5 categories from data_audit.work_areas.cross_team
+
+**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
+
+---
+
+### SLIDE ①E: Avklarat sedan förra mötet — Other (docs, infra, chores)
+
+🚨 **IDENTICAL STRUCTURE TO ①A** — Other version
+
+**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
+
+**REGLER - EXAKT SOM ①A, MEN ENDAST OTHER:**
+- Del 1: ALLA merged Other-PRs denna vecka (docs, infra, build, chores, etc)
+- Del 2: ALLA öppna Other-branches med commits denna vecka
+- Del 3: ALLA öppna Other-PRs som väntar på review
+- Del 4: ALLA stängda Other-issues UTAN merge denna vecka
+- Del 5: Other commit-arbete (docs updates, infra changes, etc)
+
+**FILTRERA:**
+- Visa bara arbete klassificerat som Other: documentation, infrastructure, build system, chores, refactoring, etc
+- Visa ALLA 5 kategorier — ingen kan utelämnas
+- **VIKTIGT:** Denna slide visas ENDAST om Other-arbete existerar i audit. Annars hoppas ①E över.
+
+**DATA-SOURCES:**
+- 📊 All 5 categories from data_audit.work_areas.other
+
+**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
+
+---
+
+**JÄMFÖRELSE MELLAN ALLA OMRÅDEN (①A-E):**
+
+Dessa slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
+
+| | Frontend | Backend | Native | Cross-team | Other |
+|---|----------|---------|--------|-----------|-------|
+| Merged | X | Y | Z | W | U |
+| Pågår | X | Y | Z | W | U |
+| Väntar på review | X | Y | Z | W | U |
+| Stängda issues | X | Y | Z | W | U |
+| Commit-arbete | X | Y | Z | W | U |
+
+**REGEL:** Om någon rad är tom för alla områden (t.ex. ingen "Commit-arbete" överhuvudtaget), MÅSTE det noteras i audit med anledning (t.ex. "Inga relevanta commits denna vecka")
+
+**Syftet:** Se ALLT arbete för varje område denna vecka — ingen aktivitet försvinner mellan stolarna, och ingen slide är överbelastad.
 
 ---
 

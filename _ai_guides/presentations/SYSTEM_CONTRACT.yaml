@@ -151,23 +151,38 @@ data_audit:
       frontend:
         merged_pr_ids: "[#XX, #YY, #ZZ] or empty if none"
         open_pr_ids: "[#XX, #YY] or empty"
-        active_issue_ids: "[#XX, #YY] or empty"
+        closed_issue_ids: "[#XX, #YY] or empty (without PR merge)"
+        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
+        active_branches: "[branch-name, branch-name] or empty (commits in period)"
+        commit_ids: "[sha, sha] or empty (relevant commits not in PR)"
       backend:
         merged_pr_ids: "[#XX, #YY] or empty"
         open_pr_ids: "[#XX, #YY] or empty"
-        active_issue_ids: "[#XX, #YY] or empty"
+        closed_issue_ids: "[#XX] or empty (without PR merge)"
+        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
+        active_branches: "[branch-name] or empty (commits in period)"
+        commit_ids: "[sha] or empty (relevant commits not in PR)"
       native:
         merged_pr_ids: "[#XX, #YY] or empty"
         open_pr_ids: "[#XX] or empty"
-        active_issue_ids: "[#XX, #YY] or empty"
+        closed_issue_ids: "[#XX] or empty (without PR merge)"
+        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
+        active_branches: "[branch-name] or empty (commits in period)"
+        commit_ids: "[sha] or empty (relevant commits not in PR)"
       cross_team:
         merged_pr_ids: "[#XX, #YY] or empty (work affecting multiple teams)"
         open_pr_ids: "[#XX] or empty"
-        active_issue_ids: "[#XX, #YY] or empty"
+        closed_issue_ids: "[#XX] or empty (without PR merge)"
+        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
+        active_branches: "[branch-name] or empty (commits in period)"
+        commit_ids: "[sha] or empty (relevant commits not in PR)"
       other:
         merged_pr_ids: "[#XX] or empty (docs, infra, chores, etc)"
         open_pr_ids: "[] or empty"
-        active_issue_ids: "[#XX] or empty"
+        closed_issue_ids: "[#XX] or empty (docs, infra without PR)"
+        active_issue_ids: "[#XX] or empty (if any)"
+        active_branches: "[branch-name] or empty (if any)"
+        commit_ids: "[sha] or empty (docs commits, infra changes, etc)"
 
     member_coverage:
       expected: 7
@@ -194,25 +209,35 @@ data_audit:
           updated_at: "[ISO timestamp]"
           review_status: "[pending/approved/changes-requested]"
 
-      active_issues:
+      open_issues:
         - number: "[#XX]"
           title: "[string]"
           assignee: "[GitHub username or null]"
           updated_at: "[ISO timestamp]"
           labels: "[array of labels or empty]"
-          status: "[open/closed]"
+          status: "[open]"
+
+      closed_issues:
+        - number: "[#XX]"
+          title: "[string]"
+          closed_at: "[ISO timestamp]"
+          assignee: "[GitHub username or null]"
+          merged_pr: "[#XX or null — if null, issue is 'done' without merge]"
+          labels: "[array of labels or empty]"
 
       active_branches:
         - name: "[branch name]"
           head_sha: "[commit SHA]"
           last_commit_at: "[ISO timestamp within reporting period]"
           last_commit_author: "[GitHub username]"
+          linked_pr: "[#XX or null]"
 
       commits_to_develop:
         - sha: "[commit SHA]"
           message: "[commit message]"
           committed_at: "[ISO timestamp]"
           author: "[GitHub username]"
+          linked_pr: "[#XX or null — if null, commit not part of PR]"
 
       meeting_protocol:
         date: "[meeting date, ISO format]"
@@ -225,10 +250,15 @@ data_audit:
 
   validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again. Raw data lists prevent missed data and duplicates."
   checksums:
-    count: "repository_total_merged_prs MUST == sum(frontend + backend + native + cross_team + other counts)"
-    set: "repository_merged_pr_ids MUST == union(all work_area merged_pr_ids)"
-    uniqueness: "No PR ID may occur in more than one work_area"
-  failure_condition: "If ANY checksum fails → render gate FAIL. Do not build presentation."
+    merged_pr_count: "repository_total_merged_prs MUST == sum(all work_areas.merged_pr_ids)"
+    merged_pr_set: "Each merged PR ID appears exactly once (not duplicated across work_areas)"
+    closed_issue_count: "Every closed issue in reporting period appears in exactly one work_area"
+    open_pr_count: "Every open PR with activity appears in exactly one work_area"
+    branch_count: "Every active branch (with commits this period) appears in exactly one work_area"
+    commit_count: "Every relevant commit appears in exactly one work_area (even if not in PR)"
+    activity_union: "Verified activity count = sum(merged_pr + closed_issue + open_pr + branch + commit per team)"
+    team_completeness: "For each team's slide: count(audit data) == count(represented on slide). No omissions."
+  failure_condition: "If ANY checksum fails → render gate FAIL with detailed mismatch report. Do not build presentation."
 
 ###############################################################################
 # AUTHORITY HIERARCHY — Which file owns what domain
