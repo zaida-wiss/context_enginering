@@ -108,7 +108,7 @@ Semantic colors for status indication (Symbol + Color + Text together):
 - [ ] All blocks stack vertically (never horizontal/grid)
 - [ ] All blocks are 100% width (never small cards)
 - [ ] Spacing matches spec: 20px between, 16px inside
-- [ ] Typography matches spec exactly (14/13/13/12pt)
+- [ ] Typography matches spec exactly (28/14/13/13/12pt per typography table)
 - [ ] If 4+ work items exist on one topic → auto-split to continuation slide
 - [ ] No nested structures, no tables, no cards
 - [ ] Slide does NOT appear as dashboard, grid, or crowded

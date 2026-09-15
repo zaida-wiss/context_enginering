@@ -285,10 +285,9 @@ execution_sequence:
     source: "VISUAL_DESIGN_MANDATORY.md (authoritative)"
     reference: "TEMPLATE_REFERENCE.html (reference only)"
     rule: >
-      Every slide uses CANONICAL LAYOUT: 1 rubrik + 1 budskap + 1–3 fullbreddsblock (vertical stack).
-      Each block: symbol → status-line → title (18pt) → effect (14pt) → owner (12pt).
+      Apply VISUAL_DESIGN_MANDATORY.md exactly. All typography, spacing, and CANONICAL LAYOUT values
+      are defined there. Do not restate, override, or interpret them here.
       Max 3 blocks per slide; 4+ blocks → auto-split to continuation slide (①A.1, ①A.2, etc).
-      Spacing/typography values are FIXED (never compress).
       If content exceeds 3 blocks → create new slide, never summarize.
       If TEMPLATE_REFERENCE conflicts with VISUAL_DESIGN_MANDATORY → VISUAL_DESIGN_MANDATORY always wins.
 
@@ -495,9 +494,6 @@ data_audit:
       - An enrichment checksum mismatches (mark as ⚠️ in presentation)"
       - A specific GitHub endpoint fails, as long as the required information is verified another way
 
-###############################################################################
-# AUTHORITY HIERARCHY — Which file owns what domain
-###############################################################################
 ###############################################################################
 # HARD RULES — Never break these
 ###############################################################################
