@@ -75,15 +75,31 @@ execution_sequence:
       - "Fetch REPOSITORY-WIDE data, not current-user data only"
       - "For every branch candidate, verify HEAD commit timestamp falls inside reporting period"
       - "Collect raw details, not just IDs: PR authors, assignees, linked issues, timestamps"
-    blocking_sources:
-      - "Team roster (identity verification)"
-      - "Merged PRs from develop (primary deliverable marker) — REPOSITORY-WIDE"
-      - "Open issues with activity (in-progress work) — ALL, not filtered by user"
-    non_blocking_sources:
-      - "Project Board (use ONLY for enrichment/verification; reconstruct from Issues/PRs if unavailable)"
-      - "Meeting protocol (prefer Google Drive connector; fallback to GitHub if needed)"
-      - "Commits list (derive from PR data if direct access unavailable)"
-    rule: "Fetch ALL. If BLOCKING source unreachable even with fallback → STOP. If NON-BLOCKING fails → use fallback, do NOT stop."
+
+    required_information:
+      - "Team roster (identity verification from TEAM_ROSTER.md)"
+      - "Merged PRs from develop in reporting period (primary deliverable marker) — ANY GitHub endpoint that returns this"
+      - "Open issues with assignee + activity in reporting period (in-progress work) — ANY GitHub endpoint that returns this"
+
+    enrichment_only:
+      - "Commit list (can be derived from verified PR data; fetch if available, but commit-endpoint failure is NOT a STOP)"
+      - "Branch inventory (can be derived from active PR and issue data; if direct branch-list unavailable, reconstruct from other GitHub data)"
+      - "Project Board (use ONLY for cross-check; reconstruct from Issues/PRs if unavailable)"
+      - "Meeting protocol (prefer Google Drive connector; fallback to GitHub; optional context)"
+
+    rule: >
+      STOP rendering only if REQUIRED INFORMATION cannot be reconstructed from ANY allowed source.
+
+      A specific GitHub endpoint, API method, or data source failing is NOT a STOP condition
+      if the same required information can be verified through another allowed GitHub endpoint
+      or documented fallback (Google Sheets, meeting protocol).
+
+      Example: If /repos/.../commits endpoint fails but merged PRs are verified (which include
+      commit metadata), continue. If GitHub PRs endpoint fails but Google Sheets has the PR list,
+      continue.
+
+      Enrichment-only sources failing (branches, board, protocol) never stop rendering.
+      Mark missing enrichment data with ⚠️ in presentation notes.
 
   step_3:
     name: "Verify All 7 Team Members"
@@ -259,17 +275,27 @@ data_audit:
         next_steps: "[action items with owners]"
         questions_to_pl: "[open questions needing PL input]"
 
-  validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again. Raw data lists prevent missed data and duplicates."
-  checksums:
-    merged_pr_count: "repository_total_merged_prs MUST == sum(all work_areas.merged_pr_ids)"
-    merged_pr_set: "Each merged PR ID appears exactly once (not duplicated across work_areas)"
-    closed_issue_count: "Every closed issue in reporting period appears in exactly one work_area"
-    open_pr_count: "Every open PR with activity appears in exactly one work_area"
-    branch_count: "Every active branch (with commits this period) appears in exactly one work_area"
-    commit_count: "Every relevant commit appears in exactly one work_area (even if not in PR)"
-    activity_union: "Verified unique activity count = deduplicated union of (merged_pr + closed_issue + active_issue + open_pr + branch + commit) per team. One work item may appear as issue+branch+PR — count as ONE."
+  validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again. Raw data lists prevent missed data and duplicates. Checksums verify INFORMATION completeness, not endpoint availability."
+
+  information_checksums:
+    roster_verified: "All 7 team members from TEAM_ROSTER matched to GitHub identity"
+    merged_prs_complete: "Every merged PR to develop in reporting period is in audit (from any verified source: GitHub API, web, Sheets, etc.)"
+    active_work_complete: "Every open issue with assignee + activity in reporting period is in audit"
+    team_assignment: "Every verified activity assigned to exactly one team (Frontend/Backend/Native/Cross/Other). No work falls between team-boundaries."
+
+  enrichment_checksums:
+    activity_union: "Deduplicated union of (merged_pr + closed_issue + active_issue + open_pr + branch + commit) per team. One work item may appear as issue+branch+PR — count as ONE."
     team_completeness: "For each team's slide: count(audit data) == count(represented on slide). No omissions."
-  failure_condition: "If ANY checksum fails → render gate FAIL with detailed mismatch report. Do not build presentation."
+
+  failure_condition: >
+    STOP rendering if:
+      - Any REQUIRED INFORMATION is missing and cannot be reconstructed from allowed sources
+      - Information checksums fail (roster, merged PRs, active work not complete)
+
+    Do NOT stop rendering if:
+      - An enrichment source is unavailable (commits, branches, board, protocol)
+      - An enrichment checksum mismatches (mark as ⚠️ in presentation)"
+      - A specific GitHub endpoint fails, as long as the required information is verified another way
 
 ###############################################################################
 # AUTHORITY HIERARCHY — Which file owns what domain
