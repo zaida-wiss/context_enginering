@@ -25,6 +25,53 @@ non_negotiable_execution:
   - "⚠️ No artifact tool may be invoked before READ and AUDIT are complete"
 
 ###############################################################################
+# AUTHORITY HIERARCHY — Single Source Per Domain (ZERO DUPLICATION)
+###############################################################################
+authority:
+  execution_and_contract:
+    file: "SYSTEM_CONTRACT.yaml (this file)"
+    owns: "Execution sequence, required vs optional data, when to STOP, delivery format"
+
+  data_sources_and_collection:
+    files:
+      - "data/DATA_SOURCES.md (WHERE data comes from)"
+      - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (HOW to collect)"
+    owns: "Data acquisition, fallback chain, no decision-making"
+
+  accessibility_and_neurodiversity:
+    file: "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL)"
+    owns: "NPF rules, cognitive accessibility, hierarchy, focus, triple-redundancy"
+    rule: "These rules OVERRIDE all other design rules when they conflict"
+
+  visual_design_implementation:
+    file: "design/VISUAL_DESIGN_MANDATORY.md"
+    owns: "Concrete implementation of NPF constraints (typography, spacing, CANONICAL LAYOUT)"
+    depends_on: "Must implement ACCESSIBILITY_NEURODIVERSITY.md rules"
+
+  slide_content:
+    file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+    owns: "What content goes where, exact format per slide"
+    does_not_own: "Design, layout, typography (those are VISUAL_DESIGN_MANDATORY)"
+
+  visual_reference:
+    file: "monday_meeting/design/TEMPLATE_REFERENCE.html"
+    owns: "Illustrations of the visual result only"
+    does_not_own: "Any rule, value, or constraint (reference only)"
+
+  verification_and_quality:
+    file: "verification/RENDER_GATE_CHECKLIST.md"
+    owns: "Verification checkpoints before delivery"
+
+conflict_resolution:
+  rule: >
+    When two files conflict, follow this priority:
+    1. ACCESSIBILITY_NEURODIVERSITY.md (NPF rules always win)
+    2. VISUAL_DESIGN_MANDATORY.md (implementation rules)
+    3. SLIDE_DETAIL_SPEC.md (content rules)
+    4. TEMPLATE_REFERENCE.html (reference only, never wins)
+    If SYSTEM_CONTRACT.yaml contradicts any file, SYSTEM_CONTRACT.yaml wins.
+
+###############################################################################
 # EXECUTION RECEIPT — MANDATORY GATE
 ###############################################################################
 execution_receipt:
@@ -41,9 +88,10 @@ execution_receipt:
     - "SYSTEM_CONTRACT.yaml (this file — authority + execution sequence)"
     - "../../_memory/EXTERNAL_SOURCES.md (allowlist of ALL external sources)"
     - "data/DATA_SOURCES.md (WHERE to find data + fallback chain)"
-    - "design/VISUAL_DESIGN_MANDATORY.md (CANONICAL LAYOUT rules)"
+    - "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL — NPF rules override all others)"
+    - "design/VISUAL_DESIGN_MANDATORY.md (CANONICAL LAYOUT + typography + spacing)"
     - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content per slide)"
-    - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference examples)"
+    - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only)"
     - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (HOW to collect data)"
     - "verification/RENDER_GATE_CHECKLIST.md (verification gates)"
 
@@ -146,9 +194,10 @@ execution_sequence:
       - "MANDATORY_READING_ORDER.md (entry point)"
       - "../../_memory/EXTERNAL_SOURCES.md (allowlist of ALL external data sources — MUST READ FIRST)"
       - "data/DATA_SOURCES.md (WHERE data comes from + fallback chain)"
-      - "design/VISUAL_DESIGN_MANDATORY.md (authoritative layout rules — CANONICAL LAYOUT only)"
+      - "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 MANDATORY — NPF rules override all design conflicts)"
+      - "design/VISUAL_DESIGN_MANDATORY.md (authoritative implementation of NPF constraints)"
       - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content for each slide)"
-      - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only)"
+      - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only — not a rule source)"
       - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (HOW to collect from sources in DATA_SOURCES.md)"
       - "verification/RENDER_GATE_CHECKLIST.md (before rendering: verify data completeness + visual rendering)"
     time_estimate_minutes: 30
