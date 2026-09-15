@@ -207,6 +207,37 @@ execution_sequence:
       VISUAL_DESIGN_MANDATORY and RENDER_GATE_CHECKLIST enforce CANONICAL LAYOUT and render verification.
       All instructions are POSITIVE (describe what to do) — never "don't" but always "use X instead".
 
+  step_1b:
+    name: "INSTRUCTION AUDIT — Verify Design Rules Loaded"
+    prerequisite: "MUST pass before proceeding to data collection"
+
+    must_confirm_true:
+      accessibility_neurodiversity_read: "ACCESSIBILITY_NEURODIVERSITY.md was read"
+      visual_design_loaded: "VISUAL_DESIGN_MANDATORY.md rules loaded (28pt slide titles, CANONICAL LAYOUT)"
+      slide_detail_spec_loaded: "SLIDE_DETAIL_SPEC.md loaded (exact content per slide)"
+      template_is_reference_only: "TEMPLATE_REFERENCE.html understood as reference only (not rule source)"
+      npf_rules_win: "NPF rules from ACCESSIBILITY_NEURODIVERSITY.md override all other design rules"
+
+    design_constants_must_be:
+      slide_title_size_pt: 28
+      canonical_layout_blocks: "Exactly 1 header + 1 message + 1–3 fullwidth blocks per slide"
+      status_encoding_required: "Symbol + Color + Text (all three always together)"
+      max_line_length_chars: 70
+      max_content_blocks_per_slide: 3
+      corner_radius_px: 0
+      block_spacing_px: 20
+      block_padding_px: 16
+      line_height: 1.8
+
+    rule: >
+      STOP if any design constant differs from values above.
+      This audit prevents different AI models from making different design choices.
+      It is the gate that ensures "any AI model gets same result."
+
+    failure_action: >
+      STOP and report which design constant was incorrect.
+      Do not proceed to data collection until values match exactly.
+
   step_2:
     name: "Fetch LIVE GitHub Data — COMPLETE REPOSITORY AUDIT"
     critical_rules:
@@ -467,20 +498,6 @@ data_audit:
 ###############################################################################
 # AUTHORITY HIERARCHY — Which file owns what domain
 ###############################################################################
-authority:
-  execution_order: "SYSTEM_CONTRACT.yaml (this file)"
-  slide_content: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
-  data_collection: "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
-  data_sources: "data/DATA_SOURCES.md"
-  accessibility: "design/ACCESSIBILITY_NEURODIVERSITY.md"
-  visual_design: "design/VISUAL_DESIGN_MANDATORY.md"
-  final_verification: "verification/RENDER_GATE_CHECKLIST.md"
-
-conflict_resolution:
-  rule: "A file may ONLY define rules within its own authority domain"
-  consequence: "If a rule appears in multiple files, keep it in authoritative file, DELETE from all others"
-  example: "NPF rules belong in ACCESSIBILITY_NEURODIVERSITY.md, not in RENDER_GATE_CHECKLIST"
-
 ###############################################################################
 # HARD RULES — Never break these
 ###############################################################################
