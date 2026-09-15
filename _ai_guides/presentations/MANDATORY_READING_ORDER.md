@@ -8,32 +8,45 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER
 
-## 🚨 CRITICAL — ALLOWED vs FORBIDDEN
+## 🚨 CRITICAL — ALLOWLIST GATE: ALLOWED vs FORBIDDEN
 
-**During presentation generation, these actions are FORBIDDEN:**
+**🚫 THESE ACTIONS ARE ABSOLUTELY FORBIDDEN — NO EXCEPTIONS:**
 
-❌ **Search the public web** (Google, Bing, DuckDuckGo, web search engines)  
+❌ **Search the public web** (Google, Bing, DuckDuckGo, web search engines, any general search)  
 ❌ **Clone GitHub repository** (`git clone` — requires credentials, often fails)  
-❌ **Download external specifications** (design guides, templates, tutorials from web)  
-❌ **Use unregistered websites** (blogs, forums, Stack Overflow, Medium, dev.to)  
-❌ **Substitute arbitrary web sources** as fallback  
+❌ **Download external files** (design specs, templates, tutorials, guides, examples from web)  
+❌ **Use unregistered websites** (blogs, forums, Stack Overflow, Medium, dev.to, Notion, Figma links, etc)  
+❌ **Substitute arbitrary web sources** as fallback when registered sources fail  
+❌ **Use model training data or knowledge cutoff** as replacement for actual data  
 
-**These actions are ALLOWED:**
+**Why:** Web search is how AI models bypass data governance. If a source is unavailable, the presentation STOPS — it does not render with guessed or substituted data.
 
-✅ **Read local files** in this repository (`_ai_guides/presentations/`)  
-✅ **Fetch GitHub data** via:
-   - `https://github.com/chas-challenge-2026/avanza-team1/pulls` (web URL)
+---
+
+**✅ THESE ACTIONS ARE ALLOWED — AND ONLY THESE:**
+
+✅ **Read local files** from this repository (`_ai_guides/presentations/`, `_memory/`, etc)  
+✅ **Fetch GitHub data** ONLY via:
    - GitHub REST API: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/...`
-   - Individual PR pages: `https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]`  
+   - GitHub web: `https://github.com/chas-challenge-2026/avanza-team1/...` (direct navigation)
+   - Individual PR/issue pages: `https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]`  
 ✅ **Access registered external sources** from [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md) ONLY  
-✅ **Use fallback chain** as documented (GitHub → Sheets → Board → Issues → Protocol)
+✅ **Use documented fallback chain** (GitHub API → GitHub web → Sheets → Board → Issues → Protocol)  
+   - Fallbacks are tried IN ORDER
+   - Each fallback is listed in `DATA_ACQUISITION_CONTRACT.yaml`
+   - If all fallbacks fail, mark dataset INCOMPLETE and STOP
 
-**If data cannot be found:**
-- Use documented fallbacks (see DATA_SOURCES.md)
+---
+
+**If data cannot be found in allowed sources:**
+- Do NOT search the web
+- Do NOT improvise a substitute source
 - Report which source is unavailable
-- NEVER search the web or clone repositories as workaround
+- Follow documented fallback order
+- If all fallbacks fail, mark dataset INCOMPLETE
+- **STOP rendering** (incomplete data is reported, not hidden)
 
-**See [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) `external_sources_policy` for full details.**
+**See [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) sections `external_sources_policy` and `step_1c` (ALLOWLIST GATE) for full details.**
 
 ---
 

@@ -307,6 +307,46 @@ execution_sequence:
       STOP and report which design constant was incorrect.
       Do not proceed to data collection until values match exactly.
 
+  step_1c:
+    name: "ALLOWLIST GATE — Verify External Source Policy Understood"
+    prerequisite: "MUST pass before proceeding to data collection (step_2)"
+
+    must_confirm_true:
+      external_sources_policy_read: "external_sources_policy section in SYSTEM_CONTRACT.yaml was read"
+      mandatory_reading_order_read: "MANDATORY_READING_ORDER.md was read (ALLOWED vs FORBIDDEN sections)"
+      external_sources_md_read: "_memory/EXTERNAL_SOURCES.md was read (registered sources only)"
+
+    must_understand_forbidden:
+      - "❌ General web search (Google, Bing, DuckDuckGo, etc.)"
+      - "❌ git clone of GitHub repositories"
+      - "❌ Downloading external specs, templates, tutorials"
+      - "❌ Unregistered websites (blogs, forums, Stack Overflow, Medium, dev.to)"
+      - "❌ Arbitrary web sources as fallback"
+
+    must_understand_allowed:
+      - "✅ Read local files from repository"
+      - "✅ GitHub web: https://github.com/chas-challenge-2026/avanza-team1/"
+      - "✅ GitHub API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/"
+      - "✅ Registered external sources only (see _memory/EXTERNAL_SOURCES.md)"
+      - "✅ Documented fallback chain (GitHub → Sheets → Board → Issues)"
+
+    critical_checkpoint: >
+      Before proceeding to data collection (step_2), confirm:
+      1. Web search is FORBIDDEN (not a fallback option)
+      2. Only registered sources from _memory/EXTERNAL_SOURCES.md may be used
+      3. GitHub API/web and fallback chain are the ONLY data acquisition methods
+      4. If a source is unavailable, follow documented fallback order (never improvise)
+      5. If ALL fallbacks fail, mark dataset INCOMPLETE (do not substitute arbitrary sources)
+
+    rule: >
+      This gate prevents AI models from bypassing the allowlist by "searching the web"
+      when data sources are unavailable. Web search is not a fallback.
+      Incomplete data is reported; presentations do not render with substituted sources.
+
+    failure_action: >
+      STOP. Report which external source policy rule was misunderstood.
+      Do not proceed to data collection until all checkpoints are confirmed.
+
   step_2:
     name: "Fetch LIVE GitHub Data — Follow DATA_ACQUISITION_CONTRACT"
     source: "data/DATA_ACQUISITION_CONTRACT.yaml (canonical method per dataset)"
