@@ -1,0 +1,239 @@
+---
+name: external_sources_registry
+description: Machine-readable registry of all external data sources, URLs, IDs, access methods, and classifications
+version: 1.0
+metadata:
+  type: registry
+  critical: true
+  role: "Single source of truth for external source definitions"
+  note: "This file OWNS all URLs, IDs, access_methods, and classifications. Do NOT duplicate in other files — reference source IDs instead."
+
+---
+
+sources:
+
+  # REQUIRED GITHUB SOURCES
+
+  GITHUB_MERGED_PRS:
+    source_id: "GITHUB_MERGED_PRS"
+    classification: "REQUIRED"
+    purpose: "Merged PRs to develop branch within reporting period"
+    primary:
+      method: "github_connector"
+      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
+      http_method: "GET"
+      filtering: "local: merged_at != null, merged_at within REPORTING_PERIOD, base.ref == 'develop'"
+      attribution: "use assignees[] (person who worked on code)"
+    fallbacks:
+      - method: "github_web"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged"
+        note: "Only if canonical fails"
+      - method: "google_drive_connector"
+        source_id: "GOOGLE_PROJECT_DATA_SHEET"
+        note: "Only if GitHub unavailable AND connector available"
+    allowed_access_methods:
+      - "github_connector"
+      - "github_api"
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+      - "raw_github"
+      - "csv_export"
+
+  GITHUB_OPEN_ISSUES:
+    source_id: "GITHUB_OPEN_ISSUES"
+    classification: "REQUIRED"
+    purpose: "Open issues with assigned owner within reporting period"
+    primary:
+      method: "github_connector"
+      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
+      http_method: "GET"
+      filtering: "local: exclude pull_request key, assignees.length > 0, updated_at within REPORTING_PERIOD"
+    fallbacks:
+      - method: "github_web"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
+        note: "Only if API unavailable"
+      - method: "google_drive_connector"
+        source_id: "GOOGLE_PROJECT_DATA_SHEET"
+        note: "Only if GitHub unavailable AND connector available"
+    allowed_access_methods:
+      - "github_connector"
+      - "github_api"
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+      - "raw_github"
+
+  GITHUB_TEAM_ROSTER:
+    source_id: "GITHUB_TEAM_ROSTER"
+    classification: "REQUIRED"
+    purpose: "Team member identity verification (7 members)"
+    primary:
+      method: "local_file"
+      path: "_memory/TEAM_ROSTER.md"
+      note: "Always available, verified via git history"
+    fallbacks: []
+
+  # OPTIONAL GITHUB SOURCES
+
+  GITHUB_PROJECT_BOARD:
+    source_id: "GITHUB_PROJECT_BOARD"
+    classification: "OPTIONAL"
+    purpose: "Project board status (can be derived from issues if unavailable)"
+    primary:
+      method: "github_connector"
+      url: "https://github.com/orgs/chas-challenge-2026/projects/31"
+    fallbacks: []
+
+  GITHUB_CONTEXT_ENGINEERING:
+    source_id: "GITHUB_CONTEXT_ENGINEERING"
+    classification: "OPTIONAL"
+    purpose: "This documentation repository"
+    primary:
+      method: "github_connector"
+      url: "https://github.com/zaida-wiss/context_enginering"
+    fallbacks: []
+
+  # GOOGLE SHEETS SOURCES (FALLBACK ONLY)
+
+  GOOGLE_PROJECT_DATA_SHEET:
+    source_id: "GOOGLE_PROJECT_DATA_SHEET"
+    classification: "FALLBACK"
+    purpose: "Project data fallback (commits, PRs, issues, board)"
+    document_id: "1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI"
+    primary:
+      method: "google_drive_connector"
+      url: "https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/"
+      note: "Requires Google Drive Connector"
+    formats:
+      csv: "https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=csv"
+      xlsx: "https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=xlsx"
+    tabs:
+      commits: "gid=743460023"
+      issues: "gid=77162861"
+      prs: "gid=743460023"
+      project_board: "gid=869242669"
+    allowed_access_methods:
+      - "google_drive_connector"
+    forbidden_access_methods:
+      - "web_search"
+      - "csv_export_without_connector"
+      - "general_web_access"
+
+  GOOGLE_RISK_REGISTER:
+    source_id: "GOOGLE_RISK_REGISTER"
+    classification: "OPTIONAL"
+    purpose: "Risk and asset register"
+    document_id: "1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F"
+    primary:
+      method: "google_drive_connector"
+      url: "https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/"
+      note: "Requires Google Drive Connector"
+    formats:
+      csv_risks: "https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285"
+      csv_assets: "https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349"
+    tabs:
+      risk_management: "gid=1796827285"
+      assets: "gid=684132349"
+    allowed_access_methods:
+      - "google_drive_connector"
+
+  # GOOGLE DOCS SOURCES (FALLBACK ONLY)
+
+  GOOGLE_MEETING_PROTOCOL:
+    source_id: "GOOGLE_MEETING_PROTOCOL"
+    classification: "FALLBACK"
+    purpose: "Weekly sprint planning decisions, blockers, action items"
+    document_id: "1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8"
+    primary:
+      method: "google_drive_connector"
+      url: "https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit"
+      note: "Requires Google Drive Connector"
+    formats:
+      txt: "https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt"
+      pdf: "https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf"
+      html: "https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=html"
+    allowed_access_methods:
+      - "google_drive_connector"
+    forbidden_access_methods:
+      - "web_search"
+      - "export_without_connector"
+
+  # UTILITIES
+
+  WEBAIM_CONTRAST_CHECKER:
+    source_id: "WEBAIM_CONTRAST_CHECKER"
+    classification: "REFERENCE"
+    purpose: "WCAG AA/AAA text contrast validation (reference only, not required for presentations)"
+    primary:
+      method: "web_direct"
+      url: "https://webaim.org/resources/contrastchecker/"
+
+  LOCALHOST_DEV_SERVER:
+    source_id: "LOCALHOST_DEV_SERVER"
+    classification: "REFERENCE"
+    purpose: "Local development server (reference only)"
+    primary:
+      method: "local"
+      url: "http://localhost:3000"
+
+---
+
+# CLASSIFICATION RULES
+
+classifications:
+  REQUIRED:
+    definition: "Must succeed or presentation STOPS"
+    action_on_failure: "STOP DATA_ACQUISITION_RECEIPT and report INCOMPLETE"
+  FALLBACK:
+    definition: "Try if primary fails (only if connector/method available)"
+    action_on_failure: "Try next fallback or STOP if all fail"
+  OPTIONAL:
+    definition: "Nice-to-have, do not block presentation"
+    action_on_failure: "Mark with ⚠️ and continue"
+  REFERENCE:
+    definition: "Documentation or external tools, not part of presentation pipeline"
+    action_on_failure: "Ignore"
+
+# ACCESS METHOD RULES
+
+access_methods:
+  github_connector:
+    definition: "GitHub Connector (preferred for all GitHub sources)"
+    supported_sources: ["GITHUB_MERGED_PRS", "GITHUB_OPEN_ISSUES", "GITHUB_PROJECT_BOARD", "GITHUB_CONTEXT_ENGINEERING"]
+  github_api:
+    definition: "GitHub REST API (direct HTTPS to api.github.com)"
+    supported_sources: ["GITHUB_MERGED_PRS", "GITHUB_OPEN_ISSUES"]
+  github_web:
+    definition: "GitHub web direct (fallback only)"
+    supported_sources: ["GITHUB_MERGED_PRS", "GITHUB_OPEN_ISSUES"]
+  google_drive_connector:
+    definition: "Google Drive Connector (required for Google Sheets/Docs)"
+    supported_sources: ["GOOGLE_PROJECT_DATA_SHEET", "GOOGLE_RISK_REGISTER", "GOOGLE_MEETING_PROTOCOL"]
+  local_file:
+    definition: "Local repository file (always available)"
+    supported_sources: ["GITHUB_TEAM_ROSTER"]
+  web_direct:
+    definition: "Direct web access (reference tools only)"
+    supported_sources: ["WEBAIM_CONTRAST_CHECKER"]
+  local:
+    definition: "Local server (development only)"
+    supported_sources: ["LOCALHOST_DEV_SERVER"]
+
+# REPORTING PERIOD
+
+reporting_period:
+  definition: "7 calendar days"
+  timezone: "Europe/Stockholm"
+  format: "meeting_date - 7 days at 00:00 (inclusive) through meeting_date at 00:00 (exclusive)"
+  example:
+    meeting_date: "2026-09-22 (Monday)"
+    start: "2026-09-15 00:00 Europe/Stockholm (inclusive)"
+    end: "2026-09-22 00:00 Europe/Stockholm (exclusive)"
+    coverage: "All work completed between these timestamps"
+
+---
+
+**Last updated:** 2026-09-15
+**Status:** Machine-readable registry (YAML) — single source of truth
+**Governance:** This file OWNS all URLs, IDs, access methods, classifications. Other files reference by source_id only.
