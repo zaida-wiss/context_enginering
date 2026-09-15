@@ -129,7 +129,7 @@ Slide ①A displays Frontend work in 5 sections, each as a FULLWIDTH BLOCK:
    - List: all closed issues without linked merge, each as: 🔵 #XX Title
    
 5. **COMMIT-ARBETE** (if any; add as block 5)
-   - List: relevant commits not in PRs, each as: 💾 SHA…message · Author
+   - List: relevant commits not in PRs, each as: 💾 SHA…message · Author (display_name @github_login)
 
 **IF MORE THAN 3 BLOCKS → AUTO-SPLIT**
 - Block 1 + 2 + 3 → stays on ①A
@@ -174,6 +174,8 @@ Alla data måste hämtas LIVE från GitHub när presentationen byggas.
 
 - **Del 5: Commit-arbete** (refaktorering, docs, chores — om relevant)
   - Visa relevanta commits som inte är länkade till issue
+  - Format: 💾 SHA…message · Author (display_name @github_login)
+  - Author MÅSTE visa både visningsnamn OCH GitHub-login för full aktivitetsspårning
   - Status = 💾 COMMIT
   - Info = commit-meddelande (kort)
 

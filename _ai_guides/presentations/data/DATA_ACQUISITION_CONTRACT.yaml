@@ -201,6 +201,41 @@ validation_rules:
 
   rule: "Zero activity in a category is valid. Missing data sources are not."
 
+  relevant_commits:
+    source_id: "GITHUB_COMMITS"
+    classification: "OPTIONAL (required only if presentation includes commit-level work)"
+    purpose: "Commits not linked to issues or PRs (refactoring, docs, chores)"
+
+    canonical_method:
+      endpoint: "/repos/chas-challenge-2026/avanza-team1/commits"
+      http_method: "GET"
+      params:
+        since: "REPORTING_PERIOD_START"
+        until: "REPORTING_PERIOD_END"
+        per_page: 100
+
+    required_fields:
+      - sha (commit hash)
+      - message (commit message)
+      - author.name (display name — e.g. "Zaida Wiss")
+      - author.login (GitHub username — e.g. "zaida-wiss")
+      - author.date (timestamp)
+      - html_url (link to commit on github.com)
+
+    presentation_format: "💾 SHA…message · Author (display_name @github_login)"
+    note: "Author field MUST include both display_name AND github_login for full activity tracking"
+
+    local_filter:
+      - "exclude commits linked to merged PRs (already shown in merged_prs section)"
+      - "exclude commits linked to issues (already shown in active_issues or merged_prs sections)"
+      - "include only commits with activity in REPORTING_PERIOD"
+
+    requirement: "If relevant_commits exist, ALL must be shown (not paginated)"
+    fields_for_deduplication:
+      - sha (unique commit identifier)
+
+    stop_condition: "source fails AND all fallbacks fail — omit commit section if unavailable (OPTIONAL dataset)"
+
 ###############################################################################
 # DATA_ACQUISITION_RECEIPT — Machine-Readable Diagnostic Logging
 ###############################################################################
