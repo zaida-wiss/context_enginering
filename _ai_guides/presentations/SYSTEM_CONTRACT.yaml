@@ -346,43 +346,55 @@ execution_sequence:
   step_2b:
     name: "Record DATA_ACQUISITION_RECEIPT — MANDATORY before DATA_AUDIT"
     prerequisite: "MUST complete BEFORE proceeding to data_audit"
+    specification: "See data/DATA_ACQUISITION_CONTRACT.yaml section data_acquisition_receipt for exact format"
 
     must_record_for_each_required_dataset:
-      team_roster:
-        - "Source attempted: TEAM_ROSTER.md (local file)"
-        - "Result: Success | Failure (specify error)"
-        - "Members verified: N/7"
-        - "Complete: true | false"
+      structure: "See DATA_ACQUISITION_CONTRACT.yaml data_acquisition_receipt for full schema"
 
-      merged_prs:
-        - "Source 1 attempted: GitHub API /pulls?state=closed"
-        - "Result: Success | Failure (specify error code/timeout)"
-        - "PRs collected: N"
-        - "Source 2 attempted: GitHub web /pulls?q=is:pr+state:merged"
-        - "Result: Success | Failure"
-        - "PRs collected: N"
-        - "Source 3 attempted: Google Sheets (CSV export)"
-        - "Result: Success | Failure"
-        - "PRs collected: N"
-        - "Selected source: GitHub API | GitHub web | Sheets"
-        - "Complete: true | false (only after all fallbacks exhausted)"
+      template:
+        execution_id: "Link to EXECUTION_RECEIPT_MACHINE.execution_id"
+        attempted_at: "ISO 8601 timestamp"
+        reporting_period: "REPORTING_PERIOD_START ... REPORTING_PERIOD_END"
 
-      active_issues:
-        - "Source 1 attempted: GitHub API /issues?state=open"
-        - "Result: Success | Failure"
-        - "Issues collected: N"
-        - "Source 2 attempted: GitHub web /issues?q=is:open"
-        - "Result: Success | Failure"
-        - "Issues collected: N"
-        - "Source 3 attempted: Google Sheets"
-        - "Result: Success | Failure"
-        - "Issues collected: N"
-        - "Selected source: GitHub API | GitHub web | Sheets"
-        - "Complete: true | false (only after all fallbacks exhausted)"
+        per_dataset:
+          team_roster:
+            - "Source attempted: TEAM_ROSTER.md (local file)"
+            - "Status: SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT | EMPTY_RESPONSE | PARSE_ERROR"
+            - "Failure reason: (if not SUCCESS)"
+            - "Members verified: N/7"
+            - "Final status: SUCCESS | INCOMPLETE"
+
+          merged_prs:
+            - "Source 1: GitHub API /pulls?state=closed&base=develop"
+              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT | EMPTY_RESPONSE"
+              http_code: "200 | 403 | 404 | 401 | 429 (rate limit) | null"
+              failure_reason: "e.g., 'API rate limit exceeded', 'authentication failed', 'timeout after 30s'"
+              payload_summary: "N items collected"
+              tried_at: "ISO 8601 timestamp"
+            - "Source 2: GitHub web /pulls?q=is:pr+is:merged (fallback)"
+              status: "SUCCESS | EMPTY_RESPONSE | PARSE_ERROR"
+              failure_reason: "e.g., 'page structure changed', 'no data extracted'"
+              payload_summary: "N items collected"
+              tried_at: "ISO 8601 timestamp"
+              fallback_reason: "GitHub API [reason]"
+            - "Source 3: Google Sheets CSV export (fallback)"
+              status: "SUCCESS | AUTH_ERROR | EMPTY_RESPONSE"
+              failure_reason: "e.g., 'permission denied', 'sheet not shared'"
+              payload_summary: "N items collected"
+              tried_at: "ISO 8601 timestamp"
+            - "Selected source: GitHub API | GitHub web | Sheets"
+            - "Final status: SUCCESS | INCOMPLETE"
+
+          active_issues:
+            - "Same structure as merged_prs (see DATA_ACQUISITION_CONTRACT.yaml for details)"
 
     critical_rule: >
       A required dataset may ONLY be marked INCOMPLETE after EVERY fallback
       defined in DATA_ACQUISITION_CONTRACT.yaml has been attempted and failed.
+
+      Every failure MUST record http_code, failure_reason, and tried_at.
+      This enables diagnosis of why data acquisition failed and informs fixes
+      (e.g., API rate limiting, permission issues, selector mismatches).
 
       Endpoint failure (e.g., GitHub API 503) is NOT dataset incompleteness.
       Try the next fallback immediately.
