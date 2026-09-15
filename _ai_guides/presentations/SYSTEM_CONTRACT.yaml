@@ -153,7 +153,8 @@ execution_receipt:
     - "README.md or _ai_guides/presentations/README.md (navigation)"
     - "MANDATORY_READING_ORDER.md (entry point)"
     - "SYSTEM_CONTRACT.yaml (this file — authority + execution sequence)"
-    - "../../_memory/EXTERNAL_SOURCES.md (allowlist of ALL external sources)"
+    - "../../_memory/EXTERNAL_SOURCES.yaml (authoritative registry of ALL external sources — MACHINE-READABLE)"
+    - "../../_memory/EXTERNAL_SOURCES.md (human-friendly introduction to registry)"
     - "data/DATA_SOURCES.md (WHERE to find data)"
     - "data/DATA_ACQUISITION_CONTRACT.yaml (🚨 CRITICAL — EXACT acquisition algorithm, no interpretation)"
     - "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL — NPF rules override all others)"
@@ -256,7 +257,7 @@ external_sources_policy:
       - "github.com/zaida-wiss/context_enginering (this context repository)"
 
     project_documents:
-      - "Google Docs/Sheets registered in _memory/EXTERNAL_SOURCES.md"
+      - "Google Docs/Sheets registered in _memory/EXTERNAL_SOURCES.yaml (authoritative)"
       - "User-uploaded project files"
 
     internal_sources:
@@ -282,7 +283,7 @@ external_sources_policy:
     - "Git clone of GitHub repositories (requires credentials, often fails)"
     - "Downloading files from web (design specs, templates, examples, tutorials)"
     - "Unregistered websites, blogs, forums, tutorials"
-    - "GitHub URLs NOT in EXTERNAL_SOURCES.md"
+    - "GitHub URLs NOT in EXTERNAL_SOURCES.yaml"
     - "Stack Overflow, Medium, dev.to, GitHub Gists, Notion, Figma, external docs"
     - "External design guidance or examples (use TEMPLATE_REFERENCE.html in repo)"
     - "AI knowledge cutoff or model training data as source (use GitHub API instead)"
@@ -290,7 +291,7 @@ external_sources_policy:
     - "Cloning or downloading project repositories (fetch via API/web links only)"
 
   verification:
-    - "If using external URL, verify it appears in _memory/EXTERNAL_SOURCES.md"
+    - "If using external URL, verify it appears in _memory/EXTERNAL_SOURCES.yaml (authoritative registry)"
     - "If URL is not listed, DO NOT use it — report source as unavailable instead"
 
 ###############################################################################
@@ -301,7 +302,8 @@ execution_sequence:
     name: "Read Mandatory Files — IN THIS EXACT ORDER"
     files:
       - "MANDATORY_READING_ORDER.md (entry point)"
-      - "../../_memory/EXTERNAL_SOURCES.md (allowlist of ALL external data sources — MUST READ FIRST)"
+      - "../../_memory/EXTERNAL_SOURCES.yaml (authoritative registry — MACHINE-READABLE)"
+      - "../../_memory/EXTERNAL_SOURCES.md (human-friendly introduction — READ FIRST for understanding)"
       - "data/DATA_SOURCES.md (WHERE data comes from)"
       - "data/DATA_ACQUISITION_CONTRACT.yaml (🚨 MANDATORY — EXACT canonical algorithm, no fallback list)"
       - "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 MANDATORY — NPF rules override all design conflicts)"
@@ -312,7 +314,7 @@ execution_sequence:
       - "verification/RENDER_GATE_CHECKLIST.md (before rendering: verify data completeness + visual rendering)"
     time_estimate_minutes: 30
     rule: >
-      Read in this order. EXTERNAL_SOURCES.md contains ALL external data URLs and must be read BEFORE collecting data.
+      Read EXTERNAL_SOURCES.md first for understanding, then use EXTERNAL_SOURCES.yaml (authoritative) for actual URLs and configuration.
       DATA_SOURCES.md defines WHERE sources exist. DATA_ACQUISITION_CONTRACT.yaml defines HOW data is acquired exactly.
       DATA_COLLECTION_MANDATORY.md defines HOW completeness is validated and structured.
       VISUAL_DESIGN_MANDATORY and RENDER_GATE_CHECKLIST enforce CANONICAL LAYOUT and render verification.
@@ -356,7 +358,7 @@ execution_sequence:
     must_confirm_true:
       external_sources_policy_read: "external_sources_policy section in SYSTEM_CONTRACT.yaml was read"
       mandatory_reading_order_read: "MANDATORY_READING_ORDER.md was read (ALLOWED vs FORBIDDEN sections)"
-      external_sources_md_read: "_memory/EXTERNAL_SOURCES.md was read (registered sources only)"
+      external_sources_yaml_read: "_memory/EXTERNAL_SOURCES.yaml was read (authoritative registry of sources)"
 
     must_understand_forbidden:
       - "❌ General web search (Google, Bing, DuckDuckGo, etc.)"
@@ -375,7 +377,7 @@ execution_sequence:
     critical_checkpoint: >
       Before proceeding to data collection (step_2), confirm:
       1. Web search is FORBIDDEN (not a fallback option)
-      2. Only registered sources from _memory/EXTERNAL_SOURCES.md may be used
+      2. Only registered sources from _memory/EXTERNAL_SOURCES.yaml may be used
       3. GitHub API/web and fallback chain are the ONLY data acquisition methods
       4. If a source is unavailable, follow documented fallback order (never improvise)
       5. If ALL fallbacks fail, mark dataset INCOMPLETE (do not substitute arbitrary sources)
