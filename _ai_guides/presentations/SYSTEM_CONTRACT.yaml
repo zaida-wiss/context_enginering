@@ -671,22 +671,15 @@ fact_vs_assessment:
   rule: "Assessment can NEVER be presented as status. Always separate."
 
 ###############################################################################
-# DEPRECATED FILES — Do NOT use these, DELETE all references
+# DEPRECATED FILES POLICY
 ###############################################################################
-deprecated_files:
-  - name: "PRESENTATION_FORMAT_GUIDE.md"
-    reason: "Superseded by SLIDE_DETAIL_SPEC.md"
-    action: "DELETE or ARCHIVE"
+deprecated_files_policy: >
+  See DEPRECATED_FILES.md for the complete list of deprecated presentation files.
 
-  - name: "PRESENTATION_CONSISTENCY_FRAMEWORK.md"
-    reason: "Superseded by VISUAL_DESIGN_MANDATORY.md"
-    action: "DELETE or ARCHIVE"
+  RULE: Do NOT read deprecated files for presentation generation.
+  These files are listed only for historical reference.
 
-  - name: "PRESENTATION_DESIGN_SPEC.md"
-    reason: "Superseded by TEMPLATE_REFERENCE.html"
-    action: "DELETE or ARCHIVE"
-
-note: "ALL references to these files removed from active instructions"
+  All active instructions reference only files in execution_receipt (step_1).
 
 ###############################################################################
 # WHAT NOT TO DO
