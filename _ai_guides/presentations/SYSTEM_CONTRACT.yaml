@@ -539,7 +539,10 @@ hard_rules:
     consequence: "Cannot render if any member cannot be identity-verified"
 
   - rule: "Missing PR/issue assignee shows as '??', never blocks rendering"
-    consequence: "Display (#XX - ??) for unassigned work, presentation still renders"
+    consequence: >
+      Display (#XX - ??) for unassigned work, presentation still renders.
+      ALSO: Suggest owner based on previous commits/accountability patterns.
+      Purpose: Prompt meeting decision "Vem tar ansvar för denna?"
 
   - rule: "Never invent data"
     consequence: "If source unreachable, use documented fallback. If all fallbacks exhausted → STOP."

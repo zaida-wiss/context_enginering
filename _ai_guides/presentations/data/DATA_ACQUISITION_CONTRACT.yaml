@@ -63,7 +63,12 @@ required_datasets:
 
     CRITICAL_RULE: >
       Show PR by ASSIGNEE (person who worked on the code), NOT by merger.
-      If PR has multiple assignees: list all. If no assignee: mark as "unassigned".
+      If PR has multiple assignees: list all.
+      If no assignee: show "??" + suggest owner based on:
+        1. Previous commits on similar code areas
+        2. Team accountability patterns (long continuous chains vs load distribution)
+        3. Who has capacity (avoid overload)
+      This prompts meeting decision: "Vem tar ansvar för denna?"
 
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
