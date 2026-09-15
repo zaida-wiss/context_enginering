@@ -57,6 +57,7 @@ sources:
     allowed_access_methods:
       - "github_connector"
       - "github_api"
+      - "github_web"
     forbidden_access_methods:
       - "web_search"
       - "general_web_access"

@@ -61,18 +61,17 @@ required_datasets:
       - "general_web_access"
       - "raw_github (raw.githubusercontent.com)"
       - "csv_export"
-      - "any_non_api_method"
 
     enforcement:
       rule: >
-        MUST use only allowed_access_methods for canonical_source.
-        Do NOT substitute any other retrieval mechanism.
-        Do NOT attempt CSV export, web search, or raw GitHub links for PR data.
-      on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
+        For CANONICAL (primary) source: MUST use only [github_connector, github_api].
+        For FALLBACKS: github_web and google_drive_connector are explicitly allowed (see fallback_chain).
+        Do NOT attempt web_search, raw GitHub, or CSV export for this dataset.
+      on_violation: "STOP. Report: forbidden access method attempted for merged_prs canonical source"
 
     fallback_chain:
-      1: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[0] (github_web)"
-      2: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
+      1: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[0] (github_web) — allowed when primary fails"
+      2: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET) — allowed when github_web fails"
 
     pagination:
       required: true
@@ -124,18 +123,17 @@ required_datasets:
       - "general_web_access"
       - "raw_github (raw.githubusercontent.com)"
       - "csv_export"
-      - "any_non_api_method"
 
     enforcement:
       rule: >
-        MUST use only allowed_access_methods for canonical_source.
-        Do NOT substitute any other retrieval mechanism.
-        Do NOT attempt web search or raw GitHub links for issue data.
-      on_violation: "STOP. Report: forbidden access method attempted for active_issues"
+        For CANONICAL (primary) source: MUST use only [github_connector, github_api].
+        For FALLBACKS: github_web and google_drive_connector are explicitly allowed (see fallback_chain).
+        Do NOT attempt web_search, raw GitHub, or CSV export for this dataset.
+      on_violation: "STOP. Report: forbidden access method attempted for active_issues canonical source"
 
     fallback_chain:
-      1: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[0] (github_web)"
-      2: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
+      1: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[0] (github_web) — allowed when primary fails"
+      2: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET) — allowed when github_web fails"
 
     pagination:
       required: true
@@ -170,10 +168,6 @@ reporting_period:
       START: 2026-09-15 00:00 Europe/Stockholm (Monday one week prior)
       END: 2026-09-22 00:00 Europe/Stockholm (meeting date at midnight)
       Coverage: All work completed between these timestamps
-
-  compare_fields:
-    merged_pr: "merged_at"
-    open_issue: "updated_at"
 
   compare_fields:
     merged_pr: "merged_at"
