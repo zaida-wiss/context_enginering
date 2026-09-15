@@ -47,6 +47,31 @@ Färger och symboler bär budskap **FÖRE** text. Det gör presentationen:
 
 ---
 
+## 🚨 FORBIDDEN — PRESENTATION ≠ DASHBOARD
+
+**En presentation för mötet är INTE en dashboard, Jira-export, eller rapport.**
+
+❌ **ALDRIG:**
+- Många likvärdiga kort/rader bredvid varandra (grid-layout)
+- Små textrutor som ser ut som datatabeller (även om de är shapes, inte tables)
+- Upprepade metadata-rader ("Issue #XX | Title | Assignee | Status | Progress")
+- Täta listor som liknar GitHub-export
+- 5+ poster på samma visuella nivå (information overload)
+- Metadata-kolumner som har samma visuell vikt som huvudbudskapet
+- Scrollbara områden med många items (det är en PRESENTATION, inte ett verktyg)
+
+**VARFÖR:** En mötes-presentation ska berätta EN BERÄTTELSE, inte visa ALLA DATA.
+
+✅ **ISTÄLLET:**
+- Max 3–5 visuella huvudobjekt per slide
+- Ett stort rubrik-budskap + 1–3 visuella grupper
+- Om fler än 3–5 poster finns: split till ①A.1, ①A.2, etc — aldrig sammanfattas bort
+- Metadata (issue-nummer, assignee, dates) är STÖD för huvudbudskapet, inte primär information
+- Stora vita områden runt varje grupp (60–70% whitespace)
+- Fokus på MÖTETS BUDSKAP, inte DATANS FULLSTÄNDIGHET på EN slide
+
+---
+
 ## 📋 KONKRET IMPLEMENTERING PER ELEMENT
 
 ### A. DoD-Status (Definition of Done)

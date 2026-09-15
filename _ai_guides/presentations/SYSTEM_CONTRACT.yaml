@@ -93,8 +93,9 @@ execution_sequence:
 
   step_5:
     name: "Verify Visual Design"
-    source: "VISUAL_DESIGN_MANDATORY.md and TEMPLATE_REFERENCE.html"
-    rule: "NPF-friendly only. NO TABLES. Symbol + Färg + Text mandatory."
+    source: "VISUAL_DESIGN_MANDATORY.md (authoritative)"
+    reference: "TEMPLATE_REFERENCE.html (reference only)"
+    rule: "If TEMPLATE_REFERENCE conflicts with VISUAL_DESIGN_MANDATORY → VISUAL_DESIGN_MANDATORY always wins. NPF-friendly only. NO TABLES. NO DASHBOARD-LAYOUT. Symbol + Färg + Text mandatory. Presentation ≠ Dashboard."
 
   step_6:
     name: "Pass Render Gate"
@@ -265,6 +266,15 @@ hard_rules:
   - rule: "Verify data completeness: repository_total == sum(classified by area)"
     consequence: "If FALSE → render gate FAIL. No presentation built."
 
+  - rule: "Point ① completeness: All verified activity (union of merged PRs, branches, open PRs, issues, commits) must be represented"
+    consequence: "If verified activity in audit ≠ activity on slides → render gate FAIL. Split to ①A.1, ①A.2, etc. rather than omitting work."
+
+  - rule: "Every verified activity assigned to exactly one team: Frontend, Backend, Native, Cross-team, or Other"
+    consequence: "No activity may be omitted because it lacks clear team ownership. Cross-team and Other must be represented. If team cannot be determined → cross-team."
+
+  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①-A/B/C)"
+    consequence: "If mismatch → audit and slide both show the discrepancy. Never silently drop data."
+
   - rule: "All 7 team members must be accounted for (with work OR marked 'no activity')"
     consequence: "Cannot render if any member cannot be identity-verified"
 
@@ -290,12 +300,24 @@ hard_rules:
 # DEFINITIONS — No interpretation allowed, these are mechanical
 ###############################################################################
 github_status_definitions:
+  verified_activity:
+    definition: "All work activity during reporting period that can be verified from GitHub"
+    union_of:
+      - "Merged PRs to develop"
+      - "Closed issues (regardless of merge status)"
+      - "Open PRs with recent activity"
+      - "Active branches with commits in reporting period"
+      - "Commits to develop in reporting period"
+      - "Open issues with assignee and recent updates"
+    rule: "Point ① completeness is defined by the UNION of all verified activity, not merged PRs alone"
+    consequence: "Every verified activity must appear exactly once (Frontend, Backend, Native, Cross-team, or Other). No activity omitted due to slide capacity. Split to ①A.1, ①A.2, etc. when needed."
+
   delivered:
-    definition: "PR merged to develop during reporting period"
+    definition: "Merged PR to develop during reporting period (subset of verified_activity)"
     sources:
       - "GitHub PR with 'merged' status"
       - "Linked to closed issue in reporting period"
-    counterexample: "Closed issue WITHOUT merge = NOT delivered"
+    note: "Merged PRs are PRIMARY evidence of delivery, but point ① shows union of ALL verified activity, not only merged PRs"
 
   in_progress:
     definition: "Open PR with recent commits OR open issue with assignee + activity"

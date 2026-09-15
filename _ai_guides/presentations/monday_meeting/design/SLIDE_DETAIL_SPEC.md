@@ -72,12 +72,32 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 ---
 
-## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1-3 slides)
+## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1+ slides, split as needed)
+
+**CRITICAL RULE:** Point ① completeness = union of ALL verified activity during reporting period, not merged PRs alone.
+
+**VERIFIED ACTIVITY = {merged PRs, closed issues, active branches, open PRs with activity, relevant commits}**
+
+**If team's verified activity exceeds slide capacity:**
+- Split to ①A.1, ①A.2, ①B.1, ①B.2, etc.
+- NEVER omit work to fit slide count
+- Each continuation slide starts with team name again
+
+**TEAM CHECKSUMS (RENDERED IN AUDIT REPORT):**
+```
+Frontend: verified_activity_count (audit) == representation_count (slides)
+Backend: verified_activity_count (audit) == representation_count (slides)
+Native: verified_activity_count (audit) == representation_count (slides)
+Cross-team: verified_activity_count (audit) == representation_count (slides)
+Other: verified_activity_count (audit) == representation_count (slides)
+```
+If mismatch → both audit and slides note the discrepancy. Never silently drop data.
 
 **Rubriker per team (måste matcha mötesprotokollet):**
-- Slide ①A: **"Avklarat sedan förra mötet — Frontend"**
-- Slide ①B: **"Avklarat sedan förra mötet — Backend"**
-- Slide ①C: **"Avklarat sedan förra mötet — Native"**
+- Slide ①A: **"① Avklarat sedan förra mötet — Frontend"** (or ①A.1, ①A.2 if split)
+- Slide ①B: **"① Avklarat sedan förra mötet — Backend"** (or ①B.1, ①B.2 if split)
+- Slide ①C: **"① Avklarat sedan förra mötet — Native"** (or ①C.1, ①C.2 if split)
+- Slide ①D: **"① Avklarat sedan förra mötet — Cross-team"** (if any cross-team work exists)
 
 ### SLIDE ①A: Avklarat sedan förra mötet — Frontend
 
@@ -99,6 +119,8 @@ Din presentation måste innehålla:
 - ✅ MERGED DENNA VECKA (faktiska merged PRs från GitHub denna vecka)
 - ✅ PÅGÅR DENNA VECKA (faktiska branches med commits från GitHub denna vecka)
 - ✅ VÄNTAR PÅ REVIEW (faktiska öppna PRs från GitHub utan approval)
+- ✅ STÄNGDA ISSUES (faktiska stängda issues från GitHub denna vecka — kan sakna merge)
+- ✅ COMMIT-ARBETE (relevanta commits från denna vecka — dokumentation, refaktorering, chores)
 
 **MÅSTE VISAS VISUELLT:**
 - 🔵 Team-märke (Frontend/Backend/Native) per rad — från TEAM_ROSTER.md
@@ -126,6 +148,16 @@ Alla data måste hämtas LIVE från GitHub när presentationen byggas.
   - Branch-kolumn = PR-nummer (#142, #143)
   - Sortera på skapningsdatum (äldst först — längst väntan)
   - **VISUELL MARKERING:** Denna sektion ska ha en 🟠 orange eller 🔴 röd bakgrund för att dra uppmärksamhet
+
+- **Del 4: Stängda issues utan merge** (om någon finns)
+  - Visa stängda issues som INTE är länkade till merge denna vecka
+  - Status = 🔵 CLOSED
+  - Branch-kolumn = issue-nummer (#XXX)
+
+- **Del 5: Commit-arbete** (refaktorering, docs, chores — om relevant)
+  - Visa relevanta commits som inte är länkade till issue
+  - Status = 💾 COMMIT
+  - Info = commit-meddelande (kort)
 
 - **Arbetet från alla 7 team-medlemmar måste synas** (antingen i Merged, Pågår eller Väntar på review)
   - Om medlem har 0 commits denna vecka: Lägg till "Inget arbete i koden denna vecka"
