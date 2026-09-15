@@ -13,6 +13,28 @@ metadata:
 # NOT A FALLBACK LIST. A CANONICAL ALGORITHM.
 # Different AI models following this contract get identical data.
 
+test_mode_activation:
+  rule: >
+    TEST_MODE can ONLY be activated by explicit user request with keywords:
+    "test", "fixture", "mock-data", "TEST_MODE", or "use test data"
+
+    If user does NOT explicitly request test mode, use PRODUCTION mode.
+    PRODUCTION mode requires live GitHub/Sheets sources (will STOP if unavailable).
+
+  test_mode_behavior: >
+    When explicitly activated:
+    - Read merged_prs from fixtures/merged_prs_sample.json
+    - Read active_issues from fixtures/active_issues_sample.json
+    - Record in DATA_ACQUISITION_RECEIPT: source = "FIXTURE (test mode)"
+    - Proceed through gates, modular composition, render, delivery
+    - Add footer to presentation: "⚠️ TEST MODE — fixture data"
+
+  production_mode_behavior: >
+    When NOT in test mode (default):
+    - Use live GitHub API, GitHub web, Google Sheets per fallback_order
+    - STOP if any required source fails (do not substitute fixtures)
+    - Report DATA_ACQUISITION_RECEIPT with real source diagnostics
+
 required_datasets:
   team_roster:
     canonical_method: "Read TEAM_ROSTER.md file locally"

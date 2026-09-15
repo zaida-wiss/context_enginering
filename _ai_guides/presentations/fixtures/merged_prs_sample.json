@@ -1,0 +1,80 @@
+{
+  "execution_mode": "TEST_MODE",
+  "data_source": "fixtures/merged_prs_sample.json",
+  "note": "Deterministic test data for success path verification. PRODUCTION: use live GitHub sources.",
+  "merged_prs": [
+    {
+      "number": 42,
+      "title": "Fix login flow security with bcrypt",
+      "assignees": [{"login": "rashaknifdi"}],
+      "merged_at": "2026-09-12T14:30:00Z",
+      "base": {"ref": "develop"},
+      "user": {"login": "rashaknifdi"},
+      "team": "Backend"
+    },
+    {
+      "number": 45,
+      "title": "Update design tokens for new brand",
+      "assignees": [{"login": "bjorneboman"}],
+      "merged_at": "2026-09-13T09:15:00Z",
+      "base": {"ref": "develop"},
+      "user": {"login": "bjorneboman"},
+      "team": "Frontend"
+    },
+    {
+      "number": 48,
+      "title": "Add TypeScript support to frontend",
+      "assignees": [{"login": "zaida-wiss"}],
+      "merged_at": "2026-09-13T11:42:00Z",
+      "base": {"ref": "develop"},
+      "user": {"login": "zaida-wiss"},
+      "team": "Frontend"
+    },
+    {
+      "number": 51,
+      "title": "Implement risk calculation engine",
+      "assignees": [{"login": "Svartakatten"}],
+      "merged_at": "2026-09-12T16:20:00Z",
+      "base": {"ref": "develop"},
+      "user": {"login": "Svartakatten"},
+      "team": "Backend"
+    },
+    {
+      "number": 54,
+      "title": "Native iOS camera integration",
+      "assignees": [{"login": "TomacBarin"}],
+      "merged_at": "2026-09-14T10:05:00Z",
+      "base": {"ref": "develop"},
+      "user": {"login": "TomacBarin"},
+      "team": "Frontend"
+    },
+    {
+      "number": 56,
+      "title": "System performance optimization",
+      "assignees": [{"login": "lundhpargmailcom"}],
+      "merged_at": "2026-09-13T15:30:00Z",
+      "base": {"ref": "develop"},
+      "user": {"login": "lundhpargmailcom"},
+      "team": "Native/System"
+    },
+    {
+      "number": 59,
+      "title": "Fix Android memory leak",
+      "assignees": [{"login": "Henrik-Westerlund"}],
+      "merged_at": "2026-09-14T13:45:00Z",
+      "base": {"ref": "develop"},
+      "user": {"login": "Henrik-Westerlund"},
+      "team": "Native/System"
+    }
+  ],
+  "metadata": {
+    "reporting_period_start": "2026-09-08T09:00:00Z",
+    "reporting_period_end": "2026-09-15T09:00:00Z",
+    "total_merged_prs": 7,
+    "team_coverage": {
+      "Frontend": 3,
+      "Backend": 2,
+      "Native/System": 2
+    }
+  }
+}
