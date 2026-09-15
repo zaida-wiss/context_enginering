@@ -72,7 +72,7 @@ Källa 2: Fallback — GitHub web
   Status: ✅ LÄST / ❌ MISSLYCKAD
 
 Källa 3: Fallback — Google Sheets historik
-  [ ] https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=77162861#gid=77162861
+  [ ] See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET (Issues tab, gid=77162861)
   Status: ✅ LÄST / ❌ MISSLYCKAD
 
 Källa 4: Fallback — Merged PRs denna vecka (om commits-listan failar)

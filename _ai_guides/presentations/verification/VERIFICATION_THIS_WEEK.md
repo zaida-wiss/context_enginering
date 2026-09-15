@@ -47,7 +47,7 @@ This shows what CAN and CANNOT be verified from available local sources.
   - Who's assigned to what
 
 ### 2. **Meeting Protocol** ❌
-- **Source:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit?tab=t.d1i0rhhuog1q
+- **Source:** See EXTERNAL_SOURCES.yaml: GOOGLE_MEETING_PROTOCOL
 - **Status:** NOT READ (requires Google Docs auth)
 - **What it would show:**
   - Sprint goals for this week

@@ -22,7 +22,7 @@
 
 ```
 Du: "Läs mötesprotokollet från denna länk:
-    https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+    See EXTERNAL_SOURCES.yaml: GOOGLE_MEETING_PROTOCOL
 
     Sedan: Förbered FÖR mandagsmötet"
 ```
@@ -363,7 +363,7 @@ Mötesprotokollet är **PRIMÄR källa** för:
 - Vad är nästa möte?
 
 **Raw-länk för AI:**
-- TXT: `https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt`
+- TXT: `See EXTERNAL_SOURCES.yaml: GOOGLE_MEETING_PROTOCOL`
 
 **FORMAT I MÖTESPROTOKOLLET:**
 ```
@@ -496,17 +496,7 @@ PRIMÄR KÄLLA - GitHub Project Board:
    1. ✅ Läser: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
 
 PRIMÄR FALLBACK - Google Sheets:
-   2. Om GitHub misslyckas → Läser: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
-
-PRESENTERA:
-   3. Lista issues per status:
-      - 🟢 To Do
-      - 🟡 In Progress (PRIORITET)
-      - ✅ Done
-
-VIKTIGASTE:
-   4. ⚠️ Berätta källa: "Läst från: GitHub" eller "Läst från: Google Sheets"
-```
+   2. Om GitHub misslyckas → Läser: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
 
 ---
 
@@ -522,31 +512,11 @@ PRIMÄR KÄLLA - GitHub Project Board:
    3. ✅ Läser Closed/Merged PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed
 
 PRIMÄR KÄLLA - Google Sheets (Risker & Assets):
-   4. ✅ Läser Risker: `https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285`
-   5. ✅ Läser Assets: `https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349`
+   4. ✅ Läser Risker: `See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285`
+   5. ✅ Läser Assets: `See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=684132349`
 
 PRIMÄR FALLBACK - Google Sheets:
-   5. Om GitHub misslyckas → Läser Google Sheets Project Board: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
-   6. Om GitHub PRs misslyckas → Läser Google Sheets PR Status: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=743460023#gid=743460023
-
-SEKUNDÄR FALLBACK:
-   7. Om allt misslyckas → Läser PR_UPDATES.md
-
-PRESENTERA:
-   8. Presenterar:
-      - Issues I Progress (från Project Board)
-      - 🟢 Open PRs + status
-      - ✅ Recently merged PRs
-      - Blockers & status
-      - Risk-uppdateringar
-      - Plan för nästa vecka
-
-VIKTIGT - MÅSTE ALLTID GÖRA:
-   9. ⚠️ BERÄTTA EXAKT vilken källa du använt för VARJE SEKTION:
-      "Projekt Status: Läst från GitHub"
-      "PRs: Läst från Google Sheets (GitHub var otillgänglig)"
-      etc.
-```
+   5. Om GitHub misslyckas → Läser Google Sheets Project Board: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
 
 ### "Uppdatera Risker i Google Sheets"
 ```
@@ -554,7 +524,7 @@ Du: "Ny risk: Back-testing är långsam"
     ELLER "Uppdatera risker"
 
 AI: (Läser alltid från Google Sheets direkt)
-   1. ✅ Läser Google Sheets Risker: https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285
+   1. ✅ Läser Google Sheets Risker: See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285
    2. ✅ Läser git log för att verifiera mitigations
    3. ✅ Identifierar om detta är en ny risk
 
@@ -620,8 +590,8 @@ Du: "Ge mig risk status presentation"
 AI: (MÅSTE följa denna prioritering)
 
 PRIMÄR KÄLLA - Google Sheets:
-   1. ✅ Läser Risker: https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285
-   2. ✅ Läser Assets: https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349
+   1. ✅ Läser Risker: See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285
+   2. ✅ Läser Assets: See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=684132349
 
 PRESENTERA (i denna ordning):
    3. Executive Summary (1-2 mening):
@@ -791,71 +761,7 @@ PRIMÄR KÄLLA - GitHub Project Board:
    2. ✅ Läser git log denna vecka (commits på develop)
 
 PRIMÄR FALLBACK - Google Sheets:
-   3. Om GitHub misslyckas → Läser: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/edit?gid=869242669#gid=869242669
-
-PRESENTERA (MÖTES-FORMAT):
-
-   📊 EXECUTIVE SUMMARY (överst):
-   ┌─────────────────────────────────────┐
-   │ Issues Status Denna Vecka           │
-   │ Done denna vecka:      X issues     │
-   │ In Progress:           X issues     │
-   │ To Do / Backlog:       X issues     │
-   │ Blockers:              X issues     │
-   │ Kritiska:              X issues     │
-   │ Dagar till deadline:   X dagar      │
-   └─────────────────────────────────────┘
-
-   ✅ COMPLETED (Denna vecka):
-   Tabell: #XX | Title | Owner | Branch | Merged
-   - Visa alla issues som är Done denna vecka
-   - Visa om de är mergade till develop
-
-   🟡 IN PROGRESS (Pågår nu):
-   Tabell: #XX | Title | Owner | Status | Branch | PR # | PR Status | Blocker?
-   - Visa alla issues i In Progress
-   - Visa om de har PR öppen
-   - PR Status: Needs Review / Approved / Changes Requested
-   - Flagga PRs som väntar på review > 2 dagar (🔴 BLOCKERA!)
-   - Flagga blockers/kritiska (🔴)
-   - Visa progress/commits denna vecka
-
-   🟢 TO DO / BACKLOG (Nästa på tur):
-   Tabell: #XX | Title | Priority | Estimate | Owner | Ready?
-   - Top 5 prioriterade
-   - Vilka kan starta nästa?
-   - Vilka är kritiska för deadline?
-
-   🚨 BLOCKERS & KRITISKA:
-   - Lista alla blockers (red flags)
-   - Lista alla CRITICAL priority issues
-   - Vad behöver vi göra?
-   - Vilka är beroenden?
-
-   ⏰ DEADLINE RISK:
-   - Dagar kvar till Sep 24 (CTO deadline)
-   - Issues som måste vara Done innan SWE23
-   - Risk för att inte hinna?
-
-VIKTIGASTE:
-   ⚠️ BERÄTTA källa: "Läst från: GitHub Project Board"
-   ✅ Presentera i tabellformat (mötes-klar)
-   ✅ Fokusera på KRITISKA och BLOCKERS
-   ✅ Visa nästa backlog-items
-   ✅ Ge konkreta rekommendationer
-
-VERIFIKATION (KRITISK):
-   🔍 STÄMMA AV MOT NULÄGET - för VARJE issue:
-   - Issue säger "Done" → Verifiera: Är den mergad till develop? (kolla git log)
-   - Issue säger "In Progress" → Verifiera: Finns commits denna vecka? (kolla git)
-   - Issue säger "To Do" → Verifiera: Är den verkligen inte påbörjad?
-   - 🚨 Om något stämmer inte → FLAGGA DETTA: "⚠️ Issue #XX säger Done men ingen merge på develop"
-
-   Samma verifikation för RISKER & ASSETS:
-   - Risk säger "Mitigated" → Verifiera: Finns commits för mitigation?
-   - Asset säger "Active" → Verifiera: Är den faktiskt i användning?
-   - Mismatch → FLAGGA: "⚠️ Risk #XX status uppdaterad i Google Sheets?"
-```
+   3. Om GitHub misslyckas → Läser: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
 
 ### "Förbered Sprintmöte Presentation" (Nuläge + Förslag Framåt)
 ```

@@ -150,7 +150,7 @@ metadata:
   - Alla steg måste checkades OFF
 
 - [ ] **Fallback-hierarkin försökt?** — Om GitHub failade:
-  - Google Sheets: https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/
+  - Google Sheets: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET
   - Project Board: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
   - Meeting protocol (länk i README.md)
 

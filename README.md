@@ -75,7 +75,7 @@
 
 - **Project code:** https://github.com/chas-challenge-2026/avanza-team1
 - **Project Board:** https://github.com/orgs/chas-challenge-2026/projects/31
-- **Meeting notes:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit
+- **Meeting notes:** See `_memory/EXTERNAL_SOURCES.yaml` (GOOGLE_MEETING_PROTOCOL source_id)
 
 ---
 

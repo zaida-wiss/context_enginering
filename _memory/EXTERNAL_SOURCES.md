@@ -44,9 +44,12 @@ source_id: "GITHUB_MERGED_PRS"
 reference: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS"
 ```
 
-**DO NOT DO THIS:**
+**DO NOT DO THIS (examples of what NOT to do):**
 ```yaml
+# ❌ WRONG: Hardcoded raw URL instead of source_id
 url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?..."
+
+# ❌ WRONG: Hardcoded raw sheet ID instead of source_id
 sheet_id: "1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI"
 ```
 

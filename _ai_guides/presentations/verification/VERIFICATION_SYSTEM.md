@@ -122,7 +122,7 @@ git log --oneline --since="1 week ago"
 
 ### ✅ STEG 4: Läs Google Sheets Risker
 
-**CSV-länk för AI:** https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285
+**CSV-länk för AI:** See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER
 
 **Vad att kolla:**
 - [ ] CRITICAL risker — status? (Lösta? Pågår? Ej påbörjade?)
@@ -144,7 +144,7 @@ git log --oneline --since="1 week ago"
 
 ### ✅ STEG 5: Läs Mötesprotokollet
 
-**TXT-länk för AI:** https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
+**TXT-länk för AI:** See EXTERNAL_SOURCES.yaml: GOOGLE_MEETING_PROTOCOL
 
 **Vad att kolla:**
 - [ ] Vilka beslut togs på senaste mötet? (markeras med "B:")
