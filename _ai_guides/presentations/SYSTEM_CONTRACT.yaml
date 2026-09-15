@@ -239,35 +239,39 @@ execution_sequence:
       Do not proceed to data collection until values match exactly.
 
   step_2:
-    name: "Fetch LIVE GitHub Data — COMPLETE REPOSITORY AUDIT"
-    critical_rules:
-      - "Fetch REPOSITORY-WIDE data, not current-user data only"
-      - "For every branch candidate, verify HEAD commit timestamp falls inside reporting period"
-      - "Collect raw details, not just IDs: PR authors, assignees, linked issues, timestamps"
+    name: "Fetch LIVE GitHub Data — Follow DATA_ACQUISITION_CONTRACT"
+    source: "data/DATA_ACQUISITION_CONTRACT.yaml (canonical method per dataset)"
+
+    critical_rule: >
+      For each required dataset (team_roster, merged_prs, active_issues):
+      1. Follow the CANONICAL METHOD in DATA_ACQUISITION_CONTRACT.yaml
+      2. If primary method fails, try fallbacks in specified order
+      3. Mark outcome in DATA_AUDIT (COMPLETE or INCOMPLETE)
+      4. STOP rendering only if any required dataset is INCOMPLETE
 
     required_information:
-      team_roster: "7 team members identity-verified (from TEAM_ROSTER.md, ANY GitHub endpoint)"
-      merged_prs: "All PRs merged to develop in reporting period (ANY GitHub endpoint, Sheets fallback, individual PR pages)"
-      active_issues: "All open issues with assignee+activity in reporting period (ANY GitHub endpoint, Sheets fallback, reconstructed from Board)"
+      team_roster: "7 team members identity-verified (TEAM_ROSTER.md, local authoritative source)"
+      merged_prs: "All PRs merged to develop in reporting period (GitHub API canonical method, fallbacks listed)"
+      active_issues: "All open issues with assignee+activity in reporting period (GitHub API canonical method, fallbacks listed)"
 
     optional_enrichment:
-      - "Commit list (can derive from PR metadata; /commits endpoint optional)"
-      - "Branch inventory (can derive from active PR/issue data; branch-list optional)"
-      - "Project Board (verification only; reconstruct from Issues/PRs if unavailable)"
-      - "Meeting protocol (context only; never blocks)"
+      - "Commit list (can derive from PR metadata)"
+      - "Branch inventory (can derive from PR/issue data)"
+      - "Project Board (reconstruction from Issues/PRs)"
+      - "Meeting protocol (context only)"
 
     rule: >
-      STOP rendering only if REQUIRED INFORMATION cannot be reconstructed from ANY allowed source.
+      ENDPOINT FAILURE ≠ DATA FAILURE.
 
-      A specific GitHub endpoint, API method, or data source failing is NOT a STOP condition
-      if the same required information can be verified through another allowed GitHub endpoint
-      or documented fallback (Google Sheets, meeting protocol).
+      STOP rendering only when:
+        team_roster.complete == false
+        OR merged_prs.complete == false
+        OR active_issues.complete == false
 
-      Example: If /repos/.../commits endpoint fails but merged PRs are verified (which include
-      commit metadata), continue. If GitHub PRs endpoint fails but Google Sheets has the PR list,
-      continue.
+      A specific GitHub endpoint failing is NOT a STOP condition if the same information
+      can be acquired through a fallback source listed in DATA_ACQUISITION_CONTRACT.yaml.
 
-      Enrichment-only sources failing (branches, board, protocol) never stop rendering.
+      Enrichment-only sources failing (commits, branches, board, protocol) never stop rendering.
       Mark missing enrichment data with ⚠️ in presentation notes.
 
   step_3:

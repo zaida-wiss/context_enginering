@@ -1,0 +1,136 @@
+---
+name: data_acquisition_contract
+description: Canonical acquisition method for required datasets — deterministic, no interpretation
+metadata:
+  type: process
+  critical: true
+  version: 1.0
+---
+
+# DATA ACQUISITION CONTRACT
+#
+# This file defines THE EXACT METHOD for acquiring each required dataset.
+# NOT A FALLBACK LIST. A CANONICAL ALGORITHM.
+# Different AI models following this contract get identical data.
+
+required_datasets:
+  team_roster:
+    canonical_method: "Read TEAM_ROSTER.md file locally"
+    requirement: 7 members
+    fields:
+      - name
+      - github_username
+      - team_designation
+    stop_condition: "any member missing or unverifiable"
+    fallback: "None — local file is authoritative"
+
+  merged_prs:
+    canonical_method:
+      endpoint: "/repos/chas-challenge-2026/avanza-team1/pulls"
+      http_method: "GET"
+      params:
+        state: "closed"
+        base: "develop"
+        per_page: 100
+
+      pagination:
+        required: true
+        stop_when: "response contains < per_page results"
+        collect_all: true
+
+      local_filter:
+        - "merged_at != null"
+        - "merged_at >= REPORTING_PERIOD_START"
+        - "merged_at < REPORTING_PERIOD_END"
+        - "base.ref == 'develop'"
+
+    fallback_order:
+      1: "GitHub API (above)"
+      2: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
+      3: "Individual PR pages: https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]"
+      4: "Google Sheets: see EXTERNAL_SOURCES.md"
+
+    requirement: "ALL merged PRs in reporting period"
+    fields:
+      - id (PR number)
+      - title
+      - author
+      - merged_at (timestamp)
+      - base.ref
+      - linked_issues (if available)
+
+    stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
+
+  active_issues:
+    canonical_method:
+      endpoint: "/repos/chas-challenge-2026/avanza-team1/issues"
+      http_method: "GET"
+      params:
+        state: "open"
+        per_page: 100
+
+      pagination:
+        required: true
+        stop_when: "response contains < per_page results"
+        collect_all: true
+
+      local_filter:
+        - "assignee != null"
+        - "updated_at >= REPORTING_PERIOD_START"
+        - "updated_at < REPORTING_PERIOD_END"
+        - "is_pull_request == false"
+
+    fallback_order:
+      1: "GitHub API (above)"
+      2: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
+      3: "Google Sheets: see EXTERNAL_SOURCES.md"
+      4: "Project Board: reconstruct from column view"
+
+    requirement: "ALL open issues with activity in reporting period, assigned to someone"
+    fields:
+      - id (issue number)
+      - title
+      - assignee
+      - updated_at (timestamp)
+      - labels (for team classification)
+
+    stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
+
+reporting_period:
+  definition: "Previous Monday 00:00 through current Monday 00:00 (exclusive), Europe/Stockholm"
+  timezone: "Europe/Stockholm"
+
+  dynamic_calculation:
+    REPORTING_PERIOD_START: "meeting_date - 7 days at 00:00"
+    REPORTING_PERIOD_END: "meeting_date at 00:00 (exclusive)"
+
+  example:
+    meeting_date: "2026-09-16 (Monday)"
+    start_inclusive: "2026-09-09 00:00 Europe/Stockholm"
+    end_exclusive: "2026-09-16 00:00 Europe/Stockholm"
+
+  compare_fields:
+    merged_pr: "merged_at"
+    open_issue: "updated_at"
+
+endpoint_failure_vs_data_completeness:
+  principle: >
+    ENDPOINT_FAILURE is not DATA_FAILURE.
+
+    If GitHub API fails, try GitHub web.
+    If GitHub web fails, try fallback sources.
+    If all sources fail, DATA_AUDIT marks dataset as INCOMPLETE.
+
+    STOP RENDERING only if:
+      team_roster.complete == false
+      OR merged_prs.complete == false
+      OR active_issues.complete == false
+
+    Otherwise: render with available data, mark sources in footer.
+
+validation_rules:
+  merged_prs_minimum: "At least 1, or mark week as 'no merged work'"
+  active_issues_minimum: "At least 1, or mark week as 'no open work'"
+  team_roster: "Exactly 7, or STOP"
+
+  rule: "Zero activity in a category is valid. Missing data sources are not."
