@@ -61,13 +61,19 @@ execution_sequence:
     name: "Read Mandatory Files — IN THIS EXACT ORDER"
     files:
       - "MANDATORY_READING_ORDER.md (entry point)"
-      - "design/VISUAL_DESIGN_MANDATORY.md (authoritative layout rules — CRITICAL after recent rewrite)"
+      - "../../_memory/EXTERNAL_SOURCES.md (allowlist of ALL external data sources — MUST READ FIRST)"
+      - "monday_meeting/data/DATA_SOURCES.md (WHERE data comes from + fallback chain)"
+      - "design/VISUAL_DESIGN_MANDATORY.md (authoritative layout rules — CANONICAL LAYOUT only)"
       - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content for each slide)"
       - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only)"
-      - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (what GitHub data to fetch)"
-      - "verification/RENDER_GATE_CHECKLIST.md (before rendering: visual verification of PPTX)"
+      - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (HOW to collect from sources in DATA_SOURCES.md)"
+      - "verification/RENDER_GATE_CHECKLIST.md (before rendering: verify data completeness + visual rendering)"
     time_estimate_minutes: 30
-    rule: "Read in order. Do not skip. VISUAL_DESIGN_MANDATORY and RENDER_GATE_CHECKLIST have been rewritten to enforce CANONICAL LAYOUT (positive rules, not negative)."
+    rule: >
+      Read in this order. EXTERNAL_SOURCES.md contains ALL external data URLs and must be read BEFORE collecting data.
+      DATA_SOURCES.md defines WHERE to find information. DATA_COLLECTION_MANDATORY.md defines HOW to collect.
+      VISUAL_DESIGN_MANDATORY and RENDER_GATE_CHECKLIST enforce CANONICAL LAYOUT and render verification.
+      All instructions are POSITIVE (describe what to do) — never "don't" but always "use X instead".
 
   step_2:
     name: "Fetch LIVE GitHub Data — COMPLETE REPOSITORY AUDIT"

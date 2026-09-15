@@ -146,9 +146,9 @@ Q: **Does the slide follow VISUAL_DESIGN_MANDATORY?**
 - ✅ Yes → continue
 - ❌ No → STOP, fix design first
 
-Q: **Are all sources verifiable from GitHub?**
+Q: **Is all required data verified from an allowed source (GitHub primary, Sheets/Protocol fallback)?**
 - ✅ Yes → continue
-- ❌ No → STOP, remove unverified content
+- ❌ No (data is from unallowed source) → STOP, use allowed sources only
 
 ---
 
@@ -179,17 +179,18 @@ VISAR MED "??":
 REGEL: Saknad assignee är ALDRIG blocker. Visa alltid "??" istället.
 ```
 
-### 3. DATA ÄR VERIFIERAD (INTE FABRICERAD)
+### 3. DATA ÄR VERIFIERAD FRÅN TILLÅTNA KÄLLOR
 
 ```
 MÅSTE uppfyllas:
-✅ Alla siffror från GitHub (commits, PRs, dates)
+✅ Alla siffror från GitHub, Google Sheets, eller mötesprotokollet (EXTERNA_SOURCES.md allowlist)
 ✅ Alla namn från TEAM_ROSTER.md
-✅ Inga gissningar eller "förväntas"
+✅ Ingen gissad data ("vi förväntar oss...", "normalt skulle...")
+✅ Ingen inference utan verifiering ("baserat på...")
 
-OM FABRICERAD DATA:
-❌ "Denna slide innehåller fabricerad data: 'vi förväntar oss...'"
-→ STOPP, använd endast verifierad data
+OM VERIFIERING SAKNAS:
+❌ "Denna slide innehåller ogodkänd data"
+→ STOPP, använd endast verifierad data från allowlisted sources
 ```
 
 ### 4. MÖTESPROTOKOLLET — OPTIONAL CONTEXT (INTE BLOCKERANDE)
@@ -323,9 +324,10 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
 **DATA COMPLETENESS:**
 ```
   [ ] DATA_AUDIT generated and passed (all checksums: COUNT, SET, UNIQUENESS, TEAM_COMPLETENESS)
-  [ ] Minimum 1 verified activity this week (PR/issue/commit/branch)
+  [ ] Minimum 1 verified activity this week (from GitHub, Sheets, or allowed fallback)
   [ ] All 7 team members accounted for (with work OR marked "no activity")
-  [ ] All data from GitHub (no invented/cached data)
+  [ ] All data from allowlisted sources (EXTERNAL_SOURCES.md), no fabricated data
+  [ ] If GitHub endpoint failed, fallback source (Sheets/Protocol) successfully used
 ```
 
 **CONTENT INTEGRITY:**
