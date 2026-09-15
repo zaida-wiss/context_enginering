@@ -46,7 +46,8 @@ required_datasets:
 
     fallback_order:
       1: "GitHub web: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
-      2: "Google Sheets: see EXTERNAL_SOURCES.md"
+      2: "Repository home + manual /pulls navigation: https://github.com/chas-challenge-2026/avanza-team1"
+      3: "Google Sheets: see EXTERNAL_SOURCES.md"
 
     verification_only:
       - "Individual PR pages (verification only, not for completeness discovery)"
@@ -55,10 +56,14 @@ required_datasets:
     fields:
       - id (PR number)
       - title
-      - author
+      - assignees[] (CRITICAL: who worked on this PR, not who merged it)
       - merged_at (timestamp)
       - base.ref
       - linked_issues (if available)
+
+    CRITICAL_RULE: >
+      Show PR by ASSIGNEE (person who worked on the code), NOT by merger.
+      If PR has multiple assignees: list all. If no assignee: mark as "unassigned".
 
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
@@ -97,12 +102,19 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
 reporting_period:
-  definition: "Previous Monday 00:00 through current Monday 00:00 (exclusive), Europe/Stockholm"
+  definition: "7 days prior to meeting time through meeting time (exclusive), Europe/Stockholm"
   timezone: "Europe/Stockholm"
+  meeting_time: "Monday 09:00"
 
   calculation:
-    REPORTING_PERIOD_START: "meeting_date - 7 calendar days at 00:00 Europe/Stockholm (inclusive)"
-    REPORTING_PERIOD_END: "meeting_date at 00:00 Europe/Stockholm (exclusive)"
+    REPORTING_PERIOD_START: "meeting_date at 09:00 minus 7 calendar days, Europe/Stockholm (inclusive)"
+    REPORTING_PERIOD_END: "meeting_date at 09:00 Europe/Stockholm (exclusive)"
+
+  example:
+    meeting_date: "2026-09-22 (Monday)"
+    REPORTING_PERIOD_START: "2026-09-15 09:00 Europe/Stockholm (last Monday 09:00)"
+    REPORTING_PERIOD_END: "2026-09-22 09:00 Europe/Stockholm (this Monday 09:00, not included)"
+    coverage: "Work completed between these two timepoints"
 
   compare_fields:
     merged_pr: "merged_at"

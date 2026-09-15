@@ -90,8 +90,10 @@ Presentation generation:
 | **Issues (OPEN)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open |
 | **Pull Requests (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
 | **Merged PRs (@today-1w)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=merged%3A%3E%40today-1w |
-| **Merged PRs (ALL — fallback)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged |
-| **Merged PRs (API — with timestamp)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&per_page=100 (filter by merged_at ≠ null and within REPORTING_PERIOD) |
+| **Merged PRs (API — canonical)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&per_page=100 (filter by merged_at ≠ null and within REPORTING_PERIOD, use assignees[] for work owner) |
+| **Merged PRs (Web fallback 1)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+state%3Amerged |
+| **Merged PRs (Repo fallback 2)** | https://github.com/chas-challenge-2026/avanza-team1 → navigate to /pulls |
+| **Merged PRs (Raw fallback 3)** | https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/.github/workflows/pr-list.json (if branch metadata available) |
 
 ### Project Board & Fallback
 | Resource | Primary | Fallback | Notes |
