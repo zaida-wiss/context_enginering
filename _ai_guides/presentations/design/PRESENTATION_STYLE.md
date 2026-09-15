@@ -40,7 +40,7 @@ Denna fil visar EXAKTA layouts & designexempel som måste följas.
 
 Varje slide med arbetslista kan ha två lager om det passar designen:
 
-**Visuell mötesstöd:** Ikoner, färger, checklistor, diagram  
+**Visuell mötesstöd:** Ikoner, färger, checklistor, diagram
 **Text-innehål:** Redigerbar text som går att kopiera
 
 Användaren ser bara ett samstämt möte, inte någon märkning av "kopierbar text".
@@ -159,8 +159,8 @@ KÄNSLA UTAN ATT SÄGA DET EXPLICIT:
 ### REGEL: FÄRGER ÄR ALDRIG DEKORATION
 
 ✅ **Grön** = verifierat positivt framsteg
-✅ **Orange/Gul** = pågående, avvikelse, eller behov av uppmärksamhet  
-✅ **Röd** = endast verkligt blockerande/kritiskt  
+✅ **Orange/Gul** = pågående, avvikelse, eller behov av uppmärksamhet
+✅ **Röd** = endast verkligt blockerande/kritiskt
 ✅ **Lila/Blå/Rosa** = neutrala kategorier, struktur eller teamindelning
 
 ❌ Använd ALDRIG färg för att se fin ut
@@ -296,7 +296,7 @@ Om assignee är uppenbart överbelastad = FRÅGA OM BALANS (denna vecka kan Marc
 
 ## 🚨 MEGA-REGEL 2: Verifiera Git-Status & Jämför Med Project Board
 
-**AI MÅSTE:** 
+**AI MÅSTE:**
 1. Köra git-commands för FAKTISK data (inte gissa)
 2. Jämföra mot Project Board
 3. Märka diskrepanser (Board kan stale)
@@ -343,7 +343,7 @@ Varje siffra, datum, mål måste komma från:
 ```
 ❌ DÅLIGT: "Vi säkrar kärnflödet denna vecka"
 
-✅ BÄTTRE: "Vi fokuserar på kärnflödet: 
+✅ BÄTTRE: "Vi fokuserar på kärnflödet:
            portföljöversikten end-to-end (hela flödet från inmatning till visning).
            Git visar 5 commits denna vecka."
 
@@ -377,7 +377,7 @@ Om 14pt inte funkar → 18pt + större element eller dela sliden.
 
 ```
 ☐ Rubrik: 28 pt
-☐ Huvudtext: 16 pt  
+☐ Huvudtext: 16 pt
 ☐ Metadata (issue #, assignee): 14 pt
 ```
 
@@ -416,7 +416,7 @@ STATUSFÄRGER (ENDAST NÄR STATUS FINNS):
 
 EXEMPEL PÅ KORREKT ANVÄNDNING:
   ❌ DÅLIGT: Backend-kort är helt orange
-  ✅ RÄTT: Backend-kort är blågrå. Inne i kortet 
+  ✅ RÄTT: Backend-kort är blågrå. Inne i kortet
            markeras risken med en liten orange indikator.
 ```
 
@@ -454,7 +454,7 @@ RESULTAT: NPF-vänlig presentation med rätt design & regler
 
 **Du får ALDRIG hitta på något.**
 
-Varje siffra, datum, mål, och statistik i presentationen MÅSTE komma från dessa och ENDAST dessa kilder:
+Varje siffra, datum, mål, och statistik i presentationen MÅSTE komma från dessa och ENDAST dessa källor:
 
 ```
 🔴 TVINGANDE KÄLLKRAV:
@@ -731,7 +731,7 @@ Background: Ljus nyans av status-färg (10% opacity)
      - Listor av issues (som inte är om framsteg)
      - Deadlines (information, inte status)
      - Åtgärdsförslag (innehål, inte bedömning)
-     
+
 
 Kontrast: HIGH (4.5:1 minimum vs background)
 Padding inuti: 16px

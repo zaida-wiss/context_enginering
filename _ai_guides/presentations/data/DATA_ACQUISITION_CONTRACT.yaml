@@ -47,13 +47,14 @@ required_datasets:
     fallback: "None — local file is authoritative"
 
   merged_prs:
-    canonical_source:
-      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
-      reference: "EXTERNAL_SOURCES.md: GitHub Sources → REQUIRED → Merged PRs (API)"
+    source_id: "GITHUB_MERGED_PRS"
+    reference: "EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS (canonical source of truth for URL, access methods, fallback chain)"
 
     allowed_access_methods:
       - "github_connector (preferred)"
       - "github_api (direct HTTPS GET)"
+
+    primary_method_binding: "EXTERNAL_SOURCES.yaml defines primary.method = github_connector. This is BINDING and MUST be used first. Do NOT use github_api unless primary fails."
 
     forbidden_access_methods:
       - "web_search"
@@ -70,8 +71,8 @@ required_datasets:
       on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
 
     fallback_chain:
-      1: "github_web (only if canonical fails): https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged"
-      2: "google_sheets (only if GitHub connector available AND canonical+web both failed)"
+      1: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[0] (github_web)"
+      2: "See EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
 
     pagination:
       required: true
@@ -109,13 +110,14 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
   active_issues:
-    canonical_source:
-      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
-      reference: "EXTERNAL_SOURCES.md: GitHub Sources → REQUIRED → Open Issues (API)"
+    source_id: "GITHUB_OPEN_ISSUES"
+    reference: "EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES (canonical source of truth for URL, access methods, fallback chain)"
 
     allowed_access_methods:
       - "github_connector (preferred)"
       - "github_api (direct HTTPS GET)"
+
+    primary_method_binding: "EXTERNAL_SOURCES.yaml defines primary.method = github_connector. This is BINDING and MUST be used first. Do NOT use github_api unless primary fails."
 
     forbidden_access_methods:
       - "web_search"
@@ -132,9 +134,8 @@ required_datasets:
       on_violation: "STOP. Report: forbidden access method attempted for active_issues"
 
     fallback_chain:
-      1: "github_web (only if canonical fails): https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
-      2: "google_sheets (only if Google connector available AND canonical+web both failed)"
-      3: "project_board (only as last resort if all else fails)"
+      1: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[0] (github_web)"
+      2: "See EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
 
     pagination:
       required: true

@@ -7,9 +7,11 @@ metadata:
   last_tested: 2026-09-15
 ---
 
-# 🔗 LINK AUDIT — External Sources Status
+# 🔗 LINK AUDIT — Connectivity Status Only
 
-**Purpose:** Document all external URLs used in the presentation pipeline and their connectivity status.
+**Purpose:** Report connectivity status of sources defined in EXTERNAL_SOURCES.yaml. This is a DIAGNOSTIC file only.
+
+**🚨 IMPORTANT:** URL definitions, IDs, access methods, and classifications are owned by [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml). This file reports test results only — it does NOT define sources.
 
 ---
 
@@ -22,10 +24,10 @@ metadata:
 | **avanza-team1 issues (open)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open | EXTERNAL_SOURCES.md | Open issues filter | ✅ WORKING | 2026-09-15 |
 | **avanza-team1 PRs (all)** | https://github.com/chas-challenge-2026/avanza-team1/pulls | EXTERNAL_SOURCES.md | PR list | ✅ WORKING | 2026-09-15 |
 | **avanza-team1 merged PRs (week)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=merged%3A%3E%40today-1w | EXTERNAL_SOURCES.md | Week-filtered merged PRs | ✅ WORKING | 2026-09-15 |
-| **avanza-team1 merged PRs (API canonical)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100 | EXTERNAL_SOURCES.md, DATA_ACQUISITION_CONTRACT.yaml | Canonical merged PRs endpoint | ✅ WORKING | 2026-09-15 |
-| **avanza-team1 merged PRs (web fallback)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged | EXTERNAL_SOURCES.md, DATA_ACQUISITION_CONTRACT.yaml | Web fallback for merged PRs | ✅ WORKING | 2026-09-15 |
-| **context_enginering repo** | https://github.com/zaida-wiss/context_enginering | EXTERNAL_SOURCES.md, README.md | This repository | ✅ WORKING | 2026-09-15 |
-| **Project Board** | https://github.com/orgs/chas-challenge-2026/projects/31 | EXTERNAL_SOURCES.md | GitHub Projects board | ⚠️ UNTESTED | — |
+| **avanza-team1 merged PRs (API canonical)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100 | EXTERNAL_SOURCES.yaml (GITHUB_MERGED_PRS) | Canonical merged PRs endpoint | ✅ WORKING | 2026-09-15 |
+| **avanza-team1 merged PRs (web fallback)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged | EXTERNAL_SOURCES.yaml (GITHUB_MERGED_PRS.fallbacks) | Web fallback for merged PRs | ✅ WORKING | 2026-09-15 |
+| **context_enginering repo** | https://github.com/zaida-wiss/context_enginering | EXTERNAL_SOURCES.yaml (GITHUB_CONTEXT_ENGINEERING) | This repository | ✅ WORKING | 2026-09-15 |
+| **Project Board** | https://github.com/orgs/chas-challenge-2026/projects/31 | EXTERNAL_SOURCES.yaml (GITHUB_PROJECT_BOARD) | GitHub Projects board | ⚠️ UNTESTED | — |
 
 ---
 
@@ -33,12 +35,12 @@ metadata:
 
 | Source | URL | Location in Repo | Purpose | Status | Last Tested |
 |--------|-----|------------------|---------|--------|-------------|
-| **Project Data (view)** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/ | EXTERNAL_SOURCES.md | Fallback: commits, PRs, issues, board | ⚠️ BLOCKED | 2026-09-15 |
-| **Project Data (CSV export)** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=csv | EXTERNAL_SOURCES.md, DATA_ACQUISITION_CONTRACT.yaml | Fallback CSV export | ⚠️ BLOCKED | 2026-09-15 |
-| **Project Data (Excel export)** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=xlsx | EXTERNAL_SOURCES.md | Fallback Excel export | ⚠️ BLOCKED | 2026-09-15 |
-| **Risk Register (view)** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/ | EXTERNAL_SOURCES.md | Risk/asset register | ⚠️ BLOCKED | 2026-09-15 |
-| **Risk CSV** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285 | EXTERNAL_SOURCES.md | Risk export | ⚠️ BLOCKED | 2026-09-15 |
-| **Assets CSV** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349 | EXTERNAL_SOURCES.md | Assets export | ⚠️ BLOCKED | 2026-09-15 |
+| **Project Data (view)** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/ | EXTERNAL_SOURCES.yaml (GOOGLE_PROJECT_DATA_SHEET) | Fallback: commits, PRs, issues, board | ⚠️ BLOCKED | 2026-09-15 |
+| **Project Data (CSV export)** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=csv | EXTERNAL_SOURCES.yaml (GOOGLE_PROJECT_DATA_SHEET.formats) | Fallback CSV export | ⚠️ BLOCKED | 2026-09-15 |
+| **Project Data (Excel export)** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=xlsx | EXTERNAL_SOURCES.yaml (GOOGLE_PROJECT_DATA_SHEET.formats) | Fallback Excel export | ⚠️ BLOCKED | 2026-09-15 |
+| **Risk Register (view)** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/ | EXTERNAL_SOURCES.yaml (GOOGLE_RISK_REGISTER) | Risk/asset register | ⚠️ BLOCKED | 2026-09-15 |
+| **Risk CSV** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285 | EXTERNAL_SOURCES.yaml (GOOGLE_RISK_REGISTER.formats) | Risk export | ⚠️ BLOCKED | 2026-09-15 |
+| **Assets CSV** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349 | EXTERNAL_SOURCES.yaml (GOOGLE_RISK_REGISTER.formats) | Assets export | ⚠️ BLOCKED | 2026-09-15 |
 
 ---
 
@@ -46,10 +48,10 @@ metadata:
 
 | Source | URL | Location in Repo | Purpose | Status | Last Tested |
 |--------|-----|------------------|---------|--------|-------------|
-| **Meeting Protocol (view & edit)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit | EXTERNAL_SOURCES.md | Weekly meeting decisions | ⚠️ BLOCKED | 2026-09-15 |
-| **Meeting Protocol (TXT export)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt | EXTERNAL_SOURCES.md | Text export | ⚠️ BLOCKED | 2026-09-15 |
-| **Meeting Protocol (PDF export)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf | EXTERNAL_SOURCES.md | PDF export | ⚠️ BLOCKED | 2026-09-15 |
-| **Meeting Protocol (HTML export)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=html | EXTERNAL_SOURCES.md | HTML export | ⚠️ BLOCKED | 2026-09-15 |
+| **Meeting Protocol (view & edit)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit | EXTERNAL_SOURCES.yaml (GOOGLE_MEETING_PROTOCOL) | Weekly meeting decisions | ⚠️ BLOCKED | 2026-09-15 |
+| **Meeting Protocol (TXT export)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt | EXTERNAL_SOURCES.yaml (GOOGLE_MEETING_PROTOCOL.formats) | Text export | ⚠️ BLOCKED | 2026-09-15 |
+| **Meeting Protocol (PDF export)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf | EXTERNAL_SOURCES.yaml (GOOGLE_MEETING_PROTOCOL.formats) | PDF export | ⚠️ BLOCKED | 2026-09-15 |
+| **Meeting Protocol (HTML export)** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=html | EXTERNAL_SOURCES.yaml (GOOGLE_MEETING_PROTOCOL.formats) | HTML export | ⚠️ BLOCKED | 2026-09-15 |
 
 ---
 
@@ -57,8 +59,8 @@ metadata:
 
 | Source | URL | Location in Repo | Purpose | Status | Last Tested |
 |--------|-----|------------------|---------|--------|-------------|
-| **WebAIM Contrast Checker** | https://webaim.org/resources/contrastchecker/ | EXTERNAL_SOURCES.md | WCAG AA/AAA validation (reference only) | ✅ WORKING | — |
-| **Localhost** | http://localhost:3000 | EXTERNAL_SOURCES.md | Local dev server (reference only) | N/A | — |
+| **WebAIM Contrast Checker** | https://webaim.org/resources/contrastchecker/ | EXTERNAL_SOURCES.yaml (WEBAIM_CONTRAST_CHECKER) | WCAG AA/AAA validation (reference only) | ✅ WORKING | — |
+| **Localhost** | http://localhost:3000 | EXTERNAL_SOURCES.yaml (LOCALHOST_DEV_SERVER) | Local dev server (reference only) | N/A | — |
 
 ---
 
@@ -66,7 +68,7 @@ metadata:
 
 | Source | Original URL | Location | Reason | Status |
 |--------|--------------|----------|--------|--------|
-| **Raw fallback (pr-list.json)** | https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/.github/workflows/pr-list.json | EXTERNAL_SOURCES.md (removed), DATA_ACQUISITION_CONTRACT.yaml (removed) | File not found (404), wrong branch | ❌ DELETED |
+| **Raw fallback (pr-list.json)** | https://raw.githubusercontent.com/chas-challenge-2026/avanza-team1/main/.github/workflows/pr-list.json | Removed from EXTERNAL_SOURCES.yaml | File not found (404), wrong branch | ❌ DELETED |
 
 ---
 

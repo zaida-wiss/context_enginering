@@ -23,7 +23,7 @@
 ```
 Du: "Läs mötesprotokollet från denna länk:
     https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt
-    
+
     Sedan: Förbered FÖR mandagsmötet"
 ```
 
@@ -56,7 +56,7 @@ NU presenterar jag mötet baserat på detta:"
 
 **OM AI INTE KAN LÄSA mötesprotokollet:**
 ```
-❌ "Jag kan inte läsa mötesprotokollet från länken 
+❌ "Jag kan inte läsa mötesprotokollet från länken
    (autentisering krävs eller länken nåbar).
 
 🔴 UTAN mötesprotokollet kan jag inte presentera ordentligt!
@@ -83,7 +83,7 @@ Väntar på mötesprotokollet innan jag presenterar..."
 ✅ STEG 0: KÄLLBEKRÄFTELSE & RENSA (alltid först, samma plats)
    • Läs mötesprotokollet FÖRST
    • Läs git log, GitHub, Google Sheets
-   • Bekräfta alla lästa kilder
+   • Bekräfta alla lästa källor
    • 🔴 RENSA bort tidigare samtalhistorik
    • Svara ENDAST baserat på källorna
 
@@ -134,7 +134,7 @@ Väntar på mötesprotokollet innan jag presenterar..."
    • Typografi: Samma hierarki
 ```
 
-**Du behöver INTE säga mer än:** `"Ge mig en presentation"`  
+**Du behöver INTE säga mer än:** `"Ge mig en presentation"`
 **AI levererar SAMMA IGENKÄNNBAR STRUKTUR varje gång** ✅
 
 ---
@@ -557,10 +557,10 @@ AI: (Läser alltid från Google Sheets direkt)
    1. ✅ Läser Google Sheets Risker: https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285
    2. ✅ Läser git log för att verifiera mitigations
    3. ✅ Identifierar om detta är en ny risk
-   
+
 AI: Presenterar risken i Google Sheets-format:
    Asset / system | Category | Risk | Cause | Consequence | Likelihood | Impact | Risk score | Risk level | Response | Mitigation | Owner | Status
-   
+
 AI: Instruktion: "Lägg till denna risken i Google Sheets om du håller med"
 ```
 
@@ -613,7 +613,7 @@ AI: Presenterar:
 
 ### "Ge Mig Risk Status Presentation" (Nuläge på Risker)
 ```
-Du: "Ge mig risk status presentation" 
+Du: "Ge mig risk status presentation"
     ELLER "Risk-rapport denna vecka"
     ELLER "Hur ser det ut med risker?"
 
@@ -631,17 +631,17 @@ PRESENTERA (i denna ordning):
 
    4. Risk Status Tabell (Google Sheets format):
       Asset / system | Category | Risk | Status | Risk level | Mitigation | Owner | Deadline
-      
+
    5. Risker Efter Status:
       - 🔴 CRITICAL risker (lista alla)
       - 🟠 HIGH risker (lista alla)
       - 🟡 MEDIUM risker (lista alla)
-      
+
    6. Mitigations i Progress:
       - Vad jobbar vi på?
       - Framsteg denna vecka?
       - Blockers?
-      
+
    7. Nästa Steg:
       - Vad måste vi adressera denna vecka?
       - Vilka risker närmar sig deadline?
@@ -651,14 +651,14 @@ VIKTIGT:
    ⚠️ BERÄTTA vilken källa: "Läst från: Google Sheets Risker"
    ✅ Presentera i tabellformat (klar för copy-pasta)
    ✅ Fokusera på CRITICAL/HIGH (ignorera LOW)
-   
+
 VERIFIKATION MOT NULÄGET:
    🔍 För varje risk - stämma av:
    - Risk säger "Mitigated" → Verifiera: Finns commits för denna mitigation? (kolla git)
    - Risk säger "In Progress" → Verifiera: Pågår arbetet? Är det mergat?
    - Risk säger "Open" → Verifiera: Är detta fortfarande en hot? Eller redan löst?
    - 🚨 Mismatch → FLAGGA: "⚠️ Risk #XX verkar löst men status uppdaterad i Google Sheets?"
-   
+
    För varje asset:
    - Asset säger "Active" → Verifiera: Finns den fortfarande i koden?
    - Asset säger "Deprecated" → Verifiera: Är den verkligen borttagen?
@@ -691,7 +691,7 @@ LÄSA - GIT COMMIT HISTORY:
       - Vilka commits är på develop?
       - Format bör vara: type(scope): message (#ISSUE)
       - Vilka issue-nummer refereras?
-      
+
    2. ✅ Läser git log på feature/* och fix/* branches
       - Vilka branches är aktiva (senaste commit < 7 dagar)?
       - Vad jobbar de på?
@@ -709,13 +709,13 @@ LÄSA - PULL REQUESTS & REVIEWS:
       - Vilka väntar på review (keine approvals)?
       - Vilka är reviewade (approvals)?
       - Vilka väntar på fixes (changes requested)?
-      
+
    5. ✅ Läser Closed/Merged PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed
       - Vilka PRs är mergade denna vecka?
       - Vilka är closed utan merge?
 
 VERIFIERING - STÄMMA AV:
-   
+
    ✅ DONE vs MERGED:
    - Issue #XX säger "Done" på Project Board
    - ✓ Verifiera: Är den mergad till develop? (kolla git log develop + PR closed)
@@ -723,7 +723,7 @@ VERIFIERING - STÄMMA AV:
    - ✓ Verifiera: PR status = Merged (eller Closed)?
    - 🚨 IF mismatch: "⚠️ Issue #XX säger Done men ingen commit på develop denna vecka"
    - 🚨 IF PR inte merged: "⚠️ PR för #XX är closed utan merge"
-   
+
    🟡 IN PROGRESS vs COMMITS & PR STATUS:
    - Issue #XX säger "In Progress" på Project Board
    - ✓ Verifiera: Finns commits på feature/#XX branch?
@@ -735,7 +735,7 @@ VERIFIERING - STÄMMA AV:
    - 🚨 IF ingen commit: "⚠️ Issue #XX är In Progress men ingen commit denna vecka"
    - 🚨 IF PR väntar på review >2 dagar: "⚠️ PR #YY för #XX väntar på review - prioritera review!"
    - 🚨 IF PR har changes requested: "⚠️ PR #YY kräver fixes innan merge"
-   
+
    🟢 TO DO vs BRANCHES & PRS:
    - Issue #XX säger "To Do" på Project Board
    - ✓ Verifiera: Finns feature/#XX branch redan?
@@ -744,12 +744,12 @@ VERIFIERING - STÄMMA AV:
    - 🚨 IF finns PR: "⚠️ Issue #XX är To Do men PR redan öppen (#YY) - uppdatera status"
 
 PRESENTERA MISMATCH-RAPPORT:
-   
+
    📊 SUMMARY:
    ✅ X issues korrekt (Done + mergad, eller To Do + ingen branch)
    ⚠️ Y issues med mismatch (Du måste uppdatera Project Board / PR)
    🔴 Z PRs som blockerar (väntar på review, changes requested)
-   
+
    🚨 MISMATCHES (Kräver handling):
    - [Tabell] Issue # | Title | Status | Git Branch | PR Status | Åtgärd
    - Exempel:
@@ -757,13 +757,13 @@ PRESENTERA MISMATCH-RAPPORT:
      - #54 | Dashboard | Done | f/54 has commits | PR #101 väntar review ⚠️ → Prioritera review!
      - #56 | FX Converter | In Progress | f/56 aktiv | PR #102 approved ✅ → Ready för merge
      - #57 | Back-testing | To Do | f/57 exists | PR #103 changes req ⚠️ → Owner måste fixa
-   
+
    🔴 BLOCKERS - PRS VÄNTAR:
    - [Tabell] PR # | Issue # | Author | Status | Väntar på | Tid väntad
    - Exempel:
      - #101 | #54 | @dev1 | Needs Review | Reviewer | 2 dagar → PRIORITERA!
      - #103 | #57 | @dev2 | Changes Requested | Author fixes | 1 dag
-   
+
    🎯 REKOMMENDATIONER:
    - "Dessa issues behöver uppdateras på Project Board: #54, #57"
    - "Dessa är korrekt uppdaterade: #52, #56"
@@ -810,7 +810,7 @@ PRESENTERA (MÖTES-FORMAT):
    Tabell: #XX | Title | Owner | Branch | Merged
    - Visa alla issues som är Done denna vecka
    - Visa om de är mergade till develop
-   
+
    🟡 IN PROGRESS (Pågår nu):
    Tabell: #XX | Title | Owner | Status | Branch | PR # | PR Status | Blocker?
    - Visa alla issues i In Progress
@@ -819,19 +819,19 @@ PRESENTERA (MÖTES-FORMAT):
    - Flagga PRs som väntar på review > 2 dagar (🔴 BLOCKERA!)
    - Flagga blockers/kritiska (🔴)
    - Visa progress/commits denna vecka
-   
+
    🟢 TO DO / BACKLOG (Nästa på tur):
    Tabell: #XX | Title | Priority | Estimate | Owner | Ready?
    - Top 5 prioriterade
    - Vilka kan starta nästa?
    - Vilka är kritiska för deadline?
-   
+
    🚨 BLOCKERS & KRITISKA:
    - Lista alla blockers (red flags)
    - Lista alla CRITICAL priority issues
    - Vad behöver vi göra?
    - Vilka är beroenden?
-   
+
    ⏰ DEADLINE RISK:
    - Dagar kvar till Sep 24 (CTO deadline)
    - Issues som måste vara Done innan SWE23
@@ -843,14 +843,14 @@ VIKTIGASTE:
    ✅ Fokusera på KRITISKA och BLOCKERS
    ✅ Visa nästa backlog-items
    ✅ Ge konkreta rekommendationer
-   
+
 VERIFIKATION (KRITISK):
    🔍 STÄMMA AV MOT NULÄGET - för VARJE issue:
    - Issue säger "Done" → Verifiera: Är den mergad till develop? (kolla git log)
    - Issue säger "In Progress" → Verifiera: Finns commits denna vecka? (kolla git)
    - Issue säger "To Do" → Verifiera: Är den verkligen inte påbörjad?
    - 🚨 Om något stämmer inte → FLAGGA DETTA: "⚠️ Issue #XX säger Done men ingen merge på develop"
-   
+
    Samma verifikation för RISKER & ASSETS:
    - Risk säger "Mitigated" → Verifiera: Finns commits för mitigation?
    - Asset säger "Active" → Verifiera: Är den faktiskt i användning?
@@ -945,7 +945,7 @@ KRITISKT:
    ✅ Ge KONKRETA rekommendationer
    ✅ Inkludera RISKER + DEADLINES
    ✅ Verifiera action items från förra möte
-   
+
 VERIFIKATION MOT NULÄGET:
    🔍 Stämma av mellan sources:
    - Project Board säger "Done" → Verifiera: Mergad till develop? (kolla git)
@@ -1040,7 +1040,7 @@ File: src/path/file.tsx
 Dependencies: #XX (if any)
 Framework: React + TypeScript
 
-**Blockers:** 
+**Blockers:**
 None (eller "WAITS FOR: #XX API")
 
 **Definition of Ready:** (innan vi börjar)
@@ -1153,7 +1153,7 @@ feat(frontend): Add LoginForm | [se ovan format] | @developer-name | To Do | Hig
    - `[Native]` — C/C++ calculations
    - `[Docs]` — Documentation
    - `[DevOps]` — Infrastructure
-   
+
    ✅ Exempel: `[Frontend] Linked target-allocation inputs (sum always 100)`
    ❌ Felaktigt: `Add LoginForm` (ingen kategori)
 
@@ -1276,7 +1276,7 @@ AI: Svar innehåler:
 
 ## 🎓 MENTORSHIP-MODELL — INTE CODEGEN!
 
-⚠️ **DET VIKTIGASTE CONCEPTET:**  
+⚠️ **DET VIKTIGASTE CONCEPTET:**
 AI guider DIG att TÄNKA genom arkitekturen. Du implementerar. AI granskar.
 **KODEXEMPEL KOMMER LÄNGST NED** — tvinga dig själv att tänka först!
 
@@ -1288,7 +1288,7 @@ AI guider DIG att TÄNKA genom arkitekturen. Du implementerar. AI granskar.
 
 2️⃣ ARKITEKTUR-FRÅGOR (INNAN KOD!)
    AI: Läser din issue. Ställer frågor:
-        
+
         💭 "Vilken state behöver komponenten?"
         💭 "Ska validation ligga i komponenten eller modulen?"
         💭 "Hur flödar error-meddelanden tillbaka?"
@@ -1308,8 +1308,8 @@ AI guider DIG att TÄNKA genom arkitekturen. Du implementerar. AI granskar.
         ✅ Rätt state-placering
         ✅ Bra separation of concerns
         ✅ Korrekt routing
-        
-        Märkte du att du inte använder logout? 
+
+        Märkte du att du inte använder logout?
         Och validering här är redundant — två villkor för samma sak."
 
 6️⃣ KODEXEMPEL (om du behöver — längst ner i denna fil)
@@ -1405,7 +1405,7 @@ AI: Listar:
 **Hur du copy-pastas issue-data som AI kan läsa:**
 
 ```
-1. Öppna issue på GitHub: 
+1. Öppna issue på GitHub:
    https://github.com/chas-challenge-2026/avanza-team1/issues/52
 
 2. Copy-pasta issue-innehållet i detta format:
@@ -1414,7 +1414,7 @@ AI: Listar:
 ISSUE CONTEXT:
 Title: [Issue title från GitHub]
 
-Description: 
+Description:
 [Hela issue-beskrivningen]
 
 Acceptance Criteria:
@@ -1442,7 +1442,7 @@ För **VARJE STEG** presentera:
 STEG 1: Skapa API-endpoint
 
 🎯 VAD:
-Du behöver skapa en REST-endpoint GET /api/portfolio 
+Du behöver skapa en REST-endpoint GET /api/portfolio
 som returnerar användarens portföljdata
 
 🔧 HUR:
@@ -1463,7 +1463,7 @@ som returnerar användarens portföljdata
 STEG 2: Skapa Integration Test
 
 🎯 VAD:
-Du behöver skriva ett test som verifierar att 
+Du behöver skriva ett test som verifierar att
 endpoint returnerar rätt data
 
 🔧 HUR:
@@ -1495,15 +1495,15 @@ Under gången får du också:
 
 ```
 Du: [Paste samma issue-innehål som ovan]
-    
+
     Jag har gjort detta:
     - Feature implementerad
     - Tests skrivna
     - PR: https://github.com/.../pull/123
-    
+
     Du: "Uppfyller jag acceptance criteria och DoD?"
 
-AI: (KRITISKT!) 
+AI: (KRITISKT!)
    ❌ LÄSER INTE bara issue-body DoD-checklistan
    ✅ LÄSER DEFINITION_OF_DONE.md för aktuell DoD-standard
    ✅ VERIFIERAR att issue-body inkluderar ALLT från DoD
@@ -1613,7 +1613,7 @@ Resultat:
 ```
    ✅ Acceptance Criteria
    ✅ Kodstandarder (TEAMSTANDARDS.md)
-   
+
 AI: Presenterar:
    ✅ Vad som är bra
    ⚠️ Vad som saknas
@@ -1629,7 +1629,7 @@ AI: Läser:
    - GitHub Project Board (prioritering + backlog)
    - Google Sheets Risker (vilka risker påverkas)
    - GitHub Project Board (beroenden mellan issues)
-   
+
 AI: Rekommenderar:
    - Top 3 candidates
    - Varför dessa är viktiga
@@ -1886,6 +1886,6 @@ Korta kommandon du kan använda:
 
 ---
 
-*Last Updated: 2026-09-04*  
-*Purpose: Quick guide to AI capabilities in this project*  
+*Last Updated: 2026-09-04*
+*Purpose: Quick guide to AI capabilities in this project*
 *Note: This file is AI-generated help text — use it as a menu*

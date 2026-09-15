@@ -3,7 +3,7 @@
 **Team process, AI guidelines, and decision logs.**  
 **Project code:** https://github.com/chas-challenge-2026/avanza-team1
 
-🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) för maskinläsbar register (URLs, IDs, access methods, klassificeringar). Se [`_memory/EXTERNAL_SOURCES.md`](_memory/EXTERNAL_SOURCES.md) för människovänlig introduktion.
 
 ---
 
@@ -57,7 +57,7 @@
 
 **For presentations:**
 - ✅ **Följ: MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml → execution_sequence**
-- ✅ **Verifiera alla REQUIRED datakällor innan rendering** (se [`_memory/EXTERNAL_SOURCES.md`](_memory/EXTERNAL_SOURCES.md) för klassificering: REQUIRED/FALLBACK/OPTIONAL)
+- ✅ **Verifiera alla REQUIRED datakällor innan rendering** (se [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) för klassificering: REQUIRED/FALLBACK/OPTIONAL)
   - REQUIRED: GitHub API, local team roster → must succeed or STOP
   - FALLBACK: GitHub web, Sheets, Docs → try in order if primary fails
   - OPTIONAL: Project Board, Risk Register → nice-to-have if connector available
