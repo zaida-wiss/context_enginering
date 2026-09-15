@@ -2,7 +2,8 @@
 # SYSTEM CONTRACT — Maskinläsbar definition av presentationspipelinen
 #
 # Detta YAML-block är källan till sanning för vilken AI som helst
-# Läs detta FÖRE du läser något annat i context-repot
+# Läs denna direkt efter MANDATORY_READING_ORDER.md
+# Denna fil är därefter enda auktoritet för execution order och authority
 ###############################################################################
 
 task: monday_meeting_presentation
@@ -42,6 +43,7 @@ execution_receipt:
     - "data/DATA_SOURCES.md (WHERE to find data + fallback chain)"
     - "design/VISUAL_DESIGN_MANDATORY.md (CANONICAL LAYOUT rules)"
     - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content per slide)"
+    - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference examples)"
     - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (HOW to collect data)"
     - "verification/RENDER_GATE_CHECKLIST.md (verification gates)"
 
@@ -53,20 +55,37 @@ execution_receipt:
   gate_status: "MUST PASS BEFORE PROCEEDING TO ARTIFACT_GATE"
 
 ###############################################################################
-# ARTIFACT GATE — PREVENTS PREMATURE GENERATION
+# ARTIFACT GATES — ORCHESTRATE BUILD → VERIFY → DELIVER
 ###############################################################################
-artifact_gate:
-  rule: >
-    Do not create PPTX, PDF, or any presentation artifact UNTIL:
-    1. execution_receipt is COMPLETE (all files read in this execution)
-    2. data_audit is COMPLETE (available and verified)
-    3. RENDER_GATE_CHECKLIST checklist PASSED
+artifact_gates:
+  before_build:
+    name: "Gate before internal PPTX build"
+    requires:
+      - "execution_receipt is COMPLETE (all mandatory files read in this execution)"
+      - "data_audit is COMPLETE (data collection verified)"
+    rule: >
+      Do not build slides or internal PPTX until BOTH conditions pass.
+    failure_action: "STOP and report which files not read or data_audit missing"
 
-  failure_action: >
-    STOP artifact generation. Report which gate failed:
-    - execution_receipt: "Files not yet read: [LIST]"
-    - data_audit: "DATA_AUDIT not available; run data collection first"
-    - render_gate: "RENDER_GATE checks failed: [LIST]"
+  before_visual_verification:
+    name: "Gate before visual rendering check"
+    requires:
+      - "PPTX built (from before_build gate)"
+      - "Render internal PPTX to visual format for per-slide verification"
+    rule: >
+      Internal PPTX must be rendered and visually verified per RENDER_GATE_CHECKLIST.
+      This is the visual check step: view each slide, confirm layout/content.
+
+  before_delivery:
+    name: "Gate before final artifact delivery"
+    requires:
+      - "execution_receipt is COMPLETE"
+      - "data_audit is COMPLETE"
+      - "internal PPTX visually verified (render_gate checks passed)"
+    rule: >
+      Do not generate final PDF or PPTX for delivery until all gates pass.
+      Final step: export PDF (default) or PPTX (if explicitly requested).
+    failure_action: "STOP and report which gate failed"
 
 # Note: Authority hierarchy is defined below in the AUTHORITY HIERARCHY section
 # Do not duplicate it here. Remove this section to avoid drift.
