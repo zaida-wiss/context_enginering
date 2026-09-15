@@ -61,5 +61,18 @@ All external URLs (GitHub, Google Sheets, Google Docs) are in: [`_memory/EXTERNA
 
 ---
 
+---
+
+## 🚨 KEY PRINCIPLE: Positive Instructions Only
+
+**Instructions focus on WHAT TO DO, never on WHAT NOT TO DO.**
+
+Instead of: "Don't make a dashboard, don't use cards, don't compress text"  
+We say: "Use CANONICAL LAYOUT: 1 header + 1 message + 1–3 fullwidth blocks, vertically stacked, with fixed spacing."
+
+This prevents misinterpretation. AI builds to the positive spec, not away from negatives.
+
+---
+
 **Version:** 4.0 (Minimal — everything else is in SYSTEM_CONTRACT.yaml)  
 **Status:** PRODUCTION — THE ONLY reading order
