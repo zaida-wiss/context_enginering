@@ -58,12 +58,16 @@ external_sources_policy:
 ###############################################################################
 execution_sequence:
   step_1:
-    name: "Read Mandatory Files"
+    name: "Read Mandatory Files — IN THIS EXACT ORDER"
     files:
-      - "presentations/MANDATORY_READING_ORDER.md"
-      - "presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
-      - "presentations/monday_meeting/design/TEMPLATE_REFERENCE.html"
-    time_estimate_minutes: 20
+      - "MANDATORY_READING_ORDER.md (entry point)"
+      - "design/VISUAL_DESIGN_MANDATORY.md (authoritative layout rules — CRITICAL after recent rewrite)"
+      - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content for each slide)"
+      - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only)"
+      - "data/DATA_COLLECTION_MANDATORY.md (what GitHub data to fetch)"
+      - "verification/RENDER_GATE_CHECKLIST.md (before rendering: visual verification of PPTX)"
+    time_estimate_minutes: 30
+    rule: "Read in order. Do not skip. VISUAL_DESIGN_MANDATORY and RENDER_GATE_CHECKLIST have been rewritten to enforce CANONICAL LAYOUT (positive rules, not negative)."
 
   step_2:
     name: "Fetch LIVE GitHub Data — COMPLETE REPOSITORY AUDIT"

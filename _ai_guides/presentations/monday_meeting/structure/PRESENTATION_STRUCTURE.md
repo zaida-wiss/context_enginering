@@ -14,23 +14,23 @@ metadata:
 
 ## The 14 Meeting Points in Order
 
-| # | Name | Purpose |
-|---|------|---------|
-| - | **Framsida** | Meeting header, this week's focus | See SLIDE_DETAIL_SPEC |
-| ① | **Avklarat sedan förra mötet** (1-3 slides) | What shipped this week | Merged PRs per team |
-| ② | **Aktuell status** (1-3 slides) | What's in progress | Open PRs + active issues |
-| ③ | **Frontend** (1-3 slides) | Frontend-specific status | Team breakdown |
-| ④ | **Backend** (1-3 slides) | Backend-specific status | Team breakdown |
-| ⑤ | **Native** (1-3 slides) | Native-specific status | Team breakdown |
-| ⑥ | **Blockers & Dependencies** (1-2 slides) | What's blocking? | Includes code-review findings |
-| ⑦ | **Risker** (1-2 slides) | What could fail? | Risk + mitigation |
-| ⑧ | **Kapacitet & Estimering** (1 slide) | Do we fit in the week? | Capacity vs plan |
-| ⑨ | **Prioritering & Scope** (1-2 slides) | Phase-based order (what first?) | Fas 1 → 2 → 3 |
-| ⑩ | **Tekniska Beslut** (1 slide) | Architecture decisions needed | Owners for each |
-| ⑪ | **Sprintmål** (1 slide) | What's the goal? | Based on capacity + priorities |
-| ⑫ | **Sprintplan** (1-2 slides) | Timeline + milestones | Daily schedule + deadlines |
-| ⑬ | **Nästa Steg** (1-2 slides) | Action items post-meeting | GitHub actions + owners + deadline |
-| ⑭ | **Frågor till PL** (1 slide) | Open questions for PL | Scope + decisions needed |
+| # | Name | Purpose | Slide Count |
+|---|------|---------|------|
+| - | **Framsida** | Meeting header, this week's focus | 1 |
+| ① | **Avklarat sedan förra mötet** | Merged PRs + closed issues + active issues + branches + commits (ALL verified activity per team) | 1+ (auto-split: ①A, ①B, ①C, ①D, ①E as needed) |
+| ② | **Nuläge & Deadline** | Progress bars + deadline tracker with risk/actions | 1 |
+| ③ | **Frontend** | Frontend-specific detailed status & impediments | 2-3 |
+| ④ | **Backend** | Backend-specific detailed status & impediments | 2-3 |
+| ⑤ | **Native** | Native-specific detailed status & impediments | 2-3 |
+| ⑥ | **Blockers & Dependencies** | What's blocking progress? | 1-2 |
+| ⑦ | **Risker** | What could fail? Risk matrix + mitigations | 1-2 |
+| ⑧ | **Kapacitet & Estimering** | Do we fit? Capacity vs sprint plan | 1 |
+| ⑨ | **Prioritering & Scope** | Phase-based prioritization (1→2→3) | 1-2 |
+| ⑩ | **Tekniska Beslut** | Architecture decisions needed this week | 1 |
+| ⑪ | **Sprintmål** | Sprint goal + success criteria | 1 |
+| ⑫ | **Sprintplan** | Timeline, milestones, daily schedule | 1-2 |
+| ⑬ | **Nästa Steg** | Post-meeting action items → GitHub | 1-2 |
+| ⑭ | **Frågor till PL** | Open questions needing PL decision | 1 |
 
 ---
 
