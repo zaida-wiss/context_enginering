@@ -75,10 +75,10 @@ required_datasets:
         collect_all: true
 
       local_filter:
-        - "assignee != null"
+        - "exclude if key 'pull_request' exists in object"
+        - "assignees.length > 0"
         - "updated_at >= REPORTING_PERIOD_START"
         - "updated_at < REPORTING_PERIOD_END"
-        - "is_pull_request == false"
 
     fallback_order:
       1: "GitHub API (above)"
@@ -90,9 +90,9 @@ required_datasets:
     fields:
       - id (issue number)
       - title
-      - assignee
+      - assignees[] (array of assignee objects)
       - updated_at (timestamp)
-      - labels (for team classification)
+      - labels[] (for team classification)
 
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
@@ -100,14 +100,9 @@ reporting_period:
   definition: "Previous Monday 00:00 through current Monday 00:00 (exclusive), Europe/Stockholm"
   timezone: "Europe/Stockholm"
 
-  dynamic_calculation:
-    REPORTING_PERIOD_START: "meeting_date - 7 days at 00:00"
-    REPORTING_PERIOD_END: "meeting_date at 00:00 (exclusive)"
-
-  example:
-    meeting_date: "2026-09-16 (Monday)"
-    start_inclusive: "2026-09-09 00:00 Europe/Stockholm"
-    end_exclusive: "2026-09-16 00:00 Europe/Stockholm"
+  calculation:
+    REPORTING_PERIOD_START: "meeting_date - 7 calendar days at 00:00 Europe/Stockholm (inclusive)"
+    REPORTING_PERIOD_END: "meeting_date at 00:00 Europe/Stockholm (exclusive)"
 
   compare_fields:
     merged_pr: "merged_at"
