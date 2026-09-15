@@ -53,16 +53,22 @@ required_datasets:
     access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_MERGED_PRS (all allowed/forbidden methods defined there)"
 
     execution_sequence:
-      1_primary: "Use EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.primary.method (github_connector)"
-      2_fallback_1: "If primary fails, use EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[0] (github_web)"
-      3_fallback_2: "If fallback_1 fails, use EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
+      1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
+      2_fallback_1: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
+      3_fallback_2: "GitHub web UI (last resort; requires HTML parsing)"
 
     enforcement:
       rule: >
-        Use methods in sequence per EXTERNAL_SOURCES.yaml.
-        Do not attempt web_search, general_web_access, raw_github, or csv_export — these are forbidden per registry.
-        If all sources fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE for this dataset.
+        1. Try GitHub REST API with any available implementation
+        2. If API fails: try Google Sheets ONLY if freshness can be verified
+        3. If Sheets unavailable or stale: try GitHub web
+        4. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+        Do not attempt web_search, general_web_access, raw_github, or csv_export.
       on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
+
+    freshness_gate_for_sheets: >
+      If Google Sheets fallback is needed, verify last_synced_at timestamp exists and is >= REPORTING_PERIOD_END.
+      If timestamp missing or stale: do NOT use sheet for completeness source. Try GitHub web instead.
 
     pagination:
       required: true
@@ -106,16 +112,22 @@ required_datasets:
     access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_OPEN_ISSUES (all allowed/forbidden methods defined there)"
 
     execution_sequence:
-      1_primary: "Use EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.primary.method (github_connector)"
-      2_fallback_1: "If primary fails, use EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[0] (github_web)"
-      3_fallback_2: "If fallback_1 fails, use EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET)"
+      1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
+      2_fallback_1: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
+      3_fallback_2: "GitHub web UI (last resort; requires HTML parsing and manual issue filtering)"
 
     enforcement:
       rule: >
-        Use methods in sequence per EXTERNAL_SOURCES.yaml.
-        Do not attempt web_search, general_web_access, raw_github, or csv_export — these are forbidden per registry.
-        If all sources fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE for this dataset.
+        1. Try GitHub REST API with any available implementation
+        2. If API fails: try Google Sheets ONLY if freshness can be verified
+        3. If Sheets unavailable or stale: try GitHub web
+        4. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+        Do not attempt web_search, general_web_access, raw_github, or csv_export.
       on_violation: "STOP. Report: forbidden access method attempted for active_issues"
+
+    freshness_gate_for_sheets: >
+      If Google Sheets fallback is needed, verify last_synced_at timestamp exists and is >= REPORTING_PERIOD_END.
+      If timestamp missing or stale: do NOT use sheet for completeness source. Try GitHub web instead.
 
     pagination:
       required: true

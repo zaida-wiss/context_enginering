@@ -1,5 +1,20 @@
 # 📱 Avanza Team 1 — Context & Process Documentation
 
+**🚨 INSTRUCTION AUTHORITY FOR AI WORK**
+
+This repository (`context_enginering`) is the **sole source of truth** for:
+- How AI should work on Avanza Team 1
+- Which data sources are allowed
+- How to build, verify, and deliver presentations
+- Fallback chains, gates, and authority hierarchy
+
+The project code repository (`avanza-team1`) contains:
+- Project code, GitHub issues, pull requests, and project board
+- Workflow documentation, architecture, and technical decisions
+- **NOT** instructions for how AI should acquire or present data
+
+**Do not derive AI workflow, presentation rules, or source authority from the project repository's README.**
+
 **Team process, AI guidelines, and decision logs.**  
 **Project code:** https://github.com/chas-challenge-2026/avanza-team1
 
@@ -21,11 +36,11 @@
    - Follow execution_sequence from SYSTEM_CONTRACT.yaml exactly
    - No presentation artifact may be generated before execution_receipt and data_audit gates pass
    
-   **Snapshot-at-Start Policy:**
-   1. Read README from default branch
-   2. Register repo commit SHA
-   3. Read all subsequent files from same SHA
-   4. This ensures execution stays deterministic across AI models
+   **Version Consistency Policy:**
+   1. Always read latest files from default branch (no SHA lockdown)
+   2. Once a build starts (execution_receipt → data_audit → rendering), use consistent versions within that build
+   3. If repo changes mid-build and you need to restart, read fresh from latest default branch
+   4. This balances: (a) fixes/improvements visible immediately, (b) no rule-version churn within a single build
 
 ### 📚 Jag behöver projektinformation
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
