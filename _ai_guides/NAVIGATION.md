@@ -198,10 +198,7 @@ This file is an index only. It does not define read order or rules.
 | Fil | Syfte | Läs Om Du... |
 |-----|-------|------------|
 | **PRESENTATION_STRUCTURE.md** | Övergripande krav (14 mötepunkter) | Vill förstå struktur övergripande |
-| **PRESENTATION_DATA.md** | Snapshot för denna veckans presentation | Presentationen behöver färdig data |
-| **GITHUB_SNAPSHOT.md** | Fallback för GitHub när API failar | GitHub är otillgänglig |
-| **CURRENT_PROJECT_STATUS.md** | Fallback för Project Board | Project Board är otillgänglig |
-| **PROTOCOL_SNAPSHOT.md** | Fallback för mötesprotokollet | Mötet kunde inte läsas |
+| **EXTERNAL_SOURCES.yaml** | Auktoritativ register för alla datakällor | Behöver veta vilka sources som finns och deras fallback-ordning |
 
 ---
 

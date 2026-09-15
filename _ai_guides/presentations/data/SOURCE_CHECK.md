@@ -66,18 +66,19 @@ metadata:
 
 ### PROJECT GITHUB SOURCES
 
-- [ ] **GitHub Branches**
-  - URL: https://github.com/chas-challenge-2026/avanza-team1/branches
+- [ ] **GitHub Merged PRs (develop branch)**
+  - Source: GITHUB_MERGED_PRS per EXTERNAL_SOURCES.yaml
   - Status: ✅ / ⚠️ / ❌
-  - Access method: GitHub Connector / Web
-  - Fallback: GITHUB_SNAPSHOT.md
+  - Primary: GitHub REST API
+  - Fallback chain: Google Sheets (if fresh) → GitHub web
+  - Reporting period: Last 7 calendar days
 
-- [ ] **GitHub Commits (develop branch)**
-  - URL: https://github.com/chas-challenge-2026/avanza-team1/commits/develop
-  - Date range: Last 7 days
+- [ ] **GitHub Open Issues**
+  - Source: GITHUB_OPEN_ISSUES per EXTERNAL_SOURCES.yaml
   - Status: ✅ / ⚠️ / ❌
-  - Access method: GitHub Connector / Web
-  - Fallback: GITHUB_SNAPSHOT.md
+  - Primary: GitHub REST API
+  - Fallback chain: Google Sheets (if fresh) → GitHub web
+  - Reporting period: Last 7 calendar days with activity
 
 - [ ] **GitHub Issues (open)**
   - URL: https://github.com/chas-challenge-2026/avanza-team1/issues

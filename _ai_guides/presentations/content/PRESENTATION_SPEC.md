@@ -40,10 +40,9 @@ För `avanza-team1` repository:
 - ❌ `git checkout` remote branch
 
 ### ANVÄND ISTÄLLET
-1. ✅ GitHub Connector/API
-2. ✅ GitHub-webben direktåtkomst
-3. ✅ raw.githubusercontent.com för filer
-4. ✅ _memory/GITHUB_SNAPSHOT.md fallback
+1. ✅ GitHub REST API (via any implementation: connector, HTTP, curl)
+2. ✅ Google Sheets (if freshness verified per EXTERNAL_SOURCES.yaml)
+3. ✅ GitHub-webben direktåtkomst (last resort fallback)
 
 **Viktigt:** "Bara läsa" är INTE ett undantag. `git ls-remote` är fortfarande ett network-anrop från shell.
 

@@ -73,8 +73,8 @@ The project code repository (`avanza-team1`) contains:
 **For presentations:**
 - ✅ **Följ: MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml → execution_sequence**
 - ✅ **Verifiera alla REQUIRED datakällor innan rendering** (se [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) för klassificering: REQUIRED/FALLBACK/OPTIONAL)
-  - REQUIRED: GitHub API, local team roster → must succeed or STOP
-  - FALLBACK: GitHub web, Sheets, Docs → try in order if primary fails
+  - REQUIRED: GitHub REST API, local team roster → must succeed or STOP
+  - FALLBACK (in order): Google Sheets (if freshness verified) → GitHub web (last resort)
   - OPTIONAL: Project Board, Risk Register → nice-to-have if connector available
 - ✅ Alla 7 teammedlemmar måste vara representerade
 
