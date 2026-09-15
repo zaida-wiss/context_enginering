@@ -22,8 +22,6 @@ sources:
       method: "github_connector"
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
       http_method: "GET"
-      filtering: "local: merged_at != null, merged_at within REPORTING_PERIOD, base.ref == 'develop'"
-      attribution: "use assignees[] (person who worked on code)"
     fallbacks:
       - method: "github_web"
         url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged"
@@ -49,7 +47,6 @@ sources:
       method: "github_connector"
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
       http_method: "GET"
-      filtering: "local: exclude pull_request key, assignees.length > 0, updated_at within REPORTING_PERIOD"
     fallbacks:
       - method: "github_web"
         url: "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
