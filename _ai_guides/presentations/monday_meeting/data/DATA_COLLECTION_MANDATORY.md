@@ -29,7 +29,7 @@ Requirement: All 7 members verified
 
 ### 2. Merged PRs (REPORTING_PERIOD)
 ```
-Sources: [`DATA_SOURCES.md`](../DATA_SOURCES.md) section "WORK COMPLETED THIS WEEK"
+Sources: [`DATA_SOURCES.md`](../../data/DATA_SOURCES.md) section "WORK COMPLETED THIS WEEK"
 Primary: GitHub API or web pulls tab
 Fallback: Google Sheets (see [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md) for link)
 
@@ -39,7 +39,7 @@ Verify: merged_at is within REPORTING_PERIOD (see [`SYSTEM_CONTRACT.yaml`](../..
 
 ### 3. Active Issues (REPORTING_PERIOD)
 ```
-Sources: [`DATA_SOURCES.md`](../DATA_SOURCES.md) section "WORK IN PROGRESS"
+Sources: [`DATA_SOURCES.md`](../../data/DATA_SOURCES.md) section "WORK IN PROGRESS"
 Primary: GitHub API or web issues tab
 Fallback: Google Sheets or reconstructed from Project Board
 

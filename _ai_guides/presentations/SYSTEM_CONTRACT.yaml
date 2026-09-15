@@ -70,7 +70,7 @@ execution_sequence:
     files:
       - "MANDATORY_READING_ORDER.md (entry point)"
       - "../../_memory/EXTERNAL_SOURCES.md (allowlist of ALL external data sources — MUST READ FIRST)"
-      - "monday_meeting/data/DATA_SOURCES.md (WHERE data comes from + fallback chain)"
+      - "data/DATA_SOURCES.md (WHERE data comes from + fallback chain)"
       - "design/VISUAL_DESIGN_MANDATORY.md (authoritative layout rules — CANONICAL LAYOUT only)"
       - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content for each slide)"
       - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only)"

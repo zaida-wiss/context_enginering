@@ -229,14 +229,14 @@ Before any presentation is delivered:
 ☐ SLIDE_DETAIL_SPEC.md content applied per slide
 ☐ ACCESSIBILITY_NEURODIVERSITY.md rules respected (NPF takes precedence)
 ☐ NO default tool template used
-☐ NO avanza-team1 styling imported
+☐ NO avanza-team1 styling imported (product UI style is forbidden)
 ☐ Layout: exactly 1 header + 1 message + 1–3 fullwidth blocks (vertical stack)
 ☐ Whitespace: 20px margin between blocks, 16px padding inside
 ☐ Colors: semantic only (green/orange/red for status, never decorative)
 ☐ Typography: fixed sizes (14pt title, 13pt content, 12pt metadata)
 ☐ Symbols: ①②③④⑤ meeting-point markers present and consistent
 ☐ Rendered visually: PPTX must be viewed before delivery (RENDER_GATE mandatory)
-☐ Data: from context_enginering data sources ONLY
+☐ Data: from allowlisted project sources (GitHub, Sheets, Docs) per SYSTEM_CONTRACT / DATA_SOURCES only
 ```
 
 ---
