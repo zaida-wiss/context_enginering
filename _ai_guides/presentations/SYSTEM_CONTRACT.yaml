@@ -295,6 +295,64 @@ external_sources_policy:
     - "If URL is not listed, DO NOT use it — report source as unavailable instead"
 
 ###############################################################################
+# TOOL ROUTING GATE — Mechanical tool selection (MANDATORY)
+###############################################################################
+tool_routing_gate:
+  purpose: "Prevent tool improvisation. For each source, use ONLY registered implementations."
+
+  rule: >
+    Before calling ANY tool to fetch data:
+    1. Identify source_id from EXTERNAL_SOURCES.yaml
+    2. Identify canonical access_method (e.g., "github_rest_api")
+    3. Identify permitted_implementations for that access_method
+    4. Call ONLY a tool from permitted_implementations
+    5. If no permitted tool is available: record TOOL_UNAVAILABLE, continue to next fallback
+    6. If all fallbacks fail: STOP and report INCOMPLETE
+
+  forbidden_tool_substitutions:
+    - "bash_git (git ls-remote, git clone, git fetch)"
+    - "shell_network_tools (curl, wget, netcat)"
+    - "generic_web_search (Google, Bing, DuckDuckGo, Brave, search engines)"
+    - "web_search_fallback (when GitHub API fails, do NOT open a search engine)"
+    - "arbitrary_url_guessing (improvise URLs not in EXTERNAL_SOURCES.yaml)"
+
+  critical_distinction: >
+    "GitHub web" (registered fallback for a specific resource) ≠ "web search" (forbidden).
+    GitHub web means: direct navigation to https://github.com/chas-challenge-2026/avanza-team1/pulls
+    NOT: "search the web for avanza team PRs"
+
+  github_rest_api:
+    permitted_implementations:
+      - "github_connector (preferred)"
+      - "native_github_rest_tool (if available)"
+    forbidden_implementations:
+      - "bash_git (shell git command)"
+      - "shell_curl (HTTP from shell)"
+      - "web_search"
+
+  google_sheets:
+    permitted_implementations:
+      - "google_drive_connector"
+    forbidden_implementations:
+      - "csv_export (without connector)"
+      - "web_search"
+      - "url_download"
+
+  github_web_ui:
+    permitted_implementations:
+      - "web_navigation (direct browser-like navigation to github.com URLs)"
+      - "html_fetch (to registered GitHub web URLs only)"
+    forbidden_implementations:
+      - "web_search (do NOT search for the page)"
+      - "general_web_access (only github.com URLs)"
+
+  failure_action: >
+    If a permitted tool is unavailable: record in DATA_ACQUISITION_RECEIPT.
+    Do NOT invent a new tool or access method.
+    Do NOT fallback to web search or generic HTTP.
+    Continue only to the next REGISTERED fallback source.
+
+###############################################################################
 # EXECUTION SEQUENCE — Följ dessa steg i exakt denna ordning
 ###############################################################################
 execution_sequence:
