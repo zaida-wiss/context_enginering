@@ -105,25 +105,32 @@ external_sources_policy:
       - "User-uploaded project files"
 
     internal_sources:
-      - "All YAML/Markdown files in this repository"
+      - "All YAML/Markdown files in _ai_guides/presentations/ (authoritative)"
       - "TEAM_ROSTER.md (team identity verification)"
+      - "TEMPLATE_REFERENCE.html (visual reference — read, don't download)"
+      - "_memory/EXTERNAL_SOURCES.md (whitelist of external URLs)"
 
   access_methods:
-    - "GitHub web: Direct URL access to /pulls, /issues, /pull/[N] pages"
-    - "GitHub REST API v3: Direct API calls (preferred for bulk data)"
-    - "GitHub Connector/OAuth: Authorized connector integration (preferred, no rate limits)"
-    - "Raw GitHub: raw.githubusercontent.com (fallback if web fails)"
-    - "Google Drive Connector: For Sheets/Docs (if authorized)"
-    - "Direct Google Docs/Sheets links: CSV/Excel export if API fails"
+    - "✅ GitHub web: https://github.com/chas-challenge-2026/avanza-team1/pulls (direct URL)"
+    - "✅ GitHub API: https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls (REST API)"
+    - "✅ GitHub Connector: Authorized connector integration (if available, preferred)"
+    - "✅ Raw GitHub: raw.githubusercontent.com (fallback if web fails)"
+    - "✅ Google Drive Connector: For Sheets/Docs (if authorized)"
+    - "✅ Direct Sheets/Docs: CSV/Excel export if API fails"
+    - "❌ git clone (repositories cannot be cloned)"
+    - "❌ Web download (no downloading files from internet)"
 
   forbidden:
-    - "General web search (Google, Bing, DuckDuckGo, etc.)"
-    - "Search engines"
+    - "General web search (Google, Bing, DuckDuckGo, Brave, web search engines)"
+    - "Git clone of GitHub repositories (requires credentials, often fails)"
+    - "Downloading files from web (design specs, templates, examples, tutorials)"
     - "Unregistered websites, blogs, forums, tutorials"
-    - "GitHub URLs not explicitly in EXTERNAL_SOURCES.md"
-    - "Stack Overflow, Medium, dev.to, GitHub Gists, or similar"
-    - "External design guidance, examples, or templates"
-    - "Arbitrary web sources as fallback or substitute"
+    - "GitHub URLs NOT in EXTERNAL_SOURCES.md"
+    - "Stack Overflow, Medium, dev.to, GitHub Gists, Notion, Figma, external docs"
+    - "External design guidance or examples (use TEMPLATE_REFERENCE.html in repo)"
+    - "AI knowledge cutoff or model training data as source (use GitHub API instead)"
+    - "Arbitrary web sources as fallback or substitute for unavailable data"
+    - "Cloning or downloading project repositories (fetch via API/web links only)"
 
   verification:
     - "If using external URL, verify it appears in _memory/EXTERNAL_SOURCES.md"

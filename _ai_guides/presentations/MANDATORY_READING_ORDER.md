@@ -8,15 +8,30 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER
 
-## 🚨 CRITICAL — NO WEB SEARCH
+## 🚨 CRITICAL — ALLOWED vs FORBIDDEN
 
-**Never search the public web during presentation generation.**
+**During presentation generation, these actions are FORBIDDEN:**
 
-Only use sources explicitly registered in [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md).  
-Only use the two project repositories (project code + context).  
-Only use user-provided project files.
+❌ **Search the public web** (Google, Bing, DuckDuckGo, web search engines)  
+❌ **Clone GitHub repository** (`git clone` — requires credentials, often fails)  
+❌ **Download external specifications** (design guides, templates, tutorials from web)  
+❌ **Use unregistered websites** (blogs, forums, Stack Overflow, Medium, dev.to)  
+❌ **Substitute arbitrary web sources** as fallback  
 
-If required data cannot be found in allowed sources, report the source as unavailable and follow the documented fallback. Never substitute an arbitrary web source.
+**These actions are ALLOWED:**
+
+✅ **Read local files** in this repository (`_ai_guides/presentations/`)  
+✅ **Fetch GitHub data** via:
+   - `https://github.com/chas-challenge-2026/avanza-team1/pulls` (web URL)
+   - GitHub REST API: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/...`
+   - Individual PR pages: `https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]`  
+✅ **Access registered external sources** from [`_memory/EXTERNAL_SOURCES.md`](../../_memory/EXTERNAL_SOURCES.md) ONLY  
+✅ **Use fallback chain** as documented (GitHub → Sheets → Board → Issues → Protocol)
+
+**If data cannot be found:**
+- Use documented fallbacks (see DATA_SOURCES.md)
+- Report which source is unavailable
+- NEVER search the web or clone repositories as workaround
 
 **See [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) `external_sources_policy` for full details.**
 
