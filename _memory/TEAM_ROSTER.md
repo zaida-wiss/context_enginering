@@ -21,7 +21,7 @@ metadata:
 
 | Display Name | Verified Email | GitHub Handle | Commit History | Status |
 |--------------|----------------|---------------|-----------------|--------|
-| Tomac Barin Jansson | tomacbarin@me.com | (verified from commits) | ✅ Active | Active |
+| Tomac Barin Jansson | tomacbarin@me.com | TomacBarin | ✅ Active | Active |
 | Björn Boman | 1125969+bjorneboman@users.noreply.github.com | bjorneboman | ✅ Active | Active |
 | Zaida Wiss | zaida.wiss@chasacademy.se | zaida-wiss | ✅ Active | Active |
 
@@ -36,7 +36,7 @@ metadata:
 
 | Display Name | Verified Email | GitHub Handle | Commit History | Status |
 |--------------|----------------|---------------|-----------------|--------|
-| Erik Berglund | rikexhx@gmail.com | rikexhx (also commits as "Svartakatten") | ✅ Active | Active |
+| Erik Berglund | rikexhx@gmail.com | Svartakatten | ✅ Active | Active |
 | Rasha Knifdi | rasha.fi@hotmail.com | rashaknifdi | ✅ Active | Active |
 
 **Arbetsområden:**
@@ -50,8 +50,8 @@ metadata:
 
 | Display Name | Verified Email | GitHub Handle | Commit History | Status |
 |--------------|----------------|---------------|-----------------|--------|
-| Pär Lundh | lundh.par@gmail.com | (verified from commits) | ✅ Active | Active |
-| Henrik Westerlund | henrik.w93@gmail.com | (verified from commits) | ✅ Active | Active |
+| Pär Lundh | lundh.par@gmail.com | lundhpargmailcom | ✅ Active | Active |
+| Henrik Westerlund | henrik.w93@gmail.com | Henrik-Westerlund | ✅ Active | Active |
 
 **Arbetsområden:**
 - Native & Risk Motor (JNA, risk calculations)
