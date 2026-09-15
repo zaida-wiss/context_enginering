@@ -22,17 +22,17 @@ Presentation generation:
 
 ---
 
-## 📋 Google Sheets (Fallback Data)
+## 📋 Google Sheets — FALLBACK ONLY (requires Google Connector)
 
-### Sheet 1: Project Data Fallback (Commits, PRs, Issues, Board)
-**Primary:** GitHub  
-**Fallback:** Google Sheets
+⚠️ **IMPORTANT:** Google Sheets sources require Google Drive Connector. Without it, do NOT attempt CSV/Excel exports — they will fail with safe_open block. Presentation will correctly STOP at DATA_ACQUISITION_RECEIPT if GitHub sources fail AND Google Connector unavailable.
 
-| Format | URL |
-|--------|-----|
-| **View** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/ |
-| **CSV Export** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=csv |
-| **Excel Export** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=xlsx |
+### Sheet 1: Project Data (Commits, PRs, Issues, Board)
+
+| Format | URL | Classification | Access Method | Status |
+|--------|-----|-----------------|----------------|--------|
+| **View** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/ | Fallback | Google Drive Connector REQUIRED | ⚠️ Blocked without connector |
+| **CSV Export** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=csv | Fallback | Google Drive Connector REQUIRED | ⚠️ Blocked without connector |
+| **Excel Export** | https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=xlsx | Fallback | Google Drive Connector REQUIRED | ⚠️ Blocked without connector |
 
 **Sheet ID:** `1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI`
 
@@ -42,17 +42,13 @@ Presentation generation:
 - PRs: `gid=743460023`
 - Project Board: `gid=869242669`
 
----
+### Sheet 2: Risk & Asset Register
 
-### Sheet 2: Risk & Asset Register (Risk Management)
-**Primary:** Team Risk Register (project-maintained)  
-**Fallback:** Google Sheets
-
-| Format | URL |
-|--------|-----|
-| **View** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/ |
-| **CSV Export — Risks** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285 |
-| **CSV Export — Assets** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349 |
+| Format | URL | Classification | Access Method | Status |
+|--------|-----|-----------------|----------------|--------|
+| **View** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/ | Optional | Google Drive Connector REQUIRED | ⚠️ Blocked without connector |
+| **CSV Export — Risks** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285 | Optional | Google Drive Connector REQUIRED | ⚠️ Blocked without connector |
+| **CSV Export — Assets** | https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349 | Optional | Google Drive Connector REQUIRED | ⚠️ Blocked without connector |
 
 **Sheet ID:** `1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F`
 
@@ -62,49 +58,47 @@ Presentation generation:
 
 ---
 
-## 📄 Google Docs
+## 📄 Google Docs — FALLBACK ONLY (requires Google Connector)
+
+⚠️ **IMPORTANT:** Google Docs sources require Google Drive Connector. Without it, do NOT attempt export URLs — they will fail with safe_open block.
 
 ### Meeting Protocol & Decisions
-**Primary:** Google Docs (real-time editable)
 
-| Format | URL |
-|--------|-----|
-| **View & Edit** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit |
-| **TXT Export** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt |
-| **PDF Export** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf |
-| **HTML Export** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=html |
+| Format | URL | Classification | Access Method | Status | Purpose |
+|--------|-----|-----------------|----------------|--------|---------|
+| **View & Edit** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit | Fallback | Google Drive Connector REQUIRED | ⚠️ Blocked without connector | Weekly sprint planning decisions, blockers, action items |
+| **TXT Export** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=txt | Fallback | Google Drive Connector REQUIRED | ⚠️ Blocked without connector | Text export for processing |
+| **PDF Export** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=pdf | Fallback | Google Drive Connector REQUIRED | ⚠️ Blocked without connector | PDF export for archive |
+| **HTML Export** | https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/export?format=html | Fallback | Google Drive Connector REQUIRED | ⚠️ Blocked without connector | HTML for web publishing |
 
 **Doc ID:** `1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8`
-
-**Purpose:** Mötesprotokollet — weekly sprint planning decisions, blockers, action items
 
 ---
 
 ## 🔗 GitHub Sources
 
-### Primary
-| Resource | URL |
-|----------|-----|
-| **Project Repo** | https://github.com/chas-challenge-2026/avanza-team1 |
-| **Issues (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is%3Aissue |
-| **Issues (OPEN)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open |
-| **Pull Requests (ALL)** | https://github.com/chas-challenge-2026/avanza-team1/pulls |
-| **Merged PRs (API — CANONICAL)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100 |
-| **Merged PRs (API — notes)** | Filter by merged_at ≠ null and within REPORTING_PERIOD. Use assignees[] for work owner attribution. Paginate until < 100 results. |
-| **Merged PRs (Web fallback)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged |
-| **Merged PRs (Repo home)** | https://github.com/chas-challenge-2026/avanza-team1 → navigate to /pulls tab |
+### REQUIRED for Presentations (must succeed)
 
-### Project Board & Fallback
-| Resource | Primary | Fallback | Notes |
-|----------|---------|----------|-------|
-| **Project Board** | https://github.com/orgs/chas-challenge-2026/projects/31 | Issues URL (above) | If Board API unavailable → read Issues directly |
-| **Merged PRs** | `pulls?q=is:pr+is:merged+merged:>=[DATE]` | [All merged PRs](https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+state%3Amerged) → then filter by date | If date filter fails → use all-merged link, then manually filter by week |
-| **Commits** | GitHub commits API | Sheets commits tab | If API unavailable → Sheets data |
+| Source | URL | Access Method | Status | Notes |
+|--------|-----|----------------|--------|-------|
+| **Merged PRs (API)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100 | GitHub Connector OR API | ✅ Working | Canonical method. Filter by merged_at within REPORTING_PERIOD. Use assignees[] for attribution. |
+| **Open Issues (API)** | https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100 | GitHub Connector OR API | ✅ Working | Filter: exclude pull_requests key, assignees.length > 0, updated_at in REPORTING_PERIOD |
+| **Team Roster (local)** | _memory/TEAM_ROSTER.md | Local file | ✅ Working | Always available. 7 members, verified via git history. |
 
-### Reference
-| Resource | URL |
-|----------|-----|
-| **Context Engineering** | https://github.com/zaida-wiss/context_enginering |
+### FALLBACK if primary fails (try in order)
+
+| Source | URL | Access Method | Status | Notes |
+|--------|-----|----------------|--------|-------|
+| **Merged PRs (Web)** | https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Amerged | GitHub web direct | ✅ Working | Only if API unavailable |
+| **Open Issues (Web)** | https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open | GitHub web direct | ✅ Working | Only if API unavailable |
+| **Project Repo home** | https://github.com/chas-challenge-2026/avanza-team1 | GitHub web direct | ✅ Working | Navigation fallback only |
+
+### OPTIONAL — Reference only (not required for presentations)
+
+| Source | URL | Access Method | Status | Purpose |
+|--------|-----|----------------|--------|---------|
+| **Project Board** | https://github.com/orgs/chas-challenge-2026/projects/31 | GitHub Connector | ⚠️ Untested | Can be derived from Issues if needed |
+| **Context Engineering repo** | https://github.com/zaida-wiss/context_enginering | GitHub Connector | ✅ Working | This documentation repository |
 
 ---
 
