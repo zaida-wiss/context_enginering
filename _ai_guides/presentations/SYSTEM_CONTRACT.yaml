@@ -128,8 +128,8 @@ artifact_gates:
       - PPTX: only if user explicitly requests "editable", "PowerPoint", "redigerbar", etc
     failure_action: "STOP. Report RENDER_GATE_CHECKLIST failures or visual verification issues"
 
-# Note: Authority hierarchy is defined below in the AUTHORITY HIERARCHY section
-# Do not duplicate it here. Remove this section to avoid drift.
+# Note: Authority hierarchy is defined once near the top of this file.
+# Do not duplicate it elsewhere. This section enforces the gates only.
 
 ###############################################################################
 # EXTERNAL SOURCES POLICY — ALLOWLIST ONLY (TVINGANDE)
