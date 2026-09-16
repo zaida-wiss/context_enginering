@@ -548,7 +548,7 @@ FAIL GATE if:
   [ ] IDENTICAL LAYOUT for Frontend (③), Backend (④), Native (⑤)
       ✅ Same card geometry (soft rounded corners)
       ✅ Same internal spacing (16–20px padding)
-      ✅ Same typography hierarchy (28pt header, 14pt body, 13pt metadata per WCAG 2.2 AA)
+      ✅ Same typography hierarchy (32pt header, 20pt body, 18pt metadata per VISUAL_DESIGN_MANDATORY.md and WCAG 2.2 AA)
       ✅ Same responsive-height behavior
       ✅ ONLY difference: team border color (Teal/Hot Pink/Purple)
       ❌ FAILURE if geometry differs between teams
@@ -612,7 +612,7 @@ FAIL GATE if:
 
   ✅ GENERAL RULES (apply to ALL slides including exceptions):
   [ ] Slides that exceed layout capacity auto-continue: ①A/②/③/④/⑤/etc.1, .2, .3 (never summarized)
-  [ ] All typography matches FIXED spec: titles 28pt, content 14pt, metadata 13pt (WCAG 2.2 AA minimum)
+  [ ] All typography matches FIXED spec: titles 32pt, content 20pt, metadata 18pt (per VISUAL_DESIGN_MANDATORY.md and WCAG 2.2 AA minimum)
   [ ] Whitespace: 20px margin between blocks/chains, 16-20px internal padding
   [ ] Soft cards: 12-18px rounded corners, never hard rectangular boxes
   [ ] No compression: never reduce padding/spacing to fit more

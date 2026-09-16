@@ -89,7 +89,7 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 - **Mötespunkts-symbol ANDRA:** ① ② ③ ... ⑭ (no space before penna, one space after number)
 - Exakt ett mellanslag mellan nummer och rubrik-text
 - Samma penna+nummer för alla sub-slides (✏️ ①A, ✏️ ①B, ✏️ ①C använder alla ✏️ ①)
-- Font: 28pt BOLD (per VISUAL_DESIGN_MANDATORY.md, never smaller, never different)
+- Font: 32pt BOLD (per VISUAL_DESIGN_MANDATORY.md, never smaller, never different)
 **GÄLLER ENDAST för:**
 - Alla slides ①-⑭ (vilken typ av fortsättningsslide som helst: ①A, ①B-2, ②, ③B, etc)
 - Slide ⓪ (introduktionsslide endast om den har en mötespunkts-nummer — i detta fall, ⓪ framsida har INGEN symbol)
@@ -107,10 +107,10 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 **NO SLIDE TITLE** — Framsida har ingen mötespunkts-rubrik. Börjar direkt med innehål.
 
 **HEADER SECTION:**
-- Meeting date: "Veckomöte · [DATE]" (e.g., "Veckomöte · 21 september 2026") (28pt BOLD)
-- Team identifier: "Avanza Team 1" (14pt)
+- Meeting date: "Veckomöte · [DATE]" (e.g., "Veckomöte · 21 september 2026") (32pt BOLD)
+- Team identifier: "Avanza Team 1" (20pt)
 - Reporting period (compact, under meeting title): "Rapportperiod: [START DATE] 09:00 – [END DATE] 09:00"
-  - Font: 13pt (smaller than title, but still visible)
+  - Font: 18pt (smaller than title, but still visible)
   - Line-height: compact (1.4-1.6)
   - Color: muted (#94A3B8)
 
@@ -145,9 +145,9 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 **VISUAL LAYOUT:**
 ```
 ┌─────────────────────────────────────┐
-│  Veckomöte · 21 september 2026      │  28pt BOLD
-│  Avanza Team 1                      │  14pt regular
-│  Rapportperiod: 14 sep 09:00 –      │  13pt muted, compact
+│  Veckomöte · 21 september 2026      │  32pt BOLD
+│  Avanza Team 1                      │  20pt regular
+│  Rapportperiod: 14 sep 09:00 –      │  18pt muted, compact
 │              21 sep 09:00            │
 └─────────────────────────────────────┘
 
@@ -653,7 +653,7 @@ Each card shows one ranked priority item. Cards grow vertically to fit content.
 - **Ranking:** 1️⃣ = highest urgency, 2️⃣ = next, 3️⃣ = next
 - **Each card:** Rank | Priority level | Deadline | VAD | VARFÖR | STATUS | RISK | ACTION
 - **Card behavior:** Grows vertically to fit all content (no clipping)
-- **Text alignment:** All text centered inside each card
+- **Text alignment:** All text left-aligned inside each card (per VISUAL_DESIGN_MANDATORY.md, NOT centered)
 - **STATUS-märken:** ⏳ = waiting, 🟢 = on track, 🔴 = behind, 🟠 = risk
 - **ACTION:** Konkret nästa steg med ÄGA och TIDRAM
 
@@ -683,12 +683,12 @@ Each card shows one ranked priority item. Cards grow vertically to fit content.
 
 - Vertically stacked compact cards (NOT wide horizontal bands)
 - One work item per card
-- Text centered horizontally inside every card
+- Text left-aligned horizontally inside every card (per VISUAL_DESIGN_MANDATORY.md, NOT centered)
 - Card height adapts to content (no clipping allowed)
 - Minimum height, let cards expand vertically
 - Same spacing and typography hierarchy across all teams
 
-**Card structure (centered):**
+**Card structure (left-aligned):**
 ```
     ✅ #93 · PR #95
     SQL-injection fix
