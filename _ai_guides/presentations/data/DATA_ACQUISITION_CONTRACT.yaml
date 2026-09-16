@@ -200,65 +200,88 @@ required_datasets:
 
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
-  decisions_and_candidates:
-    source_id: "DECISION_DETECTION"
+  decisions_confirmed:
+    source_id: "DECISION_CONFIRMED"
     classification: "OPTIONAL (enhances team awareness)"
+    canonical_source: "docs/BESLUT.md"
 
-    confirmed_decisions:
-      canonical_source: "docs/BESLUT.md"
-      purpose: "Show verified team decisions made during reporting period"
-      fields:
-        - title
-        - short_summary
-        - impact
-        - date_decided
-        - source (who documented it)
+    purpose: "Show decisions verified as decided during reporting period"
+    access_method: "Read docs/BESLUT.md locally"
 
-    decision_candidates:
-      purpose: >
-        Identify possible decisions that GitHub/context suggest the team
-        has already adopted but hasn't yet documented as explicit decisions.
+    required_fields_per_decision:
+      - title
+      - decision_date
+      - updated_date (if modified)
+      - short_summary
+      - impact
 
-        This helps the team learn what constitutes a project decision and
-        prompts them to evaluate: "Should we document this?"
+    filtering_rule: >
+      Include ONLY if:
+        decision_date >= REPORTING_PERIOD_START AND decision_date < REPORTING_PERIOD_END
+        OR
+        updated_date >= REPORTING_PERIOD_START AND updated_date < REPORTING_PERIOD_END
 
-      detection_sources:
-        - merged_pull_requests (established patterns)
-        - current_code_structure (architectural choices)
-        - sprint_goals (priority decisions)
-        - roadmap_phases (timeline decisions)
-        - team_workflow (process decisions)
+      If date missing: do NOT include (not verifiable as "since last meeting")
 
-      criteria_for_candidate:
-        - affects future implementation
-        - establishes reusable rule
-        - selects between alternatives
-        - defines interface or contract
-        - changes team workflow
-        - creates dependency/order between work
-        - establishes quality/security/testing practice
+    output:
+      max_per_slide: 4
+      label: "✓ BESLUT"
+      include_date_documented: true
 
-      do_NOT_suggest_if_only:
-        - single commit or change
-        - ordinary implementation detail
-        - task completion or status
-        - temporary debugging change
-        - routine code review
+  decision_candidates:
+    source_id: "DECISION_CANDIDATES"
+    classification: "OPTIONAL (pedagogical)"
 
-      output_format:
-        - max_suggestions: 2-3 per presentation
-        - label: "Förslag på beslut att dokumentera"
-        - structure:
-          - title (question form: "Ska vi...")
-          - short_description
-          - evidence (which PRs/code patterns suggest this)
-          - why_document (impact on future work)
+    purpose: >
+      Identify possible decisions from GitHub/code patterns.
+      Never claims decision IS made — only prompts team evaluation.
+      Helps team learn what constitutes a real project decision.
 
-      rule: >
-        Never infer a decision is confirmed unless it's in docs/BESLUT.md.
-        Candidates are prompts for the team to evaluate and decide whether
-        to document in docs/BESLUT.md. Presentation helps team learn
-        what constitutes a real decision.
+    detection_sources:
+      - merged_pull_requests (patterns)
+      - code_choices (architectural choices)
+      - branch_workflow (integration patterns)
+      - team_priorities (order/dependencies)
+
+    minimum_evidence_requirement: >
+      MUST have ONE of:
+        - Multiple related PRs following same pattern (≥2)
+        - Repeated pattern across independent work instances (≥2)
+        - Explicit issue/PR text indicating choice
+        - Architectural change with documented future effect
+
+      FORBIDDEN: suggesting from single PR
+
+    criteria_for_candidate:
+      affects_future_implementation: true
+      OR establishes_reusable_rule: true
+      OR selects_between_alternatives: true
+      OR defines_interface_or_contract: true
+      OR changes_team_workflow: true
+      OR creates_work_dependency: true
+      OR establishes_quality_practice: true
+
+    do_NOT_suggest_if_only:
+      - single_commit: true
+      - implementation_detail: true
+      - task_completion: true
+      - temporary_change: true
+      - routine_review: true
+
+    output_format:
+      max_suggestions: 2-3 per presentation
+      label: "? Förslag på beslut att dokumentera"
+      required_in_each:
+        - title (question form: "Ska vi...")
+        - short_description
+        - evidence_refs (concrete PRs/patterns)
+        - why_is_decision (future impact)
+
+    critical_rule: >
+      NEVER claim candidate IS a decision.
+      Always phrase as question: "Ska vi dokumentera detta?"
+      Always show concrete evidence (PR numbers, patterns).
+      Always explain future impact.
 
   open_pull_requests:
     source_id: "GITHUB_OPEN_PRS"

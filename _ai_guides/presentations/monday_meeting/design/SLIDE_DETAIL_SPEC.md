@@ -322,9 +322,9 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 
 ---
 
-## 📝 ① AVSLUT — BESLUT (0-1 slides, conditional)
+## 📝①E — BESLUT SEDAN FÖRRA MÖTET (0-1 slides, conditional)
 
-### SLIDE ① BESLUT SEDAN FÖRRA MÖTET
+**PLACEMENT:** After ①D, before ② (completes ① section)
 
 **PURPOSE:**
 Help team see what decisions have been made (documented in docs/BESLUT.md)
