@@ -343,24 +343,27 @@ This rule prevents the exact problem seen on cover slides where text received un
 
 ---
 
-## ✅ MANDATORY BEFORE RENDERING
+## ✅ RENDER GATE — Before Delivery
 
-**Do not render unless:**
+**All slides MUST pass the render gate before delivery.**
 
-- [ ] Every slide has exactly: 1 header + 1 message + 1–3 blocks
-- [ ] All blocks stack vertically (never horizontal/grid)
-- [ ] All blocks are 100% width (never small cards)
-- [ ] Spacing matches spec: 20px between, 16px inside
-- [ ] Typography matches spec exactly (28/14/13/13/12pt per typography table)
-- [ ] If 4+ work items exist on one topic → auto-split to continuation slide
-- [ ] No nested structures, no tables, no cards
-- [ ] Slide does NOT appear as dashboard, grid, or crowded
+See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) for complete validation requirements.
+
+**Key checks (summary):**
+- [ ] Layout compliance: Canonical form with authorized exceptions (①A grid, ⑥A diagrams)
+- [ ] All content in soft cards (rounded 12-18px corners, responsive height)
+- [ ] Spacing: 20px between blocks, 16-20px internal padding
+- [ ] Typography: Fixed sizes per spec (28/14/13/13/12pt)
+- [ ] Visual render check: Actually rendered to PPTX/viewable format, not just generated
+- [ ] WCAG 2.2 AA: Contrast, no text box borders, color separation
+- [ ] Data integrity: No duplicates, checksums aligned, no fabricated data
+- [ ] GitHub entity provenance: All issue numbers verified
 
 **If ANY check fails:**
-- Do not render to PPTX
-- Fix the content (split to continuation slide)
-- Check again
-- Only then render
+- Do not deliver
+- Fix the issue
+- Re-check
+- Only then deliver
 
 ---
 
