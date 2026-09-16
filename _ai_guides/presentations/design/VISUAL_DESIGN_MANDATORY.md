@@ -102,12 +102,23 @@ All content containers must be rendered as soft cards rather than hard rectangul
 - Text must never touch the card border
 - Clear vertical spacing between: title → person/status → metadata
 
-### Responsive card height
-- Card height must be determined by content
+### Responsive card height — MANDATORY FOR ALL CARDS
+- Card height MUST be determined by content (use flexbox or auto-height)
 - Never use fixed card heights when text length varies
 - Cards must grow vertically when text wraps
-- All text must stay fully inside the card
+- **NO TEXT CLIPPING ALLOWED** — all text must stay fully inside the card
 - Prefer taller, fewer cards over shallow, many boxes
+- Better to split to new slide than to clip text
+
+### Responsive card width
+- Use flexbox for responsive width calculations
+- Cards should expand to use available width
+- Reduce gaps between cards if needed for readability
+- Wider cards are better than narrow text columns
+
+### Layout principle: CONTENT FIRST
+Readability and full text visibility are more important than perfect geometric symmetry.
+Variable card heights are acceptable and expected.
 
 ### Slide density
 - Prefer fewer, taller cards over many compressed boxes
@@ -117,6 +128,7 @@ All content containers must be rendered as soft cards rather than hard rectangul
 ### Core visual principle
 The presentation should resemble information cards placed on a dark tabletop:
 soft rounded surfaces, generous whitespace, clear separation and calm visual hierarchy.
+All content must be readable; geometry must adapt to content, never the reverse.
 
 ---
 

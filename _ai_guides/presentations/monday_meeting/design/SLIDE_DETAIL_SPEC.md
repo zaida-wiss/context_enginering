@@ -60,23 +60,40 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 ## 📝⓪ FRAMSIDA (1 slide, mandatory)
 
 **REQUIRED CONTENT:**
-- Meeting date: "Veckomöte · [DATE, e.g. "16 september 2026"]"
+- Meeting date: "Veckomöte · [DATE, e.g. "21 september 2026"]"
 - Team identifier: "Avanza Team 1"
+- Reporting period: "Rapportperiod: [START DATE] – [END DATE]"
+
+**WEEKLY FOCUS (primary content):**
+- Sprint goal or weekly focus (if defined)
+- Key deliverable this week
+- Any critical deadline or milestone
+
+**RELEVANT PL CONVERSATION TOPICS (if applicable):**
+- Topics to discuss with Project Lead
+- Source: Extracted from schedule/timeline (NOT meeting notes)
+- Example: "Release candidate criteria by Friday" / "CTO demo readiness"
+
+**DATA INTEGRITY FOOTER:**
 - Data source verification: "✅ [number] sources verified"
 - List of verified sources:
   - ✅ GitHub (commits, PRs, issues per-person)
   - ✅ Team roster (7 members)
   - [Other sources if used]
-- Reporting period: "Rapportperiod: [START DATE] – [END DATE]"
 - Status: Green checkmark if all sources OK, yellow warning if fallback used, red if incomplete
 
 **VISUAL NOTES:**
 - Large, centered meeting title
 - Significant whitespace
-- Clear data-provenance statement (shows this is not guessed data)
+- Weekly focus as main message
+- Data provenance footer proves integrity
 - Follows ACCESSIBILITY_NEURODIVERSITY.md + VISUAL_DESIGN_MANDATORY.md for layout
 
-**NOTE:** This slide proves data integrity before content begins.
+**CRITICAL: Do NOT include:**
+- ❌ NPF/design explanations ("Färg + symbol + text...")
+- ❌ Design methodology descriptions
+- ❌ Process explanations
+- Focus on: Sprint goal, deadline, and what PL wants to discuss
 
 ---
 
@@ -101,11 +118,17 @@ Shows what was actually delivered, regardless of team.
 - Include cross-team PRs in chronological order
 - Show assignee + GitHub login for each
 
-**CARD DATA FIELDS:**
+**CARD DATA FIELDS (showing ACTUAL WORK DONE, not just assignment):**
 - PR number + title
-- GitHub handle + display name
-- Assignee/owner name (@github_login)
+- **Developed by:** [Name] (@github_login) — who opened the PR
+- **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
+- **Merged by:** [Name] (@github_login) — who merged to develop
 - Merged date
+
+**CRITICAL:**
+- Show actual reviewers (who approved), NOT just requested_reviewers
+- All three fields must be filled (if missing, show "?" or note "no review yet")
+- This demonstrates team collaboration (not just individual work)
 
 **VISUAL IMPLEMENTATION:**
 Do NOT define colors, grid, layout, or badge styling here.
@@ -135,11 +158,18 @@ If a team member has NO verified active issue or PR:
 
 **This is capacity information, NOT performance assessment.**
 
+**CRITICAL: Review is work, not "available":**
+- If a person is actively reviewing PRs → show them as "Reviewing [PR#] for [person]"
+- Do NOT show reviewers as "Ny issue eller tillgänglig för hjälp"
+- Review work is actual work and should be visible
+- Only show "available" if the person has NO active reviews or PRs
+
 **DO NOT:**
 - Write "Ingen aktivitet" (implies inactivity)
 - Write "Inget arbete" (implies no work)
 - Use red warning
 - Use phrasing that implies low performance
+- Hide reviewers as if they're "idle"
 
 **Visual style:**
 - Neutral gray or blue color
@@ -154,7 +184,29 @@ Example on team slide later:
 
 ---
 
-## 📊 ①B — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
+## 📊 ①B — MERGAT TILL TEAM COLLECTION BRANCHES (om relevant, 0-1 slides)
+
+**PURPOSE:**
+Show work that has been merged to team collection branches (e.g., Java-Development-Environment for Backend)
+but NOT yet merged to develop. This represents work-in-progress that's committed to a team branch.
+
+**WHEN TO SHOW:**
+- Only if there are PRs merged to collection branches during REPORTING_PERIOD
+- If no such PRs, skip this slide
+
+**CONTENT:**
+- PRs merged to [Team Collection Branch] (e.g., Java-Development-Environment, C/C++-Native)
+- Sort chronologically (oldest first)
+- Show same fields as ①A: Developed by | Reviewed by | Merged to [Branch] | Date
+
+**CRITICAL (no double-counting):**
+- Do NOT show work that's already on ①A (merged to develop)
+- This slide shows work that's on a team branch but not yet on develop
+- It's progress, but not yet delivered to develop
+
+---
+
+## 📊 ①C — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
 
 **PURPOSE:**
 Shows active work by team. Three separate columns, each team's pågår issues.
