@@ -866,49 +866,47 @@ execution_sequence:
       dataset_2_merged_prs:
         action: "Call GITHUB_MERGED_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
         on_success: "Proceed to dataset_3_active_issues"
-        on_all_github_rest_implementations_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
-        on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
-        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to data_audit"
-        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = github_rest_api | sheets | github_web, merged_prs.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+        on_all_github_rest_implementations_unavailable: "Use registered fallback (per EXTERNAL_SOURCES.yaml)"
+        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_3_active_issues"
+        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = source_used_per_EXTERNAL_SOURCES, merged_prs.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
 
       dataset_3_active_issues:
-        action: "Call GITHUB_OPEN_ISSUES source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        action: "Call GITHUB_OPEN_ISSUES source using any implementation permitted by EXTERNAL_SOURCES.yaml"
         on_success: "Proceed to dataset_4_open_prs"
-        on_all_github_rest_implementations_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
-        on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
+        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml for this source"
         on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_4_open_prs"
-        record_in_receipt: "active_issues.status = SUCCESS | INCOMPLETE, active_issues.source_used = github_rest_api | sheets | github_web, active_issues.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+        record_in_receipt: "active_issues.status = SUCCESS | INCOMPLETE, active_issues.source_used = [per EXTERNAL_SOURCES], active_issues.implementation_used = [per EXTERNAL_SOURCES]"
 
       dataset_4_open_prs:
-        action: "Call GITHUB_OPEN_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        action: "Call GITHUB_OPEN_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml"
         on_success: "Proceed to dataset_5_branches"
-        on_all_github_rest_implementations_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
-        on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
+        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml for this source"
         on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_5_branches"
-        record_in_receipt: "open_prs.status = SUCCESS | INCOMPLETE, open_prs.source_used = github_rest_api | sheets | github_web, open_prs.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+        record_in_receipt: "open_prs.status = SUCCESS | INCOMPLETE, open_prs.source_used = [per EXTERNAL_SOURCES], open_prs.implementation_used = [per EXTERNAL_SOURCES]"
 
       dataset_5_branches:
-        action: "Call GITHUB_BRANCHES source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        action: "Call GITHUB_BRANCHES source using any implementation permitted by EXTERNAL_SOURCES.yaml"
         on_success: "Proceed to dataset_6_commits"
-        on_all_github_rest_implementations_unavailable: "Record as INCOMPLETE, proceed to dataset_6_commits (branches required for activity detection but may be available via commits data)"
+        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml (if any)"
         on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_6_commits"
-        record_in_receipt: "branches.status = SUCCESS | INCOMPLETE, branches.source_used = github_rest_api, branches.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+        record_in_receipt: "branches.status = SUCCESS | INCOMPLETE, branches.source_used = [per EXTERNAL_SOURCES], branches.implementation_used = [per EXTERNAL_SOURCES]"
 
       dataset_6_commits:
-        action: "Call GITHUB_COMMITS source (per-branch) using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        action: "Call GITHUB_COMMITS source (per-branch) using any implementation permitted by EXTERNAL_SOURCES.yaml"
         on_success: "Proceed to step_2b"
-        on_all_github_rest_implementations_unavailable: "Record as INCOMPLETE, proceed to step_2b"
+        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml (if any)"
         on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to step_2b"
-        record_in_receipt: "commits.status = SUCCESS | INCOMPLETE, commits.source_used = github_rest_api, commits.implementation_used = [github_connector | http_fetch | web_fetch | curl], branches_scanned = [develop, Java-Development-Environment, C/C++-Native, ...]"
+        record_in_receipt: "commits.status = SUCCESS | INCOMPLETE, commits.source_used = [per EXTERNAL_SOURCES], commits.implementation_used = [per EXTERNAL_SOURCES], branches_scanned = [develop, Java-Development-Environment, C/C++-Native, ...]"
 
     CRITICAL_VALIDITY_RULE: >
-      "GitHub API failed" is ONLY a valid report if an implementation explicitly
-      permitted by EXTERNAL_SOURCES.yaml for github_rest_api was actually invoked
-      (github_connector, http_fetch, web_fetch, or curl).
+      "Primary source failed" is ONLY a valid report if an implementation explicitly
+      permitted by EXTERNAL_SOURCES.yaml for that source was actually invoked.
 
-      If ALL permitted GitHub REST implementations are unavailable: record
-      ALL_GITHUB_IMPLEMENTATIONS_UNAVAILABLE in receipt and proceed to next
-      registered fallback (Sheets per EXTERNAL_SOURCES.yaml).
+      If ALL permitted implementations for the primary source are unavailable:
+      follow the fallback chain registered in EXTERNAL_SOURCES.yaml for that source.
+
+      If a source has NO registered fallback chain (fallbacks: []):
+      mark dataset INCOMPLETE immediately; do NOT invent fallback attempts.
 
       Do NOT attempt to work around unavailability by using unregistered tools,
       generic web access, or improvised implementations not in EXTERNAL_SOURCES.yaml.
