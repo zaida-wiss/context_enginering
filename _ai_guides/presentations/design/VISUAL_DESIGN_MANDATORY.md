@@ -49,18 +49,18 @@ Each block displays ONE CATEGORY of work (merged PRs, open issues, etc):
    Blockerad på Backend. Tomac · waiting
 ```
 
-**Each work item = ONE LINE:**
+**Each work item = ONE LINE (within a soft card):**
 - Symbol (✅ ◐ 🔴 etc)
 - Issue# and Title
 - Owner/Status
 
-**NO nested tables, NO grid, NO cards. Just clean lines.**
+**All text must be contained within soft, rounded cards with generous padding and responsive height.**
 
 ---
 
 ## ⚠️ EXCEPTION — SLIDE ①A MERGED OVERVIEW BOARD
 
-Slide ①A ("Mergade PR:er") is the ONLY standard exception to the full-width block rule.
+Slide ①A ("Mergade PR:er") is the ONLY standard exception to the full-width single-card layout.
 
 **For Slide ①A ONLY:**
 - A 3 × 2 card grid IS REQUIRED
@@ -68,14 +68,15 @@ Slide ①A ("Mergade PR:er") is the ONLY standard exception to the full-width bl
 - Cards have identical dimensions
 - Cards are read chronologically left-to-right, top-to-bottom
 - Large whitespace must remain around the board
-- Each card has team-colored border (teal/orange/purple/yellow/gray)
+- Each card has team-colored border (teal/hot pink/purple/light slate)
+- Cards are rendered as soft rounded cards with 12–18px corners
 - This is a presentation summary, not a GitHub/Jira dashboard
 
 **All other slides (①B-①E, ②, ③, etc.):**
 - Continue to follow the canonical vertical full-width block layout
-- NO card grids
-- NO nested tables
-- Only exception is ①A
+- Content rendered as stacked soft cards (not grid)
+- Each card is a soft, rounded, responsive container
+- Only exception to single-stacked layout is ①A
 
 ---
 
@@ -130,9 +131,9 @@ These values NEVER change. Use them exactly.
 | Block width | 100% of slide |
 | Block height | Auto (content-driven, never compressed) |
 | Spacing between blocks | 20px |
-| Padding inside block | 16px |
+| Padding inside block | 16–20px (all sides) |
 | Line height | 1.8 (NPF standard) |
-| Corner radius | None (blocks are rectangular) |
+| Corner radius | 12–18px (all corners, mandatory softness) |
 
 ### Typography
 

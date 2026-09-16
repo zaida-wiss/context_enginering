@@ -494,7 +494,7 @@ och var den aktuella blockeringen finns.
 - Kedjor får visas vänster→höger eller uppifrån→ned beroende på utrymme
 - Om en kedja har flera grenar ska förgrening visas visuellt
 
-**VARJE NÖD SKA VISA:**
+**VARJE NOD SKA VISA:**
 - Issue-nummer
 - Kort titel
 - Team (via färg eller märkning)
