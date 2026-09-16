@@ -32,35 +32,37 @@ metadata:
 
 ## 🚨 CRITICAL FINDINGS
 
-### ❌ Rule Removed: DEDUPLICATION & CHECKSUMS (was in main, NOT in cleanup)
+### ✅ Rule Restored: DEDUPLICATION & CHECKSUMS
 
-**In main (SLIDE_DETAIL_SPEC.md):**
+**Was in main (SLIDE_DETAIL_SPEC.md), MISSING in cleanup, NOW RESTORED:**
+
+**Status in cleanup:** ✅ RESTORED to RENDER_GATE_CHECKLIST.md (new section)
+
+**What was restored:**
 ```markdown
-**DEDUPLICATION RULE:**
+DEDUPLICATION RULE:
 - Same work MUST NOT appear twice (e.g., issue + branch + PR)
 - If issue has linked PR and branch → show as ONE row
 - If issue has no PR yet but has active branch → show as ONE row
 - If branch has no PR and no issue → show as ONE row
 - Count only ONCE in audit and slides
 
-**TEAM CHECKSUMS (RENDERED IN AUDIT REPORT):**
+TEAM CHECKSUMS:
 Frontend: verified_activity_count (audit) == representation_count (slides)
 Backend: verified_activity_count (audit) == representation_count (slides)
-[etc for all teams]
+Native: verified_activity_count (audit) == representation_count (slides)
+Cross-team: verified_activity_count (audit) == representation_count (slides)
+
 If mismatch → both audit and slides note discrepancy. Never silently drop data.
 ```
 
-**Status in cleanup:** NOT FOUND in any file
+**Location:** RENDER_GATE_CHECKLIST.md (new "DEDUPLICATION & DATA INTEGRITY GATE" section)
 
-**Assessment:** 🔴 IMPORTANT RULE LOST
-- This rule prevents duplicate work appearing on multiple slides
-- It enforces audit accuracy (checksums)
-- It's not mentioned anywhere else in cleanup
-- **Recommendation:** Restore to cleanup before merge
-
-**Where should it go?**
-- Primary: RENDER_GATE_CHECKLIST.md (validation rule before rendering)
-- Secondary: DATA_ACQUISITION_CONTRACT.yaml (data audit section)
+**Assessment:** 🟢 ISSUE RESOLVED
+- Rule prevents duplicate work appearing on multiple slides
+- Enforces audit accuracy (checksums)
+- Placed correctly in RENDER_GATE as verification step
+- Restored commit: 8207d4c
 
 ---
 
@@ -163,16 +165,17 @@ RULE: Never mix status colors with neutral information.
 
 ## 📋 ACTION ITEMS
 
-### 🔴 Must Fix Before Merge
+### ✅ Completed
 
-1. **Restore DEDUPLICATION RULE**
-   - Add to RENDER_GATE_CHECKLIST.md (as verification check)
-   - Add to DATA_ACQUISITION_CONTRACT.yaml (as audit requirement)
-   - Ensure unique_id counting is documented
+1. ✅ **DEDUPLICATION RULE restored** (commit 8207d4c)
+   - Added to RENDER_GATE_CHECKLIST.md (verification check)
+   - New section: "DEDUPLICATION & DATA INTEGRITY GATE"
+   - Unique_id counting documented
 
-2. **Restore TEAM CHECKSUMS**
-   - Add to RENDER_GATE_CHECKLIST.md
-   - Make it a PASS/FAIL gate before rendering
+2. ✅ **TEAM CHECKSUMS restored** (commit 8207d4c)
+   - Added to RENDER_GATE_CHECKLIST.md
+   - PASS/FAIL gate before rendering
+   - Checksum verification section complete
 
 ### 🟡 Recommended Enhancements
 
@@ -201,15 +204,18 @@ RULE: Never mix status colors with neutral information.
 
 ## 🎯 Recommendation
 
-**✅ cleanup is ready to merge, WITH these additions:**
+**✅ cleanup is ready for final testing:**
 
-1. Add DEDUPLICATION RULE + TEAM CHECKSUMS back to RENDER_GATE_CHECKLIST.md
+### Done ✅
+1. ✅ DEDUPLICATION RULE + TEAM CHECKSUMS restored to RENDER_GATE_CHECKLIST.md
+2. ✅ Internal contradictions fixed in VISUAL_DESIGN_MANDATORY.md
+3. ✅ Typo fixed (VARJE NÖD → VARJE NOD)
+
+### Before merge — next steps:
+1. **Run smoke test on cleanup** (end-to-end verification)
 2. (Optional) Restore VERIFIED_ACTIVITY definition for clarity
 3. (Optional) Restore COLOR SEMANTICS explanation section
-
-**After these additions:**
-- Run smoke test on cleanup
-- Then merge cleanup → main
+4. Then merge cleanup → main
 
 ---
 
