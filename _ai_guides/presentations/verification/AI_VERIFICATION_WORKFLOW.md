@@ -169,8 +169,28 @@ DATA VERIFICATION (spot check):
   ✅ Slide ①A: If PR count > 6, continuation slides exist (①A-2, ①A-3, etc)
   ✅ Slide ①B: Collection branch PRs OR explicit omission ("0 deliveries")
   ✅ Slide ①C-①D: Open PRs with recent activity OR explicit omission
+  ✅ Slide ①E: Decisions verified (see below)
   ✅ Slide ③④⑤: Team issues match GitHub status + blockers
   ✅ No PR shown twice (deduplication verified)
+
+DECISION VERIFICATION (Slide ①E):
+  ✅ Verified decisions:
+     - Each decision exists in docs/BESLUT.md
+     - Has valid decision_date field (YYYY-MM-DD format)
+     - Date falls within REPORTING_PERIOD
+     - status = "confirmed" (not "proposed")
+     - Has "Påverkan" section (impact documented)
+  
+  ✅ Decision candidates:
+     - Minimum 2 pieces of evidence (PRs or patterns)
+     - Never phrased as "Teamet beslutade..." (always "Förslag på...")
+     - Evidence is concrete and verifiable
+     - Future impact clearly stated
+     - Candidate has 2-3 per slide max
+  
+  ✅ If no decisions + no candidates:
+     - Slide ①E omitted
+     - Audit records: "Slide ①E omitted — 0 decisions, 0 candidates"
 
 DESIGN & STRUCTURE COMPLIANCE:
   ✅ Slide ①A: 3×2 grid (6 max), soft cards, team borders

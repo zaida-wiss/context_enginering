@@ -54,7 +54,7 @@ For all classified information:
 | **sprint_goal** | this week, sprint goal, weekly goal, current focus, priority | `_memory/presentations/CURRENT_SPRINT.yaml` | update sprint_focus array |
 | **roadmap** | phases, weeks, project structure, long-term plan | `_memory/presentations/TEAM_ROADMAP.yaml` | update phases |
 | **team_roster** | person, role, team assignment, responsibility | `_memory/TEAM_ROSTER.md` | add/update member info |
-| **decision** | approved, decided, rule, policy, "we will", "from now on" | `docs/BESLUT.md` | add to decision log |
+| **decision** | approved, decided, rule, policy, "we will", "from now on" | `docs/BESLUT.md` | add entry (see format below) |
 
 ### Routing Examples
 
@@ -79,6 +79,66 @@ User: "Vi använder Vitest för testing framework"
 → Classification: decision
 → Route to: docs/BESLUT.md
 → Action: log decision with date, impact
+```
+
+---
+
+## DECISION FORMAT (for docs/BESLUT.md)
+
+**When routing to decisions: use this EXACT format**
+
+```yaml
+---
+id: [slug-format: lowercase, hyphens]
+decision_date: YYYY-MM-DD
+updated_date: YYYY-MM-DD
+status: confirmed
+---
+
+# [Decision Title]
+
+**Beslut:**
+[One sentence of what was decided]
+
+**Påverkan:**
+[Why this decision affects future work]
+```
+
+### Field Rules (MANDATORY)
+
+| Field | Format | Example | Must have |
+|-------|--------|---------|-----------|
+| `id` | slug (a-z, -, _) | `frontend-test-strategy` | YES |
+| `decision_date` | YYYY-MM-DD | `2026-09-15` | YES |
+| `updated_date` | YYYY-MM-DD | `2026-09-15` | YES |
+| `status` | `confirmed` or `proposed` | `confirmed` | YES |
+
+**If date is missing:** Decision will NOT appear in presentation (cannot verify "since last meeting")
+
+### Routing Example
+
+```
+User: "Vi har beslutat att använda Vitest för alla frontendtester"
+
+Classification: decision
+Extract: title="Test strategy", decision="Vitest for frontend"
+Route to: docs/BESLUT.md
+Create entry:
+
+---
+id: frontend-test-strategy
+decision_date: 2026-09-16
+updated_date: 2026-09-16
+status: confirmed
+---
+
+# Test strategy
+
+**Beslut:**
+Frontend använder Vitest för alla nya tester.
+
+**Påverkan:**
+Säkerställer konsistent testmetod i teamet.
 ```
 
 ---
