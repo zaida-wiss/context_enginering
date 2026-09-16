@@ -472,7 +472,58 @@ After rendering to PPTX, page through every slide:
 
 ---
 
+---
+
+## 🎴 COMPACT CARD STANDARD — Mandatory for Meeting Points ②–④, ⑥–⑦, ⑨–⑭
+
+**MANDATORY for these slides:**
+- ② Nuläge & Deadline
+- ③④⑤ Frontend/Backend/Native
+- ⑥ Risker & Blockers
+- ⑦ Team Capacity
+- ⑨–⑭ (all remaining slides)
+
+### Default Layout
+
+- **Use compact cards** (small to medium size)
+- **Arrange in:** 2–3 cards per row, or vertically stacked
+- **Style:** Match slide ① visual language
+  - Soft rounded corners (12–18px)
+  - Clear team/type borders
+  - Generous internal padding (16–20px)
+  - Responsive card height (grows with content)
+
+### STANDARD_INFO_CARD Component
+
+Reusable card structure for information display:
+
+```
+┌──────────────────────────┐
+│ [Title]                  │
+├──────────────────────────┤
+│ [Status/Badge]           │
+│ [Body text/summary]      │
+│ [Optional metadata]      │
+└──────────────────────────┘
+```
+
+- **Width:** Adapts to grid (100% in stack, 33-50% in grid)
+- **Height:** Content-driven (never fixed)
+- **Borders:** Soft, rounded (12–18px corners)
+- **Never clips text** — grows vertically instead
+
+### Forbidden (applies to all slides using this standard)
+
+- ❌ Stretched full-width horizontal boxes
+- ❌ Banner-like information containers
+- ❌ Oversized empty decorative cards
+- ❌ Text size reduction to preserve geometry
+- ❌ Text clipping
+- ❌ Fixed-height containers
+
+---
+
 **This is the only design specification. Everything else is deprecated.**
 
-**Version:** 3.0 (Canonical layout only)  
+**Version:** 3.1 (Compact card standard added)  
 **Status:** PRODUCTION
