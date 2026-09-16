@@ -94,62 +94,28 @@ This mötespunkt is divided into phases (①A, then ①B-①E in team context la
 Global overview of ALL work merged to develop, displayed chronologically.
 Shows what was actually delivered, regardless of team.
 
-**CARD GRID:**
-- 3 columns × 4 rows = max 12 cards per slide
-- If more than 12 merged PRs: create ①A.2, ①A.3, etc.
-- Chronological order CONTINUES across slides
+**CONTENT REQUIREMENTS:**
+- All PRs merged during REPORTING_PERIOD
+- Sort chronologically (oldest first)
+- Chronological order CONTINUES across slides if >12 cards
+- Include cross-team PRs in chronological order
+- Show assignee + GitHub login for each
 
-**METHODOLOGY:**
-- Collect ALL PRs where merged_at is within REPORTING_PERIOD and base.ref == "develop"
-- Sort GLOBALLY by merged_at (oldest first)
-- DO NOT group by team first — chronology is primary sort
-- If multiple PRs same date: sort by timestamp (more precise)
-- Cross-team PRs appear in chronological order with svart/neutral border
+**CARD DATA FIELDS:**
+- PR number + title
+- GitHub handle + display name
+- Assignee/owner name (@github_login)
+- Merged date
 
-**CARD FORMAT:**
+**VISUAL IMPLEMENTATION:**
+Do NOT define colors, grid, layout, or badge styling here.
+All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
+- Grid dimensions (3×4, max 12 cards)
+- Team colors (borders, badges)
+- Card layout and spacing
+- Legend
 
-Each card displays:
-```
-[GitHub Handle]                    [TEAM BADGE]
-#PR — Short title
-Brief description of delivery
-Merged DD sep
-
-Assignee/Owner name (@github_login)
-```
-
-**TEAM VISUALIZATION (Border + Badge):**
-- Frontend:    #2DD4BF (teal)
-- Backend:     #FB923C (orange)
-- Native:      #A855F7 (purple)
-- Cross-team:  #000000 (svart/neutral)
-
-Team color on BORDER + BADGE ONLY. Never full-card background.
-Team color means team ownership, NOT status.
-Svart border shows cross-team ownership (relevant to multiple teams).
-
-**OWNER ATTRIBUTION:**
-- Show issue/PR assignee as owner
-- Show GitHub display name + @github_login (e.g., "Zaida Wiss @zaida-wiss")
-- If PR has no assignee but links to issue: use issue assignee
-- If no verified owner: show "??" + note
-
-**LAYOUT RULES:**
-- 3 columns × 4 rows per slide (max 12 cards)
-- Read order: left → right, then next row
-- Large whitespace around entire board
-- This is a presentation summary, not a GitHub dashboard
-
-**DO NOT:**
-- Group by team
-- Sort by person or PR number
-- Use team color to express status
-- Add grid to other slides (①A is the ONLY exception to full-width block rule)
-
-**LEGEND (appears on every ①A slide):**
-```
-● Frontend (teal)    ● Backend (orange)    ● Native (purple)    ■ Cross-team (svart)
-```
+This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it looks.
 
 ---
 
@@ -191,62 +157,38 @@ Example on team slide later:
 ## 📊 ①B — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
 
 **PURPOSE:**
-Shows active work by team. Three separate columns, each team's pågår issues/branches.
+Shows active work by team. Three separate columns, each team's pågår issues.
 Does NOT include cross-team work (that goes to ①C).
 
-**CARD GRID:**
-- 3 columns (Frontend | Backend | Native)
-- 4 rows per column = max 12 cards total
-- Column 1 (Frontend): teal border
-- Column 2 (Backend): orange border
-- Column 3 (Native): purple border
+**CONTENT REQUIREMENTS:**
+- Active (open) issues assigned to team members
+- One column per team (Frontend | Backend | Native)
+- Max 4 rows per column = max 12 cards total
+- Include issue number, branch, latest commit timestamp
+- Exclude cross-team work (goes to ①C)
 
-**CARD FORMAT:**
-
-Each card displays:
-```
-#ISSUE — Title
-Branch: frontend/#72-analytics
-Latest commit: 16 sep 14:23 · Zaida
-◐ Pågår
-
-Assignee name (@github_login)
-```
-
-**REQUIRED FIELDS:**
+**CARD DATA FIELDS:**
 - Issue number + title
-- Branch name (shows where work lives)
-- **Latest commit timestamp** (proves activity this week)
-- **Link to branch/PR** (clickable, so reviewer can inspect code)
-- Assignee name + @github_login
-
-**CODE INSPECTION REQUIREMENT:**
-Before displaying issue as "Pågår":
-1. Reviewer SHOULD inspect the branch/PR code
-2. Ask: Does code look like it's progressing toward completion?
-3. Does the work match the issue description?
-4. Any obvious blockers or incomplete sections?
-
-If code looks suspicious (incomplete, wrong direction, stalled):
-- Add note: "Code needs review — direction unclear" or "Looks stalled"
-- This helps meeting participants identify issues before they become blockers
-
-**WHY COMMIT TIMESTAMP:**
-- Shows when the work actually happened
-- Distinguishes active work (today) from stale branches (3 days ago)
-- Proves the issue isn't abandoned
-
-**SORT ORDER:**
-- Frontend: by latest commit (most recent first, within last 7 days)
-- Backend: by latest commit (most recent first, within last 7 days)
-- Native: by latest commit (most recent first, within last 7 days)
-- NO cross-team cards on this slide
+- Branch name
+- Latest commit timestamp + author name
+- Assignee name (@github_login)
+- Code inspection notes (if issues detected)
 
 **DATA SOURCE:**
-- Open issues + open branches with recent commits (last 7 days)
-- Per team via TEAM_ROSTER.md classification
-- Exclude cross-team (goes to ①C)
-- **CRITICAL:** Latest commit timestamp from repository_branches_and_commits source (DATA_ACQUISITION_CONTRACT.yaml)
+- Open issues + matching active branches
+- Recent commits (last 7 days)
+- Per team via TEAM_ROSTER.md
+- Latest commit timestamp from DATA_ACQUISITION_CONTRACT.yaml
+
+**VISUAL IMPLEMENTATION:**
+Do NOT define colors, grid layout, or spacing here.
+All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
+- Column structure (3 columns)
+- Team border colors
+- Card dimensions and spacing
+- How to display commit timestamp
+
+This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it looks.
 
 ---
 
@@ -256,39 +198,32 @@ If code looks suspicious (incomplete, wrong direction, stalled):
 Shows active cross-team work (affects multiple teams).
 Separate slide to keep team columns clean and highlight cross-team coordination.
 
-**CARD GRID:**
-- 3 columns × 4 rows = max 12 cards
-- All cards have svart/neutral border (#000000)
-- Indicates work relevant to multiple teams
+**CONTENT REQUIREMENTS:**
+- Active (open) issues affecting multiple teams
+- Max 12 cards per slide
+- Show which teams are involved in each issue
+- Include branch names and latest commit timestamps
+- Sort by activity (most recent first)
 
-**CARD FORMAT:**
-
-Each card displays:
-```
-#ISSUE — Title
-Teams: Frontend + Backend / Backend + Native / etc
-Branch: api/#84-schema
-Latest commit: 16 sep 10:15 · Tomac
-◐ Pågår
-
-Assignee name (@github_login)
-```
-
-**REQUIRED FIELDS:**
+**CARD DATA FIELDS:**
 - Issue number + title
-- Teams involved (shows which teams must coordinate)
-- Branch name (shows where work lives)
-- **Latest commit timestamp** (proves activity this week)
-- Assignee name + @github_login
-
-**SORT ORDER:**
-- By latest commit (most recent first, within last 7 days)
-- Shows most active cross-team work first
+- Teams involved
+- Branch name
+- Latest commit timestamp + author name
+- Assignee name (@github_login)
 
 **DATA SOURCE:**
-- Open issues + branches marked as cross-team or affecting multiple teams
-- Show which teams are involved
-- **CRITICAL:** Latest commit timestamp from repository_branches_and_commits source (DATA_ACQUISITION_CONTRACT.yaml)
+- Open issues marked as cross-team or affecting multiple teams
+- Latest commit timestamp from DATA_ACQUISITION_CONTRACT.yaml
+
+**VISUAL IMPLEMENTATION:**
+Do NOT define colors, grid layout, or border styling here.
+All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
+- Grid dimensions (3×4, max 12 cards)
+- Cross-team border color and styling
+- Card layout and spacing
+
+This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it looks.
 
 ---
 
