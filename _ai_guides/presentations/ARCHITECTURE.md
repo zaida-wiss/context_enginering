@@ -145,3 +145,183 @@ DATA_ACQUISITION_CONTRACT.yaml (fetches the data)
 4. Commit all together
 
 **Golden Rule:** Changes never travel one way. If you update one tier, check the others.
+
+---
+
+## 📍 FILE PLACEMENT GUIDE — Where Information Lives
+
+**This section tells AI WHERE to put new information and WHEN to update existing files.**
+
+### TIER 1 FILES — Never Create New, Always Update Existing
+
+These files are **authoritative sources**. Do NOT create alternatives. When you need to add information, UPDATE these files.
+
+| File | Owns | When to Update | How to Update |
+|------|------|---|---|
+| **VISUAL_DESIGN_MANDATORY.md** | ALL visual rules (colors, typography, spacing, borders, grids) | User wants to change colors, fonts, layout | Edit the relevant section; never create "VISUAL_DESIGN_V2.md" |
+| **ACCESSIBILITY_NEURODIVERSITY.md** | WCAG/NPF boundaries (contrast, readability, symbol consistency) | Need to define new accessibility requirement | Add to the appropriate section; WCAG 2.2 AA is binding |
+| **SLIDE_DETAIL_SPEC.md** | Content blueprint (what data goes where, card format) | Need to define new slide type or change card structure | Edit the slide section; do NOT add color/font rules (those go to VISUAL_DESIGN) |
+| **DATA_ACQUISITION_CONTRACT.yaml** | Data collection method (canonical algorithm, no interpretation) | Need to add new data source or change collection | Add new `dataset` section; reference authority hierarchy |
+| **ACTIVE_WORK_DETECTION_MODEL.md** | Evidence hierarchy for determining "what is someone working on?" | Need to add new detection signal or change priority | Edit the evidence levels; update algorithm section |
+| **SYSTEM_CONTRACT.yaml** | Execution sequence, gates, authority conflicts, entity rules | Need to add new rule, gate, or policy | Add new top-level section; reference other files as needed |
+
+---
+
+### TIER 2 FILES — Reference Files (Supporting, Not Authoritative)
+
+These files REFERENCE tier-1 files. They explain, visualize, or summarize tier-1 rules. Do NOT store original rules here.
+
+| File | Purpose | When to Update | How to Update |
+|------|---------|---|---|
+| **TEMPLATE_REFERENCE.html** | Visual mockup showing VISUAL_DESIGN_MANDATORY rules in action | VISUAL_DESIGN_MANDATORY changes | Re-render mockup to show new colors/layout |
+| **DATA_COLLECTION_MANDATORY.md** | Checklist/validation based on DATA_ACQUISITION_CONTRACT | DATA_ACQUISITION_CONTRACT changes | Update checklist items; add validation rules |
+| **RENDER_GATE_CHECKLIST.md** | Pre-rendering verification based on all tier-1 files | New rules added to VISUAL_DESIGN, ACCESSIBILITY, or DATA | Add new checkboxes; reference tier-1 files |
+
+---
+
+### DIRECTORY STRUCTURE — Where Each Type Lives
+
+```
+_ai_guides/presentations/
+
+├─ MANDATORY_READING_ORDER.md          (entry point — NEVER modified)
+├─ SYSTEM_CONTRACT.yaml                (execution + authority — TIER 1)
+├─ ARCHITECTURE.md                     (this file — how system is organized)
+│
+├─ data/
+│  ├─ DATA_SOURCES.md                  (where sources are, not how to fetch)
+│  ├─ DATA_ACQUISITION_CONTRACT.yaml   (HOW to fetch — TIER 1)
+│  ├─ ACTIVE_WORK_DETECTION_MODEL.md   (evidence hierarchy — TIER 1)
+│  └─ (no other data-collection files should exist)
+│
+├─ design/
+│  ├─ VISUAL_DESIGN_MANDATORY.md       (all visual rules — TIER 1)
+│  ├─ ACCESSIBILITY_NEURODIVERSITY.md  (WCAG/NPF — TIER 1)
+│  ├─ TEMPLATE_REFERENCE.html          (mockup visualization — TIER 2)
+│  └─ (no other design files; PRESENTATION_STYLE.md is deprecated)
+│
+├─ monday_meeting/
+│  ├─ design/
+│  │  ├─ SLIDE_DETAIL_SPEC.md          (content per slide — TIER 1)
+│  │  └─ (no other slide-spec files)
+│  │
+│  ├─ data/
+│  │  ├─ DATA_COLLECTION_MANDATORY.md  (validation checklist — TIER 2)
+│  │  └─ (no other data-validation files)
+│  │
+│  └─ structure/
+│     └─ PRESENTATION_STRUCTURE.md     (14 meeting points — reference only)
+│
+└─ verification/
+   ├─ RENDER_GATE_CHECKLIST.md         (pre-render verification — TIER 2)
+   └─ (no other verification files)
+```
+
+**IF YOU FIND OTHER FILES IN THESE DIRECTORIES:**
+- PRESENTATION_STYLE.md → deprecated, info is in VISUAL_DESIGN_MANDATORY.md
+- DESIGN_AUTHORITY.md → deprecated, info is in SYSTEM_CONTRACT.yaml
+- *_v2.md, *_UPDATED.md, etc. → delete and consolidate into tier-1 file
+
+---
+
+### HOW TO ADD NEW INFORMATION
+
+**Scenario 1: New slide type (e.g., "①⑬ Risk Assessment")**
+
+1. WHERE: SLIDE_DETAIL_SPEC.md — add new section `## 📊 ①⑬ RISK ASSESSMENT`
+2. WHAT: Define content format, required fields, data source
+3. DO NOT: Add visual rules here
+4. THEN: If new visuals needed, update VISUAL_DESIGN_MANDATORY.md
+5. THEN: If new data needed, update DATA_ACQUISITION_CONTRACT.yaml
+
+**Scenario 2: New color or typography rule**
+
+1. WHERE: VISUAL_DESIGN_MANDATORY.md — add to relevant section
+2. WHAT: Define exact hex value, usage, contrast ratio
+3. WHY: Add context (e.g., "for new risk-severity indicator")
+4. DO NOT: Mention this color in SLIDE_DETAIL_SPEC.md
+5. THEN: Update TEMPLATE_REFERENCE.html to show the new color
+
+**Scenario 3: New data source needed**
+
+1. WHERE: DATA_ACQUISITION_CONTRACT.yaml — add new `dataset:` section
+2. WHAT: Define canonical method, fallback order, required fields, correlation logic
+3. WHO: Is this data tied to a specific slide? Reference SLIDE_DETAIL_SPEC.md
+4. WHY: Is this data needed for active work detection? Add to ACTIVE_WORK_DETECTION_MODEL.md
+5. DO NOT: Create a separate "DATA_SOURCES_NEW.md"
+
+**Scenario 4: New accessibility boundary (e.g., "all borders must be 3:1 contrast")**
+
+1. WHERE: ACCESSIBILITY_NEURODIVERSITY.md — add to "MANDATORY — WCAG 2.2 AA" section
+2. WHAT: Define the rule + contrast ratio + why
+3. THEN: Update VISUAL_DESIGN_MANDATORY.md to implement this boundary
+4. THEN: Update RENDER_GATE_CHECKLIST.md with a checkbox
+
+**Scenario 5: Need to change existing rule**
+
+1. FIND: Which tier-1 file owns this rule?
+2. VERIFY: Check SYSTEM_CONTRACT.yaml authority hierarchy — does this file own it?
+3. UPDATE: Edit the tier-1 file directly
+4. PROPAGATE: Update all tier-2 files that reference it
+5. DO NOT: Create alternative versions or work-arounds
+
+---
+
+### CONSISTENCY CHECKS FOR AI
+
+**Before writing or editing any file, ask yourself:**
+
+```
+[ ] Is this information already defined elsewhere?
+    If yes → edit that file, don't create a new one
+    
+[ ] Does this file own this type of information?
+    Check SYSTEM_CONTRACT.yaml authority hierarchy
+    If no → add it to the file that owns it
+    
+[ ] Am I creating a *_v2 or alternative file?
+    If yes → STOP. Consolidate into existing tier-1 file instead
+    
+[ ] Does this change affect other files?
+    - Visual rule change → check TEMPLATE_REFERENCE.html
+    - Data rule change → check RENDER_GATE_CHECKLIST.md
+    - Accessibility rule change → check VISUAL_DESIGN_MANDATORY.md
+    
+[ ] Am I adding rules to SLIDE_DETAIL_SPEC.md?
+    If they're visual (color, font, spacing) → move to VISUAL_DESIGN_MANDATORY.md
+    If they're accessibility → move to ACCESSIBILITY_NEURODIVERSITY.md
+    If they're data-related → reference DATA_ACQUISITION_CONTRACT.yaml
+```
+
+---
+
+### WHAT TO DO WITH DEPRECATED FILES
+
+When you find old/redundant files:
+
+1. **IDENTIFY:** Which tier-1 file now owns this information?
+2. **MIGRATE:** Copy any unique content to the tier-1 file
+3. **CONSOLIDATE:** If information is duplicated, keep only tier-1 version
+4. **DELETE:** Remove the deprecated file
+5. **COMMIT:** "chore: consolidate [OLD_FILE] into [TIER_1_FILE]"
+
+**Example:**
+- Found: `PRESENTATION_STYLE.md` (deprecated)
+- Owner: `VISUAL_DESIGN_MANDATORY.md`
+- Action: Delete `PRESENTATION_STYLE.md`, reference is now in VISUAL_DESIGN_MANDATORY.md
+
+---
+
+### AUTHORITY HIERARCHY APPLIED TO FILE PLACEMENT
+
+If TWO files claim the same responsibility:
+
+1. Check SYSTEM_CONTRACT.yaml `authority` section
+2. Higher-level file wins
+3. Lower-level file becomes reference/validation only
+4. DO NOT maintain both as alternatives
+
+**Example:** If both SLIDE_DETAIL_SPEC.md and VISUAL_DESIGN_MANDATORY.md say "Backend is orange":
+- VISUAL_DESIGN_MANDATORY.md wins (TIER 1, owns HOW)
+- SLIDE_DETAIL_SPEC.md updates to reference it (TIER 2)
+- Result: One source of truth
