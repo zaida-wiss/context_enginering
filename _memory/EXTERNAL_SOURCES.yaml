@@ -24,13 +24,19 @@ sources:
       source_type: "github_rest_api"
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
       http_method: "GET"
-      note: "Canonical endpoint; any available implementation allowed"
+      note: "Canonical endpoint; implementation order defined below"
+
+    implementation_order:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+
+    selection_rule: "If github_connector available, MUST be attempted first before other implementations"
 
     allowed_implementations:
       - "github_connector"
       - "http_fetch"
       - "web_fetch"
-      - "curl (CLI tool)"
 
     forbidden_access_methods:
       - "web_search"
@@ -62,13 +68,19 @@ sources:
       source_type: "github_rest_api"
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
       http_method: "GET"
-      note: "Canonical endpoint; API includes PRs so contract must filter pull_request key"
+      note: "Canonical endpoint; API includes PRs so contract must filter pull_request key; implementation order defined below"
+
+    implementation_order:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+
+    selection_rule: "If github_connector available, MUST be attempted first before other implementations"
 
     allowed_implementations:
       - "github_connector"
       - "http_fetch"
       - "web_fetch"
-      - "curl (CLI tool)"
 
     forbidden_access_methods:
       - "web_search"
@@ -99,13 +111,19 @@ sources:
       source_type: "github_rest_api"
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=open&per_page=100"
       http_method: "GET"
-      note: "Separate from issues API; provides PR-specific fields (head.ref, requested_reviewers, review_state)"
+      note: "Separate from issues API; provides PR-specific fields (head.ref, requested_reviewers, review_state); implementation order defined below"
+
+    implementation_order:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+
+    selection_rule: "If github_connector available, MUST be attempted first before other implementations"
 
     allowed_implementations:
       - "github_connector"
       - "http_fetch"
       - "web_fetch"
-      - "curl (CLI tool)"
 
     forbidden_access_methods:
       - "web_search"
@@ -134,13 +152,19 @@ sources:
       source_type: "github_rest_api"
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/branches?per_page=100"
       http_method: "GET"
-      note: "Lists all branches; used to detect collection branches and activity"
+      note: "Lists all branches; used to detect collection branches and activity; implementation order defined below"
+
+    implementation_order:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+
+    selection_rule: "If github_connector available, MUST be attempted first before other implementations"
 
     allowed_implementations:
       - "github_connector"
       - "http_fetch"
       - "web_fetch"
-      - "curl (CLI tool)"
 
     forbidden_access_methods:
       - "web_search"
@@ -157,7 +181,14 @@ sources:
       source_type: "github_rest_api"
       url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/commits?sha={branch}&since={REPORTING_PERIOD_START}&until={REPORTING_PERIOD_END}&per_page=100"
       http_method: "GET"
-      note: "Parameterized by branch and reporting period; shows activity per branch"
+      note: "Parameterized by branch and reporting period; shows activity per branch; implementation order defined below"
+
+    implementation_order:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+
+    selection_rule: "If github_connector available, MUST be attempted first before other implementations"
 
     allowed_implementations:
       - "github_connector"
