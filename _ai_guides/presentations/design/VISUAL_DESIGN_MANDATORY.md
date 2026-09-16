@@ -488,7 +488,6 @@ After rendering to PPTX, page through every slide:
 - ② Nuläge & Deadline
 - ⑥ Risker & Blockers (except ⑥A dependency diagram)
 - ⑦ Risk register
-- ⑧ Kapacitet
 - ⑨ Prioritering & Scope
 - ⑩ Tekniska Beslut
 - ⑪ Sprintmål
@@ -502,8 +501,9 @@ After rendering to PPTX, page through every slide:
 - ⑤ Native denna vecka
 (These three use identical TEAM_DETAIL_CARDS layout—see above section)
 
-**NOT affected (keep existing layout):**
+**UNCHANGED (keep existing layouts):**
 - ① Avklarat (①A grid, ①B-①E full-width stacked)
+- ⑧ Kapacitet & Estimering (tabell format per SLIDE_DETAIL_SPEC)
 
 ### Default Layout
 
