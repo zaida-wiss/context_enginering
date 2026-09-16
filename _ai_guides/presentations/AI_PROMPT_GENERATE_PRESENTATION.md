@@ -117,9 +117,11 @@ If anyone is missing → Slide must show "❌ Ingen aktivitet denna vecka" (No a
 ### Slide ① — Avklarat sedan förra mötet
 
 **Title format (MUST match meeting protocol):**
-- Slide ①A: "Avklarat sedan förra mötet — Frontend"
-- Slide ①B: "Avklarat sedan förra mötet — Backend"
-- Slide ①C: "Avklarat sedan förra mötet — Native"
+- Slide ①A: "① Avklarat sedan förra mötet — Develop"
+- Slide ①B: "① Avklarat sedan förra mötet — Collection branches"
+- Slide ③: "③ Frontend — denna vecka"
+- Slide ④: "④ Backend — denna vecka"
+- Slide ⑤: "⑤ Native — denna vecka"
 
 **NOT:** "Frontend — avklarat + pågår + review" ❌
 

@@ -157,9 +157,9 @@ required_datasets:
       - commits[] (detailed commit list)
       - commits[].author.login (actual code author per commit)
       - commits[].commit.author.email (for attribution)
-      - reviews[] (completed reviews, NOT requested_reviewers)
-      - reviews[].user.login (actual reviewer who approved)
-      - reviews[].state (only "APPROVED" counts as completed review)
+      - reviews[] (all submitted reviews, NOT requested_reviewers)
+      - reviews[].user.login (actual reviewer who submitted review)
+      - reviews[].state (APPROVED, CHANGES_REQUESTED, or COMMENTED count as review work)
       - linked_issues[] (issues this PR addresses)
 
     CRITICAL_RULE: >
@@ -353,8 +353,20 @@ required_datasets:
       - merged_by (who merged to branch)
 
     CRITICAL_DEDUPLICATION: >
-      A PR merged to develop MUST NOT also count as "merged to collection branch".
-      If a PR later reaches develop, remove it from collection-branch delivery list.
+      Deduplication by WORK IDENTITY, not PR number.
+
+      Delivery identity priority:
+        1. Linked issue IDs (primary)
+        2. Commit SHA ancestry (who authored the work)
+        3. Source branch + commit set (same changes)
+
+      Rule: If same work (same linked issue OR same commit ancestry)
+      appears as both collection-branch AND develop delivery,
+      show ONLY the develop delivery (later in timeline).
+
+      IMPORTANT: PR numbers alone are INSUFFICIENT.
+      Collection PR #107 and later develop PR #109 may represent same work.
+      Use issue links and commits to determine true identity.
 
     classification_rule: >
       develop_delivery: base_branch == develop

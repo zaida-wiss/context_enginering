@@ -72,7 +72,7 @@ Slide ①A ("Mergade PR:er") is the ONLY standard exception to the full-width si
 - Cards are rendered as soft rounded cards with 12–18px corners
 - This is a presentation summary, not a GitHub/Jira dashboard
 
-**All other slides (①B-①E, ②, ③, etc.):**
+**All other slides (①B-①D, ②, ③, etc.):**
 - Continue to follow the canonical vertical full-width block layout
 - Content rendered as stacked soft cards (not grid)
 - Each card is a soft, rounded, responsive container
@@ -226,7 +226,7 @@ Light Slate border (#CBD5E1) means work affects multiple teams, not a single tea
 It is neutral, showing coordination required across team boundaries.
 Use on:
 - Slide ①A: cross-team merged PRs (in chronological order)
-- Slide ①C: cross-team pågår work
+- Slide ①D: cross-team pågår work
 
 **EXAMPLE — Frontend card on slide ①A (Merged):**
 - Slide background: #0F1830
@@ -237,7 +237,7 @@ Use on:
 - Text: #FFFFFF
 - Metadata: #94A3B8
 
-**EXAMPLE — Backend card on slide ①B (In Progress):**
+**EXAMPLE — Backend card on slide ①C or ①D (In Progress):**
 - Slide background: #0F1830
 - Card background: #18233D
 - Card border: #FF4FA3 (hot pink, team ownership)
@@ -258,7 +258,7 @@ Use on:
 **CRITICAL:**
 Team colors and status colors are TWO DIFFERENT semantic systems.
 On Slide ①A "Merged PRs": all cards already have status = MERGED.
-On Slide ①B-①C "Pågår": all cards already have status = ◐ PÅGÅR.
+On Slide ①B-①D "Pågår": all cards already have status = ◐ PÅGÅR.
 Therefore border color represents TEAM. Do NOT add green/orange/red status borders.
 Status is communicated by symbol + text ("Merged" / "◐ Pågår").
 

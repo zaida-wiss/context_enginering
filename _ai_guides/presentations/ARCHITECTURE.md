@@ -21,7 +21,7 @@ metadata:
 - Layout (full-width blocks, card grids, spacing, margins, padding)
 - Component structure (cards, borders, badges)
 - Dark navy theme (#0F1830) — MANDATORY on all slides
-- Grid dimensions (3 columns × 4 rows for ①A-①C)
+- Grid dimensions (3 columns × 2 rows for ①A merged overview, full-width blocks for ①B-①D)
 - Exceptions (①A is the ONLY card-grid exception to full-width blocks)
 
 **When to update:** Whenever a design rule changes (colors, layout, typography)
@@ -109,19 +109,15 @@ DATA_ACQUISITION_CONTRACT.yaml (fetches the data)
 
 **Team Colors (Borders only):**
 - Frontend: #2DD4BF (teal)
-- Backend: #FB923C (orange)
+- Backend: #FF4FA3 (hot pink)
 - Native: #A855F7 (purple)
-- Cross-team: #000000 (svart/neutral)
+- Cross-team: #CBD5E1 (light slate, WCAG compliant)
 
-**Grid Layout (①A-①C):**
-- 3 columns × 4 rows = max 12 cards per slide
-- Card border shows team ownership
-- Status shown via symbol + text (✅ Merged, ◐ Pågår, etc.)
-
-**Slides:**
-- ①A: Merged PRs (chronological, all teams mixed)
-- ①B: Pågår by team (Frontend | Backend | Native columns)
-- ①C: Pågår Cross-team (separate slide, svart borders)
+**Slide Layouts:**
+- ①A: Merged PRs — 3×2 card grid (6 max) with team-colored borders
+- ①B: Collection branch merges — full-width stacked cards (Java-Development-Environment, C/C++-Native, etc.)
+- ①C: Pågår by team — full-width stacked cards (Frontend, Backend, Native, each team section)
+- ①D: Pågår Cross-team — full-width stacked cards (work affecting multiple teams)
 
 ---
 
