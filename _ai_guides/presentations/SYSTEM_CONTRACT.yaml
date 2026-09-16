@@ -720,11 +720,13 @@ tool_routing_gate:
   github_rest_api:
     permitted_implementations:
       - "github_connector (preferred)"
-      - "native_github_rest_tool (if available)"
+      - "http_fetch"
+      - "web_fetch"
+      - "curl (CLI tool)"
     forbidden_implementations:
       - "bash_git (shell git command)"
-      - "shell_curl (HTTP from shell)"
       - "web_search"
+    note: "Must match EXTERNAL_SOURCES.yaml allowed_implementations for github_rest_api"
 
   google_sheets:
     permitted_implementations:
