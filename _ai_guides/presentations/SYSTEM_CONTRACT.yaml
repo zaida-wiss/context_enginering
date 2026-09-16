@@ -786,13 +786,13 @@ execution_sequence:
 
     must_confirm_true:
       accessibility_neurodiversity_read: "ACCESSIBILITY_NEURODIVERSITY.md was read"
-      visual_design_loaded: "VISUAL_DESIGN_MANDATORY.md rules loaded (28pt slide titles, CANONICAL LAYOUT)"
+      visual_design_loaded: "VISUAL_DESIGN_MANDATORY.md rules loaded (32pt slide titles, CANONICAL LAYOUT)"
       slide_detail_spec_loaded: "SLIDE_DETAIL_SPEC.md loaded (exact content per slide)"
       template_is_reference_only: "TEMPLATE_REFERENCE.html understood as reference only (not rule source)"
       npf_rules_win: "NPF rules from ACCESSIBILITY_NEURODIVERSITY.md override all other design rules"
 
     design_constants_must_be:
-      slide_title_size_pt: 28
+      slide_title_size_pt: 32
       canonical_layout_blocks: "Exactly 1 header + 1 message + 1–3 fullwidth blocks per slide"
       status_encoding_required: "Symbol + Color + Text (all three always together)"
       max_line_length_chars: 70
