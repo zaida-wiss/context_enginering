@@ -237,10 +237,10 @@ sources:
       csv: "https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=csv"
       xlsx: "https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/export?format=xlsx"
     tabs:
-      commits: "gid=743460023"
-      issues: "gid=77162861"
+      commits: "gid=77162861"
+      issues: "gid=869242669"
       prs: "gid=743460023"
-      project_board: "gid=869242669"
+      project_board: "gid=954257821"
     allowed_access_methods:
       - "google_drive_connector"
     forbidden_access_methods:
