@@ -144,14 +144,23 @@ required_datasets:
     verification_only:
       - "Individual PR pages (verification only, not for completeness discovery)"
 
-    requirement: "ALL merged PRs in reporting period"
+    requirement: "ALL merged PRs in reporting period (develop + collection branches)"
     fields:
-      - id (PR number)
+      - number (PR number)
       - title
-      - assignees[] (CRITICAL: who worked on this PR, not who merged it)
+      - base.ref (branch merged to: develop or collection branch)
+      - head.ref
       - merged_at (timestamp)
-      - base.ref
-      - linked_issues (if available)
+      - merged_by.login (person who merged)
+      - author.login (PR author)
+      - assignees[] (CRITICAL: who worked on this PR)
+      - commits[] (detailed commit list)
+      - commits[].author.login (actual code author per commit)
+      - commits[].commit.author.email (for attribution)
+      - reviews[] (completed reviews, NOT requested_reviewers)
+      - reviews[].user.login (actual reviewer who approved)
+      - reviews[].state (only "APPROVED" counts as completed review)
+      - linked_issues[] (issues this PR addresses)
 
     CRITICAL_RULE: >
       Show PR by ASSIGNEE (person who worked on the code), NOT by merger.
@@ -317,6 +326,42 @@ required_datasets:
 
     requirement: "ALL dependencies between open/merged issues in reporting period"
     stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE, but continue with available data)"
+
+  collection_branches_and_merges:
+    source_id: "GITHUB_COLLECTION_BRANCHES"
+    classification: "SECONDARY (track team progress before develop integration)"
+    purpose: >
+      Track work merged to team collection branches (e.g., Java-Development-Environment for Backend,
+      C/C++-Native for Native). This represents team progress before integration to develop.
+
+    known_branches:
+      backend:
+        - "Java-Development-Environment"
+      native:
+        - "C/C++-Native"
+      frontend: [] # Frontend typically develops directly on develop
+
+    discovery:
+      allow_additional_verified_branches: true
+      per_team: "True — ask team members if branches exist beyond known list"
+
+    collect_per_branch:
+      - merged_prs (with all fields: commits, reviews, merged_by, etc)
+      - merged_at
+      - contributors (commit authors)
+      - reviewers (actual approvers, not requested)
+      - merged_by (who merged to branch)
+
+    CRITICAL_DEDUPLICATION: >
+      A PR merged to develop MUST NOT also count as "merged to collection branch".
+      If a PR later reaches develop, remove it from collection-branch delivery list.
+
+    classification_rule: >
+      develop_delivery: base_branch == develop
+      team_delivery: base_branch == verified_collection_branch
+
+    requirement: "Track all collection-branch merges to show team progress"
+    fields: (same as merged_prs) + base.ref (for filtering by branch)
 
   team_member_capacity_and_absence:
     source_id: "GITHUB_TEAM_ROSTER_EXTENDED"
