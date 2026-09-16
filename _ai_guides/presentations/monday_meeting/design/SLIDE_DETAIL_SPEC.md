@@ -95,18 +95,116 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 ---
 
-## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1+ slides, split as needed)
+## 📝① AVKLARAT SEDAN FÖRRA MÖTET
 
-**CRITICAL RULE:** Point ① completeness = union of ALL verified activity during reporting period, not merged PRs alone.
+**Point ① shows ONLY completed work during reporting period.**
 
-**VERIFIED ACTIVITY = {merged PRs, closed issues, open issues with activity, active branches, open PRs with activity, relevant commits}**
+This mötespunkt is divided into phases (①A, then ①B-①E in team context later):
 
-**DEDUPLICATION RULE:**
-- Same work MUST NOT appear twice (e.g., issue + branch + PR)
-- If issue has linked PR and branch → show as ONE row in merged/pågår/review (use PR as primary, note issue link)
-- If issue has no PR yet but has active branch → show as ONE row in pågår (branch + issue link)
-- If branch has no PR and no issue → show as ONE row in pågår
-- Count only ONCE in audit and slides (unique identifiers: issue#, PR#, branch-name, or commit-sha)
+---
+
+## 📊 ①A — MERGADE PR:ER SEDAN FÖRRA MÖTET (1+ slides, split as needed)
+
+**PURPOSE:**
+Global overview of ALL work merged to develop, displayed chronologically.
+Shows what was actually delivered, regardless of team.
+
+**METHODOLOGY:**
+- Collect ALL PRs where merged_at is within REPORTING_PERIOD and base.ref == "develop"
+- Sort GLOBALLY by merged_at (oldest first)
+- DO NOT group by team first — chronology is primary sort
+- If multiple PRs same date: sort by timestamp (more precise)
+
+**CARD LAYOUT (3 columns × 2 rows max per slide):**
+
+Each card displays:
+```
+[GitHub Handle]                    [TEAM BADGE]
+#PR — Short title
+Brief description of delivery
+Merged DD sep
+
+Assignee/Owner name (@github_login)
+```
+
+**TEAM VISUALIZATION (Border + Badge only):**
+- Frontend:    #2DD4BF (teal)
+- Backend:     #FB923C (orange)
+- Native:      #A855F7 (purple)
+- Cross-team:  #FACC15 (yellow)
+- Other:       #94A3B8 (gray)
+
+Team color on BORDER + BADGE ONLY. Never full-card background.
+Team color means team ownership, NOT status.
+
+**OWNER ATTRIBUTION:**
+- Show issue/PR assignee as owner
+- Show GitHub display name + @github_login (e.g., "Zaida Wiss @zaida-wiss")
+- If PR has no assignee but links to issue: use issue assignee
+- If no verified owner: show "??" + note
+
+**LAYOUT RULES:**
+- Max 6 cards per slide (3 columns × 2 rows)
+- If more than 6 merged PRs: create ①A.2, ①A.3, etc.
+- Chronological order CONTINUES across slides
+- Read order: left → right, then next row
+- Large whitespace around entire board
+- This is a presentation summary, not a GitHub dashboard
+
+**DO NOT:**
+- Group Frontend first, then Backend
+- Sort by person
+- Sort by PR number
+- Use team color to express status (clear/pågår/blocked)
+- Add grid to other slides (①A is the ONLY exception to full-width block rule)
+
+**LEGEND (appears on every ①A slide):**
+```
+● Frontend    ● Backend    ● Native    ● Cross-team
+```
+
+---
+
+## 🟢 TEAM MEMBER CAPACITY — UNIVERSAL RULE
+
+If a team member has NO verified active issue or PR:
+
+**Show:**
+"[Name] — Ny issue eller tillgänglig för hjälp i [teamet]"
+
+**This means:**
+- Can take next prioritized issue
+- Can help a team colleague
+- Can pair or review
+- Can help unblock someone
+- Is available for support/ramp-up
+
+**This is capacity information, NOT performance assessment.**
+
+**DO NOT:**
+- Write "Ingen aktivitet" (implies inactivity)
+- Write "Inget arbete" (implies no work)
+- Use red warning
+- Use phrasing that implies low performance
+
+**Visual style:**
+- Neutral gray or blue color
+- Symbol: ○ or ↔
+- Text: "Ny issue eller tillgänglig för hjälp"
+
+Example on team slide later:
+```
+○ Erik — Ny issue eller tillgänglig för hjälp i Backend
+○ Pär — Ny issue eller tillgänglig för hjälp i Native
+```
+
+---
+
+## 📝 ①B-①E — PÅGÅR & HINDER (deferred to team context)
+
+**Pågår per team, planerat, blockers/risker → shown during team-specific slides later.**
+
+**For now: ①A contains ONLY completed/merged work.**
 
 **If team's verified activity exceeds slide capacity:**
 - Split to ①A.1, ①A.2, ①B.1, ①B.2, etc.

@@ -58,6 +58,27 @@ Each block displays ONE CATEGORY of work (merged PRs, open issues, etc):
 
 ---
 
+## ⚠️ EXCEPTION — SLIDE ①A MERGED OVERVIEW BOARD
+
+Slide ①A ("Mergade PR:er") is the ONLY standard exception to the full-width block rule.
+
+**For Slide ①A ONLY:**
+- A 3 × 2 card grid IS REQUIRED
+- Maximum 6 cards per slide
+- Cards have identical dimensions
+- Cards are read chronologically left-to-right, top-to-bottom
+- Large whitespace must remain around the board
+- Each card has team-colored border (teal/orange/purple/yellow/gray)
+- This is a presentation summary, not a GitHub/Jira dashboard
+
+**All other slides (①B-①E, ②, ③, etc.):**
+- Continue to follow the canonical vertical full-width block layout
+- NO card grids
+- NO nested tables
+- Only exception is ①A
+
+---
+
 ## 📐 FIXED DIMENSIONS & TYPOGRAPHY
 
 These values NEVER change. Use them exactly.
@@ -77,26 +98,80 @@ These values NEVER change. Use them exactly.
 
 | Element | Font Size | Weight | Color |
 |---------|-----------|--------|-------|
-| Slide header (meeting point ①②③) | 28pt | BOLD | #323232 (dark gray) |
-| Section header (Frontend, Backend, etc) | 14pt | BOLD | #323232 |
-| Main message | 13pt | Regular | #323232 |
-| Work item title | 13pt | Regular | #323232 |
-| Owner/Status | 12pt | Regular | #666666 (medium gray) |
+| Slide header (meeting point ①②③) | 28pt | BOLD | #FFFFFF (white) |
+| Section header (Frontend, Backend, etc) | 14pt | BOLD | #FFFFFF |
+| Main message | 13pt | Regular | #CBD5E1 (light slate) |
+| Work item title | 13pt | Regular | #FFFFFF |
+| Owner/Status | 12pt | Regular | #94A3B8 (muted slate) |
 
 ---
 
-## 🎨 COLOR PALETTE
+## 🎨 PRESENTATION THEME — BACKGROUNDS (MANDATORY)
 
-Semantic colors for status indication (Symbol + Color + Text together):
+**ALL slides MUST use dark navy theme. NO EXCEPTIONS.**
 
-| Status | Symbol | Color | RGB | Usage |
+| Element | Color | Hex | Usage |
+|---------|-------|-----|-------|
+| Slide background | Dark Navy | #0F1830 | Every slide |
+| Content board/card | Secondary Navy | #18233D | Cards, blocks, containers |
+| Alternate board (if needed) | Tertiary Navy | #202C47 | Variation for contrast |
+| Dividers/borders (neutral) | Slate | #334155 | Separators (not team-related) |
+
+**CRITICAL THEME RULE:**
+
+All Monday Meeting presentation slides MUST use the dark navy theme (#0F1830).
+
+DO NOT:
+- Use white slide backgrounds
+- Use light-gray slide backgrounds
+- Alternate slide background colors
+- Use team color as full-slide background
+
+The dark navy background is constant throughout the deck.
+
+---
+
+## 🎨 STATUS COLORS (SEMANTIC)
+
+Status is communicated via Symbol + Color + Text:
+
+| Status | Symbol | Color | Hex | Usage |
 |--------|--------|-------|-----|-------|
-| Done/Merged | ✅ | Green | 76, 175, 80 | Completed work |
-| In Progress | ◐ | Orange | 255, 152, 0 | Active work |
-| Waiting/Blocked | ⏳ 🔴 | Orange/Red | 255, 152, 0 / 244, 67, 54 | Blocked or review |
-| Unknown/Closed | 🔵 | Gray | 200, 200, 200 | Closed or unknown |
+| Done/Merged | ✅ | Green | #4CAF50 | Completed work |
+| In Progress | ◐ | Orange | #FF9800 | Active work |
+| Waiting/Blocked | 🔴 | Red | #F44336 | Blocked or in review |
+| Unknown/Closed | 🔵 | Gray | #94A3B8 | Closed or unknown |
 
-**RULE:** Color carries semantic meaning. Always combine Symbol + Color + Text.
+**RULE:** Status color = symbol + border/accent color only. Never full-card background.
+
+---
+
+## 🏷️ TEAM COLORS (CATEGORY, NOT STATUS)
+
+Team is communicated via border + badge. Team colors represent TEAM OWNERSHIP only.
+They NEVER represent status or priority.
+
+| Team | Color | Hex | Usage |
+|------|-------|-----|-------|
+| Frontend | Teal | #2DD4BF | Card border + badge |
+| Backend | Orange | #FB923C | Card border + badge |
+| Native | Purple | #A855F7 | Card border + badge |
+| Cross-team | Yellow | #FACC15 | Card border + badge |
+| Other | Gray | #94A3B8 | Card border + badge (docs, infra, chores) |
+
+**EXAMPLE — Frontend card on slide ①A:**
+- Slide background: #0F1830
+- Card background: #18233D
+- Card border: #2DD4BF (teal)
+- Team badge: teal
+- Text: #FFFFFF
+- Metadata: #94A3B8
+
+**CRITICAL:**
+Team colors and status colors are TWO DIFFERENT semantic systems.
+On Slide ①A "Merged PRs": all cards already have status = MERGED.
+Therefore border color represents TEAM. Do NOT add green status borders.
+"Mergad" text communicates completion.
 
 ---
 
