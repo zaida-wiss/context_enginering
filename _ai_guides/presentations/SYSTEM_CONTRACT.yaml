@@ -791,7 +791,8 @@ execution_sequence:
       status_encoding_required: "Symbol + Color + Text (all three always together)"
       max_line_length_chars: 70
       max_content_blocks_per_slide: 3
-      corner_radius_px: 0
+      corner_radius_px_min: 12
+      corner_radius_px_max: 18
       block_spacing_px: 20
       block_padding_px: 16
       line_height: 1.8

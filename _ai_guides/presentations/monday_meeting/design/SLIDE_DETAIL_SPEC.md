@@ -51,7 +51,7 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 - Symbolen måste vara FÖRST i rubriken (no exceptions)
 - Exakt två mellanslag mellan symbol och rubrik-text
 - Samma symbol för alla sub-slides (①A, ①B, ①C använder alla ①)
-- Font: Arial 14pt BOLD (never smaller, never different font)
+- Font: 28pt BOLD (per VISUAL_DESIGN_MANDATORY.md, never smaller, never different)
 
 **NOTE:** These are rendering rules for AI, not content to display.
 
@@ -110,7 +110,7 @@ Shows what was actually delivered, regardless of team.
 **VISUAL IMPLEMENTATION:**
 Do NOT define colors, grid, layout, or badge styling here.
 All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
-- Grid dimensions (3×4, max 12 cards)
+- Grid dimensions: 3 × 2 (max 6 cards per slide)
 - Team colors (borders, badges)
 - Card layout and spacing
 - Legend
@@ -219,7 +219,7 @@ Separate slide to keep team columns clean and highlight cross-team coordination.
 **VISUAL IMPLEMENTATION:**
 Do NOT define colors, grid layout, or border styling here.
 All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
-- Grid dimensions (3×4, max 12 cards)
+- Grid dimensions: 3 × 2 (max 6 cards per slide)
 - Cross-team border color and styling
 - Card layout and spacing
 
