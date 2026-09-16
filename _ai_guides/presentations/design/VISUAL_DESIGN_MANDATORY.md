@@ -19,10 +19,10 @@ Every slide contains:
 
 ```
 ┌─────────────────────────────────────┐
-│  ① RUBRIK — Team/Mötespunkt        │  28pt BOLD (NPF: large hierarchy)
+│  ① RUBRIK — Team/Mötespunkt        │  32pt BOLD (meeting-room readable)
 ├─────────────────────────────────────┤
 │                                     │
-│  HUVUDBUDSKAP (one-liner)           │  13pt, clear statement
+│  HUVUDBUDSKAP (one-liner)           │  20pt, clear statement
 │                                     │
 │  [CONTENT BLOCK 1]                  │  Fullwidth block
 │  (work items or content)            │  Vertical stack only
@@ -33,6 +33,8 @@ Every slide contains:
 │  (If 4+ items: auto-split to ①A.1) │
 └─────────────────────────────────────┘
 ```
+
+**See TYPOGRAPHY section below for definitive values and minimums.**
 
 ### Content Block Structure
 
@@ -229,15 +231,15 @@ If content would require font size BELOW these minimums:
 ### Typography Table — Specific Font Sizes
 
 **Slide headers with meeting points MUST include pen symbol:**
-- Format: `✏️ ① Slide Title` (pen first, one space, meeting point number, one space, title)
+- Format: `✏️① Slide Title` (pen first, NO space, meeting point number, one space, title)
 - All meeting point slides (①-⑭) MUST have pen symbol
 - Framsida (⓪) is EXCLUDED: no slide title, no pen symbol, no meeting-point marker
 - Pen emoji: ✏️ (Unicode U+270F, rendered at same size as meeting point number)
-- No space between pen and number
+- No space between pen and number (✏️① not ✏️ ①)
 
 | Element | Font Size | Weight | Color | Minimum Rule |
 |---------|-----------|--------|-------|--------------|
-| Slide header with meeting point (✏️ ①②③) | 32pt | BOLD | #FFFFFF (white) | **NEVER below 32pt** |
+| Slide header with meeting point (✏️①②③) | 32pt | BOLD | #FFFFFF (white) | **NEVER below 32pt** |
 | Section header (Frontend, Backend, etc) | 22pt | BOLD | #FFFFFF | **NEVER below 22pt** |
 | Main content / Work item title | 20pt | Regular | #FFFFFF | **NEVER below 20pt** |
 | Secondary text / Owner/Status | 18pt | Regular | #94A3B8 (muted slate) | **NEVER below 18pt** |
