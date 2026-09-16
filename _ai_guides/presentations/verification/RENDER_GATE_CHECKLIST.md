@@ -254,9 +254,27 @@ VISUAL QUALITY (inspect rendered layout):
      - ①C with team columns
      - ②③④⑤
 
+MERGE OVERVIEW BOARDS (①A–①C):
+  ☐ Slide ①A uses 3×2 grid (merged to develop)
+  ☐ Slide ①B uses SAME 3×2 grid (Backend collection branch)
+  ☐ Slide ①C uses SAME 3×2 grid (Native collection branch)
+  ☐ NO slide ①B or ①C rendered as stacked full-width list
+  ☐ Max 6 merge cards per physical slide
+  ☐ Continuation slides created if >6 items
+
+CARD TEXT LAYOUT:
+  ☐ No text overlap anywhere
+  ☐ Title/body/metadata visually separated (not compressed)
+  ☐ Minimum internal vertical spacing preserved (8–10–10px gaps)
+  ☐ Wrapped text increases card height (auto-height working)
+  ☐ No text clipping or truncation
+  ☐ No font shrinking to solve overflow
+  ☐ Overflow creates continuation slide instead
+
 EXPLICIT OMISSIONS (if slides are missing):
-  ☐ ①B omitted — document: "0 collection-branch deliveries (dataset empty)"
-  ☐ ①D omitted — document: "0 cross-team active items (dataset empty)"
+  ☐ ①B omitted — document: "0 Backend collection-branch merges (dataset empty)"
+  ☐ ①C omitted — document: "0 Native collection-branch merges (dataset empty)"
+  ☐ ①D/①E omitted — document reason clearly
   ☐ Other omissions — explicit reason recorded
 ```
 

@@ -58,25 +58,30 @@ Each block displays ONE CATEGORY of work (merged PRs, open issues, etc):
 
 ---
 
-## ⚠️ EXCEPTION — SLIDE ①A MERGED OVERVIEW BOARD
+## ⚠️ EXCEPTION — COMPLETED MERGE OVERVIEW BOARDS (①A–①C)
 
-Slide ①A ("Mergade PR:er") is the ONLY standard exception to the full-width single-card layout.
+**ALL completed merge overview slides MUST use the same 3 × 2 grid layout:**
+- ①A — Merged to develop
+- ①B — Merged to Backend collection branch (Java-Development-Environment)
+- ①C — Merged to Native collection branch (C/C++-Native)
 
-**For Slide ①A ONLY:**
-- A 3 × 2 card grid IS REQUIRED
-- Maximum 6 cards per slide
-- Cards have identical dimensions
+**For Slides ①A–①C ONLY:**
+- A 3 × 2 card grid IS REQUIRED (NOT full-width stacked)
+- Maximum 6 cards per physical slide
+- Continuation slides (①A-2, ①B-2, etc.) when >6 items
+- Cards have identical dimensions within each slide
 - Cards are read chronologically left-to-right, top-to-bottom
 - Large whitespace must remain around the board
 - Each card has team-colored border (teal/hot pink/purple/light slate)
 - Cards are rendered as soft rounded cards with 12–18px corners
 - This is a presentation summary, not a GitHub/Jira dashboard
+- **CRITICAL: These three slides are visually identical layouts—only content and branch differ**
 
-**All other slides (①B-①D, ②, ③, etc.):**
+**All other slides (①D+, ②, ③, etc.):**
 - Continue to follow the canonical vertical full-width block layout
 - Content rendered as stacked soft cards (not grid)
 - Each card is a soft, rounded, responsive container
-- Only exception to single-stacked layout is ①A
+- Only exception to single-stacked layout is ①A–①C merge boards
 
 ---
 
@@ -384,6 +389,58 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 - Fix the issue
 - Re-check
 - Only then deliver
+
+---
+
+## 📋 CARD TEXT STACK — MANDATORY VERTICAL SEPARATION
+
+**Every work card MUST contain three visually separated text zones:**
+
+### Structure (in order):
+1. **TITLE ROW** — status symbol + PR/issue number + title
+   - Font size: 13–14pt
+   - Bold where applicable
+   - Color: #FFFFFF (white)
+
+2. **DESCRIPTION / WORK DETAILS** — brief summary or context
+   - Font size: 12–13pt  
+   - May wrap to multiple lines
+   - Color: #FFFFFF
+   - **MUST NOT overlap title or metadata**
+
+3. **METADATA ROW** — owner / branch / status / date
+   - Font size: 11–12pt
+   - Color: #94A3B8 (muted slate)
+   - **MUST be visually separated from description**
+
+### Mandatory vertical spacing (BINDING — not optional):
+- Card top padding: **minimum 16px**
+- Title → Description gap: **minimum 8px**
+- Description → Metadata gap: **minimum 10px**
+- Card bottom padding: **minimum 16px**
+- Line height (body text): **minimum 1.3**
+- Line height (metadata): **minimum 1.2**
+- Gap between adjacent cards: **minimum 20px**
+
+### Auto-height behavior (CRITICAL):
+- Cards MUST grow vertically when text wraps
+- Fixed-height containers are FORBIDDEN
+- Text must NEVER overlap another text block
+- Text must NEVER be clipped or truncated
+
+### If content does not fit:
+1. Increase card height automatically
+2. Reduce number of cards per physical slide
+3. Create continuation slide (①A-2, ①B-2, etc.)
+4. **NEVER reduce font size below accessibility minimum (14pt body, 13pt secondary)**
+5. **NEVER reduce required spacing**
+
+**Failure modes that trigger RENDER_GATE FAIL:**
+- ❌ Title and body text share same baseline region
+- ❌ Metadata overlaps body text
+- ❌ Line spacing below 1.2
+- ❌ Internal padding below 16px
+- ❌ Text clipping anywhere on card
 
 ---
 

@@ -198,6 +198,20 @@ DECISION VERIFICATION (Slide ①E):
      - Slide ①E omitted
      - Audit records: "Slide ①E omitted — 0 decisions, 0 candidates"
 
+CARD TEXT STACK COMPLIANCE (CRITICAL):
+  ✅ Every work card contains THREE separate text zones:
+     - Title row (status + number + title)
+     - Description row (summary/context)
+     - Metadata row (owner/branch/date)
+  ✅ Vertical spacing preserved:
+     - Title→Description minimum 8px
+     - Description→Metadata minimum 10px
+     - Card padding minimum 16px top/bottom
+  ✅ No text overlap anywhere
+  ✅ Auto-height working (cards grow, not shrink text)
+  ❌ FAILURE if title/body/metadata compressed together
+  ❌ FAILURE if text clipped to fit card
+
 DESIGN & STRUCTURE COMPLIANCE:
   ✅ Slide ①A: 3×2 grid (6 max), soft cards, team borders
   ✅ Slide ①B-①D: Full-width stacked cards, responsive height

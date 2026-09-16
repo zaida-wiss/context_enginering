@@ -251,29 +251,73 @@ Example on team slide later:
 
 ---
 
-## 📊 ①B — MERGAT TILL TEAM COLLECTION BRANCHES (om relevant, 0-1 slides)
+## 📊 ①B — AVKLARAT SEDAN FÖRRA MÖTET — BACKEND COLLECTION BRANCH (0-1+ slides)
 
 **PURPOSE:**
-Show work that has been merged to team collection branches (e.g., Java-Development-Environment for Backend)
-but NOT yet merged to develop. This represents work-in-progress that's committed to a team branch.
+Show all work merged to Backend team's collection branch (Java-Development-Environment) during reporting period.
+This represents delivered work to the Backend team branch, not yet necessarily on develop.
+
+**CANONICAL BRANCH:**
+`Java-Development-Environment`
+
+**LAYOUT:**
+- **SAME 3×2 GRID AS ①A** (NOT full-width stacked)
+- Max 6 cards per physical slide
+- Continuation slides (①B-2, ①B-3, etc.) if >6
+- Chronological order (oldest first)
+
+**CARD DATA FIELDS:**
+- PR number + title
+- **Developed by:** [Name(s)] (@github_login) — from commit authors
+- **Reviewed by:** [Name] (@github_login) — actual APPROVED reviewers
+- **Merged to:** Java-Development-Environment
+- Merge date
 
 **WHEN TO SHOW:**
-- Only if there are PRs merged to collection branches during REPORTING_PERIOD
-- If no such PRs, skip this slide
-
-**CONTENT:**
-- PRs merged to [Team Collection Branch] (e.g., Java-Development-Environment, C/C++-Native)
-- Sort chronologically (oldest first)
-- Show same fields as ①A: Developed by | Reviewed by | Merged to [Branch] | Date
+- Show if ANY PRs merged to Java-Development-Environment during REPORTING_PERIOD
+- If no merges: show omission slide with "Inga verifierade merges till Backend collection branch denna vecka"
 
 **CRITICAL (no double-counting):**
-- Do NOT show work that's already on ①A (merged to develop)
-- This slide shows work that's on a team branch but not yet on develop
-- It's progress, but not yet delivered to develop
+- Do NOT show work already displayed on ①A (merged to develop)
+- This shows team delivery branch, not final develop delivery
+- Deduplication: use linked_issue_ids + commit_sha_ancestry
 
 ---
 
-## 📊 ①C — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
+## 📊 ①C — AVKLARAT SEDAN FÖRRA MÖTET — NATIVE COLLECTION BRANCH (0-1+ slides)
+
+**PURPOSE:**
+Show all work merged to Native/System team's collection branch during reporting period.
+This represents delivered work to the Native team branch, not yet necessarily on develop.
+
+**CANONICAL BRANCH:**
+`C/C++-Native`
+
+**LAYOUT:**
+- **SAME 3×2 GRID AS ①A** (NOT full-width stacked)
+- Max 6 cards per physical slide
+- Continuation slides (①C-2, ①C-3, etc.) if >6
+- Chronological order (oldest first)
+
+**CARD DATA FIELDS:**
+- PR number + title
+- **Developed by:** [Name(s)] (@github_login) — from commit authors
+- **Reviewed by:** [Name] (@github_login) — actual APPROVED reviewers
+- **Merged to:** C/C++-Native
+- Merge date
+
+**WHEN TO SHOW:**
+- Show if ANY PRs merged to C/C++-Native during REPORTING_PERIOD
+- If no merges: show omission slide with "Inga verifierade merges till Native collection branch denna vecka"
+
+**CRITICAL (no double-counting):**
+- Do NOT show work already displayed on ①A (merged to develop)
+- This shows team delivery branch, not final develop delivery
+- Deduplication: use linked_issue_ids + commit_sha_ancestry
+
+---
+
+## 📊 ①D — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
 
 **PURPOSE:**
 Shows active work by team. Three separate columns, each team's pågår issues.
