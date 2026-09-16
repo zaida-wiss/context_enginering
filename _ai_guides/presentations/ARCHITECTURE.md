@@ -222,6 +222,18 @@ _ai_guides/presentations/
 - DESIGN_AUTHORITY.md → deprecated, info is in SYSTEM_CONTRACT.yaml
 - *_v2.md, *_UPDATED.md, etc. → delete and consolidate into tier-1 file
 
+**MAINTENANCE REMINDER:**
+Every 4 weeks, run FILE_CONSISTENCY_AUDIT (defined in SYSTEM_CONTRACT.yaml).
+This prevents context-bloat and conflicting files.
+
+**DEPRECATION PROCESS:**
+If a file is no longer used:
+1. Add deprecation header at top (see template below)
+2. Copy unique content to tier-1 replacement
+3. Keep for 2 weeks (grace period)
+4. Delete permanently after 2 weeks
+5. Never keep alternative versions
+
 ---
 
 ### HOW TO ADD NEW INFORMATION
@@ -325,3 +337,75 @@ If TWO files claim the same responsibility:
 - VISUAL_DESIGN_MANDATORY.md wins (TIER 1, owns HOW)
 - SLIDE_DETAIL_SPEC.md updates to reference it (TIER 2)
 - Result: One source of truth
+
+---
+
+## 🗑️ DEPRECATION HEADER TEMPLATE
+
+When a file is superseded, add this header immediately after the frontmatter:
+
+```markdown
+---
+name: old_filename
+description: [old description]
+metadata:
+  type: [type]
+  status: DEPRECATED
+---
+
+🚨 **DEPRECATED** — This file is no longer maintained.
+
+**Reason:** [Brief reason why this file is no longer used]
+
+**See instead:** 
+- [`NEW_FILE.md`](path/to/NEW_FILE.md) — [why this file is authoritative now]
+- [`ANOTHER_FILE.md`](path/to/ANOTHER_FILE.md) — [other relevant files]
+
+**Grace period:** This file will be deleted [DATE]. Copy any unique content to 
+[NEW_FILE.md] before then.
+
+**Git history:** If you need old content, check `git log -- old_filename.md`
+
+---
+
+[Rest of old file content below — DO NOT EDIT]
+```
+
+**Example (real deprecation):**
+```markdown
+🚨 **DEPRECATED** — This file is no longer maintained.
+
+**Reason:** Visual design rules moved to single authoritative source.
+
+**See instead:**
+- [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md) — all visual rules
+- [`TEMPLATE_REFERENCE.html`](../design/TEMPLATE_REFERENCE.html) — visual mockups
+
+**Grace period:** This file will be deleted 2026-10-01. All unique content 
+has been consolidated into VISUAL_DESIGN_MANDATORY.md.
+
+---
+```
+
+---
+
+## 🔍 CONFLICT DETECTION QUICK REFERENCE
+
+**Before any edit, grep for these patterns:**
+
+```bash
+# Find duplicate color definitions
+grep -r "#[0-9A-Fa-f]{6}" _ai_guides/presentations/ | sort | uniq -d
+
+# Find duplicate font sizes
+grep -r "[0-9]\+pt" _ai_guides/presentations/ | sort | uniq -d
+
+# Find multiple files claiming same responsibility
+grep -r "TEAM COLORS" _ai_guides/presentations/
+grep -r "Backend.*orange\|orange.*Backend" _ai_guides/presentations/
+
+# Find all *_v2, *_OLD, *_DEPRECATED files
+find _ai_guides/presentations/ -name "*_v[0-9]*" -o -name "*_OLD*" -o -name "*_BACKUP*"
+```
+
+If grep finds duplicates → run FILE_CONSISTENCY_AUDIT immediately.

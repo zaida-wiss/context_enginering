@@ -241,6 +241,110 @@ conflict_resolution:
     4. If same level, STOP and report: "Authority conflict requires clarification at [LEVEL]"
 
 ###############################################################################
+# REPOSITORY MAINTENANCE & DRIFT PREVENTION
+###############################################################################
+maintenance_policy:
+  problem: >
+    Over time, context repos can accumulate conflicting files (VISUAL_DESIGN_MANDATORY.md
+    vs PRESENTATION_STYLE.md, DATA_ACQUISITION_CONTRACT.yaml vs DATA_SOURCES_NEW.yaml, etc).
+    This breaks Single Source of Truth and causes AI to follow contradictory rules.
+
+  solution: >
+    Every 4 weeks (or before major changes):
+    1. Run FILE_CONSISTENCY_AUDIT (see below)
+    2. Delete deprecated/conflicting files
+    3. Consolidate into tier-1 files
+    4. Update ARCHITECTURE.md directory structure if needed
+
+  frequency: "Every 4 weeks OR before presentation system changes"
+  owner: "Team lead / AI architect"
+  cost: "~30 minutes per audit"
+
+file_consistency_audit:
+  procedure: >
+    1. LIST all files in _ai_guides/presentations/ recursively
+    2. FOR EACH file:
+       a. Is it mentioned in ARCHITECTURE.md?
+       b. Is it a tier-1 or tier-2 file?
+       c. Does it conflict with any tier-1 file?
+       d. Is it deprecated (contains _v2, _OLD, _UPDATED)?
+    3. REPORT conflicts and deprecated files
+    4. CONSOLIDATE redundant content into tier-1 files
+    5. DELETE deprecated files
+    6. COMMIT: "chore: audit — consolidate conflicting files"
+
+  exit_criteria: >
+    ✅ PASS if:
+    - Every file appears in ARCHITECTURE.md
+    - No two files own the same responsibility
+    - No deprecated files exist
+    - No *_v2 / *_OLD / *_UPDATED files exist
+
+    ❌ FAIL if:
+    - Conflicting rules found in different files
+    - Tier-1 files contradict each other
+    - Deprecated files not removed
+
+deprecation_policy:
+  rule: >
+    If a file is superseded by another:
+    1. Add deprecation marker at top: "🚨 DEPRECATED — see [NEW_FILE] instead"
+    2. Copy unique content to new file if not already there
+    3. Keep for 2 weeks (grace period for context caching)
+    4. Delete permanently after 2 weeks
+    5. Never keep alternative versions (*_v2, *_UPDATED, etc)
+
+  grace_period: "2 weeks maximum"
+  permanent_deletion: "After grace period, delete immediately"
+  never_keep: "Alternative versions (_v2, _OLD, _BACKUP, _TMP)"
+
+conflict_detection_rules:
+  automatic_fail_if: >
+    ✅ File A and File B claim the same responsibility (per ARCHITECTURE.md)
+    ✅ Rules in File A contradict rules in File B
+    ✅ Different files specify different values for the same constant (color, font size, etc)
+    ✅ SLIDE_DETAIL_SPEC.md contains visual rules (should be in VISUAL_DESIGN_MANDATORY.md)
+    ✅ DATA_ACQUISITION_CONTRACT.yaml references are inconsistent across files
+
+  detection_checklist: >
+    Before presentation generation:
+    [ ] Grep all files for color values — ensure consistency (no duplicate hex codes)
+    [ ] Grep all files for font sizes — ensure consistency (no duplicate pt values)
+    [ ] Grep all files for rule keywords — catch subtle contradictions
+    [ ] Check SYSTEM_CONTRACT.yaml authority hierarchy — does it match file content?
+
+context_bloat_prevention:
+  principle: >
+    Context repo should enable presentation generation, not document all design history.
+    Deleted files stay in git history; they don't need to exist in working tree.
+
+  maximum_files_allowed: "~40 total instruction files"
+  current_count: "~35 (as of 2026-09-16)"
+  warning_threshold: "35 files → time for audit"
+  critical_threshold: "45+ files → must consolidate immediately"
+
+  if_exceeded: >
+    1. Run FILE_CONSISTENCY_AUDIT
+    2. Delete all deprecated files
+    3. Consolidate similar files into one
+    4. Raise issue: "Context bloat — [N] files, consolidation needed"
+
+version_control_for_instructions:
+  principle: >
+    Instruction files are versioned through git. We don't need version numbers in filenames.
+    If old version is needed, check git history. If current version is wrong, fix it, don't create v2.
+
+  never_use: "VISUAL_DESIGN_v2.md, DATA_ACQUISITION_v1_5.md, OLD_ARCHITECTURE.md"
+  instead_use: "Edit the file, commit the change, check git history if needed"
+
+  git_workflow: >
+    1. Find problem with VISUAL_DESIGN_MANDATORY.md
+    2. Fix it directly in the file
+    3. Commit: "fix: VISUAL_DESIGN — Backend color now hot pink"
+    4. If you need to see old version: git show HEAD~1:_ai_guides/.../VISUAL_DESIGN_MANDATORY.md
+    5. Never create VISUAL_DESIGN_MANDATORY_OLD.md
+
+###############################################################################
 # EXECUTION RECEIPT — MANDATORY GATE
 ###############################################################################
 execution_receipt:
