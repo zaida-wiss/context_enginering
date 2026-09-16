@@ -128,29 +128,23 @@ required_datasets:
     classification: "SECONDARY (supporting data, linked from per_person_activity)"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS (canonical source of truth for URL, access methods, fallback chain)"
 
-    access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_MERGED_PRS (all allowed/forbidden methods defined there)"
+    access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_MERGED_PRS (authoritative for: URL, allowed/forbidden implementations, fallback order, fallback sources)"
 
     note: "This data feeds per_person_activity categorization. Primary collection method is per-person, not per-PR."
 
-    execution_sequence:
-      1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
-        url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
-      2_fallback_1: "GitHub web UI (merged PRs filter)"
-        url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
-      3_fallback_2: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
-        url: "EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET"
-      4_fallback_3: "Individual PR pages (verification only, not for completeness discovery)"
-        url: "https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]"
+    execution_sequence: >
+      Follow EXTERNAL_SOURCES.yaml GITHUB_MERGED_PRS exactly:
+      1. Try primary source with any allowed implementation (see EXTERNAL_SOURCES.yaml)
+      2. If all implementations fail: try fallback_order per EXTERNAL_SOURCES.yaml
+      3. If all fallbacks fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+
+      DO NOT duplicate fallback lists here. EXTERNAL_SOURCES.yaml is the single source of truth.
 
     enforcement:
       rule: >
-        1. Try GitHub REST API with any available implementation
-        2. If API fails: try GitHub web UI
-        3. If web UI fails: try Google Sheets ONLY if freshness can be verified
-        4. If Sheets unavailable or stale: use individual PR pages for verification
-        5. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
-        Do not attempt web_search, general_web_access, raw_github, or csv_export.
-      on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
+        Use implementations and fallback order from EXTERNAL_SOURCES.yaml GITHUB_MERGED_PRS only.
+        Do not attempt web_search, general_web_access, raw_github, csv_export, or any implementation not explicitly listed in EXTERNAL_SOURCES.yaml.
+      on_violation: "STOP. Report: unauthorized access method attempted for merged_prs"
 
     freshness_gate_for_sheets: >
       If Google Sheets fallback is needed, verify last_synced_at timestamp exists and is >= REPORTING_PERIOD_END.
@@ -544,25 +538,19 @@ required_datasets:
 
     access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_OPEN_ISSUES (all allowed/forbidden methods defined there)"
 
-    execution_sequence:
-      1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
-        url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
-      2_fallback_1: "GitHub web UI (open issues filter)"
-        url: "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
-      3_fallback_2: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
-        url: "EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET"
-      4_fallback_3: "Project Board (reconstruct from column view)"
-        url: "https://github.com/orgs/chas-challenge-2026/projects/31"
+    execution_sequence: >
+      Follow EXTERNAL_SOURCES.yaml GITHUB_OPEN_ISSUES exactly:
+      1. Try primary source with any allowed implementation (see EXTERNAL_SOURCES.yaml)
+      2. If all implementations fail: try fallback_order per EXTERNAL_SOURCES.yaml
+      3. If all fallbacks fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+
+      DO NOT duplicate fallback lists here. EXTERNAL_SOURCES.yaml is the single source of truth.
 
     enforcement:
       rule: >
-        1. Try GitHub REST API with any available implementation
-        2. If API fails: try GitHub web UI
-        3. If web UI fails: try Google Sheets ONLY if freshness can be verified
-        4. If Sheets unavailable or stale: reconstruct from Project Board
-        5. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
-        Do not attempt web_search, general_web_access, raw_github, or csv_export.
-      on_violation: "STOP. Report: forbidden access method attempted for active_issues"
+        Use implementations and fallback order from EXTERNAL_SOURCES.yaml GITHUB_OPEN_ISSUES only.
+        Do not attempt web_search, general_web_access, raw_github, csv_export, or any implementation not explicitly listed in EXTERNAL_SOURCES.yaml.
+      on_violation: "STOP. Report: unauthorized access method attempted for active_issues"
 
     freshness_gate_for_sheets: >
       If Google Sheets fallback is needed, verify last_synced_at timestamp exists and is >= REPORTING_PERIOD_END.
