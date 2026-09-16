@@ -707,7 +707,7 @@ tool_routing_gate:
 
   forbidden_tool_substitutions:
     - "bash_git (git ls-remote, git clone, git fetch)"
-    - "shell_network_tools (curl, wget, netcat)"
+    - "unregistered_shell_network_tools (wget, netcat; curl ONLY if explicitly allowed in EXTERNAL_SOURCES.yaml)"
     - "generic_web_search (Google, Bing, DuckDuckGo, Brave, search engines)"
     - "web_search_fallback (when GitHub API fails, do NOT open a search engine)"
     - "arbitrary_url_guessing (improvise URLs not in EXTERNAL_SOURCES.yaml)"
