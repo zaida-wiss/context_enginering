@@ -225,6 +225,15 @@ After rendering, verification MUST inspect the produced artifact:
 ### Artifact inspection checklist:
 
 ```
+COVER SLIDE — FRAMSIDA (⓪)
+  ☐ Meeting date visible: "Veckomöte · [DATE]"
+  ☐ Team identifier visible: "Avanza Team 1"
+  ☐ Reporting period visible (compact, under meeting title): "Rapportperiod: [START] 09:00 – [END] 09:00"
+  ☐ Three main content areas visible: Sprintfokus, Deadline, PL-fokus
+  ☐ Deadline date in orange/accent color
+  ☐ Footer visible and compact: "Snapshot: [TIMESTAMP] | Källor: GitHub, Project Board ✅"
+  ☐ No separate information box (data integrated into main slide)
+
 PHYSICAL STRUCTURE (count actual objects in rendered artifact):
   ☐ Physical slide count = expected total
   ☐ Slide ①A contains max 6 cards per slide

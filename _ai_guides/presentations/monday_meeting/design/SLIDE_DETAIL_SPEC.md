@@ -106,41 +106,78 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 ## 📝⓪ FRAMSIDA (1 slide, mandatory)
 
-**REQUIRED CONTENT:**
-- Meeting date: "Veckomöte · [DATE, e.g. "21 september 2026"]"
+**HEADER SECTION:**
+- Meeting date: "Veckomöte · [DATE]" (e.g., "Veckomöte · 21 september 2026")
 - Team identifier: "Avanza Team 1"
-- Reporting period: "Rapportperiod: [START DATE] – [END DATE]"
+- Reporting period (compact, under meeting title): "Rapportperiod: [START DATE] 09:00 – [END DATE] 09:00"
+  - Font: 13pt (smaller than title, but still visible)
+  - Line-height: compact (1.4-1.6)
+  - Color: muted (#94A3B8)
 
-**WEEKLY FOCUS (primary content):**
-- Sprint goal or weekly focus (if defined)
-- Key deliverable this week
-- Any critical deadline or milestone
+**MAIN CONTENT AREA (focus on three key elements):**
 
-**RELEVANT PL CONVERSATION TOPICS (if applicable):**
-- Topics to discuss with Project Lead
-- Source: Extracted from schedule/timeline (NOT meeting notes)
-- Example: "Release candidate criteria by Friday" / "CTO demo readiness"
+1. **Sprintfokus**
+   - Format: "Sprintfokus: [3-5 key words separated by •]"
+   - Example: "Kärnflöde • dokumentation • teststatus"
+   - Font: 14pt, regular
 
-**DATA INTEGRITY FOOTER:**
-- Data source verification: "✅ [number] sources verified"
-- List of verified sources:
-  - ✅ GitHub (commits, PRs, issues per-person)
-  - ✅ Team roster (7 members)
-  - [Other sources if used]
-- Status: Green checkmark if all sources OK, yellow warning if fallback used, red if incomplete
+2. **Deadline (highlighted)**
+   - Format: "Deadline: [DESCRIPTION] • [DATE] [TIME]"
+   - Example: "CTO-underlag • tors 24 sep 16:00"
+   - Font: 14pt, regular
+   - Color: Orange/accent color (#F97316 or team deadline color) for date/time
+   - This is the CRITICAL milestone this week
+
+3. **PL-fokus (discussion topics)**
+   - Format: "PL-fokus: [TOPIC 1], [TOPIC 2], [TOPIC 3]"
+   - Example: "Integration, scope och beroenden"
+   - Font: 14pt, regular
+   - Source: Extracted from schedule/timeline (NOT meeting notes)
+
+**DATA INTEGRITY FOOTER (minimal, compact):**
+- Format: "Snapshot: [TIMESTAMP] | Källor: GitHub, Project Board ✅"
+- Example: "Snapshot: 16 sep 15:56 CEST | Källor: GitHub, Project Board ✅"
+- Font: 11-12pt (smaller)
+- Line-height: compact (1.2)
+- Color: muted (#94A3B8)
+- Placement: Bottom of slide
+
+**VISUAL LAYOUT:**
+```
+┌─────────────────────────────────────┐
+│  Veckomöte · 21 september 2026      │  28pt BOLD
+│  Avanza Team 1                      │  14pt regular
+│  Rapportperiod: 14 sep 09:00 –      │  13pt muted, compact
+│              21 sep 09:00            │
+└─────────────────────────────────────┘
+
+[WHITESPACE]
+
+Sprintfokus: Kärnflöde • dokumentation • teststatus
+
+Deadline: CTO-underlag • tors 24 sep 16:00
+
+PL-fokus: Integration, scope och beroenden
+
+[WHITESPACE]
+
+Snapshot: 16 sep 15:56 CEST | Källor: GitHub, Project Board ✅
+```
 
 **VISUAL NOTES:**
 - Large, centered meeting title
-- Significant whitespace
-- Weekly focus as main message
-- Data provenance footer proves integrity
-- Follows ACCESSIBILITY_NEURODIVERSITY.md + VISUAL_DESIGN_MANDATORY.md for layout
+- Significant whitespace between sections
+- Three main focus areas equally visible (no hierarchy)
+- Deadline in orange for quick scanning
+- Footer minimal and unobtrusive
+- Follows ACCESSIBILITY_NEURODIVERSITY.md + VISUAL_DESIGN_MANDATORY.md
 
 **CRITICAL: Do NOT include:**
-- ❌ NPF/design explanations ("Färg + symbol + text...")
+- ❌ NPF/design explanations
 - ❌ Design methodology descriptions
 - ❌ Process explanations
-- Focus on: Sprint goal, deadline, and what PL wants to discuss
+- ❌ Separate information boxes
+- Focus on: Sprint goal, deadline, weekly priorities, PL discussion points
 
 ---
 
