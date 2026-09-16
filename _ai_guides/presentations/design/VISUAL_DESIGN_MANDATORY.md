@@ -476,12 +476,17 @@ After rendering to PPTX, page through every slide:
 
 ## 🎴 COMPACT CARD STANDARD — Mandatory for Meeting Points ②–④, ⑥–⑦, ⑨–⑭
 
-**MANDATORY for these slides:**
+**MANDATORY for these MEETING POINTS ONLY:**
 - ② Nuläge & Deadline
-- ③④⑤ Frontend/Backend/Native
+- ③ Frontend denna vecka
+- ④ Backend denna vecka
 - ⑥ Risker & Blockers
 - ⑦ Team Capacity
-- ⑨–⑭ (all remaining slides)
+- ⑨–⑭ (all remaining points)
+
+**NOT affected (keep existing layout):**
+- ① Avklarat (①A grid, ①B-①E full-width stacked)
+- ⑤ Native denna vecka (table format)
 
 ### Default Layout
 
