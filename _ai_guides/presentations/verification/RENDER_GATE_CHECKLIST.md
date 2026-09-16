@@ -441,6 +441,16 @@ FAIL GATE if:
       → Per github_entity_identity rule in SYSTEM_CONTRACT.yaml
 ```
 
+**DELIVERY SEPARATION & NO DOUBLE-COUNTING:**
+```
+  [ ] ①A contains ONLY develop merges (not collection branch merges)
+  [ ] ①B contains ONLY collection-branch merges (not develop merges)
+  [ ] ①C/①D use correct numbering (pågår work per team and cross-team)
+  [ ] No PR/change counted on multiple slides
+  [ ] Collection-branch cards state target branch explicitly (e.g., "Java-Development-Environment")
+  [ ] Developed-by field uses actual commit authors where available
+```
+
 **TEAM DETAIL CARD COMPLIANCE:**
 ```
   [ ] Team detail cards use compact vertical layout (③④⑤ slides)

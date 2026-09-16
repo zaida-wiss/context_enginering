@@ -109,10 +109,11 @@ This mötespunkt is divided into phases (①A, then ①B-①E in team context la
 
 **PURPOSE:**
 Global overview of ALL work merged to develop, displayed chronologically.
-Shows what was actually delivered, regardless of team.
+Shows what was actually delivered to develop, regardless of team.
+Does NOT include work merged to team collection branches (that goes to ①B).
 
 **CONTENT REQUIREMENTS:**
-- All PRs merged during REPORTING_PERIOD
+- All PRs merged TO DEVELOP during REPORTING_PERIOD (not to collection branches)
 - Sort chronologically (oldest first)
 - Chronological order CONTINUES across slides if >12 cards
 - Include cross-team PRs in chronological order
@@ -120,12 +121,17 @@ Shows what was actually delivered, regardless of team.
 
 **CARD DATA FIELDS (showing ACTUAL WORK DONE, not just assignment):**
 - PR number + title
-- **Developed by:** [Name] (@github_login) — who opened the PR
+- **Developed by:** [Name(s)] (@github_login) — verified from:
+  1. Commit authors in PR (primary)
+  2. Issue assignee if commits missing (fallback)
+  3. PR author as last resort (weak signal)
 - **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
 - **Merged by:** [Name] (@github_login) — who merged to develop
 - Merged date
 
 **CRITICAL:**
+- Show actual code contributors (commit authors > assignee > pr_author)
+- PR author is fallback only, NOT the definition of "developer"
 - Show actual reviewers (who approved), NOT just requested_reviewers
 - All three fields must be filled (if missing, show "?" or note "no review yet")
 - This demonstrates team collaboration (not just individual work)
@@ -217,7 +223,7 @@ Does NOT include cross-team work (that goes to ①C).
 - One column per team (Frontend | Backend | Native)
 - Max 4 rows per column = max 12 cards total
 - Include issue number, branch, latest commit timestamp
-- Exclude cross-team work (goes to ①C)
+- Exclude cross-team work (goes to ①D)
 
 **CARD DATA FIELDS:**
 - Issue number + title
@@ -283,7 +289,7 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 
 **Planerat, blockers/risker → shown during detailed team slides later.**
 
-**For now: ①A-①C contain ONLY completed/merged and pågår work.**
+**Structure: ①A-①D contain completed/merged work, pågår work, and collection-branch progress.**
 
 ---
 
