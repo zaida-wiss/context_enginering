@@ -224,14 +224,23 @@ Does NOT include work merged to team collection branches (that goes to ①B).
 - Show assignee + GitHub login for each
 
 **CARD DATA FIELDS (showing ACTUAL WORK DONE, not just assignment):**
-- PR number + title
-- **Developed by:** [Name(s)] (@github_login) — verified from:
-  1. Commit authors in PR (primary)
-  2. Issue assignee if commits missing (fallback)
-  3. PR author as last resort (weak signal)
+
+Card layout (no borders, clean typography):
+```
+#100 Länkade mål-inputs                    ← PR number + title (14pt)
+
+Björn · 14 sep 19:28                       ← Developer name + merge timestamp (14pt BOLD)
+
+Merged by: Erik  |  Reviewed by: Zaida     ← Two-column table, no border (11-12pt muted)
+```
+
+**Field definitions:**
+- **PR number + title:** [#XX] [Title] — primary identifier (14pt)
+- **Developer name + merge time:** [Name] · [MERGE_DATE] [HH:MM] — who wrote the code + when merged (14pt BOLD)
+  - Developer verified from: 1) Commit authors (primary), 2) Issue assignee (fallback), 3) PR author (weak signal)
+- **Merged by:** [Name] (@github_login) — who clicked merge button
 - **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
-- **Merged by:** [Name] (@github_login) — who merged to develop
-- Merged date
+- **No "Merged to develop" text** — only for collection-branch cards (①B, ①C)
 
 **PAGINATION (MANDATORY):**
 - Slide ①A shows MAX 6 cards per physical slide (3 columns × 2 rows)
@@ -319,11 +328,23 @@ This represents delivered work to the Backend team branch, not yet necessarily o
 - Chronological order (oldest first)
 
 **CARD DATA FIELDS:**
-- PR number + title
-- **Developed by:** [Name(s)] (@github_login) — from commit authors
-- **Reviewed by:** [Name] (@github_login) — actual APPROVED reviewers
-- **Merged to:** Java-Development-Environment
-- Merge date
+
+Card layout (no borders, clean typography):
+```
+#97 IDOR-skydd                             ← PR number + title (14pt)
+
+Rasha · 14 sep 13:29                       ← Developer name + merge timestamp (14pt BOLD)
+
+Merged by: Erik  |  Reviewed by: Zaida     ← Two-column table, no border (11-12pt muted)
+```
+
+**Field definitions:**
+- **PR number + title:** [#XX] [Title] — primary identifier (14pt)
+- **Developer name + merge time:** [Name] · [MERGE_DATE] [HH:MM] — who wrote code + when merged to Java-Development-Environment (14pt BOLD)
+  - Developer verified from commit authors (primary source)
+- **Merged by:** [Name] (@github_login) — who merged to Java-Development-Environment
+- **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
+- **No "Merged to Java-Development-Environment" text** — redundant (shown in slide header)
 
 **WHEN TO SHOW:**
 - Show if ANY PRs merged to Java-Development-Environment during REPORTING_PERIOD
@@ -352,11 +373,23 @@ This represents delivered work to the Native team branch, not yet necessarily on
 - Chronological order (oldest first)
 
 **CARD DATA FIELDS:**
-- PR number + title
-- **Developed by:** [Name(s)] (@github_login) — from commit authors
-- **Reviewed by:** [Name] (@github_login) — actual APPROVED reviewers
-- **Merged to:** C/C++-Native
-- Merge date
+
+Card layout (no borders, clean typography):
+```
+#108 JWT-auth                              ← PR number + title (14pt)
+
+Rasha · 16 sep 13:51                       ← Developer name + merge timestamp (14pt BOLD)
+
+Merged by: Erik  |  Reviewed by: Zaida     ← Two-column table, no border (11-12pt muted)
+```
+
+**Field definitions:**
+- **PR number + title:** [#XX] [Title] — primary identifier (14pt)
+- **Developer name + merge time:** [Name] · [MERGE_DATE] [HH:MM] — who wrote code + when merged to C/C++-Native (14pt BOLD)
+  - Developer verified from commit authors (primary source)
+- **Merged by:** [Name] (@github_login) — who merged to C/C++-Native
+- **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
+- **No "Merged to C/C++-Native" text** — redundant (shown in slide header)
 
 **WHEN TO SHOW:**
 - Show if ANY PRs merged to C/C++-Native during REPORTING_PERIOD
