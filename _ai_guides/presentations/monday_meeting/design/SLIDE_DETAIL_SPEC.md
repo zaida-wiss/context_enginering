@@ -26,6 +26,38 @@ This file defines **content only** (what data goes where, how it's structured).
 
 ---
 
+## 📐 CANONICAL LAYOUT MAPPING (by mötespunkt)
+
+**MANDATORY: Every slide MUST use ONE OF these layouts. No exceptions.**
+
+| Mötespunkt | Layout Standard | Description |
+|---|---|---|
+| **①A** | Grid 3×2 | Max 6 merged PR cards per slide, pagination if >6 |
+| **①B** | Full-width stacked | Collection-branch PRs (if any) |
+| **①C–①D** | Full-width stacked | Open issues + cross-team work |
+| **①E** | Full-width stacked | Decisions + candidates |
+| **②** | COMPACT_CARD_STANDARD | Priority items, vertically ranked |
+| **③④⑤** | TEAM_DETAIL_CARDS | Status + blockers, IDENTICAL layout for all teams |
+| **⑥** | COMPACT_CARD_STANDARD (except ⑥A) | Blockers + dependencies |
+| **⑥A** | Dependency diagram | Visual node + arrow graph (exception allowed) |
+| **⑦** | COMPACT_CARD_STANDARD | Risk register (compact cards, NOT table) |
+| **⑧** | COMPACT_CARD_STANDARD | Capacity view |
+| **⑨** | COMPACT_CARD_STANDARD | Prioritization + phases |
+| **⑩** | COMPACT_CARD_STANDARD | Technical decisions |
+| **⑪** | COMPACT_CARD_STANDARD | Sprint goals |
+| **⑫** | COMPACT_CARD_STANDARD | Sprint plan + milestones |
+| **⑬** | COMPACT_CARD_STANDARD | Action plan |
+| **⑭** | COMPACT_CARD_STANDARD | Questions for PL |
+
+**CRITICAL RULES:**
+- ✅ **③④⑤ use IDENTICAL card layout** — only team color differs
+- ✅ **③④⑤ NEVER use tables** — use TEAM_DETAIL_CARDS only
+- ✅ **Responsive height on all cards** — content-driven, never fixed
+- ✅ **NO TEXT CLIPPING** — split to new slide if needed
+- ✅ **①A GRID IS AN EXCEPTION** — allowed for merged overview only
+
+---
+
 🔗 **VISUAL REFERENCE:** Se [`TEMPLATE_REFERENCE.html`](TEMPLATE_REFERENCE.html) för exempel-layouts.
 
 Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punkt-nivå-overview.

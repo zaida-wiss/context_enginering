@@ -505,15 +505,37 @@ FAIL GATE if:
   [ ] Developed-by field uses actual commit authors where available
 ```
 
-**TEAM DETAIL CARD COMPLIANCE:**
+**TEAM DETAIL CARD COMPLIANCE (③④⑤ — CRITICAL):**
 ```
-  [ ] Team detail cards use compact vertical layout (③④⑤ slides)
+  🚨 CRITICAL RULES FOR SLIDES ③④⑤:
+  
+  [ ] NO POWERPOINT TABLES — All three slides use TEAM_DETAIL_CARDS only
+      ❌ FAILURE if any of ③④⑤ renders as table/grid
+      ✅ All work shown as vertically stacked cards
+  
+  [ ] IDENTICAL LAYOUT for Frontend (③), Backend (④), Native (⑤)
+      ✅ Same card geometry (soft rounded corners)
+      ✅ Same internal spacing (16–20px padding)
+      ✅ Same typography hierarchy (28pt header, 13pt body, 12pt metadata)
+      ✅ Same responsive-height behavior
+      ✅ ONLY difference: team border color (Teal/Hot Pink/Purple)
+      ❌ FAILURE if geometry differs between teams
+  
   [ ] Text is centered horizontally inside every team card
+      ❌ FAILURE if text is left-aligned or justified
+  
   [ ] No team card clips or hides text
+      ✅ Card grows vertically to fit content
+      ✅ Never reduce font size or clip text
+  
   [ ] Card height adapts to content (not fixed)
-  [ ] Frontend, Backend and Native use identical card layout
-  [ ] No card stretches to full slide width
+      ✅ Short content → short card
+      ✅ Long content → tall card
+  
   [ ] Spacing between cards is consistent (20px minimum)
+  
+  [ ] No card stretches to full slide width
+      ✅ Cards are compact (width adapts to content)
 ```
 
 **PRIORITY/RISK CARD COMPLIANCE (slide ②):**

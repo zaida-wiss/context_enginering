@@ -383,12 +383,17 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 
 ---
 
-## 🎯 TEAM DETAIL CARDS — Mandatory responsive layout
+## 🎯 TEAM DETAIL CARDS — Mandatory responsive layout for ③④⑤
 
-Applies to Frontend, Backend and Native team-detail slides (③④⑤).
+**MANDATORY for these MEETING POINTS ONLY:**
+- ③ Frontend denna vecka
+- ④ Backend denna vecka
+- ⑤ Native denna vecka
+
+These three team-detail slides MUST use identical TEAM_DETAIL_CARDS layout. **NO TABLES ALLOWED.**
 
 ### Layout
-- Use vertically stacked compact cards (NOT wide horizontal bands)
+- Use vertically stacked compact cards (NOT wide horizontal bands, NOT PowerPoint tables)
 - One work item per card
 - Text is horizontally centered inside every card
 - Maintain generous spacing between cards (20px minimum)
@@ -413,15 +418,18 @@ Applies to Frontend, Backend and Native team-detail slides (③④⑤).
     Merge: Erik
 ```
 
-### Consistency Rule
-Frontend, Backend and Native MUST use identical:
-- card geometry
-- internal spacing
+### Consistency Rule: ③④⑤ MUST BE IDENTICAL
+Frontend (③), Backend (④), and Native (⑤) MUST use identical card layout:
+- card geometry (soft rounded corners, same dimensions)
+- internal spacing (16–20px padding, 20px between cards)
 - centered text alignment
-- typography hierarchy
+- typography hierarchy (28pt header, 13pt body, 12pt metadata)
 - responsive-height behavior
 
-Only team border colour differs.
+**ONLY difference allowed: team border color**
+- Frontend: Teal #2DD4BF
+- Backend: Hot Pink #FF4FA3
+- Native: Purple #A855F7
 
 ---
 
@@ -474,19 +482,28 @@ After rendering to PPTX, page through every slide:
 
 ---
 
-## 🎴 COMPACT CARD STANDARD — Mandatory for Meeting Points ②–④, ⑥–⑦, ⑨–⑭
+## 🎴 COMPACT CARD STANDARD — Mandatory for Meeting Points ②, ⑥–⑦, ⑨–⑭
 
 **MANDATORY for these MEETING POINTS ONLY:**
 - ② Nuläge & Deadline
+- ⑥ Risker & Blockers (except ⑥A dependency diagram)
+- ⑦ Risk register
+- ⑧ Kapacitet
+- ⑨ Prioritering & Scope
+- ⑩ Tekniska Beslut
+- ⑪ Sprintmål
+- ⑫ Sprintplan
+- ⑬ Nästa Steg
+- ⑭ Frågor till PL
+
+**DIFFERENT LAYOUT (TEAM_DETAIL_CARDS):**
 - ③ Frontend denna vecka
 - ④ Backend denna vecka
-- ⑥ Risker & Blockers
-- ⑦ Team Capacity
-- ⑨–⑭ (all remaining points)
+- ⑤ Native denna vecka
+(These three use identical TEAM_DETAIL_CARDS layout—see above section)
 
 **NOT affected (keep existing layout):**
 - ① Avklarat (①A grid, ①B-①E full-width stacked)
-- ⑤ Native denna vecka (table format)
 
 ### Default Layout
 

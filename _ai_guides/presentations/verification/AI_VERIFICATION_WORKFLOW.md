@@ -175,11 +175,17 @@ DATA VERIFICATION (spot check):
 
 DECISION VERIFICATION (Slide ①E):
   ✅ Verified decisions:
-     - Each decision exists in docs/BESLUT.md
+     - Each decision file exists in docs/decisions/ (NOT docs/examples/decisions/)
      - Has valid decision_date field (YYYY-MM-DD format)
      - Date falls within REPORTING_PERIOD
-     - status = "confirmed" (not "proposed")
+     - status = "confirmed" (not "proposed", not "example")
      - Has "Påverkan" section (impact documented)
+     - File path MUST be: docs/decisions/<id>.md (canonical source)
+  
+  ❌ FORBIDDEN — Examples never in presentation:
+     - NEVER read from docs/examples/decisions/
+     - NEVER show files marked status: "example"
+     - ONLY read from canonical docs/decisions/ path
   
   ✅ Decision candidates:
      - Minimum 2 pieces of evidence (PRs or patterns)
@@ -195,9 +201,26 @@ DECISION VERIFICATION (Slide ①E):
 DESIGN & STRUCTURE COMPLIANCE:
   ✅ Slide ①A: 3×2 grid (6 max), soft cards, team borders
   ✅ Slide ①B-①D: Full-width stacked cards, responsive height
-  ✅ Slide ③④⑤: Compact vertically stacked cards (NOT tables), centered text, responsive height
+  
+  🚨 CRITICAL — TEAM DETAIL CARDS (③④⑤):
+     ✅ Slide ③④⑤: Vertically stacked compact cards (NEVER tables)
+     ✅ Slide ③④⑤: Centered text horizontally
+     ✅ Slide ③④⑤: Responsive height (grows with content)
+     ✅ Slide ③④⑤: Identical geometry for all three teams
+     ✅ Slide ③④⑤: Only team border color differs (Teal/Hot Pink/Purple)
+     ❌ FAILURE if any of ③④⑤ uses PowerPoint table format
+     ❌ FAILURE if any of ③④⑤ clips text
+     ❌ FAILURE if geometry differs between teams
+  
+  ✅ Slides ②⑥-⑦⑨–⑭: COMPACT_CARD_STANDARD
+     ✅ 2–3 cards per row or vertically stacked
+     ✅ Soft rounded corners (12–18px)
+     ✅ Responsive height (no fixed dimensions)
+     ❌ FAILURE if full-width horizontal bands
+     ❌ FAILURE if text clipped
+  
   ✅ All cards: 12–18px corners, 16–20px padding, NO text clipping
-  ✅ All cards: Dark navy background #0F1830, soft appearance
+  ✅ All cards: Dark navy background (#0F1830 slide, #18233D card)
   ✅ Team colors: Borders only (not backgrounds)
   ✅ Status symbols: ✅ ◐ 🔴 ? consistent meaning everywhere
   ✅ Typography: Headers 28pt BOLD, body 13pt regular, metadata 12pt
