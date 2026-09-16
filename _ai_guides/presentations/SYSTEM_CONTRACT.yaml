@@ -1215,7 +1215,7 @@ hard_rules:
   - rule: "Every verified activity assigned to exactly one team: Frontend, Backend, Native, Cross-team, or Other"
     consequence: "No activity may be omitted because it lacks clear team ownership. Cross-team and Other must be represented. If team cannot be determined → cross-team."
 
-  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①A/B/C/D/E)"
+  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①A–①F)"
     consequence: "If mismatch → audit and slide both show the discrepancy. Never silently drop data."
 
   - rule: "All 7 team members must be accounted for (with work OR marked 'no activity')"
@@ -1318,7 +1318,7 @@ forbidden:
 success_criteria:
   - "✅ All data fetched LIVE from GitHub (not cached)"
   - "✅ All 7 team members verified or marked 'no activity'"
-  - "✅ Slide ① titles follow 'Avklarat sedan förra mötet — [Team]'"
+  - "✅ Section ① (①A–①F) follows SLIDE_DETAIL_SPEC structure (①A–①C: merged work, ①D–①E: pågår work, ①F: decisions)"
   - "✅ NPF-friendly design (no tables, Symbol+Färg+Text)"
   - "✅ Every slide timestamped with data fetch time"
   - "✅ All GitHub sources either ✅ verified or ⚠️ marked failed"
