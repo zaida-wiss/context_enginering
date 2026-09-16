@@ -708,7 +708,8 @@ data_acquisition_receipt:
 
   example_log:
     dataset: "merged_prs"
-    source_id: "GITHUB_MERGED_PRS (see EXTERNAL_SOURCES.yaml for actual URL)"
+    source_id: "GITHUB_MERGED_PRS"
+    note: "See EXTERNAL_SOURCES.yaml for actual URL and fallback chain"
     sources_tested:
       - source: "GITHUB_MERGED_PRS.primary (github_connector)"
         status: "HTTP_ERROR"
