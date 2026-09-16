@@ -46,11 +46,64 @@ required_datasets:
     stop_condition: "any member missing or unverifiable"
     fallback: "None — local file is authoritative"
 
+  relevant_issues_activity:
+    source_id: "GITHUB_RELEVANT_ISSUES"
+    classification: "REQUIRED (foundation for all activity reporting)"
+    purpose: "Gather all relevant issues during reporting period (not PR-centric, issue-centric)"
+
+    CRITICAL_METHODOLOGY: >
+      This is the PRIMARY data collection method. Find all RELEVANT ISSUES during REPORTING_PERIOD,
+      then attribute work to assignees/participants. This ensures no work is missed.
+
+      OLD METHOD (WRONG): "Get all merged PRs, then find who authored them"
+      NEW METHOD (CORRECT): "Get ALL relevant issues (closed + open), find who worked on each, link PRs"
+
+    execution_sequence:
+      1_find_closed_issues: "GitHub API: GET /repos/.../issues?state=closed&since=[START]&until=[END]&per_page=100"
+      2_find_open_issues: "GitHub API: GET /repos/.../issues?state=open&since=[START_ACTIVITY]&per_page=100"
+      3_link_prs_to_issues: "For each issue, find linked PRs via issue body or GitHub API"
+      4_attribute_to_persons: "For each issue, list all assignees + author + significant commenters"
+      5_categorize_by_status: "✅ AVKLARAT (closed), 🟠 PÅGÅR (open + recent activity), 🔴 BLOCKERAT"
+
+    inclusion_criteria: >
+      CLOSED ISSUES: any closed during REPORTING_PERIOD
+      OPEN ISSUES: must have activity (assignee, comment, commit reference) during REPORTING_PERIOD
+      EXCLUDE: test-only issues, duplicates, issues closed before REPORTING_PERIOD_START
+
+    fields_required:
+      - issue.number
+      - issue.title
+      - issue.state (open | closed)
+      - issue.assignees[] (all assignees with display_name + login)
+      - issue.created_at
+      - issue.updated_at
+      - issue.closed_at (if closed during period)
+      - issue.user.login (author)
+      - linked_pull_requests[] (if any)
+      - pr.merged_at (if linked PR is merged during period)
+      - issue.labels (for team categorization)
+
+    output_structure: >
+      Grouped by person (from assignees + author across ALL issues):
+        [Person Name] (@github_login):
+          ✅ AVKLARAT:
+            - #ISSUE_NUMBER Title · closed [DATE] · [PR #XXX merged]
+          🟠 PÅGÅR:
+            - #ISSUE_NUMBER Title · last_update [DATE]
+          🔴 BLOCKERAT:
+            - #ISSUE_NUMBER Title · [blocking reason if any]
+
+    requirement: "ALL 7 team members from TEAM_ROSTER MUST appear (even with zero activity). Missing persons = DATA_AUDIT FAIL"
+    stop_condition: "If any required issue data missing or TEAM_ROSTER incomplete, STOP with DATA_AUDIT ERROR"
+
   merged_prs:
     source_id: "GITHUB_MERGED_PRS"
+    classification: "SECONDARY (supporting data, linked from per_person_activity)"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS (canonical source of truth for URL, access methods, fallback chain)"
 
     access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_MERGED_PRS (all allowed/forbidden methods defined there)"
+
+    note: "This data feeds per_person_activity categorization. Primary collection method is per-person, not per-PR."
 
     execution_sequence:
       1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"

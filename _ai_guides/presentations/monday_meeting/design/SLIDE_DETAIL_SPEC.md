@@ -72,6 +72,27 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 
 ---
 
+## 📝⓪ FRAMSIDA (1 slide, mandatory)
+
+**REQUIRED CONTENT:**
+- Meeting date: "Veckomöte · [DATE, e.g. "16 september 2026"]"
+- Team identifier: "Avanza Team 1"
+- Data source verification: "✅ [number] sources verified"
+- List of verified sources: 
+  - ✅ GitHub (commits, PRs, issues per-person)
+  - ✅ Team roster (7 members)
+  - [Other sources if used]
+- Reporting period: "Rapportperiod: [START DATE] – [END DATE]"
+- Status: Green checkmark if all sources OK, yellow warning if fallback used, red if incomplete
+
+**VISUAL NOTES:**
+- Large, centered meeting title
+- Significant whitespace
+- Clear data-provenance statement (shows this is not guessed data)
+- Follows ACCESSIBILITY_NEURODIVERSITY.md + VISUAL_DESIGN_MANDATORY.md for layout
+
+**NOTE:** This slide proves data integrity before content begins.
+
 ---
 
 ## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1+ slides, split as needed)
