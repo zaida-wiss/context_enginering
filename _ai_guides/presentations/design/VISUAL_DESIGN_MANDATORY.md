@@ -254,21 +254,22 @@ Status is communicated by symbol + text ("Merged" / "◐ Pågår").
 
 | Status | Symbol | Color | Hex | Meaning | Usage |
 |--------|--------|-------|-----|---------|-------|
-| **On Track** | ✅ | Green | #2ecc71 | Work completed, on schedule | Merged PRs, finished tasks |
-| **In Progress** | ◐ | Orange | #ff9800 | Active work, slight delay acceptable | Ongoing features, open PRs in review |
-| **Blocked/Critical** | 🔴 | Red | #e74c3c | Critical blocker, needs immediate action | Blocked issues, failed deployments |
-| **Unknown/Neutral** | ? | Gray | #9e9e9e | Status unverified or not applicable | Unassigned work, dependencies |
+| **On Track** | ✅ | Green | #4CAF50 | Work completed, on schedule | Merged PRs, finished tasks |
+| **In Progress** | ◐ | Orange | #FF9800 | Active work, slight delay acceptable | Ongoing features, open PRs in review |
+| **Blocked/Critical** | 🔴 | Red | #F44336 | Critical blocker, needs immediate action | Blocked issues, failed deployments |
+| **Unknown/Neutral** | ? | Gray | #94A3B8 | Status unverified or not applicable | Unassigned work, dependencies |
 
-**STRUCTURE COLORS (Non-status information):**
+**STRUCTURE COLORS (Non-status information, for dark navy theme):**
 
 | Element | Meaning | Hex | Usage |
 |---------|---------|-----|-------|
-| **Dark Gray** | Main text, titles | #323232 | All readable content |
-| **Medium Gray** | Metadata, secondary | #666666 | Assignee, timestamps, notes |
-| **Light Gray** | Backgrounds, dividers | #f5f5f5 | Block backgrounds, separators |
+| **Main Text** | Titles, primary content | #FFFFFF | All readable titles and headers |
+| **Secondary Text** | Metadata, timestamps | #CBD5E1 | Assignee, dates, timestamps, secondary info |
+| **Muted Text** | Tertiary information | #94A3B8 | Support text, less important details |
+| **Neutral Dividers** | Visual separation | #334155 | Borders between sections (not team-related) |
 
 **CRITICAL RULE:** Never use a status color (green/orange/red) unless you mean the status it represents.
-If unsure, use gray or dark gray instead.
+If unsure, use neutral colors (#334155, #94A3B8, #CBD5E1) instead.
 
 ---
 
