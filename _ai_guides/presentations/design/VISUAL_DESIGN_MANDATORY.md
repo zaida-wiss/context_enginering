@@ -165,7 +165,7 @@ They NEVER represent status or priority. **Team colors MUST NEVER overlap with s
 - Red (#F44336) — **ONLY** for status 🔴 "Blocked"
 
 **CROSS-TEAM BORDER RULE:**
-Svart border (#000000) means work affects multiple teams, not a single team.
+Light Slate border (#CBD5E1) means work affects multiple teams, not a single team.
 It is neutral, showing coordination required across team boundaries.
 Use on:
 - Slide ①A: cross-team merged PRs (in chronological order)
