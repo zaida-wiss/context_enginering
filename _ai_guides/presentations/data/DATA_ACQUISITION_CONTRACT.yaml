@@ -285,6 +285,39 @@ required_datasets:
     requirement: "ALL branches with activity in REPORTING_PERIOD"
     stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE)"
 
+  issue_dependencies_and_blockers:
+    source_id: "GITHUB_ISSUE_RELATIONSHIPS"
+    classification: "CRITICAL (required for priority recommendation and analysis)"
+    purpose: >
+      Detect which issues block other issues. Essential for:
+      - Recommending priority order
+      - Identifying critical path
+      - Suggesting team split/parallelization
+      - Estimating realistic completion time
+
+    execution_sequence:
+      1_collect_linked_issues: "GitHub API: GET /repos/.../issues/[ID]/related (if available)"
+      2_parse_issue_body: "Search issue body for '#[number]' references (blockers/dependencies)"
+      3_check_pr_links: "Get PRs linked to each issue via pr.linked_issues"
+      4_infer_from_branch_name: "Branch pattern might indicate dependency (e.g., 'after-#67')"
+      5_explicit_labels: "Check for 'blocks-', 'depends-on-', 'after-' labels if team uses them"
+
+    required_fields:
+      - issue.number
+      - issue.title
+      - linked_issues[] (if issue blocks or depends on others)
+      - related_pull_requests[] (if PRs depend on this issue)
+      - labels (for explicit dependency markers)
+
+    output_structure: >
+      Per issue, determine:
+        - What issues does THIS issue block? (#X blocks #Y, #Z)
+        - What issues block THIS issue? (#A must finish first)
+        - Critical path: #X → #Y → #Z (N days total)
+
+    requirement: "ALL dependencies between open/merged issues in reporting period"
+    stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE, but continue with available data)"
+
   active_issues:
     source_id: "GITHUB_OPEN_ISSUES"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES (canonical source of truth for URL, access methods, fallback chain)"

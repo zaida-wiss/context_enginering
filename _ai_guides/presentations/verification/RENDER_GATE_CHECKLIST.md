@@ -334,6 +334,43 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
   [ ] Each slide header starts with meeting-point symbol (①②③ etc)
 ```
 
+**ANALYSIS & RECOMMENDATIONS (Beyond Status Reporting):**
+```
+Presentation must include FORWARD-LOOKING analysis, not just status reporting.
+
+  [ ] PRIORITY RANKING — Which issues should be done first?
+      ✅ Issues ranked by: impact + risk + dependencies
+      ✅ Not just "5 things are open" — "do THESE 3 first because [X] blocks [Y]"
+      ✅ Example: "#67 API (first — blocks 2 teams)" vs "#84 DB (third — independent)"
+
+  [ ] DEPENDENCY CHAIN — What blocks what?
+      ✅ #X blocks #Y blocks #Z visualized
+      ✅ Allows parallelization: "Frontend does this while Backend does that"
+      ✅ Critical path identified: "Feature ready in N days if no delays"
+
+  [ ] TEAM CAPACITY & SPLIT — How should we divide work?
+      ✅ Recommendation: Frontend takes [X], Backend takes [Y], Native takes [Z]
+      ✅ Avoids: Everyone on same thing, or idle capacity
+      ✅ Example: "Zaida: #72 (depends on #67) | Erik: #84 (parallel)"
+
+  [ ] ESTIMATED COMPLETION — When will work actually be DONE?
+      ✅ Not "started" — DONE (merged, ready to ship)
+      ✅ Includes: review time, merge wait time, testing
+      ✅ Risk flagged: "If API review takes 2 days → 6 days total instead of 5"
+
+  [ ] ACTIONABLE NEXT STEPS — What do we DO after this meeting?
+      ✅ TODAY: Erik starts #67 (priority 1), Zaida preps #84
+      ✅ AFTER #67: Zaida starts #72, Pär starts #89
+      ✅ By Friday: All work merged, ready for CTO demo
+
+FAIL GATE if:
+  ❌ Only status reported (passive, backward-looking)
+  ❌ Recommendations vague ("do better", "go faster")
+  ❌ No specific team assignment
+  ❌ No actionable next steps
+  ❌ Team capacity not addressed (might be idle)
+```
+
 **CODE INSPECTION FOR PÅGÅR-ISSUES (QUALITY GATE):**
 ```
   [ ] For each "Pågår" issue displayed (①B, ①C slides):

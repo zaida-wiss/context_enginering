@@ -172,6 +172,93 @@ repository_ref_policy:
     before merge to main.
 
 ###############################################################################
+# PRESENTATION ANALYSIS LAYER — Recommendations Beyond Status Reporting
+###############################################################################
+analysis_and_recommendations:
+  principle: >
+    Presentation is NOT just status reporting (what happened this week).
+    It MUST also include analysis (what should we do next, in what order, how to parallelize).
+
+  required_analysis_elements:
+    priority_recommendation: >
+      MUST rank work by impact/risk/dependencies.
+      Not just "these 5 things are open" — "do THESE 3 first because [X] blocks [Y]".
+
+      Example:
+        🔴 #67 Update API contract (FIRST — blocks Frontend + Native)
+        🟠 #72 Frontend state management (SECOND — depends on #67)
+        🟡 #84 Database optimization (THIRD — independent, lower priority)
+
+    dependency_chain: >
+      MUST show which issues block others.
+      Format: #X blocks #Y blocks #Z
+
+      Allows team to parallelize: "While you wait for #67 review,
+      start #84 (independent) + #73 (prep work for #72)".
+
+    team_capacity_and_split: >
+      MUST recommend how to divide work across teams.
+
+      Example:
+        ✅ Frontend: Take #72 (UI) + #84-prep (infra setup)
+        ✅ Backend: Take #67 (API contract) + #73 (database)
+        ✅ Native: Wait for #67 → then take cross-team integration
+
+      This prevents: "Everyone works on the same thing" or "Idle capacity".
+
+    estimated_completion_and_risk: >
+      MUST estimate when work can be DONE (not just started).
+
+      Example:
+        #67 API: 2 days (no blockers)
+        #72 Frontend: 3 days (after #67 done)
+        #84 Database: 2 days (parallel to #72)
+        → Full feature ready in 5 days (critical path)
+        → Risk: If API review takes 1+ day → 6+ days total
+
+    actionable_next_steps: >
+      MUST end presentation with explicit NEXT STEPS.
+
+      Example:
+        TODAY:
+          - Erik: Start #67 API contract (priority 1)
+          - Zaida: Prep #84 database infra (priority 3, independent)
+          - Björn: Review yesterday's PRs
+
+        AFTER #67 merged:
+          - Zaida: Start #72 state management
+          - Pär: Begin cross-team integration #89
+
+        By Friday:
+          - All work merged to Java-Development-Environment
+          - CTO demo ready
+
+  data_sources_required:
+    - github_issues: dependencies, blockers, linked issues
+    - github_prs: review status, which PRs block what
+    - team_roster: who can work on what
+    - commit_history: effort indicators (how long did similar work take)
+    - project_board: if available, status/iteration info
+
+  analysis_vs_reporting:
+    reporting: >
+      "Here's what happened this week"
+      ← Passive, backward-looking
+
+    analysis: >
+      "Here's what should happen next, in this order, split like this"
+      ← Active, forward-looking, actionable
+
+  enforcement: >
+    Presentation FAIL (render gate) if:
+    ❌ Only status reported (no priority/dependencies/split recommendation)
+    ❌ Recommendations exist but are vague ("do better")
+    ❌ No actionable next steps for specific teams
+    ❌ Team capacity not addressed (might be idle)
+
+---
+
+###############################################################################
 # RISK ANALYSIS & BLOCKER DETECTION — Branch Coverage (CRITICAL)
 ###############################################################################
 risk_analysis_branch_coverage:
