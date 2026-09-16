@@ -235,7 +235,7 @@ Light Slate border (#CBD5E1) means work affects multiple teams, not a single tea
 It is neutral, showing coordination required across team boundaries.
 Use on:
 - Slide ①A: cross-team merged PRs (in chronological order)
-- Slide ①D: cross-team pågår work
+- Slide ①E: cross-team pågår work
 
 **EXAMPLE — Frontend card on slide ①A (Merged):**
 - Slide background: #0F1830
@@ -246,7 +246,7 @@ Use on:
 - Text: #FFFFFF
 - Metadata: #94A3B8
 
-**EXAMPLE — Backend card on slide ①C or ①D (In Progress):**
+**EXAMPLE — Backend card on slide ①D or ①E (In Progress):**
 - Slide background: #0F1830
 - Card background: #18233D
 - Card border: #FF4FA3 (hot pink, team ownership)
@@ -267,7 +267,7 @@ Use on:
 **CRITICAL:**
 Team colors and status colors are TWO DIFFERENT semantic systems.
 On Slide ①A "Merged PRs": all cards already have status = MERGED.
-On Slide ①B-①D "Pågår": all cards already have status = ◐ PÅGÅR.
+On Slides ①D-①E "Pågår": all cards already have status = ◐ PÅGÅR.
 Therefore border color represents TEAM. Do NOT add green/orange/red status borders.
 Status is communicated by symbol + text ("Merged" / "◐ Pågår").
 
@@ -564,7 +564,7 @@ After rendering to PPTX, page through every slide:
 (These three use identical TEAM_DETAIL_CARDS layout—see above section)
 
 **NOT affected (keep existing layouts):**
-- ① Avklarat (①A grid, ①B-①E full-width stacked)
+- ① Section (①A–①C: 3×2 grid, ①D–①F: full-width stacked)
 
 ### Default Layout
 

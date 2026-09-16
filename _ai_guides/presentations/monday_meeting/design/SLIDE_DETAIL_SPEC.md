@@ -32,10 +32,12 @@ This file defines **content only** (what data goes where, how it's structured).
 
 | Mötespunkt | Layout Standard | Description |
 |---|---|---|
-| **①A** | Grid 3×2 | Max 6 merged PR cards per slide, pagination if >6 |
-| **①B** | Full-width stacked | Collection-branch PRs (if any) |
-| **①C–①D** | Full-width stacked | Open issues + cross-team work |
-| **①E** | Full-width stacked | Decisions + candidates |
+| **①A** | Grid 3×2 | Max 6 merged PR cards per slide (develop branch), pagination if >6 |
+| **①B** | Grid 3×2 | Collection-branch PRs (Backend: Java-Development-Environment), pagination if >6 |
+| **①C** | Grid 3×2 | Collection-branch PRs (Native: C/C++-Native), pagination if >6 |
+| **①D** | Full-width stacked | Open issues this week (team-based: Frontend, Backend, Native) |
+| **①E** | Full-width stacked | Open issues this week (cross-team work) |
+| **①F** | Full-width stacked | Decisions + decision candidates |
 | **②** | COMPACT_CARD_STANDARD | Priority items, vertically ranked |
 | **③④⑤** | TEAM_DETAIL_CARDS | Status + blockers, IDENTICAL layout for all teams |
 | **⑥** | COMPACT_CARD_STANDARD (except ⑥A) | Blockers + dependencies |
@@ -355,7 +357,7 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 
 ---
 
-## 📊 ①C — PÅGÅR DENNA VECKA: CROSS-TEAM
+## 📊 ①E — PÅGÅR DENNA VECKA: CROSS-TEAM
 
 **PURPOSE:**
 Shows active cross-team work (affects multiple teams).
@@ -390,17 +392,18 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 
 ---
 
-## 📝 ①D-①E — HINDER, RISKER, BLOCKERS (deferred to team context)
+---
 
-**Planerat, blockers/risker → shown during detailed team slides later.**
-
-**Structure: ①A-①D contain completed/merged work, pågår work, and collection-branch progress.**
+**STRUCTURE SUMMARY: ① Section (①A–①F)**
+- ①A–①C: Completed work (develop + collection branches)
+- ①D–①E: Active work this week (team-based + cross-team)
+- ①F: Decisions made since last meeting
 
 ---
 
-## 📝①E — BESLUT SEDAN FÖRRA MÖTET (0-1 slides, conditional)
+## 📝①F — BESLUT SEDAN FÖRRA MÖTET (0-1 slides, conditional)
 
-**PLACEMENT:** After ①D, before ② (completes ① section)
+**PLACEMENT:** After ①E, before ② (completes ① section)
 
 **PURPOSE:**
 Help team see what decisions have been made (documented in docs/BESLUT.md)

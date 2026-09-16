@@ -250,8 +250,9 @@ VISUAL QUALITY (inspect rendered layout):
   ☐ Team detail cards (③④⑤) are vertically stacked (not tables)
   ☐ Required sections present:
      - Framsida with meeting date + data footer
-     - ①A with grid layout
-     - ①C with team columns
+     - ①A–①C with 3×2 grid layouts (merged work)
+     - ①D–①E with stacked layouts (pågår work)
+     - ①F with stacked layout (decisions)
      - ②③④⑤
 
 MERGE OVERVIEW BOARDS (①A–①C):
@@ -274,7 +275,7 @@ CARD TEXT LAYOUT:
 EXPLICIT OMISSIONS (if slides are missing):
   ☐ ①B omitted — document: "0 Backend collection-branch merges (dataset empty)"
   ☐ ①C omitted — document: "0 Native collection-branch merges (dataset empty)"
-  ☐ ①D/①E omitted — document reason clearly
+  ☐ ①D/①E/①F omitted — document reason clearly
   ☐ Other omissions — explicit reason recorded
 ```
 
@@ -453,7 +454,7 @@ FAIL GATE if:
 
 **CODE INSPECTION FOR PÅGÅR-ISSUES (QUALITY GATE):**
 ```
-  [ ] For each "Pågår" issue displayed (①B, ①C slides):
+  [ ] For each "Pågår" issue displayed (①D, ①E slides):
       - Branch/PR link is clickable (inspectable)
       - Spot-check: Code looks like it's progressing toward issue goal?
       - Code matches issue description (not going in wrong direction)?
@@ -518,8 +519,8 @@ FAIL GATE if:
 **DELIVERY SEPARATION & NO DOUBLE-COUNTING:**
 ```
   [ ] ①A contains ONLY develop merges (not collection branch merges)
-  [ ] ①B contains ONLY collection-branch merges (not develop merges)
-  [ ] ①C/①D use correct numbering (pågår work per team and cross-team)
+  [ ] ①B–①C contain ONLY collection-branch merges (not develop merges)
+  [ ] ①D/①E use correct numbering (pågår work per team and cross-team)
   [ ] No PR/change counted on multiple slides
   [ ] Collection-branch cards state target branch explicitly (e.g., "Java-Development-Environment")
   [ ] Developed-by field uses actual commit authors where available
@@ -578,7 +579,7 @@ FAIL GATE if:
 
 **LAYOUT COMPLIANCE — CANONICAL FORM WITH AUTHORIZED EXCEPTIONS:**
 ```
-  ✅ GENERAL RULE (most slides: ①B-①E, ②-⑤, ⑦-⑬, ⑭):
+  ✅ GENERAL RULE (most slides: ①D-①F, ②-⑤, ⑦-⑬, ⑭):
   [ ] Every slide has exactly: 1 header + 1 main message + 1–3 content blocks
   [ ] Content blocks stack vertically (never side-by-side)
   [ ] All blocks are 100% width (no small cards in grid)
@@ -599,7 +600,7 @@ FAIL GATE if:
   [ ] Flow direction clearly shows blocking relationships (pilar indicates direction)
 
   ✅ GENERAL RULES (apply to ALL slides including exceptions):
-  [ ] If slide has 4+ work items (①B-①C) → continues automatically to ①B.1, ①B.2 (never summarized)
+  [ ] Slides that exceed layout capacity auto-continue: ①A/②/③/④/⑤/etc.1, .2, .3 (never summarized)
   [ ] All typography matches FIXED spec: titles 28pt, content 14pt, metadata 13pt (WCAG 2.2 AA minimum)
   [ ] Whitespace: 20px margin between blocks/chains, 16-20px internal padding
   [ ] Soft cards: 12-18px rounded corners, never hard rectangular boxes
@@ -620,7 +621,7 @@ STEP B: Open PPTX file and page through every slide visually. For each slide:
   [ ] Header is at top (symbol first)
   [ ] Main message is clearly visible below header
   
-  ✅ For slides ①B-①E, ②-⑤, ⑦-⑬, ⑭ (canonical layout):
+  ✅ For slides ①D-①F, ②-⑤, ⑦-⑬, ⑭ (canonical layout):
   [ ] Content blocks stack vertically (never side-by-side)
   [ ] All blocks are 100% width
   [ ] Work items display as clean single lines (not grid)
@@ -656,7 +657,7 @@ STEP D: Only after ALL slides pass visual check:
 - Text clipping → reduce text length, split to new slide
 - Block overflow → split to continuation slide automatically
 - Dense layout → already at max 3 blocks per slide; if still dense → reformat work items as single lines
-- Unwanted grid appearance (slides ①B-①C, ②-⑤, etc) → check that blocks are 100% width and stacked vertically
+- Unwanted grid appearance (slides ②-⑤, ⑦-⑪, ⑬-⑭ should be stacked, NOT grid) → check that blocks are 100% width and stacked vertically
 - Broken dependency diagram (slide ⑥A) → verify nodes have soft corners, status markers visible, arrows clear
 - Card ①A grid incorrect → verify 3-column layout, soft rounded cards, chronological order
 
