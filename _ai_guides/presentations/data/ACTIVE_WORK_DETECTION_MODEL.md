@@ -258,7 +258,7 @@ Status: Ready to start
 
 ❌ **Project Board status alone** — too unreliable
 ❌ **Level 5 orphaned commits** — until linked to issue
-❌ **Old branches with no recent commits** — assume paused/stale
+⚠️ **Old branches with no recent commits (LEVEL 3)** — show on ①D/①E but flag as "possibly paused/uncertain"
 ❌ **Closed issues** — belong in slide ①A (merged)
 
 ---
@@ -415,9 +415,10 @@ SUMMARY FOR MEETING SLIDE:
     - If no work: shown with "Ny issue eller tillgänglig för hjälp"
 
 [ ] Correlation verified:
-    - Each issue has a linked branch or PR
+    - LEVEL 1-3: Each issue has a linked branch or PR
+    - LEVEL 4: Open assigned issue without branch is valid (shown in ①E section B)
     - Each PR has a linked issue
-    - Branch names match issue numbers when possible
+    - Branch names match issue numbers when possible (where branch exists)
 
 [ ] Reviewer coverage:
     - All open PRs have reviewers assigned (or show "ej tilldelad")
