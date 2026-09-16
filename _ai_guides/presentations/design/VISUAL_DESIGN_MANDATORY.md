@@ -367,6 +367,48 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 
 ---
 
+## 🎯 TEAM DETAIL CARDS — Mandatory responsive layout
+
+Applies to Frontend, Backend and Native team-detail slides (③④⑤).
+
+### Layout
+- Use vertically stacked compact cards (NOT wide horizontal bands)
+- One work item per card
+- Text is horizontally centered inside every card
+- Maintain generous spacing between cards (20px minimum)
+
+### Responsive sizing
+- Card height is CONTENT-DRIVEN (never fixed)
+- Use minimum height, let cards expand vertically
+- If text wraps, card grows taller
+- NO text clipping allowed
+- Do NOT reduce font size to force content into a card
+
+### Card structure (in vertical order)
+```
+    ✅ #93 · PR #95
+    SQL-injection fix
+
+    Mergat till
+    Java-Development-Environment
+
+       Rasha
+    Review: Erik
+    Merge: Erik
+```
+
+### Consistency Rule
+Frontend, Backend and Native MUST use identical:
+- card geometry
+- internal spacing
+- centered text alignment
+- typography hierarchy
+- responsive-height behavior
+
+Only team border colour differs.
+
+---
+
 ## 🔗 DEPENDENCY DIAGRAMS — Mandatory visual rules
 
 Dependency and blocker slides must use visual flow diagrams instead of paragraph-style text blocks.

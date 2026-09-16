@@ -239,39 +239,51 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 
 ### SLIDE ②A: Nuläge + Deadline Tracker & Risk
 
-**FORMAT:**
+**FORMAT: Vertically stacked compact priority cards**
 
-**INNEHÅL - DEL 1: DEADLINE TRACKER (fokuserat på risk)**
+Use small vertically-stacked cards (NOT wide horizontal bands).
+Each card shows one ranked priority item. Cards grow vertically to fit content.
+
+**INNEHÅL - Vertically ranked cards:**
 
 ```
-🔴 KRITISK (Idag 14:00) — [MILESTONE_A]
-   VAD: [TEAM_A] + [TEAM_B] fastslår [DECISION]
-   VARFÖR: Låser upp [FEATURE_1], [FEATURE_2], [FEATURE_3]
-   STATUS: ⏳ INGEN AKTIVITET än
-   RISK: Om inte klart idag → [N] dagar försening för [M] teams
-   ACTION: [PERSON] möte 14:00 — kan vi unblockera NU?
+    1️⃣ KRITISK — [MILESTONE_A]
+       Idag 14:00
 
-🟠 HÖGT (Imorgon) — [MILESTONE_B]
-   VAD: Formell dokumentation i issue #XX ([FORMAT], [DETAILS])
-   VARFÖR: [TEAM_C] + [TEAM_D] behöver detta för [PHASE]
-   STATUS: ⏳ Beror på idag's möte
-   RISK: [N] dag sen → [IMPACT]
-   ACTION: Vilka kan hjälpa [PERSON] med [TASK]?
+    VAD: [TEAM_A] + [TEAM_B] fastslår [DECISION]
+    VARFÖR: Låser upp [FEATURE_1], [FEATURE_2]
+    STATUS: ⏳ Ingen aktivitet än
+    RISK: [N] dagar försening om ej klart
+    ACTION: [PERSON] möte 14:00
 
-🟡 MEDEL (Fredag) — Feature-complete eller fallback
-   VAD: Alla features klara ELLER fallback för CTO-demo
-   VARFÖR: CTO-demo denna vecka
-   STATUS: 🟢 ON TRACK (Frontend 80%, Backend 60%)
-   BUFFER: 1 dag kvar
-   ACTION: Hålla fokus på blockers denna vecka
+
+    2️⃣ HÖGT — [MILESTONE_B]
+       Imorgon
+
+    VAD: Dokumentation i issue #XX
+    VARFÖR: [TEAM_C] behöver för [PHASE]
+    STATUS: ⏳ Beror på möte idag
+    RISK: Kan försena nästa fas
+    ACTION: Vilka kan assistera [PERSON]?
+
+
+    3️⃣ MEDEL — CTO-demo denna vecka
+
+    VAD: Feature-complete eller fallback
+    VARFÖR: Demo är schemalagd
+    STATUS: 🟢 80% (Frontend), 60% (Backend)
+    BUFFER: 1 dag kvar
+    ACTION: Fokusera på blockers
 ```
 
 **REGLER:**
-- **Del 1 (Deadlines):** Primär fokus — vilken deadline, vad innebär den, vilken risk, vad gör vi
-- Deadlines i prioritetsordning: 🔴 Kritisk → 🟠 Högt → 🟡 Medel
-- Varje deadline: VAD | VARFÖR | STATUS | RISK | ACTION
-- STATUS-märken: ⏳ = väntar, 🟢 = on track, 🔴 = behind, 🟠 = risk
-- ACTION = konkret nästa steg (inte "vi hoppas")
+- **Layout:** Vertically stacked compact cards, one per ranked item
+- **Ranking:** 1️⃣ = highest urgency, 2️⃣ = next, 3️⃣ = next
+- **Each card:** Rank | Priority level | Deadline | VAD | VARFÖR | STATUS | RISK | ACTION
+- **Card behavior:** Grows vertically to fit all content (no clipping)
+- **Text alignment:** All text centered inside each card
+- **STATUS-märken:** ⏳ = waiting, 🟢 = on track, 🔴 = behind, 🟠 = risk
+- **ACTION:** Konkret nästa steg med ÄGA och TIDRAM
 
 **MÅSTE innehålla:**
 - ✅ Progress % per team
@@ -290,6 +302,34 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 - ❌ Vaga actions ("vi ska jobba på det") — måste ha ÄGA och TIDRAM
 
 **FOOTER:** `Källa: GitHub issues + Project Board + Sprint planning ✅`
+
+---
+
+## 🎯 TEAM DETAIL LAYOUT (③ Frontend, ④ Backend, ⑤ Native)
+
+**All team detail slides use identical card layout:**
+
+- Vertically stacked compact cards (NOT wide horizontal bands)
+- One work item per card
+- Text centered horizontally inside every card
+- Card height adapts to content (no clipping allowed)
+- Minimum height, let cards expand vertically
+- Same spacing and typography hierarchy across all teams
+
+**Card structure (centered):**
+```
+    ✅ #93 · PR #95
+    SQL-injection fix
+
+    Mergat till
+    Java-Development-Environment
+
+       Rasha
+    Review: Erik
+    Merge: Erik
+```
+
+**See VISUAL_DESIGN_MANDATORY.md for complete TEAM DETAIL CARDS rules.**
 
 ---
 

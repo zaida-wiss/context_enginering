@@ -441,6 +441,29 @@ FAIL GATE if:
       → Per github_entity_identity rule in SYSTEM_CONTRACT.yaml
 ```
 
+**TEAM DETAIL CARD COMPLIANCE:**
+```
+  [ ] Team detail cards use compact vertical layout (③④⑤ slides)
+  [ ] Text is centered horizontally inside every team card
+  [ ] No team card clips or hides text
+  [ ] Card height adapts to content (not fixed)
+  [ ] Frontend, Backend and Native use identical card layout
+  [ ] No card stretches to full slide width
+  [ ] Spacing between cards is consistent (20px minimum)
+```
+
+**PRIORITY/RISK CARD COMPLIANCE (slide ②):**
+```
+  [ ] Priority items shown as vertically stacked cards (not wide bands)
+  [ ] Each card shows: rank number + deadline + content
+  [ ] Text inside each card is centered
+  [ ] No card clips text (cards grow vertically as needed)
+  [ ] Priority ordering clear (1️⃣ 2️⃣ 3️⃣)
+  [ ] Risk and action visible in every card
+```
+
+---
+
 **LAYOUT COMPLIANCE — CANONICAL FORM WITH AUTHORIZED EXCEPTIONS:**
 ```
   ✅ GENERAL RULE (most slides: ①B-①E, ②-⑤, ⑦-⑬, ⑭):
