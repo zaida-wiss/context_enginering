@@ -30,7 +30,8 @@ Every slide contains:
 │  [CONTENT BLOCK 2]                  │  Max 1–3 blocks per slide
 │  (if needed)                        │
 │                                     │
-│  (If 4+ items: auto-split to ①A.1) │
+│  (If content too large: split to   │  Continuation: ①A-2, ①B-2, etc.
+│   continuation slide)               │
 └─────────────────────────────────────┘
 ```
 
