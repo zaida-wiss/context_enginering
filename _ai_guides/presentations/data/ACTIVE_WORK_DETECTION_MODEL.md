@@ -34,7 +34,7 @@ CONCLUSION: ✅ DEFINITE active work
 STATUS: "Väntar på review" (blocker: waiting for Björn)
 ```
 
-**Use case:** Show on slide ①B "Väntar i PR"
+**Use case:** Show on slide ①D (team-based) or ①E (cross-team) "PR väntar på review"
 
 ---
 
@@ -54,7 +54,7 @@ CONCLUSION: ✅ VERY LIKELY active work
 STATUS: "Pågår — arbete slutförs, PR nästa" (still coding)
 ```
 
-**Use case:** Show on slide ①C "Pågår utan PR"
+**Use case:** Show on slide ①D (team-based) or ①E (cross-team) "Pågår denna vecka utan PR"
 
 ---
 
@@ -311,7 +311,7 @@ HUMAN INSPECTION (Required):
 | "Pågår — branch active" | "Feature mostly working, minor bugs" | OK — proceeding normally |
 
 **Requirement:**
-- Before displaying issue as "Pågår", reviewer SHOULD inspect code
+- Before displaying issue as "Pågår" (LEVEL 2-3) on ①D or ①E, reviewer SHOULD inspect code
 - If concerned: add annotation (not hiding problems, surfacing them)
 - If no access to code: mark as "Code not inspected — [reason]"
 
@@ -409,7 +409,9 @@ SUMMARY FOR MEETING SLIDE:
 
 ```
 [ ] All team members accounted for:
-    - If active: shown in ①A (merged) or ①B/①C (active)
+    - If merged work: shown in ①A/①B/①C
+    - If active (LEVEL 1-3): shown in ①D (team-based) or ①E (cross-team)
+    - If assigned but no branch (LEVEL 4): shown in ①E section B (Backlog)
     - If no work: shown with "Ny issue eller tillgänglig för hjälp"
 
 [ ] Correlation verified:
