@@ -635,6 +635,21 @@ STEP B: Open PPTX file and page through every slide visually. For each slide:
   [ ] Displays dependency chains with nodes and arrows
   [ ] Nodes are soft-rounded cards with status markers
   [ ] Flow direction is clear (pilar shows blocking)
+
+  ✅ For slide ⑬ (authorized 4-column grid exception):
+  [ ] Displays as 4-column card grid (max 4 actions per slide)
+  [ ] Cards are equal width and soft-rounded (12-18px corners)
+  [ ] Each card shows: Number | Title | Description | Deadline | Verification
+  [ ] Whitespace between cards is adequate (16-20px padding)
+  [ ] If >4 actions: continuation slide ⑬B created
+
+  ✅ For slide ⑭ (authorized questions-card exception):
+  [ ] Displays as grouped cards (two visual sections)
+  [ ] "IDAG-SVAR BEHÖVS" section at top, "NICE-TO-HAVE" below
+  [ ] Each question is individual card with border + soft corners (12-18px)
+  [ ] Cards show: Q# | KATEGORI — Fråga | Impakt
+  [ ] Dark navy theme maintained (or light theme variant)
+  [ ] Whitespace and borders provide clear visual hierarchy
   
   ✅ For ALL slides:
   [ ] No blocks/cards pushed off-slide or cut at bottom
@@ -657,7 +672,9 @@ STEP D: Only after ALL slides pass visual check:
 - Text clipping → reduce text length, split to new slide
 - Block overflow → split to continuation slide automatically
 - Dense layout → already at max 3 blocks per slide; if still dense → reformat work items as single lines
-- Unwanted grid appearance (slides ②-⑤, ⑦-⑪, ⑬-⑭ should be stacked, NOT grid) → check that blocks are 100% width and stacked vertically
+- Unwanted grid appearance (slides ②-⑤, ⑦-⑫ should be stacked, NOT grid) → check that blocks are 100% width and stacked vertically
+- ⑬ grid incorrect (should be 4 columns, equal width) → verify grid layout and card alignment
+- ⑭ cards incorrect (should show grouped questions with borders) → verify card-based layout and visual hierarchy
 - Broken dependency diagram (slide ⑥A) → verify nodes have soft corners, status markers visible, arrows clear
 - Card ①A grid incorrect → verify 3-column layout, soft rounded cards, chronological order
 

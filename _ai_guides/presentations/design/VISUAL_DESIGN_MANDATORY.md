@@ -81,7 +81,45 @@ Each block displays ONE CATEGORY of work (merged PRs, open issues, etc):
 - Continue to follow the canonical vertical full-width block layout
 - Content rendered as stacked soft cards (not grid)
 - Each card is a soft, rounded, responsive container
-- Only exception to single-stacked layout is ①A–①C merge boards
+- Authorized exceptions to canonical layout: ①A–①C (grid), ⑥A (diagrams), ⑬ (4-column grid), ⑭ (cards)
+
+---
+
+## ⚠️ EXCEPTION — DEPENDENCY DIAGRAMS (⑥A)
+
+**Slide ⑥A MUST use visual flow diagram layout:**
+- Nodes rendered as soft-rounded cards with status markers
+- Arrows show blocking relationships (visual direction)
+- Nodes can be arranged horizontally or vertically as space permits
+- Maximum 3-4 chains per slide
+- Each node has: Issue number + title + status symbol (✅/◐/⏳/🔴)
+- This is NOT a grid—it's a flow diagram with visual hierarchy
+
+---
+
+## ⚠️ EXCEPTION — NEXT STEPS GRID (⑬)
+
+**Slide ⑬ MUST use 4-column card grid layout:**
+- Maximum 4 prioritized actions per slide (one card per column)
+- Cards rendered as soft-rounded boxes with border + padding
+- Each card shows: Number | Title | Description | Deadline | Verification
+- Cards are equal height and width within the slide
+- Soft corners (12–18px), neutral border, whitespace between cards
+- If >4 actions: create continuation slide ⑬B
+- This layout emphasizes visual prioritization over text listing
+
+---
+
+## ⚠️ EXCEPTION — QUESTIONS TO PL CARDS (⑭)
+
+**Slide ⑭ MUST use grouped card layout:**
+- Two visual groups: "IDAG-SVAR BEHÖVS" (top) | "NICE-TO-HAVE" (below)
+- Each question rendered as individual card with border
+- Cards have soft corners (12–18px), neutral border, responsive padding
+- Each card shows: Q# | KATEGORI — Fråga | Impakt (1 sentence)
+- Dark navy theme compatible (#0F1830 background per SYSTEM_CONTRACT.yaml)
+- Whitespace between cards and clear visual hierarchy
+- Works on both light and dark themes (border/text contrast maintained)
 
 ---
 

@@ -48,8 +48,8 @@ This file defines **content only** (what data goes where, how it's structured).
 | **⑩** | COMPACT_CARD_STANDARD | Technical decisions |
 | **⑪** | COMPACT_CARD_STANDARD | Sprint goals |
 | **⑫** | COMPACT_CARD_STANDARD | Sprint plan + milestones |
-| **⑬** | COMPACT_CARD_STANDARD | Action plan |
-| **⑭** | COMPACT_CARD_STANDARD | Questions for PL |
+| **⑬** | Grid 4×1 (exception) | Next steps — 4 prioritized actions, max 4 cards per slide |
+| **⑭** | Grouped cards (exception) | Questions to PL — two sections (IDAG-SVAR + NICE-TO-HAVE) |
 
 **CRITICAL RULES:**
 - ✅ **③④⑤ use IDENTICAL card layout** — only team color differs
@@ -1194,65 +1194,67 @@ MILESTONES:
 
 ---
 
-## 📝⑬ NÄSTA STEG (1-2 slides)
+## 📝⑬ NÄSTA STEG (1 slide)
 
-### SLIDE ⑬A: Handlingsplan direkt efter mötet
+### SLIDE ⑬A: Prioriterade åtgärder — 4 steg framåt
 
-**FORMAT:** Numrerad lista med tid + verifikation
+**FORMAT:** 4-kolumners grid (max 4 cards, en per åtgärd)
 
-**INNEHÅL:**
+**LAYOUT:**
+- 4 vertikala kort/boxes placerade sida-vid-sida
+- Varje kort: rubrik + beskrivning + deadline
+- Numrerad (①②③④ eller 1 2 3 4)
+- Soft-rounded corners (12-18px per VISUAL_DESIGN_MANDATORY)
+
+**INNEHÅL PER KORT:**
 ```
-HANDLINGSPLAN:
+[① RUBRIK]
+Kort beskrivning av åtgärd
+Deadline + ägare
+Verifikation kort notering
+```
 
-INOM 1 TIMMA EFTER MÖTET:
-[ ] 1. [PERSON_A]: Uppdatera GitHub issue #XX med [DECISION]
-    Verifikation: Issue-description innehåller [PROOF]
+**EXEMPEL:**
+```
+① Boka BE ↔ FE-möte
+Lås API-kontraktet denna vecka
+Deadline: Idag
+Verifikation: Meeting booked + minutes in GitHub
 
-[ ] 2. [PERSON_B]: Uppdatera Project Board — flytta #YY till "[STATUS]"
-    Verifikation: Project Board visar #YY i rätt kolumn
+② Boka BE ↔ Native-möte
+Klargör JNA-bryggan tisdag/onsdag
+Deadline: Idag
+Verifikation: Meeting booked + technical spec link
 
-IDAG (före [TIDPUNKT] möte):
-[ ] 3. [PERSON_C]: Review [RESOURCE] för #ZZ
-    Verifikation: [PERSON_C] säger "ready" i GitHub-kommentarer
+③ Frontend fortsätter
+Issue #43, ansvar och tillgänglighet
+Deadline: Denna vecka
+Verifikation: Issue assigned + branch created
 
-[ ] 4. [PERSON_D]: Genomför [TASK] på #AA
-    Verifikation: [PERSON_D] mergear #AA eller sätter label "[STATUS]"
-
-IMORGON:
-[ ] 5. [PERSON_E]: Starta #BB [TASK]-implementation
-    Verifikation: Branch #BB-branch skapad + första commit pushad
-
-[ ] 6. [PERSON_F]: Börja pairing-session med [PERSON_G] på #CC
-    Verifikation: Commit pushad från #CC-branch
-
-DENNA VECKA:
-[ ] 7. [PERSON_H]: Genomför [MEETING] med [TEAM] ([WHEN])
-    Verifikation: Issue-comment i GitHub med mötes-summering
-
-[ ] 8. [PERSON_I]: Code-review alla inkommande PRs från [TEAM]
-    Verifikation: Alla PRs har review-kommentar
-
-[ ] 9. PL: Verifiera Project Board stämmer med Git-branch-status
-    Verifikation: Board-kolumner matchar faktisk arbete
+④ Håll det smalt
+Prioritera stabil flöde framför nya features
+Deadline: Sprint-long
+Verifikation: Scope confirmed in Project Board
 ```
 
 **REGLER:**
-- Numrerad lista (1, 2, 3...)
-- Tidsgrupp: Inom 1h | Idag | Imorgon | Denna vecka
-- Format: Nummer. Namn: Action
-- MÅSTE ha verifikation (hur vet vi att det är klart?)
-- Verifikation = GitHub-verifierbar (inte "vi tror")
+- MAX 4 åtgärder (kan inte rymmas på en slide)
+- Varje kort: prioriterad åtgärd (INTE en checklist)
+- Format: Nummer. Rubrik | Beskrivning | Deadline | Verifikation
+- Rubrik 1-5 ord, beskrivning 1-2 meningar
+- Deadline = samma dag, imorgon, denna vecka, sprint-long
+- Verifikation = GitHub-verifierbar
 
 **MÅSTE innehålla:**
-- ✅ Konkreta GitHub-åtgärder (issue-update, branch-create, PR-create)
-- ✅ Ägare för varje åtgärd
-- ✅ Deadline (samma dag, imorgon, denna vecka)
-- ✅ Verifikation-punkt (hur vet vi det är klart?)
+- ✅ De viktigaste 4 åtgärderna från mötet
+- ✅ Ägare/ansvarig per åtgärd (implicit eller explicit)
+- ✅ Deadline (konkret tidsram)
+- ✅ Verifikation (hur vet vi det är klart?)
 
 **FÅR INTE innehålla:**
-- ❌ Vague tasks ("vi ska jobba på...")
-- ❌ Åtgärder utan ägare
-- ❌ "Vi hoppas..." (bara konkreta saker)
+- ❌ >4 åtgärder (split till separat ⑬B om fler)
+- ❌ Vaga deadlines ("senare")
+- ❌ Okoncreta verifikationer
 
 **FOOTER:** `Baserat på punkt ③-⑫ (status, prioritering, plan) ✅`
 
@@ -1262,52 +1264,62 @@ DENNA VECKA:
 
 ### SLIDE ⑭A: Öppna frågor för PL-svar
 
-**FORMAT:** Numrerad lista med prioritering
+**FORMAT:** Moderna kort/boxes — Grupperad efter prioritet
 
-**INNEHÅL:**
+**LAYOUT:**
+- Två grupper: "IDAG-SVAR BEHÖVS" (högre upp) + "NICE-TO-HAVE" (längre ned)
+- Varje fråga = separat kort/box med border (soft-rounded corners 12-18px)
+- Kort-innehål: Nummer + KATEGORI — Fråga (bold) | Impakt
+- Designtema: Dark navy bakgrund (#0F1830), soft border, whitespace mellan kort
+
+**INNEHÅL PER KORT:**
+
 ```
-ÖPPNA FRÅGOR FÖR PL-SVAR:
+IDAG-SVAR BEHÖVS
 
-IDAG-SVAR BEHÖVS (höga prioriteten):
+┌─────────────────────────────────────┐
+│ Q1 SCOPE — Ska #XX in i denna sprint?│
+│ Påverkar [TEAM]-kapacitet (+ [N]h)  │
+└─────────────────────────────────────┘
 
-1. SCOPE — Ska #XX ([FEATURE_A]) in i denna sprint?
-   VARFÖR VIKTIG: Påverkar [TEAM]-kapacitet (+ [N] timmar)
-   IMPAKT: Om JA → flytta #YY till nästa vecka
+┌─────────────────────────────────────┐
+│ Q2 PRIORITERING — Skippa #AA för #ZZ?
+│ Säkerhet vs testramverk-investering │
+└─────────────────────────────────────┘
 
-2. PRIORITERING — Om #ZZ mergea idag, kan vi skippa #AA?
-   VARFÖR VIKTIG: Kan spara [N] timmar [TASK]
-   IMPAKT: Säkerhets-testing vs testramverk-investering
+NICE-TO-HAVE (diskussionsfrågor)
 
-3. SCOPE — Responsive dashboard (#86): krävs desktop-version också?
-   VARFÖR VIKTIG: Påverkar Native-tidsuppskattning (+ 12 timmar)
-   IMPAKT: Om JA → omöjligt denna vecka
-
-IDAG-SVAR NICE-TO-HAVE (diskussions-frågor):
-
-4. PROCESS — Ska mötet nästa vecka starta med Code Review eller Retrospekt?
-   VARFÖR VIKTIG: Påverkar agenda (40min skillnad)
-
-5. PROCESS — Ska vi döpa om branches enligt naming-convention?
-   VARFÖR VIKTIG: CI/CD-fokus eller flexibilitet?
+┌─────────────────────────────────────┐
+│ Q3 PROCESS — Code Review el Retrospekt?
+│ Påverkar agenda (40min skillnad)    │
+└─────────────────────────────────────┘
 ```
 
 **REGLER:**
-- MAX 5-6 frågor per möte
-- Börja med "IDAG-SVAR BEHÖVS" (höga prioriteten)
-- Avsluta med "IDAG-SVAR NICE-TO-HAVE" (diskussions-frågor för senare)
-- Format: Nummer. KATEGORI — Fråga + VARFÖR VIKTIG + IMPAKT
-- PL måste kunna svara direkt (inte "vi återkommer")
+- MAX 6 frågor total (helst 3-4 prioriterade)
+- Q1, Q2, Q3... (eller 1, 2, 3...)
+- Format: Q# KATEGORI — Fråga + impakt (1 mening)
+- Två sektion: IDAG-SVAR BEHÖVS (överst) | NICE-TO-HAVE (längre ned)
+- PL måste kunna svara direkt under mötet
 
 **MÅSTE innehålla:**
-- ✅ Öppna frågor från teamet
-- ✅ PL-beslut som saknas
-- ✅ Scope-frågor ("ska vi inkludera X?")
-- ✅ Prioritering (vad ska PL svara på IDAG)
+- ✅ Frågor som kräver PL-beslut denna vecka
+- ✅ Scope-frågor (påverkar sprintomfattning)
+- ✅ Prioriteringsfrågor (välja mellan alternativ)
+- ✅ Tydlig impakt för varje fråga
 
 **FÅR INTE innehålla:**
 - ❌ Retoriska frågor
-- ❌ "Vi undrar om..." (bara konkreta frågor)
+- ❌ Frågor utan konkret påverkan
+- ❌ "Vi undrar..." (bara direkta frågor)
 - ❌ >6 frågor
+
+**VISUAL DESIGN:**
+- Soft-rounded kort (12-18px corners)
+- Neutral border (light gray eller team-färgad)
+- Soft padding (16-20px intern)
+- Dark navy background tema (per VISUAL_DESIGN_MANDATORY.md)
+- Fungerar på både light/dark themes
 
 **FOOTER:** `Källa: Team-feedback under mötet ✅`
 
