@@ -711,7 +711,7 @@ tool_routing_gate:
 
   forbidden_tool_substitutions:
     - "bash_git (git ls-remote, git clone, git fetch)"
-    - "unregistered_shell_network_tools (wget, netcat; curl ONLY if explicitly allowed in EXTERNAL_SOURCES.yaml)"
+    - "shell_network_tools (curl, wget, netcat — forbidden per MANDATORY_READING_ORDER.md)"
     - "generic_web_search (Google, Bing, DuckDuckGo, Brave, search engines)"
     - "web_search_fallback (when GitHub API fails, do NOT open a search engine)"
     - "arbitrary_url_guessing (improvise URLs not in EXTERNAL_SOURCES.yaml)"
@@ -863,11 +863,11 @@ execution_sequence:
         record_in_receipt: "teams_roster.status = SUCCESS | INCOMPLETE"
 
       dataset_2_merged_prs:
-        action: "Call GITHUB_MERGED_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        action: "Call GITHUB_MERGED_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml"
         on_success: "Proceed to dataset_3_active_issues"
-        on_all_github_rest_implementations_unavailable: "Use registered fallback (per EXTERNAL_SOURCES.yaml)"
+        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml for this source"
         on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_3_active_issues"
-        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = source_used_per_EXTERNAL_SOURCES, merged_prs.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = [per EXTERNAL_SOURCES], merged_prs.implementation_used = [per EXTERNAL_SOURCES]"
 
       dataset_3_active_issues:
         action: "Call GITHUB_OPEN_ISSUES source using any implementation permitted by EXTERNAL_SOURCES.yaml"
