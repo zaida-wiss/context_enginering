@@ -106,7 +106,7 @@ SLIDE COMPLIANCE:
   ✅ Slide ①A: 3×2 grid format (max 6 cards)
   ✅ Slide ①B: Full-width cards (if collection branches exist)
   ✅ Slide ①C-①D: Full-width stacked cards
-  ✅ Slide ③④⑤: Table format (issue-status-blockers)
+  ✅ Slide ③④⑤: Compact vertically stacked cards (NOT tables, NOT horizontal bands)
   ✅ Design: Dark navy, soft cards 12-18px, responsive height, no clipping
 
 BLOCKING SOURCES:
@@ -148,7 +148,7 @@ DATA VERIFICATION (spot check):
 DESIGN & STRUCTURE COMPLIANCE:
   ✅ Slide ①A: 3×2 grid (6 max), soft cards, team borders
   ✅ Slide ①B-①D: Full-width stacked cards, responsive height
-  ✅ Slide ③④⑤: Table format (Issue | Assignee | Status | Blockers)
+  ✅ Slide ③④⑤: Compact vertically stacked cards (NOT tables), centered text, responsive height
   ✅ All cards: 12–18px corners, 16–20px padding, NO text clipping
   ✅ All cards: Dark navy background #0F1830, soft appearance
   ✅ Team colors: Borders only (not backgrounds)
@@ -161,6 +161,9 @@ VISUAL QUALITY (rendered PPTX):
   ✅ Responsive card heights working correctly
   ✅ Whitespace adequate (60-70% minimum)
   ✅ Slide density reasonable (split if compressed)
+  ✅ Team detail cards (③④⑤): Compact vertical layout, centered text
+  ✅ Team detail cards: Different heights acceptable (content-driven)
+  ✅ Team detail cards: Frontend/Backend/Native use same card system
 
 CONTENT CHECK:
   ✅ All 7 team members appear with work or "available" marker

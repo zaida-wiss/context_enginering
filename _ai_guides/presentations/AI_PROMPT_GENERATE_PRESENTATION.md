@@ -132,18 +132,33 @@ After collecting all datasets:
   - Light slate border (#CBD5E1)
   - Full-width stacked cards
 
-### Team Detail Slides (③④⑤) — TABLE FORMAT (NOT stacked cards)
+### Team Detail Slides (③④⑤) — COMPACT VERTICALLY STACKED RESPONSIVE CARDS
 
-- **Slide ③** "③ Frontend — denna vecka" — Issue-status TABLE + operativ plan
-- **Slide ④** "④ Backend — denna vecka" — Issue-status TABLE + operativ plan
-- **Slide ⑤** "⑤ Native — denna vecka" — Issue-status TABLE + operativ plan
+- **Slide ③** "③ Frontend — denna vecka" — Issue-status per card + operativ plan
+- **Slide ④** "④ Backend — denna vecka" — Issue-status per card + operativ plan
+- **Slide ⑤** "⑤ Native — denna vecka" — Issue-status per card + operativ plan
 
-Table columns:
-| Issue | Assignee | Status | Blockers | Next |
-|-------|----------|--------|----------|------|
-| #88 | Tomac | ✓ (merged) | None | Deploy |
+**MANDATORY LAYOUT (per TEAM_DETAIL_CARDS section in VISUAL_DESIGN_MANDATORY.md):**
+- One issue/work item per card
+- Vertically stacked (NOT horizontal bands, NOT tables)
+- Text horizontally centered inside each card
+- Card height is CONTENT-DRIVEN (grows to fit text)
+- Cards may have different heights (acceptable and expected)
+- Generous spacing between cards (20px minimum)
+- NO TEXT CLIPPING — text must always fit inside card
 
-Legend: ✓ AVKLARAT, ◐ PÅGÅR, ✕ BLOCKERAD, ? OKÄND
+**Card content per line:**
+```
+    ✓ #93 · PR #95
+    SQL-injection fix
+    
+    Merged to develop
+    
+       Tomac
+    Review: Erik
+```
+
+**Legend:** ✓ AVKLARAT, ◐ PÅGÅR, ✕ BLOCKERAD, ? OKÄND
 
 **Design for all slides:**
 - Dark navy background (#0F1830)
@@ -160,7 +175,7 @@ Legend: ✓ AVKLARAT, ◐ PÅGÅR, ✕ BLOCKERAD, ? OKÄND
 Read: `verification/RENDER_GATE_CHECKLIST.md`
 
 This checklist MUST pass before delivering presentation:
-- Layout compliance (①A grid, ①B-①D full-width, ③④⑤ tables)
+- Layout compliance (①A grid, ①B-①D full-width, ③④⑤ responsive cards)
 - Visual design (soft cards, 12-18px corners, responsive height)
 - Data integrity (no duplicates, dedup verified, checksums aligned)
 - Attribution accuracy (commits > assignees > PR author priority)
@@ -189,7 +204,7 @@ After rendering to PPTX:
 - ☐ Verify all 7 team members visible somewhere (work or "available")
 - ☐ Verify ①A shows 3×2 grid (max 6 cards)
 - ☐ Verify ①B-①D show full-width stacked cards
-- ☐ Verify ③④⑤ show table format with issue-status marks
+- ☐ Verify ③④⑤ show compact vertically stacked cards with centered text (NOT tables)
 - ☐ Verify colors: team borders correct, status symbols clear
 - ☐ Verify deduplication applied (no PR shown twice)
 
@@ -217,7 +232,7 @@ If you CANNOT complete ANY step:
 - ❌ Show only "APPROVED" reviews — include CHANGES_REQUESTED + COMMENTED as review work
 - ❌ Use PR author as "Developed by" — use commit authors (primary) > assignees > PR author
 - ❌ Show "inaktiv" or "ingen aktivitet" — use "Ny issue eller tillgänglig för hjälp i [team]" instead
-- ❌ Render ③④⑤ as stacked cards — MUST be table format (issue-status table + plan)
+- ❌ Render ③④⑤ as tables or horizontal bands — MUST be compact vertically stacked cards with centered text
 - ❌ Use corner radius < 12px or > 18px on soft cards
 - ❌ Clip text to fit cards — split to new slide instead
 - ❌ Hide data verification failures or source unavailability
@@ -229,7 +244,7 @@ If you CANNOT complete ANY step:
 ✅ LIVE GitHub data fetched (today's date, all 5 datasets collected)  
 ✅ Data integrity checklist passed (dedup, attribution, reviews verified)
 ✅ All 7 team members appear (with work or "available" marker, never "inactive")
-✅ Slide structure correct (①A grid, ①B-①D full-width, ③④⑤ tables)
+✅ Slide structure correct (①A grid, ①B-①D full-width, ③④⑤ responsive cards)
 ✅ Design compliant (dark navy, soft cards 12-18px, responsive height, no clipping)
 ✅ Team colors correct (borders only, not backgrounds; never overlap status colors)
 ✅ Framsida footer shows verified sources + timestamp
