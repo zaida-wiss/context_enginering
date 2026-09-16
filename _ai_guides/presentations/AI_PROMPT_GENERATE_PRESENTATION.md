@@ -180,13 +180,16 @@ Before any Artifact/Open/Render operation:
 
 ### Slides ① continued — Pågår denna vecka (In progress work)
 
-- **Slide ①C** "① Pågår denna vecka — Per team" — Open PRs + active work per team (Frontend, Backend, Native sections)
-  - Full-width stacked cards
-  - Show: PR#, issue#, assignee, review status, blockers
+- **Slide ①D** "① Pågår denna vecka — Team-based" — Open PRs + active work per team (Frontend, Backend, Native sections)
+  - Full-width stacked, 3 team columns
+  - Show: PR#, issue#, assignee, review status, branch
+  - LEVEL 1-3 evidence per team
 
-- **Slide ①D** "① Pågår denna vecka — Cross-team" — Work affecting multiple teams (if any)
-  - Light slate border (#CBD5E1)
+- **Slide ①E** "① Pågår denna vecka — Cross-team + Backlog" — Two sections
+  - Section A: Work affecting multiple teams (LEVEL 2-3 cross-team)
+  - Section B: Assigned issues without branch (LEVEL 4 backlog)
   - Full-width stacked cards
+  - Light slate borders (#CBD5E1) for cross-team
 
 ### Team Detail Slides (③④⑤) — COMPACT VERTICALLY STACKED RESPONSIVE CARDS
 

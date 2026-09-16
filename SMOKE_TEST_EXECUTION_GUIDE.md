@@ -96,9 +96,13 @@ Verify these real, visual/data criteria:
 - [ ] Balanced across teams?
 - [ ] No duplicates (same work on multiple slides)?
 
-**Slide ①B/①C (Pågår):**
-- [ ] Team separation clear?
-- [ ] Cross-team separate from team-specific?
+**Slide ①D (Pågår denna vecka: Team-based):**
+- [ ] Team separation clear (Frontend | Backend | Native)?
+- [ ] Active PRs and issues shown per team?
+
+**Slide ①E (Pågår denna vecka: Cross-team + Backlog):**
+- [ ] Cross-team work clearly separated from backlog?
+- [ ] LEVEL 4 (assigned without branch) shown in section B?
 
 **Visual Design:**
 - [ ] Cards rounded (corners visible, not sharp rectangles)?

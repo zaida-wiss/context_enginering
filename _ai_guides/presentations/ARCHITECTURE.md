@@ -113,11 +113,13 @@ DATA_ACQUISITION_CONTRACT.yaml (fetches the data)
 - Native: #A855F7 (purple)
 - Cross-team: #CBD5E1 (light slate, WCAG compliant)
 
-**Slide Layouts:**
-- ①A: Merged PRs — 3×2 card grid (6 max) with team-colored borders
-- ①B: Collection branch merges — full-width stacked cards (Java-Development-Environment, C/C++-Native, etc.)
-- ①C: Pågår by team — full-width stacked cards (Frontend, Backend, Native, each team section)
-- ①D: Pågår Cross-team — full-width stacked cards (work affecting multiple teams)
+**Slide Layouts (Canonical Mapping — See SLIDE_DETAIL_SPEC.md for current spec):**
+- ①A–①C: Merged PRs (develop + 2 collection branches) — 3×2 card grid (6 max per slide)
+- ①D: Pågår denna vecka: Team-based (LEVEL 1-3) — full-width stacked, 3 team columns
+- ①E: Pågår denna vecka: Cross-team + Backlog (LEVEL 2-3 cross + LEVEL 4 assigned)
+- ①F: Decisions made this sprint
+
+⚠️ **Authority:** See SLIDE_DETAIL_SPEC.md for definitive slide content. This section is a summary only.
 
 ---
 
