@@ -198,9 +198,15 @@ These values NEVER change. Use them exactly.
 
 **WCAG 2.2 AA Compliant (per SYSTEM_CONTRACT: accessibility rules override design when conflict).**
 
+**Slide headers with meeting points MUST include pen symbol:**
+- Format: `✏️ ① Slide Title` (pen first, one space, meeting point number, one space, title)
+- All meeting point slides (①-⑭) and intro slide (⓪) must have pen symbol
+- Pen emoji: ✏️ (Unicode U+270F, rendered at same size as meeting point number)
+- No space between pen and number
+
 | Element | Font Size | Weight | Color |
 |---------|-----------|--------|-------|
-| Slide header (meeting point ①②③) | 28pt | BOLD | #FFFFFF (white) |
+| Slide header with meeting point (✏️ ①②③) | 28pt | BOLD | #FFFFFF (white) |
 | Section header (Frontend, Backend, etc) | 14pt | BOLD | #FFFFFF |
 | Main content / Work item title | 14pt | Regular | #FFFFFF |
 | Secondary text / Owner/Status | 13pt | Regular | #94A3B8 (muted slate) |

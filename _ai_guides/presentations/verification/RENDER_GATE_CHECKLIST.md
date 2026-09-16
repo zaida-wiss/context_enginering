@@ -229,7 +229,8 @@ PHYSICAL STRUCTURE (count actual objects in rendered artifact):
   ☐ Physical slide count = expected total
   ☐ Slide ①A contains max 6 cards per slide
   ☐ If PR count > 6: continuation slides exist (①A-2, ①A-3, etc)
-  ☐ Visible slide headings match expected (①, ②, ③④⑤, etc)
+  ☐ Visible slide headings have pen symbol (✏️ ①, ✏️ ②, ✏️ ③④⑤, etc)
+  ☐ Intro slide ⓪ shows "✏️ Nuläge & deadline" (pen only, no meeting point number)
 
 CONTENT VERIFICATION (inspect rendered text):
   ☐ "Developed by" field visible and populated (not "??" unless PR truly has no commit authors)
@@ -618,7 +619,8 @@ STEP A: Render presentation to PPTX (PowerPoint/Google Slides export)
 
 STEP B: Open PPTX file and page through every slide visually. For each slide:
   
-  [ ] Header is at top (symbol first)
+  [ ] Header is at top (pen symbol first: ✏️ ① or ✏️ Nuläge)
+  [ ] Pen symbol is clearly visible (not cut off or faded)
   [ ] Main message is clearly visible below header
   
   ✅ For slides ①D-①F, ②-⑤, ⑦-⑬, ⑭ (canonical layout):

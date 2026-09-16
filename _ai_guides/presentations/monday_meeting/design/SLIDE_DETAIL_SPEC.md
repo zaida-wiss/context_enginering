@@ -68,24 +68,37 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 ## 🚨 KRITISK REGEL — MÖTESPUNKTS-SYMBOLER
 
-**VARJE slide-rubrik MÅSTE börja med mötespunkts-symbolen så det är OMEDELBAR VISUELL klar vilken mötespunkt sliden tillhör.**
+**VARJE slide-rubrik med ett mötespunkts-nummer (①-⑭) MÅSTE börja med penna-symbol + mötespunkts-symbol för omedelbar visuell orientering.**
 
 ```
 ❌ FEL:   "Avklarat sedan förra mötet — Frontend"
-✅ RÄTT:  "① Avklarat sedan förra mötet — Frontend"
+✅ RÄTT:  "✏️ ① Avklarat sedan förra mötet — Frontend"
 
 ❌ FEL:   "Aktuell status"
-✅ RÄTT:  "② Aktuell status"
+✅ RÄTT:  "✏️ ② Aktuell status"
 
 ❌ FEL:   "Frontend"
-✅ RÄTT:  "③ Frontend"
+✅ RÄTT:  "✏️ ③ Frontend"
+
+❌ FEL:   "Backend Collection Branch"
+✅ RÄTT:  "✏️ ①B Backend Collection Branch"
 ```
 
 **REGLER (Mechanical — no variation):**
-- Symbolen måste vara FÖRST i rubriken (no exceptions)
-- Exakt två mellanslag mellan symbol och rubrik-text
-- Samma symbol för alla sub-slides (①A, ①B, ①C använder alla ①)
+- **Penna FÖRST:** ✏️ (unicode U+270F, no space after)
+- **Mötespunkts-symbol ANDRA:** ① ② ③ ... ⑭ (no space before penna, one space after number)
+- Exakt ett mellanslag mellan nummer och rubrik-text
+- Samma penna+nummer för alla sub-slides (✏️ ①A, ✏️ ①B, ✏️ ①C använder alla ✏️ ①)
 - Font: 28pt BOLD (per VISUAL_DESIGN_MANDATORY.md, never smaller, never different)
+- Slide ⓪ (Nuläge & deadline) använder ENDAST penna: ✏️ Nuläge & deadline (no number)
+
+**GÄLLER ENDAST för:**
+- Alla slides ①-⑭ (vilken typ av fortsättningsslide som helst: ①A, ①B-2, ②, ③B, etc)
+- Slide ⓪ (introduktionsslide)
+
+**GÄLLER INTE för:**
+- Framsida
+- Övrigt material utan mötespunkts-nummer
 
 **NOTE:** These are rendering rules for AI, not content to display.
 
