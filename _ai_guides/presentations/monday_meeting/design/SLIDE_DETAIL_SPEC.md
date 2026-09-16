@@ -481,26 +481,53 @@ MÖJLIG SUPPORT:
 
 ### SLIDE ⑥A: Blockerträd — Alla kritiska kedjor
 
-**FORMAT:** ASCII-diagram eller tabell
+**FORMAT:** Visuell dependency-diagram med noder och pilar
 
-**INNEHÅL:**
-```
-🔴 KRITISKA KEDJOR:
+**SYFTE:**
+Visa hur issues hänger ihop i kedjor, vilken issue som låser upp nästa steg, 
+och var den aktuella blockeringen finns.
 
-[#XX API Foundation]
-   ├──→ [#YY Feature A]
-   └──→ [#ZZ Feature B]
+**VISUELLT FORMAT:**
+- Varje issue visas som en separat nod / "mjukt kort"
+- Noder binds ihop med pilar
+- Varje kedja visas som en egen tydlig sektion
+- Kedjor får visas vänster→höger eller uppifrån→ned beroende på utrymme
+- Om en kedja har flera grenar ska förgrening visas visuellt
 
-[#AA Test Foundation]
-   └──→ [#BB Feature C]
-        └──→ [#CC Feature D]
-```
+**VARJE NÖD SKA VISA:**
+- Issue-nummer
+- Kort titel
+- Team (via färg eller märkning)
+- Status:
+  - ✅ Klar
+  - ◐ Pågår
+  - ⏳ Väntar
+  - 🔴 Blockerad
 
 **REGLER:**
-- Visa ENDAST kritiska chains (låser upp mycket)
-- Format: ASCII-diagram (pilar → visar beroende)
-- Visa issue-nummer (#XX) och kort titel
-- Färger: 🔴 = kritisk, 🟠 = måttlig
+- Visa sambandet visuellt, inte bara som meningar
+- Pilar ska visa riktning: vilken issue låser upp nästa
+- Kritisk blocker ska markeras tydligt
+- Om flera issues beror på samma foundation-issue ska detta förgrenas
+- Max 3–4 kedjor per slide, annars delas innehållet upp på fler slides
+- Noder måste vara rundade kort med padding (se VISUAL_DESIGN_MANDATORY.md)
+
+**EXEMPEL LAYOUT:**
+```
+KEDJA 1
+[ #43 API Foundation ] ─────→ [ #82 usePortfolio ]
+      ✅                            ◐
+
+KEDJA 2
+[ #103 JWT-auth ] ─────────→ [ #104 Spring Security ]
+      ◐                              ⏳
+
+KEDJA 3
+[ #6 JNA-bridge ] ─────────→ [ #16 back-testing ]
+      ⏳
+            └──────→ [ #98 historical FX ]
+            └──────→ [ #99 multi-currency FX ]
+```
 
 **MÅSTE innehålla:**
 - ✅ Foundation-issues (låser upp mycket)
@@ -510,8 +537,7 @@ MÖJLIG SUPPORT:
 **FÅR INTE innehålla:**
 - ❌ Alla issues (bara kritiska kedjor)
 - ❌ Timmar eller estimat
-
-**FOOTER:** `Källa: Code review + GitHub PR dependencies ✅`
+- ❌ Långa textstycken — kort titel per nod
 
 ---
 

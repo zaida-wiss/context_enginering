@@ -79,6 +79,46 @@ Slide ①A ("Mergade PR:er") is the ONLY standard exception to the full-width bl
 
 ---
 
+## 🎴 SOFT CARD SURFACES — Mandatory visual style
+
+All content containers must be rendered as soft cards rather than hard rectangular boxes.
+
+### Card shape
+- Use clearly rounded corners on every content card (12–18px radius)
+- Avoid sharp 90-degree corners
+- Corners should be visually noticeable but not exaggerated
+- Cards should feel soft and calm rather than technical or boxy
+
+### Card appearance
+- Cards must visually feel like separate surfaces resting on top of the slide background
+- Use subtle contrast between card surface (#18233D) and slide background (#0F1830)
+- Borders should be thin and soft (1–2px)
+- Team colour may be used as a subtle accent, but the whole card should still feel soft
+- Never use a hard, bright rectangular outline
+
+### Internal spacing (mandatory)
+- Every card must have generous internal padding (16–20px on all sides)
+- Text must never touch the card border
+- Clear vertical spacing between: title → person/status → metadata
+
+### Responsive card height
+- Card height must be determined by content
+- Never use fixed card heights when text length varies
+- Cards must grow vertically when text wraps
+- All text must stay fully inside the card
+- Prefer taller, fewer cards over shallow, many boxes
+
+### Slide density
+- Prefer fewer, taller cards over many compressed boxes
+- If cards cannot fit comfortably: create additional slide
+- Never reduce padding or squeeze text simply to fit more
+
+### Core visual principle
+The presentation should resemble information cards placed on a dark tabletop:
+soft rounded surfaces, generous whitespace, clear separation and calm visual hierarchy.
+
+---
+
 ## 📐 FIXED DIMENSIONS & TYPOGRAPHY
 
 These values NEVER change. Use them exactly.
@@ -319,6 +359,31 @@ This rule prevents the exact problem seen on cover slides where text received un
 - Fix the content (split to continuation slide)
 - Check again
 - Only then render
+
+---
+
+## 🔗 DEPENDENCY DIAGRAMS — Mandatory visual rules
+
+Dependency and blocker slides must use visual flow diagrams instead of paragraph-style text blocks.
+
+### Node style
+- Each issue must be shown as a separate rounded card/node
+- Nodes must look like soft cards (see Soft Card Surfaces section above)
+- Text must wrap inside the node
+- Node size must adapt to content
+- Use status markers on each node: ✅ ◐ ⏳ 🔴
+
+### Arrows and flow
+- Dependencies must be shown with arrows
+- Arrow direction must clearly indicate what unlocks what
+- Branching dependencies must be shown as branches, not inline prose
+- Avoid crossing arrows when possible
+
+### Layout
+- Prefer left-to-right flow for short chains
+- Prefer top-to-bottom flow when content becomes too wide
+- Split into multiple chains if needed
+- Do not compress diagram to fit too much on one slide
 
 ---
 
