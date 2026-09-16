@@ -74,9 +74,9 @@ required_datasets:
     fallback: "None — local file is authoritative"
 
   relevant_issues_activity:
-    source_id: "GITHUB_RELEVANT_ISSUES"
+    source_id: "GITHUB_OPEN_ISSUES"
     classification: "REQUIRED (foundation for all activity reporting)"
-    purpose: "Gather all relevant issues during reporting period (not PR-centric, issue-centric)"
+    purpose: "Gather all open issues during reporting period (not PR-centric, issue-centric)"
 
     CRITICAL_METHODOLOGY: >
       This is the PRIMARY data collection method. Find all RELEVANT ISSUES during REPORTING_PERIOD,
@@ -162,9 +162,6 @@ required_datasets:
       - "base.ref == 'develop' (only develop branch)"
       - "use assignees[] for attribution (person who worked on code, not merger)"
 
-    verification_only:
-      - "Individual PR pages (verification only, not for completeness discovery)"
-
     requirement: "ALL merged PRs in reporting period (develop + collection branches)"
     fields:
       - number (PR number)
@@ -195,8 +192,9 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
   decisions_confirmed:
-    source_id: "DECISION_CONFIRMED"
+    source_type: "local_file"
     classification: "OPTIONAL (enhances team awareness)"
+    note: "Local file source, not external GitHub API"
     canonical_source:
       path: "docs/decisions/*.md (one decision per file)"
       exclude: "docs/examples/** (CRITICAL: never read examples)"
@@ -233,7 +231,8 @@ required_datasets:
       include_date_documented: true
 
   decision_candidates:
-    source_id: "DECISION_CANDIDATES"
+    source_type: "derived_analysis"
+    note: "NOT an external source; derived analysis result from GitHub data"
     classification: "OPTIONAL (pedagogical)"
 
     purpose: >
@@ -241,11 +240,11 @@ required_datasets:
       Never claims decision IS made — only prompts team evaluation.
       Helps team learn what constitutes a real project decision.
 
-    detection_sources:
-      - merged_pull_requests (patterns)
-      - code_choices (architectural choices)
-      - branch_workflow (integration patterns)
-      - team_priorities (order/dependencies)
+    sources_used:
+      - GITHUB_MERGED_PRS (patterns from merged PRs)
+      - GITHUB_OPEN_ISSUES (architectural choices from issues)
+      - GITHUB_BRANCHES (branch workflow patterns)
+      - GITHUB_COMMITS (team priorities from commit order)
 
     minimum_evidence_requirement: >
       MUST have ONE of:
@@ -332,7 +331,6 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (mark DATA_ACQUISITION_RECEIPT as INCOMPLETE)"
 
   repository_branches_and_commits:
-    source_id: "GITHUB_BRANCHES_COMMITS"
     classification: "CRITICAL (activity evidence; required for active work detection)"
     purpose: >
       Collect branches and recent commits to detect active work on issues
@@ -340,8 +338,14 @@ required_datasets:
 
       Project Board may be outdated or inaccessible; commit history is authoritative.
 
+    sources_required:
+      - source_id: "GITHUB_BRANCHES"
+        purpose: "List all repository branches (including collection branches)"
+      - source_id: "GITHUB_COMMITS"
+        purpose: "Commits per branch during reporting period"
+
     execution_sequence:
-      1_collect_all_branches: "GitHub API: GET /repos/chas-challenge-2026/avanza-team1/branches"
+      1_collect_all_branches: "Use GITHUB_BRANCHES source: GET /repos/chas-challenge-2026/avanza-team1/branches"
 
       2_CRITICAL_identify_team_collection_branches: >
         Teams often use dedicated branches as collection points BEFORE merging to develop.
@@ -409,7 +413,8 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE)"
 
   issue_dependencies_and_blockers:
-    source_id: "GITHUB_ISSUE_RELATIONSHIPS"
+    source_type: "derived_analysis"
+    note: "NOT an external source; derived by parsing GITHUB_OPEN_ISSUES + GITHUB_MERGED_PRS data"
     classification: "CRITICAL (required for priority recommendation and analysis)"
     purpose: >
       Detect which issues block other issues. Essential for:
@@ -418,12 +423,15 @@ required_datasets:
       - Suggesting team split/parallelization
       - Estimating realistic completion time
 
-    execution_sequence:
-      1_collect_linked_issues: "GitHub API: GET /repos/.../issues/[ID]/related (if available)"
-      2_parse_issue_body: "Search issue body for '#[number]' references (blockers/dependencies)"
-      3_check_pr_links: "Get PRs linked to each issue via pr.linked_issues"
-      4_infer_from_branch_name: "Branch pattern might indicate dependency (e.g., 'after-#67')"
-      5_explicit_labels: "Check for 'blocks-', 'depends-on-', 'after-' labels if team uses them"
+    sources_used:
+      - GITHUB_OPEN_ISSUES (issue body parsing)
+      - GITHUB_MERGED_PRS (PR-linked issues)
+
+    derivation_sequence:
+      1_parse_issue_body: "Search issue body for '#[number]' references (blockers/dependencies)"
+      2_check_pr_links: "Get PRs linked to each issue via issue.linked_issues"
+      3_infer_from_branch_name: "Branch pattern might indicate dependency (e.g., 'after-#67')"
+      4_explicit_labels: "Check for 'blocks-', 'depends-on-', 'after-' labels if team uses them"
 
     required_fields:
       - issue.number
@@ -442,11 +450,16 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE, but continue with available data)"
 
   collection_branches_and_merges:
-    source_id: "GITHUB_COLLECTION_BRANCHES"
+    source_type: "derived_filtering"
+    note: "NOT an external source; filtering of GITHUB_BRANCHES + GITHUB_COMMITS by known team branches"
     classification: "SECONDARY (track team progress before develop integration)"
     purpose: >
       Track work merged to team collection branches (e.g., Java-Development-Environment for Backend,
       C/C++-Native for Native). This represents team progress before integration to develop.
+
+    sources_used:
+      - GITHUB_BRANCHES (to identify collection branches)
+      - GITHUB_COMMITS (to track recent activity)
 
     known_branches:
       backend:
@@ -490,7 +503,8 @@ required_datasets:
     fields: (same as merged_prs) + base.ref (for filtering by branch)
 
   team_member_capacity_and_absence:
-    source_id: "GITHUB_TEAM_ROSTER_EXTENDED"
+    source_type: "derived_analysis"
+    note: "NOT an external source; derived from GITHUB_OPEN_ISSUES + team capacity data"
     classification: "CRITICAL (required for workload balancing recommendation)"
     purpose: >
       For each team member, determine:
@@ -498,6 +512,10 @@ required_datasets:
       - Estimated time on current work (days)
       - Planned absence (vacation, sick leave, training)
       - Available capacity this week
+
+    sources_used:
+      - GITHUB_OPEN_ISSUES (current assignments)
+      - Local team capacity data (time estimates, planned absence)
 
     execution_sequence:
       1_get_team_roster: "TEAM_ROSTER.md — all 7 members"
@@ -578,16 +596,16 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
 reporting_period:
-  definition: "7 calendar days (one full week)"
+  definition: "7 calendar days anchored to meeting time (09:00 Stockholm)"
   timezone: "Europe/Stockholm"
-  format: "meeting_date - 7 days at 00:00 (inclusive) through meeting_date at 00:00 (exclusive)"
+  format: "meeting_date - 7 days at 09:00 (inclusive) through meeting_date at 09:00 (exclusive)"
 
   AUTHORITATIVE_DEFINITION: |
-    REPORTING_PERIOD_START = meeting_date at 00:00 minus 7 calendar days (inclusive)
-    REPORTING_PERIOD_END = meeting_date at 00:00 (exclusive)
-    Example: Meeting on Monday 2026-09-22
-      START: 2026-09-15 00:00 Europe/Stockholm (Monday one week prior)
-      END: 2026-09-22 00:00 Europe/Stockholm (meeting date at midnight)
+    REPORTING_PERIOD_START = meeting_date at 09:00 minus 7 calendar days (inclusive)
+    REPORTING_PERIOD_END = meeting_date at 09:00 (exclusive)
+    Example: Meeting on Monday 2026-09-22 09:00
+      START: 2026-09-15 09:00 Europe/Stockholm (Previous Monday 09:00)
+      END: 2026-09-22 09:00 Europe/Stockholm (current Monday 09:00)
       Coverage: All work completed between these timestamps
 
   compare_fields:

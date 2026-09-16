@@ -1057,8 +1057,8 @@ data_audit:
   requirement: "MUST be generated before ANY slides are built. Shows AI what it collected."
   output_format:
     reporting_period:
-      start: "REPORTING_PERIOD_START (Monday 00:00)"
-      end: "REPORTING_PERIOD_END (next Monday 00:00, exclusive)"
+      start: "REPORTING_PERIOD_START (Monday 09:00 Europe/Stockholm)"
+      end: "REPORTING_PERIOD_END (next Monday 09:00 Europe/Stockholm, exclusive)"
 
     repository_totals:
       merged_prs: "N (count of PRs merged in reporting period)"

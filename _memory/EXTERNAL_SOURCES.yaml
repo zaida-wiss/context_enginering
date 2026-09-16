@@ -90,6 +90,80 @@ sources:
         url: "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
         note: "Last resort: requires HTML parsing; less reliable than API"
 
+  GITHUB_OPEN_PRS:
+    source_id: "GITHUB_OPEN_PRS"
+    classification: "REQUIRED"
+    purpose: "Open pull requests with review status and branch information"
+
+    primary:
+      source_type: "github_rest_api"
+      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=open&per_page=100"
+      http_method: "GET"
+      note: "Separate from issues API; provides PR-specific fields (head.ref, requested_reviewers, review_state)"
+
+    allowed_implementations:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+      - "curl (CLI tool)"
+
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+      - "raw_github (raw.githubusercontent.com)"
+
+    fallbacks:
+      - fallback_order: 1
+        source_id: "GOOGLE_PROJECT_DATA_SHEET"
+        source_type: "google_sheets_structured_data"
+        note: "Only if GitHub API completely unavailable"
+
+  GITHUB_BRANCHES:
+    source_id: "GITHUB_BRANCHES"
+    classification: "REQUIRED"
+    purpose: "List all repository branches including collection branches (Java-Development-Environment, C/C++-Native)"
+
+    primary:
+      source_type: "github_rest_api"
+      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/branches?per_page=100"
+      http_method: "GET"
+      note: "Lists all branches; used to detect collection branches and activity"
+
+    allowed_implementations:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+      - "curl (CLI tool)"
+
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+
+    fallbacks: []
+
+  GITHUB_COMMITS:
+    source_id: "GITHUB_COMMITS"
+    classification: "REQUIRED"
+    purpose: "Commits per branch during reporting period (activity tracking)"
+
+    primary:
+      source_type: "github_rest_api"
+      url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/commits?sha={branch}&since={REPORTING_PERIOD_START}&until={REPORTING_PERIOD_END}&per_page=100"
+      http_method: "GET"
+      note: "Parameterized by branch and reporting period; shows activity per branch"
+
+    allowed_implementations:
+      - "github_connector"
+      - "http_fetch"
+      - "web_fetch"
+      - "curl (CLI tool)"
+
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+
+    fallbacks: []
+
   GITHUB_TEAM_ROSTER:
     source_id: "GITHUB_TEAM_ROSTER"
     classification: "REQUIRED"
@@ -101,15 +175,6 @@ sources:
     fallbacks: []
 
   # OPTIONAL GITHUB SOURCES
-
-  GITHUB_PROJECT_BOARD:
-    source_id: "GITHUB_PROJECT_BOARD"
-    classification: "OPTIONAL"
-    purpose: "Project board status (can be derived from issues if unavailable)"
-    primary:
-      method: "github_connector"
-      url: "https://github.com/orgs/chas-challenge-2026/projects/31"
-    fallbacks: []
 
   GITHUB_CONTEXT_ENGINEERING:
     source_id: "GITHUB_CONTEXT_ENGINEERING"
@@ -226,7 +291,7 @@ classifications:
 access_methods:
   github_connector:
     definition: "GitHub Connector (preferred for all GitHub sources)"
-    supported_sources: ["GITHUB_MERGED_PRS", "GITHUB_OPEN_ISSUES", "GITHUB_PROJECT_BOARD", "GITHUB_CONTEXT_ENGINEERING"]
+    supported_sources: ["GITHUB_MERGED_PRS", "GITHUB_OPEN_ISSUES", "GITHUB_OPEN_PRS", "GITHUB_BRANCHES", "GITHUB_COMMITS", "GITHUB_CONTEXT_ENGINEERING"]
   github_api:
     definition: "GitHub REST API (direct HTTPS to api.github.com)"
     supported_sources: ["GITHUB_MERGED_PRS", "GITHUB_OPEN_ISSUES"]
