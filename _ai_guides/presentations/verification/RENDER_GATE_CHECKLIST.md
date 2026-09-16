@@ -492,6 +492,50 @@ STEP D: Only after ALL slides pass visual check:
 
 **NEVER deliver a presentation without rendering it to PPTX and visually checking every single slide.**
 
+---
+
+## 🔐 DEDUPLICATION & DATA INTEGRITY GATE
+
+**Ensure no work appears twice and all data is accounted for:**
+
+```
+DEDUPLICATION RULE — BEFORE RENDERING:
+
+  [ ] No work item appears twice (e.g., issue + branch + PR shown separately)
+      Rule: Same work → show ONCE using primary identifier
+      - If issue has linked PR and branch → show as PR (note issue+branch links)
+      - If issue has no PR yet but has active branch → show as branch (note issue link)
+      - If branch has no PR and no issue → show as branch
+      - Count only ONCE in audit and slides (unique_id: issue#, PR#, branch, or commit-sha)
+
+  [ ] All verified work is represented (no silent omissions)
+      If work exceeds slide capacity:
+      ✅ Split to continuation slides (①A.1, ①A.2, ①B.1, ①B.2, etc)
+      ✅ NEVER omit to fit slide count
+      ❌ NEVER say "showing 3 of 7 issues" without showing all 7
+
+TEAM CHECKSUMS — VERIFICATION:
+
+  [ ] Audit report generated for each team:
+      Frontend: verified_activity_count (audit) == representation_count (slides)
+      Backend: verified_activity_count (audit) == representation_count (slides)
+      Native: verified_activity_count (audit) == representation_count (slides)
+      Cross-team: verified_activity_count (audit) == representation_count (slides)
+  
+  [ ] If mismatch found:
+      ✅ Both audit AND slides note the discrepancy (transparent)
+      ❌ NEVER silently drop data to hide mismatch
+      Example footer: "Audit: 12 items | Slides: 10 items (2 continued to ①A.2)"
+
+FAIL GATE if:
+  ❌ Same work shown on multiple slides (violates deduplication)
+  ❌ Checksum mismatch found but not documented
+  ❌ Work omitted without explanation
+  ❌ "Showing top N" without full count visible
+```
+
+---
+
 **FINAL CHECK — ALWAYS RENDER:**
 ```
   If ALL checkboxes passed:
