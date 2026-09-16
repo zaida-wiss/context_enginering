@@ -56,27 +56,65 @@ RESULT: ✅ PHASE 1 PASSED — OK to proceed to PHASE 2
 
 ---
 
-## PHASE 2: RENDER GATE VERIFICATION
+## PHASE 2: DEDUPLICATION & ATTRIBUTION VERIFICATION
 
 **AI must generate and show this report:**
 
 ```
 ═══════════════════════════════════════════════════════════
-RENDER GATE VERIFICATION — PHASE 2
+DEDUPLICATION & ATTRIBUTION VERIFICATION — PHASE 2A
 ═══════════════════════════════════════════════════════════
 
-DATA_AUDIT CHECKSUMS:
-  ✅ COUNT: sum(Frontend + Backend + Native + Cross + Other) == repository_total
-  ✅ SET: repository_merged_pr_ids == union(all work_areas)
-  ✅ UNIQUENESS: No PR ID in multiple work_areas
+DEDUPLICATION CHECK (collection branches vs develop):
+  ✅ Java-Development-Environment PRs scanned: N total
+  ✅ C/C++-Native PRs scanned: N total
+  ✅ Dedup by linked_issue_ids: M conflicts resolved
+  ✅ Dedup by commit_sha_ancestry: K conflicts resolved
+  ✅ Final count: Develop=[X], Collection-only=[Y], Deduplicated=[Z]
+  
+ATTRIBUTION VERIFICATION:
+  ✅ Developed-by uses commit authors (primary): N% 
+  ✅ Developed-by fallback to assignees: M%
+  ✅ Reviewed-by includes APPROVED: N reviews
+  ✅ Reviewed-by includes CHANGES_REQUESTED: M reviews
+  ✅ Reviewed-by includes COMMENTED: K reviews
+  ✅ Merged-by verified from pr.merged_by.login: all X PRs
 
-TEAM COVERAGE:
-  ✅ All 7 members identity-verified or marked "no activity"
+═══════════════════════════════════════════════════════════
+RESULT: ✅ ATTRIBUTION VERIFIED — OK to proceed
+═══════════════════════════════════════════════════════════
+```
+
+---
+
+## PHASE 3: RENDER GATE VERIFICATION
+
+**AI must generate and show this report:**
+
+```
+═══════════════════════════════════════════════════════════
+RENDER GATE VERIFICATION — PHASE 3
+═══════════════════════════════════════════════════════════
+
+DATA INTEGRITY CHECKSUMS:
+  ✅ TOTAL: Develop PRs + Collection PRs (deduplicated) = repository_activity_total
+  ✅ UNIQ: No PR shown twice (dedup applied)
+  ✅ TEAM_COVERAGE: All 7 members appear (work or "available")
+  ✅ COLLECTION_BRANCH_COVERAGE: Java-Development-Environment + C/C++-Native scanned
+
+SLIDE COMPLIANCE:
+  ✅ Slide ①A: 3×2 grid format (max 6 cards)
+  ✅ Slide ①B: Full-width cards (if collection branches exist)
+  ✅ Slide ①C-①D: Full-width stacked cards
+  ✅ Slide ③④⑤: Table format (issue-status-blockers)
+  ✅ Design: Dark navy, soft cards 12-18px, responsive height, no clipping
 
 BLOCKING SOURCES:
-  ✅ Team roster: LIVE or FALLBACK verified
-  ✅ GitHub Issues/PRs: LIVE or FALLBACK verified
-  ✅ Commits: LIVE or FALLBACK verified
+  ✅ Team roster: 7 members verified
+  ✅ GitHub Develop PRs: LIVE or FALLBACK verified
+  ✅ GitHub Collection branches: LIVE or FALLBACK verified
+  ✅ Commits (attribution): LIVE or FALLBACK verified
+  ✅ Reviews (all states): LIVE or FALLBACK verified
 
 ═══════════════════════════════════════════════════════════
 RESULT: ✅ RENDER GATE PASSED — OK to build presentation
@@ -85,36 +123,57 @@ RESULT: ✅ RENDER GATE PASSED — OK to build presentation
 
 ---
 
-## PHASE 3: FINAL VERIFICATION (after slides built)
+## PHASE 4: FINAL VERIFICATION (after slides built & rendered to PPTX)
 
 **AI must generate and show this report:**
 
 ```
 ═══════════════════════════════════════════════════════════
-FINAL VERIFICATION REPORT — PHASE 3: PRESENTATION READY
+FINAL VERIFICATION REPORT — PHASE 4: PRESENTATION READY
 ═══════════════════════════════════════════════════════════
 
 SLIDES GENERATED:
   Total slides: N
   Meeting points covered: ①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭
   All 7 team members shown: YES/NO
+  Reporting period: [START] – [END]
 
 DATA VERIFICATION (spot check):
-  ✅ Slide X: Data from GitHub, dates match merge-dates
-  ✅ Slide Y: Issues match GitHub status
-  ... (key slides verified)
+  ✅ Slide ①A: Merged PRs match GitHub (dates within period)
+  ✅ Slide ①B: Collection branch PRs identified (if any)
+  ✅ Slide ①C-①D: Open PRs with recent activity
+  ✅ Slide ③④⑤: Team issues match GitHub status + blockers
+  ✅ No PR shown twice (deduplication verified)
 
-DESIGN COMPLIANCE:
-  ✅ NPF rules followed (Symbol + Färg + Text)
-  ✅ No tables (accessibility)
-  ✅ Whitespace adequate
-  ✅ Colors semantic (status-based)
+DESIGN & STRUCTURE COMPLIANCE:
+  ✅ Slide ①A: 3×2 grid (6 max), soft cards, team borders
+  ✅ Slide ①B-①D: Full-width stacked cards, responsive height
+  ✅ Slide ③④⑤: Table format (Issue | Assignee | Status | Blockers)
+  ✅ All cards: 12–18px corners, 16–20px padding, NO text clipping
+  ✅ All cards: Dark navy background #0F1830, soft appearance
+  ✅ Team colors: Borders only (not backgrounds)
+  ✅ Status symbols: ✅ ◐ 🔴 ? consistent meaning everywhere
+  ✅ Typography: Headers 28pt BOLD, body 13pt regular, metadata 12pt
+  ✅ Colors: Team borders correct, status symbols clear, WCAG 4.5:1 contrast
 
-FORBIDDEN CONTENT CHECK:
-  ✅ No percentages without source
-  ✅ No AI instructions on slides
-  ✅ No estimates/forecasts
-  ✅ No unverified names
+VISUAL QUALITY (rendered PPTX):
+  ✅ All text fully visible (no clipping or overflow)
+  ✅ Responsive card heights working correctly
+  ✅ Whitespace adequate (60-70% minimum)
+  ✅ Slide density reasonable (split if compressed)
+
+CONTENT CHECK:
+  ✅ All 7 team members appear with work or "available" marker
+  ✅ Review work shown (not "available" if actively reviewing)
+  ✅ Blockers clearly marked with reason
+  ✅ No unverified GitHub entity numbers
+  ✅ No percentages, estimates, or forecasts without source
+  ✅ No AI instructions or process descriptions on slides
+
+SOURCE PROVENANCE:
+  ✅ Framsida footer shows verified sources + timestamp
+  ✅ All GitHub data LIVE (not cached/snapshot)
+  ✅ Fallbacks used only if primary unavailable (clearly marked ⚠️)
 
 ═══════════════════════════════════════════════════════════
 RESULT: ✅✅✅ PRESENTATION VERIFIED & READY TO SHOW

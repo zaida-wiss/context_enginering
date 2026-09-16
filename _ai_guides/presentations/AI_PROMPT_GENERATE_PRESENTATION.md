@@ -38,131 +38,160 @@ Before doing ANYTHING, read these three files completely:
 
 ---
 
-## STEP 2 — MANDATORY: FETCH LIVE GITHUB DATA
+## STEP 2 — MANDATORY: DATA ACQUISITION (Follow DATA_ACQUISITION_CONTRACT.yaml)
 
-**You MUST visit and read data from these 5 GitHub URLs. Do NOT skip any.**
+**Read this FIRST:** `DATA_ACQUISITION_CONTRACT.yaml` — canonical acquisition method
+**Then follow:** `DATA_COLLECTION_MANDATORY.md` — implementation guide with checklist
 
-🚨 **If you cannot reach ANY source → STOP and report: "⚠️ GitHub [source] not accessible"**  
-Never skip a source because you couldn't reach it.
+🚨 **If any PRIMARY source fails → STOP and report DATA_ACQUISITION_RECEIPT with status**
+Never skip a source or substitute with fallback without trying primary first.
 
-### Source 1: Merged PRs (PRIMARY for Slide ①)
-```
-https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged+merged:>=[TODAY-7d]
-```
-**What to extract:**
-- PR number, title, assignee (owner of work), merge date
-- Count total merged PRs this week
-- Group by team (Frontend/Backend/Native)
+### Required Datasets (in order)
 
-### Source 2: Commits (Proof of work)
-```
-https://github.com/chas-challenge-2026/avanza-team1/commits/develop?since=[TODAY-7d]&until=[TODAY]
-```
-**What to extract:**
-- Author, commit message, date
-- Group by person and work area
-- Count commits per team member
+**DATASET 1: Team Roster (Local)**
+- Read `TEAM_ROSTER.md` — 7 members with GitHub login + display name
+- Verify all members appear in later work attribution
 
-### Source 3: Open PRs (In progress, awaiting review)
-```
-https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:open+updated:>=[TODAY-7d]
-```
-**What to extract:**
-- PR number, title, assignee, review status
-- How many commits since creation?
-- Who is waiting for review?
+**DATASET 2: Merged PRs (GitHub API → develop branch)**
+- URL: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&merged:>=[REPORTING_PERIOD_START]`
+- Extract: `pr.commits[].author.login` (actual code authors — PRIMARY)
+- Extract: `pr.reviews[].user.login` + `reviews[].state` (APPROVED, CHANGES_REQUESTED, COMMENTED all count)
+- Extract: `pr.merged_by.login` (who pressed merge)
+- Extract: `pr.linked_issues[]` (for deduplication via linked_issue_ids)
+- Fallback: GitHub web UI (https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged)
 
-### Source 4: Project Board Status
-```
-https://github.com/orgs/chas-challenge-2026/projects/31
-```
-**What to extract:**
-- Which issues moved to "Done" this week?
-- Which are "In Progress"?
-- Which are "In Review"?
+**DATASET 3: Collection Branch Merges (GitHub API)**
+- Known branches: Java-Development-Environment (Backend), C/C++-Native (Native)
+- Same attribution chain as Dataset 2
+- CRITICAL: Apply DEDUPLICATION using `linked_issue_ids + commit_sha_ancestry`
+  - If same work appears in both branches, show ONLY develop delivery
+- Fallback: GitHub web UI per-branch
 
-### Source 5: Open Issues with activity
-```
-https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:issue+is:open+updated:>=[TODAY-7d]
-```
-**What to extract:**
-- Issue number, title, assignee
-- Any recently updated/commented on?
+**DATASET 4: Open PRs + Active Issues (GitHub API)**
+- Open PRs: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=open`
+- Active issues: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&updated:>=[REPORTING_PERIOD_START]`
+- Extract: assignees, review requests, activity timestamps
+
+**DATASET 5: Recent Commits (for pågår evidence)**
+- Per-branch commits: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/commits?sha=[branch]&since=[REPORTING_PERIOD_START]`
+- Branches: develop, Java-Development-Environment, C/C++-Native, and any team branches
+- Extract: author.login, commit.message, authored_at (proof of active work)
 
 ---
 
-## STEP 3 — VERIFY ALL 7 TEAM MEMBERS
+## STEP 3 — VERIFY ATTRIBUTION & DEDUPLICATION (Critical integrity check)
 
-From TEAM_ROSTER.md, verify you found work for:
+After collecting all datasets:
 
-**Frontend:**
-- Tomac Barin Jansson
-- Björn Boman
-- Zaida Wiss
+1. **Verify all 7 team members appear somewhere:**
+   - Frontend: Tomac, Björn, Zaida
+   - Backend: Erik, Rasha
+   - Native: Pär, Henrik
+   - If missing → show "○ [Name] — Ny issue eller tillgänglig för hjälp i [team]" (NOT "inaktiv")
 
-**Backend:**
-- Erik Berglund
-- Rasha Knifdi
+2. **Apply DEDUPLICATION using linked_issue_ids + commit_sha_ancestry:**
+   - Check if Collection branch PR #X and Develop PR #Y represent same work
+   - Look for: same linked issue OR same commits in ancestry
+   - Rule: Show ONLY the Develop delivery (final state)
+   - Log deduplication decisions for verification
 
-**Native/System:**
-- Pär Lundh
-- Henrik Westerlund
+3. **Verify Reviewed-by includes ALL review states:**
+   - NOT just "APPROVED" 
+   - Include: APPROVED (✅), CHANGES_REQUESTED (⚠️), COMMENTED (💬)
+   - All show as review work
 
-If anyone is missing → Slide must show "❌ Ingen aktivitet denna vecka" (No activity this week)
+4. **Verify Developed-by uses actual commit authors:**
+   - NOT just PR author
+   - Priority: commits[] > assignees[] > pr.user (fallback only)
 
 ---
 
 ## STEP 4 — BUILD PRESENTATION
 
-### Slide ① — Avklarat sedan förra mötet
+**CRITICAL: Follow SLIDE_DETAIL_SPEC.md exactly for content + VISUAL_DESIGN_MANDATORY.md for rendering**
 
-**Title format (MUST match meeting protocol):**
-- Slide ①A: "① Avklarat sedan förra mötet — Develop"
-- Slide ①B: "① Avklarat sedan förra mötet — Collection branches"
-- Slide ③: "③ Frontend — denna vecka"
-- Slide ④: "④ Backend — denna vecka"
-- Slide ⑤: "⑤ Native — denna vecka"
+### Slides ① — Avklarat sedan förra mötet (Global overview)
 
-**NOT:** "Frontend — avklarat + pågår + review" ❌
+- **Slide ①A** "① Avklarat sedan förra mötet" — ALL merged PRs to develop (chronological, 3×2 card grid, max 6)
+  - Cards show: PR#, title, Developed by (commit authors), Reviewed by (all states), Merged by
+  - Team-colored borders (teal/pink/purple/slate)
+  - Soft rounded cards (12–18px corners)
 
-**Design: NPF-friendly (NO TABLES)**
-- Symbol + Färg + Text trio (not separate)
-- 24px+ row height
-- 14pt bold headers, 13pt body text
-- Rounded corners (6-8px)
-- Colored sections: 🟢 Grön (RGB 76,175,80) for Merged, 🟡 Orange (RGB 255,152,0) for In Progress
+- **Slide ①B** (if relevant) "① Avklarat sedan förra mötet — Collection branches" — Merged to Java-Development-Environment, C/C++-Native
+  - Same format as ①A
+  - Apply deduplication: don't show if already in Develop
+  - Different presentation-time label ("merged to collection")
 
-**Structure (3 sections per slide):**
-1. ✅ MERGED DENNA VECKA — Merged PRs
-2. ◐ PÅGÅR DENNA VECKA — Open branches with commits
-3. ⏳ VÄNTAR PÅ REVIEW — Open PRs awaiting approval
+### Slides ① continued — Pågår denna vecka (In progress work)
+
+- **Slide ①C** "① Pågår denna vecka — Per team" — Open PRs + active work per team (Frontend, Backend, Native sections)
+  - Full-width stacked cards
+  - Show: PR#, issue#, assignee, review status, blockers
+
+- **Slide ①D** "① Pågår denna vecka — Cross-team" — Work affecting multiple teams (if any)
+  - Light slate border (#CBD5E1)
+  - Full-width stacked cards
+
+### Team Detail Slides (③④⑤) — TABLE FORMAT (NOT stacked cards)
+
+- **Slide ③** "③ Frontend — denna vecka" — Issue-status TABLE + operativ plan
+- **Slide ④** "④ Backend — denna vecka" — Issue-status TABLE + operativ plan
+- **Slide ⑤** "⑤ Native — denna vecka" — Issue-status TABLE + operativ plan
+
+Table columns:
+| Issue | Assignee | Status | Blockers | Next |
+|-------|----------|--------|----------|------|
+| #88 | Tomac | ✓ (merged) | None | Deploy |
+
+Legend: ✓ AVKLARAT, ◐ PÅGÅR, ✕ BLOCKERAD, ? OKÄND
+
+**Design for all slides:**
+- Dark navy background (#0F1830)
+- Soft rounded cards/table cells (12–18px corners)
+- Team-colored borders (borders only, NOT full background)
+- Internal padding: 16–20px
+- Typography: 28pt headers (bold), 13pt body (regular), 12pt metadata
+- Responsive height: NO TEXT CLIPPING (split to new slide if needed)
 
 ---
 
-## STEP 5 — DATA VERIFICATION & TIMESTAMPING
+## STEP 5 — BEFORE RENDERING: Run RENDER_GATE_CHECKLIST.md
 
-Every slide footer MUST show:
+Read: `verification/RENDER_GATE_CHECKLIST.md`
+
+This checklist MUST pass before delivering presentation:
+- Layout compliance (①A grid, ①B-①D full-width, ③④⑤ tables)
+- Visual design (soft cards, 12-18px corners, responsive height)
+- Data integrity (no duplicates, dedup verified, checksums aligned)
+- Attribution accuracy (commits > assignees > PR author priority)
+- Review states (APPROVED + CHANGES_REQUESTED + COMMENTED all shown)
+- WCAG compliance (contrast, color separation, no text clipping)
+
+**Framsida footer MUST show:**
 ```
-Data från [DATE] [TIME] UTC | Källor: GitHub PRs + Commits + Project Board ✅
+✅ [N] sources verified — Data från [DATE] [TIME] UTC
+Sources: GitHub PRs, commits, issues, collection branches
 ```
 
-If any GitHub source failed:
+If any source failed:
 ```
-⚠️ GitHub [source name] kunde inte verifieras. Manuell verifiering krävs.
+⚠️ GitHub [source name] fallback used (partially unavailable)
 ```
 
 ---
 
-## STEP 6 — RENDER-GATE CHECKLIST
+## STEP 6 — FINAL QUALITY CHECKS (Before delivery)
 
-Before generating final presentation, verify:
-
-- ☐ All 7 team members have work listed OR marked "Ingen aktivitet"
-- ☐ Slide titles match "Avklarat sedan förra mötet — [Team]"
-- ☐ No tables (NPF-friendly design only)
-- ☐ All data is from LIVE GitHub (not cached/snapshot)
-- ☐ Timestamp on every slide showing when data was fetched
-- ☐ If any GitHub source failed → Clearly marked with ⚠️
+After rendering to PPTX:
+- ☐ Open in PowerPoint and page through every slide
+- ☐ Verify NO text clipping or overflow
+- ☐ Verify responsive card heights working correctly
+- ☐ Verify all 7 team members visible somewhere (work or "available")
+- ☐ Verify ①A shows 3×2 grid (max 6 cards)
+- ☐ Verify ①B-①D show full-width stacked cards
+- ☐ Verify ③④⑤ show table format with issue-status marks
+- ☐ Verify colors: team borders correct, status symbols clear
+- ☐ Verify deduplication applied (no PR shown twice)
 
 ---
 
@@ -182,23 +211,30 @@ If you CANNOT complete ANY step:
 
 ## DO NOT
 
-- ❌ Use cached/snapshot data
-- ❌ Skip GitHub sources because they're slow
-- ❌ Use tables (NPF violation)
-- ❌ Show individual team members without their team color badge
-- ❌ Hide data verification failures
-- ❌ Forget to timestamp all slides
+- ❌ Use cached/snapshot data — fetch LIVE from GitHub
+- ❌ Skip data acquisition steps — follow DATA_ACQUISITION_CONTRACT.yaml
+- ❌ Forget deduplication — use linked_issue_ids + commit_sha_ancestry (not just PR IDs)
+- ❌ Show only "APPROVED" reviews — include CHANGES_REQUESTED + COMMENTED as review work
+- ❌ Use PR author as "Developed by" — use commit authors (primary) > assignees > PR author
+- ❌ Show "inaktiv" or "ingen aktivitet" — use "Ny issue eller tillgänglig för hjälp i [team]" instead
+- ❌ Render ③④⑤ as stacked cards — MUST be table format (issue-status table + plan)
+- ❌ Use corner radius < 12px or > 18px on soft cards
+- ❌ Clip text to fit cards — split to new slide instead
+- ❌ Hide data verification failures or source unavailability
 
 ---
 
 ## SUCCESS CRITERIA
 
-✅ Presentation rendered from LIVE GitHub data (fetched today)  
-✅ All 7 team members verified or marked "no activity"  
-✅ Slide ① titles follow "Avklarat sedan förra mötet — [Team]"  
-✅ NPF-friendly design (no tables, Symbol+Färg+Text)  
-✅ Every slide timestamped with data fetch time  
-✅ All GitHub sources either verified or marked ⚠️  
+✅ LIVE GitHub data fetched (today's date, all 5 datasets collected)  
+✅ Data integrity checklist passed (dedup, attribution, reviews verified)
+✅ All 7 team members appear (with work or "available" marker, never "inactive")
+✅ Slide structure correct (①A grid, ①B-①D full-width, ③④⑤ tables)
+✅ Design compliant (dark navy, soft cards 12-18px, responsive height, no clipping)
+✅ Team colors correct (borders only, not backgrounds; never overlap status colors)
+✅ Framsida footer shows verified sources + timestamp
+✅ Render-gate checklist PASSED (run before delivery)  
+✅ Actually rendered to PPTX and visually verified (not just generated)
 
 ---
 
