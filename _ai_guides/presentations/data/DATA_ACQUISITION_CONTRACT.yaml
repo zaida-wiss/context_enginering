@@ -164,6 +164,107 @@ required_datasets:
 
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
+  open_pull_requests:
+    source_id: "GITHUB_OPEN_PRS"
+    classification: "CRITICAL (strong signal of active work; required for ①B slides)"
+    purpose: >
+      Collect all open PRs linked to active issues. These PRs indicate work that is
+      completed at code-level but waiting for review/merge. Essential for showing
+      'Väntar i PR' status (blocker: waiting for review, not stuck).
+
+    execution_sequence:
+      1_primary: "GitHub REST API: GET /repos/chas-challenge-2026/avanza-team1/pulls?state=open&per_page=100"
+      2_fallback_1: "GitHub web UI: https://github.com/chas-challenge-2026/avanza-team1/pulls"
+      3_fallback_2: "Google Sheets (if freshness verified)"
+
+    required_fields:
+      - number (PR ID)
+      - title
+      - author.login (GitHub username)
+      - assignees[] (who worked on code)
+      - requested_reviewers[] (CRITICAL: who needs to review)
+      - body (may contain issue reference)
+      - head.ref (branch name)
+      - created_at
+      - updated_at
+      - linked_issue (if PR closes/fixes issue)
+
+    correlation:
+      link_pr_to_issue: >
+        For each open PR, attempt to find linked issue via:
+        1. GitHub API: PR.linked_issues
+        2. PR body text: regex for '#ISSUE_NUMBER'
+        3. Branch name: regex for 'issue-NUM' or '#NUM'
+        4. Commit messages in PR: grep for '#NUM'
+
+    output_structure: >
+      Per PR (for ①B slide):
+        #PR_NUMBER · #ISSUE_NUMBER Title
+        Assignee: [person who worked]
+        Reviewers: [list of requested_reviewers, or "ej tilldelad"]
+        Branch: [head.ref]
+        Status: Väntar på review
+
+    requirement: "ALL open PRs linked to active issues during REPORTING_PERIOD"
+    stop_condition: "source fails AND all fallbacks fail (mark DATA_ACQUISITION_RECEIPT as INCOMPLETE)"
+
+  repository_branches_and_commits:
+    source_id: "GITHUB_BRANCHES_COMMITS"
+    classification: "CRITICAL (activity evidence; required for active work detection)"
+    purpose: >
+      Collect branches and recent commits to detect active work on issues
+      that may not yet have open PRs. Critical for slide ①C (Pågår utan PR).
+
+      Project Board may be outdated or inaccessible; commit history is authoritative.
+
+    execution_sequence:
+      1_collect_branches: "GitHub API: GET /repos/chas-challenge-2026/avanza-team1/branches"
+      2_collect_recent_commits_per_branch: >
+        For EACH branch (especially non-develop):
+          GET /repos/chas-challenge-2026/avanza-team1/commits?sha=[branch]&since=[START]&until=[END]&per_page=100
+      3_filter_relevant_branches: >
+        Branches matching patterns:
+          - feature/*
+          - bugfix/*
+          - {team}/* (frontend/, backend/, native/)
+          - Any branch with recent commits (last 7 days)
+      4_exclude_stale_branches: >
+        Skip branches with NO commits in REPORTING_PERIOD
+
+    required_fields_per_branch:
+      - name
+      - last_commit_sha
+      - last_commit_date
+      - commit_author.login
+      - commit_message
+
+    branch_to_issue_correlation:
+      infer_from: >
+        1. Branch name regex: '(issue|fix|feature)-(\d+)' or '#(\d+)'
+        2. Commit message regex: '#(\d+)' or 'fixes #(\d+)'
+        3. Match against known issue numbers from GITHUB_OPEN_ISSUES + GITHUB_MERGED_PRS
+
+    output_structure: >
+      Per branch with recent commits:
+        branch: docs/#67-update-readme
+        linked_issue: #67 (inferred from branch name)
+        last_commit: 2026-09-16 14:23 · Zaida Wiss
+        status: Pågår (aktiv branch, commits denna vecka)
+
+    active_work_detection_logic:
+      Strongest_signals:
+        - Open PR + linked issue + assignee = DEFINITE active work
+        - Open issue + matching branch + recent commits = VERY LIKELY active work
+        - Open issue + matching branch (no recent commits) = MAYBE active work
+        - Open assigned issue alone = POSSIBLY active work
+
+      Weakest_signals:
+        - Recent commits without issue link = UNCONFIRMED (orphaned work)
+        - Project Board status alone = UNRELIABLE (often outdated)
+
+    requirement: "ALL branches with activity in REPORTING_PERIOD"
+    stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE)"
+
   active_issues:
     source_id: "GITHUB_OPEN_ISSUES"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES (canonical source of truth for URL, access methods, fallback chain)"
