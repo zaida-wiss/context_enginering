@@ -1,0 +1,67 @@
+---
+name: team_schedule
+description: Team 1 recurring meetings, times, and recurring events (Chas Challenge 2026)
+metadata:
+  source: CHAS course schedule
+  timezone: Europe/Stockholm
+  updated: 2026-09-16
+---
+
+recurring_meetings:
+  monday:
+    - time: "08:00-12:00"
+      type: "sprint_planning"
+      description: "Sprintstart + projektarbete"
+
+  tuesday:
+    lunch: "11:15-12:15"
+      note: "Before PL meeting for quiet discussion time"
+
+    - time: "12:30-14:00"
+      type: "pl_meeting"
+      name: "Teamavstämning med Projektledare"
+      description: "Follow up project, priorities, blockers, focus"
+      location: "Slack Huddle"
+      recurring: true
+
+  wednesday:
+    - time: "08:00-09:00"
+      type: "individual_follow_up"
+      name: "Individuella möten med PL (efter behov)"
+      description: "One-on-one if needed"
+      location: "Slack Huddle"
+
+    lunch: "12:00-13:00"
+
+  thursday:
+    - time: "09:00-17:00"
+      type: "project_work"
+      description: "Project work day"
+
+  friday:
+    - time: "08:00-10:00"
+      type: "lia_preparation"
+      description: "LIA prep drop-in"
+
+    - time: "10:00-12:00"
+      type: "lia_search"
+      description: "Active LIA search and company dialogue"
+
+    - time: "12:00-13:00"
+      lunch: true
+
+    - time: "13:00-16:00"
+      type: "lia_search"
+      description: "Active LIA search and company dialogue"
+
+    - time: "16:00-17:00"
+      type: "lia_followup"
+      description: "Efterarbete LIA-sök"
+
+    note: "SACRED - No project work allowed on Fridays (course requirement)"
+    location: "Scandic hotel"
+
+current_week_focus:
+  week: "2026-09-16 (V3-V5 production phase)"
+  pl_meeting_focus: "Fungerande delar, teststatus, README/dokumentation"
+  sprint_goal: "Bygg kärnflödet, dokumentation från dag 1"
