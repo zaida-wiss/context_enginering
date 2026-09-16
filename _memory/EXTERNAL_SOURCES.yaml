@@ -194,7 +194,6 @@ sources:
       - "github_connector"
       - "http_fetch"
       - "web_fetch"
-      - "curl (CLI tool)"
 
     forbidden_access_methods:
       - "web_search"
