@@ -200,7 +200,8 @@ These values NEVER change. Use them exactly.
 
 **Slide headers with meeting points MUST include pen symbol:**
 - Format: `✏️ ① Slide Title` (pen first, one space, meeting point number, one space, title)
-- All meeting point slides (①-⑭) and intro slide (⓪) must have pen symbol
+- All meeting point slides (①-⑭) MUST have pen symbol
+- Framsida (⓪) is EXCLUDED: no slide title, no pen symbol, no meeting-point marker
 - Pen emoji: ✏️ (Unicode U+270F, rendered at same size as meeting point number)
 - No space between pen and number
 
