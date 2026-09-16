@@ -14,7 +14,8 @@ recurring_meetings:
       description: "Sprintstart + projektarbete"
 
   tuesday:
-    lunch: "11:15-12:15"
+    - time: "11:15-12:15"
+      type: "lunch"
       note: "Before PL meeting for quiet discussion time"
 
     - time: "12:30-14:00"
@@ -31,7 +32,8 @@ recurring_meetings:
       description: "One-on-one if needed"
       location: "Slack Huddle"
 
-    lunch: "12:00-13:00"
+    - time: "12:00-13:00"
+      type: "lunch"
 
   thursday:
     - time: "09:00-17:00"
@@ -42,24 +44,27 @@ recurring_meetings:
     - time: "08:00-10:00"
       type: "lia_preparation"
       description: "LIA prep drop-in"
+      location: "Scandic hotel"
 
     - time: "10:00-12:00"
       type: "lia_search"
       description: "Active LIA search and company dialogue"
+      location: "Scandic hotel"
 
     - time: "12:00-13:00"
-      lunch: true
+      type: "lunch"
+      location: "Scandic hotel"
 
     - time: "13:00-16:00"
       type: "lia_search"
       description: "Active LIA search and company dialogue"
+      location: "Scandic hotel"
 
     - time: "16:00-17:00"
       type: "lia_followup"
       description: "Efterarbete LIA-sök"
-
-    note: "SACRED - No project work allowed on Fridays (course requirement)"
-    location: "Scandic hotel"
+      location: "Scandic hotel"
+      note: "SACRED - No project work allowed on Fridays (course requirement)"
 
 current_week_focus:
   week: "2026-09-16 (V3-V5 production phase)"
