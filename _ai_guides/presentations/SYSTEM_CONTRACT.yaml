@@ -860,33 +860,32 @@ execution_sequence:
         record_in_receipt: "teams_roster.status = SUCCESS | INCOMPLETE"
 
       dataset_2_merged_prs:
-        action: "Use github_connector to call https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
+        action: "Call GITHUB_MERGED_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
         on_success: "Proceed to dataset_3_active_issues"
-        on_tool_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
+        on_all_github_rest_implementations_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
         on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
         on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to data_audit"
-        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = github_connector | sheets | github_web"
+        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = github_rest_api | sheets | github_web, merged_prs.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
 
       dataset_3_active_issues:
-        action: "Use github_connector to call https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
+        action: "Call GITHUB_OPEN_ISSUES source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
         on_success: "Proceed to step_2b"
-        on_tool_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
+        on_all_github_rest_implementations_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
         on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
         on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to step_2b"
-        record_in_receipt: "active_issues.status = SUCCESS | INCOMPLETE, active_issues.source_used = github_connector | sheets | github_web"
+        record_in_receipt: "active_issues.status = SUCCESS | INCOMPLETE, active_issues.source_used = github_rest_api | sheets | github_web, active_issues.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
 
     CRITICAL_VALIDITY_RULE: >
-      "GitHub API failed" is ONLY a valid report if github_connector
-      (or the explicitly named native GitHub REST API tool) was actually invoked.
+      "GitHub API failed" is ONLY a valid report if an implementation explicitly
+      permitted by EXTERNAL_SOURCES.yaml for github_rest_api was actually invoked
+      (github_connector, http_fetch, web_fetch, or curl).
 
-      A DNS error, connection timeout, or generic HTTP failure from shell/bash/curl
-      does NOT count as an attempted GitHub API acquisition.
+      If ALL permitted GitHub REST implementations are unavailable: record
+      ALL_GITHUB_IMPLEMENTATIONS_UNAVAILABLE in receipt and proceed to next
+      registered fallback (Sheets per EXTERNAL_SOURCES.yaml).
 
-      If github_connector cannot be invoked, record TOOL_UNAVAILABLE in receipt
-      and proceed directly to the next registered fallback (Sheets).
-
-      Do NOT attempt to work around github_connector unavailability by using
-      shell network commands, generic web access, or improvised HTTP tools.
+      Do NOT attempt to work around unavailability by using unregistered tools,
+      generic web access, or improvised implementations not in EXTERNAL_SOURCES.yaml.
 
   step_2b:
     name: "Record DATA_ACQUISITION_RECEIPT — MANDATORY before DATA_AUDIT"
