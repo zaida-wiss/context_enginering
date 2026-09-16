@@ -156,8 +156,15 @@ They NEVER represent status or priority.
 | Frontend | Teal | #2DD4BF | Card border + badge |
 | Backend | Orange | #FB923C | Card border + badge |
 | Native | Purple | #A855F7 | Card border + badge |
-| Cross-team | Yellow | #FACC15 | Card border + badge |
+| Cross-team | Svart/Neutral | #000000 | Card border + badge (indicates multi-team ownership) |
 | Other | Gray | #94A3B8 | Card border + badge (docs, infra, chores) |
+
+**CROSS-TEAM BORDER RULE:**
+Svart border (#000000) means work affects multiple teams, not a single team.
+It is neutral, showing coordination required across team boundaries.
+Use on:
+- Slide ①A: cross-team merged PRs (in chronological order)
+- Slide ①C: cross-team pågår work
 
 **EXAMPLE — Frontend card on slide ①A:**
 - Slide background: #0F1830
@@ -167,11 +174,20 @@ They NEVER represent status or priority.
 - Text: #FFFFFF
 - Metadata: #94A3B8
 
+**EXAMPLE — Cross-team card on slide ①A or ①C:**
+- Slide background: #0F1830
+- Card background: #18233D
+- Card border: #000000 (svart/neutral)
+- Team badge: "Cross-team" or show affected teams
+- Text: #FFFFFF
+- Metadata: #94A3B8
+
 **CRITICAL:**
 Team colors and status colors are TWO DIFFERENT semantic systems.
 On Slide ①A "Merged PRs": all cards already have status = MERGED.
-Therefore border color represents TEAM. Do NOT add green status borders.
-"Mergad" text communicates completion.
+On Slide ①B-①C "Pågår": all cards already have status = ◐ PÅGÅR.
+Therefore border color represents TEAM. Do NOT add green/orange/red status borders.
+Status is communicated by symbol + text ("Merged" / "◐ Pågår").
 
 ---
 

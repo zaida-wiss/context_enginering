@@ -78,7 +78,7 @@ Kontrast minimum:            4.5:1 (WCAG AA)
 - Meeting date: "Veckomöte · [DATE, e.g. "16 september 2026"]"
 - Team identifier: "Avanza Team 1"
 - Data source verification: "✅ [number] sources verified"
-- List of verified sources: 
+- List of verified sources:
   - ✅ GitHub (commits, PRs, issues per-person)
   - ✅ Team roster (7 members)
   - [Other sources if used]
@@ -109,13 +109,19 @@ This mötespunkt is divided into phases (①A, then ①B-①E in team context la
 Global overview of ALL work merged to develop, displayed chronologically.
 Shows what was actually delivered, regardless of team.
 
+**CARD GRID:**
+- 3 columns × 4 rows = max 12 cards per slide
+- If more than 12 merged PRs: create ①A.2, ①A.3, etc.
+- Chronological order CONTINUES across slides
+
 **METHODOLOGY:**
 - Collect ALL PRs where merged_at is within REPORTING_PERIOD and base.ref == "develop"
 - Sort GLOBALLY by merged_at (oldest first)
 - DO NOT group by team first — chronology is primary sort
 - If multiple PRs same date: sort by timestamp (more precise)
+- Cross-team PRs appear in chronological order with svart/neutral border
 
-**CARD LAYOUT (3 columns × 2 rows max per slide):**
+**CARD FORMAT:**
 
 Each card displays:
 ```
@@ -127,15 +133,15 @@ Merged DD sep
 Assignee/Owner name (@github_login)
 ```
 
-**TEAM VISUALIZATION (Border + Badge only):**
+**TEAM VISUALIZATION (Border + Badge):**
 - Frontend:    #2DD4BF (teal)
 - Backend:     #FB923C (orange)
 - Native:      #A855F7 (purple)
-- Cross-team:  #FACC15 (yellow)
-- Other:       #94A3B8 (gray)
+- Cross-team:  #000000 (svart/neutral)
 
 Team color on BORDER + BADGE ONLY. Never full-card background.
 Team color means team ownership, NOT status.
+Svart border shows cross-team ownership (relevant to multiple teams).
 
 **OWNER ATTRIBUTION:**
 - Show issue/PR assignee as owner
@@ -144,23 +150,20 @@ Team color means team ownership, NOT status.
 - If no verified owner: show "??" + note
 
 **LAYOUT RULES:**
-- Max 6 cards per slide (3 columns × 2 rows)
-- If more than 6 merged PRs: create ①A.2, ①A.3, etc.
-- Chronological order CONTINUES across slides
+- 3 columns × 4 rows per slide (max 12 cards)
 - Read order: left → right, then next row
 - Large whitespace around entire board
 - This is a presentation summary, not a GitHub dashboard
 
 **DO NOT:**
-- Group Frontend first, then Backend
-- Sort by person
-- Sort by PR number
-- Use team color to express status (clear/pågår/blocked)
+- Group by team
+- Sort by person or PR number
+- Use team color to express status
 - Add grid to other slides (①A is the ONLY exception to full-width block rule)
 
 **LEGEND (appears on every ①A slide):**
 ```
-● Frontend    ● Backend    ● Native    ● Cross-team
+● Frontend (teal)    ● Backend (orange)    ● Native (purple)    ■ Cross-team (svart)
 ```
 
 ---
@@ -200,267 +203,78 @@ Example on team slide later:
 
 ---
 
-## 📝 ①B-①E — PÅGÅR & HINDER (deferred to team context)
+## 📊 ①B — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
 
-**Pågår per team, planerat, blockers/risker → shown during team-specific slides later.**
+**PURPOSE:**
+Shows active work by team. Three separate columns, each team's pågår issues/branches.
+Does NOT include cross-team work (that goes to ①C).
 
-**For now: ①A contains ONLY completed/merged work.**
+**CARD GRID:**
+- 3 columns (Frontend | Backend | Native)
+- 4 rows per column = max 12 cards total
+- Column 1 (Frontend): teal border
+- Column 2 (Backend): orange border
+- Column 3 (Native): purple border
 
-**If team's verified activity exceeds slide capacity:**
-- Split to ①A.1, ①A.2, ①B.1, ①B.2, etc.
-- NEVER omit work to fit slide count
-- Each continuation slide starts with team name again
+**CARD FORMAT:**
 
-**TEAM CHECKSUMS (RENDERED IN AUDIT REPORT):**
+Each card displays:
 ```
-Frontend: verified_activity_count (audit) == representation_count (slides)
-Backend: verified_activity_count (audit) == representation_count (slides)
-Native: verified_activity_count (audit) == representation_count (slides)
-Cross-team: verified_activity_count (audit) == representation_count (slides)
-Other: verified_activity_count (audit) == representation_count (slides)
+#ISSUE — Title
+Branch: [branch-name]
+◐ Pågår
+
+Assignee name (@github_login)
 ```
-If mismatch → both audit and slides note the discrepancy. Never silently drop data.
 
-**Rubriker per team (måste matcha mötesprotokollet):**
-- Slide ①A: **"① Avklarat sedan förra mötet — Frontend"** (or ①A.1, ①A.2 if split)
-- Slide ①B: **"① Avklarat sedan förra mötet — Backend"** (or ①B.1, ①B.2 if split)
-- Slide ①C: **"① Avklarat sedan förra mötet — Native"** (or ①C.1, ①C.2 if split)
-- Slide ①D: **"① Avklarat sedan förra mötet — Cross-team"** (if any cross-team work exists)
+**SORT ORDER:**
+- Frontend: by activity/priority
+- Backend: by activity/priority
+- Native: by activity/priority
+- NO cross-team cards on this slide
 
-### SLIDE ①A: Avklarat sedan förra mötet — Frontend
-
-**USES CANONICAL LAYOUT** — 1 header + 1 main message + 1–3 fullwidth vertical content blocks
-
-**CONTENT STRUCTURE (5 work categories, stacked vertically):**
-
-Slide ①A displays Frontend work in 5 sections, each as a FULLWIDTH BLOCK:
-
-1. **MERGED denna vecka** (block 1)
-   - List: all merged PRs this week, each as: ✅ #XX Title · Owner
-   
-2. **PÅGÅR denna vecka** (block 2)
-   - List: all active branches/issues with activity, each as: ◐ #XX Title · Owner
-   
-3. **VÄNTAR PÅ REVIEW** (block 3)
-   - List: all open PRs awaiting review, each as: ⏳ #XX Title · Owner
-   
-4. **STÄNGDA ISSUES (no merge)** (if any; add as block 4)
-   - List: all closed issues without linked merge, each as: 🔵 #XX Title
-   
-5. **COMMIT-ARBETE** (if any; add as block 5)
-   - List: relevant commits not in PRs, each as: 💾 SHA…message · Author (display_name @github_login)
-
-**IF MORE THAN 3 BLOCKS → AUTO-SPLIT**
-- Block 1 + 2 + 3 → stays on ①A
-- Block 4 + 5 → move to ①A.1 (new continuation slide)
-
-**LAYOUT RULES (MANDATORY):**
-- Each work item = ONE line within its block
-- Format per item: Symbol · Issue# Title · Owner (or ?? if unassigned)
-- No nested tables, no grid, no cards
-- Vertical stack only (never horizontal)
-- Fixed spacing: 20px between blocks, 16px padding inside each block
-- Block height auto (fills with content), never compress
-
-**ALDRIG ANVÄND EXEMPEL-DATA I FAKTISK PRESENTATION.**
-Alla data måste hämtas LIVE från GitHub när presentationen byggas.
-
-**REGLER:**
-- **Del 1: Merged denna vecka** (sortera på merge-datum, äldst först — veckan börjar överst, slutar längst ner)
-  - Visa ALLA merged PRs denna vecka
-  - Status = ✓ DONE
-  - Datum = merge-datum (YYYY-MM-DD)
-
-- **Del 2: Pågår denna vecka** (sortera på branch-aktivitet, senast pushad först)
-  - Visa ALLA öppna branches med commits denna vecka (även utan PR än)
-  - Visa ALLA öppna issues med assignee + recent activity (comments, updates) — ENDAST om ej redan i PR/branch
-  - Status = ◐ PÅG
-  - Branch/Issue-kolumn = branch-namn ELLER issue-nummer (#XXX) — visa båda om båda finns
-  - **DEDUP:** Om samma issue redan visas via PR eller branch → visa INTE igen här
-  - Verifiera mot Project Board: Issue är "In Progress" ELLER branch/issue har activity senaste 3 dagarna
-
-- **Del 3: Väntar på review** (KRITISK textruta för gruppens uppmärksamhet)
-  - Visa ALLA öppna PRs som väntar på review (status: "awaiting review" eller ingen approval än)
-  - Status = ⏳ REVIEW (påminn gruppen om att reviewa)
-  - Branch-kolumn = PR-nummer (#142, #143)
-  - Sortera på skapningsdatum (äldst först — längst väntan)
-  - **VISUELL MARKERING:** Denna sektion ska ha en 🟠 orange eller 🔴 röd bakgrund för att dra uppmärksamhet
-
-- **Del 4: Stängda issues utan merge** (om någon finns)
-  - Visa stängda issues som INTE är länkade till merge denna vecka
-  - Status = 🔵 CLOSED
-  - Branch-kolumn = issue-nummer (#XXX)
-
-- **Del 5: Commit-arbete** (refaktorering, docs, chores — om relevant)
-  - Visa relevanta commits som inte är länkade till issue
-  - Format: 💾 SHA…message · Author (display_name @github_login)
-  - Author MÅSTE visa både visningsnamn OCH GitHub-login för full aktivitetsspårning
-  - Status = 💾 COMMIT
-  - Info = commit-meddelande (kort)
-
-- **Arbetet från alla 7 team-medlemmar måste synas** (antingen i Merged, Pågår eller Väntar på review)
-  - Om medlem har 0 commits denna vecka: Lägg till "Inget arbete i koden denna vecka"
-
-- **Assignad = Ägare av arbetet** (GitHub issue/PR assignee, inte reviewer eller merger)
-  - VIKTIGT: Visar VEMS JOBB det är, inte vem som checkade det
-  - ASSIGNEE från GitHub = källan (inte reviewer, inte "merged by")
-  - Format: GitHub handle + display name (från TEAM_ROSTER.md)
-  - Exempel: ✅ "#95 Security review · [PERSON_A]" ([PERSON_A] ÄGde det)
-  - Exempel: ❌ "#95 Security review · [PERSON_B]" ([PERSON_B] reviewade det, men [PERSON_A] ägde det)
-
-**MÅSTE innehålla:**
-- ✅ Issue-nummer (#XX)
-- ✅ Kort titel (2-5 ord)
-- ✅ **Assignad person** (ägaren av arbetet, från GitHub issue/PR assignee) — INTE reviewer
-- ✅ Status (✓ DONE eller ◐ PÅG eller ⏳ REVIEW)
-- ✅ Datum (merge-datum, branch-namn, eller PR-nummer)
-- ✅ ALLA 7 team-medlemmar (även om 0 arbete denna vecka)
-- ✅ **Väntar på review-sektion** (ska synas tydligt för gruppens uppmärksamhet)
-
-**FÅR INTE innehålla:**
-- ❌ Commit-hash
-- ❌ Endast merged (måste visa pågår + review också)
-- ❌ Stale branches (>3 dagar utan push)
-- ❌ PRs som redan är mergead (de hör hemma i "Merged" sektion)
-- ❌ **Reviewer namn som assignee** (visa ägare, inte vem som checkade)
-
-**DATA-SOURCES:**
-- 📊 **Merged:** GitHub PRs API (merged till develop denna vecka) — FAKTISK GitHub-data, inte exempel
-- 📊 **Pågår:** GitHub branches (commits senaste 7 dagar) + Project Board (status: In Progress) — FAKTISK data
-- 📊 **Väntar på review:** GitHub PRs API (open PRs utan approval, skapade denna vecka) — **MÅSTE HÄMTAS FRÅN GITHUB**, inte exempel
-  - Sortera på skapningsdatum (längst väntan först)
-  - Inkludera ENDAST team-medlemmars PRs (match issue-owner mot TEAM_ROSTER.md)
-  - Status: ⏳ REVIEW (ingen approval än)
-- 🔍 **Jämförelse:** Branch mot Project Board — visa discrepancy om Board och Git inte stämmer
-
-**FOOTER:** `Källa: GitHub PRs + branches (LIVE från [UTC-TIDSSTÄMPEL]) ✅`
-
-🚨 **KRITISK REGEL:** All data i denna slide MÅSTE hämtas LIVE från GitHub när presentationen byggas. Aldrig från exempel, aldrig från snapshot. Inkludera tidsstämpel (t.ex. "2026-09-14 14:00:32 UTC") så det är tydligt att data är aktuell.
+**DATA SOURCE:**
+- Open issues + open branches with recent commits (last 7 days)
+- Per team via TEAM_ROSTER.md classification
+- Exclude cross-team (goes to ①C)
 
 ---
 
-### SLIDE ①B: Avklarat sedan förra mötet — Backend
+## 📊 ①C — PÅGÅR DENNA VECKA: CROSS-TEAM
 
-🚨 **IDENTICAL STRUCTURE TO ①A** — Backend version
+**PURPOSE:**
+Shows active cross-team work (affects multiple teams).
+Separate slide to keep team columns clean and highlight cross-team coordination.
 
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
+**CARD GRID:**
+- 3 columns × 4 rows = max 12 cards
+- All cards have svart/neutral border (#000000)
+- Indicates work relevant to multiple teams
 
-**REGLER - EXAKT SOM ①A, MEN ENDAST BACKEND:**
-- Del 1: ALLA merged Backend-PRs denna vecka (status = ✓ DONE)
-- Del 2: ALLA öppna Backend-branches med commits denna vecka (status = ◐ PÅG)
-- Del 3: ALLA öppna Backend-PRs som väntar på review (status = ⏳ REVIEW)
-- Del 4: ALLA stängda Backend-issues UTAN merge denna vecka (status = 🔵 CLOSED)
-- Del 5: Backend-relaterat commit-arbete som inte är länkat till issue (status = 💾 COMMIT)
+**CARD FORMAT:**
 
-**FILTRERA:**
-- Visa bara arbete där Team = "Backend" (från TEAM_ROSTER.md labels eller inferred från PR/issue content)
-- Visa ALLA 5 kategorier — ingen kan utelämnas
+Each card displays:
+```
+#ISSUE — Title
+Branch: [branch-name]
+Teams: [Frontend + Backend] / [Backend + Native] / etc
+◐ Pågår
 
-**DATA-SOURCES:**
-- 📊 **Merged:** GitHub PRs API (Backend-issues, merged denna vecka)
-- 📊 **Pågår:** GitHub branches (Backend-issues, commits senaste 7 dagar)
-- 📊 **Väntar på review:** GitHub PRs API (Backend-issues, open, no approval)
-- 📊 **Stängda utan merge:** GitHub Issues API (Backend-issues, closed this week, no linked merge)
-- 📊 **Commits:** GitHub Commits API (Backend-related commits, not in any PR)
-- 🔍 **Jämförelse:** Audit count == slide representation count (checksum)
+Assignee name (@github_login)
+```
 
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
-
----
-
-### SLIDE ①C: Avklarat sedan förra mötet — Native
-
-🚨 **IDENTICAL STRUCTURE TO ①A** — Native version
-
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
-
-**REGLER - EXAKT SOM ①A, MEN ENDAST NATIVE:**
-- Del 1: ALLA merged Native-PRs denna vecka (status = ✓ DONE)
-- Del 2: ALLA öppna Native-branches med commits denna vecka (status = ◐ PÅG)
-- Del 3: ALLA öppna Native-PRs som väntar på review (status = ⏳ REVIEW)
-- Del 4: ALLA stängda Native-issues UTAN merge denna vecka (status = 🔵 CLOSED)
-- Del 5: Native-relaterat commit-arbete som inte är länkat till issue (status = 💾 COMMIT)
-
-**FILTRERA:**
-- Visa bara arbete där Team = "Native" (från TEAM_ROSTER.md labels eller inferred från PR/issue content)
-- Visa ALLA 5 kategorier — ingen kan utelämnas
-
-**DATA-SOURCES:**
-- 📊 **Merged:** GitHub PRs API (Native-issues, merged denna vecka)
-- 📊 **Pågår:** GitHub branches (Native-issues, commits senaste 7 dagar)
-- 📊 **Väntar på review:** GitHub PRs API (Native-issues, open, no approval)
-- 📊 **Stängda utan merge:** GitHub Issues API (Native-issues, closed this week, no linked merge)
-- 📊 **Commits:** GitHub Commits API (Native-related commits, not in any PR)
-- 🔍 **Jämförelse:** Audit count == slide representation count (checksum)
-
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
+**DATA SOURCE:**
+- Open issues + branches marked as cross-team or affecting multiple teams
+- Show which teams are involved
+- Sorted by activity/priority
 
 ---
 
-### SLIDE ①D: Avklarat sedan förra mötet — Cross-team
+## 📝 ①D-①E — HINDER, RISKER, BLOCKERS (deferred to team context)
 
-🚨 **IDENTICAL STRUCTURE TO ①A** — Cross-team version
+**Planerat, blockers/risker → shown during detailed team slides later.**
 
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
-
-**REGLER - EXAKT SOM ①A, MEN ENDAST CROSS-TEAM:**
-- Del 1: ALLA merged Cross-team-PRs denna vecka (work affecting multiple teams)
-- Del 2: ALLA öppna Cross-team-branches med commits denna vecka
-- Del 3: ALLA öppna Cross-team-PRs som väntar på review
-- Del 4: ALLA stängda Cross-team-issues UTAN merge denna vecka
-- Del 5: Cross-team commit-arbete som inte är länkat till issue
-
-**FILTRERA:**
-- Visa bara arbete klassificerat som Cross-team (PRs/issues affecting Frontend + Backend, or Frontend + Native, etc)
-- Visa ALLA 5 kategorier — ingen kan utelämnas
-
-**DATA-SOURCES:**
-- 📊 All 5 categories from data_audit.work_areas.cross_team
-
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
-
----
-
-### SLIDE ①E: Avklarat sedan förra mötet — Other (docs, infra, chores)
-
-🚨 **IDENTICAL STRUCTURE TO ①A** — Other version
-
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
-
-**REGLER - EXAKT SOM ①A, MEN ENDAST OTHER:**
-- Del 1: ALLA merged Other-PRs denna vecka (docs, infra, build, chores, etc)
-- Del 2: ALLA öppna Other-branches med commits denna vecka
-- Del 3: ALLA öppna Other-PRs som väntar på review
-- Del 4: ALLA stängda Other-issues UTAN merge denna vecka
-- Del 5: Other commit-arbete (docs updates, infra changes, etc)
-
-**FILTRERA:**
-- Visa bara arbete klassificerat som Other: documentation, infrastructure, build system, chores, refactoring, etc
-- Visa ALLA 5 kategorier — ingen kan utelämnas
-- **VIKTIGT:** Denna slide visas ENDAST om Other-arbete existerar i audit. Annars hoppas ①E över.
-
-**DATA-SOURCES:**
-- 📊 All 5 categories from data_audit.work_areas.other
-
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
-
----
-
-**JÄMFÖRELSE MELLAN ALLA OMRÅDEN (①A-E):**
-
-Dessa slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
-
-| | Frontend | Backend | Native | Cross-team | Other |
-|---|----------|---------|--------|-----------|-------|
-| Merged | X | Y | Z | W | U |
-| Pågår | X | Y | Z | W | U |
-| Väntar på review | X | Y | Z | W | U |
-| Stängda issues | X | Y | Z | W | U |
-| Commit-arbete | X | Y | Z | W | U |
-
-**REGEL:** Om någon rad är tom för alla områden (t.ex. ingen "Commit-arbete" överhuvudtaget), MÅSTE det noteras i audit med anledning (t.ex. "Inga relevanta commits denna vecka")
-
-**Syftet:** Se ALLT arbete för varje område denna vecka — ingen aktivitet försvinner mellan stolarna, och ingen slide är överbelastad.
+**For now: ①A-①C contain ONLY completed/merged and pågår work.**
 
 ---
 
@@ -468,19 +282,9 @@ Dessa slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
 
 ### SLIDE ②A: Nuläge + Deadline Tracker & Risk
 
-**FORMAT:** Två delar: (1) Progress bars per team, (2) Deadline Tracker med Risk-nivå
+**FORMAT:**
 
-**INNEHÅL - DEL 1: NULÄGE denna sprint (compact)**
-
-```
-PROGRESS:
-
-Frontend:  ████████░░ 80% (API-kontrakt väntar på Backend)
-Backend:   ██████░░░░ 60% (Fokus denna vecka)
-Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
-```
-
-**INNEHÅL - DEL 2: DEADLINE TRACKER (fokuserat på risk)**
+**INNEHÅL - DEL 1: DEADLINE TRACKER (fokuserat på risk)**
 
 ```
 🔴 KRITISK (Idag 14:00) — [MILESTONE_A]
@@ -506,8 +310,7 @@ Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
 ```
 
 **REGLER:**
-- **Del 1 (Progress):** Kompakt — progress bars per team, max 3 rader
-- **Del 2 (Deadlines):** Primär fokus — vilken deadline, vad innebär den, vilken risk, vad gör vi
+- **Del 1 (Deadlines):** Primär fokus — vilken deadline, vad innebär den, vilken risk, vad gör vi
 - Deadlines i prioritetsordning: 🔴 Kritisk → 🟠 Högt → 🟡 Medel
 - Varje deadline: VAD | VARFÖR | STATUS | RISK | ACTION
 - STATUS-märken: ⏳ = väntar, 🟢 = on track, 🔴 = behind, 🟠 = risk
