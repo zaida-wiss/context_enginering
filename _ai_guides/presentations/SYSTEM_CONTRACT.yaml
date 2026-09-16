@@ -172,6 +172,42 @@ repository_ref_policy:
     before merge to main.
 
 ###############################################################################
+# GITHUB ENTITY IDENTITY — Data Provenance (CRITICAL)
+###############################################################################
+github_entity_identity:
+  rule: >
+    Never synthesize, infer, translate or invent a GitHub issue/PR number.
+    If work exists but the issue is not verified against GitHub, say so explicitly.
+
+  issue_id_may_be_displayed_only_if:
+    - "The issue object was retrieved from an ALLOWED GitHub source"
+    - "repository_full_name matches the project repository"
+    - "issue_number comes directly from that object (not inferred)"
+
+  pr_id_may_be_displayed_only_if:
+    - "The PR object was retrieved from an ALLOWED GitHub source"
+    - "PR number comes directly from that object (not inferred)"
+
+  forbidden:
+    - "Treating a PR number as an issue number"
+    - "Inferring issue number from branch name unless verified against GitHub"
+    - "Creating an issue ID because the described work probably should have one"
+    - "Using example IDs from documentation as real project data"
+    - "Guessing a GitHub entity exists when you only have a work description"
+
+  when_work_exists_but_issue_is_not_verified:
+    display_instead_of_number:
+      - "Behöver issue"
+      - "Issue-ID ej verifierat"
+      - "Arbetsområde — issue behöver skapas/verifieras"
+      - "Verifieras — [issue status]"
+
+  why_this_matters: >
+    AI can detect that "this work should probably have an issue", but must never
+    invent "#6" or any number without verified GitHub provenance.
+    This prevents the exact problem: fake issue numbers in presentations.
+
+###############################################################################
 # CONFLICT RESOLUTION
 ###############################################################################
 conflict_resolution:

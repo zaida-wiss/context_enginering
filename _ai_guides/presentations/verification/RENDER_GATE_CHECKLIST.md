@@ -334,6 +334,35 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
   [ ] Each slide header starts with meeting-point symbol (①②③ etc)
 ```
 
+**WCAG 2.2 AA & COLOR SEMANTIC COMPLIANCE (CRITICAL — NEW):**
+```
+  [ ] NO ordinary text boxes have visible borders, outlines, or fills
+      → Headers, titles, dates, subtitles, captions, metadata = plain text ONLY
+      → Exceptions: Only designated cards, team containers, status components (per VISUAL_DESIGN_MANDATORY.md)
+  
+  [ ] NO team color is used as a status color (CRITICAL SEPARATION)
+      → Frontend (teal) ≠ any status color
+      → Backend (hot pink) ≠ any status color
+      → Native (purple) ≠ any status color
+      → Cross-team (light slate) ≠ any status color
+      → Orange ONLY means status ◐ "pågår", NEVER team
+      → Green ONLY means status ✅ "merged", NEVER team
+      → Red ONLY means status 🔴 "blocked", NEVER team
+  
+  [ ] All visible text + information-carrying graphics WCAG 2.2 AA compliant
+      → Normal text: 4.5:1 contrast minimum
+      → Large text (18pt+ or 14pt bold): 3:1 contrast minimum
+      → UI components, borders: 3:1 contrast minimum
+      → No dark navy (#0F1830) + black (#000000) borders (0:1 contrast = invisible)
+      → Color never the sole information carrier (MUST pair with symbol + text)
+  
+  [ ] GITHUB ENTITY PROVENANCE — Every issue/PR number verifiable
+      → Each #XX on slide corresponds to verified GitHub object
+      → Not inferred, guessed, or translated from branch name
+      → If work exists but issue unverified: display "Behöver issue" / "Issue ej verifierat" instead of number
+      → Per github_entity_identity rule in SYSTEM_CONTRACT.yaml
+```
+
 **LAYOUT COMPLIANCE — CANONICAL FORM ONLY:**
 ```
   [ ] Every slide has exactly: 1 header + 1 main message + 1–3 content blocks

@@ -10,40 +10,25 @@ metadata:
 
 **Denna fil säger EXAKT vad varje slide ska innehålla — ingen gissning.**
 
-🔗 **VISUELL REFERENS:** Se [`TEMPLATE_REFERENCE.html`](TEMPLATE_REFERENCE.html) för hur varje slide ska se ut visuellt (färger, fonts, spacing, rundade hörn).
+## 🎨 VISUAL IMPLEMENTATION — AUTHORITY
 
-Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punkt-nivå-overview.
+**Do NOT define colors, typography, borders, spacing or card geometry here.**
+
+All visual implementation — colors, fonts, spacing, contrast, borders, background fills, corner radius — 
+MUST come from [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md).
+
+This file defines **content only** (what data goes where, how it's structured).
+
+**Authority hierarchy:**
+1. **VISUAL_DESIGN_MANDATORY.md** — ALL visual rules (colors, fonts, spacing, borders)
+2. **ACCESSIBILITY_NEURODIVERSITY.md** — WCAG 2.2 AA boundaries (cannot be violated by visual choices)
+3. **This file (SLIDE_DETAIL_SPEC.md)** — Content structure and data fields ONLY
 
 ---
 
-## 🎨 COLOR PALETTE & DESIGN CONSTANTS
+🔗 **VISUAL REFERENCE:** Se [`TEMPLATE_REFERENCE.html`](TEMPLATE_REFERENCE.html) för exempel-layouts.
 
-**Dessa värden används överallt i presentationen:**
-
-### Färger (RGB)
-```
-MERGED-sektion bakgrund:     RGB 76, 175, 80     (🟢 Grön)
-PÅGÅR-sektion bakgrund:      RGB 255, 152, 0     (🟡 Orange)
-VÄNTAR PÅ REVIEW bakgrund:   RGB 255, 152, 0     (🟡 Orange) eller RGB 244, 67, 54 (🔴 Röd)
-Text på färgad bakgrund:     Vit (RGB 255, 255, 255)
-Neutral bakgrund:            Ljusgrå (RGB 245, 245, 245)
-Header text:                 Mörkgrå (RGB 50, 50, 50)
-Body text:                   Mörkgrå (RGB 100, 100, 100)
-```
-
-### Font & Spacing (FIXED VALUES — NEVER CHANGE)
-```
-Section headers:             Arial 14pt BOLD
-Issue nummer & titel:        Arial 13pt regular
-Meta-text (datum/branch):    Arial 12pt regular
-Row height:                  24px MINIMUM
-Padding per element:         12px
-Margin mellan element:       8px minimum
-Corner radius:               6-8px
-Kontrast minimum:            4.5:1 (WCAG AA)
-```
-
-**NOTE:** These values are AI instructions, not slide content. Never display them in the presentation.
+Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punkt-nivå-overview.
 
 ---
 

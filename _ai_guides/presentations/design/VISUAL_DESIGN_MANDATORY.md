@@ -149,15 +149,20 @@ Status is communicated via Symbol + Color + Text:
 ## 🏷️ TEAM COLORS (CATEGORY, NOT STATUS)
 
 Team is communicated via border + badge. Team colors represent TEAM OWNERSHIP only.
-They NEVER represent status or priority.
+They NEVER represent status or priority. **Team colors MUST NEVER overlap with status colors.**
 
-| Team | Color | Hex | Usage |
-|------|-------|-----|-------|
-| Frontend | Teal | #2DD4BF | Card border + badge |
-| Backend | Orange | #FB923C | Card border + badge |
-| Native | Purple | #A855F7 | Card border + badge |
-| Cross-team | Svart/Neutral | #000000 | Card border + badge (indicates multi-team ownership) |
-| Other | Gray | #94A3B8 | Card border + badge (docs, infra, chores) |
+| Team | Color | Hex | Usage | Contrast Check |
+|------|-------|-----|-------|---|
+| Frontend | Teal | #2DD4BF | Card border + badge | ✅ 4.5:1 on #18233D |
+| Backend | Hot Pink | #FF4FA3 | Card border + badge | ✅ 4.5:1 on #18233D |
+| Native | Purple | #A855F7 | Card border + badge | ✅ 3:1 on #18233D |
+| Cross-team | Light Slate | #CBD5E1 | Card border + badge | ✅ 4.5:1 on #18233D |
+| Other | Gray | #94A3B8 | Card border + badge | ✅ 4.5:1 on #18233D |
+
+**RESERVED STATUS COLORS (MUST NOT be used as team colors):**
+- Orange (#FF9800) — **ONLY** for status ◐ "In Progress"
+- Green (#4CAF50) — **ONLY** for status ✅ "Merged/Complete"  
+- Red (#F44336) — **ONLY** for status 🔴 "Blocked"
 
 **CROSS-TEAM BORDER RULE:**
 Svart border (#000000) means work affects multiple teams, not a single team.
@@ -166,18 +171,29 @@ Use on:
 - Slide ①A: cross-team merged PRs (in chronological order)
 - Slide ①C: cross-team pågår work
 
-**EXAMPLE — Frontend card on slide ①A:**
+**EXAMPLE — Frontend card on slide ①A (Merged):**
 - Slide background: #0F1830
 - Card background: #18233D
-- Card border: #2DD4BF (teal)
-- Team badge: teal
+- Card border: #2DD4BF (teal, team ownership)
+- Status symbol: ✅ (text only, no colored border)
+- Team badge: teal with #0F1830 text
+- Text: #FFFFFF
+- Metadata: #94A3B8
+
+**EXAMPLE — Backend card on slide ①B (In Progress):**
+- Slide background: #0F1830
+- Card background: #18233D
+- Card border: #FF4FA3 (hot pink, team ownership)
+- Status symbol: ◐ (text only, no orange border)
+- Team badge: hot pink with #0F1830 text
 - Text: #FFFFFF
 - Metadata: #94A3B8
 
 **EXAMPLE — Cross-team card on slide ①A or ①C:**
 - Slide background: #0F1830
 - Card background: #18233D
-- Card border: #000000 (svart/neutral)
+- Card border: #CBD5E1 (light slate, neutral/multi-team)
+- Status symbol: ✅ or ◐ (text only)
 - Team badge: "Cross-team" or show affected teams
 - Text: #FFFFFF
 - Metadata: #94A3B8
@@ -215,42 +231,57 @@ If unsure, use gray or dark gray instead.
 
 ---
 
-## 🖼️ BORDER RULES — Status Visualization
+## 🖼️ BORDER & COLOR SEPARATION — Ownership vs Status
 
-**COLORED BORDERS = STATUS ONLY**
+**TWO INDEPENDENT SEMANTIC SYSTEMS:**
 
-```
-🟢 GREEN BORDER (3px solid #2ecc71):
-   Meaning: ON TRACK / Klart / Vi når målet
-   Apply to: Completed work blocks, finished tasks
-   Padding: 16px inside
-   Background: Light green (5% opacity)
+### 1. OUTER TEAM BORDER (3-6px) — Ownership/Category ONLY
 
-🟠 ORANGE BORDER (3px solid #ff9800):
-   Meaning: IN PROGRESS / Slightly delayed / Not yet on track
-   Apply to: Active work blocks, items needing attention
-   Padding: 16px inside
-   Background: Light orange (5% opacity)
+| Border Color | Meaning | Applies To |
+|---|---|---|
+| **Teal** #2DD4BF | Frontend team ownership | Frontend cards |
+| **Hot Pink** #FF4FA3 | Backend team ownership | Backend cards |
+| **Purple** #A855F7 | Native team ownership | Native cards |
+| **Light Slate** #CBD5E1 | Cross-team / Multi-team | Cross-team cards |
+| **Gray** #94A3B8 | Other (infra, chores, docs) | Other cards |
 
-🔴 RED BORDER (3px solid #e74c3c):
-   Meaning: CRITICAL / Blocked / Immediate action needed
-   Apply to: Blockers, failed items, urgent issues
-   Padding: 16px inside
-   Background: Light red (5% opacity)
-```
+**These borders NEVER communicate status.**
 
-**NEUTRAL BORDERS = INFORMATION ONLY (No status meaning)**
+### 2. STATUS SYMBOL + TEXT — Status ONLY
 
-```
-⬛ DARK BORDER (2px solid #323232):
-   Meaning: Information ONLY, no status judgment
-   Apply to: Headers, lists, deadlines, action items
-   Padding: 16px inside
-   Background: Neutral (white or light gray)
+| Status | Symbol | Text Format | Usage |
+|---|---|---|---|
+| **Merged/Complete** | ✅ | "Merged 2026-09-16" | Completed work |
+| **In Progress** | ◐ | "Pågår — [detail]" | Active work |
+| **Blocked** | 🔴 | "Blockerad — [reason]" | Blocked work |
+| **Unknown** | ? | "Status okänd" | Unverified work |
 
-RULE: Never mix status colors with neutral information.
-      One block = one message (either status OR information, not both).
-```
+**Status is communicated by symbol + text, NEVER by border color.**
+
+---
+
+## 📦 TEXT BOX RULE — MANDATORY
+
+**Ordinary text boxes, headers, titles, and captions:**
+- fill: none / transparent
+- outline: none / invisible
+- border: none
+
+A text box must NEVER receive a visible outline, border, or background merely because it contains text.
+
+**Visible borders may ONLY be applied to:**
+- Designated content cards (issue/PR cards with metadata)
+- Team/category containers (Frontend, Backend, Native sections)
+- Explicitly specified status components (severity indicators, risk badges)
+
+**Headers, titles, dates, subtitles, captions, and metadata are plain text** — they must never have:
+- Visible borders
+- Colored fills
+- Outlines or frames
+
+Unless the slide specification in SLIDE_DETAIL_SPEC.md **explicitly** says "add border to [element]", the element MUST be plain text.
+
+This rule prevents the exact problem seen on cover slides where text received unwanted borders.
 
 ---
 

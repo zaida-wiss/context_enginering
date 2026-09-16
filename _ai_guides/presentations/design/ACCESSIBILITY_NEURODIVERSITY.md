@@ -9,6 +9,27 @@ metadata:
 
 # 🧠 NEURODIVERSE-VÄNLIG DESIGN — Dyslexi, ADHD & Autism
 
+## 🚨 MANDATORY — WCAG 2.2 AA ACCESSIBILITY STANDARD
+
+**ALL content in this file and all presentations MUST comply with WCAG 2.2 Level AA simultaneously.** 
+NPF design can NEVER reduce contrast, readability, or use color as the sole information carrier.
+
+### WCAG 2.2 AA Requirements (Binding):
+
+| Element | Ratio | Application |
+|---------|-------|-------------|
+| **Normal text** | 4.5:1 minimum | All body text, labels, captions |
+| **Large text** (18pt+ or 14pt bold) | 3:1 minimum | Headers, titles, badges |
+| **UI components, borders** | 3:1 minimum | All borders/frames that carry meaning |
+| **Color as information** | ❌ FORBIDDEN | Color MUST be paired with symbol + text |
+| **Metadata/secondary text** | 4.5:1 minimum | Never "muted" below readability threshold |
+| **Dark navy + black borders** | ❌ INVALID | Invisible contrast (0:1) — forbidden as information-bearing elements |
+
+**NPF principles DO NOT override WCAG.**  
+If a design choice reduces contrast below WCAG AA, it is NOT acceptable, regardless of NPF benefits.
+
+---
+
 **DENNA FIL FÖRKLARAR varför presentationen är utformad som den är — för TRE neurologiska profiler.**
 
 En presentation som är vänlig för dyslekti, ADHD och autism är **inte bara tillgänglig** — det är **bättre för ALLA läsare**. 
