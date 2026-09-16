@@ -54,7 +54,7 @@ For all classified information:
 | **sprint_goal** | this week, sprint goal, weekly goal, current focus, priority | `_memory/presentations/CURRENT_SPRINT.yaml` | update sprint_focus array |
 | **roadmap** | phases, weeks, project structure, long-term plan | `_memory/presentations/TEAM_ROADMAP.yaml` | update phases |
 | **team_roster** | person, role, team assignment, responsibility | `_memory/TEAM_ROSTER.md` | add/update member info |
-| **decision** | approved, decided, rule, policy, "we will", "from now on" | `docs/BESLUT.md` | add entry (see format below) |
+| **decision** | approved, decided, rule, policy, "we will", "from now on" | `docs/decisions/<id>.md` | create new file (see format below) |
 
 ### Routing Examples
 
@@ -83,11 +83,16 @@ User: "Vi använder Vitest för testing framework"
 
 ---
 
-## DECISION FORMAT (for docs/BESLUT.md)
+## DECISION FORMAT (for docs/decisions/*.md)
 
-**When routing to decisions: use this EXACT format**
+**When routing to decisions: create ONE FILE per decision**
 
-```yaml
+**File location:** `docs/decisions/<decision-id>.md`
+**File name matches id:** must be identical (e.g., `frontend-test-strategy.md`)
+
+**File content (YAML frontmatter + Markdown):**
+
+```markdown
 ---
 id: [slug-format: lowercase, hyphens]
 decision_date: YYYY-MM-DD
@@ -97,10 +102,10 @@ status: confirmed
 
 # [Decision Title]
 
-**Beslut:**
+## Beslut
 [One sentence of what was decided]
 
-**Påverkan:**
+## Påverkan
 [Why this decision affects future work]
 ```
 
@@ -115,16 +120,23 @@ status: confirmed
 
 **If date is missing:** Decision will NOT appear in presentation (cannot verify "since last meeting")
 
+**Why separate files?**
+- One decision per file = clean YAML frontmatter
+- Easy to update individual decisions
+- Cleaner git history and merge conflicts
+- All AI-agentes parse YAML frontmatter the same way
+
 ### Routing Example
 
 ```
 User: "Vi har beslutat att använda Vitest för alla frontendtester"
 
 Classification: decision
-Extract: title="Test strategy", decision="Vitest for frontend"
-Route to: docs/BESLUT.md
-Create entry:
+Extract: id="frontend-test-strategy", date="2026-09-16"
+Route to: docs/decisions/
+Create file: docs/decisions/frontend-test-strategy.md
 
+Content:
 ---
 id: frontend-test-strategy
 decision_date: 2026-09-16
@@ -134,10 +146,10 @@ status: confirmed
 
 # Test strategy
 
-**Beslut:**
+## Beslut
 Frontend använder Vitest för alla nya tester.
 
-**Påverkan:**
+## Påverkan
 Säkerställer konsistent testmetod i teamet.
 ```
 

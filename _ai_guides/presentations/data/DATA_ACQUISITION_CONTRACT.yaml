@@ -203,10 +203,10 @@ required_datasets:
   decisions_confirmed:
     source_id: "DECISION_CONFIRMED"
     classification: "OPTIONAL (enhances team awareness)"
-    canonical_source: "docs/BESLUT.md"
+    canonical_source: "docs/decisions/*.md (one decision per file)"
 
     purpose: "Show decisions verified as decided during reporting period"
-    access_method: "Read docs/BESLUT.md locally"
+    access_method: "Read all .md files from docs/decisions/ directory locally"
 
     required_fields_per_decision:
       - title
