@@ -54,10 +54,20 @@ Never skip a source or substitute with fallback without trying primary first.
 
 **DATASET 2: Merged PRs (GitHub API → develop branch)**
 - URL: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&merged:>=[REPORTING_PERIOD_START]`
-- Extract: `pr.commits[].author.login` (actual code authors — PRIMARY)
-- Extract: `pr.reviews[].user.login` + `reviews[].state` (APPROVED, CHANGES_REQUESTED, COMMENTED all count)
-- Extract: `pr.merged_by.login` (who pressed merge)
+
+**MANDATORY FIELDS (ALL MUST be extracted for each PR):**
+- Extract: `pr.commits[].author.login` (actual code authors — PRIMARY for "Developed by")
+- Extract: `pr.reviews[].user.login` + `reviews[].state` (APPROVED, CHANGES_REQUESTED, COMMENTED all count as "Reviewed by")
+- Extract: `pr.merged_by.login` (MANDATORY — who actually merged the PR for "Merged by")
 - Extract: `pr.linked_issues[]` (for deduplication via linked_issue_ids)
+
+**CRITICAL RULE:**
+- ❌ NEVER write "ej verifierat", "not verified", "GitHub-merge", or similar placeholder when GitHub data exists
+- ✅ IF `pr.merged_by.login` exists → use it
+- ✅ IF `pr.reviews[]` with APPROVED exists → use it
+- ✅ IF neither exists → write "Ej verifierbart" ONLY
+- ❌ Do NOT guess from PR author, assignee, or merge commit author
+
 - Fallback: GitHub web UI (https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged)
 
 **DATASET 3: Collection Branch Merges (GitHub API)**
@@ -278,6 +288,10 @@ If you CANNOT complete ANY step:
 - ❌ Show only "APPROVED" reviews — include CHANGES_REQUESTED + COMMENTED as review work
 - ❌ Use PR author as "Developed by" — use commit authors (primary) > assignees > PR author
 - ❌ Show "inaktiv" or "ingen aktivitet" — use "Ny issue eller tillgänglig för hjälp i [team]" instead
+- ❌ Write "ej verifierat", "not verified", "GitHub-merge", or similar placeholder when GitHub data exists
+  - ✅ IF merged_by.login exists in GitHub → use it (never write "GitHub-merge")
+  - ✅ IF reviews[] exists in GitHub → use reviewer name (never write "not verified")
+  - ✅ ONLY write "Ej verifierbart" if GitHub truly lacks the data AND cannot be fetched
 - ❌ Render ③④⑤ as tables or horizontal bands — MUST be compact vertically stacked cards with centered text
 - ❌ Use corner radius < 12px or > 18px on soft cards
 - ❌ Clip text to fit cards — split to new slide instead

@@ -232,12 +232,14 @@ PHYSICAL STRUCTURE (count actual objects in rendered artifact):
   ☐ Visible slide headings match expected (①, ②, ③④⑤, etc)
 
 CONTENT VERIFICATION (inspect rendered text):
-  ☐ "Developed by" field visible and populated
-  ☐ "Reviewed by" field visible and populated
-  ☐ "Merged by" field visible and populated
+  ☐ "Developed by" field visible and populated (not "??" unless PR truly has no commit authors)
+  ☐ "Reviewed by" field visible and populated (actual GitHub reviewer, not "ej verifierat" if reviews exist)
+  ☐ "Merged by" field visible and populated (actual merged_by.login from GitHub, not "GitHub-merge" placeholder)
+     ❌ FAILURE if "Merged by: GitHub-merge" or "Merged by: ej verifierat" when GitHub has merged_by.login
   ☐ No PR shown twice (deduplication verified in actual render)
   ☐ All 7 team member names appear (with work or "available" marker)
   ☐ Actual PR numbers match GitHub (not invented/fabricated)
+  ☐ "Ej verifierbart" ONLY appears if GitHub data truly unavailable (checked explicitly)
 
 VISUAL QUALITY (inspect rendered layout):
   ☐ No text clipping or overflow
