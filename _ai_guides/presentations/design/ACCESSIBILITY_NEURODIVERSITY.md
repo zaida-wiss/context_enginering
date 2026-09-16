@@ -183,34 +183,44 @@ Backend
 
 ### Font-storlekar i presentationen:
 
+**➡️ AUKTORITATIV KÄLLA: Se VISUAL_DESIGN_MANDATORY.md för exakta värden.**
+
 ```
-28pt BOLD       = SLIDE-TITEL (mötespunkt ①, ②, etc)
+32pt BOLD       = SLIDE-TITEL (mötespunkt ①, ②, etc — ✏️ ①②③)
                   (Dyslektiker: STOR är viktigt, lättare att läsa)
+                  (Autism: konsekvent storlek överallt = förutsägbart)
 
-14pt BOLD       = Sektion-header (Frontend, Backend, etc)
+22pt BOLD       = Sektion-header (Frontend, Backend, etc)
                   (Gruppering — detta är en KATEGORI)
+                  (ADHD: stor, fokuserad rubrik = snabb visuell sammanfattning)
 
-14pt REGULAR    = Issue-titel (#95 Security review)
+20pt REGULAR    = Issue-titel (#95 Security review)
                   (Huvudinformation — läs detta)
+                  (Dyslektiker: detta är läsbar storlek utan ansträngning)
 
-13pt REGULAR    = Metainfo (Assignad, Status, Datum)
+18pt REGULAR    = Metainfo (Assignad, Status, Datum, Branch)
                   (Bekräftelse av vad färg/symbol sa)
+                  (Autism: högre än tidigare = mindre stress vid läsning)
 
-11pt ITALIC     = Extra info (commits, test-status)
-                  (Sekundär läsning)
-
-10-12pt SMALL   = Footer-info
-                  (Tertiär — läs bara om du vill djupdyka)
+12–14pt SMALL   = Evidence tags (TOLKNING, FÖRSLAG, GITHUB), Footer-info
+                  (Tertiär — läs bara om du vill djupdyka eller verifiera källa)
 ```
 
-**RADAVSTÅND: 24px mellan rader** (1.5x linjeavstånd)
+**RADAVSTÅND: minst 1.4x linjeavstånd** (ca 24–28px mellan raderna)
 - Standard är ofta 20px — för tätt för dyslektiker
-- 24px ger "andrum" — ögonen kan vila mellan rader
+- Större avstånd ger "andrum" — ögonen kan vila mellan rader
+- ADHD-fokus försvinner inte så lätt när rader är separerade
 
 **TECKENFÖRDELNING:**
 - Max 60-70 tecken per rad (inte full slidbredd)
 - Gör det lättare för dyslektiker att följa rad-för-rad
 - Hjälper ADHD-fokus att inte hoppa omkring
+- Autism: förutsägbar struktur = lugn läsning
+
+**VARFÖR DESSA FÖRÄNDRINGAR:**
+- Tidigare rekommendation (14pt body) är för liten för mötes-presentationer på vägg
+- Möterum är inte skrivbord — läsare sitter 3–5m bort
+- Större text = mindre visuell ansträngning = mer tillgänglig för neurodiversitet
 
 ---
 
@@ -240,11 +250,14 @@ WHITESPACE:
   [ ] 70% tom yta på framsidan (mental paus)
 
 TYPOGRAFI:
-  [ ] 28pt bold för slide-titel
-  [ ] 14pt bold för sektion-headers
-  [ ] 14pt regular för huvud-innehål
-  [ ] 24px radavstånd (minst)
+  [ ] 32pt bold för slide-titel (✏️ ①②③)
+  [ ] 22pt bold för sektion-headers
+  [ ] 20pt regular för huvud-innehål
+  [ ] 18pt regular för sekundär info
+  [ ] 12–14pt för små labels och tags
+  [ ] 1.4x linjeavstånd MINST (24–28px mellan rader)
   [ ] Max 60-70 tecken per rad
+  [ ] ALDRIG shrink-to-fit — kortet växer eller sliden delas istället
 
 KONTRAST:
   [ ] WCAG AA minst (4.5:1 ratio)

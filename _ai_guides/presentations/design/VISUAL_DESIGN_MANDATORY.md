@@ -194,9 +194,39 @@ These values NEVER change. Use them exactly.
 | Line height | 1.8 (NPF standard) |
 | Corner radius | 12–18px (all corners, mandatory softness) |
 
-### Typography
+### Typography Hierarchy
 
 **WCAG 2.2 AA Compliant (per SYSTEM_CONTRACT: accessibility rules override design when conflict).**
+
+**MINIMUM FONT SIZES — BINDING AND NON-NEGOTIABLE:**
+
+**All text that is meant to be read and understood during a presentation MUST meet these minimums:**
+
+| Element | Minimum Size | Context |
+|---------|-------------|---------|
+| **Slide title/header** | 32pt | Meeting point headers (①-⑭) — must read from 3–5m away |
+| **Section headers** | 22pt | Frontend, Backend, Native team sections |
+| **Main content text** | 20pt | Issue titles, work item names, key information |
+| **Secondary information** | 18pt | Status details, branch names, PR references |
+| **Small labels/tags** | 12–14pt | Evidence tags (TOLKNING, FÖRSLAG, etc), timestamps |
+| **Footer/source reference** | 12–14pt | Source citations, minimal reference info |
+
+**CRITICAL ENFORCEMENT RULE:**
+
+If content would require font size BELOW these minimums:
+1. **FIRST OPTION:** Increase card height (card grows vertically)
+2. **SECOND OPTION:** Reduce cards per row (use 2 cards instead of 3)
+3. **THIRD OPTION:** Create continuation slide (①A-2, ②B, etc.)
+4. **FORBIDDEN:** Reduce font size below minimum
+5. **FORBIDDEN:** Reduce padding to save space
+6. **FORBIDDEN:** Enable shrink-to-fit or auto-reduce font
+7. **FORBIDDEN:** Clip text
+
+**These rules are absolute. No exceptions.**
+
+---
+
+### Typography Table — Specific Font Sizes
 
 **Slide headers with meeting points MUST include pen symbol:**
 - Format: `✏️ ① Slide Title` (pen first, one space, meeting point number, one space, title)
@@ -205,15 +235,73 @@ These values NEVER change. Use them exactly.
 - Pen emoji: ✏️ (Unicode U+270F, rendered at same size as meeting point number)
 - No space between pen and number
 
-| Element | Font Size | Weight | Color |
-|---------|-----------|--------|-------|
-| Slide header with meeting point (✏️ ①②③) | 28pt | BOLD | #FFFFFF (white) |
-| Section header (Frontend, Backend, etc) | 14pt | BOLD | #FFFFFF |
-| Main content / Work item title | 14pt | Regular | #FFFFFF |
-| Secondary text / Owner/Status | 13pt | Regular | #94A3B8 (muted slate) |
-| Tertiary text / Metadata | 12pt | Regular | #94A3B8 (muted slate) |
+| Element | Font Size | Weight | Color | Minimum Rule |
+|---------|-----------|--------|-------|--------------|
+| Slide header with meeting point (✏️ ①②③) | 32pt | BOLD | #FFFFFF (white) | **NEVER below 32pt** |
+| Section header (Frontend, Backend, etc) | 22pt | BOLD | #FFFFFF | **NEVER below 22pt** |
+| Main content / Work item title | 20pt | Regular | #FFFFFF | **NEVER below 20pt** |
+| Secondary text / Owner/Status | 18pt | Regular | #94A3B8 (muted slate) | **NEVER below 18pt** |
+| Small labels / Evidence tags | 12–14pt | Regular | #94A3B8 or accent | Only for references |
+| Tertiary text / Metadata | 12–14pt | Regular | #94A3B8 (muted slate) | Only for small references |
 
-**Rationale:** ACCESSIBILITY_NEURODIVERSITY specifies 14pt minimum for body text and 13pt for secondary. These override VISUAL_DESIGN's initial values (13pt/12pt) per SYSTEM_CONTRACT authority hierarchy.
+**Rationale:** Presentations shown on meeting-room screens require larger minimum sizes than desktop reading. A 14pt font is unreadable from 3–5m away. These new minimums ensure every participant can read the information without strain.
+
+---
+
+## 🚫 TYPOGRAPHY ENFORCEMENT — MANDATORY RENDER GATE
+
+Before ANY presentation is delivered, a typography validation MUST pass.
+
+### Validation Checklist
+
+**FAIL if ANY of these are true:**
+
+- [ ] Body text (main content) is below 20pt
+- [ ] Secondary text is below 18pt  
+- [ ] Section headers are below 22pt
+- [ ] Meeting point headers are below 32pt
+- [ ] Text has been shrunk via auto-fit or shrink-to-fit
+- [ ] Text is clipped or truncated
+- [ ] Text overlaps a card border
+- [ ] Padding has been reduced below 16px to fit content
+- [ ] Cards have fixed height instead of content-driven growth
+- [ ] Multiple work items are squeezed into a single row instead of using continuation slides
+
+### Rendering Model — MANDATORY
+
+Treat every slide content area like **CSS flexbox with `height: auto`:**
+
+```
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.card {
+  height: auto;  /* NEVER fixed */
+  min-height: min-content;
+  padding: 16px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+```
+
+### Core Principle
+
+**Content size determines card size. Card size must NEVER force content to shrink.**
+
+If you must choose between:
+- Keeping 20pt font + growing card + possibly adding continuation slide
+- Shrinking to 14pt to fit current card size
+
+**ALWAYS choose the first option.**
 
 ---
 
@@ -423,7 +511,14 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 - [ ] Layout compliance: Canonical form with authorized exceptions (①A grid, ⑥A diagrams)
 - [ ] All content in soft cards (rounded 12-18px corners, responsive height)
 - [ ] Spacing: 20px between blocks, 16-20px internal padding
-- [ ] Typography: Fixed sizes per spec (28/14/13/13/12pt)
+- [ ] **Typography: ALL text meets minimums (32pt headers, 22pt sections, 20pt body, 18pt secondary)**
+  - [ ] No header below 32pt
+  - [ ] No section header below 22pt
+  - [ ] No body text below 20pt
+  - [ ] No secondary text below 18pt
+  - [ ] No shrink-to-fit enabled
+  - [ ] No font reduction to fit cards
+  - [ ] All text readable in final PPTX (zoom to 100% and check from 3m away conceptually)
 - [ ] Visual render check: Actually rendered to PPTX/viewable format, not just generated
 - [ ] WCAG 2.2 AA: Contrast, no text box borders, color separation
 - [ ] Data integrity: No duplicates, checksums aligned, no fabricated data
@@ -435,6 +530,8 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 - Re-check
 - Only then deliver
 
+**Typography fails are BLOCKERS. A presentation with shrunk font or clipped text is not deliverable.**
+
 ---
 
 ## 📋 CARD TEXT STACK — MANDATORY VERTICAL SEPARATION
@@ -443,28 +540,30 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 
 ### Structure (in order):
 1. **TITLE ROW** — status symbol + PR/issue number + title
-   - Font size: 13–14pt
+   - Font size: **20pt minimum**
    - Bold where applicable
    - Color: #FFFFFF (white)
+   - May include small evidence tag (TOLKNING, FÖRSLAG, etc) at 12–14pt
 
 2. **DESCRIPTION / WORK DETAILS** — brief summary or context
-   - Font size: 12–13pt  
+   - Font size: **18pt minimum**  
    - May wrap to multiple lines
    - Color: #FFFFFF
    - **MUST NOT overlap title or metadata**
 
 3. **METADATA ROW** — owner / branch / status / date
-   - Font size: 11–12pt
+   - Font size: **12–14pt** (small but still readable)
    - Color: #94A3B8 (muted slate)
    - **MUST be visually separated from description**
+   - Can include small evidence tags
 
 ### Mandatory vertical spacing (BINDING — not optional):
 - Card top padding: **minimum 16px**
-- Title → Description gap: **minimum 8px**
-- Description → Metadata gap: **minimum 10px**
+- Title → Description gap: **minimum 10px**
+- Description → Metadata gap: **minimum 12px**
 - Card bottom padding: **minimum 16px**
-- Line height (body text): **minimum 1.3**
-- Line height (metadata): **minimum 1.2**
+- Line height (body text): **minimum 1.4**
+- Line height (metadata): **minimum 1.3**
 - Gap between adjacent cards: **minimum 20px**
 
 ### Auto-height behavior (CRITICAL):
@@ -472,20 +571,26 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 - Fixed-height containers are FORBIDDEN
 - Text must NEVER overlap another text block
 - Text must NEVER be clipped or truncated
+- Padding must NEVER be reduced to save space
 
 ### If content does not fit:
 1. Increase card height automatically
-2. Reduce number of cards per physical slide
+2. Reduce number of cards per physical slide (2 cards instead of 3)
 3. Create continuation slide (①A-2, ①B-2, etc.)
-4. **NEVER reduce font size below accessibility minimum (14pt body, 13pt secondary)**
+4. **NEVER reduce font size below 20pt (title), 18pt (body), 12pt (labels)**
 5. **NEVER reduce required spacing**
+6. **NEVER enable shrink-to-fit or auto-reduce-font**
 
 **Failure modes that trigger RENDER_GATE FAIL:**
+- ❌ Title is below 20pt
+- ❌ Body text is below 18pt
 - ❌ Title and body text share same baseline region
 - ❌ Metadata overlaps body text
-- ❌ Line spacing below 1.2
+- ❌ Line spacing below 1.3
 - ❌ Internal padding below 16px
 - ❌ Text clipping anywhere on card
+- ❌ Shrink-to-fit enabled
+- ❌ Text is centered in dense status cards
 
 ---
 
@@ -496,46 +601,66 @@ See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) fo
 - ④ Backend denna vecka
 - ⑤ Native denna vecka
 
-These three team-detail slides MUST use identical TEAM_DETAIL_CARDS layout. **NO TABLES ALLOWED.**
+These three team-detail slides MUST use identical TEAM_DETAIL_CARDS layout. **NO TABLES ALLOWED. NO ROWS. CARDS ONLY.**
 
-### Layout
+### Layout Principle
 - Use vertically stacked compact cards (NOT wide horizontal bands, NOT PowerPoint tables)
 - One work item per card
-- Text is horizontally centered inside every card
+- Text is LEFT-ALIGNED inside every card (NOT centered)
 - Maintain generous spacing between cards (20px minimum)
+- Content drives card height; card drives slide length if needed
 
-### Responsive sizing
+### Responsive sizing — BINDING
 - Card height is CONTENT-DRIVEN (never fixed)
 - Use minimum height, let cards expand vertically
 - If text wraps, card grows taller
 - NO text clipping allowed
 - Do NOT reduce font size to force content into a card
+- If multiple cards cannot fit on one slide with 20pt+ text → create continuation slide
+
+### Typography for ③④⑤ Cards
+Apply the mandatory minimums from the Typography Hierarchy section:
+- Card title: 20pt minimum
+- Status/branch info: 18pt minimum  
+- Owner/assignee: 18pt minimum
+- Metadata: 12–14pt (timestamps, review info)
 
 ### Card structure (in vertical order)
 ```
-    ✅ #93 · PR #95
-    SQL-injection fix
+✅ #93 · PR #95
+SQL-injection fix
 
-    Mergat till
-    Java-Development-Environment
+Merged till
+Java-Development-Environment
 
-       Rasha
-    Review: Erik
-    Merge: Erik
+Rasha · Merged
+Review: Erik + Björn
+Date: 14 sep 13:04
 ```
 
 ### Consistency Rule: ③④⑤ MUST BE IDENTICAL
 Frontend (③), Backend (④), and Native (⑤) MUST use identical card layout:
-- card geometry (soft rounded corners, same dimensions)
+- card geometry (soft rounded corners, responsive height)
 - internal spacing (16–20px padding, 20px between cards)
-- centered text alignment
-- typography hierarchy (28pt header, 13pt body, 12pt metadata)
+- LEFT-aligned text (not centered)
+- typography hierarchy (22pt section header, 20pt card title, 18pt secondary, 12–14pt metadata)
 - responsive-height behavior
+- **NO shrinking text to fit**
 
 **ONLY difference allowed: team border color**
 - Frontend: Teal #2DD4BF
 - Backend: Hot Pink #FF4FA3
 - Native: Purple #A855F7
+
+### Forbidden on ③④⑤
+- ❌ PowerPoint tables or row-like horizontal bands
+- ❌ Centered text in dense status cards
+- ❌ Fixed card heights
+- ❌ Font size below 20pt for main content
+- ❌ Font size below 18pt for secondary info
+- ❌ Padding below 16px
+- ❌ Text clipping or truncation
+- ❌ More than 3 cards forced onto one row if text shrinking would be needed
 
 ---
 
@@ -620,6 +745,20 @@ After rendering to PPTX, page through every slide:
   - Clear team/type borders
   - Generous internal padding (16–20px)
   - Responsive card height (grows with content)
+  - LEFT-aligned text (not centered)
+
+### Typography Minimums for Compact Cards
+
+All compact cards MUST adhere to the Typography Hierarchy section:
+- Card title: 20pt minimum
+- Body/summary text: 18pt minimum
+- Metadata/secondary info: 12–14pt
+
+**NO EXCEPTIONS.** If content does not fit:
+1. Reduce cards per row
+2. Allow card to grow taller
+3. Create continuation slide
+4. NEVER shrink font below minimum
 
 ### STANDARD_INFO_CARD Component
 
@@ -627,18 +766,20 @@ Reusable card structure for information display:
 
 ```
 ┌──────────────────────────┐
-│ [Title]                  │
-├──────────────────────────┤
-│ [Status/Badge]           │
-│ [Body text/summary]      │
-│ [Optional metadata]      │
+│ [Title — 20pt]           │
+│                          │
+│ [Body — 18pt]            │
+│ [Continues as needed]    │
+│                          │
+│ [Metadata — 12–14pt]     │
 └──────────────────────────┘
 ```
 
 - **Width:** Adapts to grid (100% in stack, 33-50% in grid)
-- **Height:** Content-driven (never fixed)
+- **Height:** Content-driven (never fixed) — card grows with text
 - **Borders:** Soft, rounded (12–18px corners)
 - **Never clips text** — grows vertically instead
+- **Padding:** 16–20px on all sides (never reduced)
 
 ### Forbidden (applies to all slides using this standard)
 
@@ -646,8 +787,10 @@ Reusable card structure for information display:
 - ❌ Banner-like information containers
 - ❌ Oversized empty decorative cards
 - ❌ Text size reduction to preserve geometry
-- ❌ Text clipping
+- ❌ Text clipping or truncation
 - ❌ Fixed-height containers
+- ❌ Centered text in information-dense cards
+- ❌ Font below 20pt for titles, 18pt for body, 14pt for tiny labels
 
 ---
 
