@@ -294,10 +294,15 @@ required_datasets:
       completed at code-level but waiting for review/merge. Essential for showing
       'Väntar i PR' status (blocker: waiting for review, not stuck).
 
-    execution_sequence:
-      1_primary: "GitHub REST API: GET /repos/chas-challenge-2026/avanza-team1/pulls?state=open&per_page=100"
-      2_fallback_1: "GitHub web UI: https://github.com/chas-challenge-2026/avanza-team1/pulls"
-      3_fallback_2: "Google Sheets (if freshness verified)"
+    reference: "EXTERNAL_SOURCES.yaml: GITHUB_OPEN_PRS (canonical source of truth for URL, implementations, fallback chain)"
+
+    execution_sequence: >
+      Follow EXTERNAL_SOURCES.yaml GITHUB_OPEN_PRS exactly:
+      1. Try primary source with any allowed implementation (see EXTERNAL_SOURCES.yaml)
+      2. If all implementations fail: try fallback_order per EXTERNAL_SOURCES.yaml
+      3. If all fallbacks fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+
+      DO NOT duplicate fallback lists here. EXTERNAL_SOURCES.yaml is the single source of truth.
 
     required_fields:
       - number (PR ID)

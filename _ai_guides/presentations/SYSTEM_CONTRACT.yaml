@@ -869,11 +869,33 @@ execution_sequence:
 
       dataset_3_active_issues:
         action: "Call GITHUB_OPEN_ISSUES source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
-        on_success: "Proceed to step_2b"
+        on_success: "Proceed to dataset_4_open_prs"
         on_all_github_rest_implementations_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
         on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
-        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to step_2b"
+        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_4_open_prs"
         record_in_receipt: "active_issues.status = SUCCESS | INCOMPLETE, active_issues.source_used = github_rest_api | sheets | github_web, active_issues.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+
+      dataset_4_open_prs:
+        action: "Call GITHUB_OPEN_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        on_success: "Proceed to dataset_5_branches"
+        on_all_github_rest_implementations_unavailable: "Use registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)"
+        on_sheets_unavailable_or_stale: "Use registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)"
+        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_5_branches"
+        record_in_receipt: "open_prs.status = SUCCESS | INCOMPLETE, open_prs.source_used = github_rest_api | sheets | github_web, open_prs.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+
+      dataset_5_branches:
+        action: "Call GITHUB_BRANCHES source using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        on_success: "Proceed to dataset_6_commits"
+        on_all_github_rest_implementations_unavailable: "Record as INCOMPLETE, proceed to dataset_6_commits (branches required for activity detection but may be available via commits data)"
+        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_6_commits"
+        record_in_receipt: "branches.status = SUCCESS | INCOMPLETE, branches.source_used = github_rest_api, branches.implementation_used = [github_connector | http_fetch | web_fetch | curl]"
+
+      dataset_6_commits:
+        action: "Call GITHUB_COMMITS source (per-branch) using any implementation permitted by EXTERNAL_SOURCES.yaml (github_connector, http_fetch, web_fetch, or curl)"
+        on_success: "Proceed to step_2b"
+        on_all_github_rest_implementations_unavailable: "Record as INCOMPLETE, proceed to step_2b"
+        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to step_2b"
+        record_in_receipt: "commits.status = SUCCESS | INCOMPLETE, commits.source_used = github_rest_api, commits.implementation_used = [github_connector | http_fetch | web_fetch | curl], branches_scanned = [develop, Java-Development-Environment, C/C++-Native, ...]"
 
     CRITICAL_VALIDITY_RULE: >
       "GitHub API failed" is ONLY a valid report if an implementation explicitly
@@ -931,6 +953,44 @@ execution_sequence:
 
           active_issues:
             - "Same structure as merged_prs (see DATA_ACQUISITION_CONTRACT.yaml for details)"
+
+          open_prs:
+            - "Source 1: GitHub API /pulls?state=open"
+              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT | EMPTY_RESPONSE"
+              http_code: "200 | 403 | 404 | 401 | 429 (rate limit) | null"
+              failure_reason: "e.g., 'API rate limit exceeded'"
+              payload_summary: "N items collected"
+              tried_at: "ISO 8601 timestamp"
+            - "Source 2: Google Sheets (fallback)"
+              status: "SUCCESS | AUTH_ERROR | EMPTY_RESPONSE"
+              failure_reason: "e.g., 'permission denied'"
+              payload_summary: "N items collected"
+              tried_at: "ISO 8601 timestamp"
+            - "Source 3: GitHub web (fallback)"
+              status: "SUCCESS | PARSE_ERROR"
+              failure_reason: "e.g., 'page structure changed'"
+              payload_summary: "N items collected"
+              tried_at: "ISO 8601 timestamp"
+            - "Final status: SUCCESS | INCOMPLETE"
+
+          branches:
+            - "Source: GitHub API /repos/.../branches"
+              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT"
+              http_code: "200 | 403 | 404 | 401 | null"
+              failure_reason: "e.g., 'API rate limit exceeded'"
+              branches_found: "N (including develop, Java-Development-Environment, C/C++-Native)"
+              tried_at: "ISO 8601 timestamp"
+            - "Final status: SUCCESS | INCOMPLETE"
+
+          commits:
+            - "Source: GitHub API /repos/.../commits (per branch)"
+              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT"
+              http_code: "200 | 403 | 404 | 401 | null"
+              failure_reason: "e.g., 'API rate limit exceeded'"
+              branches_scanned: "N (develop, Java-Development-Environment, C/C++-Native, ...)"
+              commits_found: "N total across all branches in REPORTING_PERIOD"
+              tried_at: "ISO 8601 timestamp"
+            - "Final status: SUCCESS | INCOMPLETE"
 
     critical_rule: >
       A required dataset may ONLY be marked INCOMPLETE after EVERY fallback

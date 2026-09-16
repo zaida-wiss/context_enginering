@@ -116,7 +116,14 @@ sources:
       - fallback_order: 1
         source_id: "GOOGLE_PROJECT_DATA_SHEET"
         source_type: "google_sheets_structured_data"
-        note: "Only if GitHub API completely unavailable"
+        note: "Try only if GitHub API completely unavailable"
+        freshness_requirement: "last_synced_at >= REPORTING_PERIOD_END (must verify before use)"
+
+      - fallback_order: 2
+        source_id: "GITHUB_OPEN_PRS_WEB"
+        source_type: "github_web_ui"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:open"
+        note: "Last resort: requires HTML parsing; less reliable than API"
 
   GITHUB_BRANCHES:
     source_id: "GITHUB_BRANCHES"
