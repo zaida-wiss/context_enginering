@@ -35,8 +35,8 @@ This file defines **content only** (what data goes where, how it's structured).
 | **①A** | Grid 3×2 | Max 6 merged PR cards per slide (develop branch), pagination if >6 |
 | **①B** | Grid 3×2 | Collection-branch PRs (Backend: Java-Development-Environment), pagination if >6 |
 | **①C** | Grid 3×2 | Collection-branch PRs (Native: C/C++-Native), pagination if >6 |
-| **①D** | Full-width stacked | Pågår denna vecka (team-based: Frontend, Backend, Native — LEVEL 2-3) |
-| **①E** | Full-width stacked | Backlog & assigned work: Assigned without branch (LEVEL 4) + Cross-team (LEVEL 2-3) |
+| **①D** | Full-width stacked | Pågår denna vecka: Team-based (Frontend, Backend, Native — LEVEL 1-3) |
+| **①E** | Full-width stacked | Pågår denna vecka: Cross-team + Backlog (LEVEL 2-3 cross-team + LEVEL 4) |
 | **①F** | Full-width stacked | Decisions + decision candidates |
 | **②** | COMPACT_CARD_STANDARD | Priority items, vertically ranked |
 | **③④⑤** | TEAM_DETAIL_CARDS | Status + blockers, IDENTICAL layout for all teams |
@@ -402,18 +402,18 @@ Merged by: Erik  |  Reviewed by: Zaida     ← Two-column table, no border (11-1
 
 ---
 
-## 📊 ①D — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
+## 📊 ①D — PÅGÅR DENNA VECKA: TEAM-BASED (LEVEL 1-3)
 
 **PURPOSE:**
-Shows active work by team. Three separate columns, each team's pågår issues.
-Does NOT include cross-team work (that goes to ①C).
+Shows active work by single team. Three separate columns, each team's pågår issues.
+Does NOT include cross-team work (that goes to ①E).
 
 **CONTENT REQUIREMENTS:**
 - Active (open) issues assigned to team members
 - One column per team (Frontend | Backend | Native)
 - Max 4 rows per column = max 12 cards total
-- Include issue number, branch, latest commit timestamp
-- Exclude cross-team work (goes to ①D)
+- Include issue number, branch, latest commit timestamp, PR status
+- Exclude cross-team work (goes to ①E)
 
 **CARD DATA FIELDS:**
 - Issue number + title

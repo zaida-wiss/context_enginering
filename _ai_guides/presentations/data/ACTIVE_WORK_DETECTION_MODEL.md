@@ -74,6 +74,8 @@ STATUS: "Pågår — branch aktiv, senaste commit utanför vecka"
 
 **Use case:** Include but flag as uncertain
 
+**Show on:** ①D (team-based) or ①E (cross-team)
+
 ---
 
 ### LEVEL 4 — Moderate Evidence: Open Assigned Issue Alone
@@ -151,20 +153,23 @@ For each team member, follow this sequence:
    └─ Combine all evidence into one "activity record" per person
 
 4. Classify & Show:
-   ├─ IF (open_pr + linked_issue + assignee) → LEVEL 1 → Show on ①B
-   ├─ ELSE IF (open_issue + matching_branch + recent_commits) → LEVEL 2 → Show on ①C
-   ├─ ELSE IF (open_issue + matching_branch) → LEVEL 3 → Show on ①C
-   ├─ ELSE IF (open_assigned_issue) → LEVEL 4 → Show on ①E
+   ├─ IF (open_pr + linked_issue + assignee) → LEVEL 1 → Show on ①D or ①E (team-based or cross-team)
+   ├─ ELSE IF (open_issue + matching_branch + recent_commits + TEAM) → LEVEL 2 → Show on ①D
+   ├─ ELSE IF (open_issue + matching_branch + recent_commits + CROSS_TEAM) → LEVEL 2 → Show on ①E (section A)
+   ├─ ELSE IF (open_issue + matching_branch + TEAM) → LEVEL 3 → Show on ①D
+   ├─ ELSE IF (open_issue + matching_branch + CROSS_TEAM) → LEVEL 3 → Show on ①E (section A)
+   ├─ ELSE IF (open_assigned_issue + no_branch) → LEVEL 4 → Show on ①E (section B)
    ├─ ELSE IF (recent_commits_unlinked) → LEVEL 5 → Don't show (suggest linking)
    ├─ ELSE IF (no_activity_this_period) → "Ingen aktivitet denna vecka"
-   └─ MANDATORY: Every open assigned issue must be accounted for (shown or excluded with reason)
+   └─ MANDATORY: Every open assigned issue must be accounted for (shown on ①D/①E or excluded with reason)
 ```
 
 **CRITICAL RULE: COMPLETENESS**
 
 Before rendering, validate:
 ```
-open_assigned_issues_from_github == (issues_shown_in_①B_①C_①D_①E + explicit_exclusions)
+open_assigned_issues_from_github == 
+  (issues_shown_in_①D_①E + explicit_exclusions)
 ```
 
 If this fails → presentation generation STOPS and shows which issues are missing.
@@ -173,50 +178,52 @@ If this fails → presentation generation STOPS and shows which issues are missi
 
 ## 🎯 HOW TO SHOW THIS ON SLIDES
 
-### Slide ①A — Merged PRs
-**Show:** All merged PRs (all levels of evidence required them to exist → already done)
+### Slide ①A — Merged PRs (develop)
+**Show:** All merged PRs to develop branch
+**Evidence:** Already completed work
 
 ---
 
-### Slide ①B — Väntar i PR (NEW)
-**Show:** Level 1 evidence only
-- Open PR + linked issue + assignee ✓
-- Include: PR number, issue number, title, assignee, reviewer(s), branch
-- Format: `#PR · #ISSUE Title`
-- Reviewer field is CRITICAL — shows who is blocking
+### Slide ①B — Merged PRs (Backend collection branch)
+**Show:** All merged PRs to Backend Java-Development-Environment branch
+**Evidence:** Already completed work
+
+---
+
+### Slide ①C — Merged PRs (Native collection branch)
+**Show:** All merged PRs to Native C/C++-Native branch
+**Evidence:** Already completed work
+
+---
+
+### Slide ①D — Pågår denna vecka: Team-based
+**Show:** LEVEL 1 + LEVEL 2 + LEVEL 3 evidence PER TEAM (Frontend | Backend | Native)
+- Open PR + issue (LEVEL 1)
+- Open issue + matching branch + recent commits (LEVEL 2)
+- Open issue + matching branch, older commits (LEVEL 3)
+- Three separate team columns
 
 **Render gate check:**
 ```
 [ ] All open PRs linked to active issues are shown
-[ ] All requested_reviewers are visible
-[ ] If no reviewers assigned: show "Review: ej tilldelad"
+[ ] All team-based pågår issues with branches are shown
+[ ] Cross-team work excluded (goes to ①E)
+[ ] Branch names visible for context
 ```
 
 ---
 
-### Slide ①C — Pågår denna vecka utan PR
-**Show:** Level 2 + Level 3 evidence
-- Open issue + matching branch + (optional: recent commits)
-- Include: issue number, title, assignee, branch
-- Format: `#ISSUE Title`
-- Branch shows where the work lives
+### Slide ①E — Pågår denna vecka: Cross-team + Backlog
 
-**Render gate check:**
-```
-[ ] All open issues with active branches shown (not in ①B)
-[ ] Branch name visible for context
-```
+**TWO SECTIONS:**
 
----
+#### Section A: Cross-team pågår (LEVEL 2-3)
+**Show:** LEVEL 2 + LEVEL 3 evidence affecting multiple teams
+- Open issues with matching branches
+- Affects 2+ teams
+- Format: `#ISSUE · Teams affected`
 
-### Slide ①D — Pågår denna vecka: Cross-team
-**Show:** Level 2 + Level 3 evidence WHERE issue affects multiple teams
-- Same as ①C, but filtered to cross-team issues only
-- Svart/neutral border indicates multi-team ownership
-
----
-
-### Slide ①E — Tilldelad / Ej påbörjad (Level 4 + Board Status)
+#### Section B: Backlog / Assigned without branch (LEVEL 4)
 **Show:** Open assigned issues WITHOUT matching branch, classified by Project Board status
 
 **MANDATORY RULE: All open assigned issues must be shown or explicitly excluded.**
@@ -271,8 +278,9 @@ Status: Ready to start
    - Checklist: "Correlation complete?"
 
 3. **RENDER_GATE_CHECKLIST.md**
-   - Check: "Every person with work is shown in ①A, ①B, ①C, or ①D?"
-   - Check: "No open PR is missing from ①B?"
+   - Check: "Every person with work is shown in ①D or ①E?"
+   - Check: "No open PR is missing from ①D/①E?"
+   - Check: "No open assigned issue is missing from ①D/①E without documented exclusion?"
 
 ---
 
@@ -321,10 +329,8 @@ open_assigned_issues = github_api.issues(state='open', assignee=person)
 
 # Collect all issues actually rendered in presentation
 rendered_issues = (
-    issues_on_slide_①B +  # PR waiting (LEVEL 1)
-    issues_on_slide_①C +  # Pågår no PR (LEVEL 2-3)
-    issues_on_slide_①D +  # Cross-team
-    issues_on_slide_①E +  # Assigned no branch (LEVEL 4)
+    issues_on_slide_①D +  # Team-based (LEVEL 1-3: PR waiting, pågår, etc)
+    issues_on_slide_①E +  # Cross-team pågår (LEVEL 2-3) + Backlog (LEVEL 4)
     issues_explicitly_excluded  # with documented reason
 )
 
@@ -357,23 +363,35 @@ LEVEL 1 (PR + Issue + Assignee):
     ├─ Assignee: Zaida
     ├─ Reviewers: Björn
     ├─ Branch: docs/#67-update-readme
+    ├─ Team: Frontend (single-team work)
     ├─ Status: Väntar på review (blocker: Björn needs to approve)
-    └─ ACTION: Show on ①B "Väntar i PR"
+    └─ ACTION: Show on ①D "Väntar i PR"
 
 LEVEL 2 (Issue + Branch + Recent Commits):
   - #72 Add analytics dashboard
     ├─ Assignee: Zaida
     ├─ Branch: frontend/#72-analytics
+    ├─ Team: Frontend (single-team work)
     ├─ Recent commits: 15 sep, 16 sep
     ├─ Status: Pågår — arbete fortsätter, PR nästa
-    └─ ACTION: Show on ①C "Pågår denna vecka utan PR"
+    └─ ACTION: Show on ①D "Pågår denna vecka utan PR"
 
-LEVEL 4 (Assigned Issue):
-  - #95 Refactor auth middleware
+LEVEL 2 (Cross-team):
+  - #88 API integration
+    ├─ Assignee: Zaida
+    ├─ Branch: integration/#88-api
+    ├─ Teams affected: Frontend + Backend
+    ├─ Recent commits: 16 sep
+    ├─ Status: Pågår — integration point, multiple teams
+    └─ ACTION: Show on ①E section A "Cross-team pågår"
+
+LEVEL 4 (Assigned Issue, No Branch):
+  - #89 Add MVP core-flow E2E test
     ├─ Assignee: Zaida
     ├─ No branch found
-    ├─ Status: Tilldelad — arbete inte påbörjat eller branch saknas
-    └─ ACTION: Include as capacity info (not shown on ①B/①C, but noted if relevant)
+    ├─ Project Board status: Ready to start
+    ├─ Status: Tilldelad — arbete inte påbörjat ännu
+    └─ ACTION: Show on ①E section B "Backlog / Assigned"
 
 SUMMARY FOR MEETING SLIDE:
   ✅ Mergat: (from slide ①A — PRs merged earlier)
