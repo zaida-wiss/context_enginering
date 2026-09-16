@@ -41,7 +41,7 @@ This file defines **content only** (what data goes where, how it's structured).
 | **⑥** | COMPACT_CARD_STANDARD (except ⑥A) | Blockers + dependencies |
 | **⑥A** | Dependency diagram | Visual node + arrow graph (exception allowed) |
 | **⑦** | COMPACT_CARD_STANDARD | Risk register (compact cards, NOT table) |
-| **⑧** | Table format | Kapacitet & Estimering (unchanged — per spec) |
+| **⑧** | COMPACT_CARD_STANDARD | Kapacitet & Estimering (compact cards) |
 | **⑨** | COMPACT_CARD_STANDARD | Prioritization + phases |
 | **⑩** | COMPACT_CARD_STANDARD | Technical decisions |
 | **⑪** | COMPACT_CARD_STANDARD | Sprint goals |

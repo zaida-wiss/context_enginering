@@ -212,12 +212,13 @@ DESIGN & STRUCTURE COMPLIANCE:
      ❌ FAILURE if any of ③④⑤ clips text
      ❌ FAILURE if geometry differs between teams
   
-  ✅ Slides ②⑥-⑦⑨–⑭: COMPACT_CARD_STANDARD
+  ✅ Slides ②⑥-⑧⑨–⑭: COMPACT_CARD_STANDARD
      ✅ 2–3 cards per row or vertically stacked
      ✅ Soft rounded corners (12–18px)
      ✅ Responsive height (no fixed dimensions)
      ❌ FAILURE if full-width horizontal bands
      ❌ FAILURE if text clipped
+     ❌ FAILURE if ⑧ rendered as table (must be compact cards)
   
   ✅ All cards: 12–18px corners, 16–20px padding, NO text clipping
   ✅ All cards: Dark navy background (#0F1830 slide, #18233D card)

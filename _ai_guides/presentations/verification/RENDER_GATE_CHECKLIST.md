@@ -538,14 +538,20 @@ FAIL GATE if:
       ✅ Cards are compact (width adapts to content)
 ```
 
-**PRIORITY/RISK CARD COMPLIANCE (slide ②):**
+**COMPACT CARD COMPLIANCE (slides ②, ⑥–⑧, ⑨–⑭):**
 ```
-  [ ] Priority items shown as vertically stacked cards (not wide bands)
-  [ ] Each card shows: rank number + deadline + content
+  [ ] All slides show vertically stacked cards (not wide bands, not tables)
+  [ ] Each card shows: rank/title + status + content
   [ ] Text inside each card is centered
   [ ] No card clips text (cards grow vertically as needed)
-  [ ] Priority ordering clear (1️⃣ 2️⃣ 3️⃣)
-  [ ] Risk and action visible in every card
+  [ ] Soft corners visible (12–18px radius)
+  [ ] 2–3 cards per row or single column (depends on content)
+  
+  [ ] Slide ② (Priority): Rank numbers visible (1️⃣ 2️⃣ 3️⃣)
+  [ ] Slide ⑦ (Risk): Compact cards, NOT table format
+  [ ] Slide ⑧ (Kapacitet): Compact cards, NOT table format
+  
+  ❌ FAILURE if any slide ②⑥–⑧⑨–⑭ renders as table or wide band
 ```
 
 ---

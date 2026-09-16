@@ -482,12 +482,13 @@ After rendering to PPTX, page through every slide:
 
 ---
 
-## 🎴 COMPACT CARD STANDARD — Mandatory for Meeting Points ②, ⑥–⑦, ⑨–⑭
+## 🎴 COMPACT CARD STANDARD — Mandatory for Meeting Points ②, ⑥–⑧, ⑨–⑭
 
 **MANDATORY for these MEETING POINTS ONLY:**
 - ② Nuläge & Deadline
 - ⑥ Risker & Blockers (except ⑥A dependency diagram)
 - ⑦ Risk register
+- ⑧ Kapacitet & Estimering
 - ⑨ Prioritering & Scope
 - ⑩ Tekniska Beslut
 - ⑪ Sprintmål
@@ -501,9 +502,8 @@ After rendering to PPTX, page through every slide:
 - ⑤ Native denna vecka
 (These three use identical TEAM_DETAIL_CARDS layout—see above section)
 
-**UNCHANGED (keep existing layouts):**
+**NOT affected (keep existing layouts):**
 - ① Avklarat (①A grid, ①B-①E full-width stacked)
-- ⑧ Kapacitet & Estimering (tabell format per SLIDE_DETAIL_SPEC)
 
 ### Default Layout
 
