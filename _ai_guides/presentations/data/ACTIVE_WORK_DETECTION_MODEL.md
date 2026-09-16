@@ -234,6 +234,41 @@ For each team member, follow this sequence:
 
 ---
 
+## 🔍 CODE INSPECTION — Beyond Git Signals
+
+**Git signals (commits, branches, PRs) show ACTIVITY, but not CODE QUALITY.**
+
+When evaluating "Pågår" issues:
+
+```
+GITHUB SIGNALS (Automatic):
+  ✅ Branch exists
+  ✅ Recent commits found
+  ✅ PR is open
+
+HUMAN INSPECTION (Required):
+  ? Code looks like it's progressing?
+  ? Does it match the issue description?
+  ? Any obvious blockers or incomplete sections?
+```
+
+**Examples of what code inspection reveals:**
+
+| Git Says | Code Says | Action |
+|---|---|---|
+| "Pågår — commit today" | "Stalled, incomplete refactor" | Flag as: "Code needs review" |
+| "Pågår — 5 commits this week" | "Wrong direction, needs rebase" | Flag as: "Direction unclear" |
+| "Pågår — branch active" | "Feature mostly working, minor bugs" | OK — proceeding normally |
+
+**Requirement:**
+- Before displaying issue as "Pågår", reviewer SHOULD inspect code
+- If concerned: add annotation (not hiding problems, surfacing them)
+- If no access to code: mark as "Code not inspected — [reason]"
+
+**This prevents:** Showing work as "on track" when it's actually stalled or wrong
+
+---
+
 ## 📝 EXAMPLE: One Person's Complete Activity Record
 
 ```

@@ -334,6 +334,24 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
   [ ] Each slide header starts with meeting-point symbol (①②③ etc)
 ```
 
+**CODE INSPECTION FOR PÅGÅR-ISSUES (QUALITY GATE):**
+```
+  [ ] For each "Pågår" issue displayed (①B, ①C slides):
+      - Branch/PR link is clickable (inspectable)
+      - Spot-check: Code looks like it's progressing toward issue goal?
+      - Code matches issue description (not going in wrong direction)?
+      - Any obvious blockers or stalled sections visible?
+  
+  [ ] If code inspection reveals problems:
+      - Add note: "Code needs review — [specific concern]"
+      - Don't hide problems; surface them for team discussion
+      - Better to flag in meeting than discover at merge time
+  
+  [ ] If you cannot inspect code (no access):
+      - Mark issue: "Code not inspected — [reason]"
+      - Transparency is important (don't pretend you checked)
+```
+
 **TEAM COLLECTION BRANCH COVERAGE (CRITICAL for risk/blocker analysis):**
 ```
   [ ] Risk/blocker/capacity analysis examined ALL team collection branches?

@@ -217,7 +217,19 @@ Assignee name (@github_login)
 - Issue number + title
 - Branch name (shows where work lives)
 - **Latest commit timestamp** (proves activity this week)
+- **Link to branch/PR** (clickable, so reviewer can inspect code)
 - Assignee name + @github_login
+
+**CODE INSPECTION REQUIREMENT:**
+Before displaying issue as "Pågår":
+1. Reviewer SHOULD inspect the branch/PR code
+2. Ask: Does code look like it's progressing toward completion?
+3. Does the work match the issue description?
+4. Any obvious blockers or incomplete sections?
+
+If code looks suspicious (incomplete, wrong direction, stalled):
+- Add note: "Code needs review — direction unclear" or "Looks stalled"
+- This helps meeting participants identify issues before they become blockers
 
 **WHY COMMIT TIMESTAMP:**
 - Shows when the work actually happened
