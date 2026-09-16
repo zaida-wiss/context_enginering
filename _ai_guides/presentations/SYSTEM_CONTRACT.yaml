@@ -136,6 +136,44 @@ authority:
     file: "verification/RENDER_GATE_CHECKLIST.md"
     owns: "Verification checkpoints before delivery"
 
+###############################################################################
+# REPOSITORY REF POLICY — Branch Inheritance (CRITICAL)
+###############################################################################
+repository_ref_policy:
+  rule: >
+    The repository ref used to read the entry README is the authoritative
+    ref for the entire execution. ALL internal repository files must be read
+    from this same ref. Never silently switch to the default branch.
+
+  execution_ref:
+    source: "ref (branch/tag/SHA) of the README that started this execution"
+    applies_to: "Every internal file read during this execution"
+
+  requirements:
+    - "Read EVERY internal repository file from execution_ref (same branch as entry README)"
+    - "Never silently switch to repository default branch mid-execution"
+    - "External project data may come from registered sources as defined separately"
+    - "If a required internal file does not exist on execution_ref: STOP and report missing file"
+    - "Do NOT fetch the file from main/default as fallback"
+
+  fallback_behavior:
+    rule: >
+      If a required internal file does not exist on the execution_ref,
+      STOP immediately and report the missing file. Do not fetch from default.
+
+  example_correct_flow: >
+    cleanup/README.md → cleanup/SYSTEM_CONTRACT.yaml →
+    cleanup/SLIDE_DETAIL_SPEC.md → cleanup/VISUAL_DESIGN_MANDATORY.md → etc.
+    (All from cleanup branch, never jumping to main)
+
+  why_this_matters: >
+    This enables isolated testing and development on feature branches
+    without accidental fallback to main. cleanup branch must be testable
+    before merge to main.
+
+###############################################################################
+# CONFLICT RESOLUTION
+###############################################################################
 conflict_resolution:
   principle: >
     Domain separation prevents most conflicts. When conflicts occur despite separation, follow this priority:

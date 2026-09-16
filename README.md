@@ -36,11 +36,11 @@ The project code repository (`avanza-team1`) contains:
    - Follow execution_sequence from SYSTEM_CONTRACT.yaml exactly
    - No presentation artifact may be generated before execution_receipt and data_audit gates pass
    
-   **Version Consistency Policy:**
-   1. Always read latest files from default branch (no SHA lockdown)
-   2. Once a build starts (execution_receipt → data_audit → rendering), use consistent versions within that build
-   3. If repo changes mid-build and you need to restart, read fresh from latest default branch
-   4. This balances: (a) fixes/improvements visible immediately, (b) no rule-version churn within a single build
+   **Branch Inheritance Policy (CRITICAL):**
+   1. The branch/ref of the README you start from is the authoritative ref for ALL internal files read
+   2. Read every internal file from that same branch/ref — never silently switch to default/main
+   3. This enables isolated development (e.g., cleanup branch testable before merge to main)
+   4. If a required file doesn't exist on your branch: STOP and report, don't fetch from main as fallback
 
 ### 📚 Jag behöver projektinformation
 → **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB

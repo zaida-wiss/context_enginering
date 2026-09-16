@@ -55,10 +55,9 @@ RESULTAT: Live GitHub-data + verifierad design = presentationen är klar
 4. ✅ Föl ordningen → slutligen render presentation
 5. ✅ Verifiera mot render-gate checklist före leverans
 
-**Raw-links för direkt läsning (om länk inte fungerar):**
-- 🚨 MANDATORY_READING_ORDER.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/MANDATORY_READING_ORDER.md
-- 📊 SLIDE_DETAIL_SPEC.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md
-- 📝 PRESENTATION_STRUCTURE.md: https://raw.githubusercontent.com/zaida-wiss/context_enginering/main/_ai_guides/presentations/monday_meeting/structure/PRESENTATION_STRUCTURE.md
+**Branch Inheritance Policy:**
+Do NOT use raw.githubusercontent.com links that hard-code `/main/`. 
+Read files from the same branch/ref as your entry README (see repository_ref_policy in SYSTEM_CONTRACT.yaml).
 
 ---
 
