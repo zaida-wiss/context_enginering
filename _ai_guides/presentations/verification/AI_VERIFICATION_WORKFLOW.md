@@ -224,7 +224,11 @@ DESIGN & STRUCTURE COMPLIANCE:
   ✅ All cards: Dark navy background (#0F1830 slide, #18233D card)
   ✅ Team colors: Borders only (not backgrounds)
   ✅ Status symbols: ✅ ◐ 🔴 ? consistent meaning everywhere
-  ✅ Typography: Headers 28pt BOLD, body 13pt regular, metadata 12pt
+  ✅ Typography (WCAG 2.2 AA compliant): 
+     - Headers 28pt BOLD
+     - Body text 14pt regular (min — per ACCESSIBILITY_NEURODIVERSITY)
+     - Metadata 13pt regular (min)
+     ❌ FAILURE if body <14pt or metadata <13pt
   ✅ Colors: Team borders correct, status symbols clear, WCAG 4.5:1 contrast
 
 VISUAL QUALITY (rendered PPTX):

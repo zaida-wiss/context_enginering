@@ -153,13 +153,17 @@ These values NEVER change. Use them exactly.
 
 ### Typography
 
+**WCAG 2.2 AA Compliant (per SYSTEM_CONTRACT: accessibility rules override design when conflict).**
+
 | Element | Font Size | Weight | Color |
 |---------|-----------|--------|-------|
 | Slide header (meeting point ①②③) | 28pt | BOLD | #FFFFFF (white) |
 | Section header (Frontend, Backend, etc) | 14pt | BOLD | #FFFFFF |
-| Main message | 13pt | Regular | #CBD5E1 (light slate) |
-| Work item title | 13pt | Regular | #FFFFFF |
-| Owner/Status | 12pt | Regular | #94A3B8 (muted slate) |
+| Main content / Work item title | 14pt | Regular | #FFFFFF |
+| Secondary text / Owner/Status | 13pt | Regular | #94A3B8 (muted slate) |
+| Tertiary text / Metadata | 12pt | Regular | #94A3B8 (muted slate) |
+
+**Rationale:** ACCESSIBILITY_NEURODIVERSITY specifies 14pt minimum for body text and 13pt for secondary. These override VISUAL_DESIGN's initial values (13pt/12pt) per SYSTEM_CONTRACT authority hierarchy.
 
 ---
 
