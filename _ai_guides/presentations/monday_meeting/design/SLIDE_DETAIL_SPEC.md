@@ -452,9 +452,12 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 ### Section 1: Open Assigned (No Branch Yet) — LEVEL 4
 Shows issues that are assigned but don't have a matching branch yet.
 
+**LEVEL 4 definition:** Open assigned issue + NO matching branch + NO branch exists anywhere
+(Branch exists but with no recent commits = LEVEL 3, shown elsewhere on ①D, not here)
+
 **Content:**
 - Open issues assigned to team members
-- No matching branch exists (or branch exists but no recent commits)
+- No matching branch exists
 - Classified by Project Board status:
   - **Ready to start** — shown as "⏳ #ISSUE — Ready"
   - **In Progress (but no branch)** — shown as "◐ #ISSUE — In Progress (no branch)"
