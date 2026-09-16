@@ -16,6 +16,24 @@ Follow this order exactly. Do not skip.
 
 ---
 
+## 0️⃣ READ INTEGRITY_CONSTRAINT.md FIRST
+
+**Location:** [`INTEGRITY_CONSTRAINT.md`](INTEGRITY_CONSTRAINT.md)
+
+This file states the non-negotiable rule:
+
+**If you cannot obtain ALL required data from registered sources: STOP.**
+
+Do NOT guess, hallucinate, or improvise data. 
+
+Do NOT rationalize your way around this rule.
+
+**If you commit to following this rule exactly — continue to step 1.**
+
+**If you plan to ignore this rule — STOP now.**
+
+---
+
 ## 1️⃣ READ SYSTEM_CONTRACT.yaml
 
 **Location:** [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml)

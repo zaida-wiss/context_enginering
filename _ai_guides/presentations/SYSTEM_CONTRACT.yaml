@@ -910,6 +910,28 @@ execution_sequence:
       Do NOT attempt to work around unavailability by using unregistered tools,
       generic web access, or improvised implementations not in EXTERNAL_SOURCES.yaml.
 
+  step_2a:
+    name: "INTEGRITY VERIFICATION — Check all data before recording receipt"
+    prerequisite: "MUST complete BEFORE proceeding to step_2b"
+
+    rule: >
+      Before recording DATA_ACQUISITION_RECEIPT, verify that NO data was guessed,
+      hallucinated, or improvised. For each dataset that is marked SUCCESS:
+      - Is the source registered in EXTERNAL_SOURCES.yaml? YES/NO
+      - Was the implementation actually invoked (per receipt)? YES/NO
+      - Is the data verified from a real source, not a guess? YES/NO
+
+    failure_action: >
+      If ANY dataset has unverified, guessed, or hallucinated data:
+      STOP immediately. Do NOT proceed to step_2b.
+      Report which dataset(s) contain unverified data.
+      Do NOT attempt to "fill in the blanks" with guesses.
+
+    critical_checkpoint: >
+      This step prevents hallucinated data from reaching the presentation.
+      If you cannot verify that all SUCCESS datasets came from actual sources:
+      you must mark them INCOMPLETE instead.
+
   step_2b:
     name: "Record DATA_ACQUISITION_RECEIPT — MANDATORY before DATA_AUDIT"
     prerequisite: "MUST complete BEFORE proceeding to data_audit"
