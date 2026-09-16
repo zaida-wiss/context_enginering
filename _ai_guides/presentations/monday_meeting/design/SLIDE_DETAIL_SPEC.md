@@ -35,8 +35,8 @@ This file defines **content only** (what data goes where, how it's structured).
 | **①A** | Grid 3×2 | Max 6 merged PR cards per slide (develop branch), pagination if >6 |
 | **①B** | Grid 3×2 | Collection-branch PRs (Backend: Java-Development-Environment), pagination if >6 |
 | **①C** | Grid 3×2 | Collection-branch PRs (Native: C/C++-Native), pagination if >6 |
-| **①D** | Full-width stacked | Open issues this week (team-based: Frontend, Backend, Native) |
-| **①E** | Full-width stacked | Open issues this week (cross-team work) |
+| **①D** | Full-width stacked | Pågår denna vecka (team-based: Frontend, Backend, Native — LEVEL 2-3) |
+| **①E** | Full-width stacked | Backlog & assigned work: Assigned without branch (LEVEL 4) + Cross-team (LEVEL 2-3) |
 | **①F** | Full-width stacked | Decisions + decision candidates |
 | **②** | COMPACT_CARD_STANDARD | Priority items, vertically ranked |
 | **③④⑤** | TEAM_DETAIL_CARDS | Status + blockers, IDENTICAL layout for all teams |
@@ -440,38 +440,73 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 
 ---
 
-## 📊 ①E — PÅGÅR DENNA VECKA: CROSS-TEAM
+## 📊 ①E — BACKLOG & ASSIGNED WORK (LEVEL 4 + Cross-team)
 
 **PURPOSE:**
-Shows active cross-team work (affects multiple teams).
-Separate slide to keep team columns clean and highlight cross-team coordination.
+1. Show assigned issues that haven't started yet (LEVEL 4 per ACTIVE_WORK_DETECTION_MODEL)
+2. Show active cross-team work that affects multiple teams
+3. Track capacity and upcoming work visibility
 
-**CONTENT REQUIREMENTS:**
+**TWO SECTIONS ON THIS SLIDE:**
+
+### Section 1: Open Assigned (No Branch Yet) — LEVEL 4
+Shows issues that are assigned but don't have a matching branch yet.
+
+**Content:**
+- Open issues assigned to team members
+- No matching branch exists (or branch exists but no recent commits)
+- Classified by Project Board status:
+  - **Ready to start** — shown as "⏳ #ISSUE — Ready"
+  - **In Progress (but no branch)** — shown as "◐ #ISSUE — In Progress (no branch)"
+  - **To Do** — shown as "⏳ #ISSUE — Backlog"
+
+**Card fields:**
+- Issue number + title
+- Project Board status (if available)
+- Assignee name
+- Why no branch (if known)
+- Dependencies blocking start (if known)
+
+**Max:** 6 cards per slide (if more, use continuation slide ①E-2)
+
+---
+
+### Section 2: Cross-Team Active Work — LEVEL 2-3
+Shows active issues affecting multiple teams (branch exists, work ongoing).
+
+**Content:**
 - Active (open) issues affecting multiple teams
-- Max 12 cards per slide
-- Show which teams are involved in each issue
-- Include branch names and latest commit timestamps
+- Branch names and latest commit timestamps
+- Which teams are involved in each issue
 - Sort by activity (most recent first)
 
-**CARD DATA FIELDS:**
+**Card fields:**
 - Issue number + title
 - Teams involved
 - Branch name
 - Latest commit timestamp + author name
 - Assignee name (@github_login)
 
+**Max:** 6 cards per slide (if more, use continuation slide ①E-2)
+
+---
+
 **DATA SOURCE:**
-- Open issues marked as cross-team or affecting multiple teams
-- Latest commit timestamp from DATA_ACQUISITION_CONTRACT.yaml
+- Open issues + TEAM_ROSTER.md
+- Project Board status via GitHub API
+- Branch matching from ACTIVE_WORK_DETECTION_MODEL
+- Cross-team classification from issue labels or team assignment
 
 **VISUAL IMPLEMENTATION:**
 Do NOT define colors, grid layout, or border styling here.
 All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
-- Grid dimensions: 3 × 2 (max 6 cards per slide)
-- Cross-team border color and styling
 - Card layout and spacing
+- Team border colors for cross-team section
+- Status symbols and formatting
 
-This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it looks.
+**MANDATORY RULE:**
+Every open assigned issue MUST appear on ①D, ①E, or be explicitly excluded with documented reason.
+See ACTIVE_WORK_DETECTION_MODEL.md for completeness validation.
 
 ---
 

@@ -138,10 +138,11 @@ For each team member, follow this sequence:
    ├─ All open issues (assigned or authored by person)
    ├─ All open PRs (authored or assigned)
    ├─ All branches (created by or with commits from person)
-   └─ All recent commits (by person in REPORTING_PERIOD)
+   ├─ All recent commits (by person in REPORTING_PERIOD)
+   └─ Project Board status for each issue (Ready, In Progress, To Do)
 
 2. Correlate:
-   ├─ For each issue: find linked PRs, matching branches, recent commits
+   ├─ For each issue: find linked PRs, matching branches, recent commits, Board status
    ├─ For each PR: find linked issue, commits, branch
    ├─ For each branch: infer issue number, find commits, find PR
    └─ For each commit: link to issue (via message) or PR (via branch)
@@ -149,14 +150,24 @@ For each team member, follow this sequence:
 3. Deduplicate:
    └─ Combine all evidence into one "activity record" per person
 
-4. Classify:
-   ├─ IF (open_pr + linked_issue + assignee) → LEVEL 1
-   ├─ ELSE IF (open_issue + matching_branch + recent_commits) → LEVEL 2
-   ├─ ELSE IF (open_issue + matching_branch) → LEVEL 3
-   ├─ ELSE IF (open_assigned_issue) → LEVEL 4
-   ├─ ELSE IF (recent_commits_unlinked) → LEVEL 5
-   └─ ELSE → "Ingen aktivitet denna vecka"
+4. Classify & Show:
+   ├─ IF (open_pr + linked_issue + assignee) → LEVEL 1 → Show on ①B
+   ├─ ELSE IF (open_issue + matching_branch + recent_commits) → LEVEL 2 → Show on ①C
+   ├─ ELSE IF (open_issue + matching_branch) → LEVEL 3 → Show on ①C
+   ├─ ELSE IF (open_assigned_issue) → LEVEL 4 → Show on ①E
+   ├─ ELSE IF (recent_commits_unlinked) → LEVEL 5 → Don't show (suggest linking)
+   ├─ ELSE IF (no_activity_this_period) → "Ingen aktivitet denna vecka"
+   └─ MANDATORY: Every open assigned issue must be accounted for (shown or excluded with reason)
 ```
+
+**CRITICAL RULE: COMPLETENESS**
+
+Before rendering, validate:
+```
+open_assigned_issues_from_github == (issues_shown_in_①B_①C_①D_①E + explicit_exclusions)
+```
+
+If this fails → presentation generation STOPS and shows which issues are missing.
 
 ---
 
@@ -202,6 +213,37 @@ For each team member, follow this sequence:
 **Show:** Level 2 + Level 3 evidence WHERE issue affects multiple teams
 - Same as ①C, but filtered to cross-team issues only
 - Svart/neutral border indicates multi-team ownership
+
+---
+
+### Slide ①E — Tilldelad / Ej påbörjad (Level 4 + Board Status)
+**Show:** Open assigned issues WITHOUT matching branch, classified by Project Board status
+
+**MANDATORY RULE: All open assigned issues must be shown or explicitly excluded.**
+
+If issue is open + assigned to person + no matching branch exists:
+
+```
+IF Project Board status = "In Progress" or "Ready":
+  → Show on ①E with current status
+  → Format: "⏳ #ISSUE Title — [status] — Ingen branch ännu"
+  
+ELSE IF Project Board status = "To Do" or no status:
+  → Show on ①E as capacity info
+  → Format: "⏳ #ISSUE Title — Backlog"
+  
+ELSE:
+  → Explicit omission with reason (archived, dependency, etc)
+```
+
+**Example card:**
+```
+⏳ #89 · Add MVP core-flow E2E test
+Zaida · No branch yet
+Status: Ready to start
+```
+
+**Use case:** Track who has assigned work that hasn't started yet. Prevents issues from silently disappearing.
 
 ---
 
@@ -266,6 +308,42 @@ HUMAN INSPECTION (Required):
 - If no access to code: mark as "Code not inspected — [reason]"
 
 **This prevents:** Showing work as "on track" when it's actually stalled or wrong
+
+---
+
+## 🚫 COMPLETENESS VALIDATION — MANDATORY RENDER GATE
+
+**Before any presentation is rendered, this check MUST pass:**
+
+```python
+# Fetch all open issues assigned to each team member this sprint
+open_assigned_issues = github_api.issues(state='open', assignee=person)
+
+# Collect all issues actually rendered in presentation
+rendered_issues = (
+    issues_on_slide_①B +  # PR waiting (LEVEL 1)
+    issues_on_slide_①C +  # Pågår no PR (LEVEL 2-3)
+    issues_on_slide_①D +  # Cross-team
+    issues_on_slide_①E +  # Assigned no branch (LEVEL 4)
+    issues_explicitly_excluded  # with documented reason
+)
+
+# VALIDATION
+if open_assigned_issues != rendered_issues:
+    FAIL("Missing issues:")
+    for issue in (open_assigned_issues - rendered_issues):
+        print(f"  #{issue.number} {issue.title} — why was this omitted?")
+```
+
+**Failure mode:** If ANY open assigned issue is missing from the presentation without explanation → rendering STOPS.
+
+**Allowed exclusions (must be documented):**
+- "Outside sprint scope" (document why)
+- "Blocked by X" (document blocker)
+- "Archived/closed" (should not be open)
+- "Wrong assignee cached" (fix GitHub)
+
+**This rule prevents:** Silent disappearance of issues (#88, #89) from presentations.
 
 ---
 
