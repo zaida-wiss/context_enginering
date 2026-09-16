@@ -203,25 +203,35 @@ required_datasets:
   decisions_confirmed:
     source_id: "DECISION_CONFIRMED"
     classification: "OPTIONAL (enhances team awareness)"
-    canonical_source: "docs/decisions/*.md (one decision per file)"
+    canonical_source:
+      path: "docs/decisions/*.md (one decision per file)"
+      exclude: "docs/examples/** (CRITICAL: never read examples)"
 
     purpose: "Show decisions verified as decided during reporting period"
-    access_method: "Read all .md files from docs/decisions/ directory locally"
+    access_method: "Read all .md files from docs/decisions/ directory ONLY"
 
-    required_fields_per_decision:
-      - title
-      - decision_date
-      - updated_date (if modified)
-      - short_summary
-      - impact
+    schema_validation:
+      required_fields:
+        - id (unique across all files, slug format)
+        - decision_date (YYYY-MM-DD)
+        - updated_date (YYYY-MM-DD)
+        - status (must equal 'confirmed')
+
+      allowed_status:
+        - confirmed (included in presentation)
+        - proposed (excluded)
+        - superseded (excluded)
+        - revoked (excluded)
 
     filtering_rule: >
-      Include ONLY if:
-        decision_date >= REPORTING_PERIOD_START AND decision_date < REPORTING_PERIOD_END
-        OR
-        updated_date >= REPORTING_PERIOD_START AND updated_date < REPORTING_PERIOD_END
+      Include decision ONLY if ALL:
+        1. File is in docs/decisions/ (NOT docs/examples/)
+        2. status == "confirmed"
+        3. (decision_date OR updated_date) within REPORTING_PERIOD
+        4. All required fields present and valid
+        5. id is unique (no duplicates across all decision files)
 
-      If date missing: do NOT include (not verifiable as "since last meeting")
+      If ANY validation fails: STOP with DATA_AUDIT ERROR
 
     output:
       max_per_slide: 4
