@@ -172,6 +172,60 @@ repository_ref_policy:
     before merge to main.
 
 ###############################################################################
+# RISK ANALYSIS & BLOCKER DETECTION — Branch Coverage (CRITICAL)
+###############################################################################
+risk_analysis_branch_coverage:
+  rule: >
+    Risk analysis (slide ②, blockers, capacity, dependencies, estimates)
+    MUST examine ALL team collection branches, not just develop.
+
+    Analyzing only develop misses:
+    - Work ready-to-merge but waiting (in Java-Development-Environment)
+    - Blocked PRs on team branches (not on develop yet)
+    - Capacity/staffing of team collection points
+    - Dependencies between teams (visible on shared branches)
+
+  team_collection_branches: >
+    Known collection points that MUST be scanned:
+    - develop (primary merge target)
+    - Java-Development-Environment (Backend collection point)
+    - [Ask team if other collection branches exist]
+
+    Why: Developers merge feature→collection branch first.
+         They may wait days/weeks before collection→develop.
+         This visibility is critical for risk analysis.
+
+  what_to_look_for_per_collection_branch:
+    - "Open PRs waiting for review (blocking point)"
+    - "Commits merged to collection branch but not develop yet (ready to ship?)"
+    - "Who's working on what (capacity/staffing)"
+    - "Dependencies between work items (one blocks another)"
+    - "Estimated vs actual progress (burndown/velocity)"
+    - "Team capacity (how many people, how many open issues)"
+
+  enforcement: >
+    Data acquisition: repository_branches_and_commits dataset MUST include
+    all collection branches (not just develop).
+
+    Risk analysis: When analyzing blockers/capacity/estimates,
+    explicitly report which branches were scanned.
+    Footer: "Scanned: develop, Java-Development-Environment | Last scan: [TIMESTAMP]"
+
+  failure_condition: >
+    ❌ FAIL if:
+    - Only develop branch was analyzed (incomplete risk picture)
+    - Team collection branches were not scanned
+    - Report doesn't list which branches were examined
+
+  example_correct_analysis: >
+    ✅ develop: 5 open PRs, 2 merged this week
+    ✅ Java-Development-Environment: 8 open PRs (waiting 3+ days), 15 commits this week
+    → Risk: Backend queue is growing, may delay next develop merge
+    → Action: Prioritize PR reviews on Java-Development-Environment branch
+
+---
+
+###############################################################################
 # GITHUB ENTITY IDENTITY — Data Provenance (CRITICAL)
 ###############################################################################
 github_entity_identity:

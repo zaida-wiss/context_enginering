@@ -334,6 +334,23 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
   [ ] Each slide header starts with meeting-point symbol (①②③ etc)
 ```
 
+**TEAM COLLECTION BRANCH COVERAGE (CRITICAL for risk/blocker analysis):**
+```
+  [ ] Risk/blocker/capacity analysis examined ALL team collection branches?
+      ✅ develop (primary)
+      ✅ Java-Development-Environment (Backend collection)
+      ✅ Any other team-specific collection branches?
+  
+  [ ] Report lists which branches were scanned (transparency)
+      Example: "Scanned: develop, Java-Development-Environment | 16 sep 14:00"
+  
+  [ ] If risk analysis examined ONLY develop: ❌ INCOMPLETE
+      Must rescan with team collection branches
+      
+  WHY: Work often waits on team branches before reaching develop.
+       Blocking, capacity, risk analysis is incomplete otherwise.
+```
+
 **WCAG 2.2 AA & COLOR SEMANTIC COMPLIANCE (CRITICAL — NEW):**
 ```
   [ ] NO ordinary text boxes have visible borders, outlines, or fills

@@ -218,18 +218,37 @@ required_datasets:
       Project Board may be outdated or inaccessible; commit history is authoritative.
 
     execution_sequence:
-      1_collect_branches: "GitHub API: GET /repos/chas-challenge-2026/avanza-team1/branches"
-      2_collect_recent_commits_per_branch: >
-        For EACH branch (especially non-develop):
+      1_collect_all_branches: "GitHub API: GET /repos/chas-challenge-2026/avanza-team1/branches"
+
+      2_CRITICAL_identify_team_collection_branches: >
+        Teams often use dedicated branches as collection points BEFORE merging to develop.
+        These MUST be scanned for complete risk/blocker/capacity analysis.
+
+        KNOWN COLLECTION BRANCHES (MANDATORY to scan):
+          - develop (default target)
+          - Java-Development-Environment (Backend collection point)
+          - [Other team-specific branches if they exist]
+
+        DISCOVERY (if unknown branches exist):
+          - List all branches with recent commits (last 14 days)
+          - Filter for non-feature branches (typically *-Development-Environment or team/*-main)
+          - Ask team if uncertain which are collection branches
+
+      3_collect_recent_commits_per_branch: >
+        For EACH branch (especially collection branches):
           GET /repos/chas-challenge-2026/avanza-team1/commits?sha=[branch]&since=[START]&until=[END]&per_page=100
-      3_filter_relevant_branches: >
+
+      4_filter_relevant_branches: >
         Branches matching patterns:
-          - feature/*
-          - bugfix/*
-          - {team}/* (frontend/, backend/, native/)
-          - Any branch with recent commits (last 7 days)
-      4_exclude_stale_branches: >
+          - Collection branches (develop, Java-Development-Environment, etc) — ALWAYS
+          - feature/* — if recent commits
+          - bugfix/* — if recent commits
+          - {team}/* (frontend/, backend/, native/) — if recent commits
+          - Any branch with commits in REPORTING_PERIOD
+
+      5_exclude_stale_branches: >
         Skip branches with NO commits in REPORTING_PERIOD
+        (stale branches don't affect current risk/capacity analysis)
 
     required_fields_per_branch:
       - name
