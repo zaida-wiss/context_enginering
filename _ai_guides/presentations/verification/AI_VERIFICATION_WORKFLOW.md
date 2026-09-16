@@ -163,9 +163,12 @@ SLIDES GENERATED:
   Reporting period: [START] – [END]
 
 DATA VERIFICATION (spot check):
+  ✅ Repository SHA verified (matches origin/cleanup HEAD)
   ✅ Slide ①A: Merged PRs match GitHub (dates within period)
-  ✅ Slide ①B: Collection branch PRs identified (if any)
-  ✅ Slide ①C-①D: Open PRs with recent activity
+  ✅ Slide ①A: Card count <= 6 per physical slide (pagination rule)
+  ✅ Slide ①A: If PR count > 6, continuation slides exist (①A-2, ①A-3, etc)
+  ✅ Slide ①B: Collection branch PRs OR explicit omission ("0 deliveries")
+  ✅ Slide ①C-①D: Open PRs with recent activity OR explicit omission
   ✅ Slide ③④⑤: Team issues match GitHub status + blockers
   ✅ No PR shown twice (deduplication verified)
 

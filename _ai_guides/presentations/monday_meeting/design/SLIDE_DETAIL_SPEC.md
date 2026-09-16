@@ -97,6 +97,26 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 ---
 
+## 🎯 CONDITIONAL SLIDE RULE — When slides may be omitted
+
+**A slide MAY be omitted only if its dataset is empty, with these requirements:**
+
+1. **Dataset must be verified empty** (not just "no data found")
+   - Explicit count: 0 verified items
+   - Record omission reason
+   
+2. **Audit must explicitly record:**
+   ```
+   ①B omitted — 0 verified collection-branch deliveries (dataset empty)
+   ①D omitted — 0 verified cross-team active items (dataset empty)
+   ```
+   
+3. **Forbidden:** Omitting a slide because generator chose to skip it
+   - Every slide must have explicit decision: SHOW or OMIT (with reason)
+   - Default: SHOW (even if empty, show "no items this period")
+
+---
+
 ## 📝① AVKLARAT SEDAN FÖRRA MÖTET
 
 **Point ① shows ONLY completed work during reporting period.**
@@ -128,6 +148,15 @@ Does NOT include work merged to team collection branches (that goes to ①B).
 - **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
 - **Merged by:** [Name] (@github_login) — who merged to develop
 - Merged date
+
+**PAGINATION (MANDATORY):**
+- Slide ①A shows MAX 6 cards per physical slide (3 columns × 2 rows)
+- If merged PR count > 6:
+  - Create continuation slide ①A-2 (preserves ① symbol, continues chronologically)
+  - Continue ①A-3, ①A-4 if needed
+  - FORBIDDEN: shrink cards, reduce font below 12pt, place >6 on one slide
+  - If merged PR count <= 6: single ①A slide
+- Chronological order continues unbroken across ①A pages
 
 **CRITICAL:**
 - Show actual code contributors (commit authors > assignee > pr_author)

@@ -208,6 +208,60 @@ OM du INTE kan nå mötesprotokollet:
 
 ---
 
+## 🔬 ARTIFACT VERIFICATION LAYER — Inspect rendered artifact, NOT generator report
+
+**CRITICAL RULE: Self-report is not evidence.**
+
+Generator statements such as "all checks passed" are **not** sufficient proof.
+
+After rendering, verification MUST inspect the produced artifact:
+
+### SPEC VERIFICATION (before render)
+"What should the presentation contain according to rules?"
+
+### ARTIFACT VERIFICATION (after render)
+"What does the presentation **actually** contain?"
+
+### Artifact inspection checklist:
+
+```
+PHYSICAL STRUCTURE (count actual objects in rendered artifact):
+  ☐ Physical slide count = expected total
+  ☐ Slide ①A contains max 6 cards per slide
+  ☐ If PR count > 6: continuation slides exist (①A-2, ①A-3, etc)
+  ☐ Visible slide headings match expected (①, ②, ③④⑤, etc)
+
+CONTENT VERIFICATION (inspect rendered text):
+  ☐ "Developed by" field visible and populated
+  ☐ "Reviewed by" field visible and populated
+  ☐ "Merged by" field visible and populated
+  ☐ No PR shown twice (deduplication verified in actual render)
+  ☐ All 7 team member names appear (with work or "available" marker)
+  ☐ Actual PR numbers match GitHub (not invented/fabricated)
+
+VISUAL QUALITY (inspect rendered layout):
+  ☐ No text clipping or overflow
+  ☐ Cards expand to contain all text
+  ☐ Team color borders present and correct
+  ☐ Corner radius 12-18px visually present
+  ☐ Padding 16-20px visually present
+  ☐ Team detail cards (③④⑤) are vertically stacked (not tables)
+  ☐ Required sections present:
+     - Framsida with meeting date + data footer
+     - ①A with grid layout
+     - ①C with team columns
+     - ②③④⑤
+
+EXPLICIT OMISSIONS (if slides are missing):
+  ☐ ①B omitted — document: "0 collection-branch deliveries (dataset empty)"
+  ☐ ①D omitted — document: "0 cross-team active items (dataset empty)"
+  ☐ Other omissions — explicit reason recorded
+```
+
+**Render gate PASS only if artifact inspection confirms spec.**
+
+---
+
 ## ❌ PRESENTATION KAN INTE RENDERAS om:
 
 ### 1. NOLL ARBETE DENNA VECKA

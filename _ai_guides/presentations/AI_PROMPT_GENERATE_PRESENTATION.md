@@ -110,15 +110,32 @@ After collecting all datasets:
 
 **Before building presentation, verify you're reading current HEAD:**
 
+**Output these verification lines before any other output:**
+
 ```
-Check cleanup-branchen HEAD:
-- Expected: Latest commit message should be about presentation system fixes
-- Not: Old commits from before this session
-- Verify: You're reading from cleanup-branchen, not main/develop
+═══════════════════════════════════════════════════════════
+REPOSITORY STATE VERIFICATION
+═══════════════════════════════════════════════════════════
+
+Requested branch: cleanup
+Remote HEAD: [fetch latest SHA from origin/cleanup]
+Instruction files loaded from SHA: [show actual loaded SHA]
+MATCH: [YES or NO — must be YES to proceed]
+
+Latest commit message: [show actual latest commit]
+Timestamp: [show author date]
+
+═══════════════════════════════════════════════════════════
 ```
 
-If repo_commit_sha in DATA_ACQUISITION_RECEIPT is stale (>1 hour old),
-re-run acquisition step to get fresh data.
+**If MATCH is NO:**
+- STOP immediately
+- Do NOT proceed to data acquisition
+- Report: "Branch mismatch — loaded from old SHA"
+
+**If loaded SHA is stale (>30 min old):**
+- Re-run acquisition step to get fresh data
+- Update DATA_ACQUISITION_RECEIPT with new timestamp
 
 ---
 
