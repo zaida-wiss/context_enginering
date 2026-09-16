@@ -363,6 +363,12 @@ Presentation must include FORWARD-LOOKING analysis, not just status reporting.
       ✅ AFTER #67: Zaida starts #72, Pär starts #89
       ✅ By Friday: All work merged, ready for CTO demo
 
+  [ ] ASSIGNMENT REASONING — Why did we assign work this way?
+      ✅ Ownership cohesion: "Zaida continues state management (#72, #78 — same area)"
+      ✅ Load balancing: "Erik has 2 days open, Zaida has 3 days — split evenly"
+      ✅ Absence accounted for: "Pär absent Mon-Tue, assigned low-urgency work for Wed-Fri"
+      ✅ Capacity shown: "Erik: 3 days available, Zaida: 2.5 days, Björn: 1 day"
+
 FAIL GATE if:
   ❌ Only status reported (passive, backward-looking)
   ❌ Recommendations vague ("do better", "go faster")

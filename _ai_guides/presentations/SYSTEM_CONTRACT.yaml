@@ -249,12 +249,61 @@ analysis_and_recommendations:
       "Here's what should happen next, in this order, split like this"
       ← Active, forward-looking, actionable
 
-  enforcement: >
-    Presentation FAIL (render gate) if:
-    ❌ Only status reported (no priority/dependencies/split recommendation)
-    ❌ Recommendations exist but are vague ("do better")
-    ❌ No actionable next steps for specific teams
-    ❌ Team capacity not addressed (might be idle)
+  recommendation_algorithm:
+    principle: >
+      Balance THREE goals simultaneously:
+      1. OWNERSHIP COHESION — keep related work with same person (domain expertise)
+      2. LOAD BALANCING — spread work evenly across team
+      3. ABSENCE HANDLING — adjust for planned/actual absence (sick leave, vacation)
+
+    step_1_identify_related_issues: >
+      Group issues by "area" (component, feature, code domain):
+        - Related issues: same component, same code area, same feature branch prefix
+        - Example: #72, #78, #89 all in "Frontend state management" → group together
+        - Example: #67, #73, #84 all in "Database/Backend" → group together
+
+    step_2_assign_current_owner: >
+      Who's already working in this area?
+        - If Zaida is doing #72 (state management) → assign next related issue #78 to Zaida
+        - If Erik is doing #67 (API) → assign #73 to Erik (same area)
+        - Rationale: Zaida knows state management already, reduces context-switch cost
+
+    step_3_calculate_working_capacity: >
+      For EACH team member:
+        base_capacity = 5 days per week
+        - Subtract planned absence (vacation on calendar?)
+        - Subtract current open work (if 3 issues open → estimate time)
+        - Result: "Zaida has 2 days capacity this week, Erik has 3 days"
+
+    step_4_balance_workload: >
+      Assign related issues to current owner IF:
+        ✅ Related work exists in their area
+        ✅ They have remaining capacity
+        ✅ It doesn't overload them relative to team average
+
+      ELSE (if overloaded):
+        - Pass related work to SECOND-best owner (someone with time + familiarity)
+        - Never leave someone idle while others are overloaded
+
+    step_5_absence_override: >
+      If someone is out next week:
+        - Their current work → handoff to similar-skilled colleague
+        - New assignments → redirect to available people
+        - Update capacity estimate: "Erik absent Mon-Tue, capacity = 3 days"
+
+    output_recommendation: >
+      Example output:
+        Zaida (capacity: 2 days): #72 (state mgmt), #78 (state mgmt) — cohesive area
+        Erik (capacity: 3 days): #67 (API), #73 (DB) — sequential, 2.5 days each
+        Björn (capacity: 1.5 days): #84 (infra) — independent work
+        Pär (capacity: ABSENT Mon-Tue, 2 days available Wed-Fri): #89 (cross-team, low urgency)
+
+    enforcement: >
+      Recommendation FAIL if:
+      ❌ Issues assigned with NO regard to related work (person gets random mix)
+      ❌ Workload highly uneven (person X has 5 days, person Y has 0.5 days)
+      ❌ Absence not accounted for (person assigned full week despite absence)
+      ❌ No explanation for why work was assigned (should show: cohesion + capacity reasoning)
 
 ---
 

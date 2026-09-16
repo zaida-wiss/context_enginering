@@ -318,6 +318,49 @@ required_datasets:
     requirement: "ALL dependencies between open/merged issues in reporting period"
     stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE, but continue with available data)"
 
+  team_member_capacity_and_absence:
+    source_id: "GITHUB_TEAM_ROSTER_EXTENDED"
+    classification: "CRITICAL (required for workload balancing recommendation)"
+    purpose: >
+      For each team member, determine:
+      - Current workload (how many open issues assigned)
+      - Estimated time on current work (days)
+      - Planned absence (vacation, sick leave, training)
+      - Available capacity this week
+
+    execution_sequence:
+      1_get_team_roster: "TEAM_ROSTER.md — all 7 members"
+      2_per_person_open_issues: "GitHub API: issues assigned to [person]?state=open"
+      3_estimate_per_issue: "Multiply: issue complexity × average team velocity"
+      4_get_absence_calendar: >
+        Check: Google Calendar, team wiki, or explicit note in repo
+        Format: "Zaida: absent 20-24 sep (vacation)", "Erik: Mon-Tue (doctor appt)"
+      5_calculate_capacity: >
+        base = 5 working days
+        available = base - (absence days) - (current work days)
+
+    required_fields:
+      - person.name
+      - person.github_login
+      - open_issues_assigned (issue numbers + estimated effort)
+      - planned_absence (dates + reason if possible)
+      - current_workload_days (estimated, per issue)
+
+    output_structure: >
+      Per team member:
+        Zaida:
+          current_open_issues: [#72, #78] (estimated: 1.5 days)
+          planned_absence: none
+          capacity_available: 3.5 days
+
+        Erik:
+          current_open_issues: [#67] (estimated: 2 days)
+          planned_absence: "Mon 20-21 sep (conference)"
+          capacity_available: 2.5 days
+
+    requirement: "Capacity estimate for all 7 team members"
+    stop_condition: "If absence calendar unavailable: assume all available (no days subtracted)"
+
   active_issues:
     source_id: "GITHUB_OPEN_ISSUES"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES (canonical source of truth for URL, access methods, fallback chain)"
