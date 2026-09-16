@@ -90,14 +90,12 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 - Exakt ett mellanslag mellan nummer och rubrik-text
 - Samma penna+nummer för alla sub-slides (✏️ ①A, ✏️ ①B, ✏️ ①C använder alla ✏️ ①)
 - Font: 28pt BOLD (per VISUAL_DESIGN_MANDATORY.md, never smaller, never different)
-- Slide ⓪ (Nuläge & deadline) använder ENDAST penna: ✏️ Nuläge & deadline (no number)
-
 **GÄLLER ENDAST för:**
 - Alla slides ①-⑭ (vilken typ av fortsättningsslide som helst: ①A, ①B-2, ②, ③B, etc)
-- Slide ⓪ (introduktionsslide)
+- Slide ⓪ (introduktionsslide endast om den har en mötespunkts-nummer — i detta fall, ⓪ framsida har INGEN symbol)
 
 **GÄLLER INTE för:**
-- Framsida
+- Framsida (⓪) — har ingen rubrik, ingen penna, inget nummer
 - Övrigt material utan mötespunkts-nummer
 
 **NOTE:** These are rendering rules for AI, not content to display.
@@ -106,9 +104,11 @@ Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punk
 
 ## 📝⓪ FRAMSIDA (1 slide, mandatory)
 
+**NO SLIDE TITLE** — Framsida har ingen mötespunkts-rubrik. Börjar direkt med innehål.
+
 **HEADER SECTION:**
-- Meeting date: "Veckomöte · [DATE]" (e.g., "Veckomöte · 21 september 2026")
-- Team identifier: "Avanza Team 1"
+- Meeting date: "Veckomöte · [DATE]" (e.g., "Veckomöte · 21 september 2026") (28pt BOLD)
+- Team identifier: "Avanza Team 1" (14pt)
 - Reporting period (compact, under meeting title): "Rapportperiod: [START DATE] 09:00 – [END DATE] 09:00"
   - Font: 13pt (smaller than title, but still visible)
   - Line-height: compact (1.4-1.6)
