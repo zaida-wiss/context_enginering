@@ -1433,8 +1433,8 @@ TOTALT:
 - Punkt ② är ALLTID status (nuläge + deadline)
 - Punkt ③-⑤ är ALLTID team-uppdateringar (per-team issues: Frontend/Backend/Native)
 - Punkt ⑥ är ALLTID blockers (blockerträd)
-- Punkt ⑦ är ALLTID risker (risk-register)
-- Punkt ⑧ är ALLTID kapacitet (kapacitet-tabell)
+- Punkt ⑦ är ALLTID risker (compact cards)
+- Punkt ⑧ är ALLTID kapacitet (compact cards)
 - Punkt ⑨ är ALLTID prioritering (fas-baserad ordning)
 - Punkt ⑬ är ALLTID nästa steg (deadlines + summary)
 

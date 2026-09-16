@@ -1,88 +1,53 @@
 # 📱 Avanza Team 1 — Context & Process Documentation
 
-**🚨 INSTRUCTION AUTHORITY FOR AI WORK**
-
-This repository (`context_enginering`) is the **sole source of truth** for:
+This repository is the **single source of truth** for:
 - How AI should work on Avanza Team 1
-- Which data sources are allowed
-- How to build, verify, and deliver presentations
-- Fallback chains, gates, and authority hierarchy
+- How presentations are built and validated
+- Team standards and decision logs
+- External data sources and access methods
 
-The project code repository (`avanza-team1`) contains:
-- Project code, GitHub issues, pull requests, and project board
-- Workflow documentation, architecture, and technical decisions
-- **NOT** instructions for how AI should acquire or present data
-
-**Do not derive AI workflow, presentation rules, or source authority from the project repository's README.**
-
-**Team process, AI guidelines, and decision logs.**  
-**Project code:** https://github.com/chas-challenge-2026/avanza-team1
-
-🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) för maskinläsbar register (URLs, IDs, access methods, klassificeringar). Se [`_memory/EXTERNAL_SOURCES.md`](_memory/EXTERNAL_SOURCES.md) för människovänlig introduktion.
+**Do NOT derive AI workflow or presentation rules from the project repository.** That lives here only.
 
 ---
 
-## 🚨 START HERE — Enligt vad du gör
+## 🎯 What do you want to do?
 
-### 👤 Jag gör vanligt arbete (kodning, issues, etc)
-→ **[_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md)** ← MANDATORY
-- HOW to work with this project
-- WHERE to get data
-- WHAT to do if something fails
+### 👤 I'm doing regular project work (coding, issues, etc)
+→ **[_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md)**
 
-### 🎨 Jag skapar en PRESENTATION
-→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)** ← START HERE
-   - MANDATORY_READING_ORDER.md routes to SYSTEM_CONTRACT.yaml (the only authority for execution order)
-   - Follow execution_sequence from SYSTEM_CONTRACT.yaml exactly
-   - No presentation artifact may be generated before execution_receipt and data_audit gates pass
-   
-   **Version Consistency Policy:**
-   1. Always read latest files from default branch (no SHA lockdown)
-   2. Once a build starts (execution_receipt → data_audit → rendering), use consistent versions within that build
-   3. If repo changes mid-build and you need to restart, read fresh from latest default branch
-   4. This balances: (a) fixes/improvements visible immediately, (b) no rule-version churn within a single build
+### 🎨 I'm creating a presentation
+→ **[_ai_guides/presentations/MANDATORY_READING_ORDER.md](_ai_guides/presentations/MANDATORY_READING_ORDER.md)**
 
-### 📚 Jag behöver projektinformation
-→ **[_memory/README.md](_memory/README.md)** ← CENTRAL HUB
-- Alla projektfakta, deadlines, standarder
-- Auktoritativt för projektet
+### 📚 I need project facts (deadlines, standards, etc)
+→ **[_memory/README.md](_memory/README.md)**
 
-### 🤔 Jag vet inte var jag ska börja
-→ **[_ai_guides/README.md](_ai_guides/README.md)** ← Navigationshub för alla guides
+### 🤖 I'm looking for AI guidelines
+→ **[_ai_guides/README.md](_ai_guides/README.md)**
 
 ---
 
-**För annat arbete:**
+## 📍 Authority Map — Where each rule lives
 
-**Understanding the project?**
-→ **[_memory/TEAMSTANDARDS.md](_memory/TEAMSTANDARDS.md)** + **[_memory/DEFINITION_OF_DONE.md](_memory/DEFINITION_OF_DONE.md)**
+| Question | Answer |
+|----------|--------|
+| **How does the presentation system work?** | [`SYSTEM_CONTRACT.yaml`](_ai_guides/presentations/SYSTEM_CONTRACT.yaml) |
+| **What data sources are allowed?** | [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) |
+| **What slides exist and what's on them?** | [`SLIDE_DETAIL_SPEC.md`](_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md) |
+| **How do slides look (colors, fonts, layout)?** | [`VISUAL_DESIGN_MANDATORY.md`](_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md) |
+| **What are the WCAG/accessibility requirements?** | [`ACCESSIBILITY_NEURODIVERSITY.md`](_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md) |
+| **What data must be collected and how?** | [`DATA_ACQUISITION_CONTRACT.yaml`](_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml) |
+| **How is "active work" detected from GitHub?** | [`ACTIVE_WORK_DETECTION_MODEL.md`](_ai_guides/presentations/data/ACTIVE_WORK_DETECTION_MODEL.md) |
+| **Where should new rules be placed?** | [`ARCHITECTURE.md`](_ai_guides/presentations/ARCHITECTURE.md) |
 
-**Sharing with another AI?**
-→ Link: https://github.com/zaida-wiss/context_enginering (they'll follow the README from top)
-
-**Need help with code?**
-→ Read **[_memory/PROJEKTKONTEXT_AVANZA.md](_memory/PROJEKTKONTEXT_AVANZA.md)** then project repo above
+**Do NOT create new policy files.** All rules belong in one of the files above.
 
 ---
 
+## 🚨 Critical Rule
 
----
+If two authoritative files appear to contradict each other: **STOP. Do not choose the interpretation that seems most reasonable.**
 
-## 🚨 CRITICAL RULES — Överordnade
-
-**For presentations:**
-- ✅ **Följ: MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml → execution_sequence**
-- ✅ **Verifiera alla REQUIRED datakällor innan rendering** (se [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) för klassificering: REQUIRED/FALLBACK/OPTIONAL)
-  - REQUIRED: GitHub REST API, local team roster → must succeed or STOP
-  - FALLBACK (in order): Google Sheets (if freshness verified) → GitHub web (last resort)
-  - OPTIONAL: Project Board, Risk Register → nice-to-have if connector available
-- ✅ Alla 7 teammedlemmar måste vara representerade
-
-**For team members:**
-- Se **[_memory/README.md](_memory/README.md)** för TEAMSTANDARDS, DEFINITION_OF_DONE, etc
-
-**For AI guides & all other work:**
-- Se **[_ai_guides/README.md](_ai_guides/README.md)** för navigation
+Report the conflict instead.
 
 ---
 
@@ -90,13 +55,6 @@ The project code repository (`avanza-team1`) contains:
 
 - **Project code:** https://github.com/chas-challenge-2026/avanza-team1
 - **Project Board:** https://github.com/orgs/chas-challenge-2026/projects/31
-- **Meeting notes:** See `_memory/EXTERNAL_SOURCES.yaml` (GOOGLE_MEETING_PROTOCOL source_id)
-
----
-
----
-
-**Last updated:** 2026-09-14 — Orchestration fixed: single execution path for all  
-**Team repos:**
-- Team process & AI guides: https://github.com/zaida-wiss/context_enginering
-- Project code: https://github.com/chas-challenge-2026/avanza-team1
+- **Team repos:**
+  - This one: https://github.com/zaida-wiss/context_enginering
+  - Code: https://github.com/chas-challenge-2026/avanza-team1

@@ -10,336 +10,562 @@ metadata:
 
 **Denna fil säger EXAKT vad varje slide ska innehålla — ingen gissning.**
 
-🔗 **VISUELL REFERENS:** Se [`TEMPLATE_REFERENCE.html`](TEMPLATE_REFERENCE.html) för hur varje slide ska se ut visuellt (färger, fonts, spacing, rundade hörn).
+## 🎨 VISUAL IMPLEMENTATION — AUTHORITY
+
+**Do NOT define colors, typography, borders, spacing or card geometry here.**
+
+All visual implementation — colors, fonts, spacing, contrast, borders, background fills, corner radius — 
+MUST come from [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md).
+
+This file defines **content only** (what data goes where, how it's structured).
+
+**Authority hierarchy:**
+1. **VISUAL_DESIGN_MANDATORY.md** — ALL visual rules (colors, fonts, spacing, borders)
+2. **ACCESSIBILITY_NEURODIVERSITY.md** — WCAG 2.2 AA boundaries (cannot be violated by visual choices)
+3. **This file (SLIDE_DETAIL_SPEC.md)** — Content structure and data fields ONLY
+
+---
+
+## 📐 CANONICAL LAYOUT MAPPING (by mötespunkt)
+
+**MANDATORY: Every slide MUST use ONE OF these layouts. No exceptions.**
+
+| Mötespunkt | Layout Standard | Description |
+|---|---|---|
+| **①A** | Grid 3×2 | Max 6 merged PR cards per slide (develop branch), pagination if >6 |
+| **①B** | Grid 3×2 | Collection-branch PRs (Backend: Java-Development-Environment), pagination if >6 |
+| **①C** | Grid 3×2 | Collection-branch PRs (Native: C/C++-Native), pagination if >6 |
+| **①D** | Full-width stacked | Open issues this week (team-based: Frontend, Backend, Native) |
+| **①E** | Full-width stacked | Open issues this week (cross-team work) |
+| **①F** | Full-width stacked | Decisions + decision candidates |
+| **②** | COMPACT_CARD_STANDARD | Priority items, vertically ranked |
+| **③④⑤** | TEAM_DETAIL_CARDS | Status + blockers, IDENTICAL layout for all teams |
+| **⑥** | COMPACT_CARD_STANDARD (except ⑥A) | Blockers + dependencies |
+| **⑥A** | Dependency diagram | Visual node + arrow graph (exception allowed) |
+| **⑦** | COMPACT_CARD_STANDARD | Risk register (compact cards, NOT table) |
+| **⑧** | COMPACT_CARD_STANDARD | Kapacitet & Estimering (compact cards) |
+| **⑨** | COMPACT_CARD_STANDARD | Prioritization + phases |
+| **⑩** | COMPACT_CARD_STANDARD | Technical decisions |
+| **⑪** | COMPACT_CARD_STANDARD | Sprint goals |
+| **⑫** | COMPACT_CARD_STANDARD | Sprint plan + milestones |
+| **⑬** | Grid 4×1 (exception) | Next steps — 4 prioritized actions, max 4 cards per slide |
+| **⑭** | Grouped cards (exception) | Questions to PL — two sections (IDAG-SVAR + NICE-TO-HAVE) |
+
+**CRITICAL RULES:**
+- ✅ **③④⑤ use IDENTICAL card layout** — only team color differs
+- ✅ **③④⑤ NEVER use tables** — use TEAM_DETAIL_CARDS only
+- ✅ **Responsive height on all cards** — content-driven, never fixed
+- ✅ **NO TEXT CLIPPING** — split to new slide if needed
+- ✅ **①A GRID IS AN EXCEPTION** — allowed for merged overview only
+
+---
+
+🔗 **VISUAL REFERENCE:** Se [`TEMPLATE_REFERENCE.html`](TEMPLATE_REFERENCE.html) för exempel-layouts.
 
 Se [PRESENTATION_STRUCTURE.md](../structure/PRESENTATION_STRUCTURE.md) för punkt-nivå-overview.
 
 ---
 
-## 🎨 COLOR PALETTE & DESIGN CONSTANTS
-
-**Dessa värden används överallt i presentationen:**
-
-### Färger (RGB)
-```
-MERGED-sektion bakgrund:     RGB 76, 175, 80     (🟢 Grön)
-PÅGÅR-sektion bakgrund:      RGB 255, 152, 0     (🟡 Orange)
-VÄNTAR PÅ REVIEW bakgrund:   RGB 255, 152, 0     (🟡 Orange) eller RGB 244, 67, 54 (🔴 Röd)
-Text på färgad bakgrund:     Vit (RGB 255, 255, 255)
-Neutral bakgrund:            Ljusgrå (RGB 245, 245, 245)
-Header text:                 Mörkgrå (RGB 50, 50, 50)
-Body text:                   Mörkgrå (RGB 100, 100, 100)
-```
-
-### Font & Spacing (FIXED VALUES — NEVER CHANGE)
-```
-Section headers:             Arial 14pt BOLD
-Issue nummer & titel:        Arial 13pt regular
-Meta-text (datum/branch):    Arial 12pt regular
-Row height:                  24px MINIMUM
-Padding per element:         12px
-Margin mellan element:       8px minimum
-Corner radius:               6-8px
-Kontrast minimum:            4.5:1 (WCAG AA)
-```
-
-**NOTE:** These values are AI instructions, not slide content. Never display them in the presentation.
-
----
-
 ## 🚨 KRITISK REGEL — MÖTESPUNKTS-SYMBOLER
 
-**VARJE slide-rubrik MÅSTE börja med mötespunkts-symbolen så det är OMEDELBAR VISUELL klar vilken mötespunkt sliden tillhör.**
+**VARJE slide-rubrik med ett mötespunkts-nummer (①-⑭) MÅSTE börja med penna-symbol + mötespunkts-symbol för omedelbar visuell orientering.**
 
 ```
 ❌ FEL:   "Avklarat sedan förra mötet — Frontend"
-✅ RÄTT:  "① Avklarat sedan förra mötet — Frontend"
+✅ RÄTT:  "✏️ ① Avklarat sedan förra mötet — Frontend"
 
 ❌ FEL:   "Aktuell status"
-✅ RÄTT:  "② Aktuell status"
+✅ RÄTT:  "✏️ ② Aktuell status"
 
 ❌ FEL:   "Frontend"
-✅ RÄTT:  "③ Frontend"
+✅ RÄTT:  "✏️ ③ Frontend"
+
+❌ FEL:   "Backend Collection Branch"
+✅ RÄTT:  "✏️ ①B Backend Collection Branch"
 ```
 
 **REGLER (Mechanical — no variation):**
-- Symbolen måste vara FÖRST i rubriken (no exceptions)
-- Exakt två mellanslag mellan symbol och rubrik-text
-- Samma symbol för alla sub-slides (①A, ①B, ①C använder alla ①)
-- Font: Arial 14pt BOLD (never smaller, never different font)
+- **Penna FÖRST:** ✏️ (unicode U+270F, no space after)
+- **Mötespunkts-symbol ANDRA:** ① ② ③ ... ⑭ (no space before penna, one space after number)
+- Exakt ett mellanslag mellan nummer och rubrik-text
+- Samma penna+nummer för alla sub-slides (✏️ ①A, ✏️ ①B, ✏️ ①C använder alla ✏️ ①)
+- Font: 28pt BOLD (per VISUAL_DESIGN_MANDATORY.md, never smaller, never different)
+**GÄLLER ENDAST för:**
+- Alla slides ①-⑭ (vilken typ av fortsättningsslide som helst: ①A, ①B-2, ②, ③B, etc)
+- Slide ⓪ (introduktionsslide endast om den har en mötespunkts-nummer — i detta fall, ⓪ framsida har INGEN symbol)
+
+**GÄLLER INTE för:**
+- Framsida (⓪) — har ingen rubrik, ingen penna, inget nummer
+- Övrigt material utan mötespunkts-nummer
 
 **NOTE:** These are rendering rules for AI, not content to display.
 
 ---
 
----
+## 📝⓪ FRAMSIDA (1 slide, mandatory)
 
-## 📝① AVKLARAT SEDAN FÖRRA MÖTET (1+ slides, split as needed)
+**NO SLIDE TITLE** — Framsida har ingen mötespunkts-rubrik. Börjar direkt med innehål.
 
-**CRITICAL RULE:** Point ① completeness = union of ALL verified activity during reporting period, not merged PRs alone.
+**HEADER SECTION:**
+- Meeting date: "Veckomöte · [DATE]" (e.g., "Veckomöte · 21 september 2026") (28pt BOLD)
+- Team identifier: "Avanza Team 1" (14pt)
+- Reporting period (compact, under meeting title): "Rapportperiod: [START DATE] 09:00 – [END DATE] 09:00"
+  - Font: 13pt (smaller than title, but still visible)
+  - Line-height: compact (1.4-1.6)
+  - Color: muted (#94A3B8)
 
-**VERIFIED ACTIVITY = {merged PRs, closed issues, open issues with activity, active branches, open PRs with activity, relevant commits}**
+**MAIN CONTENT AREA (focus on three key elements):**
 
-**DEDUPLICATION RULE:**
-- Same work MUST NOT appear twice (e.g., issue + branch + PR)
-- If issue has linked PR and branch → show as ONE row in merged/pågår/review (use PR as primary, note issue link)
-- If issue has no PR yet but has active branch → show as ONE row in pågår (branch + issue link)
-- If branch has no PR and no issue → show as ONE row in pågår
-- Count only ONCE in audit and slides (unique identifiers: issue#, PR#, branch-name, or commit-sha)
+1. **Sprintfokus**
+   - Format: "Sprintfokus: [3-5 key words separated by •]"
+   - Example: "Kärnflöde • dokumentation • teststatus"
+   - Font: 14pt, regular
 
-**If team's verified activity exceeds slide capacity:**
-- Split to ①A.1, ①A.2, ①B.1, ①B.2, etc.
-- NEVER omit work to fit slide count
-- Each continuation slide starts with team name again
+2. **Deadline (highlighted)**
+   - Format: "Deadline: [DESCRIPTION] • [DATE] [TIME]"
+   - Example: "CTO-underlag • tors 24 sep 16:00"
+   - Font: 14pt, regular
+   - Color: Orange/accent color (#F97316 or team deadline color) for date/time
+   - This is the CRITICAL milestone this week
 
-**TEAM CHECKSUMS (RENDERED IN AUDIT REPORT):**
+3. **PL-fokus (discussion topics)**
+   - Format: "PL-fokus: [TOPIC 1], [TOPIC 2], [TOPIC 3]"
+   - Example: "Integration, scope och beroenden"
+   - Font: 14pt, regular
+   - Source: Extracted from schedule/timeline (NOT meeting notes)
+
+**DATA INTEGRITY FOOTER (minimal, compact):**
+- Format: "Snapshot: [TIMESTAMP] | Källor: GitHub, Project Board ✅"
+- Example: "Snapshot: 16 sep 15:56 CEST | Källor: GitHub, Project Board ✅"
+- Font: 11-12pt (smaller)
+- Line-height: compact (1.2)
+- Color: muted (#94A3B8)
+- Placement: Bottom of slide
+
+**VISUAL LAYOUT:**
 ```
-Frontend: verified_activity_count (audit) == representation_count (slides)
-Backend: verified_activity_count (audit) == representation_count (slides)
-Native: verified_activity_count (audit) == representation_count (slides)
-Cross-team: verified_activity_count (audit) == representation_count (slides)
-Other: verified_activity_count (audit) == representation_count (slides)
+┌─────────────────────────────────────┐
+│  Veckomöte · 21 september 2026      │  28pt BOLD
+│  Avanza Team 1                      │  14pt regular
+│  Rapportperiod: 14 sep 09:00 –      │  13pt muted, compact
+│              21 sep 09:00            │
+└─────────────────────────────────────┘
+
+[WHITESPACE]
+
+Sprintfokus: Kärnflöde • dokumentation • teststatus
+
+Deadline: CTO-underlag • tors 24 sep 16:00
+
+PL-fokus: Integration, scope och beroenden
+
+[WHITESPACE]
+
+Snapshot: 16 sep 15:56 CEST | Källor: GitHub, Project Board ✅
 ```
-If mismatch → both audit and slides note the discrepancy. Never silently drop data.
 
-**Rubriker per team (måste matcha mötesprotokollet):**
-- Slide ①A: **"① Avklarat sedan förra mötet — Frontend"** (or ①A.1, ①A.2 if split)
-- Slide ①B: **"① Avklarat sedan förra mötet — Backend"** (or ①B.1, ①B.2 if split)
-- Slide ①C: **"① Avklarat sedan förra mötet — Native"** (or ①C.1, ①C.2 if split)
-- Slide ①D: **"① Avklarat sedan förra mötet — Cross-team"** (if any cross-team work exists)
+**VISUAL NOTES:**
+- Large, centered meeting title
+- Significant whitespace between sections
+- Three main focus areas equally visible (no hierarchy)
+- Deadline in orange for quick scanning
+- Footer minimal and unobtrusive
+- Follows ACCESSIBILITY_NEURODIVERSITY.md + VISUAL_DESIGN_MANDATORY.md
 
-### SLIDE ①A: Avklarat sedan förra mötet — Frontend
+**CRITICAL: Do NOT include:**
+- ❌ NPF/design explanations
+- ❌ Design methodology descriptions
+- ❌ Process explanations
+- ❌ Separate information boxes
+- Focus on: Sprint goal, deadline, weekly priorities, PL discussion points
 
-**USES CANONICAL LAYOUT** — 1 header + 1 main message + 1–3 fullwidth vertical content blocks
+---
 
-**CONTENT STRUCTURE (5 work categories, stacked vertically):**
+## 🎯 CONDITIONAL SLIDE RULE — When slides may be omitted
 
-Slide ①A displays Frontend work in 5 sections, each as a FULLWIDTH BLOCK:
+**A slide MAY be omitted only if its dataset is empty, with these requirements:**
 
-1. **MERGED denna vecka** (block 1)
-   - List: all merged PRs this week, each as: ✅ #XX Title · Owner
+1. **Dataset must be verified empty** (not just "no data found")
+   - Explicit count: 0 verified items
+   - Record omission reason
    
-2. **PÅGÅR denna vecka** (block 2)
-   - List: all active branches/issues with activity, each as: ◐ #XX Title · Owner
+2. **Audit must explicitly record:**
+   ```
+   ①B omitted — 0 verified collection-branch deliveries (dataset empty)
+   ①D omitted — 0 verified cross-team active items (dataset empty)
+   ```
    
-3. **VÄNTAR PÅ REVIEW** (block 3)
-   - List: all open PRs awaiting review, each as: ⏳ #XX Title · Owner
-   
-4. **STÄNGDA ISSUES (no merge)** (if any; add as block 4)
-   - List: all closed issues without linked merge, each as: 🔵 #XX Title
-   
-5. **COMMIT-ARBETE** (if any; add as block 5)
-   - List: relevant commits not in PRs, each as: 💾 SHA…message · Author
-
-**IF MORE THAN 3 BLOCKS → AUTO-SPLIT**
-- Block 1 + 2 + 3 → stays on ①A
-- Block 4 + 5 → move to ①A.1 (new continuation slide)
-
-**LAYOUT RULES (MANDATORY):**
-- Each work item = ONE line within its block
-- Format per item: Symbol · Issue# Title · Owner (or ?? if unassigned)
-- No nested tables, no grid, no cards
-- Vertical stack only (never horizontal)
-- Fixed spacing: 20px between blocks, 16px padding inside each block
-- Block height auto (fills with content), never compress
-
-**ALDRIG ANVÄND EXEMPEL-DATA I FAKTISK PRESENTATION.**
-Alla data måste hämtas LIVE från GitHub när presentationen byggas.
-
-**REGLER:**
-- **Del 1: Merged denna vecka** (sortera på merge-datum, äldst först — veckan börjar överst, slutar längst ner)
-  - Visa ALLA merged PRs denna vecka
-  - Status = ✓ DONE
-  - Datum = merge-datum (YYYY-MM-DD)
-
-- **Del 2: Pågår denna vecka** (sortera på branch-aktivitet, senast pushad först)
-  - Visa ALLA öppna branches med commits denna vecka (även utan PR än)
-  - Visa ALLA öppna issues med assignee + recent activity (comments, updates) — ENDAST om ej redan i PR/branch
-  - Status = ◐ PÅG
-  - Branch/Issue-kolumn = branch-namn ELLER issue-nummer (#XXX) — visa båda om båda finns
-  - **DEDUP:** Om samma issue redan visas via PR eller branch → visa INTE igen här
-  - Verifiera mot Project Board: Issue är "In Progress" ELLER branch/issue har activity senaste 3 dagarna
-
-- **Del 3: Väntar på review** (KRITISK textruta för gruppens uppmärksamhet)
-  - Visa ALLA öppna PRs som väntar på review (status: "awaiting review" eller ingen approval än)
-  - Status = ⏳ REVIEW (påminn gruppen om att reviewa)
-  - Branch-kolumn = PR-nummer (#142, #143)
-  - Sortera på skapningsdatum (äldst först — längst väntan)
-  - **VISUELL MARKERING:** Denna sektion ska ha en 🟠 orange eller 🔴 röd bakgrund för att dra uppmärksamhet
-
-- **Del 4: Stängda issues utan merge** (om någon finns)
-  - Visa stängda issues som INTE är länkade till merge denna vecka
-  - Status = 🔵 CLOSED
-  - Branch-kolumn = issue-nummer (#XXX)
-
-- **Del 5: Commit-arbete** (refaktorering, docs, chores — om relevant)
-  - Visa relevanta commits som inte är länkade till issue
-  - Status = 💾 COMMIT
-  - Info = commit-meddelande (kort)
-
-- **Arbetet från alla 7 team-medlemmar måste synas** (antingen i Merged, Pågår eller Väntar på review)
-  - Om medlem har 0 commits denna vecka: Lägg till "Inget arbete i koden denna vecka"
-
-- **Assignad = Ägare av arbetet** (GitHub issue/PR assignee, inte reviewer eller merger)
-  - VIKTIGT: Visar VEMS JOBB det är, inte vem som checkade det
-  - ASSIGNEE från GitHub = källan (inte reviewer, inte "merged by")
-  - Format: GitHub handle + display name (från TEAM_ROSTER.md)
-  - Exempel: ✅ "#95 Security review · [PERSON_A]" ([PERSON_A] ÄGde det)
-  - Exempel: ❌ "#95 Security review · [PERSON_B]" ([PERSON_B] reviewade det, men [PERSON_A] ägde det)
-
-**MÅSTE innehålla:**
-- ✅ Issue-nummer (#XX)
-- ✅ Kort titel (2-5 ord)
-- ✅ **Assignad person** (ägaren av arbetet, från GitHub issue/PR assignee) — INTE reviewer
-- ✅ Status (✓ DONE eller ◐ PÅG eller ⏳ REVIEW)
-- ✅ Datum (merge-datum, branch-namn, eller PR-nummer)
-- ✅ ALLA 7 team-medlemmar (även om 0 arbete denna vecka)
-- ✅ **Väntar på review-sektion** (ska synas tydligt för gruppens uppmärksamhet)
-
-**FÅR INTE innehålla:**
-- ❌ Commit-hash
-- ❌ Endast merged (måste visa pågår + review också)
-- ❌ Stale branches (>3 dagar utan push)
-- ❌ PRs som redan är mergead (de hör hemma i "Merged" sektion)
-- ❌ **Reviewer namn som assignee** (visa ägare, inte vem som checkade)
-
-**DATA-SOURCES:**
-- 📊 **Merged:** GitHub PRs API (merged till develop denna vecka) — FAKTISK GitHub-data, inte exempel
-- 📊 **Pågår:** GitHub branches (commits senaste 7 dagar) + Project Board (status: In Progress) — FAKTISK data
-- 📊 **Väntar på review:** GitHub PRs API (open PRs utan approval, skapade denna vecka) — **MÅSTE HÄMTAS FRÅN GITHUB**, inte exempel
-  - Sortera på skapningsdatum (längst väntan först)
-  - Inkludera ENDAST team-medlemmars PRs (match issue-owner mot TEAM_ROSTER.md)
-  - Status: ⏳ REVIEW (ingen approval än)
-- 🔍 **Jämförelse:** Branch mot Project Board — visa discrepancy om Board och Git inte stämmer
-
-**FOOTER:** `Källa: GitHub PRs + branches (LIVE från [UTC-TIDSSTÄMPEL]) ✅`
-
-🚨 **KRITISK REGEL:** All data i denna slide MÅSTE hämtas LIVE från GitHub när presentationen byggas. Aldrig från exempel, aldrig från snapshot. Inkludera tidsstämpel (t.ex. "2026-09-14 14:00:32 UTC") så det är tydligt att data är aktuell.
+3. **Forbidden:** Omitting a slide because generator chose to skip it
+   - Every slide must have explicit decision: SHOW or OMIT (with reason)
+   - Default: SHOW (even if empty, show "no items this period")
 
 ---
 
-### SLIDE ①B: Avklarat sedan förra mötet — Backend
+## 📝① AVKLARAT SEDAN FÖRRA MÖTET
 
-🚨 **IDENTICAL STRUCTURE TO ①A** — Backend version
+**Point ① shows ONLY completed work during reporting period.**
 
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
-
-**REGLER - EXAKT SOM ①A, MEN ENDAST BACKEND:**
-- Del 1: ALLA merged Backend-PRs denna vecka (status = ✓ DONE)
-- Del 2: ALLA öppna Backend-branches med commits denna vecka (status = ◐ PÅG)
-- Del 3: ALLA öppna Backend-PRs som väntar på review (status = ⏳ REVIEW)
-- Del 4: ALLA stängda Backend-issues UTAN merge denna vecka (status = 🔵 CLOSED)
-- Del 5: Backend-relaterat commit-arbete som inte är länkat till issue (status = 💾 COMMIT)
-
-**FILTRERA:**
-- Visa bara arbete där Team = "Backend" (från TEAM_ROSTER.md labels eller inferred från PR/issue content)
-- Visa ALLA 5 kategorier — ingen kan utelämnas
-
-**DATA-SOURCES:**
-- 📊 **Merged:** GitHub PRs API (Backend-issues, merged denna vecka)
-- 📊 **Pågår:** GitHub branches (Backend-issues, commits senaste 7 dagar)
-- 📊 **Väntar på review:** GitHub PRs API (Backend-issues, open, no approval)
-- 📊 **Stängda utan merge:** GitHub Issues API (Backend-issues, closed this week, no linked merge)
-- 📊 **Commits:** GitHub Commits API (Backend-related commits, not in any PR)
-- 🔍 **Jämförelse:** Audit count == slide representation count (checksum)
-
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
+This mötespunkt is divided into phases (①A, then ①B-①E in team context later):
 
 ---
 
-### SLIDE ①C: Avklarat sedan förra mötet — Native
+## 📊 ①A — MERGADE PR:ER SEDAN FÖRRA MÖTET (1+ slides, split as needed)
 
-🚨 **IDENTICAL STRUCTURE TO ①A** — Native version
+**PURPOSE:**
+Global overview of ALL work merged to develop, displayed chronologically.
+Shows what was actually delivered to develop, regardless of team.
+Does NOT include work merged to team collection branches (that goes to ①B).
 
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
+**CONTENT REQUIREMENTS:**
+- All PRs merged TO DEVELOP during REPORTING_PERIOD (not to collection branches)
+- Sort chronologically (oldest first)
+- Chronological order CONTINUES across slides if >12 cards
+- Include cross-team PRs in chronological order
+- Show assignee + GitHub login for each
 
-**REGLER - EXAKT SOM ①A, MEN ENDAST NATIVE:**
-- Del 1: ALLA merged Native-PRs denna vecka (status = ✓ DONE)
-- Del 2: ALLA öppna Native-branches med commits denna vecka (status = ◐ PÅG)
-- Del 3: ALLA öppna Native-PRs som väntar på review (status = ⏳ REVIEW)
-- Del 4: ALLA stängda Native-issues UTAN merge denna vecka (status = 🔵 CLOSED)
-- Del 5: Native-relaterat commit-arbete som inte är länkat till issue (status = 💾 COMMIT)
+**CARD DATA FIELDS (showing ACTUAL WORK DONE, not just assignment):**
 
-**FILTRERA:**
-- Visa bara arbete där Team = "Native" (från TEAM_ROSTER.md labels eller inferred från PR/issue content)
-- Visa ALLA 5 kategorier — ingen kan utelämnas
+Card layout (no borders, clean typography):
+```
+#100 Länkade mål-inputs                    ← PR number + title (14pt)
 
-**DATA-SOURCES:**
-- 📊 **Merged:** GitHub PRs API (Native-issues, merged denna vecka)
-- 📊 **Pågår:** GitHub branches (Native-issues, commits senaste 7 dagar)
-- 📊 **Väntar på review:** GitHub PRs API (Native-issues, open, no approval)
-- 📊 **Stängda utan merge:** GitHub Issues API (Native-issues, closed this week, no linked merge)
-- 📊 **Commits:** GitHub Commits API (Native-related commits, not in any PR)
-- 🔍 **Jämförelse:** Audit count == slide representation count (checksum)
+Björn · 14 sep 19:28                       ← Developer name + merge timestamp (14pt BOLD)
 
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
+Merged by: Erik  |  Reviewed by: Zaida     ← Two-column table, no border (11-12pt muted)
+```
 
----
+**Field definitions:**
+- **PR number + title:** [#XX] [Title] — primary identifier (14pt)
+- **Developer name + merge time:** [Name] · [MERGE_DATE] [HH:MM] — who wrote the code + when merged (14pt BOLD)
+  - Developer verified from: 1) Commit authors (primary), 2) Issue assignee (fallback), 3) PR author (weak signal)
+- **Merged by:** [Name] (@github_login) — who clicked merge button
+- **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
+- **No "Merged to develop" text** — only for collection-branch cards (①B, ①C)
 
-### SLIDE ①D: Avklarat sedan förra mötet — Cross-team
+**PAGINATION (MANDATORY):**
+- Slide ①A shows MAX 6 cards per physical slide (3 columns × 2 rows)
+- If merged PR count > 6:
+  - Create continuation slide ①A-2 (preserves ① symbol, continues chronologically)
+  - Continue ①A-3, ①A-4 if needed
+  - FORBIDDEN: shrink cards, reduce font below 12pt, place >6 on one slide
+  - If merged PR count <= 6: single ①A slide
+- Chronological order continues unbroken across ①A pages
 
-🚨 **IDENTICAL STRUCTURE TO ①A** — Cross-team version
+**CRITICAL:**
+- Show actual code contributors (commit authors > assignee > pr_author)
+- PR author is fallback only, NOT the definition of "developer"
+- Show actual reviewers (who approved), NOT just requested_reviewers
+- All three fields must be filled (if missing, show "?" or note "no review yet")
+- This demonstrates team collaboration (not just individual work)
 
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
+**VISUAL IMPLEMENTATION:**
+Do NOT define colors, grid, layout, or badge styling here.
+All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
+- Grid dimensions: 3 × 2 (max 6 cards per slide)
+- Team colors (borders, badges)
+- Card layout and spacing
+- Legend
 
-**REGLER - EXAKT SOM ①A, MEN ENDAST CROSS-TEAM:**
-- Del 1: ALLA merged Cross-team-PRs denna vecka (work affecting multiple teams)
-- Del 2: ALLA öppna Cross-team-branches med commits denna vecka
-- Del 3: ALLA öppna Cross-team-PRs som väntar på review
-- Del 4: ALLA stängda Cross-team-issues UTAN merge denna vecka
-- Del 5: Cross-team commit-arbete som inte är länkat till issue
-
-**FILTRERA:**
-- Visa bara arbete klassificerat som Cross-team (PRs/issues affecting Frontend + Backend, or Frontend + Native, etc)
-- Visa ALLA 5 kategorier — ingen kan utelämnas
-
-**DATA-SOURCES:**
-- 📊 All 5 categories from data_audit.work_areas.cross_team
-
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
-
----
-
-### SLIDE ①E: Avklarat sedan förra mötet — Other (docs, infra, chores)
-
-🚨 **IDENTICAL STRUCTURE TO ①A** — Other version
-
-**FORMAT:** Visuella rader klassificerad i fem serier: Merged | Pågår | Väntar på review | Stängda issues | Commit-arbete
-
-**REGLER - EXAKT SOM ①A, MEN ENDAST OTHER:**
-- Del 1: ALLA merged Other-PRs denna vecka (docs, infra, build, chores, etc)
-- Del 2: ALLA öppna Other-branches med commits denna vecka
-- Del 3: ALLA öppna Other-PRs som väntar på review
-- Del 4: ALLA stängda Other-issues UTAN merge denna vecka
-- Del 5: Other commit-arbete (docs updates, infra changes, etc)
-
-**FILTRERA:**
-- Visa bara arbete klassificerat som Other: documentation, infrastructure, build system, chores, refactoring, etc
-- Visa ALLA 5 kategorier — ingen kan utelämnas
-- **VIKTIGT:** Denna slide visas ENDAST om Other-arbete existerar i audit. Annars hoppas ①E över.
-
-**DATA-SOURCES:**
-- 📊 All 5 categories from data_audit.work_areas.other
-
-**FOOTER:** `Data från [UTC-TIDSSTÄMPEL] | Alla 5 kategorier verifierade från GitHub ✅`
+This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it looks.
 
 ---
 
-**JÄMFÖRELSE MELLAN ALLA OMRÅDEN (①A-E):**
+## 🟢 TEAM MEMBER CAPACITY — UNIVERSAL RULE
 
-Dessa slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
+If a team member has NO verified active issue or PR:
 
-| | Frontend | Backend | Native | Cross-team | Other |
-|---|----------|---------|--------|-----------|-------|
-| Merged | X | Y | Z | W | U |
-| Pågår | X | Y | Z | W | U |
-| Väntar på review | X | Y | Z | W | U |
-| Stängda issues | X | Y | Z | W | U |
-| Commit-arbete | X | Y | Z | W | U |
+**Show:**
+"[Name] — Ny issue eller tillgänglig för hjälp i [teamet]"
 
-**REGEL:** Om någon rad är tom för alla områden (t.ex. ingen "Commit-arbete" överhuvudtaget), MÅSTE det noteras i audit med anledning (t.ex. "Inga relevanta commits denna vecka")
+**This means:**
+- Can take next prioritized issue
+- Can help a team colleague
+- Can pair or review
+- Can help unblock someone
+- Is available for support/ramp-up
 
-**Syftet:** Se ALLT arbete för varje område denna vecka — ingen aktivitet försvinner mellan stolarna, och ingen slide är överbelastad.
+**This is capacity information, NOT performance assessment.**
+
+**CRITICAL: Review is work, not "available":**
+- If a person is actively reviewing PRs → show them as "Reviewing [PR#] for [person]"
+- Do NOT show reviewers as "Ny issue eller tillgänglig för hjälp"
+- Review work is actual work and should be visible
+- Only show "available" if the person has NO active reviews or PRs
+
+**DO NOT:**
+- Write "Ingen aktivitet" (implies inactivity)
+- Write "Inget arbete" (implies no work)
+- Use red warning
+- Use phrasing that implies low performance
+- Hide reviewers as if they're "idle"
+
+**Visual style:**
+- Neutral gray or blue color
+- Symbol: ○ or ↔
+- Text: "Ny issue eller tillgänglig för hjälp"
+
+Example on team slide later:
+```
+○ Erik — Ny issue eller tillgänglig för hjälp i Backend
+○ Pär — Ny issue eller tillgänglig för hjälp i Native
+```
+
+---
+
+## 📊 ①B — AVKLARAT SEDAN FÖRRA MÖTET — BACKEND COLLECTION BRANCH (0-1+ slides)
+
+**PURPOSE:**
+Show all work merged to Backend team's collection branch (Java-Development-Environment) during reporting period.
+This represents delivered work to the Backend team branch, not yet necessarily on develop.
+
+**CANONICAL BRANCH:**
+`Java-Development-Environment`
+
+**LAYOUT:**
+- **SAME 3×2 GRID AS ①A** (NOT full-width stacked)
+- Max 6 cards per physical slide
+- Continuation slides (①B-2, ①B-3, etc.) if >6
+- Chronological order (oldest first)
+
+**CARD DATA FIELDS:**
+
+Card layout (no borders, clean typography):
+```
+#97 IDOR-skydd                             ← PR number + title (14pt)
+
+Rasha · 14 sep 13:29                       ← Developer name + merge timestamp (14pt BOLD)
+
+Merged by: Erik  |  Reviewed by: Zaida     ← Two-column table, no border (11-12pt muted)
+```
+
+**Field definitions:**
+- **PR number + title:** [#XX] [Title] — primary identifier (14pt)
+- **Developer name + merge time:** [Name] · [MERGE_DATE] [HH:MM] — who wrote code + when merged to Java-Development-Environment (14pt BOLD)
+  - Developer verified from commit authors (primary source)
+- **Merged by:** [Name] (@github_login) — who merged to Java-Development-Environment
+- **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
+- **No "Merged to Java-Development-Environment" text** — redundant (shown in slide header)
+
+**WHEN TO SHOW:**
+- Show if ANY PRs merged to Java-Development-Environment during REPORTING_PERIOD
+- If no merges: show omission slide with "Inga verifierade merges till Backend collection branch denna vecka"
+
+**CRITICAL (no double-counting):**
+- Do NOT show work already displayed on ①A (merged to develop)
+- This shows team delivery branch, not final develop delivery
+- Deduplication: use linked_issue_ids + commit_sha_ancestry
+
+---
+
+## 📊 ①C — AVKLARAT SEDAN FÖRRA MÖTET — NATIVE COLLECTION BRANCH (0-1+ slides)
+
+**PURPOSE:**
+Show all work merged to Native/System team's collection branch during reporting period.
+This represents delivered work to the Native team branch, not yet necessarily on develop.
+
+**CANONICAL BRANCH:**
+`C/C++-Native`
+
+**LAYOUT:**
+- **SAME 3×2 GRID AS ①A** (NOT full-width stacked)
+- Max 6 cards per physical slide
+- Continuation slides (①C-2, ①C-3, etc.) if >6
+- Chronological order (oldest first)
+
+**CARD DATA FIELDS:**
+
+Card layout (no borders, clean typography):
+```
+#108 JWT-auth                              ← PR number + title (14pt)
+
+Rasha · 16 sep 13:51                       ← Developer name + merge timestamp (14pt BOLD)
+
+Merged by: Erik  |  Reviewed by: Zaida     ← Two-column table, no border (11-12pt muted)
+```
+
+**Field definitions:**
+- **PR number + title:** [#XX] [Title] — primary identifier (14pt)
+- **Developer name + merge time:** [Name] · [MERGE_DATE] [HH:MM] — who wrote code + when merged to C/C++-Native (14pt BOLD)
+  - Developer verified from commit authors (primary source)
+- **Merged by:** [Name] (@github_login) — who merged to C/C++-Native
+- **Reviewed by:** [Name] (@github_login) — who actually approved (not requested_reviewers)
+- **No "Merged to C/C++-Native" text** — redundant (shown in slide header)
+
+**WHEN TO SHOW:**
+- Show if ANY PRs merged to C/C++-Native during REPORTING_PERIOD
+- If no merges: show omission slide with "Inga verifierade merges till Native collection branch denna vecka"
+
+**CRITICAL (no double-counting):**
+- Do NOT show work already displayed on ①A (merged to develop)
+- This shows team delivery branch, not final develop delivery
+- Deduplication: use linked_issue_ids + commit_sha_ancestry
+
+---
+
+## 📊 ①D — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE
+
+**PURPOSE:**
+Shows active work by team. Three separate columns, each team's pågår issues.
+Does NOT include cross-team work (that goes to ①C).
+
+**CONTENT REQUIREMENTS:**
+- Active (open) issues assigned to team members
+- One column per team (Frontend | Backend | Native)
+- Max 4 rows per column = max 12 cards total
+- Include issue number, branch, latest commit timestamp
+- Exclude cross-team work (goes to ①D)
+
+**CARD DATA FIELDS:**
+- Issue number + title
+- Branch name
+- Latest commit timestamp + author name
+- Assignee name (@github_login)
+- Code inspection notes (if issues detected)
+
+**DATA SOURCE:**
+- Open issues + matching active branches
+- Recent commits (last 7 days)
+- Per team via TEAM_ROSTER.md
+- Latest commit timestamp from DATA_ACQUISITION_CONTRACT.yaml
+
+**VISUAL IMPLEMENTATION:**
+Do NOT define colors, grid layout, or spacing here.
+All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
+- Column structure (3 columns)
+- Team border colors
+- Card dimensions and spacing
+- How to display commit timestamp
+
+This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it looks.
+
+---
+
+## 📊 ①E — PÅGÅR DENNA VECKA: CROSS-TEAM
+
+**PURPOSE:**
+Shows active cross-team work (affects multiple teams).
+Separate slide to keep team columns clean and highlight cross-team coordination.
+
+**CONTENT REQUIREMENTS:**
+- Active (open) issues affecting multiple teams
+- Max 12 cards per slide
+- Show which teams are involved in each issue
+- Include branch names and latest commit timestamps
+- Sort by activity (most recent first)
+
+**CARD DATA FIELDS:**
+- Issue number + title
+- Teams involved
+- Branch name
+- Latest commit timestamp + author name
+- Assignee name (@github_login)
+
+**DATA SOURCE:**
+- Open issues marked as cross-team or affecting multiple teams
+- Latest commit timestamp from DATA_ACQUISITION_CONTRACT.yaml
+
+**VISUAL IMPLEMENTATION:**
+Do NOT define colors, grid layout, or border styling here.
+All visual rules are in [`VISUAL_DESIGN_MANDATORY.md`](../design/VISUAL_DESIGN_MANDATORY.md):
+- Grid dimensions: 3 × 2 (max 6 cards per slide)
+- Cross-team border color and styling
+- Card layout and spacing
+
+This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it looks.
+
+---
+
+---
+
+**STRUCTURE SUMMARY: ① Section (①A–①F)**
+- ①A–①C: Completed work (develop + collection branches)
+- ①D–①E: Active work this week (team-based + cross-team)
+- ①F: Decisions made since last meeting
+
+---
+
+## 📝①F — BESLUT SEDAN FÖRRA MÖTET (0-1 slides, conditional)
+
+**PLACEMENT:** After ①E, before ② (completes ① section)
+
+**PURPOSE:**
+Help team see what decisions have been made (documented in docs/BESLUT.md)
+and discover what decisions should perhaps be documented (candidates from GitHub).
+
+**TWO SECTIONS:**
+
+#### Section A: VERIFIERADE BESLUT
+
+Show confirmed decisions from docs/BESLUT.md during reporting period.
+
+**Format:** Vertically stacked compact cards, one decision per card
+
+```
+✓ Teststrategi
+Vitest + RTL används för frontendtester.
+Dokumenterat: 15 september
+
+✓ API-kontrakt
+JWT skickas via HttpOnly-cookie.
+Dokumenterat: 12 september
+```
+
+**RULES:**
+- Only show if 1+ decisions exist in docs/BESLUT.md
+- Max 4 decisions per slide
+- If no decisions: omit Section A
+
+#### Section B: FÖRSLAG PÅ BESLUT ATT DOKUMENTERA (optional)
+
+Show 2-3 decision candidates. These are things GitHub/code patterns suggest
+the team has already adopted or decided, but isn't yet documented as formal decisions.
+
+Format helps team learn: "What makes something a real decision?"
+
+```
+? Backend-integrationsflöde
+Ska Backend alltid integrera i Java-Development-Environment
+innan merge till develop?
+
+Underlag: Flera säkerhets-PR:er följer detta mönster.
+Varför dokumentera? Påverkar hur vi reviewar och planerar.
+```
+
+**RULES FOR CANDIDATES:**
+- Show ONLY if evidence suggests team has adopted the practice
+- NEVER claim a decision is made — use "Förslag på beslut" (suggestion)
+- Evidence must be from: GitHub PRs, code patterns, or team workflow
+- Max 2-3 suggestions per presentation
+- If no candidates: omit Section B
+- Include: question form, evidence, why it matters
+
+**CANDIDATE CRITERIA (what AI should suggest):**
+
+✅ Suggest as decision candidate if it:
+- Affects future implementation
+- Establishes reusable rule
+- Selects between alternatives
+- Defines interface or contract
+- Changes team workflow
+- Creates dependency/order between work
+- Establishes quality/security/testing practice
+
+❌ Do NOT suggest if it's only:
+- A single commit
+- Ordinary implementation detail
+- Task completion or status
+- Temporary debugging change
+- One-off code review
+
+**SLIDE OMISSION:**
+- If no verified decisions AND no candidates: omit entire slide
+- Record omission in audit: "Slide ① BESLUT omitted — 0 decisions + 0 candidates"
+
+**VISUAL IMPLEMENTATION:**
+- Verified decisions: green check + date
+- Candidates: blue question mark + evidence link
+- Both: soft cards, centered text, responsive height
+- See VISUAL_DESIGN_MANDATORY.md for card styling
 
 ---
 
@@ -347,50 +573,51 @@ Dessa slides tillsammans visar gruppens KOMPLETTA bild denna vecka:
 
 ### SLIDE ②A: Nuläge + Deadline Tracker & Risk
 
-**FORMAT:** Två delar: (1) Progress bars per team, (2) Deadline Tracker med Risk-nivå
+**FORMAT: Vertically stacked compact priority cards**
 
-**INNEHÅL - DEL 1: NULÄGE denna sprint (compact)**
+Use small vertically-stacked cards (NOT wide horizontal bands).
+Each card shows one ranked priority item. Cards grow vertically to fit content.
 
-```
-PROGRESS:
-
-Frontend:  ████████░░ 80% (API-kontrakt väntar på Backend)
-Backend:   ██████░░░░ 60% (Fokus denna vecka)
-Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
-```
-
-**INNEHÅL - DEL 2: DEADLINE TRACKER (fokuserat på risk)**
+**INNEHÅL - Vertically ranked cards:**
 
 ```
-🔴 KRITISK (Idag 14:00) — [MILESTONE_A]
-   VAD: [TEAM_A] + [TEAM_B] fastslår [DECISION]
-   VARFÖR: Låser upp [FEATURE_1], [FEATURE_2], [FEATURE_3]
-   STATUS: ⏳ INGEN AKTIVITET än
-   RISK: Om inte klart idag → [N] dagar försening för [M] teams
-   ACTION: [PERSON] möte 14:00 — kan vi unblockera NU?
+    1️⃣ KRITISK — [MILESTONE_A]
+       Idag 14:00
 
-🟠 HÖGT (Imorgon) — [MILESTONE_B]
-   VAD: Formell dokumentation i issue #XX ([FORMAT], [DETAILS])
-   VARFÖR: [TEAM_C] + [TEAM_D] behöver detta för [PHASE]
-   STATUS: ⏳ Beror på idag's möte
-   RISK: [N] dag sen → [IMPACT]
-   ACTION: Vilka kan hjälpa [PERSON] med [TASK]?
+    VAD: [TEAM_A] + [TEAM_B] fastslår [DECISION]
+    VARFÖR: Låser upp [FEATURE_1], [FEATURE_2]
+    STATUS: ⏳ Ingen aktivitet än
+    RISK: [N] dagar försening om ej klart
+    ACTION: [PERSON] möte 14:00
 
-🟡 MEDEL (Fredag) — Feature-complete eller fallback
-   VAD: Alla features klara ELLER fallback för CTO-demo
-   VARFÖR: CTO-demo denna vecka
-   STATUS: 🟢 ON TRACK (Frontend 80%, Backend 60%)
-   BUFFER: 1 dag kvar
-   ACTION: Hålla fokus på blockers denna vecka
+
+    2️⃣ HÖGT — [MILESTONE_B]
+       Imorgon
+
+    VAD: Dokumentation i issue #XX
+    VARFÖR: [TEAM_C] behöver för [PHASE]
+    STATUS: ⏳ Beror på möte idag
+    RISK: Kan försena nästa fas
+    ACTION: Vilka kan assistera [PERSON]?
+
+
+    3️⃣ MEDEL — CTO-demo denna vecka
+
+    VAD: Feature-complete eller fallback
+    VARFÖR: Demo är schemalagd
+    STATUS: 🟢 80% (Frontend), 60% (Backend)
+    BUFFER: 1 dag kvar
+    ACTION: Fokusera på blockers
 ```
 
 **REGLER:**
-- **Del 1 (Progress):** Kompakt — progress bars per team, max 3 rader
-- **Del 2 (Deadlines):** Primär fokus — vilken deadline, vad innebär den, vilken risk, vad gör vi
-- Deadlines i prioritetsordning: 🔴 Kritisk → 🟠 Högt → 🟡 Medel
-- Varje deadline: VAD | VARFÖR | STATUS | RISK | ACTION
-- STATUS-märken: ⏳ = väntar, 🟢 = on track, 🔴 = behind, 🟠 = risk
-- ACTION = konkret nästa steg (inte "vi hoppas")
+- **Layout:** Vertically stacked compact cards, one per ranked item
+- **Ranking:** 1️⃣ = highest urgency, 2️⃣ = next, 3️⃣ = next
+- **Each card:** Rank | Priority level | Deadline | VAD | VARFÖR | STATUS | RISK | ACTION
+- **Card behavior:** Grows vertically to fit all content (no clipping)
+- **Text alignment:** All text centered inside each card
+- **STATUS-märken:** ⏳ = waiting, 🟢 = on track, 🔴 = behind, 🟠 = risk
+- **ACTION:** Konkret nästa steg med ÄGA och TIDRAM
 
 **MÅSTE innehålla:**
 - ✅ Progress % per team
@@ -409,6 +636,34 @@ Native:    ███████░░░ 70% (Blockerad på Backend-kontrakt)
 - ❌ Vaga actions ("vi ska jobba på det") — måste ha ÄGA och TIDRAM
 
 **FOOTER:** `Källa: GitHub issues + Project Board + Sprint planning ✅`
+
+---
+
+## 🎯 TEAM DETAIL LAYOUT (③ Frontend, ④ Backend, ⑤ Native)
+
+**All team detail slides use identical card layout:**
+
+- Vertically stacked compact cards (NOT wide horizontal bands)
+- One work item per card
+- Text centered horizontally inside every card
+- Card height adapts to content (no clipping allowed)
+- Minimum height, let cards expand vertically
+- Same spacing and typography hierarchy across all teams
+
+**Card structure (centered):**
+```
+    ✅ #93 · PR #95
+    SQL-injection fix
+
+    Mergat till
+    Java-Development-Environment
+
+       Rasha
+    Review: Erik
+    Merge: Erik
+```
+
+**See VISUAL_DESIGN_MANDATORY.md for complete TEAM DETAIL CARDS rules.**
 
 ---
 
@@ -600,26 +855,53 @@ MÖJLIG SUPPORT:
 
 ### SLIDE ⑥A: Blockerträd — Alla kritiska kedjor
 
-**FORMAT:** ASCII-diagram eller tabell
+**FORMAT:** Visuell dependency-diagram med noder och pilar
 
-**INNEHÅL:**
-```
-🔴 KRITISKA KEDJOR:
+**SYFTE:**
+Visa hur issues hänger ihop i kedjor, vilken issue som låser upp nästa steg, 
+och var den aktuella blockeringen finns.
 
-[#XX API Foundation]
-   ├──→ [#YY Feature A]
-   └──→ [#ZZ Feature B]
+**VISUELLT FORMAT:**
+- Varje issue visas som en separat nod / "mjukt kort"
+- Noder binds ihop med pilar
+- Varje kedja visas som en egen tydlig sektion
+- Kedjor får visas vänster→höger eller uppifrån→ned beroende på utrymme
+- Om en kedja har flera grenar ska förgrening visas visuellt
 
-[#AA Test Foundation]
-   └──→ [#BB Feature C]
-        └──→ [#CC Feature D]
-```
+**VARJE NOD SKA VISA:**
+- Issue-nummer
+- Kort titel
+- Team (via färg eller märkning)
+- Status:
+  - ✅ Klar
+  - ◐ Pågår
+  - ⏳ Väntar
+  - 🔴 Blockerad
 
 **REGLER:**
-- Visa ENDAST kritiska chains (låser upp mycket)
-- Format: ASCII-diagram (pilar → visar beroende)
-- Visa issue-nummer (#XX) och kort titel
-- Färger: 🔴 = kritisk, 🟠 = måttlig
+- Visa sambandet visuellt, inte bara som meningar
+- Pilar ska visa riktning: vilken issue låser upp nästa
+- Kritisk blocker ska markeras tydligt
+- Om flera issues beror på samma foundation-issue ska detta förgrenas
+- Max 3–4 kedjor per slide, annars delas innehållet upp på fler slides
+- Noder måste vara rundade kort med padding (se VISUAL_DESIGN_MANDATORY.md)
+
+**EXEMPEL LAYOUT:**
+```
+KEDJA 1
+[ #43 API Foundation ] ─────→ [ #82 usePortfolio ]
+      ✅                            ◐
+
+KEDJA 2
+[ #103 JWT-auth ] ─────────→ [ #104 Spring Security ]
+      ◐                              ⏳
+
+KEDJA 3
+[ #6 JNA-bridge ] ─────────→ [ #16 back-testing ]
+      ⏳
+            └──────→ [ #98 historical FX ]
+            └──────→ [ #99 multi-currency FX ]
+```
 
 **MÅSTE innehålla:**
 - ✅ Foundation-issues (låser upp mycket)
@@ -629,8 +911,7 @@ MÖJLIG SUPPORT:
 **FÅR INTE innehålla:**
 - ❌ Alla issues (bara kritiska kedjor)
 - ❌ Timmar eller estimat
-
-**FOOTER:** `Källa: Code review + GitHub PR dependencies ✅`
+- ❌ Långa textstycken — kort titel per nod
 
 ---
 
@@ -996,65 +1277,67 @@ MILESTONES:
 
 ---
 
-## 📝⑬ NÄSTA STEG (1-2 slides)
+## 📝⑬ NÄSTA STEG (1 slide)
 
-### SLIDE ⑬A: Handlingsplan direkt efter mötet
+### SLIDE ⑬A: Prioriterade åtgärder — 4 steg framåt
 
-**FORMAT:** Numrerad lista med tid + verifikation
+**FORMAT:** 4-kolumners grid (max 4 cards, en per åtgärd)
 
-**INNEHÅL:**
+**LAYOUT:**
+- 4 vertikala kort/boxes placerade sida-vid-sida
+- Varje kort: rubrik + beskrivning + deadline
+- Numrerad (①②③④ eller 1 2 3 4)
+- Soft-rounded corners (12-18px per VISUAL_DESIGN_MANDATORY)
+
+**INNEHÅL PER KORT:**
 ```
-HANDLINGSPLAN:
+[① RUBRIK]
+Kort beskrivning av åtgärd
+Deadline + ägare
+Verifikation kort notering
+```
 
-INOM 1 TIMMA EFTER MÖTET:
-[ ] 1. [PERSON_A]: Uppdatera GitHub issue #XX med [DECISION]
-    Verifikation: Issue-description innehåller [PROOF]
+**EXEMPEL:**
+```
+① Boka BE ↔ FE-möte
+Lås API-kontraktet denna vecka
+Deadline: Idag
+Verifikation: Meeting booked + minutes in GitHub
 
-[ ] 2. [PERSON_B]: Uppdatera Project Board — flytta #YY till "[STATUS]"
-    Verifikation: Project Board visar #YY i rätt kolumn
+② Boka BE ↔ Native-möte
+Klargör JNA-bryggan tisdag/onsdag
+Deadline: Idag
+Verifikation: Meeting booked + technical spec link
 
-IDAG (före [TIDPUNKT] möte):
-[ ] 3. [PERSON_C]: Review [RESOURCE] för #ZZ
-    Verifikation: [PERSON_C] säger "ready" i GitHub-kommentarer
+③ Frontend fortsätter
+Issue #43, ansvar och tillgänglighet
+Deadline: Denna vecka
+Verifikation: Issue assigned + branch created
 
-[ ] 4. [PERSON_D]: Genomför [TASK] på #AA
-    Verifikation: [PERSON_D] mergear #AA eller sätter label "[STATUS]"
-
-IMORGON:
-[ ] 5. [PERSON_E]: Starta #BB [TASK]-implementation
-    Verifikation: Branch #BB-branch skapad + första commit pushad
-
-[ ] 6. [PERSON_F]: Börja pairing-session med [PERSON_G] på #CC
-    Verifikation: Commit pushad från #CC-branch
-
-DENNA VECKA:
-[ ] 7. [PERSON_H]: Genomför [MEETING] med [TEAM] ([WHEN])
-    Verifikation: Issue-comment i GitHub med mötes-summering
-
-[ ] 8. [PERSON_I]: Code-review alla inkommande PRs från [TEAM]
-    Verifikation: Alla PRs har review-kommentar
-
-[ ] 9. PL: Verifiera Project Board stämmer med Git-branch-status
-    Verifikation: Board-kolumner matchar faktisk arbete
+④ Håll det smalt
+Prioritera stabil flöde framför nya features
+Deadline: Sprint-long
+Verifikation: Scope confirmed in Project Board
 ```
 
 **REGLER:**
-- Numrerad lista (1, 2, 3...)
-- Tidsgrupp: Inom 1h | Idag | Imorgon | Denna vecka
-- Format: Nummer. Namn: Action
-- MÅSTE ha verifikation (hur vet vi att det är klart?)
-- Verifikation = GitHub-verifierbar (inte "vi tror")
+- MAX 4 åtgärder (kan inte rymmas på en slide)
+- Varje kort: prioriterad åtgärd (INTE en checklist)
+- Format: Nummer. Rubrik | Beskrivning | Deadline | Verifikation
+- Rubrik 1-5 ord, beskrivning 1-2 meningar
+- Deadline = samma dag, imorgon, denna vecka, sprint-long
+- Verifikation = GitHub-verifierbar
 
 **MÅSTE innehålla:**
-- ✅ Konkreta GitHub-åtgärder (issue-update, branch-create, PR-create)
-- ✅ Ägare för varje åtgärd
-- ✅ Deadline (samma dag, imorgon, denna vecka)
-- ✅ Verifikation-punkt (hur vet vi det är klart?)
+- ✅ De viktigaste 4 åtgärderna från mötet
+- ✅ Ägare/ansvarig per åtgärd (implicit eller explicit)
+- ✅ Deadline (konkret tidsram)
+- ✅ Verifikation (hur vet vi det är klart?)
 
 **FÅR INTE innehålla:**
-- ❌ Vague tasks ("vi ska jobba på...")
-- ❌ Åtgärder utan ägare
-- ❌ "Vi hoppas..." (bara konkreta saker)
+- ❌ >4 åtgärder (split till separat ⑬B om fler)
+- ❌ Vaga deadlines ("senare")
+- ❌ Okoncreta verifikationer
 
 **FOOTER:** `Baserat på punkt ③-⑫ (status, prioritering, plan) ✅`
 
@@ -1064,52 +1347,62 @@ DENNA VECKA:
 
 ### SLIDE ⑭A: Öppna frågor för PL-svar
 
-**FORMAT:** Numrerad lista med prioritering
+**FORMAT:** Moderna kort/boxes — Grupperad efter prioritet
 
-**INNEHÅL:**
+**LAYOUT:**
+- Två grupper: "IDAG-SVAR BEHÖVS" (högre upp) + "NICE-TO-HAVE" (längre ned)
+- Varje fråga = separat kort/box med border (soft-rounded corners 12-18px)
+- Kort-innehål: Nummer + KATEGORI — Fråga (bold) | Impakt
+- Designtema: Dark navy bakgrund (#0F1830), soft border, whitespace mellan kort
+
+**INNEHÅL PER KORT:**
+
 ```
-ÖPPNA FRÅGOR FÖR PL-SVAR:
+IDAG-SVAR BEHÖVS
 
-IDAG-SVAR BEHÖVS (höga prioriteten):
+┌─────────────────────────────────────┐
+│ Q1 SCOPE — Ska #XX in i denna sprint?│
+│ Påverkar [TEAM]-kapacitet (+ [N]h)  │
+└─────────────────────────────────────┘
 
-1. SCOPE — Ska #XX ([FEATURE_A]) in i denna sprint?
-   VARFÖR VIKTIG: Påverkar [TEAM]-kapacitet (+ [N] timmar)
-   IMPAKT: Om JA → flytta #YY till nästa vecka
+┌─────────────────────────────────────┐
+│ Q2 PRIORITERING — Skippa #AA för #ZZ?
+│ Säkerhet vs testramverk-investering │
+└─────────────────────────────────────┘
 
-2. PRIORITERING — Om #ZZ mergea idag, kan vi skippa #AA?
-   VARFÖR VIKTIG: Kan spara [N] timmar [TASK]
-   IMPAKT: Säkerhets-testing vs testramverk-investering
+NICE-TO-HAVE (diskussionsfrågor)
 
-3. SCOPE — Responsive dashboard (#86): krävs desktop-version också?
-   VARFÖR VIKTIG: Påverkar Native-tidsuppskattning (+ 12 timmar)
-   IMPAKT: Om JA → omöjligt denna vecka
-
-IDAG-SVAR NICE-TO-HAVE (diskussions-frågor):
-
-4. PROCESS — Ska mötet nästa vecka starta med Code Review eller Retrospekt?
-   VARFÖR VIKTIG: Påverkar agenda (40min skillnad)
-
-5. PROCESS — Ska vi döpa om branches enligt naming-convention?
-   VARFÖR VIKTIG: CI/CD-fokus eller flexibilitet?
+┌─────────────────────────────────────┐
+│ Q3 PROCESS — Code Review el Retrospekt?
+│ Påverkar agenda (40min skillnad)    │
+└─────────────────────────────────────┘
 ```
 
 **REGLER:**
-- MAX 5-6 frågor per möte
-- Börja med "IDAG-SVAR BEHÖVS" (höga prioriteten)
-- Avsluta med "IDAG-SVAR NICE-TO-HAVE" (diskussions-frågor för senare)
-- Format: Nummer. KATEGORI — Fråga + VARFÖR VIKTIG + IMPAKT
-- PL måste kunna svara direkt (inte "vi återkommer")
+- MAX 6 frågor total (helst 3-4 prioriterade)
+- Q1, Q2, Q3... (eller 1, 2, 3...)
+- Format: Q# KATEGORI — Fråga + impakt (1 mening)
+- Två sektion: IDAG-SVAR BEHÖVS (överst) | NICE-TO-HAVE (längre ned)
+- PL måste kunna svara direkt under mötet
 
 **MÅSTE innehålla:**
-- ✅ Öppna frågor från teamet
-- ✅ PL-beslut som saknas
-- ✅ Scope-frågor ("ska vi inkludera X?")
-- ✅ Prioritering (vad ska PL svara på IDAG)
+- ✅ Frågor som kräver PL-beslut denna vecka
+- ✅ Scope-frågor (påverkar sprintomfattning)
+- ✅ Prioriteringsfrågor (välja mellan alternativ)
+- ✅ Tydlig impakt för varje fråga
 
 **FÅR INTE innehålla:**
 - ❌ Retoriska frågor
-- ❌ "Vi undrar om..." (bara konkreta frågor)
+- ❌ Frågor utan konkret påverkan
+- ❌ "Vi undrar..." (bara direkta frågor)
 - ❌ >6 frågor
+
+**VISUAL DESIGN:**
+- Soft-rounded kort (12-18px corners)
+- Neutral border (light gray eller team-färgad)
+- Soft padding (16-20px intern)
+- Dark navy background tema (per VISUAL_DESIGN_MANDATORY.md)
+- Fungerar på både light/dark themes
 
 **FOOTER:** `Källa: Team-feedback under mötet ✅`
 

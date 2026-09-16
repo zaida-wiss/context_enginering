@@ -208,6 +208,92 @@ OM du INTE kan nå mötesprotokollet:
 
 ---
 
+## 🔬 ARTIFACT VERIFICATION LAYER — Inspect rendered artifact, NOT generator report
+
+**CRITICAL RULE: Self-report is not evidence.**
+
+Generator statements such as "all checks passed" are **not** sufficient proof.
+
+After rendering, verification MUST inspect the produced artifact:
+
+### SPEC VERIFICATION (before render)
+"What should the presentation contain according to rules?"
+
+### ARTIFACT VERIFICATION (after render)
+"What does the presentation **actually** contain?"
+
+### Artifact inspection checklist:
+
+```
+COVER SLIDE — FRAMSIDA (⓪)
+  ☐ NO slide title or meeting point symbol (framsida is title-free)
+  ☐ Meeting date visible: "Veckomöte · [DATE]"
+  ☐ Team identifier visible: "Avanza Team 1"
+  ☐ Reporting period visible (compact, under meeting title): "Rapportperiod: [START] 09:00 – [END] 09:00"
+  ☐ Three main content areas visible: Sprintfokus, Deadline, PL-fokus
+  ☐ Deadline date in orange/accent color
+  ☐ Footer visible and compact: "Snapshot: [TIMESTAMP] | Källor: GitHub, Project Board ✅"
+  ☐ No separate information box (data integrated into main slide)
+
+PHYSICAL STRUCTURE (count actual objects in rendered artifact):
+  ☐ Physical slide count = expected total
+  ☐ Slide ①A contains max 6 cards per slide
+  ☐ If PR count > 6: continuation slides exist (①A-2, ①A-3, etc)
+  ☐ Visible slide headings have pen symbol (✏️ ①, ✏️ ②, ✏️ ③④⑤, etc)
+  ☐ Cover slide ⓪ (framsida) has NO header or pen symbol
+
+CONTENT VERIFICATION (inspect rendered text):
+  ☐ "Developed by" field visible and populated (not "??" unless PR truly has no commit authors)
+  ☐ "Reviewed by" field visible and populated (actual GitHub reviewer, not "ej verifierat" if reviews exist)
+  ☐ "Merged by" field visible and populated (actual merged_by.login from GitHub, not "GitHub-merge" placeholder)
+     ❌ FAILURE if "Merged by: GitHub-merge" or "Merged by: ej verifierat" when GitHub has merged_by.login
+  ☐ No PR shown twice (deduplication verified in actual render)
+  ☐ All 7 team member names appear (with work or "available" marker)
+  ☐ Actual PR numbers match GitHub (not invented/fabricated)
+  ☐ "Ej verifierbart" ONLY appears if GitHub data truly unavailable (checked explicitly)
+
+VISUAL QUALITY (inspect rendered layout):
+  ☐ No text clipping or overflow
+  ☐ Cards expand to contain all text
+  ☐ Team color borders present and correct
+  ☐ Corner radius 12-18px visually present
+  ☐ Padding 16-20px visually present
+  ☐ Team detail cards (③④⑤) are vertically stacked (not tables)
+  ☐ Required sections present:
+     - Framsida with meeting date + data footer
+     - ①A–①C with 3×2 grid layouts (merged work)
+     - ①D–①E with stacked layouts (pågår work)
+     - ①F with stacked layout (decisions)
+     - ②③④⑤
+
+MERGE OVERVIEW BOARDS (①A–①C):
+  ☐ Slide ①A uses 3×2 grid (merged to develop)
+  ☐ Slide ①B uses SAME 3×2 grid (Backend collection branch)
+  ☐ Slide ①C uses SAME 3×2 grid (Native collection branch)
+  ☐ NO slide ①B or ①C rendered as stacked full-width list
+  ☐ Max 6 merge cards per physical slide
+  ☐ Continuation slides created if >6 items
+
+CARD TEXT LAYOUT:
+  ☐ No text overlap anywhere
+  ☐ Title/body/metadata visually separated (not compressed)
+  ☐ Minimum internal vertical spacing preserved (8–10–10px gaps)
+  ☐ Wrapped text increases card height (auto-height working)
+  ☐ No text clipping or truncation
+  ☐ No font shrinking to solve overflow
+  ☐ Overflow creates continuation slide instead
+
+EXPLICIT OMISSIONS (if slides are missing):
+  ☐ ①B omitted — document: "0 Backend collection-branch merges (dataset empty)"
+  ☐ ①C omitted — document: "0 Native collection-branch merges (dataset empty)"
+  ☐ ①D/①E/①F omitted — document reason clearly
+  ☐ Other omissions — explicit reason recorded
+```
+
+**Render gate PASS only if artifact inspection confirms spec.**
+
+---
+
 ## ❌ PRESENTATION KAN INTE RENDERAS om:
 
 ### 1. NOLL ARBETE DENNA VECKA
@@ -334,15 +420,202 @@ Meddelande: "Kunde inte nå [EXTERNAL_SOURCE].
   [ ] Each slide header starts with meeting-point symbol (①②③ etc)
 ```
 
-**LAYOUT COMPLIANCE — CANONICAL FORM ONLY:**
+**ANALYSIS & RECOMMENDATIONS (Beyond Status Reporting):**
 ```
+Presentation must include FORWARD-LOOKING analysis, not just status reporting.
+
+  [ ] PRIORITY RANKING — Which issues should be done first?
+      ✅ Issues ranked by: impact + risk + dependencies
+      ✅ Not just "5 things are open" — "do THESE 3 first because [X] blocks [Y]"
+      ✅ Example: "#67 API (first — blocks 2 teams)" vs "#84 DB (third — independent)"
+
+  [ ] DEPENDENCY CHAIN — What blocks what?
+      ✅ #X blocks #Y blocks #Z visualized
+      ✅ Allows parallelization: "Frontend does this while Backend does that"
+      ✅ Critical path identified: "Feature ready in N days if no delays"
+
+  [ ] TEAM CAPACITY & SPLIT — How should we divide work?
+      ✅ Recommendation: Frontend takes [X], Backend takes [Y], Native takes [Z]
+      ✅ Avoids: Everyone on same thing, or idle capacity
+      ✅ Example: "Zaida: #72 (depends on #67) | Erik: #84 (parallel)"
+
+  [ ] ESTIMATED COMPLETION — When will work actually be DONE?
+      ✅ Not "started" — DONE (merged, ready to ship)
+      ✅ Includes: review time, merge wait time, testing
+      ✅ Risk flagged: "If API review takes 2 days → 6 days total instead of 5"
+
+  [ ] ACTIONABLE NEXT STEPS — What do we DO after this meeting?
+      ✅ TODAY: Erik starts #67 (priority 1), Zaida preps #84
+      ✅ AFTER #67: Zaida starts #72, Pär starts #89
+      ✅ By Friday: All work merged, ready for CTO demo
+
+  [ ] ASSIGNMENT REASONING — Why did we assign work this way?
+      ✅ Ownership cohesion: "Zaida continues state management (#72, #78 — same area)"
+      ✅ Load balancing: "Erik has 2 days open, Zaida has 3 days — split evenly"
+      ✅ Absence accounted for: "Pär absent Mon-Tue, assigned low-urgency work for Wed-Fri"
+      ✅ Capacity shown: "Erik: 3 days available, Zaida: 2.5 days, Björn: 1 day"
+
+FAIL GATE if:
+  ❌ Only status reported (passive, backward-looking)
+  ❌ Recommendations vague ("do better", "go faster")
+  ❌ No specific team assignment
+  ❌ No actionable next steps
+  ❌ Team capacity not addressed (might be idle)
+```
+
+**CODE INSPECTION FOR PÅGÅR-ISSUES (QUALITY GATE):**
+```
+  [ ] For each "Pågår" issue displayed (①D, ①E slides):
+      - Branch/PR link is clickable (inspectable)
+      - Spot-check: Code looks like it's progressing toward issue goal?
+      - Code matches issue description (not going in wrong direction)?
+      - Any obvious blockers or stalled sections visible?
+  
+  [ ] If code inspection reveals problems:
+      - Add note: "Code needs review — [specific concern]"
+      - Don't hide problems; surface them for team discussion
+      - Better to flag in meeting than discover at merge time
+  
+  [ ] If you cannot inspect code (no access):
+      - Mark issue: "Code not inspected — [reason]"
+      - Transparency is important (don't pretend you checked)
+```
+
+**TEAM COLLECTION BRANCH COVERAGE (CRITICAL for risk/blocker analysis):**
+```
+  [ ] Risk/blocker/capacity analysis examined ALL team collection branches?
+      ✅ develop (primary)
+      ✅ Java-Development-Environment (Backend collection)
+      ✅ Any other team-specific collection branches?
+  
+  [ ] Report lists which branches were scanned (transparency)
+      Example: "Scanned: develop, Java-Development-Environment | 16 sep 14:00"
+  
+  [ ] If risk analysis examined ONLY develop: ❌ INCOMPLETE
+      Must rescan with team collection branches
+      
+  WHY: Work often waits on team branches before reaching develop.
+       Blocking, capacity, risk analysis is incomplete otherwise.
+```
+
+**WCAG 2.2 AA & COLOR SEMANTIC COMPLIANCE (CRITICAL — NEW):**
+```
+  [ ] NO ordinary text boxes have visible borders, outlines, or fills
+      → Headers, titles, dates, subtitles, captions, metadata = plain text ONLY
+      → Exceptions: Only designated cards, team containers, status components (per VISUAL_DESIGN_MANDATORY.md)
+  
+  [ ] NO team color is used as a status color (CRITICAL SEPARATION)
+      → Frontend (teal) ≠ any status color
+      → Backend (hot pink) ≠ any status color
+      → Native (purple) ≠ any status color
+      → Cross-team (light slate) ≠ any status color
+      → Orange ONLY means status ◐ "pågår", NEVER team
+      → Green ONLY means status ✅ "merged", NEVER team
+      → Red ONLY means status 🔴 "blocked", NEVER team
+  
+  [ ] All visible text + information-carrying graphics WCAG 2.2 AA compliant
+      → Normal text: 4.5:1 contrast minimum
+      → Large text (18pt+ or 14pt bold): 3:1 contrast minimum
+      → UI components, borders: 3:1 contrast minimum
+      → No dark navy (#0F1830) + black (#000000) borders (0:1 contrast = invisible)
+      → Color never the sole information carrier (MUST pair with symbol + text)
+  
+  [ ] GITHUB ENTITY PROVENANCE — Every issue/PR number verifiable
+      → Each #XX on slide corresponds to verified GitHub object
+      → Not inferred, guessed, or translated from branch name
+      → If work exists but issue unverified: display "Behöver issue" / "Issue ej verifierat" instead of number
+      → Per github_entity_identity rule in SYSTEM_CONTRACT.yaml
+```
+
+**DELIVERY SEPARATION & NO DOUBLE-COUNTING:**
+```
+  [ ] ①A contains ONLY develop merges (not collection branch merges)
+  [ ] ①B–①C contain ONLY collection-branch merges (not develop merges)
+  [ ] ①D/①E use correct numbering (pågår work per team and cross-team)
+  [ ] No PR/change counted on multiple slides
+  [ ] Collection-branch cards state target branch explicitly (e.g., "Java-Development-Environment")
+  [ ] Developed-by field uses actual commit authors where available
+```
+
+**TEAM DETAIL CARD COMPLIANCE (③④⑤ — CRITICAL):**
+```
+  🚨 CRITICAL RULES FOR SLIDES ③④⑤:
+  
+  [ ] NO POWERPOINT TABLES — All three slides use TEAM_DETAIL_CARDS only
+      ❌ FAILURE if any of ③④⑤ renders as table/grid
+      ✅ All work shown as vertically stacked cards
+  
+  [ ] IDENTICAL LAYOUT for Frontend (③), Backend (④), Native (⑤)
+      ✅ Same card geometry (soft rounded corners)
+      ✅ Same internal spacing (16–20px padding)
+      ✅ Same typography hierarchy (28pt header, 14pt body, 13pt metadata per WCAG 2.2 AA)
+      ✅ Same responsive-height behavior
+      ✅ ONLY difference: team border color (Teal/Hot Pink/Purple)
+      ❌ FAILURE if geometry differs between teams
+  
+  [ ] Text is centered horizontally inside every team card
+      ❌ FAILURE if text is left-aligned or justified
+  
+  [ ] No team card clips or hides text
+      ✅ Card grows vertically to fit content
+      ✅ Never reduce font size or clip text
+  
+  [ ] Card height adapts to content (not fixed)
+      ✅ Short content → short card
+      ✅ Long content → tall card
+  
+  [ ] Spacing between cards is consistent (20px minimum)
+  
+  [ ] No card stretches to full slide width
+      ✅ Cards are compact (width adapts to content)
+```
+
+**COMPACT CARD COMPLIANCE (slides ②, ⑥–⑧, ⑨–⑭):**
+```
+  [ ] All slides show vertically stacked cards (not wide bands, not tables)
+  [ ] Each card shows: rank/title + status + content
+  [ ] Text inside each card is centered
+  [ ] No card clips text (cards grow vertically as needed)
+  [ ] Soft corners visible (12–18px radius)
+  [ ] 2–3 cards per row or single column (depends on content)
+  
+  [ ] Slide ② (Priority): Rank numbers visible (1️⃣ 2️⃣ 3️⃣)
+  [ ] Slide ⑦ (Risk): Compact cards, NOT table format
+  [ ] Slide ⑧ (Kapacitet): Compact cards, NOT table format
+  
+  ❌ FAILURE if any slide ②⑥–⑧⑨–⑭ renders as table or wide band
+```
+
+---
+
+**LAYOUT COMPLIANCE — CANONICAL FORM WITH AUTHORIZED EXCEPTIONS:**
+```
+  ✅ GENERAL RULE (most slides: ①D-①F, ②-⑤, ⑦-⑬, ⑭):
   [ ] Every slide has exactly: 1 header + 1 main message + 1–3 content blocks
-  [ ] No horizontal layouts (all content stacked vertically)
-  [ ] No small cards in grid (all blocks are 100% width)
+  [ ] Content blocks stack vertically (never side-by-side)
+  [ ] All blocks are 100% width (no small cards in grid)
   [ ] No compression of typography or spacing (use FIXED values from VISUAL_DESIGN_MANDATORY)
-  [ ] If slide has 4+ work items → continues automatically to ①A.1, ①A.2 (never summarized)
-  [ ] All block dimensions match spec: 18pt title, 14pt effect, 12pt owner
-  [ ] Whitespace: 20px margin between blocks, 16px padding around content
+
+  ✅ AUTHORIZED EXCEPTION — Slide ①A (Merged PRs Overview):
+  [ ] Uses 3 × N card grid (per VISUAL_DESIGN_MANDATORY.md specification)
+  [ ] Cards are soft-rounded (12-18px corners, responsive height)
+  [ ] Cards display chronologically (left-to-right, top-to-bottom)
+  [ ] Maximum 6 cards per slide (split to ①A.2 if more)
+  [ ] Grid appearance is intentional (overview board, not dashboard)
+
+  ✅ AUTHORIZED EXCEPTION — Slide ⑥A (Dependency Diagrams):
+  [ ] Uses visual flow diagrams with nodes and arrows (per SLIDE_DETAIL_SPEC.md)
+  [ ] Nodes can be arranged horizontally (left→right) or vertically (top→bottom)
+  [ ] Each node is soft-rounded card (12-18px corners, responsive height)
+  [ ] Maximum 3-4 chains per slide (split if more)
+  [ ] Flow direction clearly shows blocking relationships (pilar indicates direction)
+
+  ✅ GENERAL RULES (apply to ALL slides including exceptions):
+  [ ] Slides that exceed layout capacity auto-continue: ①A/②/③/④/⑤/etc.1, .2, .3 (never summarized)
+  [ ] All typography matches FIXED spec: titles 28pt, content 14pt, metadata 13pt (WCAG 2.2 AA minimum)
+  [ ] Whitespace: 20px margin between blocks/chains, 16-20px internal padding
+  [ ] Soft cards: 12-18px rounded corners, never hard rectangular boxes
+  [ ] No compression: never reduce padding/spacing to fit more
 ```
 
 **RENDERED OUTPUT VERIFICATION (MANDATORY BEFORE DELIVERY):**
@@ -356,16 +629,46 @@ STEP A: Render presentation to PPTX (PowerPoint/Google Slides export)
 
 STEP B: Open PPTX file and page through every slide visually. For each slide:
   
-  [ ] Header is at top (symbol first)
+  [ ] Header is at top (pen symbol first: ✏️ ① or ✏️ Nuläge)
+  [ ] Pen symbol is clearly visible (not cut off or faded)
   [ ] Main message is clearly visible below header
+  
+  ✅ For slides ①D-①F, ②-⑤, ⑦-⑬, ⑭ (canonical layout):
   [ ] Content blocks stack vertically (never side-by-side)
-  [ ] No blocks pushed off-slide or cut at bottom
+  [ ] All blocks are 100% width
+  [ ] Work items display as clean single lines (not grid)
+  
+  ✅ For slide ①A (authorized grid exception):
+  [ ] Displays as 3-column card grid (intentional, not dashboard)
+  [ ] Cards are soft-rounded with padding
+  [ ] Read left-to-right, top-to-bottom
+  
+  ✅ For slide ⑥A (authorized diagram exception):
+  [ ] Displays dependency chains with nodes and arrows
+  [ ] Nodes are soft-rounded cards with status markers
+  [ ] Flow direction is clear (pilar shows blocking)
+
+  ✅ For slide ⑬ (authorized 4-column grid exception):
+  [ ] Displays as 4-column card grid (max 4 actions per slide)
+  [ ] Cards are equal width and soft-rounded (12-18px corners)
+  [ ] Each card shows: Number | Title | Description | Deadline | Verification
+  [ ] Whitespace between cards is adequate (16-20px padding)
+  [ ] If >4 actions: continuation slide ⑬B created
+
+  ✅ For slide ⑭ (authorized questions-card exception):
+  [ ] Displays as grouped cards (two visual sections)
+  [ ] "IDAG-SVAR BEHÖVS" section at top, "NICE-TO-HAVE" below
+  [ ] Each question is individual card with border + soft corners (12-18px)
+  [ ] Cards show: Q# | KATEGORI — Fråga | Impakt
+  [ ] Dark navy theme maintained (or light theme variant)
+  [ ] Whitespace and borders provide clear visual hierarchy
+  
+  ✅ For ALL slides:
+  [ ] No blocks/cards pushed off-slide or cut at bottom
   [ ] No text clipping or overlap
-  [ ] All text fully visible in its block (no truncation)
-  [ ] Work items display as single lines (not wrapped into grid)
-  [ ] Spacing between blocks matches spec (20px visual gap visible)
-  [ ] Slide is NOT dense/cramped (60-70% whitespace visible)
-  [ ] Slide does NOT look like dashboard/grid/card-layout
+  [ ] All text fully visible (no truncation)
+  [ ] Spacing between blocks/chains matches spec (20px gaps)
+  [ ] Slide has adequate whitespace (60-70% visible, never dense/cramped)
   
 STEP C: If ANY check fails:
   [ ] Fix the content (split to continuation slide ①A.1, etc.)
@@ -381,9 +684,57 @@ STEP D: Only after ALL slides pass visual check:
 - Text clipping → reduce text length, split to new slide
 - Block overflow → split to continuation slide automatically
 - Dense layout → already at max 3 blocks per slide; if still dense → reformat work items as single lines
-- Dashboard appearance → check that blocks are 100% width and stacked vertically, not in grid
+- Unwanted grid appearance (slides ②-⑤, ⑦-⑫ should be stacked, NOT grid) → check that blocks are 100% width and stacked vertically
+- ⑬ grid incorrect (should be 4 columns, equal width) → verify grid layout and card alignment
+- ⑭ cards incorrect (should show grouped questions with borders) → verify card-based layout and visual hierarchy
+- Broken dependency diagram (slide ⑥A) → verify nodes have soft corners, status markers visible, arrows clear
+- Card ①A grid incorrect → verify 3-column layout, soft rounded cards, chronological order
 
 **NEVER deliver a presentation without rendering it to PPTX and visually checking every single slide.**
+
+---
+
+## 🔐 DEDUPLICATION & DATA INTEGRITY GATE
+
+**Ensure no work appears twice and all data is accounted for:**
+
+```
+DEDUPLICATION RULE — BEFORE RENDERING:
+
+  [ ] No work item appears twice (e.g., issue + branch + PR shown separately)
+      Rule: Same work → show ONCE using primary identifier
+      - If issue has linked PR and branch → show as PR (note issue+branch links)
+      - If issue has no PR yet but has active branch → show as branch (note issue link)
+      - If branch has no PR and no issue → show as branch
+      - Count only ONCE in audit and slides (unique_id: issue#, PR#, branch, or commit-sha)
+
+  [ ] All verified work is represented (no silent omissions)
+      If work exceeds slide capacity:
+      ✅ Split to continuation slides (①A.1, ①A.2, ①B.1, ①B.2, etc)
+      ✅ NEVER omit to fit slide count
+      ❌ NEVER say "showing 3 of 7 issues" without showing all 7
+
+TEAM CHECKSUMS — VERIFICATION:
+
+  [ ] Audit report generated for each team:
+      Frontend: verified_activity_count (audit) == representation_count (slides)
+      Backend: verified_activity_count (audit) == representation_count (slides)
+      Native: verified_activity_count (audit) == representation_count (slides)
+      Cross-team: verified_activity_count (audit) == representation_count (slides)
+  
+  [ ] If mismatch found:
+      ✅ Both audit AND slides note the discrepancy (transparent)
+      ❌ NEVER silently drop data to hide mismatch
+      Example footer: "Audit: 12 items | Slides: 10 items (2 continued to ①A.2)"
+
+FAIL GATE if:
+  ❌ Same work shown on multiple slides (violates deduplication)
+  ❌ Checksum mismatch found but not documented
+  ❌ Work omitted without explanation
+  ❌ "Showing top N" without full count visible
+```
+
+---
 
 **FINAL CHECK — ALWAYS RENDER:**
 ```

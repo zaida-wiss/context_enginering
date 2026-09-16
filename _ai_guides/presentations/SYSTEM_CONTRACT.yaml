@@ -87,11 +87,33 @@ non_negotiable_execution:
 
 ###############################################################################
 # AUTHORITY HIERARCHY — Single Source Per Domain (ZERO DUPLICATION)
+# Revised 2026-09-16: Clarified roles to distinguish between requirements, implementation, and content
 ###############################################################################
 authority:
   execution_and_contract:
     file: "SYSTEM_CONTRACT.yaml (this file)"
-    owns: "Execution sequence, required vs optional data, when to STOP, delivery format"
+    owns: "Execution sequence, process, gates, required vs optional data, when to STOP, delivery format"
+    role: "Overarching orchestration and conflict resolution"
+
+  slide_structure_and_content:
+    file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md (🚨 CRITICAL)"
+    owns: "Which slides exist, their order, meeting-point symbols (①-⑭), slide titles, required content per slide, continuation rules"
+    rule: "This is the SLIDE BLUEPRINT. Other files may style but CANNOT rename, reorder, merge, or omit slides unless explicitly permitted here"
+    does_not_own: "Visual design, layout, typography (those belong to VISUAL_DESIGN_MANDATORY)"
+
+  accessibility_and_neurodiversity:
+    file: "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL)"
+    owns: "Quality requirements that design MUST meet: NPF principles, color semantics, symbol consistency, cognitive load, whitespace, large text, low visual density"
+    role: "BOUNDARY CONDITIONS — these are non-negotiable constraints that visual design must never violate"
+    wins_over: "Nothing, because it defines minimum quality, not implementation"
+    note: "Defines WHY and WHAT MUST BE, not HOW to build it"
+
+  visual_design_implementation:
+    file: "design/VISUAL_DESIGN_MANDATORY.md (AUTHORITATIVE)"
+    owns: "ENDA source of truth for exakt layout, form, typography, spacing, margins, block structure, PowerPoint implementation, rounded corners vs rectangles, color placement"
+    must_implement: "All ACCESSIBILITY_NEURODIVERSITY.md requirements"
+    rule: "If this conflicts with SLIDE_DETAIL_SPEC (content), VISUAL_DESIGN_MANDATORY wins on form; if conflicts with ACCESSIBILITY_NEURODIVERSITY, revise to meet accessibility first"
+    note: "Defines HOW to build within quality boundaries"
 
   data_sources:
     file: "data/DATA_SOURCES.md"
@@ -105,38 +127,412 @@ authority:
     file: "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
     owns: "Validation, audit structure, completeness checking"
 
-  accessibility_and_neurodiversity:
-    file: "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL)"
-    owns: "NPF rules, cognitive accessibility, hierarchy, focus, triple-redundancy"
-    rule: "These rules OVERRIDE all other design rules when they conflict"
-
-  visual_design_implementation:
-    file: "design/VISUAL_DESIGN_MANDATORY.md"
-    owns: "Concrete implementation of NPF constraints (typography, spacing, CANONICAL LAYOUT)"
-    depends_on: "Must implement ACCESSIBILITY_NEURODIVERSITY.md rules"
-
-  slide_content:
-    file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
-    owns: "What content goes where, exact format per slide"
-    does_not_own: "Design, layout, typography (those are VISUAL_DESIGN_MANDATORY)"
-
   visual_reference:
     file: "monday_meeting/design/TEMPLATE_REFERENCE.html"
     owns: "Illustrations of the visual result only"
-    does_not_own: "Any rule, value, or constraint (reference only)"
+    does_not_own: "Any rule, value, or constraint (reference only; NEVER authoritative)"
 
   verification_and_quality:
     file: "verification/RENDER_GATE_CHECKLIST.md"
     owns: "Verification checkpoints before delivery"
 
-conflict_resolution:
+###############################################################################
+# REPOSITORY REF POLICY — Branch Inheritance (CRITICAL)
+###############################################################################
+repository_ref_policy:
   rule: >
-    When two files conflict, follow this priority:
-    1. ACCESSIBILITY_NEURODIVERSITY.md (NPF rules always win)
-    2. VISUAL_DESIGN_MANDATORY.md (implementation rules)
-    3. SLIDE_DETAIL_SPEC.md (content rules)
-    4. TEMPLATE_REFERENCE.html (reference only, never wins)
-    If SYSTEM_CONTRACT.yaml contradicts any file, SYSTEM_CONTRACT.yaml wins.
+    The repository ref used to read the entry README is the authoritative
+    ref for the entire execution. ALL internal repository files must be read
+    from this same ref. Never silently switch to the default branch.
+
+  execution_ref:
+    source: "ref (branch/tag/SHA) of the README that started this execution"
+    applies_to: "Every internal file read during this execution"
+
+  requirements:
+    - "Read EVERY internal repository file from execution_ref (same branch as entry README)"
+    - "Never silently switch to repository default branch mid-execution"
+    - "External project data may come from registered sources as defined separately"
+    - "If a required internal file does not exist on execution_ref: STOP and report missing file"
+    - "Do NOT fetch the file from main/default as fallback"
+
+  fallback_behavior:
+    rule: >
+      If a required internal file does not exist on the execution_ref,
+      STOP immediately and report the missing file. Do not fetch from default.
+
+  example_correct_flow: >
+    cleanup/README.md → cleanup/SYSTEM_CONTRACT.yaml →
+    cleanup/SLIDE_DETAIL_SPEC.md → cleanup/VISUAL_DESIGN_MANDATORY.md → etc.
+    (All from cleanup branch, never jumping to main)
+
+  why_this_matters: >
+    This enables isolated testing and development on feature branches
+    without accidental fallback to main. cleanup branch must be testable
+    before merge to main.
+
+###############################################################################
+# PRESENTATION ANALYSIS LAYER — Recommendations Beyond Status Reporting
+###############################################################################
+analysis_and_recommendations:
+  principle: >
+    Presentation is NOT just status reporting (what happened this week).
+    It MUST also include analysis (what should we do next, in what order, how to parallelize).
+
+  required_analysis_elements:
+    priority_recommendation: >
+      MUST rank work by impact/risk/dependencies.
+      Not just "these 5 things are open" — "do THESE 3 first because [X] blocks [Y]".
+
+      Example:
+        🔴 #67 Update API contract (FIRST — blocks Frontend + Native)
+        🟠 #72 Frontend state management (SECOND — depends on #67)
+        🟡 #84 Database optimization (THIRD — independent, lower priority)
+
+    dependency_chain: >
+      MUST show which issues block others.
+      Format: #X blocks #Y blocks #Z
+
+      Allows team to parallelize: "While you wait for #67 review,
+      start #84 (independent) + #73 (prep work for #72)".
+
+    team_capacity_and_split: >
+      MUST recommend how to divide work across teams.
+
+      Example:
+        ✅ Frontend: Take #72 (UI) + #84-prep (infra setup)
+        ✅ Backend: Take #67 (API contract) + #73 (database)
+        ✅ Native: Wait for #67 → then take cross-team integration
+
+      This prevents: "Everyone works on the same thing" or "Idle capacity".
+
+    estimated_completion_and_risk: >
+      MUST estimate when work can be DONE (not just started).
+
+      Example:
+        #67 API: 2 days (no blockers)
+        #72 Frontend: 3 days (after #67 done)
+        #84 Database: 2 days (parallel to #72)
+        → Full feature ready in 5 days (critical path)
+        → Risk: If API review takes 1+ day → 6+ days total
+
+    actionable_next_steps: >
+      MUST end presentation with explicit NEXT STEPS.
+
+      Example:
+        TODAY:
+          - Erik: Start #67 API contract (priority 1)
+          - Zaida: Prep #84 database infra (priority 3, independent)
+          - Björn: Review yesterday's PRs
+
+        AFTER #67 merged:
+          - Zaida: Start #72 state management
+          - Pär: Begin cross-team integration #89
+
+        By Friday:
+          - All work merged to Java-Development-Environment
+          - CTO demo ready
+
+  data_sources_required:
+    - github_issues: dependencies, blockers, linked issues
+    - github_prs: review status, which PRs block what
+    - team_roster: who can work on what
+    - commit_history: effort indicators (how long did similar work take)
+    - project_board: if available, status/iteration info
+
+  analysis_vs_reporting:
+    reporting: >
+      "Here's what happened this week"
+      ← Passive, backward-looking
+
+    analysis: >
+      "Here's what should happen next, in this order, split like this"
+      ← Active, forward-looking, actionable
+
+  recommendation_algorithm:
+    principle: >
+      Balance THREE goals simultaneously:
+      1. OWNERSHIP COHESION — keep related work with same person (domain expertise)
+      2. LOAD BALANCING — spread work evenly across team
+      3. ABSENCE HANDLING — adjust for planned/actual absence (sick leave, vacation)
+
+    step_1_identify_related_issues: >
+      Group issues by "area" (component, feature, code domain):
+        - Related issues: same component, same code area, same feature branch prefix
+        - Example: #72, #78, #89 all in "Frontend state management" → group together
+        - Example: #67, #73, #84 all in "Database/Backend" → group together
+
+    step_2_assign_current_owner: >
+      Who's already working in this area?
+        - If Zaida is doing #72 (state management) → assign next related issue #78 to Zaida
+        - If Erik is doing #67 (API) → assign #73 to Erik (same area)
+        - Rationale: Zaida knows state management already, reduces context-switch cost
+
+    step_3_calculate_working_capacity: >
+      For EACH team member:
+        base_capacity = 5 days per week
+        - Subtract planned absence (vacation on calendar?)
+        - Subtract current open work (if 3 issues open → estimate time)
+        - Result: "Zaida has 2 days capacity this week, Erik has 3 days"
+
+    step_4_balance_workload: >
+      Assign related issues to current owner IF:
+        ✅ Related work exists in their area
+        ✅ They have remaining capacity
+        ✅ It doesn't overload them relative to team average
+
+      ELSE (if overloaded):
+        - Pass related work to SECOND-best owner (someone with time + familiarity)
+        - Never leave someone idle while others are overloaded
+
+    step_5_absence_override: >
+      If someone is out next week:
+        - Their current work → handoff to similar-skilled colleague
+        - New assignments → redirect to available people
+        - Update capacity estimate: "Erik absent Mon-Tue, capacity = 3 days"
+
+    output_recommendation: >
+      Example output:
+        Zaida (capacity: 2 days): #72 (state mgmt), #78 (state mgmt) — cohesive area
+        Erik (capacity: 3 days): #67 (API), #73 (DB) — sequential, 2.5 days each
+        Björn (capacity: 1.5 days): #84 (infra) — independent work
+        Pär (capacity: ABSENT Mon-Tue, 2 days available Wed-Fri): #89 (cross-team, low urgency)
+
+    enforcement: >
+      Recommendation FAIL if:
+      ❌ Issues assigned with NO regard to related work (person gets random mix)
+      ❌ Workload highly uneven (person X has 5 days, person Y has 0.5 days)
+      ❌ Absence not accounted for (person assigned full week despite absence)
+      ❌ No explanation for why work was assigned (should show: cohesion + capacity reasoning)
+
+---
+
+###############################################################################
+# RISK ANALYSIS & BLOCKER DETECTION — Branch Coverage (CRITICAL)
+###############################################################################
+risk_analysis_branch_coverage:
+  rule: >
+    Risk analysis (slide ②, blockers, capacity, dependencies, estimates)
+    MUST examine ALL team collection branches, not just develop.
+
+    Analyzing only develop misses:
+    - Work ready-to-merge but waiting (in Java-Development-Environment)
+    - Blocked PRs on team branches (not on develop yet)
+    - Capacity/staffing of team collection points
+    - Dependencies between teams (visible on shared branches)
+
+  team_collection_branches: >
+    Known collection points that MUST be scanned:
+    - develop (primary merge target)
+    - Java-Development-Environment (Backend collection point)
+    - [Ask team if other collection branches exist]
+
+    Why: Developers merge feature→collection branch first.
+         They may wait days/weeks before collection→develop.
+         This visibility is critical for risk analysis.
+
+  what_to_look_for_per_collection_branch:
+    - "Open PRs waiting for review (blocking point)"
+    - "Commits merged to collection branch but not develop yet (ready to ship?)"
+    - "Who's working on what (capacity/staffing)"
+    - "Dependencies between work items (one blocks another)"
+    - "Estimated vs actual progress (burndown/velocity)"
+    - "Team capacity (how many people, how many open issues)"
+
+  enforcement: >
+    Data acquisition: repository_branches_and_commits dataset MUST include
+    all collection branches (not just develop).
+
+    Risk analysis: When analyzing blockers/capacity/estimates,
+    explicitly report which branches were scanned.
+    Footer: "Scanned: develop, Java-Development-Environment | Last scan: [TIMESTAMP]"
+
+  failure_condition: >
+    ❌ FAIL if:
+    - Only develop branch was analyzed (incomplete risk picture)
+    - Team collection branches were not scanned
+    - Report doesn't list which branches were examined
+
+  example_correct_analysis: >
+    ✅ develop: 5 open PRs, 2 merged this week
+    ✅ Java-Development-Environment: 8 open PRs (waiting 3+ days), 15 commits this week
+    → Risk: Backend queue is growing, may delay next develop merge
+    → Action: Prioritize PR reviews on Java-Development-Environment branch
+
+---
+
+###############################################################################
+# GITHUB ENTITY IDENTITY — Data Provenance (CRITICAL)
+###############################################################################
+github_entity_identity:
+  rule: >
+    Never synthesize, infer, translate or invent a GitHub issue/PR number.
+    If work exists but the issue is not verified against GitHub, say so explicitly.
+
+  issue_id_may_be_displayed_only_if:
+    - "The issue object was retrieved from an ALLOWED GitHub source"
+    - "repository_full_name matches the project repository"
+    - "issue_number comes directly from that object (not inferred)"
+
+  pr_id_may_be_displayed_only_if:
+    - "The PR object was retrieved from an ALLOWED GitHub source"
+    - "PR number comes directly from that object (not inferred)"
+
+  forbidden:
+    - "Treating a PR number as an issue number"
+    - "Inferring issue number from branch name unless verified against GitHub"
+    - "Creating an issue ID because the described work probably should have one"
+    - "Using example IDs from documentation as real project data"
+    - "Guessing a GitHub entity exists when you only have a work description"
+
+  when_work_exists_but_issue_is_not_verified:
+    display_instead_of_number:
+      - "Behöver issue"
+      - "Issue-ID ej verifierat"
+      - "Arbetsområde — issue behöver skapas/verifieras"
+      - "Verifieras — [issue status]"
+
+  why_this_matters: >
+    AI can detect that "this work should probably have an issue", but must never
+    invent "#6" or any number without verified GitHub provenance.
+    This prevents the exact problem: fake issue numbers in presentations.
+
+###############################################################################
+# CONFLICT RESOLUTION
+###############################################################################
+conflict_resolution:
+  principle: >
+    Domain separation prevents most conflicts. When conflicts occur despite separation, follow this priority:
+
+    LEVEL 1 — SYSTEM_CONTRACT.yaml (orchestration and process)
+      → Always wins on execution sequence, gates, when to STOP
+
+    LEVEL 2 — ACCESSIBILITY_NEURODIVERSITY.md (quality boundaries)
+      → Wins on any quality/accessibility constraint (cannot be overridden by layout choices)
+
+    LEVEL 3 — VISUAL_DESIGN_MANDATORY.md (implementation authority)
+      → Wins on HOW to build (form, layout, typography, spacing)
+      → Wins over SLIDE_DETAIL_SPEC on visual appearance
+      → MUST NOT violate Level 2 boundaries
+
+    LEVEL 4 — SLIDE_DETAIL_SPEC.md (content blueprint)
+      → Wins on WHAT content exists and WHERE it goes
+      → MUST NOT be renamed, reordered, merged, or omitted by visual design
+      → Visual design styles content according to this structure
+
+    LEVEL 5 — TEMPLATE_REFERENCE.html (inspiration only)
+      → Never wins any conflict; illustrates possibilities only
+
+  resolution_algorithm: >
+    If File A and File B conflict:
+    1. Check both are in same domain (e.g., layout). If not, conflict is false (domains separate).
+    2. If both claim same domain, map to Authority Hierarchy level.
+    3. Higher level always wins.
+    4. If same level, STOP and report: "Authority conflict requires clarification at [LEVEL]"
+
+###############################################################################
+# REPOSITORY MAINTENANCE & DRIFT PREVENTION
+###############################################################################
+maintenance_policy:
+  problem: >
+    Over time, context repos can accumulate conflicting files (VISUAL_DESIGN_MANDATORY.md
+    vs PRESENTATION_STYLE.md, DATA_ACQUISITION_CONTRACT.yaml vs DATA_SOURCES_NEW.yaml, etc).
+    This breaks Single Source of Truth and causes AI to follow contradictory rules.
+
+  solution: >
+    Every 4 weeks (or before major changes):
+    1. Run FILE_CONSISTENCY_AUDIT (see below)
+    2. Delete deprecated/conflicting files
+    3. Consolidate into tier-1 files
+    4. Update ARCHITECTURE.md directory structure if needed
+
+  frequency: "Every 4 weeks OR before presentation system changes"
+  owner: "Team lead / AI architect"
+  cost: "~30 minutes per audit"
+
+file_consistency_audit:
+  procedure: >
+    1. LIST all files in _ai_guides/presentations/ recursively
+    2. FOR EACH file:
+       a. Is it mentioned in ARCHITECTURE.md?
+       b. Is it a tier-1 or tier-2 file?
+       c. Does it conflict with any tier-1 file?
+       d. Is it deprecated (contains _v2, _OLD, _UPDATED)?
+    3. REPORT conflicts and deprecated files
+    4. CONSOLIDATE redundant content into tier-1 files
+    5. DELETE deprecated files
+    6. COMMIT: "chore: audit — consolidate conflicting files"
+
+  exit_criteria: >
+    ✅ PASS if:
+    - Every file appears in ARCHITECTURE.md
+    - No two files own the same responsibility
+    - No deprecated files exist
+    - No *_v2 / *_OLD / *_UPDATED files exist
+
+    ❌ FAIL if:
+    - Conflicting rules found in different files
+    - Tier-1 files contradict each other
+    - Deprecated files not removed
+
+deprecation_policy:
+  rule: >
+    If a file is superseded by another:
+    1. Add deprecation marker at top: "🚨 DEPRECATED — see [NEW_FILE] instead"
+    2. Copy unique content to new file if not already there
+    3. Keep for 2 weeks (grace period for context caching)
+    4. Delete permanently after 2 weeks
+    5. Never keep alternative versions (*_v2, *_UPDATED, etc)
+
+  grace_period: "2 weeks maximum"
+  permanent_deletion: "After grace period, delete immediately"
+  never_keep: "Alternative versions (_v2, _OLD, _BACKUP, _TMP)"
+
+conflict_detection_rules:
+  automatic_fail_if: >
+    ✅ File A and File B claim the same responsibility (per ARCHITECTURE.md)
+    ✅ Rules in File A contradict rules in File B
+    ✅ Different files specify different values for the same constant (color, font size, etc)
+    ✅ SLIDE_DETAIL_SPEC.md contains visual rules (should be in VISUAL_DESIGN_MANDATORY.md)
+    ✅ DATA_ACQUISITION_CONTRACT.yaml references are inconsistent across files
+
+  detection_checklist: >
+    Before presentation generation:
+    [ ] Grep all files for color values — ensure consistency (no duplicate hex codes)
+    [ ] Grep all files for font sizes — ensure consistency (no duplicate pt values)
+    [ ] Grep all files for rule keywords — catch subtle contradictions
+    [ ] Check SYSTEM_CONTRACT.yaml authority hierarchy — does it match file content?
+
+context_bloat_prevention:
+  principle: >
+    Context repo should enable presentation generation, not document all design history.
+    Deleted files stay in git history; they don't need to exist in working tree.
+
+  maximum_files_allowed: "~40 total instruction files"
+  current_count: "~35 (as of 2026-09-16)"
+  warning_threshold: "35 files → time for audit"
+  critical_threshold: "45+ files → must consolidate immediately"
+
+  if_exceeded: >
+    1. Run FILE_CONSISTENCY_AUDIT
+    2. Delete all deprecated files
+    3. Consolidate similar files into one
+    4. Raise issue: "Context bloat — [N] files, consolidation needed"
+
+version_control_for_instructions:
+  principle: >
+    Instruction files are versioned through git. We don't need version numbers in filenames.
+    If old version is needed, check git history. If current version is wrong, fix it, don't create v2.
+
+  never_use: "VISUAL_DESIGN_v2.md, DATA_ACQUISITION_v1_5.md, OLD_ARCHITECTURE.md"
+  instead_use: "Edit the file, commit the change, check git history if needed"
+
+  git_workflow: >
+    1. Find problem with VISUAL_DESIGN_MANDATORY.md
+    2. Fix it directly in the file
+    3. Commit: "fix: VISUAL_DESIGN — Backend color now hot pink"
+    4. If you need to see old version: git show HEAD~1:_ai_guides/.../VISUAL_DESIGN_MANDATORY.md
+    5. Never create VISUAL_DESIGN_MANDATORY_OLD.md
 
 ###############################################################################
 # EXECUTION RECEIPT — MANDATORY GATE
@@ -395,7 +791,8 @@ execution_sequence:
       status_encoding_required: "Symbol + Color + Text (all three always together)"
       max_line_length_chars: 70
       max_content_blocks_per_slide: 3
-      corner_radius_px: 0
+      corner_radius_px_min: 12
+      corner_radius_px_max: 18
       block_spacing_px: 20
       block_padding_px: 16
       line_height: 1.8
@@ -638,14 +1035,15 @@ execution_sequence:
 # REPORTING PERIOD — When slides report "denna vecka" / "this week"
 ###############################################################################
 reporting_period:
-  definition: "Previous Monday 00:00 through current Monday 00:00 (exclusive)"
+  definition: "Previous Monday 09:00 through current Monday 09:00 (exclusive, Europe/Stockholm)"
   timezone: "Europe/Stockholm"
-  calculation: "For a Monday meeting: report the week that just ended (previous Mon-Sun)"
-  example: "Meeting on Monday 2026-09-14: report period is 2026-09-07 00:00 through 2026-09-14 00:00 (exclusive)"
-  rule: "ALWAYS dynamic. Calculate: meeting_date - 7 days (00:00) through meeting_date (00:00, exclusive)"
+  meeting_time: "09:00 (all periods anchored to meeting start time)"
+  calculation: "For a Monday 09:00 meeting: report from previous Monday 09:00 to this Monday 09:00"
+  example: "Meeting on Monday 2026-09-16 09:00: report period is 2026-09-09 09:00 through 2026-09-16 09:00 (exclusive)"
+  rule: "ALWAYS dynamic. Calculate: meeting_date - 7 days at 09:00 through meeting_date at 09:00 (exclusive)"
   variables:
-    REPORTING_PERIOD_START: "current_meeting_date - 7 days at 00:00 Europe/Stockholm"
-    REPORTING_PERIOD_END: "current_meeting_date at 00:00 Europe/Stockholm (exclusive)"
+    REPORTING_PERIOD_START: "current_meeting_date - 7 days at 09:00 Europe/Stockholm"
+    REPORTING_PERIOD_END: "current_meeting_date at 09:00 Europe/Stockholm (exclusive)"
 
 current_state:
   definition: "Live GitHub state at generation time"
@@ -817,7 +1215,7 @@ hard_rules:
   - rule: "Every verified activity assigned to exactly one team: Frontend, Backend, Native, Cross-team, or Other"
     consequence: "No activity may be omitted because it lacks clear team ownership. Cross-team and Other must be represented. If team cannot be determined → cross-team."
 
-  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①A/B/C/D/E)"
+  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①A–①F)"
     consequence: "If mismatch → audit and slide both show the discrepancy. Never silently drop data."
 
   - rule: "All 7 team members must be accounted for (with work OR marked 'no activity')"
@@ -920,7 +1318,7 @@ forbidden:
 success_criteria:
   - "✅ All data fetched LIVE from GitHub (not cached)"
   - "✅ All 7 team members verified or marked 'no activity'"
-  - "✅ Slide ① titles follow 'Avklarat sedan förra mötet — [Team]'"
+  - "✅ Section ① (①A–①F) follows SLIDE_DETAIL_SPEC structure (①A–①C: merged work, ①D–①E: pågår work, ①F: decisions)"
   - "✅ NPF-friendly design (no tables, Symbol+Färg+Text)"
   - "✅ Every slide timestamped with data fetch time"
   - "✅ All GitHub sources either ✅ verified or ⚠️ marked failed"

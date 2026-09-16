@@ -36,6 +36,33 @@ test_mode_activation:
     - Report DATA_ACQUISITION_RECEIPT with real source diagnostics
 
 required_datasets:
+  project_context:
+    classification: "REQUIRED (foundation for presentation metadata)"
+    canonical_method: "Read from _memory/presentations/"
+
+    datasets:
+      schedule:
+        file: "_memory/presentations/SCHEDULE.yaml"
+        purpose: "Meeting times, recurring events"
+        required_for: "framsida timing context"
+
+      milestones:
+        file: "_memory/presentations/MILESTONES.yaml"
+        purpose: "Critical deadlines, deliverables"
+        required_for: "framsida next_deadline, priority ranking"
+
+      roadmap:
+        file: "_memory/presentations/TEAM_ROADMAP.yaml"
+        purpose: "Project phases, timeline"
+        required_for: "contextual sprint positioning"
+
+      current_sprint:
+        file: "_memory/presentations/CURRENT_SPRINT.yaml"
+        purpose: "This week's goals, focus"
+        required_for: "framsida weekly_focus, ② priority ranking"
+
+    stop_condition: "if any context file missing or unparseable"
+
   team_roster:
     canonical_method: "Read TEAM_ROSTER.md file locally"
     requirement: 7 members
@@ -46,23 +73,82 @@ required_datasets:
     stop_condition: "any member missing or unverifiable"
     fallback: "None — local file is authoritative"
 
+  relevant_issues_activity:
+    source_id: "GITHUB_RELEVANT_ISSUES"
+    classification: "REQUIRED (foundation for all activity reporting)"
+    purpose: "Gather all relevant issues during reporting period (not PR-centric, issue-centric)"
+
+    CRITICAL_METHODOLOGY: >
+      This is the PRIMARY data collection method. Find all RELEVANT ISSUES during REPORTING_PERIOD,
+      then attribute work to assignees/participants. This ensures no work is missed.
+
+      OLD METHOD (WRONG): "Get all merged PRs, then find who authored them"
+      NEW METHOD (CORRECT): "Get ALL relevant issues (closed + open), find who worked on each, link PRs"
+
+    execution_sequence:
+      1_find_closed_issues: "GitHub API: GET /repos/.../issues?state=closed&since=[START]&until=[END]&per_page=100"
+      2_find_open_issues: "GitHub API: GET /repos/.../issues?state=open&since=[START_ACTIVITY]&per_page=100"
+      3_link_prs_to_issues: "For each issue, find linked PRs via issue body or GitHub API"
+      4_attribute_to_persons: "For each issue, list all assignees + author + significant commenters"
+      5_categorize_by_status: "✅ AVKLARAT (closed), 🟠 PÅGÅR (open + recent activity), 🔴 BLOCKERAT"
+
+    inclusion_criteria: >
+      CLOSED ISSUES: any closed during REPORTING_PERIOD
+      OPEN ISSUES: must have activity (assignee, comment, commit reference) during REPORTING_PERIOD
+      EXCLUDE: test-only issues, duplicates, issues closed before REPORTING_PERIOD_START
+
+    fields_required:
+      - issue.number
+      - issue.title
+      - issue.state (open | closed)
+      - issue.assignees[] (all assignees with display_name + login)
+      - issue.created_at
+      - issue.updated_at
+      - issue.closed_at (if closed during period)
+      - issue.user.login (author)
+      - linked_pull_requests[] (if any)
+      - pr.merged_at (if linked PR is merged during period)
+      - issue.labels (for team categorization)
+
+    output_structure: >
+      Grouped by person (from assignees + author across ALL issues):
+        [Person Name] (@github_login):
+          ✅ AVKLARAT:
+            - #ISSUE_NUMBER Title · closed [DATE] · [PR #XXX merged]
+          🟠 PÅGÅR:
+            - #ISSUE_NUMBER Title · last_update [DATE]
+          🔴 BLOCKERAT:
+            - #ISSUE_NUMBER Title · [blocking reason if any]
+
+    requirement: "ALL 7 team members from TEAM_ROSTER MUST appear (even with zero activity). Missing persons = DATA_AUDIT FAIL"
+    stop_condition: "If any required issue data missing or TEAM_ROSTER incomplete, STOP with DATA_AUDIT ERROR"
+
   merged_prs:
     source_id: "GITHUB_MERGED_PRS"
+    classification: "SECONDARY (supporting data, linked from per_person_activity)"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_MERGED_PRS (canonical source of truth for URL, access methods, fallback chain)"
 
     access_methods_authority: "EXTERNAL_SOURCES.yaml — GITHUB_MERGED_PRS (all allowed/forbidden methods defined there)"
 
+    note: "This data feeds per_person_activity categorization. Primary collection method is per-person, not per-PR."
+
     execution_sequence:
       1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
-      2_fallback_1: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
-      3_fallback_2: "GitHub web UI (last resort; requires HTML parsing)"
+        url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100"
+      2_fallback_1: "GitHub web UI (merged PRs filter)"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged"
+      3_fallback_2: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
+        url: "EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET"
+      4_fallback_3: "Individual PR pages (verification only, not for completeness discovery)"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/pull/[NUMBER]"
 
     enforcement:
       rule: >
         1. Try GitHub REST API with any available implementation
-        2. If API fails: try Google Sheets ONLY if freshness can be verified
-        3. If Sheets unavailable or stale: try GitHub web
-        4. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+        2. If API fails: try GitHub web UI
+        3. If web UI fails: try Google Sheets ONLY if freshness can be verified
+        4. If Sheets unavailable or stale: use individual PR pages for verification
+        5. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
         Do not attempt web_search, general_web_access, raw_github, or csv_export.
       on_violation: "STOP. Report: forbidden access method attempted for merged_prs"
 
@@ -85,14 +171,23 @@ required_datasets:
     verification_only:
       - "Individual PR pages (verification only, not for completeness discovery)"
 
-    requirement: "ALL merged PRs in reporting period"
+    requirement: "ALL merged PRs in reporting period (develop + collection branches)"
     fields:
-      - id (PR number)
+      - number (PR number)
       - title
-      - assignees[] (CRITICAL: who worked on this PR, not who merged it)
+      - base.ref (branch merged to: develop or collection branch)
+      - head.ref
       - merged_at (timestamp)
-      - base.ref
-      - linked_issues (if available)
+      - merged_by.login (person who merged)
+      - author.login (PR author)
+      - assignees[] (CRITICAL: who worked on this PR)
+      - commits[] (detailed commit list)
+      - commits[].author.login (actual code author per commit)
+      - commits[].commit.author.email (for attribution)
+      - reviews[] (all submitted reviews, NOT requested_reviewers)
+      - reviews[].user.login (actual reviewer who submitted review)
+      - reviews[].state (APPROVED, CHANGES_REQUESTED, or COMMENTED count as review work)
+      - linked_issues[] (issues this PR addresses)
 
     CRITICAL_RULE: >
       Show PR by ASSIGNEE (person who worked on the code), NOT by merger.
@@ -105,6 +200,344 @@ required_datasets:
 
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
+  decisions_confirmed:
+    source_id: "DECISION_CONFIRMED"
+    classification: "OPTIONAL (enhances team awareness)"
+    canonical_source:
+      path: "docs/decisions/*.md (one decision per file)"
+      exclude: "docs/examples/** (CRITICAL: never read examples)"
+
+    purpose: "Show decisions verified as decided during reporting period"
+    access_method: "Read all .md files from docs/decisions/ directory ONLY"
+
+    schema_validation:
+      required_fields:
+        - id (unique across all files, slug format)
+        - decision_date (YYYY-MM-DD)
+        - updated_date (YYYY-MM-DD)
+        - status (must equal 'confirmed')
+
+      allowed_status:
+        - confirmed (included in presentation)
+        - proposed (excluded)
+        - superseded (excluded)
+        - revoked (excluded)
+
+    filtering_rule: >
+      Include decision ONLY if ALL:
+        1. File is in docs/decisions/ (NOT docs/examples/)
+        2. status == "confirmed"
+        3. (decision_date OR updated_date) within REPORTING_PERIOD
+        4. All required fields present and valid
+        5. id is unique (no duplicates across all decision files)
+
+      If ANY validation fails: STOP with DATA_AUDIT ERROR
+
+    output:
+      max_per_slide: 4
+      label: "✓ BESLUT"
+      include_date_documented: true
+
+  decision_candidates:
+    source_id: "DECISION_CANDIDATES"
+    classification: "OPTIONAL (pedagogical)"
+
+    purpose: >
+      Identify possible decisions from GitHub/code patterns.
+      Never claims decision IS made — only prompts team evaluation.
+      Helps team learn what constitutes a real project decision.
+
+    detection_sources:
+      - merged_pull_requests (patterns)
+      - code_choices (architectural choices)
+      - branch_workflow (integration patterns)
+      - team_priorities (order/dependencies)
+
+    minimum_evidence_requirement: >
+      MUST have ONE of:
+        - Multiple related PRs following same pattern (≥2)
+        - Repeated pattern across independent work instances (≥2)
+        - Explicit issue/PR text indicating choice
+        - Architectural change with documented future effect
+
+      FORBIDDEN: suggesting from single PR
+
+    criteria_for_candidate:
+      affects_future_implementation: true
+      OR establishes_reusable_rule: true
+      OR selects_between_alternatives: true
+      OR defines_interface_or_contract: true
+      OR changes_team_workflow: true
+      OR creates_work_dependency: true
+      OR establishes_quality_practice: true
+
+    do_NOT_suggest_if_only:
+      - single_commit: true
+      - implementation_detail: true
+      - task_completion: true
+      - temporary_change: true
+      - routine_review: true
+
+    output_format:
+      max_suggestions: 2-3 per presentation
+      label: "? Förslag på beslut att dokumentera"
+      required_in_each:
+        - title (question form: "Ska vi...")
+        - short_description
+        - evidence_refs (concrete PRs/patterns)
+        - why_is_decision (future impact)
+
+    critical_rule: >
+      NEVER claim candidate IS a decision.
+      Always phrase as question: "Ska vi dokumentera detta?"
+      Always show concrete evidence (PR numbers, patterns).
+      Always explain future impact.
+
+  open_pull_requests:
+    source_id: "GITHUB_OPEN_PRS"
+    classification: "CRITICAL (strong signal of active work; required for ①D–①E slides)"
+    purpose: >
+      Collect all open PRs linked to active issues. These PRs indicate work that is
+      completed at code-level but waiting for review/merge. Essential for showing
+      'Väntar i PR' status (blocker: waiting for review, not stuck).
+
+    execution_sequence:
+      1_primary: "GitHub REST API: GET /repos/chas-challenge-2026/avanza-team1/pulls?state=open&per_page=100"
+      2_fallback_1: "GitHub web UI: https://github.com/chas-challenge-2026/avanza-team1/pulls"
+      3_fallback_2: "Google Sheets (if freshness verified)"
+
+    required_fields:
+      - number (PR ID)
+      - title
+      - author.login (GitHub username)
+      - assignees[] (who worked on code)
+      - requested_reviewers[] (CRITICAL: who needs to review)
+      - body (may contain issue reference)
+      - head.ref (branch name)
+      - created_at
+      - updated_at
+      - linked_issue (if PR closes/fixes issue)
+
+    correlation:
+      link_pr_to_issue: >
+        For each open PR, attempt to find linked issue via:
+        1. GitHub API: PR.linked_issues
+        2. PR body text: regex for '#ISSUE_NUMBER'
+        3. Branch name: regex for 'issue-NUM' or '#NUM'
+        4. Commit messages in PR: grep for '#NUM'
+
+    output_structure: >
+      Per PR (for ①D–①E slides — pågår work):
+        #PR_NUMBER · #ISSUE_NUMBER Title
+        Assignee: [person who worked]
+        Reviewers: [list of requested_reviewers, or "ej tilldelad"]
+        Branch: [head.ref]
+        Status: Väntar på review
+
+    requirement: "ALL open PRs linked to active issues during REPORTING_PERIOD"
+    stop_condition: "source fails AND all fallbacks fail (mark DATA_ACQUISITION_RECEIPT as INCOMPLETE)"
+
+  repository_branches_and_commits:
+    source_id: "GITHUB_BRANCHES_COMMITS"
+    classification: "CRITICAL (activity evidence; required for active work detection)"
+    purpose: >
+      Collect branches and recent commits to detect active work on issues
+      that may not yet have open PRs. Critical for slides ①D–①E (Pågår utan PR).
+
+      Project Board may be outdated or inaccessible; commit history is authoritative.
+
+    execution_sequence:
+      1_collect_all_branches: "GitHub API: GET /repos/chas-challenge-2026/avanza-team1/branches"
+
+      2_CRITICAL_identify_team_collection_branches: >
+        Teams often use dedicated branches as collection points BEFORE merging to develop.
+        These MUST be scanned for complete risk/blocker/capacity analysis.
+
+        KNOWN COLLECTION BRANCHES (MANDATORY to scan):
+          - develop (default target)
+          - Java-Development-Environment (Backend collection point)
+          - [Other team-specific branches if they exist]
+
+        DISCOVERY (if unknown branches exist):
+          - List all branches with recent commits (last 14 days)
+          - Filter for non-feature branches (typically *-Development-Environment or team/*-main)
+          - Ask team if uncertain which are collection branches
+
+      3_collect_recent_commits_per_branch: >
+        For EACH branch (especially collection branches):
+          GET /repos/chas-challenge-2026/avanza-team1/commits?sha=[branch]&since=[START]&until=[END]&per_page=100
+
+      4_filter_relevant_branches: >
+        Branches matching patterns:
+          - Collection branches (develop, Java-Development-Environment, etc) — ALWAYS
+          - feature/* — if recent commits
+          - bugfix/* — if recent commits
+          - {team}/* (frontend/, backend/, native/) — if recent commits
+          - Any branch with commits in REPORTING_PERIOD
+
+      5_exclude_stale_branches: >
+        Skip branches with NO commits in REPORTING_PERIOD
+        (stale branches don't affect current risk/capacity analysis)
+
+    required_fields_per_branch:
+      - name
+      - last_commit_sha
+      - last_commit_date (CRITICAL — shown on slides ①B–①E)
+      - commit_author.login
+      - commit_author.name (display name for slide)
+      - commit_message (for linking to issue)
+
+    branch_to_issue_correlation:
+      infer_from: >
+        1. Branch name regex: '(issue|fix|feature)-(\d+)' or '#(\d+)'
+        2. Commit message regex: '#(\d+)' or 'fixes #(\d+)'
+        3. Match against known issue numbers from GITHUB_OPEN_ISSUES + GITHUB_MERGED_PRS
+
+    output_structure: >
+      Per branch with recent commits:
+        branch: docs/#67-update-readme
+        linked_issue: #67 (inferred from branch name)
+        last_commit: 2026-09-16 14:23 · Zaida Wiss
+        status: Pågår (aktiv branch, commits denna vecka)
+
+    active_work_detection_logic:
+      Strongest_signals:
+        - Open PR + linked issue + assignee = DEFINITE active work
+        - Open issue + matching branch + recent commits = VERY LIKELY active work
+        - Open issue + matching branch (no recent commits) = MAYBE active work
+        - Open assigned issue alone = POSSIBLY active work
+
+      Weakest_signals:
+        - Recent commits without issue link = UNCONFIRMED (orphaned work)
+        - Project Board status alone = UNRELIABLE (often outdated)
+
+    requirement: "ALL branches with activity in REPORTING_PERIOD"
+    stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE)"
+
+  issue_dependencies_and_blockers:
+    source_id: "GITHUB_ISSUE_RELATIONSHIPS"
+    classification: "CRITICAL (required for priority recommendation and analysis)"
+    purpose: >
+      Detect which issues block other issues. Essential for:
+      - Recommending priority order
+      - Identifying critical path
+      - Suggesting team split/parallelization
+      - Estimating realistic completion time
+
+    execution_sequence:
+      1_collect_linked_issues: "GitHub API: GET /repos/.../issues/[ID]/related (if available)"
+      2_parse_issue_body: "Search issue body for '#[number]' references (blockers/dependencies)"
+      3_check_pr_links: "Get PRs linked to each issue via pr.linked_issues"
+      4_infer_from_branch_name: "Branch pattern might indicate dependency (e.g., 'after-#67')"
+      5_explicit_labels: "Check for 'blocks-', 'depends-on-', 'after-' labels if team uses them"
+
+    required_fields:
+      - issue.number
+      - issue.title
+      - linked_issues[] (if issue blocks or depends on others)
+      - related_pull_requests[] (if PRs depend on this issue)
+      - labels (for explicit dependency markers)
+
+    output_structure: >
+      Per issue, determine:
+        - What issues does THIS issue block? (#X blocks #Y, #Z)
+        - What issues block THIS issue? (#A must finish first)
+        - Critical path: #X → #Y → #Z (N days total)
+
+    requirement: "ALL dependencies between open/merged issues in reporting period"
+    stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE, but continue with available data)"
+
+  collection_branches_and_merges:
+    source_id: "GITHUB_COLLECTION_BRANCHES"
+    classification: "SECONDARY (track team progress before develop integration)"
+    purpose: >
+      Track work merged to team collection branches (e.g., Java-Development-Environment for Backend,
+      C/C++-Native for Native). This represents team progress before integration to develop.
+
+    known_branches:
+      backend:
+        - "Java-Development-Environment"
+      native:
+        - "C/C++-Native"
+      frontend: [] # Frontend typically develops directly on develop
+
+    discovery:
+      allow_additional_verified_branches: true
+      per_team: "True — ask team members if branches exist beyond known list"
+
+    collect_per_branch:
+      - merged_prs (with all fields: commits, reviews, merged_by, etc)
+      - merged_at
+      - contributors (commit authors)
+      - reviewers (actual approvers, not requested)
+      - merged_by (who merged to branch)
+
+    CRITICAL_DEDUPLICATION: >
+      Deduplication by WORK IDENTITY, not PR number.
+
+      Delivery identity priority:
+        1. Linked issue IDs (primary)
+        2. Commit SHA ancestry (who authored the work)
+        3. Source branch + commit set (same changes)
+
+      Rule: If same work (same linked issue OR same commit ancestry)
+      appears as both collection-branch AND develop delivery,
+      show ONLY the develop delivery (later in timeline).
+
+      IMPORTANT: PR numbers alone are INSUFFICIENT.
+      Collection PR #107 and later develop PR #109 may represent same work.
+      Use issue links and commits to determine true identity.
+
+    classification_rule: >
+      develop_delivery: base_branch == develop
+      team_delivery: base_branch == verified_collection_branch
+
+    requirement: "Track all collection-branch merges to show team progress"
+    fields: (same as merged_prs) + base.ref (for filtering by branch)
+
+  team_member_capacity_and_absence:
+    source_id: "GITHUB_TEAM_ROSTER_EXTENDED"
+    classification: "CRITICAL (required for workload balancing recommendation)"
+    purpose: >
+      For each team member, determine:
+      - Current workload (how many open issues assigned)
+      - Estimated time on current work (days)
+      - Planned absence (vacation, sick leave, training)
+      - Available capacity this week
+
+    execution_sequence:
+      1_get_team_roster: "TEAM_ROSTER.md — all 7 members"
+      2_per_person_open_issues: "GitHub API: issues assigned to [person]?state=open"
+      3_estimate_per_issue: "Multiply: issue complexity × average team velocity"
+      4_get_absence_calendar: >
+        Check: Google Calendar, team wiki, or explicit note in repo
+        Format: "Zaida: absent 20-24 sep (vacation)", "Erik: Mon-Tue (doctor appt)"
+      5_calculate_capacity: >
+        base = 5 working days
+        available = base - (absence days) - (current work days)
+
+    required_fields:
+      - person.name
+      - person.github_login
+      - open_issues_assigned (issue numbers + estimated effort)
+      - planned_absence (dates + reason if possible)
+      - current_workload_days (estimated, per issue)
+
+    output_structure: >
+      Per team member:
+        Zaida:
+          current_open_issues: [#72, #78] (estimated: 1.5 days)
+          planned_absence: none
+          capacity_available: 3.5 days
+
+        Erik:
+          current_open_issues: [#67] (estimated: 2 days)
+          planned_absence: "Mon 20-21 sep (conference)"
+          capacity_available: 2.5 days
+
+    requirement: "Capacity estimate for all 7 team members"
+    stop_condition: "If absence calendar unavailable: assume all available (no days subtracted)"
+
   active_issues:
     source_id: "GITHUB_OPEN_ISSUES"
     reference: "EXTERNAL_SOURCES.yaml: GITHUB_OPEN_ISSUES (canonical source of truth for URL, access methods, fallback chain)"
@@ -113,15 +546,21 @@ required_datasets:
 
     execution_sequence:
       1_primary: "GitHub REST API via any allowed implementation (github_connector, http_fetch, curl, etc)"
-      2_fallback_1: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
-      3_fallback_2: "GitHub web UI (last resort; requires HTML parsing and manual issue filtering)"
+        url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100"
+      2_fallback_1: "GitHub web UI (open issues filter)"
+        url: "https://github.com/chas-challenge-2026/avanza-team1/issues?q=is:open"
+      3_fallback_2: "Google Sheets (ONLY if freshness_requirement verified: last_synced_at >= REPORTING_PERIOD_END)"
+        url: "EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET"
+      4_fallback_3: "Project Board (reconstruct from column view)"
+        url: "https://github.com/orgs/chas-challenge-2026/projects/31"
 
     enforcement:
       rule: >
         1. Try GitHub REST API with any available implementation
-        2. If API fails: try Google Sheets ONLY if freshness can be verified
-        3. If Sheets unavailable or stale: try GitHub web
-        4. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
+        2. If API fails: try GitHub web UI
+        3. If web UI fails: try Google Sheets ONLY if freshness can be verified
+        4. If Sheets unavailable or stale: reconstruct from Project Board
+        5. If all fail: mark DATA_ACQUISITION_RECEIPT as INCOMPLETE
         Do not attempt web_search, general_web_access, raw_github, or csv_export.
       on_violation: "STOP. Report: forbidden access method attempted for active_issues"
 
@@ -188,6 +627,41 @@ validation_rules:
   team_roster: "Exactly 7, or STOP"
 
   rule: "Zero activity in a category is valid. Missing data sources are not."
+
+  relevant_commits:
+    source_id: "GITHUB_COMMITS"
+    classification: "OPTIONAL (required only if presentation includes commit-level work)"
+    purpose: "Commits not linked to issues or PRs (refactoring, docs, chores)"
+
+    canonical_method:
+      endpoint: "/repos/chas-challenge-2026/avanza-team1/commits"
+      http_method: "GET"
+      params:
+        since: "REPORTING_PERIOD_START"
+        until: "REPORTING_PERIOD_END"
+        per_page: 100
+
+    required_fields:
+      - sha (commit hash)
+      - message (commit message)
+      - author.name (display name — e.g. "Zaida Wiss")
+      - author.login (GitHub username — e.g. "zaida-wiss")
+      - author.date (timestamp)
+      - html_url (link to commit on github.com)
+
+    presentation_format: "💾 SHA…message · Author (display_name @github_login)"
+    note: "Author field MUST include both display_name AND github_login for full activity tracking"
+
+    local_filter:
+      - "exclude commits linked to merged PRs (already shown in merged_prs section)"
+      - "exclude commits linked to issues (already shown in active_issues or merged_prs sections)"
+      - "include only commits with activity in REPORTING_PERIOD"
+
+    requirement: "If relevant_commits exist, ALL must be shown (not paginated)"
+    fields_for_deduplication:
+      - sha (unique commit identifier)
+
+    stop_condition: "source fails AND all fallbacks fail — omit commit section if unavailable (OPTIONAL dataset)"
 
 ###############################################################################
 # DATA_ACQUISITION_RECEIPT — Machine-Readable Diagnostic Logging

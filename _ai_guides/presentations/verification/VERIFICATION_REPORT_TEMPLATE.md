@@ -143,17 +143,16 @@ SLIDES GENERATED:
   All 7 team members shown: YES ✅
 
 DATA VERIFICATION (per slide):
-  Slide ①A (Frontend denna vecka):
-    ✅ Merged PRs match GitHub develop-merge
+  Slide ①A (Merged to develop):
+    ✅ All PRs merged to develop match GitHub
     ✅ All assignees exist in TEAM_ROSTER
     ✅ Dates match actual merge-dates
     
-  Slide ①B (Backend denna vecka):
-    ✅ Issue #95, #87 match GitHub status
-    ✅ Assignee Erik (rikexhx) verified
-    ⚠️ Issue #80 — test-coverage not yet added (marked "pågår")
+  Slide ①B (Collection branches):
+    ✅ All PRs merged to collection branches identified
+    ✅ Deduplication verified (no double-count to develop)
     
-  Slide ④A (Frontend denna sprint):
+  Slide ③ (Frontend denna vecka):
     ✅ Issue #88, #89, #85 match GitHub
     ✅ Assignees verified
     ✅ Blockers match actual dependencies
