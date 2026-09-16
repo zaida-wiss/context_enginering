@@ -41,35 +41,32 @@ git checkout cleanup
 git log --oneline -3  # verify you're on cleanup branch
 ```
 
-### Step 3: Give Fresh AI This Instruction
+### Step 3: Give Fresh AI Minimal Instruction (Realistic Test)
+
+**The test is most valuable when the AI gets the LEAST help.**
+
+Give ONLY this:
+
 ```
-You are starting cold on the cleanup-branchen of context_enginering.
+Read this repository:
+https://github.com/zaida-wiss/context_enginering/blob/cleanup/README.md
 
-Read the file: README.md (root)
-Follow the entry point for: "Jag skapar en PRESENTATION"
-Execute the full presentation-generation pipeline exactly as specified.
+Create the presentation for Monday's team meeting (09:00 Stockholm time).
 
-Your task:
-1. Generate a Monday meeting presentation for next week's team meeting
-2. Follow ALL system instructions and gates
-3. Log EVERY decision and gate result (use SMOKE_TEST.md as template)
-4. Generate a presentation artifact when ready
-5. Report PASS/FAIL with details
+That's the task. Follow what the repo tells you to do.
+```
 
-Failure criteria:
-- File read from wrong branch
-- Any gate failed without explanation
-- Data gaps or fabricated information
-- Design violations
-- Manual corrections needed
-- Presentation not delivered
+**That's it. Nothing else.**
 
-Success criteria:
-- All files read from cleanup-branchen only
-- All gates PASS
-- Presentation generated without errors
-- NO manual corrections needed
-- Execution log complete
+No instructions about:
+- Entry points
+- Pipeline steps  
+- Gate logging
+- What to verify
+
+Just: README link + task.
+
+This tests whether README alone is sufficient to guide you through the entire system.
 ```
 
 ### Step 4: Wait for Test Completion
@@ -81,83 +78,95 @@ The fresh AI will:
 
 **Do NOT help, guide, or correct the AI.** If it fails, that's data about what needs fixing.
 
-### Step 5: Analyze Results
+### Step 5: Evaluate Against Concrete Criteria
 
-**If test PASSES:**
+**Do NOT just read what the AI claims. Actually look at the presentation.**
+
+Verify these real, visual/data criteria:
+
+**Data Completeness:**
+- [ ] All 7 team members checked (or marked "no activity")?
+- [ ] Team collection branches actually scanned (develop, Java-Development-Environment, etc)?
+- [ ] Clear distinction: merged to develop vs pågår work?
+- [ ] Verified activity for Zaida, Erik, Björn, Henrik, Pär, Rasha, Tomac?
+- [ ] No unverified data fabricated (marked as "unverified" or "no data" instead)?
+
+**Slide ①A (Merged):**
+- [ ] Chronological order (oldest first)?
+- [ ] Balanced across teams?
+- [ ] No duplicates (same work on multiple slides)?
+
+**Slide ①B/①C (Pågår):**
+- [ ] Team separation clear?
+- [ ] Cross-team separate from team-specific?
+
+**Visual Design:**
+- [ ] Cards rounded (corners visible, not sharp rectangles)?
+- [ ] Padding inside cards (text doesn't touch borders)?
+- [ ] Responsive height (cards grow with content)?
+- [ ] No text clipping or truncation?
+- [ ] Dark navy background (#0F1830)?
+- [ ] Soft appearance (calm, not technical/boxy)?
+
+**Slide ⑥A (Blockers):**
+- [ ] Actual dependency diagram (not just text list)?
+- [ ] Nodes with arrows (pilar showing blocking)?
+- [ ] Status markers visible (✅ ◐ ⏳ 🔴)?
+- [ ] Flow direction clear?
+
+**Colors:**
+- [ ] Team colors (teal/hot pink/purple) on borders only?
+- [ ] Status symbols (✅ ◐ 🔴) shown, not colored boxes?
+- [ ] No overlap of team color with status color?
+- [ ] Green ≠ team, only ✅ status?
+
+**Rendering:**
+- [ ] Presentation actually rendered to PPTX or viewable format?
+- [ ] AI visually checked every slide (not just generated)?
+- [ ] Issues with layout/spacing noted?
+
+**If ANY of these fails:**
 ```
-✅ System is production-ready
-✅ All gates work correctly
-✅ All rules are consistent
-✅ Fresh AI can execute without help
+❌ Evaluate: Is this a data problem or a rule problem?
+
+If DATA problem (missing person, branch not scanned):
+  → Fix data acquisition in SYSTEM_CONTRACT or DATA_ACQUISITION_CONTRACT
+  → Re-test with fresh session
+
+If RULE problem (README didn't explain how to do X):
+  → Fix README or authority files to be clearer
+  → Re-test with fresh session
+
+If DESIGN problem (rule exists but AI didn't follow it):
+  → Make rule more explicit/clearer in VISUAL_DESIGN
+  → Re-test with fresh session
+
+Do NOT: Manually fix the presentation. That's not a pass.
+```
+
+**If ALL criteria pass:**
+```
+✅ System is self-contained
+✅ README sufficient to guide AI
+✅ All rules followed without help
+✅ Presentation actually follows specs
 → Merge cleanup → main is safe
-```
-
-**If test FAILS:**
-```
-❌ Note WHICH gate failed and why
-❌ Note ANY file it read from wrong branch
-❌ Note ANY rule violation or ambiguity
-→ Fix the revealed issue on cleanup
-→ Run smoke test again (fresh session)
-→ Repeat until PASS
 ```
 
 ---
 
 ## 📋 Expected Smoke Test Output
 
-The fresh AI should produce something like this:
+The fresh AI should produce a **complete presentation artifact** (PPTX or viewable format).
 
-```
-EXECUTION LOG — cleanup-branchen smoke test
-===========================================
+The test output is the presentation itself — not a log or report.
 
-BRANCH INHERITANCE CHECK
-✅ README read from: cleanup
-✅ SYSTEM_CONTRACT.yaml read from: cleanup
-✅ SLIDE_DETAIL_SPEC.md read from: cleanup
-✅ DATA_ACQUISITION_CONTRACT.yaml read from: cleanup
-✅ VISUAL_DESIGN_MANDATORY.md read from: cleanup
-✅ RENDER_GATE_CHECKLIST.md read from: cleanup
-✅ All files from SAME branch (no jump to main)
-
-EXECUTION RECEIPT GATE
-✅ Files verified: [list]
-✅ Authority hierarchy verified
-✅ Status: PASS
-
-DATA ACQUISITION GATE
-✅ Merged PRs found: N (from GitHub)
-✅ Active issues found: N (from active work detection)
-✅ Team branches scanned: [develop, Java-Development-Environment, ...]
-✅ Status: PASS
-
-DATA AUDIT GATE
-✅ Team checksums aligned
-✅ No deduplication violations
-✅ Status: PASS
-
-RENDER GATE CHECKS
-✅ WCAG 2.2 AA compliance: PASS
-✅ Color semantics: PASS
-✅ No text box borders: PASS
-✅ GitHub entity provenance: PASS
-✅ Code inspection (pågår): PASS
-✅ Soft card surfaces: PASS
-✅ Dependency diagrams: PASS
-✅ Status: PASS
-
-PRESENTATION GENERATED
-✅ Format: PPTX
-✅ Slides: ①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭
-✅ Status: DELIVERED
-
-FINAL RESULT: ✅ PASS
-- All gates passed
-- No manual corrections needed
-- Fresh AI successfully generated valid presentation
-- System is production-ready
-```
+**To evaluate:**
+1. Open/view the presentation
+2. Check it against the 11 concrete criteria above
+3. Document what passes and what fails
+4. If all pass: system is ready
+5. If any fail: identify the root cause and fix it
 
 ---
 
@@ -256,18 +265,23 @@ After the fresh AI completes the test, create a report:
 
 ---
 
-## ⚠️ Do NOT Cheat
+## ⚠️ The Test Must Be Realistic
 
-These rules are non-negotiable for the smoke test:
+This test simulates real usage. Keep it honest:
 
-- ❌ Do NOT use prior conversation context
-- ❌ Do NOT guide the fresh AI
-- ❌ Do NOT fix issues manually "just this once"
-- ❌ Do NOT modify gates to make them pass
-- ❌ Do NOT skip gate checks
-- ❌ Do NOT claim PASS if fresh AI needed help
+- ❌ Do NOT use prior conversation context from cleanup work
+- ❌ Do NOT give extra instructions beyond "README link + task"
+- ❌ Do NOT help the AI if it gets stuck
+- ❌ Do NOT fix issues manually in the presentation
+- ❌ Do NOT claim PASS because AI says so — verify visually
+- ❌ Do NOT modify the system to make the test pass
 
-The whole point is proving the system is self-contained and works.
+**The point:**
+If the system requires special instructions or help to work, it's not ready.
+If the README alone doesn't guide the AI, the README needs fixing.
+If rules aren't followed, the rule needs to be clearer.
+
+This is what real usage looks like: user gives task, system executes or fails.
 
 ---
 
