@@ -441,15 +441,34 @@ FAIL GATE if:
       → Per github_entity_identity rule in SYSTEM_CONTRACT.yaml
 ```
 
-**LAYOUT COMPLIANCE — CANONICAL FORM ONLY:**
+**LAYOUT COMPLIANCE — CANONICAL FORM WITH AUTHORIZED EXCEPTIONS:**
 ```
+  ✅ GENERAL RULE (most slides: ①B-①E, ②-⑤, ⑦-⑬, ⑭):
   [ ] Every slide has exactly: 1 header + 1 main message + 1–3 content blocks
-  [ ] No horizontal layouts (all content stacked vertically)
-  [ ] No small cards in grid (all blocks are 100% width)
+  [ ] Content blocks stack vertically (never side-by-side)
+  [ ] All blocks are 100% width (no small cards in grid)
   [ ] No compression of typography or spacing (use FIXED values from VISUAL_DESIGN_MANDATORY)
-  [ ] If slide has 4+ work items → continues automatically to ①A.1, ①A.2 (never summarized)
-  [ ] All block dimensions match spec: 18pt title, 14pt effect, 12pt owner
-  [ ] Whitespace: 20px margin between blocks, 16px padding around content
+
+  ✅ AUTHORIZED EXCEPTION — Slide ①A (Merged PRs Overview):
+  [ ] Uses 3 × N card grid (per VISUAL_DESIGN_MANDATORY.md specification)
+  [ ] Cards are soft-rounded (12-18px corners, responsive height)
+  [ ] Cards display chronologically (left-to-right, top-to-bottom)
+  [ ] Maximum 6 cards per slide (split to ①A.2 if more)
+  [ ] Grid appearance is intentional (overview board, not dashboard)
+
+  ✅ AUTHORIZED EXCEPTION — Slide ⑥A (Dependency Diagrams):
+  [ ] Uses visual flow diagrams with nodes and arrows (per SLIDE_DETAIL_SPEC.md)
+  [ ] Nodes can be arranged horizontally (left→right) or vertically (top→bottom)
+  [ ] Each node is soft-rounded card (12-18px corners, responsive height)
+  [ ] Maximum 3-4 chains per slide (split if more)
+  [ ] Flow direction clearly shows blocking relationships (pilar indicates direction)
+
+  ✅ GENERAL RULES (apply to ALL slides including exceptions):
+  [ ] If slide has 4+ work items (①B-①C) → continues automatically to ①B.1, ①B.2 (never summarized)
+  [ ] All typography matches FIXED spec: titles, content, metadata sizes
+  [ ] Whitespace: 20px margin between blocks/chains, 16-20px internal padding
+  [ ] Soft cards: 12-18px rounded corners, never hard rectangular boxes
+  [ ] No compression: never reduce padding/spacing to fit more
 ```
 
 **RENDERED OUTPUT VERIFICATION (MANDATORY BEFORE DELIVERY):**
@@ -465,14 +484,28 @@ STEP B: Open PPTX file and page through every slide visually. For each slide:
   
   [ ] Header is at top (symbol first)
   [ ] Main message is clearly visible below header
+  
+  ✅ For slides ①B-①E, ②-⑤, ⑦-⑬, ⑭ (canonical layout):
   [ ] Content blocks stack vertically (never side-by-side)
-  [ ] No blocks pushed off-slide or cut at bottom
+  [ ] All blocks are 100% width
+  [ ] Work items display as clean single lines (not grid)
+  
+  ✅ For slide ①A (authorized grid exception):
+  [ ] Displays as 3-column card grid (intentional, not dashboard)
+  [ ] Cards are soft-rounded with padding
+  [ ] Read left-to-right, top-to-bottom
+  
+  ✅ For slide ⑥A (authorized diagram exception):
+  [ ] Displays dependency chains with nodes and arrows
+  [ ] Nodes are soft-rounded cards with status markers
+  [ ] Flow direction is clear (pilar shows blocking)
+  
+  ✅ For ALL slides:
+  [ ] No blocks/cards pushed off-slide or cut at bottom
   [ ] No text clipping or overlap
-  [ ] All text fully visible in its block (no truncation)
-  [ ] Work items display as single lines (not wrapped into grid)
-  [ ] Spacing between blocks matches spec (20px visual gap visible)
-  [ ] Slide is NOT dense/cramped (60-70% whitespace visible)
-  [ ] Slide does NOT look like dashboard/grid/card-layout
+  [ ] All text fully visible (no truncation)
+  [ ] Spacing between blocks/chains matches spec (20px gaps)
+  [ ] Slide has adequate whitespace (60-70% visible, never dense/cramped)
   
 STEP C: If ANY check fails:
   [ ] Fix the content (split to continuation slide ①A.1, etc.)
@@ -488,7 +521,9 @@ STEP D: Only after ALL slides pass visual check:
 - Text clipping → reduce text length, split to new slide
 - Block overflow → split to continuation slide automatically
 - Dense layout → already at max 3 blocks per slide; if still dense → reformat work items as single lines
-- Dashboard appearance → check that blocks are 100% width and stacked vertically, not in grid
+- Unwanted grid appearance (slides ①B-①C, ②-⑤, etc) → check that blocks are 100% width and stacked vertically
+- Broken dependency diagram (slide ⑥A) → verify nodes have soft corners, status markers visible, arrows clear
+- Card ①A grid incorrect → verify 3-column layout, soft rounded cards, chronological order
 
 **NEVER deliver a presentation without rendering it to PPTX and visually checking every single slide.**
 
