@@ -123,6 +123,30 @@ RESULT: ✅ RENDER GATE PASSED — OK to build presentation
 
 ---
 
+## PHASE 3.5: ARTIFACT PRECONDITION CHECK
+
+**Before attempting to render/export:**
+
+```
+═══════════════════════════════════════════════════════════
+ARTIFACT PRECONDITION CHECK — PHASE 3.5
+═══════════════════════════════════════════════════════════
+
+  ✅ Source artifact path selected
+  ✅ Source artifact file created (exists on disk)
+  ✅ File size > 0 bytes (not empty)
+  ✅ HTML is well-formed (can be parsed)
+  ✅ All required assets inline or embedded
+  ✅ Ready for render → PPTX conversion
+
+═══════════════════════════════════════════════════════════
+If ANY check fails: STOP. Report ARTIFACT_BUILD_ERROR.
+Do NOT attempt to render a non-existent or empty file.
+═══════════════════════════════════════════════════════════
+```
+
+---
+
 ## PHASE 4: FINAL VERIFICATION (after slides built & rendered to PPTX)
 
 **AI must generate and show this report:**

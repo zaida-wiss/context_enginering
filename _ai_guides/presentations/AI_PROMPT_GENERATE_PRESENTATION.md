@@ -106,9 +106,38 @@ After collecting all datasets:
 
 ---
 
+## STEP 3.5 — VERIFY REPOSITORY STATE
+
+**Before building presentation, verify you're reading current HEAD:**
+
+```
+Check cleanup-branchen HEAD:
+- Expected: Latest commit message should be about presentation system fixes
+- Not: Old commits from before this session
+- Verify: You're reading from cleanup-branchen, not main/develop
+```
+
+If repo_commit_sha in DATA_ACQUISITION_RECEIPT is stale (>1 hour old),
+re-run acquisition step to get fresh data.
+
+---
+
 ## STEP 4 — BUILD PRESENTATION
 
 **CRITICAL: Follow SLIDE_DETAIL_SPEC.md exactly for content + VISUAL_DESIGN_MANDATORY.md for rendering**
+
+### ARTIFACT CREATION ORDER — MANDATORY
+
+Before any Artifact/Open/Render operation:
+
+1. **Determine output path** — where will presentation HTML live?
+2. **Create the source artifact file** — write HTML to that path
+3. **Verify file exists** — check that file was created successfully
+4. **Verify file is non-empty** — file size > 0 bytes
+5. **Only then open/render/convert** — start render-to-PPTX
+6. **If creation fails → STOP** — report ARTIFACT_BUILD_ERROR
+
+**Never attempt to open or render a source file that has not yet been created.**
 
 ### Slides ① — Avklarat sedan förra mötet (Global overview)
 
