@@ -43,6 +43,27 @@ This repository is the **single source of truth** for:
 
 ---
 
+## 🆕 Latest Changes (Version 2.0)
+
+**Typography Enforcement (Meeting-Room Ready)**
+- Minimum body text: 20pt (was 14pt) — readable from 3–5m distance
+- Render-gate now BLOCKS presentations with smaller text
+- Cards grow or slides split before text shrinks
+
+**Issue Completeness (No Silent Disappearance)**
+- Slide ①E now shows open assigned issues WITHOUT matching branch (LEVEL 4)
+- **Mandatory rule:** Every open assigned issue MUST appear on ①D/①E or be explicitly excluded
+- Render-gate validates: `open_assigned_issues_github == rendered_on_①D_①E`
+
+**Clear Evidence Levels**
+- LEVEL 3 = branch exists + no recent commits → shown on ①D/①E, flagged as "possibly paused"
+- LEVEL 4 = no matching branch → shown on ①E section B (Backlog)
+- No overlap. Boundaries verified across files.
+
+**See:** [`ACTIVE_WORK_DETECTION_MODEL.md`](_ai_guides/presentations/data/ACTIVE_WORK_DETECTION_MODEL.md) and [`VISUAL_DESIGN_MANDATORY.md`](_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md)
+
+---
+
 ## 🚨 Critical Rule
 
 If two authoritative files appear to contradict each other: **STOP. Do not choose the interpretation that seems most reasonable.**
