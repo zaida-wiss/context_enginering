@@ -115,13 +115,17 @@ authority:
     rule: "If this conflicts with SLIDE_DETAIL_SPEC (content), VISUAL_DESIGN_MANDATORY wins on form; if conflicts with ACCESSIBILITY_NEURODIVERSITY, revise to meet accessibility first"
     note: "Defines HOW to build within quality boundaries"
 
-  data_sources:
-    file: "data/DATA_SOURCES.md"
-    owns: "WHERE external sources exist (no HOW, no WHETHER)"
+  external_sources_registry:
+    file: "_memory/EXTERNAL_SOURCES.yaml (AUTHORITATIVE)"
+    owns: "Single source of truth for: all external data sources, source IDs, URLs, access methods, allowed/forbidden implementations, fallback chains, source classifications (REQUIRED/OPTIONAL/FALLBACK)"
+    rule: "This is the ONLY file that defines fallback order. DATA_ACQUISITION_CONTRACT references it, never duplicates"
+    note: "Owns the 'what' and 'in what order' for data acquisition fallbacks"
 
   data_acquisition:
     file: "data/DATA_ACQUISITION_CONTRACT.yaml"
-    owns: "EXACT canonical algorithm, pagination, filtering, fallback order (mechanical, no decisions)"
+    owns: "EXACT canonical algorithm, pagination, filtering, dataset structure (mechanical, no decisions)"
+    references_not_owns: "fallback order (see EXTERNAL_SOURCES.yaml for authoritative fallback chains)"
+    note: "Specifies HOW to execute; EXTERNAL_SOURCES specifies WHAT sources exist and WHEN to try each"
 
   data_collection:
     file: "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
@@ -937,18 +941,18 @@ execution_sequence:
               failure_reason: "e.g., 'API rate limit exceeded', 'authentication failed', 'timeout after 30s'"
               payload_summary: "N items collected"
               tried_at: "ISO 8601 timestamp"
-            - "Source 2: GitHub web /pulls?q=is:pr+is:merged (fallback)"
-              status: "SUCCESS | EMPTY_RESPONSE | PARSE_ERROR"
-              failure_reason: "e.g., 'page structure changed', 'no data extracted'"
-              payload_summary: "N items collected"
-              tried_at: "ISO 8601 timestamp"
-              fallback_reason: "GitHub API [reason]"
-            - "Source 3: Google Sheets CSV export (fallback)"
+            - "Source 2: Google Sheets CSV export (fallback #1 per EXTERNAL_SOURCES.yaml)"
               status: "SUCCESS | AUTH_ERROR | EMPTY_RESPONSE"
               failure_reason: "e.g., 'permission denied', 'sheet not shared'"
               payload_summary: "N items collected"
               tried_at: "ISO 8601 timestamp"
-            - "Selected source: GitHub API | GitHub web | Sheets"
+              fallback_reason: "GitHub API [reason]"
+            - "Source 3: GitHub web /pulls?q=is:pr+is:merged (fallback #2 per EXTERNAL_SOURCES.yaml)"
+              status: "SUCCESS | EMPTY_RESPONSE | PARSE_ERROR"
+              failure_reason: "e.g., 'page structure changed', 'no data extracted'"
+              payload_summary: "N items collected"
+              tried_at: "ISO 8601 timestamp"
+            - "Selected source: GitHub API | Sheets | GitHub web"
             - "Final status: SUCCESS | INCOMPLETE"
 
           active_issues:
@@ -994,7 +998,7 @@ execution_sequence:
 
     critical_rule: >
       A required dataset may ONLY be marked INCOMPLETE after EVERY fallback
-      defined in DATA_ACQUISITION_CONTRACT.yaml has been attempted and failed.
+      defined in EXTERNAL_SOURCES.yaml (authoritative source registry) has been attempted and failed.
 
       Every failure MUST record http_code, failure_reason, and tried_at.
       This enables diagnosis of why data acquisition failed and informs fixes
