@@ -234,9 +234,10 @@ required_datasets:
     required_fields_per_branch:
       - name
       - last_commit_sha
-      - last_commit_date
+      - last_commit_date (CRITICAL — shown on slide ①B/①C)
       - commit_author.login
-      - commit_message
+      - commit_author.name (display name for slide)
+      - commit_message (for linking to issue)
 
     branch_to_issue_correlation:
       infer_from: >

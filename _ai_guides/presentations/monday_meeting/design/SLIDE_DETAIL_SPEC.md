@@ -206,22 +206,35 @@ Does NOT include cross-team work (that goes to ①C).
 Each card displays:
 ```
 #ISSUE — Title
-Branch: [branch-name]
+Branch: frontend/#72-analytics
+Latest commit: 16 sep 14:23 · Zaida
 ◐ Pågår
 
 Assignee name (@github_login)
 ```
 
+**REQUIRED FIELDS:**
+- Issue number + title
+- Branch name (shows where work lives)
+- **Latest commit timestamp** (proves activity this week)
+- Assignee name + @github_login
+
+**WHY COMMIT TIMESTAMP:**
+- Shows when the work actually happened
+- Distinguishes active work (today) from stale branches (3 days ago)
+- Proves the issue isn't abandoned
+
 **SORT ORDER:**
-- Frontend: by activity/priority
-- Backend: by activity/priority
-- Native: by activity/priority
+- Frontend: by latest commit (most recent first, within last 7 days)
+- Backend: by latest commit (most recent first, within last 7 days)
+- Native: by latest commit (most recent first, within last 7 days)
 - NO cross-team cards on this slide
 
 **DATA SOURCE:**
 - Open issues + open branches with recent commits (last 7 days)
 - Per team via TEAM_ROSTER.md classification
 - Exclude cross-team (goes to ①C)
+- **CRITICAL:** Latest commit timestamp from repository_branches_and_commits source (DATA_ACQUISITION_CONTRACT.yaml)
 
 ---
 
@@ -241,17 +254,29 @@ Separate slide to keep team columns clean and highlight cross-team coordination.
 Each card displays:
 ```
 #ISSUE — Title
-Branch: [branch-name]
-Teams: [Frontend + Backend] / [Backend + Native] / etc
+Teams: Frontend + Backend / Backend + Native / etc
+Branch: api/#84-schema
+Latest commit: 16 sep 10:15 · Tomac
 ◐ Pågår
 
 Assignee name (@github_login)
 ```
 
+**REQUIRED FIELDS:**
+- Issue number + title
+- Teams involved (shows which teams must coordinate)
+- Branch name (shows where work lives)
+- **Latest commit timestamp** (proves activity this week)
+- Assignee name + @github_login
+
+**SORT ORDER:**
+- By latest commit (most recent first, within last 7 days)
+- Shows most active cross-team work first
+
 **DATA SOURCE:**
 - Open issues + branches marked as cross-team or affecting multiple teams
 - Show which teams are involved
-- Sorted by activity/priority
+- **CRITICAL:** Latest commit timestamp from repository_branches_and_commits source (DATA_ACQUISITION_CONTRACT.yaml)
 
 ---
 
