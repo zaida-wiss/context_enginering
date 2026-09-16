@@ -322,6 +322,91 @@ This file defines WHAT goes on the slide. VISUAL_DESIGN_MANDATORY defines HOW it
 
 ---
 
+## 📝 ① AVSLUT — BESLUT (0-1 slides, conditional)
+
+### SLIDE ① BESLUT SEDAN FÖRRA MÖTET
+
+**PURPOSE:**
+Help team see what decisions have been made (documented in docs/BESLUT.md)
+and discover what decisions should perhaps be documented (candidates from GitHub).
+
+**TWO SECTIONS:**
+
+#### Section A: VERIFIERADE BESLUT
+
+Show confirmed decisions from docs/BESLUT.md during reporting period.
+
+**Format:** Vertically stacked compact cards, one decision per card
+
+```
+✓ Teststrategi
+Vitest + RTL används för frontendtester.
+Dokumenterat: 15 september
+
+✓ API-kontrakt
+JWT skickas via HttpOnly-cookie.
+Dokumenterat: 12 september
+```
+
+**RULES:**
+- Only show if 1+ decisions exist in docs/BESLUT.md
+- Max 4 decisions per slide
+- If no decisions: omit Section A
+
+#### Section B: FÖRSLAG PÅ BESLUT ATT DOKUMENTERA (optional)
+
+Show 2-3 decision candidates. These are things GitHub/code patterns suggest
+the team has already adopted or decided, but isn't yet documented as formal decisions.
+
+Format helps team learn: "What makes something a real decision?"
+
+```
+? Backend-integrationsflöde
+Ska Backend alltid integrera i Java-Development-Environment
+innan merge till develop?
+
+Underlag: Flera säkerhets-PR:er följer detta mönster.
+Varför dokumentera? Påverkar hur vi reviewar och planerar.
+```
+
+**RULES FOR CANDIDATES:**
+- Show ONLY if evidence suggests team has adopted the practice
+- NEVER claim a decision is made — use "Förslag på beslut" (suggestion)
+- Evidence must be from: GitHub PRs, code patterns, or team workflow
+- Max 2-3 suggestions per presentation
+- If no candidates: omit Section B
+- Include: question form, evidence, why it matters
+
+**CANDIDATE CRITERIA (what AI should suggest):**
+
+✅ Suggest as decision candidate if it:
+- Affects future implementation
+- Establishes reusable rule
+- Selects between alternatives
+- Defines interface or contract
+- Changes team workflow
+- Creates dependency/order between work
+- Establishes quality/security/testing practice
+
+❌ Do NOT suggest if it's only:
+- A single commit
+- Ordinary implementation detail
+- Task completion or status
+- Temporary debugging change
+- One-off code review
+
+**SLIDE OMISSION:**
+- If no verified decisions AND no candidates: omit entire slide
+- Record omission in audit: "Slide ① BESLUT omitted — 0 decisions + 0 candidates"
+
+**VISUAL IMPLEMENTATION:**
+- Verified decisions: green check + date
+- Candidates: blue question mark + evidence link
+- Both: soft cards, centered text, responsive height
+- See VISUAL_DESIGN_MANDATORY.md for card styling
+
+---
+
 ## 📝② NULÄGE & DEADLINE (1 slide)
 
 ### SLIDE ②A: Nuläge + Deadline Tracker & Risk

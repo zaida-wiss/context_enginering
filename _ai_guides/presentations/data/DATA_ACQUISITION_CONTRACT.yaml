@@ -36,6 +36,33 @@ test_mode_activation:
     - Report DATA_ACQUISITION_RECEIPT with real source diagnostics
 
 required_datasets:
+  project_context:
+    classification: "REQUIRED (foundation for presentation metadata)"
+    canonical_method: "Read from _memory/presentations/"
+
+    datasets:
+      schedule:
+        file: "_memory/presentations/SCHEDULE.yaml"
+        purpose: "Meeting times, recurring events"
+        required_for: "framsida timing context"
+
+      milestones:
+        file: "_memory/presentations/MILESTONES.yaml"
+        purpose: "Critical deadlines, deliverables"
+        required_for: "framsida next_deadline, priority ranking"
+
+      roadmap:
+        file: "_memory/presentations/TEAM_ROADMAP.yaml"
+        purpose: "Project phases, timeline"
+        required_for: "contextual sprint positioning"
+
+      current_sprint:
+        file: "_memory/presentations/CURRENT_SPRINT.yaml"
+        purpose: "This week's goals, focus"
+        required_for: "framsida weekly_focus, ② priority ranking"
+
+    stop_condition: "if any context file missing or unparseable"
+
   team_roster:
     canonical_method: "Read TEAM_ROSTER.md file locally"
     requirement: 7 members
@@ -172,6 +199,66 @@ required_datasets:
       This prompts meeting decision: "Vem tar ansvar för denna?"
 
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
+
+  decisions_and_candidates:
+    source_id: "DECISION_DETECTION"
+    classification: "OPTIONAL (enhances team awareness)"
+
+    confirmed_decisions:
+      canonical_source: "docs/BESLUT.md"
+      purpose: "Show verified team decisions made during reporting period"
+      fields:
+        - title
+        - short_summary
+        - impact
+        - date_decided
+        - source (who documented it)
+
+    decision_candidates:
+      purpose: >
+        Identify possible decisions that GitHub/context suggest the team
+        has already adopted but hasn't yet documented as explicit decisions.
+
+        This helps the team learn what constitutes a project decision and
+        prompts them to evaluate: "Should we document this?"
+
+      detection_sources:
+        - merged_pull_requests (established patterns)
+        - current_code_structure (architectural choices)
+        - sprint_goals (priority decisions)
+        - roadmap_phases (timeline decisions)
+        - team_workflow (process decisions)
+
+      criteria_for_candidate:
+        - affects future implementation
+        - establishes reusable rule
+        - selects between alternatives
+        - defines interface or contract
+        - changes team workflow
+        - creates dependency/order between work
+        - establishes quality/security/testing practice
+
+      do_NOT_suggest_if_only:
+        - single commit or change
+        - ordinary implementation detail
+        - task completion or status
+        - temporary debugging change
+        - routine code review
+
+      output_format:
+        - max_suggestions: 2-3 per presentation
+        - label: "Förslag på beslut att dokumentera"
+        - structure:
+          - title (question form: "Ska vi...")
+          - short_description
+          - evidence (which PRs/code patterns suggest this)
+          - why_document (impact on future work)
+
+      rule: >
+        Never infer a decision is confirmed unless it's in docs/BESLUT.md.
+        Candidates are prompts for the team to evaluate and decide whether
+        to document in docs/BESLUT.md. Presentation helps team learn
+        what constitutes a real decision.
 
   open_pull_requests:
     source_id: "GITHUB_OPEN_PRS"
