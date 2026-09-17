@@ -9,7 +9,7 @@ metadata:
 
 recurring_meetings:
   monday:
-    - time: "08:00-12:00"
+    - time: "09:00-10:30"
       type: "sprint_planning"
       description: "Sprintstart + projektarbete"
 
