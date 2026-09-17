@@ -912,12 +912,12 @@ execution_sequence:
             allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
           source: "string (e.g., 'team_planning')"
           updated_at: "ISO 8601 timestamp (e.g., '2026-09-17T14:00:00+02:00')"
-          valid_for_week: "ISO week matching presentation week (e.g., '2026-W39' for Mon 2026-09-22 meeting)"
+          valid_for_week: "ISO week matching presentation week (e.g., '2026-W39' for Mon 2026-09-21 meeting)"
 
     critical_week_validation: >
       The valid_for_week MUST match the ISO week of the presentation's Monday meeting date.
 
-      Example: If presentation is for Monday 2026-09-22 meeting (ISO week starting 2026-09-22):
+      Example: If presentation is for Monday 2026-09-21 meeting (ISO week 2026-W39):
         ✓ PASS: valid_for_week = '2026-W39' (correct week)
         ❌ FAIL: valid_for_week = '2026-W38' (previous week — stale data)
         ❌ FAIL: valid_for_week = '2026-W40' (next week — future data)
