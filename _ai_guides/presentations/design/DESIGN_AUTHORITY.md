@@ -1,254 +1,143 @@
 ---
 name: design-authority
-description: MANDATORY — Design authority hierarchy. context_enginering owns presentation design ONLY
+description: MANDATORY — Presentation design authority and conflict ownership
 metadata:
   type: process
   critical: true
+  version: 2.0
 ---
 
-# 🎨 DESIGN AUTHORITY — Var Comes Design From
+# 🎨 DESIGN AUTHORITY
 
-**This file establishes SOURCE OF TRUTH for presentation design.**
+This document explains **who owns what** in the presentation system. It does not redefine the detailed rules owned by those files.
 
----
-
-## 🚨 RULE 0: DESIGN AUTHORITY HIERARCHY
-
-**PRESENTATION DESIGN comes ONLY from context_enginering repo.**
-
-```
-DESIGN AUTHORITY (ranked by priority):
-  
-  🎯 RENDERING-LEVEL SPECIFICATION (MANDATORY):
-  1️⃣ _ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md 
-     (CANONICAL LAYOUT: header + message + 1–3 fullwidth blocks; NPF rules; typography fixed; render-gate rules)
-  
-  🎯 SLIDE-LEVEL SPECIFICATION (CONTENT AUTHORITY):
-  2️⃣ _ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md 
-     (EXAKT innehål per slide — format, data-sources, footer, what goes where)
-  
-  🎨 DESIGN CONTEXT (reference/understanding only):
-  3️⃣ _ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md (why design rules exist)
-  4️⃣ _ai_guides/presentations/design/REFERENCE_SLIDES/ (visual examples)
-  5️⃣ _ai_guides/presentations/design/PRESENTATION_STYLE.md (historical reference — deprecated for rendering)
-  
-  ⚠️ DO NOT USE FOR RENDERING:
-  
-NOT FROM:
-  ❌ avanza-team1 repo (project repo, data source ONLY)
-  ❌ avanza-team1 styling, CSS, component library, or design tokens
-  ❌ presentation tool's default template or auto-styling
-  ❌ "what looks good" or general design trends
-  ❌ imitation of Avanza-app visual identity
-```
-
-**CRITICAL RULE:** If SLIDE_DETAIL_SPEC.md says X and another file says Y → SLIDE_DETAIL_SPEC.md WINS.
-
-**Reason:** SLIDE_DETAIL_SPEC.md is the ONLY file with:
-- Explicit KOLUMNER (columns) for each slide
-- Explicit DATA-SOURCES (where to fetch real data)
-- Explicit MÅSTE/FÅR INTE (what must/must not appear)
-- FOOTER specifications per slide
-- REGLER (how to sort, how to filter, visual markers)
+The purpose is to prevent contradictory instructions.
 
 ---
 
-## 🚨 RULE 1: PROJECT REPO BOUNDARY
+## 1. AUTHORITY HIERARCHY
 
-**CLEAR SEPARATION: context_enginering = design, avanza-team1 = data only**
+Use this order when rules conflict:
 
-### ALLOWED: Read from avanza-team1 for DATA ONLY
+1. `SYSTEM_CONTRACT.yaml` — execution sequence, gates, STOP/CONTINUE, delivery
+2. `ACCESSIBILITY_NEURODIVERSITY.md` — WCAG/readability; absolute boundary
+3. `VISUAL_DESIGN_MANDATORY.md` — global appearance and slide-level visual rules
+4. `CARD_COMPONENT_STANDARD.md` — all card-internal layout and typography
+5. `PROVENANCE_AND_AI_LABELING.md` — fact/team/AI source identity
+6. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit and pagination
+7. `SLIDE_DETAIL_SPEC.md` — slide purpose, fields, ordering and content requirements
+8. `TEMPLATE_REFERENCE.html` — example only; never authoritative
 
-```
-✅ GitHub Issues (what's being worked on)
-✅ PRs & commits (who did what)
-✅ Project Board status (Done/In Progress/Backlog)
-✅ Technical architecture decisions
-✅ Sprint goals & prioritization
-✅ Team structure & roles
-```
-
-### FORBIDDEN: Extract design from avanza-team1
-
-```
-❌ Copy visual styling from avanza-team1 UI
-❌ Use avanza-team1's component library for presentation
-❌ Mirror avanza-team1's design tokens or color scheme
-❌ Follow avanza-team1's layout patterns
-❌ Import CSS or design system from project repo
-❌ Assume presentation should "look like Avanza-app"
-```
-
-**Why:** Presentation is a COMMUNICATION TOOL, not a showcase of the product.
-The two serve different purposes and need different visual identities.
+`RENDER_GATE_CHECKLIST.md` validates compliance with the authorities above. It does not invent new design rules.
 
 ---
 
-## 🎨 RULE 2: PRESENTATION VISUAL IDENTITY (DEFINED IN THIS REPO)
+## 2. SINGLE-OWNER RULE
 
-**Presentations MUST have their own visual identity, separate from Avanza-app.**
+A rule category must have **one owning document**.
 
-### Visual Principles
+Lower documents may reference the owner but must not repeat different values or redefine the rule.
 
-✅ **Modern tech presentation** (like Figma, Stripe, or modern startup decks)  
-✅ **Generous whitespace** (60-70% empty is good)  
-✅ **Hierarchical typography** — clear primary/secondary/tertiary  
-✅ **Semantic color ONLY** — green/orange/red for status, never decorative  
-✅ **Avanza brand awareness** (acknowledgement that this is Avanza work) — but NOT mimicry  
-
-### What "Avanza-feeling" means in presentations:
-
-```
-✅ Modern, clean, professional
-✅ Data-driven (numbers, progress, clarity)
-✅ Problem-focused (what's blocking us, how we solve)
-✅ Respectful of audience time (no fluff)
-
-❌ NOT: Dark mode + gradient hero-slides like Avanza product
-❌ NOT: Product component library used for slides
-❌ NOT: Avanza-app color scheme in presentation
-❌ NOT: Mimicking the visual style of product UI
-```
-
-The presentation should feel like a **professional business deck**,
-not like "a screenshot of the Avanza-app presentation feature."
+Examples:
+- contrast/accessibility → `ACCESSIBILITY_NEURODIVERSITY.md`
+- global palette → `VISUAL_DESIGN_MANDATORY.md`
+- slide-title minimum → `VISUAL_DESIGN_MANDATORY.md`
+- card title/explanation/assignee sizes → `CARD_COMPONENT_STANDARD.md`
+- card-internal spacing → `CARD_COMPONENT_STANDARD.md`
+- merge/review formatting → `CARD_COMPONENT_STANDARD.md`
+- timestamp placement/style → `CARD_COMPONENT_STANDARD.md`
+- AI/fact labels → `PROVENANCE_AND_AI_LABELING.md`
+- which fields belong on slide ①D → `SLIDE_DETAIL_SPEC.md`
+- evidence classification Level 1–6 → `ACTIVE_WORK_DETECTION_MODEL.md` as internal data logic
 
 ---
 
-## 🚨 RULE 3: DESIGN TOOL DEFAULTS ARE NOT AUTHORITY
+## 3. NO DUPLICATE POLICY VALUES
 
-**If presentation tool has default templates, default card layouts, or auto-coloring:**
+Do not copy exact numeric component rules into multiple authority files.
 
-**PowerPoint default theme → context_enginering PRESENTATION_STYLE.md wins**  
-**Google Slides default template → context_enginering PRESENTATION_STYLE.md wins**  
-**Figma default design → context_enginering PRESENTATION_STYLE.md wins**
+Good:
+> `VISUAL_DESIGN_MANDATORY.md`: Card internals follow `CARD_COMPONENT_STANDARD.md`.
 
-```
-WHEN THERE IS A CONFLICT:
-- Default tool styling: "Use our template"
-- PRESENTATION_STYLE.md: "Use this layout"
+Bad:
+> both files separately define different contribution font sizes or timestamp placement.
 
-RESULT: PRESENTATION_STYLE.md is AUTHORITATIVE.
-```
-
-### What this means in practice:
-
-- Don't use PowerPoint's default "Title + Content" layout unless PRESENTATION_STYLE.md says so
-- Don't use Google Slides's default card arrangement unless explicitly instructed
-- Don't use the tool's automatic color scheme — use semantic colors from PRESENTATION_STYLE.md
-- Don't use the tool's "professional" template if it contradicts PRESENTATION_STYLE.md
-
-**If the tool's default looks better, update PRESENTATION_STYLE.md to document why,
-then update the tool. Don't silently deviate.**
+If a rule needs to change, update the owning authority first. Then update examples/checklists only to reflect it.
 
 ---
 
-## ✅ REFERENCE DESIGN: Where Visual Authority Lives
+## 4. REFERENCE FILES NEVER WIN
 
-```
-🎯 REFERENCE SLIDES ARE NORMATIVE:
-  _ai_guides/presentations/design/REFERENCE_SLIDES/
-  
-These show:
-  • Correct border usage (colored for status, black for info)
-  • Correct whitespace distribution
-  • Correct typography hierarchy
-  • Correct progress bar styling
-  • Correct team-status card layout
-  • Correct issue-list formatting
-  
-Generated presentations should visually resemble these,
-within the bounds of different data.
-```
+`TEMPLATE_REFERENCE.html`, screenshots, older decks and reference slides may demonstrate the desired result, but they never override an authority file.
+
+If an example conflicts with an authority:
+1. follow the authority
+2. update the example
+
+Never modify an authority merely to preserve a stale example.
 
 ---
 
-## 🔍 VERIFICATION: How to Know Design Authority is Being Followed
+## 5. PROJECT-REPO BOUNDARY
 
-**Before any presentation is generated, check:**
+`context_enginering` owns presentation instructions.
 
-```
-Q1: Is every color choice explained in PRESENTATION_STYLE.md?
-    YES → Proceed
-    NO → Revert to PRESENTATION_STYLE.md or update it
+`chas-challenge-2026/avanza-team1` is a **project-data source only** for presentations.
 
-Q2: Are there any visual elements not in the REFERENCE_SLIDES?
-    YES → Question if they're needed; align or add to REFERENCE_SLIDES
-    NO → Good
+Allowed project data includes:
+- issues
+- PRs
+- commits
+- branches
+- project-board state
+- verified technical decisions
+- team ownership
 
-Q3: Does the presentation use default template styling the tool provides?
-    YES → Check PRESENTATION_STYLE.md; override if it says to
-    NO → Good
-
-Q4: Are there any design choices borrowed from avanza-team1 repo?
-    YES → STOP; design authority is context_enginering ONLY
-    NO → Good
-
-Q5: Does the visual style feel like Avanza-app rather than a standalone presentation deck?
-    YES → Simplify; make it look like its own communication, not a product feature
-    NO → Good
-```
+Do not copy presentation design rules from the application UI or its CSS/design system.
 
 ---
 
-## 📋 FOR AI MODELS GENERATING PRESENTATIONS
+## 6. CHANGE PROCEDURE
 
-**You MUST follow this hierarchy EXACTLY:**
+When a new presentation requirement is added:
 
-### Before you render ANY presentation:
+1. identify the rule category
+2. update its single owning authority
+3. update `RENDER_GATE_CHECKLIST.md` if the rule needs mechanical validation
+4. update `TEMPLATE_REFERENCE.html` only as an example
+5. update README/architecture only if authority ownership itself changed
+6. search for stale duplicate wording and remove or delegate it
 
-1. ✅ Read SYSTEM_CONTRACT.yaml (authority hierarchy)
-2. ✅ Read VISUAL_DESIGN_MANDATORY.md (CANONICAL LAYOUT + render rules)
-3. ✅ Read SLIDE_DETAIL_SPEC.md (content per slide)
-4. ✅ Read ACCESSIBILITY_NEURODIVERSITY.md (why design works this way)
-
-### When making ANY design choice:
-
-1. ✅ Is it in VISUAL_DESIGN_MANDATORY.md? Use it.
-2. ✅ Is it in SLIDE_DETAIL_SPEC.md? Apply it.
-3. ✅ Is it shown in REFERENCE_SLIDES? Visual reference only (MANDATORY takes precedence).
-4. ✅ Is it the tool's default? Override it per VISUAL_DESIGN_MANDATORY.md.
-5. ✅ Is it from avanza-team1? FORBIDDEN. Use context_enginering design only.
-6. ✅ Is it your own design taste? FORBIDDEN. VISUAL_DESIGN_MANDATORY.md is authoritative.
-
-### If there's a conflict between:
-
-- ✅ VISUAL_DESIGN_MANDATORY.md vs tool defaults → VISUAL_DESIGN_MANDATORY wins
-- ✅ SLIDE_DETAIL_SPEC.md vs VISUAL_DESIGN_MANDATORY.md → Both apply (content + rendering rules together)
-- ✅ ACCESSIBILITY_NEURODIVERSITY.md rules vs other design rules → NPF rules WIN when they conflict
-- ❌ avanza-team1 design vs context_enginering rules → NEVER use avanza-team1 design
+Do not create `_V2`, `_NEW`, `_UPDATED` competing policy files. Git history is the version history.
 
 ---
 
-## 🚨 CHECKLIST: Design Authority Compliance
+## 7. CURRENT CARD OWNERSHIP
 
-Before any presentation is delivered:
+`CARD_COMPONENT_STANDARD.md` exclusively controls:
+- pedagogical explanation directly under title
+- explanation text size
+- visual emphasis of verified assignee/developer
+- minimum vertical spacing between semantic blocks
+- merge/review name display
+- handling of unknown merger/reviewer identity
+- timestamp format, alignment and visual weight
+- whether internal evidence levels are visible in cards
 
-```
-☐ VISUAL_DESIGN_MANDATORY.md rules followed (CANONICAL LAYOUT)
-☐ SLIDE_DETAIL_SPEC.md content applied per slide
-☐ ACCESSIBILITY_NEURODIVERSITY.md rules respected (NPF takes precedence)
-☐ NO default tool template used
-☐ NO avanza-team1 styling imported (product UI style is forbidden)
-☐ Layout: exactly 1 header + 1 message + 1–3 fullwidth blocks (vertical stack)
-☐ Whitespace: 20px margin between blocks, 16px padding inside
-☐ Colors: semantic only (green/orange/red for status, never decorative)
-☐ Typography: fixed sizes (14pt title, 13pt content, 12pt metadata)
-☐ Symbols: ①②③④⑤ meeting-point markers present and consistent
-☐ Rendered visually: PPTX must be viewed before delivery (RENDER_GATE mandatory)
-☐ Data: from allowlisted project sources (GitHub, Sheets, Docs) per SYSTEM_CONTRACT / DATA_SOURCES only
-```
+Other files must reference this authority instead of redefining those details.
 
 ---
 
-**This file IS the design authority.**
+## 8. CONFLICT RESPONSE
 
-**Do not negotiate with presentation tool defaults.**
+If two authoritative files appear to own the same rule category and disagree:
 
-**Do not borrow from avanza-team1.**
+**STOP rendering and fix the documentation hierarchy first.**
 
-**context_enginering owns presentation design. Full stop.**
+Do not choose whichever rule is more convenient for the current slide.
 
 ---
 
-**Last updated:** 2026-09-13
+**Status:** PRODUCTION
+**Version:** 2.0
+**Last updated:** 2026-09-17
