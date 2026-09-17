@@ -1,198 +1,262 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monday Meeting — Modern Card Reference</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0F1830;
-      color: #FFFFFF;
-      padding: 32px;
-    }
-    .notice,
-    .slide {
-      max-width: 1200px;
-      margin: 0 auto 48px auto;
-    }
-    .notice {
-      padding: 20px 22px;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      background: #18233D;
-      box-shadow: 0 10px 30px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.16);
-      font-size: 20px;
-      line-height: 1.5;
-    }
-    .slide { padding: 36px; background: #0F1830; }
-    h1 { margin: 0 0 14px 0; font-size: 32px; line-height: 1.25; }
-    h2 { margin: 0 0 24px 0; font-size: 22px; line-height: 1.4; color: #CBD5E1; }
-    .grid-3x2,
-    .grid-2x2 {
-      display: grid;
-      gap: 20px;
-      align-items: stretch;
-    }
-    .grid-3x2 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-2x2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .card {
-      background: #18233D;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 20px;
-      height: auto;
-      min-height: min-content;
-      box-shadow: 0 10px 30px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.16);
-    }
-    .card.frontend { border-left: 6px solid #2DD4BF; }
-    .card.backend  { border-left: 6px solid #FF4FA3; }
-    .card.native   { border-left: 6px solid #A855F7; }
-    .card.cross    { border-left: 6px solid #CBD5E1; }
-    .card.other    { border-left: 6px solid #94A3B8; }
-    .title {
-      font-size: 20px;
-      line-height: 1.45;
-      margin-bottom: 5px;
-      font-weight: 700;
-    }
-    .microcopy {
-      font-size: 13px;
-      line-height: 1.35;
-      color: #8290A7;
-      margin-bottom: 12px;
-    }
-    .secondary {
-      font-size: 18px;
-      line-height: 1.45;
-      color: #CBD5E1;
-      margin-bottom: 10px;
-    }
-    .meta {
-      font-size: 14px;
-      line-height: 1.4;
-      color: #94A3B8;
-    }
-    .timestamp {
-      margin-top: 8px;
-      font-size: 13px;
-      line-height: 1.35;
-      color: #8290A7;
-    }
-    .rule {
-      margin-top: 24px;
-      font-size: 18px;
-      line-height: 1.5;
-      color: #CBD5E1;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monday Meeting — Responsive Card Reference</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px;
+    font-family: Arial, sans-serif;
+    background: #0F1830;
+    color: #FFFFFF;
+  }
+  .notice, .slide {
+    max-width: 1200px;
+    margin: 0 auto 48px;
+  }
+  .notice {
+    background: #18233D;
+    border: 1px solid #64748B;
+    border-radius: 18px;
+    padding: 20px 22px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .slide { padding: 30px; }
+  h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  h2 {
+    margin: 0 0 22px;
+    font-size: 22px;
+    line-height: 1.3;
+    color: #CBD5E1;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+  }
+  .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: rgba(24,35,61,.96);
+    border: 1px solid #475569;
+    border-radius: 18px;
+    padding: 18px 18px 16px 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.16);
+    min-height: 210px;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 5px;
+    border-radius: 5px;
+    background: #94A3B8;
+  }
+  .frontend::before { background:#2DD4BF; }
+  .backend::before { background:#FF4FA3; }
+  .native::before { background:#A855F7; }
+  .cross::before { background:#CBD5E1; }
+  .title {
+    font-size: 19px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .microcopy {
+    font-size: 11.5px;
+    line-height: 1.3;
+    color: #94A3B8;
+    margin-bottom: 9px;
+  }
+  .owner {
+    font-size: 13px;
+    line-height: 1.3;
+    color: #CBD5E1;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .meta, .source {
+    font-size: 10.5px;
+    line-height: 1.3;
+    color: #94A3B8;
+    margin-bottom: 4px;
+  }
+  .source { color: #CBD5E1; }
+  .timestamp {
+    margin-top: auto;
+    padding-top: 10px;
+    font-size: 10px;
+    line-height: 1.15;
+    color: #94A3B8;
+    white-space: pre-line;
+  }
+  .fact, .ai {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #475569;
+  }
+  .fact strong, .ai strong {
+    display: block;
+    font-size: 10.5px;
+    line-height: 1.25;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+  .fact p, .ai p {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #CBD5E1;
+  }
+  .rule {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #CBD5E1;
+  }
+  @media (max-width: 900px) {
+    .grid, .grid.three { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-  <div class="notice">
-    <strong>REFERENCE ONLY.</strong><br>
-    Modern card language is mandatory. Every Issue, PR and Merge card includes a short pedagogical contribution line directly under the title. Dates use the same discreet visual style. If content does not fit: create continuation slides.
+
+<div class="notice">
+  <strong>REFERENCE ONLY.</strong><br>
+  WCAG 2.2 AA är alltid överordnat. Kort använder responsiva, avsiktligt valda textstorlekar inom godkända intervall. Om innehåll inte får plats vid tillgänglig miniminivå ändras korttäthet/layout eller sliden delas. Automatisk shrink-to-fit används aldrig.
+</div>
+
+<section class="slide">
+  <h1>✏️①A Mergade PR:er sedan förra mötet</h1>
+  <h2>Exempel på kompakt merge-card</h2>
+  <div class="grid three">
+    <article class="card frontend">
+      <div class="title">#80 · Drift från live target</div>
+      <div class="microcopy">Beräknar drift från aktuell målallokering i stället för mock-flagga.</div>
+      <div class="owner">Tomac · Frontend</div>
+      <div class="meta">Merged: Zaida | Review: ej verifierat</div>
+      <div class="timestamp">14 sep
+10:16</div>
+    </article>
+    <article class="card frontend">
+      <div class="title">#105 · Test foundation</div>
+      <div class="microcopy">Lägger grunden för tester av kritiska frontendflöden.</div>
+      <div class="owner">Zaida · Frontend</div>
+      <div class="meta">Merged: Björn | Review: Björn</div>
+      <div class="timestamp">15 sep
+09:59</div>
+    </article>
+    <article class="card backend">
+      <div class="title">#97 · IDOR-skydd</div>
+      <div class="microcopy">Skyddar åtkomstkontroll så användare bara når tillåtna resurser.</div>
+      <div class="owner">Rasha · Backend</div>
+      <div class="meta">Merged: Erik | Review: verifierad</div>
+      <div class="timestamp">14 sep
+13:29</div>
+    </article>
   </div>
+  <div class="rule">Teamfärg används endast som vänsteraccent. Datum/tid ligger nere till vänster i två rader.</div>
+</section>
 
-  <section class="slide">
-    <h1>✏️①A Mergade PR:er sedan förra mötet</h1>
-    <h2>3 × 2 card grid · max 6 cards per fysisk slide</h2>
-    <div class="grid-3x2">
-      <div class="card frontend">
-        <div class="title">#105 · Establish frontend test foundation</div>
-        <div class="microcopy">Lägger grunden för enhetstester av kritiska frontendflöden.</div>
-        <div class="secondary">Zaida · Frontend</div>
-        <div class="meta">Reviewed by Björn · Merged by Björn</div>
-        <div class="timestamp">Merged 15 sep · 09:59</div>
-      </div>
-      <div class="card frontend">
-        <div class="title">#101 · API client with mock adapter</div>
-        <div class="microcopy">Ger frontend ett gemensamt API-lager som även kan köras mot mockdata.</div>
-        <div class="secondary">Tomac · Frontend</div>
-        <div class="meta">Reviewer verifierad i GitHub</div>
-        <div class="timestamp">Merged 14 sep · 18:13</div>
-      </div>
-      <div class="card backend">
-        <div class="title">#111 · Java development environment</div>
-        <div class="microcopy">Samlar backendmiljön så Java-delarna kan integreras mot develop.</div>
-        <div class="secondary">Backend</div>
-        <div class="timestamp">Merged 16 sep · 18:40</div>
-      </div>
-      <div class="card frontend">
-        <div class="title">#100 · Linked target allocation inputs</div>
-        <div class="microcopy">Håller målallokeringens inmatningar synkade så summan alltid blir 100 procent.</div>
-        <div class="secondary">Björn · Frontend</div>
-        <div class="timestamp">Merged 14 sep · 17:14</div>
-      </div>
-    </div>
-    <div class="rule">Förklaringsraden är sekundär. Om kortet blir för högt minskas antalet kort på sliden — aldrig fonten.</div>
-  </section>
+<section class="slide">
+  <h1>✏️①E Tilldelat / backlog</h1>
+  <h2>Jämn rytm, innehållsdrivna kort</h2>
+  <div class="grid">
+    <article class="card native">
+      <div class="title">⏳ #98 · Historisk FX-lookup</div>
+      <div class="microcopy">Utökar FX-motorn med historiska valutakurser upp till fem år.</div>
+      <div class="owner">Henrik · Native</div>
+      <div class="meta">Tilldelad · ingen aktiv branch verifierad</div>
+      <div class="timestamp">14 sep
+09:47</div>
+    </article>
+    <article class="card frontend">
+      <div class="title">? #106 · HttpOnly cookie</div>
+      <div class="microcopy">Flyttar auth-token när backendkopplingen finns på plats.</div>
+      <div class="owner">?? · Frontend</div>
+      <div class="meta">Unassigned · verifieras efter integration</div>
+      <div class="timestamp">14 sep
+11:05</div>
+    </article>
+  </div>
+  <div class="rule">Ingen vertikal justify mellan rader. Primär text toppriktas och timestamp förankras nere.</div>
+</section>
 
-  <section class="slide">
-    <h1>✏️①D Pågår denna vecka</h1>
-    <h2>2 × 2 modern card grid · max 4 cards per fysisk slide</h2>
-    <div class="grid-2x2">
-      <div class="card frontend">
-        <div class="title">◐ #85 · Responsive shared header</div>
-        <div class="microcopy">Gör toppnavigationen användbar även på mindre skärmar.</div>
-        <div class="secondary">Björn · Frontend</div>
-        <div class="meta">Branch: 85-frontend-responsive-shared-header-and-navigation</div>
-        <div class="timestamp">Senaste commit 16 sep · 20:58</div>
+<section class="slide">
+  <h1>✏️⑫ Sprintplan</h1>
+  <h2>Fakta och AI-förslag får aldrig blandas utan källmarkering</h2>
+  <div class="grid">
+    <article class="card cross">
+      <div class="title">Tisdag 22 sep</div>
+      <div class="fact">
+        <strong>📅 Schemafakta</strong>
+        <p>PL-avstämning 12:30–14:00 i Slack Huddle.</p>
       </div>
-      <div class="card frontend">
-        <div class="title">◐ PR #109 · Portfolio via usePortfolio</div>
-        <div class="microcopy">Gör portföljdata tillgänglig via en återanvändbar React-hook.</div>
-        <div class="secondary">Tomac · Frontend</div>
-        <div class="meta">Öppen PR · väntar på review/merge</div>
-        <div class="timestamp">Uppdaterad 17 sep · 06:58</div>
+      <div class="ai">
+        <strong>? AI-förslag</strong>
+        <p>Ta med tydlig status på integration, test och README.</p>
       </div>
-      <div class="card backend">
-        <div class="title">◐ Backend integration work</div>
-        <div class="microcopy">Bidrag till koden behöver verifieras.</div>
-        <div class="secondary">Rasha / Erik · Backend</div>
-        <div class="meta">Visa verifierad issue/branch/status här</div>
+    </article>
+    <article class="card cross">
+      <div class="title">Onsdag 23 sep</div>
+      <div class="fact">
+        <strong>📅 Schemafakta</strong>
+        <p>Individuella PL-möten 08:00–09:00 vid behov.</p>
       </div>
-      <div class="card native">
-        <div class="title">◐ Native module work</div>
-        <div class="microcopy">Bidrag till koden behöver verifieras.</div>
-        <div class="secondary">Pär / Henrik · Native</div>
-        <div class="meta">Visa verifierad issue/branch/status här</div>
+      <div class="ai">
+        <strong>? AI-förslag</strong>
+        <p>Verifiera kvarvarande blockerare inför CTO-underlaget.</p>
       </div>
-    </div>
-    <div class="rule">Varje Issue/PR-card får en egen kort kodförklaring direkt under rubriken.</div>
-  </section>
+    </article>
+  </div>
+</section>
 
-  <section class="slide">
-    <h1>✏️①E Tilldelat / backlog</h1>
-    <h2>2 × 2 modern card grid · max 4 cards per fysisk slide</h2>
-    <div class="grid-2x2">
-      <div class="card native">
-        <div class="title">○ #16 · Basic back-testing module</div>
-        <div class="microcopy">Lägger grunden för att köra strategier mot historisk marknadsdata.</div>
-        <div class="secondary">Pär + Henrik</div>
-        <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
-      </div>
-      <div class="card native">
-        <div class="title">○ #73 · Cleanup risk module</div>
-        <div class="microcopy">Förenklar riskmodulen så beräkningarna blir lättare att underhålla.</div>
-        <div class="secondary">Pär</div>
-        <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
-      </div>
-      <div class="card native">
-        <div class="title">○ #74 · Uppdatera Native README</div>
-        <div class="microcopy">Gör Native-delens bygg- och integrationsflöde tydligare för teamet.</div>
-        <div class="secondary">Pär + Henrik</div>
-        <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
-      </div>
-      <div class="card frontend">
-        <div class="title">○ #89 · MVP core-flow E2E test</div>
-        <div class="microcopy">Verifierar att det viktigaste användarflödet fungerar genom hela frontendkedjan.</div>
-        <div class="secondary">Frontend</div>
-        <div class="meta">⏳ Tilldelat / väntar på stabila beroenden</div>
-      </div>
-    </div>
-    <div class="rule">Microcopy och datum är diskreta, men varje kort behåller tydlig titel, ägare och status.</div>
-  </section>
+<section class="slide">
+  <h1>✏️⑬ Nästa steg</h1>
+  <h2>Varje åtgärd visar var den kommer ifrån</h2>
+  <div class="grid">
+    <article class="card cross">
+      <div class="title">Lås API-kontrakt</div>
+      <div class="source">✅ Mötesprotokoll</div>
+      <div class="meta">Visa ägare/deadline bara om de är verifierade.</div>
+    </article>
+    <article class="card cross">
+      <div class="title">Förslag: samla öppna reviews</div>
+      <div class="source">? AI-förslag</div>
+      <div class="meta">Förslag baserat på verifierade öppna PR:er.</div>
+    </article>
+  </div>
+</section>
+
+<section class="slide">
+  <h1>✏️⑭ Frågor till PL</h1>
+  <h2>Teamfrågor och AI-förslag är tydligt separerade</h2>
+  <div class="grid">
+    <article class="card cross">
+      <div class="title">Ska scope för CTO-underlaget ändras?</div>
+      <div class="source">✅ Från mötesprotokoll</div>
+      <div class="meta">Impakt: påverkar vad teamet prioriterar denna vecka.</div>
+    </article>
+    <article class="card cross">
+      <div class="title">Behöver API-kontraktet låsas före nästa integration?</div>
+      <div class="source">? AI-förslag till PL</div>
+      <div class="meta">Impakt: flera verifierade beroenden pekar mot samma kontrakt.</div>
+    </article>
+  </div>
+</section>
+
 </body>
 </html>
