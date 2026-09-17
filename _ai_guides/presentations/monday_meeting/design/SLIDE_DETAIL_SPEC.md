@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.2
+  version: 2.3
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -435,7 +435,7 @@ Arrows represent verified dependency direction.
 
 If dependency direction is inferred by AI rather than explicitly supported, mark the interpretation `🔎 AI-analys`.
 
-The dependency graph must feed the planning recommendations on ③–⑤ and ⑨. If a blocker appears here but does not influence proposed ordering anywhere, re-check the prioritization logic.
+The dependency graph must feed the planning recommendations on ③–⑤, ⑨ and ⑬. If a blocker appears here but does not influence proposed ordering anywhere, re-check the prioritization logic.
 
 ## Optional review findings
 
@@ -517,7 +517,9 @@ Verified section may include:
 
 Unless the team already has a complete confirmed sequence, include an AI-labeled recommendation synthesized from slides ③–⑧.
 
-Use `🔎 AI-analys` for why the ordering is sensible and `⭐ AI-förslag` for the proposed order/action.
+Use `🔎 AI-analys` for why the ordering is sensible and `⭐ AI-förslag — planeringsordning` for the proposed order/action.
+
+When verified dependencies exist, the ordering MUST explicitly show the dependency path rather than presenting independent-looking priority cards.
 
 For each team, include where evidence permits:
 - **1 — Först:** highest-leverage blocker/deadline/core-flow item
@@ -527,6 +529,14 @@ For each team, include where evidence permits:
 - **Föreslagen person:** only if supported by verified ownership/activity; otherwise mark owner to confirm
 - **Styrande blocker/risk:** why the order is suggested
 - **Estimat/kapacitet:** verified value if available, otherwise explicit `ej verifierat` / qualitative load note
+
+Every proposed ordering step should contain a short reason answering **why this comes before/after the other work**.
+
+If a dependency is verified, use explicit wording such as:
+- `Först — låser upp ...`
+- `Parallellt — kan göras utan att vänta på ...`
+- `Därefter — blir meningsfullt när ... är klart`
+- `Vänta — beroende av ...`
 
 AI-derived section may additionally include:
 - suggested scope trade-off
@@ -629,16 +639,16 @@ Never blend schedule facts, AI analysis and AI suggestions into one unlabeled pa
 
 # ⑬ NEXT STEPS
 
-Purpose: make the next actions clear while preserving provenance and showing risk-driven prioritization.
+Purpose: make the next actions clear while preserving provenance, explaining project value and showing dependency/risk-driven prioritization.
 
-**Prioritization rule:** Actions that reduce high-risk or high-consequence threats come first.
-Reference the risks from ⑦ that these actions address.
+**Prioritization rule:** Actions that reduce high-risk or high-consequence threats or unlock verified dependencies come first.
+Reference the risks/dependencies from ⑥–⑨ that these actions address.
 
 Evidence priority:
-1. explicit risk-mitigating actions from meeting protocol
-2. explicit approved/prefilled team actions with risk context
-3. AI-derived suggestions prioritized by risk impact and verified project data
-4. Actions deferred due to risk constraints should be noted as such
+1. explicit risk/dependency-mitigating actions from meeting protocol
+2. explicit approved/prefilled team actions with risk/dependency context
+3. AI-derived suggestions prioritized by risk impact, verified dependencies and verified project data
+4. actions deferred due to risk/dependency constraints should be noted as such
 
 Every action card MUST contain its provenance label.
 
@@ -651,8 +661,44 @@ AI suggestion source label:
 AI analytical explanation when useful:
 - `🔎 AI-analys`
 
+## Mandatory pedagogical explanation on every next-step card
+
+Every action card MUST contain a short grounded explanation directly under the action title that answers both:
+1. **Vad gäller detta?**
+2. **Vad tillför det projektet / varför är det viktigt?**
+
+This applies to:
+- verified team/meeting actions
+- `🔎 AI-analys`-derived actions
+- `⭐ AI-förslag`
+
+Do not replace this explanation with only an owner, provenance chip, branch or issue number.
+Do not remove the explanation to make more cards fit on one slide; paginate instead.
+
+Example:
+
+```text
+Fatta CI-beslut i #115
+Avgör om lint, tester och build ska kontrolleras automatiskt i GitHub. Det kan minska risken att fel kod mergas till develop.
+
+⭐ AI-förslag
+Ansvar: Hela teamet
+```
+
+## Dependency-aware next-step order
+
+When verified dependencies exist, ⑬ MUST make the proposed sequence visible, either through numbered cards or explicit order labels:
+- **Först** — removes/unlocks the critical dependency
+- **Parallellt** — can proceed independently
+- **Därefter** — becomes useful after the prerequisite
+- **Vänta** — should not start yet because a prerequisite is unresolved
+
+For AI-derived ordering, use `🔎 AI-analys` for the reasoning and `⭐ AI-förslag — planeringsordning` for the proposed sequence.
+
 Fields when available:
 - concise action
+- pedagogical project-value explanation
+- order/dependency relation when relevant
 - owner if confirmed
 - deadline/timeframe if confirmed
 - verification condition if confirmed
@@ -718,6 +764,8 @@ ai_analysis_without_magnifying_glass_count == 0
 ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 missing_dependency_project_value_microcopy_count == 0
+next_step_card_missing_project_value_microcopy_count == 0
+dependency_order_missing_when_evidence_exists_count == 0
 team_planning_recommendation_present_when_evidence_allows == true
 blockers_and_risks_reflected_in_priority_order == true
 numeric_capacity_or_estimate_has_verified_source == true
@@ -728,5 +776,5 @@ active_items_already_merged_to_collection_branch_count == 0
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.2
+**Version:** 2.3
 **Last updated:** 2026-09-17
