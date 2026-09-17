@@ -912,7 +912,20 @@ execution_sequence:
             allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
           source: "string (e.g., 'team_planning')"
           updated_at: "ISO 8601 timestamp (e.g., '2026-09-17T14:00:00+02:00')"
-          valid_for_week: "ISO week (e.g., '2026-W38')"
+          valid_for_week: "ISO week matching presentation week (e.g., '2026-W39' for Mon 2026-09-22 meeting)"
+
+    critical_week_validation: >
+      The valid_for_week MUST match the ISO week of the presentation's Monday meeting date.
+
+      Example: If presentation is for Monday 2026-09-22 meeting (ISO week starting 2026-09-22):
+        ✓ PASS: valid_for_week = '2026-W39' (correct week)
+        ❌ FAIL: valid_for_week = '2026-W38' (previous week — stale data)
+        ❌ FAIL: valid_for_week = '2026-W40' (next week — future data)
+
+      Why: Capacity is only valid for the specific week being planned. Previous week's capacity
+      cannot be used for next week's sprint. This check prevents stale data from passing validation.
+
+      Note: Presentation pipeline knows its Monday meeting date. Validate week match before proceeding.
 
     validation_rules:
       forbidden_values:
@@ -933,6 +946,7 @@ execution_sequence:
         ❌ DATA_PRECHECK FAIL: team_capacity.source invalid (value: empty string)
         ❌ DATA_PRECHECK FAIL: team_capacity.updated_at missing (value: null)
         ❌ DATA_PRECHECK FAIL: team_capacity.valid_for_week invalid (value: 'week 39' — expected ISO format '2026-W39')
+        ❌ DATA_PRECHECK FAIL: team_capacity.valid_for_week stale (value: '2026-W38' — presentation is for 2026-W39)
 
     stop_condition: >
       If ANY required field is missing, null, contains a forbidden value, or fails type validation:
@@ -950,10 +964,14 @@ execution_sequence:
     capacity_status_calculation: >
       Once validated, capacity status (✓ / ◐ / ✕) for each team MUST be calculated from numbers:
 
-        Status = CALCULATED from: allocated_hours < available_hours
-          ✓ (available)   = allocated_hours < 50% of available_hours
-          ◐ (constrained) = allocated_hours >= 50% AND < 100% of available_hours
-          ✕ (exhausted)   = allocated_hours >= 100% of available_hours
+        Status = CALCULATED from: allocated_hours vs available_hours ratio
+          ◐ (needs_planning)  = allocated_hours < 80% of available_hours (much slack, needs more planning)
+          ✓ (well_planned)    = allocated_hours >= 80% AND <= 100% of available_hours (realistic, fully plannable)
+          ✕ (overloaded)      = allocated_hours > 100% of available_hours (exceeds capacity, risk)
+
+      Example: 30 available hours, 30 allocated hours = 100% = ✓ (NOT ✕)
+      Example: 30 available hours, 20 allocated hours = 67% = ◐ (needs more planning)
+      Example: 30 available hours, 35 allocated hours = 117% = ✕ (overload, capacity risk)
 
       Status is NEVER stored manually in CURRENT_SPRINT.yaml.
       It is ALWAYS computed from available_hours vs allocated_hours in the presentation pipeline.
