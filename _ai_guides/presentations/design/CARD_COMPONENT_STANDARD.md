@@ -108,24 +108,31 @@ For action and next-step cards, the pedagogical line must answer:
 
 ---
 
-# 4. PERSON / TEAM IDENTITY ROW — FIRST NAME ONLY
+# 4. PERSON IDENTITY ROW — FIRST NAME ONLY
 
-Canonical visible format is the identity itself, not a sentence label.
+Canonical visible format is the person's first name only. **Team is shown by the card's left border color**, not by text.
 
-**Name format: FIRST NAME ONLY** (never full name).
+**Name format: FIRST NAME ONLY** (no team label, no full name).
+
+Card border colors represent teams:
+- Frontend: `#2DD4BF` (teal)
+- Backend: `#FF4FA3` (pink)
+- Native: `#A855F7` (purple)
+- Cross-team: `#CBD5E1` (slate)
+- Neutral: `#94A3B8` (gray)
 
 Examples:
-- `Zaida · Frontend` (not "Zaida Wiss · Frontend")
-- `Tomac · Frontend` (not full name)
-- `Rasha · Backend` (not full name)
-- `Henrik · Native` (not full name)
+- `Zaida` (not "Zaida Wiss", not "Zaida · Frontend")
+- `Tomac` (card's teal left border indicates Frontend)
+- `Rasha` (card's pink left border indicates Backend)
+- `Henrik` (card's purple left border indicates Native)
 - `Hela teamet`
 
 Hard rules:
-- do **not** use full names in presentations — first name only
-- do **not** prefix the identity row with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent legacy wording
-- when team is known and useful, use `Förnamn · Team`
-- the **entire identity row**, including the team name, uses the same primary text color as the card title
+- do **not** use full names — first name only
+- do **not** show team label in text — the card's left border color is the team indicator
+- do **not** prefix with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent wording
+- the person's name uses the same primary text color as the card title
 - use semibold/bold weight
 - the row must be easier to scan than branch/status/provenance metadata
 - do not infer a developer from commit authorship when project attribution evidence says otherwise
@@ -233,13 +240,14 @@ Do not substitute:
 when the card represents a completed merge.
 
 ## Active/open work cards
-Do **not** automatically show:
+**Show the latest commit/push timestamp** to indicate recency of work.
+
+Do **not** use:
 - PR opened/created timestamp
-- latest commit timestamp
 - issue created timestamp
 - issue updated timestamp
 
-A timestamp may appear only when it materially helps the meeting understand recency/status and the slide/content authority calls for that activity context.
+Use the **latest commit or push timestamp** when it helps the meeting understand current activity status. This is useful for slides ①D–①E (active work) to show "was this actively worked on this reporting period?"
 
 If shown:
 - exactly **one compact line** — date and clock time must never wrap to separate lines
@@ -268,11 +276,13 @@ If the timestamp is not useful to the meeting, omit it rather than filling space
 #80 · Drift från live target
 Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
-Tomac · Frontend
+Tomac
 Merged: Zaida | Review: Björn
 
                          14 sep · 10:16
 ```
+
+Note: Team is shown by the card's left **border color** (teal=Frontend), not by text.
 
 Rendering rules:
 - pedagogical explanation sits directly under the title
