@@ -108,20 +108,23 @@ For action and next-step cards, the pedagogical line must answer:
 
 ---
 
-# 4. PERSON / TEAM IDENTITY ROW — NO LEGACY LABELS
+# 4. PERSON / TEAM IDENTITY ROW — FIRST NAME ONLY
 
 Canonical visible format is the identity itself, not a sentence label.
 
+**Name format: FIRST NAME ONLY** (never full name).
+
 Examples:
-- `Zaida · Frontend`
-- `Tomac · Frontend`
-- `Rasha · Backend`
-- `Henrik · Native`
+- `Zaida · Frontend` (not "Zaida Wiss · Frontend")
+- `Tomac · Frontend` (not full name)
+- `Rasha · Backend` (not full name)
+- `Henrik · Native` (not full name)
 - `Hela teamet`
 
 Hard rules:
+- do **not** use full names in presentations — first name only
 - do **not** prefix the identity row with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent legacy wording
-- when team is known and useful, use `Namn · Team`
+- when team is known and useful, use `Förnamn · Team`
 - the **entire identity row**, including the team name, uses the same primary text color as the card title
 - use semibold/bold weight
 - the row must be easier to scan than branch/status/provenance metadata
