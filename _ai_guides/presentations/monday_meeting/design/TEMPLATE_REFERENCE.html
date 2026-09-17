@@ -1,418 +1,143 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentation Template — ①A, ①B, ①C Layout Reference</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0F1830;
-            color: #FFFFFF;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #FFFFFF;
-        }
-
-        .slide-section {
-            margin-bottom: 60px;
-        }
-
-        .slide-title {
-            font-size: 18px;
-            color: #CBD5E1;
-            margin-bottom: 5px;
-            margin-left: 20px;
-        }
-
-        .slide-note {
-            font-size: 12px;
-            color: #94A3B8;
-            margin-bottom: 20px;
-            margin-left: 20px;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .card {
-            background-color: #18233D;
-            border-left: 6px solid;
-            padding: 16px;
-            border-radius: 6px;
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Team colors */
-        .card.frontend { border-left-color: #2DD4BF; }
-        .card.backend { border-left-color: #FF4FA3; }
-        .card.native { border-left-color: #A855F7; }
-        .card.crossteam { border-left-color: #CBD5E1; }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 10px;
-        }
-
-        .card-badge {
-            font-size: 10px;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .badge-frontend { background-color: #2DD4BF; color: #0F1830; }
-        .badge-backend { background-color: #FF4FA3; color: #0F1830; }
-        .badge-native { background-color: #A855F7; color: #FFFFFF; }
-        .badge-crossteam { background-color: #CBD5E1; color: #0F1830; }
-
-        .card-title {
-            font-size: 13px;
-            font-weight: normal;
-            color: #FFFFFF;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .card-status {
-            font-size: 12px;
-            color: #CBD5E1;
-            margin-bottom: 6px;
-        }
-
-        .card-meta {
-            font-size: 11px;
-            color: #94A3B8;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px solid #334155;
-        }
-
-        .legend {
-            display: flex;
-            gap: 20px;
-            margin: 30px 20px;
-            font-size: 12px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-        }
-
-        .info-banner {
-            background-color: #202C47;
-            border-left: 4px solid #CBD5E1;
-            padding: 16px;
-            margin: 30px 20px;
-            font-size: 12px;
-            color: #CBD5E1;
-            border-radius: 4px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monday Meeting — Layout Reference</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0F1830;
+      color: #FFFFFF;
+      padding: 32px;
+    }
+    .notice {
+      max-width: 1200px;
+      margin: 0 auto 32px auto;
+      padding: 20px;
+      border: 2px solid #CBD5E1;
+      border-radius: 16px;
+      background: #18233D;
+      font-size: 20px;
+      line-height: 1.8;
+    }
+    .slide {
+      max-width: 1200px;
+      margin: 0 auto 48px auto;
+      padding: 36px;
+      background: #0F1830;
+      border: 1px solid #334155;
+      border-radius: 16px;
+    }
+    h1 {
+      margin: 0 0 28px 0;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+    h2 {
+      margin: 0 0 20px 0;
+      font-size: 22px;
+      line-height: 1.4;
+    }
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .card {
+      background: #18233D;
+      border: 2px solid #334155;
+      border-radius: 16px;
+      padding: 20px;
+      min-height: min-content;
+      height: auto;
+    }
+    .card.frontend { border-left: 6px solid #2DD4BF; }
+    .card.backend  { border-left: 6px solid #FF4FA3; }
+    .card.native   { border-left: 6px solid #A855F7; }
+    .card.cross    { border-left: 6px solid #CBD5E1; }
+    .title {
+      font-size: 20px;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .secondary {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #CBD5E1;
+    }
+    .meta {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #CBD5E1;
+    }
+    .grid-3x2 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .rule {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #CBD5E1;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>① AVKLARAT SEDAN FÖRRA MÖTET — Presentation Template</h1>
+  <div class="notice">
+    <strong>REFERENCE ONLY.</strong><br>
+    Authority order: ACCESSIBILITY_NEURODIVERSITY.md → VISUAL_DESIGN_MANDATORY.md → LAYOUT_OVERFLOW_GUARD.md → SLIDE_DETAIL_SPEC.md.<br>
+    If content does not fit: create a continuation slide. Never shrink, clip, overlap, reduce padding, or change a stacked slide into columns.
+  </div>
 
-        <div class="info-banner">
-            <strong>Denna referens visar:</strong> Layout för ①A (Mergat), ①B (Pågår per team), och ①C (Pågår Cross-team).
-            Se VISUAL_DESIGN_MANDATORY.md för färg- och layout-regler.
-        </div>
-
-        <!-- SLIDE ①A -->
-        <div class="slide-section">
-            <div class="slide-title">SLIDE ①A — MERGADE PR:ER SEDAN FÖRRA MÖTET</div>
-            <div class="slide-note">3 kolumner × 4 rader = max 12 kort. Kronologisk ordning (oldest first).</div>
-
-            <div class="card-grid">
-                <div class="card frontend">
-                    <div class="card-header">
-                        <div>zaida-wiss</div>
-                        <span class="card-badge badge-frontend">Frontend</span>
-                    </div>
-                    <div class="card-title">#105 — Establish frontend test foundation</div>
-                    <div class="card-status">✅ Merged 14 sep</div>
-                    <div class="card-meta">Zaida Wiss @zaida-wiss</div>
-                </div>
-
-                <div class="card backend">
-                    <div class="card-header">
-                        <div>rashaknifdi</div>
-                        <span class="card-badge badge-backend">Backend</span>
-                    </div>
-                    <div class="card-title">#102 — BCrypt authentication implementation</div>
-                    <div class="card-status">✅ Merged 15 sep</div>
-                    <div class="card-meta">Rasha Knifdi @rashaknifdi</div>
-                </div>
-
-                <div class="card native">
-                    <div class="card-header">
-                        <div>Henrik-Westerlund</div>
-                        <span class="card-badge badge-native">Native</span>
-                    </div>
-                    <div class="card-title">#61 — Create basic test file for FX module</div>
-                    <div class="card-status">✅ Merged 14 sep</div>
-                    <div class="card-meta">Henrik Westerlund @Henrik-Westerlund</div>
-                </div>
-
-                <div class="card frontend">
-                    <div class="card-header">
-                        <div>bjorneboman</div>
-                        <span class="card-badge badge-frontend">Frontend</span>
-                    </div>
-                    <div class="card-title">#98 — Responsive header component</div>
-                    <div class="card-status">✅ Merged 16 sep</div>
-                    <div class="card-meta">Björn Boman @bjorneboman</div>
-                </div>
-
-                <div class="card backend">
-                    <div class="card-header">
-                        <div>Svartakatten</div>
-                        <span class="card-badge badge-backend">Backend</span>
-                    </div>
-                    <div class="card-title">#104 — JWT token validation service</div>
-                    <div class="card-status">✅ Merged 16 sep</div>
-                    <div class="card-meta">Erik Berglund @Svartakatten</div>
-                </div>
-
-                <div class="card crossteam">
-                    <div class="card-header">
-                        <div>TomacBarin</div>
-                        <span class="card-badge badge-crossteam">Cross-team</span>
-                    </div>
-                    <div class="card-title">#92 — API contract definition (Frontend + Backend)</div>
-                    <div class="card-status">✅ Merged 15 sep</div>
-                    <div class="card-meta">Tomac Barin Jansson @TomacBarin</div>
-                </div>
-
-                <div class="card frontend">
-                    <div class="card-header">
-                        <div>zaida-wiss</div>
-                        <span class="card-badge badge-frontend">Frontend</span>
-                    </div>
-                    <div class="card-title">#87 — Component library updates</div>
-                    <div class="card-status">✅ Merged 15 sep</div>
-                    <div class="card-meta">Zaida Wiss @zaida-wiss</div>
-                </div>
-
-                <div class="card native">
-                    <div class="card-header">
-                        <div>lundhpargmailcom</div>
-                        <span class="card-badge badge-native">Native</span>
-                    </div>
-                    <div class="card-title">#16 — Back-testing module implementation</div>
-                    <div class="card-status">✅ Merged 16 sep</div>
-                    <div class="card-meta">Pär Lundh @lundhpargmailcom</div>
-                </div>
-
-                <div class="card backend">
-                    <div class="card-header">
-                        <div>rashaknifdi</div>
-                        <span class="card-badge badge-backend">Backend</span>
-                    </div>
-                    <div class="card-title">#103 — Database migration scripts</div>
-                    <div class="card-status">✅ Merged 16 sep</div>
-                    <div class="card-meta">Rasha Knifdi @rashaknifdi</div>
-                </div>
-            </div>
-
-            <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #2DD4BF;"></div>
-                    <span>Frontend</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #FF4FA3;"></div>
-                    <span>Backend</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #A855F7;"></div>
-                    <span>Native</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #CBD5E1;"></div>
-                    <span>Cross-team</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE ①B -->
-        <div class="slide-section">
-            <div class="slide-title">SLIDE ①B — PÅGÅR DENNA VECKA: FRONTEND, BACKEND, NATIVE</div>
-            <div class="slide-note">3 kolumner (en per team), 4 rader per kolumn. Sorterad per team.</div>
-
-            <div class="card-grid">
-                <!-- Frontend column -->
-                <div class="card frontend">
-                    <div class="card-header">
-                        <div>bjorneboman</div>
-                        <span class="card-badge badge-frontend">Frontend</span>
-                    </div>
-                    <div class="card-title">#85 — Responsive header (WIP)</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: frontend/#85-responsive<br/>Latest commit: 16 sep 14:23<br/>Björn Boman @bjorneboman</div>
-                </div>
-
-                <!-- Backend column -->
-                <div class="card backend">
-                    <div class="card-header">
-                        <div>Svartakatten</div>
-                        <span class="card-badge badge-backend">Backend</span>
-                    </div>
-                    <div class="card-title">#93 — Optimize database queries</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: backend/#93-optimize<br/>Latest commit: 15 sep 10:45<br/>Erik Berglund @Svartakatten</div>
-                </div>
-
-                <!-- Native column -->
-                <div class="card native">
-                    <div class="card-header">
-                        <div>Henrik-Westerlund</div>
-                        <span class="card-badge badge-native">Native</span>
-                    </div>
-                    <div class="card-title">#98 — Unit tests for calculations</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: native/#98-unit-tests<br/>Henrik Westerlund @Henrik-Westerlund</div>
-                </div>
-
-                <!-- Frontend -->
-                <div class="card frontend">
-                    <div class="card-header">
-                        <div>zaida-wiss</div>
-                        <span class="card-badge badge-frontend">Frontend</span>
-                    </div>
-                    <div class="card-title">#90 — UI state management refactor</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: frontend/#90-state<br/>Zaida Wiss @zaida-wiss</div>
-                </div>
-
-                <!-- Backend -->
-                <div class="card backend">
-                    <div class="card-header">
-                        <div>rashaknifdi</div>
-                        <span class="card-badge badge-backend">Backend</span>
-                    </div>
-                    <div class="card-title">#96 — JWT refresh token mechanism</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: backend/#96-jwt-refresh<br/>Rasha Knifdi @rashaknifdi</div>
-                </div>
-
-                <!-- Native -->
-                <div class="card native">
-                    <div class="card-header">
-                        <div>lundhpargmailcom</div>
-                        <span class="card-badge badge-native">Native</span>
-                    </div>
-                    <div class="card-title">#99 — Performance profiling improvements</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: native/#99-profile<br/>Pär Lundh @lundhpargmailcom</div>
-                </div>
-            </div>
-
-            <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #2DD4BF;"></div>
-                    <span>Frontend</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #FF4FA3;"></div>
-                    <span>Backend</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #A855F7;"></div>
-                    <span>Native</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE ①C -->
-        <div class="slide-section">
-            <div class="slide-title">SLIDE ①C — PÅGÅR DENNA VECKA: CROSS-TEAM</div>
-            <div class="slide-note">3 kolumner × 4 rader. Alla kort med light slate border (#CBD5E1) för multi-team ownership.</div>
-
-            <div class="card-grid">
-                <div class="card crossteam">
-                    <div class="card-header">
-                        <div>TomacBarin</div>
-                        <span class="card-badge badge-crossteam">Cross-team</span>
-                    </div>
-                    <div class="card-title">#84 — API schema evolution (Frontend + Backend)</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: api/#84-schema<br/>Latest commit: 16 sep 11:30<br/>Tomac Barin Jansson @TomacBarin</div>
-                </div>
-
-                <div class="card crossteam">
-                    <div class="card-header">
-                        <div>Svartakatten</div>
-                        <span class="card-badge badge-crossteam">Cross-team</span>
-                    </div>
-                    <div class="card-title">#6 — JNA bridge (Backend + Native)</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: native/#6-jna<br/>Erik Berglund @Svartakatten</div>
-                </div>
-
-                <div class="card crossteam">
-                    <div class="card-header">
-                        <div>zaida-wiss</div>
-                        <span class="card-badge badge-crossteam">Cross-team</span>
-                    </div>
-                    <div class="card-title">#89 — Documentation site updates (All teams)</div>
-                    <div class="card-status">◐ Pågår</div>
-                    <div class="card-meta">Branch: docs/#89-updates<br/>Zaida Wiss @zaida-wiss</div>
-                </div>
-            </div>
-
-            <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-dot" style="background-color: #CBD5E1;"></div>
-                    <span>Cross-team (Affects multiple teams)</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-banner" style="margin-top: 60px;">
-            <strong>Design Principles:</strong><br/>
-            • Dark navy theme (#0F1830) on all slides<br/>
-            • Team colors (teal #2DD4BF / hot pink #FF4FA3 / purple #A855F7) on borders + badges only<br/>
-            • Light slate border (#CBD5E1) for cross-team work (neutral multi-team)<br/>
-            • Status shown via symbol + text (✅ Merged, ◐ Pågår), not color<br/>
-            • Large whitespace for accessibility<br/>
-            • Max 12 cards per slide = auto-split to ①A.2, ①B.2, ①C.2 if needed
-        </div>
+  <section class="slide">
+    <h1>✏️①A Mergade PR:er sedan förra mötet</h1>
+    <h2>Godkänt grid-undantag: 3 × 2, max 6 kort per fysisk slide</h2>
+    <div class="grid-3x2">
+      <div class="card frontend">
+        <div class="title">#105 · Establish frontend test foundation</div>
+        <div class="secondary">Zaida · 15 sep 09:59</div>
+        <div class="meta">Merged by: Björn · Reviewed by: Björn</div>
+      </div>
+      <div class="card frontend">
+        <div class="title">#101 · API client with mock adapter</div>
+        <div class="secondary">Tomac · 14 sep 18:13</div>
+        <div class="meta">Merged by: verifierad GitHub-användare · Reviewed by: verifierad reviewer</div>
+      </div>
+      <div class="card backend">
+        <div class="title">#111 · Java development environment</div>
+        <div class="secondary">Backend · 16 sep 18:40</div>
+        <div class="meta">Collection work merged to develop</div>
+      </div>
     </div>
+    <div class="rule">Om fler än 6 kort finns: skapa ①A-2. Lägg aldrig till en tredje rad.</div>
+  </section>
+
+  <section class="slide">
+    <h1>✏️①E Tilldelat / backlog</h1>
+    <h2>Standardlayout: fullbredd, en kolumn, max 4 kort</h2>
+    <div class="stack">
+      <div class="card native">
+        <div class="title">○ #16 · Basic back-testing module</div>
+        <div class="secondary">Pär + Henrik</div>
+        <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
+      </div>
+      <div class="card native">
+        <div class="title">○ #73 · Cleanup risk module</div>
+        <div class="secondary">Pär</div>
+        <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
+      </div>
+      <div class="card native">
+        <div class="title">○ #74 · Uppdatera Native README</div>
+        <div class="secondary">Pär + Henrik</div>
+        <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
+      </div>
+    </div>
+    <div class="rule">Nästa item går på ①E-2 om höjden inte räcker. Två kolumner är förbjudet för ①E.</div>
+  </section>
 </body>
 </html>
