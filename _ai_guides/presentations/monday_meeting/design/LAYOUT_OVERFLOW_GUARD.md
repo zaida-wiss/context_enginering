@@ -1,190 +1,227 @@
 ---
 name: layout_overflow_guard
-description: Hard render rules that prevent text overlap, clipping, and accidental layout compression
+description: Hard render rules that prevent overlap, clipping, inaccessible compression and stale fixed layouts
 metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 2.0
+  version: 3.0
 ---
 
-# 🚨 LAYOUT OVERFLOW GUARD — Cards First, No Compression
+# 🚨 LAYOUT OVERFLOW GUARD — Responsive Cards, WCAG First
 
-This is a HARD RENDER GATE for Monday Meeting presentations.
+This is a HARD RENDER GATE.
 
-The visual authority is `VISUAL_DESIGN_MANDATORY.md`. This guard enforces fit, pagination and collision rules.
-
----
-
-## 1. Absolute rule
-
-When content does not fit:
-
-> Create a continuation slide.
-
-Never solve space problems by shrinking text, reducing padding, overlapping elements, clipping text, or replacing cards with text rows.
-
-A deck with more slides is correct.
-A deck with unreadable cards is invalid.
+Global visual authority: `VISUAL_DESIGN_MANDATORY.md`  
+Card internals: `CARD_COMPONENT_STANDARD.md`  
+Accessibility boundary: `ACCESSIBILITY_NEURODIVERSITY.md`
 
 ---
 
-## 2. Cards are mandatory
+## 1. ABSOLUTE RULE
+
+Content must fit **without violating WCAG 2.2 AA**.
+
+A slide is invalid if it solves space pressure by:
+- clipping text
+- overlapping text/cards
+- hiding required content
+- using color alone for meaning
+- lowering contrast below WCAG AA
+- reducing text below its component minimum
+- automatic PowerPoint shrink-to-fit
+
+When content is dense, responsive adaptation is required before pagination.
+
+---
+
+## 2. RESPONSIVE FIT SEQUENCE
+
+For every card/slide, use this order:
+
+1. Start at preferred typography sizes.
+2. Wrap text naturally.
+3. Step down deliberately within the role-specific ranges in `CARD_COMPONENT_STANDARD.md`.
+4. Tighten spacing only to the canonical minimums; never collapse line spacing.
+5. Let card height grow when space permits.
+6. Reduce grid density so cards become wider/taller.
+7. Move remaining cards to continuation slide(s).
+
+A continuation slide is mandatory when content still does not fit at the defined accessible minimums.
+
+---
+
+## 3. CARDS ARE MANDATORY
 
 For item-based content:
 
 > ONE ITEM = ONE CARD
 
-Forbidden representations:
-
-- plain text rows
-- table rows
+Forbidden:
+- plain issue/PR rows
+- table rows as primary layout
 - horizontal list bands
-- issue lists without card surfaces
-- multiple unrelated work items inside one card to save space
+- multiple unrelated work items inside one card merely to save space
 
-Dependency slide `⑥A` may use a graph, but every graph node is still a card.
+`⑥A` may use a dependency graph, but each graph node remains a card.
 
 ---
 
-## 3. Canonical grid limits
+## 4. GRID LIMITS — MAXIMUMS, NOT TARGETS
 
-| Slide type | Default card layout | Max cards / physical slide |
+| Slide type | Default | Maximum |
 |---|---|---:|
 | `①A`, `①B`, `①C` | 3 × 2 | 6 |
 | `①D`, `①E` | 2 × 2 | 4 |
-| `①F` | 2 × 2 or 2 × 1 | 4 |
-| `②`, `③`, `④`, `⑤` | 2 × 2 | 4 |
-| `⑥`, `⑦`, `⑧`, `⑨`, `⑩`, `⑪`, `⑫`, `⑭` | 2 × 2 | 4 |
-| `⑬` | 4 × 1 or 2 × 2 | 4 |
+| `①F` | 2 × 2 / 2 × 1 | 4 |
+| `②`–`⑤` | 2 × 2 | 4 |
+| `⑥`–`⑫`, `⑭` | 2 × 2 | 4 |
+| `⑬` | 4 × 1 only when readable; otherwise 2 × 2 | 4 |
 | `⑥A` | dependency graph | 3–4 chains |
 
-These are maximums, not targets.
-
-If cards are text-heavy, use fewer cards on that physical slide.
-
----
-
-## 4. Mandatory pagination
+If cards are text-heavy, use fewer cards than the maximum.
 
 Examples:
-
-- 8 items on ①E → 4 cards on `①E`, 4 cards on `①E-2`
-- 7 merged PRs on ①A → 6 cards on `①A`, 1 card on `①A-2`
-- 6 long cards on ③ → e.g. 3 cards on `③`, 3 cards on `③-2`
-
-Never create an extra row merely because there is unused horizontal space.
+- 4 long cards may become 2 cards + 2 cards on continuation
+- 6 merge cards may become 4 + 2 if the 3-column cards cannot remain readable
 
 ---
 
-## 5. Mechanical fit test
+## 5. CONTENT-DRIVEN CARD HEIGHT
 
-Before placing a card, calculate its required height from actual wrapped text:
+Calculate required height from actual wrapped content.
+
+Conceptually:
 
 ```text
 required_card_height =
   top_padding
-  + title_lines × title_line_height
-  + body_lines × body_line_height
-  + metadata_lines × metadata_line_height
+  + title_block_height
+  + supporting_block_height
+  + primary_detail_height
+  + metadata/provenance_height
   + internal_gaps
   + bottom_padding
 ```
 
-Card height must be content-driven.
+Do not assume equal text height merely because cards share a grid.
 
-For a grid cell:
-
-```text
-if required_card_height > available_cell_height:
-    reduce cards on this physical slide
-    OR create continuation slide
-```
-
-Do not reduce typography or padding.
+If equal outer card heights are used:
+- align primary content from the top
+- anchor timestamp/source metadata consistently near bottom when relevant
+- let middle whitespace vary naturally
+- do not distribute each row evenly from top to bottom
 
 ---
 
-## 6. Binding minimums
+## 6. RESPONSIVE TYPOGRAPHY BOUNDARIES
 
-Use values from `VISUAL_DESIGN_MANDATORY.md`:
+Use `CARD_COMPONENT_STANDARD.md` exactly.
 
-- Slide title: 32 pt minimum
-- Section header: 22 pt minimum
-- Card title/main text: 20 pt minimum
-- Secondary meeting information: 18 pt minimum
-- Small labels/footer: 12–14 pt only
-- Card padding: 18–22 px
-- Gap between cards: 20 px minimum
-- Corner radius: 16–20 px
+Current component minima:
+- slide title: 32 pt
+- section header: 22 pt
+- card title: 18 pt
+- owner/team: 12 pt
+- contribution/supporting text: 11 pt
+- operational metadata: 10 pt
+- timestamp/source/provenance: 10 pt
 
----
+These are component minima, not targets.
 
-## 7. Modern card surface check
+**Never go below them.**
 
-Each card must have:
+All text must also satisfy WCAG AA contrast and remain visually readable in the actual rendered artifact.
 
-- dark card surface separate from slide background
-- rounded corners
-- subtle border/accent
-- subtle box shadow/depth where supported
-- clear internal text hierarchy
-
-A card must visually read as a card, not as a line of text with a border beside it.
+If a technically WCAG-compliant minimum still looks too small/unreadable in the actual presentation context, increase the size and reduce density/paginate.
 
 ---
 
-## 8. Forbidden fixes
+## 7. PADDING / SPACING BOUNDARIES
+
+Use canonical values from the visual/card standards.
+
+Do not solve overflow by removing the visual separation required to distinguish lines/cards.
+
+Hard rules:
+- no text collision
+- no overlapping text zones
+- no negative spacing
+- no line-height compression that causes glyph/rule collision
+- card gap remains visually clear
+
+---
+
+## 8. SOURCE / PROVENANCE MUST FIT
+
+Provenance labels from `PROVENANCE_AND_AI_LABELING.md` are required content.
+
+Do not remove:
+- `📅 Schemafakta`
+- `✅ Mötesprotokoll` / team source
+- `? AI-förslag` / `? AI-analys`
+- `⚠ Källa behöver verifieras`
+
+to save space.
+
+If a card contains both facts and AI interpretation, each block remains separately labeled.
+
+---
+
+## 9. FORBIDDEN FIXES
 
 Never:
-
-- reduce main text below 20 pt
-- reduce secondary text below 18 pt
-- reduce card padding to make one more card fit
-- use shrink-to-fit or auto-shrink
-- use fixed text-box height when content wraps
-- overlap title/body/metadata
-- place text outside its card
-- convert ①D/①E to rows
-- put more than 4 cards on ①D/①E
-- put more than 6 cards on ①A–①C
+- automatic shrink-to-fit
+- fonts below component minimums
+- text clipping
+- text/card overlap
+- required content outside its card
+- contrast below WCAG AA
+- color-only meaning
+- hidden provenance
+- full team-colored card outline instead of the canonical left accent
+- fixed-height card that cuts wrapped text
 
 ---
 
-## 9. Artifact inspection gate
+## 10. ARTIFACT INSPECTION GATE
 
-Inspect the rendered PPTX/PDF, not the generator report.
+Inspect the actual rendered PPTX/PDF.
 
 The deck FAILS if:
 
 ```text
+wcag_aa_violation_count > 0
+color_only_information_count > 0
 text_overlap_count > 0
 card_overlap_count > 0
 text_outside_card_count > 0
 text_clipping_count > 0
 out_of_bounds_element_count > 0
-font_below_minimum_count > 0
+font_below_component_minimum_count > 0
+missing_required_card_row_count > 0
+uneven_row_spacing_caused_by_vertical_justification > 0
 plain_row_work_item_count > 0
 ```
 
-Also fail if ①D or ①E is rendered as a row/list layout instead of cards.
-
 ---
 
-## 10. Required failure response
+## 11. REQUIRED FAILURE RESPONSE
 
-If a slide fails fit or collision checks:
+When a slide fails:
 
-1. Identify the failing slide
-2. Identify the card causing overflow
-3. Move that card and following cards to a continuation slide
-4. Rerender
-5. Reinspect
+1. identify the exact overflowing/colliding block
+2. verify the correct role-specific typography range
+3. adapt deliberately within that range
+4. adapt card geometry/grid density
+5. paginate if still required
+6. rerender
+7. reinspect
 
-Do not deliver until all collision counts are zero.
+Do not deliver until all hard-failure counts are zero.
 
 ---
 
 **Status:** REQUIRED
-**Version:** 2.0
+**Version:** 3.0
 **Last updated:** 2026-09-17
