@@ -27,6 +27,9 @@ You must commit to all of these:
 - Never use automatic shrink-to-fit.
 - Slide titles must never be shrunk to solve layout pressure.
 - Start normal text at the preferred/larger size and reduce only when required, never below the role minimum.
+- Keep multiline text at the minimum line spacing defined by `READABILITY_HARD_RULES.md` / `CARD_COMPONENT_STANDARD.md`.
+- Render meeting-point headers with ordinary digits (`✏️ 1.`, `✏️ 2.`, `✏️ 13.`), never circled-number glyphs.
+- Keep name/identity and verification/provenance in the bottom information zone of every card when those fields exist.
 - For every merged PR, perform the dedicated merger + submitted-review lookup before rendering `Merged:` / `Review:`.
 - Never use `requested_reviewers` as evidence that an actual review happened.
 - If content still does not fit at the accessible minimum, change card geometry, reduce card density or paginate.
@@ -83,13 +86,24 @@ Read in this order:
 
 1. **Accessibility / WCAG 2.2 AA** — absolute boundary
 2. **Global visual design** — theme and global slide roles
-3. **Readability hard rules** — fixed slide-title size, larger text minima, spacing, pedagogical microcopy, dependency-aware order
-4. **Card component standard** — card internals and card role hierarchy
+3. **Readability hard rules** — fixed slide-title size, dyslexia-friendly type, ordinary meeting-point digits, larger text minima, line spacing, pedagogical microcopy, dependency-aware order
+4. **Card component standard** — card internals, bottom information zone and card role hierarchy
 5. **Provenance standard** — fact/team/AI source identity
 6. **PR merge/review identity contract** — actual merger + submitted review acquisition
 7. **Overflow guard** — responsive fit, grid density, pagination
-8. **Slide detail spec** — content fields and slide purpose
+8. **Slide detail spec** — content fields and semantic slide purpose
 9. **Template reference** — example only
+
+### Meeting-point notation clarification
+
+`SLIDE_DETAIL_SPEC.md` may use symbols such as `①`, `⑬` in documentation as **semantic section identifiers only**. They are not rendered typography.
+
+Rendered meeting headers must follow `READABILITY_HARD_RULES.md`:
+- `✏️ 1. ...`
+- `✏️ 2. ...`
+- `✏️ 13. ...`
+
+This is not a conflict: semantic document identifiers and rendered presentation labels are separate roles.
 
 No lower authority may weaken WCAG, readability, required identity lookup or provenance.
 
@@ -102,11 +116,13 @@ For every slide/card:
 1. Start at preferred typography sizes.
 2. Keep slide titles at **36 pt minimum**; they are never a fit variable.
 3. Wrap text naturally.
-4. Reduce normal/card text deliberately only inside the permitted role-specific range.
-5. Maintain WCAG AA contrast and symbol+text redundancy.
-6. Keep natural line spacing and the hard minimum block gaps from `READABILITY_HARD_RULES.md`.
-7. Let cards grow or reduce grid density when required.
-8. If content still does not fit at the permitted accessible minimum, create a continuation slide.
+4. Keep dyslexia-friendly type weight and minimum line spacing.
+5. Reduce normal/card text deliberately only inside the permitted role-specific range.
+6. Maintain WCAG AA contrast and symbol+text redundancy.
+7. Keep natural line spacing and the hard minimum block gaps from `READABILITY_HARD_RULES.md`.
+8. Keep the top content group separate from the card's bottom identity/verification zone.
+9. Let cards grow or reduce grid density when required.
+10. If content still does not fit at the permitted accessible minimum, create a continuation slide.
 
 Forbidden:
 - shrinking slide titles below 36 pt
@@ -115,7 +131,10 @@ Forbidden:
 - missing rows
 - automatic shrink-to-fit
 - fonts below component/readability minimum
-- compressed block spacing below the hard minimum
+- compressed line spacing or block spacing below the hard minimum
+- heavy/black heading weight used to compensate for weak hierarchy
+- circled-number glyphs in rendered meeting-point headers
+- moving bottom-anchored identity/verification into the body area merely to make a card fit
 - contrast below WCAG AA
 - color-only meaning
 - provenance removed to save space
@@ -214,6 +233,13 @@ slide_title_below_36pt_count == 0
 slide_title_shrunk_for_fit_count == 0
 body_text_below_role_minimum_count == 0
 card_block_spacing_violation_count == 0
+text_line_spacing_below_minimum_count == 0
+meeting_point_uses_circled_number_count == 0
+meeting_point_number_missing_count == 0
+excessively_heavy_heading_weight_count == 0
+identity_not_bottom_anchored_count == 0
+verification_not_bottom_anchored_count == 0
+bottom_information_zone_overlap_count == 0
 missing_required_card_row_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
 verified_dependency_not_reflected_in_plan_count == 0
