@@ -1,0 +1,155 @@
+---
+name: data_validation_schema
+description: Machine-readable validation rules for all data in presentation
+metadata:
+  type: validation
+  critical: true
+  enforced: before_rendering
+---
+
+# 📋 DATA VALIDATION SCHEMA
+
+This file defines what makes data VALID vs INVALID for presentation rendering.
+
+All data MUST pass these validations before rendering. NO EXCEPTIONS.
+
+---
+
+## VALIDATION RULES
+
+### Every assignee/owner in presentation:
+```
+MUST be found in:
+  - GitHub API response (GITHUB_OPEN_ISSUES, GITHUB_OPEN_PRS, GITHUB_MERGED_PRS)
+  - OR TEAM_ROSTER.md
+
+If NOT found in either:
+  ACTION: REJECT data point
+  RESULT: Remove from presentation
+  FALLBACK: Mark dataset INCOMPLETE if entire dataset is affected
+```
+
+### Every PR number (#123, #456, etc.):
+```
+MUST be verified in:
+  - GitHub API /pulls response
+  - Merged PRs list
+  - Open PRs list
+
+If NOT found:
+  ACTION: REJECT data point
+  RESULT: Do NOT display this PR
+  FALLBACK: Mark dataset INCOMPLETE
+```
+
+### Every branch name:
+```
+MUST be found in:
+  - GITHUB_BRANCHES dataset (verified API response)
+
+If NOT found:
+  ACTION: REJECT data point
+  RESULT: Do NOT display this branch
+  FALLBACK: Mark dataset INCOMPLETE
+```
+
+### Every issue number (#1, #2, etc.):
+```
+MUST be verified in:
+  - GitHub API /issues response
+  - Open issues list
+  - Merged issues list (if applicable)
+
+If NOT found:
+  ACTION: REJECT data point
+  RESULT: Do NOT display this issue
+  FALLBACK: Mark dataset INCOMPLETE
+```
+
+### Every reviewer/approver:
+```
+MUST be found in:
+  - GitHub PR review data (API response)
+  - OR TEAM_ROSTER.md
+
+If NOT found:
+  ACTION: REJECT data point
+  RESULT: Do NOT display this reviewer
+  FALLBACK: Mark dataset INCOMPLETE
+```
+
+### Every commit/merge date:
+```
+MUST be found in:
+  - GitHub API response (commit timestamp)
+
+If timestamp cannot be verified:
+  ACTION: REJECT data point
+  RESULT: Do NOT display this commit/date
+  FALLBACK: Mark dataset INCOMPLETE
+```
+
+---
+
+## REJECTION HANDLING
+
+**If ANY data point is REJECTED:**
+
+- STOP before rendering
+- Do NOT proceed to build_gate
+- Report which data point failed validation
+- Report why it failed
+- Mark affected dataset INCOMPLETE
+- Do NOT render presentation with invalid data
+
+**NEVER:**
+- ❌ Fill rejected data points with guesses
+- ❌ Leave rejected data in the presentation
+- ❌ Render "mostly valid" data
+- ❌ Render with empty fields expecting manual fill-in
+
+**ALWAYS:**
+- ✅ Reject the entire dataset if validation fails
+- ✅ Mark as INCOMPLETE and STOP
+- ✅ Report to user which data could not be verified
+
+---
+
+## BETTER EMPTY THAN FABRICATED
+
+**Philosophy:**
+
+A presentation with missing/incomplete sections is GOOD.
+A presentation with fabricated data is HARMFUL.
+
+If you cannot verify data:
+- **Better:** Leave section empty, report INCOMPLETE
+- **Never:** Guess or hallucinate to fill it in
+
+---
+
+## VALIDATION EXEMPTIONS
+
+These data points are EXEMPT from validation (they are derived):
+
+- Analysis/interpretation (as long as source data is valid)
+- Recommendations (as long as based on valid data)
+- Summaries (as long as summarizing valid data)
+
+These data points are NOT EXEMPT:
+
+- Any fact from GitHub (assignees, PRs, branches, commits)
+- Any metric or count
+- Any date or timestamp
+- Any name or person
+
+---
+
+## VALIDATION ATTESTATION
+
+After validation passes, AI MUST attest:
+
+"All data in this presentation has been validated per DATA_VALIDATION_SCHEMA.yaml.
+Every data point is verified from registered sources. No data was guessed or
+hallucinated. If validation failed for any data point, that dataset is marked
+INCOMPLETE and was not included in this presentation."

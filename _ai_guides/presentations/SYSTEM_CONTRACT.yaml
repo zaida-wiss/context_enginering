@@ -921,6 +921,13 @@ execution_sequence:
       - Was the implementation actually invoked (per receipt)? YES/NO
       - Is the data verified from a real source, not a guess? YES/NO
 
+    attestation_requirement: >
+      For EACH data point in EACH SUCCESS dataset, you MUST attest in the receipt:
+      "This data came from [REGISTERED SOURCE], obtained via [IMPLEMENTATION].
+       I did not guess, hallucinate, or improvise this data."
+      If you cannot make this attestation for ANY data point → STOP immediately.
+      Mark that dataset INCOMPLETE instead.
+
     failure_action: >
       If ANY dataset has unverified, guessed, or hallucinated data:
       STOP immediately. Do NOT proceed to step_2b.

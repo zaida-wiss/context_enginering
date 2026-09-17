@@ -736,21 +736,49 @@ FAIL GATE if:
 
 ---
 
-**FINAL CHECK — ALWAYS RENDER:**
+**INTEGRITY CHECK — BEFORE RENDER_DECISION:**
+
+🛑 **MANDATORY VALIDATION (NEW)**
+
+- [ ] ALL assignees validated against TEAM_ROSTER.md or GitHub API
+- [ ] ALL PR numbers validated against GitHub API
+- [ ] ALL branch names validated against GITHUB_BRANCHES
+- [ ] ALL dates/timestamps verified in source data
+- [ ] ZERO data points are guessed/hallucinated
+
+**If ANY validation fails:**
+  REJECT that data point. Do NOT render with invalid data.
+  
+**If entire dataset fails validation:**
+  Mark as INCOMPLETE. Do NOT render presentation without it.
+
+---
+
+**FINAL CHECK — RENDER DECISION:**
 ```
-  If ALL checkboxes passed:
-    ✅ Render and deliver (full verification)
+  ✅ If ALL data validated + ALL checkboxes passed:
+     RENDER and deliver (full verification)
   
-  If REQUIRED data present but some enrichment missing:
-    ⚠️ Mark missing sources in footer, then render anyway
-    Example: "GitHub verified ✅ | Board unavailable ⚠️ | Commits derived ✅"
+  ❌ If ANY REQUIRED dataset is INCOMPLETE:
+     STOP before rendering
+     Report which dataset failed and why
+     Do NOT render presentation without complete required data
   
-  If REQUIRED sources all failed (no fallback worked):
-    ⚠️ Mark all sources as UNVERIFIED, render with ⚠️ WARNING
-    Example: "⚠️ All data sources unavailable this week"
+  ❌ If ANY data point failed validation:
+     STOP before rendering
+     Do NOT "mark as unavailable" and render anyway
+     Report which data was invalid and why
   
-  NEVER: Stop rendering because "data is incomplete"
-  ALWAYS: Render with whatever data exists + mark accuracy in footer
+  ⚠️ If all required data is complete but optional data missing:
+     OPTIONAL: Mark missing sources in footer, then render
+     Example: "GitHub verified ✅ | Board unavailable ⚠️ | Commits derived ✅"
+  
+  RULE: Complete required data + valid data = RENDER
+  RULE: Incomplete required data OR invalid data = STOP
+  
+  NEVER: Render with guessed/hallucinated data
+  NEVER: Render with unvalidated data
+  ALWAYS: STOP if validation fails on REQUIRED data
 ```
 
 ---

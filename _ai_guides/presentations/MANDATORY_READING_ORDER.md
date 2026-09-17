@@ -16,6 +16,28 @@ Follow this order exactly. Do not skip.
 
 ---
 
+## ⚠️ COMMITMENT GATE — Answer before proceeding
+
+**This applies to ALL AI models (Claude, GPT, Gemini, Llama, etc.)**
+
+Before you read anything else, commit to ALL of these:
+
+- [ ] **Never guess on data.** If data is unavailable, report it as INCOMPLETE.
+- [ ] **Never hallucinate.** Do not invent assignees, PR numbers, branch names, or any GitHub data.
+- [ ] **Never improvise.** Do not bypass these rules because "it's faster" or "the rules seem ceremonial".
+- [ ] **Never skip steps.** Follow every rule, every gate, every verification step.
+- [ ] **Stop when required.** If data is incomplete or unverifiable, STOP before rendering. No presentation is better than a false presentation.
+
+**If you cannot commit to ALL of these:**
+
+STOP now. Do not proceed. You cannot run this pipeline.
+
+**If you commit to ALL of these:**
+
+Continue to step 0️⃣.
+
+---
+
 ## 0️⃣ READ INTEGRITY_CONSTRAINT.md FIRST
 
 **Location:** [`INTEGRITY_CONSTRAINT.md`](INTEGRITY_CONSTRAINT.md)
