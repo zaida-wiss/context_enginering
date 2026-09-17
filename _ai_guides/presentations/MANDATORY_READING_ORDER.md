@@ -117,8 +117,11 @@ Whenever content is not explicitly present in a registered source, label it.
 Use:
 - `📅 Schemafakta` — explicitly in registered school schedule
 - `✅ Mötesprotokoll` / equivalent — explicitly supplied or confirmed by team
-- `? AI-förslag` / `? AI-analys` — inferred or recommended by AI
+- `🔎 AI-analys` — AI interpretation, synthesis or assessment of verified evidence
+- `⭐ AI-förslag` — AI recommendation, suggested action or suggested question
 - `⚠ Källa behöver verifieras` — origin cannot be verified
+
+Do not use the same icon for analysis and proposals.
 
 This applies globally, especially to sprintplan, sprintmål, prioritering, nästa steg and frågor till PL.
 
@@ -176,7 +179,8 @@ out_of_bounds_element_count == 0
 font_below_component_minimum_count == 0
 missing_required_card_row_count == 0
 uneven_row_spacing_caused_by_vertical_justification == 0
-ai_generated_item_without_question_icon_count == 0
+ai_analysis_without_magnifying_glass_count == 0
+ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 ```
 
