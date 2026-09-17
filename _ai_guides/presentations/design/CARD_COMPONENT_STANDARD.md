@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.1
+  version: 1.2
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -29,15 +29,16 @@ If content cannot fit while remaining WCAG-compliant and readable, use fewer car
 
 ---
 
-# 1. CARD SURFACE — GLASS STYLE
+# 1. CARD SURFACE — CALM GLASS STYLE
 
 All cards use the same visual language throughout the deck:
 
-- dark navy slide background
-- translucent / glass-like dark card surface
+- slide background `#15182E`
+- primary card surface `#1E233B`
+- optional alternate surface `#252A45`
 - rounded corners
 - soft shadow/depth
-- subtle neutral edge only when needed for separation
+- subtle low-glare appearance
 - **team color appears ONLY as a narrow vertical accent line on the left**
 - team color must NOT outline the whole card
 - team color must NOT fill the card
@@ -51,6 +52,8 @@ All cards use the same visual language throughout the deck:
 - Other / neutral: `#94A3B8`
 
 Recommended left accent width: visually equivalent to **4–6 px**.
+
+The card itself stays calm navy regardless of team/status/source.
 
 ---
 
@@ -78,15 +81,16 @@ Never remove required information to make a card fit.
 - preferred: **18–20 pt**
 - minimum: **18 pt**
 - bold
-- high contrast (`#FFFFFF`)
+- high contrast (`#F7F8FC`)
 - wraps naturally
 
-### Contribution / explanatory microcopy
+### Contribution / project-value microcopy
 - preferred: **11–12 pt**
 - minimum: **11 pt**
 - regular
-- use a WCAG-AA-safe muted color
+- use a WCAG-AA-safe muted color such as `#B0B8CC` or `#A2ABC0`
 - normally 1–2 visual lines
+- answers **what this solves/contributes in the project**
 
 ### Owner / assignee + team
 Examples:
@@ -98,7 +102,7 @@ Style:
 - preferred: **13–14 pt**
 - minimum: **12 pt**
 - semibold or bold
-- high-contrast secondary color
+- high-contrast secondary color (`#D2D7E4`)
 
 ### Operational metadata
 Examples:
@@ -110,7 +114,7 @@ Style:
 - preferred: **11–12 pt**
 - minimum: **10 pt**
 - regular
-- WCAG-AA-safe secondary color
+- WCAG-AA-safe secondary color (`#B0B8CC`)
 - keep short metadata on one line when practical
 
 For merge cards use EXACT labels:
@@ -210,15 +214,50 @@ Owner keeps stronger contrast than lower metadata.
 
 ---
 
-# 6. EVEN VERTICAL SPACING — HARD RULE
+# 6. CANONICAL DEPENDENCY NODE
+
+Dependency nodes use the same calm card system but may be more compact horizontally.
+
+Required structure:
+
+```text
+API-kontrakt
+Definierar endpoints + payload för integrationen.
+🔴 behöver låsas
+```
+
+```text
+Riktig Java HTTP
+Byter mock mot riktig Backend-kommunikation.
+⏳ väntar
+```
+
+```text
+#106 HttpOnly auth
+Flyttar auth till säkrare cookie-baserad lösning.
+⏳ efter integration
+```
+
+Hard rules:
+- title first
+- **project-value line immediately below title**
+- status/dependency line under that
+- value line is mandatory whenever source evidence is sufficient
+- if evidence is insufficient, use `Bidrag till projektet behöver verifieras.`
+- arrows/connectors sit outside cards and must not overlap text
+- compact node layout may use smaller allowed metadata sizes, but not below component minima
+
+---
+
+# 7. EVEN VERTICAL SPACING — HARD RULE
 
 Inside a card, use a predictable vertical rhythm.
 
 Recommended visual spacing:
-- title → contribution: **4–6 px**
+- title → contribution/project-value line: **4–6 px**
 - wrapped text: normal line spacing, no extra paragraph gap between wrapped lines
-- contribution → owner: **8–10 px**
-- owner → operational metadata: **5–7 px**
+- contribution → owner/status: **7–10 px**
+- owner → operational metadata: **4–7 px**
 - metadata → timestamp/provenance area: flexible remaining space
 - timestamp line 1 → line 2: **0–2 px** extra gap
 
@@ -232,7 +271,7 @@ When equal-height cards are used:
 
 ---
 
-# 7. RESPONSIVE CARD GEOMETRY — GLOBAL RULE
+# 8. RESPONSIVE CARD GEOMETRY — GLOBAL RULE
 
 Cards are content-driven responsive components.
 
@@ -241,6 +280,7 @@ Allowed adaptations:
 - card grows in height
 - card becomes wider through a lower-density grid
 - 2×2 → 2×1 → 1×1 when content requires it
+- dependency nodes widen/grow so the project-value line remains readable
 - continuation slide when minimum accessible layout still does not fit
 
 Fit order:
@@ -254,6 +294,7 @@ Never:
 - clip text
 - overlap text
 - omit required rows
+- omit project-value microcopy from a dependency node to save space
 - reduce below component minimums
 - reduce contrast below WCAG AA
 - use color alone to communicate meaning
@@ -261,7 +302,7 @@ Never:
 
 ---
 
-# 8. CONSISTENCY ACROSS ALL SLIDES
+# 9. CONSISTENCY ACROSS ALL SLIDES
 
 The same card geometry and responsive behavior apply throughout the deck, including:
 
@@ -275,15 +316,16 @@ The same card geometry and responsive behavior apply throughout the deck, includ
 - priority/action cards
 - next-step cards
 - PL-question cards
-- dependency nodes where applicable
+- dependency nodes
 
 Only content schema and justified status/team/source accents may change.
 
 Do not switch later slides to flat bordered boxes or full team-colored outlines.
+Do not switch back to the old navy palette on later slides.
 
 ---
 
-# 9. RENDER CHECKS
+# 10. RENDER CHECKS
 
 Before delivery verify:
 
@@ -291,9 +333,11 @@ Before delivery verify:
 wcag_aa_violation_count == 0
 color_only_information_count == 0
 card_glass_surface_consistent == true
+calm_navy_palette_consistent == true
 team_color_left_accent_only == true
 full_team_outline_count == 0
 required_card_rows_missing == 0
+missing_dependency_project_value_microcopy_count == 0
 uneven_row_spacing_caused_by_vertical_justification == 0
 timestamp_bottom_left == true
 timestamp_two_lines_when_time_present == true
@@ -308,10 +352,11 @@ Also verify:
 - all muted text still meets **4.5:1** when treated as normal text
 - `Merged:` and `Review:` fit on one row when practical
 - owner remains more prominent than muted metadata
+- dependency nodes contain a readable project-value line
 - cards form one coherent component system across all slides
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.1
+**Version:** 1.2
 **Last updated:** 2026-09-17
