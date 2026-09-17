@@ -924,12 +924,24 @@ execution_sequence:
 
     for_pre_meeting_mode:
       action: "Read LAST WEEK's meeting protocol (GOOGLE_MEETING_PROTOCOL, previous week) for:"
-      check_for:
+      check_for: "Documented constraints that may affect this week's planning"
+      examples:
         - "Absence (holiday, sick leave, training, LIA requirements)"
-        - "Capacity constraints affecting THIS week's planning"
-        - "Personal situations reducing project capacity"
-      if_found: "Include as analysis/warning in point ⑧ or risk section"
-      if_not_found: "Omit point ⑧ capacity section from presentation"
+        - "Known scheduling conflicts"
+        - "Explicitly stated capacity limitations for specific team"
+      display_rule: >
+        IF documented constraints found:
+          - SHOW at team level: "Backend has documented limited availability"
+          - Never translate to hours/percentages unless explicitly in source
+          - Never guess or interpolate values
+          - Example format: "Frontend: training day Wed → capacity reduced"
+        ELSE:
+          - Omit point ⑧ capacity section entirely
+      forbidden: >
+        ❌ Do NOT estimate hours or percentages
+        ❌ Do NOT call sensitive info "capacity analysis"
+        ❌ Do NOT overdramatize or extrapolate
+        ❌ Do NOT show what is not explicitly documented
 
     must_verify_current_sprint:
       file: "_memory/presentations/CURRENT_SPRINT.yaml"
