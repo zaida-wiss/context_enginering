@@ -1,1651 +1,374 @@
 ###############################################################################
-# SYSTEM CONTRACT — Maskinläsbar definition av presentationspipelinen
-#
-# Detta YAML-block är källan till sanning för vilken AI som helst
-# Läs denna direkt efter MANDATORY_READING_ORDER.md
-# Denna fil är därefter enda auktoritet för execution order och authority
+# SYSTEM CONTRACT — Machine-readable presentation pipeline
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 3.0
-last_updated: 2026-09-16
-
-# All paths relative to repo root, under this base directory:
+version: 4.0
+last_updated: 2026-09-17
 base_path: "_ai_guides/presentations"
 
 ###############################################################################
-# PLATFORM HANDOFF — Preflight operation (NOT a gate)
+# CORE PRINCIPLES
 ###############################################################################
-platform_handoff:
-  classification: "preflight_only"
-  creates_artifact: false
-  satisfies_no_gate: true
-
-  rule: >
-    Platform-required presentation handoff may occur before execution_receipt.
-    A successful handoff MUST NOT be interpreted as permission to build,
-    render, or collect project data.
-
-  required_next_step: >
-    Immediately continue with README.md → snapshot-SHA registration →
-    MANDATORY_READING_ORDER.md → SYSTEM_CONTRACT.yaml →
-    execution_sequence step_1.
-
-  failure_prevention: >
-    Handoff does not establish execution_receipt, build_gate,
-    data_audit, or delivery_gate. It is a preflight-only operation.
-    No presentation building occurs until execution_receipt PASSES.
-
-  receipt_logging:
-    event: "platform_handoff_completed"
-    status: "COMPLETED"
-    note: "Preflight operation only; no gate satisfied; no artifact created."
+core_principles:
+  - "WCAG 2.2 AA is an absolute boundary. No layout or visual preference may weaken it."
+  - "Never guess project data. Unverified data is marked unknown/incomplete."
+  - "Never present AI inference as source fact or confirmed team decision."
+  - "Cards adapt to content; content is never clipped to preserve a grid."
+  - "Responsive typography is deliberate within defined ranges; automatic shrink-to-fit is forbidden."
+  - "If accessible minimum sizes still do not fit, reduce card density or paginate."
+  - "All source/provenance meaning uses icon + text; color alone is forbidden."
 
 ###############################################################################
-# EXECUTION LIFECYCLE — Explicit definition to prevent interpretation variance
-###############################################################################
-execution_lifecycle:
-  starts: "When user requests new presentation"
-  receives: "Unique execution_id (e.g., 'exec_20260916_001')"
-  continues: "Through subsequent chat turns until DELIVER, STOP, or RESTART"
-  ends: "At DELIVER (artifact delivered), STOP (terminated), or RESTART (new execution_id)"
-  invalidates: "Any resume after STOP requires NEW execution from README (not from cached state)"
-  no_reuse: "old receipts, old execution_ids, other execution contexts"
-
-###############################################################################
-# EXECUTION_RECEIPT_MACHINE — Machine-readable verification structure
-###############################################################################
-execution_receipt_machine:
-  required_fields:
-    - execution_id: "Unique identifier for this execution run (e.g., 'exec_20260916_001')"
-    - started_at: "ISO 8601 timestamp when execution began (e.g., '2026-09-16T14:30:00Z')"
-    - repo_commit_sha: "Git commit SHA at README read (snapshots repo version for determinism)"
-
-  files_read_array:
-    - path: "Path to file in repo"
-    - blob_sha: "Git blob SHA of file at this execution (proves version consistency)"
-    - read_at: "ISO 8601 timestamp when file was read"
-    - status: "'CONFIRMED' if read and verified, 'SKIPPED' if intentionally skipped"
-
-  gates_passed_array:
-    - gate_name: "Name of gate (e.g., 'execution_receipt', 'instruction_audit', 'data_acquisition_receipt', 'data_audit')"
-    - status: "'PASS' or 'FAIL'"
-    - verified_at: "ISO 8601 timestamp when gate was verified"
-
-  purpose: "Make AI execution verifiable: models cannot just say 'READ' — it becomes a checksum against repo version"
-
-###############################################################################
-# NON-NEGOTIABLE EXECUTION RULE
-###############################################################################
-non_negotiable_execution:
-  - "READ MANDATORY_READING_ORDER.md first (routes to this file)"
-  - "AUDIT data collection second (DATA_AUDIT before slides)"
-  - "BUILD slides third (following SLIDE_DETAIL_SPEC)"
-  - "RENDER and verify fourth (VISUAL_DESIGN_MANDATORY + RENDER_GATE)"
-  - "DELIVER last (PDF by default, PPTX if explicitly requested)"
-  - "⚠️ No artifact tool may be invoked before READ and AUDIT are complete"
-
-###############################################################################
-# AUTHORITY HIERARCHY — Single Source Per Domain (ZERO DUPLICATION)
-# Revised 2026-09-16: Clarified roles to distinguish between requirements, implementation, and content
-###############################################################################
-authority:
-  execution_and_contract:
-    file: "SYSTEM_CONTRACT.yaml (this file)"
-    owns: "Execution sequence, process, gates, required vs optional data, when to STOP, delivery format"
-    role: "Overarching orchestration and conflict resolution"
-
-  slide_structure_and_content:
-    file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md (🚨 CRITICAL)"
-    owns: "Which slides exist, their order, meeting-point symbols (①-⑭), slide titles, required content per slide, continuation rules"
-    rule: "This is the SLIDE BLUEPRINT. Other files may style but CANNOT rename, reorder, merge, or omit slides unless explicitly permitted here"
-    does_not_own: "Visual design, layout, typography (those belong to VISUAL_DESIGN_MANDATORY)"
-
-  accessibility_and_neurodiversity:
-    file: "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL)"
-    owns: "Quality requirements that design MUST meet: NPF principles, color semantics, symbol consistency, cognitive load, whitespace, large text, low visual density"
-    role: "BOUNDARY CONDITIONS — these are non-negotiable constraints that visual design must never violate"
-    wins_over: "Nothing, because it defines minimum quality, not implementation"
-    note: "Defines WHY and WHAT MUST BE, not HOW to build it"
-
-  visual_design_implementation:
-    file: "design/VISUAL_DESIGN_MANDATORY.md (AUTHORITATIVE)"
-    owns: "ENDA source of truth for exakt layout, form, typography, spacing, margins, block structure, PowerPoint implementation, rounded corners vs rectangles, color placement"
-    must_implement: "All ACCESSIBILITY_NEURODIVERSITY.md requirements"
-    rule: "If this conflicts with SLIDE_DETAIL_SPEC (content), VISUAL_DESIGN_MANDATORY wins on form; if conflicts with ACCESSIBILITY_NEURODIVERSITY, revise to meet accessibility first"
-    note: "Defines HOW to build within quality boundaries"
-
-  external_sources_registry:
-    file: "_memory/EXTERNAL_SOURCES.yaml (AUTHORITATIVE)"
-    owns: "Single source of truth for: all external data sources, source IDs, URLs, access methods, allowed/forbidden implementations, fallback chains, source classifications (REQUIRED/OPTIONAL/FALLBACK)"
-    rule: "This is the ONLY file that defines fallback order. DATA_ACQUISITION_CONTRACT references it, never duplicates"
-    note: "Owns the 'what' and 'in what order' for data acquisition fallbacks"
-
-  data_acquisition:
-    file: "data/DATA_ACQUISITION_CONTRACT.yaml"
-    owns: "EXACT canonical algorithm, pagination, filtering, dataset structure (mechanical, no decisions)"
-    references_not_owns: "fallback order (see EXTERNAL_SOURCES.yaml for authoritative fallback chains)"
-    note: "Specifies HOW to execute; EXTERNAL_SOURCES specifies WHAT sources exist and WHEN to try each"
-
-  data_collection:
-    file: "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
-    owns: "Validation, audit structure, completeness checking"
-
-  visual_reference:
-    file: "monday_meeting/design/TEMPLATE_REFERENCE.html"
-    owns: "Illustrations of the visual result only"
-    does_not_own: "Any rule, value, or constraint (reference only; NEVER authoritative)"
-
-  verification_and_quality:
-    file: "verification/RENDER_GATE_CHECKLIST.md"
-    owns: "Verification checkpoints before delivery"
-
-###############################################################################
-# REPOSITORY REF POLICY — Branch Inheritance (CRITICAL)
+# EXECUTION / BRANCH SNAPSHOT
 ###############################################################################
 repository_ref_policy:
   rule: >
-    The repository ref used to read the entry README is the authoritative
-    ref for the entire execution. ALL internal repository files must be read
-    from this same ref. Never silently switch to the default branch.
+    The ref used to read the entry README is authoritative for the entire
+    execution. Every internal context-repository file MUST be read from the same
+    branch/tag/SHA. Never silently switch to the default branch.
+  missing_internal_file: "STOP — do not fetch the missing file from another branch."
 
-  execution_ref:
-    source: "ref (branch/tag/SHA) of the README that started this execution"
-    applies_to: "Every internal file read during this execution"
-
-  requirements:
-    - "Read EVERY internal repository file from execution_ref (same branch as entry README)"
-    - "Never silently switch to repository default branch mid-execution"
-    - "External project data may come from registered sources as defined separately"
-    - "If a required internal file does not exist on execution_ref: STOP and report missing file"
-    - "Do NOT fetch the file from main/default as fallback"
-
-  fallback_behavior:
-    rule: >
-      If a required internal file does not exist on the execution_ref,
-      STOP immediately and report the missing file. Do not fetch from default.
-
-  example_correct_flow: >
-    cleanup/README.md → cleanup/SYSTEM_CONTRACT.yaml →
-    cleanup/SLIDE_DETAIL_SPEC.md → cleanup/VISUAL_DESIGN_MANDATORY.md → etc.
-    (All from cleanup branch, never jumping to main)
-
-  why_this_matters: >
-    This enables isolated testing and development on feature branches
-    without accidental fallback to main. cleanup branch must be testable
-    before merge to main.
+execution_lifecycle:
+  starts: "When the user requests a new presentation"
+  execution_id_required: true
+  snapshot_commit_sha_required: true
+  ends_on: ["DELIVER", "STOP", "RESTART"]
+  prior_execution_receipts_reusable: false
 
 ###############################################################################
-# PRESENTATION ANALYSIS LAYER — Recommendations Beyond Status Reporting
+# AUTHORITY HIERARCHY
 ###############################################################################
-analysis_and_recommendations:
-  principle: >
-    Presentation is NOT just status reporting (what happened this week).
-    It MUST also include analysis (what should we do next, in what order, how to parallelize).
+authority:
+  level_1_execution:
+    file: "SYSTEM_CONTRACT.yaml"
+    owns: "execution sequence, gates, STOP/CONTINUE, delivery rules"
 
-  required_analysis_elements:
-    priority_recommendation: >
-      MUST rank work by impact/risk/dependencies.
-      Not just "these 5 things are open" — "do THESE 3 first because [X] blocks [Y]".
+  level_2_accessibility:
+    file: "design/ACCESSIBILITY_NEURODIVERSITY.md"
+    owns: "WCAG 2.2 AA, contrast, color redundancy, readability, NPF boundaries"
+    absolute_rule: "No lower authority may weaken accessibility."
 
-      Example:
-        🔴 #67 Update API contract (FIRST — blocks Frontend + Native)
-        🟠 #72 Frontend state management (SECOND — depends on #67)
-        🟡 #84 Database optimization (THIRD — independent, lower priority)
+  level_3_global_visual:
+    file: "design/VISUAL_DESIGN_MANDATORY.md"
+    owns: "global theme, typography roles/ranges, layout limits, card grid behavior"
 
-    dependency_chain: >
-      MUST show which issues block others.
-      Format: #X blocks #Y blocks #Z
+  level_4_card_component:
+    file: "design/CARD_COMPONENT_STANDARD.md"
+    owns: "card internals, metadata sizes, timestamps, owner/review/merge layout, spacing"
 
-      Allows team to parallelize: "While you wait for #67 review,
-      start #84 (independent) + #73 (prep work for #72)".
+  level_5_provenance:
+    file: "design/PROVENANCE_AND_AI_LABELING.md"
+    owns: "schema facts vs team facts vs AI suggestions/analysis"
 
-    team_capacity_and_split: >
-      MUST recommend how to divide work across teams.
+  level_6_overflow:
+    file: "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
+    owns: "mechanical fit, responsive density, pagination, collision prevention"
 
-      Example:
-        ✅ Frontend: Take #72 (UI) + #84-prep (infra setup)
-        ✅ Backend: Take #67 (API contract) + #73 (database)
-        ✅ Native: Wait for #67 → then take cross-team integration
+  level_7_slide_content:
+    file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+    owns: "slide purpose, fields, ordering and content requirements"
+    does_not_own: "visual constants, card internals, provenance semantics"
 
-      This prevents: "Everyone works on the same thing" or "Idle capacity".
+  reference_only:
+    file: "monday_meeting/design/TEMPLATE_REFERENCE.html"
+    owns: "nothing authoritative"
 
-    estimated_completion_and_risk: >
-      MUST estimate when work can be DONE (not just started).
+  verification:
+    file: "verification/RENDER_GATE_CHECKLIST.md"
+    owns: "pre-delivery validation"
 
-      Example:
-        #67 API: 2 days (no blockers)
-        #72 Frontend: 3 days (after #67 done)
-        #84 Database: 2 days (parallel to #72)
-        → Full feature ready in 5 days (critical path)
-        → Risk: If API review takes 1+ day → 6+ days total
+  data_registry:
+    file: "../../_memory/EXTERNAL_SOURCES.yaml"
+    owns: "registered sources, URLs/IDs, source classifications and fallback order"
 
-    actionable_next_steps: >
-      MUST end presentation with explicit NEXT STEPS.
-
-      Example:
-        TODAY:
-          - Erik: Start #67 API contract (priority 1)
-          - Zaida: Prep #84 database infra (priority 3, independent)
-          - Björn: Review yesterday's PRs
-
-        AFTER #67 merged:
-          - Zaida: Start #72 state management
-          - Pär: Begin cross-team integration #89
-
-        By Friday:
-          - All work merged to Java-Development-Environment
-          - CTO demo ready
-
-  data_sources_required:
-    - github_issues: dependencies, blockers, linked issues
-    - github_prs: review status, which PRs block what
-    - team_roster: who can work on what
-    - commit_history: effort indicators (how long did similar work take)
-    - project_board: if available, status/iteration info
-
-  analysis_vs_reporting:
-    reporting: >
-      "Here's what happened this week"
-      ← Passive, backward-looking
-
-    analysis: >
-      "Here's what should happen next, in this order, split like this"
-      ← Active, forward-looking, actionable
-
-  recommendation_algorithm:
-    principle: >
-      Balance THREE goals simultaneously:
-      1. OWNERSHIP COHESION — keep related work with same person (domain expertise)
-      2. LOAD BALANCING — spread work evenly across team
-      3. ABSENCE HANDLING — adjust for planned/actual absence (sick leave, vacation)
-
-    step_1_identify_related_issues: >
-      Group issues by "area" (component, feature, code domain):
-        - Related issues: same component, same code area, same feature branch prefix
-        - Example: #72, #78, #89 all in "Frontend state management" → group together
-        - Example: #67, #73, #84 all in "Database/Backend" → group together
-
-    step_2_assign_current_owner: >
-      Who's already working in this area?
-        - If Zaida is doing #72 (state management) → assign next related issue #78 to Zaida
-        - If Erik is doing #67 (API) → assign #73 to Erik (same area)
-        - Rationale: Zaida knows state management already, reduces context-switch cost
-
-    step_3_calculate_working_capacity: >
-      For EACH team member:
-        base_capacity = 5 days per week
-        - Subtract planned absence (vacation on calendar?)
-        - Subtract current open work (if 3 issues open → estimate time)
-        - Result: "Zaida has 2 days capacity this week, Erik has 3 days"
-
-    step_4_balance_workload: >
-      Assign related issues to current owner IF:
-        ✅ Related work exists in their area
-        ✅ They have remaining capacity
-        ✅ It doesn't overload them relative to team average
-
-      ELSE (if overloaded):
-        - Pass related work to SECOND-best owner (someone with time + familiarity)
-        - Never leave someone idle while others are overloaded
-
-    step_5_absence_override: >
-      If someone is out next week:
-        - Their current work → handoff to similar-skilled colleague
-        - New assignments → redirect to available people
-        - Update capacity estimate: "Erik absent Mon-Tue, capacity = 3 days"
-
-    output_recommendation: >
-      Example output:
-        Zaida (capacity: 2 days): #72 (state mgmt), #78 (state mgmt) — cohesive area
-        Erik (capacity: 3 days): #67 (API), #73 (DB) — sequential, 2.5 days each
-        Björn (capacity: 1.5 days): #84 (infra) — independent work
-        Pär (capacity: ABSENT Mon-Tue, 2 days available Wed-Fri): #89 (cross-team, low urgency)
-
-    enforcement: >
-      Recommendation FAIL if:
-      ❌ Issues assigned with NO regard to related work (person gets random mix)
-      ❌ Workload highly uneven (person X has 5 days, person Y has 0.5 days)
-      ❌ Absence not accounted for (person assigned full week despite absence)
-      ❌ No explanation for why work was assigned (should show: cohesion + capacity reasoning)
-
----
+  data_acquisition:
+    file: "data/DATA_ACQUISITION_CONTRACT.yaml"
+    owns: "mechanical acquisition algorithm, pagination and filtering"
 
 ###############################################################################
-# RISK ANALYSIS & BLOCKER DETECTION — Branch Coverage (CRITICAL)
-###############################################################################
-risk_analysis_branch_coverage:
-  rule: >
-    Risk analysis (slide ②, blockers, capacity, dependencies, estimates)
-    MUST examine ALL team collection branches, not just develop.
-
-    Analyzing only develop misses:
-    - Work ready-to-merge but waiting (in Java-Development-Environment)
-    - Blocked PRs on team branches (not on develop yet)
-    - Capacity/staffing of team collection points
-    - Dependencies between teams (visible on shared branches)
-
-  team_collection_branches: >
-    Known collection points that MUST be scanned:
-    - develop (primary merge target)
-    - Java-Development-Environment (Backend collection point)
-    - [Ask team if other collection branches exist]
-
-    Why: Developers merge feature→collection branch first.
-         They may wait days/weeks before collection→develop.
-         This visibility is critical for risk analysis.
-
-  what_to_look_for_per_collection_branch:
-    - "Open PRs waiting for review (blocking point)"
-    - "Commits merged to collection branch but not develop yet (ready to ship?)"
-    - "Who's working on what (capacity/staffing)"
-    - "Dependencies between work items (one blocks another)"
-    - "Estimated vs actual progress (burndown/velocity)"
-    - "Team capacity (how many people, how many open issues)"
-
-  enforcement: >
-    Data acquisition: repository_branches_and_commits dataset MUST include
-    all collection branches (not just develop).
-
-    Risk analysis: When analyzing blockers/capacity/estimates,
-    explicitly report which branches were scanned.
-    Footer: "Scanned: develop, Java-Development-Environment | Last scan: [TIMESTAMP]"
-
-  failure_condition: >
-    ❌ FAIL if:
-    - Only develop branch was analyzed (incomplete risk picture)
-    - Team collection branches were not scanned
-    - Report doesn't list which branches were examined
-
-  example_correct_analysis: >
-    ✅ develop: 5 open PRs, 2 merged this week
-    ✅ Java-Development-Environment: 8 open PRs (waiting 3+ days), 15 commits this week
-    → Risk: Backend queue is growing, may delay next develop merge
-    → Action: Prioritize PR reviews on Java-Development-Environment branch
-
----
-
-###############################################################################
-# GITHUB ENTITY IDENTITY — Data Provenance (CRITICAL)
-###############################################################################
-github_entity_identity:
-  rule: >
-    Never synthesize, infer, translate or invent a GitHub issue/PR number.
-    If work exists but the issue is not verified against GitHub, say so explicitly.
-
-  issue_id_may_be_displayed_only_if:
-    - "The issue object was retrieved from an ALLOWED GitHub source"
-    - "repository_full_name matches the project repository"
-    - "issue_number comes directly from that object (not inferred)"
-
-  pr_id_may_be_displayed_only_if:
-    - "The PR object was retrieved from an ALLOWED GitHub source"
-    - "PR number comes directly from that object (not inferred)"
-
-  forbidden:
-    - "Treating a PR number as an issue number"
-    - "Inferring issue number from branch name unless verified against GitHub"
-    - "Creating an issue ID because the described work probably should have one"
-    - "Using example IDs from documentation as real project data"
-    - "Guessing a GitHub entity exists when you only have a work description"
-
-  when_work_exists_but_issue_is_not_verified:
-    display_instead_of_number:
-      - "Behöver issue"
-      - "Issue-ID ej verifierat"
-      - "Arbetsområde — issue behöver skapas/verifieras"
-      - "Verifieras — [issue status]"
-
-  why_this_matters: >
-    AI can detect that "this work should probably have an issue", but must never
-    invent "#6" or any number without verified GitHub provenance.
-    This prevents the exact problem: fake issue numbers in presentations.
-
-###############################################################################
-# CONFLICT RESOLUTION
-###############################################################################
-conflict_resolution:
-  principle: >
-    Domain separation prevents most conflicts. When conflicts occur despite separation, follow this priority:
-
-    LEVEL 1 — SYSTEM_CONTRACT.yaml (orchestration and process)
-      → Always wins on execution sequence, gates, when to STOP
-
-    LEVEL 2 — ACCESSIBILITY_NEURODIVERSITY.md (quality boundaries)
-      → Wins on any quality/accessibility constraint (cannot be overridden by layout choices)
-
-    LEVEL 3 — VISUAL_DESIGN_MANDATORY.md (implementation authority)
-      → Wins on HOW to build (form, layout, typography, spacing)
-      → Wins over SLIDE_DETAIL_SPEC on visual appearance
-      → MUST NOT violate Level 2 boundaries
-
-    LEVEL 4 — SLIDE_DETAIL_SPEC.md (content blueprint)
-      → Wins on WHAT content exists and WHERE it goes
-      → MUST NOT be renamed, reordered, merged, or omitted by visual design
-      → Visual design styles content according to this structure
-
-    LEVEL 5 — TEMPLATE_REFERENCE.html (inspiration only)
-      → Never wins any conflict; illustrates possibilities only
-
-  resolution_algorithm: >
-    If File A and File B conflict:
-    1. Check both are in same domain (e.g., layout). If not, conflict is false (domains separate).
-    2. If both claim same domain, map to Authority Hierarchy level.
-    3. Higher level always wins.
-    4. If same level, STOP and report: "Authority conflict requires clarification at [LEVEL]"
-
-###############################################################################
-# REPOSITORY MAINTENANCE & DRIFT PREVENTION
-###############################################################################
-maintenance_policy:
-  problem: >
-    Over time, context repos can accumulate conflicting files (VISUAL_DESIGN_MANDATORY.md
-    vs PRESENTATION_STYLE.md, DATA_ACQUISITION_CONTRACT.yaml vs DATA_SOURCES_NEW.yaml, etc).
-    This breaks Single Source of Truth and causes AI to follow contradictory rules.
-
-  solution: >
-    Every 4 weeks (or before major changes):
-    1. Run FILE_CONSISTENCY_AUDIT (see below)
-    2. Delete deprecated/conflicting files
-    3. Consolidate into tier-1 files
-    4. Update ARCHITECTURE.md directory structure if needed
-
-  frequency: "Every 4 weeks OR before presentation system changes"
-  owner: "Team lead / AI architect"
-  cost: "~30 minutes per audit"
-
-file_consistency_audit:
-  procedure: >
-    1. LIST all files in _ai_guides/presentations/ recursively
-    2. FOR EACH file:
-       a. Is it mentioned in ARCHITECTURE.md?
-       b. Is it a tier-1 or tier-2 file?
-       c. Does it conflict with any tier-1 file?
-       d. Is it deprecated (contains _v2, _OLD, _UPDATED)?
-    3. REPORT conflicts and deprecated files
-    4. CONSOLIDATE redundant content into tier-1 files
-    5. DELETE deprecated files
-    6. COMMIT: "chore: audit — consolidate conflicting files"
-
-  exit_criteria: >
-    ✅ PASS if:
-    - Every file appears in ARCHITECTURE.md
-    - No two files own the same responsibility
-    - No deprecated files exist
-    - No *_v2 / *_OLD / *_UPDATED files exist
-
-    ❌ FAIL if:
-    - Conflicting rules found in different files
-    - Tier-1 files contradict each other
-    - Deprecated files not removed
-
-deprecation_policy:
-  rule: >
-    If a file is superseded by another:
-    1. Add deprecation marker at top: "🚨 DEPRECATED — see [NEW_FILE] instead"
-    2. Copy unique content to new file if not already there
-    3. Keep for 2 weeks (grace period for context caching)
-    4. Delete permanently after 2 weeks
-    5. Never keep alternative versions (*_v2, *_UPDATED, etc)
-
-  grace_period: "2 weeks maximum"
-  permanent_deletion: "After grace period, delete immediately"
-  never_keep: "Alternative versions (_v2, _OLD, _BACKUP, _TMP)"
-
-conflict_detection_rules:
-  automatic_fail_if: >
-    ✅ File A and File B claim the same responsibility (per ARCHITECTURE.md)
-    ✅ Rules in File A contradict rules in File B
-    ✅ Different files specify different values for the same constant (color, font size, etc)
-    ✅ SLIDE_DETAIL_SPEC.md contains visual rules (should be in VISUAL_DESIGN_MANDATORY.md)
-    ✅ DATA_ACQUISITION_CONTRACT.yaml references are inconsistent across files
-
-  detection_checklist: >
-    Before presentation generation:
-    [ ] Grep all files for color values — ensure consistency (no duplicate hex codes)
-    [ ] Grep all files for font sizes — ensure consistency (no duplicate pt values)
-    [ ] Grep all files for rule keywords — catch subtle contradictions
-    [ ] Check SYSTEM_CONTRACT.yaml authority hierarchy — does it match file content?
-
-context_bloat_prevention:
-  principle: >
-    Context repo should enable presentation generation, not document all design history.
-    Deleted files stay in git history; they don't need to exist in working tree.
-
-  maximum_files_allowed: "~40 total instruction files"
-  current_count: "~35 (as of 2026-09-16)"
-  warning_threshold: "35 files → time for audit"
-  critical_threshold: "45+ files → must consolidate immediately"
-
-  if_exceeded: >
-    1. Run FILE_CONSISTENCY_AUDIT
-    2. Delete all deprecated files
-    3. Consolidate similar files into one
-    4. Raise issue: "Context bloat — [N] files, consolidation needed"
-
-version_control_for_instructions:
-  principle: >
-    Instruction files are versioned through git. We don't need version numbers in filenames.
-    If old version is needed, check git history. If current version is wrong, fix it, don't create v2.
-
-  never_use: "VISUAL_DESIGN_v2.md, DATA_ACQUISITION_v1_5.md, OLD_ARCHITECTURE.md"
-  instead_use: "Edit the file, commit the change, check git history if needed"
-
-  git_workflow: >
-    1. Find problem with VISUAL_DESIGN_MANDATORY.md
-    2. Fix it directly in the file
-    3. Commit: "fix: VISUAL_DESIGN — Backend color now hot pink"
-    4. If you need to see old version: git show HEAD~1:_ai_guides/.../VISUAL_DESIGN_MANDATORY.md
-    5. Never create VISUAL_DESIGN_MANDATORY_OLD.md
-
-###############################################################################
-# EXECUTION RECEIPT — MANDATORY GATE
+# MANDATORY READING
 ###############################################################################
 execution_receipt:
-  required_before_artifact_generation: true
-
-  prerequisite: >
-    In THIS execution (this conversation/run), every file below must be READ.
-    Previous conversation context, saved memory, or earlier runs do NOT count.
-    The AI must confirm reading each file in THIS execution.
-
-  must_read_and_confirm:
-    - "README.md or _ai_guides/presentations/README.md (navigation)"
-    - "MANDATORY_READING_ORDER.md (entry point)"
-    - "SYSTEM_CONTRACT.yaml (this file — authority + execution sequence)"
-    - "../../_memory/EXTERNAL_SOURCES.yaml (authoritative registry of ALL external sources — MACHINE-READABLE)"
-    - "../../_memory/EXTERNAL_SOURCES.md (human-friendly introduction to registry)"
-    - "data/DATA_SOURCES.md (WHERE to find data)"
-    - "data/DATA_ACQUISITION_CONTRACT.yaml (🚨 CRITICAL — EXACT acquisition algorithm, no interpretation)"
-    - "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 CRITICAL — NPF rules override all others)"
-    - "design/VISUAL_DESIGN_MANDATORY.md (CANONICAL LAYOUT + typography + spacing)"
-    - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content per slide)"
-    - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only)"
-    - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (validation and structuring)"
-    - "verification/RENDER_GATE_CHECKLIST.md (verification gates)"
-
-  rule: >
-    STOP if any file above has not been read in THIS execution.
-    Report: "Mandatory presentation instructions not fully read.
-    Must read [FILES] before generation can begin."
-
-  gate_status: "MUST PASS BEFORE PROCEEDING TO ARTIFACT_GATE"
+  required_before_build: true
+  must_read_same_execution:
+    - "README.md or presentations/README.md"
+    - "MANDATORY_READING_ORDER.md"
+    - "SYSTEM_CONTRACT.yaml"
+    - "../../_memory/EXTERNAL_SOURCES.yaml"
+    - "../../_memory/EXTERNAL_SOURCES.md"
+    - "data/DATA_SOURCES.md"
+    - "data/DATA_ACQUISITION_CONTRACT.yaml"
+    - "design/ACCESSIBILITY_NEURODIVERSITY.md"
+    - "design/VISUAL_DESIGN_MANDATORY.md"
+    - "design/CARD_COMPONENT_STANDARD.md"
+    - "design/PROVENANCE_AND_AI_LABELING.md"
+    - "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
+    - "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+    - "monday_meeting/design/TEMPLATE_REFERENCE.html"
+    - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
+    - "verification/RENDER_GATE_CHECKLIST.md"
+  missing_file_action: "STOP"
 
 ###############################################################################
-  step_3:
-    name: "SLIDE CONTENT VERIFICATION — Every slide has required content"
-    prerequisite: "step_2b (DATA_ACQUISITION_RECEIPT) must be complete"
-
-    rule: >
-      For EACH slide (①-⑭):
-      - Read SLIDE_DETAIL_SPEC.md for that meeting point
-      - Verify slide contains ALL required content sections
-      - Verify slide title format: ✏️ [MEETING_POINT] [TITLE]
-      - Verify no content is missing or fabricated
-
-      Missing content = INCOMPLETE slide = STOP
-
-    attestation_required: >
-      "Every slide (①-⑭) contains exactly the content specified in SLIDE_DETAIL_SPEC.md.
-       No content is missing, invented, or hallucinated."
-
-  step_4:
-    name: "VISUAL DESIGN VERIFICATION — Every slide meets design standards"
-    prerequisite: "step_3 (SLIDE CONTENT VERIFICATION) must pass"
-
-    rule: >
-      For EACH slide (①-⑭):
-      - Typography: 32pt headers, 20pt body, 18pt secondary (per VISUAL_DESIGN_MANDATORY.md)
-      - Colors: MUST match team colors (Frontend=Teal, Backend=Pink, Native=Purple)
-      - Layout: CANONICAL LAYOUT per VISUAL_DESIGN_MANDATORY.md
-      - Text alignment: TEAM_DETAIL_CARDS left-aligned (NOT centered)
-      - Spacing: 20px between cards, 16-20px padding internal
-      - Rounded corners: 12-18px (soft corners, never hard rectangles)
-
-      Visual deviation = design violation = STOP
-
-    attestation_required: >
-      "Every slide meets VISUAL_DESIGN_MANDATORY.md standards exactly.
-       Typography, colors, layout, spacing, and corner radius are correct.
-       No visual deviations or shortcuts taken."
-
-# ARTIFACT GATES — TWO CHECKPOINTS
-###############################################################################
-artifact_gates:
-  build_gate:
-    name: "May build internal PPTX?"
-
-    prerequisite_invariant: >
-      artifact handoff state MUST NOT be used as evidence that execution_receipt
-      or any other gate has passed. Platform handoff is a preflight operation only.
-
-      Handoff success does NOT permit building, rendering, or collecting project data.
-      All gates below MUST be independently verified before any artifact creation.
-
-    requires:
-      - "execution_receipt is COMPLETE (all mandatory files read in this execution)"
-      - "data_acquisition_receipt is COMPLETE (every dataset source attempted, outcomes recorded)"
-      - "data_audit is COMPLETE (data collection verified, checksums passed)"
-
-    rule: >
-      AI may build internal PPTX only after ALL THREE gates pass independently.
-      This PPTX is for verification and rendering only — not for delivery.
-
-      A successful platform handoff does NOT satisfy any of these gates.
-
-    failure_action: "STOP. Report which gate failed: execution_receipt, data_acquisition_receipt, or data_audit"
-
-  delivery_gate:
-    name: "May deliver PDF/PPTX to user?"
-    requires:
-      - "build_gate is COMPLETE"
-      - "internal PPTX has been rendered and visually verified (RENDER_GATE_CHECKLIST passed)"
-    rule: >
-      AI may export and deliver PDF (default) or PPTX (if requested) only after BOTH pass.
-      Delivery formats:
-      - PDF: default (read-only, safe for review)
-      - PPTX: only if user explicitly requests "editable", "PowerPoint", "redigerbar", etc
-
-###############################################################################
-# ARTIFACT CREATION DISTINCTION — What is allowed BEFORE build_gate passes
-###############################################################################
-artifact_creation_distinction:
-  rule: >
-    No presentation FILE, PPTX, PDF, image, or rendered slide may be CREATED before build_gate passes.
-
-  permitted_before_build_gate:
-    - "Invoking artifact tool itself (platform-required handoff call)"
-    - "Preflight validation checks (no artifact created)"
-    - "Internal verification passes (checksums, schemas, completeness)"
-    - "Receipt documentation (writing EXECUTION_RECEIPT_MACHINE content)"
-
-  forbidden_before_build_gate:
-    - "Creating PPTX file (internal or for delivery)"
-    - "Creating PDF file (any version)"
-    - "Creating PNG/JPG screenshot or image"
-    - "Rendering HTML slide preview"
-    - "Creating any artifact that can be viewed or delivered to user"
-
-  purpose: >
-    Artifact creation proof: prevent false positives where AI claims success but no file was built.
-    Checkpoint at build_gate ensures data integrity before any visual rendering begins.
-
-  failure_action: >
-    STOP. Report the relevant artifact/build gate failure and do not create an artifact.
-
-# Note: Authority hierarchy is defined once near the top of this file.
-# Do not duplicate it elsewhere. This section enforces the gates only.
-
-###############################################################################
-# EXTERNAL SOURCES POLICY — ALLOWLIST ONLY (TVINGANDE)
+# ALLOWED SOURCES / TOOL ROUTING
 ###############################################################################
 external_sources_policy:
   mode: "ALLOWLIST_ONLY"
+  registry: "../../_memory/EXTERNAL_SOURCES.yaml"
+  rules:
+    - "Use only registered project sources and their registered fallback chain."
+    - "GitHub Connector/API is preferred for GitHub project data."
+    - "Google Drive Connector is used only for registered Docs/Sheets sources."
+    - "Generic web search is forbidden for project data."
+    - "Shell network commands such as git clone/fetch, curl and wget are forbidden."
+    - "If all registered fallbacks fail, mark the dataset INCOMPLETE; do not improvise a source."
 
+###############################################################################
+# DATA INTEGRITY
+###############################################################################
+data_integrity:
+  rules:
+    - "Never invent issue/PR numbers."
+    - "Never treat a PR number as an issue number."
+    - "Never infer a GitHub entity solely from a branch name without verification."
+    - "Assignee/reviewer/merger/author identities require source evidence."
+    - "Timestamps must come from source data."
+    - "Code/product contribution claims must be grounded in issue/PR/diff/commit evidence."
+
+  unknown_work_item_wording:
+    - "Behöver issue"
+    - "Issue-ID ej verifierat"
+    - "Arbetsområde — issue behöver skapas/verifieras"
+
+###############################################################################
+# PRESENTATION MODE / CAPACITY
+###############################################################################
+presentation_mode:
+  default: "pre_meeting"
+
+  pre_meeting:
+    capacity: "optional"
+    rule: "Never estimate hours. Use verified documented constraints only."
+    if_missing: "Use approved placeholder or omit capacity slide according to slide/content rules."
+
+  post_meeting:
+    capacity: "required"
+    if_missing: "STOP"
+
+sensitive_availability:
   rule: >
-    Presentation generation uses ONLY registered external sources.
-    NO general web search. NO unregistered websites.
-    If data cannot be found in allowed sources, report as unavailable
-    and follow documented fallback. Never substitute an arbitrary web source.
+    Personal/health reasons are generalized to planning impact such as
+    "limited availability". Do not expose sensitive reasons in the deck.
+  inference_forbidden: "Do not infer percentage/hours/throughput impact unless source states it."
 
-  allowed_sources:
-    primary_repositories:
-      - "github.com/chas-challenge-2026/avanza-team1 (project code + issues + PRs + Project Board)"
-      - "github.com/zaida-wiss/context_enginering (this context repository)"
+###############################################################################
+# PROVENANCE / AI ANALYSIS
+###############################################################################
+provenance:
+  source_classes:
+    school_schedule: "📅 Schemafakta"
+    verified_team_input: "✅ Mötesprotokoll / approved team label"
+    ai_suggestion: "? AI-förslag"
+    ai_analysis: "? AI-analys"
+    unclear: "⚠ Källa behöver verifieras"
 
-    project_documents:
-      - "Google Docs/Sheets registered in _memory/EXTERNAL_SOURCES.yaml (authoritative)"
-      - "User-uploaded project files"
+  global_rule: >
+    Whenever the model adds interpretation, prioritization, recommendation,
+    suggested next step, suggested sprint action, suggested question, risk
+    interpretation or dependency recommendation that is not explicitly stated in
+    a registered source, label it as AI-derived.
 
-    internal_sources:
-      - "All YAML/Markdown files in _ai_guides/presentations/ (authoritative)"
-      - "TEAM_ROSTER.md (team identity verification)"
-      - "TEMPLATE_REFERENCE.html (visual reference — read, don't download)"
-      - "_memory/EXTERNAL_SOURCES.yaml (authoritative registry of URLs, IDs, access methods)"
+  mixed_card_rule: >
+    A card may mix fact and AI reasoning, but each block must retain its own
+    provenance label.
 
-  access_methods:
-    - "See EXTERNAL_SOURCES.yaml for complete list of allowed access methods per source"
-    - "✅ GitHub Connector: Authorized connector integration (preferred)"
-    - "✅ GitHub API: REST API (allowed for merged_prs, open_issues)"
-    - "✅ GitHub web: Direct web access (fallback only)"
-    - "✅ Google Drive Connector: For Sheets/Docs (if authorized)"
-    - "🚫 Raw GitHub (raw.githubusercontent.com): FORBIDDEN"
-    - "🚫 CSV/Excel export without Google Connector: FORBIDDEN"
-    - "🚫 Web search: FORBIDDEN"
-    - "❌ git clone (repositories cannot be cloned)"
-    - "❌ Web download (no downloading files from internet)"
+  color_rule: >
+    Color never replaces provenance icon + text. Red is reserved for
+    blocker/critical semantics and is not a fact color.
+
+###############################################################################
+# ANALYSIS LAYER — INFORMATIVE, NOT FALSELY CONFIRMED
+###############################################################################
+analysis_and_recommendations:
+  purpose: >
+    The deck may help the team reason about priorities, dependencies, risks and
+    next steps, but derived analysis must remain visibly distinct from source facts.
+
+  may_include:
+    - "AI priority suggestions based on verified dependencies"
+    - "AI dependency interpretation grounded in issue/PR evidence"
+    - "AI risk observations grounded in verified data"
+    - "AI next-step suggestions"
+    - "AI-suggested PL questions"
+
+  must_not_do:
+    - "Present an AI recommendation as an already-decided team action"
+    - "Invent capacity or completion estimates"
+    - "Invent deadlines, ownership or meeting purpose"
+    - "State inferred consequences as source facts"
+
+  estimates:
+    rule: >
+      Do not estimate completion time, hours or capacity unless the value is
+      explicitly available in registered source data and the slide specification
+      permits its use. Otherwise label qualitative AI analysis without numeric estimates.
+
+###############################################################################
+# RESPONSIVE VISUAL SYSTEM
+###############################################################################
+responsive_visual_system:
+  absolute_accessibility: "WCAG 2.2 AA"
+
+  card_style:
+    surface: "dark glass-like card"
+    team_accent: "narrow left accent only"
+    full_team_outline: false
+    content_driven_height: true
+
+  typography:
+    source_of_truth: "design/CARD_COMPONENT_STANDARD.md"
+    automatic_shrink_to_fit: false
+    rule: >
+      Start at preferred sizes; step down deliberately only within the role's
+      allowed range. Never go below component minimums.
+
+  fit_order:
+    - "natural wrapping"
+    - "deliberate typography reduction within permitted range"
+    - "canonical compact spacing"
+    - "card grows/reflows"
+    - "reduce grid density"
+    - "continuation slide"
 
   forbidden:
-    - "General web search (Google, Bing, DuckDuckGo, Brave, web search engines)"
-    - "Git clone of GitHub repositories (requires credentials, often fails)"
-    - "Downloading files from web (design specs, templates, examples, tutorials)"
-    - "Unregistered websites, blogs, forums, tutorials"
-    - "GitHub URLs NOT in EXTERNAL_SOURCES.yaml"
-    - "Stack Overflow, Medium, dev.to, GitHub Gists, Notion, Figma, external docs"
-    - "External design guidance or examples (use TEMPLATE_REFERENCE.html in repo)"
-    - "AI knowledge cutoff or model training data as source (use GitHub API instead)"
-    - "Arbitrary web sources as fallback or substitute for unavailable data"
-    - "Cloning or downloading project repositories (fetch via API/web links only)"
-
-  verification:
-    - "If using external URL, verify it appears in _memory/EXTERNAL_SOURCES.yaml (authoritative registry)"
-    - "If URL is not listed, DO NOT use it — report source as unavailable instead"
+    - "text clipping"
+    - "text/card overlap"
+    - "hidden required content"
+    - "fonts below component minimum"
+    - "contrast below WCAG AA"
+    - "color-only meaning"
+    - "automatic shrink-to-fit"
+    - "removing provenance labels to save space"
 
 ###############################################################################
-# TOOL ROUTING GATE — Mechanical tool selection (MANDATORY)
-###############################################################################
-tool_routing_gate:
-  purpose: "Prevent tool improvisation. For each source, use ONLY registered implementations."
-
-  rule: >
-    Before calling ANY tool to fetch data:
-    1. Identify source_id from EXTERNAL_SOURCES.yaml
-    2. Identify canonical access_method (e.g., "github_rest_api")
-    3. Identify permitted_implementations for that access_method
-    4. Call ONLY a tool from permitted_implementations
-    5. If no permitted tool is available: record TOOL_UNAVAILABLE, continue to next fallback
-    6. If all fallbacks fail: STOP and report INCOMPLETE
-
-  forbidden_tool_substitutions:
-    - "bash_git (git ls-remote, git clone, git fetch)"
-    - "shell_network_tools (curl, wget, netcat — forbidden per MANDATORY_READING_ORDER.md)"
-    - "generic_web_search (Google, Bing, DuckDuckGo, Brave, search engines)"
-    - "web_search_fallback (when GitHub API fails, do NOT open a search engine)"
-    - "arbitrary_url_guessing (improvise URLs not in EXTERNAL_SOURCES.yaml)"
-
-  critical_distinction: >
-    "GitHub web" (registered fallback for a specific resource) ≠ "web search" (forbidden).
-    GitHub web means: direct navigation to https://github.com/chas-challenge-2026/avanza-team1/pulls
-    NOT: "search the web for avanza team PRs"
-
-  github_rest_api:
-    permitted_implementations:
-      - "github_connector (preferred)"
-      - "http_fetch"
-      - "web_fetch"
-    forbidden_implementations:
-      - "bash_git (shell git command)"
-      - "web_search"
-    note: "Must match EXTERNAL_SOURCES.yaml allowed_implementations for github_rest_api"
-
-  google_sheets:
-    permitted_implementations:
-      - "google_drive_connector"
-    forbidden_implementations:
-      - "csv_export (without connector)"
-      - "web_search"
-      - "url_download"
-
-  github_web_ui:
-    permitted_implementations:
-      - "web_navigation (direct browser-like navigation to github.com URLs)"
-      - "html_fetch (to registered GitHub web URLs only)"
-    forbidden_implementations:
-      - "web_search (do NOT search for the page)"
-      - "general_web_access (only github.com URLs)"
-
-  failure_action: >
-    If a permitted tool is unavailable: record in DATA_ACQUISITION_RECEIPT.
-    Do NOT invent a new tool or access method.
-    Do NOT fallback to web search or generic HTTP.
-    Continue only to the next REGISTERED fallback source.
-
-###############################################################################
-# EXECUTION SEQUENCE — Följ dessa steg i exakt denna ordning
+# EXECUTION SEQUENCE
 ###############################################################################
 execution_sequence:
   step_1:
-    name: "Read Mandatory Files — IN THIS EXACT ORDER"
-    files:
-      - "MANDATORY_READING_ORDER.md (entry point)"
-      - "../../_memory/EXTERNAL_SOURCES.yaml (authoritative registry — MACHINE-READABLE)"
-      - "../../_memory/EXTERNAL_SOURCES.md (human-friendly introduction — READ FIRST for understanding)"
-      - "data/DATA_SOURCES.md (WHERE data comes from)"
-      - "data/DATA_ACQUISITION_CONTRACT.yaml (🚨 MANDATORY — EXACT canonical algorithm, no fallback list)"
-      - "design/ACCESSIBILITY_NEURODIVERSITY.md (🚨 MANDATORY — NPF rules override all design conflicts)"
-      - "design/VISUAL_DESIGN_MANDATORY.md (authoritative implementation of NPF constraints)"
-      - "monday_meeting/design/SLIDE_DETAIL_SPEC.md (exact content for each slide)"
-      - "monday_meeting/design/TEMPLATE_REFERENCE.html (visual reference only — not a rule source)"
-      - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md (validation and audit structure)"
-      - "verification/RENDER_GATE_CHECKLIST.md (before rendering: verify data completeness + visual rendering)"
-    time_estimate_minutes: 30
-    rule: >
-      Read EXTERNAL_SOURCES.md first for understanding, then use EXTERNAL_SOURCES.yaml (authoritative) for actual URLs and configuration.
-      DATA_SOURCES.md defines WHERE sources exist. DATA_ACQUISITION_CONTRACT.yaml defines HOW data is acquired exactly.
-      DATA_COLLECTION_MANDATORY.md defines HOW completeness is validated and structured.
-      VISUAL_DESIGN_MANDATORY and RENDER_GATE_CHECKLIST enforce CANONICAL LAYOUT and render verification.
-      All instructions are POSITIVE (describe what to do) — never "don't" but always "use X instead".
-
-  step_1b:
-    name: "INSTRUCTION AUDIT — Verify Design Rules Loaded"
-    prerequisite: "MUST pass before proceeding to data collection"
-
-    must_confirm_true:
-      accessibility_neurodiversity_read: "ACCESSIBILITY_NEURODIVERSITY.md was read"
-      visual_design_loaded: "VISUAL_DESIGN_MANDATORY.md rules loaded (32pt slide titles, CANONICAL LAYOUT)"
-      slide_detail_spec_loaded: "SLIDE_DETAIL_SPEC.md loaded (exact content per slide)"
-      template_is_reference_only: "TEMPLATE_REFERENCE.html understood as reference only (not rule source)"
-      npf_rules_win: "NPF rules from ACCESSIBILITY_NEURODIVERSITY.md override all other design rules"
-
-    design_constants_must_be:
-      slide_title_size_pt: 32
-      canonical_layout_blocks: "Exactly 1 header + 1 message + 1–3 fullwidth blocks per slide"
-      status_encoding_required: "Symbol + Color + Text (all three always together)"
-      max_line_length_chars: 70
-      max_content_blocks_per_slide: 3
-      corner_radius_px_min: 12
-      corner_radius_px_max: 18
-      block_spacing_px: 20
-      block_padding_px: 16
-      line_height: 1.8
-
-    rule: >
-      STOP if any design constant differs from values above.
-      This audit prevents different AI models from making different design choices.
-      It is the gate that ensures "any AI model gets same result."
-
-    failure_action: >
-      STOP and report which design constant was incorrect.
-      Do not proceed to data collection until values match exactly.
-
-  step_1c:
-    name: "ALLOWLIST GATE — Verify External Source Policy Understood"
-    prerequisite: "MUST pass before proceeding to data collection (step_2)"
-
-    must_confirm_true:
-      external_sources_policy_read: "external_sources_policy section in SYSTEM_CONTRACT.yaml was read"
-      mandatory_reading_order_read: "MANDATORY_READING_ORDER.md was read (ALLOWED vs FORBIDDEN sections)"
-      external_sources_yaml_read: "_memory/EXTERNAL_SOURCES.yaml was read (authoritative registry of sources)"
-
-    must_understand_forbidden:
-      - "❌ General web search (Google, Bing, DuckDuckGo, etc.)"
-      - "❌ git clone of GitHub repositories"
-      - "❌ Downloading external specs, templates, tutorials"
-      - "❌ Unregistered websites (blogs, forums, Stack Overflow, Medium, dev.to)"
-      - "❌ Arbitrary web sources as fallback"
-
-    must_understand_allowed:
-      - "✅ Read local files from repository"
-      - "✅ GitHub web (see EXTERNAL_SOURCES.yaml for URLs)"
-      - "✅ GitHub API (see EXTERNAL_SOURCES.yaml for URLs)"
-      - "✅ Registered external sources only (see _memory/EXTERNAL_SOURCES.yaml — authoritative registry)"
-      - "✅ Documented fallback chain (GitHub → Sheets → Board → Issues)"
-
-    critical_checkpoint: >
-      Before proceeding to data collection (step_2), confirm:
-      1. Web search is FORBIDDEN (not a fallback option)
-      2. Only registered sources from _memory/EXTERNAL_SOURCES.yaml may be used
-      3. GitHub API/web and fallback chain are the ONLY data acquisition methods
-      4. If a source is unavailable, follow documented fallback order (never improvise)
-      5. If ALL fallbacks fail, mark dataset INCOMPLETE (do not substitute arbitrary sources)
-
-    rule: >
-      This gate prevents AI models from bypassing the allowlist by "searching the web"
-      when data sources are unavailable. Web search is not a fallback.
-      Incomplete data is reported; presentations do not render with substituted sources.
-
-    failure_action: >
-      STOP. Report which external source policy rule was misunderstood.
-      Do not proceed to data collection until all checkpoints are confirmed.
-
-  step_1d:
-    name: "DATA PRECHECK — Verify Mandatory Project Inputs (with presentation_mode)"
-    prerequisite: "MUST pass before proceeding to GitHub data collection (step_2)"
-
-    objective: >
-      Validate that all MANDATORY project inputs are complete and correctly structured
-      BEFORE expensive GitHub API collection begins. This gate prevents long data collection
-      followed by a STOP due to missing required values.
-
-      Presentation can run in TWO modes:
-      - pre_meeting: Mötesunderlag (before sprint planning) — capacity is optional, shows placeholder
-      - post_meeting: Mötesprotokoll (after sprint planning) — capacity is required, shows actual values
-
-    presentation_mode:
-      rule: "User specifies mode when requesting presentation. Default: pre_meeting"
-      pre_meeting:
-        description: "Meeting preparation document (before sprint planning occurs)"
-        capacity_requirement: "OPTIONAL — show placeholder if missing"
-        placeholder_text: "○ Kapacitet fastställs under mötet"
-        proceed_on_missing_capacity: "YES (not a blocker)"
-        check_previous_week_for: "Absence/capacity constraints that affect THIS week's planning"
-        previous_week_source: "Last week's meeting protocol (mötesprotokollet)"
-        analysis_rule: >
-          IF previous week's protocol mentions documented constraints:
-            - SHOW at team level: what is documented (e.g., "Backend: Henrik absent Thu-Fri")
-            - SHOW consequence ONLY if explicitly in source
-            - Include in point ⑧ Kapacitet or as separate note
-            - Generalize private/health reasons to "limited availability"
-          ELSE:
-            - Omit point ⑧ Kapacitet entirely (no placeholder needed)
-      post_meeting:
-        description: "Meeting protocol/results (after sprint planning)"
-        capacity_requirement: "REQUIRED — stop if missing"
-        placeholder_text: "N/A (must have actual values)"
-        proceed_on_missing_capacity: "NO (must stop, wait for meeting data)"
-
-    for_pre_meeting_mode:
-      action: "Read LAST WEEK's meeting protocol (GOOGLE_MEETING_PROTOCOL, previous week) for:"
-      check_for: "Documented constraints that may affect this week's planning"
-
-      extraction_rules: >
-        PRE-meeting shows ONLY documented planning constraints.
-        Show consequence ONLY if explicitly stated in source.
-        Personal/health reasons → generalize to "limited availability".
-
-      three_levels_of_source:
-        level_1_fact_only:
-          source: "Training scheduled Wed"
-          show_in_presentation: "Training Wednesday"
-          explanation: "Directly echo the documented fact"
-
-        level_2_explicit_consequence:
-          source: "Training Wed reduces time available for project work"
-          show_in_presentation: "Training Wednesday limits available project time"
-          explanation: "Source explicitly states consequence → show it"
-
-        level_3_private_or_health:
-          source: "Personal reason + less project time available"
-          show_in_presentation: "Limited availability is documented"
-          explanation: "Generalize private/health reason; show only the planning impact"
-
-      mandatory_rules: >
-        1. Show ONLY what is documented
-        2. Show consequence ONLY if explicitly in source (not inferred)
-        3. Never estimate hours/percentages unless explicit
-        4. Generalize: private/health → "limited availability"
-        5. Avoid repeating sensitive reasons in presentation
-        6. Omit point ⑧ entirely if nothing documented
-
-      examples_correct:
-        - "Backend: limited availability is documented"
-        - "Frontend: training Friday"
-        - "Native: scheduling conflict is documented"
-
-      examples_forbidden:
-        - "Training reduces capacity by ~30% (inferring percentage)"
-        - "Personal reasons limit availability (revealing sensitive info)"
-        - "Expected reduced throughput (guessing consequence)"
-
-    must_verify_current_sprint:
-      file: "_memory/presentations/CURRENT_SPRINT.yaml"
-      required_fields:
-        team_capacity:
-          frontend:
-            available_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
-            allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
-          backend:
-            available_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
-            allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
-          native:
-            available_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
-            allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
-          source: "string (e.g., 'team_planning')"
-          updated_at: "ISO 8601 timestamp (e.g., '2026-09-17T14:00:00+02:00')"
-          valid_for_week: "ISO week matching presentation week (e.g., '2026-W39' for Mon 2026-09-21 meeting)"
-
-    critical_week_validation: >
-      The valid_for_week MUST match the ISO week of the presentation's Monday meeting date.
-
-      Example: If presentation is for Monday 2026-09-21 meeting (ISO week 2026-W39):
-        ✓ PASS: valid_for_week = '2026-W39' (correct week)
-        ❌ FAIL: valid_for_week = '2026-W38' (previous week — stale data)
-        ❌ FAIL: valid_for_week = '2026-W40' (next week — future data)
-
-      Why: Capacity is only valid for the specific week being planned. Previous week's capacity
-      cannot be used for next week's sprint. This check prevents stale data from passing validation.
-
-      Note: Presentation pipeline knows its Monday meeting date. Validate week match before proceeding.
-
-    validation_rules:
-      forbidden_values:
-        - "TBD"
-        - "null"
-        - "empty string"
-        - "unspecified"
-        - "pending"
-      required_numeric_constraint: "All *_hours fields must be: type=number AND value >= 0"
-      required_string_constraint: "All *_at and *_week fields must be non-empty strings in correct format"
-
-    error_reporting_format: >
-      If ANY field fails validation, report EXACTLY which field is invalid and WHY.
-
-      Example failures (exact format):
-        ❌ DATA_PRECHECK FAIL: team_capacity.frontend.available_hours missing (value: null)
-        ❌ DATA_PRECHECK FAIL: team_capacity.backend.allocated_hours invalid (value: 'TBD')
-        ❌ DATA_PRECHECK FAIL: team_capacity.source invalid (value: empty string)
-        ❌ DATA_PRECHECK FAIL: team_capacity.updated_at missing (value: null)
-        ❌ DATA_PRECHECK FAIL: team_capacity.valid_for_week invalid (value: 'week 39' — expected ISO format '2026-W39')
-        ❌ DATA_PRECHECK FAIL: team_capacity.valid_for_week stale (value: '2026-W38' — presentation is for 2026-W39)
-
-    stop_condition: >
-      Depends on presentation_mode:
-
-      IF presentation_mode == "pre_meeting":
-        Only STOP if:
-        - Other required fields (updated_at, valid_for_week, source) are missing
-        - Capacity CAN be missing — show placeholder instead
-        Example: All other fields valid → PROCEED (capacity will show placeholder)
-
-      IF presentation_mode == "post_meeting" (or mode not specified):
-        STOP if ANY required field is missing, including all capacity fields:
-        1. Report EACH failed field with reason (exact format above)
-        2. Do NOT proceed to step_2 (GitHub data collection)
-        3. Do NOT attempt to fill missing values with estimates or guesses
-        4. Report to user: "Cannot proceed. Missing or invalid project inputs. Wait for sprint planning meeting to complete."
-        5. STOP
-
-    pass_condition: >
-      IF presentation_mode == "pre_meeting":
-        1. Log: "DATA_PRECHECK PASS: Pre-meeting mode — capacity placeholder will be shown"
-        2. Proceed to step_2 (GitHub data collection)
-        3. Note: Capacity will render as "○ Kapacitet fastställs under mötet"
-
-      IF presentation_mode == "post_meeting":
-        1. Log: "DATA_PRECHECK PASS: All mandatory project inputs valid (post-meeting mode)"
-        2. Proceed to step_2 (GitHub data collection)
-        3. Capacity will render with actual values
-
-    capacity_status_calculation: >
-      Once validated, capacity status (✓ / ◐ / ✕) for each team MUST be calculated from numbers:
-
-        Status = CALCULATED from: allocated_hours vs available_hours ratio
-          ◐ (needs_planning)  = allocated_hours < 80% of available_hours (much slack, needs more planning)
-          ✓ (well_planned)    = allocated_hours >= 80% AND <= 100% of available_hours (realistic, fully plannable)
-          ✕ (overloaded)      = allocated_hours > 100% of available_hours (exceeds capacity, risk)
-
-      Example: 30 available hours, 30 allocated hours = 100% = ✓ (NOT ✕)
-      Example: 30 available hours, 20 allocated hours = 67% = ◐ (needs more planning)
-      Example: 30 available hours, 35 allocated hours = 117% = ✕ (overload, capacity risk)
-
-      Status is NEVER stored manually in CURRENT_SPRINT.yaml.
-      It is ALWAYS computed from available_hours vs allocated_hours in the presentation pipeline.
-
-    why_this_gate_exists: >
-      Capacity is MEETING DATA, not AI-estimated data.
-
-      Capacity is mandatory for:
-      1. Planning (slide ⑧): "Available | Allocated | Status"
-      2. Recommendations (slide ⑫): How much work can we take?
-      3. Risk analysis (slide ②): Capacity constraints?
-
-      Capacity values are determined DURING sprint planning meeting (Monday meeting).
-      The presentation cannot be built until the team has established capacity for that week.
-
-      Missing capacity data means: sprint planning meeting has not occurred yet.
-      This is NOT a failure — it is a gate that enforces meeting-first, presentation-after workflow.
-
-      This gate catches the problem EARLY (before GitHub collection) with a specific error message.
-      It prevents AI from:
-        ❌ Guessing capacity from GitHub activity
-        ❌ Estimating hours from commit counts
-        ❌ Approximating from "typical" sprint patterns
-
-      Result: Presentations reflect actual team decisions, not AI estimates.
+    name: "Read all mandatory files"
+    output: "execution receipt with file/blob SHA and execution_ref"
 
   step_2:
-    name: "Fetch LIVE GitHub Data — Follow DATA_ACQUISITION_CONTRACT"
-    prerequisite: "step_1d (DATA PRECHECK) must pass before this step"
-
-    REQUIRED_ACTION_SEQUENCE:
-      dataset_1_team_roster:
-        action: "Read local file _memory/TEAM_ROSTER.md"
-        on_success: "Proceed to dataset_2_merged_prs"
-        on_missing: "STOP (cannot verify team identity)"
-        record_in_receipt: "teams_roster.status = SUCCESS | INCOMPLETE"
-
-      dataset_2_merged_prs:
-        action: "Call GITHUB_MERGED_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml"
-        on_success: "Proceed to dataset_3_active_issues"
-        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml for this source"
-        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_3_active_issues"
-        record_in_receipt: "merged_prs.status = SUCCESS | INCOMPLETE, merged_prs.source_used = [per EXTERNAL_SOURCES], merged_prs.implementation_used = [per EXTERNAL_SOURCES]"
-
-      dataset_3_active_issues:
-        action: "Call GITHUB_OPEN_ISSUES source using any implementation permitted by EXTERNAL_SOURCES.yaml"
-        on_success: "Proceed to dataset_4_open_prs"
-        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml for this source"
-        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_4_open_prs"
-        record_in_receipt: "active_issues.status = SUCCESS | INCOMPLETE, active_issues.source_used = [per EXTERNAL_SOURCES], active_issues.implementation_used = [per EXTERNAL_SOURCES]"
-
-      dataset_4_open_prs:
-        action: "Call GITHUB_OPEN_PRS source using any implementation permitted by EXTERNAL_SOURCES.yaml"
-        on_success: "Proceed to dataset_5_branches"
-        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml for this source"
-        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_5_branches"
-        record_in_receipt: "open_prs.status = SUCCESS | INCOMPLETE, open_prs.source_used = [per EXTERNAL_SOURCES], open_prs.implementation_used = [per EXTERNAL_SOURCES]"
-
-      dataset_5_branches:
-        action: "Call GITHUB_BRANCHES source using any implementation permitted by EXTERNAL_SOURCES.yaml"
-        on_success: "Proceed to dataset_6_commits"
-        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml (if any)"
-        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to dataset_6_commits"
-        record_in_receipt: "branches.status = SUCCESS | INCOMPLETE, branches.source_used = [per EXTERNAL_SOURCES], branches.implementation_used = [per EXTERNAL_SOURCES]"
-
-      dataset_6_commits:
-        action: "Call GITHUB_COMMITS source (per-branch) using any implementation permitted by EXTERNAL_SOURCES.yaml"
-        on_success: "Proceed to step_2b"
-        on_primary_source_fails: "Follow fallback chain registered in EXTERNAL_SOURCES.yaml (if any)"
-        on_all_fallbacks_fail: "Record as INCOMPLETE, proceed to step_2b"
-        record_in_receipt: "commits.status = SUCCESS | INCOMPLETE, commits.source_used = [per EXTERNAL_SOURCES], commits.implementation_used = [per EXTERNAL_SOURCES], branches_scanned = [develop, Java-Development-Environment, C/C++-Native, ...]"
-
-    CRITICAL_VALIDITY_RULE: >
-      "Primary source failed" is ONLY a valid report if an implementation explicitly
-      permitted by EXTERNAL_SOURCES.yaml for that source was actually invoked.
-
-      If ALL permitted implementations for the primary source are unavailable:
-      follow the fallback chain registered in EXTERNAL_SOURCES.yaml for that source.
-
-      If a source has NO registered fallback chain (fallbacks: []):
-      mark dataset INCOMPLETE immediately; do NOT invent fallback attempts.
-
-      Do NOT attempt to work around unavailability by using unregistered tools,
-      generic web access, or improvised implementations not in EXTERNAL_SOURCES.yaml.
-
-  step_2a:
-    name: "INTEGRITY VERIFICATION — Check all data before recording receipt"
-    prerequisite: "MUST complete BEFORE proceeding to step_2b"
-
-    rule: >
-      Before recording DATA_ACQUISITION_RECEIPT, verify that NO data was guessed,
-      hallucinated, or improvised. For each dataset that is marked SUCCESS:
-      - Is the source registered in EXTERNAL_SOURCES.yaml? YES/NO
-      - Was the implementation actually invoked (per receipt)? YES/NO
-      - Is the data verified from a real source, not a guess? YES/NO
-
-    attestation_requirement: >
-      For EACH data point in EACH SUCCESS dataset, you MUST attest in the receipt:
-      "This data came from [REGISTERED SOURCE], obtained via [IMPLEMENTATION].
-       I did not guess, hallucinate, or improvise this data."
-      If you cannot make this attestation for ANY data point → STOP immediately.
-      Mark that dataset INCOMPLETE instead.
-
-    failure_action: >
-      If ANY dataset has unverified, guessed, or hallucinated data:
-      STOP immediately. Do NOT proceed to step_2b.
-      Report which dataset(s) contain unverified data.
-      Do NOT attempt to "fill in the blanks" with guesses.
-
-    critical_checkpoint: >
-      This step prevents hallucinated data from reaching the presentation.
-      If you cannot verify that all SUCCESS datasets came from actual sources:
-      you must mark them INCOMPLETE instead.
-
-  step_2b:
-    name: "Record DATA_ACQUISITION_RECEIPT — MANDATORY before DATA_AUDIT"
-    prerequisite: "MUST complete BEFORE proceeding to data_audit"
-    specification: "See data/DATA_ACQUISITION_CONTRACT.yaml section data_acquisition_receipt for exact format"
-
-    must_record_for_each_required_dataset:
-      structure: "See DATA_ACQUISITION_CONTRACT.yaml data_acquisition_receipt for full schema"
-
-      template:
-        execution_id: "Link to EXECUTION_RECEIPT_MACHINE.execution_id"
-        attempted_at: "ISO 8601 timestamp"
-        reporting_period: "REPORTING_PERIOD_START ... REPORTING_PERIOD_END"
-
-        per_dataset:
-          team_roster:
-            - "Source attempted: TEAM_ROSTER.md (local file)"
-            - "Status: SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT | EMPTY_RESPONSE | PARSE_ERROR"
-            - "Failure reason: (if not SUCCESS)"
-            - "Members verified: N/7"
-            - "Final status: SUCCESS | INCOMPLETE"
-
-          merged_prs:
-            - "Source 1: GitHub API /pulls?state=closed&base=develop"
-              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT | EMPTY_RESPONSE"
-              http_code: "200 | 403 | 404 | 401 | 429 (rate limit) | null"
-              failure_reason: "e.g., 'API rate limit exceeded', 'authentication failed', 'timeout after 30s'"
-              payload_summary: "N items collected"
-              tried_at: "ISO 8601 timestamp"
-            - "Source 2: Google Sheets CSV export (fallback #1 per EXTERNAL_SOURCES.yaml)"
-              status: "SUCCESS | AUTH_ERROR | EMPTY_RESPONSE"
-              failure_reason: "e.g., 'permission denied', 'sheet not shared'"
-              payload_summary: "N items collected"
-              tried_at: "ISO 8601 timestamp"
-              fallback_reason: "GitHub API [reason]"
-            - "Source 3: GitHub web /pulls?q=is:pr+is:merged (fallback #2 per EXTERNAL_SOURCES.yaml)"
-              status: "SUCCESS | EMPTY_RESPONSE | PARSE_ERROR"
-              failure_reason: "e.g., 'page structure changed', 'no data extracted'"
-              payload_summary: "N items collected"
-              tried_at: "ISO 8601 timestamp"
-            - "Selected source: GitHub API | Sheets | GitHub web"
-            - "Final status: SUCCESS | INCOMPLETE"
-
-          active_issues:
-            - "Same structure as merged_prs (see DATA_ACQUISITION_CONTRACT.yaml for details)"
-
-          open_prs:
-            - "Source 1: GitHub API /pulls?state=open"
-              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT | EMPTY_RESPONSE"
-              http_code: "200 | 403 | 404 | 401 | 429 (rate limit) | null"
-              failure_reason: "e.g., 'API rate limit exceeded'"
-              payload_summary: "N items collected"
-              tried_at: "ISO 8601 timestamp"
-            - "Source 2: Google Sheets (fallback)"
-              status: "SUCCESS | AUTH_ERROR | EMPTY_RESPONSE"
-              failure_reason: "e.g., 'permission denied'"
-              payload_summary: "N items collected"
-              tried_at: "ISO 8601 timestamp"
-            - "Source 3: GitHub web (fallback)"
-              status: "SUCCESS | PARSE_ERROR"
-              failure_reason: "e.g., 'page structure changed'"
-              payload_summary: "N items collected"
-              tried_at: "ISO 8601 timestamp"
-            - "Final status: SUCCESS | INCOMPLETE"
-
-          branches:
-            - "Source: GitHub API /repos/.../branches"
-              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT"
-              http_code: "200 | 403 | 404 | 401 | null"
-              failure_reason: "e.g., 'API rate limit exceeded'"
-              branches_found: "N (including develop, Java-Development-Environment, C/C++-Native)"
-              tried_at: "ISO 8601 timestamp"
-            - "Final status: SUCCESS | INCOMPLETE"
-
-          commits:
-            - "Source: GitHub API /repos/.../commits (per branch)"
-              status: "SUCCESS | HTTP_ERROR | AUTH_ERROR | TIMEOUT"
-              http_code: "200 | 403 | 404 | 401 | null"
-              failure_reason: "e.g., 'API rate limit exceeded'"
-              branches_scanned: "N (develop, Java-Development-Environment, C/C++-Native, ...)"
-              commits_found: "N total across all branches in REPORTING_PERIOD"
-              tried_at: "ISO 8601 timestamp"
-            - "Final status: SUCCESS | INCOMPLETE"
-
-    critical_rule: >
-      A required dataset may ONLY be marked INCOMPLETE after EVERY fallback
-      defined in EXTERNAL_SOURCES.yaml (authoritative source registry) has been attempted and failed.
-
-      Every failure MUST record http_code, failure_reason, and tried_at.
-      This enables diagnosis of why data acquisition failed and informs fixes
-      (e.g., API rate limiting, permission issues, selector mismatches).
-
-      Endpoint failure (e.g., GitHub API 503) is NOT dataset incompleteness.
-      Try the next fallback immediately.
-
-      DATA_AUDIT may NOT begin without a complete acquisition receipt showing:
-      - Which sources were attempted (in order)
-      - Which sources succeeded/failed (with error details)
-      - Which source was ultimately selected
-      - Which datasets are complete/incomplete
-
-    failure_action: >
-      If any required dataset is INCOMPLETE after all fallbacks:
-      STOP and report:
-      - Which dataset is incomplete
-      - Which sources were attempted
-      - Which error stopped each fallback
-      Do NOT proceed to data_audit or build_gate.
+    name: "Instruction audit"
+    must_confirm:
+      - "WCAG 2.2 AA is absolute"
+      - "responsive card typography ranges loaded"
+      - "provenance rules loaded"
+      - "template is reference only"
+      - "same repository ref used for all internal files"
 
   step_3:
-    name: "Verify All 7 Team Members"
-    requirement: "Every team member from TEAM_ROSTER must have work listed OR marked 'Ingen aktivitet denna vecka'"
-    rule: "Cannot proceed to rendering if anyone is missing"
+    name: "Data precheck"
+    rule: "Validate registered mandatory inputs before expensive data acquisition."
 
   step_4:
-    name: "Generate DATA_AUDIT — Machine-readable verification"
-    requirement: "MUST be shown before slides are built"
-    source: "data/DATA_ACQUISITION_CONTRACT.yaml and DATA_ACQUISITION_RECEIPT from step_2b"
-
-    rule: >
-      DATA_AUDIT validates that data was correctly collected and deduplicated.
-      This step CANNOT begin until step_2b (acquisition receipt) is complete.
+    name: "Data acquisition"
+    rule: "Use registered sources/fallbacks only."
 
   step_5:
-    name: "Build Slides Following Spec"
-    source: "SLIDE_DETAIL_SPEC.md (is authoritative)"
-    rule: "If output differs from SLIDE_DETAIL_SPEC → output is INVALID even if data is correct"
+    name: "Data audit"
+    rule: "Verify completeness/checksums; STOP on required incomplete datasets."
 
   step_6:
-    name: "Verify Visual Design"
-    source: "VISUAL_DESIGN_MANDATORY.md (authoritative)"
-    reference: "TEMPLATE_REFERENCE.html (reference only)"
+    name: "Compose slide content"
     rule: >
-      Apply VISUAL_DESIGN_MANDATORY.md exactly. All typography, spacing, and CANONICAL LAYOUT values
-      are defined there. Do not restate, override, or interpret them here.
-      Max 3 blocks per slide; 4+ blocks → auto-split to continuation slide (①A.1, ①A.2, etc).
-      If content exceeds 3 blocks → create new slide, never summarize.
-      If TEMPLATE_REFERENCE conflicts with VISUAL_DESIGN_MANDATORY → VISUAL_DESIGN_MANDATORY always wins.
+      Follow SLIDE_DETAIL_SPEC for fields/purpose and provenance authority for
+      source identity. Do not invent missing content.
 
   step_7:
-    name: "Pass Render Gate"
-    source: "RENDER_GATE_CHECKLIST.md"
-    checkpoints: 13
-    rule: "All 13 must pass before rendering"
+    name: "Build internal presentation"
+    prerequisite: "build_gate PASS"
 
   step_8:
-    name: "Timestamp Every Slide"
-    format: "Data från [DATE] [TIME] UTC | Källa: GitHub + Project Board ✅"
-    rule: "If GitHub source failed → mark with ⚠️ and note which source"
+    name: "Render + inspect"
+    rule: "Use RENDER_GATE_CHECKLIST on actual artifact."
 
   step_9:
-    name: "Deliver Presentation"
-
-    prerequisite: >
-      MUST pass artifact_gate (execution_receipt + data_audit + render_gate).
-      Do not generate any artifact before this gate is complete.
-
-    default_output: "PDF"
-    default_rule: >
-      When user requests "presentation", "slide deck", "slides", or
-      "Monday meeting presentation" WITHOUT specifying format, deliver PDF.
-      PDF is read-only, prevents accidental editing before review.
-
-    editable_output:
-      format: "PPTX"
-      triggered_by:
-        - "Can you make it editable?"
-        - "I need the PowerPoint file"
-        - "jag vill kunna redigera"
-        - "redigerbar"
-        - "PowerPoint"
-        - "pptx"
-        - "editable presentation"
-      rule: >
-        Deliver PPTX ONLY when user explicitly requests editable format
-        (PowerPoint, PPTX, redigerbar, editable, etc).
-
-    both_outputs:
-      rule: >
-        If user explicitly requests both "PDF and PowerPoint" or
-        "PDF and editable", deliver both formats.
-
-    rule: "Only if all previous steps passed AND artifact_gate cleared"
+    name: "Deliver"
+    prerequisite: "delivery_gate PASS"
 
 ###############################################################################
-# REPORTING PERIOD — When slides report "denna vecka" / "this week"
+# ARTIFACT GATES
 ###############################################################################
-reporting_period:
-  definition: "Previous Monday 09:00 through current Monday 09:00 (exclusive, Europe/Stockholm)"
-  timezone: "Europe/Stockholm"
-  meeting_time: "09:00 (all periods anchored to meeting start time)"
-  calculation: "For a Monday 09:00 meeting: report from previous Monday 09:00 to this Monday 09:00"
-  example: "Meeting on Monday 2026-09-16 09:00: report period is 2026-09-09 09:00 through 2026-09-16 09:00 (exclusive)"
-  rule: "ALWAYS dynamic. Calculate: meeting_date - 7 days at 09:00 through meeting_date at 09:00 (exclusive)"
-  variables:
-    REPORTING_PERIOD_START: "current_meeting_date - 7 days at 09:00 Europe/Stockholm"
-    REPORTING_PERIOD_END: "current_meeting_date at 09:00 Europe/Stockholm (exclusive)"
+artifact_gates:
+  build_gate:
+    requires:
+      - "execution_receipt PASS"
+      - "instruction_audit PASS"
+      - "data_precheck PASS"
+      - "data_acquisition_receipt PASS"
+      - "data_audit PASS"
+    failure_action: "STOP"
 
-current_state:
-  definition: "Live GitHub state at generation time"
-  note: "Used for 'In Progress', 'Awaiting Review', 'Open Issues'. Timestamped."
-
-###############################################################################
-# MANDATORY DATA AUDIT — Machine-readable intermediate checkpoint
-###############################################################################
-data_audit:
-  requirement: "MUST be generated before ANY slides are built. Shows AI what it collected."
-  output_format:
-    reporting_period:
-      start: "REPORTING_PERIOD_START (Monday 09:00 Europe/Stockholm)"
-      end: "REPORTING_PERIOD_END (next Monday 09:00 Europe/Stockholm, exclusive)"
-
-    repository_totals:
-      merged_prs: "N (count of PRs merged in reporting period)"
-      open_prs: "N (count of open PRs with recent activity)"
-      commits: "N (count of commits to develop in reporting period)"
-      open_issues: "N (count of open issues with activity)"
-      branches_active: "N (count of branches with commits this period)"
-
-    work_areas:
-      frontend:
-        merged_pr_ids: "[#XX, #YY, #ZZ] or empty if none"
-        open_pr_ids: "[#XX, #YY] or empty"
-        closed_issue_ids: "[#XX, #YY] or empty (without PR merge)"
-        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
-        active_branches: "[branch-name, branch-name] or empty (commits in period)"
-        commit_ids: "[sha, sha] or empty (relevant commits not in PR)"
-      backend:
-        merged_pr_ids: "[#XX, #YY] or empty"
-        open_pr_ids: "[#XX, #YY] or empty"
-        closed_issue_ids: "[#XX] or empty (without PR merge)"
-        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
-        active_branches: "[branch-name] or empty (commits in period)"
-        commit_ids: "[sha] or empty (relevant commits not in PR)"
-      native:
-        merged_pr_ids: "[#XX, #YY] or empty"
-        open_pr_ids: "[#XX] or empty"
-        closed_issue_ids: "[#XX] or empty (without PR merge)"
-        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
-        active_branches: "[branch-name] or empty (commits in period)"
-        commit_ids: "[sha] or empty (relevant commits not in PR)"
-      cross_team:
-        merged_pr_ids: "[#XX, #YY] or empty (work affecting multiple teams)"
-        open_pr_ids: "[#XX] or empty"
-        closed_issue_ids: "[#XX] or empty (without PR merge)"
-        active_issue_ids: "[#XX, #YY] or empty (open with recent activity)"
-        active_branches: "[branch-name] or empty (commits in period)"
-        commit_ids: "[sha] or empty (relevant commits not in PR)"
-      other:
-        merged_pr_ids: "[#XX] or empty (docs, infra, chores, etc)"
-        open_pr_ids: "[] or empty"
-        closed_issue_ids: "[#XX] or empty (docs, infra without PR)"
-        active_issue_ids: "[#XX] or empty (if any)"
-        active_branches: "[branch-name] or empty (if any)"
-        commit_ids: "[sha] or empty (docs commits, infra changes, etc)"
-
-    member_coverage:
-      expected: 7
-      verified: "N/7 (how many identity-verified from GitHub)"
-
-    raw_verified_data:
-      description: "Complete raw data lists for slide building (not just summaries)"
-
-      merged_prs:
-        - number: "[#XX]"
-          title: "[string]"
-          author: "[GitHub username]"
-          assignee: "[GitHub username or null]"
-          merged_at: "[ISO timestamp]"
-          base_branch: "[branch name, typically develop]"
-          linked_issue: "[#YY or null]"
-
-      open_prs:
-        - number: "[#XX]"
-          title: "[string]"
-          author: "[GitHub username]"
-          assignee: "[GitHub username or null]"
-          created_at: "[ISO timestamp]"
-          updated_at: "[ISO timestamp]"
-          review_status: "[pending/approved/changes-requested]"
-
-      open_issues:
-        - number: "[#XX]"
-          title: "[string]"
-          assignee: "[GitHub username or null]"
-          updated_at: "[ISO timestamp]"
-          labels: "[array of labels or empty]"
-          status: "[open]"
-          note: "For point ①: ONLY open issues with assignee AND recent activity (comment/update) in reporting period. Issues without assignee or without recent activity do NOT count as verified_activity."
-
-      closed_issues:
-        - number: "[#XX]"
-          title: "[string]"
-          closed_at: "[ISO timestamp]"
-          assignee: "[GitHub username or null]"
-          merged_pr: "[#XX or null — if null, issue is 'done' without merge]"
-          labels: "[array of labels or empty]"
-
-      active_branches:
-        - name: "[branch name]"
-          head_sha: "[commit SHA]"
-          last_commit_at: "[ISO timestamp within reporting period]"
-          last_commit_author: "[GitHub username]"
-          linked_pr: "[#XX or null]"
-
-      commits_to_develop:
-        - sha: "[commit SHA]"
-          message: "[commit message]"
-          committed_at: "[ISO timestamp]"
-          author: "[GitHub username]"
-          linked_pr: "[#XX or null — if null, commit not part of PR]"
-
-      meeting_protocol:
-        date: "[meeting date, ISO format]"
-        decisions: "[list of documented decisions]"
-        blockers: "[list of identified blockers]"
-        risks: "[list of identified risks]"
-        sprint_goals: "[documented goals for the sprint]"
-        next_steps: "[action items with owners]"
-        questions_to_pl: "[open questions needing PL input]"
-
-  validation_rule: "Slides MUST be derived ONLY from this data_audit object. Never independently query GitHub again. Raw data lists prevent missed data and duplicates. Checksums verify INFORMATION completeness, not endpoint availability."
-
-  information_checksums:
-    roster_verified: "All 7 team members from TEAM_ROSTER matched to GitHub identity"
-    merged_prs_complete: "Every merged PR to develop in reporting period is in audit (from any verified source: GitHub API, web, Sheets, etc.)"
-    active_work_complete: "Every open issue with assignee + activity in reporting period is in audit"
-    team_assignment: "Every verified activity assigned to exactly one team (Frontend/Backend/Native/Cross/Other). No work falls between team-boundaries."
-
-  enrichment_checksums:
-    activity_union: "Deduplicated union of (merged_pr + closed_issue + active_issue + open_pr + branch + commit) per team. One work item may appear as issue+branch+PR — count as ONE."
-    team_completeness: "For each team's slide: count(audit data) == count(represented on slide). No omissions."
-
-  failure_condition: >
-    STOP rendering if:
-      - Any REQUIRED INFORMATION is missing and cannot be reconstructed from allowed sources
-      - Information checksums fail (roster, merged PRs, active work not complete)
-
-    Do NOT stop rendering if:
-      - An enrichment source is unavailable (commits, branches, board, protocol)
-      - An enrichment checksum mismatches (mark as ⚠️ in presentation)"
-      - A specific GitHub endpoint fails, as long as the required information is verified another way
+  delivery_gate:
+    requires:
+      - "build_gate PASS"
+      - "render_gate PASS"
+      - "WCAG_2_2_AA PASS"
+      - "PROVENANCE_AND_AI_LABELING PASS"
+      - "OVERFLOW_AND_COLLISION PASS"
+    default_format: "PDF"
+    editable_format: "PPTX only when explicitly requested"
 
 ###############################################################################
-# HARD RULES — Never break these
+# FINAL RENDER CONDITIONS
 ###############################################################################
-hard_rules:
-  - rule: "Generate DATA_AUDIT before building ANY slides"
-    consequence: "Intermediate report shows what was collected. Slide building uses ONLY this audit object."
+render_acceptance:
+  zero_count_requirements:
+    wcag_aa_violation_count: 0
+    color_only_information_count: 0
+    text_overlap_count: 0
+    card_overlap_count: 0
+    text_outside_card_count: 0
+    text_clipping_count: 0
+    out_of_bounds_element_count: 0
+    font_below_component_minimum_count: 0
+    missing_required_card_row_count: 0
+    uneven_row_spacing_caused_by_vertical_justification: 0
+    full_team_outline_count: 0
+    ai_generated_item_without_question_icon_count: 0
+    unverified_item_presented_as_confirmed_count: 0
+    mixed_provenance_card_without_block_labels_count: 0
 
-  - rule: "Blocking sources: Team roster + GitHub Issues/PRs data"
-    consequence: "If both primary AND all fallbacks fail → STOP. Otherwise use fallback."
-
-  - rule: "Non-blocking sources: Project Board, meeting protocol"
-    consequence: "If fails → use fallback, NEVER stop rendering"
-
-  - rule: "Merged means: PR.merged_at != null AND PR.base.ref == 'develop' AND within reporting period"
-    consequence: "Mechanically verifiable. No interpretation."
-
-  - rule: "Verify data completeness: repository_total == sum(classified by area)"
-    consequence: "If FALSE → render gate FAIL. No presentation built."
-
-  - rule: "Point ① completeness: All verified activity (union of merged PRs, branches, open PRs, issues, commits) must be represented"
-    consequence: "If verified activity in audit ≠ activity on slides → render gate FAIL. Split to ①A.1, ①A.2, etc. rather than omitting work."
-
-  - rule: "Every verified activity assigned to exactly one team: Frontend, Backend, Native, Cross-team, or Other"
-    consequence: "No activity may be omitted because it lacks clear team ownership. Cross-team and Other must be represented. If team cannot be determined → cross-team."
-
-  - rule: "Checksum per team-slide: count(verified_activity in audit for team X) == count(represented in slide ①A–①F)"
-    consequence: "If mismatch → audit and slide both show the discrepancy. Never silently drop data."
-
-  - rule: "All 7 team members must be accounted for (with work OR marked 'no activity')"
-    consequence: "Cannot render if any member cannot be identity-verified"
-
-  - rule: "Missing PR/issue assignee shows as '??', never blocks rendering"
-    consequence: >
-      Display (#XX - ??) for unassigned work, presentation still renders.
-      ALSO: Suggest owner based on previous commits/accountability patterns.
-      Purpose: Prompt meeting decision "Vem tar ansvar för denna?"
-
-  - rule: "Never invent data"
-    consequence: "If source unreachable, use documented fallback. If all fallbacks exhausted → STOP."
-
-  - rule: "Never use example values from documentation"
-    consequence: "Use only LIVE data from GitHub, verified this week"
-
-  - rule: "NPF-friendly design mandatory"
-    consequence: "No tables. Symbol + Färg + Text only."
-
-  - rule: "Timestamp every slide with data fetch time"
-    consequence: "Show generation time + which sources succeeded/failed"
-
-  - rule: "Assessment never presented as fact"
-    consequence: "Separate FACT (GitHub data) from ASSESSMENT (AI analysis) visually"
+  failure_response:
+    - "STOP delivery"
+    - "Fix accessibility/content/layout/provenance issue"
+    - "Adapt responsive card geometry"
+    - "Add continuation slides if needed"
+    - "Rerender"
+    - "Reinspect actual artifact"
 
 ###############################################################################
-# DEFINITIONS — No interpretation allowed, these are mechanical
+# MAINTENANCE / CONFLICT PREVENTION
 ###############################################################################
-github_status_definitions:
-  verified_activity:
-    definition: "All work activity during reporting period that can be verified from GitHub"
-    union_of:
-      - "Merged PRs to develop"
-      - "Closed issues (regardless of merge status)"
-      - "Open PRs with recent activity"
-      - "Active branches with commits in reporting period"
-      - "Commits to develop in reporting period"
-      - "Open issues with assignee and recent updates"
-    rule: "Point ① completeness is defined by the UNION of all verified activity, not merged PRs alone"
-    consequence: "Every verified activity must appear exactly once (Frontend, Backend, Native, Cross-team, or Other). No activity omitted due to slide capacity. Split to ①A.1, ①A.2, etc. when needed."
+maintenance:
+  rule: >
+    Do not create competing _V2/_OLD/_UPDATED policy files. Update the owning
+    authority directly and rely on git history for previous versions.
 
-  delivered:
-    definition: "Merged PR to develop during reporting period (subset of verified_activity)"
-    sources:
-      - "GitHub PR with 'merged' status"
-      - "Linked to closed issue in reporting period"
-    note: "Merged PRs are PRIMARY evidence of delivery, but point ① shows union of ALL verified activity, not only merged PRs"
-
-  in_progress:
-    definition: "Open PR with recent commits OR open issue with assignee + activity"
-    sources:
-      - "Open PR with commits this week"
-      - "Open issue with assignee and recent comment/update"
-      - "Branch with commits but no PR yet"
-    counterexample: "Old branch with no recent commits = NOT in progress"
-
-  not_a_status:
-    - "Branch existence alone"
-    - "Single commit without PR or issue"
-    - "Issue comment without assignee"
-    - "Closed issue without merge"
-
-fact_vs_assessment:
-  fact: "Comes ONLY from verified LIVE source (GitHub API, Project Board, etc)"
-  derived: "Mechanically calculated from FACT (e.g., count PRs, sum commits)"
-  assessment: "AI analysis/interpretation (e.g., 'this person seems overloaded')"
-  rule: "Assessment can NEVER be presented as status. Always separate."
+  conflict_resolution:
+    order:
+      - "SYSTEM_CONTRACT for orchestration"
+      - "ACCESSIBILITY for WCAG/readability"
+      - "VISUAL_DESIGN for global visual rules"
+      - "CARD_COMPONENT for card internals"
+      - "PROVENANCE for fact/team/AI identity"
+      - "OVERFLOW_GUARD for fit/pagination"
+      - "SLIDE_DETAIL_SPEC for content"
+      - "TEMPLATE_REFERENCE never wins"
+    same_domain_conflict: "STOP and fix authority files before rendering"
 
 ###############################################################################
-# DEPRECATED FILES POLICY
-###############################################################################
-deprecated_files_policy: >
-  See DEPRECATED_FILES.md for the complete list of deprecated presentation files.
-
-  RULE: Do NOT read deprecated files for presentation generation.
-  These files are listed only for historical reference.
-
-  All active instructions reference only files in execution_receipt (step_1).
-
-###############################################################################
-# WHAT NOT TO DO
-###############################################################################
-forbidden:
-  - "Use cached or snapshot data"
-  - "Skip GitHub sources because they're slow"
-  - "Use tables (NPF violation)"
-  - "Show team members without team badge"
-  - "Hide data verification failures"
-  - "Copy example values from this file"
-  - "Invent data when source is unavailable"
-  - "Render without all 7 members accounted for"
-  - "Show progress/capacity/status percentages without GitHub-verifiable definition"
-  - "Use estimates, forecasts, or AI-guesses as presentation data"
-  - "Mix FACT (GitHub data) with ASSESSMENT (AI analysis) without clear separation"
-
-###############################################################################
-# SUCCESS CRITERIA — Presentation is ready to deliver ONLY if:
-###############################################################################
-success_criteria:
-  - "✅ All data fetched LIVE from GitHub (not cached)"
-  - "✅ All 7 team members verified or marked 'no activity'"
-  - "✅ Section ① (①A–①F) follows SLIDE_DETAIL_SPEC structure (①A–①C: merged work, ①D–①E: pågår work, ①F: decisions)"
-  - "✅ NPF-friendly design (no tables, Symbol+Färg+Text)"
-  - "✅ Every slide timestamped with data fetch time"
-  - "✅ All GitHub sources either ✅ verified or ⚠️ marked failed"
-  - "✅ Render-gate checklist passed (all 13 points)"
-  - "✅ No invented data, no example values"
-
+# END
 ###############################################################################
