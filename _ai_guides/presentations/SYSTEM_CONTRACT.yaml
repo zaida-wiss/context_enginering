@@ -889,13 +889,30 @@ execution_sequence:
       Do not proceed to data collection until all checkpoints are confirmed.
 
   step_1d:
-    name: "DATA PRECHECK — Verify Mandatory Project Inputs"
+    name: "DATA PRECHECK — Verify Mandatory Project Inputs (with presentation_mode)"
     prerequisite: "MUST pass before proceeding to GitHub data collection (step_2)"
 
     objective: >
       Validate that all MANDATORY project inputs are complete and correctly structured
       BEFORE expensive GitHub API collection begins. This gate prevents long data collection
       followed by a STOP due to missing required values.
+
+      Presentation can run in TWO modes:
+      - pre_meeting: Mötesunderlag (before sprint planning) — capacity is optional, shows placeholder
+      - post_meeting: Mötesprotokoll (after sprint planning) — capacity is required, shows actual values
+
+    presentation_mode:
+      rule: "User specifies mode when requesting presentation. Default: pre_meeting"
+      pre_meeting:
+        description: "Meeting preparation document (before sprint planning occurs)"
+        capacity_requirement: "OPTIONAL — show placeholder if missing"
+        placeholder_text: "○ Kapacitet fastställs under mötet"
+        proceed_on_missing_capacity: "YES (not a blocker)"
+      post_meeting:
+        description: "Meeting protocol/results (after sprint planning)"
+        capacity_requirement: "REQUIRED — stop if missing"
+        placeholder_text: "N/A (must have actual values)"
+        proceed_on_missing_capacity: "NO (must stop, wait for meeting data)"
 
     must_verify_current_sprint:
       file: "_memory/presentations/CURRENT_SPRINT.yaml"
@@ -949,17 +966,32 @@ execution_sequence:
         ❌ DATA_PRECHECK FAIL: team_capacity.valid_for_week stale (value: '2026-W38' — presentation is for 2026-W39)
 
     stop_condition: >
-      If ANY required field is missing, null, contains a forbidden value, or fails type validation:
+      Depends on presentation_mode:
+
+      IF presentation_mode == "pre_meeting":
+        Only STOP if:
+        - Other required fields (updated_at, valid_for_week, source) are missing
+        - Capacity CAN be missing — show placeholder instead
+        Example: All other fields valid → PROCEED (capacity will show placeholder)
+
+      IF presentation_mode == "post_meeting" (or mode not specified):
+        STOP if ANY required field is missing, including all capacity fields:
         1. Report EACH failed field with reason (exact format above)
         2. Do NOT proceed to step_2 (GitHub data collection)
         3. Do NOT attempt to fill missing values with estimates or guesses
-        4. Report to user: "Cannot proceed with presentation. Missing or invalid project inputs."
+        4. Report to user: "Cannot proceed. Missing or invalid project inputs. Wait for sprint planning meeting to complete."
         5. STOP
 
     pass_condition: >
-      If ALL fields above are present, non-null, contain no forbidden values, and pass type validation:
-        1. Log: "DATA_PRECHECK PASS: All mandatory project inputs valid"
+      IF presentation_mode == "pre_meeting":
+        1. Log: "DATA_PRECHECK PASS: Pre-meeting mode — capacity placeholder will be shown"
         2. Proceed to step_2 (GitHub data collection)
+        3. Note: Capacity will render as "○ Kapacitet fastställs under mötet"
+
+      IF presentation_mode == "post_meeting":
+        1. Log: "DATA_PRECHECK PASS: All mandatory project inputs valid (post-meeting mode)"
+        2. Proceed to step_2 (GitHub data collection)
+        3. Capacity will render with actual values
 
     capacity_status_calculation: >
       Once validated, capacity status (✓ / ◐ / ✕) for each team MUST be calculated from numbers:

@@ -52,11 +52,24 @@ Do NOT rationalize your way around this rule.
 
 **CRITICAL:** Capacity is MEETING DATA, not estimated data.
 
-If capacity data is missing from the meeting protocol:
-- This means the sprint planning meeting has not occurred yet
-- Do NOT estimate, calculate, or approximate capacity
-- STOP and report: "Capacity data not available — sprint planning meeting required"
-- This is not a failure; it is the system working correctly
+Presentations can run in TWO modes:
+
+**PRE-MEETING mode (default for "presentation till mötet"):**
+- Presentation is mötesunderlag (meeting preparation document)
+- Capacity CAN be missing — shows placeholder: "○ Kapacitet fastställs under mötet"
+- GitHub data + status + blockers are shown
+- Used BEFORE sprint planning meeting
+
+**POST-MEETING mode (for "mötesprotokoll" after meeting):**
+- Presentation is meeting protocol/results
+- Capacity MUST be present and filled in by team during meeting
+- If capacity missing: STOP and ask team to complete meeting data
+- Used AFTER sprint planning meeting
+
+**If capacity data is missing:**
+- PRE-MEETING: Not a blocker — show placeholder and continue
+- POST-MEETING: Stop and report "Capacity data not available — sprint planning meeting required"
+- Do NOT estimate, calculate, or approximate capacity in either mode
 
 **If you commit to following this rule exactly — continue to step 1.**
 
