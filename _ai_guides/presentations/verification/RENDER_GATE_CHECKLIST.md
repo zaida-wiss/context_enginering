@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 3.0
+  version: 3.1
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -71,7 +71,8 @@ Before rendering verify:
 - `Reviewed by` uses actual GitHub review evidence
 - `Merged by` uses actual GitHub merged_by identity when available
 - Timestamps are actual GitHub timestamps
-- No fabricated status, branch, owner, reviewer or merge identity
+- Contribution microcopy is grounded in issue/PR/body/diff/commits and is not invented
+- No fabricated status, branch, owner, reviewer, merge identity or code effect
 
 Optional enrichment may be missing without blocking, but required data may not be guessed.
 
@@ -91,10 +92,16 @@ open_assigned_issues ==
 ```
 
 No issue may silently disappear.
-
 No PR may appear twice.
-
 Zero work for one team is valid if verified.
+
+Every Issue, PR and merged-PR card must include contribution microcopy beneath the title.
+
+If verified repository evidence is insufficient, use exactly:
+
+`Bidrag till koden behöver verifieras.`
+
+Do not infer an implementation effect that cannot be supported.
 
 ---
 
@@ -113,9 +120,7 @@ If a content example contains stale visual language such as rows, lists, stacked
 
 ## 5. MODERN CARD SYSTEM — MUST PASS
 
-### Work-item representation
-
-Every work/information item that is item-based must be an individual card.
+Every item-based work/information item must be an individual card.
 
 FAIL if a slide uses:
 
@@ -163,7 +168,84 @@ The deck should feel like a modern dashboard translated into a calm meeting pres
 
 ---
 
-## 7. TYPOGRAPHY — HARD MINIMUMS
+## 7. CONTRIBUTION MICROCOPY — MUST PASS
+
+Every card representing an Issue, open PR, or merged PR must contain a short explanatory line directly below the title.
+
+The line must answer:
+
+> What does this issue/PR/merge contribute to the code or product?
+
+### Required characteristics
+
+- one short sentence
+- normally 8–14 words
+- plain, pedagogical Swedish
+- specific enough to explain the contribution
+- not a repetition of the title
+- not project-process language
+- grounded in verified repository evidence
+
+### Evidence order
+
+Issue:
+1. issue title/body/acceptance criteria
+2. linked PR
+3. matching branch/commits
+
+PR:
+1. PR title/body
+2. changed files/diff
+3. linked issue
+4. commits
+
+Merged PR:
+1. merged PR title/body + changed files
+2. linked issue
+3. commits
+
+### Visual role
+
+- Directly below the title
+- 12–13 pt
+- muted color from `VISUAL_DESIGN_MANDATORY.md`
+- no badge/background/pill
+- left aligned
+- normally max 1–2 visual lines
+
+FAIL if:
+
+- Issue card lacks the line
+- PR card lacks the line
+- Merge card lacks the line
+- text invents unsupported technical impact
+- microcopy visually competes with title/status
+- microcopy is below 12 pt
+
+---
+
+## 8. TIMESTAMP STYLE
+
+Card dates/timestamps must use the same low-emphasis visual family as contribution microcopy.
+
+Examples:
+
+```text
+17 sep · 08:42
+Merged 16 sep · 18:40
+Senaste commit 17 sep · 08:42
+```
+
+Verify:
+
+- 12–13 pt
+- same muted color as contribution microcopy
+- no pill/badge/background
+- remains visibly subordinate to title, owner and status
+
+---
+
+## 9. TYPOGRAPHY — HARD MINIMUMS
 
 FAIL if any meeting-readable text violates:
 
@@ -171,7 +253,9 @@ FAIL if any meeting-readable text violates:
 - Section header < 22 pt
 - Card title/main text < 20 pt
 - Secondary meeting information < 18 pt
-- Metadata/footer outside 12–14 pt range when small text is appropriate
+- Contribution microcopy < 12 pt or >13 pt without a documented accessibility reason
+- Card timestamp < 12 pt
+- Other metadata/footer outside 12–14 pt range when small text is appropriate
 
 Also FAIL if:
 
@@ -182,7 +266,7 @@ Also FAIL if:
 
 ---
 
-## 8. OVERFLOW & PAGINATION
+## 10. OVERFLOW & PAGINATION
 
 When a card does not fit:
 
@@ -203,6 +287,7 @@ Required continuation examples:
 FAIL if the renderer responds to overflow by:
 
 - shrinking text
+- removing contribution microcopy
 - reducing padding
 - clipping text
 - overlapping cards
@@ -211,7 +296,7 @@ FAIL if the renderer responds to overflow by:
 
 ---
 
-## 9. ARTIFACT COLLISION CHECK
+## 11. ARTIFACT COLLISION CHECK
 
 The rendered artifact must satisfy:
 
@@ -223,13 +308,14 @@ text_clipping_count == 0
 out_of_bounds_element_count == 0
 font_below_minimum_count == 0
 plain_row_work_item_count == 0
+missing_contribution_microcopy_count == 0
 ```
 
 Any non-zero count = FAIL.
 
 ---
 
-## 10. COVER SLIDE ⓪
+## 12. COVER SLIDE ⓪
 
 Verify:
 
@@ -245,7 +331,7 @@ Verify:
 
 ---
 
-## 11. MERGE BOARDS ①A–①C
+## 13. MERGE BOARDS ①A–①C
 
 Verify:
 
@@ -253,6 +339,8 @@ Verify:
 - max 6 cards per physical slide
 - chronological order where required
 - team accent visible
+- contribution microcopy directly under every merge title
+- merge timestamp uses muted microcopy/timestamp style
 - actual developer/reviewer/merger identities shown where required
 - continuation slides exist if >6
 - no third row
@@ -261,20 +349,22 @@ If a card cannot remain readable in 3 columns, reduce density for that physical 
 
 ---
 
-## 12. ACTIVE WORK ①D–①E
+## 14. ACTIVE WORK ①D–①E
 
 Verify:
 
 - ①D uses cards, default 2 × 2, max 4
 - ①E uses cards, default 2 × 2, max 4
 - each issue/work item has its own card
+- contribution microcopy appears directly under each issue/PR title
+- latest commit/date uses the muted timestamp style
 - branch/status/owner remain inside the card
 - fifth item starts a continuation slide
 - no row/list presentation
 
 ---
 
-## 13. TEAM DETAIL ③④⑤
+## 15. TEAM DETAIL ③④⑤
 
 Verify:
 
@@ -283,12 +373,13 @@ Verify:
 - no tables
 - no rows
 - one work item per card
+- Issue/PR cards include contribution microcopy
 - max 4 cards per physical slide
 - continuation slides when needed
 
 ---
 
-## 14. DEPENDENCY DIAGRAM ⑥A
+## 16. DEPENDENCY DIAGRAM ⑥A
 
 Verify:
 
@@ -300,7 +391,7 @@ Verify:
 
 ---
 
-## 15. EXPLICIT OMISSIONS
+## 17. EXPLICIT OMISSIONS
 
 If a conditional slide is omitted, record the verified reason.
 
@@ -316,7 +407,7 @@ A slide may not disappear merely because layout is inconvenient.
 
 ---
 
-## 16. FINAL DELIVERY GATE
+## 18. FINAL DELIVERY GATE
 
 Deliver only when:
 
@@ -324,6 +415,7 @@ Deliver only when:
 DATA_AUDIT == PASS
 CONTENT_COMPLETENESS == PASS
 VISUAL_CARD_SYSTEM == PASS
+CONTRIBUTION_MICROCOPY == PASS
 TYPOGRAPHY == PASS
 OVERFLOW == PASS
 ARTIFACT_COLLISION_CHECK == PASS
@@ -340,5 +432,5 @@ If any check fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 3.0
+**Version:** 3.1
 **Last updated:** 2026-09-17
