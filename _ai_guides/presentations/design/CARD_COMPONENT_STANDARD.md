@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.3
+  version: 1.4
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -24,7 +24,7 @@ It owns:
 
 It does **not** own global slide colors, slide structure, data acquisition, evidence classification or slide selection.
 
-If another document contains an example that conflicts with this file, **this file wins for card internals**.
+If another document contains an example that conflicts with this file, **this file wins for card internals**, except that `READABILITY_HARD_RULES.md` may define stricter minima.
 
 ## Absolute accessibility boundary
 
@@ -60,11 +60,11 @@ Recommended left accent width: visually equivalent to **4–6 px**.
 
 # 2. REQUIRED CONTENT ORDER
 
-For Issue/PR/Merge cards, use this visual order:
+For Issue/PR/Merge/action cards, use this visual order:
 
 1. **Title**
-2. **Pedagogical contribution line** — directly under the title
-3. **Assignee/developer + team**
+2. **Pedagogical contribution / project-value line** — directly under the title
+3. **Assignee/developer + team** when relevant
 4. **Operational metadata** — PR/branch/status or merge/review
 5. **Timestamp** — when relevant
 
@@ -72,24 +72,36 @@ Do not insert decorative or provenance rows between title and pedagogical explan
 
 The explanation and title form one semantic group. Other rows are separate blocks and must have visible spacing between them.
 
+For action and next-step cards, the pedagogical line must answer:
+- what the action concerns
+- what it contributes to the project / why it matters
+
 ---
 
-# 3. RESPONSIVE TYPOGRAPHY — NEVER AUTO-SHRINK
+# 3. RESPONSIVE TYPOGRAPHY — START LARGE, NEVER AUTO-SHRINK
+
+General principle:
+1. start at the preferred size
+2. reduce only when required to fit
+3. reduce stepwise, never below the role minimum
+4. if minimum still does not fit, change geometry/density or paginate
+
+Do not choose a smaller size merely because it technically fits.
 
 ## Card title
-- preferred: **18–20 pt**
+- preferred: **19–20 pt**
 - minimum: **18 pt**
 - bold
 - main text color from global palette
 
 ## Pedagogical contribution / project-value line
-This answers: **Vad löser detta i projektet?**
+This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
 
-- preferred: **13–14 pt**
-- minimum: **12 pt**
+- preferred: **14–15 pt**
+- minimum: **13 pt**
 - regular
 - readable secondary text color
-- normally 1–2 visual lines
+- normally 1–3 visual lines when needed for pedagogical clarity
 - placed immediately under the title
 - no extra paragraph gap between title and explanation
 
@@ -100,8 +112,8 @@ Examples:
 - `Henrik · Native`
 
 Rules:
-- preferred: **13–14 pt**
-- minimum: **12 pt**
+- preferred: **14–15 pt**
+- minimum: **13 pt**
 - semibold/bold
 - **the verified assignee/developer name uses the same primary text color as the card title**
 - the team name may use secondary text color
@@ -116,22 +128,27 @@ Examples:
 - `Öppen PR · väntar på review`
 
 Style:
-- preferred: **11–12 pt**
-- minimum: **10 pt**
+- preferred: **12–13 pt**
+- minimum: **11 pt**
 - regular
 - muted but WCAG-AA-safe color
 
 ### Merge/review identity rule
 Only show a person's name when the identity is verified by source evidence.
 
+Before rendering a merged PR card, the generator MUST perform the dedicated merger + submitted-review lookup in `data/PR_MERGE_REVIEW_IDENTITY.md`.
+
 Canonical format:
 
-`Merged: [verified name or blank] | Review: [verified name or blank]`
+`Merged: [verified name or blank] | Review: [verified approving reviewer(s) or blank]`
 
 Examples:
 - `Merged: Björn | Review: Zaida`
+- `Merged: Björn | Review: Zaida, Rasha`
 - `Merged: Björn | Review:`
 - `Merged: | Review: Zaida`
+
+`requested_reviewers` must never populate the visible `Review:` field for a merged PR. Only actual submitted `APPROVED` reviews count for that field.
 
 Never render uncertainty commentary in this row.
 
@@ -146,12 +163,12 @@ Forbidden visible wording includes:
 Verification state belongs in the internal data/audit layer, not in the meeting card.
 
 ## Timestamp / source microcopy
-- preferred: **10–11 pt**
-- minimum: **10 pt**
+- preferred: **11–12 pt**
+- minimum: **11 pt**
 - quiet WCAG-AA-safe text color
 - timestamp should be visually subordinate to all work content
 
-Never go below 10 pt.
+Never go below 11 pt.
 
 ---
 
@@ -183,7 +200,7 @@ For active work, use the relevant verified activity timestamp only when it helps
 Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
 Tomac · Frontend
-Merged: Zaida | Review:
+Merged: Zaida | Review: Björn
 
                          14 sep · 10:16
 ```
@@ -191,8 +208,8 @@ Merged: Zaida | Review:
 Rendering rules:
 - pedagogical explanation sits directly under the title
 - assignee/developer is clearly emphasized
-- only verified names appear after `Merged:` / `Review:`
-- unknown identity leaves the value blank
+- only verified merger and actual approving reviewer names appear
+- dedicated merger/review lookup is mandatory before an empty field is accepted
 - timestamp is a discreet one-line element at lower right
 
 ---
@@ -217,13 +234,13 @@ If a status symbol is already useful for the meeting (for example waiting/blocke
 
 ---
 
-# 7. CANONICAL DEPENDENCY NODE
+# 7. CANONICAL DEPENDENCY / NEXT-STEP NODE
 
-Dependency nodes use the same internal hierarchy:
+Dependency and next-step nodes use the same internal hierarchy:
 
 ```text
 API-kontrakt
-Definierar endpoints + payload för integrationen.
+Definierar endpoints + payload så Frontend och Backend kan integrera stabilt.
 
 🔴 Behöver låsas
 ```
@@ -234,6 +251,7 @@ Hard rules:
 - status/dependency is a separate block with minimum spacing
 - arrows/connectors stay outside cards
 - if evidence is insufficient, use the approved uncertainty wording from the content/data authority
+- on `⑬ Nästa steg`, every card must explain both what the action concerns and why it matters to the project
 
 ---
 
@@ -242,13 +260,13 @@ Hard rules:
 Separate semantic blocks must never visually touch.
 
 Use these **minimum rendered gaps**:
-- title → pedagogical explanation: **2 px minimum, 4 px preferred**
-- explanation → assignee/developer: **10 px minimum**
-- assignee/developer → operational metadata: **6 px minimum**
-- one operational metadata row → next separate metadata row: **4 px minimum**
-- operational metadata → bottom timestamp/source area: **8 px minimum** unless flexible whitespace is larger
+- title → pedagogical explanation: **4 px minimum, 6 px preferred**
+- explanation → assignee/developer: **12 px minimum**
+- assignee/developer → operational metadata: **8 px minimum**
+- one operational metadata row → next separate metadata row: **6 px minimum**
+- operational metadata → bottom timestamp/source area: **10 px minimum** unless flexible whitespace is larger
 
-Wrapped lines inside the same text block use normal line-height and no artificial paragraph gap.
+Wrapped lines inside the same text block use natural line-height and no artificial paragraph gap.
 
 These values are minimums, not targets for compression.
 
@@ -257,7 +275,7 @@ If a card cannot fit while respecting them:
 2. reduce grid density
 3. paginate
 
-Never solve fit by collapsing these gaps below minimum, overlapping rows, or shrinking text below role minimums.
+Never solve fit by collapsing these gaps below minimum, overlapping rows, shrinking text below role minimums, or removing the pedagogical explanation.
 
 Do not vertically justify all rows across the card height.
 
@@ -274,7 +292,7 @@ Allowed adaptations:
 
 Fit order:
 1. preferred typography
-2. typography reduction only within explicit role ranges
+2. typography reduction only when required and only within explicit role ranges
 3. canonical spacing, never below hard minimums
 4. adapt card/grid dimensions
 5. paginate
@@ -282,6 +300,7 @@ Fit order:
 Never:
 - clip or overlap text
 - omit required rows
+- omit pedagogical/project-value explanation
 - expose internal evidence-level labels to save explanation space
 - reduce below component minimums
 - reduce contrast below WCAG AA
@@ -304,16 +323,21 @@ text_clipping_count == 0
 text_overlap_count == 0
 card_block_spacing_violation_count == 0
 pedagogical_line_not_directly_under_title_count == 0
+next_step_card_missing_project_value_microcopy_count == 0
 assignee_not_visually_emphasized_count == 0
 visible_evidence_level_label_count == 0
 unverified_identity_commentary_count == 0
 timestamp_not_single_line_count == 0
 timestamp_not_right_aligned_count == 0
+verified_approving_reviewer_omitted_from_card_count == 0
+verified_merger_omitted_from_card_count == 0
 ```
 
 Also verify:
+- dedicated merger + submitted-review lookup was performed for every merged PR
 - only verified merger/reviewer names are printed
-- unknown merger/reviewer values are blank
+- `Review:` is based on submitted approvals, never requested reviewers
+- unknown merger/reviewer values are blank only after lookup
 - assignee/developer name is visually prominent
 - explanation is larger than operational metadata
 - timestamp is discreet and subordinate
@@ -322,5 +346,5 @@ Also verify:
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.3
+**Version:** 1.4
 **Last updated:** 2026-09-17
