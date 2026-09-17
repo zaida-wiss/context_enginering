@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.1
+  version: 4.2
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -59,7 +59,7 @@ Verify:
 - developer attribution follows project rules
 - reviewer/merger identities use actual evidence
 - timestamps are actual source timestamps
-- contribution microcopy is grounded in repository evidence
+- contribution/project-value microcopy is grounded in repository evidence
 - no fabricated status, branch, owner, reviewer, merge identity or code effect
 
 ---
@@ -103,7 +103,40 @@ If stale examples conflict with these authorities, ignore the stale visual form 
 
 ---
 
-## 5. MODERN CARD SYSTEM
+## 5. CANONICAL CALM-NAVY THEME
+
+The deck must use the approved calm dark palette globally.
+
+Canonical values:
+
+```text
+Slide background:       #15182E
+Card surface:           #1E233B
+Alternate card surface: #252A45
+Primary text:           #F7F8FC
+Secondary text:         #D2D7E4
+Metadata text:          #B0B8CC
+Quiet microcopy:        #A2ABC0
+```
+
+Verify:
+- every slide uses the same calm navy background family
+- every ordinary information card uses the canonical dark card family
+- cards do not revert to older `#0F1830` / `#18233D` styling
+- no black/high-glare card variants appear without an explicit exception
+- transparency does not visibly destroy the intended card/background separation
+
+Required:
+
+```text
+noncanonical_background_color_count == 0
+noncanonical_card_surface_count == 0
+high_glare_surface_count == 0
+```
+
+---
+
+## 6. MODERN CARD SYSTEM
 
 Every item-based information/work item must use a card unless explicitly defined as a diagram/group.
 
@@ -115,7 +148,7 @@ FAIL on:
 - inconsistent flat boxes replacing the card system on later slides
 
 Every card should show:
-- dark glass-like surface
+- calm dark glass-like surface
 - rounded corners
 - subtle depth
 - coherent padding
@@ -127,11 +160,12 @@ Required:
 ```text
 full_team_outline_count == 0
 card_system_inconsistency_count == 0
+calm_navy_palette_consistent == true
 ```
 
 ---
 
-## 6. RESPONSIVE TYPOGRAPHY
+## 7. RESPONSIVE TYPOGRAPHY
 
 Use role-specific ranges from `CARD_COMPONENT_STANDARD.md`.
 
@@ -161,7 +195,7 @@ auto_shrink_enabled_count == 0
 
 ---
 
-## 7. EVEN SPACING / RESPONSIVE GEOMETRY
+## 8. EVEN SPACING / RESPONSIVE GEOMETRY
 
 Verify:
 - wrapped lines use natural line spacing
@@ -181,7 +215,7 @@ fixed_height_text_clipping_count == 0
 
 ---
 
-## 8. MERGED PR CARD FORMAT
+## 9. MERGED PR CARD FORMAT
 
 Verify merged cards use:
 
@@ -212,30 +246,81 @@ merged_timestamp_prefix_count == 0
 
 ---
 
-## 9. CONTRIBUTION MICROCOPY
+## 10. CONTRIBUTION / PROJECT-VALUE MICROCOPY
 
 Every Issue, open PR and merged PR card contains a grounded explanation directly below the title.
+
+Dependency nodes also contain a short grounded line answering:
+
+> Vad löser detta i projektet?
 
 Required characteristics:
 - short
 - plain Swedish
 - grounded in verified evidence
+- directly below title
 - not vague process language
 
-If evidence is insufficient, use:
+If evidence is insufficient for an issue/PR/merge, use:
 
 `Bidrag till koden behöver verifieras.`
+
+If evidence is insufficient for a dependency node, use:
+
+`Bidrag till projektet behöver verifieras.`
 
 Required:
 
 ```text
 missing_contribution_microcopy_count == 0
+missing_dependency_project_value_microcopy_count == 0
 unsupported_contribution_claim_count == 0
 ```
 
 ---
 
-## 10. PROVENANCE — FACT VS TEAM VS AI
+## 11. DEPENDENCY FLOW CARDS ⑥A
+
+Dependency chains should visually follow the approved compact card → arrow → card format.
+
+Every node must contain:
+1. short title / issue ID
+2. short project-value explanation
+3. symbol + status/dependency text
+
+Example:
+
+```text
+API-kontrakt
+Definierar endpoints + payload för integrationen.
+🔴 behöver låsas
+```
+
+```text
+Riktig Java HTTP
+Byter mock mot riktig Backend-kommunikation.
+⏳ väntar
+```
+
+Verify:
+- arrows show dependency direction clearly
+- connectors stay outside text areas
+- project-value line is not removed because the diagram is dense
+- node geometry grows/widens responsively
+- nodes use the same calm navy glass-card language as the rest of the deck
+- no full bright outline is used instead of the narrow accent treatment
+
+Required:
+
+```text
+dependency_node_without_project_value_count == 0
+dependency_connector_overlap_count == 0
+dependency_node_style_inconsistency_count == 0
+```
+
+---
+
+## 12. PROVENANCE — FACT VS TEAM VS AI
 
 Every inferred/recommended item must be visibly distinguished from verified source content.
 
@@ -271,7 +356,7 @@ mixed_provenance_card_without_block_labels_count == 0
 
 ---
 
-## 11. OVERFLOW / COLLISION
+## 13. OVERFLOW / COLLISION
 
 The rendered artifact must satisfy:
 
@@ -296,7 +381,7 @@ Never clip or hide content.
 
 ---
 
-## 12. COVER SLIDE ⓪
+## 14. COVER SLIDE ⓪
 
 Verify:
 - no meeting-point pen/number header
@@ -308,10 +393,11 @@ Verify:
 - PL-fokus visible
 - compact source/snapshot footer visible
 - no unnecessary bordered boxes
+- canonical calm navy theme used
 
 ---
 
-## 13. MERGE BOARDS ①A–①C
+## 15. MERGE BOARDS ①A–①C
 
 Verify:
 - chronological order where required
@@ -325,7 +411,7 @@ Verify:
 
 ---
 
-## 14. ACTIVE / BACKLOG ①D–①E
+## 16. ACTIVE / BACKLOG ①D–①E
 
 Verify:
 - one work item per card
@@ -337,7 +423,7 @@ Verify:
 
 ---
 
-## 15. TEAM DETAIL ③④⑤
+## 17. TEAM DETAIL ③④⑤
 
 Verify:
 - identical card system for Frontend/Backend/Native
@@ -348,7 +434,7 @@ Verify:
 
 ---
 
-## 16. SPRINTPLAN ⑫
+## 18. SPRINTPLAN ⑫
 
 Every day card must separate:
 - verified school schedule facts
@@ -374,7 +460,7 @@ Do not blend source fact and AI content into one unlabeled statement.
 
 ---
 
-## 17. NEXT STEPS ⑬
+## 19. NEXT STEPS ⑬
 
 Every card has provenance.
 
@@ -390,7 +476,7 @@ Use:
 
 ---
 
-## 18. QUESTIONS TO PL ⑭
+## 20. QUESTIONS TO PL ⑭
 
 Every question is a modern card and includes provenance.
 
@@ -403,7 +489,7 @@ Cards adapt responsively to question length. Do not use oversized text that clip
 
 ---
 
-## 19. EXPLICIT OMISSIONS
+## 21. EXPLICIT OMISSIONS
 
 Conditional slides may only be omitted with a verified reason recorded in audit.
 
@@ -411,7 +497,7 @@ A slide may not disappear because layout is inconvenient.
 
 ---
 
-## 20. FINAL DELIVERY GATE
+## 22. FINAL DELIVERY GATE
 
 Deliver only when:
 
@@ -419,8 +505,10 @@ Deliver only when:
 DATA_AUDIT == PASS
 WCAG_2_2_AA == PASS
 CONTENT_COMPLETENESS == PASS
+CALM_NAVY_THEME == PASS
 VISUAL_CARD_SYSTEM == PASS
 RESPONSIVE_TYPOGRAPHY == PASS
+DEPENDENCY_PROJECT_VALUE_MICROCOPY == PASS
 PROVENANCE_AND_AI_LABELING == PASS
 OVERFLOW == PASS
 ARTIFACT_COLLISION_CHECK == PASS
@@ -435,5 +523,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.1
+**Version:** 4.2
 **Last updated:** 2026-09-17
