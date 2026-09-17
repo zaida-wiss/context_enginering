@@ -4,318 +4,292 @@ description: COPY THIS PROMPT — Direct instructions for any AI to generate pre
 metadata:
   type: critical_instruction
   audience: ChatGPT, Claude, Gemini — any AI asked to generate presentation
+  version: 3.0
 ---
 
 # 🤖 AI PROMPT — Generate Avanza Team 1 Presentation
 
-**Copy-paste denna prompt direkt till vilken AI som helst du ber om att skapa en presentation.**
+Generate a Monday Meeting presentation for Avanza Team 1 using the deterministic pipeline in this context repo.
+
+This is not a loose template. Follow the authority hierarchy and live data requirements exactly.
 
 ---
 
-## YOUR TASK
+## STEP 1 — READ THE AUTHORITIES
 
-Generate a presentation for Avanza Team 1 Monday meeting following the deterministic pipeline in this context repo.
+Read these files completely before building anything:
 
-**CRITICAL: This is NOT a loose template. Follow the EXACT structure and LIVE GitHub data sources specified.**
+1. `MANDATORY_READING_ORDER.md`
+2. `SYSTEM_CONTRACT.yaml`
+3. `ACCESSIBILITY_NEURODIVERSITY.md`
+4. `VISUAL_DESIGN_MANDATORY.md`
+5. `SLIDE_DETAIL_SPEC.md`
+6. `LAYOUT_OVERFLOW_GUARD.md`
+7. `RENDER_GATE_CHECKLIST.md`
+8. `DATA_ACQUISITION_CONTRACT.yaml`
+9. `ACTIVE_WORK_DETECTION_MODEL.md`
+10. `TEAM_ROSTER.md`
 
----
-
-## STEP 1 — READ MANDATORY FILES (15-20 min read)
-
-Before doing ANYTHING, read these three files completely:
-
-1. **MANDATORY_READING_ORDER.md**
-   - https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/MANDATORY_READING_ORDER.md
-   - (Execution order, hierarchy, render-gate rules)
-
-2. **SLIDE_DETAIL_SPEC.md**
-   - https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md
-   - (Exact slide ①-⑭ specifications, titles, content rules)
-
-3. **TEMPLATE_REFERENCE.html**
-   - https://github.com/zaida-wiss/context_enginering/blob/main/_ai_guides/presentations/monday_meeting/design/TEMPLATE_REFERENCE.html
-   - (NPF-friendly design principles — NO TABLES, Symbol+Färg+Text only)
+`TEMPLATE_REFERENCE.html` is reference only and never overrides an authority file.
 
 ---
 
-## STEP 2 — MANDATORY: DATA ACQUISITION (Follow DATA_ACQUISITION_CONTRACT.yaml)
+## STEP 2 — VERIFY REPOSITORY STATE
 
-**Read this FIRST:** `DATA_ACQUISITION_CONTRACT.yaml` — canonical acquisition method
-**Then follow:** `DATA_COLLECTION_MANDATORY.md` — implementation guide with checklist
+Before data acquisition:
 
-🚨 **If any PRIMARY source fails → STOP and report DATA_ACQUISITION_RECEIPT with status**
-Never skip a source or substitute with fallback without trying primary first.
-
-### Required Datasets (in order)
-
-**DATASET 1: Team Roster (Local)**
-- Read `TEAM_ROSTER.md` — 7 members with GitHub login + display name
-- Verify all members appear in later work attribution
-
-**DATASET 2: Merged PRs (GitHub API → develop branch)**
-- URL: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&merged:>=[REPORTING_PERIOD_START]`
-
-**MANDATORY FIELDS (ALL MUST be extracted for each PR):**
-- Extract: `pr.commits[].author.login` (actual code authors — PRIMARY for "Developed by")
-- Extract: `pr.reviews[].user.login` + `reviews[].state` (APPROVED, CHANGES_REQUESTED, COMMENTED all count as "Reviewed by")
-- Extract: `pr.merged_by.login` (MANDATORY — who actually merged the PR for "Merged by")
-- Extract: `pr.linked_issues[]` (for deduplication via linked_issue_ids)
-
-**CRITICAL RULE:**
-- ❌ NEVER write "ej verifierat", "not verified", "GitHub-merge", or similar placeholder when GitHub data exists
-- ✅ IF `pr.merged_by.login` exists → use it
-- ✅ IF `pr.reviews[]` with APPROVED exists → use it
-- ✅ IF neither exists → write "Ej verifierbart" ONLY
-- ❌ Do NOT guess from PR author, assignee, or merge commit author
-
-- Fallback: GitHub web UI (https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is:pr+is:merged)
-
-**DATASET 3: Collection Branch Merges (GitHub API)**
-- Known branches: Java-Development-Environment (Backend), C/C++-Native (Native)
-- Same attribution chain as Dataset 2
-- CRITICAL: Apply DEDUPLICATION using `linked_issue_ids + commit_sha_ancestry`
-  - If same work appears in both branches, show ONLY develop delivery
-- Fallback: GitHub web UI per-branch
-
-**DATASET 4: Open PRs + Active Issues (GitHub API)**
-- Open PRs: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=open`
-- Active issues: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&updated:>=[REPORTING_PERIOD_START]`
-- Extract: assignees, review requests, activity timestamps
-
-**DATASET 5: Recent Commits (for pågår evidence)**
-- Per-branch commits: `https://api.github.com/repos/chas-challenge-2026/avanza-team1/commits?sha=[branch]&since=[REPORTING_PERIOD_START]`
-- Branches: develop, Java-Development-Environment, C/C++-Native, and any team branches
-- Extract: author.login, commit.message, authored_at (proof of active work)
-
----
-
-## STEP 3 — VERIFY ATTRIBUTION & DEDUPLICATION (Critical integrity check)
-
-After collecting all datasets:
-
-1. **Verify all 7 team members appear somewhere:**
-   - Frontend: Tomac, Björn, Zaida
-   - Backend: Erik, Rasha
-   - Native: Pär, Henrik
-   - If missing → show "○ [Name] — Ny issue eller tillgänglig för hjälp i [team]" (NOT "inaktiv")
-
-2. **Apply DEDUPLICATION using linked_issue_ids + commit_sha_ancestry:**
-   - Check if Collection branch PR #X and Develop PR #Y represent same work
-   - Look for: same linked issue OR same commits in ancestry
-   - Rule: Show ONLY the Develop delivery (final state)
-   - Log deduplication decisions for verification
-
-3. **Verify Reviewed-by includes ALL review states:**
-   - NOT just "APPROVED" 
-   - Include: APPROVED (✅), CHANGES_REQUESTED (⚠️), COMMENTED (💬)
-   - All show as review work
-
-4. **Verify Developed-by uses actual commit authors:**
-   - NOT just PR author
-   - Priority: commits[] > assignees[] > pr.user (fallback only)
-
----
-
-## STEP 3.5 — VERIFY REPOSITORY STATE
-
-**Before building presentation, verify you're reading current HEAD:**
-
-**Output these verification lines before any other output:**
-
-```
-═══════════════════════════════════════════════════════════
+```text
 REPOSITORY STATE VERIFICATION
-═══════════════════════════════════════════════════════════
-
-Requested branch: cleanup
-Remote HEAD: [fetch latest SHA from origin/cleanup]
-Instruction files loaded from SHA: [show actual loaded SHA]
-MATCH: [YES or NO — must be YES to proceed]
-
-Latest commit message: [show actual latest commit]
-Timestamp: [show author date]
-
-═══════════════════════════════════════════════════════════
+Requested branch: [branch from user URL/request]
+Remote HEAD: [latest SHA]
+Instruction files loaded from SHA: [SHA]
+MATCH: YES/NO
 ```
 
-**If MATCH is NO:**
-- STOP immediately
-- Do NOT proceed to data acquisition
-- Report: "Branch mismatch — loaded from old SHA"
+If MATCH is NO: STOP.
 
-**If loaded SHA is stale (>30 min old):**
-- Re-run acquisition step to get fresh data
-- Update DATA_ACQUISITION_RECEIPT with new timestamp
+Do not use stale snapshots when live GitHub data is required.
 
 ---
 
-## STEP 4 — BUILD PRESENTATION
+## STEP 3 — DATA ACQUISITION
 
-**CRITICAL: Follow SLIDE_DETAIL_SPEC.md exactly for content + VISUAL_DESIGN_MANDATORY.md for rendering**
+Follow `DATA_ACQUISITION_CONTRACT.yaml` and `EXTERNAL_SOURCES.yaml` exactly.
 
-### ARTIFACT CREATION ORDER — MANDATORY
+Required datasets include:
 
-Before any Artifact/Open/Render operation:
+- Team roster
+- PRs merged to `develop`
+- Collection-branch merges
+- Open PRs
+- Open assigned issues
+- Branches/recent commits needed for active-work evidence
+- Actual reviews
+- Actual merge identity
 
-1. **Determine output path** — where will presentation HTML live?
-2. **Create the source artifact file** — write HTML to that path
-3. **Verify file exists** — check that file was created successfully
-4. **Verify file is non-empty** — file size > 0 bytes
-5. **Only then open/render/convert** — start render-to-PPTX
-6. **If creation fails → STOP** — report ARTIFACT_BUILD_ERROR
+Never guess missing GitHub data.
 
-**Never attempt to open or render a source file that has not yet been created.**
+### Attribution
 
-### Slides ① — Avklarat sedan förra mötet (Global overview)
+**Developed by**:
+1. actual commit authors
+2. issue assignee as fallback
+3. PR author only as weak fallback
 
-- **Slide ①A** "① Avklarat sedan förra mötet" — ALL merged PRs to develop (chronological, 3×2 card grid, max 6)
-  - Cards show: PR#, title, Developed by (commit authors), Reviewed by (all states), Merged by
-  - Team-colored borders (teal/pink/purple/slate)
-  - Soft rounded cards (12–18px corners)
+**Reviewed by**:
+- actual GitHub review activity
+- distinguish review states when relevant
 
-- **Slide ①B** (if relevant) "① Avklarat sedan förra mötet — Collection branches" — Merged to Java-Development-Environment, C/C++-Native
-  - Same format as ①A
-  - Apply deduplication: don't show if already in Develop
-  - Different presentation-time label ("merged to collection")
+**Merged by**:
+- actual `merged_by.login`
 
-### Slides ① continued — Pågår denna vecka (In progress work)
-
-- **Slide ①D** "① Pågår denna vecka — Team-based" — Open PRs + active work per team (Frontend, Backend, Native sections)
-  - Full-width stacked, 3 team columns
-  - Show: PR#, issue#, assignee, review status, branch
-  - LEVEL 1-3 evidence per team
-
-- **Slide ①E** "① Pågår denna vecka — Cross-team + Backlog" — Two sections
-  - Section A: Work affecting multiple teams (LEVEL 2-3 cross-team)
-  - Section B: Assigned issues without branch (LEVEL 4 backlog)
-  - Full-width stacked cards
-  - Light slate borders (#CBD5E1) for cross-team
-
-### Team Detail Slides (③④⑤) — COMPACT VERTICALLY STACKED RESPONSIVE CARDS
-
-- **Slide ③** "③ Frontend — denna vecka" — Issue-status per card + operativ plan
-- **Slide ④** "④ Backend — denna vecka" — Issue-status per card + operativ plan
-- **Slide ⑤** "⑤ Native — denna vecka" — Issue-status per card + operativ plan
-
-**MANDATORY LAYOUT (per TEAM_DETAIL_CARDS section in VISUAL_DESIGN_MANDATORY.md):**
-- One issue/work item per card
-- Vertically stacked (NOT horizontal bands, NOT tables)
-- Text horizontally centered inside each card
-- Card height is CONTENT-DRIVEN (grows to fit text)
-- Cards may have different heights (acceptable and expected)
-- Generous spacing between cards (20px minimum)
-- NO TEXT CLIPPING — text must always fit inside card
-
-**Card content per line:**
-```
-    ✓ #93 · PR #95
-    SQL-injection fix
-    
-    Merged to develop
-    
-       Tomac
-    Review: Erik
-```
-
-**Legend:** ✓ AVKLARAT, ◐ PÅGÅR, ✕ BLOCKERAD, ? OKÄND
-
-**Design for all slides:**
-- Dark navy background (#0F1830)
-- Soft rounded cards/table cells (12–18px corners)
-- Team-colored borders (borders only, NOT full background)
-- Internal padding: 16–20px
-- Typography: 28pt headers (bold), 13pt body (regular), 12pt metadata
-- Responsive height: NO TEXT CLIPPING (split to new slide if needed)
+Do not write generic placeholders such as `GitHub-merge` when the identity exists in GitHub.
 
 ---
 
-## STEP 5 — BEFORE RENDERING: Run RENDER_GATE_CHECKLIST.md
+## STEP 4 — DATA AUDIT
 
-Read: `verification/RENDER_GATE_CHECKLIST.md`
+Before slide generation, run the `DATA_AUDIT` required by `RENDER_GATE_CHECKLIST.md`.
 
-This checklist MUST pass before delivering presentation:
-- Layout compliance (①A grid, ①B-①D full-width, ③④⑤ responsive cards)
-- Visual design (soft cards, 12-18px corners, responsive height)
-- Data integrity (no duplicates, dedup verified, checksums aligned)
-- Attribution accuracy (commits > assignees > PR author priority)
-- Review states (APPROVED + CHANGES_REQUESTED + COMMENTED all shown)
-- WCAG compliance (contrast, color separation, no text clipping)
+Validate:
 
-**Framsida footer MUST show:**
-```
-✅ [N] sources verified — Data från [DATE] [TIME] UTC
-Sources: GitHub PRs, commits, issues, collection branches
+```text
+COUNT
+SET
+UNIQUENESS
+TEAM COVERAGE
+ACTIVE ISSUE COMPLETENESS
 ```
 
-If any source failed:
-```
-⚠️ GitHub [source name] fallback used (partially unavailable)
-```
+All seven team members must be accounted for.
+
+When a member has no verified active PR/issue/review, use:
+
+`[Name] — Ny issue eller tillgänglig för hjälp i [teamet]`
+
+Review work counts as work.
 
 ---
 
-## STEP 6 — FINAL QUALITY CHECKS (Before delivery)
+## STEP 5 — BUILD WITH THE MODERN CARD SYSTEM
 
-After rendering to PPTX:
-- ☐ Open in PowerPoint and page through every slide
-- ☐ Verify NO text clipping or overflow
-- ☐ Verify responsive card heights working correctly
-- ☐ Verify all 7 team members visible somewhere (work or "available")
-- ☐ Verify ①A shows 3×2 grid (max 6 cards)
-- ☐ Verify ①B-①D show full-width stacked cards
-- ☐ Verify ③④⑤ show compact vertically stacked cards with centered text (NOT tables)
-- ☐ Verify colors: team borders correct, status symbols clear
-- ☐ Verify deduplication applied (no PR shown twice)
+`VISUAL_DESIGN_MANDATORY.md` is the visual authority.
+
+### Core rule
+
+> ONE ITEM = ONE CARD
+
+Do not render work items as plain text rows, table rows, horizontal bands, or line-only lists.
+
+### Canonical layouts
+
+- `①A–①C`: 3 × 2 modern cards, max 6 per physical slide
+- `①D`: 2 × 2 modern cards, max 4
+- `①E`: 2 × 2 modern cards, max 4
+- `①F`: 2 × 2 or 2 × 1 cards, max 4
+- `②–⑤`: modern cards, normally 2 × 2, max 4
+- `⑥`: modern cards; `⑥A` may use dependency diagram nodes
+- `⑦–⑫`: modern cards, normally 2 × 2, max 4
+- `⑬`: 4 × 1 or 2 × 2 cards, max 4
+- `⑭`: grouped modern cards, continuation if needed
+
+### Modern card style
+
+- Slide background: `#0F1830`
+- Card surface: `#18233D`
+- Rounded corners: 16–20 px
+- Padding: 18–22 px
+- Gap between cards: 20 px minimum
+- Subtle border/accent
+- Subtle box shadow/depth
+- Team color only as accent/border, not full-card fill
+
+Canonical shadow feeling:
+
+```css
+box-shadow:
+  0 10px 30px rgba(0,0,0,.22),
+  0 2px 8px rgba(0,0,0,.16);
+```
+
+### Typography minimums
+
+- Slide title: 32 pt
+- Section header: 22 pt
+- Card title/main content: 20 pt
+- Secondary meeting information: 18 pt
+- Metadata/footer: 12–14 pt only
+
+Never shrink text below minimums.
 
 ---
 
-## MANDATORY FAILURE REPORTING
+## STEP 6 — PAGINATION / OVERFLOW
 
-If you CANNOT complete ANY step:
+When content does not fit:
 
-1. **STOP rendering**
-2. **Report exactly which step failed:**
-   - "Step 2, Source 1: GitHub merged PRs not accessible"
-   - "Step 3: Cannot verify all 7 team members"
-   - "Step 4: Cannot read SLIDE_DETAIL_SPEC.md"
+1. Let the card grow
+2. Use fewer cards on that physical slide
+3. Create continuation slide(s)
 
-3. **Never skip a step. Never use cached data. Never hide failures.**
+Examples:
+
+```text
+①D-2
+①E-2
+③-2
+⑭-2
+```
+
+Never solve overflow by:
+
+- shrinking font
+- reducing padding
+- overlapping text
+- clipping text
+- replacing cards with rows
+- hiding required branch/status/owner metadata
+
+More slides are preferred over compressed slides.
+
+---
+
+## STEP 7 — CONTENT RULES
+
+Follow `SLIDE_DETAIL_SPEC.md` for WHAT each slide contains.
+
+If `SLIDE_DETAIL_SPEC.md` contains legacy visual wording such as `rows`, `stacked`, `columns`, `table`, or old font sizes, that wording does NOT control rendering.
+
+For visual choices always follow:
+
+1. `ACCESSIBILITY_NEURODIVERSITY.md`
+2. `VISUAL_DESIGN_MANDATORY.md`
+3. `LAYOUT_OVERFLOW_GUARD.md`
+
+`SLIDE_DETAIL_SPEC.md` remains the content authority only.
+
+---
+
+## STEP 8 — RENDER GATE
+
+Before delivery, run `RENDER_GATE_CHECKLIST.md` against the actual rendered PPTX/PDF.
+
+The artifact must satisfy:
+
+```text
+text_overlap_count == 0
+card_overlap_count == 0
+text_outside_card_count == 0
+text_clipping_count == 0
+out_of_bounds_element_count == 0
+font_below_minimum_count == 0
+plain_row_work_item_count == 0
+```
+
+Also verify:
+
+- ①D and ①E are card grids, not row lists
+- card shadow/depth is subtle and consistent
+- every card has enough padding
+- team accents are correct
+- no data item disappeared because of layout pressure
+- continuation slides exist whenever necessary
+
+---
+
+## STEP 9 — FINAL QUALITY CHECK
+
+Page through every rendered slide.
+
+Check:
+
+- no overlap
+- no clipping
+- no text below minimum size
+- no row/list work-item layouts
+- modern soft-card feel throughout
+- all required data accounted for
+- actual developers/reviewers/mergers shown where required
+- all seven team members represented
+- no duplicated PR/work item
+
+If anything fails: fix → rerender → reinspect.
 
 ---
 
 ## DO NOT
 
-- ❌ Use cached/snapshot data — fetch LIVE from GitHub
-- ❌ Skip data acquisition steps — follow DATA_ACQUISITION_CONTRACT.yaml
-- ❌ Forget deduplication — use linked_issue_ids + commit_sha_ancestry (not just PR IDs)
-- ❌ Show only "APPROVED" reviews — include CHANGES_REQUESTED + COMMENTED as review work
-- ❌ Use PR author as "Developed by" — use commit authors (primary) > assignees > PR author
-- ❌ Show "inaktiv" or "ingen aktivitet" — use "Ny issue eller tillgänglig för hjälp i [team]" instead
-- ❌ Write "ej verifierat", "not verified", "GitHub-merge", or similar placeholder when GitHub data exists
-  - ✅ IF merged_by.login exists in GitHub → use it (never write "GitHub-merge")
-  - ✅ IF reviews[] exists in GitHub → use reviewer name (never write "not verified")
-  - ✅ ONLY write "Ej verifierbart" if GitHub truly lacks the data AND cannot be fetched
-- ❌ Render ③④⑤ as tables or horizontal bands — MUST be compact vertically stacked cards with centered text
-- ❌ Use corner radius < 12px or > 18px on soft cards
-- ❌ Clip text to fit cards — split to new slide instead
-- ❌ Hide data verification failures or source unavailability
+- Do not use cached or guessed GitHub data
+- Do not use PR author as automatic `Developed by`
+- Do not use requested reviewer as proof of actual review
+- Do not write `inaktiv` / `ingen aktivitet`
+- Do not use plain text rows for issue/PR items
+- Do not use table rows as the main layout
+- Do not shrink text to keep a slide count low
+- Do not force more than 4 cards onto ①D/①E
+- Do not clip text
+- Do not reduce card padding below the minimum
+- Do not ignore render-gate failures
 
 ---
 
 ## SUCCESS CRITERIA
 
-✅ LIVE GitHub data fetched (today's date, all 5 datasets collected)  
-✅ Data integrity checklist passed (dedup, attribution, reviews verified)
-✅ All 7 team members appear (with work or "available" marker, never "inactive")
-✅ Slide structure correct (①A grid, ①B-①D full-width, ③④⑤ responsive cards)
-✅ Design compliant (dark navy, soft cards 12-18px, responsive height, no clipping)
-✅ Team colors correct (borders only, not backgrounds; never overlap status colors)
-✅ Framsida footer shows verified sources + timestamp
-✅ Render-gate checklist PASSED (run before delivery)  
-✅ Actually rendered to PPTX and visually verified (not just generated)
+```text
+LIVE_DATA == PASS
+DATA_AUDIT == PASS
+CONTENT_COMPLETENESS == PASS
+MODERN_CARD_SYSTEM == PASS
+TYPOGRAPHY == PASS
+OVERFLOW == PASS
+ARTIFACT_COLLISION_CHECK == PASS
+```
+
+The desired result is:
+
+**dark navy canvas + modern rounded cards + subtle shadow + large readable text + generous whitespace + continuation slides instead of compression.**
 
 ---
 
-**This prompt is stored in the context repo so any AI can find and follow it automatically.**
-
-**Last updated:** 2026-09-14
+**Last updated:** 2026-09-17
+**Version:** 3.0
