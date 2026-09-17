@@ -27,7 +27,7 @@ Before you read anything else, commit to ALL of these:
 - [ ] **Never improvise.** Do not bypass these rules because "it's faster" or "the rules seem ceremonial".
 - [ ] **Never skip steps.** Follow every rule, every gate, every verification step.
 - [ ] **Stop when required.** If data is incomplete or unverifiable, STOP before rendering. No presentation is better than a false presentation.
-- [ ] **Never compress to make content fit.** If text/cards do not fit, create continuation slides.
+- [ ] **Never auto-shrink or hide content to make cards fit.** Use deliberate component typography from `CARD_COMPONENT_STANDARD.md`; if the card still does not fit, create continuation slides.
 
 If you cannot commit to all of these: STOP.
 
@@ -73,30 +73,43 @@ Before composing or rendering any slide, read these files:
 
 1. [`design/ACCESSIBILITY_NEURODIVERSITY.md`](design/ACCESSIBILITY_NEURODIVERSITY.md)
 2. [`design/VISUAL_DESIGN_MANDATORY.md`](design/VISUAL_DESIGN_MANDATORY.md)
-3. [`monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`](monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md)
-4. [`monday_meeting/design/SLIDE_DETAIL_SPEC.md`](monday_meeting/design/SLIDE_DETAIL_SPEC.md)
-5. [`monday_meeting/design/TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) — **REFERENCE ONLY**
+3. [`design/CARD_COMPONENT_STANDARD.md`](design/CARD_COMPONENT_STANDARD.md) — **authoritative for card internals, metadata sizes, spacing and timestamps**
+4. [`monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`](monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md)
+5. [`monday_meeting/design/SLIDE_DETAIL_SPEC.md`](monday_meeting/design/SLIDE_DETAIL_SPEC.md)
+6. [`monday_meeting/design/TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) — **REFERENCE ONLY**
 
 ### Authority for layout conflicts
 
 If content/layout instructions conflict, use this order:
 
-1. Accessibility boundaries
-2. Visual design minimums
-3. Overflow/pagination guard
-4. Slide content specification
-5. Template reference (never authoritative)
+1. Accessibility boundaries / WCAG contrast and legibility
+2. Visual design theme and global slide geometry
+3. Card component standard for card internals and compact typography
+4. Overflow/pagination guard
+5. Slide content specification
+6. Template reference (never authoritative)
 
-### Mechanical overflow rule
+### Mechanical fit rule
 
-If content cannot fit with required font size, line height and padding:
+For cards, fitting all required rows is mandatory.
+
+Use the deliberate size ranges and spacing hierarchy in `CARD_COMPONENT_STANDARD.md` first:
+
+- timestamp/evidence may be reduced first
+- review/merged/branch metadata may be reduced next
+- owner/team may use the compact owner size
+- title remains visually dominant
+- use even, natural vertical rhythm; do not distribute rows across the whole card height
+- timestamp anchors at lower-left where applicable
+
+If content still cannot fit within the permitted component sizes:
 
 - Create continuation slide.
-- Do NOT reduce font size.
-- Do NOT reduce padding.
+- Do NOT use PowerPoint shrink-to-fit / auto-reduce-font.
 - Do NOT clip text.
 - Do NOT overlap text.
-- Do NOT convert a stacked slide into two or three columns.
+- Do NOT omit required rows.
+- Do NOT create large irregular whitespace merely to preserve oversized metadata.
 
 Grid layouts are allowed only where explicitly approved by the overflow guard.
 
@@ -163,12 +176,14 @@ text_outside_card_count == 0
 text_clipping_count == 0
 out_of_bounds_element_count == 0
 unapproved_grid_slide_count == 0
-font_below_minimum_count == 0
+font_below_component_minimum_count == 0
+missing_required_card_row_count == 0
+uneven_row_spacing_caused_by_vertical_justification == 0
 ```
 
 If any check is non-zero:
 1. STOP delivery.
-2. Add continuation slides / correct layout.
+2. Apply the compact component hierarchy / add continuation slides.
 3. Rerender.
 4. Reinspect the artifact.
 
