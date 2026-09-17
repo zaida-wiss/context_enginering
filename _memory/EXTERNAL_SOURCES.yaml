@@ -271,7 +271,7 @@ sources:
   GOOGLE_MEETING_PROTOCOL:
     source_id: "GOOGLE_MEETING_PROTOCOL"
     classification: "REQUIRED"
-    purpose: "Weekly team capacity (available/allocated hours per team), sprint planning decisions, blockers, action items"
+    purpose: "Current week: team capacity (available/allocated hours per team), sprint planning decisions, blockers, action items. Also scanned for: absence, capacity constraints affecting current week planning"
     document_id: "1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8"
     document_section: "Section 8: Kapacitet (currently empty — no quantitative data)"
     required_fields:

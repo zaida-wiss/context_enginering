@@ -908,11 +908,28 @@ execution_sequence:
         capacity_requirement: "OPTIONAL — show placeholder if missing"
         placeholder_text: "○ Kapacitet fastställs under mötet"
         proceed_on_missing_capacity: "YES (not a blocker)"
+        check_previous_week_for: "Absence/capacity constraints that affect THIS week's planning"
+        previous_week_source: "Last week's meeting protocol (mötesprotokollet)"
+        analysis_rule: >
+          IF previous week's protocol mentions absence or capacity constraints:
+            - SHOW as analysis in presentation (e.g., "Backend: Henrik absent Thu-Fri")
+            - Include in point ⑧ Kapacitet or as separate risk note
+          ELSE:
+            - Omit point ⑧ Kapacitet entirely (no placeholder needed)
       post_meeting:
         description: "Meeting protocol/results (after sprint planning)"
         capacity_requirement: "REQUIRED — stop if missing"
         placeholder_text: "N/A (must have actual values)"
         proceed_on_missing_capacity: "NO (must stop, wait for meeting data)"
+
+    for_pre_meeting_mode:
+      action: "Read LAST WEEK's meeting protocol (GOOGLE_MEETING_PROTOCOL, previous week) for:"
+      check_for:
+        - "Absence (holiday, sick leave, training, LIA requirements)"
+        - "Capacity constraints affecting THIS week's planning"
+        - "Personal situations reducing project capacity"
+      if_found: "Include as analysis/warning in point ⑧ or risk section"
+      if_not_found: "Omit point ⑧ capacity section from presentation"
 
     must_verify_current_sprint:
       file: "_memory/presentations/CURRENT_SPRINT.yaml"
