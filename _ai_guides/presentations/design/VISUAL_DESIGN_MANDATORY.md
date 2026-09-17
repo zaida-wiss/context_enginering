@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.0
+  version: 4.1
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -55,15 +55,17 @@ One work/information item = one card unless the slide-specific specification exp
 | Slide background | `#0F1830` |
 | Card surface | `#18233D` |
 | Alternate card surface | `#202C47` |
-| Neutral divider/edge | `#334155` |
+| Meaningful neutral card edge/divider | `#64748B` |
 | Main text | `#FFFFFF` |
 | Secondary text | `#CBD5E1` |
 | Metadata text | `#94A3B8` |
 | Quiet microcopy/timestamp | `#8290A7` |
 
-All text colors must be checked against their actual rendered background.
+All colors must be checked against their actual rendered background.
 
-`#8290A7` is allowed only where it still meets WCAG AA against the actual dark surface. If renderer/transparency changes the effective contrast, increase contrast rather than preserving the exact hex value.
+- `#64748B` is the canonical neutral color when an edge/divider is needed to identify a card/component.
+- Lower-contrast dark strokes may be used only as purely decorative texture when they are not needed to identify content or structure.
+- `#8290A7` is allowed only where it still meets WCAG AA against the actual dark surface. If renderer/transparency changes effective contrast, increase contrast rather than preserving the exact hex value.
 
 Do not use white/light slide backgrounds in this deck.
 
@@ -87,6 +89,9 @@ box-shadow:
   0 10px 30px rgba(0,0,0,.22),
   0 2px 8px rgba(0,0,0,.16);
 ```
+
+### Meaningful edge
+If the card requires a visible neutral edge to be distinguishable from the slide/card surroundings, use `#64748B` or another verified color with at least 3:1 contrast against the adjacent surface.
 
 ### Team accent
 Team ownership is shown ONLY with a narrow left accent line.
@@ -328,6 +333,7 @@ Before delivery, the rendered artifact must satisfy:
 
 ```text
 wcag_aa_violation_count == 0
+meaningful_component_contrast_failure_count == 0
 color_only_information_count == 0
 text_overlap_count == 0
 card_overlap_count == 0
@@ -360,5 +366,5 @@ Cards adapt to content; accessibility never adapts downward to the layout.
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.0
+**Version:** 4.1
 **Last updated:** 2026-09-17
