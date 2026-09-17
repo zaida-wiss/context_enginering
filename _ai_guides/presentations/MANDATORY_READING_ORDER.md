@@ -12,6 +12,8 @@ metadata:
 
 Before creating any presentation, follow this order exactly.
 
+**PRE-MEETING CONTEXT:** This presentation is risk-focused preparation for the CTO Feed Forward task (Sept 24 video, Sept 28 feedback). Risk analysis must show concrete impact on THIS WEEK's decisions, not just list concerns.
+
 ### Commitment gate
 
 You must commit to all of these:

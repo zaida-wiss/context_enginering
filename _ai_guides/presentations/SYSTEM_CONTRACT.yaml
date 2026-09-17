@@ -149,8 +149,15 @@ presentation_mode:
 
   pre_meeting:
     capacity: "optional"
+    focus: "RISK-DRIVEN — show how risk analysis shaped THIS WEEK's decisions"
+    purpose: "Mötesunderlag AND preparation for CTO Feed Forward task (Sept 24 video, Sept 28 feedback)"
     rule: "Never estimate hours. Use verified documented constraints only."
     if_missing: "Use approved placeholder or omit capacity slide according to slide/content rules."
+    risk_integration: >
+      Point ⑦ Risks must show concrete trade-offs and mitigations implemented THIS WEEK.
+      Point ⑫ Sprint Plan must validate realism against identified risks.
+      Point ⑬ Next Steps must prioritize according to risk impact.
+      Choose risks that demonstrate actual decision impact, not theoretical concern.
 
   post_meeting:
     capacity: "required"

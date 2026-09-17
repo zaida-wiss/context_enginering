@@ -451,22 +451,28 @@ Fields:
 
 # ⑦ RISKS
 
-Purpose: surface relevant current risks, not historical noise.
+Purpose: surface relevant current risks and show concrete impact on THIS WEEK's decisions.
+
+**This slide prepares the CTO Feed Forward task** (due Sept 24):
+- Show which risks drove trade-offs this week
+- Show which mitigations are implemented/tested
+- Show which technical choices were altered to reduce risk
 
 Per risk:
 - risk statement grounded in evidence
 - evidence/source
 - consequence if explicitly supported
-- mitigation if confirmed
+- **mitigation actually implemented or tested this week**
 - owner if confirmed
 - status
+- **IMPACT ON THIS WEEK:** How did this risk change our planning/priorities/approach?
 
 If risk consequence is model-derived, mark it `🔎 AI-analys`.
 If mitigation is model-derived, mark it `⭐ AI-förslag`.
 
-Current risks must influence planning suggestions when they materially change sequence, WIP or parallelization. Do not list risks as isolated information if they should change what the team does next.
+**Critical rule:** Current risks must influence planning suggestions when they materially change sequence, WIP or parallelization. Do not list risks as isolated information if they should change what the team does next.
 
-Do not invent probability, numeric impact or delay duration.
+**For CTO preparation:** Choose risks that show *actual decision impact*, not just theoretical concern.
 
 ---
 
@@ -578,9 +584,12 @@ AI-generated goals/recommendations must use `⭐ AI-förslag`.
 
 # ⑫ SPRINT PLAN
 
-Purpose: show what is actually scheduled and, separately, proposed project focus around it.
+Purpose: show what is actually scheduled, how it relates to capacity/risk, and why we prioritized this way.
 
-Every day card must distinguish source blocks.
+**Reality check against risk:** Does this plan remain realistic given the risks/constraints identified in ⑦?
+If a risk has changed sequencing or WIP limits, that decision must be visible here.
+
+Every day card must distinguish source blocks and, where relevant, show risk-driven choices.
 
 Canonical content order:
 
@@ -620,12 +629,16 @@ Never blend schedule facts, AI analysis and AI suggestions into one unlabeled pa
 
 # ⑬ NEXT STEPS
 
-Purpose: make the next actions clear while preserving provenance.
+Purpose: make the next actions clear while preserving provenance and showing risk-driven prioritization.
+
+**Prioritization rule:** Actions that reduce high-risk or high-consequence threats come first.
+Reference the risks from ⑦ that these actions address.
 
 Evidence priority:
-1. explicit actions from meeting protocol
-2. explicit approved/prefilled team actions
-3. AI-derived suggestions based on verified project data
+1. explicit risk-mitigating actions from meeting protocol
+2. explicit approved/prefilled team actions with risk context
+3. AI-derived suggestions prioritized by risk impact and verified project data
+4. Actions deferred due to risk constraints should be noted as such
 
 Every action card MUST contain its provenance label.
 
