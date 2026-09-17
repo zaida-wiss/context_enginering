@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.5
+  version: 1.6
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -67,14 +67,15 @@ Visual priority must be:
 
 1. **Card title** — primary text color
 2. **Person/team identity row when present** — same primary text color as title
-3. **Relevant timestamp when present** — same primary text color as title
-4. **Pedagogical explanation/supporting text** — secondary, calmer color
-5. **Operational metadata/status/branch/provenance** — muted/quiet color while still WCAG-AA compliant
+3. **Pedagogical explanation/supporting text** — secondary, calmer color
+4. **Operational metadata/status/branch/provenance** — muted/quiet color while still WCAG-AA compliant
+5. **Relevant timestamp when present** — quiet microcopy/timestamp color, deliberately discreet
 
 Hard rules:
-- title, person/team identity and relevant timestamp form the strongest text layer
-- supporting explanation must be visibly calmer than title/identity/timestamp
+- title and person/team identity form the strongest text layer
+- supporting explanation must be visibly calmer than title/identity
 - metadata must be more discreet than the supporting explanation unless a blocker/critical semantic requires emphasis
+- timestamps are contextual microcopy and must **not compete for attention** with title, identity, explanation or operational metadata
 - do not use accent/team colors for ordinary metadata merely to attract attention
 - secondary/quiet text must blend more gently into the card surface while still meeting WCAG contrast requirements
 - never reduce contrast below WCAG AA to make text look quieter
@@ -82,7 +83,7 @@ Hard rules:
 The intended focus order is:
 
 ```text
-Rubrik → namn/team + relevant tid → pedagogisk förklaring → metadata/provenance
+Rubrik → namn/team → pedagogisk förklaring → metadata/provenance → tid
 ```
 
 ---
@@ -154,7 +155,7 @@ This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
 - preferred: **14–15 pt**
 - minimum: **13 pt**
 - regular
-- secondary text color; deliberately calmer than title/identity/timestamp
+- secondary text color; deliberately calmer than title/identity
 - normally 1–3 visual lines when needed for pedagogical clarity
 - placed immediately under the title
 - no extra paragraph gap between title and explanation
@@ -171,7 +172,7 @@ Style:
 - minimum: **11 pt**
 - regular
 - metadata/quiet text color from the global palette
-- visually subordinate to title, identity, timestamp and pedagogical explanation
+- visually subordinate to title, identity and pedagogical explanation
 
 ### Merge/review identity rule
 Only show a person's name when the identity is verified by source evidence.
@@ -205,8 +206,10 @@ Verification state belongs in the internal data/audit layer, not in the meeting 
 ## Timestamp typography
 - preferred: **11–12 pt**
 - minimum: **11 pt**
-- uses the **same primary text color as the card title**
-- visually compact; prominence comes from color consistency, not large size
+- uses the global **Quiet microcopy/timestamp** color from `VISUAL_DESIGN_MANDATORY.md` (`#A2ABC0` unless the palette authority changes it)
+- regular weight
+- deliberately low-emphasis while remaining WCAG-AA compliant
+- visually compact and never styled like title/identity text
 
 Never go below 11 pt.
 
@@ -236,11 +239,15 @@ Do **not** automatically show:
 A timestamp may appear only when it materially helps the meeting understand recency/status and the slide/content authority calls for that activity context.
 
 If shown:
-- one compact line
+- exactly **one compact line** — date and clock time must never wrap to separate lines
+- canonical format: `14 sep · 10:16`
+- use a middle dot separator (`·`), not a line break
 - lower-right aligned where card geometry permits
-- same primary text color as card title
+- use the global **Quiet microcopy/timestamp** color (`#A2ABC0` in the current palette)
+- keep it visually more discreet than the operational metadata
 - no prefix such as `Merged`, `Mergad`, `Senaste commit`, `PR skapad` or evidence label
 - do not place timestamp so close to metadata that rows visually merge
+- if the card is too narrow for one-line timestamp at the minimum font size, change geometry or paginate; **never wrap the timestamp**
 
 Canonical example:
 
@@ -267,8 +274,10 @@ Merged: Zaida | Review: Björn
 Rendering rules:
 - pedagogical explanation sits directly under the title
 - `Tomac · Frontend` appears without `Utvecklat av` or equivalent prefix
-- the identity row and timestamp use the same primary text color as the title
-- explanation and metadata are deliberately quieter
+- the identity row uses the same primary text color as the title
+- the timestamp uses the quiet microcopy/timestamp color and stays visually unobtrusive
+- explanation and metadata are deliberately quieter than the primary identity layer
+- timestamp is quieter still and remains a single line
 - only verified merger and actual approving reviewer names appear
 - dedicated merger/review lookup is mandatory before an empty field is accepted
 - timestamp is the merge timestamp
@@ -313,7 +322,8 @@ Hard rules:
 - arrows/connectors stay outside cards
 - if evidence is insufficient, use the approved uncertainty wording from the content/data authority
 - on `⑬ Nästa steg`, every card must explain both what the action concerns and why it matters to the project
-- if person/team or a relevant timestamp appears, they follow the same primary-color rule as every other card
+- if person/team appears, it follows the primary-color identity rule
+- if a relevant timestamp appears, it follows the quiet timestamp rule and remains a single line
 
 ---
 
@@ -367,6 +377,7 @@ Never:
 - reduce below component minimums
 - reduce contrast below WCAG AA
 - use automatic shrink-to-fit
+- wrap date and time onto separate lines
 
 ---
 
@@ -390,12 +401,14 @@ legacy_developed_by_label_count == 0
 legacy_identity_prefix_count == 0
 unnecessary_activity_timestamp_count == 0
 identity_row_not_primary_color_count == 0
-timestamp_not_primary_color_count == 0
+timestamp_not_quiet_microcopy_color_count == 0
+timestamp_too_prominent_count == 0
 secondary_text_too_prominent_count == 0
 assignee_not_visually_emphasized_count == 0
 visible_evidence_level_label_count == 0
 unverified_identity_commentary_count == 0
 timestamp_not_single_line_count == 0
+timestamp_wrapped_line_count == 0
 timestamp_not_right_aligned_count == 0
 verified_approving_reviewer_omitted_from_card_count == 0
 verified_merger_omitted_from_card_count == 0
@@ -406,9 +419,12 @@ Also verify:
 - no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the person/team identity row
 - merged PR timestamp is the merge timestamp
 - open/active cards do not display PR-created/latest-commit timestamps merely because that data exists
-- title, identity row and relevant timestamp use the same primary text color
+- title and identity row use the same primary text color
+- timestamps use the quiet microcopy/timestamp color and do not compete for focus
+- every displayed timestamp is a single line in `D MMM · HH:MM` style, localized like `14 sep · 10:16`
 - pedagogical explanation is calmer than the primary layer
-- metadata/provenance is the quietest normal text layer while still WCAG-AA compliant
+- metadata/provenance is visually quiet while still WCAG-AA compliant
+- timestamp is at least as quiet as metadata, preferably quieter, while still WCAG-AA compliant
 - dedicated merger + submitted-review lookup was performed for every merged PR
 - only verified merger/reviewer names are printed
 - `Review:` is based on submitted approvals, never requested reviewers
@@ -418,5 +434,5 @@ Also verify:
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.5
+**Version:** 1.6
 **Last updated:** 2026-09-17
