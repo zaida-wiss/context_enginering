@@ -5,7 +5,7 @@ metadata:
   type: design-and-content-integrity
   critical: true
   required_before: rendering
-  version: 1.0
+  version: 1.1
 ---
 
 # 🏷️ PROVENANCE & AI LABELING STANDARD
@@ -13,6 +13,18 @@ metadata:
 Every presentation must make it immediately clear **where a statement comes from**.
 
 AI analysis must never look like a confirmed team decision, a school-schedule fact, or a meeting-note fact.
+
+## Absolute WCAG boundary
+
+All provenance labels and symbols MUST comply with WCAG 2.2 AA.
+
+- normal-text contrast >= 4.5:1
+- color is never the sole information carrier
+- source identity always uses icon + text
+- provenance labels may never be hidden to save space
+- minimum provenance/source text size in this deck: **10 pt**
+
+If a provenance label cannot fit accessibly, change card geometry or paginate.
 
 ---
 
@@ -35,7 +47,7 @@ Example:
 PL-avstämning 12:30–14:00 i Slack Huddle.
 ```
 
-Do not attach an inferred purpose to schema text and still call the whole statement schemafakta.
+Do not attach an inferred purpose to schedule text and still call the whole statement schemafakta.
 
 ---
 
@@ -87,7 +99,7 @@ Never silently convert unclear origin into fact.
 
 Do **not** use red text to mean fact.
 
-Red already means blocker/critical in the status system, and color alone may not carry meaning.
+Red means blocker/critical in the status system, and color alone may not carry meaning.
 
 Source identity must always be represented by **icon + text**.
 
@@ -206,13 +218,13 @@ Common examples:
 Provenance is compact metadata:
 
 - preferred: 10–11 pt
-- dense slide minimum: 9 pt when still WCAG-readable in the rendered artifact
-- high enough contrast for WCAG AA
+- minimum: 10 pt
+- contrast must remain WCAG AA
 - icon + short text
 - left aligned
 - inside the relevant card/block
 
-Do not rely on a slide footer when different cards have different origins.
+Do not rely only on a slide footer when different cards have different origins.
 
 ---
 
@@ -221,6 +233,8 @@ Do not rely on a slide footer when different cards have different origins.
 Required zero-count checks:
 
 ```text
+wcag_aa_violation_count == 0
+color_only_information_count == 0
 sprint_plan_fact_without_source_label_count == 0
 sprint_plan_ai_suggestion_without_question_icon_count == 0
 next_step_card_without_provenance_count == 0
@@ -237,5 +251,5 @@ The audience must always be able to answer:
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.0
+**Version:** 1.1
 **Last updated:** 2026-09-17
