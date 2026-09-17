@@ -270,9 +270,20 @@ sources:
 
   GOOGLE_MEETING_PROTOCOL:
     source_id: "GOOGLE_MEETING_PROTOCOL"
-    classification: "FALLBACK"
-    purpose: "Weekly sprint planning decisions, blockers, action items"
+    classification: "REQUIRED"
+    purpose: "Weekly team capacity (available/allocated hours per team), sprint planning decisions, blockers, action items"
     document_id: "1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8"
+    document_section: "Section 8: Kapacitet (currently empty — no quantitative data)"
+    required_fields:
+      - "team_capacity.frontend.available_hours (not found in document)"
+      - "team_capacity.frontend.allocated_hours (not found in document)"
+      - "team_capacity.backend.available_hours (not found in document)"
+      - "team_capacity.backend.allocated_hours (not found in document)"
+      - "team_capacity.native.available_hours (not found in document)"
+      - "team_capacity.native.allocated_hours (not found in document)"
+    current_status: "⚠️ INCOMPLETE — Section exists but contains no quantitative capacity data"
+    note: "Team should populate Section 8 with available and allocated hours before presentation runs. Data must be extracted for current ISO week (valid_for_week = presentation week)"
+    when_data_available: "Once filled in document, DATA_PRECHECK will extract and validate before presentation proceeds"
     primary:
       method: "google_drive_connector"
       url: "https://docs.google.com/document/d/1WD9XJBVrE49Csqz-XYiLgejlKlCA4t5sWiwoTkNiTD8/edit"

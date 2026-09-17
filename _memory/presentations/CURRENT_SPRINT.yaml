@@ -1,53 +1,92 @@
 ---
 name: current_sprint
-description: Current week's sprint goals and focus for Team 1
+description: Dynamic sprint metadata — all values fetched from authoritative sources
 metadata:
-  source: manual_update (update weekly)
-  timezone: Europe/Stockholm
-  updated: 2026-09-16
+  schema_version: 1.0
+  note: "This file contains STRUCTURE ONLY. All values are fetched dynamically from registered sources."
 ---
 
+# STRUCTURE: Current Sprint Metadata
+#
+# All data below MUST be fetched dynamically from registered sources.
+# Do NOT hardcode examples or manual values.
+# See EXTERNAL_SOURCES.yaml for source definitions.
+
 current_sprint:
-  week: "V3-V5"
-  start_date: "2026-08-31"
-  end_date: "2026-09-18"
-  phase: "Produktion Sprint 1-3"
+  # FETCH: ISO week (e.g., "2026-W39")
+  # SOURCE: Presentation pipeline — derived from Monday meeting date
+  week: null
 
-  sprint_focus:
-    - "Bygg kärnflödet"
-    - "Dokumentation från dag 1"
-    - "Teststatus uppdaterad"
+  # FETCH: Week start date (ISO 8601)
+  # SOURCE: Derived from ISO week
+  start_date: null
 
-  weekly_goals:
-    - "Backend API endpoints fungerande"
-    - "Frontend integration med mock data"
-    - "README dokumenterat"
+  # FETCH: Week end date (ISO 8601)
+  # SOURCE: Derived from ISO week
+  end_date: null
 
-  pl_meeting_focus:
-    "Fungerande delar, teststatus, README/dokumentation"
+  # FETCH: Current project phase name
+  # SOURCE: Google Docs meeting protocol OR GitHub project board
+  phase: null
 
+  # FETCH: Sprint focus areas (list of strings)
+  # SOURCE: Google Docs meeting protocol
+  sprint_focus: []
+
+  # FETCH: Weekly goals for all teams
+  # SOURCE: Google Docs meeting protocol
+  weekly_goals: []
+
+  # FETCH: What PL meeting should focus on
+  # SOURCE: Google Docs meeting protocol
+  pl_meeting_focus: null
+
+  # FETCH: Current blockers list
+  # SOURCE: GitHub (issues tagged "blocker") OR Google Docs meeting protocol
   blockers: []
 
   team_capacity:
+    # FETCH: Frontend available hours this week
+    # SOURCE: Google Docs meeting protocol (mötesprotokollet)
+    # FORMAT: number >= 0
     frontend:
       available_hours: null
       allocated_hours: null
+
+    # FETCH: Backend available hours this week
+    # SOURCE: Google Docs meeting protocol (mötesprotokollet)
+    # FORMAT: number >= 0
     backend:
       available_hours: null
       allocated_hours: null
+
+    # FETCH: Native available hours this week
+    # SOURCE: Google Docs meeting protocol (mötesprotokollet)
+    # FORMAT: number >= 0
     native:
       available_hours: null
       allocated_hours: null
-    source: team_planning
+
+    # RECORD: Source system identifier
+    # FORMAT: string (e.g., "meeting_protocol_gdoc")
+    source: null
+
+    # FETCH: ISO 8601 timestamp when capacity was last updated
+    # SOURCE: Google Docs document metadata (last modified time)
     updated_at: null
+
+    # FETCH: ISO week this capacity data is valid for
+    # SOURCE: Presentation pipeline — must match presentation week
+    # FORMAT: "2026-W39"
     valid_for_week: null
 
+  # FETCH: Next critical deadline
+  # SOURCE: Google Docs meeting protocol OR GitHub Milestones
   next_deadline:
-    type: "phase_deadline"
-    date: "2026-09-24"
-    description: "CTO-underlag delivery (Vecka V6)"
+    type: null
+    date: null
+    description: null
 
-  notes:
-    - "No project work allowed on Fridays (LIA search requirement)"
-    - "Friday: 08:00-17:00 at Scandic hotel"
-    - "Tuesday PL meeting: 12:30-14:00 (lunch before 11:15-12:15)"
+  # FETCH: Operational notes, constraints
+  # SOURCE: Google Docs meeting protocol
+  notes: []
