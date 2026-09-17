@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.0
+  version: 2.1
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -53,7 +53,7 @@ Never invent:
 - deadlines
 - schedule purposes
 - capacity/hours
-- team decisions
+- numeric estimates
 
 ## Provenance
 
@@ -64,6 +64,43 @@ Especially:
 - `✅ Mötesprotokoll` / approved team input = explicitly stated by team/source
 - `? AI-förslag` / `? AI-analys` = model-derived
 - `⚠ Källa behöver verifieras` = origin unclear
+
+## Mandatory planning support
+
+A Monday-meeting deck is not complete if it only reports status. It must also help the team plan the next work period.
+
+For **Frontend, Backend and Native**, derive an actionable planning recommendation from verified project data whenever enough evidence exists.
+
+The recommendation must answer, as far as evidence permits:
+1. **Vad bör tas först?** — work that removes a blocker, unlocks another team, protects a deadline, or closes a critical core-flow gap.
+2. **Vem kan lämpligen ta det?** — based on verified assignee, branch ownership, recent relevant work, current active work and review load. This is a suggestion, never a reassignment presented as fact.
+3. **Vad kan göras parallellt?** — independent work that does not wait for the same dependency or touch the same bottleneck unnecessarily.
+4. **Vad bör vänta?** — lower-value or dependency-blocked work that risks increasing WIP before critical flow is stable.
+5. **Vilken blocker/risk styr ordningen?** — cite the verified dependency/risk that motivates the suggested order.
+6. **Hur påverkar kapacitet/estimering planen?** — use numeric capacity/estimate only when explicitly available in registered sources; otherwise use qualitative load-balancing only.
+
+The recommendation must be visibly labeled `? AI-förslag` or `? AI-analys`.
+
+### Required team planning format
+
+When there is enough verified data, each team should have a compact planning block using this logical order:
+
+```text
+? AI-förslag — planeringsordning
+1. Först: [issue/work item] — [suggested person if supportable]
+   Varför: [blocker/dependency/deadline/core-flow reason]
+2. Parallellt: [issue/work item] — [suggested person if supportable]
+   Varför: [independent path / load balancing]
+3. Därefter / vänta: [issue/work item]
+   Varför: [depends on earlier item / lower priority]
+Kapacitet/estimat: [verified value OR qualitative note that numeric data is missing]
+```
+
+Do not force a person recommendation when evidence is weak. In that case use wording such as:
+- `Lämplig ägare behöver bekräftas i teamet`
+- `Tillgänglig teammedlem efter review/merge`
+
+Do not infer skill, performance or availability from absence of GitHub activity.
 
 ## Conditional slides
 
@@ -87,8 +124,10 @@ Content:
 - reporting period
 - sprintfokus, grounded in verified project data
 - critical verified deadline/milestone if available
-- PL focus topics if grounded in registered source; otherwise AI-derived focus must be labeled
+- PL focus topics grounded in the actual registered schedule/agenda for the coming week; otherwise AI-derived focus must be labeled
 - compact snapshot/source footer
+
+`PL-fokus` must match the actual upcoming PL meeting theme/agenda when that source exists. Do not replace a concrete agenda such as `CTO-underlag` with a generic inferred summary such as testing/documentation unless the latter is explicitly part of the registered agenda. AI interpretation may be added separately with provenance.
 
 Do not include design-process explanations.
 
@@ -115,8 +154,6 @@ Do not include collection-branch-only merges here.
 
 Unknown reviewer/merger must be explicitly marked unknown/unverified.
 
----
-
 ## ①B — Backend collection-branch merges
 
 Canonical branch: `Java-Development-Environment`.
@@ -124,12 +161,9 @@ Canonical branch: `Java-Development-Environment`.
 Purpose: show verified PRs merged to the Backend collection branch during the reporting period that are not already represented as final `develop` delivery in a way that would double-count the same delivery.
 
 Fields: same evidence fields as ①A.
-
 Sort: chronological.
 
 If verified count = 0, omit or show empty-state according to audit decision; record reason.
-
----
 
 ## ①C — Native collection-branch merges
 
@@ -138,12 +172,9 @@ Canonical branch: `C/C++-Native`.
 Purpose: show verified PRs merged to the Native collection branch during the reporting period without double-counting final delivery.
 
 Fields: same evidence fields as ①A.
-
 Sort: chronological.
 
 If verified count = 0, record omission/empty-state reason.
-
----
 
 ## ①D — Active team work
 
@@ -172,8 +203,6 @@ But review work counts as work. If the person is actively reviewing, show review
 
 This is capacity visibility, not performance assessment.
 
----
-
 ## ①E — Assigned/backlog + cross-team work
 
 Purpose:
@@ -198,8 +227,6 @@ Cross-team fields:
 - dependency/blocker if verified
 
 Every open assigned issue must appear on ①D, ①E or in explicit audit exclusion.
-
----
 
 ## ①F — Decisions since last meeting
 
@@ -248,7 +275,7 @@ Do not invent progress percentages, days of delay or actions.
 
 # ③ FRONTEND
 
-Purpose: detailed Frontend status for the current sprint/period.
+Purpose: detailed Frontend status **and actionable next-work planning** for the current sprint/period.
 
 Include relevant cards for:
 - verified active issues
@@ -259,13 +286,21 @@ Include relevant cards for:
 
 Each work-item card includes the verified fields available from issue/PR/branch data.
 
-Optional Frontend operational suggestions may be shown, but AI-derived actions must be labeled `? AI-förslag`.
+### Mandatory Frontend planning recommendation
+
+When enough evidence exists, include a `? AI-förslag — planeringsordning` block that:
+- prioritizes pending review/merge and blocker-removing work before starting unnecessary new WIP
+- identifies a suggested person only when supported by assignee/branch/recent-work evidence
+- identifies parallel independent work for another available person when possible
+- explicitly states what should wait if it depends on Backend/API/integration or another unfinished item
+- incorporates verified tests, integration readiness, deadline and risk information
+- uses verified numeric estimate/capacity only when available; otherwise says that numeric capacity/estimate is not verified
 
 ---
 
 # ④ BACKEND
 
-Purpose: detailed Backend status.
+Purpose: detailed Backend status **and actionable dependency-aware planning**.
 
 Use the same content logic as ③.
 
@@ -275,11 +310,21 @@ May additionally include verified API-contract/integration status when relevant:
 - what is blocked by it, when verified
 - next confirmed action or AI-labeled suggestion
 
+### Mandatory Backend planning recommendation
+
+When enough evidence exists, include a `? AI-förslag — planeringsordning` block that:
+- puts work that unlocks Frontend/Native or the critical end-to-end flow before isolated cleanup
+- considers API contract/endpoints, auth/security chain, JNA bridge and integration dependencies when present
+- suggests parallel ownership only when tasks can proceed independently without creating avoidable merge/code-area contention
+- calls out work that should wait because its prerequisite is not ready
+- relates the order to verified deadline/risk/blocker evidence
+- uses numeric capacity/estimation only when verified
+
 ---
 
 # ⑤ NATIVE
 
-Purpose: detailed Native status.
+Purpose: detailed Native status **and actionable dependency-aware planning**.
 
 Use the same content logic as ③.
 
@@ -288,6 +333,14 @@ May additionally include verified JNA/native integration status:
 - current state
 - blocked dependent work
 - confirmed action or AI-labeled suggestion
+
+### Mandatory Native planning recommendation
+
+When enough evidence exists, include a `? AI-förslag — planeringsordning` block that:
+- prioritizes interface/JNA/contract work that enables integration before expanding non-critical module scope when the dependency evidence supports that order
+- proposes a sensible split between independent module work (for example backtest vs FX/risk) when verified assignments and dependencies permit it
+- identifies what can continue with mocks while waiting and what truly depends on integration
+- includes verified risk/deadline/capacity/estimate information and never invents numeric values
 
 ---
 
@@ -308,6 +361,8 @@ Each node:
 Arrows represent verified dependency direction.
 
 If dependency direction is inferred by AI rather than explicitly supported, mark the analysis accordingly.
+
+The dependency graph must feed the planning recommendations on ③–⑤ and ⑨. If a blocker appears here but does not influence proposed ordering anywhere, re-check the prioritization logic.
 
 ## Optional review findings
 
@@ -335,19 +390,22 @@ Per risk:
 
 If risk consequence or mitigation is model-derived, mark the relevant block `? AI-analys` / `? AI-förslag`.
 
+Current risks must influence planning suggestions when they materially change sequence, WIP or parallelization. Do not list risks as isolated information if they should change what the team does next.
+
 Do not invent probability, numeric impact or delay duration.
 
 ---
 
 # ⑧ CAPACITY & ESTIMATION
 
-Purpose: show verified capacity/planning information only.
+Purpose: show verified capacity/planning information and connect it to workload decisions.
 
 PRE-MEETING:
 - do not estimate hours
 - show documented availability constraints if registered sources contain them
 - generalize private/health reasons to `limited availability`
 - if no relevant verified capacity data exists, use the approved placeholder/omission behavior from `SYSTEM_CONTRACT.yaml`
+- still provide qualitative AI load-balancing when enough verified work/dependency evidence exists
 
 POST-MEETING:
 - capacity values must come from confirmed meeting/team planning data
@@ -355,21 +413,43 @@ POST-MEETING:
 
 AI may suggest qualitative load-balancing only when based on verified inputs and labeled `? AI-förslag`.
 
+Required qualitative planning questions when numeric data is missing:
+- Is one person already carrying the critical-path task plus reviews?
+- Is another person verifiably free for independent work or review/help?
+- Can work be split to reduce dependency waiting?
+- Would starting another issue increase WIP without unlocking the core flow?
+
+Never translate these questions into invented hours, percentages or velocity.
+
 ---
 
 # ⑨ PRIORITIZATION & SCOPE
 
-Purpose: show confirmed priority/scope where it exists and clearly separated AI prioritization where it does not.
+Purpose: produce a usable team plan, not only a generic priority statement.
 
 Verified section may include:
 - team-confirmed order
 - sprint scope
 - confirmed dependency sequence
+- verified estimates/capacity where available
 
-AI-derived section may include:
-- suggested order based on verified dependencies
+### Mandatory AI planning synthesis
+
+Unless the team already has a complete confirmed sequence, include an AI-labeled recommendation synthesized from slides ③–⑧.
+
+For each team, include where evidence permits:
+- **1 — Först:** highest-leverage blocker/deadline/core-flow item
+- **2 — Parallellt:** independent work/review/help path
+- **3 — Därefter:** follow-up that becomes useful after item 1
+- **Vänta:** work that should not increase WIP yet
+- **Föreslagen person:** only if supported by verified ownership/activity; otherwise mark owner to confirm
+- **Styrande blocker/risk:** why the order is suggested
+- **Estimat/kapacitet:** verified value if available, otherwise explicit `ej verifierat` / qualitative load note
+
+AI-derived section may additionally include:
 - suggested scope trade-off
-- suggested parallel work
+- suggested pairing/review support
+- suggested handoff between teams
 
 Every AI-derived item uses `? AI-förslag` or `? AI-analys`.
 
@@ -413,6 +493,8 @@ Each goal should identify:
 - owner if confirmed
 - deadline if confirmed
 
+Goals should be consistent with the dependency-aware ordering on ⑨. Do not set a goal that requires blocked work while ignoring its prerequisite.
+
 Do not state feasibility as fact unless based on verified capacity data.
 AI feasibility analysis must be labeled `? AI-analys`.
 
@@ -420,7 +502,7 @@ AI feasibility analysis must be labeled `? AI-analys`.
 
 # ⑫ SPRINT PLAN
 
-Purpose: show what is actually scheduled and, separately, any proposed project focus around it.
+Purpose: show what is actually scheduled and, separately, proposed project focus around it.
 
 Every day card must distinguish source blocks.
 
@@ -451,6 +533,8 @@ Examples that are NOT schedule facts unless explicitly stated:
 - `Stäng öppna frågetecken`
 - suggested priorities for the day
 
+When a day contains project work, the AI suggestion should, where useful, reference the dependency-aware plan from ⑨ instead of using generic phrases such as `jobba vidare`.
+
 Never blend schedule facts and AI suggestions into one unlabeled paragraph.
 
 ---
@@ -478,6 +562,8 @@ Fields when available:
 - deadline/timeframe if confirmed
 - verification condition if confirmed
 
+AI next steps should be consistent with the team plan from ⑨ and should name the concrete issue/work item when verified, rather than only saying `fortsätt arbetet`.
+
 AI must not invent owner/deadline merely to make the action look complete.
 
 ---
@@ -502,6 +588,8 @@ Each card contains:
 Urgency grouping may be used:
 - `IDAG-SVAR BEHÖVS`
 - `NICE-TO-HAVE`
+
+PL questions should be generated from unresolved items that materially affect the plan: scope, deadline interpretation, dependency ownership, integration expectations, acceptance criteria or missing information needed to estimate/plan.
 
 Urgency does not replace provenance.
 
@@ -530,12 +618,16 @@ all_conditional_omissions_audited == true
 unverified_ids_invented_count == 0
 unverified_deadlines_invented_count == 0
 unverified_owners_invented_count == 0
+unverified_numeric_estimates_invented_count == 0
 ai_generated_item_without_question_icon_count == 0
 unverified_item_presented_as_confirmed_count == 0
+team_planning_recommendation_present_when_evidence_allows == true
+blockers_and_risks_reflected_in_priority_order == true
+numeric_capacity_or_estimate_has_verified_source == true
 ```
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.0
+**Version:** 2.1
 **Last updated:** 2026-09-17
