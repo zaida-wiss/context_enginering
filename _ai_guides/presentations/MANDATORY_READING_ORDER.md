@@ -8,60 +8,53 @@ metadata:
 
 # 🚨 MANDATORY READING ORDER
 
-## 🚨 EXECUTION ENTRY POINT
+## EXECUTION ENTRY POINT
 
-**You are here because a user asked for a presentation.**
+Before creating any presentation, follow this order exactly.
 
-Follow this order exactly. Do not skip.
+### Commitment gate
 
----
+You must commit to all of these:
 
-## ⚠️ COMMITMENT GATE — Answer before proceeding
+- Never guess on data.
+- Never hallucinate assignees, PRs, branches, statuses, reviewers, times or source facts.
+- Never skip required authority files or validation gates.
+- Never present AI inference as verified fact or team decision.
+- Never violate WCAG 2.2 AA for any reason, including layout pressure.
+- Never clip, overlap or hide required content.
+- Never use automatic shrink-to-fit.
+- Use responsive, deliberate typography only within the ranges permitted by `CARD_COMPONENT_STANDARD.md`.
+- If content still does not fit at the accessible minimum, change card geometry, reduce card density or paginate.
 
-**This applies to ALL AI models (Claude, GPT, Gemini, Llama, etc.)**
-
-Before you read anything else, commit to ALL of these:
-
-- [ ] **Never guess on data.** If data is unavailable, report it as INCOMPLETE.
-- [ ] **Never hallucinate.** Do not invent assignees, PR numbers, branch names, or any GitHub data.
-- [ ] **Never improvise.** Do not bypass these rules because "it's faster" or "the rules seem ceremonial".
-- [ ] **Never skip steps.** Follow every rule, every gate, every verification step.
-- [ ] **Stop when required.** If data is incomplete or unverifiable, STOP before rendering. No presentation is better than a false presentation.
-- [ ] **Never auto-shrink or hide content to make cards fit.** Use deliberate component typography from `CARD_COMPONENT_STANDARD.md`; if the card still does not fit, create continuation slides.
-
-If you cannot commit to all of these: STOP.
+If these conditions cannot be met: STOP.
 
 ---
 
-## 0️⃣ READ INTEGRITY_CONSTRAINT.md FIRST
+## 0️⃣ READ `INTEGRITY_CONSTRAINT.md`
 
-**Location:** [`INTEGRITY_CONSTRAINT.md`](INTEGRITY_CONSTRAINT.md)
+Data integrity rules are non-negotiable.
 
-Non-negotiable data rule: if required data cannot be obtained from registered sources, STOP.
+Capacity is meeting data, not invented data.
 
-**CRITICAL:** Capacity is MEETING DATA, not estimated data.
+PRE-MEETING:
+- capacity may be missing
+- show `○ Kapacitet fastställs under mötet`
+- never estimate hours
 
-### PRE-MEETING mode
-- Capacity may be missing.
-- Show: `○ Kapacitet fastställs under mötet`.
-- Never estimate hours.
-
-### POST-MEETING mode
-- Capacity must be present.
-- If missing: STOP and ask team to complete meeting data.
+POST-MEETING:
+- capacity must be present
+- otherwise STOP
 
 ---
 
-## 1️⃣ READ SYSTEM_CONTRACT.yaml
+## 1️⃣ READ `SYSTEM_CONTRACT.yaml`
 
-**Location:** [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml)
-
-This owns:
-- Authority hierarchy
-- Execution sequence
-- Gates
-- Data validation
-- Delivery rules
+This owns orchestration:
+- execution sequence
+- gates
+- STOP/CONTINUE decisions
+- data validation
+- delivery rules
 
 Follow `execution_sequence` exactly.
 
@@ -69,126 +62,133 @@ Follow `execution_sequence` exactly.
 
 ## 2️⃣ READ PRESENTATION AUTHORITIES BEFORE COMPOSITION
 
-Before composing or rendering any slide, read these files:
+Read in this order:
 
 1. [`design/ACCESSIBILITY_NEURODIVERSITY.md`](design/ACCESSIBILITY_NEURODIVERSITY.md)
 2. [`design/VISUAL_DESIGN_MANDATORY.md`](design/VISUAL_DESIGN_MANDATORY.md)
-3. [`design/CARD_COMPONENT_STANDARD.md`](design/CARD_COMPONENT_STANDARD.md) — **authoritative for card internals, metadata sizes, spacing and timestamps**
-4. [`monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`](monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md)
-5. [`monday_meeting/design/SLIDE_DETAIL_SPEC.md`](monday_meeting/design/SLIDE_DETAIL_SPEC.md)
-6. [`monday_meeting/design/TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) — **REFERENCE ONLY**
+3. [`design/CARD_COMPONENT_STANDARD.md`](design/CARD_COMPONENT_STANDARD.md)
+4. [`design/PROVENANCE_AND_AI_LABELING.md`](design/PROVENANCE_AND_AI_LABELING.md)
+5. [`monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`](monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md)
+6. [`monday_meeting/design/SLIDE_DETAIL_SPEC.md`](monday_meeting/design/SLIDE_DETAIL_SPEC.md)
+7. [`monday_meeting/design/TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) — reference only
 
-### Authority for layout conflicts
+### Authority order for conflicts
 
-If content/layout instructions conflict, use this order:
+1. **Accessibility / WCAG 2.2 AA** — absolute boundary
+2. **Global visual design** — theme, hierarchy and responsive typography roles
+3. **Card component standard** — card internals, compact metadata, timestamps, spacing
+4. **Provenance standard** — fact/team/AI source identity
+5. **Overflow guard** — responsive fit, grid density, pagination
+6. **Slide detail spec** — content fields and slide purpose
+7. **Template reference** — example only
 
-1. Accessibility boundaries / WCAG contrast and legibility
-2. Visual design theme and global slide geometry
-3. Card component standard for card internals and compact typography
-4. Overflow/pagination guard
-5. Slide content specification
-6. Template reference (never authoritative)
-
-### Mechanical fit rule
-
-For cards, fitting all required rows is mandatory.
-
-Use the deliberate size ranges and spacing hierarchy in `CARD_COMPONENT_STANDARD.md` first:
-
-- timestamp/evidence may be reduced first
-- review/merged/branch metadata may be reduced next
-- owner/team may use the compact owner size
-- title remains visually dominant
-- use even, natural vertical rhythm; do not distribute rows across the whole card height
-- timestamp anchors at lower-left where applicable
-
-If content still cannot fit within the permitted component sizes:
-
-- Create continuation slide.
-- Do NOT use PowerPoint shrink-to-fit / auto-reduce-font.
-- Do NOT clip text.
-- Do NOT overlap text.
-- Do NOT omit required rows.
-- Do NOT create large irregular whitespace merely to preserve oversized metadata.
-
-Grid layouts are allowed only where explicitly approved by the overflow guard.
+No lower authority may weaken WCAG or hide required provenance.
 
 ---
 
-## 3️⃣ FOLLOW EXECUTION_SEQUENCE FROM SYSTEM_CONTRACT.yaml
+## 3️⃣ RESPONSIVE FIT RULE
 
-Continue from `SYSTEM_CONTRACT.yaml` and execute each step in order.
+For every slide/card:
+
+1. Start at preferred typography sizes.
+2. Wrap text naturally.
+3. Reduce deliberately only inside the role-specific ranges in `CARD_COMPONENT_STANDARD.md`.
+4. Maintain WCAG AA contrast and symbol+text redundancy.
+5. Keep even natural spacing; never vertically justify rows across the whole card.
+6. Let cards grow or reduce grid density when required.
+7. If content still does not fit at the permitted accessible minimum, create a continuation slide.
+
+Forbidden:
+- clipping
+- overlaps
+- missing rows
+- automatic shrink-to-fit
+- fonts below component minimum
+- contrast below WCAG AA
+- color-only meaning
+- provenance removed to save space
 
 ---
 
-## REGISTERED DATA SOURCES & ACCESS PATHS
+## 4️⃣ PROVENANCE RULE
 
-### Required Dataset 1: team_roster
-- Source: GITHUB_TEAM_ROSTER
-- Access: local file `_memory/TEAM_ROSTER.md`
+Whenever content is not explicitly present in a registered source, label it.
+
+Use:
+- `📅 Schemafakta` — explicitly in registered school schedule
+- `✅ Mötesprotokoll` / equivalent — explicitly supplied or confirmed by team
+- `? AI-förslag` / `? AI-analys` — inferred or recommended by AI
+- `⚠ Källa behöver verifieras` — origin cannot be verified
+
+This applies globally, especially to sprintplan, sprintmål, prioritering, nästa steg and frågor till PL.
+
+---
+
+## 5️⃣ FOLLOW `execution_sequence`
+
+Continue from `SYSTEM_CONTRACT.yaml` and execute every step in order.
+
+---
+
+## REQUIRED DATASETS
+
+### team_roster
+- Source: `GITHUB_TEAM_ROSTER`
+- Access: `_memory/TEAM_ROSTER.md`
 - Missing → STOP
 
-### Required Dataset 2: merged_prs
-- Source: GITHUB_MERGED_PRS
-- Preferred access: GitHub REST API / GitHub Connector
-- Use only registered fallback order from `EXTERNAL_SOURCES.yaml`
-- All fallbacks fail → INCOMPLETE → build gate decides STOP
+### merged_prs
+- Source: `GITHUB_MERGED_PRS`
+- Preferred access: GitHub Connector/API
+- Follow registered fallback order only
+- All fallbacks fail → INCOMPLETE → gate decides STOP
 
-### Required Dataset 3: active_issues
-- Source: GITHUB_OPEN_ISSUES
-- Preferred access: GitHub REST API / GitHub Connector
-- Use only registered fallback order from `EXTERNAL_SOURCES.yaml`
-- All fallbacks fail → INCOMPLETE → build gate decides STOP
+### active_issues
+- Source: `GITHUB_OPEN_ISSUES`
+- Preferred access: GitHub Connector/API
+- Follow registered fallback order only
+- All fallbacks fail → INCOMPLETE → gate decides STOP
 
 ---
 
 ## FORBIDDEN IMPLEMENTATIONS
 
 Do not use:
-- Shell network commands (`git clone`, `git fetch`, `curl`, `wget`)
-- Generic web search
-- Unregistered URLs/sources
-- Model knowledge as source
+- shell network commands (`git clone`, `git fetch`, `curl`, `wget`)
+- generic web search for registered project data
+- unregistered URLs/sources
+- model knowledge as source
 
 ---
 
-## CRITICAL: Data Completeness
+## RENDER COMPLETENESS
 
-Presentation rendering proceeds only if all required datasets pass the build gate.
-
-- team_roster incomplete → STOP
-- merged_prs incomplete → STOP
-- active_issues incomplete → STOP
-
----
-
-## CRITICAL: Render Completeness
-
-A deck is NOT deliverable merely because the generator completed.
-The rendered PPTX/PDF must pass artifact inspection.
-
-Mandatory zero-count checks before delivery:
+Before delivery, the rendered artifact must satisfy:
 
 ```text
+wcag_aa_violation_count == 0
+color_only_information_count == 0
 text_overlap_count == 0
 card_overlap_count == 0
 text_outside_card_count == 0
 text_clipping_count == 0
 out_of_bounds_element_count == 0
-unapproved_grid_slide_count == 0
 font_below_component_minimum_count == 0
 missing_required_card_row_count == 0
 uneven_row_spacing_caused_by_vertical_justification == 0
+ai_generated_item_without_question_icon_count == 0
+unverified_item_presented_as_confirmed_count == 0
 ```
 
 If any check is non-zero:
 1. STOP delivery.
-2. Apply the compact component hierarchy / add continuation slides.
-3. Rerender.
-4. Reinspect the artifact.
+2. Fix typography/layout/provenance.
+3. Add continuation slide(s) where required.
+4. Rerender.
+5. Reinspect the actual artifact.
 
 ---
 
 ## NEXT STEP
 
-Go to [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml), then follow the authority files above before rendering.
+Go to `SYSTEM_CONTRACT.yaml`, then follow the authorities above before rendering.
