@@ -49,23 +49,36 @@ Verify: has assignee, recent activity (comment/update) in REPORTING_PERIOD
 
 ---
 
+## 4. Branches
+
+```
+Sources: [`DATA_SOURCES.md`](../../data/DATA_SOURCES.md) section "REPOSITORY STRUCTURE"
+Primary: GitHub API branches endpoint
+Fallback: GitHub web branches page
+
+Collect: All branches in repository (develop, Java-Development-Environment, C/C++-Native, etc.)
+Requirement: Branches per SYSTEM_CONTRACT.yaml dataset_5_branches (REQUIRED before GitHub collection complete)
+```
+
+## 5. Commits
+
+```
+Sources: GitHub API commits endpoint (per branch)
+Primary: Query commits for each team branch during REPORTING_PERIOD
+Fallback: Derive from merged PR metadata
+
+Collect: Author, timestamp, branch, message
+Requirement: Commits per SYSTEM_CONTRACT.yaml dataset_6_commits (REQUIRED before GitHub collection complete)
+Note: Risk analysis (slide ②) requires commit history to estimate effort and velocity
+```
+
+---
+
 ## Optional Enrichment (non-blocking)
 
 See [`SYSTEM_CONTRACT.yaml`](../SYSTEM_CONTRACT.yaml) for optional_enrichment list.
 
 Collect if available. If unavailable, note in footer with ⚠️. Never stop rendering.
-
-### Commits (optional)
-```
-Primary: Derive from merged PR metadata (each PR contains commits)
-If needed: See [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md) for GitHub commits endpoint
-```
-
-### Branches (optional)
-```
-Primary: Derive from active PR and issue data
-If needed: See [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md) for GitHub branches endpoint
-```
 
 ### Project Board (optional)
 ```

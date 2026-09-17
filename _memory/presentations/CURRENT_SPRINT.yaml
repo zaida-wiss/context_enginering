@@ -29,9 +29,18 @@ current_sprint:
   blockers: []
 
   team_capacity:
-    total: "40 hours/week"
-    allocated: "TBD"
-    available: "TBD"
+    frontend:
+      available_hours: null
+      allocated_hours: null
+    backend:
+      available_hours: null
+      allocated_hours: null
+    native:
+      available_hours: null
+      allocated_hours: null
+    source: team_planning
+    updated_at: null
+    valid_for_week: null
 
   next_deadline:
     type: "phase_deadline"

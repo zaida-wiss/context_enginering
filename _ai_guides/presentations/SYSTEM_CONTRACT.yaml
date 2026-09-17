@@ -888,9 +888,88 @@ execution_sequence:
       STOP. Report which external source policy rule was misunderstood.
       Do not proceed to data collection until all checkpoints are confirmed.
 
+  step_1d:
+    name: "DATA PRECHECK — Verify Mandatory Project Inputs"
+    prerequisite: "MUST pass before proceeding to GitHub data collection (step_2)"
+
+    objective: >
+      Validate that all MANDATORY project inputs are complete and correctly structured
+      BEFORE expensive GitHub API collection begins. This gate prevents long data collection
+      followed by a STOP due to missing required values.
+
+    must_verify_current_sprint:
+      file: "_memory/presentations/CURRENT_SPRINT.yaml"
+      required_fields:
+        team_capacity:
+          frontend:
+            available_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
+            allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
+          backend:
+            available_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
+            allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
+          native:
+            available_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
+            allocated_hours: "number >= 0 (NOT null, NOT TBD, NOT empty)"
+          source: "string (e.g., 'team_planning')"
+          updated_at: "ISO 8601 timestamp (e.g., '2026-09-17T14:00:00+02:00')"
+          valid_for_week: "ISO week (e.g., '2026-W38')"
+
+    validation_rules:
+      forbidden_values:
+        - "TBD"
+        - "null"
+        - "empty string"
+        - "unspecified"
+        - "pending"
+      required_numeric_constraint: "All *_hours fields must be: type=number AND value >= 0"
+      required_string_constraint: "All *_at and *_week fields must be non-empty strings in correct format"
+
+    error_reporting_format: >
+      If ANY field fails validation, report EXACTLY which field is invalid and WHY.
+
+      Example failures (exact format):
+        ❌ DATA_PRECHECK FAIL: team_capacity.frontend.available_hours missing (value: null)
+        ❌ DATA_PRECHECK FAIL: team_capacity.backend.allocated_hours invalid (value: 'TBD')
+        ❌ DATA_PRECHECK FAIL: team_capacity.source invalid (value: empty string)
+        ❌ DATA_PRECHECK FAIL: team_capacity.updated_at missing (value: null)
+        ❌ DATA_PRECHECK FAIL: team_capacity.valid_for_week invalid (value: 'week 39' — expected ISO format '2026-W39')
+
+    stop_condition: >
+      If ANY required field is missing, null, contains a forbidden value, or fails type validation:
+        1. Report EACH failed field with reason (exact format above)
+        2. Do NOT proceed to step_2 (GitHub data collection)
+        3. Do NOT attempt to fill missing values with estimates or guesses
+        4. Report to user: "Cannot proceed with presentation. Missing or invalid project inputs."
+        5. STOP
+
+    pass_condition: >
+      If ALL fields above are present, non-null, contain no forbidden values, and pass type validation:
+        1. Log: "DATA_PRECHECK PASS: All mandatory project inputs valid"
+        2. Proceed to step_2 (GitHub data collection)
+
+    capacity_status_calculation: >
+      Once validated, capacity status (✓ / ◐ / ✕) for each team MUST be calculated from numbers:
+
+        Status = CALCULATED from: allocated_hours < available_hours
+          ✓ (available)   = allocated_hours < 50% of available_hours
+          ◐ (constrained) = allocated_hours >= 50% AND < 100% of available_hours
+          ✕ (exhausted)   = allocated_hours >= 100% of available_hours
+
+      Status is NEVER stored manually in CURRENT_SPRINT.yaml.
+      It is ALWAYS computed from available_hours vs allocated_hours in the presentation pipeline.
+
+    why_this_gate_exists: >
+      Capacity is mandatory for:
+      1. Planning (slide ⑧): "Available | Allocated | Status"
+      2. Recommendations (slide ⑫): How much work can we take?
+      3. Risk analysis (slide ②): Capacity constraints?
+
+      Missing capacity data makes these slides incomplete or forces hallucination.
+      This gate catches the problem EARLY (before GitHub collection) with a specific error message.
+
   step_2:
     name: "Fetch LIVE GitHub Data — Follow DATA_ACQUISITION_CONTRACT"
-    prerequisite: "step_1c (ALLOWLIST GATE) must pass before this step"
+    prerequisite: "step_1d (DATA PRECHECK) must pass before this step"
 
     REQUIRED_ACTION_SEQUENCE:
       dataset_1_team_roster:
