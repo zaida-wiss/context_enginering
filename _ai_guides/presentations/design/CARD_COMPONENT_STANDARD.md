@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.6
+  version: 1.7
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -19,13 +19,14 @@ It owns:
 - person/team identity emphasis
 - merge/review metadata presentation
 - branch/status metadata presentation
+- verification/provenance placement
 - visible timestamps
 - card-internal visual hierarchy
 - card-internal responsive behavior
 
 It does **not** own global slide colors, slide structure, data acquisition, evidence classification or slide selection.
 
-If another document contains an example that conflicts with this file, **this file wins for card internals**, except that `READABILITY_HARD_RULES.md` may define stricter minima.
+If another document contains an example that conflicts with this file, **this file wins for card internals**, except that `READABILITY_HARD_RULES.md` may define stricter readability minima.
 
 ## Absolute accessibility boundary
 
@@ -66,41 +67,69 @@ This hierarchy applies to **every card in the entire presentation**, including I
 Visual priority must be:
 
 1. **Card title** — primary text color
-2. **Person/team identity row when present** — same primary text color as title
-3. **Pedagogical explanation/supporting text** — secondary, calmer color
-4. **Operational metadata/status/branch/provenance** — muted/quiet color while still WCAG-AA compliant
+2. **Pedagogical explanation/supporting text** — secondary, calmer color
+3. **Person/team identity row when present** — primary text color, but physically anchored in the bottom zone
+4. **Verification/provenance + operational metadata** — muted/quiet color in the bottom zone
 5. **Relevant timestamp when present** — quiet microcopy/timestamp color, deliberately discreet
 
 Hard rules:
-- title and person/team identity form the strongest text layer
-- supporting explanation must be visibly calmer than title/identity
+- title is the strongest text layer
+- supporting explanation must be visibly calmer than title
+- identity remains easy to scan but must not interrupt the title/explanation reading flow
 - metadata must be more discreet than the supporting explanation unless a blocker/critical semantic requires emphasis
 - timestamps are contextual microcopy and must **not compete for attention** with title, identity, explanation or operational metadata
 - do not use accent/team colors for ordinary metadata merely to attract attention
 - secondary/quiet text must blend more gently into the card surface while still meeting WCAG contrast requirements
 - never reduce contrast below WCAG AA to make text look quieter
+- avoid extra-bold/black weights; normal card titles should look clear, not heavy
 
-The intended focus order is:
+The intended scan order is:
 
 ```text
-Rubrik → namn/team → pedagogisk förklaring → metadata/provenance → tid
+Rubrik → pedagogisk förklaring → [luft] → namn → verifiering/metadata → tid
 ```
 
 ---
 
-# 3. REQUIRED CONTENT ORDER
+# 3. REQUIRED CONTENT ORDER + BOTTOM ANCHOR
 
 For Issue/PR/Merge/action cards, use this visual order:
 
 1. **Title**
 2. **Pedagogical contribution / project-value line** — directly under the title
-3. **Person/team identity row** when relevant
-4. **Operational metadata** — PR/branch/status or merge/review
-5. **Timestamp** — only when relevant according to the timestamp standard
+3. flexible whitespace / remaining content area
+4. **Person/team identity row** when relevant — anchored in the card's bottom information zone
+5. **Verification/provenance + operational metadata** — directly below identity in the bottom information zone
+6. **Timestamp** — bottom-most row when relevant according to the timestamp standard
+
+### Bottom-anchor hard rule
+
+**Name/identity and verification/provenance must always sit at the bottom of the card, not immediately after the body copy.**
+
+This applies to all card types when those fields exist:
+- status cards
+- issue/PR cards
+- merged PR cards
+- decision cards
+- action/next-step cards
+- risk cards
+- team-summary cards
+
+Examples of bottom-zone verification/provenance:
+- `✅ Mötesprotokoll 17 sep`
+- `✅ GitHub + mötesprotokoll`
+- `🔎 AI-analys`
+- `⭐ AI-förslag`
+- `📅 Schemafakta`
+- branch / PR / merge-review metadata when relevant
+
+If a card has no person identity, the verification/provenance row is still anchored to the bottom.
+
+If a card has a timestamp, the timestamp is the lowest row and verification/metadata stays above it.
+
+Do not vertically justify all rows across the card. The title/explanation stay grouped at the top; the identity/verification area is a deliberate bottom group.
 
 Do not insert decorative or provenance rows between title and pedagogical explanation.
-
-The explanation and title form one semantic group. Other rows are separate blocks and must have visible spacing between them.
 
 For action and next-step cards, the pedagogical line must answer:
 - what the action concerns
@@ -122,19 +151,20 @@ Card border colors represent teams:
 - Neutral: `#94A3B8` (gray)
 
 Examples:
-- `Zaida` (not "Zaida Wiss", not "Zaida · Frontend")
-- `Tomac` (card's teal left border indicates Frontend)
-- `Rasha` (card's pink left border indicates Backend)
-- `Henrik` (card's purple left border indicates Native)
+- `Zaida` (not `Zaida Wiss`, not `Zaida · Frontend`)
+- `Tomac`
+- `Rasha`
+- `Henrik`
 - `Hela teamet`
 
 Hard rules:
 - do **not** use full names — first name only
 - do **not** show team label in text — the card's left border color is the team indicator
 - do **not** prefix with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent wording
-- the person's name uses the same primary text color as the card title
-- use semibold/bold weight
+- use the main/primary text color, not the team accent color, for ordinary identity text
+- use semibold/bold weight, but not extra-bold/black
 - the row must be easier to scan than branch/status/provenance metadata
+- the row belongs in the **bottom information zone** defined above
 - do not infer a developer from commit authorship when project attribution evidence says otherwise
 
 Typography:
@@ -153,11 +183,15 @@ General principle:
 
 Do not choose a smaller size merely because it technically fits.
 
+All card text follows the dyslexia-friendly typography rules in `READABILITY_HARD_RULES.md`.
+
 ## Card title
 - preferred: **19–20 pt**
 - minimum: **18 pt**
-- bold
+- semibold/bold
+- **avoid extra-bold/black/heavy display weights**
 - main/primary text color from global palette
+- multiline title line spacing: **1.05 minimum**
 
 ## Pedagogical contribution / project-value line
 This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
@@ -168,14 +202,14 @@ This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
 - secondary text color; deliberately calmer than title/identity
 - normally 1–3 visual lines when needed for pedagogical clarity
 - placed immediately under the title
-- no extra paragraph gap between title and explanation
+- multiline line spacing: **1.15 minimum, 1.2 preferred**
 
-## Operational metadata
+## Operational metadata / verification
 Examples:
 - `Merged: Zaida | Review: Björn`
-- `Merged: Zaida | Review:`
 - `Branch: frontend/#83-save-allocation`
-- `Öppen PR · väntar på review`
+- `✅ Mötesprotokoll 17 sep`
+- `⭐ AI-förslag`
 
 Style:
 - preferred: **12–13 pt**
@@ -183,6 +217,8 @@ Style:
 - regular
 - metadata/quiet text color from the global palette
 - visually subordinate to title, identity and pedagogical explanation
+- placed in the bottom information zone
+- multiline metadata line spacing: **1.1 minimum**
 
 ### Merge/review identity rule
 Only show a person's name when the identity is verified by source evidence.
@@ -240,14 +276,12 @@ Do not substitute:
 when the card represents a completed merge.
 
 ## Active/open work cards
-**Show the latest commit/push timestamp** to indicate recency of work.
+Show the latest commit/push timestamp only when it materially helps the meeting understand recency of work.
 
 Do **not** use:
 - PR opened/created timestamp
 - issue created timestamp
 - issue updated timestamp
-
-Use the **latest commit or push timestamp** when it helps the meeting understand current activity status. This is useful for slides ①D–①E (active work) to show "was this actively worked on this reporting period?"
 
 If shown:
 - exactly **one compact line** — date and clock time must never wrap to separate lines
@@ -276,21 +310,22 @@ If the timestamp is not useful to the meeting, omit it rather than filling space
 #80 · Drift från live target
 Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
+
 Tomac
 Merged: Zaida | Review: Björn
-
                          14 sep · 10:16
 ```
 
-Note: Team is shown by the card's left **border color** (teal=Frontend), not by text.
+Note: Team is shown by the card's left border color (teal=Frontend), not by text.
 
 Rendering rules:
 - pedagogical explanation sits directly under the title
-- `Tomac · Frontend` appears without `Utvecklat av` or equivalent prefix
-- the identity row uses the same primary text color as the title
-- the timestamp uses the quiet microcopy/timestamp color and stays visually unobtrusive
-- explanation and metadata are deliberately quieter than the primary identity layer
-- timestamp is quieter still and remains a single line
+- flexible whitespace separates the explanation from the bottom information zone
+- `Tomac` sits near the bottom of the card
+- merge/review verification sits directly below the name
+- timestamp sits at the bottom and stays one line
+- identity uses the primary text color, not team accent color
+- timestamp uses the quiet microcopy/timestamp color and stays visually unobtrusive
 - only verified merger and actual approving reviewer names appear
 - dedicated merger/review lookup is mandatory before an empty field is accepted
 - timestamp is the merge timestamp
@@ -303,9 +338,12 @@ Rendering rules:
 #88 · Kritiska MVP-tester
 Testar login, målallokering och drift för kritiska MVP-flöden.
 
-Zaida · Frontend
+
+Zaida
 PR #114 · Build/frontend/#88-critical-interactions
 ```
+
+Name and operational verification/metadata are anchored at the bottom.
 
 Do not append PR creation/latest-commit time by default.
 
@@ -325,44 +363,49 @@ Dependency and next-step nodes use the same universal hierarchy:
 API-kontrakt
 Definierar endpoints + payload så Frontend och Backend kan integrera stabilt.
 
+
 🔴 Behöver låsas
 ```
 
 Hard rules:
 - title first
 - pedagogical/project-value line immediately below title
-- status/dependency is a separate, quieter block unless critical semantics require emphasis
+- verification/status/dependency belongs in the bottom information zone
 - arrows/connectors stay outside cards
 - if evidence is insufficient, use the approved uncertainty wording from the content/data authority
-- on `⑬ Nästa steg`, every card must explain both what the action concerns and why it matters to the project
-- if person/team appears, it follows the primary-color identity rule
+- on `13. Nästa steg`, every card must explain both what the action concerns and why it matters to the project
+- if person/team appears, it follows the identity rule and is bottom-anchored
 - if a relevant timestamp appears, it follows the quiet timestamp rule and remains a single line
 
 ---
 
-# 10. MINIMUM VERTICAL SPACING — HARD RULE
+# 10. MINIMUM VERTICAL SPACING & LINE HEIGHT — HARD RULE
 
 Separate semantic blocks must never visually touch.
 
 Use these **minimum rendered gaps**:
-- title → pedagogical explanation: **4 px minimum, 6 px preferred**
-- explanation → person/team identity: **12 px minimum**
-- identity → operational metadata: **8 px minimum**
+- title → pedagogical explanation: **6 px minimum, 8 px preferred**
+- explanation → bottom identity zone: **14 px minimum**; normally much larger because identity is bottom-anchored
+- identity → operational metadata/verification: **8 px minimum**
 - one operational metadata row → next separate metadata row: **6 px minimum**
 - operational metadata → bottom timestamp/source area: **10 px minimum** unless flexible whitespace is larger
+
+Line spacing:
+- multiline body/explanation: **1.15 minimum, 1.2 preferred**
+- multiline card title: **1.05 minimum**
+- metadata: natural line height, never compressed until glyphs visually collide
 
 Wrapped lines inside the same text block use natural line-height and no artificial paragraph gap.
 
 These values are minimums, not targets for compression.
 
 If a card cannot fit while respecting them:
-1. let the card grow
-2. reduce grid density
-3. paginate
+1. shorten wording without losing meaning
+2. let the card grow
+3. reduce grid density
+4. paginate
 
 Never solve fit by collapsing these gaps below minimum, overlapping rows, shrinking text below role minimums, or removing the pedagogical explanation.
-
-Do not vertically justify all rows across the card height.
 
 ---
 
@@ -378,14 +421,17 @@ Allowed adaptations:
 Fit order:
 1. preferred typography
 2. typography reduction only when required and only within explicit role ranges
-3. canonical spacing, never below hard minimums
-4. adapt card/grid dimensions
-5. paginate
+3. canonical spacing and line-height, never below hard minimums
+4. preserve top content group + bottom information zone
+5. adapt card/grid dimensions
+6. paginate
 
 Never:
 - clip or overlap text
+- allow independent textboxes to occupy the same vertical space
 - omit required rows
 - omit pedagogical/project-value explanation
+- move name/verification up into the body area merely to make a card fit
 - expose internal evidence-level labels to save explanation space
 - reduce below component minimums
 - reduce contrast below WCAG AA
@@ -408,7 +454,11 @@ font_below_component_minimum_count == 0
 text_clipping_count == 0
 text_overlap_count == 0
 card_block_spacing_violation_count == 0
+text_line_spacing_below_minimum_count == 0
 pedagogical_line_not_directly_under_title_count == 0
+identity_not_bottom_anchored_count == 0
+verification_not_bottom_anchored_count == 0
+bottom_information_zone_overlap_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
 legacy_developed_by_label_count == 0
 legacy_identity_prefix_count == 0
@@ -430,14 +480,14 @@ verified_merger_omitted_from_card_count == 0
 Also verify:
 - these hierarchy checks apply to **every card type**, not only PR/issue cards
 - no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the person/team identity row
+- person identity is first-name-only and sits in the bottom information zone
+- verification/provenance is at the bottom of the card; if a timestamp exists, it sits immediately above the timestamp
 - merged PR timestamp is the merge timestamp
 - open/active cards do not display PR-created/latest-commit timestamps merely because that data exists
-- title and identity row use the same primary text color
 - timestamps use the quiet microcopy/timestamp color and do not compete for focus
 - every displayed timestamp is a single line in `D MMM · HH:MM` style, localized like `14 sep · 10:16`
 - pedagogical explanation is calmer than the primary layer
 - metadata/provenance is visually quiet while still WCAG-AA compliant
-- timestamp is at least as quiet as metadata, preferably quieter, while still WCAG-AA compliant
 - dedicated merger + submitted-review lookup was performed for every merged PR
 - only verified merger/reviewer names are printed
 - `Review:` is based on submitted approvals, never requested reviewers
@@ -447,5 +497,5 @@ Also verify:
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.6
+**Version:** 1.7
 **Last updated:** 2026-09-17
