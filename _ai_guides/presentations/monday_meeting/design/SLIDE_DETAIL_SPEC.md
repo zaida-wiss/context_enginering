@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.1
+  version: 2.2
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -154,14 +154,43 @@ Do not include collection-branch-only merges here.
 
 Unknown reviewer/merger must be explicitly marked unknown/unverified.
 
+## Collection-branch lifecycle — applies equally to Backend and Native
+
+The Backend and Native collection slides are **state views**, not merely reporting-period event logs.
+
+Canonical collection branches:
+- Backend: `Java-Development-Environment`
+- Native: `C/C++-Native`
+
+A work item belongs on its collection-branch slide when verified work has been merged into that team's collection branch **and the same work has not yet been promoted to the final delivery branch**.
+
+Lifecycle:
+
+```text
+assigned / started, not merged to collection branch
+  → active work (①D/①E)
+
+merged to team collection branch, not yet promoted
+  → collection-branch merged (①B/①C)
+
+promoted onward to final delivery branch
+  → remove from ①B/①C; final delivery is represented on the final-delivery merge view
+```
+
+Do not keep the same work simultaneously as active work and collection-branch merged work.
+Do not keep collection-branch items after promotion onward.
+Deduplicate by issue/PR/work identity, not merely by merge-commit count.
+
 ## ①B — Backend collection-branch merges
 
 Canonical branch: `Java-Development-Environment`.
 
-Purpose: show verified PRs merged to the Backend collection branch during the reporting period that are not already represented as final `develop` delivery in a way that would double-count the same delivery.
+Purpose: show all verified Backend work currently accumulated in the Backend collection branch and not yet promoted onward to the final delivery branch.
 
-Fields: same evidence fields as ①A.
-Sort: chronological.
+Include work even if the merge into the collection branch occurred before the current reporting period, as long as it still remains unpromoted.
+
+Fields: same evidence fields as ①A where available, plus linked issue/work identity when verified.
+Sort: chronological by collection-branch merge time.
 
 If verified count = 0, omit or show empty-state according to audit decision; record reason.
 
@@ -169,16 +198,18 @@ If verified count = 0, omit or show empty-state according to audit decision; rec
 
 Canonical branch: `C/C++-Native`.
 
-Purpose: show verified PRs merged to the Native collection branch during the reporting period without double-counting final delivery.
+Purpose: show all verified Native work currently accumulated in the Native collection branch and not yet promoted onward to the final delivery branch.
 
-Fields: same evidence fields as ①A.
-Sort: chronological.
+Include work even if the merge into the collection branch occurred before the current reporting period, as long as it still remains unpromoted.
+
+Fields: same evidence fields as ①A where available, plus linked issue/work identity when verified.
+Sort: chronological by collection-branch merge time.
 
 If verified count = 0, record omission/empty-state reason.
 
 ## ①D — Active team work
 
-Purpose: show verified active work owned primarily by one team.
+Purpose: show verified assigned/started work owned primarily by one team that has **not yet been merged to that team's collection branch or final delivery branch**.
 
 Include:
 - issue number + title
@@ -189,6 +220,8 @@ Include:
 - open PR when verified
 - latest relevant activity timestamp
 - blocker/dependency when verified
+
+`På gång` means assigned and/or started work that is still pre-merge for its team's collection branch. A work item stops being `På gång` as soon as it is verified merged to the applicable collection branch.
 
 Do not classify an old open issue as actively worked merely because it remains open.
 Use `ACTIVE_WORK_DETECTION_MODEL.md`.
@@ -226,7 +259,7 @@ Cross-team fields:
 - latest verified activity
 - dependency/blocker if verified
 
-Every open assigned issue must appear on ①D, ①E or in explicit audit exclusion.
+Every open assigned issue must appear on ①D, ①E, ①B/①C when already merged to a collection branch, or in explicit audit exclusion.
 
 ## ①F — Decisions since last meeting
 
@@ -624,10 +657,12 @@ unverified_item_presented_as_confirmed_count == 0
 team_planning_recommendation_present_when_evidence_allows == true
 blockers_and_risks_reflected_in_priority_order == true
 numeric_capacity_or_estimate_has_verified_source == true
+collection_branch_items_promoted_onward_remaining_count == 0
+active_items_already_merged_to_collection_branch_count == 0
 ```
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.1
+**Version:** 2.2
 **Last updated:** 2026-09-17
