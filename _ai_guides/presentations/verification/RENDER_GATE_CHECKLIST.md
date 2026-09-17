@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.4
+  version: 4.5
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -111,7 +111,28 @@ Manual visual checks:
 
 ---
 
-## 5. CARD-INTERNAL SYSTEM
+## 5. MEETING-POINT HEADER INTEGRITY
+
+Slides ①–⑭ must render the meeting-point prefix and number as one coherent header identity.
+
+Required:
+
+```text
+meeting_point_number_missing_count == 0
+pen_without_meeting_point_number_count == 0
+meeting_point_header_malformed_count == 0
+```
+
+Manual checks:
+- no slide may show `✏️` without its meeting-point number
+- the canonical pattern is `✏️ ⑨ Prioritering & scope` or equivalent title text
+- continuation slides preserve the identity, e.g. `✏️ ⑨-2 ...`
+
+Any failure → STOP.
+
+---
+
+## 6. CARD-INTERNAL SYSTEM — ALL CARDS
 
 Validate against `CARD_COMPONENT_STANDARD.md` and `READABILITY_HARD_RULES.md`.
 
@@ -123,6 +144,12 @@ auto_shrink_enabled_count == 0
 card_block_spacing_violation_count == 0
 pedagogical_line_not_directly_under_title_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
+legacy_developed_by_label_count == 0
+legacy_identity_prefix_count == 0
+unnecessary_activity_timestamp_count == 0
+identity_row_not_primary_color_count == 0
+timestamp_not_primary_color_count == 0
+secondary_text_too_prominent_count == 0
 assignee_not_visually_emphasized_count == 0
 visible_evidence_level_label_count == 0
 unverified_identity_commentary_count == 0
@@ -130,12 +157,14 @@ timestamp_not_single_line_count == 0
 timestamp_not_right_aligned_count == 0
 ```
 
-Manual visual checks:
-- pedagogical explanation is immediately below title
+Manual visual checks across **every card type**:
+- card title uses primary text color
+- person/team identity row, when present, uses the same primary text color as the title
+- relevant timestamp, when present, uses the same primary text color as the title
+- pedagogical explanation is calmer/secondary
+- branch/status/provenance/ordinary metadata is quieter than the explanation while still WCAG-AA compliant
+- no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the identity row
 - every next-step/action card explains what the action concerns and why it matters to the project
-- explanation is visibly larger than operational metadata
-- verified assignee/developer name is easy to scan and uses the primary title text color
-- team label remains secondary
 - separate semantic blocks have the minimum required vertical spacing
 - no text rows visually touch
 - block spacing is not compressed merely to fit more cards
@@ -144,7 +173,7 @@ If card content cannot fit while preserving the required spacing and type sizes,
 
 ---
 
-## 6. MERGE / REVIEW METADATA
+## 7. MERGE / REVIEW METADATA
 
 Canonical visible pattern:
 
@@ -182,20 +211,17 @@ Unknown identity remains blank in the meeting card only after the dedicated look
 
 ---
 
-## 7. TIMESTAMP
+## 8. TIMESTAMP RELEVANCE
 
-When rendered, timestamp must follow `CARD_COMPONENT_STANDARD.md`:
-- one compact line
-- lower-right aligned where card geometry permits
-- quiet WCAG-safe color
-- minimum 11 pt
-- no semantic prefix
+When rendered, timestamp must follow `CARD_COMPONENT_STANDARD.md`.
 
-Example:
+Merged PR cards:
+- use merge timestamp
+- do not replace it with PR creation or latest commit time
 
-```text
-14 sep · 10:16
-```
+Active/open cards:
+- do not show PR-created/latest-commit/issue-created timestamps automatically
+- show time only when it materially helps meeting status understanding
 
 Required:
 
@@ -203,11 +229,19 @@ Required:
 timestamp_two_line_count == 0
 timestamp_prefix_count == 0
 timestamp_not_right_aligned_count == 0
+unnecessary_activity_timestamp_count == 0
+merged_pr_wrong_timestamp_type_count == 0
+```
+
+Example:
+
+```text
+14 sep · 10:16
 ```
 
 ---
 
-## 8. ACTIVE-WORK EVIDENCE
+## 9. ACTIVE-WORK EVIDENCE
 
 Evidence levels from `ACTIVE_WORK_DETECTION_MODEL.md` are internal only.
 
@@ -227,7 +261,7 @@ visible_evidence_level_label_count == 0
 
 ---
 
-## 9. CONTRIBUTION / PROJECT-VALUE EXPLANATION
+## 10. CONTRIBUTION / PROJECT-VALUE EXPLANATION
 
 Every Issue/PR/Merge card, dependency node and next-step/action card must contain grounded pedagogical microcopy when evidence supports it.
 
@@ -246,7 +280,7 @@ For next-step cards, the explanation must answer:
 
 ---
 
-## 10. DEPENDENCY-AWARE ORDER
+## 11. DEPENDENCY-AWARE ORDER
 
 When verified dependencies exist, the deck must make their effect on planning visible.
 
@@ -265,7 +299,7 @@ Manual check:
 
 ---
 
-## 11. PROVENANCE
+## 12. PROVENANCE
 
 Validate against `PROVENANCE_AND_AI_LABELING.md`.
 
@@ -280,7 +314,7 @@ mixed_provenance_card_without_block_labels_count == 0
 
 ---
 
-## 12. OVERFLOW / COLLISION
+## 13. OVERFLOW / COLLISION
 
 Required:
 
@@ -298,7 +332,7 @@ Never solve density by shrinking slide titles, shrinking below role minima, remo
 
 ---
 
-## 13. COVER / SLIDE-SPECIFIC CONTENT
+## 14. COVER / SLIDE-SPECIFIC CONTENT
 
 Validate slide purpose and required fields against `SLIDE_DETAIL_SPEC.md`.
 
@@ -306,7 +340,7 @@ Conditional slides may only be omitted for a source-grounded reason recorded in 
 
 ---
 
-## 14. FINAL DELIVERY GATE
+## 15. FINAL DELIVERY GATE
 
 Deliver only when:
 
@@ -316,6 +350,7 @@ WCAG_2_2_AA == PASS
 CONTENT_COMPLETENESS == PASS
 GLOBAL_VISUAL_SYSTEM == PASS
 READABILITY_HARD_RULES == PASS
+MEETING_POINT_HEADER_INTEGRITY == PASS
 CARD_COMPONENT_STANDARD == PASS
 PROVENANCE_AND_AI_LABELING == PASS
 OVERFLOW_AND_COLLISION == PASS
@@ -332,5 +367,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.4
+**Version:** 4.5
 **Last updated:** 2026-09-17
