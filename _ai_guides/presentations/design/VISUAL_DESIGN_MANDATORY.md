@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.3
+  version: 4.4
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -102,12 +102,25 @@ All internal card rules are delegated to `CARD_COMPONENT_STANDARD.md`.
 ## 4. GLOBAL TYPOGRAPHY
 
 This file owns only slide-level roles:
-- slide title/header: **32 pt minimum**, bold
+- slide title/header: **36 pt**, bold — this is both the preferred and minimum size
 - section header: **22 pt minimum**, bold
 
-For every card-internal role, including title, pedagogical explanation, assignee/developer, operational metadata and timestamp, use **only** `CARD_COMPONENT_STANDARD.md`.
+### Slide-title hard rule
 
-Do not duplicate those numeric rules here.
+Slide titles are **never a responsive fit variable**.
+
+Never shrink a slide title below 36 pt because content is crowded.
+Never use automatic shrink-to-fit on slide titles.
+
+If a title does not fit at 36 pt:
+1. shorten the wording without losing meaning
+2. widen or reposition the title zone
+3. reduce slide content density
+4. create a continuation slide
+
+For every card-internal role, including title, pedagogical explanation, assignee/developer, operational metadata and timestamp, use **only** `CARD_COMPONENT_STANDARD.md` plus the hard readability minima in `READABILITY_HARD_RULES.md`.
+
+Do not duplicate those numeric card-internal rules here.
 
 ---
 
@@ -143,14 +156,15 @@ Do not duplicate those numeric rules here.
 
 ## 6. PROJECT-VALUE EXPLANATION
 
-Issue/PR/Merge cards and dependency nodes must explain what the work contributes when source evidence supports it.
+Issue/PR/Merge cards, dependency nodes and action/next-step cards must explain what the work contributes when source evidence supports it.
 
 Content rule:
 - short, grounded, plain Swedish
 - directly connected to the title
+- answer what it concerns and why it matters to the project
 - no invented impact
 
-**Placement, font size and spacing are owned solely by `CARD_COMPONENT_STANDARD.md`.**
+**Placement, font size and spacing are owned by `CARD_COMPONENT_STANDARD.md` and `READABILITY_HARD_RULES.md`.**
 
 Evidence grounding order:
 
@@ -200,14 +214,17 @@ Evidence strength levels from `ACTIVE_WORK_DETECTION_MODEL.md` are **internal da
 ## 9. RESPONSIVE FIT ORDER
 
 When content is dense:
-1. keep required content
-2. wrap naturally
-3. follow card-specific typography/spacing rules in `CARD_COMPONENT_STANDARD.md`
-4. let cards grow
-5. reduce grid density
-6. paginate
+1. keep slide title fixed at 36 pt
+2. keep required content
+3. wrap naturally
+4. start normal/card text at preferred sizes and reduce only when required
+5. follow card-specific typography/spacing rules in `CARD_COMPONENT_STANDARD.md` and `READABILITY_HARD_RULES.md`
+6. let cards grow
+7. reduce grid density
+8. paginate
 
 Forbidden:
+- shrinking slide titles
 - clipping
 - overlap
 - missing content
@@ -215,6 +232,7 @@ Forbidden:
 - typography below the owning component minimum
 - contrast below WCAG AA
 - removing required provenance
+- removing pedagogical explanation to save space
 
 ---
 
@@ -239,6 +257,8 @@ This file requires globally:
 - WCAG AA pass
 - no high-glare surfaces
 - no full team outlines
+- slide titles remain at 36 pt or larger
+- slide titles are never shrunk for fit
 - slide-level typography minimums respected
 
 Do not duplicate the full render-gate checklist here.
@@ -254,5 +274,5 @@ Card internals are governed by `CARD_COMPONENT_STANDARD.md`; global design must 
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.3
+**Version:** 4.4
 **Last updated:** 2026-09-17
