@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 3.0
+  version: 3.1
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -151,42 +151,191 @@ PowerPoint/PptxGenJS equivalent:
 ### Internal spacing
 
 - Padding: **18–22 px** on all sides
-- Title → body gap: minimum **10 px**
+- Title → contribution microcopy gap: **4–6 px**
+- Contribution microcopy → primary detail gap: **10–12 px**
 - Body → metadata gap: minimum **12 px**
 - Gap between cards: minimum **20 px**
 
 ---
 
+## ✨ CONTRIBUTION MICROCOPY — ISSUE, PR & MERGE CARDS
+
+Every card whose primary object is an **Issue, Pull Request, or merged Pull Request** MUST contain one short pedagogical explanation immediately below the title.
+
+### Purpose
+
+The line answers, in plain Swedish:
+
+> **Vad bidrar detta arbete med till koden eller produkten?**
+
+It is supporting context, not status information. It should help a reader understand the technical value without opening GitHub.
+
+### Placement
+
+Always directly below the issue/PR/merge title and above owner/status/branch information.
+
+```text
+#85 · Responsive shared header
+Gör navigationen användbar även på mindre skärmar.
+
+Björn · Frontend
+◐ Pågår
+Branch: 85-frontend-responsive...
+17 sep 08:42
+```
+
+### Wording
+
+- One short sentence only
+- Prefer **8–14 words**
+- Maximum roughly **90 characters** when practical
+- Plain language before implementation jargon
+- Explain code/product contribution, not project administration
+- Do not repeat the title with different words
+- No hype, sales language or vague phrases such as “förbättrar systemet” without saying how
+
+Good:
+- `Lägger till JWT-autentisering så API-anrop kan verifiera användaren.`
+- `Gör portföljdata tillgänglig via en återanvändbar React-hook.`
+- `Skyddar loginflödet mot SQL-injektion.`
+- `Gör toppnavigationen responsiv på mindre skärmar.`
+
+Bad:
+- `Arbete med autentisering.`
+- `Förbättrar koden.`
+- `Viktig feature.`
+- `Denna PR är nu mergad.`
+
+### Evidence / no guessing
+
+The contribution line MUST be grounded in verified repository evidence.
+
+Use this order:
+
+**For Issue cards:**
+1. Issue title + issue body / acceptance criteria
+2. Linked PR when one exists
+3. Verified matching branch/commit messages
+
+**For PR cards:**
+1. PR title + PR body
+2. Changed files / diff summary when available
+3. Linked issue / acceptance criteria
+4. Commit messages
+
+**For merged PR cards:**
+1. Actual merged PR title/body + changed files
+2. Linked issue
+3. Commit messages
+
+If there is not enough verified information to explain the contribution safely, show:
+
+`Bidrag till koden behöver verifieras.`
+
+Do not invent implementation effects.
+
+### Tense
+
+- Open Issue: describe the intended contribution, e.g. `Gör ...`, `Lägger till ...`
+- Open PR: describe what the PR changes, e.g. `Kopplar ...`, `Inför ...`
+- Merged PR: describe the delivered contribution, e.g. `Skyddar ...`, `Lägger till ...`
+
+Avoid process phrasing such as `ska jobba med`, `är mergad`, `PR för` when the actual code contribution can be stated instead.
+
+---
+
+## 🌫️ DISCREET MICROCOPY & TIMESTAMP STYLE
+
+Contribution microcopy and card timestamps share one deliberately low-emphasis visual style.
+
+### Canonical style
+
+- Font size: **12–13 pt**
+- Weight: regular
+- Text color: **`#8290A7`**
+- Line height: approximately **1.3–1.4**
+- No badge, pill, border or background behind the line
+- Left aligned
+- Maximum 1–2 visual lines
+
+This color should feel close to the card surface without disappearing. It is intentionally quieter than normal metadata (`#94A3B8`) and much quieter than primary text.
+
+### Timestamp
+
+Dates/timestamps inside cards use the same style and color:
+
+```text
+17 sep · 08:42
+```
+
+or, when the semantic label matters:
+
+```text
+Merged 16 sep · 18:40
+Senaste commit 17 sep · 08:42
+```
+
+### Important accessibility boundary
+
+This low-emphasis style may ONLY be used for:
+
+- contribution microcopy
+- timestamps/dates
+- optional evidence/source micro-labels
+
+Never use it for:
+
+- issue/PR title
+- assignee/owner
+- status
+- blocker
+- branch when branch is operationally important
+- deadline/action that must be discussed
+
+Those remain at their normal readable hierarchy.
+
+If the rendered projector/view makes `#8290A7` unreadable, increase contrast while keeping the same muted visual role. Never lower contrast further merely for aesthetics.
+
+---
+
 ## 📋 CARD CONTENT STACK
 
-Every information card uses this internal hierarchy:
+Every Issue/PR/Merge card uses this internal hierarchy:
 
 1. **Title**
    - Issue/PR number + short title
    - 20 pt minimum
 
-2. **Primary detail**
+2. **Contribution microcopy**
+   - One pedagogical sentence explaining the contribution to code/product
+   - 12–13 pt, `#8290A7`
+   - Same visual family as timestamps
+
+3. **Primary detail**
    - Owner, status, team, or short summary
    - 18 pt minimum
 
-3. **Secondary detail**
-   - Branch, blocker, review state, dates
+4. **Secondary detail**
+   - Branch, blocker, review state
    - 18 pt minimum when it must be read during the meeting
 
-4. **Metadata**
-   - Small timestamp/source/evidence labels only
-   - 12–14 pt
+5. **Timestamp / metadata**
+   - Date/time in contribution-microcopy color
+   - 12–13 pt
+   - Other small source/evidence labels: 12–14 pt
 
 Example:
 
 ```text
 ┌────────────────────────────────┐
 │ ◐ #85 · Responsive header      │
+│ Gör navigationen användbar     │
+│ även på mindre skärmar.        │
 │                                │
 │ Björn · Frontend               │
 │ Pågår                          │
-│                                │
 │ Branch: 85-frontend-responsive │
+│ 17 sep · 08:42                 │
 └────────────────────────────────┘
 ```
 
@@ -219,7 +368,7 @@ Never:
 - reduce card padding below minimum
 - overlap text zones
 - convert cards to rows
-- hide branch/status/owner to force fit
+- hide contribution microcopy, branch/status/owner merely to force fit
 
 ---
 
@@ -231,11 +380,14 @@ Never:
 | Section header | **22 pt** |
 | Card title / main content | **20 pt** |
 | Secondary readable information | **18 pt** |
-| Small labels/timestamps/footer | **12–14 pt** |
+| Contribution microcopy | **12–13 pt** |
+| Card timestamp | **12–13 pt** |
+| Other small labels/footer | **12–14 pt** |
 
 ### Line height
 
 - Main/secondary text: approximately **1.4–1.6**
+- Microcopy/timestamps: approximately **1.3–1.4**
 - Never compress line height until lines visually collide
 
 ### Forbidden
@@ -244,6 +396,7 @@ Never:
 - Auto-reduce-font
 - Main content below 20 pt
 - Secondary meeting content below 18 pt
+- Contribution microcopy below 12 pt
 - Tiny text used to preserve a grid
 
 ---
@@ -275,6 +428,7 @@ All slides use dark navy background.
 | Main text | `#FFFFFF` |
 | Secondary text | `#CBD5E1` |
 | Muted text | `#94A3B8` |
+| Contribution/timestamp microcopy | `#8290A7` |
 
 Do not use white/light slide backgrounds.
 
@@ -340,6 +494,7 @@ Frontend, Backend and Native detail slides use identical modern card geometry.
 - If a card needs more room: use 2 × 1 or single-column cards
 - Continuation slides when needed
 - Only team accent color differs
+- Issue/PR cards include contribution microcopy directly below the title
 
 ---
 
@@ -382,6 +537,7 @@ text_clipping_count == 0
 out_of_bounds_element_count == 0
 font_below_minimum_count == 0
 plain_row_work_item_count == 0
+missing_contribution_microcopy_count == 0
 ```
 
 Also verify:
@@ -390,6 +546,8 @@ Also verify:
 - Cards have modern rounded geometry
 - Shadow/depth is subtle and consistent
 - ①D and ①E are card grids, not row lists
+- Every Issue/PR/Merge card has contribution microcopy directly under its title
+- Contribution microcopy and timestamps use the same muted visual family
 - No page becomes dense merely to avoid adding another slide
 
 If any condition fails:
@@ -405,12 +563,12 @@ If any condition fails:
 
 The presentation should feel like a modern dashboard translated into a calm meeting deck:
 
-**dark navy canvas + modern soft cards + subtle shadow + large readable type + generous whitespace.**
+**dark navy canvas + modern soft cards + subtle shadow + clear primary type + discreet explanatory microcopy + generous whitespace.**
 
 Cards are the visual language. Rows are not.
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 3.0
+**Version:** 3.1
 **Last updated:** 2026-09-17
