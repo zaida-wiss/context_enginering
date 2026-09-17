@@ -5,799 +5,412 @@ metadata:
   type: process
   critical: true
   required_before: rendering
+  version: 3.0
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
 
-**Every presentation slide uses EXACTLY this layout. Nothing else is allowed.**
+This is the authoritative visual specification for Monday Meeting presentations.
+
+**Core principle:** content is presented as modern cards, not as text rows or list-like bands.
+
+If content does not fit, create a continuation slide. Never shrink, clip, overlap, or convert cards into plain rows.
 
 ---
 
 ## 🎯 CANONICAL SLIDE LAYOUT
 
-Every slide contains:
+Every meeting-point slide contains:
 
-```
-┌─────────────────────────────────────┐
-│  ① RUBRIK — Team/Mötespunkt        │  32pt BOLD (meeting-room readable)
-├─────────────────────────────────────┤
-│                                     │
-│  HUVUDBUDSKAP (one-liner)           │  20pt, clear statement
-│                                     │
-│  [CONTENT BLOCK 1]                  │  Fullwidth block
-│  (work items or content)            │  Vertical stack only
-│                                     │
-│  [CONTENT BLOCK 2]                  │  Max 1–3 blocks per slide
-│  (if needed)                        │
-│                                     │
-│  (If content too large: split to   │  Continuation: ①A-2, ①B-2, etc.
-│   continuation slide)               │
-└─────────────────────────────────────┘
-```
+1. Slide title at top
+2. Optional one-line main message
+3. A card area
+4. Optional compact footer/source line
 
-**See TYPOGRAPHY section below for definitive values and minimums.**
+**Work items and information items are rendered as individual cards.**
 
-### Content Block Structure
+### Mandatory rule
 
-Each block displays ONE CATEGORY of work (merged PRs, open issues, etc):
+> ONE WORK ITEM = ONE CARD
 
-```
-✅ #107 BCrypt login fix
-   Säkrar loginflödet. Rasha · väntar på review
-
-◐ #104 Spring Security
-   Fokus denna vecka. Erik · pågår
-
-🔴 #108 Auth contract
-   Blockerad på Backend. Tomac · waiting
-```
-
-**Each work item = ONE LINE (within a soft card):**
-- Symbol (✅ ◐ 🔴 etc)
-- Issue# and Title
-- Owner/Status
-
-**All text must be contained within soft, rounded cards with generous padding and responsive height.**
+Never render issue/PR/work items as plain text rows, table rows, horizontal bands, or line-only lists.
 
 ---
 
-## ⚠️ EXCEPTION — COMPLETED MERGE OVERVIEW BOARDS (①A–①C)
+## 🧩 CANONICAL CARD GRIDS
 
-**ALL completed merge overview slides MUST use the same 3 × 2 grid layout:**
-- ①A — Merged to develop
-- ①B — Merged to Backend collection branch (Java-Development-Environment)
-- ①C — Merged to Native collection branch (C/C++-Native)
+### ①A–①C — completed merge overview
 
-**For Slides ①A–①C ONLY:**
-- A 3 × 2 card grid IS REQUIRED (NOT full-width stacked)
+Use a **3 × 2 card grid**.
+
 - Maximum 6 cards per physical slide
-- Continuation slides (①A-2, ①B-2, etc.) when >6 items
-- Cards have identical dimensions within each slide
-- Cards are read chronologically left-to-right, top-to-bottom
-- Large whitespace must remain around the board
-- Each card has team-colored border (teal/hot pink/purple/light slate)
-- Cards are rendered as soft rounded cards with 12–18px corners
-- This is a presentation summary, not a GitHub/Jira dashboard
-- **CRITICAL: These three slides are visually identical layouts—only content and branch differ**
+- Read left-to-right, top-to-bottom
+- If more than 6 items: create continuation slide
+- Do not add a third row
+- If one or more cards are too text-heavy for 3 columns at accessibility minimums, reduce that physical slide to 2 × 2 and continue on the next slide
 
-**All other slides (①D+, ②, ③, etc.):**
-- Continue to follow the canonical vertical full-width block layout
-- Content rendered as stacked soft cards (not grid)
-- Each card is a soft, rounded, responsive container
-- Authorized exceptions to canonical layout: ①A–①C (grid), ⑥A (diagrams), ⑬ (4-column grid), ⑭ (cards)
+### ①D — active team work
+
+Use a **2 × 2 modern card grid**.
+
+- Maximum 4 cards per physical slide
+- One work item per card
+- Team border color remains visible
+- Branch/status/owner live inside the card
+- If more than 4 items: create `①D-2`, `①D-3`, etc.
+
+### ①E — cross-team + assigned/backlog
+
+Use a **2 × 2 modern card grid**.
+
+- Maximum 4 cards per physical slide
+- One issue/work item per card
+- Never render assigned/backlog items as rows
+- If more than 4 items: create `①E-2`, `①E-3`, etc.
+
+### ①F — decisions
+
+Use cards.
+
+- Prefer 2 × 2 when items are compact
+- Prefer 2 × 1 or 1 × 2 when cards contain longer rationale
+- Maximum 4 cards per physical slide
+
+### ②, ③, ④, ⑤, ⑥, ⑦, ⑧, ⑨, ⑩, ⑪, ⑫, ⑭
+
+Use **modern cards**.
+
+- Default: 2 columns when cards are short/medium
+- Fall back to 1 column when a card needs more text
+- Never show plain rows or tables as the main information layout
+- Maximum 4 cards per physical slide unless a slide-specific rule is stricter
+- Create continuation slides instead of compressing cards
+
+### ⑬ — next steps
+
+Use a **4 × 1 card grid**.
+
+- Maximum 4 prioritized cards
+- If content is too long for four readable cards, use 2 × 2 and continue on a second slide
+
+### ⑥A — dependency diagram
+
+Exception: visual dependency graph is allowed.
+
+- Every node is still a rounded card
+- Maximum 3–4 chains per slide
+- Split to continuation slide if needed
 
 ---
 
-## ⚠️ EXCEPTION — DEPENDENCY DIAGRAMS (⑥A)
+## 🎴 MODERN CARD SURFACES — MANDATORY
 
-**Slide ⑥A MUST use visual flow diagram layout:**
-- Nodes rendered as soft-rounded cards with status markers
-- Arrows show blocking relationships (visual direction)
-- Nodes can be arranged horizontally or vertically as space permits
-- Maximum 3-4 chains per slide
-- Each node has: Issue number + title + status symbol (✅/◐/⏳/🔴)
-- This is NOT a grid—it's a flow diagram with visual hierarchy
-
----
-
-## ⚠️ EXCEPTION — NEXT STEPS GRID (⑬)
-
-**Slide ⑬ MUST use 4-column card grid layout:**
-- Maximum 4 prioritized actions per slide (one card per column)
-- Cards rendered as soft-rounded boxes with border + padding
-- Each card shows: Number | Title | Description | Deadline | Verification
-- Cards are equal height and width within the slide
-- Soft corners (12–18px), neutral border, whitespace between cards
-- If >4 actions: create continuation slide ⑬B
-- This layout emphasizes visual prioritization over text listing
-
----
-
-## ⚠️ EXCEPTION — QUESTIONS TO PL CARDS (⑭)
-
-**Slide ⑭ MUST use grouped card layout:**
-- Two visual groups: "IDAG-SVAR BEHÖVS" (top) | "NICE-TO-HAVE" (below)
-- Each question rendered as individual card with border
-- Cards have soft corners (12–18px), neutral border, responsive padding
-- Each card shows: Q# | KATEGORI — Fråga | Impakt (1 sentence)
-- Dark navy theme compatible (#0F1830 background per SYSTEM_CONTRACT.yaml)
-- Whitespace between cards and clear visual hierarchy
-- Works on both light and dark themes (border/text contrast maintained)
-
----
-
-## 🎴 SOFT CARD SURFACES — Mandatory visual style
-
-All content containers must be rendered as soft cards rather than hard rectangular boxes.
+All content containers must look like modern card surfaces placed on a dark navy background.
 
 ### Card shape
-- Use clearly rounded corners on every content card (12–18px radius)
-- Avoid sharp 90-degree corners
-- Corners should be visually noticeable but not exaggerated
-- Cards should feel soft and calm rather than technical or boxy
 
-### Card appearance
-- Cards must visually feel like separate surfaces resting on top of the slide background
-- Use subtle contrast between card surface (#18233D) and slide background (#0F1830)
-- Borders should be thin and soft (1–2px)
-- Team colour may be used as a subtle accent, but the whole card should still feel soft
-- Never use a hard, bright rectangular outline
+- Corner radius: **16–20 px**
+- No sharp 90° content boxes
+- Card height is content-driven
+- Equal heights are allowed only when all text fits naturally
 
-### Internal spacing (mandatory)
-- Every card must have generous internal padding (16–20px on all sides)
-- Text must never touch the card border
-- Clear vertical spacing between: title → person/status → metadata
+### Card background
 
-### Responsive layout behavior — MANDATORY FOR ALL CARDS
+- Slide background: `#0F1830`
+- Card background: `#18233D`
+- Optional alternate card surface: `#202C47`
 
-**Required behavior (technology-agnostic):**
-- Card height is CONTENT-DRIVEN (not fixed)
-- Cards grow vertically when content wraps
-- **NO TEXT CLIPPING ALLOWED** — all text must stay fully inside the card
-- Card width expands to use available space
-- Vertical reflow happens automatically (no manual height adjustments)
-- Text size must not be reduced below accessibility minimums
+### Border
 
-**Implementation (technology varies):**
-- HTML/CSS: Use flexbox or CSS Grid with auto-height
-- PowerPoint: Use PptxGenJS with auto-sizing or manual row calculation
-- Other renderers: Use equivalent responsive techniques
-- The outcome matters more than the technique
+- Neutral border: `1px solid #334155`
+- Team-owned cards may use a stronger team-color left border or outline accent
+- Do not use bright hard rectangular frames
 
-**Better to split to new slide than to clip text**
+### Box shadow — modern depth
 
-### Layout principle: CONTENT FIRST
-Readability and full text visibility are more important than perfect geometric symmetry.
-Variable card heights are acceptable and expected.
+Cards MUST have a subtle shadow/depth effect when the renderer supports it.
 
-### Slide density
-- Prefer fewer, taller cards over many compressed boxes
-- If cards cannot fit comfortably: create additional slide
-- Never reduce padding or squeeze text simply to fit more
+Canonical CSS-equivalent shadow:
 
-### Core visual principle
-The presentation should resemble information cards placed on a dark tabletop:
-soft rounded surfaces, generous whitespace, clear separation and calm visual hierarchy.
-All content must be readable; geometry must adapt to content, never the reverse.
-
----
-
-## 📐 FIXED DIMENSIONS & TYPOGRAPHY
-
-These values NEVER change. Use them exactly.
-
-### Layout
-
-| Property | Value |
-|----------|-------|
-| Block width | 100% of slide |
-| Block height | Auto (content-driven, never compressed) |
-| Spacing between blocks | 20px |
-| Padding inside block | 16–20px (all sides) |
-| Line height | 1.8 (NPF standard) |
-| Corner radius | 12–18px (all corners, mandatory softness) |
-
-### Typography Hierarchy
-
-**WCAG 2.2 AA Compliant (per SYSTEM_CONTRACT: accessibility rules override design when conflict).**
-
-**MINIMUM FONT SIZES — BINDING AND NON-NEGOTIABLE:**
-
-**All text that is meant to be read and understood during a presentation MUST meet these minimums:**
-
-| Element | Minimum Size | Context |
-|---------|-------------|---------|
-| **Slide title/header** | 32pt | Meeting point headers (①-⑭) — must read from 3–5m away |
-| **Section headers** | 22pt | Frontend, Backend, Native team sections |
-| **Main content text** | 20pt | Issue titles, work item names, key information |
-| **Secondary information** | 18pt | Status details, branch names, PR references |
-| **Small labels/tags** | 12–14pt | Evidence tags (TOLKNING, FÖRSLAG, etc), timestamps |
-| **Footer/source reference** | 12–14pt | Source citations, minimal reference info |
-
-**CRITICAL ENFORCEMENT RULE:**
-
-If content would require font size BELOW these minimums:
-1. **FIRST OPTION:** Increase card height (card grows vertically)
-2. **SECOND OPTION:** Reduce cards per row (use 2 cards instead of 3)
-3. **THIRD OPTION:** Create continuation slide (①A-2, ②B, etc.)
-4. **FORBIDDEN:** Reduce font size below minimum
-5. **FORBIDDEN:** Reduce padding to save space
-6. **FORBIDDEN:** Enable shrink-to-fit or auto-reduce font
-7. **FORBIDDEN:** Clip text
-
-**These rules are absolute. No exceptions.**
-
----
-
-### Typography Table — Specific Font Sizes
-
-**Slide headers with meeting points MUST include pen symbol:**
-- Format: `✏️① Slide Title` (pen first, NO space, meeting point number, one space, title)
-- All meeting point slides (①-⑭) MUST have pen symbol
-- Framsida (⓪) is EXCLUDED: no slide title, no pen symbol, no meeting-point marker
-- Pen emoji: ✏️ (Unicode U+270F, rendered at same size as meeting point number)
-- No space between pen and number (✏️① not ✏️ ①)
-
-| Element | Font Size | Weight | Color | Minimum Rule |
-|---------|-----------|--------|-------|--------------|
-| Slide header with meeting point (✏️①②③) | 32pt | BOLD | #FFFFFF (white) | **NEVER below 32pt** |
-| Section header (Frontend, Backend, etc) | 22pt | BOLD | #FFFFFF | **NEVER below 22pt** |
-| Main content / Work item title | 20pt | Regular | #FFFFFF | **NEVER below 20pt** |
-| Secondary text / Owner/Status | 18pt | Regular | #94A3B8 (muted slate) | **NEVER below 18pt** |
-| Small labels / Evidence tags | 12–14pt | Regular | #94A3B8 or accent | Only for references |
-| Tertiary text / Metadata | 12–14pt | Regular | #94A3B8 (muted slate) | Only for small references |
-
-**Rationale:** Presentations shown on meeting-room screens require larger minimum sizes than desktop reading. A 14pt font is unreadable from 3–5m away. These new minimums ensure every participant can read the information without strain.
-
----
-
-## 🚫 TYPOGRAPHY ENFORCEMENT — MANDATORY RENDER GATE
-
-Before ANY presentation is delivered, a typography validation MUST pass.
-
-### Validation Checklist
-
-**FAIL if ANY of these are true:**
-
-- [ ] Body text (main content) is below 20pt
-- [ ] Secondary text is below 18pt  
-- [ ] Section headers are below 22pt
-- [ ] Meeting point headers are below 32pt
-- [ ] Text has been shrunk via auto-fit or shrink-to-fit
-- [ ] Text is clipped or truncated
-- [ ] Text overlaps a card border
-- [ ] Padding has been reduced below 16px to fit content
-- [ ] Cards have fixed height instead of content-driven growth
-- [ ] Multiple work items are squeezed into a single row instead of using continuation slides
-
-### Rendering Model — MANDATORY
-
-Treat every slide content area like **CSS flexbox with `height: auto`:**
-
-```
-.slide-content {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 20px;
-}
-
-.card {
-  height: auto;  /* NEVER fixed */
-  min-height: min-content;
-  padding: 16px;
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
+```css
+box-shadow:
+  0 10px 30px rgba(0, 0, 0, 0.22),
+  0 2px 8px rgba(0, 0, 0, 0.16);
 ```
 
-### Core Principle
+PowerPoint/PptxGenJS equivalent:
 
-**Content size determines card size. Card size must NEVER force content to shrink.**
+- opacity/transparency should remain subtle
+- blur should be soft
+- distance should be small
+- shadow must not reduce text contrast
+- shadow must not be used as a substitute for spacing
 
-If you must choose between:
-- Keeping 20pt font + growing card + possibly adding continuation slide
-- Shrinking to 14pt to fit current card size
+**Goal:** modern layered surface, not floating/glowing UI.
 
-**ALWAYS choose the first option.**
+### Internal spacing
 
----
-
-## 🎨 PRESENTATION THEME — BACKGROUNDS (MANDATORY)
-
-**ALL slides MUST use dark navy theme. NO EXCEPTIONS.**
-
-| Element | Color | Hex | Usage |
-|---------|-------|-----|-------|
-| Slide background | Dark Navy | #0F1830 | Every slide |
-| Content board/card | Secondary Navy | #18233D | Cards, blocks, containers |
-| Alternate board (if needed) | Tertiary Navy | #202C47 | Variation for contrast |
-| Dividers/borders (neutral) | Slate | #334155 | Separators (not team-related) |
-
-**CRITICAL THEME RULE:**
-
-All Monday Meeting presentation slides MUST use the dark navy theme (#0F1830).
-
-DO NOT:
-- Use white slide backgrounds
-- Use light-gray slide backgrounds
-- Alternate slide background colors
-- Use team color as full-slide background
-
-The dark navy background is constant throughout the deck.
+- Padding: **18–22 px** on all sides
+- Title → body gap: minimum **10 px**
+- Body → metadata gap: minimum **12 px**
+- Gap between cards: minimum **20 px**
 
 ---
 
-## 🎨 STATUS COLORS (SEMANTIC)
+## 📋 CARD CONTENT STACK
 
-Status is communicated via Symbol + Color + Text:
+Every information card uses this internal hierarchy:
 
-| Status | Symbol | Color | Hex | Usage |
-|--------|--------|-------|-----|-------|
-| Done/Merged | ✅ | Green | #4CAF50 | Completed work |
-| In Progress | ◐ | Orange | #FF9800 | Active work |
-| Waiting/Blocked | 🔴 | Red | #F44336 | Blocked or in review |
-| Unknown/Closed | 🔵 | Gray | #94A3B8 | Closed or unknown |
+1. **Title**
+   - Issue/PR number + short title
+   - 20 pt minimum
 
-**RULE:** Status color = symbol + border/accent color only. Never full-card background.
+2. **Primary detail**
+   - Owner, status, team, or short summary
+   - 18 pt minimum
 
----
+3. **Secondary detail**
+   - Branch, blocker, review state, dates
+   - 18 pt minimum when it must be read during the meeting
 
-## 🏷️ TEAM COLORS (CATEGORY, NOT STATUS)
+4. **Metadata**
+   - Small timestamp/source/evidence labels only
+   - 12–14 pt
 
-Team is communicated via border + badge. Team colors represent TEAM OWNERSHIP only.
-They NEVER represent status or priority. **Team colors MUST NEVER overlap with status colors.**
+Example:
 
-| Team | Color | Hex | Usage | Contrast Check |
-|------|-------|-----|-------|---|
-| Frontend | Teal | #2DD4BF | Card border + badge | ✅ 4.5:1 on #18233D |
-| Backend | Hot Pink | #FF4FA3 | Card border + badge | ✅ 4.5:1 on #18233D |
-| Native | Purple | #A855F7 | Card border + badge | ✅ 3:1 on #18233D |
-| Cross-team | Light Slate | #CBD5E1 | Card border + badge | ✅ 4.5:1 on #18233D |
-| Other | Gray | #94A3B8 | Card border + badge | ✅ 4.5:1 on #18233D |
+```text
+┌────────────────────────────────┐
+│ ◐ #85 · Responsive header      │
+│                                │
+│ Björn · Frontend               │
+│ Pågår                          │
+│                                │
+│ Branch: 85-frontend-responsive │
+└────────────────────────────────┘
+```
 
-**RESERVED STATUS COLORS (MUST NOT be used as team colors):**
-- Orange (#FF9800) — **ONLY** for status ◐ "In Progress"
-- Green (#4CAF50) — **ONLY** for status ✅ "Merged/Complete"  
-- Red (#F44336) — **ONLY** for status 🔴 "Blocked"
-
-**CROSS-TEAM BORDER RULE:**
-Light Slate border (#CBD5E1) means work affects multiple teams, not a single team.
-It is neutral, showing coordination required across team boundaries.
-Use on:
-- Slide ①A: cross-team merged PRs (in chronological order)
-- Slide ①E: cross-team pågår work
-
-**EXAMPLE — Frontend card on slide ①A (Merged):**
-- Slide background: #0F1830
-- Card background: #18233D
-- Card border: #2DD4BF (teal, team ownership)
-- Status symbol: ✅ (text only, no colored border)
-- Team badge: teal with #0F1830 text
-- Text: #FFFFFF
-- Metadata: #94A3B8
-
-**EXAMPLE — Backend card on slide ①D or ①E (In Progress):**
-- Slide background: #0F1830
-- Card background: #18233D
-- Card border: #FF4FA3 (hot pink, team ownership)
-- Status symbol: ◐ (text only, no orange border)
-- Team badge: hot pink with #0F1830 text
-- Text: #FFFFFF
-- Metadata: #94A3B8
-
-**EXAMPLE — Cross-team card on slide ①A or ①C:**
-- Slide background: #0F1830
-- Card background: #18233D
-- Card border: #CBD5E1 (light slate, neutral/multi-team)
-- Status symbol: ✅ or ◐ (text only)
-- Team badge: "Cross-team" or show affected teams
-- Text: #FFFFFF
-- Metadata: #94A3B8
-
-**CRITICAL:**
-Team colors and status colors are TWO DIFFERENT semantic systems.
-On Slide ①A "Merged PRs": all cards already have status = MERGED.
-On Slides ①D-①E "Pågår": all cards already have status = ◐ PÅGÅR.
-Therefore border color represents TEAM. Do NOT add green/orange/red status borders.
-Status is communicated by symbol + text ("Merged" / "◐ Pågår").
+**Never collapse these fields into a single text row merely to save vertical space.**
 
 ---
 
-## 🎨 COLOR SEMANTICS — What Each Color Means
+## 📐 RESPONSIVE CARD BEHAVIOR
 
-**STATUS COLORS (Indicate project status, not preferences):**
+Cards must behave like responsive UI surfaces.
 
-| Status | Symbol | Color | Hex | Meaning | Usage |
-|--------|--------|-------|-----|---------|-------|
-| **On Track** | ✅ | Green | #4CAF50 | Work completed, on schedule | Merged PRs, finished tasks |
-| **In Progress** | ◐ | Orange | #FF9800 | Active work, slight delay acceptable | Ongoing features, open PRs in review |
-| **Blocked/Critical** | 🔴 | Red | #F44336 | Critical blocker, needs immediate action | Blocked issues, failed deployments |
-| **Unknown/Neutral** | ? | Gray | #94A3B8 | Status unverified or not applicable | Unassigned work, dependencies |
+- Height: auto/content-driven
+- Text wraps inside card
+- No text clipping
+- No shrink-to-fit
+- No fixed text-box heights that can cause overlap
+- Geometry adapts to content
 
-**STRUCTURE COLORS (Non-status information, for dark navy theme):**
+### Fit priority
 
-| Element | Meaning | Hex | Usage |
-|---------|---------|-----|-------|
-| **Main Text** | Titles, primary content | #FFFFFF | All readable titles and headers |
-| **Secondary Text** | Metadata, timestamps | #CBD5E1 | Assignee, dates, timestamps, secondary info |
-| **Muted Text** | Tertiary information | #94A3B8 | Support text, less important details |
-| **Neutral Dividers** | Visual separation | #334155 | Borders between sections (not team-related) |
+When content is too large:
 
-**CRITICAL RULE:** Never use a status color (green/orange/red) unless you mean the status it represents.
-If unsure, use neutral colors (#334155, #94A3B8, #CBD5E1) instead.
+1. Let the card grow
+2. Use fewer cards on that physical slide
+3. Move remaining cards to a continuation slide
+
+Never:
+
+- reduce body text below minimum
+- reduce card padding below minimum
+- overlap text zones
+- convert cards to rows
+- hide branch/status/owner to force fit
 
 ---
 
-## 🖼️ BORDER & COLOR SEPARATION — Ownership vs Status
+## 📐 TYPOGRAPHY — BINDING MINIMUMS
 
-**TWO INDEPENDENT SEMANTIC SYSTEMS:**
+| Element | Minimum |
+|---|---:|
+| Slide title/header | **32 pt** |
+| Section header | **22 pt** |
+| Card title / main content | **20 pt** |
+| Secondary readable information | **18 pt** |
+| Small labels/timestamps/footer | **12–14 pt** |
 
-### 1. OUTER TEAM BORDER (3-6px) — Ownership/Category ONLY
+### Line height
 
-| Border Color | Meaning | Applies To |
+- Main/secondary text: approximately **1.4–1.6**
+- Never compress line height until lines visually collide
+
+### Forbidden
+
+- Shrink-to-fit
+- Auto-reduce-font
+- Main content below 20 pt
+- Secondary meeting content below 18 pt
+- Tiny text used to preserve a grid
+
+---
+
+## 🖊️ MEETING-POINT HEADERS
+
+All meeting point slides ①–⑭:
+
+- Format: `✏️① Slide Title`
+- Pen first
+- No space between pen and meeting-point symbol
+- One space after meeting-point symbol
+- 32 pt bold minimum
+
+Cover slide ⓪ has no pen and no meeting-point header.
+
+---
+
+## 🎨 PRESENTATION THEME
+
+All slides use dark navy background.
+
+| Element | Hex |
+|---|---|
+| Slide background | `#0F1830` |
+| Card surface | `#18233D` |
+| Alternate surface | `#202C47` |
+| Neutral border/divider | `#334155` |
+| Main text | `#FFFFFF` |
+| Secondary text | `#CBD5E1` |
+| Muted text | `#94A3B8` |
+
+Do not use white/light slide backgrounds.
+
+---
+
+## 🏷️ TEAM COLORS
+
+Team color communicates ownership/category only.
+
+| Team | Color |
+|---|---|
+| Frontend | `#2DD4BF` |
+| Backend | `#FF4FA3` |
+| Native | `#A855F7` |
+| Cross-team | `#CBD5E1` |
+| Other | `#94A3B8` |
+
+Use team color as:
+
+- left accent border
+- subtle outline
+- small badge/accent
+
+Do not use team color as full-card background.
+
+---
+
+## 🎨 STATUS COLORS
+
+Status uses symbol + text.
+
+| Status | Symbol | Color |
 |---|---|---|
-| **Teal** #2DD4BF | Frontend team ownership | Frontend cards |
-| **Hot Pink** #FF4FA3 | Backend team ownership | Backend cards |
-| **Purple** #A855F7 | Native team ownership | Native cards |
-| **Light Slate** #CBD5E1 | Cross-team / Multi-team | Cross-team cards |
-| **Gray** #94A3B8 | Other (infra, chores, docs) | Other cards |
+| Done/Merged | ✅ | `#4CAF50` |
+| In progress | ◐ | `#FF9800` |
+| Blocked/Critical | 🔴 | `#F44336` |
+| Unknown/Neutral | ? | `#94A3B8` |
 
-**These borders NEVER communicate status.**
-
-### 2. STATUS SYMBOL + TEXT — Status ONLY
-
-| Status | Symbol | Text Format | Usage |
-|---|---|---|---|
-| **Merged/Complete** | ✅ | "Merged 2026-09-16" | Completed work |
-| **In Progress** | ◐ | "Pågår — [detail]" | Active work |
-| **Blocked** | 🔴 | "Blockerad — [reason]" | Blocked work |
-| **Unknown** | ? | "Status okänd" | Unverified work |
-
-**Status is communicated by symbol + text, NEVER by border color.**
+Status color must not replace team ownership color.
 
 ---
 
-## 📦 TEXT BOX RULE — MANDATORY
+## 📦 TEXT BOX RULE
 
-**Ordinary text boxes, headers, titles, and captions:**
-- fill: none / transparent
-- outline: none / invisible
+Ordinary text boxes such as titles, captions, dates and footers:
+
+- fill: none/transparent
 - border: none
+- outline: none
 
-A text box must NEVER receive a visible outline, border, or background merely because it contains text.
-
-**Visible borders may ONLY be applied to:**
-- Designated content cards (issue/PR cards with metadata)
-- Team/category containers (Frontend, Backend, Native sections)
-- Explicitly specified status components (severity indicators, risk badges)
-
-**Headers, titles, dates, subtitles, captions, and metadata are plain text** — they must never have:
-- Visible borders
-- Colored fills
-- Outlines or frames
-
-Unless the slide specification in SLIDE_DETAIL_SPEC.md **explicitly** says "add border to [element]", the element MUST be plain text.
-
-This rule prevents the exact problem seen on cover slides where text received unwanted borders.
+Visible card surfaces are reserved for actual information cards/components.
 
 ---
 
-## 📍 STATUS SYMBOLS — Consistent Meaning Everywhere
+## 🎯 TEAM DETAIL CARDS — ③④⑤
 
-**ALWAYS use same symbol for same status, across all slides:**
+Frontend, Backend and Native detail slides use identical modern card geometry.
 
-| Symbol | Meaning | Usage | Example |
-|--------|---------|-------|---------|
-| ✅ | Done / Merged / Delivered | Completed work | Merged PR, finished task |
-| ◐ | In Progress / Active / Doing now | Ongoing work | Open PR under review, active feature |
-| 🔴 | Blocked / Critical / Stop | Urgent problem | Blocked by dependency, test failure |
-| ? | Unknown / Unassigned / Unverified | Missing info | Unassigned PR, status unknown |
-| → | Depends on / Waiting for / Next step | Relationship | "Waiting for #XX to merge" |
-
-**CONSISTENCY RULE:** If you use ◐ to mean "in progress", ALWAYS use ◐ for that. Never switch symbols.
+- Cards only
+- No tables
+- No row bands
+- Default 2 × 2 layout, max 4 work cards per slide
+- If a card needs more room: use 2 × 1 or single-column cards
+- Continuation slides when needed
+- Only team accent color differs
 
 ---
 
-## ✅ RENDER GATE — Before Delivery
+## 🎴 COMPACT CARD STANDARD — ②, ⑥–⑫, ⑭
 
-**All slides MUST pass the render gate before delivery.**
+Use modern cards, not rows.
 
-See [`RENDER_GATE_CHECKLIST.md`](../../verification/RENDER_GATE_CHECKLIST.md) for complete validation requirements.
+Default behavior:
 
-**Key checks (summary):**
-- [ ] Layout compliance: Canonical form with authorized exceptions (①A grid, ⑥A diagrams)
-- [ ] All content in soft cards (rounded 12-18px corners, responsive height)
-- [ ] Spacing: 20px between blocks, 16-20px internal padding
-- [ ] **Typography: ALL text meets minimums (32pt headers, 22pt sections, 20pt body, 18pt secondary)**
-  - [ ] No header below 32pt
-  - [ ] No section header below 22pt
-  - [ ] No body text below 20pt
-  - [ ] No secondary text below 18pt
-  - [ ] No shrink-to-fit enabled
-  - [ ] No font reduction to fit cards
-  - [ ] All text readable in final PPTX (zoom to 100% and check from 3m away conceptually)
-- [ ] Visual render check: Actually rendered to PPTX/viewable format, not just generated
-- [ ] WCAG 2.2 AA: Contrast, no text box borders, color separation
-- [ ] Data integrity: No duplicates, checksums aligned, no fabricated data
-- [ ] GitHub entity provenance: All issue numbers verified
+- 2 × 2 for compact/medium information
+- 2 × 1 for longer cards
+- 1 × 1 when a single item needs significant space
+- Maximum 4 cards per physical slide
+- Continue on next slide instead of reducing readability
 
-**If ANY check fails:**
-- Do not deliver
-- Fix the issue
-- Re-check
-- Only then deliver
-
-**Typography fails are BLOCKERS. A presentation with shrunk font or clipped text is not deliverable.**
+No full-width text banners unless a slide specification explicitly calls for a single hero/message card.
 
 ---
 
-## 📋 CARD TEXT STACK — MANDATORY VERTICAL SEPARATION
+## 🔗 DEPENDENCY DIAGRAMS — ⑥A
 
-**Every work card MUST contain three visually separated text zones:**
-
-### Structure (in order):
-1. **TITLE ROW** — status symbol + PR/issue number + title
-   - Font size: **20pt minimum**
-   - Bold where applicable
-   - Color: #FFFFFF (white)
-   - May include small evidence tag (TOLKNING, FÖRSLAG, etc) at 12–14pt
-
-2. **DESCRIPTION / WORK DETAILS** — brief summary or context
-   - Font size: **18pt minimum**  
-   - May wrap to multiple lines
-   - Color: #FFFFFF
-   - **MUST NOT overlap title or metadata**
-
-3. **METADATA ROW** — owner / branch / status / date
-   - Font size: **12–14pt** (small but still readable)
-   - Color: #94A3B8 (muted slate)
-   - **MUST be visually separated from description**
-   - Can include small evidence tags
-
-### Mandatory vertical spacing (BINDING — not optional):
-- Card top padding: **minimum 16px**
-- Title → Description gap: **minimum 10px**
-- Description → Metadata gap: **minimum 12px**
-- Card bottom padding: **minimum 16px**
-- Line height (body text): **minimum 1.4**
-- Line height (metadata): **minimum 1.3**
-- Gap between adjacent cards: **minimum 20px**
-
-### Auto-height behavior (CRITICAL):
-- Cards MUST grow vertically when text wraps
-- Fixed-height containers are FORBIDDEN
-- Text must NEVER overlap another text block
-- Text must NEVER be clipped or truncated
-- Padding must NEVER be reduced to save space
-
-### If content does not fit:
-1. Increase card height automatically
-2. Reduce number of cards per physical slide (2 cards instead of 3)
-3. Create continuation slide (①A-2, ①B-2, etc.)
-4. **NEVER reduce font size below 20pt (title), 18pt (body), 12pt (labels)**
-5. **NEVER reduce required spacing**
-6. **NEVER enable shrink-to-fit or auto-reduce-font**
-
-**Failure modes that trigger RENDER_GATE FAIL:**
-- ❌ Title is below 20pt
-- ❌ Body text is below 18pt
-- ❌ Title and body text share same baseline region
-- ❌ Metadata overlaps body text
-- ❌ Line spacing below 1.3
-- ❌ Internal padding below 16px
-- ❌ Text clipping anywhere on card
-- ❌ Shrink-to-fit enabled
-- ❌ Text is centered in dense status cards
+- Each issue = rounded shadowed card/node
+- Use arrows for relationships
+- Prefer left-to-right for short chains
+- Prefer top-to-bottom when wide
+- Avoid crossing arrows
+- Never compress diagram until card text becomes unreadable
 
 ---
 
-## 🎯 TEAM DETAIL CARDS — Mandatory responsive layout for ③④⑤
+## 🚨 OVERFLOW & COLLISION GATE
 
-**MANDATORY for these MEETING POINTS ONLY:**
-- ③ Frontend denna vecka
-- ④ Backend denna vecka
-- ⑤ Native denna vecka
+Before delivery, the rendered artifact must satisfy:
 
-These three team-detail slides MUST use identical TEAM_DETAIL_CARDS layout. **NO TABLES ALLOWED. NO ROWS. CARDS ONLY.**
-
-### Layout Principle
-- Use vertically stacked compact cards (NOT wide horizontal bands, NOT PowerPoint tables)
-- One work item per card
-- Text is LEFT-ALIGNED inside every card (NOT centered)
-- Maintain generous spacing between cards (20px minimum)
-- Content drives card height; card drives slide length if needed
-
-### Responsive sizing — BINDING
-- Card height is CONTENT-DRIVEN (never fixed)
-- Use minimum height, let cards expand vertically
-- If text wraps, card grows taller
-- NO text clipping allowed
-- Do NOT reduce font size to force content into a card
-- If multiple cards cannot fit on one slide with 20pt+ text → create continuation slide
-
-### Typography for ③④⑤ Cards
-Apply the mandatory minimums from the Typography Hierarchy section:
-- Card title: 20pt minimum
-- Status/branch info: 18pt minimum  
-- Owner/assignee: 18pt minimum
-- Metadata: 12–14pt (timestamps, review info)
-
-### Card structure (in vertical order)
-```
-✅ #93 · PR #95
-SQL-injection fix
-
-Merged till
-Java-Development-Environment
-
-Rasha · Merged
-Review: Erik + Björn
-Date: 14 sep 13:04
+```text
+text_overlap_count == 0
+card_overlap_count == 0
+text_outside_card_count == 0
+text_clipping_count == 0
+out_of_bounds_element_count == 0
+font_below_minimum_count == 0
+plain_row_work_item_count == 0
 ```
 
-### Consistency Rule: ③④⑤ MUST BE IDENTICAL
-Frontend (③), Backend (④), and Native (⑤) MUST use identical card layout:
-- card geometry (soft rounded corners, responsive height)
-- internal spacing (16–20px padding, 20px between cards)
-- LEFT-aligned text (not centered)
-- typography hierarchy (22pt section header, 20pt card title, 18pt secondary, 12–14pt metadata)
-- responsive-height behavior
-- **NO shrinking text to fit**
+Also verify:
 
-**ONLY difference allowed: team border color**
-- Frontend: Teal #2DD4BF
-- Backend: Hot Pink #FF4FA3
-- Native: Purple #A855F7
+- Cards have visible separation from background
+- Cards have modern rounded geometry
+- Shadow/depth is subtle and consistent
+- ①D and ①E are card grids, not row lists
+- No page becomes dense merely to avoid adding another slide
 
-### Forbidden on ③④⑤
-- ❌ PowerPoint tables or row-like horizontal bands
-- ❌ Centered text in dense status cards
-- ❌ Fixed card heights
-- ❌ Font size below 20pt for main content
-- ❌ Font size below 18pt for secondary info
-- ❌ Padding below 16px
-- ❌ Text clipping or truncation
-- ❌ More than 3 cards forced onto one row if text shrinking would be needed
+If any condition fails:
+
+1. Do not deliver
+2. Create continuation slide(s)
+3. Rerender
+4. Inspect again
 
 ---
 
-## 🔗 DEPENDENCY DIAGRAMS — Mandatory visual rules
+## ✅ CORE PRINCIPLE
 
-Dependency and blocker slides must use visual flow diagrams instead of paragraph-style text blocks.
+The presentation should feel like a modern dashboard translated into a calm meeting deck:
 
-### Node style
-- Each issue must be shown as a separate rounded card/node
-- Nodes must look like soft cards (see Soft Card Surfaces section above)
-- Text must wrap inside the node
-- Node size must adapt to content
-- Use status markers on each node: ✅ ◐ ⏳ 🔴
+**dark navy canvas + modern soft cards + subtle shadow + large readable type + generous whitespace.**
 
-### Arrows and flow
-- Dependencies must be shown with arrows
-- Arrow direction must clearly indicate what unlocks what
-- Branching dependencies must be shown as branches, not inline prose
-- Avoid crossing arrows when possible
-
-### Layout
-- Prefer left-to-right flow for short chains
-- Prefer top-to-bottom flow when content becomes too wide
-- Split into multiple chains if needed
-- Do not compress diagram to fit too much on one slide
+Cards are the visual language. Rows are not.
 
 ---
 
-## 🚨 RENDER GATE (VISUAL CHECK)
-
-After rendering to PPTX, page through every slide:
-
-- [ ] Header is visible at top
-- [ ] Main message is clearly readable
-- [ ] Content blocks stack vertically
-- [ ] No text clipping or overlap
-- [ ] No blocks pushed off-slide
-- [ ] Slide is NOT dense (60-70% whitespace visible)
-- [ ] Work items display as clean lines (not in grid)
-- [ ] Overall appearance is clean and readable
-
-**If ANY visual check fails:**
-- Do not deliver
-- Fix the content
-- Re-render to PPTX
-- Re-check visually
-- Repeat until all pass
-
----
-
----
-
-## 🎴 COMPACT CARD STANDARD — Mandatory for Meeting Points ②, ⑥–⑧, ⑨–⑭
-
-**MANDATORY for these MEETING POINTS ONLY:**
-- ② Nuläge & Deadline
-- ⑥ Risker & Blockers (except ⑥A dependency diagram)
-- ⑦ Risk register
-- ⑧ Kapacitet & Estimering
-- ⑨ Prioritering & Scope
-- ⑩ Tekniska Beslut
-- ⑪ Sprintmål
-- ⑫ Sprintplan
-- ⑬ Nästa Steg
-- ⑭ Frågor till PL
-
-**DIFFERENT LAYOUT (TEAM_DETAIL_CARDS):**
-- ③ Frontend denna vecka
-- ④ Backend denna vecka
-- ⑤ Native denna vecka
-(These three use identical TEAM_DETAIL_CARDS layout—see above section)
-
-**NOT affected (keep existing layouts):**
-- ① Section (①A–①C: 3×2 grid, ①D–①F: full-width stacked)
-
-### Default Layout
-
-- **Use compact cards** (small to medium size)
-- **Arrange in:** 2–3 cards per row, or vertically stacked
-- **Style:** Match slide ① visual language
-  - Soft rounded corners (12–18px)
-  - Clear team/type borders
-  - Generous internal padding (16–20px)
-  - Responsive card height (grows with content)
-  - LEFT-aligned text (not centered)
-
-### Typography Minimums for Compact Cards
-
-All compact cards MUST adhere to the Typography Hierarchy section:
-- Card title: 20pt minimum
-- Body/summary text: 18pt minimum
-- Metadata/secondary info: 12–14pt
-
-**NO EXCEPTIONS.** If content does not fit:
-1. Reduce cards per row
-2. Allow card to grow taller
-3. Create continuation slide
-4. NEVER shrink font below minimum
-
-### STANDARD_INFO_CARD Component
-
-Reusable card structure for information display:
-
-```
-┌──────────────────────────┐
-│ [Title — 20pt]           │
-│                          │
-│ [Body — 18pt]            │
-│ [Continues as needed]    │
-│                          │
-│ [Metadata — 12–14pt]     │
-└──────────────────────────┘
-```
-
-- **Width:** Adapts to grid (100% in stack, 33-50% in grid)
-- **Height:** Content-driven (never fixed) — card grows with text
-- **Borders:** Soft, rounded (12–18px corners)
-- **Never clips text** — grows vertically instead
-- **Padding:** 16–20px on all sides (never reduced)
-
-### Forbidden (applies to all slides using this standard)
-
-- ❌ Stretched full-width horizontal boxes
-- ❌ Banner-like information containers
-- ❌ Oversized empty decorative cards
-- ❌ Text size reduction to preserve geometry
-- ❌ Text clipping or truncation
-- ❌ Fixed-height containers
-- ❌ Centered text in information-dense cards
-- ❌ Font below 20pt for titles, 18pt for body, 14pt for tiny labels
-
----
-
-**This is the only design specification. Everything else is deprecated.**
-
-**Version:** 3.1 (Compact card standard added)  
 **Status:** PRODUCTION
+**Version:** 3.0
+**Last updated:** 2026-09-17
