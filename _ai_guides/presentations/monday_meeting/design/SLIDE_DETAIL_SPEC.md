@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.3
+  version: 2.4
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -23,9 +23,10 @@ It does NOT own:
 Those are owned by the higher authorities:
 1. `ACCESSIBILITY_NEURODIVERSITY.md`
 2. `VISUAL_DESIGN_MANDATORY.md`
-3. `CARD_COMPONENT_STANDARD.md`
-4. `PROVENANCE_AND_AI_LABELING.md`
-5. `LAYOUT_OVERFLOW_GUARD.md`
+3. `READABILITY_HARD_RULES.md`
+4. `CARD_COMPONENT_STANDARD.md`
+5. `PROVENANCE_AND_AI_LABELING.md`
+6. `LAYOUT_OVERFLOW_GUARD.md`
 
 Any visual example in this file is descriptive only.
 
@@ -33,13 +34,40 @@ Any visual example in this file is descriptive only.
 
 # GLOBAL CONTENT RULES
 
-## Meeting-point headers
+## Meeting-point headers — atomic identity
 
-Slides ①–⑭ use:
+Slides ①–⑭ use the complete pattern:
 
-`✏️[MEETING POINT] [TITLE]`
+`✏️ [MEETING POINT] [TITLE]`
 
-Cover ⓪ has no pen/meeting-point header.
+Examples:
+- `✏️ ⑨ Prioritering & scope`
+- `✏️ ⑬ Nästa steg`
+- continuation: `✏️ ⑨-2 Prioritering & scope`
+
+Hard rules:
+- the pen and meeting-point number are one semantic header identity
+- never render `✏️` without the meeting-point number
+- never drop the meeting-point number while keeping the pen/title
+- continuation slides preserve the same meeting-point identity
+- cover ⓪ has no pen/meeting-point header
+
+## Card identity / timestamp content rule
+
+For work/action cards, content must not require legacy labels such as:
+- `Utvecklat av`
+- `Developed by`
+- `Developer:`
+- `Assigned to:`
+
+When person/team identity is shown, provide only the verified identity value for the card renderer, e.g. `Zaida · Frontend`.
+
+Timestamp content must be meeting-relevant:
+- merged PR cards use merge time
+- active/open work does not automatically require PR-created/latest-commit timestamps
+- include activity time only when it materially helps explain current status
+
+Visual treatment of these fields is owned by `CARD_COMPONENT_STANDARD.md`.
 
 ## No guessing
 
@@ -224,7 +252,7 @@ Include:
 - team
 - matching active branch when verified
 - open PR when verified
-- latest relevant activity timestamp
+- latest relevant activity timestamp **only when meeting-relevant**
 - blocker/dependency when verified
 
 `På gång` means assigned and/or started work that is still pre-merge for its team's collection branch. A work item stops being `På gång` as soon as it is verified merged to the applicable collection branch.
@@ -255,14 +283,14 @@ Assigned/backlog fields:
 - board/status if verified
 - dependency/blocker if verified
 - whether matching active branch is verified
-- last issue activity timestamp when relevant
+- last issue activity timestamp only when it materially helps status understanding
 
 Cross-team fields:
 - issue number + title
 - involved teams
 - owner(s)
 - branch/PR if verified
-- latest verified activity
+- latest verified activity only when meeting-relevant
 - dependency/blocker if verified
 
 Every open assigned issue must appear on ①D, ①E, ①B/①C when already merged to a collection branch, or in explicit audit exclusion.
@@ -517,9 +545,7 @@ Verified section may include:
 
 Unless the team already has a complete confirmed sequence, include an AI-labeled recommendation synthesized from slides ③–⑧.
 
-Use `🔎 AI-analys` for why the ordering is sensible and `⭐ AI-förslag — planeringsordning` for the proposed order/action.
-
-When verified dependencies exist, the ordering MUST explicitly show the dependency path rather than presenting independent-looking priority cards.
+Use `🔎 AI-analys` for why the ordering is sensible and `⭐ AI-förslag` for the proposed order/action.
 
 For each team, include where evidence permits:
 - **1 — Först:** highest-leverage blocker/deadline/core-flow item
@@ -529,14 +555,6 @@ For each team, include where evidence permits:
 - **Föreslagen person:** only if supported by verified ownership/activity; otherwise mark owner to confirm
 - **Styrande blocker/risk:** why the order is suggested
 - **Estimat/kapacitet:** verified value if available, otherwise explicit `ej verifierat` / qualitative load note
-
-Every proposed ordering step should contain a short reason answering **why this comes before/after the other work**.
-
-If a dependency is verified, use explicit wording such as:
-- `Först — låser upp ...`
-- `Parallellt — kan göras utan att vänta på ...`
-- `Därefter — blir meningsfullt när ... är klart`
-- `Vänta — beroende av ...`
 
 AI-derived section may additionally include:
 - suggested scope trade-off
@@ -639,18 +657,22 @@ Never blend schedule facts, AI analysis and AI suggestions into one unlabeled pa
 
 # ⑬ NEXT STEPS
 
-Purpose: make the next actions clear while preserving provenance, explaining project value and showing dependency/risk-driven prioritization.
+Purpose: make the next actions clear while preserving provenance and showing risk-driven prioritization.
 
-**Prioritization rule:** Actions that reduce high-risk or high-consequence threats or unlock verified dependencies come first.
-Reference the risks/dependencies from ⑥–⑨ that these actions address.
+**Prioritization rule:** Actions that reduce high-risk or high-consequence threats come first.
+Reference the risks from ⑦ that these actions address.
 
 Evidence priority:
-1. explicit risk/dependency-mitigating actions from meeting protocol
-2. explicit approved/prefilled team actions with risk/dependency context
-3. AI-derived suggestions prioritized by risk impact, verified dependencies and verified project data
-4. actions deferred due to risk/dependency constraints should be noted as such
+1. explicit risk-mitigating actions from meeting protocol
+2. explicit approved/prefilled team actions with risk context
+3. AI-derived suggestions prioritized by risk impact and verified project data
+4. Actions deferred due to risk constraints should be noted as such
 
 Every action card MUST contain its provenance label.
+
+Every action card MUST also contain a grounded pedagogical explanation directly under the action title that answers:
+1. what the action concerns
+2. what it contributes/unlocks in the project or why it matters
 
 Verified action example source label:
 - `✅ Mötesprotokoll`
@@ -661,47 +683,20 @@ AI suggestion source label:
 AI analytical explanation when useful:
 - `🔎 AI-analys`
 
-## Mandatory pedagogical explanation on every next-step card
-
-Every action card MUST contain a short grounded explanation directly under the action title that answers both:
-1. **Vad gäller detta?**
-2. **Vad tillför det projektet / varför är det viktigt?**
-
-This applies to:
-- verified team/meeting actions
-- `🔎 AI-analys`-derived actions
-- `⭐ AI-förslag`
-
-Do not replace this explanation with only an owner, provenance chip, branch or issue number.
-Do not remove the explanation to make more cards fit on one slide; paginate instead.
-
-Example:
-
-```text
-Fatta CI-beslut i #115
-Avgör om lint, tester och build ska kontrolleras automatiskt i GitHub. Det kan minska risken att fel kod mergas till develop.
-
-⭐ AI-förslag
-Ansvar: Hela teamet
-```
-
-## Dependency-aware next-step order
-
-When verified dependencies exist, ⑬ MUST make the proposed sequence visible, either through numbered cards or explicit order labels:
-- **Först** — removes/unlocks the critical dependency
-- **Parallellt** — can proceed independently
-- **Därefter** — becomes useful after the prerequisite
-- **Vänta** — should not start yet because a prerequisite is unresolved
-
-For AI-derived ordering, use `🔎 AI-analys` for the reasoning and `⭐ AI-förslag — planeringsordning` for the proposed sequence.
-
 Fields when available:
 - concise action
-- pedagogical project-value explanation
-- order/dependency relation when relevant
+- pedagogical/project-value explanation
 - owner if confirmed
 - deadline/timeframe if confirmed
 - verification condition if confirmed
+
+When verified dependencies exist, ⑬ must reflect the dependency-aware sequence from ⑨:
+- **Först**
+- **Parallellt**
+- **Därefter / Vänta**
+- short `Varför` grounded in blocker/dependency/deadline/core-flow evidence
+
+AI-derived ordering uses `🔎 AI-analys` for reasoning and `⭐ AI-förslag — planeringsordning` for the proposed sequence.
 
 AI next steps should be consistent with the team plan from ⑨ and should name the concrete issue/work item when verified, rather than only saying `fortsätt arbetet`.
 
@@ -756,6 +751,10 @@ Before rendering verify:
 ```text
 all_required_work_items_accounted_for == true
 all_conditional_omissions_audited == true
+meeting_point_number_missing_count == 0
+pen_without_meeting_point_number_count == 0
+legacy_developed_by_label_count == 0
+unnecessary_activity_timestamp_count == 0
 unverified_ids_invented_count == 0
 unverified_deadlines_invented_count == 0
 unverified_owners_invented_count == 0
@@ -765,7 +764,6 @@ ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 missing_dependency_project_value_microcopy_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
-dependency_order_missing_when_evidence_exists_count == 0
 team_planning_recommendation_present_when_evidence_allows == true
 blockers_and_risks_reflected_in_priority_order == true
 numeric_capacity_or_estimate_has_verified_source == true
@@ -776,5 +774,5 @@ active_items_already_merged_to_collection_branch_count == 0
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.3
+**Version:** 2.4
 **Last updated:** 2026-09-17
