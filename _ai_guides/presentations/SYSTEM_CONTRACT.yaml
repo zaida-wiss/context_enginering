@@ -911,9 +911,11 @@ execution_sequence:
         check_previous_week_for: "Absence/capacity constraints that affect THIS week's planning"
         previous_week_source: "Last week's meeting protocol (mötesprotokollet)"
         analysis_rule: >
-          IF previous week's protocol mentions absence or capacity constraints:
-            - SHOW as analysis in presentation (e.g., "Backend: Henrik absent Thu-Fri")
-            - Include in point ⑧ Kapacitet or as separate risk note
+          IF previous week's protocol mentions documented constraints:
+            - SHOW at team level: what is documented (e.g., "Backend: Henrik absent Thu-Fri")
+            - SHOW consequence ONLY if explicitly in source
+            - Include in point ⑧ Kapacitet or as separate note
+            - Generalize private/health reasons to "limited availability"
           ELSE:
             - Omit point ⑧ Kapacitet entirely (no placeholder needed)
       post_meeting:
@@ -925,23 +927,45 @@ execution_sequence:
     for_pre_meeting_mode:
       action: "Read LAST WEEK's meeting protocol (GOOGLE_MEETING_PROTOCOL, previous week) for:"
       check_for: "Documented constraints that may affect this week's planning"
-      examples:
-        - "Absence (holiday, sick leave, training, LIA requirements)"
-        - "Known scheduling conflicts"
-        - "Explicitly stated capacity limitations for specific team"
-      display_rule: >
-        IF documented constraints found:
-          - SHOW at team level: "Backend has documented limited availability"
-          - Never translate to hours/percentages unless explicitly in source
-          - Never guess or interpolate values
-          - Example format: "Frontend: training day Wed → capacity reduced"
-        ELSE:
-          - Omit point ⑧ capacity section entirely
-      forbidden: >
-        ❌ Do NOT estimate hours or percentages
-        ❌ Do NOT call sensitive info "capacity analysis"
-        ❌ Do NOT overdramatize or extrapolate
-        ❌ Do NOT show what is not explicitly documented
+
+      extraction_rules: >
+        PRE-meeting shows ONLY documented planning constraints.
+        Show consequence ONLY if explicitly stated in source.
+        Personal/health reasons → generalize to "limited availability".
+
+      three_levels_of_source:
+        level_1_fact_only:
+          source: "Training scheduled Wed"
+          show_in_presentation: "Training Wednesday"
+          explanation: "Directly echo the documented fact"
+
+        level_2_explicit_consequence:
+          source: "Training Wed reduces time available for project work"
+          show_in_presentation: "Training Wednesday limits available project time"
+          explanation: "Source explicitly states consequence → show it"
+
+        level_3_private_or_health:
+          source: "Personal reason + less project time available"
+          show_in_presentation: "Limited availability is documented"
+          explanation: "Generalize private/health reason; show only the planning impact"
+
+      mandatory_rules: >
+        1. Show ONLY what is documented
+        2. Show consequence ONLY if explicitly in source (not inferred)
+        3. Never estimate hours/percentages unless explicit
+        4. Generalize: private/health → "limited availability"
+        5. Avoid repeating sensitive reasons in presentation
+        6. Omit point ⑧ entirely if nothing documented
+
+      examples_correct:
+        - "Backend: limited availability is documented"
+        - "Frontend: training Friday"
+        - "Native: scheduling conflict is documented"
+
+      examples_forbidden:
+        - "Training reduces capacity by ~30% (inferring percentage)"
+        - "Personal reasons limit availability (revealing sensitive info)"
+        - "Expected reduced throughput (guessing consequence)"
 
     must_verify_current_sprint:
       file: "_memory/presentations/CURRENT_SPRINT.yaml"
