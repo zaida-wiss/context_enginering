@@ -4,7 +4,7 @@ description: Evidence hierarchy for detecting active work — without relying so
 metadata:
   type: specification
   critical: true
-  version: 1.0
+  version: 1.1
 ---
 
 # 🔍 ACTIVE WORK DETECTION MODEL
@@ -14,6 +14,38 @@ metadata:
 **Problem:** Project Board is often stale or inaccessible. Commits + branches + issues + PRs together tell a more accurate story.
 
 **Solution:** Use a **proof hierarchy** — combine multiple signals to determine active work status.
+
+---
+
+## 🔁 TEAM COLLECTION-BRANCH LIFECYCLE — MANDATORY
+
+Backend and Native use team collection branches before final delivery.
+
+Canonical branches:
+- Backend: `Java-Development-Environment`
+- Native: `C/C++-Native`
+
+The lifecycle is the same for both teams:
+
+```text
+1. Assigned / started, not merged to collection branch
+   → ACTIVE / PÅ GÅNG
+
+2. Merged to team collection branch, not yet promoted onward
+   → COLLECTION-BRANCH MERGED
+
+3. Promoted onward to final delivery branch
+   → REMOVE from collection-branch merged view
+   → treat as final delivered work
+```
+
+Rules:
+- A work item MUST NOT remain in `På gång` after it has been verified merged to its team's collection branch.
+- A work item MUST remain visible on the team's collection-branch merge slide while it is present there and not yet promoted onward.
+- Once the same work is promoted onward, it MUST disappear from the collection-branch slide.
+- Backend and Native MUST use identical lifecycle logic.
+- Deduplicate by linked issue / PR / work identity, not by raw merge-commit count alone.
+- A collection-branch item may have been merged before the current reporting period and still MUST be shown if it remains unpromoted.
 
 ---
 
@@ -69,7 +101,6 @@ Open issue #45
 
 CONCLUSION: ⚠️ POSSIBLY active work (or paused)
 STATUS: "Pågår — branch aktiv, senaste commit utanför vecka"
-        (could be paused, or commits on develop instead)
 ```
 
 **Use case:** Include but flag as uncertain
@@ -88,8 +119,7 @@ Open issue #89
 └── no recent commits found
 
 CONCLUSION: 🤔 POSSIBLY assigned, maybe not started
-STATUS: "Tilldelad — arbete tidigi eller ännu påbörjad?"
-        (needs clarification in meeting)
+STATUS: "Tilldelad — arbete tidigt eller ännu inte påbörjat"
 ```
 
 **Use case:** Include to track who has capacity, but lower priority
@@ -102,11 +132,10 @@ STATUS: "Tilldelad — arbete tidigi eller ännu påbörjad?"
 Commit 16 sep · Erik · "Fix JWT refresh token issue"
 ├── no PR found
 ├── no issue reference in message
-└── branch: backend/jwt-fix (inferred from message, not verified)
+└── branch: backend/jwt-fix
 
 CONCLUSION: ❓ UNCONFIRMED work
 STATUS: "Arbete detekterat — behöver länkas till issue"
-        (orphaned commit, needs context)
 ```
 
 **Use case:** Suggest linking to issue, don't show on slide without verification
@@ -120,11 +149,9 @@ Project Board status: "In Progress"
 ├── but no corresponding issue found
 ├── no PR
 ├── no commits
-└── Board last updated: 30 aug (2 weeks ago)
+└── Board last updated: 30 aug
 
 CONCLUSION: ❌ UNRELIABLE
-STATUS: "Boarden är troligtvis inte uppdaterad"
-        (ignore Board, use GitHub data)
 ```
 
 **Use case:** Never use Project Board as primary source; always verify with GitHub
@@ -135,303 +162,164 @@ STATUS: "Boarden är troligtvis inte uppdaterad"
 
 For each team member, follow this sequence:
 
-```
+```text
 1. Collect:
    ├─ All open issues (assigned or authored by person)
    ├─ All open PRs (authored or assigned)
    ├─ All branches (created by or with commits from person)
    ├─ All recent commits (by person in REPORTING_PERIOD)
-   └─ Project Board status for each issue (Ready, In Progress, To Do)
+   ├─ All merges into Backend/Native collection branches
+   ├─ Evidence that collection-branch work has been promoted onward
+   └─ Project Board status for each issue
 
 2. Correlate:
    ├─ For each issue: find linked PRs, matching branches, recent commits, Board status
-   ├─ For each PR: find linked issue, commits, branch
+   ├─ For each PR: find linked issue, commits, head branch, base branch
    ├─ For each branch: infer issue number, find commits, find PR
-   └─ For each commit: link to issue (via message) or PR (via branch)
+   ├─ For each collection-branch merge: identify linked issue/PR/work identity
+   └─ For each collection item: determine whether same work is already promoted onward
 
 3. Deduplicate:
-   └─ Combine all evidence into one "activity record" per person
+   └─ Combine all evidence into one activity record per work item/person
 
 4. Classify & Show:
-   ├─ IF (open_pr + linked_issue + assignee) → LEVEL 1 → Show on ①D or ①E (team-based or cross-team)
-   ├─ ELSE IF (open_issue + matching_branch + recent_commits + TEAM) → LEVEL 2 → Show on ①D
-   ├─ ELSE IF (open_issue + matching_branch + recent_commits + CROSS_TEAM) → LEVEL 2 → Show on ①E (section A)
-   ├─ ELSE IF (open_issue + matching_branch + TEAM) → LEVEL 3 → Show on ①D
-   ├─ ELSE IF (open_issue + matching_branch + CROSS_TEAM) → LEVEL 3 → Show on ①E (section A)
-   ├─ ELSE IF (open_assigned_issue + no_branch) → LEVEL 4 → Show on ①E (section B)
-   ├─ ELSE IF (recent_commits_unlinked) → LEVEL 5 → Don't show (suggest linking)
-   ├─ ELSE IF (no_activity_this_period) → "Ingen aktivitet denna vecka"
-   └─ MANDATORY: Every open assigned issue must be accounted for (shown on ①D/①E or excluded with reason)
+   ├─ IF work merged to collection branch AND NOT promoted onward → ①B or ①C
+   ├─ ELSE IF open_pr + linked_issue + assignee → LEVEL 1 → ①D/①E
+   ├─ ELSE IF open_issue + matching_branch + recent_commits + TEAM → LEVEL 2 → ①D
+   ├─ ELSE IF open_issue + matching_branch + recent_commits + CROSS_TEAM → LEVEL 2 → ①E
+   ├─ ELSE IF open_issue + matching_branch + TEAM → LEVEL 3 → ①D
+   ├─ ELSE IF open_issue + matching_branch + CROSS_TEAM → LEVEL 3 → ①E
+   ├─ ELSE IF open_assigned_issue + no_branch → LEVEL 4 → ①E
+   ├─ ELSE IF recent_commits_unlinked → LEVEL 5 → don't show until verified
+   └─ IF collection item promoted onward → remove from ①B/①C and represent as final delivery
 ```
 
 **CRITICAL RULE: COMPLETENESS**
 
 Before rendering, validate:
-```
-open_assigned_issues_from_github == 
-  (issues_shown_in_①D_①E + explicit_exclusions)
+
+```text
+open_assigned_issues_from_github ==
+  issues_shown_in_①D_①E
+  + issues_currently_on_①B_①C
+  + explicit_exclusions
 ```
 
-If this fails → presentation generation STOPS and shows which issues are missing.
+Additionally:
+
+```text
+collection_branch_items_promoted_onward_remaining_count == 0
+active_items_already_merged_to_collection_branch_count == 0
+```
+
+If any check fails → presentation generation STOPS.
 
 ---
 
 ## 🎯 HOW TO SHOW THIS ON SLIDES
 
-### Slide ①A — Merged PRs (develop)
-**Show:** All merged PRs to develop branch
-**Evidence:** Already completed work
+### Slide ①A — Merged to final integration/delivery branch
+**Show:** Work actually promoted to the final delivery branch according to the current presentation contract.
+**Evidence:** Already delivered work.
 
 ---
 
-### Slide ①B — Merged PRs (Backend collection branch)
-**Show:** All merged PRs to Backend Java-Development-Environment branch
-**Evidence:** Already completed work
+### Slide ①B — Backend collection branch
+Canonical branch: `Java-Development-Environment`.
+
+**Show:** Backend work merged to the collection branch that has NOT yet been promoted onward.
+
+This is a current state view, not only a reporting-period event list.
 
 ---
 
-### Slide ①C — Merged PRs (Native collection branch)
-**Show:** All merged PRs to Native C/C++-Native branch
-**Evidence:** Already completed work
+### Slide ①C — Native collection branch
+Canonical branch: `C/C++-Native`.
+
+**Show:** Native work merged to the collection branch that has NOT yet been promoted onward.
+
+This is a current state view, not only a reporting-period event list.
 
 ---
 
 ### Slide ①D — Pågår denna vecka: Team-based
-**Show:** LEVEL 1 + LEVEL 2 + LEVEL 3 evidence PER TEAM (Frontend | Backend | Native)
-- Open PR + issue (LEVEL 1)
-- Open issue + matching branch + recent commits (LEVEL 2)
-- Open issue + matching branch, older commits (LEVEL 3)
-- Three separate team columns
 
-**Render gate check:**
-```
-[ ] All open PRs linked to active issues are shown
-[ ] All team-based pågår issues with branches are shown
-[ ] Cross-team work excluded (goes to ①E)
-[ ] Branch names visible for context
-```
+**Show only pre-collection-merge work:**
+- Open PR + issue
+- Open issue + matching branch + recent commits
+- Open issue + matching branch, older commits
+
+**Never show here:** work already verified merged into `Java-Development-Environment` or `C/C++-Native`.
 
 ---
 
-### Slide ①E — Pågår denna vecka: Cross-team + Backlog
+### Slide ①E — Cross-team + Assigned/Backlog
 
-**TWO SECTIONS:**
+Section A: verified cross-team work not yet merged to collection/final branch.
 
-#### Section A: Cross-team pågår (LEVEL 2-3)
-**Show:** LEVEL 2 + LEVEL 3 evidence affecting multiple teams
-- Open issues with matching branches
-- Affects 2+ teams
-- Format: `#ISSUE · Teams affected`
+Section B: assigned issues without verified active branch/PR.
 
-#### Section B: Backlog / Assigned without branch (LEVEL 4)
-**Show:** Open assigned issues WITHOUT matching branch, classified by Project Board status
-
-**MANDATORY RULE: All open assigned issues must be shown or explicitly excluded.**
-
-If issue is open + assigned to person + no matching branch exists:
-
-```
-IF Project Board status = "In Progress" or "Ready":
-  → Show on ①E with current status
-  → Format: "⏳ #ISSUE Title — [status] — Ingen branch ännu"
-  
-ELSE IF Project Board status = "To Do" or no status:
-  → Show on ①E as capacity info
-  → Format: "⏳ #ISSUE Title — Backlog"
-  
-ELSE:
-  → Explicit omission with reason (archived, dependency, etc)
-```
-
-**Example card:**
-```
-⏳ #89 · Add MVP core-flow E2E test
-Zaida · No branch yet
-Status: Ready to start
-```
-
-**Use case:** Track who has assigned work that hasn't started yet. Prevents issues from silently disappearing.
+Every open assigned issue must be shown on ①D/①E, represented on ①B/①C if already collection-merged, or explicitly excluded.
 
 ---
 
 ## ⚠️ WHAT NOT TO SHOW
 
-❌ **Project Board status alone** — too unreliable
-❌ **Level 5 orphaned commits** — until linked to issue
-⚠️ **Old branches with no recent commits (LEVEL 3)** — show on ①D/①E but flag as "possibly paused/uncertain"
-❌ **Closed issues** — belong in slide ①A (merged)
+❌ Project Board status alone as proof of active work
+❌ Orphaned commits until linked/verified
+❌ Work already merged to a collection branch as `På gång`
+❌ Work already promoted onward on ①B/①C
+⚠️ Old branches with no recent commits may be shown as uncertain if still pre-merge
 
 ---
 
 ## 🔗 INTEGRATION WITH DATA ACQUISITION
 
-**This model is implemented via:**
+This model requires:
 
-1. **DATA_ACQUISITION_CONTRACT.yaml**
-   - Section: `open_pull_requests` (Level 1 evidence)
-   - Section: `repository_branches_and_commits` (Level 2-3 evidence)
-   - Section: `active_issues` (foundation for all levels)
+1. `active_issues`
+2. `open_pull_requests`
+3. `repository_branches_and_commits`
+4. merged PRs / merge evidence for both collection branches
+5. promotion evidence from collection branches onward
 
-2. **DATA_COLLECTION_MANDATORY.md**
-   - Checklist: "All PRs linked to issues?"
-   - Checklist: "All branches matched to issues?"
-   - Checklist: "Correlation complete?"
-
-3. **RENDER_GATE_CHECKLIST.md**
-   - Check: "Every person with work is shown in ①D or ①E?"
-   - Check: "No open PR is missing from ①D/①E?"
-   - Check: "No open assigned issue is missing from ①D/①E without documented exclusion?"
-
----
-
-## 🔍 CODE INSPECTION — Beyond Git Signals
-
-**Git signals (commits, branches, PRs) show ACTIVITY, but not CODE QUALITY.**
-
-When evaluating "Pågår" issues:
-
-```
-GITHUB SIGNALS (Automatic):
-  ✅ Branch exists
-  ✅ Recent commits found
-  ✅ PR is open
-
-HUMAN INSPECTION (Required):
-  ? Code looks like it's progressing?
-  ? Does it match the issue description?
-  ? Any obvious blockers or incomplete sections?
-```
-
-**Examples of what code inspection reveals:**
-
-| Git Says | Code Says | Action |
-|---|---|---|
-| "Pågår — commit today" | "Stalled, incomplete refactor" | Flag as: "Code needs review" |
-| "Pågår — 5 commits this week" | "Wrong direction, needs rebase" | Flag as: "Direction unclear" |
-| "Pågår — branch active" | "Feature mostly working, minor bugs" | OK — proceeding normally |
-
-**Requirement:**
-- Before displaying issue as "Pågår" (LEVEL 2-3) on ①D or ①E, reviewer SHOULD inspect code
-- If concerned: add annotation (not hiding problems, surfacing them)
-- If no access to code: mark as "Code not inspected — [reason]"
-
-**This prevents:** Showing work as "on track" when it's actually stalled or wrong
+The acquisition layer must collect enough history to reconstruct the collection-branch state even when a collection merge happened before the current reporting period.
 
 ---
 
 ## 🚫 COMPLETENESS VALIDATION — MANDATORY RENDER GATE
 
-**Before any presentation is rendered, this check MUST pass:**
+Before any presentation is rendered:
 
-```python
-# Fetch all open issues assigned to each team member this sprint
-open_assigned_issues = github_api.issues(state='open', assignee=person)
-
-# Collect all issues actually rendered in presentation
-rendered_issues = (
-    issues_on_slide_①D +  # Team-based (LEVEL 1-3: PR waiting, pågår, etc)
-    issues_on_slide_①E +  # Cross-team pågår (LEVEL 2-3) + Backlog (LEVEL 4)
-    issues_explicitly_excluded  # with documented reason
-)
-
-# VALIDATION
-if open_assigned_issues != rendered_issues:
-    FAIL("Missing issues:")
-    for issue in (open_assigned_issues - rendered_issues):
-        print(f"  #{issue.number} {issue.title} — why was this omitted?")
+```text
+[ ] Every open assigned issue is accounted for
+[ ] No work appears both as På gång and collection-merged
+[ ] No promoted work remains on Backend collection slide
+[ ] No promoted work remains on Native collection slide
+[ ] Backend and Native use identical lifecycle rules
+[ ] Collection state is derived by work identity, not just raw merge count
 ```
 
-**Failure mode:** If ANY open assigned issue is missing from the presentation without explanation → rendering STOPS.
-
-**Allowed exclusions (must be documented):**
-- "Outside sprint scope" (document why)
-- "Blocked by X" (document blocker)
-- "Archived/closed" (should not be open)
-- "Wrong assignee cached" (fix GitHub)
-
-**This rule prevents:** Silent disappearance of issues (#88, #89) from presentations.
-
----
-
-## 📝 EXAMPLE: One Person's Complete Activity Record
-
-```
-Zaida Wiss (@zaida-wiss):
-
-LEVEL 1 (PR + Issue + Assignee):
-  - #68 · #67 Update README
-    ├─ Assignee: Zaida
-    ├─ Reviewers: Björn
-    ├─ Branch: docs/#67-update-readme
-    ├─ Team: Frontend (single-team work)
-    ├─ Status: Väntar på review (blocker: Björn needs to approve)
-    └─ ACTION: Show on ①D "Väntar i PR"
-
-LEVEL 2 (Issue + Branch + Recent Commits):
-  - #72 Add analytics dashboard
-    ├─ Assignee: Zaida
-    ├─ Branch: frontend/#72-analytics
-    ├─ Team: Frontend (single-team work)
-    ├─ Recent commits: 15 sep, 16 sep
-    ├─ Status: Pågår — arbete fortsätter, PR nästa
-    └─ ACTION: Show on ①D "Pågår denna vecka utan PR"
-
-LEVEL 2 (Cross-team):
-  - #88 API integration
-    ├─ Assignee: Zaida
-    ├─ Branch: integration/#88-api
-    ├─ Teams affected: Frontend + Backend
-    ├─ Recent commits: 16 sep
-    ├─ Status: Pågår — integration point, multiple teams
-    └─ ACTION: Show on ①E section A "Cross-team pågår"
-
-LEVEL 4 (Assigned Issue, No Branch):
-  - #89 Add MVP core-flow E2E test
-    ├─ Assignee: Zaida
-    ├─ No branch found
-    ├─ Project Board status: Ready to start
-    ├─ Status: Tilldelad — arbete inte påbörjat ännu
-    └─ ACTION: Show on ①E section B "Backlog / Assigned"
-
-SUMMARY FOR MEETING SLIDE:
-  ✅ Mergat: (from slide ①A — PRs merged earlier)
-  🟠 Väntar: #68 · #67 · Björn behöver granska
-  🟠 Pågår: #72 · Analytics dashboard, branch active
-
-=> Zaida är aktiv denna vecka, blocking point är Björn's review
-```
+Failure of any item → STOP.
 
 ---
 
 ## ✅ QUALITY ASSURANCE
 
-**Before rendering presentation:**
+Before rendering:
 
-```
-[ ] All team members accounted for:
-    - If merged work: shown in ①A/①B/①C
-    - If active (LEVEL 1-3): shown in ①D (team-based) or ①E (cross-team)
-    - If assigned but no branch (LEVEL 4): shown in ①E section B (Backlog)
-    - If no work: shown with "Ny issue eller tillgänglig för hjälp"
-
-[ ] Correlation verified:
-    - LEVEL 1-3: Each issue has a linked branch or PR
-    - LEVEL 4: Open assigned issue without branch is valid (shown in ①E section B)
-    - Each PR has a linked issue
-    - Branch names match issue numbers when possible (where branch exists)
-
-[ ] Reviewer coverage:
-    - All open PRs have reviewers assigned (or show "ej tilldelad")
-    - Helps team identify review blockers
-
-[ ] No orphaned work:
-    - No commits exist without issue link
-    - No branches exist without issue link
-    - No PRs exist without issue link
+```text
+[ ] Team members accounted for
+[ ] Active work is truly pre-merge
+[ ] Collection-branch work is shown while awaiting onward promotion
+[ ] Promoted work disappears from collection view
+[ ] No duplicate issue appears in multiple lifecycle states
+[ ] Branch names and issue links are verified where available
+[ ] Reviewer coverage is shown where relevant
 ```
 
 ---
 
-**Status:** PRODUCTION  
-**Version:** 1.0  
-**Updated:** 2026-09-16
+**Status:** PRODUCTION
+**Version:** 1.1
+**Updated:** 2026-09-17
