@@ -5,25 +5,35 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.2
+  version: 4.3
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
 
-This is the authoritative global visual specification for Monday Meeting presentations.
+This file is the **single authority for global presentation appearance**.
+
+It owns:
+- global palette
+- slide background
+- card surface family
+- global slide-title and section-title roles
+- maximum card density / grid behavior
+- global visual consistency
+
+It does **not** own card-internal spacing, card-internal type sizes, assignee emphasis, merge/review formatting or timestamp placement. Those belong exclusively to `CARD_COMPONENT_STANDARD.md`.
+
+If a card-internal example in this file ever conflicts with `CARD_COMPONENT_STANDARD.md`, the card standard wins.
 
 ## Absolute rule: WCAG first
 
-All design decisions MUST comply with `ACCESSIBILITY_NEURODIVERSITY.md` and WCAG 2.2 AA.
-
-No visual preference, card density, slide count, or desire to preserve a grid may weaken accessibility.
+`ACCESSIBILITY_NEURODIVERSITY.md` and WCAG 2.2 AA are above all visual preferences.
 
 At minimum:
-- normal text contrast: **4.5:1**
-- WCAG large text: **3:1**
-- information-bearing borders/components: **3:1**
+- normal text contrast >= **4.5:1**
+- WCAG large text contrast >= **3:1**
+- information-bearing components >= **3:1**
 - color is never the sole information carrier
-- text must not clip, overlap or disappear
+- no clipping, overlap or hidden text
 
 If a layout cannot satisfy these rules, change the layout or paginate.
 
@@ -32,216 +42,120 @@ If a layout cannot satisfy these rules, change the layout or paginate.
 ## 1. GLOBAL VISUAL LANGUAGE
 
 The deck uses:
-
-- a calm deep navy canvas
+- calm deep navy canvas
 - soft dark glass-like cards
 - rounded corners
 - subtle depth/shadow
-- low-glare surfaces that are easy on the eyes
+- low-glare surfaces
 - clear hierarchy
-- compact but readable metadata
-- responsive cards that adapt to content
+- responsive cards
+- cards as the primary information language, not tables/rows
 
-**Cards are the primary visual language. Rows/tables are not.**
-
-One work/information item = one card unless the slide-specific specification explicitly defines a diagram/group.
-
-The visual target is the calm dark appearance used on the approved Capacity & estimation reference slide: soft navy background, slightly lighter dark cards, white primary text and restrained accents.
+One work/information item = one card unless a slide authority explicitly defines a diagram/group.
 
 ---
 
-## 2. CANONICAL CALM-NAVY THEME — DEFAULT FOR ALL PRESENTATIONS
-
-These colors are the default palette for every Monday Meeting presentation.
+## 2. CANONICAL PALETTE
 
 | Element | Hex | Role |
 |---|---|---|
 | Slide background | `#15182E` | calm deep navy canvas |
-| Card surface | `#1E233B` | primary glass-card surface |
+| Card surface | `#1E233B` | primary card surface |
 | Alternate card surface | `#252A45` | optional subtle variation |
-| Decorative card edge | `#33405D` | subtle non-semantic separation only |
-| Meaningful neutral edge/divider | `#7F8AA6` | use only when the edge itself carries meaning |
-| Main text | `#F7F8FC` | titles and primary content |
-| Secondary text | `#D2D7E4` | readable supporting information |
-| Metadata text | `#B0B8CC` | compact metadata |
-| Quiet microcopy/timestamp | `#A2ABC0` | tertiary text, still WCAG-safe |
+| Decorative card edge | `#33405D` | non-semantic separation |
+| Meaningful neutral divider | `#7F8AA6` | structural meaning when needed |
+| Main text | `#F7F8FC` | titles / primary content |
+| Secondary text | `#D2D7E4` | supporting information |
+| Metadata text | `#B0B8CC` | metadata |
+| Quiet microcopy/timestamp | `#A2ABC0` | tertiary content, still WCAG-safe |
 
-### Palette rules
-
-- This palette is the **default**, not an optional theme.
-- Do not switch later slides back to `#0F1830` / `#18233D` or to light backgrounds.
-- Do not introduce black cards or high-glare near-white panels.
-- Maintain the same background/card relationship across the entire deck.
-- Glass/transparency must preserve the effective appearance close to `#1E233B`; do not make cards so transparent that the slide background visually replaces the card surface.
-- All text colors must be checked against the actual rendered surface after transparency is applied.
+Palette rules:
+- same background/card family across the entire deck
+- no black/high-glare cards
+- transparency must preserve contrast
+- actual rendered colors must pass WCAG
 
 ---
 
-## 3. CARD SURFACE
+## 3. CARD SURFACE — GLOBAL APPEARANCE ONLY
 
 ### Shape
-- corner radius: **16–20 px**
+- rounded corners, visually around **16–20 px**
 - content-driven height
-- no fixed text-box height that causes clipping
 - subtle shadow/depth
+- no fixed height that forces clipping
 
-### Glass effect
-The renderer may use translucency/soft depth, but never at the expense of text contrast.
+### Team accent
+Team ownership is shown with a **narrow left accent only**:
+- Frontend `#2DD4BF`
+- Backend `#FF4FA3`
+- Native `#A855F7`
+- Cross-team `#CBD5E1`
+- Neutral `#94A3B8`
 
-Suggested visual equivalent:
+Do not use full team-colored outlines or team-colored card fills.
 
-```css
-background: rgba(30,35,59,.94);
-box-shadow:
-  0 10px 30px rgba(0,0,0,.20),
-  0 2px 8px rgba(0,0,0,.14);
-```
-
-The goal is **soft depth**, not glow.
-
-### Neutral edge
-A subtle decorative edge may use `#33405D` when it is only visual polish.
-
-If an edge/divider is necessary to communicate structure or state, use a WCAG-verified meaningful edge such as `#7F8AA6` or another color with at least 3:1 contrast against adjacent surfaces.
-
-### Team accent — left line only
-Team ownership is shown ONLY with a narrow left accent line.
-
-- Frontend: `#2DD4BF`
-- Backend: `#FF4FA3`
-- Native: `#A855F7`
-- Cross-team: `#CBD5E1`
-- Neutral/other: `#94A3B8`
-
-Rules:
-- team color must NOT outline the entire card
-- team color must NOT fill the card
-- accent should be approximately **4–6 px** visually
-- team color never replaces status/source symbols and text
-- the card itself always stays in the calm navy card palette
+All internal card rules are delegated to `CARD_COMPONENT_STANDARD.md`.
 
 ---
 
-## 4. INTERNAL SPACING
+## 4. GLOBAL TYPOGRAPHY
 
-Canonical card rhythm:
-
-- outer card padding: **16–20 px preferred**
-- title → explanatory/supporting text: **4–6 px**
-- supporting text → primary detail: **7–10 px**
-- primary detail → metadata: **4–7 px**
-- gap between separate cards: **18–22 px**
-
-Do not vertically justify all text rows across the full card height.
-
-When cards have equal outer height:
-- top-align main content
-- bottom-anchor timestamp/source metadata when appropriate
-- allow middle whitespace to absorb small differences
-
----
-
-## 5. RESPONSIVE TYPOGRAPHY
-
-This file defines global roles; `CARD_COMPONENT_STANDARD.md` defines exact card-internal ranges.
-
-### Global fixed roles
+This file owns only slide-level roles:
 - slide title/header: **32 pt minimum**, bold
 - section header: **22 pt minimum**, bold
 
-### Card roles
-Use `CARD_COMPONENT_STANDARD.md`:
-- card title: preferred 18–20 pt, minimum 18 pt
-- owner/team: preferred 13–14 pt, minimum 12 pt
-- contribution/supporting text: preferred 11–12 pt, minimum 11 pt
-- operational metadata: preferred 11–12 pt, minimum 10 pt
-- timestamp/source/provenance: preferred 10–11 pt, minimum 10 pt
+For every card-internal role, including title, pedagogical explanation, assignee/developer, operational metadata and timestamp, use **only** `CARD_COMPONENT_STANDARD.md`.
 
-The renderer may deliberately step down within these ranges on dense slides.
-
-This is **not** shrink-to-fit. Sizes are selected intentionally based on content density.
-
-If content does not fit at the permitted minimum size:
-- change card geometry
-- reduce cards per slide
-- create continuation slide
-
-Never reduce below the component minimum merely to preserve a grid.
+Do not duplicate those numeric rules here.
 
 ---
 
-## 6. LINE HEIGHT AND WRAPPING
-
-- slide/section headings: natural readable spacing
-- card title/body: approximately **1.22–1.4** depending on font/rendering
-- compact metadata: approximately **1.18–1.32**
-- never reduce line height until glyphs/lines visually collide
-- text wraps naturally inside card boundaries
-- prefer shorter source-grounded wording over cramped lines
-
----
-
-## 7. CANONICAL CARD GRIDS
-
-These are maximum densities, not targets.
+## 5. CARD GRIDS — MAXIMUM DENSITY, NOT TARGET
 
 ### ①A–①C merge overview
-- default: **3 × 2**
-- max 6 cards
-- if content is dense: use 2 × 2 or fewer and continue
+- maximum 6 cards
+- default may be 3×2 only when readable
+- otherwise reduce density and continue on another slide
 
 ### ①D / ①E active/backlog
-- default: **2 × 2**
-- max 4 cards
+- maximum 4 cards per physical slide
+- default 2×2 when content permits
 
 ### ①F decisions
-- 2 × 2, 2 × 1, or 1 × 1 depending on content
-- max 4
+- maximum 4 cards
+- 2×2, 2×1 or 1×1 based on content
 
 ### ②–⑫ and ⑭
-- default: 2 × 2 for compact content
-- switch to 2 × 1 or 1 × 1 for longer content
-- max 4 cards unless slide-specific rules are stricter
+- maximum 4 cards unless slide authority is stricter
+- lower density when text length requires it
 
 ### ⑬ next steps
-- 4 × 1 only when each card remains readable
-- otherwise 2 × 2 / fewer cards + continuation
+- 4×1 only when each card remains readable
+- otherwise 2×2 or continuation
 
 ### ⑥A dependency diagram
 - graph allowed
-- each node still uses the canonical calm navy card styling
-- max 3–4 chains per slide
-- node cards may be compact/wide to support left→right flow
+- maximum 3–4 chains per slide
+- nodes remain card components
 
 ---
 
-## 8. CONTRIBUTION / PROJECT-VALUE MICROCOPY
+## 6. PROJECT-VALUE EXPLANATION
 
-Issue/PR/Merge cards and dependency-node cards must explain the code/product contribution directly below the title.
+Issue/PR/Merge cards and dependency nodes must explain what the work contributes when source evidence supports it.
 
-The line answers:
+Content rule:
+- short, grounded, plain Swedish
+- directly connected to the title
+- no invented impact
 
-> **Vad löser detta i projektet?**
+**Placement, font size and spacing are owned solely by `CARD_COMPONENT_STANDARD.md`.**
 
-Rules:
-- one short grounded sentence
-- plain Swedish
-- normally 6–14 words
-- directly under the title
-- visually smaller than the title
-- do not invent impact
-- if insufficient evidence: `Bidrag till projektet behöver verifieras.`
-- use card-standard supporting-text size and WCAG-compliant contrast
-
-Good dependency-node examples:
-- `Definierar endpoints och payload som Frontend kan integrera mot.`
-- `Byter mockflöde mot riktig HTTP-kommunikation med Backend.`
-- `Flyttar auth-token till säkrare HttpOnly-cookie.`
-
-Evidence order:
+Evidence grounding order:
 
 Issue:
-1. title/body/acceptance criteria
+1. issue title/body/acceptance criteria
 2. linked PR
 3. verified branch/commits
 
@@ -256,111 +170,57 @@ Merged PR:
 2. linked issue
 3. commits
 
-Dependency node:
-1. linked issue/PR purpose
-2. explicit dependency/acceptance criteria
-3. verified implementation evidence
+---
+
+## 7. PROVENANCE
+
+Source identity is owned by `PROVENANCE_AND_AI_LABELING.md`.
+
+Color may support source/status meaning but never replace icon + text where provenance must be visible.
 
 ---
 
-## 9. DEPENDENCY FLOW CARDS — APPROVED FORMAT
+## 8. STATUS VISUALS
 
-Dependency chains should use compact rounded cards connected by clear arrows, matching the approved visual reference.
+Status must use symbol + text when status is shown.
 
-Canonical node structure:
+Examples:
+- ✅ klart/merged
+- ◐ pågår
+- ⏳ väntar/beroende
+- 🔴 blockerad/kritisk
+- ? oklar
 
-```text
-API-kontrakt
-Definierar endpoints + payload för integrationen.
-🔴 behöver låsas
-```
+Do not use color alone.
 
-```text
-Riktig Java HTTP
-Byter mock mot riktig Backend-kommunikation.
-⏳ väntar
-```
-
-```text
-#106 HttpOnly auth
-Flyttar auth till säkrare cookie-baserad lösning.
-⏳ efter integration
-```
-
-Rules:
-- title at top
-- **short project-value line immediately under title**
-- status line beneath the value line
-- arrows clearly show dependency direction
-- use the calm navy card surface for every node
-- team/status may use a narrow left accent, but never a full bright outline
-- keep nodes wide enough that the project-value line is readable
-- if a node needs more text, increase node width/height or wrap naturally; do not remove the explanation
+Evidence strength levels from `ACTIVE_WORK_DETECTION_MODEL.md` are **internal data classification**, not visible status labels.
 
 ---
 
-## 10. TIMESTAMPS AND MERGE METADATA
+## 9. RESPONSIVE FIT ORDER
 
-Follow `CARD_COMPONENT_STANDARD.md`.
+When content is dense:
+1. keep required content
+2. wrap naturally
+3. follow card-specific typography/spacing rules in `CARD_COMPONENT_STANDARD.md`
+4. let cards grow
+5. reduce grid density
+6. paginate
 
-Merge metadata labels:
-
-```text
-Merged: [name] | Review: [name/status]
-```
-
-Do not use:
-- `Merged by:`
-- `Reviewed by:`
-
-Timestamp is normally bottom-left and may use two lines:
-
-```text
-14 sep
-10:16
-```
-
-Do not prefix the date with `Merged`, `Mergad`, or `Senaste commit` when the semantic meaning is already established by the card.
+Forbidden:
+- clipping
+- overlap
+- missing content
+- automatic shrink-to-fit
+- typography below the owning component minimum
+- contrast below WCAG AA
+- removing required provenance
 
 ---
 
-## 11. PROVENANCE / FACT VS AI
+## 10. TEXT BOX RULE
 
-Source identity follows `PROVENANCE_AND_AI_LABELING.md`.
-
-Canonical labels include:
-- `📅 Schemafakta`
-- `✅ Mötesprotokoll`
-- `🔎 AI-analys`
-- `⭐ AI-förslag`
-- `⚠ Källa behöver verifieras`
-
-Never use color alone to distinguish fact from AI.
-Never use red to mean `fact`; red remains blocker/critical status.
-
-Mixed cards must label each fact/AI block separately.
-
----
-
-## 12. STATUS COLORS
-
-Status always uses symbol + text.
-
-| Status | Symbol | Meaning |
-|---|---|---|
-| Done/Merged | ✅ | klart |
-| In progress | ◐ | pågår |
-| Waiting | ⏳ | väntar / beroende |
-| Blocked/Critical | 🔴 / ✕ | blockerad/kritisk |
-| Unknown | ? | oklar/ej verifierad |
-
-Color supports the symbol/text but never replaces them.
-
----
-
-## 13. TEXT BOX RULE
-
-Ordinary text boxes such as titles, captions and footers:
+Ordinary slide titles, captions and footers:
 - transparent fill
 - no decorative border
 - no unnecessary panel behind text
@@ -369,72 +229,30 @@ Visible card surfaces are reserved for actual information components.
 
 ---
 
-## 14. RESPONSIVE FIT ORDER
+## 11. RENDER GATE HANDOFF
 
-When content is dense:
+Detailed mechanical checks live only in `verification/RENDER_GATE_CHECKLIST.md`.
 
-1. keep all required content
-2. wrap naturally
-3. move within the permitted typography range toward the minimum
-4. use canonical compact spacing
-5. let cards grow
-6. reduce grid density / increase card width
-7. paginate
+This file requires globally:
+- canonical palette consistent
+- card system consistent
+- WCAG AA pass
+- no high-glare surfaces
+- no full team outlines
+- slide-level typography minimums respected
 
-Forbidden:
-- clipping
-- overlap
-- missing content
-- automatic shrink-to-fit
-- fonts below allowed minima
-- contrast below WCAG AA
-- color-only meaning
-- removing provenance labels
-- removing the project-value line from dependency nodes merely to save space
-
----
-
-## 15. RENDER GATE
-
-Before delivery, the rendered artifact must satisfy:
-
-```text
-wcag_aa_violation_count == 0
-meaningful_component_contrast_failure_count == 0
-color_only_information_count == 0
-text_overlap_count == 0
-card_overlap_count == 0
-text_outside_card_count == 0
-text_clipping_count == 0
-out_of_bounds_element_count == 0
-font_below_component_minimum_count == 0
-plain_row_work_item_count == 0
-missing_contribution_microcopy_count == 0
-missing_dependency_project_value_microcopy_count == 0
-uneven_row_spacing_caused_by_vertical_justification == 0
-full_team_outline_count == 0
-noncanonical_background_color_count == 0
-noncanonical_card_surface_count == 0
-```
-
-If any count is non-zero:
-1. do not deliver
-2. fix the slide
-3. adapt typography/layout within accessible limits
-4. add continuation slide(s) if needed
-5. rerender
-6. inspect again
+Do not duplicate the full render-gate checklist here.
 
 ---
 
 ## CORE PRINCIPLE
 
-**Calm navy canvas + soft glass cards + responsive deliberate typography + short project-value explanations + clear provenance + no clipping.**
+**Calm navy canvas + soft cards + clear hierarchy + responsive geometry + accessible rendering.**
 
-Cards adapt to content; accessibility never adapts downward to the layout.
+Card internals are governed by `CARD_COMPONENT_STANDARD.md`; global design must not redefine them.
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.2
+**Version:** 4.3
 **Last updated:** 2026-09-17
