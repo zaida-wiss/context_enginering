@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.3
+  version: 4.4
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -17,11 +17,12 @@ Authority order:
 1. `SYSTEM_CONTRACT.yaml`
 2. `ACCESSIBILITY_NEURODIVERSITY.md`
 3. `VISUAL_DESIGN_MANDATORY.md`
-4. `CARD_COMPONENT_STANDARD.md`
-5. `PROVENANCE_AND_AI_LABELING.md`
-6. `LAYOUT_OVERFLOW_GUARD.md`
-7. `SLIDE_DETAIL_SPEC.md`
-8. `TEMPLATE_REFERENCE.html` — reference only
+4. `READABILITY_HARD_RULES.md`
+5. `CARD_COMPONENT_STANDARD.md`
+6. `PROVENANCE_AND_AI_LABELING.md`
+7. `LAYOUT_OVERFLOW_GUARD.md`
+8. `SLIDE_DETAIL_SPEC.md`
+9. `TEMPLATE_REFERENCE.html` — reference only
 
 ---
 
@@ -87,9 +88,9 @@ Any failure → STOP.
 
 ---
 
-## 4. GLOBAL VISUAL SYSTEM
+## 4. GLOBAL VISUAL + READABILITY SYSTEM
 
-Validate against `VISUAL_DESIGN_MANDATORY.md`:
+Validate against `VISUAL_DESIGN_MANDATORY.md` and `READABILITY_HARD_RULES.md`:
 
 ```text
 noncanonical_background_color_count == 0
@@ -97,13 +98,22 @@ noncanonical_card_surface_count == 0
 high_glare_surface_count == 0
 full_team_outline_count == 0
 card_system_inconsistency_count == 0
+slide_title_below_36pt_count == 0
+slide_title_shrunk_for_fit_count == 0
+body_text_below_role_minimum_count == 0
 ```
+
+Manual visual checks:
+- every slide title is 36 pt or larger
+- no slide title was reduced to solve density
+- normal/supporting text starts at the preferred larger size where possible
+- smaller normal text is used only when required and remains above the role minimum
 
 ---
 
 ## 5. CARD-INTERNAL SYSTEM
 
-Validate against `CARD_COMPONENT_STANDARD.md`.
+Validate against `CARD_COMPONENT_STANDARD.md` and `READABILITY_HARD_RULES.md`.
 
 Required:
 
@@ -112,6 +122,7 @@ font_below_component_minimum_count == 0
 auto_shrink_enabled_count == 0
 card_block_spacing_violation_count == 0
 pedagogical_line_not_directly_under_title_count == 0
+next_step_card_missing_project_value_microcopy_count == 0
 assignee_not_visually_emphasized_count == 0
 visible_evidence_level_label_count == 0
 unverified_identity_commentary_count == 0
@@ -121,11 +132,13 @@ timestamp_not_right_aligned_count == 0
 
 Manual visual checks:
 - pedagogical explanation is immediately below title
+- every next-step/action card explains what the action concerns and why it matters to the project
 - explanation is visibly larger than operational metadata
 - verified assignee/developer name is easy to scan and uses the primary title text color
 - team label remains secondary
 - separate semantic blocks have the minimum required vertical spacing
 - no text rows visually touch
+- block spacing is not compressed merely to fit more cards
 
 If card content cannot fit while preserving the required spacing and type sizes, reduce density or paginate.
 
@@ -136,7 +149,7 @@ If card content cannot fit while preserving the required spacing and type sizes,
 Canonical visible pattern:
 
 ```text
-Merged: [verified name or blank] | Review: [verified name or blank]
+Merged: [verified name or blank] | Review: [verified name(s) or blank]
 ```
 
 Acceptable:
@@ -158,9 +171,14 @@ Required:
 legacy_merged_by_label_count == 0
 legacy_reviewed_by_label_count == 0
 unverified_identity_commentary_count == 0
+merged_pr_without_merger_lookup_count == 0
+merged_pr_without_submitted_reviews_lookup_count == 0
+review_field_populated_from_requested_reviewers_count == 0
+verified_approving_reviewer_omitted_from_card_count == 0
+verified_merger_omitted_from_card_count == 0
 ```
 
-Unknown identity remains blank in the meeting card; uncertainty stays in the internal audit.
+Unknown identity remains blank in the meeting card only after the dedicated lookup has been performed; uncertainty stays in the internal audit.
 
 ---
 
@@ -170,6 +188,7 @@ When rendered, timestamp must follow `CARD_COMPONENT_STANDARD.md`:
 - one compact line
 - lower-right aligned where card geometry permits
 - quiet WCAG-safe color
+- minimum 11 pt
 - no semantic prefix
 
 Example:
@@ -210,19 +229,43 @@ visible_evidence_level_label_count == 0
 
 ## 9. CONTRIBUTION / PROJECT-VALUE EXPLANATION
 
-Every Issue/PR/Merge card and dependency node must contain grounded pedagogical microcopy when evidence supports it.
+Every Issue/PR/Merge card, dependency node and next-step/action card must contain grounded pedagogical microcopy when evidence supports it.
 
 Required:
 
 ```text
 missing_contribution_microcopy_count == 0
 missing_dependency_project_value_microcopy_count == 0
+next_step_card_missing_project_value_microcopy_count == 0
 unsupported_contribution_claim_count == 0
 ```
 
+For next-step cards, the explanation must answer:
+- what the action concerns
+- what it contributes/unlocks in the project or why it matters
+
 ---
 
-## 10. PROVENANCE
+## 10. DEPENDENCY-AWARE ORDER
+
+When verified dependencies exist, the deck must make their effect on planning visible.
+
+Required:
+
+```text
+verified_dependency_not_reflected_in_plan_count == 0
+dependency_order_missing_when_evidence_exists_count == 0
+```
+
+Manual check:
+- `⑥` dependency/blocker information feeds `⑨` prioritization and `⑬` next steps
+- proposed order distinguishes `Först`, `Parallellt`, `Därefter` / `Vänta` where evidence permits
+- every ordering step includes a short reason
+- AI-derived order uses `🔎 AI-analys` for reasoning and `⭐ AI-förslag — planeringsordning` for the recommendation
+
+---
+
+## 11. PROVENANCE
 
 Validate against `PROVENANCE_AND_AI_LABELING.md`.
 
@@ -237,7 +280,7 @@ mixed_provenance_card_without_block_labels_count == 0
 
 ---
 
-## 11. OVERFLOW / COLLISION
+## 12. OVERFLOW / COLLISION
 
 Required:
 
@@ -251,11 +294,11 @@ missing_required_card_row_count == 0
 plain_row_work_item_count == 0
 ```
 
-Never solve density by shrinking below component minima or collapsing semantic block spacing.
+Never solve density by shrinking slide titles, shrinking below role minima, removing pedagogical explanations or collapsing semantic block spacing.
 
 ---
 
-## 12. COVER / SLIDE-SPECIFIC CONTENT
+## 13. COVER / SLIDE-SPECIFIC CONTENT
 
 Validate slide purpose and required fields against `SLIDE_DETAIL_SPEC.md`.
 
@@ -263,7 +306,7 @@ Conditional slides may only be omitted for a source-grounded reason recorded in 
 
 ---
 
-## 13. FINAL DELIVERY GATE
+## 14. FINAL DELIVERY GATE
 
 Deliver only when:
 
@@ -272,9 +315,11 @@ DATA_AUDIT == PASS
 WCAG_2_2_AA == PASS
 CONTENT_COMPLETENESS == PASS
 GLOBAL_VISUAL_SYSTEM == PASS
+READABILITY_HARD_RULES == PASS
 CARD_COMPONENT_STANDARD == PASS
 PROVENANCE_AND_AI_LABELING == PASS
 OVERFLOW_AND_COLLISION == PASS
+DEPENDENCY_AWARE_PLAN == PASS
 ACTUAL_RENDER_INSPECTION == PASS
 ```
 
@@ -287,5 +332,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.3
+**Version:** 4.4
 **Last updated:** 2026-09-17
