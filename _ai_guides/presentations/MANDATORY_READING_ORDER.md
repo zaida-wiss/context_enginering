@@ -27,14 +27,9 @@ Before you read anything else, commit to ALL of these:
 - [ ] **Never improvise.** Do not bypass these rules because "it's faster" or "the rules seem ceremonial".
 - [ ] **Never skip steps.** Follow every rule, every gate, every verification step.
 - [ ] **Stop when required.** If data is incomplete or unverifiable, STOP before rendering. No presentation is better than a false presentation.
+- [ ] **Never compress to make content fit.** If text/cards do not fit, create continuation slides.
 
-**If you cannot commit to ALL of these:**
-
-STOP now. Do not proceed. You cannot run this pipeline.
-
-**If you commit to ALL of these:**
-
-Continue to step 0️⃣.
+If you cannot commit to all of these: STOP.
 
 ---
 
@@ -42,38 +37,18 @@ Continue to step 0️⃣.
 
 **Location:** [`INTEGRITY_CONSTRAINT.md`](INTEGRITY_CONSTRAINT.md)
 
-This file states the non-negotiable rule:
-
-**If you cannot obtain ALL required data from registered sources: STOP.**
-
-Do NOT guess, hallucinate, or improvise data. 
-
-Do NOT rationalize your way around this rule.
+Non-negotiable data rule: if required data cannot be obtained from registered sources, STOP.
 
 **CRITICAL:** Capacity is MEETING DATA, not estimated data.
 
-Presentations can run in TWO modes:
+### PRE-MEETING mode
+- Capacity may be missing.
+- Show: `○ Kapacitet fastställs under mötet`.
+- Never estimate hours.
 
-**PRE-MEETING mode (default for "presentation till mötet"):**
-- Presentation is mötesunderlag (meeting preparation document)
-- Capacity CAN be missing — shows placeholder: "○ Kapacitet fastställs under mötet"
-- GitHub data + status + blockers are shown
-- Used BEFORE sprint planning meeting
-
-**POST-MEETING mode (for "mötesprotokoll" after meeting):**
-- Presentation is meeting protocol/results
-- Capacity MUST be present and filled in by team during meeting
-- If capacity missing: STOP and ask team to complete meeting data
-- Used AFTER sprint planning meeting
-
-**If capacity data is missing:**
-- PRE-MEETING: Not a blocker — show placeholder and continue
-- POST-MEETING: Stop and report "Capacity data not available — sprint planning meeting required"
-- Do NOT estimate, calculate, or approximate capacity in either mode
-
-**If you commit to following this rule exactly — continue to step 1.**
-
-**If you plan to ignore this rule — STOP now.**
+### POST-MEETING mode
+- Capacity must be present.
+- If missing: STOP and ask team to complete meeting data.
 
 ---
 
@@ -81,110 +56,124 @@ Presentations can run in TWO modes:
 
 **Location:** [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml)
 
-This file contains:
-- Authority hierarchy (who owns what)
-- Execution sequence (step-by-step actions)
-- All gates and their pass/fail criteria
-- Data validation rules
-- Delivery rules (PDF default, PPTX if requested)
+This owns:
+- Authority hierarchy
+- Execution sequence
+- Gates
+- Data validation
+- Delivery rules
 
-**Action:** Read SYSTEM_CONTRACT.yaml in full before proceeding.
+Follow `execution_sequence` exactly.
 
 ---
 
-## 2️⃣ FOLLOW EXECUTION_SEQUENCE FROM SYSTEM_CONTRACT.yaml
+## 2️⃣ READ PRESENTATION AUTHORITIES BEFORE COMPOSITION
 
-**Location:** `execution_sequence` section in SYSTEM_CONTRACT.yaml
+Before composing or rendering any slide, read these files:
 
-The execution_sequence tells you exactly what to do next. Follow it step by step. Do not skip. Do not deviate.
+1. [`design/ACCESSIBILITY_NEURODIVERSITY.md`](design/ACCESSIBILITY_NEURODIVERSITY.md)
+2. [`design/VISUAL_DESIGN_MANDATORY.md`](design/VISUAL_DESIGN_MANDATORY.md)
+3. [`monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`](monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md)
+4. [`monday_meeting/design/SLIDE_DETAIL_SPEC.md`](monday_meeting/design/SLIDE_DETAIL_SPEC.md)
+5. [`monday_meeting/design/TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) — **REFERENCE ONLY**
 
-**Next step after this file:** Go to SYSTEM_CONTRACT.yaml and begin `step_1`.
+### Authority for layout conflicts
+
+If content/layout instructions conflict, use this order:
+
+1. Accessibility boundaries
+2. Visual design minimums
+3. Overflow/pagination guard
+4. Slide content specification
+5. Template reference (never authoritative)
+
+### Mechanical overflow rule
+
+If content cannot fit with required font size, line height and padding:
+
+- Create continuation slide.
+- Do NOT reduce font size.
+- Do NOT reduce padding.
+- Do NOT clip text.
+- Do NOT overlap text.
+- Do NOT convert a stacked slide into two or three columns.
+
+Grid layouts are allowed only where explicitly approved by the overflow guard.
+
+---
+
+## 3️⃣ FOLLOW EXECUTION_SEQUENCE FROM SYSTEM_CONTRACT.yaml
+
+Continue from `SYSTEM_CONTRACT.yaml` and execute each step in order.
 
 ---
 
 ## REGISTERED DATA SOURCES & ACCESS PATHS
 
-**For presentations, data comes from these sources in this order:**
-
 ### Required Dataset 1: team_roster
-- **Source:** GITHUB_TEAM_ROSTER (local file)
-- **Access method:** local_file
-- **Action:** Read _memory/TEAM_ROSTER.md
-- **On success:** Continue to next dataset
-- **On missing:** STOP (cannot proceed without team identity)
+- Source: GITHUB_TEAM_ROSTER
+- Access: local file `_memory/TEAM_ROSTER.md`
+- Missing → STOP
 
 ### Required Dataset 2: merged_prs
-- **Source:** GITHUB_MERGED_PRS
-- **Access method:** github_rest_api
-- **Canonical URL:** https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?state=closed&base=develop&per_page=100
-- **Preferred tool:** GitHub Connector (or any available tool implementing GitHub REST API)
-- **Action:** Call GitHub REST API endpoint
-- **On success:** Continue to next dataset
-- **On tool unavailable:** Try registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)
-- **If Sheets unavailable or stale:** Try registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)
-- **If all fail:** Mark merged_prs as INCOMPLETE, proceed to data_audit
+- Source: GITHUB_MERGED_PRS
+- Preferred access: GitHub REST API / GitHub Connector
+- Use only registered fallback order from `EXTERNAL_SOURCES.yaml`
+- All fallbacks fail → INCOMPLETE → build gate decides STOP
 
 ### Required Dataset 3: active_issues
-- **Source:** GITHUB_OPEN_ISSUES
-- **Access method:** github_rest_api
-- **Canonical URL:** https://api.github.com/repos/chas-challenge-2026/avanza-team1/issues?state=open&per_page=100
-- **Preferred tool:** GitHub Connector (or any available tool implementing GitHub REST API)
-- **Action:** Call GitHub REST API endpoint
-- **On success:** Continue to data_audit
-- **On tool unavailable:** Try registered fallback #1 (Google Sheets per EXTERNAL_SOURCES.yaml)
-- **If Sheets unavailable or stale:** Try registered fallback #2 (GitHub web per EXTERNAL_SOURCES.yaml)
-- **If all fail:** Mark active_issues as INCOMPLETE, proceed to data_audit
-
----
-
-## IMPORTANT: Tool Selection
-
-For each source, EXTERNAL_SOURCES.yaml specifies:
-- The canonical endpoint (what data)
-- Permitted tool implementations (how to access it)
-- The fallback chain (in order if primary fails)
-
-**You may use ANY tool that implements the access_method specified in EXTERNAL_SOURCES.yaml.**
-
-Example: If access_method is "github_rest_api", you may use:
-- GitHub Connector
-- WebFetch
-- Any HTTP tool that can call api.github.com
-
-**Do NOT:** Use a tool not listed in the access_method's `allowed_implementations`.
+- Source: GITHUB_OPEN_ISSUES
+- Preferred access: GitHub REST API / GitHub Connector
+- Use only registered fallback order from `EXTERNAL_SOURCES.yaml`
+- All fallbacks fail → INCOMPLETE → build gate decides STOP
 
 ---
 
 ## FORBIDDEN IMPLEMENTATIONS
 
-These tool substitutions are NOT permitted:
-
-- Shell network commands: `git ls-remote`, `git clone`, `git fetch`
-- Shell HTTP tools: `curl`, `wget`
-- Generic web search: Google, Bing, DuckDuckGo, search engines
-- Unregistered URLs or arbitrary sources
-- Model training data or knowledge cutoff as source
-
-**Why:** If a source is unavailable, the presentation STOPS with INCOMPLETE data. It does not render with substituted or guessed data. These forbidden paths circumvent that gate.
+Do not use:
+- Shell network commands (`git clone`, `git fetch`, `curl`, `wget`)
+- Generic web search
+- Unregistered URLs/sources
+- Model knowledge as source
 
 ---
 
 ## CRITICAL: Data Completeness
 
-**Presentation rendering only proceeds if ALL required datasets are COMPLETE.**
+Presentation rendering proceeds only if all required datasets pass the build gate.
 
-- If team_roster is INCOMPLETE: STOP
-- If merged_prs is INCOMPLETE: STOP
-- If active_issues is INCOMPLETE: STOP
+- team_roster incomplete → STOP
+- merged_prs incomplete → STOP
+- active_issues incomplete → STOP
 
-**Incomplete data is reported to the user. Presentation is not generated.**
+---
 
-**See SYSTEM_CONTRACT.yaml sections `data_audit` and `build_gate` for gate definitions.**
+## CRITICAL: Render Completeness
+
+A deck is NOT deliverable merely because the generator completed.
+The rendered PPTX/PDF must pass artifact inspection.
+
+Mandatory zero-count checks before delivery:
+
+```text
+text_overlap_count == 0
+card_overlap_count == 0
+text_outside_card_count == 0
+text_clipping_count == 0
+out_of_bounds_element_count == 0
+unapproved_grid_slide_count == 0
+font_below_minimum_count == 0
+```
+
+If any check is non-zero:
+1. STOP delivery.
+2. Add continuation slides / correct layout.
+3. Rerender.
+4. Reinspect the artifact.
 
 ---
 
 ## NEXT STEP
 
-👉 **Go to [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml) and start with `step_1` in the `execution_sequence` section.**
-
-The execution_sequence will guide every action from here onward.
+Go to [`SYSTEM_CONTRACT.yaml`](SYSTEM_CONTRACT.yaml), then follow the authority files above before rendering.
