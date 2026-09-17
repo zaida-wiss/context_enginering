@@ -27,21 +27,9 @@
       font-size: 20px;
       line-height: 1.5;
     }
-    .slide {
-      padding: 36px;
-      background: #0F1830;
-    }
-    h1 {
-      margin: 0 0 14px 0;
-      font-size: 32px;
-      line-height: 1.25;
-    }
-    h2 {
-      margin: 0 0 24px 0;
-      font-size: 22px;
-      line-height: 1.4;
-      color: #CBD5E1;
-    }
+    .slide { padding: 36px; background: #0F1830; }
+    h1 { margin: 0 0 14px 0; font-size: 32px; line-height: 1.25; }
+    h2 { margin: 0 0 24px 0; font-size: 22px; line-height: 1.4; color: #CBD5E1; }
     .grid-3x2,
     .grid-2x2 {
       display: grid;
@@ -50,7 +38,6 @@
     }
     .grid-3x2 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-2x2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
     .card {
       background: #18233D;
       border: 1px solid #334155;
@@ -65,12 +52,17 @@
     .card.native   { border-left: 6px solid #A855F7; }
     .card.cross    { border-left: 6px solid #CBD5E1; }
     .card.other    { border-left: 6px solid #94A3B8; }
-
     .title {
       font-size: 20px;
       line-height: 1.45;
-      margin-bottom: 12px;
+      margin-bottom: 5px;
       font-weight: 700;
+    }
+    .microcopy {
+      font-size: 13px;
+      line-height: 1.35;
+      color: #8290A7;
+      margin-bottom: 12px;
     }
     .secondary {
       font-size: 18px;
@@ -83,6 +75,12 @@
       line-height: 1.4;
       color: #94A3B8;
     }
+    .timestamp {
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.35;
+      color: #8290A7;
+    }
     .rule {
       margin-top: 24px;
       font-size: 18px;
@@ -94,8 +92,7 @@
 <body>
   <div class="notice">
     <strong>REFERENCE ONLY.</strong><br>
-    Modern card language is mandatory. Work items are never rendered as plain rows or list bands.
-    When content does not fit: create continuation slides. Never shrink, clip, overlap, or replace cards with rows.
+    Modern card language is mandatory. Every Issue, PR and Merge card includes a short pedagogical contribution line directly under the title. Dates use the same discreet visual style. If content does not fit: create continuation slides.
   </div>
 
   <section class="slide">
@@ -104,26 +101,32 @@
     <div class="grid-3x2">
       <div class="card frontend">
         <div class="title">#105 · Establish frontend test foundation</div>
+        <div class="microcopy">Lägger grunden för enhetstester av kritiska frontendflöden.</div>
         <div class="secondary">Zaida · Frontend</div>
-        <div class="meta">Merged 15 sep · Reviewed by Björn</div>
+        <div class="meta">Reviewed by Björn · Merged by Björn</div>
+        <div class="timestamp">Merged 15 sep · 09:59</div>
       </div>
       <div class="card frontend">
         <div class="title">#101 · API client with mock adapter</div>
+        <div class="microcopy">Ger frontend ett gemensamt API-lager som även kan köras mot mockdata.</div>
         <div class="secondary">Tomac · Frontend</div>
-        <div class="meta">Merged 14 sep · reviewer verifierad i GitHub</div>
+        <div class="meta">Reviewer verifierad i GitHub</div>
+        <div class="timestamp">Merged 14 sep · 18:13</div>
       </div>
       <div class="card backend">
         <div class="title">#111 · Java development environment</div>
+        <div class="microcopy">Samlar backendmiljön så Java-delarna kan integreras mot develop.</div>
         <div class="secondary">Backend</div>
-        <div class="meta">Merged to develop</div>
+        <div class="timestamp">Merged 16 sep · 18:40</div>
       </div>
       <div class="card frontend">
         <div class="title">#100 · Linked target allocation inputs</div>
+        <div class="microcopy">Håller målallokeringens inmatningar synkade så summan alltid blir 100 procent.</div>
         <div class="secondary">Björn · Frontend</div>
-        <div class="meta">Merged 14 sep</div>
+        <div class="timestamp">Merged 14 sep · 17:14</div>
       </div>
     </div>
-    <div class="rule">Om fler än 6 kort finns: skapa ①A-2. Aldrig en tredje rad.</div>
+    <div class="rule">Förklaringsraden är sekundär. Om kortet blir för högt minskas antalet kort på sliden — aldrig fonten.</div>
   </section>
 
   <section class="slide">
@@ -132,26 +135,32 @@
     <div class="grid-2x2">
       <div class="card frontend">
         <div class="title">◐ #85 · Responsive shared header</div>
+        <div class="microcopy">Gör toppnavigationen användbar även på mindre skärmar.</div>
         <div class="secondary">Björn · Frontend</div>
         <div class="meta">Branch: 85-frontend-responsive-shared-header-and-navigation</div>
+        <div class="timestamp">Senaste commit 16 sep · 20:58</div>
       </div>
       <div class="card frontend">
-        <div class="title">◐ #82 · Portfolio via usePortfolio</div>
+        <div class="title">◐ PR #109 · Portfolio via usePortfolio</div>
+        <div class="microcopy">Gör portföljdata tillgänglig via en återanvändbar React-hook.</div>
         <div class="secondary">Tomac · Frontend</div>
-        <div class="meta">PR #109 · väntar på review/merge</div>
+        <div class="meta">Öppen PR · väntar på review/merge</div>
+        <div class="timestamp">Uppdaterad 17 sep · 06:58</div>
       </div>
       <div class="card backend">
         <div class="title">◐ Backend integration work</div>
+        <div class="microcopy">Bidrag till koden behöver verifieras.</div>
         <div class="secondary">Rasha / Erik · Backend</div>
         <div class="meta">Visa verifierad issue/branch/status här</div>
       </div>
       <div class="card native">
         <div class="title">◐ Native module work</div>
+        <div class="microcopy">Bidrag till koden behöver verifieras.</div>
         <div class="secondary">Pär / Henrik · Native</div>
         <div class="meta">Visa verifierad issue/branch/status här</div>
       </div>
     </div>
-    <div class="rule">Femte kortet går på ①D-2. Ingen textlista eller rad-layout får användas.</div>
+    <div class="rule">Varje Issue/PR-card får en egen kort kodförklaring direkt under rubriken.</div>
   </section>
 
   <section class="slide">
@@ -160,26 +169,30 @@
     <div class="grid-2x2">
       <div class="card native">
         <div class="title">○ #16 · Basic back-testing module</div>
+        <div class="microcopy">Lägger grunden för att köra strategier mot historisk marknadsdata.</div>
         <div class="secondary">Pär + Henrik</div>
         <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
       </div>
       <div class="card native">
         <div class="title">○ #73 · Cleanup risk module</div>
+        <div class="microcopy">Förenklar riskmodulen så beräkningarna blir lättare att underhålla.</div>
         <div class="secondary">Pär</div>
         <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
       </div>
       <div class="card native">
         <div class="title">○ #74 · Uppdatera Native README</div>
+        <div class="microcopy">Gör Native-delens bygg- och integrationsflöde tydligare för teamet.</div>
         <div class="secondary">Pär + Henrik</div>
         <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
       </div>
       <div class="card frontend">
         <div class="title">○ #89 · MVP core-flow E2E test</div>
+        <div class="microcopy">Verifierar att det viktigaste användarflödet fungerar genom hela frontendkedjan.</div>
         <div class="secondary">Frontend</div>
         <div class="meta">⏳ Tilldelat / väntar på stabila beroenden</div>
       </div>
     </div>
-    <div class="rule">Nästa item går på ①E-2. Cards behålls; layouten blir aldrig en radlista.</div>
+    <div class="rule">Microcopy och datum är diskreta, men varje kort behåller tydlig titel, ägare och status.</div>
   </section>
 </body>
 </html>
