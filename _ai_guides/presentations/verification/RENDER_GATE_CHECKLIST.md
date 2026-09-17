@@ -4,46 +4,49 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.2
+  version: 4.3
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
 
-A presentation may be delivered only when BOTH data integrity and rendered-artifact quality pass.
+A presentation may be delivered only when both data integrity and the actual rendered artifact pass.
 
-Self-report from the generator is not evidence. Inspect the actual rendered PPTX/PDF.
+This checklist validates existing authorities. It must not redefine their rules.
+
+Authority order:
+1. `SYSTEM_CONTRACT.yaml`
+2. `ACCESSIBILITY_NEURODIVERSITY.md`
+3. `VISUAL_DESIGN_MANDATORY.md`
+4. `CARD_COMPONENT_STANDARD.md`
+5. `PROVENANCE_AND_AI_LABELING.md`
+6. `LAYOUT_OVERFLOW_GUARD.md`
+7. `SLIDE_DETAIL_SPEC.md`
+8. `TEMPLATE_REFERENCE.html` — reference only
 
 ---
 
 ## 1. DATA AUDIT
 
-Create a data audit for the reporting period.
-
 Required totals:
 - total merged PRs
 - total open PRs
 - total commits to develop
-- total open issues with activity
+- total open assigned/active issues
 
-Required work-area classification:
+Required classification:
 - Frontend
 - Backend
 - Native
 - Cross-team
 - Other
 
-For each area record:
-- merged PR IDs
-- open PR IDs
-- active issue IDs
-
-Required checks:
+Checks:
 
 ```text
-COUNT: sum(classified merged PR counts) == repository merged PR total
-SET: classified PR IDs == repository merged PR ID set
-UNIQUENESS: each PR appears in exactly one work area
-TEAM: all team identities verified
+classified_merged_pr_set == repository_merged_pr_set
+all_open_prs_accounted_for == true
+all_open_assigned_issues_accounted_for == true
+all_registered_team_members_accounted_for == true
 ```
 
 Any failure → STOP.
@@ -53,28 +56,19 @@ Any failure → STOP.
 ## 2. DATA ACCURACY
 
 Verify:
-- issue/PR numbers are real
-- state is accurate
-- assignee is verified or explicitly unknown
-- developer attribution follows project rules
-- reviewer/merger identities use actual evidence
-- timestamps are actual source timestamps
-- contribution/project-value microcopy is grounded in repository evidence
-- no fabricated status, branch, owner, reviewer, merge identity or code effect
+- real issue/PR IDs
+- accurate state
+- assignee verified or internally unknown
+- merger/reviewer identity based on actual source evidence
+- timestamp from source data
+- contribution explanation grounded in issue/PR/diff/commit evidence
+- no invented branch, owner, reviewer, merger, deadline or code effect
+
+Internal uncertainty must not be converted into false certainty.
 
 ---
 
-## 3. WCAG 2.2 AA — ABSOLUTE DELIVERY GATE
-
-The deck MUST pass WCAG 2.2 AA.
-
-Verify at minimum:
-- normal text contrast >= **4.5:1**
-- WCAG large text contrast >= **3:1**
-- meaningful borders/components >= **3:1**
-- color is never the only information carrier
-- muted text remains compliant against the actual rendered surface
-- no text becomes inaccessible because of transparency/glass effects
+## 3. WCAG 2.2 AA
 
 Required:
 
@@ -83,191 +77,140 @@ wcag_aa_violation_count == 0
 color_only_information_count == 0
 ```
 
-Any non-zero count = FAIL. No design/layout exception may override this gate.
+Also verify:
+- normal text contrast >= 4.5:1
+- large text contrast >= 3:1
+- meaningful component contrast >= 3:1
+- transparency does not reduce effective contrast
+
+Any failure → STOP.
 
 ---
 
-## 4. AUTHORITY ORDER
+## 4. GLOBAL VISUAL SYSTEM
 
-Use:
-
-1. `ACCESSIBILITY_NEURODIVERSITY.md`
-2. `VISUAL_DESIGN_MANDATORY.md`
-3. `CARD_COMPONENT_STANDARD.md`
-4. `PROVENANCE_AND_AI_LABELING.md`
-5. `LAYOUT_OVERFLOW_GUARD.md`
-6. `SLIDE_DETAIL_SPEC.md` for slide content
-7. `TEMPLATE_REFERENCE.html` as reference only
-
-If stale examples conflict with these authorities, ignore the stale visual form and fix the lower-authority wording when practical.
-
----
-
-## 5. CANONICAL CALM-NAVY THEME
-
-The deck must use the approved calm dark palette globally.
-
-Canonical values:
-
-```text
-Slide background:       #15182E
-Card surface:           #1E233B
-Alternate card surface: #252A45
-Primary text:           #F7F8FC
-Secondary text:         #D2D7E4
-Metadata text:          #B0B8CC
-Quiet microcopy:        #A2ABC0
-```
-
-Verify:
-- every slide uses the same calm navy background family
-- every ordinary information card uses the canonical dark card family
-- cards do not revert to older `#0F1830` / `#18233D` styling
-- no black/high-glare card variants appear without an explicit exception
-- transparency does not visibly destroy the intended card/background separation
-
-Required:
+Validate against `VISUAL_DESIGN_MANDATORY.md`:
 
 ```text
 noncanonical_background_color_count == 0
 noncanonical_card_surface_count == 0
 high_glare_surface_count == 0
-```
-
----
-
-## 6. MODERN CARD SYSTEM
-
-Every item-based information/work item must use a card unless explicitly defined as a diagram/group.
-
-FAIL on:
-- plain text work-item rows
-- table rows as primary layout
-- horizontal list bands
-- unrelated items merged into one card to save space
-- inconsistent flat boxes replacing the card system on later slides
-
-Every card should show:
-- calm dark glass-like surface
-- rounded corners
-- subtle depth
-- coherent padding
-- team color as **left accent only** where applicable
-- clear text hierarchy
-
-Required:
-
-```text
 full_team_outline_count == 0
 card_system_inconsistency_count == 0
-calm_navy_palette_consistent == true
 ```
 
 ---
 
-## 7. RESPONSIVE TYPOGRAPHY
+## 5. CARD-INTERNAL SYSTEM
 
-Use role-specific ranges from `CARD_COMPONENT_STANDARD.md`.
-
-Current minima:
-- slide title: 32 pt
-- section header: 22 pt
-- card title: 18 pt
-- owner/team: 12 pt
-- contribution/supporting text: 11 pt
-- operational metadata: 10 pt
-- timestamp/source/provenance: 10 pt
-
-The renderer MAY deliberately select smaller sizes within the allowed range when a slide is dense.
-
-The renderer MAY NOT:
-- use automatic shrink-to-fit
-- go below role minimums
-- reduce contrast
-- hide required fields
+Validate against `CARD_COMPONENT_STANDARD.md`.
 
 Required:
 
 ```text
 font_below_component_minimum_count == 0
 auto_shrink_enabled_count == 0
+card_block_spacing_violation_count == 0
+pedagogical_line_not_directly_under_title_count == 0
+assignee_not_visually_emphasized_count == 0
+visible_evidence_level_label_count == 0
+unverified_identity_commentary_count == 0
+timestamp_not_single_line_count == 0
+timestamp_not_right_aligned_count == 0
 ```
+
+Manual visual checks:
+- pedagogical explanation is immediately below title
+- explanation is visibly larger than operational metadata
+- verified assignee/developer name is easy to scan and uses the primary title text color
+- team label remains secondary
+- separate semantic blocks have the minimum required vertical spacing
+- no text rows visually touch
+
+If card content cannot fit while preserving the required spacing and type sizes, reduce density or paginate.
 
 ---
 
-## 8. EVEN SPACING / RESPONSIVE GEOMETRY
+## 6. MERGE / REVIEW METADATA
 
-Verify:
-- wrapped lines use natural line spacing
-- no visually colliding lines
-- content is top-aligned in cards
-- timestamps/source metadata are consistently anchored where appropriate
-- rows are NOT vertically distributed across the entire card height
-- card height/width responds to actual content
-- dense content changes grid density or paginates
-
-Required:
+Canonical visible pattern:
 
 ```text
-uneven_row_spacing_caused_by_vertical_justification == 0
-fixed_height_text_clipping_count == 0
+Merged: [verified name or blank] | Review: [verified name or blank]
 ```
 
----
+Acceptable:
+- `Merged: Björn | Review: Zaida`
+- `Merged: Björn | Review:`
+- `Merged: | Review: Zaida`
 
-## 9. MERGED PR CARD FORMAT
-
-Verify merged cards use:
-
-```text
-Merged: [name] | Review: [name/status]
-```
-
-and timestamp:
-
-```text
-14 sep
-10:16
-```
-
-FAIL on:
+Fail visible wording such as:
+- `ej verifierat`
+- `verifierad`
+- `verifierat via merge-commit`
+- `faktisk review behöver verifieras`
 - `Merged by:`
 - `Reviewed by:`
-- `Mergad` prefix before bottom timestamp
-- one-line timestamp where the component rule requires two-line compact form
 
 Required:
 
 ```text
 legacy_merged_by_label_count == 0
 legacy_reviewed_by_label_count == 0
-merged_timestamp_prefix_count == 0
+unverified_identity_commentary_count == 0
+```
+
+Unknown identity remains blank in the meeting card; uncertainty stays in the internal audit.
+
+---
+
+## 7. TIMESTAMP
+
+When rendered, timestamp must follow `CARD_COMPONENT_STANDARD.md`:
+- one compact line
+- lower-right aligned where card geometry permits
+- quiet WCAG-safe color
+- no semantic prefix
+
+Example:
+
+```text
+14 sep · 10:16
+```
+
+Required:
+
+```text
+timestamp_two_line_count == 0
+timestamp_prefix_count == 0
+timestamp_not_right_aligned_count == 0
 ```
 
 ---
 
-## 10. CONTRIBUTION / PROJECT-VALUE MICROCOPY
+## 8. ACTIVE-WORK EVIDENCE
 
-Every Issue, open PR and merged PR card contains a grounded explanation directly below the title.
+Evidence levels from `ACTIVE_WORK_DETECTION_MODEL.md` are internal only.
 
-Dependency nodes also contain a short grounded line answering:
+Fail any visible card containing:
+- `GitHub · nivå 1`
+- `GitHub nivå 2`
+- `Level 1 evidence`
+- equivalent evidence-strength label
 
-> Vad löser detta i projektet?
+Use meeting-relevant status instead when useful.
 
-Required characteristics:
-- short
-- plain Swedish
-- grounded in verified evidence
-- directly below title
-- not vague process language
+Required:
 
-If evidence is insufficient for an issue/PR/merge, use:
+```text
+visible_evidence_level_label_count == 0
+```
 
-`Bidrag till koden behöver verifieras.`
+---
 
-If evidence is insufficient for a dependency node, use:
+## 9. CONTRIBUTION / PROJECT-VALUE EXPLANATION
 
-`Bidrag till projektet behöver verifieras.`
+Every Issue/PR/Merge card and dependency node must contain grounded pedagogical microcopy when evidence supports it.
 
 Required:
 
@@ -279,75 +222,13 @@ unsupported_contribution_claim_count == 0
 
 ---
 
-## 11. DEPENDENCY FLOW CARDS ⑥A
+## 10. PROVENANCE
 
-Dependency chains should visually follow the approved compact card → arrow → card format.
-
-Every node must contain:
-1. short title / issue ID
-2. short project-value explanation
-3. symbol + status/dependency text
-
-Example:
-
-```text
-API-kontrakt
-Definierar endpoints + payload för integrationen.
-🔴 behöver låsas
-```
-
-```text
-Riktig Java HTTP
-Byter mock mot riktig Backend-kommunikation.
-⏳ väntar
-```
-
-Verify:
-- arrows show dependency direction clearly
-- connectors stay outside text areas
-- project-value line is not removed because the diagram is dense
-- node geometry grows/widens responsively
-- nodes use the same calm navy glass-card language as the rest of the deck
-- no full bright outline is used instead of the narrow accent treatment
+Validate against `PROVENANCE_AND_AI_LABELING.md`.
 
 Required:
 
 ```text
-dependency_node_without_project_value_count == 0
-dependency_connector_overlap_count == 0
-dependency_node_style_inconsistency_count == 0
-```
-
----
-
-## 12. PROVENANCE — FACT VS TEAM VS AI
-
-Every inferred/recommended item must be visibly distinguished from verified source content.
-
-Canonical labels:
-- `📅 Schemafakta`
-- `✅ Mötesprotokoll` / equivalent verified team label
-- `🔎 AI-analys`
-- `⭐ AI-förslag`
-- `⚠ Källa behöver verifieras`
-
-Rules:
-- `🔎` is reserved for AI analysis / interpretation
-- `⭐` is reserved for AI proposals / recommendations / suggested questions
-- do not use one AI icon for both roles
-- color may support but never replace icon + text
-- red is NOT a fact color
-- mixed cards label each block independently
-
-Especially verify slides ⑫, ⑬ and ⑭.
-
-Required:
-
-```text
-sprint_plan_fact_without_source_label_count == 0
-sprint_plan_ai_content_without_source_icon_count == 0
-next_step_card_without_provenance_count == 0
-pl_question_card_without_provenance_count == 0
 ai_analysis_without_magnifying_glass_count == 0
 ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
@@ -356,9 +237,9 @@ mixed_provenance_card_without_block_labels_count == 0
 
 ---
 
-## 13. OVERFLOW / COLLISION
+## 11. OVERFLOW / COLLISION
 
-The rendered artifact must satisfy:
+Required:
 
 ```text
 text_overlap_count == 0
@@ -370,134 +251,19 @@ missing_required_card_row_count == 0
 plain_row_work_item_count == 0
 ```
 
-If content is too dense:
-1. step down within the permitted typography range
-2. adapt spacing to canonical compact values
-3. grow/reflow cards
-4. reduce grid density
-5. paginate
-
-Never clip or hide content.
+Never solve density by shrinking below component minima or collapsing semantic block spacing.
 
 ---
 
-## 14. COVER SLIDE ⓪
+## 12. COVER / SLIDE-SPECIFIC CONTENT
 
-Verify:
-- no meeting-point pen/number header
-- meeting date visible
-- team identifier visible
-- reporting period visible
-- sprintfokus visible
-- deadline visible
-- PL-fokus visible
-- compact source/snapshot footer visible
-- no unnecessary bordered boxes
-- canonical calm navy theme used
+Validate slide purpose and required fields against `SLIDE_DETAIL_SPEC.md`.
+
+Conditional slides may only be omitted for a source-grounded reason recorded in the audit.
 
 ---
 
-## 15. MERGE BOARDS ①A–①C
-
-Verify:
-- chronological order where required
-- one merge per card
-- max 6 per physical slide
-- use fewer cards when 3-column layout is not readable
-- team left accent only
-- contribution microcopy present
-- merger/reviewer/developer evidence shown as required
-- compact timestamp format used
-
----
-
-## 16. ACTIVE / BACKLOG ①D–①E
-
-Verify:
-- one work item per card
-- default max 4 per physical slide
-- branch/status/owner remain visible
-- all required rows fit
-- card density reduces when content is long
-- no row/list layout
-
----
-
-## 17. TEAM DETAIL ③④⑤
-
-Verify:
-- identical card system for Frontend/Backend/Native
-- only justified team accent differs
-- no tables
-- contribution text appears on Issue/PR cards
-- responsive grid density
-
----
-
-## 18. SPRINTPLAN ⑫
-
-Every day card must separate:
-- verified school schedule facts
-- verified meeting/team actions
-- AI-derived analysis
-- AI-derived planning suggestions
-
-Example structure:
-
-```text
-Tisdag 22 sep
-📅 Schemafakta
-PL-avstämning 12:30–14:00.
-
-🔎 AI-analys
-Integrationsstatus är sannolikt viktigast utifrån beroendena.
-
-⭐ AI-förslag
-Ta med tydlig status på integration och test.
-```
-
-Do not blend source fact and AI content into one unlabeled statement.
-
----
-
-## 19. NEXT STEPS ⑬
-
-Every card has provenance.
-
-Priority of evidence:
-1. meeting-protocol actions
-2. approved/prefilled team actions
-3. AI proposals
-
-Use:
-- `✅` for verified team/meeting action
-- `⭐` for suggested next step
-- `🔎` only for an analytical explanation, not for the suggested action itself
-
----
-
-## 20. QUESTIONS TO PL ⑭
-
-Every question is a modern card and includes provenance.
-
-Distinguish:
-- `✅` actual team question
-- `⭐` AI-suggested question
-- `🔎` AI analysis that explains why the question may matter
-
-Cards adapt responsively to question length. Do not use oversized text that clips impact/source content.
-
----
-
-## 21. EXPLICIT OMISSIONS
-
-Conditional slides may only be omitted with a verified reason recorded in audit.
-
-A slide may not disappear because layout is inconvenient.
-
----
-
-## 22. FINAL DELIVERY GATE
+## 13. FINAL DELIVERY GATE
 
 Deliver only when:
 
@@ -505,23 +271,21 @@ Deliver only when:
 DATA_AUDIT == PASS
 WCAG_2_2_AA == PASS
 CONTENT_COMPLETENESS == PASS
-CALM_NAVY_THEME == PASS
-VISUAL_CARD_SYSTEM == PASS
-RESPONSIVE_TYPOGRAPHY == PASS
-DEPENDENCY_PROJECT_VALUE_MICROCOPY == PASS
+GLOBAL_VISUAL_SYSTEM == PASS
+CARD_COMPONENT_STANDARD == PASS
 PROVENANCE_AND_AI_LABELING == PASS
-OVERFLOW == PASS
-ARTIFACT_COLLISION_CHECK == PASS
+OVERFLOW_AND_COLLISION == PASS
+ACTUAL_RENDER_INSPECTION == PASS
 ```
 
 If any gate fails:
-1. fix
+1. fix the owning authority implementation
 2. rerender
-3. reinspect actual artifact
+3. reinspect the actual artifact
 4. deliver only after all gates pass
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.2
+**Version:** 4.3
 **Last updated:** 2026-09-17
