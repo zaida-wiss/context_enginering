@@ -3,7 +3,7 @@ name: presentation_architecture
 description: Design architecture — Single Source of Truth for presentation system
 metadata:
   type: critical_specification
-  version: 1.2
+  version: 2.0
 ---
 
 # 📐 PRESENTATION ARCHITECTURE — Single Source of Truth
@@ -12,209 +12,277 @@ This document defines where presentation rules belong and how conflicts are reso
 
 ---
 
-## 1. Authority hierarchy
+## 1. AUTHORITY HIERARCHY
 
 ### LEVEL 1 — SYSTEM_CONTRACT.yaml
 Owns orchestration:
-- Execution sequence
-- Gates
+- execution sequence
+- gates
 - STOP/CONTINUE decisions
-- Delivery rules
+- delivery rules
 
 ### LEVEL 2 — ACCESSIBILITY_NEURODIVERSITY.md
-Owns accessibility boundaries:
+Owns the absolute accessibility boundary:
 - WCAG 2.2 AA
-- Readability
-- Contrast
-- Neurodiverse-friendly constraints
+- contrast
+- color redundancy
+- readability
+- neurodiverse-friendly constraints
 
-Accessibility boundaries may never be weakened by layout convenience.
+**WCAG may never be weakened by layout convenience, density or visual preference.**
 
 ### LEVEL 3 — VISUAL_DESIGN_MANDATORY.md
-Owns visual implementation:
-- Typography minimums
-- Colors
-- Spacing
-- Card geometry
-- Shadows/depth
-- Theme
-- Which card-grid layouts are valid
+Owns global visual implementation:
+- theme
+- typography roles/ranges
+- card-grid limits
+- spacing
+- colors
+- global responsive behavior
 
-If a renderer needs to know HOW something looks or is positioned, this is the master visual authority.
+### LEVEL 4 — CARD_COMPONENT_STANDARD.md
+Owns card internals:
+- card typography ranges
+- metadata sizes
+- timestamp format
+- owner/review/merge layout
+- internal spacing
+- team accent treatment
 
-### LEVEL 4 — SLIDE_DETAIL_SPEC.md
+### LEVEL 5 — PROVENANCE_AND_AI_LABELING.md
+Owns source identity:
+- fact vs team input vs AI inference
+- schema facts
+- meeting facts
+- AI suggestion/analysis labels
+- mixed-card source labeling
+
+### LEVEL 6 — SLIDE_DETAIL_SPEC.md
 Owns slide content:
-- What appears on each slide
-- Required data fields
-- Sort order
-- Slide purpose
-- Content exclusions
+- what appears on each slide
+- required data fields
+- sort order
+- slide purpose
+- content exclusions
 
-It does NOT own visual layout. Any legacy words such as "row", "stacked", "columns" or "table" inside content examples are descriptive only and must never override `VISUAL_DESIGN_MANDATORY.md`.
+It does NOT override accessibility, visual design, card component or provenance rules.
 
 ### DATA AUTHORITIES
 - `DATA_ACQUISITION_CONTRACT.yaml` — how data is acquired
 - `ACTIVE_WORK_DETECTION_MODEL.md` — how active work is classified
-- `_memory/EXTERNAL_SOURCES.yaml` — allowed external sources and access methods
+- `_memory/EXTERNAL_SOURCES.yaml` — allowed external sources/access methods
 
 ---
 
-## 2. Validation/reference files
+## 2. VALIDATION / REFERENCE FILES
 
 ### LAYOUT_OVERFLOW_GUARD.md
-Mechanical fit, pagination and collision validation.
+Mechanical responsive fit, density, pagination and collision rules.
 
 ### RENDER_GATE_CHECKLIST.md
-Pre/post-render verification.
+Pre/post-render validation, including WCAG and provenance.
 
 ### TEMPLATE_REFERENCE.html
-Visual example only.
-
-**TEMPLATE_REFERENCE.html is never authoritative.**
+Visual example only. Never authoritative.
 
 ---
 
-## 3. Canonical visual language
+## 3. CANONICAL VISUAL LANGUAGE
 
-The presentation uses a **modern card system**.
+The presentation uses one coherent **modern glass-card system**.
 
 Core rule:
 
 > ONE ITEM = ONE CARD
 
-Plain row/list layouts are not part of the Monday Meeting visual language.
+Required characteristics:
+- dark navy canvas
+- glass-like dark card surface
+- rounded corners
+- subtle depth
+- readable responsive typography
+- team ownership shown by a **narrow left accent only**
+- no full-card team-colored outline/fill
+- consistent internal hierarchy
 
-Canonical layouts:
-
-- `①A–①C`: 3 × 2 cards, max 6 per physical slide
-- `①D`: 2 × 2 cards, max 4 per physical slide
-- `①E`: 2 × 2 cards, max 4 per physical slide
-- `①F`: 2 × 2 or 2 × 1 cards, max 4
-- `②–⑤`: modern cards, normally 2 × 2, max 4
-- `⑥`: cards; `⑥A` may use dependency diagram nodes
-- `⑦–⑫`: modern cards, normally 2 × 2, max 4
-- `⑬`: 4 × 1 or 2 × 2 cards, max 4
-- `⑭`: grouped modern cards, max 4 per physical slide before continuation
-
-If a card needs more room, reduce the number of cards on that physical slide and create a continuation slide.
+This system applies throughout the deck, including sprintplan, next steps and PL questions.
 
 ---
 
-## 4. Modern card style
+## 4. RESPONSIVE TYPOGRAPHY MODEL
 
-Cards are the primary surface.
+The system no longer treats every card text role as 18–20 pt.
 
-Required visual characteristics:
+Instead:
+- every role has a preferred size and an explicit minimum
+- dense cards may deliberately step down within that range
+- automatic shrink-to-fit remains forbidden
+- WCAG 2.2 AA remains mandatory
+- if content still does not fit at the minimum, geometry/density changes or pagination are required
 
-- Dark navy canvas
-- Secondary navy card surface
-- Rounded corners 16–20 px
-- Generous padding 18–22 px
-- Minimum 20 px gap between cards
-- Subtle border/accent
-- Subtle box shadow/depth
-- Team color used as accent, not full-card fill
-- Large readable typography
-
-The deck should feel like a modern dashboard translated into a calm meeting presentation.
+Role-specific ranges live in `CARD_COMPONENT_STANDARD.md`.
 
 ---
 
-## 5. Overflow rule
+## 5. RESPONSIVE CARD MODEL
 
-When required content does not fit:
+Cards adapt to their content.
 
-1. Keep required font sizes.
-2. Keep required padding and spacing.
-3. Keep each item as a card.
-4. Reduce cards on the physical slide if necessary.
-5. Create continuation slide(s).
+Allowed:
+- natural wrapping
+- content-driven height
+- lower grid density
+- wider cards
+- 2×2 → 2×1 → 1×1 where appropriate
+- continuation slides
 
-Never solve overflow by:
-- Shrinking text
-- Reducing padding below minimum
-- Clipping text
-- Overlapping text
-- Using fixed-height text boxes that cannot grow
-- Converting cards into rows or lists
-- Hiding required metadata just to preserve geometry
-
-Extra slides are preferable to unreadable slides.
+Forbidden:
+- clipping
+- overlap
+- hiding fields
+- shrinking below minimum
+- reducing WCAG contrast
+- color-only meaning
+- fixed-height boxes that crop wrapped text
 
 ---
 
-## 6. File responsibilities
+## 6. PROVENANCE MODEL
+
+Every derived claim must clearly show its origin.
+
+Canonical source classes:
+- `📅 Schemafakta`
+- `✅ Mötesprotokoll` / verified team input
+- `? AI-förslag`
+- `? AI-analys`
+- `⚠ Källa behöver verifieras`
+
+A mixed card may contain several source classes, but each block must remain labeled.
+
+This is especially important for:
+- sprintplan
+- sprintmål
+- prioritering
+- risk analysis
+- next steps
+- questions to PL
+
+Red is not a fact color. Red remains blocker/critical.
+
+---
+
+## 7. CANONICAL LAYOUT LIMITS
+
+These are maximums, not targets:
+
+- `①A–①C`: max 6 cards, default 3×2
+- `①D–①E`: max 4, default 2×2
+- `①F`: max 4, responsive 2×2 / 2×1 / 1×1
+- `②–⑫`: max 4, responsive card layout
+- `⑬`: max 4; 4×1 only when readable, otherwise 2×2/fewer
+- `⑭`: max 4 before continuation
+- `⑥A`: dependency diagram exception; each node remains a card
+
+If card content is long, use fewer cards.
+
+---
+
+## 8. FILE RESPONSIBILITIES
 
 | File | Responsibility |
 |---|---|
-| `SYSTEM_CONTRACT.yaml` | Execution + gates |
-| `ACCESSIBILITY_NEURODIVERSITY.md` | Accessibility boundaries |
-| `VISUAL_DESIGN_MANDATORY.md` | Visual rules + card layout |
-| `SLIDE_DETAIL_SPEC.md` | Slide content only |
-| `DATA_ACQUISITION_CONTRACT.yaml` | Data acquisition |
-| `ACTIVE_WORK_DETECTION_MODEL.md` | Activity evidence model |
-| `LAYOUT_OVERFLOW_GUARD.md` | Mechanical fit/pagination validation |
-| `RENDER_GATE_CHECKLIST.md` | Artifact verification |
-| `TEMPLATE_REFERENCE.html` | Example only |
+| `SYSTEM_CONTRACT.yaml` | execution + gates |
+| `ACCESSIBILITY_NEURODIVERSITY.md` | absolute WCAG/accessibility boundary |
+| `VISUAL_DESIGN_MANDATORY.md` | global theme + responsive visual rules |
+| `CARD_COMPONENT_STANDARD.md` | internal card typography/spacing/metadata |
+| `PROVENANCE_AND_AI_LABELING.md` | source fact/team/AI identity |
+| `SLIDE_DETAIL_SPEC.md` | slide content only |
+| `DATA_ACQUISITION_CONTRACT.yaml` | data acquisition |
+| `ACTIVE_WORK_DETECTION_MODEL.md` | activity evidence model |
+| `LAYOUT_OVERFLOW_GUARD.md` | responsive fit/pagination validation |
+| `RENDER_GATE_CHECKLIST.md` | final artifact validation |
+| `TEMPLATE_REFERENCE.html` | example only |
 
-Do not create `_V2`, `_UPDATED`, `_NEW`, or competing policy files.
+Do not create competing `_V2`, `_UPDATED`, `_NEW` policy variants.
 
 ---
 
-## 7. Propagation rules
+## 9. PROPAGATION RULES
 
-### Change visual design
+### Change accessibility
+1. Update `ACCESSIBILITY_NEURODIVERSITY.md` if the boundary itself changes.
+2. Propagate to visual/card/overflow/render-gate files.
+3. Accessibility remains highest authority.
+
+### Change global design
 1. Update `VISUAL_DESIGN_MANDATORY.md`.
-2. Update `LAYOUT_OVERFLOW_GUARD.md` if fit rules change.
+2. Update `CARD_COMPONENT_STANDARD.md` if card internals change.
+3. Update `LAYOUT_OVERFLOW_GUARD.md`.
+4. Update `RENDER_GATE_CHECKLIST.md`.
+5. Update reference template when useful.
+
+### Change provenance/source identity
+1. Update `PROVENANCE_AND_AI_LABELING.md`.
+2. Update reading order/authority map if needed.
 3. Update `RENDER_GATE_CHECKLIST.md`.
-4. Update `TEMPLATE_REFERENCE.html`.
-5. Remove stale visual wording from content/reference files when practical.
+4. Remove stale source wording in slide spec/examples when practical.
 
 ### Change slide content
 1. Update `SLIDE_DETAIL_SPEC.md`.
-2. Update `DATA_ACQUISITION_CONTRACT.yaml` if additional data is required.
-3. Do not add visual constants to the content spec.
+2. Update data acquisition if extra data is required.
+3. Do not define conflicting visual constants there.
 
 ---
 
-## 8. Conflict handling
+## 10. CONFLICT HANDLING
 
-If two instructions conflict:
+When instructions conflict:
 
-1. Identify which file owns the rule category.
-2. Follow the owner according to the hierarchy above.
-3. Fix the stale lower-level wording so the conflict does not recur.
+1. identify which file owns the rule category
+2. follow the higher authority
+3. fix the stale lower-level wording so the conflict does not recur
 
-For visual/layout conflicts, `VISUAL_DESIGN_MANDATORY.md` wins.
+Never silently choose the easier layout.
 
 Known stale patterns that must never win:
-- plain text rows for work items
-- full-width row-list slides
-- 11–14 pt readable meeting content
-- fixed-height cards
-- 3 × 4 / 12-card merge boards
-- more than 4 cards on ①D/①E
-- shrink-to-fit
+- 18 pt required for all secondary card metadata
+- 20 pt required for every card title regardless of density
+- `Merged by:` / `Reviewed by:` labels
+- one-line merge timestamp with `Merged` prefix
+- full team-colored card outlines
+- flat non-glass cards on later slides
+- unlabelled AI suggestions
+- red used to mean source fact
+- `team feedback` used for AI-generated questions
+- automatic shrink-to-fit
 
 ---
 
-## 9. Render acceptance
+## 11. RENDER ACCEPTANCE
 
 A deck is not complete until the rendered artifact passes:
 
 ```text
+wcag_aa_violation_count == 0
+color_only_information_count == 0
 text_overlap_count == 0
 card_overlap_count == 0
 text_outside_card_count == 0
 text_clipping_count == 0
 out_of_bounds_element_count == 0
-font_below_minimum_count == 0
+font_below_component_minimum_count == 0
 plain_row_work_item_count == 0
+missing_required_card_row_count == 0
+uneven_row_spacing_caused_by_vertical_justification == 0
+ai_generated_item_without_question_icon_count == 0
+unverified_item_presented_as_confirmed_count == 0
 ```
 
-Any non-zero count means: fix layout → add continuation slide(s) → rerender → reinspect.
+Any non-zero count means: fix → rerender → reinspect.
 
 ---
 
 **Last updated:** 2026-09-17
 **Status:** Production architecture
+**Version:** 2.0
