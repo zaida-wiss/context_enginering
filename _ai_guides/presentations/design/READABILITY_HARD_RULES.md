@@ -1,11 +1,11 @@
 ---
 name: readability_hard_rules
-description: MANDATORY — fixed slide-title size, larger text minima, spacing, pedagogical microcopy and dependency-aware ordering
+description: MANDATORY — fixed slide-title size, dyslexia-friendly typography, larger text minima, spacing, pedagogical microcopy and dependency-aware ordering
 metadata:
   type: design-specification
   critical: true
   required_before: composition
-  version: 1.0
+  version: 1.1
 ---
 
 # READABILITY HARD RULES
@@ -19,10 +19,13 @@ If a lower-level example conflicts with this file, this file wins for the rules 
 Slide titles / meeting-point headers use a normal fixed presentation size.
 
 Hard rules:
-- preferred and minimum slide-title size: **36 pt**, bold
+- preferred and minimum slide-title size: **36 pt**
 - slide titles are **never** a fit variable
 - do not shrink a slide title because the slide is crowded
 - do not use automatic shrink-to-fit on slide titles
+- use a clear sans-serif typeface with open letterforms
+- use **semibold/bold only as much as needed for hierarchy**; avoid extra-bold, black or visually heavy title weights
+- the title must feel easy to scan rather than dense or block-like
 
 If a title does not fit at 36 pt:
 1. shorten the wording without losing meaning
@@ -32,7 +35,46 @@ If a title does not fit at 36 pt:
 
 Never reduce the title below 36 pt to preserve content density.
 
-## 2. NORMAL TEXT STARTS LARGER
+## 2. DYSLEXIA-FRIENDLY TYPE & GLYPHS — HARD RULE
+
+Typography must support fast scanning, letter recognition and stable line tracking.
+
+Hard rules:
+- use a familiar sans-serif family with clearly differentiated letterforms; prefer **Arial, Aptos, Atkinson Hyperlegible, Verdana or equivalent** when available
+- body/supporting copy uses regular weight by default
+- card titles and slide titles may use semibold/bold, but **must not look excessively heavy**
+- avoid condensed fonts, decorative display fonts, all-caps paragraphs and long stretches of italic text
+- avoid tightly packed uppercase labels when normal sentence case is clearer
+- keep left alignment for normal text
+- never reduce letter spacing to make text fit
+- do not use stylized circled-number glyphs for meeting-point identity
+
+### Meeting-point numbering
+
+Use **ordinary Arabic digits** so the meeting-point number is immediately recognizable.
+
+Canonical pattern:
+
+```text
+✏️ 1. Avklarat sedan förra mötet
+✏️ 2. Nuläge och närmaste deadline
+✏️ 13. Nästa steg
+```
+
+Continuation slides:
+
+```text
+✏️ 1A-2. Avklarat sedan förra mötet
+✏️ 9-2. Prioritering och scope
+```
+
+Forbidden in rendered meeting headers:
+- `①`, `②`, `⑨`, `⑬`, `⑭` and equivalent circled-number symbols
+- a pen icon without the visible ordinary number
+
+A lower-level slide/content specification may define the semantic meeting-point number, but it must not force circled glyphs in the rendered deck.
+
+## 3. NORMAL TEXT STARTS LARGER
 
 Normal presentation text should start larger than the minimum.
 
@@ -53,31 +95,37 @@ For card-internal roles, these minima override older lower values:
 
 A technically fitting smaller size is not a reason to use it. Use the largest comfortable size that fits the layout.
 
-## 3. MINIMUM BLOCK SPACING IS LARGER
+## 4. LINE HEIGHT & BLOCK SPACING MUST STAY OPEN
 
-Semantic text blocks must remain visually separated.
+Text must never feel vertically compressed.
+
+Hard rules:
+- multiline body/supporting text uses **at least 1.15 line spacing**, with **1.2 preferred**
+- multiline card titles use at least **1.05 line spacing**
+- wrapped lines within one semantic text block must not touch or visually collide
+- separate semantic blocks must have an explicit gap; do not rely on accidental textbox placement
+- do not place two independent textboxes on top of the same vertical band unless they are intentionally side-by-side and non-overlapping
 
 Minimum rendered gaps:
-- title → pedagogical explanation: **4 px minimum**, **6 px preferred**
-- explanation → assignee/developer: **12 px minimum**
+- title → pedagogical explanation: **6 px minimum**, **8 px preferred**
+- explanation → assignee/developer: **14 px minimum**
 - assignee/developer → operational metadata: **8 px minimum**
 - separate metadata row → next metadata row: **6 px minimum**
 - operational metadata → timestamp/source area: **10 px minimum**
 
-Wrapped lines inside one text block use natural line height. Never compress line height until the text looks crowded.
-
 If these gaps do not fit:
 - increase card height
 - reduce cards per slide
+- shorten copy without removing meaning
 - paginate
 
 Do not solve fit by shrinking below these spacing minima.
 
-## 4. PEDAGOGICAL MICROCOPY IS REQUIRED
+## 5. PEDAGOGICAL MICROCOPY IS REQUIRED
 
 Every action/work card that asks the team to do something must explain the project value, not only name the task.
 
-Especially on `⑬ Nästa steg`, every card must answer directly under the title:
+Especially on `13. Nästa steg`, every card must answer directly under the title:
 1. **Vad gäller detta?**
 2. **Vad tillför det projektet / varför är det viktigt?**
 
@@ -98,7 +146,7 @@ Ansvar: Hela teamet
 
 If source evidence does not support the claimed project value, use neutral wording or mark the interpretation as AI-derived according to provenance rules. Never invent impact.
 
-## 5. DEPENDENCIES MUST DRIVE ORDER
+## 6. DEPENDENCIES MUST DRIVE ORDER
 
 When verified dependencies exist, the presentation must make the suggested sequence visible.
 
@@ -126,7 +174,7 @@ Example:
 
 The dependency graph and blocker slides must feed this ordering. Do not list a blocker without letting it influence the plan when it materially affects sequence.
 
-## 6. RENDER / COMPOSITION FAILURE CONDITIONS
+## 7. RENDER / COMPOSITION FAILURE CONDITIONS
 
 The deck fails when any of these are non-zero:
 
@@ -135,11 +183,15 @@ slide_title_below_36pt_count > 0
 slide_title_shrunk_for_fit_count > 0
 body_text_below_role_minimum_count > 0
 card_block_spacing_violation_count > 0
+text_line_spacing_below_minimum_count > 0
+meeting_point_uses_circled_number_count > 0
+meeting_point_number_missing_count > 0
+excessively_heavy_heading_weight_count > 0
 next_step_card_missing_project_value_microcopy_count > 0
 verified_dependency_not_reflected_in_plan_count > 0
 ```
 
-Fix by changing wording, geometry, density or pagination — not by shrinking titles or compressing text.
+Fix by changing wording, geometry, density or pagination — not by shrinking titles, using heavier type, or compressing text.
 
 ## CORE PRINCIPLE
 
@@ -148,5 +200,5 @@ Fix by changing wording, geometry, density or pagination — not by shrinking ti
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.0
+**Version:** 1.1
 **Last updated:** 2026-09-17
