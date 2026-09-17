@@ -5,7 +5,7 @@ metadata:
   type: design-and-content-integrity
   critical: true
   required_before: rendering
-  version: 1.1
+  version: 1.2
 ---
 
 # 🏷️ PROVENANCE & AI LABELING STANDARD
@@ -65,26 +65,49 @@ Labels:
 
 ---
 
-### ? AI-förslag / AI-analys
-Use when the item is inferred or proposed by AI, including:
-- recommendation
+### 🔎 AI-analys
+Use when AI interprets, compares or draws a conclusion from verified source data, without claiming that the team already decided it.
+
+Typical cases:
+- dependency analysis
+- risk interpretation
+- prioritization analysis
+- capacity interpretation
+- identifying a likely blocker or consequence
+- synthesizing patterns across GitHub/project data
+
+Labels:
+- `🔎 AI-analys`
+- `🔎 AI-tolkning av underlaget`
+- `🔎 AI-analys av beroenden`
+
+Prefer analytical wording:
+- `Analys: ...`
+- `AI-bedömning: ...`
+- `Underlaget tyder på ...`
+
+---
+
+### ⭐ AI-förslag
+Use when AI recommends an action, question or next step that is not explicitly written/confirmed by the team.
+
+Typical cases:
 - suggested next step
 - suggested sprint action
 - suggested PL question
-- interpretation/prioritization based on source data
-- reasonable but not explicitly documented action
-
-The question mark is mandatory.
+- suggested order of work
+- suggested mitigation
+- reasonable but undocumented action
 
 Labels:
-- `? AI-förslag`
-- `? AI-analys`
-- `? AI-tolkning av underlaget`
+- `⭐ AI-förslag`
+- `⭐ AI-förslag till PL`
+- `⭐ Förslag baserat på underlaget`
 
-Prefer proposal language:
+Prefer proposal wording:
 - `Förslag: ...`
 - `Rimligt nästa steg: ...`
-- `AI-bedömning: ...`
+- `Förslag till fråga: ...`
 
 ---
 
@@ -95,7 +118,25 @@ Never silently convert unclear origin into fact.
 
 ---
 
-## 2. COLOR MAY NOT REPLACE SOURCE LABELS
+## 2. ICON SEMANTICS — HARD RULE
+
+Use the icons consistently across the whole deck:
+
+- `📅` = verified schedule fact
+- `✅` = verified meeting/team fact
+- `🔎` = AI analysis / interpretation
+- `⭐` = AI proposal / recommendation
+- `⚠` = source/origin not safely verified
+
+Do not use one AI icon for both analysis and proposal.
+
+The audience should be able to distinguish immediately between:
+
+> **Vad vet vi? Vad analyserar AI? Vad föreslår AI?**
+
+---
+
+## 3. COLOR MAY NOT REPLACE SOURCE LABELS
 
 Do **not** use red text to mean fact.
 
@@ -107,9 +148,9 @@ Color may support the source label, but never replace it.
 
 ---
 
-## 3. MIXED CARDS MUST LABEL EACH BLOCK
+## 4. MIXED CARDS MUST LABEL EACH BLOCK
 
-A single card may contain both fact and AI reasoning.
+A single card may contain fact, AI analysis and/or AI proposal.
 
 Example:
 
@@ -119,7 +160,10 @@ Tisdag 22 sep
 📅 Schemafakta
 PL-avstämning 12:30–14:00 i Slack Huddle.
 
-? AI-förslag
+🔎 AI-analys
+Integrationsstatus är den mest sannolika diskussionspunkten utifrån beroendena.
+
+⭐ AI-förslag
 Ta med tydlig status på integration, test och README.
 ```
 
@@ -127,21 +171,23 @@ Do not blend these into one unlabelled paragraph.
 
 ---
 
-## 4. SLIDE ⑫ — SPRINTPLAN
+## 5. SLIDE ⑫ — SPRINTPLAN
 
 Every day card must distinguish:
 
 1. verified schedule facts
 2. verified meeting/team actions
-3. AI-derived planning suggestions
+3. AI-derived analysis
+4. AI-derived planning suggestions
 
-Order inside the card:
+Order inside the card when present:
 
 ```text
 Dag + datum
 📅 Schemafakta
-✅ Mötes-/teamfakta (if any)
-? AI-förslag (if any)
+✅ Mötes-/teamfakta
+🔎 AI-analys
+⭐ AI-förslag
 ```
 
 Only text explicitly present in the schedule is `📅 Schemafakta`.
@@ -153,15 +199,17 @@ Items such as these are normally AI-derived unless separately verified:
 - `Stäng öppna frågetecken`
 - `Verifiera att CTO-materialet har ägare och checkbar status`
 
+Classify each as either analysis (`🔎`) or proposal (`⭐`) based on what the sentence actually does.
+
 ---
 
-## 5. SLIDE ⑬ — NÄSTA STEG
+## 6. SLIDE ⑬ — NÄSTA STEG
 
 Build next steps in this evidence order:
 
 1. explicit actions from meeting protocol
 2. explicit actions from approved/prefilled team input
-3. AI-derived suggestions based on verified project data
+3. AI-derived proposals based on verified project data
 
 Every card must contain its own provenance label.
 
@@ -170,16 +218,24 @@ Verified:
 ✅ Mötesprotokoll
 ```
 
-AI-derived:
+AI-derived recommended action:
 ```text
-? AI-förslag
+⭐ AI-förslag
 ```
 
-If both types occur on one slide, verified actions appear first unless the meeting itself sets another priority.
+If a card explains **why** a step is sensible, that explanatory block may additionally be marked:
+
+```text
+🔎 AI-analys
+```
+
+If both verified and AI-derived items occur on one slide, verified actions appear first unless the meeting itself sets another priority.
+
+Do not present `⭐ AI-förslag` as a confirmed action.
 
 ---
 
-## 6. SLIDE ⑭ — FRÅGOR TILL PL
+## 7. SLIDE ⑭ — FRÅGOR TILL PL
 
 Every question card must identify whether it is a real team question or an AI suggestion.
 
@@ -187,19 +243,25 @@ Verified:
 - `✅ Från mötesprotokoll`
 - `✅ Teamfråga`
 
-AI-derived:
-- `? AI-förslag till PL`
-- `? AI-analys av beroenden`
+AI-proposed question:
+- `⭐ AI-förslag till PL`
+
+AI explanation/interpretation supporting the question:
+- `🔎 AI-analys`
+- `🔎 AI-analys av beroenden`
 
 Urgency groups such as `IDAG-SVAR BEHÖVS` and `NICE-TO-HAVE` do not replace provenance.
 
 ---
 
-## 7. GLOBAL APPLICATION
+## 8. GLOBAL APPLICATION
 
 This rule applies to **all slides**, not only ⑫–⑭.
 
-Whenever content is inferred rather than copied/faithfully summarized from a registered source, mark it as AI-derived.
+Whenever content is inferred rather than copied/faithfully summarized from a registered source, mark it correctly as either:
+
+- `🔎 AI-analys` when AI is interpreting evidence
+- `⭐ AI-förslag` when AI is recommending an action/question
 
 Common examples:
 - sprint goals
@@ -213,7 +275,7 @@ Common examples:
 
 ---
 
-## 8. VISUAL TREATMENT
+## 9. VISUAL TREATMENT
 
 Provenance is compact metadata:
 
@@ -226,9 +288,11 @@ Provenance is compact metadata:
 
 Do not rely only on a slide footer when different cards have different origins.
 
+Icons must remain legible and must not be the only carrier of meaning; always pair with text.
+
 ---
 
-## 9. RENDER GATE
+## 10. RENDER GATE
 
 Required zero-count checks:
 
@@ -236,20 +300,21 @@ Required zero-count checks:
 wcag_aa_violation_count == 0
 color_only_information_count == 0
 sprint_plan_fact_without_source_label_count == 0
-sprint_plan_ai_suggestion_without_question_icon_count == 0
+sprint_plan_ai_content_without_source_icon_count == 0
 next_step_card_without_provenance_count == 0
 pl_question_card_without_provenance_count == 0
-ai_generated_item_without_question_icon_count == 0
+ai_analysis_without_magnifying_glass_count == 0
+ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 mixed_provenance_card_without_block_labels_count == 0
 ```
 
 The audience must always be able to answer:
 
-> Är detta fakta från en källa, något teamet faktiskt har sagt, eller ett förslag från AI?
+> Är detta fakta från en källa, något teamet faktiskt har sagt, en AI-analys eller ett AI-förslag?
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.1
+**Version:** 1.2
 **Last updated:** 2026-09-17
