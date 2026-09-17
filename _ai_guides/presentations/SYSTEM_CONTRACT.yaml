@@ -977,13 +977,26 @@ execution_sequence:
       It is ALWAYS computed from available_hours vs allocated_hours in the presentation pipeline.
 
     why_this_gate_exists: >
+      Capacity is MEETING DATA, not AI-estimated data.
+
       Capacity is mandatory for:
       1. Planning (slide ⑧): "Available | Allocated | Status"
       2. Recommendations (slide ⑫): How much work can we take?
       3. Risk analysis (slide ②): Capacity constraints?
 
-      Missing capacity data makes these slides incomplete or forces hallucination.
+      Capacity values are determined DURING sprint planning meeting (Monday meeting).
+      The presentation cannot be built until the team has established capacity for that week.
+
+      Missing capacity data means: sprint planning meeting has not occurred yet.
+      This is NOT a failure — it is a gate that enforces meeting-first, presentation-after workflow.
+
       This gate catches the problem EARLY (before GitHub collection) with a specific error message.
+      It prevents AI from:
+        ❌ Guessing capacity from GitHub activity
+        ❌ Estimating hours from commit counts
+        ❌ Approximating from "typical" sprint patterns
+
+      Result: Presentations reflect actual team decisions, not AI estimates.
 
   step_2:
     name: "Fetch LIVE GitHub Data — Follow DATA_ACQUISITION_CONTRACT"

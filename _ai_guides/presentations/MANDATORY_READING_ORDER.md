@@ -50,6 +50,14 @@ Do NOT guess, hallucinate, or improvise data.
 
 Do NOT rationalize your way around this rule.
 
+**CRITICAL:** Capacity is MEETING DATA, not estimated data.
+
+If capacity data is missing from the meeting protocol:
+- This means the sprint planning meeting has not occurred yet
+- Do NOT estimate, calculate, or approximate capacity
+- STOP and report: "Capacity data not available — sprint planning meeting required"
+- This is not a failure; it is the system working correctly
+
 **If you commit to following this rule exactly — continue to step 1.**
 
 **If you plan to ignore this rule — STOP now.**
