@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.0
+version: 4.1
 last_updated: 2026-09-17
 base_path: "_ai_guides/presentations"
 
@@ -15,8 +15,12 @@ core_principles:
   - "Never guess project data. Unverified data is marked unknown/incomplete."
   - "Never present AI inference as source fact or confirmed team decision."
   - "Cards adapt to content; content is never clipped to preserve a grid."
+  - "Slide titles are fixed at 36 pt minimum and are never shrunk to solve layout pressure."
+  - "Normal/card text starts at preferred larger sizes and is reduced only when required within defined ranges."
   - "Responsive typography is deliberate within defined ranges; automatic shrink-to-fit is forbidden."
-  - "If accessible minimum sizes still do not fit, reduce card density or paginate."
+  - "If accessible/readability minimum sizes still do not fit, reduce card density or paginate."
+  - "Required pedagogical/project-value microcopy is never removed to save space."
+  - "Verified dependencies must influence planning order when they materially affect sequence."
   - "All source/provenance meaning uses icon + text; color alone is forbidden."
 
 ###############################################################################
@@ -51,21 +55,26 @@ authority:
 
   level_3_global_visual:
     file: "design/VISUAL_DESIGN_MANDATORY.md"
-    owns: "global theme, typography roles/ranges, layout limits, card grid behavior"
+    owns: "global theme, slide-title role, layout limits, card grid behavior"
 
-  level_4_card_component:
+  level_4_readability:
+    file: "design/READABILITY_HARD_RULES.md"
+    owns: "fixed 36 pt slide titles, larger text minima, block spacing, pedagogical microcopy, dependency-aware ordering"
+    rule: "No lower authority may weaken these readability minima."
+
+  level_5_card_component:
     file: "design/CARD_COMPONENT_STANDARD.md"
     owns: "card internals, metadata sizes, timestamps, owner/review/merge layout, spacing"
 
-  level_5_provenance:
+  level_6_provenance:
     file: "design/PROVENANCE_AND_AI_LABELING.md"
     owns: "schema facts vs team facts vs AI suggestions/analysis"
 
-  level_6_overflow:
+  level_7_overflow:
     file: "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
     owns: "mechanical fit, responsive density, pagination, collision prevention"
 
-  level_7_slide_content:
+  level_8_slide_content:
     file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
     owns: "slide purpose, fields, ordering and content requirements"
     does_not_own: "visual constants, card internals, provenance semantics"
@@ -101,6 +110,7 @@ execution_receipt:
     - "data/DATA_ACQUISITION_CONTRACT.yaml"
     - "design/ACCESSIBILITY_NEURODIVERSITY.md"
     - "design/VISUAL_DESIGN_MANDATORY.md"
+    - "design/READABILITY_HARD_RULES.md"
     - "design/CARD_COMPONENT_STANDARD.md"
     - "design/PROVENANCE_AND_AI_LABELING.md"
     - "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
@@ -226,6 +236,12 @@ analysis_and_recommendations:
 ###############################################################################
 responsive_visual_system:
   absolute_accessibility: "WCAG 2.2 AA"
+  readability_authority: "design/READABILITY_HARD_RULES.md"
+
+  slide_title:
+    preferred_pt: 36
+    minimum_pt: 36
+    shrink_for_fit: false
 
   card_style:
     surface: "dark glass-like card"
@@ -234,29 +250,35 @@ responsive_visual_system:
     content_driven_height: true
 
   typography:
-    source_of_truth: "design/CARD_COMPONENT_STANDARD.md"
+    source_of_truth: "design/READABILITY_HARD_RULES.md + design/CARD_COMPONENT_STANDARD.md"
     automatic_shrink_to_fit: false
     rule: >
-      Start at preferred sizes; step down deliberately only within the role's
-      allowed range. Never go below component minimums.
+      Start normal/card text at preferred sizes; step down deliberately only when
+      required and only within the role's allowed range. Never go below the
+      readability/component minimums. Slide titles never shrink.
 
   fit_order:
+    - "keep slide title fixed at 36 pt or larger"
+    - "start normal/card text at preferred sizes"
     - "natural wrapping"
-    - "deliberate typography reduction within permitted range"
-    - "canonical compact spacing"
+    - "deliberate normal/card typography reduction only when required and within permitted range"
+    - "preserve hard minimum block spacing"
     - "card grows/reflows"
     - "reduce grid density"
     - "continuation slide"
 
   forbidden:
+    - "shrinking slide title below 36 pt"
     - "text clipping"
     - "text/card overlap"
     - "hidden required content"
-    - "fonts below component minimum"
+    - "fonts below component/readability minimum"
+    - "spacing below readability hard minimum"
     - "contrast below WCAG AA"
     - "color-only meaning"
     - "automatic shrink-to-fit"
     - "removing provenance labels to save space"
+    - "removing pedagogical/project-value microcopy to save space"
 
 ###############################################################################
 # EXECUTION SEQUENCE
@@ -270,7 +292,12 @@ execution_sequence:
     name: "Instruction audit"
     must_confirm:
       - "WCAG 2.2 AA is absolute"
+      - "slide title fixed at 36 pt minimum and never shrunk for fit"
+      - "readability hard rules loaded"
+      - "normal/card text starts at preferred size and is reduced only when required"
       - "responsive card typography ranges loaded"
+      - "pedagogical microcopy requirement loaded"
+      - "dependency-aware planning rule loaded"
       - "provenance rules loaded"
       - "template is reference only"
       - "same repository ref used for all internal files"
@@ -291,7 +318,8 @@ execution_sequence:
     name: "Compose slide content"
     rule: >
       Follow SLIDE_DETAIL_SPEC for fields/purpose and provenance authority for
-      source identity. Do not invent missing content.
+      source identity. Required next-step microcopy and dependency-aware ordering
+      must be preserved. Do not invent missing content.
 
   step_7:
     name: "Build internal presentation"
@@ -323,8 +351,10 @@ artifact_gates:
       - "build_gate PASS"
       - "render_gate PASS"
       - "WCAG_2_2_AA PASS"
+      - "READABILITY_HARD_RULES PASS"
       - "PROVENANCE_AND_AI_LABELING PASS"
       - "OVERFLOW_AND_COLLISION PASS"
+      - "DEPENDENCY_AWARE_PLAN PASS"
     default_format: "PDF"
     editable_format: "PPTX only when explicitly requested"
 
@@ -341,6 +371,13 @@ render_acceptance:
     text_clipping_count: 0
     out_of_bounds_element_count: 0
     font_below_component_minimum_count: 0
+    slide_title_below_36pt_count: 0
+    slide_title_shrunk_for_fit_count: 0
+    body_text_below_role_minimum_count: 0
+    card_block_spacing_violation_count: 0
+    next_step_card_missing_project_value_microcopy_count: 0
+    verified_dependency_not_reflected_in_plan_count: 0
+    dependency_order_missing_when_evidence_exists_count: 0
     missing_required_card_row_count: 0
     uneven_row_spacing_caused_by_vertical_justification: 0
     full_team_outline_count: 0
@@ -350,7 +387,9 @@ render_acceptance:
 
   failure_response:
     - "STOP delivery"
-    - "Fix accessibility/content/layout/provenance issue"
+    - "Fix accessibility/readability/content/layout/provenance issue"
+    - "Keep slide titles at 36 pt minimum"
+    - "Restore pedagogical microcopy / dependency order if missing"
     - "Adapt responsive card geometry"
     - "Add continuation slides if needed"
     - "Rerender"
@@ -367,8 +406,9 @@ maintenance:
   conflict_resolution:
     order:
       - "SYSTEM_CONTRACT for orchestration"
-      - "ACCESSIBILITY for WCAG/readability"
+      - "ACCESSIBILITY for WCAG boundary"
       - "VISUAL_DESIGN for global visual rules"
+      - "READABILITY_HARD_RULES for fixed title size, text minima, spacing, microcopy and dependency-aware order"
       - "CARD_COMPONENT for card internals"
       - "PROVENANCE for fact/team/AI identity"
       - "OVERFLOW_GUARD for fit/pagination"
