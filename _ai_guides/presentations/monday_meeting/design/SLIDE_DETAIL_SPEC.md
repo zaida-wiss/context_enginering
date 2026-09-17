@@ -62,8 +62,11 @@ Every inferred recommendation/analysis follows `PROVENANCE_AND_AI_LABELING.md`.
 Especially:
 - `📅 Schemafakta` = explicitly in registered school schedule
 - `✅ Mötesprotokoll` / approved team input = explicitly stated by team/source
-- `? AI-förslag` / `? AI-analys` = model-derived
+- `🔎 AI-analys` = model-derived interpretation, synthesis or assessment
+- `⭐ AI-förslag` = model-derived recommendation, suggested action or suggested question
 - `⚠ Källa behöver verifieras` = origin unclear
+
+Analysis and proposals must not share the same AI icon.
 
 ## Mandatory planning support
 
@@ -79,14 +82,17 @@ The recommendation must answer, as far as evidence permits:
 5. **Vilken blocker/risk styr ordningen?** — cite the verified dependency/risk that motivates the suggested order.
 6. **Hur påverkar kapacitet/estimering planen?** — use numeric capacity/estimate only when explicitly available in registered sources; otherwise use qualitative load-balancing only.
 
-The recommendation must be visibly labeled `? AI-förslag` or `? AI-analys`.
+Use `🔎 AI-analys` for the reasoning and `⭐ AI-förslag` for the recommended action/order.
 
 ### Required team planning format
 
 When there is enough verified data, each team should have a compact planning block using this logical order:
 
 ```text
-? AI-förslag — planeringsordning
+🔎 AI-analys
+[Short evidence-based explanation of the blocker/risk/order]
+
+⭐ AI-förslag — planeringsordning
 1. Först: [issue/work item] — [suggested person if supportable]
    Varför: [blocker/dependency/deadline/core-flow reason]
 2. Parallellt: [issue/work item] — [suggested person if supportable]
@@ -275,7 +281,7 @@ Fields:
 - affected area/team when relevant
 
 ### Decision candidates
-These are AI suggestions and MUST use `? AI-förslag`/`? AI-analys` provenance.
+These are AI suggestions and MUST use `⭐ AI-förslag`; explanatory reasoning may use `🔎 AI-analys`.
 
 Fields:
 - question-form candidate
@@ -300,7 +306,8 @@ For each priority item include when evidence exists:
 - verified blocker/risk
 - confirmed action if documented
 
-If consequence/action is AI-derived rather than explicitly sourced, mark that block `? AI-analys` or `? AI-förslag`.
+If consequence is AI-derived, mark it `🔎 AI-analys`.
+If an action is AI-derived, mark it `⭐ AI-förslag`.
 
 Do not invent progress percentages, days of delay or actions.
 
@@ -321,13 +328,15 @@ Each work-item card includes the verified fields available from issue/PR/branch 
 
 ### Mandatory Frontend planning recommendation
 
-When enough evidence exists, include a `? AI-förslag — planeringsordning` block that:
+When enough evidence exists, include a `⭐ AI-förslag — planeringsordning` block that:
 - prioritizes pending review/merge and blocker-removing work before starting unnecessary new WIP
 - identifies a suggested person only when supported by assignee/branch/recent-work evidence
 - identifies parallel independent work for another available person when possible
 - explicitly states what should wait if it depends on Backend/API/integration or another unfinished item
 - incorporates verified tests, integration readiness, deadline and risk information
 - uses verified numeric estimate/capacity only when available; otherwise says that numeric capacity/estimate is not verified
+
+Use `🔎 AI-analys` separately when explaining why the ordering is recommended.
 
 ---
 
@@ -345,13 +354,15 @@ May additionally include verified API-contract/integration status when relevant:
 
 ### Mandatory Backend planning recommendation
 
-When enough evidence exists, include a `? AI-förslag — planeringsordning` block that:
+When enough evidence exists, include a `⭐ AI-förslag — planeringsordning` block that:
 - puts work that unlocks Frontend/Native or the critical end-to-end flow before isolated cleanup
 - considers API contract/endpoints, auth/security chain, JNA bridge and integration dependencies when present
 - suggests parallel ownership only when tasks can proceed independently without creating avoidable merge/code-area contention
 - calls out work that should wait because its prerequisite is not ready
 - relates the order to verified deadline/risk/blocker evidence
 - uses numeric capacity/estimation only when verified
+
+Use `🔎 AI-analys` separately when explaining the dependency logic.
 
 ---
 
@@ -369,11 +380,13 @@ May additionally include verified JNA/native integration status:
 
 ### Mandatory Native planning recommendation
 
-When enough evidence exists, include a `? AI-förslag — planeringsordning` block that:
+When enough evidence exists, include a `⭐ AI-förslag — planeringsordning` block that:
 - prioritizes interface/JNA/contract work that enables integration before expanding non-critical module scope when the dependency evidence supports that order
 - proposes a sensible split between independent module work (for example backtest vs FX/risk) when verified assignments and dependencies permit it
 - identifies what can continue with mocks while waiting and what truly depends on integration
 - includes verified risk/deadline/capacity/estimate information and never invents numeric values
+
+Use `🔎 AI-analys` separately when explaining the dependency logic.
 
 ---
 
@@ -385,15 +398,42 @@ Purpose: show the critical dependency chains affecting current work.
 
 Include only critical chains.
 
-Each node:
-- issue number
+Every dependency node MUST contain, in this logical order:
+- issue number when one exists
 - short title
+- **short grounded project-value explanation directly under the title** answering `Vad löser detta i projektet?`
 - team
-- verified state
+- verified state/status
+
+Project-value explanation rules:
+- one short sentence, normally 6–14 words
+- grounded in issue/PR/dependency evidence
+- never invent technical impact
+- if evidence is insufficient, use exactly: `Bidrag till projektet behöver verifieras.`
+
+Canonical content example:
+
+```text
+API-kontrakt
+Definierar endpoints + payload för integrationen.
+🔴 behöver låsas
+```
+
+```text
+Riktig Java HTTP
+Byter mock mot riktig Backend-kommunikation.
+⏳ väntar
+```
+
+```text
+#106 HttpOnly auth
+Flyttar auth till säkrare cookie-baserad lösning.
+⏳ efter integration
+```
 
 Arrows represent verified dependency direction.
 
-If dependency direction is inferred by AI rather than explicitly supported, mark the analysis accordingly.
+If dependency direction is inferred by AI rather than explicitly supported, mark the interpretation `🔎 AI-analys`.
 
 The dependency graph must feed the planning recommendations on ③–⑤ and ⑨. If a blocker appears here but does not influence proposed ordering anywhere, re-check the prioritization logic.
 
@@ -405,7 +445,7 @@ Fields:
 - affected PR/work item
 - finding category
 - verified status
-- next confirmed action, or AI-labeled suggestion
+- next confirmed action, or `⭐ AI-förslag` when model-derived
 
 ---
 
@@ -421,7 +461,8 @@ Per risk:
 - owner if confirmed
 - status
 
-If risk consequence or mitigation is model-derived, mark the relevant block `? AI-analys` / `? AI-förslag`.
+If risk consequence is model-derived, mark it `🔎 AI-analys`.
+If mitigation is model-derived, mark it `⭐ AI-förslag`.
 
 Current risks must influence planning suggestions when they materially change sequence, WIP or parallelization. Do not list risks as isolated information if they should change what the team does next.
 
@@ -444,7 +485,7 @@ POST-MEETING:
 - capacity values must come from confirmed meeting/team planning data
 - if required values are missing, STOP according to system contract
 
-AI may suggest qualitative load-balancing only when based on verified inputs and labeled `? AI-förslag`.
+AI may suggest qualitative load-balancing only when based on verified inputs and labeled `⭐ AI-förslag`; reasoning behind that suggestion may be `🔎 AI-analys`.
 
 Required qualitative planning questions when numeric data is missing:
 - Is one person already carrying the critical-path task plus reviews?
@@ -470,6 +511,8 @@ Verified section may include:
 
 Unless the team already has a complete confirmed sequence, include an AI-labeled recommendation synthesized from slides ③–⑧.
 
+Use `🔎 AI-analys` for why the ordering is sensible and `⭐ AI-förslag` for the proposed order/action.
+
 For each team, include where evidence permits:
 - **1 — Först:** highest-leverage blocker/deadline/core-flow item
 - **2 — Parallellt:** independent work/review/help path
@@ -483,8 +526,6 @@ AI-derived section may additionally include:
 - suggested scope trade-off
 - suggested pairing/review support
 - suggested handoff between teams
-
-Every AI-derived item uses `? AI-förslag` or `? AI-analys`.
 
 Do not invent numeric estimates.
 
@@ -505,7 +546,8 @@ Decision candidate fields:
 - question
 - evidence
 - impact
-- `? AI-förslag` if model-derived
+- `⭐ AI-förslag` if model-derived
+- `🔎 AI-analys` when explanatory reasoning is model-derived
 
 Never convert a code pattern into a confirmed decision without source evidence.
 
@@ -529,7 +571,8 @@ Each goal should identify:
 Goals should be consistent with the dependency-aware ordering on ⑨. Do not set a goal that requires blocked work while ignoring its prerequisite.
 
 Do not state feasibility as fact unless based on verified capacity data.
-AI feasibility analysis must be labeled `? AI-analys`.
+AI feasibility analysis must be labeled `🔎 AI-analys`.
+AI-generated goals/recommendations must use `⭐ AI-förslag`.
 
 ---
 
@@ -550,7 +593,10 @@ Canonical content order:
 ✅ Mötes-/teamfakta
 [Only if explicitly documented]
 
-? AI-förslag
+🔎 AI-analys
+[Optional interpretation of verified project data]
+
+⭐ AI-förslag
 [Optional planning suggestion inferred from project data]
 ```
 
@@ -568,7 +614,7 @@ Examples that are NOT schedule facts unless explicitly stated:
 
 When a day contains project work, the AI suggestion should, where useful, reference the dependency-aware plan from ⑨ instead of using generic phrases such as `jobba vidare`.
 
-Never blend schedule facts and AI suggestions into one unlabeled paragraph.
+Never blend schedule facts, AI analysis and AI suggestions into one unlabeled paragraph.
 
 ---
 
@@ -587,7 +633,10 @@ Verified action example source label:
 - `✅ Mötesprotokoll`
 
 AI suggestion source label:
-- `? AI-förslag`
+- `⭐ AI-förslag`
+
+AI analytical explanation when useful:
+- `🔎 AI-analys`
 
 Fields when available:
 - concise action
@@ -609,8 +658,8 @@ Every question is its own card and must include provenance.
 
 Question sources:
 - `✅ Från mötesprotokoll` / `✅ Teamfråga`
-- `? AI-förslag till PL`
-- `? AI-analys av beroenden`
+- `⭐ AI-förslag till PL` for an AI-generated question
+- `🔎 AI-analys av beroenden` for the reasoning/context explaining why a question matters
 
 Each card contains:
 - question
@@ -652,8 +701,10 @@ unverified_ids_invented_count == 0
 unverified_deadlines_invented_count == 0
 unverified_owners_invented_count == 0
 unverified_numeric_estimates_invented_count == 0
-ai_generated_item_without_question_icon_count == 0
+ai_analysis_without_magnifying_glass_count == 0
+ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
+missing_dependency_project_value_microcopy_count == 0
 team_planning_recommendation_present_when_evidence_allows == true
 blockers_and_risks_reflected_in_priority_order == true
 numeric_capacity_or_estimate_has_verified_source == true
