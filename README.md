@@ -34,6 +34,7 @@ Do not derive presentation rules from the project repository.
 | What data sources are allowed? | [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) |
 | What are the absolute WCAG/NPF boundaries? | [`ACCESSIBILITY_NEURODIVERSITY.md`](_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md) |
 | How does the deck look globally? | [`VISUAL_DESIGN_MANDATORY.md`](_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md) |
+| What are the hard readability/typography rules? | [`READABILITY_HARD_RULES.md`](_ai_guides/presentations/design/READABILITY_HARD_RULES.md) |
 | How must cards behave internally? | [`CARD_COMPONENT_STANDARD.md`](_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md) |
 | How do facts/team input differ from AI suggestions? | [`PROVENANCE_AND_AI_LABELING.md`](_ai_guides/presentations/design/PROVENANCE_AND_AI_LABELING.md) |
 | How is responsive fit/pagination handled? | [`LAYOUT_OVERFLOW_GUARD.md`](_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md) |
@@ -53,28 +54,34 @@ Use this order when instructions conflict:
 1. `SYSTEM_CONTRACT.yaml` — orchestration/gates
 2. `ACCESSIBILITY_NEURODIVERSITY.md` — absolute accessibility boundary
 3. `VISUAL_DESIGN_MANDATORY.md` — global visual rules
-4. `CARD_COMPONENT_STANDARD.md` — card internals
-5. `PROVENANCE_AND_AI_LABELING.md` — source/fact/AI identity
-6. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit/pagination
-7. `SLIDE_DETAIL_SPEC.md` — slide content
-8. `TEMPLATE_REFERENCE.html` — reference only
+4. `READABILITY_HARD_RULES.md` — hard typography, line spacing and meeting-number readability
+5. `CARD_COMPONENT_STANDARD.md` — card internals
+6. `PROVENANCE_AND_AI_LABELING.md` — source/fact/AI identity
+7. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit/pagination
+8. `SLIDE_DETAIL_SPEC.md` — slide content
+9. `TEMPLATE_REFERENCE.html` — reference only
 
 If two authorities appear to own the same rule and disagree, fix the documentation before rendering.
 
 ---
 
-## 🆕 Current card contract
+## 🆕 Current card + readability contract
 
-The detailed values live only in `CARD_COMPONENT_STANDARD.md`. At a high level:
+The detailed values live in `READABILITY_HARD_RULES.md` and `CARD_COMPONENT_STANDARD.md`. At a high level:
 
 - pedagogical explanation sits directly under the title
-- verified assignee/developer is visually prominent
-- separate semantic text blocks always keep minimum spacing
+- titles use a clear sans-serif and must not become visually extra-heavy
+- ordinary body/support text is regular weight with open line spacing
+- meeting-point headers use **ordinary digits**, e.g. `✏️ 2. Nuläge ...`; circled-number glyphs such as `②` are not rendered
+- verified person identity uses first name only and is visually easy to scan
+- **name/identity and verification/provenance are anchored at the bottom of every card when present**
+- separate semantic text blocks always keep minimum spacing and multiline text keeps natural line height
 - internal evidence labels such as `GitHub · nivå 1` are not shown in meeting cards
 - merger/reviewer names are printed only when verified; unknown values stay blank
-- timestamps are compact, one line, discreet and right-aligned
+- timestamps are compact, one line, discreet and bottom-most when present
 - automatic shrink-to-fit is forbidden
-- if accessible content does not fit, cards reflow or the slide paginates
+- if accessible content does not fit, cards reflow, grid density is reduced or the slide paginates
+- rendered delivery fails if text overlaps, line spacing is compressed or the bottom information zone collides with body text
 
 This README intentionally does not duplicate numeric card spacing/type rules.
 
