@@ -36,9 +36,9 @@ recurring_meetings:
       type: "lunch"
 
   thursday:
-    - time: "09:00-17:00"
-      type: "project_work"
-      description: "Project work day"
+    - time: "15:00-15:30"
+      type: "uppföljningsmöte innan helgen"
+      description: "Slack Huddle"
 
   friday:
     - time: "08:00-10:00"
