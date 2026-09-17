@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monday Meeting — Layout Reference</title>
+  <title>Monday Meeting — Modern Card Reference</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -13,76 +13,80 @@
       color: #FFFFFF;
       padding: 32px;
     }
-    .notice {
-      max-width: 1200px;
-      margin: 0 auto 32px auto;
-      padding: 20px;
-      border: 2px solid #CBD5E1;
-      border-radius: 16px;
-      background: #18233D;
-      font-size: 20px;
-      line-height: 1.8;
-    }
+    .notice,
     .slide {
       max-width: 1200px;
       margin: 0 auto 48px auto;
+    }
+    .notice {
+      padding: 20px 22px;
+      border: 1px solid #334155;
+      border-radius: 18px;
+      background: #18233D;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.16);
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    .slide {
       padding: 36px;
       background: #0F1830;
-      border: 1px solid #334155;
-      border-radius: 16px;
     }
     h1 {
-      margin: 0 0 28px 0;
+      margin: 0 0 14px 0;
       font-size: 32px;
       line-height: 1.25;
     }
     h2 {
-      margin: 0 0 20px 0;
+      margin: 0 0 24px 0;
       font-size: 22px;
       line-height: 1.4;
+      color: #CBD5E1;
     }
-    .stack {
-      display: flex;
-      flex-direction: column;
+    .grid-3x2,
+    .grid-2x2 {
+      display: grid;
       gap: 20px;
+      align-items: stretch;
     }
+    .grid-3x2 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2x2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
     .card {
       background: #18233D;
-      border: 2px solid #334155;
-      border-radius: 16px;
+      border: 1px solid #334155;
+      border-radius: 18px;
       padding: 20px;
-      min-height: min-content;
       height: auto;
+      min-height: min-content;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.16);
     }
     .card.frontend { border-left: 6px solid #2DD4BF; }
     .card.backend  { border-left: 6px solid #FF4FA3; }
     .card.native   { border-left: 6px solid #A855F7; }
     .card.cross    { border-left: 6px solid #CBD5E1; }
+    .card.other    { border-left: 6px solid #94A3B8; }
+
     .title {
       font-size: 20px;
-      line-height: 1.8;
-      margin-bottom: 10px;
+      line-height: 1.45;
+      margin-bottom: 12px;
+      font-weight: 700;
     }
     .secondary {
       font-size: 18px;
-      line-height: 1.8;
+      line-height: 1.45;
       color: #CBD5E1;
+      margin-bottom: 10px;
     }
     .meta {
-      margin-top: 10px;
       font-size: 14px;
-      line-height: 1.5;
-      color: #CBD5E1;
-    }
-    .grid-3x2 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      line-height: 1.4;
+      color: #94A3B8;
     }
     .rule {
       margin-top: 24px;
       font-size: 18px;
-      line-height: 1.8;
+      line-height: 1.5;
       color: #CBD5E1;
     }
   </style>
@@ -90,37 +94,70 @@
 <body>
   <div class="notice">
     <strong>REFERENCE ONLY.</strong><br>
-    Authority order: ACCESSIBILITY_NEURODIVERSITY.md → VISUAL_DESIGN_MANDATORY.md → LAYOUT_OVERFLOW_GUARD.md → SLIDE_DETAIL_SPEC.md.<br>
-    If content does not fit: create a continuation slide. Never shrink, clip, overlap, reduce padding, or change a stacked slide into columns.
+    Modern card language is mandatory. Work items are never rendered as plain rows or list bands.
+    When content does not fit: create continuation slides. Never shrink, clip, overlap, or replace cards with rows.
   </div>
 
   <section class="slide">
     <h1>✏️①A Mergade PR:er sedan förra mötet</h1>
-    <h2>Godkänt grid-undantag: 3 × 2, max 6 kort per fysisk slide</h2>
+    <h2>3 × 2 card grid · max 6 cards per fysisk slide</h2>
     <div class="grid-3x2">
       <div class="card frontend">
         <div class="title">#105 · Establish frontend test foundation</div>
-        <div class="secondary">Zaida · 15 sep 09:59</div>
-        <div class="meta">Merged by: Björn · Reviewed by: Björn</div>
+        <div class="secondary">Zaida · Frontend</div>
+        <div class="meta">Merged 15 sep · Reviewed by Björn</div>
       </div>
       <div class="card frontend">
         <div class="title">#101 · API client with mock adapter</div>
-        <div class="secondary">Tomac · 14 sep 18:13</div>
-        <div class="meta">Merged by: verifierad GitHub-användare · Reviewed by: verifierad reviewer</div>
+        <div class="secondary">Tomac · Frontend</div>
+        <div class="meta">Merged 14 sep · reviewer verifierad i GitHub</div>
       </div>
       <div class="card backend">
         <div class="title">#111 · Java development environment</div>
-        <div class="secondary">Backend · 16 sep 18:40</div>
-        <div class="meta">Collection work merged to develop</div>
+        <div class="secondary">Backend</div>
+        <div class="meta">Merged to develop</div>
+      </div>
+      <div class="card frontend">
+        <div class="title">#100 · Linked target allocation inputs</div>
+        <div class="secondary">Björn · Frontend</div>
+        <div class="meta">Merged 14 sep</div>
       </div>
     </div>
-    <div class="rule">Om fler än 6 kort finns: skapa ①A-2. Lägg aldrig till en tredje rad.</div>
+    <div class="rule">Om fler än 6 kort finns: skapa ①A-2. Aldrig en tredje rad.</div>
+  </section>
+
+  <section class="slide">
+    <h1>✏️①D Pågår denna vecka</h1>
+    <h2>2 × 2 modern card grid · max 4 cards per fysisk slide</h2>
+    <div class="grid-2x2">
+      <div class="card frontend">
+        <div class="title">◐ #85 · Responsive shared header</div>
+        <div class="secondary">Björn · Frontend</div>
+        <div class="meta">Branch: 85-frontend-responsive-shared-header-and-navigation</div>
+      </div>
+      <div class="card frontend">
+        <div class="title">◐ #82 · Portfolio via usePortfolio</div>
+        <div class="secondary">Tomac · Frontend</div>
+        <div class="meta">PR #109 · väntar på review/merge</div>
+      </div>
+      <div class="card backend">
+        <div class="title">◐ Backend integration work</div>
+        <div class="secondary">Rasha / Erik · Backend</div>
+        <div class="meta">Visa verifierad issue/branch/status här</div>
+      </div>
+      <div class="card native">
+        <div class="title">◐ Native module work</div>
+        <div class="secondary">Pär / Henrik · Native</div>
+        <div class="meta">Visa verifierad issue/branch/status här</div>
+      </div>
+    </div>
+    <div class="rule">Femte kortet går på ①D-2. Ingen textlista eller rad-layout får användas.</div>
   </section>
 
   <section class="slide">
     <h1>✏️①E Tilldelat / backlog</h1>
-    <h2>Standardlayout: fullbredd, en kolumn, max 4 kort</h2>
-    <div class="stack">
+    <h2>2 × 2 modern card grid · max 4 cards per fysisk slide</h2>
+    <div class="grid-2x2">
       <div class="card native">
         <div class="title">○ #16 · Basic back-testing module</div>
         <div class="secondary">Pär + Henrik</div>
@@ -136,8 +173,13 @@
         <div class="secondary">Pär + Henrik</div>
         <div class="meta">⏳ Tilldelat · branch ej verifierad</div>
       </div>
+      <div class="card frontend">
+        <div class="title">○ #89 · MVP core-flow E2E test</div>
+        <div class="secondary">Frontend</div>
+        <div class="meta">⏳ Tilldelat / väntar på stabila beroenden</div>
+      </div>
     </div>
-    <div class="rule">Nästa item går på ①E-2 om höjden inte räcker. Två kolumner är förbjudet för ①E.</div>
+    <div class="rule">Nästa item går på ①E-2. Cards behålls; layouten blir aldrig en radlista.</div>
   </section>
 </body>
 </html>
