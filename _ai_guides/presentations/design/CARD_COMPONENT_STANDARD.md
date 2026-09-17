@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.4
+  version: 1.5
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -16,10 +16,11 @@ It owns:
 - card-internal typography
 - order of card content
 - spacing between card text blocks
-- assignee/developer emphasis
+- person/team identity emphasis
 - merge/review metadata presentation
 - branch/status metadata presentation
 - visible timestamps
+- card-internal visual hierarchy
 - card-internal responsive behavior
 
 It does **not** own global slide colors, slide structure, data acquisition, evidence classification or slide selection.
@@ -58,15 +59,43 @@ Recommended left accent width: visually equivalent to **4–6 px**.
 
 ---
 
-# 2. REQUIRED CONTENT ORDER
+# 2. UNIVERSAL CARD VISUAL HIERARCHY — APPLIES TO ALL CARDS
+
+This hierarchy applies to **every card in the entire presentation**, including Issue, PR, Merge, action, next-step, risk, decision, sprint-plan, capacity, dependency, question and informational cards.
+
+Visual priority must be:
+
+1. **Card title** — primary text color
+2. **Person/team identity row when present** — same primary text color as title
+3. **Relevant timestamp when present** — same primary text color as title
+4. **Pedagogical explanation/supporting text** — secondary, calmer color
+5. **Operational metadata/status/branch/provenance** — muted/quiet color while still WCAG-AA compliant
+
+Hard rules:
+- title, person/team identity and relevant timestamp form the strongest text layer
+- supporting explanation must be visibly calmer than title/identity/timestamp
+- metadata must be more discreet than the supporting explanation unless a blocker/critical semantic requires emphasis
+- do not use accent/team colors for ordinary metadata merely to attract attention
+- secondary/quiet text must blend more gently into the card surface while still meeting WCAG contrast requirements
+- never reduce contrast below WCAG AA to make text look quieter
+
+The intended focus order is:
+
+```text
+Rubrik → namn/team + relevant tid → pedagogisk förklaring → metadata/provenance
+```
+
+---
+
+# 3. REQUIRED CONTENT ORDER
 
 For Issue/PR/Merge/action cards, use this visual order:
 
 1. **Title**
 2. **Pedagogical contribution / project-value line** — directly under the title
-3. **Assignee/developer + team** when relevant
+3. **Person/team identity row** when relevant
 4. **Operational metadata** — PR/branch/status or merge/review
-5. **Timestamp** — when relevant
+5. **Timestamp** — only when relevant according to the timestamp standard
 
 Do not insert decorative or provenance rows between title and pedagogical explanation.
 
@@ -78,7 +107,32 @@ For action and next-step cards, the pedagogical line must answer:
 
 ---
 
-# 3. RESPONSIVE TYPOGRAPHY — START LARGE, NEVER AUTO-SHRINK
+# 4. PERSON / TEAM IDENTITY ROW — NO LEGACY LABELS
+
+Canonical visible format is the identity itself, not a sentence label.
+
+Examples:
+- `Zaida · Frontend`
+- `Tomac · Frontend`
+- `Rasha · Backend`
+- `Henrik · Native`
+- `Hela teamet`
+
+Hard rules:
+- do **not** prefix the identity row with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent legacy wording
+- when team is known and useful, use `Namn · Team`
+- the **entire identity row**, including the team name, uses the same primary text color as the card title
+- use semibold/bold weight
+- the row must be easier to scan than branch/status/provenance metadata
+- do not infer a developer from commit authorship when project attribution evidence says otherwise
+
+Typography:
+- preferred: **14–15 pt**
+- minimum: **13 pt**
+
+---
+
+# 5. RESPONSIVE TYPOGRAPHY — START LARGE, NEVER AUTO-SHRINK
 
 General principle:
 1. start at the preferred size
@@ -92,7 +146,7 @@ Do not choose a smaller size merely because it technically fits.
 - preferred: **19–20 pt**
 - minimum: **18 pt**
 - bold
-- main text color from global palette
+- main/primary text color from global palette
 
 ## Pedagogical contribution / project-value line
 This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
@@ -100,25 +154,10 @@ This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
 - preferred: **14–15 pt**
 - minimum: **13 pt**
 - regular
-- readable secondary text color
+- secondary text color; deliberately calmer than title/identity/timestamp
 - normally 1–3 visual lines when needed for pedagogical clarity
 - placed immediately under the title
 - no extra paragraph gap between title and explanation
-
-## Assignee/developer + team
-Examples:
-- `Tomac · Frontend`
-- `Rasha · Backend`
-- `Henrik · Native`
-
-Rules:
-- preferred: **14–15 pt**
-- minimum: **13 pt**
-- semibold/bold
-- **the verified assignee/developer name uses the same primary text color as the card title**
-- the team name may use secondary text color
-- this row must be visually easier to find than branch/status metadata
-- do not infer a developer from commit authorship when issue-assignee evidence says otherwise; use the project attribution rules
 
 ## Operational metadata
 Examples:
@@ -131,7 +170,8 @@ Style:
 - preferred: **12–13 pt**
 - minimum: **11 pt**
 - regular
-- muted but WCAG-AA-safe color
+- metadata/quiet text color from the global palette
+- visually subordinate to title, identity, timestamp and pedagogical explanation
 
 ### Merge/review identity rule
 Only show a person's name when the identity is verified by source evidence.
@@ -162,19 +202,45 @@ Forbidden visible wording includes:
 
 Verification state belongs in the internal data/audit layer, not in the meeting card.
 
-## Timestamp / source microcopy
+## Timestamp typography
 - preferred: **11–12 pt**
 - minimum: **11 pt**
-- quiet WCAG-AA-safe text color
-- timestamp should be visually subordinate to all work content
+- uses the **same primary text color as the card title**
+- visually compact; prominence comes from color consistency, not large size
 
 Never go below 11 pt.
 
 ---
 
-# 4. TIMESTAMP STANDARD
+# 6. TIMESTAMP STANDARD — RELEVANT TIME ONLY
 
-When a timestamp is useful, show it as **one compact line aligned to the lower-right of the card**.
+A timestamp is not generic activity decoration. It is shown only when the time itself helps the meeting understand delivery or current status.
+
+## Merged PR cards
+Show the **merge timestamp**.
+
+Do not substitute:
+- PR creation time
+- latest commit time
+- issue creation time
+
+when the card represents a completed merge.
+
+## Active/open work cards
+Do **not** automatically show:
+- PR opened/created timestamp
+- latest commit timestamp
+- issue created timestamp
+- issue updated timestamp
+
+A timestamp may appear only when it materially helps the meeting understand recency/status and the slide/content authority calls for that activity context.
+
+If shown:
+- one compact line
+- lower-right aligned where card geometry permits
+- same primary text color as card title
+- no prefix such as `Merged`, `Mergad`, `Senaste commit`, `PR skapad` or evidence label
+- do not place timestamp so close to metadata that rows visually merge
 
 Canonical example:
 
@@ -182,18 +248,11 @@ Canonical example:
 14 sep · 10:16
 ```
 
-Rules:
-- one line only
-- bottom/right aligned where card geometry permits
-- use the quietest WCAG-AA-safe text color in the global palette
-- no prefix such as `Merged`, `Mergad`, `Senaste commit` or evidence label
-- do not place timestamp so close to other metadata that the rows visually merge
-
-For active work, use the relevant verified activity timestamp only when it helps the meeting.
+If the timestamp is not useful to the meeting, omit it rather than filling space because the source exposes a date.
 
 ---
 
-# 5. CANONICAL MERGED-PR CARD
+# 7. CANONICAL MERGED-PR CARD
 
 ```text
 #80 · Drift från live target
@@ -207,14 +266,16 @@ Merged: Zaida | Review: Björn
 
 Rendering rules:
 - pedagogical explanation sits directly under the title
-- assignee/developer is clearly emphasized
+- `Tomac · Frontend` appears without `Utvecklat av` or equivalent prefix
+- the identity row and timestamp use the same primary text color as the title
+- explanation and metadata are deliberately quieter
 - only verified merger and actual approving reviewer names appear
 - dedicated merger/review lookup is mandatory before an empty field is accepted
-- timestamp is a discreet one-line element at lower right
+- timestamp is the merge timestamp
 
 ---
 
-# 6. CANONICAL ACTIVE ISSUE / PR CARD
+# 8. CANONICAL ACTIVE ISSUE / PR CARD
 
 ```text
 #88 · Kritiska MVP-tester
@@ -222,21 +283,21 @@ Testar login, målallokering och drift för kritiska MVP-flöden.
 
 Zaida · Frontend
 PR #114 · Build/frontend/#88-critical-interactions
-
-                         17 sep · 09:19
 ```
+
+Do not append PR creation/latest-commit time by default.
 
 Evidence level is **not rendered as text on the card**. Do not show `GitHub · nivå 1`, `nivå 2`, etc.
 
 The evidence hierarchy remains an internal classification used to decide whether/how an item is shown.
 
-If a status symbol is already useful for the meeting (for example waiting/blocked), it may be used together with text. Do not add a separate evidence-level symbol merely to expose the internal classification.
+If a status symbol is useful for the meeting (for example waiting/blocked), it may be used together with text. Do not add a separate evidence-level symbol merely to expose the internal classification.
 
 ---
 
-# 7. CANONICAL DEPENDENCY / NEXT-STEP NODE
+# 9. CANONICAL DEPENDENCY / NEXT-STEP NODE
 
-Dependency and next-step nodes use the same internal hierarchy:
+Dependency and next-step nodes use the same universal hierarchy:
 
 ```text
 API-kontrakt
@@ -248,21 +309,22 @@ Definierar endpoints + payload så Frontend och Backend kan integrera stabilt.
 Hard rules:
 - title first
 - pedagogical/project-value line immediately below title
-- status/dependency is a separate block with minimum spacing
+- status/dependency is a separate, quieter block unless critical semantics require emphasis
 - arrows/connectors stay outside cards
 - if evidence is insufficient, use the approved uncertainty wording from the content/data authority
 - on `⑬ Nästa steg`, every card must explain both what the action concerns and why it matters to the project
+- if person/team or a relevant timestamp appears, they follow the same primary-color rule as every other card
 
 ---
 
-# 8. MINIMUM VERTICAL SPACING — HARD RULE
+# 10. MINIMUM VERTICAL SPACING — HARD RULE
 
 Separate semantic blocks must never visually touch.
 
 Use these **minimum rendered gaps**:
 - title → pedagogical explanation: **4 px minimum, 6 px preferred**
-- explanation → assignee/developer: **12 px minimum**
-- assignee/developer → operational metadata: **8 px minimum**
+- explanation → person/team identity: **12 px minimum**
+- identity → operational metadata: **8 px minimum**
 - one operational metadata row → next separate metadata row: **6 px minimum**
 - operational metadata → bottom timestamp/source area: **10 px minimum** unless flexible whitespace is larger
 
@@ -281,7 +343,7 @@ Do not vertically justify all rows across the card height.
 
 ---
 
-# 9. RESPONSIVE CARD GEOMETRY
+# 11. RESPONSIVE CARD GEOMETRY
 
 Allowed adaptations:
 - natural text wrapping
@@ -308,9 +370,9 @@ Never:
 
 ---
 
-# 10. RENDER CHECKS
+# 12. RENDER CHECKS
 
-Before delivery verify:
+Before delivery verify across **all cards**:
 
 ```text
 wcag_aa_violation_count == 0
@@ -324,6 +386,12 @@ text_overlap_count == 0
 card_block_spacing_violation_count == 0
 pedagogical_line_not_directly_under_title_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
+legacy_developed_by_label_count == 0
+legacy_identity_prefix_count == 0
+unnecessary_activity_timestamp_count == 0
+identity_row_not_primary_color_count == 0
+timestamp_not_primary_color_count == 0
+secondary_text_too_prominent_count == 0
 assignee_not_visually_emphasized_count == 0
 visible_evidence_level_label_count == 0
 unverified_identity_commentary_count == 0
@@ -334,17 +402,21 @@ verified_merger_omitted_from_card_count == 0
 ```
 
 Also verify:
+- these hierarchy checks apply to **every card type**, not only PR/issue cards
+- no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the person/team identity row
+- merged PR timestamp is the merge timestamp
+- open/active cards do not display PR-created/latest-commit timestamps merely because that data exists
+- title, identity row and relevant timestamp use the same primary text color
+- pedagogical explanation is calmer than the primary layer
+- metadata/provenance is the quietest normal text layer while still WCAG-AA compliant
 - dedicated merger + submitted-review lookup was performed for every merged PR
 - only verified merger/reviewer names are printed
 - `Review:` is based on submitted approvals, never requested reviewers
 - unknown merger/reviewer values are blank only after lookup
-- assignee/developer name is visually prominent
-- explanation is larger than operational metadata
-- timestamp is discreet and subordinate
 - cards form one coherent component system across all slides
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.4
+**Version:** 1.5
 **Last updated:** 2026-09-17
