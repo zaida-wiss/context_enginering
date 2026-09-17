@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.0
+  version: 4.1
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -242,11 +242,14 @@ Every inferred/recommended item must be visibly distinguished from verified sour
 Canonical labels:
 - `📅 Schemafakta`
 - `✅ Mötesprotokoll` / equivalent verified team label
-- `? AI-förslag`
-- `? AI-analys`
+- `🔎 AI-analys`
+- `⭐ AI-förslag`
 - `⚠ Källa behöver verifieras`
 
 Rules:
+- `🔎` is reserved for AI analysis / interpretation
+- `⭐` is reserved for AI proposals / recommendations / suggested questions
+- do not use one AI icon for both roles
 - color may support but never replace icon + text
 - red is NOT a fact color
 - mixed cards label each block independently
@@ -257,10 +260,11 @@ Required:
 
 ```text
 sprint_plan_fact_without_source_label_count == 0
-sprint_plan_ai_suggestion_without_question_icon_count == 0
+sprint_plan_ai_content_without_source_icon_count == 0
 next_step_card_without_provenance_count == 0
 pl_question_card_without_provenance_count == 0
-ai_generated_item_without_question_icon_count == 0
+ai_analysis_without_magnifying_glass_count == 0
+ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 mixed_provenance_card_without_block_labels_count == 0
 ```
@@ -349,6 +353,7 @@ Verify:
 Every day card must separate:
 - verified school schedule facts
 - verified meeting/team actions
+- AI-derived analysis
 - AI-derived planning suggestions
 
 Example structure:
@@ -358,11 +363,14 @@ Tisdag 22 sep
 📅 Schemafakta
 PL-avstämning 12:30–14:00.
 
-? AI-förslag
+🔎 AI-analys
+Integrationsstatus är sannolikt viktigast utifrån beroendena.
+
+⭐ AI-förslag
 Ta med tydlig status på integration och test.
 ```
 
-Do not blend source fact and recommendation into one unlabeled statement.
+Do not blend source fact and AI content into one unlabeled statement.
 
 ---
 
@@ -373,9 +381,12 @@ Every card has provenance.
 Priority of evidence:
 1. meeting-protocol actions
 2. approved/prefilled team actions
-3. AI suggestions
+3. AI proposals
 
-AI suggestions use visible `?` and proposal wording where practical.
+Use:
+- `✅` for verified team/meeting action
+- `⭐` for suggested next step
+- `🔎` only for an analytical explanation, not for the suggested action itself
 
 ---
 
@@ -384,8 +395,9 @@ AI suggestions use visible `?` and proposal wording where practical.
 Every question is a modern card and includes provenance.
 
 Distinguish:
-- actual team question
-- AI-suggested question
+- `✅` actual team question
+- `⭐` AI-suggested question
+- `🔎` AI analysis that explains why the question may matter
 
 Cards adapt responsively to question length. Do not use oversized text that clips impact/source content.
 
@@ -423,5 +435,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.0
+**Version:** 4.1
 **Last updated:** 2026-09-17
