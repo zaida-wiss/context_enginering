@@ -572,6 +572,43 @@ execution_receipt:
   gate_status: "MUST PASS BEFORE PROCEEDING TO ARTIFACT_GATE"
 
 ###############################################################################
+  step_3:
+    name: "SLIDE CONTENT VERIFICATION — Every slide has required content"
+    prerequisite: "step_2b (DATA_ACQUISITION_RECEIPT) must be complete"
+
+    rule: >
+      For EACH slide (①-⑭):
+      - Read SLIDE_DETAIL_SPEC.md for that meeting point
+      - Verify slide contains ALL required content sections
+      - Verify slide title format: ✏️ [MEETING_POINT] [TITLE]
+      - Verify no content is missing or fabricated
+
+      Missing content = INCOMPLETE slide = STOP
+
+    attestation_required: >
+      "Every slide (①-⑭) contains exactly the content specified in SLIDE_DETAIL_SPEC.md.
+       No content is missing, invented, or hallucinated."
+
+  step_4:
+    name: "VISUAL DESIGN VERIFICATION — Every slide meets design standards"
+    prerequisite: "step_3 (SLIDE CONTENT VERIFICATION) must pass"
+
+    rule: >
+      For EACH slide (①-⑭):
+      - Typography: 32pt headers, 20pt body, 18pt secondary (per VISUAL_DESIGN_MANDATORY.md)
+      - Colors: MUST match team colors (Frontend=Teal, Backend=Pink, Native=Purple)
+      - Layout: CANONICAL LAYOUT per VISUAL_DESIGN_MANDATORY.md
+      - Text alignment: TEAM_DETAIL_CARDS left-aligned (NOT centered)
+      - Spacing: 20px between cards, 16-20px padding internal
+      - Rounded corners: 12-18px (soft corners, never hard rectangles)
+
+      Visual deviation = design violation = STOP
+
+    attestation_required: >
+      "Every slide meets VISUAL_DESIGN_MANDATORY.md standards exactly.
+       Typography, colors, layout, spacing, and corner radius are correct.
+       No visual deviations or shortcuts taken."
+
 # ARTIFACT GATES — TWO CHECKPOINTS
 ###############################################################################
 artifact_gates:
