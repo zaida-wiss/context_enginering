@@ -3,7 +3,7 @@ name: presentation_architecture
 description: Design architecture — Single Source of Truth for presentation system
 metadata:
   type: critical_specification
-  version: 1.1
+  version: 1.2
 ---
 
 # 📐 PRESENTATION ARCHITECTURE — Single Source of Truth
@@ -36,8 +36,9 @@ Owns visual implementation:
 - Colors
 - Spacing
 - Card geometry
+- Shadows/depth
 - Theme
-- Which layout families are valid
+- Which card-grid layouts are valid
 
 If a renderer needs to know HOW something looks or is positioned, this is the master visual authority.
 
@@ -49,7 +50,7 @@ Owns slide content:
 - Slide purpose
 - Content exclusions
 
-It must not override visual/accessibility minimums.
+It does NOT own visual layout. Any legacy words such as "row", "stacked", "columns" or "table" inside content examples are descriptive only and must never override `VISUAL_DESIGN_MANDATORY.md`.
 
 ### DATA AUTHORITIES
 - `DATA_ACQUISITION_CONTRACT.yaml` — how data is acquired
@@ -60,124 +61,144 @@ It must not override visual/accessibility minimums.
 
 ## 2. Validation/reference files
 
-These files do NOT create competing design policy. They mechanically validate or illustrate the authority files.
-
 ### LAYOUT_OVERFLOW_GUARD.md
-Purpose: mechanical pagination/overflow validation.
-
-It enforces existing visual/accessibility rules by answering:
-- Does the content fit without shrinking?
-- Must a continuation slide be created?
-- Is an unapproved grid being used?
-- Does the rendered artifact contain overlap or clipping?
-
-It may never reduce typography, spacing, or accessibility minimums.
+Mechanical fit, pagination and collision validation.
 
 ### RENDER_GATE_CHECKLIST.md
-Purpose: pre/post-render verification.
+Pre/post-render verification.
 
 ### TEMPLATE_REFERENCE.html
-Purpose: visual example only.
+Visual example only.
 
-**TEMPLATE_REFERENCE.html is never authoritative.** If it conflicts with any authority file or validation guard, ignore the template and follow the authority files.
-
----
-
-## 3. Canonical layout rule
-
-Default layout is **single-column, full-width, stacked cards**.
-
-Approved exceptions:
-- `①A` — 3 × 2 grid, max 6 cards
-- `①B` — 3 × 2 grid, max 6 cards
-- `①C` — 3 × 2 grid, max 6 cards
-- `⑥A` — dependency diagram
-- `⑬` — 4 × 1 next-step grid, max 4 cards
-
-Everything else must remain stacked unless `VISUAL_DESIGN_MANDATORY.md` explicitly defines another exception.
-
-**Important correction:** `①D` and `①E` are stacked layouts. They must paginate instead of switching to columns.
+**TEMPLATE_REFERENCE.html is never authoritative.**
 
 ---
 
-## 4. Overflow rule
+## 3. Canonical visual language
+
+The presentation uses a **modern card system**.
+
+Core rule:
+
+> ONE ITEM = ONE CARD
+
+Plain row/list layouts are not part of the Monday Meeting visual language.
+
+Canonical layouts:
+
+- `①A–①C`: 3 × 2 cards, max 6 per physical slide
+- `①D`: 2 × 2 cards, max 4 per physical slide
+- `①E`: 2 × 2 cards, max 4 per physical slide
+- `①F`: 2 × 2 or 2 × 1 cards, max 4
+- `②–⑤`: modern cards, normally 2 × 2, max 4
+- `⑥`: cards; `⑥A` may use dependency diagram nodes
+- `⑦–⑫`: modern cards, normally 2 × 2, max 4
+- `⑬`: 4 × 1 or 2 × 2 cards, max 4
+- `⑭`: grouped modern cards, max 4 per physical slide before continuation
+
+If a card needs more room, reduce the number of cards on that physical slide and create a continuation slide.
+
+---
+
+## 4. Modern card style
+
+Cards are the primary surface.
+
+Required visual characteristics:
+
+- Dark navy canvas
+- Secondary navy card surface
+- Rounded corners 16–20 px
+- Generous padding 18–22 px
+- Minimum 20 px gap between cards
+- Subtle border/accent
+- Subtle box shadow/depth
+- Team color used as accent, not full-card fill
+- Large readable typography
+
+The deck should feel like a modern dashboard translated into a calm meeting presentation.
+
+---
+
+## 5. Overflow rule
 
 When required content does not fit:
 
 1. Keep required font sizes.
-2. Keep required padding and line height.
-3. Keep the approved layout family.
-4. Create a continuation slide.
+2. Keep required padding and spacing.
+3. Keep each item as a card.
+4. Reduce cards on the physical slide if necessary.
+5. Create continuation slide(s).
 
 Never solve overflow by:
 - Shrinking text
 - Reducing padding below minimum
 - Clipping text
 - Overlapping text
-- Using fixed-height cards that cannot grow
-- Changing a stacked slide into two/three columns
+- Using fixed-height text boxes that cannot grow
+- Converting cards into rows or lists
+- Hiding required metadata just to preserve geometry
 
 Extra slides are preferable to unreadable slides.
 
 ---
 
-## 5. File responsibilities
+## 6. File responsibilities
 
 | File | Responsibility |
 |---|---|
 | `SYSTEM_CONTRACT.yaml` | Execution + gates |
 | `ACCESSIBILITY_NEURODIVERSITY.md` | Accessibility boundaries |
-| `VISUAL_DESIGN_MANDATORY.md` | Visual rules |
-| `SLIDE_DETAIL_SPEC.md` | Slide content |
+| `VISUAL_DESIGN_MANDATORY.md` | Visual rules + card layout |
+| `SLIDE_DETAIL_SPEC.md` | Slide content only |
 | `DATA_ACQUISITION_CONTRACT.yaml` | Data acquisition |
 | `ACTIVE_WORK_DETECTION_MODEL.md` | Activity evidence model |
 | `LAYOUT_OVERFLOW_GUARD.md` | Mechanical fit/pagination validation |
 | `RENDER_GATE_CHECKLIST.md` | Artifact verification |
 | `TEMPLATE_REFERENCE.html` | Example only |
 
-Do not create `_V2`, `_UPDATED`, `_NEW`, or alternative policy files.
-A new validation file is permitted only when it validates an existing authority category rather than redefining it, and it must be added to this architecture + mandatory reading order in the same change.
+Do not create `_V2`, `_UPDATED`, `_NEW`, or competing policy files.
 
 ---
 
-## 6. Propagation rules
+## 7. Propagation rules
 
 ### Change visual design
 1. Update `VISUAL_DESIGN_MANDATORY.md`.
-2. Update validation rules if required.
-3. Update `TEMPLATE_REFERENCE.html` to illustrate the new design.
+2. Update `LAYOUT_OVERFLOW_GUARD.md` if fit rules change.
+3. Update `RENDER_GATE_CHECKLIST.md`.
+4. Update `TEMPLATE_REFERENCE.html`.
+5. Remove stale visual wording from content/reference files when practical.
 
 ### Change slide content
 1. Update `SLIDE_DETAIL_SPEC.md`.
 2. Update `DATA_ACQUISITION_CONTRACT.yaml` if additional data is required.
 3. Do not add visual constants to the content spec.
 
-### Change accessibility boundary
-1. Update `ACCESSIBILITY_NEURODIVERSITY.md`.
-2. Update `VISUAL_DESIGN_MANDATORY.md` implementation.
-3. Add/adjust render validation.
-
 ---
 
-## 7. Conflict handling
+## 8. Conflict handling
 
 If two instructions conflict:
 
-1. STOP before rendering.
-2. Identify which file owns the rule category.
-3. Follow the owner according to the hierarchy above.
-4. Fix the stale lower-level reference so the conflict does not recur.
+1. Identify which file owns the rule category.
+2. Follow the owner according to the hierarchy above.
+3. Fix the stale lower-level wording so the conflict does not recur.
 
-Known stale-example patterns that must never win:
+For visual/layout conflicts, `VISUAL_DESIGN_MANDATORY.md` wins.
+
+Known stale patterns that must never win:
+- plain text rows for work items
+- full-width row-list slides
 - 11–14 pt readable meeting content
-- Fixed-height cards
+- fixed-height cards
 - 3 × 4 / 12-card merge boards
-- Two-column fallback for `①D` or `①E`
-- Shrink-to-fit
+- more than 4 cards on ①D/①E
+- shrink-to-fit
 
 ---
 
-## 8. Render acceptance
+## 9. Render acceptance
 
 A deck is not complete until the rendered artifact passes:
 
@@ -187,11 +208,11 @@ card_overlap_count == 0
 text_outside_card_count == 0
 text_clipping_count == 0
 out_of_bounds_element_count == 0
-unapproved_grid_slide_count == 0
 font_below_minimum_count == 0
+plain_row_work_item_count == 0
 ```
 
-Any non-zero count means: fix layout → rerender → reinspect.
+Any non-zero count means: fix layout → add continuation slide(s) → rerender → reinspect.
 
 ---
 
