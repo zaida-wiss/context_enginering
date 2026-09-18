@@ -1020,7 +1020,7 @@ with them, and any clearly separated planning proposal.
 Goal resolution, source priority, milestone reasoning and AI proposal semantics
 are owned by:
 
-`../../project/GOALS_AND_SPRINT_PLANNING.md`
+`../../../project/GOALS_AND_SPRINT_PLANNING.md`
 
 This slide applies that authority rather than redefining it.
 
