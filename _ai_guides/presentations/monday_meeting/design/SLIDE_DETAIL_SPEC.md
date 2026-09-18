@@ -994,24 +994,31 @@ Never convert a code pattern into a confirmed decision without source evidence.
 
 # ⑪ SPRINT GOALS
 
-Purpose: show the sprint/week goals.
+Purpose: show the current decided sprint goals, how verified execution aligns
+with them, and any clearly separated planning proposal.
 
-Priority order:
-1. goals explicitly stated in planning/meeting source
-2. registered milestone/source goals
-3. AI-derived suggested synthesis only when useful and clearly labeled
+Goal resolution, source priority, milestone reasoning and AI proposal semantics
+are owned by:
 
-Each goal should identify:
-- goal
-- why it matters if source-grounded or separately AI-labeled
-- owner if confirmed
-- deadline if confirmed
+`../../project/GOALS_AND_SPRINT_PLANNING.md`
 
-Goals should be consistent with the dependency-aware ordering on ⑨. Do not set a goal that requires blocked work while ignoring its prerequisite.
+This slide applies that authority rather than redefining it.
 
-Do not state feasibility as fact unless based on verified capacity data.
-AI feasibility analysis must be labeled `🔎 AI-analys`.
-AI-generated goals/recommendations must use `⭐ AI-förslag`.
+Required presentation meanings:
+- the source-backed decided goal(s), when available
+- concise evidence of progress/alignment when useful
+- `🔎 AI-analys` when interpreting alignment, deviation or pressure
+- `⭐ AI-förslag` when recommending a changed/future goal
+
+When a proposal changes an existing goal, show enough information for the team to
+understand:
+- what would change
+- from what
+- to what
+- why
+- expected effect/tradeoff
+
+Do not silently replace a verified decided goal with an AI-generated goal.
 
 ---
 
