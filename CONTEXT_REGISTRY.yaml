@@ -48,7 +48,7 @@ logical_destinations:
       path: "_ai_guides/project/TEAM_STANDARDS.md"
     definition_of_done:
       path: "_ai_guides/project/DEFINITION_OF_DONE.md"
-    definition_of_done_template:
+    issue_body_template:
       path: "_ai_guides/project/templates/ISSUE_BODY.md"
     risk_register_template:
       path: "_ai_guides/project/templates/RISK_REGISTER.md"
@@ -117,7 +117,7 @@ tasks:
       - "logical_destinations.project.team_standards"
       - "logical_destinations.project.testing"
       - "logical_destinations.project.definition_of_done"
-      - "logical_destinations.project.definition_of_done_template"
+      - "logical_destinations.project.issue_body_template"
       - "logical_destinations.project.team_tone_and_collaboration"
     supporting_context:
       - "logical_destinations.project.risk_register_template"
