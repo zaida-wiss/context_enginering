@@ -248,6 +248,33 @@ sources:
       - "csv_export_without_connector"
       - "general_web_access"
 
+  GOOGLE_SPRINT_PLANNING:
+    source_id: "GOOGLE_SPRINT_PLANNING"
+    classification: "CONDITIONAL_PRIMARY"
+    purpose: "Decided sprint purpose, sprint goals, milestones/checkpoints and sprint plan when the Team Avanza 1 spreadsheet contains the exact worksheet Sprintplanering"
+    document_id: "1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI"
+    primary:
+      method: "google_drive_connector"
+      url: "https://docs.google.com/spreadsheets/d/1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI/"
+      worksheet_title: "Sprintplanering"
+    discovery:
+      method: "spreadsheet_metadata"
+      rule: "Check current worksheet titles on each planning run; use the worksheet only when an exact Sprintplanering tab exists."
+      missing_state: "UNAVAILABLE_NOT_YET_CREATED"
+      missing_behavior: "Continue to confirmed meeting decisions and registered milestone/course sources; do not infer a decided sprint goal from GitHub activity."
+    authority:
+      owns_when_present:
+        - "decided sprint purpose"
+        - "decided sprint goals"
+        - "decided sprint planning focus"
+        - "documented sprint milestones/checkpoints"
+      note: "Later confirmed meeting decisions may supersede an earlier value when the meeting source explicitly records the change."
+    allowed_access_methods:
+      - "google_drive_connector"
+    forbidden_access_methods:
+      - "web_search"
+      - "general_web_access"
+
   GOOGLE_RISK_REGISTER:
     source_id: "GOOGLE_RISK_REGISTER"
     classification: "OPTIONAL"
