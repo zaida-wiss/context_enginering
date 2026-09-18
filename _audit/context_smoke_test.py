@@ -303,6 +303,15 @@ def main():
         failures,
     )
     require(
+        "composition authority is present in all presentation authority maps",
+        "COMPOSITION_ARCHITECTURE.md" in design_authority
+        and "LEVEL 9 — COMPOSITION_ARCHITECTURE.md" in presentation_architecture
+        and "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md" in system_contract
+        and "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md" in authority_registry,
+        failures,
+    )
+
+    require(
         "presentation architecture delegates genuine conflicts to global framework",
         "AUTHORITY OWNERSHIP HIERARCHY" in presentation_architecture
         and "AI_FRAMEWORK.yaml" in presentation_architecture
