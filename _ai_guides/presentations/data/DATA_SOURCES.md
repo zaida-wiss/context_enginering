@@ -8,7 +8,7 @@ metadata:
 
 # 📊 DATA SOURCES — Where to Find Information
 
-**AUTHORITATIVE REGISTRY:** [`data/SOURCES.yaml`](data/SOURCES.yaml)
+**AUTHORITATIVE REGISTRY:** [`data/SOURCES.yaml`](../../../data/SOURCES.yaml)
 
 This file is a **human-friendly guide** only. For actual URLs, IDs, and access methods, see SOURCES.yaml.
 
