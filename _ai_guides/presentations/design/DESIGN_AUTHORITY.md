@@ -4,7 +4,7 @@ description: MANDATORY — Presentation design authority and conflict ownership
 metadata:
   type: process
   critical: true
-  version: 2.2
+  version: 2.3
 ---
 
 # 🎨 DESIGN AUTHORITY
@@ -30,8 +30,9 @@ STOP + explicit user decision:
 6. `PROVENANCE_AND_AI_LABELING.md` — fact/team/AI source identity
 7. `PR_MERGE_REVIEW_IDENTITY.md` — merger and actual review identity
 8. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit and pagination
-9. `SLIDE_DETAIL_SPEC.md` — slide purpose, fields, ordering and content requirements
-10. `TEMPLATE_REFERENCE.html` — example only; never authoritative
+9. `COMPOSITION_ARCHITECTURE.md` — meeting-point order, empty states, cross-slide continuity and composition completeness
+10. `SLIDE_DETAIL_SPEC.md` — slide purpose, fields, ordering and content requirements
+11. `TEMPLATE_REFERENCE.html` — example only; never authoritative
 
 `AUTHORITY_REGISTRY.yaml` determines which files are active. This document
 explains conflict handling but does not activate a retired file.
@@ -55,7 +56,8 @@ Examples:
 - merge/review formatting → `CARD_COMPONENT_STANDARD.md`
 - timestamp placement/style → `CARD_COMPONENT_STANDARD.md`
 - AI/fact labels → `PROVENANCE_AND_AI_LABELING.md`
-- which fields belong on slide ①D → `SLIDE_DETAIL_SPEC.md`
+- deck-wide meeting-point order / empty-state / red-thread composition → `COMPOSITION_ARCHITECTURE.md`
+- which fields belong on a specific meeting-point slide → `SLIDE_DETAIL_SPEC.md`
 - evidence classification Level 1–6 → `ACTIVE_WORK_DETECTION_MODEL.md` as internal data logic
 
 ---
@@ -182,5 +184,5 @@ owner and update the stale example in the same context change.
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.2
+**Version:** 2.3
 **Last updated:** 2026-09-18
