@@ -4,7 +4,7 @@ description: Minimal router for Avanza project work
 metadata:
   type: router
   status: active
-  version: 2.8
+  version: 2.9
 ---
 
 # Avanza project context router
@@ -17,7 +17,7 @@ presentation rules, data-source rules or team standards.
 ## Global framework first
 
 Before resolving project-specific owners, apply
-[`../AI_FRAMEWORK.md`](../AI_FRAMEWORK.md).
+[`../AI_FRAMEWORK.yaml`](../AI_FRAMEWORK.yaml).
 
 If active project rules genuinely conflict, stop and ask the user to decide as
 required by the global conflict-decision gate. Do not resolve the contradiction
@@ -64,5 +64,5 @@ result with the task's registered acceptance checks.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.8
+**Version:** 2.9
 **Last updated:** 2026-09-18
