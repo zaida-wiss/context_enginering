@@ -624,6 +624,13 @@ for integration. Never invent numeric estimates, capacity or ownership.
 
 Purpose: show the critical dependency chains affecting current work.
 
+Dependency classification, verification semantics, early synchronization signals
+and sequencing logic are owned by:
+
+`../../../project/DEPENDENCIES_AND_CAPACITY.md`
+
+This slide applies that authority rather than redefining dependency planning.
+
 ## ⑥A Dependency graph
 
 Include only critical chains.
@@ -709,6 +716,12 @@ If mitigation is model-derived, mark it `⭐ AI-förslag`.
 # ⑧ CAPACITY & ESTIMATION
 
 Purpose: show verified capacity/planning information and connect it to workload decisions.
+
+Capacity, missing-estimate and qualitative-load reasoning are owned by:
+
+`../../../project/DEPENDENCIES_AND_CAPACITY.md`
+
+This slide presents that analysis using verified project evidence.
 
 PRE-MEETING:
 - do not estimate hours
