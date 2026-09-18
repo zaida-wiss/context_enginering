@@ -10,6 +10,12 @@ Do not derive presentation rules from the project repository.
 
 ---
 
+## 🧭 Context registry
+
+Machine-readable paths and task bundles are registered in
+[`CONTEXT_REGISTRY.yaml`](CONTEXT_REGISTRY.yaml). Use it as the central path
+atlas when files move or when an AI task needs to resolve its dependencies.
+
 ## 🎯 What do you want to do?
 
 ### 👤 Regular project work
