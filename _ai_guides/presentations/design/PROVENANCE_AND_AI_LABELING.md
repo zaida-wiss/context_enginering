@@ -449,5 +449,5 @@ The audience must always be able to answer:
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.2
+**Version:** 1.4
 **Last updated:** 2026-09-17
