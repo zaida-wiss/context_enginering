@@ -385,8 +385,13 @@ execution_sequence:
       - "template is reference only"
       - "same repository ref used for all internal files"
       - "authority conflicts recorded with both rules, owners and resolution"
+      - "cover uses verified current-week PL focus and deadlines"
+      - "every school task answers Vad, När, Var, Varför and Hur from registered _memory/data sources"
       - "meeting point 1 uses six cards as standard capacity per physical slide and has no total slide/card limit"
-      - "meeting point 1 contains only work performed in the previous Monday 09:00 to current Monday 09:00 sprint window"
+      - "cover sprint period is the active Monday 09:00–next Monday 09:00 interval containing the request timestamp"
+      - "meeting point 1 contains only verified work from active sprint start through the actual data cutoff"
+      - "the deck is always an in-progress planning document for the active sprint"
+      - "points 3–5 and 9 plan the remaining horizon from data cutoff to active sprint end"
       - "meeting point 1d AI team summaries use 1–10 sentences, name every team member and ground each contribution/decision"
       - "points 3–5 own backlog, future work, older inactive work and decisions that govern upcoming team work"
       - "point 9 uses exactly Frontend, Backend, Native and Cross-team columns"
@@ -397,13 +402,39 @@ execution_sequence:
       - "meeting-point 9 continuations use lowercase letters: 9a, 9b, 9c, 9d, 9e"
       - "canonical source symbols are preserved and not replaced by tags"
 
-  monday_protocol_week:
+  sprint_period_resolution:
     timezone: "Europe/Stockholm"
     rule: >
-      A protocol requested for the Monday meeting belongs to and is dated for
-      the current work week beginning that Monday. Meeting point 1 inside that
-      protocol reports the immediately preceding sprint window ending Monday at
-      09:00; do not name the protocol as the previous week.
+      Resolve the active sprint from the request timestamp, not from the target
+      meeting label. Sprints start Monday at 09:00 and end the following Monday
+      at 09:00. The cover displays the complete scheduled start/end dates of the
+      active sprint containing the request timestamp. Meeting point 1 includes
+      verified work from sprint start through the actual acquisition cutoff;
+      it never claims future work between cutoff and sprint end.
+    boundary_rule: >
+      A request before Monday 09:00 belongs to the sprint that is still ending.
+      A request at or after Monday 09:00 belongs to the newly started sprint.
+    forward_use_rule: >
+      Regardless of request day/time, the presentation is an in-progress working
+      document for the resolved active sprint. Verified facts cover sprint start
+      through data cutoff; forward sections cover remaining work through sprint
+      end using verified plans or explicit AI labels.
+    example: >
+      For a request on Monday 2026-09-21 at 08:58 Europe/Stockholm, show
+      sprintperiod 14 September–21 September on the cover and use 08:58 as the
+      latest possible factual cutoff.
+
+  cover_school_task_contract:
+    required_questions: ["Vad", "När", "Var", "Varför", "Hur"]
+    scope: "all school tasks/deadlines and PL topics in or materially affecting the current week"
+    source_boundary: "registered _memory and presentation data sources"
+    rules:
+      - "all five answers are visible on the cover or its ⓪a continuation"
+      - "each verified answer retains source provenance"
+      - "documented meaning/consequence is shown under Varför"
+      - "documented submission/meeting/execution method is shown under Hur"
+      - "missing answers remain visible as ⚠ [FIELD] kunde inte verifieras"
+      - "AI analysis never fills a verified-answer field"
 
   step_3:
     name: "Data precheck"

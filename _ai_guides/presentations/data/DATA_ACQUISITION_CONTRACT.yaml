@@ -43,23 +43,41 @@ required_datasets:
     datasets:
       schedule:
         file: "_memory/presentations/SCHEDULE.yaml"
-        purpose: "Meeting times, recurring events"
-        required_for: "framsida timing context"
+        supporting_file: "_memory/SCHEDULE.md"
+        purpose: "Meeting times, recurring events, weekly PL focus and school-task instructions"
+        required_for: "framsida PL focus and school-task Vad/När/Var/Varför/Hur"
 
       milestones:
         file: "_memory/presentations/MILESTONES.yaml"
-        purpose: "Critical deadlines, deliverables"
-        required_for: "framsida next_deadline, priority ranking"
+        purpose: "Critical deadlines, deliverables, submission place/method"
+        required_for: "framsida current-week deadlines and school-task Vad/När/Var/Varför/Hur"
 
       roadmap:
         file: "_memory/presentations/TEAM_ROADMAP.yaml"
-        purpose: "Project phases, timeline"
-        required_for: "contextual sprint positioning"
+        purpose: "Project phases, timeline, documented purpose and weekly consequence"
+        required_for: "contextual sprint positioning and verified Varför"
 
       current_sprint:
         file: "_memory/presentations/CURRENT_SPRINT.yaml"
         purpose: "This week's goals, focus"
-        required_for: "framsida weekly_focus, ② priority ranking"
+        required_for: "framsida weekly_focus, PL topic and ② priority ranking"
+
+    school_task_five_question_contract:
+      required_fields:
+        - "Vad"
+        - "När"
+        - "Var"
+        - "Varför"
+        - "Hur"
+      source_search_order:
+        - "_memory/presentations/SCHEDULE.yaml"
+        - "_memory/SCHEDULE.md"
+        - "_memory/presentations/MILESTONES.yaml"
+        - "_memory/presentations/TEAM_ROADMAP.yaml"
+        - "_memory/presentations/CURRENT_SPRINT.yaml"
+        - "other registered _memory/data sources"
+      missing_field_rule: "Render ⚠ [FIELD] kunde inte verifieras; never infer from title alone"
+      provenance_rule: "Every populated answer must identify the supporting registered source"
 
     stop_condition: "if any context file missing or unparseable"
 
@@ -601,17 +619,27 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
 reporting_period:
-  definition: "7 calendar days anchored to meeting time (09:00 Stockholm)"
+  definition: "active 7-day sprint containing the request timestamp, anchored Monday 09:00 Stockholm"
   timezone: "Europe/Stockholm"
-  format: "meeting_date - 7 days at 09:00 (inclusive) through meeting_date at 09:00 (exclusive)"
+  cover_format: "SPRINT_START date through SPRINT_END date"
 
   AUTHORITATIVE_DEFINITION: |
-    REPORTING_PERIOD_START = meeting_date at 09:00 minus 7 calendar days (inclusive)
-    REPORTING_PERIOD_END = meeting_date at 09:00 (exclusive)
-    Example: Meeting on Monday 2026-09-22 09:00
-      START: 2026-09-15 09:00 Europe/Stockholm (Previous Monday 09:00)
-      END: 2026-09-22 09:00 Europe/Stockholm (current Monday 09:00)
-      Coverage: All work completed between these timestamps
+    SPRINT_START = latest Monday 09:00 Europe/Stockholm that is <= REQUEST_TIMESTAMP
+    SPRINT_END = SPRINT_START + 7 calendar days
+    DATA_CUTOFF = min(actual acquisition timestamp, SPRINT_END)
+    REPORTING_PERIOD = [SPRINT_START, DATA_CUTOFF]
+    COVER_PERIOD = [SPRINT_START date, SPRINT_END date]
+
+    Example: request Monday 2026-09-21 08:58 Europe/Stockholm
+      SPRINT_START: 2026-09-14 09:00
+      SPRINT_END: 2026-09-21 09:00
+      DATA_CUTOFF: 2026-09-21 08:58 (or earlier verified source cutoff)
+      COVER: Sprintperiod 14 september–21 september
+
+    Boundary:
+      08:59:59 belongs to the sprint that is ending.
+      09:00:00 belongs to the new sprint.
+      Never present activity after DATA_CUTOFF as completed/current fact.
 
   compare_fields:
     merged_pr: "merged_at"

@@ -131,6 +131,39 @@ Manual checks:
 
 Any failure → STOP.
 
+## Cover: current-week PL focus and school tasks
+
+Required:
+
+```text
+cover_wrong_week_count == 0
+cover_sprint_period_not_based_on_request_timestamp_count == 0
+meeting_point_1_fact_after_data_cutoff_count == 0
+current_week_pl_topic_missing_count == 0
+current_week_deadline_missing_count == 0
+school_task_missing_five_question_field_count == 0
+school_task_answer_without_source_count == 0
+school_task_unverified_answer_presented_as_fact_count == 0
+```
+
+Manual checks:
+- the cover names the current sprint/week and the verified topic to handle with PL
+- the sprint period is the Monday 09:00–next Monday 09:00 interval containing the request timestamp
+- a Monday 08:58 request still shows the sprint ending at 09:00 that day
+- meeting point 1 contains no factual activity after the actual acquisition cutoff
+- the deck is framed as `Sprint in progress`, not as a retrospective for a closed sprint
+- points 3–5 and 9 cover actionable remaining work through the displayed sprint end
+- future facts and AI-proposed actions remain visibly distinct
+- every school task/deadline in or affecting the week answers `Vad`, `När`, `Var`, `Varför`, `Hur`
+- deadline meaning/consequence is visible under `Varför`
+- submission, meeting or execution method is visible under `Hur`
+- each answer is grounded in registered `_memory`/data documentation
+- any missing answer remains visible as `⚠ [fält] kunde inte verifieras`
+- an AI interpretation is separated as `🔎 AI-analys` and never substitutes for a verified answer
+- if the cover cannot fit accessibly, the five-question content continues on `⓪a`; it is never dropped
+
+---
+
 ### Meeting point 1 card standard
 
 - every physical slide in `①–①d` targets six cards when at least six grounded items exist and all six remain readable

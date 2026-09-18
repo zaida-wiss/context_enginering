@@ -105,8 +105,10 @@ The detailed values live in `READABILITY_HARD_RULES.md` and `CARD_COMPONENT_STAN
 - timestamps are compact, one line, discreet and bottom-most when present
 - automatic shrink-to-fit is forbidden
 - if accessible content does not fit, cards reflow, grid density is reduced or the slide paginates
-- meeting point 1 shows only work performed in the preceding Monday 09:00–current Monday 09:00 sprint window, using six cards as standard capacity per physical slide
-- a Monday-meeting protocol is always dated/named for the current week that begins that Monday
+- the cover sprint period is resolved from request time using Monday 09:00 boundaries; a Monday 08:58 request still belongs to the sprint ending at 09:00
+- meeting point 1 shows verified work from that sprint's start through the actual data cutoff, using six cards as standard capacity per physical slide
+- the presentation always functions as a `Sprint in progress` working document; points 3–5 and 9 plan the remaining active-sprint horizon
+- the cover shows verified current-week PL focus and deadlines; every school task answers `Vad`, `När`, `Var`, `Varför`, `Hur` from registered `_memory`/data documentation
 - meeting points 3–5 remain the separate team sections: Frontend, Backend and Native
 - meeting point 9 uses four team columns: `Frontend`, `Backend`, `Native`, `Cross-team`
 - meeting point 9 keeps a fixed `1×4` structure with content-driven blocks and lettered continuations such as `9a`, `9b`

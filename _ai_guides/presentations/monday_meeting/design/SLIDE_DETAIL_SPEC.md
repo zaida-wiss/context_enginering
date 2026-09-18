@@ -168,30 +168,63 @@ Visual density/pagination is controlled by the visual/overflow authorities.
 
 # ⓪ COVER — MANDATORY
 
-Purpose: orient the meeting quickly.
+Purpose: orient the meeting quickly and state exactly what must be handled with
+PL during the current week.
 
 Content:
 - meeting date
 - `Avanza Team 1`
-- reporting period
+- active sprint period resolved from the request timestamp
 - sprintfokus, grounded in verified project data
-- critical verified deadline/milestone if available
-- PL focus topics grounded in the actual registered schedule/agenda for the coming week; otherwise AI-derived focus must be labeled
+- every verified school task/deadline that falls in or materially affects the current week
+- PL focus topics grounded in the actual registered schedule/agenda for the current week
 - compact snapshot/source footer
 
 `PL-fokus` must match the actual upcoming PL meeting theme/agenda when that source exists. Do not replace a concrete agenda such as `CTO-underlag` with a generic inferred summary such as testing/documentation unless the latter is explicitly part of the registered agenda. AI interpretation may be added separately with provenance.
+
+## Mandatory verified five-question block
+
+For every school task, deadline and PL topic shown on the cover, answer all five
+questions from registered `_memory` and presentation-data documentation:
+
+1. **Vad?** — exact task/deliverable or PL topic
+2. **När?** — verified date, time and applicable week/sprint
+3. **Var?** — verified place, channel or submission platform
+4. **Varför?** — documented purpose, learning/project objective or verified consequence
+5. **Hur?** — documented submission method, meeting format, required artefact or execution instructions
+
+Each answer retains source-level provenance. Do not derive `Varför` or `Hur`
+from the task title alone. Search the registered schedule, milestones, roadmap,
+current-sprint context and other registered `_memory`/data documentation.
+
+If one answer remains unavailable after source acquisition, keep the task on the
+cover and write the missing field explicitly, for example:
+`⚠ Hur kunde inte verifieras`. Never omit a missing field and never replace it
+with an AI guess. An AI interpretation may appear only as a separate
+`🔎 AI-analys` block, not as the verified five-question answer.
+
+The cover prioritizes current-week PL focus and deadlines over decorative or
+generic status text. If multiple school items require more space, reflow the
+cover and use a `⓪a` continuation rather than reducing readability or dropping
+any of the five answers.
+
+Sprint-period boundary:
+- resolve the active sprint containing the request timestamp in `Europe/Stockholm`
+- sprint start is Monday 09:00; sprint end is the following Monday 09:00
+- display the full scheduled date range on the cover even when the request is made before sprint end
+- example: request Monday 21 September at 08:58 → `Sprintperiod 14 september–21 september`
+- factual content uses the actual verified data cutoff, never the future 09:00 endpoint
 
 Do not include design-process explanations.
 
 ---
 
-# ① PREVIOUS SPRINT OUTCOME + STARTED WORK
+# ① SPRINT IN PROGRESS — COMPLETED + STARTED SO FAR
 
-Sprint window in `Europe/Stockholm`:
-
-`previous Monday 09:00 inclusive → current Monday 09:00 exclusive`
-
-At current Monday 09:00 the new work week/sprint begins with sprint planning.
+Use the active sprint resolved from the request timestamp. Meeting point 1
+covers `SPRINT_START inclusive → DATA_CUTOFF inclusive`, where sprint boundaries
+are Monday 09:00 in `Europe/Stockholm`. It may not claim work after the actual
+data cutoff merely because the cover displays the full scheduled sprint end.
 Six cards is the standard capacity per physical slide, never a total limit.
 Create as many lowercase-letter continuations as required and never omit
 grounded work.
@@ -270,9 +303,16 @@ advanced the project and any verified decision that materially explains the
 outcome. Never invent progress, decisions, contribution or impact. Use `①da`,
 `①db` and so on when summaries need more space.
 
-Nothing in meeting point 1 may describe work outside the sprint window except
-an explicit comparison labeled as context. Backlog, future plans and work with
-no verified activity during the period belong to later meeting points.
+Nothing in meeting point 1 may describe work outside the active sprint start to
+data-cutoff interval. Backlog, future plans and work with no verified activity
+during the period belong to later meeting points.
+
+The deck remains a forward-working sprint document:
+- point 1 establishes verified progress so far in the active sprint
+- points 3–5 turn remaining team work into concrete next actions
+- point 9 prioritizes the remaining sprint horizon from data cutoff to sprint end
+- future scheduled facts use their verified source symbol
+- AI-proposed future actions remain marked `⭐ AI-förslag`; they are never presented as completed facts
 
 ---
 
