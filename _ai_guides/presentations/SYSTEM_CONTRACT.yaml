@@ -3,8 +3,8 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.1
-last_updated: 2026-09-17
+version: 4.2
+last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
 ###############################################################################
@@ -559,7 +559,17 @@ artifact_gates:
       - "OVERFLOW_AND_COLLISION PASS"
       - "DEPENDENCY_AWARE_PLAN PASS"
     default_format: "PDF"
+    default_delivery_rule: >
+      Deliver the finished presentation to the user as PDF only by default.
+      Do not substitute PPTX, Google Slides or another presentation format and
+      do not include an editable copy unless the user explicitly asks for one.
+    explicit_override_rule: >
+      If the user explicitly requests another format, deliver that requested
+      format. If the user asks for both PDF and an editable format, deliver both.
     editable_format: "PPTX only when explicitly requested"
+    pdf_generation_rule: >
+      The internal deck may be authored in PPTX or another supported format for
+      production, but the user-facing artifact remains PDF unless explicitly overridden.
 
 ###############################################################################
 # FINAL RENDER CONDITIONS
