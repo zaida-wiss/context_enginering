@@ -1,7 +1,7 @@
 ---
 name: definition_of_done
 description: Final completion criteria for project issues
-version: 2.1
+version: 2.2
 metadata:
   type: project_authority
   status: active
@@ -24,6 +24,27 @@ Those details are owned by:
 - testing → `TESTING.md`
 - risk reasoning → `RISK_MANAGEMENT.md`
 - communication/review tone → `TEAM_TONE_AND_COLLABORATION.yaml`
+
+## Issue-specific application
+
+The full Definition of Done is the canonical set of completion concerns.
+
+When an issue is created, the AI selects the criteria that actually apply to
+that issue's scope and renders those as the issue's **Applicable Definition of
+Done**.
+
+Selection rules:
+- include criteria that are materially affected by the change
+- make every selected criterion concrete and verifiable
+- explain briefly why the selected criterion applies when the connection is not obvious
+- omit non-applicable criteria rather than copying the full DoD mechanically
+- never invent a new project rule merely to make the checklist look complete
+
+Core completion concerns such as verified Acceptance Criteria, appropriate
+verification, accepted review/integration and truthful final issue state remain
+relevant to implementation work. Other areas such as README, architecture,
+contracts, risk updates or decision records are included when the issue affects
+them.
 
 ## Acceptance Criteria
 
@@ -54,12 +75,24 @@ that every issue needs unit, integration and E2E tests.
 ## Documentation
 
 Relevant documentation is current when the issue changes something another
-person needs to understand, for example:
-- setup or configuration
-- API/contract behavior
-- architecture or decision rationale
-- user-facing workflow
-- known constraints
+person needs to understand.
+
+Select the applicable documentation criterion for the issue, for example:
+
+- **README** — when the change affects setup, installation, commands, usage,
+  configuration, project structure or another behavior the README is expected
+  to explain
+- **API/contract documentation** — when request/response shape, fields, types,
+  errors, units, compatibility or an integration boundary changes
+- **architecture/decision documentation** — when the issue changes an important
+  technical direction or records reasoning future developers need
+- **user/developer workflow documentation** — when the way a person uses,
+  tests, runs or maintains the system changes
+- **known constraints/limitations** — when the issue introduces or changes a
+  limitation another person needs to understand
+
+If none of these areas is affected, the issue-specific DoD should not contain a
+documentation checkbox merely as boilerplate.
 
 The documentation requirement is proportional to the change.
 
@@ -106,5 +139,5 @@ decision and update the authority that owns that rule.
 ---
 
 **Status:** ACTIVE
-**Version:** 2.1
+**Version:** 2.2
 **Last updated:** 2026-09-18
