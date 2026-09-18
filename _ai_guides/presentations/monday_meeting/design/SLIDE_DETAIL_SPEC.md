@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.8
+  version: 2.9
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -131,20 +131,27 @@ The recommendation must answer, as far as evidence permits:
 
 Use `🔎 AI-analys` for the reasoning and `⭐ AI-förslag` for the recommended action/order.
 
-### Canonical four-team format for meeting point 9
+### Four-perspective planning coverage
 
-Every physical slide for point 9 MUST use these columns in this exact order:
+Planning analysis must consider these perspectives when relevant:
 
-| Frontend | Backend | Native | Cross-team |
-|---|---|---|---|
-| Team-specific items | Team-specific items | Team-specific items | Work that genuinely spans or unlocks multiple teams |
+- Frontend
+- Backend
+- Native/System
+- Cross-team
 
-Content rules:
-- the columns identify team ownership/impact; they are not workflow stages
-- do not duplicate an item in both a team column and `Cross-team`
-- keep an empty column visible and state the verified empty state
-- use continuation slides instead of hiding items or shrinking below readable minima
-- `📌` is a workflow-status symbol, not provenance; every item still needs the applicable `✅`, `🔎`, `⭐`, `📅` or `⚠`
+This is a **coverage requirement**, not a page-layout requirement.
+
+Meeting point 9 renders the vertically stacked execution groups defined in its
+own section. Team/layer ownership may be shown inside those groups when it helps
+the meeting, but the slide is not forced into four columns.
+
+Do not duplicate the same work item under both a team/layer label and
+`Cross-team`. Use `Cross-team` only when the work genuinely spans or unlocks
+multiple teams.
+
+`📌` is a workflow-status symbol, not provenance; every item still retains the
+applicable `✅`, `🔎`, `⭐`, `📅` or `⚠` source/provenance meaning.
 
 ### Required team planning format
 
