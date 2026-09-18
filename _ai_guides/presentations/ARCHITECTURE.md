@@ -3,7 +3,7 @@ name: presentation_architecture
 description: Design architecture — Single Source of Truth for presentation system
 metadata:
   type: critical_specification
-  version: 2.1
+  version: 2.2
 ---
 
 # 📐 PRESENTATION ARCHITECTURE — Single Source of Truth
@@ -12,7 +12,11 @@ This document defines where presentation rules belong and how conflicts are reso
 
 ---
 
-## 1. AUTHORITY HIERARCHY
+## 1. AUTHORITY OWNERSHIP HIERARCHY
+
+This hierarchy defines ownership/delegation only. Genuine incompatible active
+rules are resolved through the user-decision gate in `../AI_FRAMEWORK.yaml`,
+never by rank alone.
 
 ### LEVEL 1 — SYSTEM_CONTRACT.yaml
 Owns orchestration:
