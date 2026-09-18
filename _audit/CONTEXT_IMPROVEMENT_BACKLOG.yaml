@@ -79,7 +79,7 @@ items:
 
   technical_debt:
     priority: high
-    status: pending
+    status: implemented
     purpose: >
       Teach recognition, classification and handling of technical debt without
       treating every imperfection as debt or every debt item as urgent.
@@ -88,11 +88,15 @@ items:
       - "Connect debt to consequence, cost of delay and affected project goal."
       - "Recommend action when evidence supports it."
       - "Escalate before teams knowingly build incompatible solutions when prevention is cheaper."
-    proposed_owner: "_ai_guides/project/TECHNICAL_DEBT.md"
+    owner: "_ai_guides/project/TECHNICAL_DEBT.md"
+    implementation_notes:
+      - "Separates unfinished work, bugs, blockers, risks and debt."
+      - "Adds high-interest debt and stop-and-sync reasoning."
+      - "Uses active-branch signals without overstating experimental work."
 
   coding_assistance_task_bundle:
     priority: high
-    status: pending_after_cross_layer
+    status: implemented
     purpose: >
       Create a VS Code/coding-help task bundle that keeps local coding help one
       step ahead by checking relevant project context, contracts, active branches,
