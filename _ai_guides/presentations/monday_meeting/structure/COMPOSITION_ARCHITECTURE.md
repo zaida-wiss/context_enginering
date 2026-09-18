@@ -4,7 +4,7 @@ description: MANDATORY — composition order, meeting-point continuity, empty st
 metadata:
   type: structural_authority
   critical: true
-  version: 1.0
+  version: 1.1
 ---
 
 # MONDAY MEETING COMPOSITION ARCHITECTURE
@@ -87,33 +87,33 @@ A later slide must not ignore a verified blocker/risk/capacity fact that materia
 
 Do not invent numeric hours, percentages or estimates to make a thread look complete.
 
-## 4. VISUAL VARIETY BY INFORMATION TYPE
+## 4. SHARED VISUAL COMPOSITION
 
-The deck must not collapse every point into the same generic card grid.
+The deck uses a consistent responsive card/grid system as its primary visual structure.
 
-Use the owning visual rules for the information type:
-- ②: full-course horizontal timeline + nearest-focus callouts
-- ⑥: dependency flow/graph when dependencies exist
-- ⑦: risk blocks that expose risk → mitigation → planning impact
-- ⑨: vertical priority sequence
-- ⑫: chronological day/plan structure
-- ⑬: concise action sequence/cards
+The information problem changes **inside** the grid:
+- ②: deadline/course-state cards ordered chronologically
+- ⑥: blocker/dependency cards with optional arrows/connectors
+- ⑦: risk cards that expose risk → mitigation → planning impact
+- ⑨: priority cards grouped as first / parallel / backlog / proposal
+- ⑫: day/plan cards ordered chronologically
+- ⑬: concise action cards
 
-Cards remain the shared component language, but the **slide-level composition must match the information problem**.
+Use fewer/wider cards and continuation slides when needed. Do not require a
+different full-slide composition simply because the information type changes.
 
 ## 5. MEETING-POINT HEADER IDENTITY
 
-Every physical slide belonging to ①–⑭ renders:
+Every physical slide belonging to meeting points 1–14 renders:
 
 ```text
-✏️ [canonical circled meeting-point symbol] [official title]
+✏️ [ordinary Arabic number]. [official title]
 [optional subordinate subtitle]
 ```
 
-Canonical symbols:
-`① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭`
-
-The symbol must be visibly rendered in the final PDF/image. Missing-glyph squares fail validation.
+Canonical rendered identities are `1.` through `14.`.
+Circled symbols may remain internal documentation identifiers but are not used
+as the rendered meeting-point identity.
 
 Cover ⓪ is the only exception and does not use the pen header.
 
@@ -135,7 +135,7 @@ official_meeting_points_in_order == true
 silent_meeting_point_skip_count == 0
 unrecorded_omission_count == 0
 cross_slide_thread_break_count == 0
-generic_grid_replacing_required_visual_count == 0
+shared_card_grid_missing_count == 0
 meeting_point_header_identity_failure_count == 0
 ```
 
