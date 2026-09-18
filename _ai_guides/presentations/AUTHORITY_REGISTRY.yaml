@@ -1,59 +1,62 @@
 name: presentation_authority_registry
 description: Canonical registry of active authorities, validators, references and retired guides
-version: 1.0
+version: 1.1
 metadata:
   type: registry
   critical: true
   status: active
 
 rule: >
-  Only files listed under active_authorities may define presentation rules.
-  Validators may check rules but may not create them. References may illustrate
-  rules but may not override them. Retired files must not be read or used during
-  production composition.
+  Files listed under active_authorities are the canonical owners of presentation
+  rules. Validators verify those rules. References illustrate them. Retired files
+  remain historical material outside the production task bundle.
 
 active_authorities:
   - rank: 1
+    file: INTEGRITY_CONSTRAINT.md
+    category: data_integrity
+    owns: verified-data semantics, explicit unknown/incomplete states and factual trust boundary
+  - rank: 2
     file: SYSTEM_CONTRACT.yaml
     category: orchestration
     owns: execution sequence, gates, STOP/CONTINUE and delivery
-  - rank: 2
+  - rank: 4
     file: design/ACCESSIBILITY_NEURODIVERSITY.md
     category: accessibility
     owns: WCAG 2.2 AA, neurodiversity and absolute readability boundary
-  - rank: 3
+  - rank: 4
     file: design/VISUAL_DESIGN_MANDATORY.md
     category: global_visual
     owns: palette, slide-level visual roles, layouts and column/grid structure
-  - rank: 4
+  - rank: 5
     file: design/READABILITY_HARD_RULES.md
     category: readability
     owns: readable type minima, line spacing, meeting-point glyphs and pedagogical clarity
-  - rank: 5
+  - rank: 6
     file: design/CARD_COMPONENT_STANDARD.md
     category: card_component
     owns: card internals, identity rows, metadata, timestamps and card spacing
-  - rank: 6
+  - rank: 7
     file: design/PROVENANCE_AND_AI_LABELING.md
     category: provenance
     owns: source classes, canonical symbols and mixed-source labeling
-  - rank: 7
+  - rank: 8
     file: data/PR_MERGE_REVIEW_IDENTITY.md
     category: pr_identity
     owns: merger and submitted-review acquisition and rendering semantics
-  - rank: 8
+  - rank: 9
     file: monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md
     category: responsive_fit
     owns: fit algorithm, pagination and collision prevention
-  - rank: 9
+  - rank: 10
     file: monday_meeting/design/SLIDE_DETAIL_SPEC.md
     category: slide_content
     owns: meeting-point purpose, required fields and content order
-  - rank: 10
+  - rank: 11
     file: data/DATA_ACQUISITION_CONTRACT.yaml
     category: acquisition
     owns: mechanical data acquisition and reporting-period filtering
-  - rank: 11
+  - rank: 12
     file: ../../data/SOURCES.yaml
     category: source_registry
     owns: allowed sources, URLs, access methods and fallback order
@@ -65,8 +68,8 @@ validators:
 
 supporting_data_models:
   rule: >
-    These files may define data classification or diagnostics only. They may not
-    define slide order, visual layout, provenance labels or authority hierarchy.
+    These files support data classification and diagnostics. Presentation rule
+    categories remain owned by the active authorities above.
   files:
     - data/ACTIVE_WORK_DETECTION_MODEL.md
     - data/DATA_SOURCES.md
@@ -103,9 +106,9 @@ retired_guides:
   - verification/VISUAL_VERIFICATION.md
 
 retired_rule: >
-  Retired guides are historical context only. Production agents MUST NOT load,
-  cite, merge or infer rules from them. If useful content exists only in a
-  retired guide, migrate it into the correct active authority before use.
+  Retired guides are historical context outside the production task bundle.
+  Useful historical content is migrated into the correct active authority before
+  it becomes part of current presentation behavior.
 
 conflict_rule: >
   If two active authorities claim the same category or contain incompatible
