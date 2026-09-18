@@ -1,7 +1,7 @@
 ---
 name: team_standards
 description: Canonical project workflow and team operating standards
-version: 2.0
+version: 2.1
 metadata:
   type: project_authority
   status: active
@@ -20,6 +20,7 @@ workflow that makes work understandable, reviewable, testable and safe to change
 Detailed rule areas have their own owners:
 
 - testing strategy → `TESTING.md`
+- risk management → `RISK_MANAGEMENT.md`
 - completion criteria → `DEFINITION_OF_DONE.md`
 - team communication → `TEAM_TONE_AND_COLLABORATION.yaml`
 - people/conflict support → `HR_AND_TEAM_SUPPORT.yaml`
@@ -103,8 +104,8 @@ Decision records preserve the **why**, not only the final code.
 ## Step 4 — Update risk analysis when the issue reveals a risk
 
 When implementation, testing or review identifies a new risk or materially
-changes an existing risk, record that information in the project's canonical
-risk source.
+changes an existing risk, follow `RISK_MANAGEMENT.md` and record the confirmed
+risk/update in the project's canonical risk source.
 
 The issue/PR should state what was found and where it was recorded.
 
@@ -322,5 +323,5 @@ When helping create an issue, PR description, review or implementation plan:
 ---
 
 **Status:** ACTIVE
-**Version:** 2.0
+**Version:** 2.1
 **Last updated:** 2026-09-18
