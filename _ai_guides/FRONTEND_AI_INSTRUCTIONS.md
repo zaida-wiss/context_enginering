@@ -11,7 +11,7 @@ Läs denna **varje gång** användaren frågar om frontend-kod.
 **REGEL: Du MÅSTE läsa design-specen innan du svarar**
 
 1. **Läs denna fil** (`FRONTEND_AI_INSTRUCTIONS.md`) ← Du är här
-2. **Läs sedan:** `_memory/UI_DESIGN_REFERENCE.md`
+2. **Läs sedan:** `data/manual/design/UI_DESIGN_REFERENCE.md`
 3. **Kolla bilderna:** `_docs/`-mappen för mockups
 4. **Basera svaret på:** Design-specifikationen från mockuperna
 5. **Referera i svaret:** "Enligt mockup XX..."
@@ -67,7 +67,7 @@ Enligt mockup [XX_namn.webp] (_docs/XX_namn.webp) behöver komponenten:
 - [ ] CSS modules (en per komponent)
 
 ### Se även
-- [UI_DESIGN_REFERENCE.md](../_memory/UI_DESIGN_REFERENCE.md) - Full spec för denna komponent
+- [UI_DESIGN_REFERENCE.md](../data/manual/design/UI_DESIGN_REFERENCE.md) - Full spec för denna komponent
 - [DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md) - Acceptance criteria
 - [TEAM_STANDARDS.md](project/TEAM_STANDARDS.md) - Code standards
 ```
@@ -131,7 +131,7 @@ Enligt mockup [02_overview.webp](_docs/02_overview.webp):
 
 **För varje frontend-fråga, referera även till:**
 
-1. **[UI_DESIGN_REFERENCE.md](../_memory/UI_DESIGN_REFERENCE.md)** - Full mockup-spec
+1. **[UI_DESIGN_REFERENCE.md](../data/manual/design/UI_DESIGN_REFERENCE.md)** - Full mockup-spec
 2. **[DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md)** - Acceptance criteria
 3. **[TEAM_STANDARDS.md](project/TEAM_STANDARDS.md)** - Code standards (TypeScript, CSS modules, etc.)
 
