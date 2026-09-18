@@ -1,0 +1,116 @@
+---
+name: context_improvement_backlog
+description: Remaining context-engineering improvements identified during the 2026-09-18 refactor
+version: 1.0
+metadata:
+  type: maintenance_backlog
+  status: active
+  updated: 2026-09-18
+---
+
+items:
+
+  risk_management_and_cto:
+    priority: high
+    status: pending_source_review
+    purpose: >
+      Build a project risk-management standard that teaches industry practice
+      while using the team's existing Google risk register as the canonical
+      current-risk store.
+    source_work_needed:
+      - "Inspect the registered GOOGLE_RISK_REGISTER structure/columns."
+      - "Inspect CTO Feed Forward requirements already stored under data/manual/course/."
+      - "Map school-required fields to broadly useful risk-management concepts."
+    principles_already_decided:
+      - "Context repo teaches the method; it does not create a competing risk register."
+      - "Current risks come from verified source data."
+      - "AI may identify candidate risks but labels them as analysis/proposals until recorded/confirmed."
+      - "Risk should connect to engineering decisions, mitigation and planning impact."
+    proposed_owner: "_ai_guides/project/RISK_MANAGEMENT.md"
+
+  dependencies_and_capacity:
+    priority: high
+    status: pending
+    purpose: >
+      Teach AI to detect dependencies, missing estimates and unusual capacity
+      early enough to prevent one team from blocking another.
+    principles_already_decided:
+      - "Signal dependencies early, before they become blockers."
+      - "Notice missing estimation when planning requires it."
+      - "Use verified capacity when available; distinguish unknown capacity from normal capacity."
+      - "Recommend sequencing, parallel work and synchronization points."
+      - "Do not invent numeric estimates or capacity."
+    proposed_owner: "_ai_guides/project/DEPENDENCIES_AND_CAPACITY.md"
+
+  cross_layer_awareness:
+    priority: high
+    status: pending
+    purpose: >
+      Give coding assistance, planning and presentations a shared model for
+      Frontend ↔ Backend ↔ Native/System integration.
+    principles_already_decided:
+      - "Inspect relevant active branches when tools/access allow, not only develop/main."
+      - "Detect divergence from an existing contract."
+      - "Detect when a contract should probably be created before teams diverge."
+      - "Surface potential integration mismatch before it becomes expensive."
+      - "Re-run presentation analysis from verified project sources rather than private AI conversations."
+      - "Separate verified mismatch, early signal, AI analysis and AI proposal."
+    proposed_owner: "_ai_guides/project/CROSS_LAYER_AWARENESS.yaml"
+    intended_consumers:
+      - "coding assistance"
+      - "issue creation"
+      - "sprint planning"
+      - "risk analysis"
+      - "Monday Meeting presentations"
+
+  technical_debt:
+    priority: high
+    status: pending
+    purpose: >
+      Teach recognition, classification and handling of technical debt without
+      treating every imperfection as debt or every debt item as urgent.
+    principles_already_decided:
+      - "Distinguish early signal from verified debt."
+      - "Connect debt to consequence, cost of delay and affected project goal."
+      - "Recommend action when evidence supports it."
+      - "Escalate before teams knowingly build incompatible solutions when prevention is cheaper."
+    proposed_owner: "_ai_guides/project/TECHNICAL_DEBT.md"
+
+  coding_assistance_task_bundle:
+    priority: high
+    status: pending_after_cross_layer
+    purpose: >
+      Create a VS Code/coding-help task bundle that keeps local coding help one
+      step ahead by checking relevant project context, contracts, active branches,
+      tests, risks and dependencies.
+    depends_on:
+      - "cross_layer_awareness"
+      - "dependencies_and_capacity"
+      - "technical_debt"
+      - "risk_management_and_cto"
+    principles_already_decided:
+      - "Help with the requested code while also checking relevant surrounding system context."
+      - "Signal when another team should be consulted."
+      - "Signal when an API/contract already exists or when creating one appears timely."
+      - "Teach the professional reasoning behind the signal."
+
+  goals_and_sprint_planning:
+    priority: high
+    status: implemented
+    owner: "_ai_guides/project/GOALS_AND_SPRINT_PLANNING.md"
+    notes:
+      - "Current goals are source-backed and never invented."
+      - "A verified Sprintplanering sheet/tab is primary when present and current."
+      - "AI actively proposes future goals/milestones/issues with explicit provenance."
+      - "Proposal shows what changes, from/to, why and consequence."
+
+implementation_order:
+  - "1. Review GOOGLE_RISK_REGISTER + CTO source material; implement risk management."
+  - "2. Implement dependencies and capacity."
+  - "3. Implement cross-layer awareness with active-branch inspection semantics."
+  - "4. Implement technical-debt model."
+  - "5. Compose coding-assistance task bundle from the shared authorities."
+  - "6. Wire the same shared authorities into Monday Meeting analysis without duplicating their semantics."
+
+---
+status: ACTIVE
