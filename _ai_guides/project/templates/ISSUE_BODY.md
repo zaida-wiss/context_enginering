@@ -1,7 +1,7 @@
 ---
 name: issue_body_template
 description: Reusable issue body aligned with project workflow, testing and Definition of Done
-version: 2.0
+version: 2.1
 metadata:
   type: template
   status: active
@@ -51,6 +51,15 @@ that are relevant to the actual change.
 - [Link to risk update if a new/changed risk is found]
 - [Otherwise: No new/changed risk identified]
 
+## Applicable Definition of Done
+Only include criteria from the canonical Definition of Done that are relevant to
+this issue's scope.
+
+- [ ] [Concrete applicable DoD criterion]
+- [ ] [Concrete applicable DoD criterion]
+- [ ] [README/docs criterion only when the issue actually affects that documentation]
+- [ ] [Contract/architecture/risk/decision criterion only when applicable]
+
 ## Completion reminder
 - [ ] Acceptance Criteria verified
 - [ ] Relevant tests/checks complete
@@ -72,6 +81,8 @@ The issue is a shared working agreement, not only a task title.
 - Testing turns risk into evidence.
 - Decision records preserve important reasoning.
 - Risk updates connect implementation work to project risk management.
+- Applicable Definition of Done turns the canonical DoD into a short,
+  issue-specific completion checklist instead of copying irrelevant criteria.
 - The completion reminder reduces forgotten process steps.
 
 The canonical requirements remain in the owning standards; this template is a
@@ -80,5 +91,19 @@ short operational reminder.
 ---
 
 **Status:** ACTIVE
-**Version:** 2.0
+**Version:** 2.1
 **Last updated:** 2026-09-18
+
+
+## AI selection rule
+
+When generating an issue body, select the applicable DoD criteria from
+`../DEFINITION_OF_DONE.md` after examining the issue scope.
+
+Examples:
+- a CSS spacing fix may need visual/responsive verification but no README update
+- an API contract change normally needs contract verification/documentation
+- a setup/configuration change normally needs the relevant README/setup
+  instructions updated
+
+These examples demonstrate selection logic only; they are not project facts.
