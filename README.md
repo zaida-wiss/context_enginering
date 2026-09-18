@@ -10,6 +10,16 @@ Do not derive presentation rules from the project repository.
 
 ---
 
+## 🧭 Global AI framework
+
+Before any task-specific routing, apply
+[`_ai_guides/AI_FRAMEWORK.md`](_ai_guides/AI_FRAMEWORK.md).
+
+Its conflict-decision gate applies to every AI task in this repository. When
+active rules genuinely contradict each other, the AI must stop, show the
+conflicting rules and consequences, and ask the user to decide **before** it
+changes the rules or continues the affected task.
+
 ## 🧭 Context registry
 
 Machine-readable paths and task bundles are registered in
@@ -78,22 +88,21 @@ python3 _audit/validate_presentation_authorities.py
 
 ## 🚨 Conflict Rule
 
-Use this order when instructions conflict:
+Global conflict behavior is owned by
+[`_ai_guides/AI_FRAMEWORK.md`](_ai_guides/AI_FRAMEWORK.md).
 
-1. `SYSTEM_CONTRACT.yaml` — orchestration/gates
-2. `ACCESSIBILITY_NEURODIVERSITY.md` — absolute accessibility boundary
-3. `VISUAL_DESIGN_MANDATORY.md` — global visual rules
-4. `READABILITY_HARD_RULES.md` — hard typography, line spacing and meeting-number readability
-5. `CARD_COMPONENT_STANDARD.md` — card internals
-6. `PROVENANCE_AND_AI_LABELING.md` — source/fact/AI identity
-7. `PR_MERGE_REVIEW_IDENTITY.md` — merger/reviewer identity
-8. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit/pagination
-9. `SLIDE_DETAIL_SPEC.md` — slide content
-10. `TEMPLATE_REFERENCE.html` — reference only
+**Do not resolve a genuine contradiction by applying an authority ranking.**
+Authority maps identify ownership and absolute boundaries; they do not replace
+the user's decision when two active project intentions are incompatible.
 
-If two authorities appear to own the same rule and disagree, fix the documentation before rendering.
+For a genuine conflict:
+1. STOP the affected work.
+2. Show the conflicting rules and owning files.
+3. Explain the consequence of each option.
+4. Ask the user to decide.
+5. Update the owning context rule(s) and regression test after the decision.
+6. Continue only when the context is consistent.
 
----
 
 ## 🧭 Presentation rules — where to change what
 
