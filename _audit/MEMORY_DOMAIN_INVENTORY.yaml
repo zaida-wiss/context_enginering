@@ -59,7 +59,9 @@ files:
   _memory/GITHUB_MEMBER_MAPPING.md:
     class: memory
     reason: "Stable identity mapping used to connect team members to GitHub handles."
-    proposed_destination: "_memory/GITHUB_MEMBER_MAPPING.md"
+    proposed_destination: "_memory/GITHUB_MEMBER_MAPPING.md" 
+    migration_status: "consolidated_2026-09-18"
+    actual_destination: "_memory/TEAM_ROSTER.md"
     migration_note: "Candidate for consolidation into TEAM_ROSTER.md to remove duplicate identity data."
 
   _memory/PROJEKTKONTEXT_AVANZA.md:
@@ -187,4 +189,4 @@ migration_order:
   - "6. Consider merging GITHUB_MEMBER_MAPPING into TEAM_ROSTER to reduce duplicate identity truth."
   - "7. Update CONTEXT_REGISTRY paths and run repository-wide old-path validation after every migration batch."
 
-status: "inventory_complete_primary_domain_migrations"
+status: "memory_domain_normalized"
