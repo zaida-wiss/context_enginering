@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.3
+  version: 5.4
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -475,7 +475,7 @@ Manual checks:
 
 ---
 
-## 12B. POINT 9 — SHARED CARD/GRID PRIORITY VIEW
+## 12B. POINT 9 — VERTICAL PRIORITY VIEW
 
 Required:
 
@@ -488,17 +488,20 @@ point9_ai_order_without_analysis_label_count == 0
 point9_dependency_not_reflected_in_order_count == 0
 point9_duplicate_item_across_groups_count == 0
 point9_team_coverage_gap_without_reason_count == 0
-point9_shared_grid_missing_count == 0
-point9_priority_order_unclear_count == 0
+point9_vertical_sequence_missing_count == 0
+point9_group_vertical_order_violation_count == 0
+point9_side_by_side_group_count == 0
 point9_meta_layout_language_visible_count == 0
 suggested_issue_without_goal_link_count == 0
 unverified_owner_presented_as_fact_count == 0
 ```
 
 Manual checks:
-- meeting point 9 uses the shared responsive card/grid model from `SLIDE_DETAIL_SPEC.md`
-- inspect actual rendered geometry: card reading order matches the intended priority order
-- a readable 2×2 grid is allowed; if it becomes dense, reduce cards per slide or continue
+- meeting point 9 uses the mandatory vertical execution sequence from `SLIDE_DETAIL_SPEC.md`
+- inspect actual rendered geometry: each execution group begins below the previous group's bottom edge
+- the four execution groups may not be arranged as a 2×2/four-quadrant matrix
+- cards remain the internal components inside each group
+- if the vertical sequence becomes dense, paginate instead of shrinking below readability minima
 - no visible subtitle/body text explains presentation-layout mechanics such as `inte fyrkolumnstavla`, `vertical layout` or equivalent
 - execution groups appear in the canonical logical order:
   1. `Prioritering först`
