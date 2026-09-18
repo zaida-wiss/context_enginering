@@ -44,12 +44,16 @@ files:
     class: instruction
     reason: "Defines project workflow/quality rules for when an issue is done."
     proposed_destination: "_ai_guides/project/DEFINITION_OF_DONE.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "_ai_guides/project/DEFINITION_OF_DONE.md"
     migration_note: "Review against current team decisions before declaring canonical."
 
   _memory/DEFINITION_OF_DONE_TEMPLATE.md:
     class: instruction
     reason: "Reusable issue template and process rule."
     proposed_destination: "_ai_guides/project/templates/DEFINITION_OF_DONE.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "_ai_guides/project/templates/DEFINITION_OF_DONE.md"
     migration_note: "Reference the canonical DoD authority rather than duplicating requirements."
 
   _memory/GITHUB_MEMBER_MAPPING.md:
@@ -62,6 +66,8 @@ files:
     class: instruction
     reason: "Explicit AI operating instructions, source hierarchy and presentation behavior."
     proposed_destination: "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md"
     migration_note: "Large parts are stale and duplicate the new router/authority system; extract only still-valid project-specific guidance."
 
   _memory/README.md:
@@ -74,6 +80,8 @@ files:
     class: instruction
     reason: "Currently an empty template rather than actual risk data."
     proposed_destination: "_ai_guides/project/templates/RISK_REGISTER.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "_ai_guides/project/templates/RISK_REGISTER.md"
     migration_note: "Actual risk records should come from a live registered source or data/manual."
 
   _memory/SCHEDULE.md:
@@ -94,6 +102,8 @@ files:
     class: instruction
     reason: "Coding, Git and agent guidance are project operating standards."
     proposed_destination: "_ai_guides/project/TEAM_STANDARDS.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "_ai_guides/project/TEAM_STANDARDS.md"
     migration_note: "Split rules by owner if needed; avoid one large mixed instruction document."
 
   _memory/TEAM_ROSTER.md:
@@ -171,4 +181,4 @@ migration_order:
   - "6. Consider merging GITHUB_MEMBER_MAPPING into TEAM_ROSTER to reduce duplicate identity truth."
   - "7. Update CONTEXT_REGISTRY paths and run repository-wide old-path validation after every migration batch."
 
-status: "inventory_complete_course_data_migrated"
+status: "inventory_complete_course_data_and_project_instructions_migrated"
