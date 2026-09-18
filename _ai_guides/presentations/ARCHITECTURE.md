@@ -167,7 +167,7 @@ Every derived claim must clearly show its origin.
 
 Canonical source classes:
 - `📅 Schemafakta`
-- `✅ Mötesprotokoll` / verified team input
+- `👥 ✅ Mötesprotokoll` / verified meeting-protocol input
 - `⭐ AI-förslag`
 - `🔎 AI-analys`
 - `⚠ Källa behöver verifieras`
@@ -191,15 +191,15 @@ Red is not a fact color. Red remains blocker/critical.
 
 ## 7. CANONICAL LAYOUT LIMITS
 
-These are maximums, not targets:
+These are density rules:
 
-- `①A–①C`: max 6 cards, default 3×2
-- `①D–①E`: max 4, default 2×2
-- `①F`: max 4, responsive 2×2 / 2×1 / 1×1
-- `③–⑤`: separate Frontend, Backend and Native team sections
+- `①–①d`: only work performed in the previous sprint window; 6 cards is standard capacity per physical slide with unlimited lowercase-letter continuations
+- `①` develop merges → `①a` Backend collection merges → `①b` Native collection merges → `①c` unfinished work active in the window → `①d` AI team summaries
+- `③–⑤`: separate Frontend, Backend and Native forward-planning sections; they own backlog, future work, older inactive work and governing decisions
 - `⑨`: exactly four team columns on every slide: `Frontend`, `Backend`, `Native`, `Cross-team`
 - `⑨`: open PRs with `📌 #[PR]`, remaining issues with explicit order and visual dependencies, justified AI allocation analysis and suggested missing issues
-- `⑨`: up to 6 responsive cards per physical meeting-point slide; paginate as `9-2`, `9-3` when readability requires it
+- `⑨`: fixed `1×4` team columns with vertically stacked, content-driven cards/text blocks
+- `⑨`: continue as `9a`, `9b`, `9c`, `9d`, `9e` when content requires more space
 - `②`, `⑥–⑧` and `⑩–⑫`: max 4, responsive card layout
 - `⑬`: max 4; 4×1 only when readable, otherwise 2×2/fewer
 - `⑭`: max 4 before continuation

@@ -66,29 +66,33 @@ Recommended left accent width: visually equivalent to **4–6 px**.
 
 This hierarchy applies to **every card in the entire presentation**, including Issue, PR, Merge, action, next-step, risk, decision, sprint-plan, capacity, dependency, question and informational cards.
 
-Visual priority must be:
+Every text block has one of four visual-priority levels:
 
-1. **Card title** — primary text color
-2. **Pedagogical explanation/supporting text** — secondary, calmer color
-3. **Person/team identity row when present** — primary text color, but physically anchored in the bottom zone
-4. **Verification/provenance + operational metadata** — muted/quiet color in the bottom zone
-5. **Relevant timestamp when present** — quiet microcopy/timestamp color, deliberately discreet
+1. **Primary focus** — issue title and assignee/person identity
+2. **Action focus** — `⭐ AI-förslag`, including proposed new issues
+3. **Supporting meaning** — merge/review information, pedagogical explanation and `🔎 AI-analys`
+4. **Quiet context** — sources/provenance, branch, timestamp and technical/operational metadata
 
 Hard rules:
-- title is the strongest text layer
-- supporting explanation must be visibly calmer than title
-- identity remains easy to scan but must not interrupt the title/explanation reading flow
-- metadata must be more discreet than the supporting explanation unless a blocker/critical semantic requires emphasis
-- timestamps are contextual microcopy and must **not compete for attention** with title, identity, explanation or operational metadata
+- issue title and assignee share the strongest level-1 treatment
+- AI proposals are clearly visible at level 2 but never compete with the issue title/assignee
+- merge/review and pedagogical explanation share the calmer level-3 treatment
+- AI analysis uses level 3 unless another active content rule requires stronger warning semantics
+- source labels and symbols use level 4 but remain fully readable and identifiable
+- branch, timestamps and technical metadata use level 4 and must not compete with levels 1–3
 - do not use accent/team colors for ordinary metadata merely to attract attention
-- secondary/quiet text must blend more gently into the card surface while still meeting WCAG contrast requirements
+- level 4 blends most gently into the card surface while still meeting font-size and WCAG contrast requirements
 - never reduce contrast below WCAG AA to make text look quieter
 - avoid extra-bold/black weights; normal card titles should look clear, not heavy
+
+Level is communicated by a combination of size, weight, spacing and WCAG-safe
+color. Color alone never communicates priority. “Quiet” means low emphasis, not
+low legibility.
 
 The intended scan order is:
 
 ```text
-Rubrik → pedagogisk förklaring → [luft] → namn → verifiering/metadata → tid
+Issue-titel → pedagogisk förklaring/AI → [luft] → assignee → källa/metadata/tid
 ```
 
 ---
@@ -118,7 +122,7 @@ This applies to all card types when those fields exist:
 - team-summary cards
 
 Examples of bottom-zone verification/provenance:
-- `✅ Mötesprotokoll 17 sep`
+- `👥 ✅ Mötesprotokoll 17 sep`
 - `✅ GitHub + mötesprotokoll`
 - `🔎 AI-analys`
 - `⭐ AI-förslag`
@@ -225,13 +229,13 @@ This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
 - secondary text color; deliberately calmer than title/identity
 - normally 1–3 visual lines when needed for pedagogical clarity
 - placed immediately under the title
-- multiline line spacing: **1.15 minimum, 1.2 preferred**
+- multiline line spacing: **1.15 standard and minimum**; increase only when the rendered font requires it
 
 ## Operational metadata / verification
 Examples:
 - `Merged: Zaida | Review: Björn`
 - `Branch: frontend/#83-save-allocation`
-- `✅ Mötesprotokoll 17 sep`
+- `👥 ✅ Mötesprotokoll 17 sep`
 - `⭐ AI-förslag`
 
 Style:
@@ -414,7 +418,7 @@ Use these **minimum rendered gaps**:
 - operational metadata → bottom timestamp/source area: **10 px minimum** unless flexible whitespace is larger
 
 Line spacing:
-- multiline body/explanation: **1.15 minimum, 1.2 preferred**
+- multiline body/explanation: **1.15 standard and minimum**
 - multiline card title: **1.05 minimum**
 - metadata: natural line height, never compressed until glyphs visually collide
 
@@ -429,6 +433,41 @@ If a card cannot fit while respecting them:
 4. paginate
 
 Never solve fit by collapsing these gaps below minimum, overlapping rows, shrinking text below role minimums, or removing the pedagogical explanation.
+
+## 10A. CONTENT-FLOW CONTAINERS — HARD RULE
+
+Every card is a parent container with a vertical content-flow layout. Every
+semantic text section is its own child container/flex row, for example:
+
+1. title
+2. pedagogical contribution
+3. status or work detail
+4. dependency/AI/fact blocks
+5. flexible spacer when a bottom zone is required
+6. identity
+7. provenance/metadata
+8. timestamp
+
+Placement rules:
+- measure each child after wrapping with the actual font, size, width and line spacing
+- set the next child's top position from the previous child's measured bottom plus the required gap
+- child containers use content-driven height; fixed text heights are forbidden
+- a parent card height is calculated from padding + all measured children + all required gaps
+- a bottom-anchored information zone reserves its full measured height before the upper content area is laid out
+- upper content may never grow into the reserved bottom zone
+- independent absolute-positioned textboxes may not be used for vertically stacked card content
+- if the renderer lacks native flex layout, emulate vertical flex deterministically with measured bounding boxes and a single cursor advancing downward
+- after rendering, compare all sibling bounding boxes; any intersection greater than zero fails the card
+
+Fit order:
+1. use 1.15 body line spacing and the role-specific font size
+2. wrap and remeasure every child container
+3. grow the card when space permits
+4. reduce cards per slide toward the allowed minimum
+5. continue the meeting point on the next lettered slide
+
+Never reduce line spacing below its minimum to compensate for an incorrectly
+measured container.
 
 ---
 

@@ -153,7 +153,7 @@ Whenever content is not explicitly present in a registered source, label it.
 
 Use:
 - `📅 Schemafakta` — explicitly in registered school schedule
-- `✅ Mötesprotokoll` / equivalent — explicitly supplied or confirmed by team
+- `👥 ✅ Mötesprotokoll` / equivalent — explicitly supplied or confirmed by team
 - `🔎 AI-analys` — AI interpretation, synthesis or assessment of verified evidence
 - `⭐ AI-förslag` — AI recommendation, suggested action or suggested question
 - `⚠ Källa behöver verifieras` — origin cannot be verified
@@ -166,7 +166,7 @@ This applies globally, especially to sprintplan, sprintmål, prioritering, näst
 
 ## 5️⃣ MERGER + REVIEW LOOKUP RULE
 
-For every merged PR shown in ①A–①C:
+For every merged PR shown in ①, ①a or ①b:
 
 1. Fetch PR metadata.
 2. Resolve the actual merger (`merged_by` first; registered fallback evidence only if needed).

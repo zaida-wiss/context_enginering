@@ -126,9 +126,35 @@ meeting_point_header_malformed_count == 0
 Manual checks:
 - no slide may show `✏️` without its meeting-point number
 - the canonical pattern is `✏️ ⑨ Prioritering & scope` or equivalent title text
-- continuation slides preserve the identity, e.g. `✏️ ⑨-2 ...`
+- continuation slides preserve the identity with lowercase letters, e.g. `✏️ ⑨a ...`
+- numeric continuation suffixes such as `⑨-2` are forbidden
 
 Any failure → STOP.
+
+### Meeting point 1 card standard
+
+- every physical slide in `①–①d` targets six cards when at least six grounded items exist and all six remain readable
+- six cards is the capacity of one physical slide, not a total cap for meeting point 1
+- all grounded items remain present across as many lowercase-letter continuation slides as required
+- fewer cards require insufficient grounded items or a documented WCAG/readability fit reason
+- required `①d` team-summary AI cards are substantive content; unrelated filler cards are forbidden
+- order is `① develop` → `①a Backend collection` → `①b Native collection` → `①c active in window` → `①d AI team summaries`
+- every item in meeting point 1 has verified merge/activity evidence inside the sprint window
+- backlog, future plans and dormant older work do not appear in meeting point 1
+- every `①d` team summary contains approximately 1–10 complete sentences
+- every `①d` summary names all team members using first names and states only verified contributions
+- review/help/integration work is included when verified
+- every included decision is verified and distinguished from future questions/proposals
+- a member without verified activity uses neutral evidence-limited wording, never a performance inference
+
+### Forward planning in points 3–5
+
+- Frontend, Backend and Native each include their verified active, backlog, future and older inactive work
+- every item has a visible verified state and a concrete next-step field
+- older inactive work uses neutral wording and shows last verified activity when available
+- decisions appear when they materially govern upcoming work and retain their verified source
+- AI-derived ordering, ownership, reactivation, deferral or closure uses `🔎 AI-analys` and/or `⭐ AI-förslag` as applicable
+- completed work is not duplicated from point 1 unless needed as a short dependency reference
 
 ---
 
@@ -337,12 +363,12 @@ dependency_without_link_symbol_count == 0
 ai_dependency_without_both_symbols_count == 0
 ai_assignment_without_reason_count == 0
 suggested_issue_without_goal_link_count == 0
-meeting_point_9_card_count_over_six == 0
 ```
 
 Manual checks:
 - every slide for point 9 has exactly `Frontend | Backend | Native | Cross-team`
-- each physical slide belonging to meeting point 9 has at most six cards
+- meeting point 9 remains a fixed `1×4` team-column layout on every continuation slide
+- continuation slides use lowercase letters: `9a`, `9b`, `9c`, `9d`, `9e`
 - cards adapt to text length without violating typography minima
 - empty team columns remain visible with a verified empty state
 - point 9 renders every open PR as `📌 #[PR-number]` with its contribution directly below
@@ -366,6 +392,16 @@ Required:
 ```text
 text_overlap_count == 0
 card_overlap_count == 0
+card_child_container_overlap_count == 0
+card_fixed_text_height_count == 0
+bottom_zone_intrusion_count == 0
+card_priority_hierarchy_violation_count == 0
+level_4_contrast_failure_count == 0
+slide_missing_source_footer_count == 0
+used_source_missing_from_footer_count == 0
+unverifiable_source_missing_warning_count == 0
+source_footer_overlap_count == 0
+meeting_protocol_without_meeting_symbol_count == 0
 text_outside_card_count == 0
 text_clipping_count == 0
 out_of_bounds_element_count == 0
@@ -374,6 +410,30 @@ plain_row_work_item_count == 0
 ```
 
 Never solve density by shrinking slide titles, shrinking below role minima, removing pedagogical explanations or collapsing semantic block spacing.
+
+Container checks:
+- body/supporting text uses 1.15 line spacing unless the rendered font requires more
+- every semantic block has its own measured child container
+- stacked blocks follow vertical flow; no child starts before the previous child's measured bottom plus required gap
+- the bottom information zone is measured and reserved before upper content layout
+- any child-container intersection fails delivery, even when the text remains technically inside the card
+
+Priority checks:
+- issue title and assignee are the strongest level-1 elements
+- `⭐ AI-förslag` is level 2
+- merge/review, pedagogical explanation and `🔎 AI-analys` are level 3
+- sources, branch, timestamp and technical metadata are level 4
+- level 4 remains readable, preserves source symbols and passes WCAG contrast
+- color is not the only distinction between priority levels
+
+Source-footer checks:
+- every physical and continuation slide has a bottom source footer
+- the footer lists only deduplicated sources used on that slide
+- every verified source has its canonical symbol and readable name
+- every meeting-protocol source uses the full label `👥 ✅ Mötesprotokoll`
+- every expected but unverifiable source has `⚠`, explicit failure text and a struck-through name
+- card/block provenance remains present and agrees with the footer
+- the measured footer container does not intersect cards, diagrams or slide bounds
 
 ---
 

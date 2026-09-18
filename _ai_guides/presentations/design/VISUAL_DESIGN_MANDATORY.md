@@ -69,11 +69,24 @@ One work/information item = one card unless a slide authority explicitly defines
 | Metadata text | `#B0B8CC` | metadata |
 | Quiet microcopy/timestamp | `#A2ABC0` | tertiary content, still WCAG-safe |
 
+### Four-level text-color hierarchy
+
+| Priority | Content | Palette role |
+|---:|---|---|
+| 1 | Issue title, assignee | Main text |
+| 2 | `⭐ AI-förslag` and proposed new issues | Main/secondary text with proposal symbol and controlled emphasis |
+| 3 | Merge/review, pedagogical explanation, `🔎 AI-analys` | Secondary text |
+| 4 | Sources/provenance, branch, timestamp, technical metadata | Metadata or quiet microcopy |
+
+Level 4 is the least prominent treatment, but its rendered text must still meet
+WCAG 2.2 AA. Do not lower opacity or contrast until it nearly disappears.
+
 Palette rules:
 - same background/card family across the entire deck
 - no black/high-glare cards
 - transparency must preserve contrast
 - actual rendered colors must pass WCAG
+- priority must never be communicated by color alone; size/weight/spacing and labels support the hierarchy
 
 ---
 
@@ -149,35 +162,31 @@ Hard rules:
 - exactly four team columns on every slide for point 9
 - column headers remain visible and use at least the section-header minimum
 - empty team columns remain visible and show a verified empty state
-- support up to six cards per physical slide within meeting point 9
-- card geometry may adapt to text length using 3×2, 2×3 or a balanced mixed arrangement within the team structure
+- keep the fixed `1×4` team-column structure; cards/text blocks stack vertically inside their owning column
+- card height may adapt to text length, but the fixed four-column structure never changes
 - narrow columns must not force text below component minima
-- if content is too tall, paginate to `9-2`, `9-3` and so on; do not add a fifth column
+- if content cannot fit accessibly, continue as `9a`, `9b`, `9c`, `9d`, `9e` and so on; do not add a fifth column
 - status color may support meaning but never replaces status/source symbols
 - point 9 renders each PR heading as `📌 #[PR_NUMBER]` with a grounded contribution line directly below
 - point 9 visualizes issue order and dependency direction rather than describing them only in prose
 - point 9 keeps `🔎 AI-analys` and `⭐ AI-förslag` visible at item level
 - provenance remains visible inside every relevant item
 
-### ①A–①C merge overview
-- maximum 6 cards
-- default may be 3×2 only when readable
-- otherwise reduce density and continue on another slide
-
-### ①D / ①E active/backlog
-- maximum 4 cards per physical slide
-- default 2×2 when content permits
-
-### ①F decisions
-- maximum 4 cards
-- 2×2, 2×1 or 1×1 based on content
+### Meeting point ①–①d
+- six cards is the standard capacity per physical slide; meeting point 1 has no total card or slide limit
+- use six when at least six grounded items exist and all six remain readable
+- team-summary AI cards in ①d are required content, not filler
+- never create unrelated filler cards merely to reach six
+- preferred layout may be 3×2 when readable; card geometry remains responsive
+- if more than six grounded items exist, create as many lowercase-letter continuation slides as required
+- if six cards do not fit within WCAG/readability rules, use fewer per physical slide and continue; never omit a grounded item because of density
 
 ### ②–⑧, ⑩–⑫ and ⑭
 - maximum 4 cards unless slide authority is stricter
 - lower density when text length requires it
 
-The four-team-board and six-card exception above governs meeting point 9, not
-the ninth physical slide in the deck.
+The four-team-board exception above governs meeting point 9, not the ninth
+physical slide in the deck.
 
 ### ⑬ next steps
 - 4×1 only when each card remains readable
@@ -278,6 +287,17 @@ Ordinary slide titles, captions and footers:
 - transparent fill
 - no decorative border
 - no unnecessary panel behind text
+
+### Reserved source footer
+
+Every physical slide reserves a bottom footer container for the sources used on
+that slide. The content canvas and all cards end above this container. The
+footer may wrap and grow upward only after card layout has been recalculated;
+it may never overlay cards or extend outside the slide.
+
+Verified sources retain their canonical symbols. Expected sources that could
+not be verified use `⚠`, explicit failure text and a struck-through source name.
+The footer is priority level 4 but remains WCAG-readable.
 
 Visible card surfaces are reserved for actual information components.
 

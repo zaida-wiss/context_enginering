@@ -65,7 +65,7 @@ Continuation slides:
 
 ```text
 ✏️ 1A-2. Avklarat sedan förra mötet
-✏️ 9-2. Prioritering och scope
+✏️ 9a. Prioritering och scope
 ```
 
 Forbidden in rendered meeting headers:
@@ -100,11 +100,12 @@ A technically fitting smaller size is not a reason to use it. Use the largest co
 Text must never feel vertically compressed.
 
 Hard rules:
-- multiline body/supporting text uses **at least 1.15 line spacing**, with **1.2 preferred**
+- multiline body/supporting text uses **1.15 line spacing as the standard and minimum**; increase it only when the rendered font needs more clearance
 - multiline card titles use at least **1.05 line spacing**
 - wrapped lines within one semantic text block must not touch or visually collide
 - separate semantic blocks must have an explicit gap; do not rely on accidental textbox placement
 - do not place two independent textboxes on top of the same vertical band unless they are intentionally side-by-side and non-overlapping
+- reducing line spacing never counts as collision prevention; block geometry must be recalculated from rendered text height
 
 Minimum rendered gaps:
 - title → pedagogical explanation: **6 px minimum**, **8 px preferred**

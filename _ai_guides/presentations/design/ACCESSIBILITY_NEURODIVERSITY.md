@@ -219,7 +219,7 @@ Facts and AI-derived suggestions must be distinguishable without color.
 
 Use icon + text:
 - `📅 Schemafakta`
-- `✅ Mötesprotokoll`
+- `👥 ✅ Mötesprotokoll`
 - `⭐ AI-förslag`
 - `🔎 AI-analys`
 - `⚠ Källa behöver verifieras`

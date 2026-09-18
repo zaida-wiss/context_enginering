@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import sys
 
 import yaml
@@ -54,6 +55,11 @@ def main() -> int:
         for label, pattern in STALE_ACTIVE_PATTERNS.items():
             if pattern in text:
                 errors.append(f"{label} in active authority {filename}: {pattern}")
+
+        if re.search(r"(?<!👥 )✅ Mötesprotokoll", text):
+            errors.append(
+                f"meeting protocol missing meeting symbol in active authority {filename}"
+            )
 
         required_pattern = REQUIRED_ACTIVE_PATTERNS.get(filename)
         if required_pattern and required_pattern not in text:

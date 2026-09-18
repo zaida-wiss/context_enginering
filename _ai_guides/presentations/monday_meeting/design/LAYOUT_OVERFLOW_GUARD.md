@@ -47,10 +47,12 @@ For every card/slide, use this order:
 2. Start normal/card text at preferred typography sizes.
 3. Wrap text naturally.
 4. Step down normal/card text deliberately only when required and only within the role-specific ranges in `CARD_COMPONENT_STANDARD.md` / `READABILITY_HARD_RULES.md`.
-5. Keep the hard minimum line/block spacing; never collapse line spacing.
-6. Let card height grow when space permits.
-7. Reduce grid density so cards become wider/taller.
-8. Move remaining cards to continuation slide(s).
+5. Use the 1.15 standard/minimum body line spacing and keep hard block gaps.
+6. Recalculate every flex-row/container height from wrapped rendered text.
+7. Measure and reserve the per-slide source footer before calculating available card height.
+8. Let card height grow when space permits.
+9. Reduce grid density so cards become wider/taller.
+10. Move remaining cards to continuation slide(s).
 
 A continuation slide is mandatory when content still does not fit at the defined accessible/readability minimums.
 
@@ -76,9 +78,7 @@ Forbidden:
 
 | Slide type | Default | Maximum |
 |---|---|---:|
-| `①A`, `①B`, `①C` | 3 × 2 | 6 |
-| `①D`, `①E` | 2 × 2 | 4 |
-| `①F` | 2 × 2 / 2 × 1 | 4 |
+| `①`, `①a`, `①b`, `①c`, `①d` | responsive, 3 × 2 when readable | 6 per physical slide |
 | `②`–`⑤` | 2 × 2 | 4 |
 | `⑥`–`⑫`, `⑭` | 2 × 2 | 4 |
 | `⑬` | 4 × 1 only when readable with required microcopy; otherwise 2 × 2 | 4 |
@@ -163,6 +163,11 @@ Hard rules:
 - no overlapping text zones
 - no negative spacing
 - no line-height compression that causes crowded or colliding text
+- every stacked text block is a measured child container in vertical flow
+- each child's top edge is derived from the previous child's measured bottom edge plus the required gap
+- bottom information zones reserve space before upper content is placed
+- the physical slide's source footer reserves its full wrapped height before any card is placed
+- no card, diagram or decoration may enter the source-footer bounding box
 - card gap remains visually clear
 
 ---
@@ -173,7 +178,7 @@ Provenance labels from `PROVENANCE_AND_AI_LABELING.md` and required pedagogical/
 
 Do not remove:
 - `📅 Schemafakta`
-- `✅ Mötesprotokoll` / team source
+- `👥 ✅ Mötesprotokoll` / meeting source
 - `🔎 AI-analys`
 - `⭐ AI-förslag`
 - `⚠ Källa behöver verifieras`

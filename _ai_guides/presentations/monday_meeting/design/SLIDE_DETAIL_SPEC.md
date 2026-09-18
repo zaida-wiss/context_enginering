@@ -43,7 +43,7 @@ Slides ①–⑭ use the complete pattern:
 Examples:
 - `✏️ ⑨ Prioritering & scope`
 - `✏️ ⑬ Nästa steg`
-- continuation: `✏️ ⑨-2 Prioritering & scope`
+- continuation: `✏️ ⑨a Prioritering & scope`
 
 Hard rules:
 - the pen and meeting-point number are one semantic header identity
@@ -89,7 +89,7 @@ Every inferred recommendation/analysis follows `PROVENANCE_AND_AI_LABELING.md`.
 
 Especially:
 - `📅 Schemafakta` = explicitly in registered school schedule
-- `✅ Mötesprotokoll` / approved team input = explicitly stated by team/source
+- `👥 ✅ Mötesprotokoll` / approved team input = explicitly stated by team/source
 - `🔎 AI-analys` = model-derived interpretation, synthesis or assessment
 - `⭐ AI-förslag` = model-derived recommendation, suggested action or suggested question
 - `⚠ Källa behöver verifieras` = origin unclear
@@ -158,7 +158,10 @@ Record the reason in audit.
 
 ## Continuation slides
 
-Continuation slides preserve the same meeting-point identity, e.g. `①A-2`, `③-2`, `⑭-2`.
+Continuation slides preserve the same meeting-point identity and use lowercase
+letters. When a point already has a lowercase subsection, append another
+lowercase letter: `①a`, `①aa`, `①ab`; `①b`, `①ba`, `①bb`. Never use numeric
+suffixes for continuation.
 Visual density/pagination is controlled by the visual/overflow authorities.
 
 ---
@@ -182,158 +185,94 @@ Do not include design-process explanations.
 
 ---
 
-# ① COMPLETED + CURRENT WORK OVERVIEW
+# ① PREVIOUS SPRINT OUTCOME + STARTED WORK
 
-## ①A — Merged to `develop`
+Sprint window in `Europe/Stockholm`:
 
-Purpose: show all PRs actually merged to `develop` during the reporting period.
+`previous Monday 09:00 inclusive → current Monday 09:00 exclusive`
 
-Content per merge card:
-- PR number + title
-- short grounded contribution explanation
-- actual code contributor/developer attribution according to project evidence model
-- team
-- merger identity when verified
-- actual approving reviewer(s) when verified
-- merge timestamp
+At current Monday 09:00 the new work week/sprint begins with sprint planning.
+Six cards is the standard capacity per physical slide, never a total limit.
+Create as many lowercase-letter continuations as required and never omit
+grounded work.
 
-Sort: chronological, oldest first.
+“Done” means a verified merge during the sprint window to either `develop` or
+the owning team's registered collection branch. Project-board `Done` is a
+consistency check, not a substitute for merge evidence. Show mismatches instead
+of guessing. Deduplicate work promoted through multiple branches.
 
-Do not include collection-branch-only merges here.
+Mandatory order:
+1. `①` — merged to `develop`
+2. `①a` — merged to Backend collection branch
+3. `①b` — merged to Native collection branch
+4. `①c` — started but not yet done
+5. `①d` — AI-proposed team summaries for the meeting protocol
 
-Unknown reviewer/merger must be explicitly marked unknown/unverified.
+Continuation naming:
+- Backend: `①a`, `①aa`, `①ab`, ...
+- Native: `①b`, `①ba`, `①bb`, ...
+- Started work: `①c`, `①ca`, `①cb`, ...
+- Team summaries: `①d`, `①da`, `①db`, ...
 
-## Collection-branch lifecycle — applies equally to Backend and Native
+## ① — Merged to `develop`
 
-The Backend and Native collection slides are **state views**, not merely reporting-period event logs.
+Show every PR actually merged to `develop` during the sprint window. Sort
+oldest first. Each card contains verified PR number/title, grounded contribution,
+contributor, team, merger/reviewer when verified and merge timestamp. Do not
+include collection-branch-only merges here.
 
-Canonical collection branches:
-- Backend: `Java-Development-Environment`
-- Native: `C/C++-Native`
+## ①a — Backend collection-branch merges
 
-A work item belongs on its collection-branch slide when verified work has been merged into that team's collection branch **and the same work has not yet been promoted to the final delivery branch**.
+Canonical branch: `Java-Development-Environment`. Show every verified merge to
+this branch during the sprint window, after all `develop` pages. Use the same
+evidence fields as ① where available.
 
-Lifecycle:
+## ①b — Native collection-branch merges
 
-```text
-assigned / started, not merged to collection branch
-  → active work (①D/①E)
+Canonical branch: `C/C++-Native`. Show every verified merge to this branch
+during the sprint window, after all Backend pages. Use the same evidence fields
+as ① where available.
 
-merged to team collection branch, not yet promoted
-  → collection-branch merged (①B/①C)
+## ①c — Started but not yet done
 
-promoted onward to final delivery branch
-  → remove from ①B/①C; final delivery is represented on the final-delivery merge view
-```
+Show only unfinished work with verified development/review activity during the
+sprint window that had not reached `develop` or its team collection branch by
+Monday 09:00. Work may have originated earlier, but it belongs here only when
+the source proves that work was actually performed during this period. Do not
+include unstarted backlog, dormant older work or completed work. Review work
+counts as work when the review activity occurred inside the window.
 
-Do not keep the same work simultaneously as active work and collection-branch merged work.
-Do not keep collection-branch items after promotion onward.
-Deduplicate by issue/PR/work identity, not merely by merge-commit count.
+## ①d — AI proposal for meeting-protocol team summaries
 
-## ①B — Backend collection-branch merges
+This section always comes last in meeting point 1. Create one meaningful
+summary card for each team represented in the sprint evidence. These cards are
+not filler.
 
-Canonical branch: `Java-Development-Environment`.
+Each card is ready to copy into the meeting protocol and contains separate
+blocks:
+- `🔎 AI-analys` — concise synthesis of verified completed and started work
+- `⭐ AI-förslag` — polished proposed protocol wording
+- relevant verified decisions integrated into the wording with their source
+- `👥 ✅ Mötesprotokoll` only after the team has confirmed/copied the wording;
+  before confirmation it remains an AI proposal
 
-Purpose: show all verified Backend work currently accumulated in the Backend collection branch and not yet promoted onward to the final delivery branch.
+The proposed protocol wording is approximately 1–10 complete sentences per
+team summary. It must:
+- explain what the team did to move the project forward, grounded in verified evidence
+- include every team member's first name and their verified contribution/work during the relevant sprint period
+- include verified review/help/integration work, not only authored code
+- integrate verified decisions that affected the team's work, with source/date when available
+- distinguish decisions already made from upcoming meeting questions or undecided proposals
+- mention a member with no verified contribution neutrally as `Ingen verifierad aktivitet i underlaget för perioden`; never infer performance or absence
 
-Include work even if the merge into the collection branch occurred before the current reporting period, as long as it still remains unpromoted.
+Summarize what the team completed, what remained started at cutoff, how the work
+advanced the project and any verified decision that materially explains the
+outcome. Never invent progress, decisions, contribution or impact. Use `①da`,
+`①db` and so on when summaries need more space.
 
-Fields: same evidence fields as ①A where available, plus linked issue/work identity when verified.
-Sort: chronological by collection-branch merge time.
-
-If verified count = 0, omit or show empty-state according to audit decision; record reason.
-
-## ①C — Native collection-branch merges
-
-Canonical branch: `C/C++-Native`.
-
-Purpose: show all verified Native work currently accumulated in the Native collection branch and not yet promoted onward to the final delivery branch.
-
-Include work even if the merge into the collection branch occurred before the current reporting period, as long as it still remains unpromoted.
-
-Fields: same evidence fields as ①A where available, plus linked issue/work identity when verified.
-Sort: chronological by collection-branch merge time.
-
-If verified count = 0, record omission/empty-state reason.
-
-## ①D — Active team work
-
-Purpose: show verified assigned/started work owned primarily by one team that has **not yet been merged to that team's collection branch or final delivery branch**.
-
-Include:
-- issue number + title
-- contribution/intended contribution explanation grounded in issue/PR evidence
-- assignee/owner
-- team
-- matching active branch when verified
-- open PR when verified
-- latest relevant activity timestamp **only when meeting-relevant**
-- blocker/dependency when verified
-
-`På gång` means assigned and/or started work that is still pre-merge for its team's collection branch. A work item stops being `På gång` as soon as it is verified merged to the applicable collection branch.
-
-Do not classify an old open issue as actively worked merely because it remains open.
-Use `ACTIVE_WORK_DETECTION_MODEL.md`.
-
-### Team member with no verified active work
-
-Use neutral wording:
-
-`[Name] — Ny issue eller tillgänglig för hjälp i [teamet]`
-
-But review work counts as work. If the person is actively reviewing, show review activity rather than availability.
-
-This is capacity visibility, not performance assessment.
-
-## ①E — Assigned/backlog + cross-team work
-
-Purpose:
-- show assigned issues that are not yet verified as active
-- show verified cross-team active work
-- make upcoming work/capacity visible
-
-Assigned/backlog fields:
-- issue number + title
-- assignee
-- board/status if verified
-- dependency/blocker if verified
-- whether matching active branch is verified
-- last issue activity timestamp only when it materially helps status understanding
-
-Cross-team fields:
-- issue number + title
-- involved teams
-- owner(s)
-- branch/PR if verified
-- latest verified activity only when meeting-relevant
-- dependency/blocker if verified
-
-Every open assigned issue must appear on ①D, ①E, ①B/①C when already merged to a collection branch, or in explicit audit exclusion.
-
-## ①F — Decisions since last meeting
-
-Two content types may appear:
-
-### Verified decisions
-Source: formal decision log / meeting protocol / registered decision source.
-
-Fields:
-- decision title
-- concise decision statement
-- documented date/source
-- affected area/team when relevant
-
-### Decision candidates
-These are AI suggestions and MUST use `⭐ AI-förslag`; explanatory reasoning may use `🔎 AI-analys`.
-
-Fields:
-- question-form candidate
-- verified evidence suggesting the practice/choice exists
-- why documenting it would matter
-
-Never state a candidate as a decision already made.
-
-Omit ①F if both datasets are verified empty.
+Nothing in meeting point 1 may describe work outside the sprint window except
+an explicit comparison labeled as context. Backlog, future plans and work with
+no verified activity during the period belong to later meeting points.
 
 ---
 
@@ -358,22 +297,38 @@ Do not invent progress percentages, days of delay or actions.
 
 # ③ FRONTEND
 
-Purpose: detailed Frontend status and actionable next-work planning.
+Purpose: define what Frontend should do next.
 
-Include verified active issues, assigned upcoming issues, open PR/review work,
-blockers/dependencies and supported availability wording. Each work item keeps
-its source symbol. A verified open PR uses `📌` without replacing provenance.
+Include all verified Frontend work relevant to the upcoming period:
+- active unfinished work carried forward from ①c
+- assigned backlog not yet started
+- future work already documented in the board/roadmap
+- older open work with no verified recent activity
+- open PR/review work
+- blockers/dependencies
+- verified decisions that govern upcoming Frontend work
+
+Classify every item visibly as `Pågår`, `Backlog`, `Framtida`, `Äldre/inaktiv`,
+`📌 Väntar i PR` or another verified state. For `Äldre/inaktiv`, show the last
+verified relevant activity when available and use neutral wording; never imply
+poor performance. Each work item keeps its source symbol.
 
 When evidence permits, add separate `🔎 AI-analys` and `⭐ AI-förslag` blocks
-for order, parallel work and ownership. Do not invent estimates or assignments.
+for order, parallel work, ownership, reactivation, deferral or closure. Do not
+invent estimates or assignments. Every card answers `Vad bör hända härnäst?`.
+
+Decisions summarized in ①d may reappear here only when they materially control
+future work. Present the verified decision as fact and the resulting next action
+as confirmed or `⭐ AI-förslag` according to evidence.
 
 ---
 
 # ④ BACKEND
 
-Purpose: detailed Backend status and actionable dependency-aware planning.
+Purpose: define what Backend should do next.
 
-Use the same content logic as ③. Include verified API/contract/integration
+Use the complete forward-looking content logic from ③, including backlog,
+future work, older inactive work and governing decisions. Include verified API/contract/integration
 status when relevant and make cross-team unlocking work explicit. Keep facts,
 analysis and suggestions visually distinct.
 
@@ -381,9 +336,10 @@ analysis and suggestions visually distinct.
 
 # ⑤ NATIVE
 
-Purpose: detailed Native status and actionable dependency-aware planning.
+Purpose: define what Native should do next.
 
-Use the same content logic as ③. Include verified JNA/native integration status
+Use the complete forward-looking content logic from ③, including backlog,
+future work, older inactive work and governing decisions. Include verified JNA/native integration status
 when relevant. Keep independent mock/module work separate from work that waits
 for integration. Never invent numeric estimates, capacity or ownership.
 
@@ -509,12 +465,13 @@ Purpose: produce a usable team plan, not only a generic priority statement.
 Every physical slide belonging to meeting point ⑨ uses the canonical four-team columns:
 `Frontend | Backend | Native | Cross-team`.
 
-Each physical slide within meeting point ⑨ supports up to six cards. Card dimensions may adapt to
-the amount of text: use a balanced 3×2, 2×3 or mixed responsive arrangement
-inside the four-team structure. Never reduce text below the active readability
-minimum; if six cards cannot remain readable, continue with meeting-point
-slides `9-2`, `9-3` and so
-on rather than clipping or hiding content.
+Each physical slide within meeting point ⑨ uses a fixed `1×4` structure:
+`Frontend | Backend | Native | Cross-team`. Cards and labeled text blocks stack
+vertically inside their owning team column.
+
+The number of cards/text blocks is content-driven. If the content does not fit
+accessibly, continue as `⑨a`, `⑨b`, `⑨c`, `⑨d`, `⑨e` and so on. Never change
+the fixed four-column structure, and never clip or hide content.
 
 ### Open pull requests
 
@@ -643,7 +600,7 @@ Canonical content order:
 📅 Schemafakta
 [Only information explicitly present in registered school schedule]
 
-✅ Mötes-/teamfakta
+👥 ✅ Mötesprotokoll
 [Only if explicitly documented]
 
 🔎 AI-analys
@@ -691,7 +648,7 @@ Every action card MUST also contain a grounded pedagogical explanation directly 
 2. what it contributes/unlocks in the project or why it matters
 
 Verified action example source label:
-- `✅ Mötesprotokoll`
+- `👥 ✅ Mötesprotokoll`
 
 AI suggestion source label:
 - `⭐ AI-förslag`

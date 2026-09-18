@@ -23,8 +23,12 @@ All provenance labels and symbols MUST comply with WCAG 2.2 AA.
 - source identity always uses icon + text
 - provenance labels may never be hidden to save space
 - minimum provenance/source text size in this deck: **10 pt**
+- provenance/source information uses visual-priority level 4: lowest emphasis,
+  but always with its canonical symbol, text label and WCAG-compliant contrast
 
 If a provenance label cannot fit accessibly, change card geometry or paginate.
+Level 4 must never be implemented with opacity or color that makes the source
+difficult to read against the card background.
 
 ---
 
@@ -51,15 +55,22 @@ Do not attach an inferred purpose to schedule text and still call the whole stat
 
 ---
 
-### ✅ Mötes-/teamfakta
+### 👥 ✅ Mötesprotokoll
 Use when an action, question, decision or plan is explicitly present in:
 - meeting protocol / meeting notes
+
+The meeting symbol `👥` is mandatory whenever the named source is a meeting
+protocol. The verification symbol `✅` is also mandatory. Always render the
+complete visible label `👥 ✅ Mötesprotokoll`.
+
+### ✅ Teamfakta
+Use when an action, question, decision or plan is explicitly present in:
 - prefilled meeting input
 - approved team input
 - another registered source that directly states the item
 
 Labels:
-- `✅ Mötesprotokoll`
+- `👥 ✅ Mötesprotokoll`
 - `✅ Förifyllt av teamet`
 - `✅ Bekräftat i mötet`
 
@@ -123,7 +134,8 @@ Never silently convert unclear origin into fact.
 Use the icons consistently across the whole deck:
 
 - `📅` = verified schedule fact
-- `✅` = verified meeting/team fact
+- `👥 ✅` = verified meeting-protocol fact
+- `✅` = other verified team fact
 - `🔎` = AI analysis / interpretation
 - `⭐` = AI proposal / recommendation
 - `⚠` = source/origin not safely verified
@@ -142,7 +154,7 @@ or interpreted by AI, both meanings must be visible in the same text block:
 
 A verified dependency instead retains its verified source label, for example:
 
-`🔗 Beroende · ✅ Mötes-/teamfakta`
+`🔗 Beroende · 👥 ✅ Mötesprotokoll`
 
 ### Symbols may never be replaced by tags
 
@@ -218,7 +230,7 @@ Order inside the card when present:
 ```text
 Dag + datum
 📅 Schemafakta
-✅ Mötes-/teamfakta
+👥 ✅ Mötesprotokoll
 🔎 AI-analys
 ⭐ AI-förslag
 ```
@@ -248,7 +260,7 @@ Every card must contain its own provenance label.
 
 Verified:
 ```text
-✅ Mötesprotokoll
+👥 ✅ Mötesprotokoll
 ```
 
 AI-derived recommended action:
@@ -322,6 +334,41 @@ Provenance is compact metadata:
 Do not rely only on a slide footer when different cards have different origins.
 
 Icons must remain legible and must not be the only carrier of meaning; always pair with text.
+
+## Mandatory per-slide source footer
+
+Every physical slide, including continuation slides, has a reserved source
+footer at the bottom. It lists the sources actually used for content on that
+physical slide, not every source consulted for the whole deck.
+
+Verified source format:
+
+`✅ GitHub Projects · ✅ PR-data · 📅 Schema`
+
+Use the canonical source symbol that matches the source class and include a
+short human-readable source name. Deduplicate repeated use of the same source
+within the slide. Card/block-level provenance remains mandatory; the footer is
+an additional slide-level summary and never replaces it.
+
+### Expected but unverifiable source
+
+If a source was required or reasonably expected for that slide but could not be
+verified, include it in the footer with all three cues:
+
+1. `⚠` symbol
+2. text such as `kunde inte verifieras`
+3. strikethrough on the source name
+
+Rendered example: `⚠ ~~GitHub Projects~~ — kunde inte verifieras`
+
+Strikethrough alone is forbidden because it is not a sufficient accessible
+status cue. Never list an unverifiable source as used or verified. If a required
+source failure triggers a STOP rule, retain the failure in the audit/report;
+the footer does not make delivery permissible.
+
+The footer uses priority level 4 but must remain at least 10 pt and pass WCAG
+2.2 AA contrast. If the source list does not fit, wrap it within the reserved
+footer or continue content on another slide; never overlap the footer.
 
 ---
 

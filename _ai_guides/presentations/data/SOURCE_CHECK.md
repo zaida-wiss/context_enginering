@@ -170,7 +170,7 @@ Senast avstämd: 14 sep 2026 · 08:42 CEST
 ✅ Issues
 ✅ Pull requests
 ✅ Project Board
-✅ Mötesprotokoll
+👥 ✅ Mötesprotokoll
 
 Ej läsbara källor: Inga
 
@@ -197,7 +197,7 @@ Källkontroll · 14 sep 2026 08:42 CEST
 ✅ Issues
 ✅ PRs
 ✅ Project Board
-✅ Mötesprotokoll
+👥 ✅ Mötesprotokoll
 
 Ej läsbara källor: Inga
 Presentation är klar med full källverifiering.
@@ -232,4 +232,3 @@ Denna SOURCE_CHECK säkerställer att:
 En presentation UTAN SOURCE_CHECK är en presentation du inte kan lita på.
 [RETIRED — DO NOT USE FOR PRODUCTION. Allowed sources and access methods are
 owned by `_memory/EXTERNAL_SOURCES.yaml`.]
-

@@ -105,8 +105,11 @@ The detailed values live in `READABILITY_HARD_RULES.md` and `CARD_COMPONENT_STAN
 - timestamps are compact, one line, discreet and bottom-most when present
 - automatic shrink-to-fit is forbidden
 - if accessible content does not fit, cards reflow, grid density is reduced or the slide paginates
+- meeting point 1 shows only work performed in the preceding Monday 09:00–current Monday 09:00 sprint window, using six cards as standard capacity per physical slide
+- a Monday-meeting protocol is always dated/named for the current week that begins that Monday
 - meeting points 3–5 remain the separate team sections: Frontend, Backend and Native
 - meeting point 9 uses four team columns: `Frontend`, `Backend`, `Native`, `Cross-team`
+- meeting point 9 keeps a fixed `1×4` structure with content-driven blocks and lettered continuations such as `9a`, `9b`
 - point 9 shows open PRs as `📌 #[PR-number]`, remaining issues, order, dependencies, AI allocation and proposed missing issues
 - source identity always keeps its canonical symbol; tags never replace `📅`, `✅`, `🔎`, `⭐` or `⚠`
 - authoritative conflicts produce a rule-conflict receipt and stop rendering; they are never silently overwritten

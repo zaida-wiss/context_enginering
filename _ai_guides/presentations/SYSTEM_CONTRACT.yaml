@@ -191,7 +191,8 @@ sensitive_availability:
 provenance:
   source_classes:
     school_schedule: "📅 Schemafakta"
-    verified_team_input: "✅ Mötesprotokoll / approved team label"
+    verified_meeting_protocol: "👥 ✅ Mötesprotokoll"
+    verified_team_input: "✅ approved team label"
     ai_suggestion: "⭐ AI-förslag"
     ai_analysis: "🔎 AI-analys"
     unclear: "⚠ Källa behöver verifieras"
@@ -203,7 +204,8 @@ provenance:
       question mark or text-only label may never replace the symbol.
     required_pairs:
       - "📅 Schemafakta"
-      - "✅ Mötes-/teamfakta"
+      - "👥 ✅ Mötesprotokoll"
+      - "✅ Teamfakta"
       - "🔎 AI-analys"
       - "⭐ AI-förslag"
       - "⚠ Källa behöver verifieras"
@@ -300,6 +302,44 @@ responsive_visual_system:
       required and only within the role's allowed range. Never go below the
       readability/component minimums. Slide titles never shrink.
 
+  card_content_flow:
+    model: "parent card container with vertically stacked measured child containers"
+    body_line_spacing: "1.15 standard and minimum"
+    rules:
+      - "measure wrapped text before placing the next child"
+      - "derive each child top from the previous measured bottom plus required gap"
+      - "reserve the complete bottom information zone before laying out upper content"
+      - "grow card, reduce density or paginate when measured content does not fit"
+      - "fail rendering on any sibling bounding-box intersection"
+    forbidden:
+      - "fixed-height text containers that can clip or overlap wrapped text"
+      - "independent absolute positioning for vertically stacked card text"
+      - "reducing line spacing below 1.15 to solve fit"
+
+  card_visual_priority:
+    level_1: "issue title and assignee/person identity"
+    level_2: "AI proposal, including proposed new issues"
+    level_3: "merge/review, pedagogical explanation and AI analysis"
+    level_4: "sources/provenance, branch, timestamp and technical/operational metadata"
+    rule: >
+      Level 1 receives the strongest focus and level 4 the least, using size,
+      weight, spacing and WCAG-safe color together. Level 4 remains fully
+      readable; priority never overrides WCAG or symbol preservation.
+
+  per_slide_source_footer:
+    required_on: "every physical slide, including continuation slides"
+    content: "deduplicated sources actually used on that physical slide"
+    verified_format: "canonical source symbol + short source name"
+    unverifiable_expected_format: "⚠ + struck-through source name + text 'kunde inte verifieras'"
+    priority_level: 4
+    minimum_text_pt: 10
+    rules:
+      - "reserve measured footer height before laying out cards"
+      - "footer supplements and never replaces card/block provenance"
+      - "strikethrough is never the only unavailable-source cue"
+      - "unverifiable sources are never described as used or verified"
+      - "required-source failure still follows the applicable STOP rule"
+
   fit_order:
     - "keep slide title fixed at 36 pt or larger"
     - "start normal/card text at preferred sizes"
@@ -345,12 +385,25 @@ execution_sequence:
       - "template is reference only"
       - "same repository ref used for all internal files"
       - "authority conflicts recorded with both rules, owners and resolution"
+      - "meeting point 1 uses six cards as standard capacity per physical slide and has no total slide/card limit"
+      - "meeting point 1 contains only work performed in the previous Monday 09:00 to current Monday 09:00 sprint window"
+      - "meeting point 1d AI team summaries use 1–10 sentences, name every team member and ground each contribution/decision"
+      - "points 3–5 own backlog, future work, older inactive work and decisions that govern upcoming team work"
       - "point 9 uses exactly Frontend, Backend, Native and Cross-team columns"
       - "point 9 shows open pull requests and their contribution"
       - "point 9 shows remaining assigned issues, order and visible dependencies"
       - "point 9 shows AI work-allocation analysis and suggested missing issues"
-      - "each physical slide within meeting point 9 supports up to six responsive cards"
+      - "meeting point 9 keeps a fixed 1×4 team-column structure"
+      - "meeting-point 9 continuations use lowercase letters: 9a, 9b, 9c, 9d, 9e"
       - "canonical source symbols are preserved and not replaced by tags"
+
+  monday_protocol_week:
+    timezone: "Europe/Stockholm"
+    rule: >
+      A protocol requested for the Monday meeting belongs to and is dated for
+      the current work week beginning that Monday. Meeting point 1 inside that
+      protocol reports the immediately preceding sprint window ending Monday at
+      09:00; do not name the protocol as the previous week.
 
   step_3:
     name: "Data precheck"

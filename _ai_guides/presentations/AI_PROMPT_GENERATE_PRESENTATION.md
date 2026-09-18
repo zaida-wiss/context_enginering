@@ -129,9 +129,7 @@ Do not render work items as plain text rows, table rows, horizontal bands, or li
 ### Canonical layouts
 
 - `①A–①C`: 3 × 2 modern cards, max 6 per physical slide
-- `①D`: 2 × 2 modern cards, max 4
-- `①E`: 2 × 2 modern cards, max 4
-- `①F`: 2 × 2 or 2 × 1 cards, max 4
+- `①D–①F`: historical layout limits removed; use the active meeting-point 1 six-card-per-physical-slide standard and continuation rules
 - `②–⑤`: modern cards, normally 2 × 2, max 4
 - `⑥`: modern cards; `⑥A` may use dependency diagram nodes
 - `⑦–⑫`: modern cards, normally 2 × 2, max 4
