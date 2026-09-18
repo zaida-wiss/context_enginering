@@ -1,0 +1,160 @@
+---
+name: memory_domain_inventory
+description: Classification of current _memory files before migration
+version: 1.0
+metadata:
+  type: migration_audit
+  created: 2026-09-18
+  branch: dev
+---
+
+classification_rules:
+  memory: "Long-lived project knowledge that remains useful across tasks and is not primarily a rule or frequently changing dataset."
+  live_or_manual_data: "Project/course facts that change over time or were copied from an external source and should live in the data domain."
+  instruction: "Rules, standards, templates or AI operating guidance that belong in _ai_guides or another rule-owning documentation area."
+  derived_data: "Calculated or synthesized state that should be reproducible from canonical sources and should live under data/derived."
+
+files:
+
+  _memory/COURSE_DEADLINES.md:
+    class: live_or_manual_data
+    reason: "Copied course deadlines and submission requirements; duplicates schedule/milestone facts and can change."
+    proposed_destination: "data/manual/course/COURSE_DEADLINES.md"
+    migration_note: "Reconcile against structured milestones before moving."
+
+  _memory/CTO_FEED_FORWARD.md:
+    class: live_or_manual_data
+    reason: "Course assignment facts, deadline and deliverable requirements."
+    proposed_destination: "data/manual/course/CTO_FEED_FORWARD.md"
+    migration_note: "Consolidate with CTO_FEED_FORWARD_INSTRUCTIONS.md if both describe the same source."
+
+  _memory/CTO_FEED_FORWARD_INSTRUCTIONS.md:
+    class: live_or_manual_data
+    reason: "Copied assignment instructions are source material, not AI-system instructions."
+    proposed_destination: "data/manual/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
+    migration_note: "Preserve source provenance and consider merging duplicate assignment content."
+
+  _memory/DEFINITION_OF_DONE.md:
+    class: instruction
+    reason: "Defines project workflow/quality rules for when an issue is done."
+    proposed_destination: "_ai_guides/project/DEFINITION_OF_DONE.md"
+    migration_note: "Review against current team decisions before declaring canonical."
+
+  _memory/DEFINITION_OF_DONE_TEMPLATE.md:
+    class: instruction
+    reason: "Reusable issue template and process rule."
+    proposed_destination: "_ai_guides/project/templates/DEFINITION_OF_DONE.md"
+    migration_note: "Reference the canonical DoD authority rather than duplicating requirements."
+
+  _memory/GITHUB_MEMBER_MAPPING.md:
+    class: memory
+    reason: "Stable identity mapping used to connect team members to GitHub handles."
+    proposed_destination: "_memory/GITHUB_MEMBER_MAPPING.md"
+    migration_note: "Candidate for consolidation into TEAM_ROSTER.md to remove duplicate identity data."
+
+  _memory/PROJEKTKONTEXT_AVANZA.md:
+    class: instruction
+    reason: "Explicit AI operating instructions, source hierarchy and presentation behavior."
+    proposed_destination: "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md"
+    migration_note: "Large parts are stale and duplicate the new router/authority system; extract only still-valid project-specific guidance."
+
+  _memory/README.md:
+    class: instruction
+    reason: "Acts as a router/index and currently contains stale routing claims."
+    proposed_destination: "_memory/README.md"
+    migration_note: "Keep only as a human memory index after other files are migrated; remove instruction ownership."
+
+  _memory/RISK_REGISTER.md:
+    class: instruction
+    reason: "Currently an empty template rather than actual risk data."
+    proposed_destination: "_ai_guides/project/templates/RISK_REGISTER.md"
+    migration_note: "Actual risk records should come from a live registered source or data/manual."
+
+  _memory/SCHEDULE.md:
+    class: live_or_manual_data
+    reason: "Course schedule and deadlines are living facts that explicitly may change."
+    proposed_destination: "data/manual/course/SCHEDULE.md"
+    migration_note: "Prefer a live Canvas/calendar source when available; retain this only as sourced manual material."
+
+  _memory/SPRINT_FOCUS_TIMELINE.md:
+    class: derived_data
+    reason: "Synthesized timeline/capacity view with stale and internally inconsistent dates."
+    proposed_destination: "data/derived/SPRINT_FOCUS_TIMELINE.md"
+    migration_note: "Do not treat as canonical until regenerated from verified schedule/milestones."
+
+  _memory/TEAMSTANDARDS.md:
+    class: instruction
+    reason: "Coding, Git and agent guidance are project operating standards."
+    proposed_destination: "_ai_guides/project/TEAM_STANDARDS.md"
+    migration_note: "Split rules by owner if needed; avoid one large mixed instruction document."
+
+  _memory/TEAM_ROSTER.md:
+    class: memory
+    reason: "Long-lived team membership and verified identity mapping."
+    proposed_destination: "_memory/TEAM_ROSTER.md"
+    migration_note: "Keep as canonical long-lived team knowledge; move presentation-specific coverage rules out."
+
+  _memory/UI_DESIGN_REFERENCE.md:
+    class: live_or_manual_data
+    reason: "Reference material derived from supplied design mockups and product examples."
+    proposed_destination: "data/manual/design/UI_DESIGN_REFERENCE.md"
+    migration_note: "Keep mockups as source artifacts and separate source facts from implementation suggestions."
+
+  _memory/presentations/CURRENT_SPRINT.yaml:
+    class: instruction
+    reason: "Contains schema/structure only and says values must be fetched dynamically."
+    proposed_destination: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
+    migration_note: "This is a data schema, not memory."
+
+  _memory/presentations/MILESTONES.yaml:
+    class: live_or_manual_data
+    reason: "Structured course milestone facts with dates and submission locations."
+    proposed_destination: "data/manual/course/MILESTONES.yaml"
+    migration_note: "Can become derived/live-backed if a registered course source is connected."
+
+  _memory/presentations/SCHEDULE.yaml:
+    class: live_or_manual_data
+    reason: "Structured recurring schedule and current-week focus."
+    proposed_destination: "data/manual/course/SCHEDULE.yaml"
+    migration_note: "Separate recurring schedule facts from current-week derived focus if useful."
+
+  _memory/presentations/TEAM_ROADMAP.yaml:
+    class: live_or_manual_data
+    reason: "Structured course/project timeline sourced from course schedule."
+    proposed_destination: "data/manual/course/TEAM_ROADMAP.yaml"
+    migration_note: "Keep source metadata and derive current phase at runtime."
+
+summary:
+  memory:
+    - "_memory/GITHUB_MEMBER_MAPPING.md"
+    - "_memory/TEAM_ROSTER.md"
+  live_or_manual_data:
+    - "_memory/COURSE_DEADLINES.md"
+    - "_memory/CTO_FEED_FORWARD.md"
+    - "_memory/CTO_FEED_FORWARD_INSTRUCTIONS.md"
+    - "_memory/SCHEDULE.md"
+    - "_memory/UI_DESIGN_REFERENCE.md"
+    - "_memory/presentations/MILESTONES.yaml"
+    - "_memory/presentations/SCHEDULE.yaml"
+    - "_memory/presentations/TEAM_ROADMAP.yaml"
+  instruction:
+    - "_memory/DEFINITION_OF_DONE.md"
+    - "_memory/DEFINITION_OF_DONE_TEMPLATE.md"
+    - "_memory/PROJEKTKONTEXT_AVANZA.md"
+    - "_memory/README.md"
+    - "_memory/RISK_REGISTER.md"
+    - "_memory/TEAMSTANDARDS.md"
+    - "_memory/presentations/CURRENT_SPRINT.yaml"
+  derived_data:
+    - "_memory/SPRINT_FOCUS_TIMELINE.md"
+
+migration_order:
+  - "1. Move course/manual data into data/manual/course after reconciling duplicates."
+  - "2. Move instruction files into _ai_guides/project and split mixed ownership."
+  - "3. Move schema-only CURRENT_SPRINT into presentation data schemas."
+  - "4. Move/regenerate derived sprint timeline under data/derived."
+  - "5. Simplify _memory/README.md to index only the true long-lived memory files."
+  - "6. Consider merging GITHUB_MEMBER_MAPPING into TEAM_ROSTER to reduce duplicate identity truth."
+  - "7. Update CONTEXT_REGISTRY paths and run repository-wide old-path validation after every migration batch."
+
+status: "inventory_complete_no_moves_performed"
