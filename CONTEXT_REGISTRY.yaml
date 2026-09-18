@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.3
+version: 2.4
 metadata:
   type: registry
   critical: true
@@ -29,6 +29,8 @@ domains:
     purpose: "repository integrity and authority validation"
 
 registries:
+  ai_framework:
+    path: "_ai_guides/AI_FRAMEWORK.md"
   project_guides:
     path: "_ai_guides/project/README.md"
   presentation_authorities:
@@ -41,6 +43,10 @@ registries:
     path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
 
 logical_destinations:
+  global:
+    ai_framework:
+      path: "_ai_guides/AI_FRAMEWORK.md"
+
   project:
     context_router:
       path: "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md"
@@ -124,6 +130,7 @@ tasks:
   issue_creation:
     purpose: "Create or improve a GitHub issue using the project's canonical workflow."
     load:
+      - "logical_destinations.global.ai_framework"
       - "logical_destinations.project.team_standards"
       - "logical_destinations.project.testing"
       - "logical_destinations.project.definition_of_done"
@@ -148,11 +155,13 @@ tasks:
 
   project_default_behavior:
     load:
+      - "logical_destinations.global.ai_framework"
       - "logical_destinations.project.team_tone_and_collaboration"
 
   coding_assistance:
     purpose: "Help with code while checking the relevant surrounding project system."
     load:
+      - "logical_destinations.global.ai_framework"
       - "logical_destinations.project.team_standards"
       - "logical_destinations.project.testing"
       - "logical_destinations.project.goals_and_sprint_planning"
