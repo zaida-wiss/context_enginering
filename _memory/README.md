@@ -1,41 +1,26 @@
 # Memory — Project Context Index
 
-`_memory` contains long-lived project knowledge and a small number of files
-that are still awaiting migration to their canonical instruction/data domain.
+`_memory` contains long-lived project knowledge.
 
 Canonical repository paths and task bundles are resolved through
 [`CONTEXT_REGISTRY.yaml`](../CONTEXT_REGISTRY.yaml).
 
-## Long-lived project knowledge
+## Canonical memory
 
 | File | Purpose |
 |---|---|
 | [`TEAM_ROSTER.md`](TEAM_ROSTER.md) | Team membership and verified GitHub identities |
 | [`GITHUB_MEMBER_MAPPING.md`](GITHUB_MEMBER_MAPPING.md) | GitHub username mapping; candidate for consolidation into TEAM_ROSTER |
 
-## Pending instruction migration
+## Other domains
 
-These files currently remain in `_memory` only until their rules are migrated
-to the appropriate `_ai_guides/project/` owner:
+- project instructions → [`_ai_guides/project/`](../_ai_guides/project/)
+- living/manual course data → [`data/manual/course/`](../data/manual/course/)
+- manual design sources → [`data/manual/design/`](../data/manual/design/)
+- derived data → [`data/derived/`](../data/derived/)
+- presentation schemas/instructions → [`_ai_guides/presentations/`](../_ai_guides/presentations/)
 
-| File | Intended domain |
-|---|---|
-| `PROJEKTKONTEXT_AVANZA.md` | project instruction/router |
-| `TEAMSTANDARDS.md` | project operating standards |
-| `DEFINITION_OF_DONE.md` | project quality/workflow rules |
-| `DEFINITION_OF_DONE_TEMPLATE.md` | project template |
-| `RISK_REGISTER.md` | project template |
-| `presentations/CURRENT_SPRINT.yaml` | presentation data schema |
-
-## Living/manual data
-
-Current course and assignment facts are stored under:
-
-- [`data/manual/course/`](../data/manual/course/)
-- [`data/manual/design/`](../data/manual/design/) when design-source migration is complete
-- [`data/derived/`](../data/derived/) for reproducible derived state
-
-The memory index does not duplicate live facts.
+The memory index does not duplicate rules or live facts.
 
 ## Migration audit
 
@@ -45,5 +30,5 @@ Current classification and migration state is recorded in:
 
 ---
 
-**Status:** transitional index
+**Status:** canonical memory index
 **Last updated:** 2026-09-18
