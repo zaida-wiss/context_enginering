@@ -5,7 +5,7 @@ metadata:
   type: design-and-content-integrity
   critical: true
   required_before: rendering
-  version: 1.3
+  version: 1.4
 ---
 
 # 🏷️ PROVENANCE & AI LABELING STANDARD
@@ -320,7 +320,56 @@ Common examples:
 
 ---
 
-## 9. VISUAL TREATMENT
+## 9. AI CHECK TRACE — EXACT SOURCES CHECKED
+
+When AI performs a project-health check and reports an analytical result such as:
+
+- no new candidate risk identified
+- no new dependency/blocker identified
+- no additional capacity concern found
+- no new cross-layer mismatch found
+- no new technical-debt signal found
+
+the result must remain auditable.
+
+Use a compact block:
+
+```text
+🔎 AI-kontroll
+Kontrollerat:
+- [exact registered source / file / GitHub area / branch set]
+- [exact registered source / file / GitHub area / branch set]
+
+Resultat:
+[short conclusion]
+```
+
+The `Kontrollerat` list names the **actual places inspected**, not generic
+categories. Good examples include:
+
+- `GOOGLE_RISK_REGISTER · RISK REGISTER`
+- `GitHub · open issues linked to current sprint`
+- `GitHub · active branches touching [verified integration boundary]`
+- `GOOGLE_MEETING_PROTOCOL · sprint planning / blockers`
+- `docs/decisions/`
+- a named API-contract file or registered source
+
+Only list sources that were actually inspected in that analysis run.
+
+If a relevant expected source could not be checked, say so with `⚠` rather
+than implying it was analysed.
+
+This trace teaches the team which recurring project sources are useful to
+inspect and lets the audience understand how the AI reached a "nothing new"
+conclusion.
+
+The trace is **evidence metadata**, not an invitation to invent a proposal.
+When the analysis genuinely finds nothing actionable, the result may simply say
+that no new signal was identified in the inspected sources.
+
+---
+
+## 10. VISUAL TREATMENT
 
 Provenance is compact metadata:
 
@@ -372,7 +421,7 @@ footer or continue content on another slide; never overlap the footer.
 
 ---
 
-## 10. RENDER GATE
+## 11. RENDER GATE
 
 Required zero-count checks:
 
