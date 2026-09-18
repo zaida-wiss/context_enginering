@@ -16,6 +16,7 @@ Canonical project-level instructions live here.
 | project.risk_management | [`RISK_MANAGEMENT.md`](RISK_MANAGEMENT.md) | canonical risk reasoning aligned with the team's workbook and CTO task |
 | project.dependencies_and_capacity | [`DEPENDENCIES_AND_CAPACITY.md`](DEPENDENCIES_AND_CAPACITY.md) | dependencies, blockers, estimate gaps, capacity and flow planning |
 | project.cross_layer_awareness | [`CROSS_LAYER_AWARENESS.yaml`](CROSS_LAYER_AWARENESS.yaml) | active-branch and contract awareness across Frontend, Backend and Native/System |
+| project.technical_debt | [`TECHNICAL_DEBT.md`](TECHNICAL_DEBT.md) | recognition, prioritisation and handling of technical debt |
 
 Current project facts are data, not instructions. Presentation rules remain in
 the presentation authority system.
@@ -23,3 +24,12 @@ the presentation authority system.
 For issue creation, use the `issue_creation` task bundle in
 `CONTEXT_REGISTRY.yaml` so the issue automatically receives the workflow,
 testing, completion and communication standards it needs.
+
+
+## Task bundles
+
+- `coding_assistance` — local coding help plus relevant cross-layer, dependency,
+  testing, risk and technical-debt awareness.
+- `issue_creation` — issue body generation with testing, risk, decisions and DoD.
+- `sprint_planning` — verified goals plus transparent AI proposals.
+- `team_support` — people/conflict/team-wellbeing support.
