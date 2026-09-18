@@ -488,6 +488,27 @@ Source-footer checks:
 
 ## 14. COVER / SLIDE-SPECIFIC CONTENT
 
+School/submission-task card checks:
+
+```text
+school_task_text_label_repetition_count == 0
+school_task_missing_target_icon_count == 0
+school_task_missing_time_icon_count == 0
+school_task_missing_place_icon_count == 0
+school_task_missing_purpose_icon_count == 0
+school_task_missing_method_icon_count == 0
+priority_color_without_symbol_text_count == 0
+ordinary_project_card_using_school_task_5icon_template_count == 0
+```
+
+Manual checks:
+- school/submission/deadline cards use `🎯 🕒 📍 💡 🛠` instead of repeated
+  `VAD / NÄR / VAR / VARFÖR / HUR` labels
+- the five-icon grammar is not imposed on ordinary GitHub issue/PR cards
+- priority is shown with both visible level text/symbol and color
+- priority color passes WCAG and does not replace provenance/status meaning
+- red priority is reserved for verified critical/high-consequence school tasks
+
 Validate slide purpose and required fields against `SLIDE_DETAIL_SPEC.md`.
 
 Conditional slides may only be omitted for a source-grounded reason recorded in the audit.
