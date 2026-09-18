@@ -140,6 +140,87 @@ Do not duplicate those numeric card-internal rules here.
 
 ---
 
+## 4A. MEETING-POINT HEADER HIERARCHY
+
+Rendered meeting slides use a two-level header hierarchy.
+
+### Primary header — meeting point only
+- contains the ordinary meeting-point number + canonical meeting-point title
+- examples: `✏️ 1. Sprint in progress`, `✏️ 2. Nuläge och närmaste deadline`
+- the continuation letter does **not** belong in this primary header
+- primary header remains 36 pt minimum
+
+### Secondary subtitle — physical page topic
+- sits directly below the primary header
+- smaller and calmer than the meeting-point header
+- continuation letter belongs here, not beside the meeting-point number
+- examples:
+  - `a. Mergat till Backend-grenen`
+  - `c. Påbörjat, inte klart`
+  - `a. Närmaste fokus`
+
+### Per-meeting-point page counter
+- show a compact counter at the far right of the primary-header row
+- format: `(x/y)`, where x = this physical page within the meeting point and y = total physical pages belonging to that meeting point
+- example: `(4/6)`
+- this counter uses **visual priority level 4**: quiet, readable metadata
+- it must never compete with the meeting-point title
+- count only physical pages belonging to that meeting point
+- do not use the deck-wide slide number for this counter
+
+Canonical example:
+
+```text
+✏️ 1. Sprint in progress                                      (4/6)
+c. Påbörjat, inte klart
+```
+
+---
+
+## 4B. POINT 2 COURSE TIMELINE VISUAL
+
+Meeting point 2 is a timeline-first slide, not a card-grid slide.
+
+Visual structure:
+- one horizontal course timeline spanning the main content width
+- chronological flow left → right
+- milestone markers alternate above/below when needed for readability
+- month/time-band labels may sit below the line
+- exact dates/times are visually stronger than explanatory detail
+- 1–3 nearest-focus callouts may sit below/alongside the timeline when they fit
+- if they do not fit, continue to `2a. Närmaste fokus`
+
+### Timeline status colors
+Use the established semantic trio:
+- green = completed/passed
+- orange = upcoming checkpoint/feedforward/intermediate milestone
+- red = critical deadline/major delivery
+
+These colors supplement explicit text and symbols. Color alone is never enough.
+
+### Active sprint locator
+The active sprint interval gets a separate **temporal locator**:
+- label: `AKTUELL SPRINT` or `Vi är här`
+- show sprint date range
+- use a neutral contrasting bracket/band/outline distinct from green/orange/red
+- visually span the active sprint interval
+- keep the band behind timeline markers/text with sufficient contrast
+- never use the active-sprint locator as a status color
+
+The active sprint locator answers **where we are now**; the milestone colors
+answer **what kind of point/deadline this is**.
+
+### Nearest-focus callout style
+Nearest-focus boxes are supporting explanation cards:
+- 1–3 maximum
+- nearest critical item receives strongest hierarchy
+- short labels: `Vad`, `När`, `Var`, `Varför`, `Hur`, `Nu behöver vi`
+- use regular body text, generous spacing and no dense paragraph wall
+- provenance remains visible
+- if a value is unverified, show `⚠` rather than guessing
+
+---
+
 ## 5. CARD GRIDS — MAXIMUM DENSITY, NOT TARGET
 
 ### Meeting point 9: fixed four-team board
@@ -242,6 +323,13 @@ Color may support source/status meaning but never replace icon + text where prov
 ## 8. STATUS VISUALS
 
 Status must use symbol + text when status is shown.
+
+For meeting point 2 timeline semantics, the stable status colors are:
+- green = completed/passed
+- orange = checkpoint/feedforward/intermediate milestone
+- red = critical deadline/major delivery
+
+The active-sprint locator is neutral and separate from these status colors.
 
 Examples:
 - ✅ klart/merged
