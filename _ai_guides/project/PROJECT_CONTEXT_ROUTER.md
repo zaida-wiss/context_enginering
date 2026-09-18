@@ -4,7 +4,7 @@ description: Minimal router for Avanza project work
 metadata:
   type: router
   status: active
-  version: 2.5
+  version: 2.6
 ---
 
 # Avanza project context router
@@ -26,6 +26,8 @@ For project work:
 - risk analysis and mitigation reasoning → `project.risk_management`
 - dependencies, blockers, estimates and capacity → `project.dependencies_and_capacity`
 - Frontend ↔ Backend ↔ Native/System contracts and active-branch alignment → `project.cross_layer_awareness`
+- technical debt recognition/prioritisation → `project.technical_debt`
+- coding help with system-level awareness → `tasks.coding_assistance`
 - Definition of Done → `project.definition_of_done`
 - default communication/feedback tone → `project.team_tone_and_collaboration`
 - conflict/needs/people-support → `project.hr_and_team_support`
@@ -53,5 +55,5 @@ result with the task's registered acceptance checks.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.5
+**Version:** 2.6
 **Last updated:** 2026-09-18
