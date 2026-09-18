@@ -205,6 +205,30 @@ def main():
         failures,
     )
     require(
+        "cover validator requires PL target/time/purpose",
+        "pl_meeting_card_missing_target_time_purpose_count == 0" in render_gate
+        and "cover_generic_status_displacing_required_content_count == 0" in render_gate,
+        failures,
+    )
+    require(
+        "point 1 validator forbids separate WIP slide",
+        "point_1_separate_wip_slide_count == 0" in render_gate
+        and "physical point-1 slide/subsection titled `Påbörjat men inte avklarat` is forbidden" in render_gate,
+        failures,
+    )
+    require(
+        "meeting number visible-render check exists",
+        "meeting_point_number_glyph_render_failure_count == 0" in render_gate
+        and "missing-glyph square" in render_gate,
+        failures,
+    )
+    require(
+        "collection branch validation distinguishes merge from direct activity",
+        "point_1_verified_collection_merge_without_own_slide_count == 0" in render_gate
+        and "ordinary direct commits/branch activity are not relabeled as merges" in render_gate,
+        failures,
+    )
+    require(
         "four-team perspective is preserved as coverage, not layout",
         "Four-perspective planning coverage" in slide
         and "coverage requirement" in slide,
