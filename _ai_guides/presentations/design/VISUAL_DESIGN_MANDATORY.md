@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.9
+  version: 5.0
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -67,8 +67,9 @@ Every slide must pass a quick-scan test:
 
 The deck must feel **predictable and structurally consistent**:
 - stable header, palette, card language, provenance grammar and grid behavior
-- the same card/grid system is reused across meeting points
-- information type is expressed inside that system rather than by switching to a completely different full-slide layout
+- the same card system is reused across meeting points
+- the normal slide-level composition is responsive card/grid
+- meeting point 9 is the explicit registered exception: its execution groups are vertically stacked top-to-bottom while still using the same card components
 - no arbitrary redesign from one slide to the next
 
 One work/information item = one card unless a compact grouped card is explicitly allowed by the slide-content authority.
@@ -290,23 +291,23 @@ for the nearest consequential deadline.
 
 ## 5. CARD GRIDS — MAXIMUM DENSITY, NOT TARGET
 
-### Meeting point 9: shared card/grid priority view
+### Meeting point 9: vertical priority sequence
 
-Meeting point 9 uses the same responsive card/grid system as the rest of the deck.
+Meeting point 9 is an explicit slide-level exception to the general responsive
+grid. It uses vertically stacked execution groups in this order:
 
-Priority is communicated by:
-- section heading / card label: `Prioritering först`, `Parallellt`,
-  `Backlog — lägre prioritet`, `Förslag framåt`;
-- card order;
-- issue/proposal identifier;
-- one concise pedagogical reason where required;
-- provenance symbol/text.
+1. `Prioritering först`
+2. `Parallellt`
+3. `Backlog — lägre prioritet`
+4. `Förslag framåt — finns ännu inte / behöver korrigeras`
 
-A 2×2 card grid is allowed when readable. Use fewer cards or continuation slides
-when content length requires it.
+Cards remain the component language inside each group.
 
-Do not switch to a special full-width row-only layout merely for point 9.
-The common card language is the primary visual standard.
+Hard rules:
+- execution groups read top-to-bottom;
+- a 2×2/four-quadrant arrangement of the four groups is forbidden;
+- priority remains clear without relying on color alone;
+- paginate when needed instead of shrinking below readability minima.
 
 
 ### Meeting point ①–①d
