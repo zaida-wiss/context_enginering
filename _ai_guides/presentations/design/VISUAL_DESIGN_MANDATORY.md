@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.8
+  version: 4.9
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -187,6 +187,26 @@ All internal card rules are delegated to `CARD_COMPONENT_STANDARD.md`.
 ---
 
 ## 4. GLOBAL TYPOGRAPHY
+
+### One primary font family per deck
+
+All presentation-authored text uses one primary readable sans-serif font family
+throughout the deck.
+
+Allowed exception:
+- a fallback font may be used only when the primary font cannot render a required
+  symbol/glyph correctly;
+- the fallback must be visually compatible and limited to the affected glyph/run.
+
+Forbidden:
+- switching font families between meeting points for decoration;
+- using a different font family to make text fit;
+- mixing decorative/display fonts into ordinary meeting content.
+
+Font-family consistency is an NPF predictability rule. Fit problems are solved by
+wording, geometry, density or pagination — never by font-family substitution.
+
+
 
 This file owns only slide-level roles:
 - slide title/header: **36 pt**, bold — this is both the preferred and minimum size
