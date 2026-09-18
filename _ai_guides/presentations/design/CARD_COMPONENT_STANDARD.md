@@ -167,8 +167,10 @@ Examples:
 
 Hard rules:
 - do **not** use full names — first name only
-- do not repeat a team label when the containing section/column already names the team
-- if no visible team section/column identifies ownership, include a text team label; color may never be the only indicator
+- team ownership must never rely on color alone
+- include an explicit non-color team cue on every card where team ownership is relevant: `Frontend`, `Backend`, `Native/System` or `Cross-team`
+- a surrounding team section/header does not remove this requirement when the card may be copied, moved, exported or interpreted out of context
+- team accent color remains supplementary only
 - do **not** prefix with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent wording
 - use the main/primary text color, not the team accent color, for ordinary identity text
 - use semibold/bold weight, but not extra-bold/black
@@ -185,8 +187,8 @@ The identifier is dynamic, for example `#99`, `#105` or `#108`; examples never
 hard-code which PRs exist. For an open PR, the complete heading begins
 `📌 #[PR_NUMBER]`. Apply team color to `#[PR_NUMBER]`, not to the pushpin.
 
-The number color is supplementary. Team ownership must also be available from
-the visible column/section or a text label, and the colored number must meet
+The number color is supplementary. Team ownership must also be explicitly
+available from a text label on the card, and the colored number must meet
 WCAG 2.2 AA contrast. If the canonical color fails contrast on the selected
 surface, use its approved accessible contrast variant without changing the team
 meaning.
@@ -338,12 +340,12 @@ If the timestamp is not useful to the meeting, omit it rather than filling space
 Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
 
-Tomac
+Tomac · Frontend
 Merged: Zaida | Review: Björn
                          14 sep · 10:16
 ```
 
-Note: Team is shown by the card's left border color (teal=Frontend), not by text.
+Note: Team ownership is shown by explicit text (for example `Frontend`) plus the supplementary left accent color. Color alone is never sufficient.
 
 Rendering rules:
 - pedagogical explanation sits directly under the title
