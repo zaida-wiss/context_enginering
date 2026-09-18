@@ -1,109 +1,62 @@
 ---
-name: team-roster
-description: Authoritative team membership list with VERIFIED GitHub identities (commit-based, not assumed)
+name: team_roster
+description: Canonical long-lived team membership and verified GitHub identity mapping
 metadata:
-  type: reference
-  critical: true
+  type: memory
+  status: active
   verification_method: git_commit_history + github_api
+  updated: 2026-09-18
 ---
 
-# 👥 TEAM ROSTER — Auktoritativ Personlista (VERIFIERAD)
+# Team roster
 
-**🚨 VIKTIGT: GitHub-handles är VERIFIERADE från projekt-repot (git commits), inte gissade från personens namn.**
+This file owns long-lived team membership and verified GitHub identity mapping.
+Presentation-specific coverage rules are owned by the presentation data/content
+authorities and reference this roster as their identity source.
 
-**Denna fil definierar vilka personer som tillhör vilka team. Den är OBLIGATORISK för presentation coverage validation.**
+## Frontend
 
-**Verification Status:** Alla handlenamn är baserade på faktiska commits från avanza-team1-repot.
+| Display name | Verified email | GitHub handle | Identity status |
+|---|---|---|---|
+| Tomac Barin Jansson | tomacbarin@me.com | TomacBarin | verified |
+| Björn Boman | 1125969+bjorneboman@users.noreply.github.com | bjorneboman | verified |
+| Zaida Wiss | zaida.wiss@chasacademy.se | zaida-wiss | verified |
 
----
+## Backend
 
-## Frontend Team
+| Display name | Verified email | GitHub handle | Identity status |
+|---|---|---|---|
+| Erik Berglund | rikexhx@gmail.com | Svartakatten | verified |
+| Rasha Knifdi | rasha.fi@hotmail.com | rashaknifdi | verified |
 
-| Display Name | Verified Email | GitHub Handle | Commit History | Status |
-|--------------|----------------|---------------|-----------------|--------|
-| Tomac Barin Jansson | tomacbarin@me.com | TomacBarin | ✅ Active | Active |
-| Björn Boman | 1125969+bjorneboman@users.noreply.github.com | bjorneboman | ✅ Active | Active |
-| Zaida Wiss | zaida.wiss@chasacademy.se | zaida-wiss | ✅ Active | Active |
+## Native/System
 
-**Arbetsområden:**
-- Frontend & Auth (login, auth flows)
-- Frontend & Design System (components, design)
-- Frontend & Dashboard (UI, data visualization)
+| Display name | Verified email | GitHub handle | Identity status |
+|---|---|---|---|
+| Pär Lundh | lundh.par@gmail.com | lundhpargmailcom | verified |
+| Henrik Westerlund | henrik.w93@gmail.com | Henrik-Westerlund | verified |
 
----
+## External contributors
 
-## Backend Team
+External contributors are not part of the seven-person Team 1 roster but may
+appear in repository activity.
 
-| Display Name | Verified Email | GitHub Handle | Commit History | Status |
-|--------------|----------------|---------------|-----------------|--------|
-| Erik Berglund | rikexhx@gmail.com | Svartakatten | ✅ Active | Active |
-| Rasha Knifdi | rasha.fi@hotmail.com | rashaknifdi | ✅ Active | Active |
+| Display name | GitHub handle | Relationship | Identity status |
+|---|---|---|---|
+| Max Guclu | Max-comerit | External contributor (Comerit) | verified |
 
-**Arbetsområden:**
-- Backend & Session (API, session management)
-- Backend & Risk Calculations (risk engine)
-- Backend & Integrations (third-party APIs)
+## Canonical use
 
----
+Use this file to map:
+- display name ↔ GitHub handle
+- team membership
+- external-contributor identity
 
-## Native/System Team
-
-| Display Name | Verified Email | GitHub Handle | Commit History | Status |
-|--------------|----------------|---------------|-----------------|--------|
-| Pär Lundh | lundh.par@gmail.com | lundhpargmailcom | ✅ Active | Active |
-| Henrik Westerlund | henrik.w93@gmail.com | Henrik-Westerlund | ✅ Active | Active |
-
-**Arbetsområden:**
-- Native & Risk Motor (JNA, risk calculations)
-- Native & App Integration (native modules)
-- System & Performance (optimization)
+Current activity, assignment, availability or contribution claims are resolved
+from current registered sources rather than stored here.
 
 ---
 
-## Coverage Validation Rule
-
-**Innan Slide ①A, ①B, ①C kan skapas:**
-
-```
-FRONTEND COVERAGE CHECK:
-  ☐ Tomac — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Björn — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Zaida — commits/PRs denna vecka: [ ] found / [ ] not found
-
-BACKEND COVERAGE CHECK:
-  ☐ Erik — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Rasha — commits/PRs denna vecka: [ ] found / [ ] not found
-
-NATIVE/SYSTEM COVERAGE CHECK:
-  ☐ Pär — commits/PRs denna vecka: [ ] found / [ ] not found
-  ☐ Henrik — commits/PRs denna vecka: [ ] found / [ ] not found
-```
-
-**RULE:** Om någon medlem INTE har verifierbar aktivitet → presentationen måste uttryckligt rapportera det:
-- `Tomac — ✅ 4 commits + PR #80 (Frontend)`
-- `Björn — ⏳ 3 commits (Design System) + Review PR #90`
-- `Zaida — ❌ Ingen aktivitet denna vecka`
-
-**Presentationen får INTE bara utelämna Zaida.** Den måste visa att Zaida inte hade verifierbar GitHub-aktivitet denna vecka.
-
----
-
-## Why This File Exists
-
-Gamla problemet: Björn's design system arbete försvann från presentationen för att modellen fokuserade på "issues" istället för att systematiskt gå genom alla team-medlemmar.
-
-Denna fil säger: **Dessa 7 personer måste alla kontrolleras innan presentationen är klar.**
-
-| Team | Members |
-|------|---------|
-| Frontend | Tomac, Björn, Zaida |
-| Backend | Erik, Rasha |
-| Native/System | Pär, Henrik |
-
-Om någon saknas från presentationen = PROBLEM. Presentationen måste visa varför (aktivitet eller ingen aktivitet denna vecka).
-
-Presentation är INTE komplett utan att alla 7 har blivit kontrollerade.
-
----
-
-**Senast uppdaterad:** 2026-09-13
+**Team 1 member count:** 7
+**Status:** canonical memory
+**Last updated:** 2026-09-18
