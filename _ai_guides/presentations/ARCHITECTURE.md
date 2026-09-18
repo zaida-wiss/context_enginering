@@ -87,7 +87,7 @@ It does NOT override accessibility, visual design, card component or provenance 
 ### DATA AUTHORITIES
 - `DATA_ACQUISITION_CONTRACT.yaml` — how data is acquired
 - `ACTIVE_WORK_DETECTION_MODEL.md` — how active work is classified
-- `_memory/EXTERNAL_SOURCES.yaml` — allowed external sources/access methods
+- `data/SOURCES.yaml` — allowed external sources/access methods
 
 ---
 
