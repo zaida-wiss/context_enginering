@@ -4,7 +4,7 @@ description: Minimal router for presentation tasks
 metadata:
   type: router
   critical: true
-  version: 2.0
+  version: 2.1
 ---
 
 # Presentation task router
@@ -16,16 +16,21 @@ the files that own the rules; it does not repeat those rules.
 
 Read these once, in this order, from the same repository ref as the entry README:
 
-1. `AUTHORITY_REGISTRY.yaml`
+1. `../AI_FRAMEWORK.yaml`
+   - global normative AI behavior contract
+   - requires STOP + user decision for genuine active-rule conflicts
+   - applies before presentation-specific routing
+
+2. `AUTHORITY_REGISTRY.yaml`
    - establishes which files are active
    - identifies the owner for each rule category
    - remains the authority map throughout the task
 
-2. `INTEGRITY_CONSTRAINT.md`
+3. `INTEGRITY_CONSTRAINT.md`
    - establishes what counts as verified project information
    - defines how incomplete or uncertain data is handled
 
-3. `SYSTEM_CONTRACT.yaml`
+4. `SYSTEM_CONTRACT.yaml`
    - establishes the execution flow, gates and delivery process
    - resolves which task-specific authorities and data dependencies are needed
 
@@ -55,7 +60,8 @@ The routing path stays small and stable:
 ```text
 README
   → MANDATORY_READING_ORDER
-    → AUTHORITY_REGISTRY
+    → AI_FRAMEWORK.yaml
+      → AUTHORITY_REGISTRY
       → INTEGRITY_CONSTRAINT
         → SYSTEM_CONTRACT
           → task-specific authorities + registered data
@@ -69,5 +75,5 @@ This router changes only when the routing structure itself changes.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.0
+**Version:** 2.1
 **Last updated:** 2026-09-18
