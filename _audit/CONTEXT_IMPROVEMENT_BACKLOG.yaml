@@ -35,7 +35,7 @@ items:
 
   dependencies_and_capacity:
     priority: high
-    status: pending
+    status: implemented
     purpose: >
       Teach AI to detect dependencies, missing estimates and unusual capacity
       early enough to prevent one team from blocking another.
@@ -45,7 +45,11 @@ items:
       - "Use verified capacity when available; distinguish unknown capacity from normal capacity."
       - "Recommend sequencing, parallel work and synchronization points."
       - "Do not invent numeric estimates or capacity."
-    proposed_owner: "_ai_guides/project/DEPENDENCIES_AND_CAPACITY.md"
+    owner: "_ai_guides/project/DEPENDENCIES_AND_CAPACITY.md"
+    implementation_notes:
+      - "Numeric estimate/capacity inference removed from presentation acquisition."
+      - "Unknown capacity remains unknown rather than being treated as full availability."
+      - "Qualitative load balancing remains allowed from verified work/dependency evidence."
 
   cross_layer_awareness:
     priority: high
