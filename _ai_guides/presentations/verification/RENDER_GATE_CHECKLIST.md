@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.9
+  version: 5.0
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -108,6 +108,30 @@ Manual visual checks:
 - no slide title was reduced to solve density
 - normal/supporting text starts at the preferred larger size where possible
 - smaller normal text is used only when required and remains above the role minimum
+- header, content and source/footer zones are visibly stable from slide to slide
+- no content card enters the footer/source zone
+- no footer/source text competes with primary content
+
+### Five-second scan check
+
+Required:
+
+```text
+five_second_scan_failure_count == 0
+slide_zone_predictability_failure_count == 0
+competing_primary_focus_count == 0
+unclear_reading_direction_count == 0
+```
+
+For each rendered slide, inspect the actual PDF/image and verify that within
+approximately five seconds a viewer can identify:
+- meeting point;
+- one primary purpose;
+- primary card/group;
+- reading order;
+- provenance class when the slide mixes fact/analysis/proposal.
+
+Any failure → reduce density/emphasis, reflow or paginate and rerender.
 
 ---
 
