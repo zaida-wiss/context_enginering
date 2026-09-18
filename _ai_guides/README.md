@@ -23,7 +23,7 @@ RESULTAT: Live GitHub-data + verifierad design = presentationen är klar
 
 **`_memory/` innehåller PROJEKTKONTEXT som AI måste förstå:**
 
-- **`TEAMSTANDARDS.md`** — Kodstandarder, Git workflow
+- **`TEAM_STANDARDS.md`** — Kodstandarder, Git workflow
 - **`DEFINITION_OF_DONE.md`** — Vad är "DONE" för en GitHub-issue?
 - **`COURSE_DEADLINES.md`** — Kurs-deadlines (CTO Feed Forward, etc)
 - **`SCHEDULE.md`** — Kurschema & vecko-fokus
