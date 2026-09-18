@@ -73,7 +73,7 @@ DATA SOURCES VERIFICATION:
      Will use: Slack summary + meeting notes from GitHub
      
   ✅ DoD checklist — LIVE_VERIFIED
-     Read from: _memory/DEFINITION_OF_DONE.md
+     Read from: _ai_guides/project/DEFINITION_OF_DONE.md
      All slides will check against this
      
   ✅ Team roster — LIVE_VERIFIED
