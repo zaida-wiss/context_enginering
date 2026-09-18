@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.5
+version: 1.6
 metadata:
   type: registry
   critical: true
@@ -54,6 +54,10 @@ logical_destinations:
       path: "_ai_guides/project/templates/RISK_REGISTER.md"
     hr_and_team_support:
       path: "_ai_guides/project/HR_AND_TEAM_SUPPORT.yaml"
+    team_tone_and_collaboration:
+      path: "_ai_guides/project/TEAM_TONE_AND_COLLABORATION.yaml"
+    testing:
+      path: "_ai_guides/project/TESTING.md"
 
   memory:
     team_roster:
@@ -107,6 +111,29 @@ presentation_bootstrap:
     path: "_ai_guides/presentations/SYSTEM_CONTRACT.yaml"
 
 tasks:
+  issue_creation:
+    purpose: "Create or improve a GitHub issue using the project's canonical workflow."
+    load:
+      - "logical_destinations.project.team_standards"
+      - "logical_destinations.project.testing"
+      - "logical_destinations.project.definition_of_done"
+      - "logical_destinations.project.definition_of_done_template"
+      - "logical_destinations.project.team_tone_and_collaboration"
+    supporting_context:
+      - "logical_destinations.project.risk_register_template"
+      - "logical_destinations.decisions.confirmed"
+    output_expectations:
+      - "issue-specific Acceptance Criteria"
+      - "issue-specific Testing section selected by risk"
+      - "decision record reminder"
+      - "risk-analysis reminder"
+      - "develop-sync reminder before PR"
+      - "review, merge and Done reminder"
+
+  project_default_behavior:
+    load:
+      - "logical_destinations.project.team_tone_and_collaboration"
+
   team_support:
     behavior_standard:
       ref: "logical_destinations.project.hr_and_team_support"
