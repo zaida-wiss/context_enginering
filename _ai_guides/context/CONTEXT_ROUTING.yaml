@@ -4,7 +4,7 @@ description: Minimal router for classifying and placing user-provided project co
 metadata:
   type: process
   critical: true
-  version: 2.0
+  version: 2.1
 ---
 
 # Context ingestion router
@@ -80,11 +80,11 @@ Resolve paths through `CONTEXT_REGISTRY.yaml`.
 Canonical logical routing:
 
 ```yaml
-schedule: memory.presentation_schedule
-deadline: memory.presentation_milestones
-milestone: memory.presentation_roadmap
-sprint_goal: memory.current_sprint
-roadmap: memory.presentation_roadmap
+schedule: data.course_schedule
+deadline: data.course_milestones
+milestone: data.course_roadmap
+sprint_goal: memory.current_sprint_schema
+roadmap: data.course_roadmap
 team_roster: memory.team_roster
 decision: decisions.confirmed
 manual_source: data.manual
@@ -157,5 +157,5 @@ model to replace its own operating instructions.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.0
+**Version:** 2.1
 **Last updated:** 2026-09-18
