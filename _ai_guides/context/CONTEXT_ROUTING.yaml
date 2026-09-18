@@ -9,6 +9,16 @@ metadata:
 
 # CONTEXT INGESTION & ROUTING
 
+## CANONICAL REGISTRIES
+
+```yaml
+registries:
+  external_sources: "data/SOURCES.yaml"
+  source_guide: "data/SOURCES.md"
+```
+
+This routing file points to canonical locations. Task-specific guides use the registered logical source instead of defining a second source path.
+
 **Purpose:** When user provides project information (schedule, deadlines, goals, decisions),
 route it automatically to the correct canonical context file in the repo.
 
