@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.7
+  version: 4.8
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -72,6 +72,38 @@ The deck must feel **predictable and structurally consistent**:
 - no arbitrary redesign from one slide to the next
 
 One work/information item = one card unless a compact grouped card is explicitly allowed by the slide-content authority.
+
+### Stable slide zones — NPF predictability
+
+Every rendered meeting slide uses the same three spatial zones:
+
+1. **Header zone** — meeting-point title, optional subordinate subtitle and local page counter.
+2. **Content zone** — responsive card/grid content only.
+3. **Source/footer zone** — compact provenance/source summary and quiet operational metadata when required.
+
+Hard rules:
+- the three zones keep the same top-to-bottom order across the deck;
+- content never intrudes into the header or footer zone;
+- footer/source content never competes visually with the main content;
+- continuation slides preserve the same zone geometry;
+- decorative elements may not create a false fourth primary zone.
+
+### Five-second scan test — NPF design gate
+
+A slide must be understandable at a glance before detailed reading.
+
+Within approximately five seconds, a viewer should be able to identify:
+- which meeting point they are on;
+- the slide's one main purpose;
+- the most important card/group;
+- the intended reading order;
+- whether the content is fact, status, analysis or proposal where that distinction matters.
+
+If this is not possible, reduce competing emphasis, simplify grouping, increase
+whitespace, lower card density or continue onto another slide.
+
+The five-second test does not justify removing required provenance or project-value
+microcopy; it is a hierarchy/composition test, not a content-deletion rule.
 
 ---
 
