@@ -104,6 +104,7 @@ The detailed values live in `READABILITY_HARD_RULES.md` and `CARD_COMPONENT_STAN
 - merger/reviewer names are printed only when verified; unknown values stay blank
 - timestamps are compact, one line, discreet and bottom-most when present
 - automatic shrink-to-fit is forbidden
+- **default delivery format is PDF only**; PPTX/Google Slides/editable formats are delivered only when the user explicitly requests another or additional format
 - if accessible content does not fit, cards reflow, grid density is reduced or the slide paginates
 - the cover sprint period is resolved from request time using Monday 09:00 boundaries; a Monday 08:58 request still belongs to the sprint ending at 09:00
 - meeting point 1 shows verified work from that sprint's start through the actual data cutoff, using six cards as standard capacity per physical slide
