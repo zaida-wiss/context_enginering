@@ -10,7 +10,6 @@ Canonical repository paths and task bundles are resolved through
 | File | Purpose |
 |---|---|
 | [`TEAM_ROSTER.md`](TEAM_ROSTER.md) | Team membership and verified GitHub identities |
-| [`GITHUB_MEMBER_MAPPING.md`](GITHUB_MEMBER_MAPPING.md) | GitHub username mapping; candidate for consolidation into TEAM_ROSTER |
 
 ## Other domains
 
