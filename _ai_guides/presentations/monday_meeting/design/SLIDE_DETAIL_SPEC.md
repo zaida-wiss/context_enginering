@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.6
+  version: 2.7
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -244,8 +244,8 @@ Official meeting-point title shown on **every** slide in this section:
 
 `✏️ ① Avklarat sedan förra mötet`
 
-Page-specific descriptions such as `Mergat till develop`, `Backend collection
-branch`, `Native collection branch` and `Teamsammanfattning` are subtitles,
+Page-specific descriptions such as `Mergat till develop`, `Mergat till C/C++-Native`,
+`Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles,
 never replacements for the official meeting-point title.
 
 Use the active sprint resolved from the request timestamp. Meeting point 1
@@ -274,21 +274,26 @@ planned decision, a decision candidate, an unresolved question or an AI-suggeste
 decision here.
 
 “Done” means a verified merge during the sprint window to either `develop` or
-the owning team's registered collection branch. Project-board `Done` is a
-consistency check, not a substitute for merge evidence. Show mismatches instead
-of guessing. Deduplicate work promoted through multiple branches.
+one of the registered collection branches `C/C++-Native` or
+`Java-Development-Environment`. Project-board `Done` is a consistency check,
+not a substitute for merge evidence. Show mismatches instead of guessing.
+Deduplicate work promoted through multiple branches.
 
 Mandatory content order:
 1. merged to `develop`
-2. merged to Backend collection branch
-3. merged to Native collection branch
+2. merged to `C/C++-Native`
+3. merged to `Java-Development-Environment`
 4. AI-proposed team summaries for the meeting protocol
+
+Every non-empty target above gets its own physical slide sequence. A merge to a
+registered collection branch must never be folded into the `develop` slide or
+only summarized in a team-summary card.
 
 Six cards is the standard capacity per physical slide, never a total limit.
 Create as many continuation slides as required and never omit grounded completed
 work.
 
-## Subtitle — Mergat till `develop`
+## Subtitle — Mergat till develop
 
 Primary heading remains:
 `✏️ ① Avklarat sedan förra mötet`
@@ -301,23 +306,34 @@ oldest first. Each card contains verified PR number/title, grounded contribution
 actual contributor(s), team, merger/reviewer when verified and merge timestamp.
 Do not include collection-branch-only merges here.
 
-## Subtitle — Backend: mergat till collection branch
+All continuation slides for this target keep the same subtitle exactly:
+`Mergat till develop`. Do not render generic subtitles such as `Mergat under
+sprinten`, `del 2`, `merged work` or equivalent.
+
+## Subtitle — Mergat till C/C++-Native
+
+Primary heading remains:
+`✏️ ① Avklarat sedan förra mötet`
+
+Canonical branch: `C/C++-Native`. Show every verified merge to this branch during
+the sprint window after the `develop` pages. Use the same evidence fields as
+above where available.
+
+This collection branch gets its own physical slide sequence when it has verified
+merge evidence. The slide subtitle must be exactly `Mergat till C/C++-Native`.
+
+## Subtitle — Mergat till Java-Development-Environment
 
 Primary heading remains:
 `✏️ ① Avklarat sedan förra mötet`
 
 Canonical branch: `Java-Development-Environment`. Show every verified merge to
-this branch during the sprint window after the `develop` pages. Use the same
-evidence fields as above where available.
+this branch during the sprint window after `C/C++-Native`. Use the same evidence
+fields as above where available.
 
-## Subtitle — Native: mergat till collection branch
-
-Primary heading remains:
-`✏️ ① Avklarat sedan förra mötet`
-
-Canonical branch: `C/C++-Native`. Show every verified merge to this branch
-during the sprint window after Backend. Use the same evidence fields as above
-where available.
+This collection branch gets its own physical slide sequence when it has verified
+merge evidence. The slide subtitle must be exactly
+`Mergat till Java-Development-Environment`.
 
 ## Subtitle — Teamsammanfattning till mötesprotokollet
 
@@ -1108,10 +1124,13 @@ blockers_and_risks_reflected_in_priority_order == true
 numeric_capacity_or_estimate_has_verified_source == true
 collection_branch_items_promoted_onward_remaining_count == 0
 active_items_already_merged_to_collection_branch_count == 0
+point_1_develop_subtitle_not_exact_count == 0
+point_1_collection_branch_slide_missing_count == 0
+point_1_collection_branch_subtitle_not_exact_count == 0
 ```
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.6
+**Version:** 2.7
 **Last updated:** 2026-09-18
