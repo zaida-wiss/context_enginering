@@ -4,7 +4,7 @@ description: MANDATORY — Presentation design authority and conflict ownership
 metadata:
   type: process
   critical: true
-  version: 2.1
+  version: 2.2
 ---
 
 # 🎨 DESIGN AUTHORITY
@@ -15,9 +15,12 @@ The purpose is to prevent contradictory instructions.
 
 ---
 
-## 1. AUTHORITY HIERARCHY
+## 1. AUTHORITY OWNERSHIP ORDER
 
-Use this order when rules conflict:
+Use this order to identify **ownership, delegation and absolute boundaries**.
+Do **not** use it to silently resolve a genuine contradiction between two active
+rules. Genuine conflicts are governed by `../../AI_FRAMEWORK.yaml` and require
+STOP + explicit user decision:
 
 1. `SYSTEM_CONTRACT.yaml` — execution sequence, gates, STOP/CONTINUE, delivery
 2. `ACCESSIBILITY_NEURODIVERSITY.md` — WCAG/readability; absolute boundary
@@ -135,32 +138,49 @@ Other files must reference this authority instead of redefining those details.
 
 ## 8. CONFLICT RESPONSE
 
-If two authoritative files appear to own the same rule category and disagree:
+Global conflict behavior is normatively owned by `../../AI_FRAMEWORK.yaml`.
 
-**STOP rendering and fix the documentation hierarchy first.**
+When two active presentation rules genuinely require incompatible outcomes:
 
-Do not choose whichever rule is more convenient for the current slide.
+**STOP the affected implementation/rendering path and ask the user to decide.**
 
-Create a visible instruction-conflict receipt before stopping. It must contain:
+Do not choose the higher-ranked rule merely because it appears earlier in this
+ownership map.
+
+Create a visible instruction-conflict receipt before stopping:
 
 ```text
 RULE CONFLICT
 - Category: [layout / provenance / typography / content / data]
-- Higher authority: [file + exact rule]
-- Conflicting authority: [file + exact rule]
+- Rule A: [file + exact rule]
+- Rule B: [file + exact rule]
 - Why they cannot both be followed: [plain-language explanation]
-- Applied action: STOP before composition/rendering
-- Required documentation fix: [owning file that must be changed]
+- Consequence of option A: [...]
+- Consequence of option B: [...]
+- External/non-negotiable boundary, if any: [...]
+- Applied action: STOP
+- Required next step: ask user for decision
 ```
 
-Do not silently overwrite, merge, weaken or ignore either rule. A warning such
-as `used higher rule` is insufficient when both files claim ownership.
+After the user decides:
+1. record the decision;
+2. update the owning active rule(s);
+3. correct/retire the contradictory active rule;
+4. add/update regression protection;
+5. continue only when the context is internally consistent.
 
-If a lower-level example conflicts with a clearly delegated owner, record it as
-`STALE EXAMPLE`, follow the owner, and update the example in the same change.
+Do not silently overwrite, merge, weaken or ignore either rule.
+
+### Normal specialization / stale examples
+
+This STOP gate does not apply when there is no genuine contradiction.
+
+If a lower-level example conflicts with a clearly delegated owner but does not
+itself claim active authority, record it as `STALE EXAMPLE`, follow the active
+owner and update the stale example in the same context change.
 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.0
-**Last updated:** 2026-09-17
+**Version:** 2.2
+**Last updated:** 2026-09-18
