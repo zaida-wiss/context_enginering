@@ -328,6 +328,14 @@ def main():
     )
 
     require(
+        "composition authority registers vertical point9 exception",
+        "Registered slide-level exception:" in read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
+        and "point9_vertical_sequence_missing_count == 0" in read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
+        and "`⑨` | vertical execution groups" in read("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"),
+        failures,
+    )
+
+    require(
         "meeting point 9 uses mandatory vertical execution sequence",
         "mandatory vertical execution sequence" in slide
         and "2×2 execution-group layout" in slide,
