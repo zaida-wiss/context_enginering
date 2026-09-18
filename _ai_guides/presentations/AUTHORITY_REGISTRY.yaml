@@ -1,6 +1,6 @@
 name: presentation_authority_registry
 description: Canonical registry of active authorities, validators, references and retired guides
-version: 1.1
+version: 1.2
 metadata:
   type: registry
   critical: true
@@ -49,14 +49,18 @@ active_authorities:
     category: responsive_fit
     owns: fit algorithm, pagination and collision prevention
   - rank: 10
+    file: monday_meeting/structure/COMPOSITION_ARCHITECTURE.md
+    category: composition_structure
+    owns: meeting-point order, presence/empty states, cross-slide red threads and composition completeness
+  - rank: 11
     file: monday_meeting/design/SLIDE_DETAIL_SPEC.md
     category: slide_content
     owns: meeting-point purpose, required fields and content order
-  - rank: 11
+  - rank: 12
     file: data/DATA_ACQUISITION_CONTRACT.yaml
     category: acquisition
     owns: mechanical data acquisition and reporting-period filtering
-  - rank: 12
+  - rank: 13
     file: ../../data/SOURCES.yaml
     category: source_registry
     owns: allowed sources, URLs, access methods and fallback order
