@@ -1182,5 +1182,5 @@ point_1_collection_branch_subtitle_not_exact_count == 0
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.8
+**Version:** 3.2
 **Last updated:** 2026-09-18
