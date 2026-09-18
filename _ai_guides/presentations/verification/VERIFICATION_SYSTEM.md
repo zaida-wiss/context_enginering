@@ -3,7 +3,7 @@
 
 # ✅ Verification System - Source of Truth
 
-🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../../../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+🔗 **Alla externa datakällor:** Se [`data/SOURCES.md`](../../../data/SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
 
 ## 📍 DOKUMENTVÄGEN
 
@@ -125,7 +125,7 @@ git log --oneline --since="1 week ago"
 
 ### ✅ STEG 4: Läs Google Sheets Risker
 
-**CSV-länk för AI:** See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER
+**CSV-länk för AI:** See SOURCES.yaml: GOOGLE_RISK_REGISTER
 
 **Vad att kolla:**
 - [ ] CRITICAL risker — status? (Lösta? Pågår? Ej påbörjade?)
@@ -147,7 +147,7 @@ git log --oneline --since="1 week ago"
 
 ### ✅ STEG 5: Läs Mötesprotokollet
 
-**TXT-länk för AI:** See EXTERNAL_SOURCES.yaml: GOOGLE_MEETING_PROTOCOL
+**TXT-länk för AI:** See SOURCES.yaml: GOOGLE_MEETING_PROTOCOL
 
 **Vad att kolla:**
 - [ ] Vilka beslut togs på senaste mötet? (markeras med "B:")
