@@ -20,7 +20,7 @@ active_authorities:
     file: SYSTEM_CONTRACT.yaml
     category: orchestration
     owns: execution sequence, gates, STOP/CONTINUE and delivery
-  - rank: 4
+  - rank: 3
     file: design/ACCESSIBILITY_NEURODIVERSITY.md
     category: accessibility
     owns: WCAG 2.2 AA, neurodiversity and absolute readability boundary
