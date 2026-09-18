@@ -4,7 +4,7 @@ description: Minimal router for Avanza project work
 metadata:
   type: router
   status: active
-  version: 2.2
+  version: 2.3
 ---
 
 # Avanza project context router
@@ -23,6 +23,7 @@ For project work:
 - team/code/Git workflow → `project.team_standards`
 - testing and verification → `project.testing`
 - goals, milestones and sprint planning → `project.goals_and_sprint_planning`
+- risk analysis and mitigation reasoning → `project.risk_management`
 - Definition of Done → `project.definition_of_done`
 - default communication/feedback tone → `project.team_tone_and_collaboration`
 - conflict/needs/people-support → `project.hr_and_team_support`
@@ -50,5 +51,5 @@ result with the task's registered acceptance checks.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.2
+**Version:** 2.3
 **Last updated:** 2026-09-18
