@@ -1,7 +1,7 @@
 ---
 name: goals_and_sprint_planning
 description: Canonical reasoning and provenance standard for project goals, sprint goals, milestones and planning proposals
-version: 1.0
+version: 1.1
 metadata:
   type: project_authority
   status: active
@@ -65,12 +65,18 @@ helps distinguish activity from progress.
 
 ### 1. Explicit sprint planning source
 
-When the registered Avanza project spreadsheet contains a worksheet/tab named
-`Sprintplanering` and that tab is accessible and current, use it as the
-primary source for the **decided sprint purpose, sprint goals and planned focus**
-represented there.
+Resolve the registered conditional source `GOOGLE_SPRINT_PLANNING`.
+
+When the Team Avanza 1 spreadsheet contains an accessible worksheet/tab named
+exactly `Sprintplanering`, use that source as the primary source for the
+**decided sprint purpose, sprint goals and planned focus** represented there.
 
 The AI reads the actual values from the source. It does not infer missing cells.
+
+When `GOOGLE_SPRINT_PLANNING` reports `UNAVAILABLE_NOT_YET_CREATED`, continue
+to confirmed meeting decisions and registered milestone/course sources. GitHub
+activity may explain progress but does not become a decided sprint goal by
+inference.
 
 ### 2. Confirmed meeting decisions
 
@@ -279,5 +285,5 @@ source-backed plan and the proposed change separately.
 ---
 
 **Status:** ACTIVE
-**Version:** 1.0
+**Version:** 1.1
 **Last updated:** 2026-09-18
