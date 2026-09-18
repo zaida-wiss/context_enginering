@@ -3,7 +3,7 @@ name: presentation_architecture
 description: Design architecture — Single Source of Truth for presentation system
 metadata:
   type: critical_specification
-  version: 2.0
+  version: 2.1
 ---
 
 # 📐 PRESENTATION ARCHITECTURE — Single Source of Truth
@@ -172,8 +172,7 @@ Canonical source classes:
 - `🔎 AI-analys`
 - `⚠ Källa behöver verifieras`
 
-The Unicode symbol is part of the source identity. Tags, chips, colors,
-question marks and text-only labels may not replace it.
+The canonical Unicode symbol and its text label together identify the source class. Visual containers such as tags, chips or badges may style that canonical identity while preserving the symbol + text.
 
 A mixed card may contain several source classes, but each block must remain labeled.
 
@@ -196,10 +195,9 @@ These are density rules:
 - `①–①d`: verified work performed so far in the active sprint; 6 cards is standard capacity per physical slide with unlimited lowercase-letter continuations
 - `①` develop merges → `①a` Backend collection merges → `①b` Native collection merges → `①c` unfinished work active in the window → `①d` AI team summaries
 - `③–⑤`: separate Frontend, Backend and Native forward-planning sections; they own backlog, future work, older inactive work and governing decisions
-- `⑨`: exactly four team columns on every slide: `Frontend`, `Backend`, `Native`, `Cross-team`
-- `⑨`: open PRs with `📌 #[PR]`, remaining issues with explicit order and visual dependencies, justified AI allocation analysis and suggested missing issues
-- `⑨`: fixed `1×4` team columns with vertically stacked, content-driven cards/text blocks
-- `⑨`: continue as `9a`, `9b`, `9c`, `9d`, `9e` when content requires more space
+- `⑨`: content structure, execution groups and continuation behavior are defined by `SLIDE_DETAIL_SPEC.md`
+- `⑨`: visual implementation follows `VISUAL_DESIGN_MANDATORY.md`, `CARD_COMPONENT_STANDARD.md` and `LAYOUT_OVERFLOW_GUARD.md`
+- `⑨`: Architecture records ownership only; it does not duplicate the point-9 page layout
 - `③–⑤` and `⑨`: plan the remaining active-sprint horizon from data cutoff to sprint end
 - `②`, `⑥–⑧` and `⑩–⑫`: max 4, responsive card layout
 - `⑬`: max 4; 4×1 only when readable, otherwise 2×2/fewer
@@ -301,7 +299,8 @@ font_below_component_minimum_count == 0
 plain_row_work_item_count == 0
 missing_required_card_row_count == 0
 uneven_row_spacing_caused_by_vertical_justification == 0
-ai_generated_item_without_question_icon_count == 0
+ai_analysis_without_magnifying_glass_count == 0
+ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 ```
 
@@ -309,6 +308,6 @@ Any non-zero count means: fix → rerender → reinspect.
 
 ---
 
-**Last updated:** 2026-09-17
+**Last updated:** 2026-09-18
 **Status:** Production architecture
-**Version:** 2.0
+**Version:** 2.1
