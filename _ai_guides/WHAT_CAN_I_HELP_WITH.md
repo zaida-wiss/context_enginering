@@ -5,7 +5,7 @@
 **Se även:** Root README.md har en meny över VAD KAN JAG FRÅGA AI:N OM?
 - Länk: https://github.com/zaida-wiss/context_enginering#-vad-kan-jag-fråga-ain-om
 
-🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+🔗 **Alla externa datakällor:** Se [`data/SOURCES.md`](../data/SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
 
 ---
 
@@ -22,7 +22,7 @@
 
 ```
 Du: "Läs mötesprotokollet från denna länk:
-    See EXTERNAL_SOURCES.yaml: GOOGLE_MEETING_PROTOCOL
+    See SOURCES.yaml: GOOGLE_MEETING_PROTOCOL
 
     Sedan: Förbered FÖR mandagsmötet"
 ```
@@ -363,7 +363,7 @@ Mötesprotokollet är **PRIMÄR källa** för:
 - Vad är nästa möte?
 
 **Raw-länk för AI:**
-- TXT: `See EXTERNAL_SOURCES.yaml: GOOGLE_MEETING_PROTOCOL`
+- TXT: `See SOURCES.yaml: GOOGLE_MEETING_PROTOCOL`
 
 **FORMAT I MÖTESPROTOKOLLET:**
 ```
@@ -496,7 +496,7 @@ PRIMÄR KÄLLA - GitHub Project Board:
    1. ✅ Läser: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
 
 PRIMÄR FALLBACK - Google Sheets:
-   2. Om GitHub misslyckas → Läser: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
+   2. Om GitHub misslyckas → Läser: See SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
 
 ---
 
@@ -512,11 +512,11 @@ PRIMÄR KÄLLA - GitHub Project Board:
    3. ✅ Läser Closed/Merged PRs: https://github.com/chas-challenge-2026/avanza-team1/pulls?q=is%3Apr+is%3Aclosed
 
 PRIMÄR KÄLLA - Google Sheets (Risker & Assets):
-   4. ✅ Läser Risker: `See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285`
-   5. ✅ Läser Assets: `See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=684132349`
+   4. ✅ Läser Risker: `See SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285`
+   5. ✅ Läser Assets: `See SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=684132349`
 
 PRIMÄR FALLBACK - Google Sheets:
-   5. Om GitHub misslyckas → Läser Google Sheets Project Board: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
+   5. Om GitHub misslyckas → Läser Google Sheets Project Board: See SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
 
 ### "Uppdatera Risker i Google Sheets"
 ```
@@ -524,7 +524,7 @@ Du: "Ny risk: Back-testing är långsam"
     ELLER "Uppdatera risker"
 
 AI: (Läser alltid från Google Sheets direkt)
-   1. ✅ Läser Google Sheets Risker: See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285
+   1. ✅ Läser Google Sheets Risker: See SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285
    2. ✅ Läser git log för att verifiera mitigations
    3. ✅ Identifierar om detta är en ny risk
 
@@ -590,8 +590,8 @@ Du: "Ge mig risk status presentation"
 AI: (MÅSTE följa denna prioritering)
 
 PRIMÄR KÄLLA - Google Sheets:
-   1. ✅ Läser Risker: See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285
-   2. ✅ Läser Assets: See EXTERNAL_SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=684132349
+   1. ✅ Läser Risker: See SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=1796827285
+   2. ✅ Läser Assets: See SOURCES.yaml: GOOGLE_RISK_REGISTER&gid=684132349
 
 PRESENTERA (i denna ordning):
    3. Executive Summary (1-2 mening):
@@ -761,7 +761,7 @@ PRIMÄR KÄLLA - GitHub Project Board:
    2. ✅ Läser git log denna vecka (commits på develop)
 
 PRIMÄR FALLBACK - Google Sheets:
-   3. Om GitHub misslyckas → Läser: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
+   3. Om GitHub misslyckas → Läser: See SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET```
 
 ### "Förbered Sprintmöte Presentation" (Nuläge + Förslag Framåt)
 ```
