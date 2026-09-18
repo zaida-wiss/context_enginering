@@ -13,6 +13,7 @@ Canonical project-level instructions live here.
 | project.team_tone_and_collaboration | [`TEAM_TONE_AND_COLLABORATION.yaml`](TEAM_TONE_AND_COLLABORATION.yaml) | default communication and feedback standard |
 | project.testing | [`TESTING.md`](TESTING.md) | risk-based selection of test levels and verification |
 | project.goals_and_sprint_planning | [`GOALS_AND_SPRINT_PLANNING.md`](GOALS_AND_SPRINT_PLANNING.md) | verified goals, sprint planning and transparent AI proposals |
+| project.risk_management | [`RISK_MANAGEMENT.md`](RISK_MANAGEMENT.md) | canonical risk reasoning aligned with the team's workbook and CTO task |
 
 Current project facts are data, not instructions. Presentation rules remain in
 the presentation authority system.
