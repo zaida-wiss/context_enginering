@@ -1,7 +1,7 @@
 ---
 name: team_standards
 description: Canonical project workflow and team operating standards
-version: 2.1
+version: 2.2
 metadata:
   type: project_authority
   status: active
@@ -196,50 +196,29 @@ on the work as integrated, verified project state.
 
 # 2. Issue body standard — project standard
 
-New implementation issues should contain these sections when applicable:
+The canonical reusable issue-body structure is owned by:
 
-```markdown
-## Why
-[What problem/value does this address?]
+`templates/ISSUE_BODY.md`
 
-## Acceptance Criteria
-- [ ] Observable outcome 1
-- [ ] Observable outcome 2
+This file owns the workflow expectation; the template owns the body layout.
 
-## Dependencies / contracts
-[Relevant issue, API, branch, team or "None known"]
+When creating an implementation issue:
 
-## Testing
-**Risk this change introduces**
-- [What could break?]
+- make the intended outcome and Acceptance Criteria observable
+- include only dependency/contract information that is relevant
+- select testing from `TESTING.md` based on the change and its risk
+- check whether a decision record or risk update is actually needed
+- select an **Applicable Definition of Done** from `DEFINITION_OF_DONE.md`
+- include README/documentation work only when the issue scope affects it
+- retain the completion reminders for develop-sync, review, merge and truthful
+  Done state
 
-**Verify**
-- [ ] [Specific check]
-- [ ] [Boundary/failure/contract check if relevant]
+The issue body adapts to the change. A small CSS fix should not receive API,
+architecture or README criteria without a real reason. A cross-team contract
+change should make those integration/documentation obligations explicit.
 
-**Test level**
-- [Unit / Component / Integration / E2E / Manual quality check]
-
-## Decisions
-- [Decision record link, or "No new decision identified"]
-
-## Risk analysis
-- [Risk record/update link, or "No new/changed risk identified"]
-
-## Completion reminder
-- [ ] Acceptance Criteria verified
-- [ ] Relevant tests/checks complete
-- [ ] Relevant decisions documented
-- [ ] New/changed risks documented
-- [ ] Branch synchronized with current develop before PR
-- [ ] PR reviewed and accepted
-- [ ] Definition of Done satisfied
-- [ ] PR merged
-- [ ] Issue moved to Done
-```
-
-The body adapts to the issue. A documentation issue does not need fake runtime
-tests; a cross-team integration issue should contain explicit contract checks.
+The template is operational convenience; the owning authorities remain the
+source of the rules.
 
 ---
 
@@ -323,5 +302,5 @@ When helping create an issue, PR description, review or implementation plan:
 ---
 
 **Status:** ACTIVE
-**Version:** 2.1
+**Version:** 2.2
 **Last updated:** 2026-09-18
