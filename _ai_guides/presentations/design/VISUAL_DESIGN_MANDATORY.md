@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.6
+  version: 4.7
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -49,8 +49,8 @@ The deck uses:
 - low-glare surfaces
 - clear hierarchy
 - responsive cards
-- cards as the primary information language when the slide type is item-based
-- slide-type-specific visual structures when chronology, dependencies, risk flow or priority order are the actual information problem
+- cards and responsive card grids as the primary visual language across the deck
+- chronology, dependencies, risk and priority communicated within the same card/grid grammar through ordering, grouping, headings, symbols and optional connectors
 - deliberate whitespace that creates grouping and breathing room instead of decorative emptiness
 
 ### NPF-first visual composition
@@ -65,13 +65,13 @@ Every slide must pass a quick-scan test:
 - decorative elements never compete with data or provenance
 - dense content is paginated instead of compressed
 
-The deck must feel **predictable without becoming monotonous**:
-- stable header, palette, card language and provenance grammar
-- varied slide-level composition appropriate to the content type
+The deck must feel **predictable and structurally consistent**:
+- stable header, palette, card language, provenance grammar and grid behavior
+- the same card/grid system is reused across meeting points
+- information type is expressed inside that system rather than by switching to a completely different full-slide layout
 - no arbitrary redesign from one slide to the next
-- no generic 2×2 grid when a timeline, dependency flow or ordered sequence communicates the meaning better
 
-One work/information item = one card unless a slide authority explicitly defines a diagram, timeline, compact priority row or grouped structure.
+One work/information item = one card unless a compact grouped card is explicitly allowed by the slide-content authority.
 
 ---
 
@@ -184,8 +184,8 @@ Do not duplicate those numeric card-internal rules here.
 Rendered meeting slides use a two-level header hierarchy.
 
 ### Primary header — meeting point only
-- contains the canonical circled meeting-point symbol + canonical meeting-point title
-- examples: `✏️ ① Avklarat sedan förra mötet`, `✏️ ② Nuläge och deadlines`
+- contains the ordinary Arabic meeting-point number + canonical meeting-point title
+- examples: `✏️ 1. Avklarat sedan förra mötet`, `✏️ 2. Nuläge och deadlines`
 - the continuation letter does **not** belong in this primary header
 - primary header remains 36 pt minimum
 
@@ -210,140 +210,51 @@ Rendered meeting slides use a two-level header hierarchy.
 Canonical example:
 
 ```text
-✏️ ① Avklarat sedan förra mötet                              (4/6)
+✏️ 1. Avklarat sedan förra mötet                            (4/6)
 Teamsammanfattning till mötesprotokollet
 ```
 
 ---
 
-## 4B. POINT 2 COURSE TIMELINE VISUAL
+## 4B. POINT 2 — SHARED CARD/GRID COMPOSITION
 
-Meeting point 2 is a timeline-first slide, not a card-grid slide.
+Meeting point 2 uses the same responsive card/grid language as the rest of the deck.
 
-Visual structure:
-- one horizontal course timeline spanning the main content width
-- chronological flow left → right
-- milestone markers alternate above/below when needed for readability
-- month/time-band labels may sit below the line
-- exact dates/times are visually stronger than explanatory detail
-- 1–3 nearest-focus callouts may sit below/alongside the timeline when they fit
-- if they do not fit, continue to `2a. Närmaste fokus`
+Chronology is communicated by:
+- left-to-right or top-to-bottom card order;
+- clear date/time labels inside each card;
+- compact phase/month headings when useful;
+- status symbol + text + color;
+- an explicit `AKTUELL SPRINT` card/badge when current position needs emphasis.
 
-### Timeline status colors
-Use the established semantic trio:
-- green = completed/passed
-- orange = upcoming checkpoint/feedforward/intermediate milestone
-- red = critical deadline/major delivery
+Do not require a full-slide timeline. If chronology needs more space, paginate
+into continuation slides while preserving card order.
 
-These colors supplement explicit text and symbols. Color alone is never enough.
+Nearest-focus items use the same card component standard, with stronger hierarchy
+for the nearest consequential deadline.
 
-### Active sprint locator
-The active sprint interval gets a separate **temporal locator**:
-- label: `AKTUELL SPRINT` or `Vi är här`
-- show sprint date range
-- use a neutral contrasting bracket/band/outline distinct from green/orange/red
-- visually span the active sprint interval
-- keep the band behind timeline markers/text with sufficient contrast
-- never use the active-sprint locator as a status color
-
-The active sprint locator answers **where we are now**; the milestone colors
-answer **what kind of point/deadline this is**.
-
-### Nearest-focus callout style
-Nearest-focus boxes are supporting explanation cards:
-- 1–3 maximum
-- nearest critical item receives strongest hierarchy
-- short labels: `Vad`, `När`, `Var`, `Varför`, `Hur`, `Nu behöver vi`
-- use regular body text, generous spacing and no dense paragraph wall
-- provenance remains visible
-- if a value is unverified, show `⚠` rather than guessing
 
 ---
 
 ## 5. CARD GRIDS — MAXIMUM DENSITY, NOT TARGET
 
-### Meeting point 9: compact stacked priority view
+### Meeting point 9: shared card/grid priority view
 
-Meeting point 9 is a deliberate exception to the normal card-grid language.
+Meeting point 9 uses the same responsive card/grid system as the rest of the deck.
 
-Do **not** use four team columns.
+Priority is communicated by:
+- section heading / card label: `Prioritering först`, `Parallellt`,
+  `Backlog — lägre prioritet`, `Förslag framåt`;
+- card order;
+- issue/proposal identifier;
+- one concise pedagogical reason where required;
+- provenance symbol/text.
 
-Use one full-width vertical flow, organized by execution priority:
+A 2×2 card grid is allowed when readable. Use fewer cards or continuation slides
+when content length requires it.
 
-`Prioritering först → Parallellt → Backlog — lägre prioritet → Förslag framåt`
-
-#### Compact active row
-
-For `Prioritering först` and `Parallellt`, each existing work item is a
-compact row/block:
-
-```text
-#[ISSUE]  pedagogisk förklaring  verifieringssymbol
-```
-
-Visual rules:
-- stack rows tightly but readably
-- issue number is the strongest element in the row
-- pedagogical explanation follows directly on the same row when it fits
-- allow a second line only when necessary
-- verification/provenance symbol sits at the right edge or directly after text
-- no bottom information zone is required for this compact point-9 row
-- no person row, branch row, timestamp row or decorative empty card area
-- use thin separators or subtle row surfaces rather than large cards
-- keep gaps near their minimum-approved values before reducing text size
-- do not vertically distribute rows to fill the slide height
-
-#### Proposed row
-
-A proposed new/corrective issue uses the same compact geometry but must remain
-visibly distinct through the proposal label:
-
-```text
-⭐ Skapa issue: [kort namn] — [kort varför]
-⭐ Korrigera #123 — [kort ändring]
-```
-
-A proposal may appear in `Prioritering först` or `Parallellt` when it is
-required to make the current plan valid or remove an important blocker.
-Do not visually demote it merely because it does not yet exist as a GitHub issue.
-
-#### Backlog group
-
-Backlog rows are even more compact:
-- issue number
-- short recognition title if needed
-- verification symbol
-- no pedagogical explanation
-
-#### Future-proposal group
-
-Ordinary non-urgent proposals appear last under `Förslag framåt`.
-
-Keep this group compact:
-- proposal label
-- short proposed issue/correction
-- one short reason at most
-
-Do not include full acceptance criteria on the slide.
-
-#### Hierarchy
-
-1. `Prioritering först` — strongest group heading
-2. `Parallellt` — clear secondary group
-3. `Backlog — lägre prioritet` — quiet compact group
-4. `Förslag framåt` — compact proposal group, unless an item is promoted upward
-
-Within each group, physical top-to-bottom order communicates priority.
-
-Do not use equal-sized cards that make all work look equally important.
-Do not reserve empty team columns.
-Do not repeat team ownership unless needed for interpretation.
-
-When ownership needs to be visible, use a short text team label and/or the
-canonical team-colored issue number. Color alone never communicates ownership.
-
-If rows cannot fit accessibly, continue as `9a`, `9b` and so on while
-preserving the same execution order.
+Do not switch to a special full-width row-only layout merely for point 9.
+The common card language is the primary visual standard.
 
 
 ### Meeting point ①–①d
