@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.3
+version: 4.4
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -334,12 +334,8 @@ execution_sequence:
       - "points 3–5 and 9 plan the remaining horizon from data cutoff to active sprint end"
       - "meeting point 1d AI team summaries use 1–10 sentences, name every team member and ground each contribution/decision"
       - "points 3–5 own backlog, future work, older inactive work and decisions that govern upcoming team work"
-      - "point 9 uses exactly Frontend, Backend, Native and Cross-team columns"
-      - "point 9 shows open pull requests and their contribution"
-      - "point 9 shows remaining assigned issues, order and visible dependencies"
-      - "point 9 shows AI work-allocation analysis and suggested missing issues"
-      - "meeting point 9 keeps a fixed 1×4 team-column structure"
-      - "meeting-point 9 continuations use lowercase letters: 9a, 9b, 9c, 9d, 9e"
+      - "meeting point 9 content structure is supplied by SLIDE_DETAIL_SPEC.md"
+      - "meeting point 9 visual fit and continuation behavior are supplied by the registered design/overflow authorities"
       - "canonical source symbols are preserved and not replaced by tags"
 
   sprint_period_resolution:
