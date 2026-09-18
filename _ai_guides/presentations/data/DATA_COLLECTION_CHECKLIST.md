@@ -12,7 +12,7 @@ metadata:
 
 Live sources only. No snapshots — all data from direct links to GitHub, Project Board, Google Docs.
 
-🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../../../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+🔗 **Alla externa datakällor:** Se [`data/SOURCES.md`](../../../data/SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
 
 ---
 
@@ -72,7 +72,7 @@ Källa 2: Fallback — GitHub web
   Status: ✅ LÄST / ❌ MISSLYCKAD
 
 Källa 3: Fallback — Google Sheets historik
-  [ ] See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET (Issues tab, gid=77162861)
+  [ ] See SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET (Issues tab, gid=77162861)
   Status: ✅ LÄST / ❌ MISSLYCKAD
 
 Källa 4: Fallback — Merged PRs denna vecka (om commits-listan failar)
