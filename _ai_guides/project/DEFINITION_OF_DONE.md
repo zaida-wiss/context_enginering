@@ -1,7 +1,7 @@
 ---
 name: definition_of_done
 description: Final completion criteria for project issues
-version: 2.0
+version: 2.1
 metadata:
   type: project_authority
   status: active
@@ -22,6 +22,7 @@ or detailed implementation rules are defined.
 Those details are owned by:
 - workflow → `TEAM_STANDARDS.md`
 - testing → `TESTING.md`
+- risk reasoning → `RISK_MANAGEMENT.md`
 - communication/review tone → `TEAM_TONE_AND_COLLABORATION.yaml`
 
 ## Acceptance Criteria
@@ -46,7 +47,7 @@ that every issue needs unit, integration and E2E tests.
 
 ## Risk analysis
 
-- [ ] Any new risk or material change to an existing risk discovered during the issue is recorded in the canonical risk source.
+- [ ] Any new risk or material change to an existing risk discovered during the issue is handled according to `RISK_MANAGEMENT.md` and recorded in the canonical risk source when confirmed.
 - [ ] The issue or PR links the risk update when one was made.
 - [ ] If no new or changed risk was found, that is stated explicitly.
 
@@ -105,5 +106,5 @@ decision and update the authority that owns that rule.
 ---
 
 **Status:** ACTIVE
-**Version:** 2.0
+**Version:** 2.1
 **Last updated:** 2026-09-18
