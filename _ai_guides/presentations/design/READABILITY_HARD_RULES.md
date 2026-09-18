@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: composition
-  version: 1.2
+  version: 1.3
 ---
 
 # READABILITY HARD RULES
@@ -47,24 +47,24 @@ Hard rules:
 - avoid tightly packed uppercase labels when normal sentence case is clearer
 - keep left alignment for normal text
 - never reduce letter spacing to make text fit
-- use the canonical circled meeting-point symbols `①–⑭` consistently; the symbol is part of the deck's stable visual grammar
-- verify the chosen font/rendering path actually supports these glyphs; a missing-glyph square is a render failure
+- use ordinary Arabic digits for rendered meeting-point identity: `1.` through `14.`
+- circled symbols such as `①`–`⑭` may appear in internal documentation/indexing but not as the rendered meeting-point header identity
 
 ### Meeting-point numbering and continuation hierarchy
 
-Use the canonical circled symbols so meeting-point identity remains visually stable across the full deck.
+Use ordinary Arabic digits so the meeting-point number is immediately recognizable and font-safe.
 
 The primary header contains only:
-`✏️ [circled meeting-point symbol] [meeting-point title]`
+`✏️ [meeting-point number]. [meeting-point title]`
 
 Canonical pattern:
 
 ```text
-✏️ ① Avklarat sedan förra mötet
+✏️ 1. Avklarat sedan förra mötet
 Mergat till develop
 
-✏️ ② Nuläge och deadlines
-Kronologisk tidslinje över hela kursperioden
+✏️ 2. Nuläge och deadlines
+Aktuellt läge och närmaste deadlines
 ```
 
 Continuation letters belong to the **smaller subtitle**, not to the main
@@ -76,7 +76,7 @@ header row and uses visual-priority level 4.
 Example:
 
 ```text
-✏️ ① Avklarat sedan förra mötet                              (4/6)
+✏️ 1. Avklarat sedan förra mötet                            (4/6)
 Teamsammanfattning till mötesprotokollet
 ```
 
@@ -216,7 +216,7 @@ slide_title_shrunk_for_fit_count > 0
 body_text_below_role_minimum_count > 0
 card_block_spacing_violation_count > 0
 text_line_spacing_below_minimum_count > 0
-meeting_point_uses_circled_number_count > 0
+rendered_meeting_point_uses_circled_number_count > 0
 meeting_point_number_missing_count > 0
 excessively_heavy_heading_weight_count > 0
 next_step_card_missing_project_value_microcopy_count > 0
