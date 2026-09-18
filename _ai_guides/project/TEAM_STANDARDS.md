@@ -19,7 +19,7 @@ Det här projekt-repot innehåller tre viktiga filer för teamet:
 | Fil | Innehål |
 |-----|---------|
 | **TEAM_STANDARDS.md** | Teamstandards, commits, branches, kodstil |
-| **PROJEKTKONTEXT.md** | Kundens problem, vad vi bygger, MVP-features |
+| **PROJECT_CONTEXT_ROUTER.md** | Kundens problem, vad vi bygger, MVP-features |
 | **DEFINITION_OF_DONE.md** | Godkänd-krav, checklista, vad som krävs |
 
 **Använd denna länk när du delar med AI-agenter:**
@@ -795,7 +795,7 @@ Kan du förklara varför denna komponent är viktig för Annas portföljöversik
 
 ### Använd Dessa Dokument ALLTID
 
-- `PROJEKTKONTEXT.md` - "Det här uppfyller Annas behov av..."
+- `PROJECT_CONTEXT_ROUTER.md` - "Det här uppfyller Annas behov av..."
 - `DEFINITION_OF_DONE.md` - "Checklist innan vi är klara..."
 - `TEAM_STANDARDS.md` (denna fil) - "Enligt våra standards..."
 
