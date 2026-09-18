@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.1
+  version: 3.2
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -142,9 +142,10 @@ Planning analysis must consider these perspectives when relevant:
 
 This is a **coverage requirement**, not a page-layout requirement.
 
-Meeting point 9 renders the vertically stacked execution groups defined in its
-own section. Team/layer ownership may be shown inside those groups when it helps
-the meeting, but the slide is not forced into four columns.
+Meeting point 9 renders vertically stacked execution groups as an explicit
+exception to the general card/grid slide composition. Team/layer ownership may
+be shown inside those groups when it helps the meeting. The slide must not use
+a four-column or 2×2 execution-group layout.
 
 Do not duplicate the same work item under both a team/layer label and
 `Cross-team`. Use `Cross-team` only when the work genuinely spans or unlocks
@@ -711,8 +712,9 @@ Never translate these questions into invented hours, percentages or velocity.
 Purpose: give the team a **compact, immediately usable execution order** for
 the remaining sprint work.
 
-Meeting point 9 uses the shared responsive card/grid system and is optimized
-for fast scanning and clear priority.
+Meeting point 9 uses cards inside a **mandatory vertical execution sequence**.
+The slide-level structure is optimized for fast scanning and clear priority and
+is an explicit exception to the general shared-grid composition.
 
 ## Mandatory execution groups
 
@@ -743,7 +745,7 @@ This is the strongest section and contains the work that should be handled
 first because it removes a blocker, protects a deadline, unlocks another team,
 closes a critical core-flow gap, or corrects a misleading/insufficient issue.
 
-Place items in strict priority order using normal reading order within the grid.
+Place items in strict priority order from top to bottom within the vertical execution sequence.
 
 For existing work, each item is intentionally compact:
 
@@ -782,7 +784,7 @@ Do not repeat the same label on every existing issue row.
 
 ## 2. Parallellt
 
-In the next priority group, show work that can proceed independently while
+Below the first-priority group, show work that can proceed independently while
 the first-priority path is being handled.
 
 Use the same compact row structure for existing work:
@@ -801,7 +803,7 @@ to wait for the same dependency.
 
 ## 3. Backlog — lägre prioritet
 
-Place this group after active execution work in normal reading order.
+Place this group below active execution work in the vertical sequence.
 
 This group is deliberately the most compact. It preserves scope awareness
 without competing with current execution.
@@ -906,17 +908,28 @@ Team ownership is secondary on this slide.
 Do not split the slide into Frontend/Backend/Native/Cross-team columns.
 The priority order across the whole project is the primary organizing principle.
 
-### Shared card/grid geometry — mandatory
+### Vertical execution geometry — mandatory
 
-Point 9 follows the same responsive card/grid system as the rest of the deck.
+On each physical point-9 slide, the execution groups are arranged as a genuine
+top-to-bottom sequence:
+
+```text
+Prioritering först
+        ↓
+Parallellt
+        ↓
+Backlog — lägre prioritet
+        ↓
+Förslag framåt
+```
 
 Geometry rules:
-- cards follow normal left-to-right, top-to-bottom reading order
-- priority group headings remain explicit
-- a 2×2 grid is allowed when readable
-- use fewer/wider cards or continuation slides when needed
-- do not switch to a special row-only or full-width vertical composition
-- the visual hierarchy must still make priority clear without relying on color alone
+- each group starts below the previous group's bottom edge;
+- groups may span most or all of the usable slide width;
+- the four execution groups must not be arranged as a 2×2/four-quadrant matrix;
+- cards remain the component language inside each group;
+- continuation slides preserve group order;
+- if the vertical sequence becomes too dense, paginate rather than shrinking text.
 
 
 ## Open pull requests
@@ -935,8 +948,8 @@ continuation slide is necessary.
 
 ## Continuation behavior
 
-Try to fit the complete view on one physical slide using the shared card/grid
-system and approved spacing.
+Try to fit the complete vertical execution view on one physical slide using
+approved card spacing.
 
 If it still does not fit at readable sizes:
 - continue as `9a. Prioritering och scope`
@@ -944,7 +957,7 @@ If it still does not fit at readable sizes:
 - never split a group in a way that makes priority sequence ambiguous
 - repeat group headings on continuation pages when needed
 
-The slide must optimize for **order visibility and predictable card structure**.
+The slide must optimize for **top-to-bottom order visibility and predictable card structure**.
 
 ---
 
