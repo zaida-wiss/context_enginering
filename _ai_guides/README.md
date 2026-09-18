@@ -6,7 +6,7 @@ Dessa dokument innehåller **konkreta guider** för att skapa presentationer, m�
 
 ## 🚨 GLOBALT AI-RAMVERK — LÄS FÖRST
 
-[`AI_FRAMEWORK.md`](AI_FRAMEWORK.md) gäller för **alla** AI-uppgifter i repot.
+[`AI_FRAMEWORK.yaml`](AI_FRAMEWORK.yaml) är det **normativa kontraktet** för alla AI-uppgifter i repot. [`AI_FRAMEWORK.md`](AI_FRAMEWORK.md) är endast en mänsklig förklaring.
 
 Särskilt: om två aktiva regler motsäger varandra får AI inte välja själv. Den
 måste stoppa, visa konflikten och konsekvenserna och be användaren om beslut
