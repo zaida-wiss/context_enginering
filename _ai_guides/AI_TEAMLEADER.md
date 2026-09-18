@@ -131,7 +131,7 @@ för portfolio-endpoints
 
 💡 VARFÖR:
 - @RestController är Spring-konvention för REST-endpoints
-- @Autowired ger dependency injection (från TEAMSTANDARDS.md)
+- @Autowired ger dependency injection (från TEAM_STANDARDS.md)
 - GET för läsning följer REST-principer
 - Denna struktur gör testerna enklare
 
@@ -455,7 +455,7 @@ Before we start, ask me: "Which meeting are we running today?"
 
 ### 🧠 MINNE-DOKUMENT (Jag LÄSER bara - uppdaterar INTE)
 - **PROJEKTKONTEXT.md** - Kundens behov, varför vi bygger det
-- **TEAMSTANDARDS.md** - Kodstandarder, regler
+- **TEAM_STANDARDS.md** - Kodstandarder, regler
 - **DEFINITION_OF_DONE.md** - Acceptance criteria
 - **DECISIONS.md** - Arkitektur-beslut (varför?)
 
