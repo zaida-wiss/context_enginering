@@ -53,7 +53,7 @@ items:
 
   cross_layer_awareness:
     priority: high
-    status: pending
+    status: implemented
     purpose: >
       Give coding assistance, planning and presentations a shared model for
       Frontend ↔ Backend ↔ Native/System integration.
@@ -64,7 +64,12 @@ items:
       - "Surface potential integration mismatch before it becomes expensive."
       - "Re-run presentation analysis from verified project sources rather than private AI conversations."
       - "Separate verified mismatch, early signal, AI analysis and AI proposal."
-    proposed_owner: "_ai_guides/project/CROSS_LAYER_AWARENESS.yaml"
+    owner: "_ai_guides/project/CROSS_LAYER_AWARENESS.yaml"
+    implementation_notes:
+      - "Active relevant branches are part of integration evidence when access permits."
+      - "Contract-exists and contract-needed states are both handled."
+      - "Branch maturity prevents experimental work from being overstated as accepted design."
+      - "Legacy CROSS_TEAM_INTEGRATION.md retired to a pointer."
     intended_consumers:
       - "coding assistance"
       - "issue creation"
