@@ -13,7 +13,7 @@ metadata:
 ## Single Source of Truth
 
 **All URLs, IDs, access methods, and classifications are defined in:**  
-→ **[`data/SOURCES.yaml`](data/SOURCES.yaml)** ← AUTHORITATIVE REGISTRY
+→ **[`SOURCES.yaml`](SOURCES.yaml)** ← AUTHORITATIVE REGISTRY
 
 This file (SOURCES.md) is a **human-friendly guide**. For machine-readable definitions, always reference SOURCES.yaml.
 
