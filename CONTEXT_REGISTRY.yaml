@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.7
+version: 1.8
 metadata:
   type: registry
   critical: true
@@ -58,6 +58,8 @@ logical_destinations:
       path: "_ai_guides/project/TEAM_TONE_AND_COLLABORATION.yaml"
     testing:
       path: "_ai_guides/project/TESTING.md"
+    goals_and_sprint_planning:
+      path: "_ai_guides/project/GOALS_AND_SPRINT_PLANNING.md"
 
   memory:
     team_roster:
@@ -119,6 +121,7 @@ tasks:
       - "logical_destinations.project.definition_of_done"
       - "logical_destinations.project.issue_body_template"
       - "logical_destinations.project.team_tone_and_collaboration"
+      - "logical_destinations.project.goals_and_sprint_planning"
     supporting_context:
       - "logical_destinations.project.risk_register_template"
       - "logical_destinations.decisions.confirmed"
@@ -133,6 +136,22 @@ tasks:
   project_default_behavior:
     load:
       - "logical_destinations.project.team_tone_and_collaboration"
+
+  sprint_planning:
+    purpose: "Resolve decided goals from verified sources and propose future goals, milestones and issues transparently."
+    load:
+      - "logical_destinations.project.goals_and_sprint_planning"
+      - "logical_destinations.project.team_standards"
+      - "logical_destinations.project.testing"
+      - "logical_destinations.project.team_tone_and_collaboration"
+    source_refs:
+      - "registries.external_sources"
+    output_expectations:
+      - "verified current goal/plan when available"
+      - "explicit source provenance"
+      - "AI proposals separated from decided state"
+      - "proposal states what changes, from/to, why, expected effect and tradeoff"
+      - "candidate milestones/issues linked to goal outcomes"
 
   team_support:
     behavior_standard:
@@ -154,6 +173,8 @@ tasks:
       path: "_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"
     source_registry:
       ref: "registries.external_sources"
+    planning_authority:
+      ref: "logical_destinations.project.goals_and_sprint_planning"
     design_authorities:
       - "_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
       - "_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md"
