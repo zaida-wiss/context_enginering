@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.0
+version: 2.1
 metadata:
   type: registry
   critical: true
@@ -64,6 +64,8 @@ logical_destinations:
       path: "_ai_guides/project/RISK_MANAGEMENT.md"
     dependencies_and_capacity:
       path: "_ai_guides/project/DEPENDENCIES_AND_CAPACITY.md"
+    cross_layer_awareness:
+      path: "_ai_guides/project/CROSS_LAYER_AWARENESS.yaml"
 
   memory:
     team_roster:
@@ -128,6 +130,7 @@ tasks:
       - "logical_destinations.project.goals_and_sprint_planning"
       - "logical_destinations.project.risk_management"
       - "logical_destinations.project.dependencies_and_capacity"
+      - "logical_destinations.project.cross_layer_awareness"
     supporting_context:
       - "logical_destinations.project.risk_register_template"
       - "logical_destinations.decisions.confirmed"
@@ -187,6 +190,8 @@ tasks:
       ref: "logical_destinations.project.risk_management"
     dependency_capacity_authority:
       ref: "logical_destinations.project.dependencies_and_capacity"
+    cross_layer_authority:
+      ref: "logical_destinations.project.cross_layer_awareness"
     design_authorities:
       - "_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
       - "_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md"
