@@ -1,13 +1,15 @@
 ---
 name: verification_report_template
-description: 🟡 UNDER REVIEW — Struktur för AI:s verifierings-rapporter (använd oklar, markerad för nästa rensning)
+description: RETIRED — superseded by current receipts and render gate
 metadata:
-  type: report_template
-  status: under_review
+  type: retired_reference
+  status: retired
   version: 1.0
 ---
 
 # 🟡 VERIFICATION REPORT TEMPLATE — Struktur för AI:s Rapporter (UNDER REVIEW)
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.**
 
 **⚠️ STATUS:** Denna fil är markerad för granskning i nästa cleanup-pass.  
 Syfte är oklart — inte länkad någonstans och inte aktivt använd.  

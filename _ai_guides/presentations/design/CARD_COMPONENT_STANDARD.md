@@ -47,9 +47,11 @@ If content cannot fit while remaining readable, reduce card density or paginate.
 
 Card surfaces follow the global palette in `VISUAL_DESIGN_MANDATORY.md`.
 
-Team color appears only as a narrow vertical accent on the left. Team color must not outline or fill the whole card.
+Team color normally appears as a narrow vertical accent on the left. For issue
+and PR cards, the verified `#NUMBER` also uses the owning team's color. Team
+color must not outline or fill the whole card.
 
-Canonical team accents:
+Canonical team colors:
 - Frontend: `#2DD4BF`
 - Backend: `#FF4FA3`
 - Native: `#A855F7`
@@ -139,11 +141,13 @@ For action and next-step cards, the pedagogical line must answer:
 
 # 4. PERSON IDENTITY ROW — FIRST NAME ONLY
 
-Canonical visible format is the person's first name only. **Team is shown by the card's left border color**, not by text.
+Canonical visible format is the person's first name only. Team is shown by the
+containing team section/column and may be reinforced by the card's left accent
+and a team-colored issue/PR number.
 
 **Name format: FIRST NAME ONLY** (no team label, no full name).
 
-Card border colors represent teams:
+Team colors represent teams:
 - Frontend: `#2DD4BF` (teal)
 - Backend: `#FF4FA3` (pink)
 - Native: `#A855F7` (purple)
@@ -159,10 +163,29 @@ Examples:
 
 Hard rules:
 - do **not** use full names — first name only
-- do **not** show team label in text — the card's left border color is the team indicator
+- do not repeat a team label when the containing section/column already names the team
+- if no visible team section/column identifies ownership, include a text team label; color may never be the only indicator
 - do **not** prefix with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent wording
 - use the main/primary text color, not the team accent color, for ordinary identity text
 - use semibold/bold weight, but not extra-bold/black
+
+## Issue and PR number team color
+
+Every verified issue or PR identifier uses the owning team's canonical color:
+- Frontend: `#2DD4BF`
+- Backend: `#FF4FA3`
+- Native: `#A855F7`
+- Cross-team: `#CBD5E1`
+
+The identifier is dynamic, for example `#99`, `#105` or `#108`; examples never
+hard-code which PRs exist. For an open PR, the complete heading begins
+`📌 #[PR_NUMBER]`. Apply team color to `#[PR_NUMBER]`, not to the pushpin.
+
+The number color is supplementary. Team ownership must also be available from
+the visible column/section or a text label, and the colored number must meet
+WCAG 2.2 AA contrast. If the canonical color fails contrast on the selected
+surface, use its approved accessible contrast variant without changing the team
+meaning.
 - the row must be easier to scan than branch/status/provenance metadata
 - the row belongs in the **bottom information zone** defined above
 - do not infer a developer from commit authorship when project attribution evidence says otherwise

@@ -12,6 +12,10 @@ metadata:
 
 Before creating any presentation, follow this order exactly.
 
+Read `AUTHORITY_REGISTRY.yaml` first. It is the canonical list of active,
+validation, reference and retired files. Never load a retired guide during a
+production presentation run.
+
 **PRE-MEETING CONTEXT:** This presentation is risk-focused preparation for the CTO Feed Forward task (Sept 24 video, Sept 28 feedback). Risk analysis must show concrete impact on THIS WEEK's decisions, not just list concerns.
 
 ### Commitment gate
@@ -72,15 +76,16 @@ Follow `execution_sequence` exactly.
 
 Read in this order:
 
-1. [`design/ACCESSIBILITY_NEURODIVERSITY.md`](design/ACCESSIBILITY_NEURODIVERSITY.md)
-2. [`design/VISUAL_DESIGN_MANDATORY.md`](design/VISUAL_DESIGN_MANDATORY.md)
-3. [`design/READABILITY_HARD_RULES.md`](design/READABILITY_HARD_RULES.md)
-4. [`design/CARD_COMPONENT_STANDARD.md`](design/CARD_COMPONENT_STANDARD.md)
-5. [`design/PROVENANCE_AND_AI_LABELING.md`](design/PROVENANCE_AND_AI_LABELING.md)
-6. [`data/PR_MERGE_REVIEW_IDENTITY.md`](data/PR_MERGE_REVIEW_IDENTITY.md)
-7. [`monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`](monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md)
-8. [`monday_meeting/design/SLIDE_DETAIL_SPEC.md`](monday_meeting/design/SLIDE_DETAIL_SPEC.md)
-9. [`monday_meeting/design/TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) — reference only
+1. [`AUTHORITY_REGISTRY.yaml`](AUTHORITY_REGISTRY.yaml)
+2. [`design/ACCESSIBILITY_NEURODIVERSITY.md`](design/ACCESSIBILITY_NEURODIVERSITY.md)
+3. [`design/VISUAL_DESIGN_MANDATORY.md`](design/VISUAL_DESIGN_MANDATORY.md)
+4. [`design/READABILITY_HARD_RULES.md`](design/READABILITY_HARD_RULES.md)
+5. [`design/CARD_COMPONENT_STANDARD.md`](design/CARD_COMPONENT_STANDARD.md)
+6. [`design/PROVENANCE_AND_AI_LABELING.md`](design/PROVENANCE_AND_AI_LABELING.md)
+7. [`data/PR_MERGE_REVIEW_IDENTITY.md`](data/PR_MERGE_REVIEW_IDENTITY.md)
+8. [`monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`](monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md)
+9. [`monday_meeting/design/SLIDE_DETAIL_SPEC.md`](monday_meeting/design/SLIDE_DETAIL_SPEC.md)
+10. [`monday_meeting/design/TEMPLATE_REFERENCE.html`](monday_meeting/design/TEMPLATE_REFERENCE.html) — reference only
 
 ### Authority order for conflicts
 

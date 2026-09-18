@@ -1,12 +1,16 @@
 ---
 name: visual_verification
-description: Screenshots from dev — automatic inclusion in presentations
+description: RETIRED — screenshots are optional evidence, not an automatic rule
 metadata:
-  type: process
+  type: retired_reference
+  status: retired
   updated: 2026-09-13
 ---
 
 # 📸 VISUAL VERIFICATION — Skärmdumpar från Dev
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** Screenshots are not included
+> automatically unless an active authority explicitly requires them.
 
 **Skärmdumparna inkluderas AUTOMATISKT i presentationen. Ingen extra instruktion behövs.**
 

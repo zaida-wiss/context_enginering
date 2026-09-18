@@ -278,3 +278,6 @@ Presentationen ska ALDRIG byggas med ofullständig data.
 ---
 
 **Senast uppdaterad:** 2026-09-13
+[RETIRED — DO NOT USE FOR PRODUCTION. Data acquisition is owned by
+`DATA_ACQUISITION_CONTRACT.yaml` and the execution read list in
+`SYSTEM_CONTRACT.yaml`.]

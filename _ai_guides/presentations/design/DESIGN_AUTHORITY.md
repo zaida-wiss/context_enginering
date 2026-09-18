@@ -4,7 +4,7 @@ description: MANDATORY — Presentation design authority and conflict ownership
 metadata:
   type: process
   critical: true
-  version: 2.0
+  version: 2.1
 ---
 
 # 🎨 DESIGN AUTHORITY
@@ -22,11 +22,16 @@ Use this order when rules conflict:
 1. `SYSTEM_CONTRACT.yaml` — execution sequence, gates, STOP/CONTINUE, delivery
 2. `ACCESSIBILITY_NEURODIVERSITY.md` — WCAG/readability; absolute boundary
 3. `VISUAL_DESIGN_MANDATORY.md` — global appearance and slide-level visual rules
-4. `CARD_COMPONENT_STANDARD.md` — all card-internal layout and typography
-5. `PROVENANCE_AND_AI_LABELING.md` — fact/team/AI source identity
-6. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit and pagination
-7. `SLIDE_DETAIL_SPEC.md` — slide purpose, fields, ordering and content requirements
-8. `TEMPLATE_REFERENCE.html` — example only; never authoritative
+4. `READABILITY_HARD_RULES.md` — type minima, line spacing and meeting-point readability
+5. `CARD_COMPONENT_STANDARD.md` — all card-internal layout and typography
+6. `PROVENANCE_AND_AI_LABELING.md` — fact/team/AI source identity
+7. `PR_MERGE_REVIEW_IDENTITY.md` — merger and actual review identity
+8. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit and pagination
+9. `SLIDE_DETAIL_SPEC.md` — slide purpose, fields, ordering and content requirements
+10. `TEMPLATE_REFERENCE.html` — example only; never authoritative
+
+`AUTHORITY_REGISTRY.yaml` determines which files are active. This document
+explains conflict handling but does not activate a retired file.
 
 `RENDER_GATE_CHECKLIST.md` validates compliance with the authorities above. It does not invent new design rules.
 
@@ -135,6 +140,24 @@ If two authoritative files appear to own the same rule category and disagree:
 **STOP rendering and fix the documentation hierarchy first.**
 
 Do not choose whichever rule is more convenient for the current slide.
+
+Create a visible instruction-conflict receipt before stopping. It must contain:
+
+```text
+RULE CONFLICT
+- Category: [layout / provenance / typography / content / data]
+- Higher authority: [file + exact rule]
+- Conflicting authority: [file + exact rule]
+- Why they cannot both be followed: [plain-language explanation]
+- Applied action: STOP before composition/rendering
+- Required documentation fix: [owning file that must be changed]
+```
+
+Do not silently overwrite, merge, weaken or ignore either rule. A warning such
+as `used higher rule` is insufficient when both files claim ownership.
+
+If a lower-level example conflicts with a clearly delegated owner, record it as
+`STALE EXAMPLE`, follow the owner, and update the example in the same change.
 
 ---
 

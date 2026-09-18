@@ -1,13 +1,17 @@
 ---
 name: presentation_content
-description: VAD ska visas på varje slide (①-⑭) — data-källor, format, innehål
+description: RETIRED — superseded by monday_meeting/design/SLIDE_DETAIL_SPEC.md
 metadata:
-  type: presentation_content
-  critical: true
+  type: retired_reference
+  status: retired
   version: 1.0
 ---
 
 # 📊 PRESENTATION CONTENT — 14 Mötespunkter (①-⑭)
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** This file uses an older meeting-point
+> structure. The only active content authority is
+> `monday_meeting/design/SLIDE_DETAIL_SPEC.md`.
 
 **Denna fil definierar ENBART presentationens innehål — vad som ska visas.**
 

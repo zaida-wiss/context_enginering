@@ -1,6 +1,19 @@
-# 🎨 PRESENTATION STYLE GUIDE — Design Rules & Layout
+---
+name: legacy_presentation_style
+description: RETIRED — superseded by active design authorities
+metadata:
+  type: retired_reference
+  status: retired
+---
 
-**🚨 VIKTIGT: Läs [DESIGN_AUTHORITY.md](DESIGN_AUTHORITY.md) FÖRST**
+# 🎨 PRESENTATION STYLE GUIDE — RETIRED
+
+> **DO NOT USE FOR PRODUCTION.** Active design rules live in
+> `VISUAL_DESIGN_MANDATORY.md`, `READABILITY_HARD_RULES.md` and
+> `CARD_COMPONENT_STANDARD.md`. The examples below may conflict with the active
+> four-column team layout and have no authority.
+
+**Historisk text nedan behålls endast som bakgrund.**
 
 That file defines the SOURCE OF TRUTH for design:
 - Designreglerna i denna fil är AUKTORITATIVA

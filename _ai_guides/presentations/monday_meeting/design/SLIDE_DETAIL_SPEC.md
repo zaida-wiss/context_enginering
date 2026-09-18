@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.4
+  version: 2.5
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -100,7 +100,7 @@ Analysis and proposals must not share the same AI icon.
 
 A Monday-meeting deck is not complete if it only reports status. It must also help the team plan the next work period.
 
-For **Frontend, Backend and Native**, derive an actionable planning recommendation from verified project data whenever enough evidence exists.
+For **Frontend, Backend, Native and Cross-team**, derive an actionable planning recommendation from verified project data whenever enough evidence exists.
 
 The recommendation must answer, as far as evidence permits:
 1. **Vad bör tas först?** — work that removes a blocker, unlocks another team, protects a deadline, or closes a critical core-flow gap.
@@ -111,6 +111,21 @@ The recommendation must answer, as far as evidence permits:
 6. **Hur påverkar kapacitet/estimering planen?** — use numeric capacity/estimate only when explicitly available in registered sources; otherwise use qualitative load-balancing only.
 
 Use `🔎 AI-analys` for the reasoning and `⭐ AI-förslag` for the recommended action/order.
+
+### Canonical four-team format for meeting point 9
+
+Every physical slide for point 9 MUST use these columns in this exact order:
+
+| Frontend | Backend | Native | Cross-team |
+|---|---|---|---|
+| Team-specific items | Team-specific items | Team-specific items | Work that genuinely spans or unlocks multiple teams |
+
+Content rules:
+- the columns identify team ownership/impact; they are not workflow stages
+- do not duplicate an item in both a team column and `Cross-team`
+- keep an empty column visible and state the verified empty state
+- use continuation slides instead of hiding items or shrinking below readable minima
+- `📌` is a workflow-status symbol, not provenance; every item still needs the applicable `✅`, `🔎`, `⭐`, `📅` or `⚠`
 
 ### Required team planning format
 
@@ -343,78 +358,34 @@ Do not invent progress percentages, days of delay or actions.
 
 # ③ FRONTEND
 
-Purpose: detailed Frontend status **and actionable next-work planning** for the current sprint/period.
+Purpose: detailed Frontend status and actionable next-work planning.
 
-Include relevant cards for:
-- verified active issues
-- assigned upcoming issues
-- open PR/review work
-- blockers/dependencies
-- people with no verified active/review work using approved availability wording
+Include verified active issues, assigned upcoming issues, open PR/review work,
+blockers/dependencies and supported availability wording. Each work item keeps
+its source symbol. A verified open PR uses `📌` without replacing provenance.
 
-Each work-item card includes the verified fields available from issue/PR/branch data.
-
-### Mandatory Frontend planning recommendation
-
-When enough evidence exists, include a `⭐ AI-förslag — planeringsordning` block that:
-- prioritizes pending review/merge and blocker-removing work before starting unnecessary new WIP
-- identifies a suggested person only when supported by assignee/branch/recent-work evidence
-- identifies parallel independent work for another available person when possible
-- explicitly states what should wait if it depends on Backend/API/integration or another unfinished item
-- incorporates verified tests, integration readiness, deadline and risk information
-- uses verified numeric estimate/capacity only when available; otherwise says that numeric capacity/estimate is not verified
-
-Use `🔎 AI-analys` separately when explaining why the ordering is recommended.
+When evidence permits, add separate `🔎 AI-analys` and `⭐ AI-förslag` blocks
+for order, parallel work and ownership. Do not invent estimates or assignments.
 
 ---
 
 # ④ BACKEND
 
-Purpose: detailed Backend status **and actionable dependency-aware planning**.
+Purpose: detailed Backend status and actionable dependency-aware planning.
 
-Use the same content logic as ③.
-
-May additionally include verified API-contract/integration status when relevant:
-- endpoint/contract item
-- state
-- what is blocked by it, when verified
-- next confirmed action or AI-labeled suggestion
-
-### Mandatory Backend planning recommendation
-
-When enough evidence exists, include a `⭐ AI-förslag — planeringsordning` block that:
-- puts work that unlocks Frontend/Native or the critical end-to-end flow before isolated cleanup
-- considers API contract/endpoints, auth/security chain, JNA bridge and integration dependencies when present
-- suggests parallel ownership only when tasks can proceed independently without creating avoidable merge/code-area contention
-- calls out work that should wait because its prerequisite is not ready
-- relates the order to verified deadline/risk/blocker evidence
-- uses numeric capacity/estimation only when verified
-
-Use `🔎 AI-analys` separately when explaining the dependency logic.
+Use the same content logic as ③. Include verified API/contract/integration
+status when relevant and make cross-team unlocking work explicit. Keep facts,
+analysis and suggestions visually distinct.
 
 ---
 
 # ⑤ NATIVE
 
-Purpose: detailed Native status **and actionable dependency-aware planning**.
+Purpose: detailed Native status and actionable dependency-aware planning.
 
-Use the same content logic as ③.
-
-May additionally include verified JNA/native integration status:
-- dependency
-- current state
-- blocked dependent work
-- confirmed action or AI-labeled suggestion
-
-### Mandatory Native planning recommendation
-
-When enough evidence exists, include a `⭐ AI-förslag — planeringsordning` block that:
-- prioritizes interface/JNA/contract work that enables integration before expanding non-critical module scope when the dependency evidence supports that order
-- proposes a sensible split between independent module work (for example backtest vs FX/risk) when verified assignments and dependencies permit it
-- identifies what can continue with mocks while waiting and what truly depends on integration
-- includes verified risk/deadline/capacity/estimate information and never invents numeric values
-
-Use `🔎 AI-analys` separately when explaining the dependency logic.
+Use the same content logic as ③. Include verified JNA/native integration status
+when relevant. Keep independent mock/module work separate from work that waits
+for integration. Never invent numeric estimates, capacity or ownership.
 
 ---
 
@@ -534,6 +505,51 @@ Never translate these questions into invented hours, percentages or velocity.
 # ⑨ PRIORITIZATION & SCOPE
 
 Purpose: produce a usable team plan, not only a generic priority statement.
+
+Every physical slide belonging to meeting point ⑨ uses the canonical four-team columns:
+`Frontend | Backend | Native | Cross-team`.
+
+Each physical slide within meeting point ⑨ supports up to six cards. Card dimensions may adapt to
+the amount of text: use a balanced 3×2, 2×3 or mixed responsive arrangement
+inside the four-team structure. Never reduce text below the active readability
+minimum; if six cards cannot remain readable, continue with meeting-point
+slides `9-2`, `9-3` and so
+on rather than clipping or hiding content.
+
+### Open pull requests
+
+Every verified open PR contains the dynamic format `📌 #[PR_NUMBER]`; the
+number uses the owning team's canonical accessible color. It also contains a grounded contribution
+sentence directly below, verified author/owner, review state, confirmed next
+action when documented and applicable provenance. `📌` never replaces the
+source symbol. Do not combine unrelated PRs.
+
+### Remaining assigned issues, order and dependencies
+
+Include every remaining assigned issue with verified number/title,
+contribution, assignee and status. Give it one order marker: `1. Först`,
+`2. Parallellt`, `3. Därefter` or `Vänta`. Show dependencies as visible directed
+relations headed `🔗 Beroende`, such as `#105 → #108`, with a short reason and
+source. Inferred or AI-interpreted dependencies use both labels:
+`🔗 Beroende · 🔎 AI-analys`.
+
+Every issue number uses its owning team's canonical accessible color. The
+visible team column remains the non-color ownership cue required by WCAG.
+
+### AI work-allocation analysis
+
+Each recommendation includes `🔎 AI-analys`, a separate `⭐ AI-förslag` naming
+the person and task, and a concise motivation. Consider verified estimates,
+capacity, workload/review load, adjacent component work, dependencies,
+continuity with prior verified work, merge-conflict risk and useful pairing.
+If numeric data is absent, state `Numeriskt estimat/kapacitet saknas`.
+
+### Suggested issues to create
+
+Each suggestion includes `⭐ AI-förslag — skapa issue`, a short title, the
+grounded gap/goal, contribution, team column, dependency, supported owner
+suggestion when possible and concise acceptance criteria. Check existing issues
+and PRs first; do not suggest duplicates or filler.
 
 Verified section may include:
 - team-confirmed order

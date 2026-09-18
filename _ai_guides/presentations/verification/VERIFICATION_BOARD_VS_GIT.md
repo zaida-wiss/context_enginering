@@ -1,3 +1,6 @@
+[RETIRED — DO NOT USE FOR PRODUCTION. Source precedence is owned by
+`_memory/EXTERNAL_SOURCES.yaml` and `DATA_ACQUISITION_CONTRACT.yaml`.]
+
 # 🔍 Verifiering: GitHub Project Board vs Git History
 
 **Git är SANNINGEN när källor motsäger varandra.**

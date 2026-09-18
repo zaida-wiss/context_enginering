@@ -230,4 +230,6 @@ Denna SOURCE_CHECK säkerställer att:
 5. **Datakvalitet** — Du kan bedöma om data är aktuell eller fallback
 
 En presentation UTAN SOURCE_CHECK är en presentation du inte kan lita på.
+[RETIRED — DO NOT USE FOR PRODUCTION. Allowed sources and access methods are
+owned by `_memory/EXTERNAL_SOURCES.yaml`.]
 

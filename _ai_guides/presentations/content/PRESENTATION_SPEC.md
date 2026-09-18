@@ -1,4 +1,16 @@
-# 📋 PRESENTATION SPECIFICATION — What To Show
+---
+name: legacy_presentation_spec
+description: RETIRED — superseded by monday_meeting/design/SLIDE_DETAIL_SPEC.md
+metadata:
+  type: retired_reference
+  status: retired
+---
+
+# 📋 PRESENTATION SPECIFICATION — RETIRED
+
+> **DO NOT USE FOR PRODUCTION.** This historical specification is superseded by
+> `monday_meeting/design/SLIDE_DETAIL_SPEC.md`. It contains old meeting-point
+> numbering and cannot define or override presentation content.
 
 **This file specifies ONLY the content and contracts.**
 

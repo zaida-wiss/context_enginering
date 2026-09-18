@@ -220,8 +220,8 @@ Facts and AI-derived suggestions must be distinguishable without color.
 Use icon + text:
 - `📅 Schemafakta`
 - `✅ Mötesprotokoll`
-- `? AI-förslag`
-- `? AI-analys`
+- `⭐ AI-förslag`
+- `🔎 AI-analys`
 - `⚠ Källa behöver verifieras`
 
 Mixed source blocks inside one card must each be labeled.

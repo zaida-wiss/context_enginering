@@ -1,4 +1,16 @@
-# 🗂️ Mötesprotokoll — Sprint Planning (14 mötepunkter)
+---
+name: legacy_sprint_protocol_numbered
+description: RETIRED — historical meeting structure with obsolete numbering
+metadata:
+  type: retired_reference
+  status: retired
+---
+
+# 🗂️ Mötesprotokoll — RETIRED
+
+> **DO NOT USE FOR PRODUCTION.** This file places team sections at points 4–6.
+> The active structure places Frontend, Backend and Native at points 3–5 and is
+> defined only by `monday_meeting/design/SLIDE_DETAIL_SPEC.md`.
 
 **Denna struktur är 1:1 med presentationen. En mötespunkt kan ha 1-3+ slides (märkta med samma symbol).**
 

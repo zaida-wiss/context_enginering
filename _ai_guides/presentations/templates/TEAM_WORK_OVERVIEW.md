@@ -1,3 +1,6 @@
+[RETIRED — DO NOT USE FOR PRODUCTION. Points 3–5 use the canonical four-column
+board from `SLIDE_DETAIL_SPEC.md` and `VISUAL_DESIGN_MANDATORY.md`.]
+
 # 👥 Team Work Overview — Vad Gjorde Varje Person?
 
 This template shows team members grouped by work area with their actual contributions.

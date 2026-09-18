@@ -1,12 +1,16 @@
 ---
 name: presentation_structure
-description: 14 meeting points (①-⑭) — the narrative flow and why order matters
+description: RETIRED — narrative flow moved to SLIDE_DETAIL_SPEC.md
 metadata:
-  type: reference
-  critical: false
+  type: retired_reference
+  status: retired
 ---
 
 # 📋 PRESENTATION STRUCTURE — 14 Mötespunkter (①-⑭)
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** This file contains stale required vs
+> optional behavior. Meeting order and conditional slide rules are owned only
+> by `../design/SLIDE_DETAIL_SPEC.md` and `../../SYSTEM_CONTRACT.yaml`.
 
 **This file defines the logical flow. For details, see [SLIDE_DETAIL_SPEC.md](../design/SLIDE_DETAIL_SPEC.md)**
 

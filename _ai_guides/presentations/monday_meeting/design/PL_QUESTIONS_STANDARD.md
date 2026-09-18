@@ -1,14 +1,17 @@
 ---
 name: pl_questions_standard
-description: MANDATORY — Source provenance, card layout and adaptive typography for slide ⑭ Frågor till PL
+description: RETIRED — slide 14 rules moved to SLIDE_DETAIL_SPEC and provenance authority
 metadata:
-  type: content-design-specification
-  critical: true
-  required_before: rendering
+  type: retired_reference
+  status: retired
   version: 1.0
 ---
 
 # ❓ PL QUESTIONS STANDARD — ⑭ FRÅGOR TILL PL
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** This file contains old text-tag
+> provenance labels. Slide 14 content is owned by `SLIDE_DETAIL_SPEC.md` and
+> source symbols are owned by `PROVENANCE_AND_AI_LABELING.md`.
 
 This file is authoritative for slide **⑭ Frågor till PL**.
 

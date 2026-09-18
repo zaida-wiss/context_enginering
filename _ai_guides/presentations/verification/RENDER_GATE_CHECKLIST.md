@@ -310,7 +310,52 @@ ai_analysis_without_magnifying_glass_count == 0
 ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 mixed_provenance_card_without_block_labels_count == 0
+provenance_symbol_replaced_by_tag_count == 0
+provenance_text_without_canonical_symbol_count == 0
+ai_suggestion_without_star_count == 0
+ai_analysis_without_magnifying_glass_count == 0
 ```
+
+Manual checks:
+- each source label starts with its canonical symbol
+- no tag, chip, badge, color or `?` replaces `⭐` or `🔎`
+- mixed cards repeat the required symbol inside each relevant block
+
+## 12A. FOUR-TEAM BOARD — POINT 9
+
+Required:
+
+```text
+team_column_missing_count == 0
+open_pr_without_pushpin_number_count == 0
+issue_or_pr_number_without_team_color_count == 0
+team_identified_by_color_only_count == 0
+open_pr_missing_contribution_text_count == 0
+assigned_issue_missing_order_count == 0
+assigned_issue_dependency_not_visualized_count == 0
+dependency_without_link_symbol_count == 0
+ai_dependency_without_both_symbols_count == 0
+ai_assignment_without_reason_count == 0
+suggested_issue_without_goal_link_count == 0
+meeting_point_9_card_count_over_six == 0
+```
+
+Manual checks:
+- every slide for point 9 has exactly `Frontend | Backend | Native | Cross-team`
+- each physical slide belonging to meeting point 9 has at most six cards
+- cards adapt to text length without violating typography minima
+- empty team columns remain visible with a verified empty state
+- point 9 renders every open PR as `📌 #[PR-number]` with its contribution directly below
+- every issue/PR number uses the verified owning team's accessible color
+- team ownership also appears through the team column/section or text, never color alone
+- point 9 includes all remaining assigned issues, an order marker and a visible directed dependency relation when applicable
+- point 9 dependency text and dependency visual agree and retain provenance
+- every dependency view/relation starts with `🔗 Beroende`
+- every AI-interpreted dependency shows both `🔗 Beroende` and `🔎 AI-analys`
+- point 9 separates `🔎 AI-analys` from `⭐ AI-förslag`
+- every allocation recommendation names a task/person, motivation and its evidence limits
+- every suggested issue identifies a grounded gap/goal and has been checked against existing issues/PRs
+- `📌` never replaces the item's provenance symbol
 
 ---
 

@@ -1,12 +1,16 @@
 ---
 name: ai_verification_workflow
-description: What reports AI must generate at each phase (phase structure is in SYSTEM_CONTRACT.yaml)
+description: RETIRED — validation is owned by RENDER_GATE_CHECKLIST.md
 metadata:
-  type: process
-  critical: true
+  type: retired_reference
+  status: retired
 ---
 
 # 🔍 AI VERIFICATION WORKFLOW — Report Templates
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** Validation rules live in
+> `verification/RENDER_GATE_CHECKLIST.md`. This file may contain stale grid and
+> meeting-point examples.
 
 **The execution phases are defined in [`SYSTEM_CONTRACT.yaml`](../SYSTEM_CONTRACT.yaml)**
 

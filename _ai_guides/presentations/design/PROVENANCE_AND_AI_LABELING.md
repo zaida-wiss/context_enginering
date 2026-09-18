@@ -5,7 +5,7 @@ metadata:
   type: design-and-content-integrity
   critical: true
   required_before: rendering
-  version: 1.2
+  version: 1.3
 ---
 
 # 🏷️ PROVENANCE & AI LABELING STANDARD
@@ -129,6 +129,39 @@ Use the icons consistently across the whole deck:
 - `⚠` = source/origin not safely verified
 
 Do not use one AI icon for both analysis and proposal.
+
+### Supplementary workflow symbols
+
+- `📌 Väntar i PR` identifies work with a verified open pull request.
+- `🔗 Beroende` identifies a dependency relation or dependency view.
+
+Workflow symbols never replace source identity. When a dependency is inferred
+or interpreted by AI, both meanings must be visible in the same text block:
+
+`🔗 Beroende · 🔎 AI-analys`
+
+A verified dependency instead retains its verified source label, for example:
+
+`🔗 Beroende · ✅ Mötes-/teamfakta`
+
+### Symbols may never be replaced by tags
+
+The symbol is a required part of the visible source identity. Render the
+canonical symbol as a Unicode glyph immediately before its text label.
+
+Forbidden replacements include:
+- a pill, tag, badge or chip that contains only `AI-förslag` or `AI-analys`
+- a color-coded tag without the canonical symbol
+- question-mark variants of the AI labels
+- abbreviations such as `AI-F` / `AI-A`
+- a legend-only symbol while the individual card shows a text tag
+
+Correct:
+- `🔎 AI-analys`
+- `⭐ AI-förslag`
+
+If the selected font cannot render a canonical symbol, use a symbol-capable
+fallback font for that glyph. Do not substitute a tag or question mark.
 
 The audience should be able to distinguish immediately between:
 
@@ -298,6 +331,10 @@ Required zero-count checks:
 
 ```text
 wcag_aa_violation_count == 0
+provenance_symbol_replaced_by_tag_count == 0
+provenance_text_without_canonical_symbol_count == 0
+ai_suggestion_without_star_count == 0
+ai_analysis_without_magnifying_glass_count == 0
 color_only_information_count == 0
 sprint_plan_fact_without_source_label_count == 0
 sprint_plan_ai_content_without_source_icon_count == 0

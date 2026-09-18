@@ -1,0 +1,114 @@
+name: presentation_authority_registry
+description: Canonical registry of active authorities, validators, references and retired guides
+version: 1.0
+metadata:
+  type: registry
+  critical: true
+  status: active
+
+rule: >
+  Only files listed under active_authorities may define presentation rules.
+  Validators may check rules but may not create them. References may illustrate
+  rules but may not override them. Retired files must not be read or used during
+  production composition.
+
+active_authorities:
+  - rank: 1
+    file: SYSTEM_CONTRACT.yaml
+    category: orchestration
+    owns: execution sequence, gates, STOP/CONTINUE and delivery
+  - rank: 2
+    file: design/ACCESSIBILITY_NEURODIVERSITY.md
+    category: accessibility
+    owns: WCAG 2.2 AA, neurodiversity and absolute readability boundary
+  - rank: 3
+    file: design/VISUAL_DESIGN_MANDATORY.md
+    category: global_visual
+    owns: palette, slide-level visual roles, layouts and column/grid structure
+  - rank: 4
+    file: design/READABILITY_HARD_RULES.md
+    category: readability
+    owns: readable type minima, line spacing, meeting-point glyphs and pedagogical clarity
+  - rank: 5
+    file: design/CARD_COMPONENT_STANDARD.md
+    category: card_component
+    owns: card internals, identity rows, metadata, timestamps and card spacing
+  - rank: 6
+    file: design/PROVENANCE_AND_AI_LABELING.md
+    category: provenance
+    owns: source classes, canonical symbols and mixed-source labeling
+  - rank: 7
+    file: data/PR_MERGE_REVIEW_IDENTITY.md
+    category: pr_identity
+    owns: merger and submitted-review acquisition and rendering semantics
+  - rank: 8
+    file: monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md
+    category: responsive_fit
+    owns: fit algorithm, pagination and collision prevention
+  - rank: 9
+    file: monday_meeting/design/SLIDE_DETAIL_SPEC.md
+    category: slide_content
+    owns: meeting-point purpose, required fields and content order
+  - rank: 10
+    file: data/DATA_ACQUISITION_CONTRACT.yaml
+    category: acquisition
+    owns: mechanical data acquisition and reporting-period filtering
+  - rank: 11
+    file: ../../_memory/EXTERNAL_SOURCES.yaml
+    category: source_registry
+    owns: allowed sources, URLs, access methods and fallback order
+
+validators:
+  - verification/RENDER_GATE_CHECKLIST.md
+  - design/DESIGN_AUTHORITY.md
+  - ARCHITECTURE.md
+
+supporting_data_models:
+  rule: >
+    These files may define data classification or diagnostics only. They may not
+    define slide order, visual layout, provenance labels or authority hierarchy.
+  files:
+    - data/ACTIVE_WORK_DETECTION_MODEL.md
+    - data/DATA_SOURCES.md
+    - data/DATA_VALIDATION_SCHEMA.yaml
+    - models/DEPENDENCY_CHAIN_PLANNING.md
+    - models/REPO_FIRST_RECONSTRUCTION.md
+    - models/WEEKLY_PROGRESS_MODEL.md
+    - GITHUB_DIAGNOSTICS.md
+    - TEST_MODE.md
+
+references:
+  - monday_meeting/design/TEMPLATE_REFERENCE.html
+
+retired_guides:
+  - AI_PROMPT_GENERATE_PRESENTATION.md
+  - content/PRESENTATION_SPEC.md
+  - design/PRESENTATION_STYLE.md
+  - design/RESPONSIVE_LAYOUT_STANDARD.md
+  - structure/PRESENTATION_CONTENT.md
+  - structure/SPRINT_PROTOCOL_NUMBERED.md
+  - structure/SPRINT_MEETING_PROTOCOL_TEMPLATE.md
+  - verification/AI_VERIFICATION_WORKFLOW.md
+  - data/DATA_COLLECTION_CHECKLIST.md
+  - data/SOURCE_CHECK.md
+  - design/DESIGN_MODERN.md
+  - monday_meeting/design/PL_QUESTIONS_STANDARD.md
+  - monday_meeting/design/PRESENTATION_RED_THREADS.md
+  - monday_meeting/structure/PRESENTATION_STRUCTURE.md
+  - templates/TEAM_WORK_OVERVIEW.md
+  - verification/VERIFICATION_BOARD_VS_GIT.md
+  - verification/VERIFICATION_REPORT_TEMPLATE.md
+  - verification/VERIFICATION_SYSTEM.md
+  - verification/VERIFICATION_THIS_WEEK.md
+  - verification/VISUAL_VERIFICATION.md
+
+retired_rule: >
+  Retired guides are historical context only. Production agents MUST NOT load,
+  cite, merge or infer rules from them. If useful content exists only in a
+  retired guide, migrate it into the correct active authority before use.
+
+conflict_rule: >
+  If two active authorities claim the same category or contain incompatible
+  requirements, STOP and emit the conflict receipt defined in
+  design/DESIGN_AUTHORITY.md. Rank does not authorize silently discarding a
+  same-category conflict.

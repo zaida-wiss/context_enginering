@@ -1,3 +1,6 @@
+[RETIRED — DO NOT USE FOR PRODUCTION. Validation is owned by
+`RENDER_GATE_CHECKLIST.md`; execution is owned by `SYSTEM_CONTRACT.yaml`.]
+
 # ✅ Verification System - Source of Truth
 
 🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../../../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.

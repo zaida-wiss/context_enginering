@@ -1,4 +1,15 @@
-# 📝 Mötesprotokollet - Enkel Mall
+---
+name: legacy_sprint_meeting_protocol_template
+description: RETIRED — historical protocol template
+metadata:
+  type: retired_reference
+  status: retired
+---
+
+# 📝 Mötesprotokollet — RETIRED MALL
+
+> **DO NOT USE AS PRESENTATION AUTHORITY.** A future meeting-note template must
+> be rebuilt from the active `SLIDE_DETAIL_SPEC.md` before production use.
 
 **Datum:** [Veckodag, datum]  
 **Tid:** 09:00-10:30  

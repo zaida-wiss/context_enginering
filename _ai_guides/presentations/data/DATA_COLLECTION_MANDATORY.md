@@ -98,7 +98,8 @@ When same work appears in BOTH collection branch AND develop branch:
 ## Integration Points
 
 **Uses from:** DATA_ACQUISITION_CONTRACT.yaml
-**Feeds to:** SLIDE_DETAIL_SPEC.md (①A-①D content), AI_PROMPT_GENERATE_PRESENTATION.md
+**Feeds to:** `monday_meeting/design/SLIDE_DETAIL_SPEC.md`. The retired
+`AI_PROMPT_GENERATE_PRESENTATION.md` must not be used.
 **Validated by:** RENDER_GATE_CHECKLIST.md (DELIVERY SEPARATION & REVIEW STATES section)
 
 ---

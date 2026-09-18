@@ -1,13 +1,15 @@
 ---
 name: design_modern
-description: Modern design — vackert, rundade hörn, semantiska färger, läsbar text, ADHD-vänligt
+description: RETIRED — superseded by VISUAL_DESIGN_MANDATORY.md
 metadata:
-  type: process
-  critical: true
-  replaces: VISUAL_DESIGN_MANDATORY
+  type: retired_reference
+  status: retired
 ---
 
 # 🎨 MODERN DESIGN — Vacker Presentation
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** This file must never replace
+> `VISUAL_DESIGN_MANDATORY.md`.
 
 **DENNA DESIGN ERSÄTTER gamla tråkiga tabeller och grå layout.**
 

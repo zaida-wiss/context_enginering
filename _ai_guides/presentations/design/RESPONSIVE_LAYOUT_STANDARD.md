@@ -1,14 +1,17 @@
 ---
 name: responsive_layout_standard
-description: MANDATORY — Adaptive typography and responsive card sizing for all presentation slides
+description: RETIRED — responsive rules moved to LAYOUT_OVERFLOW_GUARD.md and active authorities
 metadata:
-  type: design-specification
-  critical: true
-  required_before: rendering
+  type: retired_reference
+  status: retired
   version: 1.0
 ---
 
 # 📐 RESPONSIVE LAYOUT STANDARD
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** Mechanical fit is owned by
+> `monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md`; global layouts are owned by
+> `VISUAL_DESIGN_MANDATORY.md`.
 
 This file applies to **every slide in the presentation**.
 Its purpose is simple: all required content must fit cleanly, with even spacing, without clipping or awkward empty gaps.

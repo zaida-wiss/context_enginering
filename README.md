@@ -18,6 +18,22 @@ Do not derive presentation rules from the project repository.
 ### 🎨 Create a presentation
 → [`_ai_guides/presentations/MANDATORY_READING_ORDER.md`](_ai_guides/presentations/MANDATORY_READING_ORDER.md)
 
+### 💬 Improve presentations through feedback
+→ Update the owning instruction in the context repository. Do not alter an
+existing presentation unless the user explicitly asks for that artifact to be
+updated or regenerated.
+
+If new feedback contradicts an active rule, the AI must show both rules and ask
+which one has priority before changing the context. The latest wording never
+silently wins by default.
+
+WCAG 2.2 AA cannot be deprioritized. A conflicting request must be explained
+and converted into the closest accessible alternative instead.
+
+When the user requests a contradiction audit, findings are first discussed in
+chat without changing files. Context rules are cleaned up only after the user
+chooses the intended result, except where WCAG already determines the outcome.
+
 ### 📚 Project facts
 → [`_memory/README.md`](_memory/README.md)
 
@@ -30,6 +46,7 @@ Do not derive presentation rules from the project repository.
 
 | Question | Authority |
 |---|---|
+| Which files are active authorities? | [`AUTHORITY_REGISTRY.yaml`](_ai_guides/presentations/AUTHORITY_REGISTRY.yaml) |
 | How does the presentation pipeline work? | [`SYSTEM_CONTRACT.yaml`](_ai_guides/presentations/SYSTEM_CONTRACT.yaml) |
 | What data sources are allowed? | [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) |
 | What are the absolute WCAG/NPF boundaries? | [`ACCESSIBILITY_NEURODIVERSITY.md`](_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md) |
@@ -45,6 +62,12 @@ Do not derive presentation rules from the project repository.
 
 Do not add competing presentation rules outside this map. A rule should be defined once by its owning authority and referenced elsewhere.
 
+After changing presentation instructions, run:
+
+```bash
+python3 _audit/validate_presentation_authorities.py
+```
+
 ---
 
 ## 🚨 Conflict Rule
@@ -57,9 +80,10 @@ Use this order when instructions conflict:
 4. `READABILITY_HARD_RULES.md` — hard typography, line spacing and meeting-number readability
 5. `CARD_COMPONENT_STANDARD.md` — card internals
 6. `PROVENANCE_AND_AI_LABELING.md` — source/fact/AI identity
-7. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit/pagination
-8. `SLIDE_DETAIL_SPEC.md` — slide content
-9. `TEMPLATE_REFERENCE.html` — reference only
+7. `PR_MERGE_REVIEW_IDENTITY.md` — merger/reviewer identity
+8. `LAYOUT_OVERFLOW_GUARD.md` — responsive fit/pagination
+9. `SLIDE_DETAIL_SPEC.md` — slide content
+10. `TEMPLATE_REFERENCE.html` — reference only
 
 If two authorities appear to own the same rule and disagree, fix the documentation before rendering.
 
@@ -81,6 +105,11 @@ The detailed values live in `READABILITY_HARD_RULES.md` and `CARD_COMPONENT_STAN
 - timestamps are compact, one line, discreet and bottom-most when present
 - automatic shrink-to-fit is forbidden
 - if accessible content does not fit, cards reflow, grid density is reduced or the slide paginates
+- meeting points 3–5 remain the separate team sections: Frontend, Backend and Native
+- meeting point 9 uses four team columns: `Frontend`, `Backend`, `Native`, `Cross-team`
+- point 9 shows open PRs as `📌 #[PR-number]`, remaining issues, order, dependencies, AI allocation and proposed missing issues
+- source identity always keeps its canonical symbol; tags never replace `📅`, `✅`, `🔎`, `⭐` or `⚠`
+- authoritative conflicts produce a rule-conflict receipt and stop rendering; they are never silently overwritten
 - rendered delivery fails if text overlaps, line spacing is compressed or the bottom information zone collides with body text
 
 This README intentionally does not duplicate numeric card spacing/type rules.

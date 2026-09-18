@@ -1,13 +1,16 @@
 ---
 name: presentation_red_threads
-description: Röda trådar genom presentationen — arbete, blockers, risker, kapacitet — kontinuerliga trådar som binder slidorna ihop
+description: RETIRED — historical narrative reference
 metadata:
-  type: reference
-  critical: true
+  type: retired_reference
+  status: retired
   version: 1.0
 ---
 
 # 🧵 PRESENTATION RED THREADS — Röda Trådar som Binder Slidorna Ihop
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** Narrative dependencies are defined by
+> the active slide-content and system-contract authorities.
 
 **Denna fil visar de fyra huvudsakliga röda trådar som löper genom HELA presentationen från ① till ⑭.**
 

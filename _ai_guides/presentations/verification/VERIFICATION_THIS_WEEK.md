@@ -1,12 +1,15 @@
 ---
 name: verification-this-week
-description: Data verification checklist — what sources were read for THIS WEEK
+description: RETIRED — execution receipts are defined by SYSTEM_CONTRACT.yaml
 metadata:
-  type: process
-  critical: true
+  type: retired_reference
+  status: retired
 ---
 
 # 🔍 VERIFICATION REPORT — Data Sources This Week
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** Use the current execution and data
+> acquisition receipts instead.
 
 **Status: PARTIAL — Waiting for you to provide final sources**
 

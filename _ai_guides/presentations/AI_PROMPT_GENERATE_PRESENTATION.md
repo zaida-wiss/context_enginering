@@ -1,13 +1,18 @@
 ---
 name: ai_prompt_generate_presentation
-description: COPY THIS PROMPT — Direct instructions for any AI to generate presentation from LIVE GitHub data
+description: RETIRED — historical generation prompt; do not use in production
 metadata:
-  type: critical_instruction
+  type: retired_reference
+  status: retired
   audience: ChatGPT, Claude, Gemini — any AI asked to generate presentation
   version: 3.0
 ---
 
 # 🤖 AI PROMPT — Generate Avanza Team 1 Presentation
+
+> **RETIRED. DO NOT USE FOR PRODUCTION.** The active execution path is
+> `MANDATORY_READING_ORDER.md` + `AUTHORITY_REGISTRY.yaml`. Content below may
+> contain old numbering or layout examples and has no authority.
 
 Generate a Monday Meeting presentation for Avanza Team 1 using the deterministic pipeline in this context repo.
 

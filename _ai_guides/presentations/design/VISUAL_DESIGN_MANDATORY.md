@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.4
+  version: 4.5
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -85,8 +85,9 @@ Palette rules:
 - subtle shadow/depth
 - no fixed height that forces clipping
 
-### Team accent
-Team ownership is shown with a **narrow left accent only**:
+### Team accent and issue/PR identifiers
+Team ownership is shown with a narrow left accent and, on issue/PR cards, the
+same team color on the `#NUMBER`:
 - Frontend `#2DD4BF`
 - Backend `#FF4FA3`
 - Native `#A855F7`
@@ -94,6 +95,8 @@ Team ownership is shown with a **narrow left accent only**:
 - Neutral `#94A3B8`
 
 Do not use full team-colored outlines or team-colored card fills.
+Color is supplementary: the visible team column/section or a text label must
+also identify ownership. Every colored identifier must meet WCAG 2.2 AA.
 
 All internal card rules are delegated to `CARD_COMPONENT_STANDARD.md`.
 
@@ -126,6 +129,36 @@ Do not duplicate those numeric card-internal rules here.
 
 ## 5. CARD GRIDS — MAXIMUM DENSITY, NOT TARGET
 
+### Meeting point 9: fixed four-team board
+
+Every physical slide belonging to meeting point 9 uses exactly these four
+vertical columns, in this order:
+
+`Frontend | Backend | Native | Cross-team`
+
+1. `Frontend`
+2. `Backend`
+3. `Native`
+4. `Cross-team`
+
+The columns classify ownership and impact. `Cross-team` is used only when work
+genuinely spans or unlocks multiple teams; do not duplicate the same item in a
+team column and the cross-team column.
+
+Hard rules:
+- exactly four team columns on every slide for point 9
+- column headers remain visible and use at least the section-header minimum
+- empty team columns remain visible and show a verified empty state
+- support up to six cards per physical slide within meeting point 9
+- card geometry may adapt to text length using 3×2, 2×3 or a balanced mixed arrangement within the team structure
+- narrow columns must not force text below component minima
+- if content is too tall, paginate to `9-2`, `9-3` and so on; do not add a fifth column
+- status color may support meaning but never replaces status/source symbols
+- point 9 renders each PR heading as `📌 #[PR_NUMBER]` with a grounded contribution line directly below
+- point 9 visualizes issue order and dependency direction rather than describing them only in prose
+- point 9 keeps `🔎 AI-analys` and `⭐ AI-förslag` visible at item level
+- provenance remains visible inside every relevant item
+
 ### ①A–①C merge overview
 - maximum 6 cards
 - default may be 3×2 only when readable
@@ -139,9 +172,12 @@ Do not duplicate those numeric card-internal rules here.
 - maximum 4 cards
 - 2×2, 2×1 or 1×1 based on content
 
-### ②–⑫ and ⑭
+### ②–⑧, ⑩–⑫ and ⑭
 - maximum 4 cards unless slide authority is stricter
 - lower density when text length requires it
+
+The four-team-board and six-card exception above governs meeting point 9, not
+the ninth physical slide in the deck.
 
 ### ⑬ next steps
 - 4×1 only when each card remains readable

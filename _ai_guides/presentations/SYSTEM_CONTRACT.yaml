@@ -70,11 +70,15 @@ authority:
     file: "design/PROVENANCE_AND_AI_LABELING.md"
     owns: "schema facts vs team facts vs AI suggestions/analysis"
 
-  level_7_overflow:
+  level_7_pr_identity:
+    file: "data/PR_MERGE_REVIEW_IDENTITY.md"
+    owns: "actual merger and submitted approving-reviewer identity"
+
+  level_8_overflow:
     file: "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
     owns: "mechanical fit, responsive density, pagination, collision prevention"
 
-  level_8_slide_content:
+  level_9_slide_content:
     file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
     owns: "slide purpose, fields, ordering and content requirements"
     does_not_own: "visual constants, card internals, provenance semantics"
@@ -103,6 +107,7 @@ execution_receipt:
   must_read_same_execution:
     - "README.md or presentations/README.md"
     - "MANDATORY_READING_ORDER.md"
+    - "AUTHORITY_REGISTRY.yaml"
     - "SYSTEM_CONTRACT.yaml"
     - "../../_memory/EXTERNAL_SOURCES.yaml"
     - "../../_memory/EXTERNAL_SOURCES.md"
@@ -113,6 +118,7 @@ execution_receipt:
     - "design/READABILITY_HARD_RULES.md"
     - "design/CARD_COMPONENT_STANDARD.md"
     - "design/PROVENANCE_AND_AI_LABELING.md"
+    - "data/PR_MERGE_REVIEW_IDENTITY.md"
     - "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
     - "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
     - "monday_meeting/design/TEMPLATE_REFERENCE.html"
@@ -186,9 +192,46 @@ provenance:
   source_classes:
     school_schedule: "📅 Schemafakta"
     verified_team_input: "✅ Mötesprotokoll / approved team label"
-    ai_suggestion: "? AI-förslag"
-    ai_analysis: "? AI-analys"
+    ai_suggestion: "⭐ AI-förslag"
+    ai_analysis: "🔎 AI-analys"
     unclear: "⚠ Källa behöver verifieras"
+
+  symbol_preservation:
+    rule: >
+      The canonical Unicode symbol is part of the provenance identity and MUST
+      be rendered before the text. A tag, badge, chip, color, abbreviation,
+      question mark or text-only label may never replace the symbol.
+    required_pairs:
+      - "📅 Schemafakta"
+      - "✅ Mötes-/teamfakta"
+      - "🔎 AI-analys"
+      - "⭐ AI-förslag"
+      - "⚠ Källa behöver verifieras"
+
+  waiting_in_pr:
+    symbol: "📌"
+    canonical_label: "📌 Väntar i PR"
+    canonical_title_format: "📌 #[PR_NUMBER]"
+    rule: >
+      Every verified open pull request must show the pushpin immediately before
+      its dynamic PR number. The PR number uses the verified owning team's color,
+      while the pushpin retains its normal appearance. A visible team column or
+      text label must also identify the team so color is never the sole carrier.
+      A short, source-grounded contribution statement must appear directly below
+      the PR heading. The symbol supplements provenance; it never replaces it.
+
+  dependency:
+    symbol: "🔗"
+    canonical_label: "🔗 Beroende"
+    rule: >
+      Every displayed dependency relation starts with the link symbol and the
+      text Beroende. The dependency symbol identifies the content type and does
+      not replace provenance.
+    ai_analysis_format: "🔗 Beroende · 🔎 AI-analys"
+    ai_rule: >
+      When the dependency or its direction is inferred or interpreted by AI,
+      render both the dependency symbol and the AI-analysis symbol with their
+      text labels. Never show only one of them.
 
   global_rule: >
     Whenever the model adds interpretation, prioritization, recommendation,
@@ -245,7 +288,7 @@ responsive_visual_system:
 
   card_style:
     surface: "dark glass-like card"
-    team_accent: "narrow left accent only"
+    team_accent: "narrow left accent; issue/PR numbers also use team color with a non-color ownership cue"
     full_team_outline: false
     content_driven_height: true
 
@@ -301,6 +344,13 @@ execution_sequence:
       - "provenance rules loaded"
       - "template is reference only"
       - "same repository ref used for all internal files"
+      - "authority conflicts recorded with both rules, owners and resolution"
+      - "point 9 uses exactly Frontend, Backend, Native and Cross-team columns"
+      - "point 9 shows open pull requests and their contribution"
+      - "point 9 shows remaining assigned issues, order and visible dependencies"
+      - "point 9 shows AI work-allocation analysis and suggested missing issues"
+      - "each physical slide within meeting point 9 supports up to six responsive cards"
+      - "canonical source symbols are preserved and not replaced by tags"
 
   step_3:
     name: "Data precheck"
@@ -332,6 +382,75 @@ execution_sequence:
   step_9:
     name: "Deliver"
     prerequisite: "delivery_gate PASS"
+
+post_delivery_feedback:
+  default_target: "context repository"
+  rule: >
+    After a presentation has been delivered, treat discussion, critique and
+    requested improvements as proposed changes to the context repository by
+    default. Improve the owning active authority so future presentations produce
+    the intended result consistently.
+  artifact_mutation_gate:
+    presentation_update_requires: "an explicit user request to update, revise, regenerate or replace the presentation artifact"
+    discussion_alone_authorizes_presentation_update: false
+    context_improvement_request_authorizes_presentation_update: false
+  clarification_rule: >
+    If it is genuinely ambiguous whether the user wants the artifact changed,
+    do not modify it. Continue reasoning and update only the context repository,
+    or ask one focused clarification question when the target cannot be inferred.
+  preservation_rule: >
+    Never silently regenerate an existing PPTX, PDF or Slides artifact while
+    implementing feedback in the context repository.
+  requested_change_conflict_protocol:
+    trigger: >
+      A new user preference or requested context change contradicts, weakens or
+      cannot coexist with an earlier active rule.
+    required_response:
+      - "Identify the existing rule and its active authority file."
+      - "State the new requested rule."
+      - "Explain the practical consequence of choosing each rule."
+      - "Ask the user which rule is more important."
+    mutation_gate: >
+      Do not overwrite, retire or reinterpret either conflicting rule until the
+      user has selected the priority. Non-conflicting requested changes may
+      continue independently.
+    wcag_exception:
+      priority: "absolute and non-negotiable"
+      rule: >
+        WCAG 2.2 AA and the active accessibility/readability hard limits may
+        never be selected against, weakened or deprioritized. If a request
+        conflicts with them, explain the exact conflict and propose the closest
+        accessible alternative. Do not ask whether WCAG should lose priority.
+    prohibited_behavior:
+      - "silent last-request-wins resolution"
+      - "guessing priority from wording or recency"
+      - "changing the presentation artifact while waiting for the decision"
+      - "offering WCAG compliance as an optional trade-off"
+  collaborative_conflict_audit:
+    trigger: >
+      The user asks to search for contradictions, overlaps or ambiguous rules in
+      the context repository or code.
+    phase_1_read_only_discovery:
+      - "Search active authorities and relevant validators before retired material."
+      - "Group findings by rule category and identify the owning files."
+      - "For each finding, quote or accurately summarize both conflicting rules."
+      - "Explain practical consequences and indicate whether WCAG fixes the priority automatically."
+      - "Do not edit, delete, retire or merge conflicting rules during discovery."
+    phase_2_chat_decision:
+      rule: >
+        Discuss unresolved conflicts with the user in chat. Ask which outcome is
+        most important, preferably one conflict or a small related group at a
+        time. Record the selected canonical rule and its owner.
+    phase_3_cleanup:
+      prerequisite: "explicit user decision or an automatic WCAG requirement"
+      actions:
+        - "Update the canonical active authority."
+        - "Remove, retire or redirect the conflicting duplicate as agreed."
+        - "Update validators when the selected rule can be checked automatically."
+        - "Run authority audit and diff validation."
+      presentation_artifact_rule: >
+        Conflict cleanup changes the context repository only unless the user
+        separately and explicitly requests a presentation update.
 
 ###############################################################################
 # ARTIFACT GATES
@@ -384,6 +503,16 @@ render_acceptance:
     ai_generated_item_without_question_icon_count: 0
     unverified_item_presented_as_confirmed_count: 0
     mixed_provenance_card_without_block_labels_count: 0
+    provenance_symbol_replaced_by_tag_count: 0
+    provenance_text_without_canonical_symbol_count: 0
+    waiting_pr_title_missing_pushpin_count: 0
+    team_column_missing_count: 0
+    open_pr_without_pushpin_number_count: 0
+    open_pr_missing_contribution_text_count: 0
+    assigned_issue_missing_order_count: 0
+    assigned_issue_dependency_not_visualized_count: 0
+    ai_assignment_without_reason_count: 0
+    suggested_issue_without_goal_link_count: 0
 
   failure_response:
     - "STOP delivery"
@@ -415,6 +544,8 @@ maintenance:
       - "SLIDE_DETAIL_SPEC for content"
       - "TEMPLATE_REFERENCE never wins"
     same_domain_conflict: "STOP and fix authority files before rendering"
+    registry: "AUTHORITY_REGISTRY.yaml is the canonical file-status and ownership registry"
+    retired_files: "Never load or merge rules from files listed under retired_guides"
 
 ###############################################################################
 # END
