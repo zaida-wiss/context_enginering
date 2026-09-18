@@ -97,7 +97,7 @@ Medan ni BYGGER, dokumenterar ni samtidigt — inte efter.
 
 ---
 
-#### 3. TEAMSTANDARDS.md — Git Weekly Status (If Changes)
+#### 3. TEAM_STANDARDS.md — Git Weekly Status (If Changes)
 ```markdown
 ## Denna vecka — Git Activity
 
