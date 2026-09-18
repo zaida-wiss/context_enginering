@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.1
+version: 2.2
 metadata:
   type: registry
   critical: true
@@ -66,6 +66,8 @@ logical_destinations:
       path: "_ai_guides/project/DEPENDENCIES_AND_CAPACITY.md"
     cross_layer_awareness:
       path: "_ai_guides/project/CROSS_LAYER_AWARENESS.yaml"
+    technical_debt:
+      path: "_ai_guides/project/TECHNICAL_DEBT.md"
 
   memory:
     team_roster:
@@ -146,6 +148,31 @@ tasks:
     load:
       - "logical_destinations.project.team_tone_and_collaboration"
 
+  coding_assistance:
+    purpose: "Help with code while checking the relevant surrounding project system."
+    load:
+      - "logical_destinations.project.team_standards"
+      - "logical_destinations.project.testing"
+      - "logical_destinations.project.goals_and_sprint_planning"
+      - "logical_destinations.project.risk_management"
+      - "logical_destinations.project.dependencies_and_capacity"
+      - "logical_destinations.project.cross_layer_awareness"
+      - "logical_destinations.project.technical_debt"
+      - "logical_destinations.project.team_tone_and_collaboration"
+    behavior:
+      - "solve the user's immediate coding problem"
+      - "inspect relevant contract/integration context when the change crosses a boundary"
+      - "inspect relevant active branches when tools/access permit"
+      - "signal missing or diverging contracts early"
+      - "signal dependency, estimation or capacity gaps when they affect the task"
+      - "identify candidate risk or technical debt with explicit provenance"
+      - "explain why the wider signal matters"
+      - "keep unrelated system analysis out of the way"
+    provenance:
+      verified_fact: "source-backed"
+      analysis: "🔎 AI-analys"
+      proposal: "⭐ AI-förslag"
+
   sprint_planning:
     purpose: "Resolve decided goals from verified sources and propose future goals, milestones and issues transparently."
     load:
@@ -192,6 +219,8 @@ tasks:
       ref: "logical_destinations.project.dependencies_and_capacity"
     cross_layer_authority:
       ref: "logical_destinations.project.cross_layer_awareness"
+    technical_debt_authority:
+      ref: "logical_destinations.project.technical_debt"
     design_authorities:
       - "_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
       - "_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md"
