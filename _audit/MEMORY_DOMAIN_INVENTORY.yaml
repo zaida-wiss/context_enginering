@@ -20,18 +20,24 @@ files:
     class: live_or_manual_data
     reason: "Copied course deadlines and submission requirements; duplicates schedule/milestone facts and can change."
     proposed_destination: "data/manual/course/COURSE_DEADLINES.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/course/COURSE_DEADLINES.md"
     migration_note: "Reconcile against structured milestones before moving."
 
   _memory/CTO_FEED_FORWARD.md:
     class: live_or_manual_data
     reason: "Course assignment facts, deadline and deliverable requirements."
     proposed_destination: "data/manual/course/CTO_FEED_FORWARD.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/course/CTO_FEED_FORWARD.md"
     migration_note: "Consolidate with CTO_FEED_FORWARD_INSTRUCTIONS.md if both describe the same source."
 
   _memory/CTO_FEED_FORWARD_INSTRUCTIONS.md:
     class: live_or_manual_data
     reason: "Copied assignment instructions are source material, not AI-system instructions."
     proposed_destination: "data/manual/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
     migration_note: "Preserve source provenance and consider merging duplicate assignment content."
 
   _memory/DEFINITION_OF_DONE.md:
@@ -74,6 +80,8 @@ files:
     class: live_or_manual_data
     reason: "Course schedule and deadlines are living facts that explicitly may change."
     proposed_destination: "data/manual/course/SCHEDULE.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/course/SCHEDULE.md"
     migration_note: "Prefer a live Canvas/calendar source when available; retain this only as sourced manual material."
 
   _memory/SPRINT_FOCUS_TIMELINE.md:
@@ -110,18 +118,24 @@ files:
     class: live_or_manual_data
     reason: "Structured course milestone facts with dates and submission locations."
     proposed_destination: "data/manual/course/MILESTONES.yaml"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/course/MILESTONES.yaml"
     migration_note: "Can become derived/live-backed if a registered course source is connected."
 
   _memory/presentations/SCHEDULE.yaml:
     class: live_or_manual_data
     reason: "Structured recurring schedule and current-week focus."
     proposed_destination: "data/manual/course/SCHEDULE.yaml"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/course/TEAM_SCHEDULE.yaml"
     migration_note: "Separate recurring schedule facts from current-week derived focus if useful."
 
   _memory/presentations/TEAM_ROADMAP.yaml:
     class: live_or_manual_data
     reason: "Structured course/project timeline sourced from course schedule."
     proposed_destination: "data/manual/course/TEAM_ROADMAP.yaml"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/course/TEAM_ROADMAP.yaml"
     migration_note: "Keep source metadata and derive current phase at runtime."
 
 summary:
@@ -157,4 +171,4 @@ migration_order:
   - "6. Consider merging GITHUB_MEMBER_MAPPING into TEAM_ROSTER to reduce duplicate identity truth."
   - "7. Update CONTEXT_REGISTRY paths and run repository-wide old-path validation after every migration batch."
 
-status: "inventory_complete_no_moves_performed"
+status: "inventory_complete_course_data_migrated"
