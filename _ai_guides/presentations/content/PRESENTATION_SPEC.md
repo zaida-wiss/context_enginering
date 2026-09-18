@@ -160,7 +160,7 @@ Om något svar är NEJ → datan kom från konversation, inte repo
 ```
 ☐ DENNA FIL (PRESENTATION_SPEC.md) — du läser den nu
 ☐ _ai_guides/presentations/models/WEEKLY_PROGRESS_MODEL.md — för "Sedan förra mötet"-sliden
-☐ _memory/DEFINITION_OF_DONE.md — FÖR DENNA VECKA (krävs för att verifiera "klart")
+☐ _ai_guides/project/DEFINITION_OF_DONE.md — FÖR DENNA VECKA (krävs för att verifiera "klart")
 ☐ _ai_guides/presentations/structure/PRESENTATION_STRUCTURE.md — för slide-ordning & mötespunkter
 ☐ GitHub-data denna vecka (via GitHub Connector/API per README.md)
   - Commits sedan förra möte
