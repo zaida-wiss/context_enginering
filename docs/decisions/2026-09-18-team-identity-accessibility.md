@@ -12,22 +12,27 @@ Active presentation authorities conflicted:
 
 ## User decision
 
-Choose **A — WCAG/NPF-strong team identity**.
+Choose **C — context-aware non-color team identity**.
 
 ### Binding rule
 
 Team ownership must never be communicated by color alone.
 
-Every card must include a non-color team cue when team ownership is relevant:
-- visible team text, e.g. `Frontend`, `Backend`, `Native/System`, `Cross-team`; or
-- an equivalent explicit non-color label defined by the active design authorities.
+Team ownership must never rely on color alone **across the complete slide context**.
 
-Team accent color remains supplementary.
+Rules:
+- On a dedicated team slide whose header explicitly names the team, e.g.
+  `3. Frontend`, the header provides the non-color team meaning. Individual cards
+  do not repeat the team name; the left team accent color is sufficient as the
+  supplementary card-level cue.
+- On mixed-team slides, each card must include an explicit non-color team cue,
+  e.g. `Frontend`, `Backend`, `Native/System` or `Cross-team`, in addition
+  to the team accent color.
+- If a card is exported or reused outside its original team slide, it must regain
+  an explicit team label because the surrounding header context is no longer present.
 
-If the slide heading already identifies the team, the card may still use a compact
-team label when needed for accessibility and mixed-content clarity. Do not rely
-on the heading + color alone when the card could be copied, moved, exported or
-read out of context.
+Team accent color remains supplementary and never carries ownership alone when
+the slide itself does not already name the team.
 
 ## Accessibility rationale
 
@@ -36,5 +41,7 @@ text/symbol/shape and must not be the sole information carrier.
 
 ## Regression expectation
 
-Validators must reject any card where team ownership is relevant but available
-only through color.
+Validators must reject:
+- mixed-team cards where ownership is available only through color;
+- dedicated team slides whose header does not explicitly name the team while card
+  ownership is shown only through color.
