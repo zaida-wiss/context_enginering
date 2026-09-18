@@ -286,6 +286,14 @@ def main():
         require(f"presentation bundle contains {ref}", ref in registry, failures)
 
     require(
+        "presentation bootstrap loads global AI framework first",
+        'file: "../AI_FRAMEWORK.yaml"' in system_contract
+        and 'required_before_presentation_authorities: true' in system_contract
+        and "../AI_FRAMEWORK.yaml" in read("_ai_guides/presentations/MANDATORY_READING_ORDER.md"),
+        failures,
+    )
+
+    require(
         "authority conflicts require an explicit user decision",
         "conflict_decision_gate:" in system_contract
         and "ask the user for a decision" in system_contract
