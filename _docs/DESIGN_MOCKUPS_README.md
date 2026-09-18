@@ -49,7 +49,7 @@ Komponenter som krävs:
 4. HoldingsTable
 
 Använd design-mockups för CSS/layout-inspiration.
-Follow TEAMSTANDARDS.md för TypeScript + CSS modules."
+Follow TEAM_STANDARDS.md för TypeScript + CSS modules."
 ```
 
 ## Frontend-Checklist
