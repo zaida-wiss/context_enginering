@@ -229,6 +229,25 @@ def main():
         failures,
     )
     require(
+        "point 9 validates actual vertical geometry",
+        "point9_group_vertical_order_violation_count == 0" in render_gate
+        and "point9_side_by_side_group_count == 0" in render_gate
+        and "2×2/four-quadrant arrangement fails" in render_gate,
+        failures,
+    )
+    require(
+        "capacity slide hides personal reasons and AI meta policy",
+        "capacity_personal_reason_exposed_count == 0" in render_gate
+        and "capacity_internal_ai_policy_visible_count == 0" in render_gate,
+        failures,
+    )
+    require(
+        "AI no-finding trace requires exact checked sources",
+        "ai_no_finding_without_exact_checked_sources_count == 0" in render_gate
+        and "actual places inspected" in provenance,
+        failures,
+    )
+    require(
         "four-team perspective is preserved as coverage, not layout",
         "Four-perspective planning coverage" in slide
         and "coverage requirement" in slide,
