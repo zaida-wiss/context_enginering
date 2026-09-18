@@ -79,7 +79,7 @@ One work/information item = one card unless a compact grouped card is explicitly
 Every rendered meeting slide uses the same three spatial zones:
 
 1. **Header zone** — meeting-point title, optional subordinate subtitle and local page counter.
-2. **Content zone** — responsive card/grid content only.
+2. **Content zone** — card-based content using the default responsive grid or a registered slide-level exception such as point 9.
 3. **Source/footer zone** — compact provenance/source summary and quiet operational metadata when required.
 
 Hard rules:
@@ -381,7 +381,7 @@ Color may support source/status meaning but never replace icon + text where prov
 
 Status must use symbol + text when status is shown.
 
-For meeting point 2 timeline semantics, the stable status colors are:
+For meeting point 2 status semantics, the stable status colors are:
 - green = completed/passed
 - orange = checkpoint/feedforward/intermediate milestone
 - red = critical deadline/major delivery
@@ -475,5 +475,5 @@ Card internals are governed by `CARD_COMPONENT_STANDARD.md`; global design must 
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.4
+**Version:** 5.0
 **Last updated:** 2026-09-17
