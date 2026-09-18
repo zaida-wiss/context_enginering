@@ -41,6 +41,8 @@ def main():
     tone = read("_ai_guides/project/TEAM_TONE_AND_COLLABORATION.yaml")
     slide = read("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
     provenance = read("_ai_guides/presentations/design/PROVENANCE_AND_AI_LABELING.md")
+    render_gate = read("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+    sources = read("data/SOURCES.yaml")
 
     print("=" * 80)
     print("SMOKE TEST 1 — CODING ASSISTANCE")
@@ -156,6 +158,13 @@ def main():
         "Identify" in risk and "Assess" in risk and "Mitigate" in risk and "Monitor" in risk,
         failures,
     )
+    require(
+        "conditional Sprintplanering source is registered",
+        "GOOGLE_SPRINT_PLANNING:" in sources
+        and 'worksheet_title: "Sprintplanering"' in sources
+        and "UNAVAILABLE_NOT_YET_CREATED" in sources,
+        failures,
+    )
 
     print()
     print("=" * 80)
@@ -186,6 +195,13 @@ def main():
     require(
         "old mandatory four-column point-9 rule is gone",
         "Every physical slide for point 9 MUST use these columns" not in slide,
+        failures,
+    )
+    require(
+        "render gate uses vertical point-9 validation",
+        "POINT 9 — VERTICAL PRIORITY VIEW" in render_gate
+        and "fixed `1×4` team-column layout" not in render_gate
+        and "every slide for point 9 has exactly" not in render_gate,
         failures,
     )
     require(
