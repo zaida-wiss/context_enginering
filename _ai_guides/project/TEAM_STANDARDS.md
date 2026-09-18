@@ -1,824 +1,326 @@
 ---
 name: team_standards
-description: Canonical project operating standards for code, Git and team conventions
+description: Canonical project workflow and team operating standards
+version: 2.0
 metadata:
   type: project_authority
   status: active
+  last_updated: 2026-09-18
 ---
 
-# Teamstandards & Agent-riktlinjer
+# Team standards
 
-Det här dokumentet definierar standards och konventioner för alla team i projektet. Använd det när du frågar AI-agenter (Claude, ChatGPT, etc.) om hjälp.
+## Purpose
 
----
+This file describes **how work moves through the project**.
 
-## 📚 DOKUMENTÖVERSIKT - Start här!
+The goal is not only to complete issues. The goal is to practice a professional
+workflow that makes work understandable, reviewable, testable and safe to change.
 
-Det här projekt-repot innehåller tre viktiga filer för teamet:
+Detailed rule areas have their own owners:
 
-| Fil | Innehål |
-|-----|---------|
-| **TEAM_STANDARDS.md** | Teamstandards, commits, branches, kodstil |
-| **PROJECT_CONTEXT_ROUTER.md** | Kundens problem, vad vi bygger, MVP-features |
-| **DEFINITION_OF_DONE.md** | Godkänd-krav, checklista, vad som krävs |
+- testing strategy → `TESTING.md`
+- completion criteria → `DEFINITION_OF_DONE.md`
+- team communication → `TEAM_TONE_AND_COLLABORATION.yaml`
+- people/conflict support → `HR_AND_TEAM_SUPPORT.yaml`
+- confirmed decisions → `docs/decisions/`
+- current project facts → registered data sources
 
-**Använd denna länk när du delar med AI-agenter:**
-```
-https://github.com/zaida-wiss/context_enginering
-```
+## Rule status
 
-**Instruera AI så här:**
-```
-"Läs från context_enginering-repot för kontext:
-- _ai_guides/project/TEAM_STANDARDS.md (teamstandards)
-- _ai_guides/project/PROJECT_CONTEXT_ROUTER.md (vad vi bygger)  
-- _ai_guides/project/DEFINITION_OF_DONE.md (godkänd-krav)
+To avoid turning AI suggestions into invented team rules, this repository uses
+three kinds of guidance:
 
-Och projekt-status från:
-- _sprint/GitHub Project Board (sprint tracking)
-- _sprint/Google Sheets Risker (risk register)
+### Project standard
 
-Använd denna kontext när du ger vägledning om kod, arkitektur och prioriteringar."
-```
+A workflow the context repository currently expects project work to follow.
 
----
+### External requirement
 
-## 1. Förstå commit-meddelanden
+A requirement backed by a course, customer, platform or other registered source.
 
-### Varför vi har ett standardformat
+### Recommended practice
 
-När flera personer arbetar på samma projekt blir commit-meddelanden "historien" om din kod. Ett välformat commit-meddelande:
-- **Hjälper alla förstå** vad som ändrades och varför
-- **Gör det enkelt att söka** efter specifika typer av ändringar
-- **Automatiserar processer** (verktyg kan läsa commits för att generera ändringsloggar)
-- **Bevarar kunskap** för framtida utvecklare (eller din framtida själv!)
+Industry-aligned guidance that is useful for learning but is not treated as a
+confirmed team decision until the team explicitly adopts it.
 
-### Formatet
-
-```
-type(scope): message
-```
-
-Låt oss bryta ned detta:
-
-#### `type` - Vilken sorts ändring är detta?
-
-Tänk på `type` som "kategorin" för ditt arbete. Det svarar på: "Vad gjorde jag precis?"
-
-| Type | Betydelse | När använder man det |
-|------|-----------|---------------------|
-| `feat` | **Feature** - något nytt | Lägger till ny komponent, ny API-endpoint, ny funktionalitet |
-| `fix` | **Fix** - buggfix | Reparerar bruten funktion, löser krasch, åtgärdar bug |
-| `refactor` | **Refactoring** - förbättrar kod utan att ändra beteende | Reorganiserar kod, extraherar CSS, förbättrar prestanda |
-| `docs` | **Dokumentation** - skriver eller uppdaterar docs | Uppdaterar README, lägger till kommentarer, skapar guider |
-| `style` | **Stil** - CSS/visuella ändringar | Ändrar färger, layout, typsnitt, avstånd |
-| `test` | **Tester** - lägger till eller reparerar tester | Skriver unit tests, reparerar felande tester |
-| `build` | **Build/Config** - setup-ändringar | Uppdaterar build-verktyg, dependencies, konfiguration |
-| `chore` | **Chore** - underhålls-uppgifter | Uppdaterar dependencies, städar upp oanvänd kod |
-
-**Exempel:**
-- `feat` - "Jag lade till en ny login-funktion"
-- `fix` - "Jag fixade logout-knappens krasch"
-- `refactor` - "Jag organiserade CSS i moduler"
-- `docs` - "Jag skrev en API-guide"
-
-#### `scope` - Vilken del av projektet?
-
-`scope` begränsar *var* ändringen hände. Det hjälper dig snabbt hitta relaterade commits.
-
-| Scope | Betyder |
-|-------|---------|
-| `frontend` | JavaScript/React/TypeScript frontend |
-| `backend` | Java backend-tjänster |
-| `native` | C/C++ native-kod |
-| `docs` | Dokumentationsfiler |
-
-**Varför detta spelar roll:**
-- Du kan snabbt hitta all frontend-ändringar: `git log --grep="frontend"`
-- Teammedlemmar kan fokusera på sitt område: "Visa alla native-ändringar"
-- Det är lättare att se mönster: "Alla backend-ändringar misslyckas tests?"
-
-#### `message` - Vad ändrades exakt?
-
-Meddelandet ska vara **kort, tydligt och i imperativ form** (som ett kommando).
-
-**Bra exempel:**
-- `feat(frontend): add holdings table component` ✅
-- `fix(backend): resolve null pointer exception in user service` ✅
-- `refactor(native): optimize memory allocation` ✅
-
-**Dåliga exempel:**
-- `feat(frontend): added a component that displays holdings` ❌ (för långt)
-- `feat(frontend): fixing the thing` ❌ (otydligt)
-- `feat(frontend): Fixed the holdings table` ❌ (fel tempus - använd imperativ)
-
-**Skrivtips:** Fyll i denna mening: "Den här commiten kommer att ___"
-- "Den här commiten kommer att **lägga till holdings table-komponent**" ✅
-- "Den här commiten kommer att **fixa null pointer exception**" ✅
-
-### Riktiga exempel
-
-```
-feat(frontend): add holdings table component (#26)
-fix(backend): resolve null pointer exception in user service (#47)
-refactor(native): optimize memory allocation in data processor
-docs: add team standards and agent guidelines
-style(frontend): extract Dashboard component styles to CSS modules (#26)
-test(backend): add unit tests for authentication service (#33)
-```
+When a recommendation becomes a team decision, record the decision and update
+the owning standard.
 
 ---
 
-## 2. Branch-namngivning
+# 1. Issue-to-Done workflow — project standard
 
-### Varför branch-namn spelar roll
+## Step 1 — Understand the issue
 
-En branch är som en "arbetsbänk" för en specifik uppgift. Bra branch-namn:
-- Hjälper dig komma ihåg vad du jobbar på
-- Gör det tydligt vad varje branch är till för
-- Kopplar commits till spårning av issues
-- Förhindrar att av misstag merga fel kod
+Before implementation, make the work understandable.
 
-### Formatet
+The issue should make clear:
 
-```
-type/issue-number-description
-```
+- what problem or need is being addressed
+- what outcome is expected
+- Acceptance Criteria
+- relevant dependencies or contracts
+- a concrete Testing section based on `TESTING.md`
+- known risks or uncertainties when they are already visible
 
-**Bryter ned det:**
+### Why
 
-- **`type`** - Samma som commits! (feature, fix, refactor, docs, etc.)
-- **`issue-number`** - Länk till din issue-tracker
-- **`description`** - Kebab-case kort beskrivning
+Clear issues reduce hidden assumptions and make review easier because everyone
+can compare the implementation with the same intended result.
 
-### Exempel förklarat
+## Step 2 — Implement on the work branch
 
-```
-feature/#26-dashboard-panels
-```
-- Type: `feature` - Det här är en ny feature
-- Issue: `#26` - Relaterad till issue #26
-- Description: `dashboard-panels` - Featuren handlar om dashboard-panels
+Work in small, understandable changes connected to the issue.
 
-```
-fix/#47-readme-formatting
-```
-- Type: `fix` - Reparerar något
-- Issue: `#47` - Relaterad till issue #47
-- Description: `readme-formatting` - Fixet handlar om README-formatering
+Commits should help another developer understand the history of the change.
 
-```
-docs/team-standards
-```
-- Type: `docs` - Dokumentation
-- Ingen issue-nummer (detta är allmänt dokumentationsarbete)
-- Description: `team-standards` - Om team-standards
+### Why
 
-### Branch-arbetsflöde exempel
+Small coherent changes are easier to review, debug and revert than one large
+unstructured change.
 
-```bash
-# 1. Skapa ny branch för ditt arbete
-git checkout develop
-git checkout -b feature/#26-dashboard-panels
+## Step 3 — Capture decisions
 
-# 2. Gör commits på denna branch
-git commit -m "feat(frontend): create panel component"
-git commit -m "feat(frontend): add styling for panels"
+When the work creates or confirms a meaningful technical/process decision,
+record it in `docs/decisions/`.
 
-# 3. När du är klar, push och skapa pull request
-git push origin feature/#26-dashboard-panels
+The issue or PR should link the relevant decision.
 
-# 4. Efter review/merge, behåll branchen - ta INTE bort den
-# Vi behåller alla branches för historik
-```
+Examples:
+- choosing one API contract over another
+- changing architecture or data flow
+- adopting a testing/tooling strategy
+- changing an established project workflow
 
----
+If the issue required no decision, it can be marked as not applicable.
 
-## 3. Frontend-standarder (JavaScript/TypeScript/React)
+### Why
 
-### Varför TypeScript?
+A decision without its reasoning is easily rediscovered and debated later.
+Decision records preserve the **why**, not only the final code.
 
-**Problemet:** JavaScript är flexibelt men felbenäget.
-```javascript
-function getUserName(user) {
-  return user.name;  // Vad om user är undefined? Krasch!
-}
-```
+## Step 4 — Update risk analysis when the issue reveals a risk
 
-**TypeScript-lösning:** Typer fångar fel *innan* runtime.
-```typescript
-interface User {
-  name: string;
-  age: number;
-}
+When implementation, testing or review identifies a new risk or materially
+changes an existing risk, record that information in the project's canonical
+risk source.
 
-function getUserName(user: User): string {
-  return user.name;  // TypeScript vet exakt vad user innehåller
-}
-```
+The issue/PR should state what was found and where it was recorded.
 
-**Fördelar:**
-- **IDE-stöd** - IntelliSense föreslår rätt properties
-- **Fånga fel tidigt** - Misstag hittas innan testning
-- **Själv-dokumenterande** - Kod visar vilka typer som förväntas
-- **Refactoring-säkerhet** - Ändra något och se alla påverkade områden
+If no relevant new or changed risk was found, mark that explicitly rather than
+inventing one.
 
-### Komponentstruktur
+### Why
 
-**Regel:** En komponent per fil, med sin egen CSS-modul.
+Risk analysis is most useful when it grows from real engineering work rather
+than being updated only before a meeting or deadline.
 
-**Varför?**
-- Lätt att hitta kod
-- Återanvändbar i olika sammanhang
-- CSS läcker inte till andra komponenter
-- Tydlig separation av ansvar
+## Step 5 — Sync with develop before opening the PR
 
-```
-src/components/
-  Dashboard/
-    Dashboard.tsx          ← Komponenten
-    Dashboard.module.css   ← Dess stilar (isolerade)
-    AccountsTable.tsx      ← En delkomponent
-    AccountsTable.module.css
-    PageHeader.tsx
-    PageHeader.module.css
-```
+Bring the current `develop` branch into the work branch before the pull request
+is considered ready for review.
 
-### Namngivningskonventioner
+Resolve integration conflicts in the work branch and rerun the tests/checks
+affected by the integration.
 
-**Komponenter:** PascalCase (som klassnamn)
-```typescript
-// Bra
-function UserProfile() { }
-function AccountsTable() { }
+### Why
 
-// Dåligt
-function userProfile() { }
-function accounts_table() { }
-```
+A branch can work perfectly while isolated and still conflict with newer team
+work. Synchronizing before review lets the reviewer examine something closer to
+what will actually be integrated.
 
-**Variabler/Funktioner:** camelCase
-```typescript
-// Bra
-const userData = fetchUser();
-function calculateTotal() { }
+## Step 6 — Verify the change
 
-// Dåligt
-const user_data = fetchUser();
-function calculate_total() { }
-```
+Run the issue-specific checks defined by `TESTING.md`.
 
-**CSS-klasser:** camelCase i `.module.css`
-```css
-/* Bra */
-.pageHeader { }
-.accountsTable { }
+Verification should answer:
+- does the intended behavior work?
+- did an important existing behavior break?
+- are relevant boundary/failure cases handled?
+- do affected team/system contracts still match?
 
-/* Dåligt */
-.page-header { }
-.accounts_table { }
-```
+### Why
 
-### TypeScript i komponenter
+"Code is written" and "change is verified" are different states.
 
-**Alltid typa dina props:**
-```typescript
-interface PageHeaderProps {
-  title?: string;           // Valfri prop
-  totalValue?: number;
-  exchange?: string;
-}
+## Step 7 — Open the pull request
 
-function PageHeader({ 
-  title = 'Default Title',  // Standardvärde
-  totalValue = 0,
-  exchange = 'USD/SEK 10:45'
-}: PageHeaderProps): JSX.Element {  // Explicit returtyp
-  return <div>{title}</div>;
-}
-```
+The PR should make review efficient by explaining:
 
-**Varför?**
-- Komponenten är själv-dokumenterande
-- TypeScript förhindrar felaktig prop-typ
-- IDE visar exakt vilka props som är tillgängliga
+- what changed
+- why it changed
+- linked issue
+- how it was tested
+- relevant decisions
+- new/changed risks
+- known limitations or follow-up work
 
-### CSS-moduler
+## Step 8 — Review collaboratively
 
-**En fil per komponent:**
-```typescript
-// PageHeader.tsx
-import styles from './PageHeader.module.css';
+Review the change against:
+- issue intent and Acceptance Criteria
+- relevant tests/evidence
+- project standards
+- affected contracts
+- clarity and maintainability
 
-function PageHeader() {
-  return <h1 className={styles.title}>Min titel</h1>;
-}
-```
+Feedback follows `TEAM_TONE_AND_COLLABORATION.yaml`.
 
-```css
-/* PageHeader.module.css */
-.title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-```
+### Why
 
-**Fördelar:**
-- CSS är begränsad till komponenten (ingen style-konflikt)
-- Lätt att hitta styling för en komponent
-- Stilar följer komponenten om den flyttas
-- Ingen global CSS-röra
+Code review is both a quality check and knowledge-sharing mechanism.
+
+## Step 9 — Apply Definition of Done
+
+Use `DEFINITION_OF_DONE.md` as the final completion gate.
+
+Any remaining work that matters should be visible as a follow-up issue rather
+than hidden in conversation or memory.
+
+## Step 10 — Merge and move the issue to Done
+
+Once the accepted PR is merged and the Definition of Done is satisfied:
+
+- confirm the issue reflects the final outcome
+- link the merged PR
+- move/close the issue as Done according to the project board workflow
+
+### Why
+
+The issue tracker should describe reality. "Done" should mean the team can rely
+on the work as integrated, verified project state.
 
 ---
 
-## 4. Backend-standarder (Java)
+# 2. Issue body standard — project standard
 
-### Paketstruktur
+New implementation issues should contain these sections when applicable:
 
-```
-src/main/java/com/company/
-  service/        ← Affärslogik
-  controller/     ← API-endpoints
-  repository/     ← Databasåtkomst
-  model/          ← Dataklasser
-  exception/      ← Egna exceptions
-```
+```markdown
+## Why
+[What problem/value does this address?]
 
-**Varför denna struktur?**
-- **Tydligt ansvar** - Alla vet var de ska leta
-- **Lagrig arkitektur** - Varje lager har ett jobb
-- **Testbarhet** - Lätt att testa varje lager separat
-- **Skalbarhet** - Lätt att lägga till nya features
+## Acceptance Criteria
+- [ ] Observable outcome 1
+- [ ] Observable outcome 2
 
-### Namngivning i Java
+## Dependencies / contracts
+[Relevant issue, API, branch, team or "None known"]
 
-**Klasser:** PascalCase
-```java
-// Bra
-public class UserService { }
-public class AccountRepository { }
+## Testing
+**Risk this change introduces**
+- [What could break?]
 
-// Dåligt
-public class userService { }
-public class account_repository { }
-```
+**Verify**
+- [ ] [Specific check]
+- [ ] [Boundary/failure/contract check if relevant]
 
-**Metoder/Variabler:** camelCase
-```java
-// Bra
-public User getUserById(int id) { }
-private String formatUserName(User user) { }
+**Test level**
+- [Unit / Component / Integration / E2E / Manual quality check]
 
-// Dåligt
-public User get_user_by_id(int id) { }
-public String FormatUserName(User user) { }
-```
+## Decisions
+- [Decision record link, or "No new decision identified"]
 
-**Konstanter:** UPPER_CASE
-```java
-// Bra
-public static final int MAX_RETRY_ATTEMPTS = 3;
-public static final String API_BASE_URL = "https://api.example.com";
+## Risk analysis
+- [Risk record/update link, or "No new/changed risk identified"]
 
-// Dåligt
-public static final int max_retry_attempts = 3;
+## Completion reminder
+- [ ] Acceptance Criteria verified
+- [ ] Relevant tests/checks complete
+- [ ] Relevant decisions documented
+- [ ] New/changed risks documented
+- [ ] Branch synchronized with current develop before PR
+- [ ] PR reviewed and accepted
+- [ ] Definition of Done satisfied
+- [ ] PR merged
+- [ ] Issue moved to Done
 ```
 
-### SOLID-principer (kort överblick)
-
-**S - Single Responsibility**
-- En klass ska göra EN sak
-- `UserService` hanterar användare, inte betalningar
-- `AuthController` hanterar autentisering, inte användarhämtning
-
-**O - Open/Closed**
-- Öppen för utökning, stängd för modifiering
-- Lägg till nya features utan att ändra befintlig kod
-- Använd arv och interfaces
-
-**L - Liskov Substitution**
-- Underklasser ska kunna ersätta sin föräldraklass
-- Om `Dog extends Animal`, ska `Dog` fungera överallt `Animal` används
-
-**I - Interface Segregation**
-- Klienter ska inte bero på interfaces de inte använder
-- Många specifika interfaces > En stor interface
-
-**D - Dependency Injection**
-- Skapa inte dependencies inuti en klass
-- Få dem som konstruktor-parametrar
-```java
-// Bra - dependency injekterad
-public class UserService {
-  private UserRepository repository;
-  
-  public UserService(UserRepository repository) {
-    this.repository = repository;
-  }
-}
-
-// Dåligt - dependency skapad inuti
-public class UserService {
-  private UserRepository repository = new UserRepository();
-}
-```
+The body adapts to the issue. A documentation issue does not need fake runtime
+tests; a cross-team integration issue should contain explicit contract checks.
 
 ---
 
-## 5. Native-standarder (C/C++)
+# 3. Git history — recommended practice unless separately decided
 
-### Minneshantering
+A readable commit convention is useful because Git history becomes searchable
+project documentation.
 
-**Utmaningen:** C/C++ ger dig direkt minneåtkomst, vilket är kraftfullt men farligt.
+A common convention is:
 
-**Problem:**
-```cpp
-int* data = new int[100];  // Allokera minne
-// ... använd data ...
-// Oops! Glömde att ta bort - minnesläcka!
+```text
+type(scope): short imperative description (#issue)
 ```
 
-**Lösning - Tydligt ägande:**
-```cpp
-class DataBuffer {
-  private:
-    int* data;
-  public:
-    DataBuffer(int size) {
-      data = new int[size];
-    }
-    ~DataBuffer() {  // Destruktor - städning sker här
-      delete[] data;
-    }
-};
+Examples:
+
+```text
+feat(frontend): add allocation validation (#88)
+fix(backend): reject unauthorized holding access (#97)
+test(native): add boundary cases for risk calculation (#73)
+docs(api): clarify portfolio response contract (#120)
 ```
 
-**Varför detta spelar roll:**
-- **Förhindrar minnesläckor** - Förlorat minne = långsammare program
-- **Förhindrar krascher** - Använder befritt minne = odefinierad beteende
-- **Förutsägbar** - Alla vet när minne frigörs
+Common types include `feat`, `fix`, `test`, `refactor`, `docs`, `build`
+and `chore`.
 
-### Namngivningskonventioner
-
-**Funktioner/Variabler:** snake_case (C-tradition)
-```cpp
-// Bra
-void calculate_total_balance() { }
-int max_user_count = 100;
-
-// Dåligt
-void calculateTotalBalance() { }
-int MaxUserCount = 100;
-```
-
-**Konstanter:** UPPER_CASE
-```cpp
-// Bra
-const int MAX_BUFFER_SIZE = 1024;
-const float PI_APPROXIMATION = 3.14159;
-
-// Dåligt
-const int max_buffer_size = 1024;
-```
-
-### Defensiv kodning
-
-Antag alltid att något kan gå fel:
-
-```cpp
-// Bra - hanterar fel
-int* buffer = allocate_memory(size);
-if (buffer == nullptr) {
-  log_error("Memory allocation failed");
-  return ERROR_CODE;
-}
-
-// Dåligt - antar framgång
-int* buffer = allocate_memory(size);
-// ... använd buffer direkt, ingen kontroll ...
-```
+This format is educational guidance until an explicit team decision records the
+exact required commit convention.
 
 ---
 
-## 6. Git-arbetsflöde
+# 4. Branch naming — recommended practice unless separately decided
 
-### Branch-strategi
+Useful branch names connect work to intent, for example:
 
-Vårt projekt använder en **två-branch-strategi** med feature-branches:
-
-```
-main ← develop ← feature/#26-dashboard-panels
-↑       ↑
-|       └─ Standardbranch (integration)
-└── Production (stabil, testad, releaad kod)
+```text
+feature/88-critical-interactions
+fix/97-holdings-authorization
+docs/120-api-contract
 ```
 
-**Branch-syften:**
-- **`main`** - Produktionskod bara. Stabil, testad, releaad.
-- **`develop`** - Integrationsbranch. Standardbranch. Nästa release-kandidat.
-- **`feature/#X-*`**, **`fix/#X-*`**, etc. - Arbetsbranches. Brancha från `develop`, merga tillbaka till `develop`.
+The important professional principle is traceability: another developer should
+be able to connect branch → issue → PR → decision/test evidence.
 
-### Lokalt arbete
-
-```bash
-# 1. Säkerställ att du är på develop och den är uppdaterad
-git checkout develop
-git pull origin develop
-
-# 2. Skapa och byt till din feature-branch
-git checkout -b feature/#26-dashboard-panels
-
-# 3. Gör ändringar och commita regelbundet
-git add src/components/Dashboard.tsx
-git commit -m "feat(frontend): add dashboard component (#26)"
-git add src/components/Dashboard.module.css
-git commit -m "style(frontend): add dashboard styling (#26)"
-
-# 4. Push till remote
-git push origin feature/#26-dashboard-panels
-```
-
-### Kodgranskning & Merge-process
-
-**Regel: Varje merge till `develop` kräver en Pull Request godkänd av en annan teammedlem.**
-
-```
-1. Push din branch (feature/#26-dashboard-panels)
-2. Skapa Pull Request till develop
-3. En annan teammedlem granskar
-4. Granskaren godkänner PR:en
-5. ⚠️ VIKTIGT: Granskaren kan INTE merga sitt eget godkännande
-6. En tredje teammedlem (eller original-autor efter granskning) mergar till develop
-7. Behåll branchen - ta INTE bort den
-```
-
-**Varför denna regel?**
-- **Kvalitetsöppning** - Kod granskas innan integration
-- **Delat ansvar** - Flera personer förstår varje ändring
-- **Förhindrar överseenden** - Olika personer fångar olika fel
-- **Kunskapsdistribution** - Alla lär sig från varandras kod
-
-### Till produktion (develop → main)
-
-När en release är klar:
-
-```bash
-# 1. Säkerställ att develop är stabil och testad
-# 2. Skapa en PR från develop till main
-# 3. Granskning (samma regler gäller)
-# 4. Merga develop till main
-# 5. Tagga releasen: git tag v1.0.0
-```
-
-### Branch-bevarande
-
-**Vi behåller alla branches. Ta INTE bort branches efter merge.**
-
-**Varför?**
-- **Historisk journalföring** - Se exakt vad som var i feature/#26
-- **Spårbarhet** - Länka commits till deras ursprungliga branches
-- **Rollback-referens** - Om main behöver reverteras, branches visar vad som ändrades
-- **Nya teammedlemmar** - Kan utforska projekthistorik genom branches
-
-Exempel:
-```bash
-git log feature/#26-dashboard-panels  # Se alla commits från denna feature
-git branch -a                         # Se alla branches någonsin skapade
-```
-
-### Varför denna process?
-
-- **Säkerhet** - Flera granskare fångar fel
-- **Kunskapsdeling** - Teamet lär sig från varandras ändringar
-- **Kvalitet** - Säkerställer att kod uppfyller standarder före integration
-- **Spårbarhet** - Tydlig historia med bevarade branches
-- **Ansvar** - Alla är ansvariga för kod de mergar
+The exact syntax is a team convention and can change through a documented
+decision.
 
 ---
 
-## 7. Fråga AI-agenter om hjälp
+# 5. Code standards — authority principle
 
-### När du ska dela detta dokument
+Technology-specific style should preferably come from:
+1. formatter/linter/compiler configuration in the actual project repository
+2. documented team decisions
+3. framework/language conventions as recommended practice
 
-**GÖR-det när du frågar om:**
-- Kodgranskning eller stilförslag
-- Nya features eller komponenter
-- Hjälp med commits eller branch-namn
-- Arkitektur-beslut
-- Lärande om bästa praxis
+This file does not invent mandatory TypeScript, Java or C++ style rules when no
+team decision or project configuration establishes them.
 
-**Exempel-förfrågan:**
-```
-Jag behöver skapa en ny React-komponent kallad "TransactionTable".
-Följ standarderna i TEAM_STANDARDS.md från branch docs/team-standards.
-Komponenten ska visa transaktioner och tillåta filtrering.
-```
+### Why
 
-### Vad att inkludera i förfrågningar
-
-1. **Exakt uppgift** - "Skapa en komponent som gör X"
-2. **Filvägar** - Var ska detta hamna?
-3. **Begränsningar** - Några specifika krav?
-4. **Kontext** - Vad relaterar detta till?
-5. **Referens** - "Följ TEAM_STANDARDS.md-standarder"
-
-### Förväntad svarsformat
-
-- Koden följer detta dokuments standarder
-- Commit-meddelanden använder det format som anges här
-- Komponenter har TypeScript-interfaces
-- Commits är korrekt formaterade
+Tool-enforced standards are more reliable than prose, and separating mandatory
+rules from recommendations prevents an AI-generated suggestion from becoming an
+accidental team policy.
 
 ---
 
-## 8. Framtida lärområden
+# 6. Working with AI
 
-Det här dokumentet kommer växa när vi lär oss tillsammans. Ämnen att lägga till:
+AI should use these standards to **teach the reasoning behind the workflow**, not
+only produce checklists.
 
-- **API-design** - Hur man strukturerar API-endpoints
-- **Prestanda** - Optimera kod och databaser
-- **Säkerhet** - Skydda användardata och system
-- **Testning** - Skriva effektiva tester
-- **Driftsättning** - Få kod till produktion
-- **Övervakning** - Spåra programkörningens hälsa
-- **Databasdesign** - Schema och frågeoptimerering
+When helping create an issue, PR description, review or implementation plan:
 
-Varje sektion följer samma pedagogiska tillvägagångssätt: förklara "varför" och visa exempel.
-
----
-
-## 7. Roller & Eskalering
-
-### Teamet I Mitten - Börja Alltid Här
-
-**Ditt team hjälper varandra först.** Ni är varandras första linje.
-
-**Roller i teamet:**
-- **Utvecklare** (alla) - Bygg, testa, dokumentera, presentera
-- **Team Lead** (roterande) - Samordning, möten, hinder, kontakt med PL
-- **C/C++-specialist** - Native-modulen (back-testing)
-- **Frontend/Backend** - Lösningen (gränssnitt, logik, API)
-
-**Viktigt:** Din insats måste vara synlig!
-- Dokumentera i Git (commits, branches)
-- Bidra till tester och dokumentation
-- Förklara dina val i beslutslogg
-- Presentera din del
-
-### Eskalering När Det Krånglar
-
-**Steg 1: Felsök i teamet**
-- Läs felmeddelandet tillsammans
-- Sök i README och beslutslogg
-- Fråga varandra
-
-**Steg 2: Ta det till PL (Projektledare)**
-- PL är din närmaste support
-- PL hjälper er strukturera problemet
-- PL avgör nästa steg
-
-**Steg 3: Techsupport (om PL säger det)**
-- Endast avgränsade tekniska blockerare
-- Beskriv: problema, vad ni testat, felmeddelande, repo/branch
-
-**Steg 4: Arkitekt (endast strukturella miljöproblem)**
-- Via PL
-- Inte för kodproblem – bara miljö/infrastruktur
-
-### Specialister & Feedback
-
-**CTO (Teknisk)**
-- Live-workshop v1 (17 aug)
-- Feedback via inspelad film (28 sep)
-- Baserat på ert CTO-underlag
-
-**UX-specialist (Användarupplevelse)**
-- Live-workshop v1 (17 aug)
-- Feedback via inspelad film (5 okt)
-- Baserat på er inspelad demo
-
-**Delivery Manager (Leveransprocess)**
-- Live-workshop v1 (17 aug)
-- Feedback via inspelad film (5 okt)
-- Baserat på scope, planering, dokumentation
-
-### Extern Bedömning
-
-**Programansvarig**
-- Följer upp kursmål om professionella dialoger (fredagar)
-- Godkänner dokumentation
-- Sätter betyget tillsammans med PL
-
-**Kund (Avanza)**
-- Ger caset
-- Live feedforward vid kvaldemo (22 okt)
-- **Påverkar INTE ditt betyg**
-
-**Jury (Finaldagen)**
-- Bedömer de 4 finalistteamen
-- Avgör tävlingen
-- **Påverkar INTE ditt betyg**
+1. resolve the relevant project standards through `CONTEXT_REGISTRY.yaml`
+2. use current project facts from registered sources
+3. explain why the suggested process helps
+4. distinguish project standards from recommended practices
+5. avoid presenting an unrecorded recommendation as a team decision
 
 ---
 
-## 7. Instruktioner för AI-agenter (När gruppen frågar dig)
-
-**Du är inte bara en kodgenerator – du är en pedagogisk guide för ett professionellt utvecklingsprojekt.**
-
-### Din Roll
-
-Du hjälper gruppen att:
-- ✅ Uppfylla **kursmålen** (17 stycken)
-- ✅ Nå **VG på de fyra kritiska målen**
-- ✅ Arbeta **agilt och professionellt**
-- ✅ **Dokumentera allt** för examination
-- ✅ Förstå **varför** vi gör saker, inte bara hur
-
-### När Gruppen Frågar Dig - Gör ALLTID Detta
-
-1. **Koppla till kursmål** - "Detta uppfyller kurmål Färdighet 5..."
-2. **Förklara pedagogiskt** - Varför gör vi det här? Vad lär vi oss?
-3. **Fokusera på VG-målen** - Särskilt dessa fyra:
-   - Tolka kundbehov och bryta ned dem
-   - Göra välgrundade estimeringar och riskbedömningar
-   - Bidra till utveckling, QA och dokumentation
-   - Ta ansvar för planering, genomförande, uppföljning
-
-4. **Dokumentera för examinatorn** - Allt ska kunna spåras i Git
-5. **Be gruppen förklara** - "Kan du förklara varför du valde detta?"
-
-### Exempel: Rätt vs Fel Vägledning
-
-**❌ FEL (bara kod):**
-```
-"Här är React-komponenten. Kopiera den och ändra X."
-```
-
-**✅ RÄTT (pedagogisk + kursmål):**
-```
-"Vi behöver denna komponent för att uppfylla:
-1. Kursmål Färdighet 5 - Bidra till utveckling
-2. VG-mål: Kvalitetssäkring - TypeScript-interfaces
-
-Här är komponenten:
-- Varför denna arkitektur?
-- Hur testar vi den?
-- Hur dokumenterar vi den i Git?
-
-Kan du förklara varför denna komponent är viktig för Annas portföljöversikt?"
-```
-
-### Fokus på De Fyra VG-Målen
-
-**1. Tolka kundbehov och bryta ned dem**
-- Är vi klara på vad Anna behöver?
-- Är features prioriterade rätt?
-- Finns det i DEFINITION_OF_DONE.md?
-
-**2. Göra välgrundade estimeringar och riskbedömningar**
-- Hur lång tid tar denna feature?
-- Vilka risker finns? (Back-testing = högrisk)
-- Vilka beroenden finns?
-- Är detta dokumenterat?
-
-**3. Bidra till utveckling, QA och dokumentation**
-- Är det testbar kod?
-- Är det dokumenterat?
-- Är det kodgranskad?
-- Är Git-historiken tydlig?
-
-**4. Ta ansvar för planering, genomförande, uppföljning**
-- Vem gör vad?
-- Deadline för varje sprint?
-- Status-uppdateringar?
-- Dokumenterade beslut?
-
-### Använd Dessa Dokument ALLTID
-
-- `PROJECT_CONTEXT_ROUTER.md` - "Det här uppfyller Annas behov av..."
-- `DEFINITION_OF_DONE.md` - "Checklist innan vi är klara..."
-- `TEAM_STANDARDS.md` (denna fil) - "Enligt våra standards..."
-
-### Granska Gruppens Förförståelse
-
-**Fråga alltid:**
-- "Varför gör vi detta?"
-- "Hur kopplar detta till Annas problem?"
-- "Vad är risken om vi inte gör detta rätt?"
-- "Hur dokumenterar vi detta för examinatorn?"
-
-Om de inte kan förklara det = de förstår det inte ännu = lära dem först.
-
----
-
-## Nyckelpoänger
-
-1. **Commit-meddelanden berättar en historia** - Gör dem tydliga och konsekventa
-2. **Branches organiserar arbete** - Använd namngivning för att visa vad du gör
-3. **Typer spelar roll** - TypeScript, C++ bästa praxis, Java-mönster
-4. **Lagarbete är lättare** med standarder - Alla vet reglerna
-5. **Lära tillsammans** - Det här dokumentet växer med vår erfarenhet
-
----
-
-**Frågor?** Fråga teamet eller en AI-agent med referens till det här dokumentet.
+**Status:** ACTIVE
+**Version:** 2.0
+**Last updated:** 2026-09-18
