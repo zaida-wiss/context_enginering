@@ -1,6 +1,6 @@
 ---
 name: data_sources
-description: "Guide to data sources (see EXTERNAL_SOURCES.yaml for authoritative registry)"
+description: "Guide to data sources (see SOURCES.yaml for authoritative registry)"
 metadata:
   type: reference
   updated: 2026-09-15
@@ -8,9 +8,9 @@ metadata:
 
 # 📊 DATA SOURCES — Where to Find Information
 
-**AUTHORITATIVE REGISTRY:** [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml)
+**AUTHORITATIVE REGISTRY:** [`data/SOURCES.yaml`](data/SOURCES.yaml)
 
-This file is a **human-friendly guide** only. For actual URLs, IDs, and access methods, see EXTERNAL_SOURCES.yaml.
+This file is a **human-friendly guide** only. For actual URLs, IDs, and access methods, see SOURCES.yaml.
 
 ---
 
@@ -18,7 +18,7 @@ This file is a **human-friendly guide** only. For actual URLs, IDs, and access m
 
 ### 1. WORK COMPLETED THIS WEEK
 
-**Source:** `GITHUB_MERGED_PRS` (see EXTERNAL_SOURCES.yaml)
+**Source:** `GITHUB_MERGED_PRS` (see SOURCES.yaml)
 
 Filter: `merged_at` within REPORTING_PERIOD, `base.ref == 'develop'`
 
@@ -26,7 +26,7 @@ Fallback: GitHub web merged PRs page, then Google Sheets if available
 
 ### 2. ACTIVE ISSUES (open, with owner)
 
-**Source:** `GITHUB_OPEN_ISSUES` (see EXTERNAL_SOURCES.yaml)
+**Source:** `GITHUB_OPEN_ISSUES` (see SOURCES.yaml)
 
 Filter: `state=open`, `assignees.length > 0`, `updated_at` within REPORTING_PERIOD
 
@@ -44,19 +44,19 @@ Required: 7 verified members
 
 ### 4. PROJECT BOARD STATUS (optional)
 
-**Source:** `GITHUB_PROJECT_BOARD` (see EXTERNAL_SOURCES.yaml)
+**Source:** `GITHUB_PROJECT_BOARD` (see SOURCES.yaml)
 
 Can be derived from open issues if unavailable
 
 ### 5. RISK & ASSET REGISTER (optional)
 
-**Source:** `GOOGLE_RISK_REGISTER` (see EXTERNAL_SOURCES.yaml)
+**Source:** `GOOGLE_RISK_REGISTER` (see SOURCES.yaml)
 
 Requires Google Drive Connector
 
 ### 6. MEETING PROTOCOL (fallback)
 
-**Source:** `GOOGLE_MEETING_PROTOCOL` (see EXTERNAL_SOURCES.yaml)
+**Source:** `GOOGLE_MEETING_PROTOCOL` (see SOURCES.yaml)
 
 Requires Google Drive Connector
 
@@ -64,7 +64,7 @@ Requires Google Drive Connector
 
 ## Access Methods
 
-For each source, see EXTERNAL_SOURCES.yaml for:
+For each source, see SOURCES.yaml for:
 - Primary access method (preferred)
 - Fallback chain (try in order)
 - Forbidden methods (never use)
@@ -73,4 +73,4 @@ For each source, see EXTERNAL_SOURCES.yaml for:
 ---
 
 **Last updated:** 2026-09-15  
-**All source URLs, IDs, and methods:** see `_memory/EXTERNAL_SOURCES.yaml`
+**All source URLs, IDs, and methods:** see `data/SOURCES.yaml`
