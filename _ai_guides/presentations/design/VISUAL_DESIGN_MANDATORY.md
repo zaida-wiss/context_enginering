@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 4.5
+  version: 4.6
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -49,9 +49,29 @@ The deck uses:
 - low-glare surfaces
 - clear hierarchy
 - responsive cards
-- cards as the primary information language, not tables/rows
+- cards as the primary information language when the slide type is item-based
+- slide-type-specific visual structures when chronology, dependencies, risk flow or priority order are the actual information problem
+- deliberate whitespace that creates grouping and breathing room instead of decorative emptiness
 
-One work/information item = one card unless a slide authority explicitly defines a diagram/group.
+### NPF-first visual composition
+
+Every slide must pass a quick-scan test:
+- one dominant purpose is recognizable within a few seconds
+- the eye has a clear entry point and reading direction
+- no more than one primary visual emphasis competes for attention
+- related information is spatially grouped
+- unrelated information is visibly separated
+- recurring symbols, colors and component positions keep the same meaning
+- decorative elements never compete with data or provenance
+- dense content is paginated instead of compressed
+
+The deck must feel **predictable without becoming monotonous**:
+- stable header, palette, card language and provenance grammar
+- varied slide-level composition appropriate to the content type
+- no arbitrary redesign from one slide to the next
+- no generic 2×2 grid when a timeline, dependency flow or ordered sequence communicates the meaning better
+
+One work/information item = one card unless a slide authority explicitly defines a diagram, timeline, compact priority row or grouped structure.
 
 ---
 
@@ -164,8 +184,8 @@ Do not duplicate those numeric card-internal rules here.
 Rendered meeting slides use a two-level header hierarchy.
 
 ### Primary header — meeting point only
-- contains the ordinary meeting-point number + canonical meeting-point title
-- examples: `✏️ 1. Sprint in progress`, `✏️ 2. Nuläge och närmaste deadline`
+- contains the canonical circled meeting-point symbol + canonical meeting-point title
+- examples: `✏️ ① Avklarat sedan förra mötet`, `✏️ ② Nuläge och deadlines`
 - the continuation letter does **not** belong in this primary header
 - primary header remains 36 pt minimum
 
@@ -190,8 +210,8 @@ Rendered meeting slides use a two-level header hierarchy.
 Canonical example:
 
 ```text
-✏️ 1. Sprint in progress                                      (4/6)
-c. Påbörjat, inte klart
+✏️ ① Avklarat sedan förra mötet                              (4/6)
+Teamsammanfattning till mötesprotokollet
 ```
 
 ---
