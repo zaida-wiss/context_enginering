@@ -23,7 +23,7 @@ authoritative_sources:
   visual: design/VISUAL_DESIGN_MANDATORY.md
   data_collection: monday_meeting/data/DATA_COLLECTION_MANDATORY.md
   team_roster: ../../../_memory/TEAM_ROSTER.md
-  external_urls: ../../../_memory/EXTERNAL_SOURCES.md
+  external_urls: ../../../data/SOURCES.md
 
 execution_sequence:
   - step1_read_mandatory_files
