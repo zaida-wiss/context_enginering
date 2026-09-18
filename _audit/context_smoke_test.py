@@ -84,6 +84,8 @@ def main():
     render_gate = read("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
     system_contract = read("_ai_guides/presentations/SYSTEM_CONTRACT.yaml")
     authority_registry = read("_ai_guides/presentations/AUTHORITY_REGISTRY.yaml")
+    design_authority = read("_ai_guides/presentations/design/DESIGN_AUTHORITY.md")
+    presentation_architecture = read("_ai_guides/presentations/ARCHITECTURE.md")
     sources = read("data/SOURCES.yaml")
 
     print("=" * 80)
@@ -290,6 +292,21 @@ def main():
         'file: "../AI_FRAMEWORK.yaml"' in system_contract
         and 'required_before_presentation_authorities: true' in system_contract
         and "../AI_FRAMEWORK.yaml" in read("_ai_guides/presentations/MANDATORY_READING_ORDER.md"),
+        failures,
+    )
+
+    require(
+        "presentation authority rank is ownership-only",
+        "AUTHORITY OWNERSHIP ORDER" in design_authority
+        and "Do **not** use it to silently resolve a genuine contradiction" in design_authority
+        and "ask the user to decide" in design_authority,
+        failures,
+    )
+    require(
+        "presentation architecture delegates genuine conflicts to global framework",
+        "AUTHORITY OWNERSHIP HIERARCHY" in presentation_architecture
+        and "AI_FRAMEWORK.yaml" in presentation_architecture
+        and "never by rank alone" in presentation_architecture,
         failures,
     )
 
