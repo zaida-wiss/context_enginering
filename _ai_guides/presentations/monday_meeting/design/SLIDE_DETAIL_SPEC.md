@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.5
+  version: 2.6
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -34,22 +34,41 @@ Any visual example in this file is descriptive only.
 
 # GLOBAL CONTENT RULES
 
-## Meeting-point headers — atomic identity
+## Meeting-point headers — fixed meeting-point title + page subtitle
 
-Slides ①–⑭ use the complete pattern:
+Slides ①–⑭ always preserve the **official meeting-point title** as the primary
+slide heading. A page-specific description is a separate subtitle and must
+never replace the meeting-point heading.
 
-`✏️ [MEETING POINT] [TITLE]`
+Canonical two-level structure:
 
-Examples:
-- `✏️ ⑨ Prioritering & scope`
-- `✏️ ⑬ Nästa steg`
-- continuation: `✏️ ⑨a Prioritering & scope`
+```text
+✏️ [MEETING POINT] [OFFICIAL MEETING-POINT TITLE]
+[PAGE-SPECIFIC SUBTITLE]
+```
+
+Example for meeting point 1:
+
+```text
+✏️ ① Avklarat sedan förra mötet
+Mergat till develop
+```
+
+Another page in the same meeting point:
+
+```text
+✏️ ① Avklarat sedan förra mötet
+Backend — mergat till collection branch
+```
 
 Hard rules:
-- the pen and meeting-point number are one semantic header identity
+- the meeting-point number and its official title are mandatory on every slide belonging to that meeting point
+- the page-specific content label is always subordinate: subtitle/section label, never the primary heading
+- never replace `Avklarat sedan förra mötet` with `Mergat till develop`, `Påbörjat arbete`, `Teamsammanfattning` or any other page content label
+- continuation/subsection markers may be shown as secondary navigation, but they do not replace the official meeting-point number/title
+- every continuation slide repeats the full official meeting-point heading
+- the pen and meeting-point number remain one semantic header identity
 - never render `✏️` without the meeting-point number
-- never drop the meeting-point number while keeping the pen/title
-- continuation slides preserve the same meeting-point identity
 - cover ⓪ has no pen/meeting-point header
 
 ## Card identity / timestamp content rule
@@ -219,100 +238,147 @@ Do not include design-process explanations.
 
 ---
 
-# ① SPRINT IN PROGRESS — COMPLETED + STARTED SO FAR
+# ① AVKLARAT SEDAN FÖRRA MÖTET
+
+Official meeting-point title shown on **every** slide in this section:
+
+`✏️ ① Avklarat sedan förra mötet`
+
+Page-specific descriptions such as `Mergat till develop`, `Backend collection
+branch`, `Native collection branch` and `Teamsammanfattning` are subtitles,
+never replacements for the official meeting-point title.
 
 Use the active sprint resolved from the request timestamp. Meeting point 1
 covers `SPRINT_START inclusive → DATA_CUTOFF inclusive`, where sprint boundaries
 are Monday 09:00 in `Europe/Stockholm`. It may not claim work after the actual
 data cutoff merely because the cover displays the full scheduled sprint end.
-Six cards is the standard capacity per physical slide, never a total limit.
-Create as many lowercase-letter continuations as required and never omit
-grounded work.
+
+## Scope: only completed work
+
+Meeting point 1 is the completed-work section. Detailed work cards here show
+only work already completed according to verified delivery evidence.
+
+It MUST NOT contain:
+- decisions that still need to be made
+- open questions or decision candidates
+- future actions or prioritization proposals
+- backlog or unstarted work
+- ordinary work-in-progress cards
+- AI proposals about what the team should do next
+
+Those belong to later meeting points, especially ③–⑤, ⑨, ⑩, ⑬ and ⑭.
+
+A decision may appear in meeting point 1 only when it was **already made** during
+the covered period and is verified by an approved source. Never include a
+planned decision, a decision candidate, an unresolved question or an AI-suggested
+decision here.
 
 “Done” means a verified merge during the sprint window to either `develop` or
 the owning team's registered collection branch. Project-board `Done` is a
 consistency check, not a substitute for merge evidence. Show mismatches instead
 of guessing. Deduplicate work promoted through multiple branches.
 
-Mandatory order:
-1. `①` — merged to `develop`
-2. `①a` — merged to Backend collection branch
-3. `①b` — merged to Native collection branch
-4. `①c` — started but not yet done
-5. `①d` — AI-proposed team summaries for the meeting protocol
+Mandatory content order:
+1. merged to `develop`
+2. merged to Backend collection branch
+3. merged to Native collection branch
+4. AI-proposed team summaries for the meeting protocol
 
-Continuation naming:
-- Backend: `①a`, `①aa`, `①ab`, ...
-- Native: `①b`, `①ba`, `①bb`, ...
-- Started work: `①c`, `①ca`, `①cb`, ...
-- Team summaries: `①d`, `①da`, `①db`, ...
+Six cards is the standard capacity per physical slide, never a total limit.
+Create as many continuation slides as required and never omit grounded completed
+work.
 
-## ① — Merged to `develop`
+## Subtitle — Mergat till `develop`
+
+Primary heading remains:
+`✏️ ① Avklarat sedan förra mötet`
+
+Subtitle:
+`Mergat till develop`
 
 Show every PR actually merged to `develop` during the sprint window. Sort
 oldest first. Each card contains verified PR number/title, grounded contribution,
-contributor, team, merger/reviewer when verified and merge timestamp. Do not
-include collection-branch-only merges here.
+actual contributor(s), team, merger/reviewer when verified and merge timestamp.
+Do not include collection-branch-only merges here.
 
-## ①a — Backend collection-branch merges
+## Subtitle — Backend: mergat till collection branch
+
+Primary heading remains:
+`✏️ ① Avklarat sedan förra mötet`
 
 Canonical branch: `Java-Development-Environment`. Show every verified merge to
-this branch during the sprint window, after all `develop` pages. Use the same
-evidence fields as ① where available.
+this branch during the sprint window after the `develop` pages. Use the same
+evidence fields as above where available.
 
-## ①b — Native collection-branch merges
+## Subtitle — Native: mergat till collection branch
+
+Primary heading remains:
+`✏️ ① Avklarat sedan förra mötet`
 
 Canonical branch: `C/C++-Native`. Show every verified merge to this branch
-during the sprint window, after all Backend pages. Use the same evidence fields
-as ① where available.
+during the sprint window after Backend. Use the same evidence fields as above
+where available.
 
-## ①c — Started but not yet done
+## Subtitle — Teamsammanfattning till mötesprotokollet
 
-Show only unfinished work with verified development/review activity during the
-sprint window that had not reached `develop` or its team collection branch by
-Monday 09:00. Work may have originated earlier, but it belongs here only when
-the source proves that work was actually performed during this period. Do not
-include unstarted backlog, dormant older work or completed work. Review work
-counts as work when the review activity occurred inside the window.
+Primary heading remains:
+`✏️ ① Avklarat sedan förra mötet`
 
-## ①d — AI proposal for meeting-protocol team summaries
-
-This section always comes last in meeting point 1. Create one meaningful
-summary card for each team represented in the sprint evidence. These cards are
-not filler.
+This section always comes last in meeting point 1. Create one meaningful summary
+card for each team represented in the sprint evidence. The summary is primarily
+a summary of **what has been completed**.
 
 Each card is ready to copy into the meeting protocol and contains separate
 blocks:
-- `🔎 AI-analys` — concise synthesis of verified completed and started work
+- `🔎 AI-analys` — concise synthesis of verified completed work
 - `⭐ AI-förslag` — polished proposed protocol wording
-- relevant verified decisions integrated into the wording with their source
-- `👥 ✅ Mötesprotokoll` only after the team has confirmed/copied the wording;
-  before confirmation it remains an AI proposal
+- relevant **already-made verified decisions** only when they materially explain the completed outcome
+- `👥 ✅ Mötesprotokoll` only after the team has confirmed/copied the wording; before confirmation it remains an AI proposal
 
-The proposed protocol wording is approximately 1–10 complete sentences per
-team summary. It must:
-- explain what the team did to move the project forward, grounded in verified evidence
-- include every team member's first name and their verified contribution/work during the relevant sprint period
-- include verified review/help/integration work, not only authored code
-- integrate verified decisions that affected the team's work, with source/date when available
-- distinguish decisions already made from upcoming meeting questions or undecided proposals
-- mention a member with no verified contribution neutrally as `Ingen verifierad aktivitet i underlaget för perioden`; never infer performance or absence
+The proposed protocol wording is approximately 1–10 complete sentences per team
+summary. It must:
+- begin with what the team completed and how it moved the project forward
+- include every team member's first name and their verified contribution during the relevant sprint period
+- include verified review/help/integration work that contributed to completed delivery, not only authored code
+- include only decisions that were already made and verified
+- never include a decision still to be taken, an open meeting question, a future action or an AI-suggested decision
+- mention a member with no verified completed contribution neutrally as `Ingen verifierad avklarad aktivitet i underlaget för perioden`; never infer performance or absence
 
-Summarize what the team completed, what remained started at cutoff, how the work
-advanced the project and any verified decision that materially explains the
-outcome. Never invent progress, decisions, contribution or impact. Use `①da`,
-`①db` and so on when summaries need more space.
+### Required ending — Påbörjat men inte avklarat
+
+At the **very end of each team summary**, after all completed work, add a short
+ending introduced as `Påbörjat men inte avklarat` when qualifying work exists.
+
+An unfinished item may be mentioned here only when BOTH are true:
+1. verified development/review activity occurred during the sprint interval, and
+2. that activity already produced a concrete, source-grounded value even though the overall item is not completed.
+
+For each such item, state:
+- what has already been done
+- what concrete value that completed portion already provides
+- explicitly that the overall item is still not completed
+
+Acceptable examples include:
+- tests already implemented in an unmerged PR
+- a working skeleton/bridge/API layer already implemented but not finished
+- verified responsive behavior already implemented on an active branch
+- reviewed partial integration not yet merged to the delivery branch
+
+Do NOT include:
+- merely assigned work with no implemented value
+- backlog or future plans
+- a branch name alone as proof of value
+- open decisions/questions
+- what the team should do next
+
+There is **no separate work-in-progress subsection inside meeting point 1**.
+Detailed unfinished work belongs to points ③–⑤ and ⑨. Meeting point 1 may only
+mention valuable unfinished progress in the final lines of the relevant team
+summary.
 
 Nothing in meeting point 1 may describe work outside the active sprint start to
-data-cutoff interval. Backlog, future plans and work with no verified activity
-during the period belong to later meeting points.
-
-The deck remains a forward-working sprint document:
-- point 1 establishes verified progress so far in the active sprint
-- points 3–5 turn remaining team work into concrete next actions
-- point 9 prioritizes the remaining sprint horizon from data cutoff to sprint end
-- future scheduled facts use their verified source symbol
-- AI-proposed future actions remain marked `⭐ AI-förslag`; they are never presented as completed facts
+data-cutoff interval. Backlog, future plans, open decisions and work with no
+verified completed or partial value belong to later meeting points.
 
 ---
 
@@ -340,7 +406,7 @@ Do not invent progress percentages, days of delay or actions.
 Purpose: define what Frontend should do next.
 
 Include all verified Frontend work relevant to the upcoming period:
-- active unfinished work carried forward from ①c
+- active unfinished work verified from GitHub/issues/PRs/branches during the sprint interval
 - assigned backlog not yet started
 - future work already documented in the board/roadmap
 - older open work with no verified recent activity
@@ -787,5 +853,5 @@ active_items_already_merged_to_collection_branch_count == 0
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.4
-**Last updated:** 2026-09-17
+**Version:** 2.6
+**Last updated:** 2026-09-18
