@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.1
+version: 1.2
 metadata:
   type: registry
   critical: true
@@ -40,22 +40,32 @@ registries:
 
 logical_destinations:
   memory:
-    presentation_schedule:
-      path: "_memory/presentations/SCHEDULE.yaml"
-    presentation_milestones:
-      path: "_memory/presentations/MILESTONES.yaml"
-    presentation_roadmap:
-      path: "_memory/presentations/TEAM_ROADMAP.yaml"
-    current_sprint:
+    current_sprint_schema:
       path: "_memory/presentations/CURRENT_SPRINT.yaml"
     team_roster:
       path: "_memory/TEAM_ROSTER.md"
+
+  data:
+    course_schedule:
+      path: "data/manual/course/TEAM_SCHEDULE.yaml"
+    course_schedule_guide:
+      path: "data/manual/course/SCHEDULE.md"
+    course_milestones:
+      path: "data/manual/course/MILESTONES.yaml"
+    course_roadmap:
+      path: "data/manual/course/TEAM_ROADMAP.yaml"
+    course_deadlines:
+      path: "data/manual/course/COURSE_DEADLINES.md"
+    cto_feed_forward:
+      path: "data/manual/course/CTO_FEED_FORWARD.md"
+    cto_feed_forward_instructions:
+      path: "data/manual/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
 
   decisions:
     confirmed:
       path: "docs/decisions/"
 
-  data:
+  storage:
     manual:
       path: "data/manual/"
     snapshots:
