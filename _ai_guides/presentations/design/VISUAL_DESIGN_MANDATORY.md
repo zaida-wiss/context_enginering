@@ -223,35 +223,89 @@ Nearest-focus boxes are supporting explanation cards:
 
 ## 5. CARD GRIDS — MAXIMUM DENSITY, NOT TARGET
 
-### Meeting point 9: fixed four-team board
+### Meeting point 9: compact stacked priority view
 
-Every physical slide belonging to meeting point 9 uses exactly these four
-vertical columns, in this order:
+Meeting point 9 is a deliberate exception to the normal card-grid language.
 
-`Frontend | Backend | Native | Cross-team`
+Do **not** use four team columns.
 
-1. `Frontend`
-2. `Backend`
-3. `Native`
-4. `Cross-team`
+Use one full-width vertical flow, organized by execution priority:
 
-The columns classify ownership and impact. `Cross-team` is used only when work
-genuinely spans or unlocks multiple teams; do not duplicate the same item in a
-team column and the cross-team column.
+`Prioritering först → Parallellt → Backlog — lägre prioritet → Förslag framåt`
 
-Hard rules:
-- exactly four team columns on every slide for point 9
-- column headers remain visible and use at least the section-header minimum
-- empty team columns remain visible and show a verified empty state
-- keep the fixed `1×4` team-column structure; cards/text blocks stack vertically inside their owning column
-- card height may adapt to text length, but the fixed four-column structure never changes
-- narrow columns must not force text below component minima
-- if content cannot fit accessibly, continue as `9a`, `9b`, `9c`, `9d`, `9e` and so on; do not add a fifth column
-- status color may support meaning but never replaces status/source symbols
-- point 9 renders each PR heading as `📌 #[PR_NUMBER]` with a grounded contribution line directly below
-- point 9 visualizes issue order and dependency direction rather than describing them only in prose
-- point 9 keeps `🔎 AI-analys` and `⭐ AI-förslag` visible at item level
-- provenance remains visible inside every relevant item
+#### Compact active row
+
+For `Prioritering först` and `Parallellt`, each existing work item is a
+compact row/block:
+
+```text
+#[ISSUE]  pedagogisk förklaring  verifieringssymbol
+```
+
+Visual rules:
+- stack rows tightly but readably
+- issue number is the strongest element in the row
+- pedagogical explanation follows directly on the same row when it fits
+- allow a second line only when necessary
+- verification/provenance symbol sits at the right edge or directly after text
+- no bottom information zone is required for this compact point-9 row
+- no person row, branch row, timestamp row or decorative empty card area
+- use thin separators or subtle row surfaces rather than large cards
+- keep gaps near their minimum-approved values before reducing text size
+- do not vertically distribute rows to fill the slide height
+
+#### Proposed row
+
+A proposed new/corrective issue uses the same compact geometry but must remain
+visibly distinct through the proposal label:
+
+```text
+⭐ Skapa issue: [kort namn] — [kort varför]
+⭐ Korrigera #123 — [kort ändring]
+```
+
+A proposal may appear in `Prioritering först` or `Parallellt` when it is
+required to make the current plan valid or remove an important blocker.
+Do not visually demote it merely because it does not yet exist as a GitHub issue.
+
+#### Backlog group
+
+Backlog rows are even more compact:
+- issue number
+- short recognition title if needed
+- verification symbol
+- no pedagogical explanation
+
+#### Future-proposal group
+
+Ordinary non-urgent proposals appear last under `Förslag framåt`.
+
+Keep this group compact:
+- proposal label
+- short proposed issue/correction
+- one short reason at most
+
+Do not include full acceptance criteria on the slide.
+
+#### Hierarchy
+
+1. `Prioritering först` — strongest group heading
+2. `Parallellt` — clear secondary group
+3. `Backlog — lägre prioritet` — quiet compact group
+4. `Förslag framåt` — compact proposal group, unless an item is promoted upward
+
+Within each group, physical top-to-bottom order communicates priority.
+
+Do not use equal-sized cards that make all work look equally important.
+Do not reserve empty team columns.
+Do not repeat team ownership unless needed for interpretation.
+
+When ownership needs to be visible, use a short text team label and/or the
+canonical team-colored issue number. Color alone never communicates ownership.
+
+If rows cannot fit accessibly, continue as `9a`, `9b` and so on while
+preserving the same execution order.
+
 
 ### Meeting point ①–①d
 - six cards is the standard capacity per physical slide; meeting point 1 has no total card or slide limit
