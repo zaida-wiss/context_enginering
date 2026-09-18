@@ -251,18 +251,40 @@ sources:
   GOOGLE_RISK_REGISTER:
     source_id: "GOOGLE_RISK_REGISTER"
     classification: "OPTIONAL"
-    purpose: "Risk and asset register"
+    purpose: "Canonical project risk and asset register"
     document_id: "1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F"
+    source_type: "drive_xlsx_workbook"
     primary:
       method: "google_drive_connector"
       url: "https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/"
-      note: "Requires Google Drive Connector"
-    formats:
-      csv_risks: "https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=1796827285"
-      csv_assets: "https://docs.google.com/spreadsheets/d/1A8XHxyAdbyrWlHSWTNgtwkKACdSiUr3F/export?format=csv&gid=684132349"
-    tabs:
-      risk_management: "gid=1796827285"
-      assets: "gid=684132349"
+      note: "Stored in Google Drive as Risk-Management-Register.xlsx; read through Drive file access rather than native Google Sheets metadata."
+    workbook_structure:
+      sheets:
+        - "workbook guide / workshop overview"
+        - "ASSETS"
+        - "RISK REGISTER"
+        - "SUMMARY"
+        - "GUIDE & SCALES"
+        - "validation lists"
+      canonical_risk_fields:
+        - "ID"
+        - "Asset / system"
+        - "Category"
+        - "Risk — what could go wrong?"
+        - "Cause / vulnerability"
+        - "Consequence / impact"
+        - "Likelihood"
+        - "Impact"
+        - "Risk score"
+        - "Risk level"
+        - "Response"
+        - "Mitigation / control"
+        - "Owner"
+        - "Likelihood after fix"
+        - "Impact after fix"
+        - "Residual score"
+        - "Residual level"
+        - "Status"
     allowed_access_methods:
       - "google_drive_connector"
 
