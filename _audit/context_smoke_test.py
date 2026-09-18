@@ -358,6 +358,20 @@ def main():
     )
 
     require(
+        "presentation typography keeps one primary font family",
+        "One primary font family per deck" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        and "inconsistent_primary_font_family_count == 0" in render_gate,
+        failures,
+    )
+    require(
+        "required meeting text stays native and editable",
+        "editable_text:" in system_contract
+        and "native editable/selectable" in system_contract
+        and "required_text_rasterized_count == 0" in render_gate,
+        failures,
+    )
+
+    require(
         "NPF five-second scan gate is active",
         "Five-second scan test" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
         and "five_second_scan_failure_count == 0" in render_gate,
