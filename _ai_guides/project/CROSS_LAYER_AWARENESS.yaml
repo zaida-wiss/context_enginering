@@ -1,0 +1,266 @@
+---
+name: cross_layer_awareness
+description: Shared reasoning model for Frontend, Backend and Native/System integration across active work
+version: 1.0
+metadata:
+  type: project_authority
+  status: active
+  last_updated: 2026-09-18
+---
+
+# Cross-layer awareness
+
+## Purpose
+
+This standard helps AI reason across Frontend ↔ Backend ↔ Native/System rather
+than treating each layer as an isolated project.
+
+It is used by:
+- coding assistance
+- issue creation
+- sprint planning
+- risk analysis
+- dependency analysis
+- Monday Meeting presentations
+
+## Core principle
+
+A local change can be technically correct and still create system-level
+problems.
+
+Therefore, when a task touches an integration boundary, inspect the relevant
+surrounding system context before giving confident guidance.
+
+## Integration chain
+
+Model important flows as:
+
+```text
+consumer
+  ↓
+contract / data shape / function boundary
+  ↓
+producer
+  ↓
+downstream effect
+```
+
+Examples of boundaries:
+- Frontend ↔ Backend HTTP API
+- Backend ↔ Native/JNA
+- shared data model/schema
+- authentication/session contract
+- persistence/data contract
+- error format
+- units/currency/precision
+- build/runtime configuration
+
+## Active-branch awareness
+
+When tools and permissions allow, relevant analysis should inspect **active work
+branches**, not only `develop` or `main`.
+
+Why:
+- contract divergence often begins before merge
+- two teams can implement different assumptions in parallel
+- waiting until integration can make rework much more expensive
+
+Relevant branches are those that:
+- touch the same contract/integration point
+- implement producer/consumer sides of the same flow
+- modify shared files/types/config
+- are linked to dependent issues
+- are currently active enough to affect near-term integration
+
+Do not scan unrelated branches merely for completeness.
+
+## Branch maturity
+
+Active branches can be incomplete or experimental.
+
+Classify observations carefully:
+
+### Verified mismatch
+
+Both relevant sides are inspectable and incompatible.
+
+### Needs synchronization
+
+Important contract detail is missing, ambiguous or differently interpreted.
+
+### Likely compatible
+
+Available evidence appears compatible but integration evidence is incomplete.
+
+### Verified compatible
+
+Both sides agree and meaningful integration/test evidence exists.
+
+### Cannot verify yet
+
+One or more sides are missing, inaccessible or too incomplete to compare.
+
+The status describes the technical evidence, not the competence of a person/team.
+
+## Existing contract check
+
+When a task approaches an integration boundary, first ask:
+
+- Does a contract already exist?
+- Where is it documented?
+- Is it current?
+- Do active implementations still match it?
+- Is it testable/verifiable?
+
+If a stable contract exists, help the user work against it.
+
+If implementation diverges, surface the mismatch and evidence.
+
+## Missing-contract signal
+
+AI should also detect when a contract **should probably exist but does not yet**.
+
+Signals include:
+- two teams are implementing opposite sides of an interface
+- repeated questions about field names/types/errors
+- mocks contain assumptions not documented elsewhere
+- one layer is blocked waiting for another
+- parallel branches invent their own shapes
+- a shared function/API is becoming a critical dependency
+
+Use:
+
+```text
+🔎 AI-analys — kontraktsbehov
+```
+
+Then explain:
+- which layers need the contract
+- what decisions need to be explicit
+- what could diverge if work continues
+- what minimum contract is enough to unblock work
+
+## Contract proposal
+
+When useful, AI may propose a contract as `⭐ AI-förslag`.
+
+A proposal should include only fields supported by known requirements and mark
+unknowns explicitly.
+
+Useful contract dimensions can include:
+- endpoint/function name
+- request/input fields
+- response/output fields
+- types
+- required/optional/null behavior
+- error behavior
+- units/precision
+- version/compatibility expectation
+- owner/decision point
+- verification/test
+
+The AI must not present its proposed contract as a decided team contract.
+
+## Early technical-debt signal
+
+Cross-layer analysis may discover a pattern that could become technical debt,
+for example:
+- duplicated models drifting apart
+- hardcoded mock assumptions spreading across layers
+- undocumented integration behavior becoming relied upon
+- multiple long-lived branches carrying incompatible versions
+- repeated manual adapters compensating for an unstable contract
+
+At this stage, signal:
+
+```text
+🔎 AI-analys — möjlig teknisk skuld
+```
+
+and pass the reasoning to the technical-debt authority.
+
+A cross-layer warning is not automatically verified technical debt.
+
+## Dependency handoff
+
+When a cross-layer issue depends on another team/layer, use
+`DEPENDENCIES_AND_CAPACITY.md` to determine:
+- prerequisite
+- dependent work
+- blocker state
+- sequencing
+- safe parallel work
+- synchronization point
+
+## Risk handoff
+
+When divergence or uncertainty could materially affect an objective, use
+`RISK_MANAGEMENT.md` to determine whether it is a candidate risk.
+
+Example chain:
+
+```text
+contract unclear
+  ↓
+two active branches implement different assumptions
+  ↓
+🔎 AI-analys: needs synchronization
+  ↓
+candidate risk: integration rework/delay
+  ↓
+⭐ AI-förslag: agree minimum contract before more dependent work
+```
+
+## Coding-assistance behavior
+
+When helping with code near an integration boundary:
+
+1. solve the user's local coding problem
+2. identify the relevant boundary
+3. check registered contract/source when available
+4. inspect relevant active branches when access permits
+5. signal mismatch, missing contract or dependency early
+6. explain why the signal matters
+7. propose the smallest useful synchronization step
+
+The AI should not overwhelm the user with unrelated system analysis.
+
+## Evidence and provenance
+
+Use:
+- source-backed fact for verified code/contract state
+- `🔎 AI-analys` for interpretation/early signal
+- `⭐ AI-förslag` for suggested contract/action/sequence
+
+State what was actually inspected.
+
+## Presentation behavior
+
+Monday Meeting analysis re-runs cross-layer reasoning from verified project
+sources.
+
+It does not use another person's private coding conversation as shared project
+evidence.
+
+Presentations may show:
+- verified compatible/mismatch state
+- missing-contract signals
+- cross-team synchronization needs
+- dependencies created by integration
+- proposed next synchronization action
+
+## Learning mode
+
+Explain why strong teams:
+- define contracts before expensive parallel divergence
+- test contracts at integration boundaries
+- inspect work-in-progress when planning integration
+- distinguish experimental branch state from accepted architecture
+- make uncertainty explicit
+- synchronize early instead of relying on late merge conflict discovery
+
+---
+
+**Status:** ACTIVE
+**Version:** 1.0
+**Last updated:** 2026-09-18
