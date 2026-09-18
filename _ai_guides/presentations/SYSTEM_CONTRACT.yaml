@@ -92,7 +92,7 @@ authority:
     owns: "pre-delivery validation"
 
   data_registry:
-    file: "../../_memory/EXTERNAL_SOURCES.yaml"
+    file: "../../data/SOURCES.yaml"
     owns: "registered sources, URLs/IDs, source classifications and fallback order"
 
   data_acquisition:
@@ -109,8 +109,8 @@ execution_receipt:
     - "MANDATORY_READING_ORDER.md"
     - "AUTHORITY_REGISTRY.yaml"
     - "SYSTEM_CONTRACT.yaml"
-    - "../../_memory/EXTERNAL_SOURCES.yaml"
-    - "../../_memory/EXTERNAL_SOURCES.md"
+    - "../../data/SOURCES.yaml"
+    - "../../data/SOURCES.md"
     - "data/DATA_SOURCES.md"
     - "data/DATA_ACQUISITION_CONTRACT.yaml"
     - "design/ACCESSIBILITY_NEURODIVERSITY.md"
@@ -131,7 +131,7 @@ execution_receipt:
 ###############################################################################
 external_sources_policy:
   mode: "ALLOWLIST_ONLY"
-  registry: "../../_memory/EXTERNAL_SOURCES.yaml"
+  registry: "../../data/SOURCES.yaml"
   rules:
     - "Use only registered project sources and their registered fallback chain."
     - "GitHub Connector/API is preferred for GitHub project data."
