@@ -4,7 +4,7 @@ description: MANDATORY — composition order, meeting-point continuity, empty st
 metadata:
   type: structural_authority
   critical: true
-  version: 1.1
+  version: 1.2
 ---
 
 # MONDAY MEETING COMPOSITION ARCHITECTURE
@@ -89,18 +89,23 @@ Do not invent numeric hours, percentages or estimates to make a thread look comp
 
 ## 4. SHARED VISUAL COMPOSITION
 
-The deck uses a consistent responsive card/grid system as its primary visual structure.
+The deck uses a consistent card system as its primary visual language.
 
-The information problem changes **inside** the grid:
+Default slide-level composition is a responsive card/grid system:
 - ②: deadline/course-state cards ordered chronologically
 - ⑥: blocker/dependency cards with optional arrows/connectors
 - ⑦: risk cards that expose risk → mitigation → planning impact
-- ⑨: priority cards grouped as first / parallel / backlog / proposal
 - ⑫: day/plan cards ordered chronologically
 - ⑬: concise action cards
 
-Use fewer/wider cards and continuation slides when needed. Do not require a
-different full-slide composition simply because the information type changes.
+Registered slide-level exception:
+- ⑨ uses vertically stacked execution groups in the order
+  `Prioritering först → Parallellt → Backlog → Förslag framåt`.
+  Cards remain the component language inside each group.
+
+Use fewer/wider cards and continuation slides when needed. No other meeting
+point may introduce a different slide-level composition without an explicit
+registered rule/decision.
 
 ## 5. MEETING-POINT HEADER IDENTITY
 
@@ -135,7 +140,8 @@ official_meeting_points_in_order == true
 silent_meeting_point_skip_count == 0
 unrecorded_omission_count == 0
 cross_slide_thread_break_count == 0
-shared_card_grid_missing_count == 0
+default_card_grid_missing_without_registered_exception_count == 0
+point9_vertical_sequence_missing_count == 0
 meeting_point_header_identity_failure_count == 0
 ```
 
