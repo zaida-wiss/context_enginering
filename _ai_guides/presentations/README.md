@@ -32,7 +32,7 @@ only in a retired file, migrate it to the correct active authority before use.
 | Responsive fit and pagination | `monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md` |
 | Meeting-point content | `monday_meeting/design/SLIDE_DETAIL_SPEC.md` |
 | Data acquisition | `data/DATA_ACQUISITION_CONTRACT.yaml` |
-| Allowed external sources | `_memory/EXTERNAL_SOURCES.yaml` |
+| Allowed external sources | `data/SOURCES.yaml` |
 
 ## Current meeting-point 9 contract
 
