@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.4
+version: 4.5
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -100,31 +100,38 @@ authority:
     owns: "mechanical acquisition algorithm, pagination and filtering"
 
 ###############################################################################
-# MANDATORY READING
+# CONTEXT BOOTSTRAP + TASK BUNDLE
 ###############################################################################
 execution_receipt:
   required_before_build: true
-  must_read_same_execution:
-    - "README.md or presentations/README.md"
-    - "MANDATORY_READING_ORDER.md"
-    - "AUTHORITY_REGISTRY.yaml"
-    - "SYSTEM_CONTRACT.yaml"
-    - "../../data/SOURCES.yaml"
-    - "../../data/SOURCES.md"
-    - "data/DATA_SOURCES.md"
-    - "data/DATA_ACQUISITION_CONTRACT.yaml"
-    - "design/ACCESSIBILITY_NEURODIVERSITY.md"
-    - "design/VISUAL_DESIGN_MANDATORY.md"
-    - "design/READABILITY_HARD_RULES.md"
-    - "design/CARD_COMPONENT_STANDARD.md"
-    - "design/PROVENANCE_AND_AI_LABELING.md"
-    - "data/PR_MERGE_REVIEW_IDENTITY.md"
-    - "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
-    - "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
-    - "monday_meeting/design/TEMPLATE_REFERENCE.html"
-    - "monday_meeting/data/DATA_COLLECTION_MANDATORY.md"
-    - "verification/RENDER_GATE_CHECKLIST.md"
-  missing_file_action: "STOP"
+
+  bootstrap:
+    rule: >
+      Start with the minimal routing chain and read each bootstrap file once from
+      the execution ref.
+    files:
+      - "MANDATORY_READING_ORDER.md"
+      - "AUTHORITY_REGISTRY.yaml"
+      - "INTEGRITY_CONSTRAINT.md"
+      - "SYSTEM_CONTRACT.yaml"
+
+  task_bundle:
+    resolver: "AUTHORITY_REGISTRY.yaml"
+    rule: >
+      Resolve the requested presentation task, then load only the active
+      authorities, validators and registered data dependencies required for that
+      task. Record every loaded file and blob/commit identity in the execution
+      receipt so the same bundle can be reproduced.
+    progressive_loading: true
+    duplicate_rule_loading: false
+
+  source_routing:
+    registry: "../../data/SOURCES.yaml"
+    context_router: "../context/CONTEXT_ROUTING.yaml"
+
+  missing_required_dependency:
+    state: "INCOMPLETE"
+    action: "Apply the relevant SYSTEM_CONTRACT gate before build."
 
 ###############################################################################
 # ALLOWED SOURCES / TOOL ROUTING
