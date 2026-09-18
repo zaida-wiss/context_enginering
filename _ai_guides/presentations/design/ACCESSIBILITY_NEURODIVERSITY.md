@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   for_ai: true
-  version: 2.1
+  version: 2.2
 ---
 
 # 🧠 ACCESSIBILITY & NEURODIVERSITY — ABSOLUTE BOUNDARY
@@ -137,10 +137,10 @@ Rules:
 
 The deck should remain visually predictable across slides.
 
-Predictability does **not** mean every slide uses the same grid. NPF support requires
-stable visual grammar while the slide-level structure matches the information:
-timeline for time, flow/graph for dependencies, risk chain for risk reasoning,
-vertical sequence for priority and cards for discrete items.
+Predictability includes reusing the same responsive card/grid grammar across
+meeting points. Chronology, dependencies, risk and priority should normally be
+expressed through card order, grouping, headings, symbols and connectors rather
+than by changing to a different full-slide composition model.
 
 Use consistently:
 - same background system
@@ -265,7 +265,7 @@ unreadable_projected_text_count == 0
 competing_primary_focus_count == 0
 unclear_reading_direction_count == 0
 npf_visual_grammar_inconsistency_count == 0
-generic_layout_obscuring_information_structure_count == 0
+card_grid_information_hierarchy_failure_count == 0
 ```
 
 Any non-zero count = FAIL.
@@ -288,5 +288,5 @@ No exception is allowed because “it looks better” or “otherwise there are 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.1
+**Version:** 2.2
 **Last updated:** 2026-09-17
