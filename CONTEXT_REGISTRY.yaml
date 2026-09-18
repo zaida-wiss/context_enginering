@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.0
+version: 1.1
 metadata:
   type: registry
   critical: true
@@ -37,6 +37,31 @@ registries:
     path: "data/SOURCES.md"
   context_ingestion:
     path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
+
+logical_destinations:
+  memory:
+    presentation_schedule:
+      path: "_memory/presentations/SCHEDULE.yaml"
+    presentation_milestones:
+      path: "_memory/presentations/MILESTONES.yaml"
+    presentation_roadmap:
+      path: "_memory/presentations/TEAM_ROADMAP.yaml"
+    current_sprint:
+      path: "_memory/presentations/CURRENT_SPRINT.yaml"
+    team_roster:
+      path: "_memory/TEAM_ROSTER.md"
+
+  decisions:
+    confirmed:
+      path: "docs/decisions/"
+
+  data:
+    manual:
+      path: "data/manual/"
+    snapshots:
+      path: "data/snapshots/"
+    derived:
+      path: "data/derived/"
 
 presentation_bootstrap:
   router:
