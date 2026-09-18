@@ -42,18 +42,18 @@ required_datasets:
 
     datasets:
       schedule:
-        file: "_memory/presentations/SCHEDULE.yaml"
-        supporting_file: "_memory/SCHEDULE.md"
+        file: "data/manual/course/TEAM_SCHEDULE.yaml"
+        supporting_file: "data/manual/course/SCHEDULE.md"
         purpose: "Meeting times, recurring events, weekly PL focus and school-task instructions"
         required_for: "framsida PL focus and school-task Vad/När/Var/Varför/Hur"
 
       milestones:
-        file: "_memory/presentations/MILESTONES.yaml"
+        file: "data/manual/course/MILESTONES.yaml"
         purpose: "Critical deadlines, deliverables, submission place/method"
         required_for: "framsida current-week deadlines and school-task Vad/När/Var/Varför/Hur"
 
       roadmap:
-        file: "_memory/presentations/TEAM_ROADMAP.yaml"
+        file: "data/manual/course/TEAM_ROADMAP.yaml"
         purpose: "Project phases, timeline, documented purpose and weekly consequence"
         required_for: "contextual sprint positioning and verified Varför"
 
@@ -70,10 +70,10 @@ required_datasets:
         - "Varför"
         - "Hur"
       source_search_order:
-        - "_memory/presentations/SCHEDULE.yaml"
-        - "_memory/SCHEDULE.md"
-        - "_memory/presentations/MILESTONES.yaml"
-        - "_memory/presentations/TEAM_ROADMAP.yaml"
+        - "data/manual/course/TEAM_SCHEDULE.yaml"
+        - "data/manual/course/SCHEDULE.md"
+        - "data/manual/course/MILESTONES.yaml"
+        - "data/manual/course/TEAM_ROADMAP.yaml"
         - "_memory/presentations/CURRENT_SPRINT.yaml"
         - "other registered _memory/data sources"
       missing_field_rule: "Render ⚠ [FIELD] kunde inte verifieras; never infer from title alone"
