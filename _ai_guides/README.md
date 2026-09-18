@@ -4,6 +4,14 @@
 
 Dessa dokument innehåller **konkreta guider** för att skapa presentationer, möten och verifiering.
 
+## 🚨 GLOBALT AI-RAMVERK — LÄS FÖRST
+
+[`AI_FRAMEWORK.md`](AI_FRAMEWORK.md) gäller för **alla** AI-uppgifter i repot.
+
+Särskilt: om två aktiva regler motsäger varandra får AI inte välja själv. Den
+måste stoppa, visa konflikten och konsekvenserna och be användaren om beslut
+innan regler ändras eller arbetet fortsätter.
+
 ---
 
 ## 📍 DOKUMENTVÄGEN — Läsordning
