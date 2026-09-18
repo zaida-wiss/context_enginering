@@ -99,7 +99,7 @@ Följ dessa standards:
 - CSS modules (en fil per komponent)
 - PascalCase komponenter
 - camelCase variabler
-- Se TEAMSTANDARDS.md för detaljer
+- Se TEAM_STANDARDS.md för detaljer
 ```
 
 ## Design-Principer Från Mockups
