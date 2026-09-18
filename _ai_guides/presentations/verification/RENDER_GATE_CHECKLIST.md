@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.6
+  version: 4.7
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -121,6 +121,7 @@ Required:
 meeting_point_number_missing_count == 0
 pen_without_meeting_point_number_count == 0
 meeting_point_header_malformed_count == 0
+meeting_point_number_glyph_render_failure_count == 0
 point_1_develop_subtitle_not_exact_count == 0
 point_1_collection_branch_slide_missing_count == 0
 point_1_collection_branch_subtitle_not_exact_count == 0
@@ -130,6 +131,7 @@ page_subtitle_replacing_meeting_point_title_count == 0
 
 Manual checks:
 - no slide may show `✏️` without its meeting-point number
+- the meeting-point number must be visibly rendered in the actual PDF/image; a missing-glyph square such as `□` fails even when the source text contains `①`
 - the primary heading always contains the official meeting-point number + official meeting-point title
 - page-specific descriptions are rendered as a separate subtitle beneath the official heading
 - a subtitle such as `Mergat till develop` may never replace `✏️ ① Avklarat sedan förra mötet`
@@ -148,6 +150,8 @@ cover_sprint_period_not_based_on_request_timestamp_count == 0
 meeting_point_1_fact_after_data_cutoff_count == 0
 current_week_pl_topic_missing_count == 0
 current_week_deadline_missing_count == 0
+pl_meeting_card_missing_target_time_purpose_count == 0
+cover_generic_status_displacing_required_content_count == 0
 school_task_missing_five_question_field_count == 0
 school_task_answer_without_source_count == 0
 school_task_unverified_answer_presented_as_fact_count == 0
@@ -155,6 +159,8 @@ school_task_unverified_answer_presented_as_fact_count == 0
 
 Manual checks:
 - the cover names the current sprint/week and the verified topic to handle with PL
+- when a current-week PL/teamavstämning is verified, its primary card visibly contains all three meanings `🎯 Vad/fokus`, `🕒 När`, `💡 Varför`
+- generic cards such as `Syfte`, `AI-läge`, `Viktigt nu`, status metrics or decorative summaries may appear only after all mandatory PL/school/deadline content is present; they never replace it
 - the sprint period is the Monday 09:00–next Monday 09:00 interval containing the request timestamp
 - a Monday 08:58 request still shows the sprint ending at 09:00 that day
 - meeting point 1 contains no factual activity after the actual acquisition cutoff
@@ -173,11 +179,21 @@ Manual checks:
 
 ### Meeting point 1 card standard
 
+Required:
+
+```text
+point_1_separate_wip_slide_count == 0
+point_1_verified_collection_merge_without_own_slide_count == 0
+point_1_unverified_collection_activity_presented_as_merge_count == 0
+```
+
 - every physical slide repeats the primary heading `✏️ ① Avklarat sedan förra mötet`
 - `Mergat till develop`, `Mergat till C/C++-Native`, `Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles only
 - every `develop` page, including continuations, uses the exact subtitle `Mergat till develop`; generic text such as `Mergat under sprinten - del 2` is forbidden
 - when verified merges exist to `C/C++-Native`, they get their own physical slide sequence directly after the `develop` sequence, with the exact subtitle `Mergat till C/C++-Native`
 - when verified merges exist to `Java-Development-Environment`, they get their own physical slide sequence after `C/C++-Native`, with the exact subtitle `Mergat till Java-Development-Environment`
+- collection-branch slide inclusion is decided from verified merge evidence for that target branch in the sprint interval; ordinary direct commits/branch activity are not relabeled as merges
+- if a collection branch has relevant direct work but no verified merge, that work may inform later active-work/planning slides but does not create a false `Mergat till ...` point-1 slide
 - collection-branch merges may not be folded into the `develop` pages or only mentioned in the team summary
 - no page-specific subtitle may replace the official meeting-point heading
 - detailed cards in meeting point 1 contain completed work only
@@ -185,6 +201,7 @@ Manual checks:
 - all grounded completed items remain present across as many continuation slides as required
 - fewer cards require insufficient grounded items or a documented WCAG/readability fit reason
 - backlog, future plans, ordinary WIP, open questions and undecided proposals do not appear as detailed point-1 work cards
+- a physical point-1 slide/subsection titled `Påbörjat men inte avklarat` is forbidden; qualifying unfinished value appears only at the end of the relevant team-summary card
 - team summaries primarily summarize completed work
 - a team summary may end with `Påbörjat men inte avklarat` only when verified activity already produced concrete partial value
 - valuable unfinished work is never presented as completed
@@ -511,6 +528,9 @@ school_task_missing_purpose_icon_count == 0
 school_task_missing_method_icon_count == 0
 priority_color_without_symbol_text_count == 0
 ordinary_project_card_using_school_task_5icon_template_count == 0
+pl_meeting_card_missing_target_icon_count == 0
+pl_meeting_card_missing_time_icon_count == 0
+pl_meeting_card_missing_purpose_icon_count == 0
 ```
 
 Manual checks:
@@ -554,5 +574,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.6
+**Version:** 4.7
 **Last updated:** 2026-09-17
