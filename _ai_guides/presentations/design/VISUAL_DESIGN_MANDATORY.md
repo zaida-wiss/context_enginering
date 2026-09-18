@@ -81,6 +81,25 @@ One work/information item = one card unless a slide authority explicitly defines
 Level 4 is the least prominent treatment, but its rendered text must still meet
 WCAG 2.2 AA. Do not lower opacity or contrast until it nearly disappears.
 
+### School/submission-task priority palette
+
+Priority color is permitted specifically for school assignments, submission
+tasks and course deadlines when paired with an explicit priority symbol/text.
+
+- **Priority 1 / critical:** red `#EF4444`
+- **Priority 2 / important upcoming:** orange `#F59E0B`
+- **Priority 3 / lower urgency:** green `#22C55E`
+
+Required visible form: symbol + text, e.g. `● PRIORITET 1`.
+Never show a colored dot/bar without the text meaning.
+Do not reuse team colors as priority colors.
+Red remains reserved for critical/high-consequence semantics.
+
+The canonical school-task metadata symbols are:
+`🎯 task · 🕒 time · 📍 place · 💡 purpose · 🛠 method`.
+These symbols replace repeated text labels such as `VAD / NÄR / VAR / VARFÖR / HUR`
+on school/submission cards, while the underlying five meanings remain mandatory.
+
 Palette rules:
 - same background/card family across the entire deck
 - no black/high-glare cards
