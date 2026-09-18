@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.3
+version: 1.4
 metadata:
   type: registry
   critical: true
@@ -54,10 +54,12 @@ logical_destinations:
       path: "_ai_guides/project/templates/RISK_REGISTER.md"
 
   memory:
-    current_sprint_schema:
-      path: "_memory/presentations/CURRENT_SPRINT.yaml"
     team_roster:
       path: "_memory/TEAM_ROSTER.md"
+
+  presentation_schemas:
+    current_sprint:
+      path: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
 
   data:
     course_schedule:
@@ -74,6 +76,8 @@ logical_destinations:
       path: "data/manual/course/CTO_FEED_FORWARD.md"
     cto_feed_forward_instructions:
       path: "data/manual/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
+    ui_design_reference:
+      path: "data/manual/design/UI_DESIGN_REFERENCE.md"
 
   decisions:
     confirmed:
@@ -86,6 +90,9 @@ logical_destinations:
       path: "data/snapshots/"
     derived:
       path: "data/derived/"
+    sprint_focus_timeline:
+      path: "data/derived/SPRINT_FOCUS_TIMELINE.md"
+      canonical: false
 
 presentation_bootstrap:
   router:
