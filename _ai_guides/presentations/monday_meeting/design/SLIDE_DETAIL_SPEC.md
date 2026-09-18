@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.9
+  version: 3.0
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -733,7 +733,9 @@ This slide presents that analysis using verified project evidence.
 PRE-MEETING:
 - do not estimate hours
 - show documented availability constraints if registered sources contain them
+- render only the planning consequence of personal availability, for example `begränsad tillgänglighet onsdag–torsdag`; omit personal reasons such as travel, health or private circumstances
 - generalize private/health reasons to `limited availability`
+- explain missing numeric capacity in project-facing language such as `Numerisk kapacitet saknas — planera kvalitativt`; do not expose internal AI-policy wording such as `Vad AI inte får göra` on the slide
 - if no relevant verified capacity data exists, use the approved placeholder/omission behavior from `SYSTEM_CONTRACT.yaml`
 - still provide qualitative AI load-balancing when enough verified work/dependency evidence exists
 
@@ -952,6 +954,31 @@ Team ownership is secondary on this slide.
 
 Do not split the slide into Frontend/Backend/Native/Cross-team columns.
 The priority order across the whole project is the primary organizing principle.
+
+### Render geometry — mandatory
+
+On each physical point-9 slide, the execution groups are arranged as a genuine
+vertical sequence:
+
+```text
+Prioritering först
+        ↓
+Parallellt
+        ↓
+Backlog — lägre prioritet
+        ↓
+Förslag framåt
+```
+
+Geometry rules:
+- each group starts below the previous group's bottom edge
+- groups may span most or all of the usable slide width
+- two groups may not occupy the same vertical band as side-by-side peers
+- a 2×2 grid, four-quadrant layout or visually parallel card matrix fails even
+  when the group labels are correct
+- continuation slides preserve the same top-to-bottom ordering
+- the visual direction must make the planning sequence obvious without relying
+  only on the words inside the cards
 
 When team identity is needed to prevent ambiguity:
 - use a short team label in quiet metadata style, or
