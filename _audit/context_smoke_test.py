@@ -249,6 +249,13 @@ def main():
     )
 
     require(
+        "team identity never relies on color alone",
+        "team ownership must never rely on color alone" in read("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md").lower()
+        and "team_identity_color_only_count == 0" in render_gate,
+        failures,
+    )
+
+    require(
         "NPF five-second scan gate is active",
         "Five-second scan test" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
         and "five_second_scan_failure_count == 0" in render_gate,
