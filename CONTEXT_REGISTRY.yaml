@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.2
+version: 2.3
 metadata:
   type: registry
   critical: true
@@ -142,6 +142,8 @@ tasks:
       - "decision record reminder"
       - "risk-analysis reminder"
       - "develop-sync reminder before PR"
+      - "issue-specific Applicable Definition of Done selected from canonical DoD"
+      - "README/documentation criterion only when scope affects it"
       - "review, merge and Done reminder"
 
   project_default_behavior:
