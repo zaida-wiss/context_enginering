@@ -89,34 +89,25 @@ If two authorities appear to own the same rule and disagree, fix the documentati
 
 ---
 
-## 🆕 Current card + readability contract
+## 🧭 Presentation rules — where to change what
 
-The detailed values live in `READABILITY_HARD_RULES.md` and `CARD_COMPONENT_STANDARD.md`. At a high level:
+README is the human entry point. Presentation behavior is defined by the owning
+authority files, so a rule is maintained in one canonical place.
 
-- pedagogical explanation sits directly under the title
-- titles use a clear sans-serif and must not become visually extra-heavy
-- ordinary body/support text is regular weight with open line spacing
-- meeting-point headers use **ordinary digits**, e.g. `✏️ 2. Nuläge ...`; circled-number glyphs such as `②` are not rendered
-- verified person identity uses first name only and is visually easy to scan
-- **name/identity and verification/provenance are anchored at the bottom of every card when present**
-- separate semantic text blocks always keep minimum spacing and multiline text keeps natural line height
-- internal evidence labels such as `GitHub · nivå 1` are not shown in meeting cards
-- merger/reviewer names are printed only when verified; unknown values stay blank
-- timestamps are compact, one line, discreet and bottom-most when present
-- automatic shrink-to-fit is forbidden
-- **default delivery format is PDF only**; PPTX/Google Slides/editable formats are delivered only when the user explicitly requests another or additional format
-- if accessible content does not fit, cards reflow, grid density is reduced or the slide paginates
-- the cover sprint period is resolved from request time using Monday 09:00 boundaries; a Monday 08:58 request still belongs to the sprint ending at 09:00
-- meeting point 1 shows verified work from that sprint's start through the actual data cutoff, using six cards as standard capacity per physical slide
-- the presentation always functions as a `Sprint in progress` working document; points 3–5 and 9 plan the remaining active-sprint horizon
-- the cover shows verified current-week PL focus and deadlines; every school task answers `Vad`, `När`, `Var`, `Varför`, `Hur` from registered `_memory`/data documentation
-- meeting points 3–5 remain the separate team sections: Frontend, Backend and Native
-- meeting point 9 follows the canonical content structure in `SLIDE_DETAIL_SPEC.md`; README does not duplicate its layout or execution-group rules
-- source identity always keeps its canonical symbol; tags never replace `📅`, `✅`, `🔎`, `⭐` or `⚠`
-- authoritative conflicts produce a rule-conflict receipt and stop rendering; they are never silently overwritten
-- rendered delivery fails if text overlaps, line spacing is compressed or the bottom information zone collides with body text
+Use the Authority Map above to locate the owner before changing presentation
+behavior. In particular:
 
-This README intentionally does not duplicate numeric card spacing/type rules.
+- execution and delivery → `SYSTEM_CONTRACT.yaml`
+- accessibility → `ACCESSIBILITY_NEURODIVERSITY.md`
+- global visual design → `VISUAL_DESIGN_MANDATORY.md`
+- readability → `READABILITY_HARD_RULES.md`
+- card internals → `CARD_COMPONENT_STANDARD.md`
+- fact/team/AI labeling → `PROVENANCE_AND_AI_LABELING.md`
+- Monday Meeting slide content → `SLIDE_DETAIL_SPEC.md`
+- source registry → `data/SOURCES.yaml`
+
+The presentation router determines which authorities are loaded for a task.
+README explains the map; it does not duplicate the detailed rules.
 
 ---
 
