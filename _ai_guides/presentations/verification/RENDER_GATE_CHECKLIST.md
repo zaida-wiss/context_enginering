@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.5
+  version: 4.6
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -121,12 +121,16 @@ Required:
 meeting_point_number_missing_count == 0
 pen_without_meeting_point_number_count == 0
 meeting_point_header_malformed_count == 0
+official_meeting_point_title_missing_count == 0
+page_subtitle_replacing_meeting_point_title_count == 0
 ```
 
 Manual checks:
 - no slide may show `✏️` without its meeting-point number
-- the canonical pattern is `✏️ ⑨ Prioritering & scope` or equivalent title text
-- continuation slides preserve the identity with lowercase letters, e.g. `✏️ ⑨a ...`
+- the primary heading always contains the official meeting-point number + official meeting-point title
+- page-specific descriptions are rendered as a separate subtitle beneath the official heading
+- a subtitle such as `Mergat till develop` may never replace `✏️ ① Avklarat sedan förra mötet`
+- continuation/subsection markers may be secondary navigation, but every slide repeats the full official meeting-point heading
 - numeric continuation suffixes such as `⑨-2` are forbidden
 
 Any failure → STOP.
@@ -166,19 +170,24 @@ Manual checks:
 
 ### Meeting point 1 card standard
 
-- every physical slide in `①–①d` targets six cards when at least six grounded items exist and all six remain readable
+- every physical slide repeats the primary heading `✏️ ① Avklarat sedan förra mötet`
+- `Mergat till develop`, collection-branch labels and `Teamsammanfattning` are subtitles only
+- no page-specific subtitle may replace the official meeting-point heading
+- detailed cards in meeting point 1 contain completed work only
 - six cards is the capacity of one physical slide, not a total cap for meeting point 1
-- all grounded items remain present across as many lowercase-letter continuation slides as required
+- all grounded completed items remain present across as many continuation slides as required
 - fewer cards require insufficient grounded items or a documented WCAG/readability fit reason
-- required `①d` team-summary AI cards are substantive content; unrelated filler cards are forbidden
-- order is `① develop` → `①a Backend collection` → `①b Native collection` → `①c active in window` → `①d AI team summaries`
-- every item in meeting point 1 has verified merge/activity evidence inside the sprint window
-- backlog, future plans and dormant older work do not appear in meeting point 1
-- every `①d` team summary contains approximately 1–10 complete sentences
-- every `①d` summary names all team members using first names and states only verified contributions
+- backlog, future plans, ordinary WIP, open questions and undecided proposals do not appear as detailed point-1 work cards
+- team summaries primarily summarize completed work
+- a team summary may end with `Påbörjat men inte avklarat` only when verified activity already produced concrete partial value
+- valuable unfinished work is never presented as completed
+- detailed unfinished work belongs to points ③–⑤ and ⑨
+- every team summary contains approximately 1–10 complete sentences
+- every summary names all team members using first names and states only verified contributions
 - review/help/integration work is included when verified
-- every included decision is verified and distinguished from future questions/proposals
-- a member without verified activity uses neutral evidence-limited wording, never a performance inference
+- every included decision was already made and verified; decisions still to be taken are forbidden in point 1
+- open decision candidates belong to point ⑩ and unresolved PL questions belong to point ⑭
+- a member without verified completed activity uses neutral evidence-limited wording, never a performance inference
 
 ### Forward planning in points 3–5
 
