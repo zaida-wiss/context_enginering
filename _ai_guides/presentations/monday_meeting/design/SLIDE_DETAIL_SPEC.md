@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 2.7
+  version: 2.8
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -216,11 +216,27 @@ Do not use this school-task priority scale on ordinary issue/PR cards.
 
 `PL-fokus` must match the actual upcoming PL meeting theme/agenda when that source exists. Do not replace a concrete agenda such as `CTO-underlag` with a generic inferred summary such as testing/documentation unless the latter is explicitly part of the registered agenda. AI interpretation may be added separately with provenance.
 
+### PL meeting card — merge focus into the meeting card
+
+When the cover contains a scheduled `Teamavstämning med PL` or equivalent PL meeting, do **not** create a separate duplicated `PL-fokus` card next to it. The PL focus belongs inside the PL meeting card itself.
+
+The PL meeting card uses exactly three information meanings:
+- `🎯 Vad/fokus` — what the meeting must focus on, including the verified PL agenda/topic
+- `🕒 När` — verified meeting date and time
+- `💡 Varför` — documented purpose or verified reason the meeting matters now
+
+Do **not** show `Var` or `Hur` on the PL meeting card. Location/format such as Slack Huddle may remain in quiet source metadata only when useful, but it is not part of the primary card content.
+
+This three-part PL structure is intentionally shorter than the school-assignment/deadline structure below.
+
 ## Mandatory verified school-task information block
 
 This five-part structure applies specifically to **school assignments, submission
-tasks, school deadlines and PL/course tasks**. It is not a generic card template
-for ordinary project issues or PRs.
+tasks and school deadlines**. It is not a generic card template for ordinary
+project issues, PRs or the PL meeting card.
+
+**Exception:** scheduled PL/teamavstämning topics use the shorter three-part
+`🎯 Vad/fokus → 🕒 När → 💡 Varför` structure defined above.
 
 Do not render the repeated words `VAD`, `NÄR`, `VAR`, `VARFÖR`, `HUR`
 as labels on every card. Use the canonical icon grammar instead:
@@ -234,9 +250,9 @@ as labels on every card. Use the canonical icon grammar instead:
 Canonical visual order:
 `🎯 → 🕒 → 📍 → 💡 → 🛠`
 
-For every school task, submission task, deadline and PL/course topic shown on
-the cover, all five meanings must still be answered from registered `_memory`
-and presentation-data documentation:
+For every school task, submission task and deadline shown on the cover, all five
+meanings must still be answered from registered `_memory` and presentation-data
+documentation:
 
 1. `🎯` exact task/deliverable or PL/course topic
 2. `🕒` verified date, time and applicable week/sprint
@@ -1166,5 +1182,5 @@ point_1_collection_branch_subtitle_not_exact_count == 0
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.7
+**Version:** 2.8
 **Last updated:** 2026-09-18
