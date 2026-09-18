@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.9
+version: 2.0
 metadata:
   type: registry
   critical: true
@@ -62,6 +62,8 @@ logical_destinations:
       path: "_ai_guides/project/GOALS_AND_SPRINT_PLANNING.md"
     risk_management:
       path: "_ai_guides/project/RISK_MANAGEMENT.md"
+    dependencies_and_capacity:
+      path: "_ai_guides/project/DEPENDENCIES_AND_CAPACITY.md"
 
   memory:
     team_roster:
@@ -125,6 +127,7 @@ tasks:
       - "logical_destinations.project.team_tone_and_collaboration"
       - "logical_destinations.project.goals_and_sprint_planning"
       - "logical_destinations.project.risk_management"
+      - "logical_destinations.project.dependencies_and_capacity"
     supporting_context:
       - "logical_destinations.project.risk_register_template"
       - "logical_destinations.decisions.confirmed"
@@ -145,6 +148,7 @@ tasks:
     load:
       - "logical_destinations.project.goals_and_sprint_planning"
       - "logical_destinations.project.risk_management"
+      - "logical_destinations.project.dependencies_and_capacity"
       - "logical_destinations.project.team_standards"
       - "logical_destinations.project.testing"
       - "logical_destinations.project.team_tone_and_collaboration"
@@ -181,6 +185,8 @@ tasks:
       ref: "logical_destinations.project.goals_and_sprint_planning"
     risk_authority:
       ref: "logical_destinations.project.risk_management"
+    dependency_capacity_authority:
+      ref: "logical_destinations.project.dependencies_and_capacity"
     design_authorities:
       - "_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
       - "_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md"
