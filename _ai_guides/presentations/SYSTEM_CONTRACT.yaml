@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.7
+version: 4.8
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -41,6 +41,22 @@ execution_lifecycle:
   snapshot_commit_sha_required: true
   ends_on: ["DELIVER", "STOP", "RESTART"]
   prior_execution_receipts_reusable: false
+
+conflict_decision_gate:
+  rule: >
+    A genuine contradiction between active context authorities is a user-decision
+    gate. The model must not resolve it autonomously.
+  required_response:
+    - "STOP the affected implementation/rendering path."
+    - "Name the conflicting files and quote/summarize the conflicting requirements."
+    - "Explain the practical consequence of each option."
+    - "Ask the user for a decision."
+    - "After the decision, update the owning context rule(s) and regression tests before continuing."
+  forbidden:
+    - "silently choose the higher-ranked rule"
+    - "patch only the presentation artifact"
+    - "reinterpret one rule until the conflict disappears"
+    - "continue rendering with an unresolved contradiction"
 
 ###############################################################################
 # AUTHORITY HIERARCHY
