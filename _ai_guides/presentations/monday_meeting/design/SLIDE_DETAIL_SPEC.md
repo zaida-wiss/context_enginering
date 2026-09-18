@@ -199,26 +199,58 @@ Content:
 - PL focus topics grounded in the actual registered schedule/agenda for the current week
 - compact snapshot/source footer
 
+## School-task priority indicator
+
+School/submission task cards may show priority with a **symbol + text + color**.
+Color is supportive only and never carries the meaning alone.
+
+Canonical levels:
+- `● PRIORITET 1` — critical / nearest consequential deadline — red accent
+- `● PRIORITET 2` — important upcoming task/checkpoint — orange accent
+- `● PRIORITET 3` — lower urgency / later school task — green accent
+
+Use priority only when it is grounded in an explicit deadline, consequence or
+course sequence. If priority is model-derived, label the reasoning `🔎 AI-analys`.
+Do not use this school-task priority scale on ordinary issue/PR cards.
+
+
 `PL-fokus` must match the actual upcoming PL meeting theme/agenda when that source exists. Do not replace a concrete agenda such as `CTO-underlag` with a generic inferred summary such as testing/documentation unless the latter is explicitly part of the registered agenda. AI interpretation may be added separately with provenance.
 
-## Mandatory verified five-question block
+## Mandatory verified school-task information block
 
-For every school task, deadline and PL topic shown on the cover, answer all five
-questions from registered `_memory` and presentation-data documentation:
+This five-part structure applies specifically to **school assignments, submission
+tasks, school deadlines and PL/course tasks**. It is not a generic card template
+for ordinary project issues or PRs.
 
-1. **Vad?** — exact task/deliverable or PL topic
-2. **När?** — verified date, time and applicable week/sprint
-3. **Var?** — verified place, channel or submission platform
-4. **Varför?** — documented purpose, learning/project objective or verified consequence
-5. **Hur?** — documented submission method, meeting format, required artefact or execution instructions
+Do not render the repeated words `VAD`, `NÄR`, `VAR`, `VARFÖR`, `HUR`
+as labels on every card. Use the canonical icon grammar instead:
+
+- `🎯` = what the school/submission task is
+- `🕒` = when it happens / deadline
+- `📍` = where it takes place or is submitted
+- `💡` = why it exists / documented purpose or consequence
+- `🛠` = how it is carried out or submitted
+
+Canonical visual order:
+`🎯 → 🕒 → 📍 → 💡 → 🛠`
+
+For every school task, submission task, deadline and PL/course topic shown on
+the cover, all five meanings must still be answered from registered `_memory`
+and presentation-data documentation:
+
+1. `🎯` exact task/deliverable or PL/course topic
+2. `🕒` verified date, time and applicable week/sprint
+3. `📍` verified place, channel or submission platform
+4. `💡` documented purpose, learning/project objective or verified consequence
+5. `🛠` documented submission method, meeting format, required artefact or execution instructions
 
 Each answer retains source-level provenance. Do not derive `Varför` or `Hur`
 from the task title alone. Search the registered schedule, milestones, roadmap,
 current-sprint context and other registered `_memory`/data documentation.
 
 If one answer remains unavailable after source acquisition, keep the task on the
-cover and write the missing field explicitly, for example:
-`⚠ Hur kunde inte verifieras`. Never omit a missing field and never replace it
+cover and retain the corresponding icon with an explicit warning, for example:
+`🛠 ⚠ kunde inte verifieras`. Never omit a missing field and never replace it
 with an AI guess. An AI interpretation may appear only as a separate
 `🔎 AI-analys` block, not as the verified five-question answer.
 
@@ -467,15 +499,17 @@ The slide must include a compact legend:
 The timeline alone is not enough. Add **1–3 concise explanatory callout boxes**
 for the nearest upcoming items that the team needs to keep track of now.
 
-These callouts are secondary to the timeline and should answer, when the
-registered sources support it:
+These callouts are secondary to the timeline. When the callout describes a
+school/submission/deadline task, use the same icon grammar as the cover:
 
-1. **Vad?** — what the deadline/checkpoint actually requires
-2. **När?** — exact date/time
-3. **Var?** — channel/platform/location
-4. **Varför?** — documented purpose or verified consequence
-5. **Hur?** — documented format/submission/execution method
-6. **Nu behöver vi:** — the immediate preparation/action that follows from verified team/project data
+- `🎯` what the deadline/checkpoint requires
+- `🕒` exact date/time
+- `📍` channel/platform/location
+- `💡` documented purpose or verified consequence
+- `🛠` documented format/submission/execution method
+- `→` immediate preparation/action that follows from verified team/project data
+
+Do not spell out `VAD / NÄR / VAR / VARFÖR / HUR` as repeated labels.
 
 The purpose is practical: the team should understand not only that a deadline is
 close, but **what it means for the work immediately ahead**.
