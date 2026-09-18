@@ -111,9 +111,7 @@ The detailed values live in `READABILITY_HARD_RULES.md` and `CARD_COMPONENT_STAN
 - the presentation always functions as a `Sprint in progress` working document; points 3–5 and 9 plan the remaining active-sprint horizon
 - the cover shows verified current-week PL focus and deadlines; every school task answers `Vad`, `När`, `Var`, `Varför`, `Hur` from registered `_memory`/data documentation
 - meeting points 3–5 remain the separate team sections: Frontend, Backend and Native
-- meeting point 9 uses four team columns: `Frontend`, `Backend`, `Native`, `Cross-team`
-- meeting point 9 keeps a fixed `1×4` structure with content-driven blocks and lettered continuations such as `9a`, `9b`
-- point 9 shows open PRs as `📌 #[PR-number]`, remaining issues, order, dependencies, AI allocation and proposed missing issues
+- meeting point 9 follows the canonical content structure in `SLIDE_DETAIL_SPEC.md`; README does not duplicate its layout or execution-group rules
 - source identity always keeps its canonical symbol; tags never replace `📅`, `✅`, `🔎`, `⭐` or `⚠`
 - authoritative conflicts produce a rule-conflict receipt and stop rendering; they are never silently overwritten
 - rendered delivery fails if text overlaps, line spacing is compressed or the bottom information zone collides with body text
