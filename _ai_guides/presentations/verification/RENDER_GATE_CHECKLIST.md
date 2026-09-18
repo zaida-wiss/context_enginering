@@ -121,6 +121,9 @@ Required:
 meeting_point_number_missing_count == 0
 pen_without_meeting_point_number_count == 0
 meeting_point_header_malformed_count == 0
+point_1_develop_subtitle_not_exact_count == 0
+point_1_collection_branch_slide_missing_count == 0
+point_1_collection_branch_subtitle_not_exact_count == 0
 official_meeting_point_title_missing_count == 0
 page_subtitle_replacing_meeting_point_title_count == 0
 ```
@@ -171,7 +174,11 @@ Manual checks:
 ### Meeting point 1 card standard
 
 - every physical slide repeats the primary heading `✏️ ① Avklarat sedan förra mötet`
-- `Mergat till develop`, collection-branch labels and `Teamsammanfattning` are subtitles only
+- `Mergat till develop`, `Mergat till C/C++-Native`, `Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles only
+- every `develop` page, including continuations, uses the exact subtitle `Mergat till develop`; generic text such as `Mergat under sprinten - del 2` is forbidden
+- when verified merges exist to `C/C++-Native`, they get their own physical slide sequence directly after the `develop` sequence, with the exact subtitle `Mergat till C/C++-Native`
+- when verified merges exist to `Java-Development-Environment`, they get their own physical slide sequence after `C/C++-Native`, with the exact subtitle `Mergat till Java-Development-Environment`
+- collection-branch merges may not be folded into the `develop` pages or only mentioned in the team summary
 - no page-specific subtitle may replace the official meeting-point heading
 - detailed cards in meeting point 1 contain completed work only
 - six cards is the capacity of one physical slide, not a total cap for meeting point 1
