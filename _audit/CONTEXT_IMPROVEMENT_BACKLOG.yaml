@@ -12,7 +12,7 @@ items:
 
   risk_management_and_cto:
     priority: high
-    status: pending_source_review
+    status: implemented
     purpose: >
       Build a project risk-management standard that teaches industry practice
       while using the team's existing Google risk register as the canonical
@@ -26,7 +26,12 @@ items:
       - "Current risks come from verified source data."
       - "AI may identify candidate risks but labels them as analysis/proposals until recorded/confirmed."
       - "Risk should connect to engineering decisions, mitigation and planning impact."
-    proposed_owner: "_ai_guides/project/RISK_MANAGEMENT.md"
+    owner: "_ai_guides/project/RISK_MANAGEMENT.md"
+    implementation_notes:
+      - "Risk workbook inspected directly from registered Google Drive source."
+      - "Workbook confirmed as Risk-Management-Register.xlsx."
+      - "Canonical fields and five-step method incorporated."
+      - "CTO Feed Forward requirements incorporated as decision-impact evidence."
 
   dependencies_and_capacity:
     priority: high
