@@ -219,9 +219,9 @@ def main():
     )
 
     require(
-        "meeting point 9 uses vertical priority model",
-        'Meeting point 9 is **not** a four-column team board' in slide
-        and "vertically stacked" in slide,
+        "meeting point 9 uses shared card grid",
+        "shared responsive card/grid system" in slide
+        and "2×2 grid is allowed" in slide,
         failures,
     )
     require(
@@ -230,12 +230,24 @@ def main():
         failures,
     )
     require(
-        "render gate uses vertical point-9 validation",
-        "POINT 9 — VERTICAL PRIORITY VIEW" in render_gate
-        and "fixed `1×4` team-column layout" not in render_gate
-        and "every slide for point 9 has exactly" not in render_gate,
+        "render gate validates shared point-9 grid",
+        "POINT 9 — SHARED CARD/GRID PRIORITY VIEW" in render_gate
+        and "point9_shared_grid_missing_count == 0" in render_gate,
         failures,
     )
+    require(
+        "rendered meeting-point numbering follows user decision",
+        "✏️ 1. Avklarat sedan förra mötet" in slide
+        and "rendered_circled_meeting_point_number_count == 0" in render_gate,
+        failures,
+    )
+    require(
+        "shared card grid follows user decision",
+        "shared responsive card/grid system" in slide
+        and "SHARED CARD/GRID RULE" in read("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"),
+        failures,
+    )
+
     require(
         "cover validator requires PL target/time/purpose",
         "pl_meeting_card_missing_target_time_purpose_count == 0" in render_gate
@@ -249,9 +261,9 @@ def main():
         failures,
     )
     require(
-        "meeting number visible-render check exists",
-        "meeting_point_number_glyph_render_failure_count == 0" in render_gate
-        and "missing-glyph square" in render_gate,
+        "meeting numbers use ordinary Arabic rendering",
+        "rendered_circled_meeting_point_number_count == 0" in render_gate
+        and "ordinary Arabic number with period" in render_gate,
         failures,
     )
     require(
@@ -261,10 +273,9 @@ def main():
         failures,
     )
     require(
-        "point 9 validates actual vertical geometry",
-        "point9_group_vertical_order_violation_count == 0" in render_gate
-        and "point9_side_by_side_group_count == 0" in render_gate
-        and "2×2/four-quadrant arrangement fails" in render_gate,
+        "point 9 validates shared grid geometry",
+        "point9_shared_grid_missing_count == 0" in render_gate
+        and "a readable 2×2 grid is allowed" in render_gate,
         failures,
     )
     require(
