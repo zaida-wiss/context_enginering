@@ -1,6 +1,6 @@
 name: presentation_authority_registry
 description: Canonical registry of active authorities, validators, references and retired guides
-version: 1.2
+version: 1.3
 metadata:
   type: registry
   critical: true
@@ -115,7 +115,9 @@ retired_rule: >
   it becomes part of current presentation behavior.
 
 conflict_rule: >
-  If two active authorities claim the same category or contain incompatible
-  requirements, STOP and emit the conflict receipt defined in
-  design/DESIGN_AUTHORITY.md. Rank does not authorize silently discarding a
-  same-category conflict.
+  If two active authorities contain incompatible requirements, STOP immediately.
+  Inform the user of the exact conflicting rules, identify the owning files,
+  explain the concrete consequence of each alternative, and ask the user to
+  choose before changing either rule or rendering further. Authority rank must
+  never be used to silently resolve a genuine contradiction. Record the user's
+  decision in the owning context authority and regression tests before continuing.
