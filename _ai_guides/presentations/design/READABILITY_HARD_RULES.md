@@ -49,30 +49,44 @@ Hard rules:
 - never reduce letter spacing to make text fit
 - do not use stylized circled-number glyphs for meeting-point identity
 
-### Meeting-point numbering
+### Meeting-point numbering and continuation hierarchy
 
 Use **ordinary Arabic digits** so the meeting-point number is immediately recognizable.
+
+The primary header contains only:
+`✏️ [meeting-point number]. [meeting-point title]`
 
 Canonical pattern:
 
 ```text
-✏️ 1. Avklarat sedan förra mötet
+✏️ 1. Sprint in progress
+c. Påbörjat, inte klart
+
 ✏️ 2. Nuläge och närmaste deadline
-✏️ 13. Nästa steg
+Kronologisk tidslinje över hela kursperioden
 ```
 
-Continuation slides:
+Continuation letters belong to the **smaller subtitle**, not to the main
+meeting-point number/title.
+
+A per-meeting-point page counter `(x/y)` sits at the far right of the primary
+header row and uses visual-priority level 4.
+
+Example:
 
 ```text
-✏️ 1A-2. Avklarat sedan förra mötet
-✏️ 9a. Prioritering och scope
+✏️ 1. Sprint in progress                                      (4/6)
+c. Påbörjat, inte klart
 ```
 
 Forbidden in rendered meeting headers:
 - `①`, `②`, `⑨`, `⑬`, `⑭` and equivalent circled-number symbols
 - a pen icon without the visible ordinary number
+- attaching continuation letters to the meeting-point number, e.g. `1c.`
+- replacing the meeting-point title with the physical-page topic
 
-A lower-level slide/content specification may define the semantic meeting-point number, but it must not force circled glyphs in the rendered deck.
+A lower-level slide/content specification may define semantic subsection IDs,
+but rendered hierarchy follows the pattern above.
 
 ## 3. NORMAL TEXT STARTS LARGER
 
@@ -94,6 +108,22 @@ For card-internal roles, these minima override older lower values:
 - card title remains **18 pt minimum**
 
 A technically fitting smaller size is not a reason to use it. Use the largest comfortable size that fits the layout.
+
+### Collision prevention takes priority over body-size preference
+
+For body/supporting/card text, **overlap is never acceptable**.
+
+When a text block is too large:
+1. reduce that block stepwise from its preferred size
+2. stop at the owning role minimum
+3. recalculate block height and spacing after every reduction
+4. if it still does not fit, shorten wording or paginate
+
+It is better to use a slightly smaller **allowed** body size than to let two
+text blocks overlap. This exception does not apply to the fixed 36 pt
+meeting-point header, which must instead trigger reflow/pagination.
+
+No renderer may preserve a preferred body size when that causes collision.
 
 ## 4. LINE HEIGHT & BLOCK SPACING MUST STAY OPEN
 
