@@ -1,0 +1,85 @@
+---
+name: context_registry
+description: Central path and task registry for the context repository
+version: 1.0
+metadata:
+  type: registry
+  critical: true
+  owns: logical paths and task bundles only
+---
+
+# This registry maps stable logical IDs to repository paths.
+# Rule semantics stay in the owning authority files.
+
+domains:
+  instructions:
+    path: "_ai_guides"
+    purpose: "how tasks are performed"
+  memory:
+    path: "_memory"
+    purpose: "long-lived project knowledge"
+  data:
+    path: "data"
+    purpose: "live-source registry, manual source material, snapshots and derived data"
+  decisions:
+    path: "docs"
+    purpose: "confirmed project decisions and supporting documentation"
+  validation:
+    path: "_audit"
+    purpose: "repository integrity and authority validation"
+
+registries:
+  presentation_authorities:
+    path: "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml"
+  external_sources:
+    path: "data/SOURCES.yaml"
+  external_sources_guide:
+    path: "data/SOURCES.md"
+  context_ingestion:
+    path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
+
+presentation_bootstrap:
+  router:
+    path: "_ai_guides/presentations/MANDATORY_READING_ORDER.md"
+  authority_map:
+    path: "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml"
+  integrity:
+    path: "_ai_guides/presentations/INTEGRITY_CONSTRAINT.md"
+  execution:
+    path: "_ai_guides/presentations/SYSTEM_CONTRACT.yaml"
+
+tasks:
+  monday_meeting_presentation:
+    bootstrap: "presentation_bootstrap"
+    content_authority:
+      path: "_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+    data_acquisition:
+      path: "_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"
+    source_registry:
+      ref: "registries.external_sources"
+    design_authorities:
+      - "_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
+      - "_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md"
+      - "_ai_guides/presentations/design/READABILITY_HARD_RULES.md"
+      - "_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md"
+      - "_ai_guides/presentations/design/PROVENANCE_AND_AI_LABELING.md"
+      - "_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
+    verification:
+      - "_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md"
+    default_delivery:
+      format: "PDF"
+      authority: "_ai_guides/presentations/SYSTEM_CONTRACT.yaml"
+
+path_change_process:
+  rule: >
+    A moved canonical file is updated in this registry first. Dependent references
+    are then updated and validated before the migration step is considered complete.
+  validation:
+    - "search repository for the previous canonical path"
+    - "verify every registered target exists on the active ref"
+    - "run applicable repository validators"
+
+---
+
+status: ACTIVE
+last_updated: 2026-09-18
