@@ -1,0 +1,118 @@
+---
+name: ai_framework
+description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
+version: 1.0
+metadata:
+  type: global_authority
+  critical: true
+  status: active
+  normative: true
+
+scope:
+  applies_to:
+    - coding
+    - issue_creation
+    - planning
+    - risk_work
+    - documentation
+    - presentations
+    - reviews
+    - audits
+    - future_task_types
+  domain_specific_rules_may_extend: true
+  domain_specific_rules_may_bypass: false
+
+context_first_correction:
+  trigger: recurring_behavior_design_or_process_defect_caused_by_repository_instructions
+  required_sequence:
+    - locate_owning_context_rule
+    - update_context_repository_first
+    - add_or_update_regression_validation_when_practical
+    - regenerate_or_patch_affected_artifact_or_output
+  artifact_only_patch_is_final_fix: false
+
+conflict_decision_gate:
+  trigger: genuine_active_rule_conflict
+  definition: >
+    Two active instructions or authorities require incompatible outcomes and
+    both cannot be followed at the same time.
+  action: STOP
+  user_decision_required: true
+  stop_before:
+    - modifying_conflicting_rules
+    - choosing_between_conflicting_rules
+    - continuing_affected_task
+    - rendering_affected_artifact
+  required_output:
+    - state_that_conflict_was_found
+    - name_conflicting_rules
+    - name_owning_files
+    - explain_consequence_of_each_option
+    - identify_non_negotiable_external_boundaries_when_relevant
+    - request_user_decision
+  required_after_user_decision:
+    - record_decision_in_owning_context_authority_or_decision_record
+    - correct_or_retire_conflicting_active_rule
+    - add_or_update_regression_test
+    - verify_context_is_internally_consistent
+    - continue_original_task
+  forbidden:
+    - silently_choose_by_authority_rank
+    - silently_choose_newest_rule
+    - infer_user_intent_to_resolve_conflict
+    - weaken_one_rule_until_conflict_disappears
+    - resolve_only_in_generated_artifact
+    - continue_with_unresolved_contradiction
+    - present_ambiguity_as_confirmed_decision
+
+authority_order:
+  purpose:
+    - locate_rule_ownership
+    - define_delegation
+    - identify_absolute_external_boundaries
+  may_silently_resolve_genuine_internal_conflict: false
+
+conflict_classification:
+  normal_specialization_examples:
+    - global_palette_owner_and_card_spacing_owner
+    - general_card_rule_with_explicit_task_specific_exception
+    - task_specific_detail_that_does_not_contradict_general_rule
+  genuine_conflict_examples:
+    - one_active_rule_requires_a_visual_symbol_and_another_forbids_it
+    - one_active_rule_requires_a_slide_and_another_forbids_it
+    - two_active_rules_assign_different_semantic_meanings_to_same_color_or_symbol
+    - one_active_rule_requires_an_item_and_another_requires_omission
+  uncertain_case_action: surface_possible_conflict_and_request_user_decision
+
+decision_trace:
+  required_fields:
+    - conflict_identified
+    - options_presented
+    - user_decision
+    - owning_authority_updated
+    - conflicting_rule_corrected_or_retired
+    - regression_check_updated
+  contradictory_active_rules_may_remain_after_decision: false
+
+absolute_boundaries:
+  examples:
+    - safety
+    - security
+    - accessibility
+    - law
+    - platform_constraints
+    - tool_constraints
+  behavior_when_user_preference_conflicts:
+    - inform_user
+    - explain_unavailable_outcome_and_reason
+    - request_decision_among_compliant_alternatives_when_multiple_exist
+    - never_silently_reinterpret_preference
+
+model_independent_acceptance:
+  checks:
+    conflict_detected_before_editing: true
+    both_owning_rules_identified: true
+    user_asked_to_decide: true
+    ai_waited_for_decision: true
+    context_updated_before_regeneration: true
+    contradiction_removed_or_prevented_afterward: true
