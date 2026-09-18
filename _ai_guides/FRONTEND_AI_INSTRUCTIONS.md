@@ -68,8 +68,8 @@ Enligt mockup [XX_namn.webp] (_docs/XX_namn.webp) behöver komponenten:
 
 ### Se även
 - [UI_DESIGN_REFERENCE.md](../_memory/UI_DESIGN_REFERENCE.md) - Full spec för denna komponent
-- [DEFINITION_OF_DONE.md](../_ai_guides/project/DEFINITION_OF_DONE.md) - Acceptance criteria
-- [TEAM_STANDARDS.md](../_ai_guides/project/TEAM_STANDARDS.md) - Code standards
+- [DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md) - Acceptance criteria
+- [TEAM_STANDARDS.md](project/TEAM_STANDARDS.md) - Code standards
 ```
 
 ---
@@ -132,8 +132,8 @@ Enligt mockup [02_overview.webp](_docs/02_overview.webp):
 **För varje frontend-fråga, referera även till:**
 
 1. **[UI_DESIGN_REFERENCE.md](../_memory/UI_DESIGN_REFERENCE.md)** - Full mockup-spec
-2. **[DEFINITION_OF_DONE.md](../_ai_guides/project/DEFINITION_OF_DONE.md)** - Acceptance criteria
-3. **[TEAM_STANDARDS.md](../_ai_guides/project/TEAM_STANDARDS.md)** - Code standards (TypeScript, CSS modules, etc.)
+2. **[DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md)** - Acceptance criteria
+3. **[TEAM_STANDARDS.md](project/TEAM_STANDARDS.md)** - Code standards (TypeScript, CSS modules, etc.)
 
 ---
 
