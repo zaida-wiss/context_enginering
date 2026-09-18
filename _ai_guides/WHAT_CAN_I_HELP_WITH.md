@@ -1251,7 +1251,7 @@ AI: Länka till HOW_TO_RUN_MEETINGS.md
 ### "Vilka Är Kodstandarder?"
 ```
 Du: "Vilka är kodstandarder?"
-AI: Läser TEAMSTANDARDS.md
+AI: Läser TEAM_STANDARDS.md
 AI: Presenterar:
    - Commit-format
    - Branch-naming
@@ -1362,7 +1362,7 @@ som returnerar användarens portföljdata
 - Endpoint måste vara REST-kompatibel (GET för att läsa data)
 - /api/portfolio är RESTful naming convention
 - ResponseEntity<PortfolioDTO> ger TypeScript-compatible format
-- Denna struktur följer TEAMSTANDARDS.md
+- Denna struktur följer TEAM_STANDARDS.md
 
 ---
 
@@ -1518,7 +1518,7 @@ Resultat:
     - Länkar till mockup 01_login.webp"
 ```
    ✅ Acceptance Criteria
-   ✅ Kodstandarder (TEAMSTANDARDS.md)
+   ✅ Kodstandarder (TEAM_STANDARDS.md)
 
 AI: Presenterar:
    ✅ Vad som är bra
@@ -1550,7 +1550,7 @@ AI: Rekommenderar:
 ### "Ge Mig En Commit-Besked"
 ```
 Du: "Jag skapade en ny React-komponent för dashboard"
-AI: Läser TEAMSTANDARDS.md (commit-format)
+AI: Läser TEAM_STANDARDS.md (commit-format)
 AI: Presenterar:
    "build(frontend): Create dashboard panel components with CSS modules (#26)"
 
