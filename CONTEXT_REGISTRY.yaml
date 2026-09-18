@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.4
+version: 2.5
 metadata:
   type: registry
   critical: true
@@ -30,7 +30,7 @@ domains:
 
 registries:
   ai_framework:
-    path: "_ai_guides/AI_FRAMEWORK.md"
+    path: "_ai_guides/AI_FRAMEWORK.yaml"
   project_guides:
     path: "_ai_guides/project/README.md"
   presentation_authorities:
@@ -45,7 +45,7 @@ registries:
 logical_destinations:
   global:
     ai_framework:
-      path: "_ai_guides/AI_FRAMEWORK.md"
+      path: "_ai_guides/AI_FRAMEWORK.yaml"
 
   project:
     context_router:
@@ -187,6 +187,7 @@ tasks:
   sprint_planning:
     purpose: "Resolve decided goals from verified sources and propose future goals, milestones and issues transparently."
     load:
+      - "logical_destinations.global.ai_framework"
       - "logical_destinations.project.goals_and_sprint_planning"
       - "logical_destinations.project.risk_management"
       - "logical_destinations.project.dependencies_and_capacity"
@@ -215,6 +216,8 @@ tasks:
       - "people-support or HR-style guidance"
 
   monday_meeting_presentation:
+    global_framework:
+      ref: "logical_destinations.global.ai_framework"
     bootstrap: "presentation_bootstrap"
     content_authority:
       path: "_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
