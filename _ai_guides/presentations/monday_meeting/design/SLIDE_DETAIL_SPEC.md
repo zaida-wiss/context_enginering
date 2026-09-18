@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.0
+  version: 3.1
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -36,28 +36,28 @@ Any visual example in this file is descriptive only.
 
 ## Meeting-point headers — fixed meeting-point title + page subtitle
 
-Slides ①–⑭ always preserve the **official meeting-point title** as the primary
+Slides 1–14 always preserve the **official meeting-point title** as the primary
 slide heading. A page-specific description is a separate subtitle and must
 never replace the meeting-point heading.
 
 Canonical two-level structure:
 
 ```text
-✏️ [MEETING POINT] [OFFICIAL MEETING-POINT TITLE]
+✏️ [MEETING POINT NUMBER]. [OFFICIAL MEETING-POINT TITLE]
 [PAGE-SPECIFIC SUBTITLE]
 ```
 
 Example for meeting point 1:
 
 ```text
-✏️ ① Avklarat sedan förra mötet
+✏️ 1. Avklarat sedan förra mötet
 Mergat till develop
 ```
 
 Another page in the same meeting point:
 
 ```text
-✏️ ① Avklarat sedan förra mötet
+✏️ 1. Avklarat sedan förra mötet
 Backend — mergat till collection branch
 ```
 
@@ -297,7 +297,7 @@ Do not include design-process explanations.
 
 Official meeting-point title shown on **every** slide in this section:
 
-`✏️ ① Avklarat sedan förra mötet`
+`✏️ 1. Avklarat sedan förra mötet`
 
 Page-specific descriptions such as `Mergat till develop`, `Mergat till C/C++-Native`,
 `Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles,
@@ -351,7 +351,7 @@ work.
 ## Subtitle — Mergat till develop
 
 Primary heading remains:
-`✏️ ① Avklarat sedan förra mötet`
+`✏️ 1. Avklarat sedan förra mötet`
 
 Subtitle:
 `Mergat till develop`
@@ -368,7 +368,7 @@ sprinten`, `del 2`, `merged work` or equivalent.
 ## Subtitle — Mergat till C/C++-Native
 
 Primary heading remains:
-`✏️ ① Avklarat sedan förra mötet`
+`✏️ 1. Avklarat sedan förra mötet`
 
 Canonical branch: `C/C++-Native`. Show every verified merge to this branch during
 the sprint window after the `develop` pages. Use the same evidence fields as
@@ -380,7 +380,7 @@ merge evidence. The slide subtitle must be exactly `Mergat till C/C++-Native`.
 ## Subtitle — Mergat till Java-Development-Environment
 
 Primary heading remains:
-`✏️ ① Avklarat sedan förra mötet`
+`✏️ 1. Avklarat sedan förra mötet`
 
 Canonical branch: `Java-Development-Environment`. Show every verified merge to
 this branch during the sprint window after `C/C++-Native`. Use the same evidence
@@ -393,7 +393,7 @@ merge evidence. The slide subtitle must be exactly
 ## Subtitle — Teamsammanfattning till mötesprotokollet
 
 Primary heading remains:
-`✏️ ① Avklarat sedan förra mötet`
+`✏️ 1. Avklarat sedan förra mötet`
 
 This section always comes last in meeting point 1. Create one meaningful summary
 card for each team represented in the sprint evidence. The summary is primarily
@@ -458,107 +458,58 @@ verified completed or partial value belong to later meeting points.
 Purpose: orient the team in **where we are in the full course period**, which
 deadlines/checkpoints are already passed, and what deserves extra attention next.
 
-## Primary visual: chronological course timeline — mandatory
+## Primary visual: chronological card/grid view — mandatory
 
-Meeting point 2 MUST use a chronological horizontal timeline covering the
-**entire registered course/project period**, from course start to final delivery.
-Do not replace this with a generic 2×2/4-card status grid.
+Meeting point 2 uses the shared responsive card/grid system.
 
-The timeline is the primary information structure and must:
-- run left → right in chronological order
-- include all verified major course phases, checkpoints, feedforward moments and deadlines from registered schedule/milestone sources
-- show exact date and time when the source provides them
-- group/label months or other time bands when this improves scanning
-- place milestone labels above/below the line to prevent collisions
-- use a visible marker for every milestone
-- keep enough spacing that no labels overlap
-- prefer short milestone labels; detailed explanation belongs in the focus callouts
-- retain source/provenance in the slide footer and in focus callouts where relevant
+The cards must together cover the **entire registered course/project period**,
+from course start to final delivery, in chronological reading order.
 
-### Mandatory current-sprint position marker
+Each milestone/deadline card should show, when verified:
+- phase/checkpoint/deadline name
+- exact date/time
+- status
+- why it matters
+- provenance
 
-The timeline MUST clearly show **where the sprint week represented by the deck
-sits in the full course period**.
+### Mandatory current-sprint position
 
-Resolve the active sprint from the presentation request timestamp using the same
-sprint-boundary rules as the cover.
+The current sprint must be clearly identifiable inside the card/grid system.
 
-Render a distinct marker that spans or brackets the active sprint interval:
-- label it clearly, e.g. `AKTUELL SPRINT` / `Vi är här`
-- show the active sprint date range
-- the marker must be visible at a glance without relying on red/orange/green
-- use a neutral/high-contrast accent, outline, bracket or translucent band so it
-  does not redefine milestone status colors
-- place the marker behind/around the relevant timeline interval, never on top of
-  milestone text
-- if the sprint crosses two timeline segments, the marker must still represent
-  the complete active interval
-- the marker is a temporal locator, not a status judgment
+Use an explicit card/badge/section label such as:
+`AKTUELL SPRINT` / `Vi är här`
 
-The viewer should be able to answer within one glance:
-**"Var befinner vi oss nu i hela kursperioden?"**
+Show the sprint date range and place the current-sprint card/label at the correct
+position in the chronological sequence.
 
-### Timeline color semantics — mandatory
+### Status color semantics
 
-Reintroduce these three colors as a stable timeline vocabulary:
-
+Use:
 - **Green = completed / passed / already carried out**
-- **Orange = upcoming checkpoint, feedforward, review or important intermediate milestone**
+- **Orange = upcoming checkpoint/feedforward/intermediate milestone**
 - **Red = critical deadline / major delivery with material consequence if missed**
 
-Color MUST always be paired with text/date/shape and may never be the only
-carrier of meaning.
+Color must always be paired with text/symbol.
 
-Do not color every future date red. Red is reserved for a verified critical
-deadline/major delivery. Ordinary future checkpoints are orange.
+### Nearest-focus cards
 
-The slide must include a compact legend:
-- `Grön = genomfört`
-- `Orange = checkpoint/feedforward`
-- `Röd = kritisk deadline`
+Add 1–3 concise cards for the nearest upcoming items the team needs to track now.
 
-## Nearest-focus callouts — mandatory support layer
+When a nearest-focus card describes a school/submission/deadline task, use:
+- `🎯` what
+- `🕒` when
+- `📍` where
+- `💡` why
+- `🛠` how
+- `→` immediate preparation/action from verified data
 
-The timeline alone is not enough. Add **1–3 concise explanatory callout boxes**
-for the nearest upcoming items that the team needs to keep track of now.
-
-These callouts are secondary to the timeline. When the callout describes a
-school/submission/deadline task, use the same icon grammar as the cover:
-
-- `🎯` what the deadline/checkpoint requires
-- `🕒` exact date/time
-- `📍` channel/platform/location
-- `💡` documented purpose or verified consequence
-- `🛠` documented format/submission/execution method
-- `→` immediate preparation/action that follows from verified team/project data
-
-Do not spell out `VAD / NÄR / VAR / VARFÖR / HUR` as repeated labels.
-
-The purpose is practical: the team should understand not only that a deadline is
-close, but **what it means for the work immediately ahead**.
-
-Rules:
-- the callout must visibly connect to or clearly name its timeline milestone
-- use short paragraphs/bullets, not dense prose
-- give strongest visual emphasis to the nearest critical item
-- use 1–3 callouts only; do not explain the entire timeline in boxes
-- verified facts keep their canonical source label
-- model interpretation uses `🔎 AI-analys`
-- model recommendation uses `⭐ AI-förslag`
-- never turn a future action into a confirmed team decision
-- if `Var`, `Varför` or `Hur` cannot be verified, write the missing field explicitly with `⚠` rather than guessing
-- do not hide a source conflict; show it as a verification point for PL/team
+Do not spell out repeated `VAD / NÄR / VAR / VARFÖR / HUR` labels.
 
 ### Overflow behavior for point 2
 
-Preferred:
-- `2.` = full-course timeline + compact nearest-focus callouts
-
-If both timeline and readable focus callouts do not fit:
-- keep the full timeline on `2.`
-- move explanatory boxes to continuation slide `2a.`
-- subtitle on `2a.` should describe the content, e.g. `a. Närmaste fokus`
-- never shrink or overlap timeline labels to avoid a continuation slide
+Keep chronological card order.
+If all content does not fit readably, continue to `2a.`, `2b.` etc.
+Never shrink below readability limits to avoid continuation slides.
 
 ## Content requirements
 
@@ -638,11 +589,11 @@ and sequencing logic are owned by:
 
 This slide applies that authority rather than redefining dependency planning.
 
-## ⑥A Dependency graph
+## ⑥A Dependency cards
 
-Include only critical chains.
+Include only critical dependency chains as cards.
 
-Every dependency node MUST contain, in this logical order:
+Every dependency card MUST contain, in this logical order:
 - issue number when one exists
 - short title
 - **short grounded project-value explanation directly under the title** answering `Vad löser detta i projektet?`
@@ -675,11 +626,11 @@ Flyttar auth till säkrare cookie-baserad lösning.
 ⏳ efter integration
 ```
 
-Arrows represent verified dependency direction.
+Optional arrows/connectors between cards may represent verified dependency direction.
 
 If dependency direction is inferred by AI rather than explicitly supported, mark the interpretation `🔎 AI-analys`.
 
-The dependency graph must feed the planning recommendations on ③–⑤, ⑨ and ⑬. If a blocker appears here but does not influence proposed ordering anywhere, re-check the prioritization logic.
+The dependency cards must feed the planning recommendations on ③–⑤, ⑨ and ⑬. If a blocker appears here but does not influence proposed ordering anywhere, re-check the prioritization logic.
 
 ## Optional review findings
 
@@ -760,8 +711,8 @@ Never translate these questions into invented hours, percentages or velocity.
 Purpose: give the team a **compact, immediately usable execution order** for
 the remaining sprint work.
 
-Meeting point 9 is **not** a four-column team board. It is a vertically stacked
-priority view optimized for fast scanning and low space usage.
+Meeting point 9 uses the shared responsive card/grid system and is optimized
+for fast scanning and clear priority.
 
 ## Mandatory execution groups
 
@@ -792,7 +743,7 @@ This is the strongest section and contains the work that should be handled
 first because it removes a blocker, protects a deadline, unlocks another team,
 closes a critical core-flow gap, or corrects a misleading/insufficient issue.
 
-Stack items in strict priority order from top to bottom.
+Place items in strict priority order using normal reading order within the grid.
 
 For existing work, each item is intentionally compact:
 
@@ -831,7 +782,7 @@ Do not repeat the same label on every existing issue row.
 
 ## 2. Parallellt
 
-After a small visual gap, stack all work that can proceed independently while
+In the next priority group, show work that can proceed independently while
 the first-priority path is being handled.
 
 Use the same compact row structure for existing work:
@@ -850,7 +801,7 @@ to wait for the same dependency.
 
 ## 3. Backlog — lägre prioritet
 
-Place this group below active execution work.
+Place this group after active execution work in normal reading order.
 
 This group is deliberately the most compact. It preserves scope awareness
 without competing with current execution.
@@ -955,36 +906,18 @@ Team ownership is secondary on this slide.
 Do not split the slide into Frontend/Backend/Native/Cross-team columns.
 The priority order across the whole project is the primary organizing principle.
 
-### Render geometry — mandatory
+### Shared card/grid geometry — mandatory
 
-On each physical point-9 slide, the execution groups are arranged as a genuine
-vertical sequence:
-
-```text
-Prioritering först
-        ↓
-Parallellt
-        ↓
-Backlog — lägre prioritet
-        ↓
-Förslag framåt
-```
+Point 9 follows the same responsive card/grid system as the rest of the deck.
 
 Geometry rules:
-- each group starts below the previous group's bottom edge
-- groups may span most or all of the usable slide width
-- two groups may not occupy the same vertical band as side-by-side peers
-- a 2×2 grid, four-quadrant layout or visually parallel card matrix fails even
-  when the group labels are correct
-- continuation slides preserve the same top-to-bottom ordering
-- the visual direction must make the planning sequence obvious without relying
-  only on the words inside the cards
+- cards follow normal left-to-right, top-to-bottom reading order
+- priority group headings remain explicit
+- a 2×2 grid is allowed when readable
+- use fewer/wider cards or continuation slides when needed
+- do not switch to a special row-only or full-width vertical composition
+- the visual hierarchy must still make priority clear without relying on color alone
 
-When team identity is needed to prevent ambiguity:
-- use a short team label in quiet metadata style, or
-- use the canonical team-colored issue number as supplementary information
-
-Color may never be the only ownership cue.
 
 ## Open pull requests
 
@@ -1002,8 +935,8 @@ continuation slide is necessary.
 
 ## Continuation behavior
 
-Try to fit the complete view on one physical slide using compact rows and
-minimum-approved inter-block spacing.
+Try to fit the complete view on one physical slide using the shared card/grid
+system and approved spacing.
 
 If it still does not fit at readable sizes:
 - continue as `9a. Prioritering och scope`
@@ -1011,7 +944,7 @@ If it still does not fit at readable sizes:
 - never split a group in a way that makes priority sequence ambiguous
 - repeat group headings on continuation pages when needed
 
-The slide must optimize for **order visibility**, not decorative card volume.
+The slide must optimize for **order visibility and predictable card structure**.
 
 ---
 
