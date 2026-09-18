@@ -324,4 +324,4 @@ Any non-zero count means: fix → rerender → reinspect.
 
 **Last updated:** 2026-09-18
 **Status:** Production architecture
-**Version:** 2.1
+**Version:** 2.4
