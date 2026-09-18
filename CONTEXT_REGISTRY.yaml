@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.4
+version: 1.5
 metadata:
   type: registry
   critical: true
@@ -52,6 +52,8 @@ logical_destinations:
       path: "_ai_guides/project/templates/DEFINITION_OF_DONE.md"
     risk_register_template:
       path: "_ai_guides/project/templates/RISK_REGISTER.md"
+    hr_and_team_support:
+      path: "_ai_guides/project/HR_AND_TEAM_SUPPORT.yaml"
 
   memory:
     team_roster:
@@ -105,6 +107,18 @@ presentation_bootstrap:
     path: "_ai_guides/presentations/SYSTEM_CONTRACT.yaml"
 
 tasks:
+  team_support:
+    behavior_standard:
+      ref: "logical_destinations.project.hr_and_team_support"
+    use_for:
+      - "team conflict"
+      - "negative talk about a colleague"
+      - "feedback and difficult conversations"
+      - "needs and expectation clashes"
+      - "role/group/project fit"
+      - "team wellbeing"
+      - "people-support or HR-style guidance"
+
   monday_meeting_presentation:
     bootstrap: "presentation_bootstrap"
     content_authority:
