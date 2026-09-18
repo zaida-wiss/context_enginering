@@ -29,6 +29,7 @@ def main():
     failures = []
 
     registry = read("CONTEXT_REGISTRY.yaml")
+    ai_framework = read("_ai_guides/AI_FRAMEWORK.md")
     router = read("_ai_guides/project/PROJECT_CONTEXT_ROUTER.md")
     dod = read("_ai_guides/project/DEFINITION_OF_DONE.md")
     issue_template = read("_ai_guides/project/templates/ISSUE_BODY.md")
@@ -60,6 +61,27 @@ def main():
         "logical_destinations.project.technical_debt",
         "logical_destinations.project.team_tone_and_collaboration",
     ]
+    require(
+        "global AI framework is registered",
+        "logical_destinations:" in registry
+        and "ai_framework:" in registry
+        and "_ai_guides/AI_FRAMEWORK.md" in registry,
+        failures,
+    )
+    require(
+        "global conflict gate requires user decision before resolution",
+        "CONFLICT DECISION GATE — USER DECIDES" in ai_framework
+        and "STOP before resolving" in ai_framework
+        and "Ask the user for the intended decision" in ai_framework
+        and "Wait for that decision" in ai_framework,
+        failures,
+    )
+    require(
+        "context-first correction is global",
+        "CONTEXT-FIRST CORRECTION" in ai_framework
+        and "update the context repository first" in ai_framework,
+        failures,
+    )
     require("coding_assistance task exists", "coding_assistance:" in registry, failures)
     for ref in coding_refs:
         require(f"coding bundle loads {ref}", ref in registry, failures)
