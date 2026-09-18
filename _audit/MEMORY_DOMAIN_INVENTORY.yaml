@@ -96,6 +96,8 @@ files:
     class: derived_data
     reason: "Synthesized timeline/capacity view with stale and internally inconsistent dates."
     proposed_destination: "data/derived/SPRINT_FOCUS_TIMELINE.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/derived/SPRINT_FOCUS_TIMELINE.md"
     migration_note: "Do not treat as canonical until regenerated from verified schedule/milestones."
 
   _memory/TEAMSTANDARDS.md:
@@ -116,12 +118,16 @@ files:
     class: live_or_manual_data
     reason: "Reference material derived from supplied design mockups and product examples."
     proposed_destination: "data/manual/design/UI_DESIGN_REFERENCE.md"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "data/manual/design/UI_DESIGN_REFERENCE.md"
     migration_note: "Keep mockups as source artifacts and separate source facts from implementation suggestions."
 
   _memory/presentations/CURRENT_SPRINT.yaml:
     class: instruction
     reason: "Contains schema/structure only and says values must be fetched dynamically."
     proposed_destination: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
+    migration_status: "migrated_2026-09-18"
+    actual_destination: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
     migration_note: "This is a data schema, not memory."
 
   _memory/presentations/MILESTONES.yaml:
@@ -181,4 +187,4 @@ migration_order:
   - "6. Consider merging GITHUB_MEMBER_MAPPING into TEAM_ROSTER to reduce duplicate identity truth."
   - "7. Update CONTEXT_REGISTRY paths and run repository-wide old-path validation after every migration batch."
 
-status: "inventory_complete_course_data_and_project_instructions_migrated"
+status: "inventory_complete_primary_domain_migrations"
