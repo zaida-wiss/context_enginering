@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.7
+  version: 4.8
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -402,6 +402,8 @@ ai_analysis_without_magnifying_glass_count == 0
 ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
 mixed_provenance_card_without_block_labels_count == 0
+ai_no_finding_without_exact_checked_sources_count == 0
+ai_check_trace_source_not_actually_inspected_count == 0
 provenance_symbol_replaced_by_tag_count == 0
 provenance_text_without_canonical_symbol_count == 0
 ai_suggestion_without_star_count == 0
@@ -418,7 +420,27 @@ Manual checks:
 - an expected source that could not be checked is shown with `⚠` rather than
   being implied as analysed
 
-## 12A. POINT 9 — VERTICAL PRIORITY VIEW
+## 12A. CAPACITY — PROJECT-FACING CONTENT
+
+Required:
+
+```text
+capacity_personal_reason_exposed_count == 0
+capacity_internal_ai_policy_visible_count == 0
+capacity_missing_numeric_state_not_explicit_count == 0
+```
+
+Manual checks:
+- availability is phrased as planning impact, not personal background
+- health, travel or other private reasons are omitted from the deck
+- the slide explains what the team can and cannot plan from the verified data
+- internal model instructions such as `Vad AI inte får göra` are not shown to the audience
+- when numeric capacity is unavailable, the audience sees that it is missing and
+  that planning therefore uses qualitative constraints
+
+---
+
+## 12B. POINT 9 — VERTICAL PRIORITY VIEW
 
 Required:
 
@@ -431,12 +453,18 @@ point9_ai_order_without_analysis_label_count == 0
 point9_dependency_not_reflected_in_order_count == 0
 point9_duplicate_item_across_groups_count == 0
 point9_team_coverage_gap_without_reason_count == 0
+point9_group_vertical_order_violation_count == 0
+point9_side_by_side_group_count == 0
+point9_meta_layout_language_visible_count == 0
 suggested_issue_without_goal_link_count == 0
 unverified_owner_presented_as_fact_count == 0
 ```
 
 Manual checks:
 - meeting point 9 uses the vertically stacked execution model from `SLIDE_DETAIL_SPEC.md`
+- inspect actual rendered geometry: each execution group begins below the previous group's bottom edge
+- no two execution groups occupy the same vertical band as side-by-side peers; a 2×2/four-quadrant arrangement fails
+- no visible subtitle/body text explains presentation-layout mechanics such as `inte fyrkolumnstavla`, `vertical layout` or equivalent
 - execution groups appear in the canonical logical order:
   1. `Prioritering först`
   2. `Parallellt`
@@ -574,5 +602,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.7
+**Version:** 4.8
 **Last updated:** 2026-09-17
