@@ -10,7 +10,7 @@ metadata:
 
 **Något ser fel ut i presentationen? Hitta ditt problem här.**
 
-🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+🔗 **Alla externa datakällor:** Se [`data/SOURCES.md`](../data/SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
 
 ---
 
@@ -150,7 +150,7 @@ metadata:
   - Alla steg måste checkades OFF
 
 - [ ] **Fallback-hierarkin försökt?** — Om GitHub failade:
-  - Google Sheets: See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET
+  - Google Sheets: See SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET
   - Project Board: https://github.com/orgs/chas-challenge-2026/projects/31/views/1
   - Meeting protocol (länk i README.md)
 
