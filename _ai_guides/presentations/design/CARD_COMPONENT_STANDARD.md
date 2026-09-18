@@ -167,9 +167,10 @@ Examples:
 
 Hard rules:
 - do **not** use full names — first name only
-- team ownership must never rely on color alone
-- include an explicit non-color team cue on every card where team ownership is relevant: `Frontend`, `Backend`, `Native/System` or `Cross-team`
-- a surrounding team section/header does not remove this requirement when the card may be copied, moved, exported or interpreted out of context
+- team ownership must never rely on color alone across the complete slide context
+- on a dedicated team slide whose primary header explicitly names the team, do not repeat the team name inside every card; the header supplies the non-color ownership cue and the left accent color is supplementary
+- on mixed-team slides, include an explicit non-color team cue on each relevant card: `Frontend`, `Backend`, `Native/System` or `Cross-team`
+- if a card is reused outside its original dedicated team slide, add the explicit team label again
 - team accent color remains supplementary only
 - do **not** prefix with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent wording
 - use the main/primary text color, not the team accent color, for ordinary identity text
@@ -187,8 +188,10 @@ The identifier is dynamic, for example `#99`, `#105` or `#108`; examples never
 hard-code which PRs exist. For an open PR, the complete heading begins
 `📌 #[PR_NUMBER]`. Apply team color to `#[PR_NUMBER]`, not to the pushpin.
 
-The number color is supplementary. Team ownership must also be explicitly
-available from a text label on the card, and the colored number must meet
+The number color is supplementary. On mixed-team slides, team ownership must
+also be explicitly available from a text label on the card. On dedicated team
+slides, the primary slide header may provide that non-color team meaning. The
+colored number must meet
 WCAG 2.2 AA contrast. If the canonical color fails contrast on the selected
 surface, use its approved accessible contrast variant without changing the team
 meaning.
@@ -340,12 +343,12 @@ If the timestamp is not useful to the meeting, omit it rather than filling space
 Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
 
-Tomac · Frontend
+Tomac
 Merged: Zaida | Review: Björn
                          14 sep · 10:16
 ```
 
-Note: Team ownership is shown by explicit text (for example `Frontend`) plus the supplementary left accent color. Color alone is never sufficient.
+Note: On a dedicated team slide, the slide header names the team and the card uses the supplementary left accent color without repeating the team text. On mixed-team slides, the card includes explicit team text plus the accent color.
 
 Rendering rules:
 - pedagogical explanation sits directly under the title
