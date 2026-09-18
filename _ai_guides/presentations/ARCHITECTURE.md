@@ -3,7 +3,7 @@ name: presentation_architecture
 description: Design architecture — Single Source of Truth for presentation system
 metadata:
   type: critical_specification
-  version: 2.3
+  version: 2.4
 ---
 
 # 📐 PRESENTATION ARCHITECTURE — Single Source of Truth
@@ -205,12 +205,13 @@ Red is not a fact color. Red remains blocker/critical.
 
 These are density rules:
 
-- `①–①d`: verified work performed so far in the active sprint; 6 cards is standard capacity per physical slide with unlimited lowercase-letter continuations
-- `①` develop merges → `①a` Backend collection merges → `①b` Native collection merges → `①c` unfinished work active in the window → `①d` AI team summaries
+- Meeting point 1: verified completed work in the active sprint; 6 cards is standard capacity per physical slide with unlimited continuation slides
+- Point-1 order: `develop` merges → `C/C++-Native` merges → `Java-Development-Environment` merges → AI team summaries
+- Point 1 has no separate WIP/unfinished-work slide; unfinished work belongs to later planning points
 - `③–⑤`: separate Frontend, Backend and Native forward-planning sections; they own backlog, future work, older inactive work and governing decisions
-- `⑨`: content structure, execution groups and continuation behavior are defined by `SLIDE_DETAIL_SPEC.md`
-- `⑨`: visual implementation follows `VISUAL_DESIGN_MANDATORY.md`, `CARD_COMPONENT_STANDARD.md` and `LAYOUT_OVERFLOW_GUARD.md`
-- `⑨`: Architecture records ownership only; it does not duplicate the point-9 page layout
+- Point 9 is an explicit slide-level exception to the general grid: its execution groups are vertically stacked top-to-bottom
+- Point 9 content/group semantics and continuation behavior are defined by `SLIDE_DETAIL_SPEC.md`
+- Point 9 cards still follow `CARD_COMPONENT_STANDARD.md`; vertical fit/pagination follows `LAYOUT_OVERFLOW_GUARD.md`
 - `③–⑤` and `⑨`: plan the remaining active-sprint horizon from data cutoff to sprint end
 - `②`, `⑥–⑧` and `⑩–⑫`: max 4, responsive card layout
 - `⑬`: max 4; 4×1 only when readable, otherwise 2×2/fewer
