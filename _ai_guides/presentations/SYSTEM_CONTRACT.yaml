@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.8
+version: 4.9
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -127,11 +127,17 @@ authority:
 execution_receipt:
   required_before_build: true
 
+  global_framework:
+    file: "../AI_FRAMEWORK.yaml"
+    normative: true
+    required_before_presentation_authorities: true
+
   bootstrap:
     rule: >
-      Start with the minimal routing chain and read each bootstrap file once from
-      the execution ref.
+      Start with the global AI framework, then the minimal presentation routing
+      chain, reading each bootstrap file once from the execution ref.
     files:
+      - "../AI_FRAMEWORK.yaml"
       - "MANDATORY_READING_ORDER.md"
       - "AUTHORITY_REGISTRY.yaml"
       - "INTEGRITY_CONSTRAINT.md"
