@@ -7,7 +7,7 @@ Canonical project-level instructions live here.
 | project.context_router | [`PROJECT_CONTEXT_ROUTER.md`](PROJECT_CONTEXT_ROUTER.md) | routes project tasks to the correct owner |
 | project.team_standards | [`TEAM_STANDARDS.md`](TEAM_STANDARDS.md) | code, Git and team operating standards |
 | project.definition_of_done | [`DEFINITION_OF_DONE.md`](DEFINITION_OF_DONE.md) | criteria for completed project work |
-| project.definition_of_done_template | [`templates/DEFINITION_OF_DONE.md`](templates/DEFINITION_OF_DONE.md) | reusable issue checklist |
+| project.issue_body_template | [`templates/ISSUE_BODY.md`](templates/ISSUE_BODY.md) | reusable issue body and completion reminder |
 | project.risk_register_template | [`templates/RISK_REGISTER.md`](templates/RISK_REGISTER.md) | reusable risk register structure |
 | project.hr_and_team_support | [`HR_AND_TEAM_SUPPORT.yaml`](HR_AND_TEAM_SUPPORT.yaml) | extra support for conflict, needs and people-related situations |
 | project.team_tone_and_collaboration | [`TEAM_TONE_AND_COLLABORATION.yaml`](TEAM_TONE_AND_COLLABORATION.yaml) | default communication and feedback standard |
