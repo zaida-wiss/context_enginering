@@ -1,293 +1,161 @@
 ---
 name: context_ingestion_routing
-description: How to classify and route user-provided project context to canonical files
+description: Minimal router for classifying and placing user-provided project context
 metadata:
   type: process
   critical: true
-  version: 1.0
+  version: 2.0
 ---
 
-# CONTEXT INGESTION & ROUTING
+# Context ingestion router
 
-## CANONICAL REGISTRIES
+## Purpose
+
+This file defines **how new project information is classified and routed**.
+
+It does not own repository paths. Canonical paths and task bundles are resolved
+through `CONTEXT_REGISTRY.yaml`.
+
+It does not own presentation rules. Presentation behavior is defined by the
+registered presentation authorities.
+
+## Routing flow
+
+```text
+new information
+  ↓
+classify
+  ↓
+extract structured fields
+  ↓
+resolve logical destination through CONTEXT_REGISTRY
+  ↓
+compare with existing canonical context
+  ↓
+merge, update or request a decision
+  ↓
+record source + update time
+```
+
+## Information classes
+
+Use the smallest fitting class:
+
+- `schedule` — meetings, recurring times, calendar events
+- `deadline` — due dates, submissions, release dates
+- `milestone` — project/course checkpoints and phase boundaries
+- `sprint_goal` — current sprint/week focus
+- `roadmap` — longer-term phases and sequence
+- `team_roster` — people, roles and team membership
+- `decision` — confirmed project/process/technical decisions
+- `manual_source` — source material supplied manually because no live registered source exists
+- `unknown` — classification needs clarification
+
+## Structured fields
+
+Capture the fields that are actually available:
 
 ```yaml
-registries:
-  external_sources: "data/SOURCES.yaml"
-  source_guide: "data/SOURCES.md"
+title:
+date:
+time:
+timezone:
+owner:
+team:
+source:
+source_type:
+confidence:
+updated_at:
 ```
 
-This routing file points to canonical locations. Task-specific guides use the registered logical source instead of defining a second source path.
+Use `Europe/Stockholm` when a timezone is required and the source belongs to
+the team's normal Swedish schedule context.
 
-**Purpose:** When user provides project information (schedule, deadlines, goals, decisions),
-route it automatically to the correct canonical context file in the repo.
+Missing fields remain unset until they are known.
 
----
+## Logical destinations
 
-## CLASSIFICATION LAYER
+Resolve paths through `CONTEXT_REGISTRY.yaml`.
 
-### Step 1: Identify Information Type
+Canonical logical routing:
 
-When user provides information, classify as ONE of:
-- **schedule** — meeting times, recurring events, calendar
-- **deadline** — due date, submission, milestone
-- **milestone** — phase, release, checkpoint
-- **sprint_goal** — this week's focus, weekly objective
-- **roadmap** — long-term phases, project timeline
-- **team_roster** — people, roles, responsibilities
-- **decision** — approved decision, policy, technical choice
-- **unknown** — cannot classify (ask for clarification)
-
-### Step 2: Extract Structured Fields
-
-For all classified information:
-- title
-- date (convert to ISO 8601: YYYY-MM-DD)
-- time (if applicable, convert to HH:MM)
-- timezone (default: Europe/Stockholm)
-- owner / responsible person
-- team / affected scope
-- source (user_provided, course_schedule, github_issue, email, etc)
-- confidence (high/medium/low)
-
-### Step 3: Route to Canonical File
-
----
-
-## ROUTING TABLE
-
-| Classification | Triggers | Canonical File | Action |
-|---|---|---|---|
-| **schedule** | meeting, time, recurring weekday, calendar, team sync, huddle | `_memory/presentations/SCHEDULE.yaml` | merge with existing schedule |
-| **deadline** | deadline, due date, release, demo, submission, deployment | `_memory/presentations/MILESTONES.yaml` | add as milestone |
-| **milestone** | phase, week range, project timeline, long-term plan | `_memory/presentations/TEAM_ROADMAP.yaml` | update phase dates |
-| **sprint_goal** | this week, sprint goal, weekly goal, current focus, priority | `_memory/presentations/CURRENT_SPRINT.yaml` | update sprint_focus array |
-| **roadmap** | phases, weeks, project structure, long-term plan | `_memory/presentations/TEAM_ROADMAP.yaml` | update phases |
-| **team_roster** | person, role, team assignment, responsibility | `_memory/TEAM_ROSTER.md` | add/update member info |
-| **decision** | approved, decided, rule, policy, "we will", "from now on" | `docs/decisions/<id>.md` | create new file (see format below) |
-
-### Routing Examples
-
-```
-User: "Tisdagar 12:30 PL-möte"
-→ Classification: schedule
-→ Route to: _memory/presentations/SCHEDULE.yaml
-→ Action: merge into recurring_meetings.tuesday
-
-User: "CTO-underlag måste vara klart 24 september"
-→ Classification: deadline + milestone
-→ Route to: _memory/presentations/MILESTONES.yaml
-→ Route to: _memory/presentations/TEAM_ROADMAP.yaml
-→ Action: add deadline, mark V6 as critical
-
-User: "Vi fokuserar på kärnflöde denna vecka"
-→ Classification: sprint_goal
-→ Route to: _memory/presentations/CURRENT_SPRINT.yaml
-→ Action: update sprint_focus array
-
-User: "Vi använder Vitest för testing framework"
-→ Classification: decision
-→ Route to: docs/BESLUT.md
-→ Action: log decision with date, impact
-```
-
----
-
-## DECISION FORMAT (for docs/decisions/*.md)
-
-**When routing to decisions: create ONE FILE per decision**
-
-**File location:** `docs/decisions/<decision-id>.md`
-**File name matches id:** must be identical (e.g., `frontend-test-strategy.md`)
-
-**File content (YAML frontmatter + Markdown):**
-
-```markdown
----
-id: [slug-format: lowercase, hyphens]
-decision_date: YYYY-MM-DD
-updated_date: YYYY-MM-DD
-status: confirmed
----
-
-# [Decision Title]
-
-## Beslut
-[One sentence of what was decided]
-
-## Påverkan
-[Why this decision affects future work]
-```
-
-### Field Rules (MANDATORY)
-
-| Field | Format | Example | Must have |
-|-------|--------|---------|-----------|
-| `id` | slug (a-z, -, _) | `frontend-test-strategy` | YES |
-| `decision_date` | YYYY-MM-DD | `2026-09-15` | YES |
-| `updated_date` | YYYY-MM-DD | `2026-09-15` | YES |
-| `status` | `confirmed` or `proposed` | `confirmed` | YES |
-
-**If date is missing:** Decision will NOT appear in presentation (cannot verify "since last meeting")
-
-**Why separate files?**
-- One decision per file = clean YAML frontmatter
-- Easy to update individual decisions
-- Cleaner git history and merge conflicts
-- All AI-agentes parse YAML frontmatter the same way
-
-### Routing Example
-
-```
-User: "Vi har beslutat att använda Vitest för alla frontendtester"
-
-Classification: decision
-Extract: id="frontend-test-strategy", date="2026-09-16"
-Route to: docs/decisions/
-Create file: docs/decisions/frontend-test-strategy.md
-
-Content:
----
-id: frontend-test-strategy
-decision_date: 2026-09-16
-updated_date: 2026-09-16
-status: confirmed
----
-
-# Test strategy
-
-## Beslut
-Frontend använder Vitest för alla nya tester.
-
-## Påverkan
-Säkerställer konsistent testmetod i teamet.
-```
-
----
-
-## CONFLICT DETECTION
-
-When information conflicts with existing context:
-
-### Scenario 1: Time Conflict
-
-**Existing:** `Tuesday 12:30-14:00 PL meeting`
-**Incoming:** `Tuesday 13:00 PL meeting`
-
-**Action:**
 ```yaml
-conflict_detected:
-  type: "time_overlap"
-  existing: "12:30-14:00"
-  incoming: "13:00"
-  resolution: "requires_user_confirmation"
-  action: "flag and ask user which is correct"
+schedule: memory.presentation_schedule
+deadline: memory.presentation_milestones
+milestone: memory.presentation_roadmap
+sprint_goal: memory.current_sprint
+roadmap: memory.presentation_roadmap
+team_roster: memory.team_roster
+decision: decisions.confirmed
+manual_source: data.manual
 ```
 
-### Scenario 2: Date Conflict
+The registry maps these logical destinations to physical repository paths.
 
-**Existing:** `Deadline 2026-09-24 (from course schedule)`
-**Incoming:** `Deadline 2026-09-23 (from Canvas)`
+## Conflict handling
 
-**Action:**
+Compare incoming information with the current canonical value.
+
+Use one of these states:
+
 ```yaml
-conflict_detected:
-  type: "date_mismatch"
-  existing: "2026-09-24 (source: course_schedule)"
-  incoming: "2026-09-23 (source: user_provided)"
-  resolution: "flag and ask which source is authoritative"
+same:
+  action: keep existing canonical value and record matching source when useful
+
+compatible_update:
+  action: merge the new verified information
+
+conflict:
+  action: show the user the competing values, their sources and practical effect
+  resolution: user decision or higher-authority source
+
+unknown:
+  action: ask one focused clarification question when the missing fact blocks routing
 ```
 
-### Scenario 3: Duplicate Entry
+When a conflict affects presentation rules, first identify the owning authority
+through the presentation authority registry before proposing a change.
 
-**Existing:** `CTO-underlag · 2026-09-24 · 16:00`
-**Incoming:** `CTO-underlag · 2026-09-24 · 16:00` (identical)
+## Source handling
 
-**Action:**
-```yaml
-conflict_detected:
-  type: "exact_duplicate"
-  resolution: "skip (already exists)"
-  action: "do not re-add, acknowledge"
-```
+Every stored project fact keeps a source identity.
+
+Preferred order for living information:
+
+1. live registered source
+2. stable repository knowledge
+3. manual source material with source note
+4. explicit snapshot when a point-in-time capture is required
+5. derived data with reproducible input references
+
+Manual source material belongs in the data domain rather than being copied into
+presentation instruction files.
+
+## Update propagation
+
+After a canonical context value changes:
+
+1. update the owning data/memory/decision location
+2. update dependent indexes or registries when the path or dependency changed
+3. leave presentation rules unchanged unless the user requested a rule change
+4. run path/link validation when a file moved
+5. let future presentation tasks read the new canonical value through their task bundle
+
+## Model-neutral instruction style
+
+Instructions describe the task goal, canonical owner and expected result.
+
+The system guides the model toward the desired output by:
+- identifying the correct authority
+- supplying verified context
+- resolving only the dependencies needed for the task
+- validating the result against explicit acceptance checks
+
+This keeps the repository usable across different AI models without asking a
+model to replace its own operating instructions.
 
 ---
 
-## MERGE & PRESERVATION RULES
-
-1. **Never overwrite without verification** — if conflict detected, ask user
-2. **Preserve existing information** — keep earlier entries unless explicitly replaced
-3. **Record all sources** — every entry must show where it came from
-4. **Timestamp all updates** — when was this added/modified
-5. **No invented information** — never guess missing dates, times, or details
-
----
-
-## INGESTION PROCESS (Full Flow)
-
-```
-USER PROVIDES INFORMATION
-        ↓
-1. IDENTIFY TYPE
-   (schedule / deadline / milestone / sprint / decision / unknown)
-        ↓
-2. EXTRACT FIELDS
-   (title, date, owner, team, source, confidence)
-        ↓
-3. DETECT CONFLICTS
-   (exact match / time conflict / date conflict / unknown)
-        ↓
-4. ROUTE TO FILE
-   (_memory/presentations/ or docs/)
-        ↓
-5. MERGE
-   (add / replace / flag for confirmation)
-        ↓
-6. RECORD SOURCE & TIMESTAMP
-        ↓
-7. UPDATE DEPENDENT CONTEXT
-   (if framsida weekly_focus changed, update presentation)
-```
-
----
-
-## SPECIAL RULES
-
-### Rule: Do Not Invent Missing Information
-
-❌ **WRONG:**
-```
-User: "Demo is Thursday"
-Inferred: "Must be 09:00 (usual demo time)"
-Action: Add "2026-09-19 09:00 Demo"
-```
-
-✅ **CORRECT:**
-```
-User: "Demo is Thursday"
-Extracted: {date: "2026-09-19", time: null}
-Action: Add "2026-09-19 Demo (time TBD)"
-```
-
-### Rule: Update Dependent Context
-
-If `CURRENT_SPRINT.yaml` sprint_focus changes → update framsida `weekly_focus`
-If `MILESTONES.yaml` next deadline changes → update framsida footer
-
----
-
-## NEXT STEPS FOR USER
-
-1. Copy the three YAML files above into `_memory/presentations/`
-2. Update `CURRENT_SPRINT.yaml` each Monday with this week's focus
-3. Whenever user provides schedule/deadline/goal info, AI automatically:
-   - Classifies it
-   - Checks for conflicts
-   - Routes to correct file
-   - Updates presentation if needed
-
----
-
-**Version:** 1.0
-**Status:** ACTIVE
-**Last updated:** 2026-09-16
+**Status:** ACTIVE ROUTER
+**Version:** 2.0
+**Last updated:** 2026-09-18
