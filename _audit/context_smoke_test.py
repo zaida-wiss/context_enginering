@@ -249,9 +249,11 @@ def main():
     )
 
     require(
-        "team identity never relies on color alone",
-        "team ownership must never rely on color alone" in read("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md").lower()
-        and "team_identity_color_only_count == 0" in render_gate,
+        "team identity uses context-aware non-color cues",
+        "dedicated team slide" in read("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md").lower()
+        and "mixed-team slides" in read("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md").lower()
+        and "mixed_team_card_color_only_identity_count == 0" in render_gate
+        and "dedicated_team_slide_missing_text_team_context_count == 0" in render_gate,
         failures,
     )
 
