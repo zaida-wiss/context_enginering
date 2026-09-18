@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.2
+version: 4.3
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -12,16 +12,16 @@ base_path: "_ai_guides/presentations"
 ###############################################################################
 core_principles:
   - "WCAG 2.2 AA is an absolute boundary. No layout or visual preference may weaken it."
-  - "Never guess project data. Unverified data is marked unknown/incomplete."
-  - "Never present AI inference as source fact or confirmed team decision."
+  - "Project facts come from verified registered sources; unavailable facts remain explicitly unknown or incomplete."
+  - "AI interpretation is clearly distinguished from verified source facts and confirmed team decisions."
   - "Cards adapt to content; content is never clipped to preserve a grid."
   - "Slide titles are fixed at 36 pt minimum and are never shrunk to solve layout pressure."
   - "Normal/card text starts at preferred larger sizes and is reduced only when required within defined ranges."
-  - "Responsive typography is deliberate within defined ranges; automatic shrink-to-fit is forbidden."
+  - "Responsive typography uses the deliberate role-specific ranges defined by the readability and card authorities."
   - "If accessible/readability minimum sizes still do not fit, reduce card density or paginate."
   - "Required pedagogical/project-value microcopy is never removed to save space."
   - "Verified dependencies must influence planning order when they materially affect sequence."
-  - "All source/provenance meaning uses icon + text; color alone is forbidden."
+  - "All source/provenance meaning is communicated with the canonical symbol + text defined by the provenance authority."
 
 ###############################################################################
 # EXECUTION / BRANCH SNAPSHOT
@@ -141,21 +141,14 @@ external_sources_policy:
     - "If all registered fallbacks fail, mark the dataset INCOMPLETE; do not improvise a source."
 
 ###############################################################################
-# DATA INTEGRITY
+# DATA INTEGRITY AUTHORITY
 ###############################################################################
-data_integrity:
-  rules:
-    - "Never invent issue/PR numbers."
-    - "Never treat a PR number as an issue number."
-    - "Never infer a GitHub entity solely from a branch name without verification."
-    - "Assignee/reviewer/merger/author identities require source evidence."
-    - "Timestamps must come from source data."
-    - "Code/product contribution claims must be grounded in issue/PR/diff/commit evidence."
-
-  unknown_work_item_wording:
-    - "Behöver issue"
-    - "Issue-ID ej verifierat"
-    - "Arbetsområde — issue behöver skapas/verifieras"
+data_integrity_authority:
+  file: "INTEGRITY_CONSTRAINT.md"
+  owns: "verified-data semantics, explicit unknown/incomplete states and factual trust boundary"
+  rule: >
+    Apply INTEGRITY_CONSTRAINT.md for factual trust semantics. This system
+    contract owns only the execution gates that act on those verification states.
 
 ###############################################################################
 # PRESENTATION MODE / CAPACITY
@@ -186,68 +179,15 @@ sensitive_availability:
   inference_forbidden: "Do not infer percentage/hours/throughput impact unless source states it."
 
 ###############################################################################
-# PROVENANCE / AI ANALYSIS
+# PROVENANCE AUTHORITY
 ###############################################################################
-provenance:
-  source_classes:
-    school_schedule: "📅 Schemafakta"
-    verified_meeting_protocol: "👥 ✅ Mötesprotokoll"
-    verified_team_input: "✅ approved team label"
-    ai_suggestion: "⭐ AI-förslag"
-    ai_analysis: "🔎 AI-analys"
-    unclear: "⚠ Källa behöver verifieras"
-
-  symbol_preservation:
-    rule: >
-      The canonical Unicode symbol is part of the provenance identity and MUST
-      be rendered before the text. A tag, badge, chip, color, abbreviation,
-      question mark or text-only label may never replace the symbol.
-    required_pairs:
-      - "📅 Schemafakta"
-      - "👥 ✅ Mötesprotokoll"
-      - "✅ Teamfakta"
-      - "🔎 AI-analys"
-      - "⭐ AI-förslag"
-      - "⚠ Källa behöver verifieras"
-
-  waiting_in_pr:
-    symbol: "📌"
-    canonical_label: "📌 Väntar i PR"
-    canonical_title_format: "📌 #[PR_NUMBER]"
-    rule: >
-      Every verified open pull request must show the pushpin immediately before
-      its dynamic PR number. The PR number uses the verified owning team's color,
-      while the pushpin retains its normal appearance. A visible team column or
-      text label must also identify the team so color is never the sole carrier.
-      A short, source-grounded contribution statement must appear directly below
-      the PR heading. The symbol supplements provenance; it never replaces it.
-
-  dependency:
-    symbol: "🔗"
-    canonical_label: "🔗 Beroende"
-    rule: >
-      Every displayed dependency relation starts with the link symbol and the
-      text Beroende. The dependency symbol identifies the content type and does
-      not replace provenance.
-    ai_analysis_format: "🔗 Beroende · 🔎 AI-analys"
-    ai_rule: >
-      When the dependency or its direction is inferred or interpreted by AI,
-      render both the dependency symbol and the AI-analysis symbol with their
-      text labels. Never show only one of them.
-
-  global_rule: >
-    Whenever the model adds interpretation, prioritization, recommendation,
-    suggested next step, suggested sprint action, suggested question, risk
-    interpretation or dependency recommendation that is not explicitly stated in
-    a registered source, label it as AI-derived.
-
-  mixed_card_rule: >
-    A card may mix fact and AI reasoning, but each block must retain its own
-    provenance label.
-
-  color_rule: >
-    Color never replaces provenance icon + text. Red is reserved for
-    blocker/critical semantics and is not a fact color.
+provenance_authority:
+  file: "design/PROVENANCE_AND_AI_LABELING.md"
+  owns: "source classes, canonical symbols, AI-analysis labels, AI-proposal labels and mixed-source labeling"
+  rule: >
+    Load and apply the provenance authority when presentation content mixes
+    verified facts, team-confirmed information, analysis or proposals. This
+    system contract references the authority and does not redefine its symbols.
 
 ###############################################################################
 # ANALYSIS LAYER — INFORMATIVE, NOT FALSELY CONFIRMED
@@ -594,7 +534,8 @@ render_acceptance:
     missing_required_card_row_count: 0
     uneven_row_spacing_caused_by_vertical_justification: 0
     full_team_outline_count: 0
-    ai_generated_item_without_question_icon_count: 0
+    ai_analysis_without_magnifying_glass_count: 0
+    ai_proposal_without_star_count: 0
     unverified_item_presented_as_confirmed_count: 0
     mixed_provenance_card_without_block_labels_count: 0
     provenance_symbol_replaced_by_tag_count: 0
