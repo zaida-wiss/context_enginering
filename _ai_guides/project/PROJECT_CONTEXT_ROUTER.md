@@ -4,7 +4,7 @@ description: Minimal router for Avanza project work
 metadata:
   type: router
   status: active
-  version: 2.0
+  version: 2.1
 ---
 
 # Avanza project context router
@@ -20,8 +20,12 @@ Resolve canonical paths through [`../../CONTEXT_REGISTRY.yaml`](../../CONTEXT_RE
 
 For project work:
 
-- team/code/Git conventions → `project.team_standards`
+- team/code/Git workflow → `project.team_standards`
+- testing and verification → `project.testing`
 - Definition of Done → `project.definition_of_done`
+- default communication/feedback tone → `project.team_tone_and_collaboration`
+- conflict/needs/people-support → `project.hr_and_team_support`
+- issue creation → `tasks.issue_creation`
 - reusable issue checklist → `project.definition_of_done_template`
 - risk-register template → `project.risk_register_template`
 - long-lived team identity → `memory.team_roster`
@@ -45,5 +49,5 @@ result with the task's registered acceptance checks.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.0
+**Version:** 2.1
 **Last updated:** 2026-09-18
