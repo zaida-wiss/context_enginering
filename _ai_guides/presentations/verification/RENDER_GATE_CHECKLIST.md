@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.2
+  version: 5.3
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -126,10 +126,16 @@ five_second_scan_failure_count == 0
 slide_zone_predictability_failure_count == 0
 competing_primary_focus_count == 0
 unclear_reading_direction_count == 0
+inconsistent_primary_font_family_count == 0
+required_text_rasterized_count == 0
 ```
 
-For each rendered slide, inspect the actual PDF/image and verify that within
-approximately five seconds a viewer can identify:
+For each rendered slide, inspect the actual PDF/image and verify font-family
+consistency visually. Also inspect the PPTX structure/source to confirm that
+presentation-authored required meeting text remains native editable/selectable
+text rather than flattened image text.
+
+Then verify that within approximately five seconds a viewer can identify:
 - meeting point;
 - one primary purpose;
 - primary card/group;
