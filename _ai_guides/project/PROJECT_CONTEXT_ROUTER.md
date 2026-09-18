@@ -4,7 +4,7 @@ description: Minimal router for Avanza project work
 metadata:
   type: router
   status: active
-  version: 2.6
+  version: 2.7
 ---
 
 # Avanza project context router
@@ -32,7 +32,7 @@ For project work:
 - default communication/feedback tone → `project.team_tone_and_collaboration`
 - conflict/needs/people-support → `project.hr_and_team_support`
 - issue creation → `tasks.issue_creation`
-- reusable issue checklist → `project.definition_of_done_template`
+- reusable issue body → `project.issue_body_template`
 - risk-register template → `project.risk_register_template`
 - long-lived team identity → `memory.team_roster`
 - live/current project facts → registered live sources in `data/SOURCES.yaml`
@@ -55,5 +55,5 @@ result with the task's registered acceptance checks.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.6
+**Version:** 2.7
 **Last updated:** 2026-09-18
