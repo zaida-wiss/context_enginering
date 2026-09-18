@@ -249,6 +249,19 @@ def main():
     )
 
     require(
+        "NPF five-second scan gate is active",
+        "Five-second scan test" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        and "five_second_scan_failure_count == 0" in render_gate,
+        failures,
+    )
+    require(
+        "stable slide zones are an active design contract",
+        "Stable slide zones" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        and "slide_zone_predictability_failure_count == 0" in render_gate,
+        failures,
+    )
+
+    require(
         "cover validator requires PL target/time/purpose",
         "pl_meeting_card_missing_target_time_purpose_count == 0" in render_gate
         and "cover_generic_status_displacing_required_content_count == 0" in render_gate,
