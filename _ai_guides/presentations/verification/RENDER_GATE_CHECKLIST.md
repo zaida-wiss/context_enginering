@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.0
+  version: 5.1
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -76,6 +76,7 @@ Required:
 ```text
 wcag_aa_violation_count == 0
 color_only_information_count == 0
+team_identity_color_only_count == 0
 ```
 
 Also verify:
@@ -83,6 +84,8 @@ Also verify:
 - large text contrast >= 3:1
 - meaningful component contrast >= 3:1
 - transparency does not reduce effective contrast
+- every card where team ownership is relevant includes an explicit non-color team label
+- team accent color is supplementary and never the sole ownership cue
 
 Any failure → STOP.
 
