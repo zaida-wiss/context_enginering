@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 4.8
+  version: 4.9
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -113,7 +113,7 @@ Manual visual checks:
 
 ## 5. MEETING-POINT HEADER INTEGRITY
 
-Slides ①–⑭ must render the meeting-point prefix and number as one coherent header identity.
+Slides 1–14 must render the meeting-point prefix and number as one coherent header identity.
 
 Required:
 
@@ -121,7 +121,7 @@ Required:
 meeting_point_number_missing_count == 0
 pen_without_meeting_point_number_count == 0
 meeting_point_header_malformed_count == 0
-meeting_point_number_glyph_render_failure_count == 0
+rendered_circled_meeting_point_number_count == 0
 point_1_develop_subtitle_not_exact_count == 0
 point_1_collection_branch_slide_missing_count == 0
 point_1_collection_branch_subtitle_not_exact_count == 0
@@ -131,12 +131,12 @@ page_subtitle_replacing_meeting_point_title_count == 0
 
 Manual checks:
 - no slide may show `✏️` without its meeting-point number
-- the meeting-point number must be visibly rendered in the actual PDF/image; a missing-glyph square such as `□` fails even when the source text contains `①`
+- the meeting-point number must be an ordinary Arabic number with period, e.g. `1.` through `14.`
 - the primary heading always contains the official meeting-point number + official meeting-point title
 - page-specific descriptions are rendered as a separate subtitle beneath the official heading
-- a subtitle such as `Mergat till develop` may never replace `✏️ ① Avklarat sedan förra mötet`
+- a subtitle such as `Mergat till develop` may never replace `✏️ 1. Avklarat sedan förra mötet`
 - continuation/subsection markers may be secondary navigation, but every slide repeats the full official meeting-point heading
-- numeric continuation suffixes such as `⑨-2` are forbidden
+- numeric continuation suffixes such as `9-2` are forbidden; use the registered continuation convention
 
 Any failure → STOP.
 
@@ -187,7 +187,7 @@ point_1_verified_collection_merge_without_own_slide_count == 0
 point_1_unverified_collection_activity_presented_as_merge_count == 0
 ```
 
-- every physical slide repeats the primary heading `✏️ ① Avklarat sedan förra mötet`
+- every physical slide repeats the primary heading `✏️ 1. Avklarat sedan förra mötet`
 - `Mergat till develop`, `Mergat till C/C++-Native`, `Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles only
 - every `develop` page, including continuations, uses the exact subtitle `Mergat till develop`; generic text such as `Mergat under sprinten - del 2` is forbidden
 - when verified merges exist to `C/C++-Native`, they get their own physical slide sequence directly after the `develop` sequence, with the exact subtitle `Mergat till C/C++-Native`
@@ -440,7 +440,7 @@ Manual checks:
 
 ---
 
-## 12B. POINT 9 — VERTICAL PRIORITY VIEW
+## 12B. POINT 9 — SHARED CARD/GRID PRIORITY VIEW
 
 Required:
 
@@ -453,17 +453,17 @@ point9_ai_order_without_analysis_label_count == 0
 point9_dependency_not_reflected_in_order_count == 0
 point9_duplicate_item_across_groups_count == 0
 point9_team_coverage_gap_without_reason_count == 0
-point9_group_vertical_order_violation_count == 0
-point9_side_by_side_group_count == 0
+point9_shared_grid_missing_count == 0
+point9_priority_order_unclear_count == 0
 point9_meta_layout_language_visible_count == 0
 suggested_issue_without_goal_link_count == 0
 unverified_owner_presented_as_fact_count == 0
 ```
 
 Manual checks:
-- meeting point 9 uses the vertically stacked execution model from `SLIDE_DETAIL_SPEC.md`
-- inspect actual rendered geometry: each execution group begins below the previous group's bottom edge
-- no two execution groups occupy the same vertical band as side-by-side peers; a 2×2/four-quadrant arrangement fails
+- meeting point 9 uses the shared responsive card/grid model from `SLIDE_DETAIL_SPEC.md`
+- inspect actual rendered geometry: card reading order matches the intended priority order
+- a readable 2×2 grid is allowed; if it becomes dense, reduce cards per slide or continue
 - no visible subtitle/body text explains presentation-layout mechanics such as `inte fyrkolumnstavla`, `vertical layout` or equivalent
 - execution groups appear in the canonical logical order:
   1. `Prioritering först`
