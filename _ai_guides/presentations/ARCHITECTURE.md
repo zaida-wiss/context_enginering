@@ -3,7 +3,7 @@ name: presentation_architecture
 description: Design architecture — Single Source of Truth for presentation system
 metadata:
   type: critical_specification
-  version: 2.2
+  version: 2.3
 ---
 
 # 📐 PRESENTATION ARCHITECTURE — Single Source of Truth
@@ -78,7 +78,15 @@ Owns merger and actual submitted-review identity.
 ### LEVEL 8 — LAYOUT_OVERFLOW_GUARD.md
 Owns mechanical fit, pagination and collision prevention.
 
-### LEVEL 9 — SLIDE_DETAIL_SPEC.md
+### LEVEL 9 — COMPOSITION_ARCHITECTURE.md
+Owns deck-wide composition:
+- official meeting-point order
+- content vs verified empty state vs permitted omission
+- cross-slide red threads
+- meeting-point continuation/page sequencing
+- composition completeness
+
+### LEVEL 10 — SLIDE_DETAIL_SPEC.md
 Owns slide content:
 - what appears on each slide
 - required data fields
@@ -86,7 +94,8 @@ Owns slide content:
 - slide purpose
 - content exclusions
 
-It does NOT override accessibility, visual design, card component or provenance rules.
+It does NOT override accessibility, visual design, card component, provenance or
+deck-wide composition ownership.
 
 ### DATA AUTHORITIES
 - `DATA_ACQUISITION_CONTRACT.yaml` — how data is acquired
