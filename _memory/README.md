@@ -1,77 +1,49 @@
-# 📚 Memory — Project Context Index
+# Memory — Project Context Index
 
-**AI context package.** När du ger denna mapp som kontext hittar AI all information den behöver för att svara rätt om projektet.
+`_memory` contains long-lived project knowledge and a small number of files
+that are still awaiting migration to their canonical instruction/data domain.
 
----
+Canonical repository paths and task bundles are resolved through
+[`CONTEXT_REGISTRY.yaml`](../CONTEXT_REGISTRY.yaml).
 
-## 🚨 KRITISK INSTRUKTION (Läs först!)
+## Long-lived project knowledge
 
-| Fil | Syfte |
-|-----|-------|
-| **PROJEKTKONTEXT_AVANZA.md** | **MÅSTE LÄSAS FÖRST** — Kritisk instruktion för ALL AI-arbete (styrning, källhierarki, transparensregler, fallbacks) |
+| File | Purpose |
+|---|---|
+| [`TEAM_ROSTER.md`](TEAM_ROSTER.md) | Team membership and verified GitHub identities |
+| [`GITHUB_MEMBER_MAPPING.md`](GITHUB_MEMBER_MAPPING.md) | GitHub username mapping; candidate for consolidation into TEAM_ROSTER |
 
----
+## Pending instruction migration
 
-## 👥 Team & Medlemmar
+These files currently remain in `_memory` only until their rules are migrated
+to the appropriate `_ai_guides/project/` owner:
 
-| Fil | Syfte |
-|-----|-------|
-| **TEAM_ROSTER.md** | Auktoritativ lista över team-medlemmar (Frontend/Backend/System) |
+| File | Intended domain |
+|---|---|
+| `PROJEKTKONTEXT_AVANZA.md` | project instruction/router |
+| `TEAMSTANDARDS.md` | project operating standards |
+| `DEFINITION_OF_DONE.md` | project quality/workflow rules |
+| `DEFINITION_OF_DONE_TEMPLATE.md` | project template |
+| `RISK_REGISTER.md` | project template |
+| `presentations/CURRENT_SPRINT.yaml` | presentation data schema |
 
-## 📋 Arbetsstandarder & Definition
+## Living/manual data
 
-| Fil | Syfte |
-|-----|-------|
-| **TEAMSTANDARDS.md** | Kodstandarder, Git workflow, commit-format, branch-naming |
-| **DEFINITION_OF_DONE.md** | Vad gör en GitHub-issue "DONE"? (tester, review, docs) |
-| **DEFINITION_OF_DONE_TEMPLATE.md** | Mall för DoD-checklist i issues |
+Current course and assignment facts are stored under:
 
-## ⚠️ Risk & Kvalitet
+- [`data/manual/course/`](../data/manual/course/)
+- [`data/manual/design/`](../data/manual/design/) when design-source migration is complete
+- [`data/derived/`](../data/derived/) for reproducible derived state
 
-| Fil | Syfte |
-|-----|-------|
-| **RISK_REGISTER.md** | Projektrisker, sannolikhet, påverkan, mitigering |
+The memory index does not duplicate live facts.
 
-## 🔗 Externa Källor & Fallbacks
+## Migration audit
 
-| Fil | Syfte |
-|-----|-------|
-| **EXTERNAL_SOURCES.md** | Centraliserad register över alla externa datakällor, IDs, fallback-URLs (Google Sheets, Google Docs, GitHub, etc.) |
+Current classification and migration state is recorded in:
 
-## 📅 Schema & Deadlines
-
-| Fil | Syfte |
-|-----|-------|
-| **SCHEDULE.md** | Kurschema, viktiga datum, vecko-fokus |
-| **SPRINT_FOCUS_TIMELINE.md** | Sprint-veckor & tema |
-| **COURSE_DEADLINES.md** | Kurs-deadlines (CTO Feed Forward, etc) |
-
-## 📹 Kurskrav & Inlämningar
-
-| Fil | Syfte |
-|-----|-------|
-| **CTO_FEED_FORWARD.md** | **VIKTIGT** — CTO Feed Forward deadline (24 sept), filminspelning om risk-arbete, impact på Slide ⑫⑬ |
-| CTO_FEED_FORWARD_INSTRUCTIONS.md | (Legacy) CTO-feedback assignment: vad ska videon innehålla? |
-
-## 🎨 Design & Referens
-
-| Fil | Syfte |
-|-----|-------|
-| **UI_DESIGN_REFERENCE.md** | Design-system, UI mockups, design specs |
+- [`_audit/MEMORY_DOMAIN_INVENTORY.yaml`](../_audit/MEMORY_DOMAIN_INVENTORY.yaml)
 
 ---
 
-## 🔍 Snabbnavigation
-
-- **"Vilka är kodreglerna?"** → TEAMSTANDARDS.md
-- **"Är en issue klar?"** → DEFINITION_OF_DONE.md
-- **"Vilka är deadline?"** → COURSE_DEADLINES.md, SCHEDULE.md
-- **"Vad måste CTO-videon ha?"** → CTO_FEED_FORWARD_INSTRUCTIONS.md
-- **"Hur ser designen ut?"** → UI_DESIGN_REFERENCE.md
-
----
-
-## ⚠️ Viktigt att veta
-
-- **Definition of Done (DoD) och kurs-deadlines är SKILT.** DoD är när GitHub-issue är "klar" (tester, review, docs). Kurs-deadlines är kurs-specifikationer och betygsgrunder.
-- Filerna här är statisk referens — uppdateras manuellt när regler ändras.
+**Status:** transitional index
+**Last updated:** 2026-09-18
