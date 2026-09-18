@@ -4,7 +4,7 @@
 
 Denna fil är fallback när GitHub PR-kommentarer inte kan läsas direkt via API.
 
-🔗 **Alla externa datakällor:** Se [`_memory/EXTERNAL_SOURCES.md`](../_memory/EXTERNAL_SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
+🔗 **Alla externa datakällor:** Se [`data/SOURCES.md`](../data/SOURCES.md) för centraliserad register över Google Sheets, Google Docs, GitHub och alla fallback-URLs.
 
 ---
 
@@ -14,7 +14,7 @@ Denna fil är fallback när GitHub PR-kommentarer inte kan läsas direkt via API
 
 1. ✅ Försök läsa från GitHub: `https://github.com/chas-challenge-2026/avanza-team1/pulls`
 2. ✅ Fallback: Läs denna fil (`PR_UPDATES.md`)
-3. ✅ Fallback 2: Kolla Google Sheets: `See EXTERNAL_SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET`
+3. ✅ Fallback 2: Kolla Google Sheets: `See SOURCES.yaml: GOOGLE_PROJECT_DATA_SHEET`
 4. ✅ **BERÄTTA vilken källa du använt:** "Läst från: [GitHub / denna fil / Google Sheets]"
 
 ---
