@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   for_ai: true
-  version: 2.2
+  version: 2.3
 ---
 
 # 🧠 ACCESSIBILITY & NEURODIVERSITY — ABSOLUTE BOUNDARY
@@ -181,6 +181,8 @@ Support focus through:
 - consistent visual hierarchy
 - clear status/source cues
 - continuation slides instead of overloaded slides
+- a stable header/content/footer zone pattern
+- a five-second scan in which meeting point, primary purpose and reading order are immediately apparent
 
 Avoid visual clutter, excessive decoration or competing highlights.
 
@@ -266,6 +268,8 @@ competing_primary_focus_count == 0
 unclear_reading_direction_count == 0
 npf_visual_grammar_inconsistency_count == 0
 card_grid_information_hierarchy_failure_count == 0
+five_second_scan_failure_count == 0
+slide_zone_predictability_failure_count == 0
 ```
 
 Any non-zero count = FAIL.
@@ -288,5 +292,5 @@ No exception is allowed because “it looks better” or “otherwise there are 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.2
+**Version:** 2.3
 **Last updated:** 2026-09-17
