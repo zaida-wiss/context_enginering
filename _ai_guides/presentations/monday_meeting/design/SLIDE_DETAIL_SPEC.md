@@ -669,81 +669,238 @@ Never translate these questions into invented hours, percentages or velocity.
 
 # ⑨ PRIORITIZATION & SCOPE
 
-Purpose: produce a usable team plan, not only a generic priority statement.
+Purpose: give the team a **compact, immediately usable execution order** for
+the remaining sprint work.
 
-Every physical slide belonging to meeting point ⑨ uses the canonical four-team columns:
-`Frontend | Backend | Native | Cross-team`.
+Meeting point 9 is **not** a four-column team board. It is a vertically stacked
+priority view optimized for fast scanning and low space usage.
 
-Each physical slide within meeting point ⑨ uses a fixed `1×4` structure:
-`Frontend | Backend | Native | Cross-team`. Cards and labeled text blocks stack
-vertically inside their owning team column.
+## Mandatory execution groups
 
-The number of cards/text blocks is content-driven. If the content does not fit
-accessibly, continue as `⑨a`, `⑨b`, `⑨c`, `⑨d`, `⑨e` and so on. Never change
-the fixed four-column structure, and never clip or hide content.
+Render these groups in this logical order:
 
-### Open pull requests
+1. **Prioritering först**
+2. **Parallellt**
+3. **Backlog — lägre prioritet**
+4. **Förslag framåt — finns ännu inte / behöver korrigeras**
 
-Every verified open PR contains the dynamic format `📌 #[PR_NUMBER]`; the
-number uses the owning team's canonical accessible color. It also contains a grounded contribution
-sentence directly below, verified author/owner, review state, confirmed next
-action when documented and applicable provenance. `📌` never replaces the
-source symbol. Do not combine unrelated PRs.
+The first three groups describe existing verified work. The fourth group
+contains model-proposed work that does not yet exist as a usable issue, or an
+existing issue that needs correction before it can guide implementation.
 
-### Remaining assigned issues, order and dependencies
+Important exception:
+**A proposal is NOT forced to stay in group 4.**
+If a missing/corrective issue is necessary to remove a blocker, protect a
+critical deadline, restore a broken core flow, resolve an important risk, or
+correct misleading scope, that proposal may be promoted directly into
+**Prioritering först** or **Parallellt**.
 
-Include every remaining assigned issue with verified number/title,
-contribution, assignee and status. Give it one order marker: `1. Först`,
-`2. Parallellt`, `3. Därefter` or `Vänta`. Show dependencies as visible directed
-relations headed `🔗 Beroende`, such as `#105 → #108`, with a short reason and
-source. Inferred or AI-interpreted dependencies use both labels:
-`🔗 Beroende · 🔎 AI-analys`.
+When promoted, it must remain visibly labeled as a proposal:
+`⭐ AI-förslag — skapa issue` or `⭐ AI-förslag — korrigera issue`.
 
-Every issue number uses its owning team's canonical accessible color. The
-visible team column remains the non-color ownership cue required by WCAG.
+## 1. Prioritering först
 
-### AI work-allocation analysis
+This is the strongest section and contains the work that should be handled
+first because it removes a blocker, protects a deadline, unlocks another team,
+closes a critical core-flow gap, or corrects a misleading/insufficient issue.
 
-Each recommendation includes `🔎 AI-analys`, a separate `⭐ AI-förslag` naming
-the person and task, and a concise motivation. Consider verified estimates,
-capacity, workload/review load, adjacent component work, dependencies,
-continuity with prior verified work, merge-conflict risk and useful pairing.
-If numeric data is absent, state `Numeriskt estimat/kapacitet saknas`.
+Stack items in strict priority order from top to bottom.
 
-### Suggested issues to create
+For existing work, each item is intentionally compact:
 
-Each suggestion includes `⭐ AI-förslag — skapa issue`, a short title, the
-grounded gap/goal, contribution, team column, dependency, supported owner
-suggestion when possible and concise acceptance criteria. Check existing issues
-and PRs first; do not suggest duplicates or filler.
+```text
+#[ISSUE]  [kort pedagogisk förklaring]  [verifieringssymbol]
+```
 
-Verified section may include:
-- team-confirmed order
-- sprint scope
-- confirmed dependency sequence
-- verified estimates/capacity where available
+For a missing/corrective issue promoted into this group:
 
-### Mandatory AI planning synthesis
+```text
+⭐ skapa/korrigera issue  [kort förklaring]  [verifieringssymbol]
+```
 
-Unless the team already has a complete confirmed sequence, include an AI-labeled recommendation synthesized from slides ③–⑧.
+Required content for existing issue:
+- verified issue number
+- one short pedagogical explanation of what the work contributes / why it is first
+- one visible provenance/verification symbol
 
-Use `🔎 AI-analys` for why the ordering is sensible and `⭐ AI-förslag` for the proposed order/action.
+Required content for promoted proposal:
+- proposal label
+- concise proposed issue purpose/correction
+- why it must happen before or alongside current work
+- visible `⭐ AI-förslag` provenance
+- reference to the verified gap/risk/dependency that caused the proposal
 
-For each team, include where evidence permits:
-- **1 — Först:** highest-leverage blocker/deadline/core-flow item
-- **2 — Parallellt:** independent work/review/help path
-- **3 — Därefter:** follow-up that becomes useful after item 1
-- **Vänta:** work that should not increase WIP yet
-- **Föreslagen person:** only if supported by verified ownership/activity; otherwise mark owner to confirm
-- **Styrande blocker/risk:** why the order is suggested
-- **Estimat/kapacitet:** verified value if available, otherwise explicit `ej verifierat` / qualitative load note
+Do NOT add:
+- assignee rows
+- branch rows
+- timestamps
+- long status sentences
+- separate AI-analysis paragraphs per row
+- duplicated titles when the issue number + explanation is sufficient
 
-AI-derived section may additionally include:
-- suggested scope trade-off
-- suggested pairing/review support
-- suggested handoff between teams
+If ordering is AI-derived, one short group-level `🔎 AI-analys` is enough.
+Do not repeat the same label on every existing issue row.
 
-Do not invent numeric estimates.
+## 2. Parallellt
+
+After a small visual gap, stack all work that can proceed independently while
+the first-priority path is being handled.
+
+Use the same compact row structure for existing work:
+
+```text
+#[ISSUE]  [kort pedagogisk förklaring]  [verifieringssymbol]
+```
+
+A missing/corrective issue may also be placed here when it can be created or
+clarified independently without blocking the primary path.
+
+Order parallel items by usefulness to the active sprint.
+
+Do not imply that "parallel" means lower value; it means the item does not need
+to wait for the same dependency.
+
+## 3. Backlog — lägre prioritet
+
+Place this group below active execution work.
+
+This group is deliberately the most compact. It preserves scope awareness
+without competing with current execution.
+
+Show only:
+- issue number
+- very short issue title when needed for recognition
+- verification/provenance symbol
+
+Example:
+
+```text
+#84 Visual asset allocation  ✅
+#89 MVP core-flow E2E        ✅
+#69 FX-info popover          ✅
+```
+
+No pedagogical explanation is required in the backlog group.
+No AI rationale, assignee, branch, timestamp or expanded metadata is shown here.
+
+## 4. Förslag framåt — finns ännu inte / behöver korrigeras
+
+This is a compact final group for useful work that is not yet represented by a
+good actionable issue.
+
+Include only suggestions that add real project value.
+
+Two valid proposal types:
+
+### A. Skapa ny issue
+Use when:
+- an important implementation/decision/task is missing from the board
+- a verified gap, blocker, risk or dependency has no adequate issue
+- work is likely to be forgotten because it exists only in notes/analysis
+
+Compact format:
+
+```text
+⭐ Skapa issue: [kort namn] — [en kort rad om varför]
+```
+
+### B. Korrigera befintlig issue
+Use when:
+- the current issue scope is outdated, misleading, incomplete or no longer
+  matches the actual architecture/work
+- acceptance criteria need correction before the issue can guide work
+- an issue duplicates another and should be clarified/merged/closed
+
+Compact format:
+
+```text
+⭐ Korrigera #123 — [kort vad som behöver ändras]
+```
+
+Do not create filler proposals.
+Check existing issues/PRs first to avoid duplicates.
+
+For ordinary future proposals, this group stays last.
+
+### Promotion rule — critical
+
+Before rendering group 4, evaluate every proposal against current blockers,
+deadlines, risks and dependencies.
+
+If a proposal is required **now** to:
+- remove a blocker
+- unlock another team
+- protect the nearest critical deadline
+- restore/complete a core flow
+- correct an issue whose current wording would direct the team incorrectly
+- capture a high-priority risk mitigation that otherwise has no owner/work item
+
+then **promote it** to `Prioritering först` or `Parallellt` instead of leaving
+it at the bottom.
+
+Its proposal status must remain visible even after promotion.
+
+## Ordering rules
+
+Top-to-bottom order must be grounded in slides ③–⑧ and verified project data.
+
+Priority logic:
+1. missing/corrective issue required to make the plan valid
+2. blocker/dependency removal
+3. critical deadline protection
+4. core-flow/integration completion
+5. review/merge work needed to unlock others
+6. useful independent parallel work
+7. lower-priority verified backlog
+8. non-urgent future proposals
+
+When a dependency is verified, its prerequisite must appear above the work it
+unlocks. If dependency direction is AI-interpreted rather than explicit, mark
+the group-level rationale `🔎 AI-analys`.
+
+Do not invent numeric estimates or availability.
+
+## Team ownership
+
+Team ownership is secondary on this slide.
+
+Do not split the slide into Frontend/Backend/Native/Cross-team columns.
+The priority order across the whole project is the primary organizing principle.
+
+When team identity is needed to prevent ambiguity:
+- use a short team label in quiet metadata style, or
+- use the canonical team-colored issue number as supplementary information
+
+Color may never be the only ownership cue.
+
+## Open pull requests
+
+Open PRs appear in the appropriate execution group according to what they block
+or enable.
+
+Compact form:
+
+```text
+📌 #114  Kritiska MVP-tester väntar på review/merge  ✅
+```
+
+Do not create a separate PR section unless the dataset is unusually large and a
+continuation slide is necessary.
+
+## Continuation behavior
+
+Try to fit the complete view on one physical slide using compact rows and
+minimum-approved inter-block spacing.
+
+If it still does not fit at readable sizes:
+- continue as `9a. Prioritering och scope`
+- preserve the same execution order
+- never split a group in a way that makes priority sequence ambiguous
+- repeat group headings on continuation pages when needed
+
+The slide must optimize for **order visibility**, not decorative card volume.
+
+---
 
 ---
 
