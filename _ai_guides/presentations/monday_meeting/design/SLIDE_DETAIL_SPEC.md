@@ -384,15 +384,118 @@ verified completed or partial value belong to later meeting points.
 
 # ② CURRENT STATE & DEADLINES
 
-Purpose: summarize the most important verified current state, deadlines and risks.
+Purpose: orient the team in **where we are in the full course period**, which
+deadlines/checkpoints are already passed, and what deserves extra attention next.
 
-For each priority item include when evidence exists:
-- what the milestone/deadline is
-- exact verified deadline
+## Primary visual: chronological course timeline — mandatory
+
+Meeting point 2 MUST use a chronological horizontal timeline covering the
+**entire registered course/project period**, from course start to final delivery.
+Do not replace this with a generic 2×2/4-card status grid.
+
+The timeline is the primary information structure and must:
+- run left → right in chronological order
+- include all verified major course phases, checkpoints, feedforward moments and deadlines from registered schedule/milestone sources
+- show exact date and time when the source provides them
+- group/label months or other time bands when this improves scanning
+- place milestone labels above/below the line to prevent collisions
+- use a visible marker for every milestone
+- keep enough spacing that no labels overlap
+- prefer short milestone labels; detailed explanation belongs in the focus callouts
+- retain source/provenance in the slide footer and in focus callouts where relevant
+
+### Mandatory current-sprint position marker
+
+The timeline MUST clearly show **where the sprint week represented by the deck
+sits in the full course period**.
+
+Resolve the active sprint from the presentation request timestamp using the same
+sprint-boundary rules as the cover.
+
+Render a distinct marker that spans or brackets the active sprint interval:
+- label it clearly, e.g. `AKTUELL SPRINT` / `Vi är här`
+- show the active sprint date range
+- the marker must be visible at a glance without relying on red/orange/green
+- use a neutral/high-contrast accent, outline, bracket or translucent band so it
+  does not redefine milestone status colors
+- place the marker behind/around the relevant timeline interval, never on top of
+  milestone text
+- if the sprint crosses two timeline segments, the marker must still represent
+  the complete active interval
+- the marker is a temporal locator, not a status judgment
+
+The viewer should be able to answer within one glance:
+**"Var befinner vi oss nu i hela kursperioden?"**
+
+### Timeline color semantics — mandatory
+
+Reintroduce these three colors as a stable timeline vocabulary:
+
+- **Green = completed / passed / already carried out**
+- **Orange = upcoming checkpoint, feedforward, review or important intermediate milestone**
+- **Red = critical deadline / major delivery with material consequence if missed**
+
+Color MUST always be paired with text/date/shape and may never be the only
+carrier of meaning.
+
+Do not color every future date red. Red is reserved for a verified critical
+deadline/major delivery. Ordinary future checkpoints are orange.
+
+The slide must include a compact legend:
+- `Grön = genomfört`
+- `Orange = checkpoint/feedforward`
+- `Röd = kritisk deadline`
+
+## Nearest-focus callouts — mandatory support layer
+
+The timeline alone is not enough. Add **1–3 concise explanatory callout boxes**
+for the nearest upcoming items that the team needs to keep track of now.
+
+These callouts are secondary to the timeline and should answer, when the
+registered sources support it:
+
+1. **Vad?** — what the deadline/checkpoint actually requires
+2. **När?** — exact date/time
+3. **Var?** — channel/platform/location
+4. **Varför?** — documented purpose or verified consequence
+5. **Hur?** — documented format/submission/execution method
+6. **Nu behöver vi:** — the immediate preparation/action that follows from verified team/project data
+
+The purpose is practical: the team should understand not only that a deadline is
+close, but **what it means for the work immediately ahead**.
+
+Rules:
+- the callout must visibly connect to or clearly name its timeline milestone
+- use short paragraphs/bullets, not dense prose
+- give strongest visual emphasis to the nearest critical item
+- use 1–3 callouts only; do not explain the entire timeline in boxes
+- verified facts keep their canonical source label
+- model interpretation uses `🔎 AI-analys`
+- model recommendation uses `⭐ AI-förslag`
+- never turn a future action into a confirmed team decision
+- if `Var`, `Varför` or `Hur` cannot be verified, write the missing field explicitly with `⚠` rather than guessing
+- do not hide a source conflict; show it as a verification point for PL/team
+
+### Overflow behavior for point 2
+
+Preferred:
+- `2.` = full-course timeline + compact nearest-focus callouts
+
+If both timeline and readable focus callouts do not fit:
+- keep the full timeline on `2.`
+- move explanatory boxes to continuation slide `2a.`
+- subtitle on `2a.` should describe the content, e.g. `a. Närmaste fokus`
+- never shrink or overlap timeline labels to avoid a continuation slide
+
+## Content requirements
+
+For each priority/deadline item included in the focus layer, include when evidence exists:
+- exact verified deadline/checkpoint
 - current verified status
-- why it matters, if source explicitly supports the consequence
+- why it matters
 - verified blocker/risk
 - confirmed action if documented
+- immediate preparation need
 
 If consequence is AI-derived, mark it `🔎 AI-analys`.
 If an action is AI-derived, mark it `⭐ AI-förslag`.
