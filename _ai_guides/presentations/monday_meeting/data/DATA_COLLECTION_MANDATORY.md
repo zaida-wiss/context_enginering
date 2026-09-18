@@ -31,7 +31,7 @@ Requirement: All 7 members verified
 ```
 Sources: [`DATA_SOURCES.md`](../../data/DATA_SOURCES.md) section "WORK COMPLETED THIS WEEK"
 Primary: GitHub API or web pulls tab
-Fallback: Google Sheets (see [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md) for link)
+Fallback: Google Sheets (see [`data/SOURCES.md`](../../../../data/SOURCES.md) for link)
 
 Collect: PR#, title, author, assignee, merged_at timestamp, base branch
 Verify: merged_at is within REPORTING_PERIOD (see [`SYSTEM_CONTRACT.yaml`](../../SYSTEM_CONTRACT.yaml))
@@ -82,13 +82,13 @@ Collect if available. If unavailable, note in footer with ⚠️. Never stop ren
 
 ### Project Board (optional)
 ```
-Source: See [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md) for board link
+Source: See [`data/SOURCES.md`](../../../../data/SOURCES.md) for board link
 Fallback: Reconstruct from Issues and PRs data
 ```
 
 ### Meeting Protocol (optional)
 ```
-Source: See [`_memory/EXTERNAL_SOURCES.md`](../../../../_memory/EXTERNAL_SOURCES.md) for Google Docs link
+Source: See [`data/SOURCES.md`](../../../../data/SOURCES.md) for Google Docs link
 Use for: Context only — never influences required-information decisions
 ```
 
