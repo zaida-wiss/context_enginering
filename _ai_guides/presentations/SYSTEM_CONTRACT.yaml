@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.6
+version: 4.7
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -22,6 +22,8 @@ core_principles:
   - "Required pedagogical/project-value microcopy is never removed to save space."
   - "Verified dependencies must influence planning order when they materially affect sequence."
   - "All source/provenance meaning is communicated with the canonical symbol + text defined by the provenance authority."
+  - "The complete Monday deck preserves the official meeting-point order and cross-slide reasoning chains defined by the composition authority."
+  - "Presentation defects are corrected in the owning context rule/validator first; a presentation-only patch is never the final fix."
 
 ###############################################################################
 # EXECUTION / BRANCH SNAPSHOT
@@ -78,10 +80,14 @@ authority:
     file: "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"
     owns: "mechanical fit, responsive density, pagination, collision prevention"
 
-  level_9_slide_content:
+  level_9_composition:
+    file: "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md"
+    owns: "meeting-point order, presence/empty states, cross-slide red threads and composition completeness"
+
+  level_10_slide_content:
     file: "monday_meeting/design/SLIDE_DETAIL_SPEC.md"
     owns: "slide purpose, fields, ordering and content requirements"
-    does_not_own: "visual constants, card internals, provenance semantics"
+    does_not_own: "visual constants, card internals, provenance semantics or deck-wide composition"
 
   reference_only:
     file: "monday_meeting/design/TEMPLATE_REFERENCE.html"
