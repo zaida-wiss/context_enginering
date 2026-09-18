@@ -58,7 +58,7 @@ required_datasets:
         required_for: "contextual sprint positioning and verified Varför"
 
       current_sprint:
-        file: "_memory/presentations/CURRENT_SPRINT.yaml"
+        file: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
         purpose: "This week's goals, focus"
         required_for: "framsida weekly_focus, PL topic and ② priority ranking"
 
@@ -74,7 +74,7 @@ required_datasets:
         - "data/manual/course/SCHEDULE.md"
         - "data/manual/course/MILESTONES.yaml"
         - "data/manual/course/TEAM_ROADMAP.yaml"
-        - "_memory/presentations/CURRENT_SPRINT.yaml"
+        - "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
         - "other registered _memory/data sources"
       missing_field_rule: "Render ⚠ [FIELD] kunde inte verifieras; never infer from title alone"
       provenance_rule: "Every populated answer must identify the supporting registered source"
