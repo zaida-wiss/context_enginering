@@ -12,6 +12,7 @@ Canonical project-level instructions live here.
 | project.hr_and_team_support | [`HR_AND_TEAM_SUPPORT.yaml`](HR_AND_TEAM_SUPPORT.yaml) | extra support for conflict, needs and people-related situations |
 | project.team_tone_and_collaboration | [`TEAM_TONE_AND_COLLABORATION.yaml`](TEAM_TONE_AND_COLLABORATION.yaml) | default communication and feedback standard |
 | project.testing | [`TESTING.md`](TESTING.md) | risk-based selection of test levels and verification |
+| project.goals_and_sprint_planning | [`GOALS_AND_SPRINT_PLANNING.md`](GOALS_AND_SPRINT_PLANNING.md) | verified goals, sprint planning and transparent AI proposals |
 
 Current project facts are data, not instructions. Presentation rules remain in
 the presentation authority system.
