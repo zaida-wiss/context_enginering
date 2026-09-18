@@ -42,6 +42,8 @@ def main():
     slide = read("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
     provenance = read("_ai_guides/presentations/design/PROVENANCE_AND_AI_LABELING.md")
     render_gate = read("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+    system_contract = read("_ai_guides/presentations/SYSTEM_CONTRACT.yaml")
+    authority_registry = read("_ai_guides/presentations/AUTHORITY_REGISTRY.yaml")
     sources = read("data/SOURCES.yaml")
 
     print("=" * 80)
@@ -185,6 +187,14 @@ def main():
     )
     for ref in presentation_refs:
         require(f"presentation bundle contains {ref}", ref in registry, failures)
+
+    require(
+        "authority conflicts require an explicit user decision",
+        "conflict_decision_gate:" in system_contract
+        and "ask the user for a decision" in system_contract
+        and "ask the user to" in authority_registry.lower(),
+        failures,
+    )
 
     require(
         "meeting point 9 uses vertical priority model",
