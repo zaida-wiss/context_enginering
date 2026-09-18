@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 1.2
+version: 1.3
 metadata:
   type: registry
   critical: true
@@ -29,6 +29,8 @@ domains:
     purpose: "repository integrity and authority validation"
 
 registries:
+  project_guides:
+    path: "_ai_guides/project/README.md"
   presentation_authorities:
     path: "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml"
   external_sources:
@@ -39,6 +41,18 @@ registries:
     path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
 
 logical_destinations:
+  project:
+    context_router:
+      path: "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md"
+    team_standards:
+      path: "_ai_guides/project/TEAM_STANDARDS.md"
+    definition_of_done:
+      path: "_ai_guides/project/DEFINITION_OF_DONE.md"
+    definition_of_done_template:
+      path: "_ai_guides/project/templates/DEFINITION_OF_DONE.md"
+    risk_register_template:
+      path: "_ai_guides/project/templates/RISK_REGISTER.md"
+
   memory:
     current_sprint_schema:
       path: "_memory/presentations/CURRENT_SPRINT.yaml"
