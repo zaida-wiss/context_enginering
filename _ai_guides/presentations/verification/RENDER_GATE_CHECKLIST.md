@@ -640,5 +640,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.8
+**Version:** 5.4
 **Last updated:** 2026-09-17
