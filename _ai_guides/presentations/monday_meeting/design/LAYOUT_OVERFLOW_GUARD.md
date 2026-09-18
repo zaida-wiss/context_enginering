@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 3.1
+  version: 3.2
 ---
 
 # 🚨 LAYOUT OVERFLOW GUARD — Responsive Cards, WCAG First
@@ -58,19 +58,26 @@ A continuation slide is mandatory when content still does not fit at the defined
 
 ---
 
-## 3. CARDS ARE MANDATORY
+## 3. SEMANTIC CONTAINER RULE
 
-For item-based content:
+For ordinary item-based content:
 
 > ONE ITEM = ONE CARD
 
-Forbidden:
-- plain issue/PR rows
-- table rows as primary layout
-- horizontal list bands
-- multiple unrelated work items inside one card merely to save space
+But the slide's **information structure wins over a generic card grid**.
 
-`⑥A` may use a dependency graph, but each graph node remains a card.
+Explicit semantic-layout exceptions:
+- ② uses a chronological timeline with supporting callouts
+- ⑥ may use a dependency graph/flow; each dependency node remains a card
+- ⑨ uses compact full-width priority rows/blocks in a strict vertical sequence
+- ⑫ uses chronological day/plan blocks
+- diagrams or grouped structures explicitly required by the slide-content authority
+
+Forbidden:
+- replacing a required timeline/flow/sequence with a generic grid
+- plain issue/PR rows on slides that use the ordinary card system
+- multiple unrelated work items inside one ordinary card merely to save space
+- using the universal card rule to erase a slide-type-specific visual grammar
 
 ---
 
@@ -233,6 +240,7 @@ verified_dependency_not_reflected_in_plan_count > 0
 missing_required_card_row_count > 0
 uneven_row_spacing_caused_by_vertical_justification > 0
 plain_row_work_item_count > 0
+required_semantic_layout_replaced_by_generic_grid_count > 0
 ```
 
 ---
@@ -255,5 +263,5 @@ Do not deliver until all hard-failure counts are zero.
 ---
 
 **Status:** REQUIRED
-**Version:** 3.1
+**Version:** 3.2
 **Last updated:** 2026-09-17
