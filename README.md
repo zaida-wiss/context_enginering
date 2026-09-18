@@ -48,7 +48,7 @@ chooses the intended result, except where WCAG already determines the outcome.
 |---|---|
 | Which files are active authorities? | [`AUTHORITY_REGISTRY.yaml`](_ai_guides/presentations/AUTHORITY_REGISTRY.yaml) |
 | How does the presentation pipeline work? | [`SYSTEM_CONTRACT.yaml`](_ai_guides/presentations/SYSTEM_CONTRACT.yaml) |
-| What data sources are allowed? | [`_memory/EXTERNAL_SOURCES.yaml`](_memory/EXTERNAL_SOURCES.yaml) |
+| What data sources are allowed? | [`data/SOURCES.yaml`](data/SOURCES.yaml) |
 | What are the absolute WCAG/NPF boundaries? | [`ACCESSIBILITY_NEURODIVERSITY.md`](_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md) |
 | How does the deck look globally? | [`VISUAL_DESIGN_MANDATORY.md`](_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md) |
 | What are the hard readability/typography rules? | [`READABILITY_HARD_RULES.md`](_ai_guides/presentations/design/READABILITY_HARD_RULES.md) |
