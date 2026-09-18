@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: composition
-  version: 1.1
+  version: 1.2
 ---
 
 # READABILITY HARD RULES
@@ -47,22 +47,23 @@ Hard rules:
 - avoid tightly packed uppercase labels when normal sentence case is clearer
 - keep left alignment for normal text
 - never reduce letter spacing to make text fit
-- do not use stylized circled-number glyphs for meeting-point identity
+- use the canonical circled meeting-point symbols `①–⑭` consistently; the symbol is part of the deck's stable visual grammar
+- verify the chosen font/rendering path actually supports these glyphs; a missing-glyph square is a render failure
 
 ### Meeting-point numbering and continuation hierarchy
 
-Use **ordinary Arabic digits** so the meeting-point number is immediately recognizable.
+Use the canonical circled symbols so meeting-point identity remains visually stable across the full deck.
 
 The primary header contains only:
-`✏️ [meeting-point number]. [meeting-point title]`
+`✏️ [circled meeting-point symbol] [meeting-point title]`
 
 Canonical pattern:
 
 ```text
-✏️ 1. Sprint in progress
-c. Påbörjat, inte klart
+✏️ ① Avklarat sedan förra mötet
+Mergat till develop
 
-✏️ 2. Nuläge och närmaste deadline
+✏️ ② Nuläge och deadlines
 Kronologisk tidslinje över hela kursperioden
 ```
 
@@ -75,8 +76,8 @@ header row and uses visual-priority level 4.
 Example:
 
 ```text
-✏️ 1. Sprint in progress                                      (4/6)
-c. Påbörjat, inte klart
+✏️ ① Avklarat sedan förra mötet                              (4/6)
+Teamsammanfattning till mötesprotokollet
 ```
 
 Forbidden in rendered meeting headers:
