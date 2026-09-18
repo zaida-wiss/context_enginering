@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 3.3
+  version: 3.4
 ---
 
 # 🚨 LAYOUT OVERFLOW GUARD — Responsive Cards, WCAG First
@@ -79,8 +79,11 @@ Allowed:
 Forbidden:
 - replacing the shared grid with a mandatory full-slide timeline;
 - replacing the shared grid with a mandatory full-slide dependency graph;
-- replacing the shared grid with a mandatory row-only priority layout;
 - multiple unrelated work items inside one ordinary card merely to save space.
+
+Registered exception:
+- meeting point 9 uses a mandatory vertical execution-group layout at slide level;
+  cards remain the internal components.
 
 The grid must adapt to content. Consistency never justifies smaller-than-allowed
 text, clipping, weak contrast or excessive density.
@@ -246,7 +249,7 @@ verified_dependency_not_reflected_in_plan_count > 0
 missing_required_card_row_count > 0
 uneven_row_spacing_caused_by_vertical_justification > 0
 plain_row_work_item_count > 0
-shared_card_grid_not_used_without_explicit_exception_count > 0
+shared_card_grid_not_used_without_registered_exception_count > 0
 ```
 
 ---
@@ -269,5 +272,5 @@ Do not deliver until all hard-failure counts are zero.
 ---
 
 **Status:** REQUIRED
-**Version:** 3.3
+**Version:** 3.4
 **Last updated:** 2026-09-17
