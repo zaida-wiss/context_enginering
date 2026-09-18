@@ -19,7 +19,7 @@ atlas when files move or when an AI task needs to resolve its dependencies.
 ## 🎯 What do you want to do?
 
 ### 👤 Regular project work
-→ [`_memory/PROJEKTKONTEXT_AVANZA.md`](_memory/PROJEKTKONTEXT_AVANZA.md)
+→ [`_ai_guides/project/PROJECT_CONTEXT_ROUTER.md`](_ai_guides/project/PROJECT_CONTEXT_ROUTER.md)
 
 ### 🎨 Create a presentation
 → [`_ai_guides/presentations/MANDATORY_READING_ORDER.md`](_ai_guides/presentations/MANDATORY_READING_ORDER.md)
