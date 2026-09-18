@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 3.2
+  version: 3.3
 ---
 
 # 🚨 LAYOUT OVERFLOW GUARD — Responsive Cards, WCAG First
@@ -58,26 +58,32 @@ A continuation slide is mandatory when content still does not fit at the defined
 
 ---
 
-## 3. SEMANTIC CONTAINER RULE
+## 3. SHARED CARD/GRID RULE
 
-For ordinary item-based content:
+The responsive card/grid system is the default composition language across the deck.
+
+For ordinary work/information items:
 
 > ONE ITEM = ONE CARD
 
-But the slide's **information structure wins over a generic card grid**.
+Chronology, dependencies, risk and priority are expressed inside the shared
+card/grid system through card order, group headings, symbols, short connectors
+and provenance.
 
-Explicit semantic-layout exceptions:
-- ② uses a chronological timeline with supporting callouts
-- ⑥ may use a dependency graph/flow; each dependency node remains a card
-- ⑨ uses compact full-width priority rows/blocks in a strict vertical sequence
-- ⑫ uses chronological day/plan blocks
-- diagrams or grouped structures explicitly required by the slide-content authority
+Allowed:
+- 3×2, 2×2, 2×1 or 1×1 responsive grids;
+- grouped cards under a shared heading;
+- arrows/connectors between cards when they clarify dependencies;
+- continuation slides when the common grid cannot remain readable.
 
 Forbidden:
-- replacing a required timeline/flow/sequence with a generic grid
-- plain issue/PR rows on slides that use the ordinary card system
-- multiple unrelated work items inside one ordinary card merely to save space
-- using the universal card rule to erase a slide-type-specific visual grammar
+- replacing the shared grid with a mandatory full-slide timeline;
+- replacing the shared grid with a mandatory full-slide dependency graph;
+- replacing the shared grid with a mandatory row-only priority layout;
+- multiple unrelated work items inside one ordinary card merely to save space.
+
+The grid must adapt to content. Consistency never justifies smaller-than-allowed
+text, clipping, weak contrast or excessive density.
 
 ---
 
@@ -89,7 +95,7 @@ Forbidden:
 | `②`–`⑤` | 2 × 2 | 4 |
 | `⑥`–`⑫`, `⑭` | 2 × 2 | 4 |
 | `⑬` | 4 × 1 only when readable with required microcopy; otherwise 2 × 2 | 4 |
-| `⑥A` | dependency graph | 3–4 chains |
+| `⑥` | responsive cards with optional connectors | 4 |
 
 If cards are text-heavy, use fewer cards than the maximum.
 
@@ -240,7 +246,7 @@ verified_dependency_not_reflected_in_plan_count > 0
 missing_required_card_row_count > 0
 uneven_row_spacing_caused_by_vertical_justification > 0
 plain_row_work_item_count > 0
-required_semantic_layout_replaced_by_generic_grid_count > 0
+shared_card_grid_not_used_without_explicit_exception_count > 0
 ```
 
 ---
@@ -263,5 +269,5 @@ Do not deliver until all hard-failure counts are zero.
 ---
 
 **Status:** REQUIRED
-**Version:** 3.2
+**Version:** 3.3
 **Last updated:** 2026-09-17
