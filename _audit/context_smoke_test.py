@@ -17,6 +17,44 @@ def read(path):
     return Path(path).read_text(encoding="utf-8")
 
 
+def yaml_scalar(content, *path):
+    """Read a scalar from the repository's simple YAML contracts without external dependencies."""
+    stack = []
+    for raw in content.splitlines():
+        if not raw.strip() or raw.lstrip().startswith("#") or raw.strip() == "---":
+            continue
+        if raw.lstrip().startswith("- "):
+            continue
+
+        indent = len(raw) - len(raw.lstrip(" "))
+        stripped = raw.strip()
+        if ":" not in stripped:
+            continue
+
+        key, value = stripped.split(":", 1)
+        key = key.strip()
+        value = value.strip()
+
+        while stack and stack[-1][0] >= indent:
+            stack.pop()
+
+        current_path = tuple(item[1] for item in stack) + (key,)
+
+        if value == "":
+            stack.append((indent, key))
+            continue
+
+        if current_path == tuple(path):
+            lowered = value.lower()
+            if lowered == "true":
+                return True
+            if lowered == "false":
+                return False
+            return value.strip('"').strip("'")
+
+    return None
+
+
 def require(label, condition, failures):
     if condition:
         print(f"✅ {label}")
@@ -29,7 +67,8 @@ def main():
     failures = []
 
     registry = read("CONTEXT_REGISTRY.yaml")
-    ai_framework = read("_ai_guides/AI_FRAMEWORK.md")
+    ai_framework = read("_ai_guides/AI_FRAMEWORK.yaml")
+    ai_framework_guide = read("_ai_guides/AI_FRAMEWORK.md")
     router = read("_ai_guides/project/PROJECT_CONTEXT_ROUTER.md")
     dod = read("_ai_guides/project/DEFINITION_OF_DONE.md")
     issue_template = read("_ai_guides/project/templates/ISSUE_BODY.md")
@@ -62,24 +101,48 @@ def main():
         "logical_destinations.project.team_tone_and_collaboration",
     ]
     require(
-        "global AI framework is registered",
+        "global AI framework YAML is registered",
         "logical_destinations:" in registry
         and "ai_framework:" in registry
-        and "_ai_guides/AI_FRAMEWORK.md" in registry,
+        and "_ai_guides/AI_FRAMEWORK.yaml" in registry,
         failures,
     )
     require(
-        "global conflict gate requires user decision before resolution",
-        "CONFLICT DECISION GATE — USER DECIDES" in ai_framework
-        and "STOP before resolving" in ai_framework
-        and "Ask the user for the intended decision" in ai_framework
-        and "Wait for that decision" in ai_framework,
+        "global AI framework YAML is normative",
+        yaml_scalar(ai_framework, "metadata", "normative") is True
+        and yaml_scalar(ai_framework, "metadata", "critical") is True
+        and yaml_scalar(ai_framework, "metadata", "status") == "active",
         failures,
     )
     require(
-        "context-first correction is global",
-        "CONTEXT-FIRST CORRECTION" in ai_framework
-        and "update the context repository first" in ai_framework,
+        "global conflict gate requires STOP and user decision",
+        yaml_scalar(ai_framework, "conflict_decision_gate", "action") == "STOP"
+        and yaml_scalar(ai_framework, "conflict_decision_gate", "user_decision_required") is True,
+        failures,
+    )
+    require(
+        "authority rank cannot silently resolve a genuine conflict",
+        yaml_scalar(
+            ai_framework,
+            "authority_order",
+            "may_silently_resolve_genuine_internal_conflict",
+        ) is False,
+        failures,
+    )
+    require(
+        "context-first correction is machine-readable",
+        yaml_scalar(
+            ai_framework,
+            "context_first_correction",
+            "artifact_only_patch_is_final_fix",
+        ) is False,
+        failures,
+    )
+    require(
+        "Markdown framework is explanatory only",
+        "normative: false" in ai_framework_guide
+        and "Normative source:" in ai_framework_guide
+        and "AI_FRAMEWORK.yaml" in ai_framework_guide,
         failures,
     )
     require("coding_assistance task exists", "coding_assistance:" in registry, failures)
@@ -151,6 +214,12 @@ def main():
 
     require("sprint_planning task exists", "sprint_planning:" in registry, failures)
     require(
+        "sprint planning loads global AI framework",
+        'sprint_planning:' in registry
+        and '"logical_destinations.global.ai_framework"' in registry,
+        failures,
+    )
+    require(
         "planning bundle loads goals authority",
         "logical_destinations.project.goals_and_sprint_planning" in registry,
         failures,
@@ -205,6 +274,12 @@ def main():
     require(
         "monday_meeting_presentation task exists",
         "monday_meeting_presentation:" in registry,
+        failures,
+    )
+    require(
+        "presentation task loads global AI framework",
+        "global_framework:" in registry
+        and 'ref: "logical_destinations.global.ai_framework"' in registry,
         failures,
     )
     for ref in presentation_refs:
