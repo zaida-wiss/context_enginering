@@ -4,7 +4,7 @@ description: Minimal router for Avanza project work
 metadata:
   type: router
   status: active
-  version: 2.7
+  version: 2.8
 ---
 
 # Avanza project context router
@@ -13,6 +13,15 @@ metadata:
 
 This file routes project work to the correct canonical owner. It does not repeat
 presentation rules, data-source rules or team standards.
+
+## Global framework first
+
+Before resolving project-specific owners, apply
+[`../AI_FRAMEWORK.md`](../AI_FRAMEWORK.md).
+
+If active project rules genuinely conflict, stop and ask the user to decide as
+required by the global conflict-decision gate. Do not resolve the contradiction
+from router order or authority rank.
 
 ## Start from the repository map
 
@@ -55,5 +64,5 @@ result with the task's registered acceptance checks.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.7
+**Version:** 2.8
 **Last updated:** 2026-09-18
