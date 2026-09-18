@@ -15,7 +15,7 @@ import os
 
 def read_sources_section():
     """Extract sources from YAML using grep and basic parsing"""
-    with open('_memory/EXTERNAL_SOURCES.yaml', 'r') as f:
+    with open('data/SOURCES.yaml', 'r') as f:
         content = f.read()
 
     # Find sources: section
@@ -90,7 +90,7 @@ def main():
     try:
         sources = read_sources_section()
     except Exception as e:
-        print(f"❌ FAIL: Cannot parse EXTERNAL_SOURCES.yaml: {e}")
+        print(f"❌ FAIL: Cannot parse SOURCES.yaml: {e}")
         return 1
 
     print("=" * 80)
@@ -171,7 +171,7 @@ def main():
         'README.md',
         '_ai_guides/presentations/MANDATORY_READING_ORDER.md',
         '_ai_guides/presentations/SYSTEM_CONTRACT.yaml',
-        '_memory/EXTERNAL_SOURCES.yaml',
+        'data/SOURCES.yaml',
         '_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml',
         '_memory/TEAM_ROSTER.md'
     ]
