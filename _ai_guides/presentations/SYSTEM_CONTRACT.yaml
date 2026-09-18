@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 4.5
+version: 4.6
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -126,8 +126,9 @@ execution_receipt:
     duplicate_rule_loading: false
 
   source_routing:
-    registry: "../../data/SOURCES.yaml"
-    context_router: "../context/CONTEXT_ROUTING.yaml"
+    context_registry: "../../CONTEXT_REGISTRY.yaml"
+    source_registry_ref: "registries.external_sources"
+    context_ingestion_ref: "registries.context_ingestion"
 
   missing_required_dependency:
     state: "INCOMPLETE"
