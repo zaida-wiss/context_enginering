@@ -395,42 +395,54 @@ Manual checks:
 - each source label starts with its canonical symbol
 - no tag, chip, badge, color or `?` replaces `⭐` or `🔎`
 - mixed cards repeat the required symbol inside each relevant block
+- when an AI health-check reports that no new signal was identified, any
+  `🔎 AI-kontroll` trace lists the exact sources/locations actually inspected
+- the AI check trace never lists a source that was not inspected
+- an expected source that could not be checked is shown with `⚠` rather than
+  being implied as analysed
 
-## 12A. FOUR-TEAM BOARD — POINT 9
+## 12A. POINT 9 — VERTICAL PRIORITY VIEW
 
 Required:
 
 ```text
-team_column_missing_count == 0
-open_pr_without_pushpin_number_count == 0
-issue_or_pr_number_without_team_color_count == 0
-team_identified_by_color_only_count == 0
-open_pr_missing_contribution_text_count == 0
-assigned_issue_missing_order_count == 0
-assigned_issue_dependency_not_visualized_count == 0
-dependency_without_link_symbol_count == 0
-ai_dependency_without_both_symbols_count == 0
-ai_assignment_without_reason_count == 0
+point9_missing_priority_first_group_count == 0
+point9_missing_parallel_group_count == 0
+point9_missing_backlog_group_count == 0
+point9_proposal_without_star_count == 0
+point9_ai_order_without_analysis_label_count == 0
+point9_dependency_not_reflected_in_order_count == 0
+point9_duplicate_item_across_groups_count == 0
+point9_team_coverage_gap_without_reason_count == 0
 suggested_issue_without_goal_link_count == 0
+unverified_owner_presented_as_fact_count == 0
 ```
 
 Manual checks:
-- every slide for point 9 has exactly `Frontend | Backend | Native | Cross-team`
-- meeting point 9 remains a fixed `1×4` team-column layout on every continuation slide
-- continuation slides use lowercase letters: `9a`, `9b`, `9c`, `9d`, `9e`
-- cards adapt to text length without violating typography minima
-- empty team columns remain visible with a verified empty state
-- point 9 renders every open PR as `📌 #[PR-number]` with its contribution directly below
-- every issue/PR number uses the verified owning team's accessible color
-- team ownership also appears through the team column/section or text, never color alone
-- point 9 includes all remaining assigned issues, an order marker and a visible directed dependency relation when applicable
-- point 9 dependency text and dependency visual agree and retain provenance
-- every dependency view/relation starts with `🔗 Beroende`
-- every AI-interpreted dependency shows both `🔗 Beroende` and `🔎 AI-analys`
-- point 9 separates `🔎 AI-analys` from `⭐ AI-förslag`
-- every allocation recommendation names a task/person, motivation and its evidence limits
-- every suggested issue identifies a grounded gap/goal and has been checked against existing issues/PRs
-- `📌` never replaces the item's provenance symbol
+- meeting point 9 uses the vertically stacked execution model from `SLIDE_DETAIL_SPEC.md`
+- execution groups appear in the canonical logical order:
+  1. `Prioritering först`
+  2. `Parallellt`
+  3. `Backlog — lägre prioritet`
+  4. `Förslag framåt — finns ännu inte / behöver korrigeras`
+- group 4 may be omitted only when verified empty; proposals that must remove a
+  blocker or protect a critical path may be promoted to `Prioritering först`
+  or `Parallellt` while retaining `⭐ AI-förslag`
+- Frontend, Backend, Native/System and Cross-team are considered as planning
+  perspectives when relevant; this is a coverage check, not a column-layout rule
+- team/layer ownership is shown with text/structure when useful and never by
+  color alone
+- an item appears in only one execution group on a physical planning sequence
+- verified dependencies affect ordering when material
+- AI-derived ordering uses one concise `🔎 AI-analys` at the useful group/slide
+  level rather than repeating it mechanically on every existing issue
+- proposed work is visibly `⭐ AI-förslag`
+- every proposed issue/correction names the grounded gap, risk, dependency or
+  goal that caused the proposal
+- numeric capacity/estimate is shown only when source-verified
+- missing numeric capacity remains explicit/qualitative rather than guessed
+- continuation slides preserve the full meeting-point identity and follow the
+  continuation convention owned by `SLIDE_DETAIL_SPEC.md`
 
 ---
 
@@ -542,5 +554,5 @@ If any gate fails:
 ---
 
 **Status:** PRODUCTION
-**Version:** 4.5
+**Version:** 4.6
 **Last updated:** 2026-09-17
