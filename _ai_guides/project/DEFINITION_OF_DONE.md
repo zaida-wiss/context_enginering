@@ -1,158 +1,109 @@
 ---
-name: definition-of-done
-description: Definition of Done (DoD) = checklist för när en GitHub issue är faktiskt slutförd
+name: definition_of_done
+description: Final completion criteria for project issues
+version: 2.0
 metadata:
   type: project_authority
   status: active
-  updated: 2026-09-13
+  last_updated: 2026-09-18
 ---
 
-# ✅ Definition of Done (DoD)
+# Definition of Done
 
-**Definition of Done är en UTVECKLINGSTERMIN för när en issue är slutförd.**
+## Purpose
 
-Det är INTE samma som kursmål eller "Done på Project Board" — det är den faktiska tekniska checklistan för "denna feature är FÄRDIG att leverera".
+Definition of Done answers one question:
 
----
+> What must be true before the team can rely on this issue as completed work?
 
-## 🎯 AC vs DoD — KRITISK SKILLNAD
+It is a **completion gate**, not the place where testing strategy, Git conventions
+or detailed implementation rules are defined.
 
-**AC (Acceptance Criteria) ≠ DoD (Definition of Done)**
+Those details are owned by:
+- workflow → `TEAM_STANDARDS.md`
+- testing → `TESTING.md`
+- communication/review tone → `TEAM_TONE_AND_COLLABORATION.yaml`
 
-```
-AC = VAD ska fungera?
-     ☐ Login works
-     ☐ Error shows
-     ☐ Redirects
-     = ~20% av DoD (bara funktionalitet)
+## Acceptance Criteria
 
-DoD = HUR säkerställer vi det är FAKTISKT klart?
-      ☐ AC uppfyllda (JA, men...)
-      ☐ Testade (unit, integration, E2E)
-      ☐ Granskade av annan
-      ☐ Dokumenterat
-      ☐ Formaterad
-      ☐ Git-historia ren
-      ☐ Accessibility verifierad
-      = 100% krav för att stänga issue
-```
+- [ ] The issue's Acceptance Criteria are satisfied and verified.
+- [ ] The final behavior matches the intended outcome described by the issue.
 
-**AC är en DELMÄNGD av DoD** — DoD är större och omfattar hela livscykeln.
+## Verification
 
----
+- [ ] The issue-specific tests/checks selected according to `TESTING.md` have been completed.
+- [ ] Relevant checks pass after the work branch has been synchronized with current `develop`.
+- [ ] Important known limitations are visible rather than hidden.
 
-## ✅ DEFINITION OF DONE — Full Checklist
+A task uses the test levels that fit its risk. Done does not automatically mean
+that every issue needs unit, integration and E2E tests.
 
-En issue är **DONE** när den uppfyller ALLT här:
+## Decisions
 
-### KÄLLKOD
+- [ ] Any meaningful technical/process decision created by the work is recorded in `docs/decisions/`.
+- [ ] The issue or PR links the relevant decision record.
+- [ ] If no new decision was needed, that is stated explicitly.
 
-- [ ] **AC är uppfyllda** — Allt som AC säger ska fungera fungerar
-- [ ] **Ingen console.log** — Debug-kod är borttagen
-- [ ] **Ingen TODO/FIXME** — Eller tydligt dokumenterat varför det finns
-- [ ] **Linting passerar** — ESLint, Prettier, format OK
-- [ ] **Ingen dead code** — Oanvänd kod är borttagen
-- [ ] **Formatterad konsekvent** — Med teamets standard
+## Risk analysis
 
-### TESTER
+- [ ] Any new risk or material change to an existing risk discovered during the issue is recorded in the canonical risk source.
+- [ ] The issue or PR links the risk update when one was made.
+- [ ] If no new or changed risk was found, that is stated explicitly.
 
-- [ ] **Unit tests** — Kritiska funktioner täckta
-- [ ] **Integration tests** — Databas/API-interaktion testad
-- [ ] **E2E tests** — Kärnflödet testat end-to-end
-- [ ] **Alla tests passerar** — Lokalt OCH i CI
-- [ ] **Edge cases testade** — Inte bara happy path
-- [ ] **Minst 70% kodtäckning** — Backend täckta väl
+## Documentation
 
-### CODE REVIEW
+Relevant documentation is current when the issue changes something another
+person needs to understand, for example:
+- setup or configuration
+- API/contract behavior
+- architecture or decision rationale
+- user-facing workflow
+- known constraints
 
-- [ ] **Granskad av annan** — Minst en annan teammedlem
-- [ ] **Feedback löst** — Alla granskningskommentarer adresserade
-- [ ] **Godkänd review** — Minst ett ✅-godkännande
-- [ ] **Ingen self-approval** — Du kan INTE godkänna din egen PR
+The documentation requirement is proportional to the change.
 
-### DOKUMENTATION
+## Review and integration
 
-- [ ] **README uppdaterad** — Installation, how-to, arkitektur
-- [ ] **Komponenter dokumenterade** — API, inputs, outputs
-- [ ] **Nya endpoints dokumenterade** — REST spec, parameters
-- [ ] **Arkitektur-beslut dokumenterade** — Varför denna väg?
-- [ ] **Kända brister dokumenterade** — Vad fungerar INTE än?
+- [ ] The pull request explains what changed, why, and how it was verified.
+- [ ] Review feedback required for acceptance has been addressed.
+- [ ] The accepted pull request is merged into the intended integration branch.
+- [ ] Any important follow-up work is represented by a visible issue rather than an informal promise.
 
-### GIT & COMMITS
+## Issue state
 
-- [ ] **Commits är logiska** — Inte "fixed stuff", utan meningsfulla
-- [ ] **Commit messages tydliga** — `type(scope): message (#issue)`
-- [ ] **Branch är deskriptiv** — `feature/#42-portfolio`
-- [ ] **Branch är mergad** — Ej stray branches kvar
-- [ ] **Git-historia ren** — Inga merge-artefakter, force-push-tecken
+- [ ] The issue links the merged pull request or final evidence.
+- [ ] The final issue state reflects what was actually delivered.
+- [ ] The issue is moved/closed as Done only after the completion criteria above are satisfied.
 
-### ACCESSIBILITY (WCAG 2.1 AA)
+## Why this matters
 
-- [ ] **Keyboard navigation** — Tab/Enter/Escape fungerar
-- [ ] **Contrast ratios** — Text/bakgrund minst 4.5:1
-- [ ] **ARIA labels** — Form inputs märkta för skärmläsare
-- [ ] **Semantic HTML** — `<button>`, `<nav>`, `<main>` inte `<div>`
-- [ ] **Inte bara färg** — Information måste även kunna förstås utan färg
+A reliable Definition of Done keeps three states separate:
 
-### DEPLOYMENT & INTEGRATION
-
-- [ ] **Kod passar in** — Ingen breaking changes
-- [ ] **Beroenden uppdaterade** — package.json, pom.xml etc
-- [ ] **Kan köras lokalt** — Setup-instruktioner klara
-- [ ] **Environment-variables** — Inte hardkodade
-- [ ] **Database-migrationer** — Dokumenterade och testade
-
-### PRESTANDA & SÄKERHET
-
-- [ ] **Performance OK** — Inte långsammare än tidigare
-- [ ] **Database-queries optimerade** — Inga N+1-problem
-- [ ] **Build passerar** — `npm run build`, `mvn clean build`
-- [ ] **Linting passerar** — Inga format-fel
-- [ ] **Ingen säkerhetsbuggar** — Granskat för OWASP Top 10
-
----
-
-## 📋 FINAL CHECKLISTA INNAN STÄNGA ISSUE
-
-```
-FÖRE DU STÄNGER ISSUE, VERIFIERA:
-
-☐ AC är uppfyllda
-☐ Alla tests passerar (lokalt + CI)
-☐ Code review är godkänd av annan
-☐ Dokumentation uppdaterad
-☐ Git-historia är ren (inga merge-artefakter)
-☐ Ingen console.log eller debug-kod
-☐ README är uppdaterad
-☐ Accessibility verifierad (WCAG AA)
-☐ Branch är mergad
-☐ Issue kan stängas med god samvete
+```text
+implemented
+    ↓
+verified + reviewed + integrated
+    ↓
+Done
 ```
 
----
+This makes the project board more trustworthy and reduces the amount of hidden
+work that appears later as surprises.
 
-## 🚀 Definition of Ready (DoR) — INNAN VI BÖRJAR
+## What this file intentionally does not own
 
-En issue är **READY** att börja arbeta på när:
+- a fixed coverage percentage
+- a requirement to run every test level for every issue
+- branch naming syntax
+- commit-message syntax
+- Definition of Ready
+- detailed coding style
 
-### Tydlighet
-- [ ] **Titel är klar** — "Add portfolio dashboard" (specifikt)
-- [ ] **Problem är definierat** — Vad är användarens behov?
-- [ ] **Lösning är beskriven** — Vad ska vi bygga?
-
-### Acceptance Criteria
-- [ ] **3-5 mätbara AC** — Testa om det är klart
-- [ ] **Inte vaga** — Inte "make it work", utan specifikt vad
-- [ ] **Definition av klart** — Vad är success?
-
-### Teknik & Beroenden
-- [ ] **Scope definierad** — Frontend/Backend/Native?
-- [ ] **Blockers identifierade** — Eller tydligt vad som blockerar?
-- [ ] **Beroenden tydliga** — Väntar denna på något annat?
-- [ ] **Estimat givet** — 4h/8h/16h/20h?
+If the team wants any of those to become binding project rules, record the
+decision and update the authority that owns that rule.
 
 ---
 
-**En issue är DONE när du kan stänga den och aldrig tänka på den igen.**
-
-**Senast uppdaterad:** 2026-09-13
+**Status:** ACTIVE
+**Version:** 2.0
+**Last updated:** 2026-09-18
