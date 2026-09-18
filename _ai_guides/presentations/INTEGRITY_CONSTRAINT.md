@@ -1,91 +1,125 @@
 ---
 name: integrity_constraint
-description: Non-negotiable data integrity rule — no hallucinations, no guesses
+description: Positive data-integrity contract for verified presentation content
 metadata:
   type: rule
   critical: true
   enforced: always
+  version: 2.0
 ---
 
-# 🛑 INTEGRITY CONSTRAINT — NON-NEGOTIABLE
+# Data integrity contract
 
-## The Rule
+## Purpose
 
-**If you cannot obtain ALL required data from registered sources ONLY:**
+This file defines what counts as trustworthy project information in presentation work.
 
-You MUST STOP immediately.
+The goal is to produce a presentation that the team can safely use for planning
+and decisions. Every factual statement therefore has a traceable source and a
+clear verification state.
 
-You are FORBIDDEN to:
-- ❌ Guess on assignees, reviewers, or owners
-- ❌ Hallucinate issue numbers or PR data
-- ❌ Improvise GitHub metadata
-- ❌ Use unregistered sources as fallback
-- ❌ "Fill in the blanks" with invented data
-- ❌ Deliver a presentation with incomplete or unverified data
+## Verified data standard
 
-## Why This Matters
+A factual data point is ready for use when all applicable conditions are met:
 
-If you deliver a presentation with fabricated data:
+- **Source:** the source is registered in `data/SOURCES.yaml`
+- **Access method:** the access method is registered for that source
+- **Verification:** the acquisition result is recorded in the current data-acquisition receipt
+- **Fallback order:** registered fallbacks are followed in their defined order when needed
+- **Status:** the data point is verified as available, or clearly represented as incomplete/unknown according to the owning content rule
 
-1. **The team makes decisions based on FALSE information**
-2. **Decisions based on false data cause real harm**
-3. **You have not helped — you have DAMAGED the process**
+Examples of factual fields covered by this standard include:
 
-It does not matter if you "delivered something". 
+- issue and PR numbers
+- assignees and owners
+- reviewers and merger identity
+- branch names
+- timestamps and deadlines
+- meeting facts
+- project status and source-derived technical facts
 
-A false deliverable is worse than no deliverable.
+## Working with incomplete information
 
-## What "Verified Data" Means
+When a required dataset cannot be verified:
 
-For EACH data point in the presentation:
+1. record which dataset is incomplete
+2. record the reason the source could not be verified
+3. apply the gate defined in `SYSTEM_CONTRACT.yaml`
+4. continue only when that gate allows incomplete data to be represented explicitly
+5. keep unknown information visibly unknown rather than converting it into a factual value
 
-- **Source:** Must be registered in EXTERNAL_SOURCES.yaml
-- **Access method:** Must be in allowed_implementations
-- **Verification:** Must be confirmed in DATA_ACQUISITION_RECEIPT
-- **Fallback chain:** Must follow EXTERNAL_SOURCES.yaml order
-- **Status:** Must be SUCCESS (not INCOMPLETE, not GUESSED)
+This preserves useful verified material while keeping the boundary between
+known and unknown information clear.
 
-If ANY data point cannot be verified:
-- Report which dataset failed
-- Report why it failed
-- STOP before rendering
+## Data acquisition flow
 
-## Decision Tree
-
-```
-Can you get ALL required data from registered sources?
-├─ YES → Continue to build_gate ✓
-└─ NO → 
-    ├─ Try registered fallbacks?
-    │  ├─ YES, fallback works → Continue ✓
-    │  └─ NO, fallback fails → STOP (go to "Failure" below)
-    └─ STOP (see "Failure" below)
-
-Failure: Cannot complete data collection
-├─ Report which datasets are INCOMPLETE
-├─ Report why each failed (blocked, unavailable, etc.)
-├─ Do NOT guess or fabricate
-└─ STOP before rendering
+```text
+registered source
+    ↓
+registered access method
+    ↓
+successful acquisition
+    ↓
+verification receipt
+    ↓
+verified factual content
 ```
 
-## This Is Not Negotiable
+When the primary source is unavailable:
 
-This rule exists to protect the team from hallucinated data.
+```text
+primary source unavailable
+    ↓
+registered fallback order
+    ↓
+verified fallback succeeds → use verified result
+    ↓
+all applicable fallbacks unavailable → mark dataset incomplete
+    ↓
+SYSTEM_CONTRACT gate decides the next action
+```
 
-If you choose to ignore this rule because:
-- "It's faster to guess"
-- "The rules seem ceremonial"
-- "Incomplete data is better than no data"
-- "I'll just fill in the obvious parts"
+## AI interpretation
 
-Then you have chosen to harm the team's decision-making.
+Verified source data and AI interpretation are separate layers.
 
-You have failed.
+- verified source information is presented with its source provenance
+- model-derived interpretation is labeled `🔎 AI-analys`
+- model-derived recommendations are labeled `⭐ AI-förslag`
+- uncertain source origin is represented with `⚠ Källa behöver verifieras`
+
+The canonical symbol and text are defined by
+`design/PROVENANCE_AND_AI_LABELING.md`.
+
+## Relationship to the presentation pipeline
+
+This file owns **data integrity semantics**.
+
+The surrounding files have separate roles:
+
+- `AUTHORITY_REGISTRY.yaml` identifies which files own each rule category
+- `SYSTEM_CONTRACT.yaml` decides execution flow and STOP/CONTINUE gates
+- `data/SOURCES.yaml` owns source definitions, access methods and fallback order
+- `data/DATA_ACQUISITION_CONTRACT.yaml` owns the acquisition procedure
+- `design/PROVENANCE_AND_AI_LABELING.md` owns visual/source labeling
+
+The presentation router determines when this file is read. This file does not
+define its own position in the reading order.
+
+## Success condition
+
+Presentation facts are considered integrity-safe when:
+
+```text
+registered_source == true
+source_access_is_registered == true
+verification_state_is_known == true
+unknown_values_remain_explicit == true
+ai_interpretation_is_labeled == true
+```
 
 ---
 
-**Read this FIRST, before reading anything else in the presentation system.**
-
-If you commit to following this rule exactly — even if it means STOP with incomplete data — you are ready to continue.
-
-If you plan to rationalize your way around this rule: STOP now.
+**Status:** ACTIVE
+**Version:** 2.0
+**Last updated:** 2026-09-18
