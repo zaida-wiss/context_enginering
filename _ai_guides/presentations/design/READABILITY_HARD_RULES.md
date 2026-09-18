@@ -232,5 +232,5 @@ Fix by changing wording, geometry, density or pagination — not by shrinking ti
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.1
+**Version:** 1.3
 **Last updated:** 2026-09-17
