@@ -13,7 +13,7 @@ Do not derive presentation rules from the project repository.
 ## 🧭 Global AI framework
 
 Before any task-specific routing, apply
-[`_ai_guides/AI_FRAMEWORK.md`](_ai_guides/AI_FRAMEWORK.md).
+[`_ai_guides/AI_FRAMEWORK.yaml`](_ai_guides/AI_FRAMEWORK.yaml).
 
 Its conflict-decision gate applies to every AI task in this repository. When
 active rules genuinely contradict each other, the AI must stop, show the
@@ -88,8 +88,8 @@ python3 _audit/validate_presentation_authorities.py
 
 ## 🚨 Conflict Rule
 
-Global conflict behavior is owned by
-[`_ai_guides/AI_FRAMEWORK.md`](_ai_guides/AI_FRAMEWORK.md).
+Global conflict behavior is normatively owned by
+[`_ai_guides/AI_FRAMEWORK.yaml`](_ai_guides/AI_FRAMEWORK.yaml).
 
 **Do not resolve a genuine contradiction by applying an authority ranking.**
 Authority maps identify ownership and absolute boundaries; they do not replace
