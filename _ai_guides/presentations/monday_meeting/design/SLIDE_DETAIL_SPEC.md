@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.2
+  version: 3.3
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -551,8 +551,8 @@ When evidence permits, add separate `🔎 AI-analys` and `⭐ AI-förslag` block
 for order, parallel work, ownership, reactivation, deferral or closure. Do not
 invent estimates or assignments. Every card answers `Vad bör hända härnäst?`.
 
-Decisions summarized in ①d may reappear here only when they materially control
-future work. Present the verified decision as fact and the resulting next action
+Verified decisions summarized in the point-1 `Teamsammanfattning` subsection
+may reappear here only when they materially control future work. Present the verified decision as fact and the resulting next action
 as confirmed or `⭐ AI-förslag` according to evidence.
 
 ---
@@ -1182,5 +1182,5 @@ point_1_collection_branch_subtitle_not_exact_count == 0
 ---
 
 **Status:** PRODUCTION
-**Version:** 3.2
+**Version:** 3.3
 **Last updated:** 2026-09-18
