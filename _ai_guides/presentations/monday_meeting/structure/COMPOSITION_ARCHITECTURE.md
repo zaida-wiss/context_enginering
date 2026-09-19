@@ -50,6 +50,11 @@ No custom thematic section may replace, reorder or silently skip an official mee
 
 A point may use multiple physical slides when required for readability. Continuation slides preserve the same official meeting-point identity.
 
+Meeting point ① has a mandatory physical-page sequence:
+`develop → C/C++-Native → Java-Development-Environment → Teamsammanfattning`.
+All four subsections are rendered; verified-empty or source-incomplete branch
+pages are explicit rather than silently omitted.
+
 ## 2. PRESENCE / EMPTY-STATE RULE
 
 For each point ①–⑭, exactly one of these must be true:
@@ -108,11 +113,15 @@ Do not invent numeric hours, percentages or estimates to make a thread look comp
 The deck uses a consistent card system as its primary visual language.
 
 Default slide-level composition is a responsive card/grid system:
-- ②: deadline/course-state cards ordered chronologically
+- ②: a chronological course/project timeline with an explicit current-week marker
 - ⑥: blocker/dependency cards with optional arrows/connectors
 - ⑦: risk cards that expose risk → mitigation → planning impact
 - ⑫: day/plan cards ordered chronologically
 - ⑬: concise action cards
+
+Point ② boundary:
+- blockers, dependencies and risks are excluded from the timeline/map and belong to ⑥/⑦
+- the active sprint interval is displayed from its actual start date, not the meeting date
 
 Registered slide-level exception:
 - ⑨ uses vertically stacked execution groups in the order
@@ -159,6 +168,10 @@ cross_slide_thread_break_count == 0
 default_card_grid_missing_without_registered_exception_count == 0
 point9_vertical_sequence_missing_count == 0
 meeting_point_header_identity_failure_count == 0
+point1_mandatory_subsection_missing_count == 0
+point2_not_chronological_timeline_count == 0
+point2_current_week_marker_missing_count == 0
+point2_blocker_or_risk_card_count == 0
 ```
 
 Any failure → STOP and correct the owning context rule or renderer before delivery.
