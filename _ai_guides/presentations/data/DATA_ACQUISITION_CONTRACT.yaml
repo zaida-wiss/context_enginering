@@ -32,8 +32,10 @@ test_mode_activation:
   production_mode_behavior: >
     When NOT in test mode (default):
     - Use live GitHub API, GitHub web, Google Sheets per fallback_order
-    - STOP if any required source fails (do not substitute fixtures)
-    - Report DATA_ACQUISITION_RECEIPT with real source diagnostics
+    - PAUSE if any REQUIRED or CRITICAL dataset remains incomplete after all registered fallbacks
+    - Name the missing source and ask the user whether to continue without it
+    - Continue only after explicit user approval; never substitute fixtures
+    - Report DATA_ACQUISITION_RECEIPT with real source diagnostics and the user's decision
 
 required_datasets:
   project_context:
@@ -657,19 +659,28 @@ endpoint_failure_vs_data_completeness:
     If GitHub web fails, try fallback sources.
     If all sources fail, DATA_AUDIT marks dataset as INCOMPLETE.
 
-    STOP RENDERING only if:
-      team_roster.complete == false
-      OR merged_prs.complete == false
-      OR active_issues.complete == false
+    PAUSE BEFORE RENDERING if any dataset classified REQUIRED or CRITICAL is INCOMPLETE.
 
-    Otherwise: render with available data, mark sources in footer.
+    The pause must name the missing source, list attempted fallbacks and explain
+    which content or analysis will be unavailable. Ask the user whether to
+    continue without that source.
+
+    Continue only after explicit user approval. Record
+    PASS_WITH_USER_OVERRIDE, omit source-dependent claims/analysis and show the
+    limitation with ⚠ in relevant content and footers. Without approval: STOP.
+
+    OPTIONAL or SECONDARY dataset failures may continue without this approval
+    only when their owning rule does not make them required for the requested deck.
 
 validation_rules:
   merged_prs_minimum: "At least 1, or mark week as 'no merged work'"
   active_issues_minimum: "At least 1, or mark week as 'no open work'"
   team_roster: "Exactly 7, or STOP"
 
-  rule: "Zero activity in a category is valid. Missing data sources are not."
+  rule: >-
+    Zero verified activity in a category is valid. A missing source is not an
+    empty result. REQUIRED or CRITICAL missing data triggers the explicit
+    incomplete-source user decision gate.
 
   relevant_commits:
     source_id: "GITHUB_COMMITS"
@@ -737,6 +748,11 @@ data_acquisition_receipt:
     selected_source: "Which source was finally used"
     final_status: "SUCCESS | INCOMPLETE"
     final_payload_count: "Number of items acquired"
+    user_override:
+      requested: "true | false"
+      decision: "continue_without_source | stop | not_applicable"
+      decided_at: "ISO 8601 timestamp or null"
+      resulting_gate_status: "PASS | PASS_WITH_USER_OVERRIDE | STOP"
 
     rule: >
       If final_status == INCOMPLETE: must list all attempted sources with their statuses.
@@ -776,10 +792,14 @@ data_acquisition_receipt:
       verify Sheets sharing permissions and connector authentication.
 
   gate_rule: >
-    If ANY required_dataset has final_status == INCOMPLETE:
+    If ANY REQUIRED or CRITICAL dataset has final_status == INCOMPLETE:
       → DATA_AUDIT marks that dataset as INCOMPLETE
-      → Presentation generation STOPS (per SYSTEM_CONTRACT.yaml)
+      → Presentation generation PAUSES (per SYSTEM_CONTRACT.yaml)
       → MUST report to user the COMPLETE sources_tested_array (all attempts), not just last failure
+      → MUST name the missing source and explain affected slides/claims/analysis
+      → MUST ask: continue without this source, or stop?
+      → Continue only on explicit user approval and record PASS_WITH_USER_OVERRIDE
+      → Without explicit approval, STOP
       → Format:
          [dataset] acquisition INCOMPLETE. Sources tried:
          1. [source_url]: [status] [http_code] — [failure_reason]
@@ -788,10 +808,17 @@ data_acquisition_receipt:
 
          This enables diagnosis: rate limiting (429), auth (401/403), DNS errors, timeouts, etc.
 
-    Else:
+    If the user explicitly approves continuing without the named source:
+      → record decision = continue_without_source
+      → DATA_AUDIT status = PASS_WITH_USER_OVERRIDE
+      → omit all source-dependent claims and analysis
+      → show ⚠ limitation in relevant content and footers
+      → build_gate may proceed in degraded mode
+
+    Else if all REQUIRED and CRITICAL datasets are complete:
       → DATA_AUDIT proceeds
       → DATA_AUDIT checksums verify completeness
-      → build_gate may proceed
+      → build_gate may proceed with PASS
 
   terminal_vs_data_problems: >
     ENDPOINT_FAILURE (DNS, TERM variable, path issues, network timeout) ≠ DATA_FAILURE.
