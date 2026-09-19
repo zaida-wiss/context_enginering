@@ -322,7 +322,7 @@ responsive_visual_system:
     verified_format: "canonical source symbol + short source name"
     unverifiable_expected_format: "⚠ + struck-through source name + text 'kunde inte verifieras'"
     priority_level: 4
-    minimum_text_pt: 10
+    minimum_text_pt: 11
     rules:
       - "reserve measured footer height before laying out cards"
       - "footer supplements and never replaces card/block provenance"
