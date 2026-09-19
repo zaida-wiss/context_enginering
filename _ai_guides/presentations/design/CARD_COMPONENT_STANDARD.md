@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.7
+  version: 1.8
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -514,7 +514,7 @@ Before delivery verify across **all cards**:
 ```text
 wcag_aa_violation_count == 0
 color_only_information_count == 0
-team_color_left_accent_only == true
+team_accent_uses_left_edge_not_full_outline == true
 full_team_outline_count == 0
 required_card_rows_missing == 0
 font_below_component_minimum_count == 0
@@ -564,5 +564,5 @@ Also verify:
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.7
+**Version:** 1.8
 **Last updated:** 2026-09-17
