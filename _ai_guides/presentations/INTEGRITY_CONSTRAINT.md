@@ -42,11 +42,13 @@ Examples of factual fields covered by this standard include:
 
 When a required dataset cannot be verified:
 
-1. record which dataset is incomplete
+1. record which dataset and named source are incomplete
 2. record the reason the source could not be verified
 3. apply the gate defined in `SYSTEM_CONTRACT.yaml`
-4. continue only when that gate allows incomplete data to be represented explicitly
-5. keep unknown information visibly unknown rather than converting it into a factual value
+4. for every REQUIRED or CRITICAL incomplete dataset, pause and ask the user whether to continue without the named source
+5. continue only after explicit user approval; record the decision as `PASS_WITH_USER_OVERRIDE`
+6. omit every claim or analysis that depends on the missing source, or represent the missing information explicitly as unverifiable
+7. keep unknown information visibly unknown rather than converting it into a factual value
 
 This preserves useful verified material while keeping the boundary between
 known and unknown information clear.
