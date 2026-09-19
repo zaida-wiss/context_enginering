@@ -435,6 +435,9 @@ Required:
 ```text
 ai_analysis_without_magnifying_glass_count == 0
 ai_proposal_without_star_count == 0
+rendered_missing_glyph_count == 0
+rendered_replacement_glyph_count == 0
+canonical_symbol_render_mismatch_count == 0
 unverified_item_presented_as_confirmed_count == 0
 mixed_provenance_card_without_block_labels_count == 0
 ai_no_finding_without_exact_checked_sources_count == 0
@@ -446,6 +449,9 @@ ai_analysis_without_magnifying_glass_count == 0
 ```
 
 Manual checks:
+- validation is performed on the final rendered/exported artifact, not only on source text
+- no canonical symbol renders as an empty square, replacement character, unrelated glyph or invisible character
+- each symbol uses the primary font only when that font demonstrably renders it; otherwise the affected glyph/run uses a verified symbol-capable fallback
 - each source label starts with its canonical symbol
 - no tag, chip, badge, color or `?` replaces `⭐` or `🔎`
 - mixed cards repeat the required symbol inside each relevant block
