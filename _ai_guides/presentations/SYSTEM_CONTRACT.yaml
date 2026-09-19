@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.0
+version: 5.1
 last_updated: 2026-09-18
 base_path: "_ai_guides/presentations"
 
@@ -382,7 +382,7 @@ execution_sequence:
       - "meeting point 1 contains only verified work from active sprint start through the actual data cutoff"
       - "the deck is always an in-progress planning document for the active sprint"
       - "points 3–5 and 9 plan the remaining horizon from data cutoff to active sprint end"
-      - "meeting point 1d AI team summaries use 1–10 sentences, name every team member and ground each contribution/decision"
+      - "the final meeting-point-1 teamsammanfattning subsection uses 1–10 sentences per team, names every team member and grounds each contribution/decision"
       - "points 3–5 own backlog, future work, older inactive work and decisions that govern upcoming team work"
       - "meeting point 9 content structure is supplied by SLIDE_DETAIL_SPEC.md"
       - "meeting point 9 visual fit and continuation behavior are supplied by the registered design/overflow authorities"
@@ -613,7 +613,10 @@ maintenance:
     Do not create competing _V2/_OLD/_UPDATED policy files. Update the owning
     authority directly and rely on git history for previous versions.
 
-  conflict_resolution:
+  authority_ownership:
+    rule: >
+      This order identifies rule ownership and delegation only. It must never be
+      used to silently choose between incompatible active requirements.
     order:
       - "SYSTEM_CONTRACT for orchestration"
       - "ACCESSIBILITY for WCAG boundary"
@@ -622,9 +625,13 @@ maintenance:
       - "CARD_COMPONENT for card internals"
       - "PROVENANCE for fact/team/AI identity"
       - "OVERFLOW_GUARD for fit/pagination"
+      - "COMPOSITION_ARCHITECTURE for deck-wide composition"
       - "SLIDE_DETAIL_SPEC for content"
       - "TEMPLATE_REFERENCE never wins"
-    same_domain_conflict: "STOP and fix authority files before rendering"
+    genuine_active_conflict: >
+      STOP the affected path, surface both conflicting requirements and their
+      consequences, ask the user for an explicit decision, then update the owning
+      rule(s) and regression protection before continuing.
     registry: "AUTHORITY_REGISTRY.yaml is the canonical file-status and ownership registry"
     retired_files: "Never load or merge rules from files listed under retired_guides"
 
