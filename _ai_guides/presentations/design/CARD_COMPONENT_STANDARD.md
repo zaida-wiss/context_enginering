@@ -78,7 +78,7 @@ Hard rules:
 - AI proposals are clearly visible at level 2 but never compete with the issue title/assignee
 - merge/review and pedagogical explanation share the calmer level-3 treatment
 - AI analysis uses level 3 unless another active content rule requires stronger warning semantics
-- source labels and symbols use level 4 but remain fully readable and identifiable
+- inline provenance symbols stay with their content blocks; full symbol + text provenance labels use level 4 in the bottom information zone
 - branch, timestamps and technical metadata use level 4 and must not compete with levels 1–3
 - do not use accent/team colors for ordinary metadata merely to attract attention
 - level 4 blends most gently into the card surface while still meeting font-size and WCAG contrast requirements
@@ -110,7 +110,7 @@ For Issue/PR/Merge/action cards, use this visual order:
 
 ### Bottom-anchor hard rule
 
-**Name/identity and verification/provenance must always sit at the bottom of the card, not immediately after the body copy.**
+**Name/identity and the full symbol + text verification/provenance row must always sit at the bottom of the card, not immediately after the body copy. Inline provenance symbols remain with their content blocks.**
 
 This applies to all card types when those fields exist:
 - status cards
@@ -135,7 +135,8 @@ If a card has a timestamp, the timestamp is the lowest row and verification/meta
 
 Do not vertically justify all rows across the card. The title/explanation stay grouped at the top; the identity/verification area is a deliberate bottom group.
 
-Do not insert decorative or provenance rows between title and pedagogical explanation.
+Do not insert a separate full-text provenance row between title and pedagogical
+explanation. An inline canonical symbol may prefix the semantic block it identifies.
 
 For action and next-step cards, the pedagogical line must answer:
 - what the action concerns
@@ -525,6 +526,9 @@ text_line_spacing_below_minimum_count == 0
 pedagogical_line_not_directly_under_title_count == 0
 identity_not_bottom_anchored_count == 0
 verification_not_bottom_anchored_count == 0
+content_block_provenance_symbol_missing_count == 0
+card_bottom_provenance_full_label_missing_count == 0
+card_bottom_provenance_symbol_text_mismatch_count == 0
 bottom_information_zone_overlap_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
 legacy_developed_by_label_count == 0
@@ -548,7 +552,9 @@ Also verify:
 - these hierarchy checks apply to **every card type**, not only PR/issue cards
 - no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the person/team identity row
 - person identity is first-name-only and sits in the bottom information zone
-- verification/provenance is at the bottom of the card; if a timestamp exists, it sits immediately above the timestamp
+- every semantic content block begins with its canonical provenance symbol
+- the bottom provenance row deduplicates every symbol used and shows symbol + full text label
+- if a timestamp exists, the full bottom provenance row sits immediately above the timestamp
 - merged PR timestamp is the merge timestamp
 - open/active cards do not display PR-created/latest-commit timestamps merely because that data exists
 - timestamps use the quiet microcopy/timestamp color and do not compete for focus
