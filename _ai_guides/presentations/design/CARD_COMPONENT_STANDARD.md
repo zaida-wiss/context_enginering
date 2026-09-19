@@ -188,6 +188,9 @@ Every verified issue or PR identifier uses the owning team's canonical color:
 The identifier is dynamic, for example `#99`, `#105` or `#108`; examples never
 hard-code which PRs exist. For an open PR, the complete heading begins
 `📌 #[PR_NUMBER]`. Apply team color to `#[PR_NUMBER]`, not to the pushpin.
+The same card's bottom information zone must contain `📌 Väntar i PR`.
+If the primary font lacks `📌`, draw the pushpin as a native/vector icon;
+never replace it with `|`, another ASCII marker, a tag or text-only status.
 
 The number color is supplementary. On mixed-team slides, team ownership must
 also be explicitly available from a text label on the card. On dedicated team
@@ -529,6 +532,9 @@ verification_not_bottom_anchored_count == 0
 content_block_provenance_symbol_missing_count == 0
 card_bottom_provenance_full_label_missing_count == 0
 card_bottom_provenance_symbol_text_mismatch_count == 0
+waiting_pr_pushpin_missing_before_identifier_count == 0
+waiting_pr_bottom_pushpin_label_missing_count == 0
+canonical_symbol_ascii_transliteration_count == 0
 bottom_information_zone_overlap_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
 legacy_developed_by_label_count == 0
