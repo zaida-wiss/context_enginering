@@ -373,7 +373,7 @@ sources:
 classifications:
   REQUIRED:
     definition: "Must succeed or presentation STOPS"
-    action_on_failure: "STOP DATA_ACQUISITION_RECEIPT and report INCOMPLETE"
+    action_on_failure: "PAUSE, report INCOMPLETE, name the source and ask whether to continue without it"
   FALLBACK:
     definition: "Try if primary fails (only if connector/method available)"
     action_on_failure: "Try next fallback or STOP if all fail"
