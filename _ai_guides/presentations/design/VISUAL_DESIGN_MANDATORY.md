@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.0
+  version: 5.1
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -247,9 +247,9 @@ Rendered meeting slides use a two-level header hierarchy.
 - smaller and calmer than the meeting-point header
 - continuation letter belongs here, not beside the meeting-point number
 - examples:
-  - `a. Mergat till Backend-grenen`
-  - `c. Påbörjat, inte klart`
-  - `a. Närmaste fokus`
+  - `Mergat till C/C++-Native`
+  - `Mergat till Java-Development-Environment`
+  - `Teamsammanfattning till mötesprotokollet`
 
 ### Per-meeting-point page counter
 - show a compact counter at the far right of the primary-header row
@@ -310,10 +310,11 @@ Hard rules:
 - paginate when needed instead of shrinking below readability minima.
 
 
-### Meeting point ①–①d
+### Meeting point 1
 - six cards is the standard capacity per physical slide; meeting point 1 has no total card or slide limit
 - use six when at least six grounded items exist and all six remain readable
-- team-summary AI cards in ①d are required content, not filler
+- team-summary AI cards are required content in the final point-1 subsection, not filler
+- point-1 subsection meaning comes from its canonical subtitle/verified merge target, never from a hard-coded continuation letter
 - never create unrelated filler cards merely to reach six
 - preferred layout may be 3×2 when readable; card geometry remains responsive
 - if more than six grounded items exist, create as many lowercase-letter continuation slides as required
@@ -475,5 +476,5 @@ Card internals are governed by `CARD_COMPONENT_STANDARD.md`; global design must 
 ---
 
 **Status:** PRODUCTION
-**Version:** 5.0
+**Version:** 5.1
 **Last updated:** 2026-09-17
