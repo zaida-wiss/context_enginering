@@ -167,8 +167,8 @@ If a technically compliant minimum still looks too small/unreadable in the actua
 Use canonical values from `READABILITY_HARD_RULES.md` and the card standard.
 
 Hard minimum rendered gaps:
-- title → pedagogical explanation: **4 px**
-- explanation → assignee/developer: **12 px**
+- title → pedagogical explanation: **6 px minimum, 8 px preferred**
+- explanation → assignee/developer: **14 px minimum**
 - assignee/developer → operational metadata: **8 px**
 - metadata row → separate metadata row: **6 px**
 - operational metadata → timestamp/source area: **10 px**
