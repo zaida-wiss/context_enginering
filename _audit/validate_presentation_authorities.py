@@ -25,6 +25,15 @@ STALE_ACTIVE_PATTERNS = {
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
+    "INTEGRITY_CONSTRAINT.md": (
+        "pause and ask the user whether to continue without the named source",
+        "PASS_WITH_USER_OVERRIDE",
+    ),
+    "data/DATA_ACQUISITION_CONTRACT.yaml": (
+        "PAUSE BEFORE RENDERING if any dataset classified REQUIRED or CRITICAL is INCOMPLETE",
+        "continue_without_source",
+        "PASS_WITH_USER_OVERRIDE",
+    ),
     "design/READABILITY_HARD_RULES.md": (
         "timestamp/source/provenance/footer microcopy: **11 pt minimum**",
         "title → pedagogical explanation: **6 px minimum**, **8 px preferred**",
@@ -48,6 +57,8 @@ REQUIRED_ACTIVE_PATTERNS = {
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
         'required_on: "every physical slide, including continuation slides"',
+        "incomplete_source_override:",
+        'approved_status: "PASS_WITH_USER_OVERRIDE"',
     ),
     "design/VISUAL_DESIGN_MANDATORY.md": (
         "Every physical slide reserves a bottom footer container",
