@@ -348,9 +348,11 @@ Mandatory content order:
 3. merged to `Java-Development-Environment`
 4. AI-proposed team summaries for the meeting protocol
 
-Every non-empty target above gets its own physical slide sequence. A merge to a
-registered collection branch must never be folded into the `develop` slide or
-only summarized in a team-summary card.
+Every target above gets its own physical slide sequence, in the stated order.
+The two registered collection-branch pages are mandatory even when the verified
+merge result is empty: render a grounded empty state, or an explicit incomplete
+state when acquisition failed. A merge to a registered collection branch must
+never be folded into the `develop` slide or only summarized in a team-summary card.
 
 Six cards is the standard capacity per physical slide, never a total limit.
 Create as many continuation slides as required and never omit grounded completed
@@ -382,8 +384,10 @@ Canonical branch: `C/C++-Native`. Show every verified merge to this branch durin
 the sprint window after the `develop` pages. Use the same evidence fields as
 above where available.
 
-This collection branch gets its own physical slide sequence when it has verified
-merge evidence. The slide subtitle must be exactly `Mergat till C/C++-Native`.
+This collection branch always gets its own physical slide sequence. When verified
+merge evidence is empty, show `Inga verifierade merges till C/C++-Native under perioden`;
+when acquisition is incomplete, show the source-specific warning instead. The slide
+subtitle must be exactly `Mergat till C/C++-Native`.
 
 ## Subtitle — Mergat till Java-Development-Environment
 
@@ -394,9 +398,10 @@ Canonical branch: `Java-Development-Environment`. Show every verified merge to
 this branch during the sprint window after `C/C++-Native`. Use the same evidence
 fields as above where available.
 
-This collection branch gets its own physical slide sequence when it has verified
-merge evidence. The slide subtitle must be exactly
-`Mergat till Java-Development-Environment`.
+This collection branch always gets its own physical slide sequence. When verified
+merge evidence is empty, show `Inga verifierade merges till Java-Development-Environment under perioden`;
+when acquisition is incomplete, show the source-specific warning instead. The slide
+subtitle must be exactly `Mergat till Java-Development-Environment`.
 
 ## Subtitle — Teamsammanfattning till mötesprotokollet
 
@@ -466,12 +471,17 @@ verified completed or partial value belong to later meeting points.
 Purpose: orient the team in **where we are in the full course period**, which
 deadlines/checkpoints are already passed, and what deserves extra attention next.
 
-## Primary visual: chronological card/grid view — mandatory
+## Primary visual: chronological course/project timeline — mandatory
 
-Meeting point 2 uses the shared responsive card/grid system.
+Meeting point 2 uses a true chronological timeline as its primary visual. A card
+grid alone is not sufficient. The timeline must cover the **entire registered
+course/project period**, from course start to final delivery, in left-to-right or
+top-to-bottom chronological reading order. Course weeks, project phases, sprint
+boundaries and verified milestones share one time axis.
 
-The cards must together cover the **entire registered course/project period**,
-from course start to final delivery, in chronological reading order.
+Blockers, dependencies and risks are forbidden on this timeline and remain in
+meeting points ⑥ and ⑦. Do not turn point 2 into a blocker map, dependency map or
+priority board.
 
 Each milestone/deadline card should show, when verified:
 - phase/checkpoint/deadline name
@@ -487,8 +497,10 @@ The current sprint must be clearly identifiable inside the card/grid system.
 Use an explicit card/badge/section label such as:
 `AKTUELL SPRINT` / `Vi är här`
 
-Show the sprint date range and place the current-sprint card/label at the correct
-position in the chronological sequence.
+Show the complete sprint date range and place a visually unambiguous current-week
+marker at the correct position on the time axis. For the sprint containing
+2026-09-19, the displayed interval is exactly `14–21 september 2026`; never shift
+its start to the meeting date.
 
 ### Status color semantics
 
