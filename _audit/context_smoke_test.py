@@ -87,6 +87,7 @@ def main():
     design_authority = read("_ai_guides/presentations/design/DESIGN_AUTHORITY.md")
     presentation_architecture = read("_ai_guides/presentations/ARCHITECTURE.md")
     sources = read("data/SOURCES.yaml")
+    course_schedule = read("data/manual/course/TEAM_SCHEDULE.yaml")
 
     print("=" * 80)
     print("SMOKE TEST 1 — CODING ASSISTANCE")
@@ -286,6 +287,14 @@ def main():
     )
     for ref in presentation_refs:
         require(f"presentation bundle contains {ref}", ref in registry, failures)
+
+    require(
+        "course-week PL focus resolves dynamically from target meeting date",
+        'resolution: "dynamic"' in course_schedule
+        and 'source: "SCHEDULE.md"' in course_schedule
+        and "Never reuse a previously stored week focus" in course_schedule,
+        failures,
+    )
 
     require(
         "presentation bootstrap loads global AI framework first",
