@@ -23,6 +23,7 @@ STALE_ACTIVE_PATTERNS = {
     "old team range": "④–⑥",
     "obsolete workflow columns": "Arbete | Läge | Härnäst | Vem",
     "stale 10 pt provenance footer minimum": "footer uses priority level 4 but must remain at least 10 pt",
+    "stale critical-data continue rule": "mark as INCOMPLETE, but continue with available data",
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
@@ -36,6 +37,7 @@ REQUIRED_ACTIVE_PATTERNS = {
         "PASS_WITH_USER_OVERRIDE",
         "Follow source/API pagination until ALL relevant commits",
         "Use accessible continuation slides when needed",
+        "trigger the explicit incomplete-source user decision gate",
     ),
     "design/READABILITY_HARD_RULES.md": (
         "timestamp/source/provenance/footer microcopy: **11 pt minimum**",
@@ -63,6 +65,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "canonical_symbol_render_mismatch_count == 0",
         "content_block_provenance_symbol_missing_count == 0",
         "card_bottom_provenance_full_label_missing_count == 0",
+        "verified_empty_state_from_incomplete_source_count == 0",
+        "dedicated_team_card_repeats_team_name_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
@@ -79,9 +83,12 @@ REQUIRED_ACTIVE_PATTERNS = {
         "Points ③–⑤ do not decide the project-wide execution order",
         "Each selected work item appears once",
         "Progressive-funnel hard rule",
+        "provide separate verified renderer fields",
+        "dedicated team slide whose primary header names the team",
     ),
     "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md": (
         "This is a progressive funnel, not permission to duplicate the same content",
+        "A missing, failed or incomplete source is not an empty result",
     ),
 }
 
