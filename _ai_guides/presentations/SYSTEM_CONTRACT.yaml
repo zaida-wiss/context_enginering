@@ -611,7 +611,9 @@ render_acceptance:
     provenance_symbol_replaced_by_tag_count: 0
     provenance_text_without_canonical_symbol_count: 0
     waiting_pr_title_missing_pushpin_count: 0
-    team_column_missing_count: 0
+    dedicated_team_slide_missing_text_team_context_count: 0
+    dedicated_team_card_repeats_team_name_count: 0
+    mixed_team_card_missing_explicit_team_text_count: 0
     open_pr_without_pushpin_number_count: 0
     open_pr_missing_contribution_text_count: 0
     assigned_issue_missing_order_count: 0
