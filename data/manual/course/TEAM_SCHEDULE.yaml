@@ -67,6 +67,13 @@ recurring_meetings:
       note: "SACRED - No project work allowed on Fridays (course requirement)"
 
 current_week_focus:
-  week: "2026-09-16 (V3-V5 production phase)"
-  pl_meeting_focus: "Fungerande delar, teststatus, README/dokumentation"
-  sprint_goal: "Bygg kärnflödet, dokumentation från dag 1"
+  resolution: "dynamic"
+  rule: >
+    Resolve the relevant course week from the target meeting date, then read the
+    matching week block in SCHEDULE.md. Never reuse a previously stored week focus
+    merely because this file was last updated during that week.
+  source: "SCHEDULE.md"
+  target_date: null
+  resolved_week: null
+  pl_meeting_focus: null
+  sprint_goal: null
