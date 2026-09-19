@@ -105,7 +105,7 @@ For card-internal roles, these minima override older lower values:
 - pedagogical/project-value explanation: **13 pt minimum**
 - assignee/developer + team: **13 pt minimum**
 - operational metadata: **11 pt minimum**
-- timestamp/source microcopy: **11 pt minimum**
+- timestamp/source/provenance/footer microcopy: **11 pt minimum**
 - card title remains **18 pt minimum**
 
 A technically fitting smaller size is not a reason to use it. Use the largest comfortable size that fits the layout.
