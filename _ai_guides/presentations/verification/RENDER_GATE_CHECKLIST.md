@@ -437,13 +437,13 @@ confirmed_post_meeting_repo_action_missing_count == 0
 
 Manual check:
 - `⑥` dependency/blocker information feeds `⑨` prioritization and `⑬` next steps
-- relevant current-sprint Frontend ↔ Backend / Backend ↔ Native integration contracts are checked before the meeting when applicable; non-applicable cases are recorded in the audit
+- relevant integration contracts/interfaces between work areas or teams are checked before the meeting when applicable; non-applicable cases are recorded in the audit
 - verified contract-review findings are routed to ⑥/⑦/⑩/⑬/⑭ according to their consequence instead of remaining isolated
 - proposed order distinguishes `Först`, `Parallellt`, `Därefter` / `Vänta` where evidence permits
 - every ordering step includes a short reason
 - verified support/pairing/review/knowledge-transfer work that materially helps sprint delivery is represented as legitimate sprint work
 - blockers are handled as team delivery constraints; the deck does not turn them into individual performance judgments
-- confirmed meeting changes that require repository follow-up become concrete ⑬ actions (issue/board/dependency/decision/support) with provenance
+- confirmed meeting changes that require repository follow-up become concrete ⑬ actions with provenance
 - AI-derived order uses `🔎 AI-analys` for reasoning and `⭐ AI-förslag — planeringsordning` for the recommendation
 
 ---
