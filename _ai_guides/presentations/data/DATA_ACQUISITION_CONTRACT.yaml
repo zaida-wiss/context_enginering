@@ -473,7 +473,7 @@ required_datasets:
         - Critical path: #X → #Y → #Z (N days total)
 
     requirement: "ALL dependencies between open/merged issues in reporting period"
-    stop_condition: "source fails AND all fallbacks fail (mark as INCOMPLETE, but continue with available data)"
+    stop_condition: "source fails AND all fallbacks fail — mark INCOMPLETE and trigger the explicit incomplete-source user decision gate"
 
   collection_branches_and_merges:
     source_type: "derived_filtering"
