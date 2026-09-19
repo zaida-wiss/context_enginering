@@ -424,6 +424,19 @@ def main():
     )
 
     require(
+        "team accent validator cannot imply color-only identity",
+        "team_accent_uses_left_edge_not_full_outline == true" in read("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md")
+        and "team_color_left_accent_only == true" not in read("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md"),
+        failures,
+    )
+    require(
+        "both registered collection branches are mandatory acquisition targets",
+        "C/C++-Native (Native/System collection point)" in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
+        and "Java-Development-Environment (Backend collection point)" in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"),
+        failures,
+    )
+
+    require(
         "active-work acquisition does not route WIP into point 1",
         "required for ①D–①E slides" not in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
         and "for ①D–①E slides" not in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
