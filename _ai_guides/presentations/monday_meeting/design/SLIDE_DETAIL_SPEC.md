@@ -79,7 +79,14 @@ For work/action cards, content must not require legacy labels such as:
 - `Developer:`
 - `Assigned to:`
 
-When person/team identity is shown, provide only the verified identity value for the card renderer, e.g. `Zaida · Frontend`.
+When person/team identity is shown, provide separate verified renderer fields,
+for example `person: Zaida` and `team: Frontend`.
+
+Rendering rule:
+- dedicated team slide whose primary header names the team: show `Zaida` only;
+  do not repeat `Frontend` inside the card
+- mixed-team slide: show the explicit non-color cue `Zaida · Frontend`
+- the narrow left team accent remains supplementary in both cases
 
 Timestamp content must be meeting-relevant:
 - merged PR cards use merge time
