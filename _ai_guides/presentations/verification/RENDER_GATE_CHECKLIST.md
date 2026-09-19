@@ -166,6 +166,7 @@ rendered_circled_meeting_point_number_count == 0
 point_1_develop_subtitle_not_exact_count == 0
 point_1_collection_branch_slide_missing_count == 0
 point_1_collection_branch_subtitle_not_exact_count == 0
+point_1_mandatory_subsection_missing_count == 0
 official_meeting_point_title_missing_count == 0
 page_subtitle_replacing_meeting_point_title_count == 0
 ```
@@ -188,6 +189,9 @@ Required:
 ```text
 cover_wrong_week_count == 0
 cover_sprint_period_not_based_on_request_timestamp_count == 0
+point2_timeline_not_chronological_count == 0
+point2_current_week_marker_missing_count == 0
+point2_blocker_or_risk_card_count == 0
 meeting_point_1_fact_after_data_cutoff_count == 0
 current_week_pl_topic_missing_count == 0
 current_week_deadline_missing_count == 0
@@ -203,6 +207,9 @@ Manual checks:
 - when a current-week PL/teamavstämning is verified, its primary card visibly contains all three meanings `🎯 Vad/fokus`, `🕒 När`, `💡 Varför`
 - generic cards such as `Syfte`, `AI-läge`, `Viktigt nu`, status metrics or decorative summaries may appear only after all mandatory PL/school/deadline content is present; they never replace it
 - the sprint period is the Monday 09:00–next Monday 09:00 interval containing the request timestamp
+- meeting point 2 renders a chronological course/project timeline with an explicit current-week marker
+- the point-2 timeline contains no blocker, dependency or risk cards; those remain in points ⑥ and ⑦
+- for a request on 2026-09-19, the visible active sprint interval begins `14 september` and ends `21 september 2026`
 - a Monday 08:58 request still shows the sprint ending at 09:00 that day
 - meeting point 1 contains no factual activity after the actual acquisition cutoff
 - the deck is framed as `Sprint in progress`, not as a retrospective for a closed sprint
@@ -231,8 +238,8 @@ point_1_unverified_collection_activity_presented_as_merge_count == 0
 - every physical slide repeats the primary heading `✏️ 1. Avklarat sedan förra mötet`
 - `Mergat till develop`, `Mergat till C/C++-Native`, `Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles only
 - every `develop` page, including continuations, uses the exact subtitle `Mergat till develop`; generic text such as `Mergat under sprinten - del 2` is forbidden
-- when verified merges exist to `C/C++-Native`, they get their own physical slide sequence directly after the `develop` sequence, with the exact subtitle `Mergat till C/C++-Native`
-- when verified merges exist to `Java-Development-Environment`, they get their own physical slide sequence after `C/C++-Native`, with the exact subtitle `Mergat till Java-Development-Environment`
+- `C/C++-Native` always gets its own physical slide sequence directly after the `develop` sequence, with the exact subtitle `Mergat till C/C++-Native`; use a verified empty/incomplete state when needed
+- `Java-Development-Environment` always gets its own physical slide sequence after `C/C++-Native`, with the exact subtitle `Mergat till Java-Development-Environment`; use a verified empty/incomplete state when needed
 - collection-branch slide inclusion is decided from verified merge evidence for that target branch in the sprint interval; ordinary direct commits/branch activity are not relabeled as merges
 - if a collection branch has relevant direct work but no verified merge, that work may inform later active-work/planning slides but does not create a false `Mergat till ...` point-1 slide
 - collection-branch merges may not be folded into the `develop` pages or only mentioned in the team summary
