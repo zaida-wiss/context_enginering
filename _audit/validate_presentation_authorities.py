@@ -44,6 +44,8 @@ REQUIRED_ACTIVE_PATTERNS = {
     "design/CARD_COMPONENT_STANDARD.md": (
         "title → pedagogical explanation: **6 px minimum, 8 px preferred**",
         "explanation → bottom identity zone: **14 px minimum**",
+        "Inline provenance symbols remain with their content blocks",
+        "card_bottom_provenance_full_label_missing_count == 0",
     ),
     "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md": (
         "title → pedagogical explanation: **6 px minimum, 8 px preferred**",
@@ -52,9 +54,13 @@ REQUIRED_ACTIVE_PATTERNS = {
     "design/PROVENANCE_AND_AI_LABELING.md": (
         "rendered_missing_glyph_count == 0",
         "minimum provenance/source text size in this deck: **11 pt**",
+        "MIXED CARDS — SYMBOL IN BLOCK, FULL LABEL AT BOTTOM",
+        "card_bottom_provenance_symbol_text_mismatch_count == 0",
     ),
     "verification/RENDER_GATE_CHECKLIST.md": (
         "canonical_symbol_render_mismatch_count == 0",
+        "content_block_provenance_symbol_missing_count == 0",
+        "card_bottom_provenance_full_label_missing_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
