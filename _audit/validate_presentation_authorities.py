@@ -27,6 +27,16 @@ STALE_ACTIVE_PATTERNS = {
 REQUIRED_ACTIVE_PATTERNS = {
     "design/READABILITY_HARD_RULES.md": (
         "timestamp/source/provenance/footer microcopy: **11 pt minimum**",
+        "title → pedagogical explanation: **6 px minimum**, **8 px preferred**",
+        "explanation → assignee/developer: **14 px minimum**",
+    ),
+    "design/CARD_COMPONENT_STANDARD.md": (
+        "title → pedagogical explanation: **6 px minimum, 8 px preferred**",
+        "explanation → bottom identity zone: **14 px minimum**",
+    ),
+    "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md": (
+        "title → pedagogical explanation: **6 px minimum, 8 px preferred**",
+        "explanation → assignee/developer: **14 px minimum**",
     ),
     "design/PROVENANCE_AND_AI_LABELING.md": (
         "rendered_missing_glyph_count == 0",
