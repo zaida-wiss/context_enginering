@@ -417,6 +417,13 @@ def main():
         failures,
     )
     require(
+        "point 1 semantic subsections do not depend on legacy fixed letters",
+        "Decisions summarized in ①d" not in slide
+        and "point-1 `Teamsammanfattning` subsection" in slide,
+        failures,
+    )
+
+    require(
         "active-work acquisition does not route WIP into point 1",
         "required for ①D–①E slides" not in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
         and "for ①D–①E slides" not in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
