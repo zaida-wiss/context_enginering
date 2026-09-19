@@ -439,7 +439,9 @@ rendered_missing_glyph_count == 0
 rendered_replacement_glyph_count == 0
 canonical_symbol_render_mismatch_count == 0
 unverified_item_presented_as_confirmed_count == 0
-mixed_provenance_card_without_block_labels_count == 0
+content_block_provenance_symbol_missing_count == 0
+card_bottom_provenance_full_label_missing_count == 0
+card_bottom_provenance_symbol_text_mismatch_count == 0
 ai_no_finding_without_exact_checked_sources_count == 0
 ai_check_trace_source_not_actually_inspected_count == 0
 provenance_symbol_replaced_by_tag_count == 0
@@ -452,9 +454,10 @@ Manual checks:
 - validation is performed on the final rendered/exported artifact, not only on source text
 - no canonical symbol renders as an empty square, replacement character, unrelated glyph or invisible character
 - each symbol uses the primary font only when that font demonstrably renders it; otherwise the affected glyph/run uses a verified symbol-capable fallback
-- each source label starts with its canonical symbol
+- each semantic content block starts with its canonical provenance symbol only
+- each card repeats every used symbol with its full text label in one deduplicated bottom provenance row
+- the inline symbols and bottom labels agree exactly
 - no tag, chip, badge, color or `?` replaces `⭐` or `🔎`
-- mixed cards repeat the required symbol inside each relevant block
 - when an AI health-check reports that no new signal was identified, any
   `🔎 AI-kontroll` trace lists the exact sources/locations actually inspected
 - the AI check trace never lists a source that was not inspected
@@ -582,7 +585,7 @@ Source-footer checks:
 - every verified source has its canonical symbol and readable name
 - every meeting-protocol source uses the full label `👥 ✅ Mötesprotokoll`
 - every expected but unverifiable source has `⚠`, explicit failure text and a struck-through name
-- card/block provenance remains present and agrees with the footer
+- inline card/block symbols and the full bottom provenance row remain present and agree with the footer
 - the measured footer container does not intersect cards, diagrams or slide bounds
 
 ---
