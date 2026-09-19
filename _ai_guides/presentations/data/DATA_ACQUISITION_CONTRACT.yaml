@@ -376,6 +376,7 @@ required_datasets:
 
         KNOWN COLLECTION BRANCHES (MANDATORY to scan):
           - develop (default target)
+          - C/C++-Native (Native/System collection point)
           - Java-Development-Environment (Backend collection point)
           - [Other team-specific branches if they exist]
 
@@ -390,7 +391,7 @@ required_datasets:
 
       4_filter_relevant_branches: >
         Branches matching patterns:
-          - Collection branches (develop, Java-Development-Environment, etc) — ALWAYS
+          - Collection branches (develop, C/C++-Native, Java-Development-Environment, etc) — ALWAYS
           - feature/* — if recent commits
           - bugfix/* — if recent commits
           - {team}/* (frontend/, backend/, native/) — if recent commits
