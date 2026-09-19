@@ -1,0 +1,40 @@
+name: Context smoke test
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+    paths:
+      - "CONTEXT_REGISTRY.yaml"
+      - "_ai_guides/**"
+      - "_audit/**"
+      - "data/**"
+      - ".github/workflows/context-smoke.yml"
+  pull_request:
+    paths:
+      - "CONTEXT_REGISTRY.yaml"
+      - "_ai_guides/**"
+      - "_audit/**"
+      - "data/**"
+      - ".github/workflows/context-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  context-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run context smoke test
+        run: python _audit/context_smoke_test.py
