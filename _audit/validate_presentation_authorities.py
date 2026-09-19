@@ -61,12 +61,19 @@ REQUIRED_ACTIVE_PATTERNS = {
         'required_on: "every physical slide, including continuation slides"',
         "incomplete_source_override:",
         'approved_status: "PASS_WITH_USER_OVERRIDE"',
+        "points 3–5 → 9 → 13 form a progressive funnel",
     ),
     "design/VISUAL_DESIGN_MANDATORY.md": (
         "Every physical slide reserves a bottom footer container",
     ),
     "monday_meeting/design/SLIDE_DETAIL_SPEC.md": (
         "Every physical slide, including continuation slides, MUST contain a reserved source footer",
+        "Points ③–⑤ do not decide the project-wide execution order",
+        "Each selected work item appears once",
+        "Progressive-funnel hard rule",
+    ),
+    "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md": (
+        "This is a progressive funnel, not permission to duplicate the same content",
     ),
 }
 
