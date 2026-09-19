@@ -175,6 +175,31 @@ Correct:
 If the selected font cannot render a canonical symbol, use a symbol-capable
 fallback font for that glyph. Do not substitute a tag or question mark.
 
+### Rendered glyph integrity gate
+
+The symbol requirement applies to the exported artifact, not only to the source
+string.
+
+Before delivery:
+1. render every physical slide from the final exported artifact
+2. inspect each canonical provenance and task symbol in the rendered output
+3. fail when a symbol becomes an empty square, replacement character, missing
+   glyph, unrelated fallback glyph or invisible character
+4. select a verified symbol-capable fallback font for only the affected glyph/run
+5. export and inspect again
+
+A source-file search for the Unicode character is not sufficient proof that the
+audience can see it. The rendered symbol and its adjacent text label must both
+be legible.
+
+Required result:
+
+```text
+rendered_missing_glyph_count == 0
+rendered_replacement_glyph_count == 0
+canonical_symbol_render_mismatch_count == 0
+```
+
 The audience should be able to distinguish immediately between:
 
 > **Vad vet vi? Vad analyserar AI? Vad föreslår AI?**
