@@ -33,6 +33,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "PAUSE BEFORE RENDERING if any dataset classified REQUIRED or CRITICAL is INCOMPLETE",
         "continue_without_source",
         "PASS_WITH_USER_OVERRIDE",
+        "Follow source/API pagination until ALL relevant commits",
+        "Use accessible continuation slides when needed",
     ),
     "design/READABILITY_HARD_RULES.md": (
         "timestamp/source/provenance/footer microcopy: **11 pt minimum**",
