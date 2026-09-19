@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   for_ai: true
-  version: 2.3
+  version: 2.4
 ---
 
 # 🧠 ACCESSIBILITY & NEURODIVERSITY — ABSOLUTE BOUNDARY
@@ -137,10 +137,13 @@ Rules:
 
 The deck should remain visually predictable across slides.
 
-Predictability includes reusing the same responsive card/grid grammar across
-meeting points. Chronology, dependencies, risk and priority should normally be
-expressed through card order, grouping, headings, symbols and connectors rather
-than by changing to a different full-slide composition model.
+Predictability includes reusing the same card component grammar across meeting
+points. The default slide-level composition is responsive card/grid. Chronology,
+dependencies and risk should normally be expressed through card order, grouping,
+headings, symbols and connectors. A registered slide-level exception may use a
+different composition when its owning authority requires it; meeting point 9's
+vertical execution sequence is such an exception. The exception must preserve
+the same NPF predictability, reading-order and WCAG boundaries.
 
 Use consistently:
 - same background system
@@ -292,5 +295,5 @@ No exception is allowed because “it looks better” or “otherwise there are 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.3
+**Version:** 2.4
 **Last updated:** 2026-09-17
