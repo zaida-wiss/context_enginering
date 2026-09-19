@@ -4,34 +4,28 @@ description: Navigation only for the Monday meeting presentation
 metadata:
   type: navigation
   status: active
+  updated: 2026-09-19
 ---
 
 # Monday meeting presentation
 
 Execution starts in [`../MANDATORY_READING_ORDER.md`](../MANDATORY_READING_ORDER.md).
-This file does not define rules.
+This file owns no presentation rules.
 
-The active meeting-point order is owned by
-[`design/SLIDE_DETAIL_SPEC.md`](design/SLIDE_DETAIL_SPEC.md):
+Use [`../AUTHORITY_REGISTRY.yaml`](../AUTHORITY_REGISTRY.yaml) to resolve the
+active owners.
 
-1. Completed and current work overview
-2. Current state and deadlines
-3. Frontend
-4. Backend
-5. Native
-6. Blockers and dependencies
-7. Risks
-8. Capacity and estimation
-9. Prioritization and scope
-10. Technical decisions
-11. Sprint goals
-12. Sprint plan
-13. Next steps
-14. Questions to PL
+For Monday Meeting composition:
 
-Point 9 uses the four-team board defined by the active visual and content
-authorities: `Frontend | Backend | Native | Cross-team`. It covers open PRs,
-remaining assigned issues, order/dependencies, AI allocation analysis and
-suggested missing issues. Points 3–5 remain the separate team sections.
+- meeting-point order, presence, empty states, continuation behavior and
+  cross-slide composition are owned by
+  [`structure/COMPOSITION_ARCHITECTURE.md`](structure/COMPOSITION_ARCHITECTURE.md)
+- meeting-point content/detail rules are owned by
+  [`design/SLIDE_DETAIL_SPEC.md`](design/SLIDE_DETAIL_SPEC.md)
+- layout fit/pagination is owned by
+  [`design/LAYOUT_OVERFLOW_GUARD.md`](design/LAYOUT_OVERFLOW_GUARD.md)
 
-Do not use files classified as retired in `../AUTHORITY_REGISTRY.yaml`.
+Apply the remaining active design, provenance, data and verification authorities
+registered in `../AUTHORITY_REGISTRY.yaml`.
+
+Do not recover rules from files classified as retired or historical.
