@@ -25,8 +25,19 @@ STALE_ACTIVE_PATTERNS = {
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
-    "design/PROVENANCE_AND_AI_LABELING.md": "rendered_missing_glyph_count == 0",
-    "verification/RENDER_GATE_CHECKLIST.md": "canonical_symbol_render_mismatch_count == 0",
+    "design/READABILITY_HARD_RULES.md": (
+        "timestamp/source/provenance/footer microcopy: **11 pt minimum**",
+    ),
+    "design/PROVENANCE_AND_AI_LABELING.md": (
+        "rendered_missing_glyph_count == 0",
+        "minimum provenance/source text size in this deck: **11 pt**",
+    ),
+    "verification/RENDER_GATE_CHECKLIST.md": (
+        "canonical_symbol_render_mismatch_count == 0",
+    ),
+    "SYSTEM_CONTRACT.yaml": (
+        "minimum_text_pt: 11",
+    ),
 }
 
 
@@ -61,12 +72,12 @@ def main() -> int:
                 f"meeting protocol missing meeting symbol in active authority {filename}"
             )
 
-        required_pattern = REQUIRED_ACTIVE_PATTERNS.get(filename)
-        if required_pattern and required_pattern not in text:
-            errors.append(
-                f"missing required presentation regression pattern in {filename}: "
-                f"{required_pattern}"
-            )
+        for required_pattern in REQUIRED_ACTIVE_PATTERNS.get(filename, ()):
+            if required_pattern not in text:
+                errors.append(
+                    f"missing required presentation regression pattern in {filename}: "
+                    f"{required_pattern}"
+                )
 
     for group in ("validators", "references", "retired_guides"):
         for filename in registry[group]:
