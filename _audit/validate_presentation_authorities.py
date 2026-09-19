@@ -74,6 +74,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "incomplete_source_override:",
         'approved_status: "PASS_WITH_USER_OVERRIDE"',
         "points 3–5 → 9 → 13 form a progressive funnel",
+        "content_block_provenance_symbol_missing_count: 0",
+        "card_bottom_provenance_full_label_missing_count: 0",
     ),
     "design/VISUAL_DESIGN_MANDATORY.md": (
         "Every physical slide reserves a bottom footer container",
