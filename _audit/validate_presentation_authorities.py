@@ -47,6 +47,13 @@ REQUIRED_ACTIVE_PATTERNS = {
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
+        'required_on: "every physical slide, including continuation slides"',
+    ),
+    "design/VISUAL_DESIGN_MANDATORY.md": (
+        "Every physical slide reserves a bottom footer container",
+    ),
+    "monday_meeting/design/SLIDE_DETAIL_SPEC.md": (
+        "Every physical slide, including continuation slides, MUST contain a reserved source footer",
     ),
 }
 
