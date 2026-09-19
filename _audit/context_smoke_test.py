@@ -409,6 +409,20 @@ def main():
         failures,
     )
     require(
+        "active-work acquisition does not route WIP into point 1",
+        "required for ①D–①E slides" not in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
+        and "for ①D–①E slides" not in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
+        and "slides ①D–①E" not in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"),
+        failures,
+    )
+    require(
+        "point 1 continuation letters do not define subsection meaning",
+        "point-1 subsection meaning comes from its canonical subtitle/verified merge target" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        and "meeting point 1 + any continuation pages" in read("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"),
+        failures,
+    )
+
+    require(
         "point 1 keeps develop-native-java-summary order",
         "merged to `develop`" in slide
         and "merged to `C/C++-Native`" in slide
