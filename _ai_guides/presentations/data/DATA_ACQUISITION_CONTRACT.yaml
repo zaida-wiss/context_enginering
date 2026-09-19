@@ -179,7 +179,7 @@ required_datasets:
       - "merged_at != null (CRITICAL: exclude unmerged PRs)"
       - "merged_at >= REPORTING_PERIOD_START"
       - "merged_at < REPORTING_PERIOD_END"
-      - "base.ref == 'develop' (only develop branch)"
+      - "base.ref in ['develop', 'C/C++-Native', 'Java-Development-Environment']"
       - "use assignees[] for attribution (person who worked on code, not merger)"
 
     requirement: "ALL merged PRs in reporting period (develop + collection branches)"
@@ -525,7 +525,12 @@ required_datasets:
       develop_delivery: base_branch == develop
       team_delivery: base_branch == verified_collection_branch
 
-    requirement: "Track all collection-branch merges to show team progress"
+    mandatory_page_dataset:
+      order: ["C/C++-Native", "Java-Development-Environment"]
+      render_when_empty: true
+      empty_state_requires_successful_acquisition: true
+      incomplete_state_names_failed_source: true
+    requirement: "Track all collection-branch merges and return a page dataset for each registered collection branch"
     fields: (same as merged_prs) + base.ref (for filtering by branch)
 
   team_member_capacity_and_absence:
