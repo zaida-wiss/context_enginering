@@ -432,7 +432,26 @@ execution_sequence:
 
   step_5:
     name: "Data audit"
-    rule: "Verify completeness/checksums; STOP on required incomplete datasets."
+    rule: >-
+      Verify completeness/checksums. If any REQUIRED or CRITICAL dataset remains
+      incomplete after registered fallbacks, PAUSE and ask the user whether to
+      continue without the named source.
+
+  incomplete_source_override:
+    default_action: "PAUSE — do not compose or render"
+    prompt_must_name:
+      - "incomplete dataset"
+      - "missing source"
+      - "all attempted fallbacks and failure reasons"
+      - "slides, claims and analyses affected"
+    continue_requires: "explicit user approval"
+    approved_status: "PASS_WITH_USER_OVERRIDE"
+    approval_rules:
+      - "record the user's decision in the acquisition receipt"
+      - "omit claims and analyses that depend on the missing source"
+      - "show the missing source and affected limitation with ⚠ in the relevant footer/content"
+      - "never reinterpret INCOMPLETE as verified empty data"
+    refusal_or_no_response: "STOP"
 
   step_6:
     name: "Compose slide content"
@@ -531,9 +550,11 @@ artifact_gates:
       - "execution_receipt PASS"
       - "instruction_audit PASS"
       - "data_precheck PASS"
-      - "data_acquisition_receipt PASS"
-      - "data_audit PASS"
-    failure_action: "STOP"
+      - "data_acquisition_receipt PASS or PASS_WITH_USER_OVERRIDE"
+      - "data_audit PASS or PASS_WITH_USER_OVERRIDE"
+    failure_action: >-
+      PAUSE and ask whether to continue without each named missing REQUIRED or
+      CRITICAL source. STOP unless the user explicitly approves degraded mode.
 
   delivery_gate:
     requires:
