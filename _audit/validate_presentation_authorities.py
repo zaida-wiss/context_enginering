@@ -25,8 +25,8 @@ STALE_ACTIVE_PATTERNS = {
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
-    "design/VISUAL_DESIGN_MANDATORY.md": "Frontend | Backend | Native | Cross-team",
-    "monday_meeting/design/SLIDE_DETAIL_SPEC.md": "Frontend | Backend | Native | Cross-team",
+    "design/PROVENANCE_AND_AI_LABELING.md": "rendered_missing_glyph_count == 0",
+    "verification/RENDER_GATE_CHECKLIST.md": "canonical_symbol_render_mismatch_count == 0",
 }
 
 
@@ -64,7 +64,7 @@ def main() -> int:
         required_pattern = REQUIRED_ACTIVE_PATTERNS.get(filename)
         if required_pattern and required_pattern not in text:
             errors.append(
-                f"missing canonical four-team layout in {filename}: "
+                f"missing required presentation regression pattern in {filename}: "
                 f"{required_pattern}"
             )
 
