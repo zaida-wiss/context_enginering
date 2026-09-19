@@ -657,6 +657,22 @@ If dependency direction is inferred by AI rather than explicitly supported, mark
 
 The dependency cards must feed the planning recommendations on ③–⑤, ⑨ and ⑬. If a blocker appears here but does not influence proposed ordering anywhere, re-check the prioritization logic.
 
+## Pre-meeting cross-team contract review
+
+Before the Monday meeting, inspect the verified integration surfaces that materially connect teams when those surfaces exist in the current sprint, for example Frontend ↔ Backend API contracts and Backend ↔ Native/JNA contracts.
+
+This is a planning and verification step, not permission to invent a problem. Record only source-grounded findings.
+
+Route each relevant finding forward instead of leaving it as isolated review metadata:
+- blocking mismatch or unresolved dependency → ⑥ Blockers & dependencies
+- risk created by the mismatch → ⑦ Risks
+- contract/technical choice that needs a team decision → ⑩ Technical decisions
+- concrete follow-up work → ⑬ Next steps
+- external/PL decision needed → ⑭ Questions to PL
+
+If no relevant integration contract exists for the sprint, record the check as not applicable in the audit rather than manufacturing a contract review.
+
+
 ## Optional review findings
 
 Show only verified code-review findings relevant to the meeting.
@@ -728,6 +744,15 @@ Required qualitative planning questions when numeric data is missing:
 - Would starting another issue increase WIP without unlocking the core flow?
 
 Never translate these questions into invented hours, percentages or velocity.
+
+## Support, pairing and shared blocker ownership
+
+Verified support, pairing, review and knowledge transfer are legitimate sprint work when they help complete, unblock or safely integrate sprint-critical work. Do not treat them as invisible or optional merely because they are not the primary authored issue.
+
+When a person or team is blocked, planning should evaluate whether another team member can help remove the blocker, review, pair, transfer knowledge or take independent parallel work. Frame the blocker as a delivery constraint for the team, not as an individual performance judgment.
+
+Any proposed support/pairing remains `⭐ AI-förslag` until confirmed. Do not invent availability, skill or ownership.
+
 
 ---
 
@@ -1142,6 +1167,23 @@ AI-derived ordering uses `🔎 AI-analys` for reasoning and `⭐ AI-förslag —
 AI next steps should be consistent with the team plan from ⑨ and should name the concrete issue/work item when verified, rather than only saying `fortsätt arbetet`.
 
 AI must not invent owner/deadline merely to make the action look complete.
+
+## Post-meeting repository actions
+
+When the meeting produces confirmed changes, ⑬ should translate them into concrete repository actions where applicable rather than ending with generic follow-up language.
+
+Examples of valid action types:
+- update an existing issue's scope or acceptance criteria
+- create a grounded missing issue
+- move/defer/pause work in the project plan when confirmed
+- document a verified blocker/dependency
+- document a confirmed technical/contract decision
+- schedule confirmed pairing/review/support when the source provides it
+
+These are presentation/action-plan items; generating the deck does not itself mutate the project repository unless the user separately requests that action.
+
+Every repository action must retain provenance. AI-proposed changes remain `⭐ AI-förslag` until confirmed.
+
 
 ---
 
