@@ -711,7 +711,14 @@ validation_rules:
       - "exclude commits linked to issues (already shown in active_issues or merged_prs sections)"
       - "include only commits with activity in REPORTING_PERIOD"
 
-    requirement: "If relevant_commits exist, ALL must be shown (not paginated)"
+    acquisition_requirement: >-
+      Follow source/API pagination until ALL relevant commits in the reporting
+      period have been collected and deduplicated; never stop after the first
+      response page.
+    presentation_requirement: >-
+      If commit-level work is included, account for every relevant commit.
+      Use accessible continuation slides when needed; never shrink, clip or omit
+      content merely to keep commits on one physical slide.
     fields_for_deduplication:
       - sha (unique commit identifier)
 
