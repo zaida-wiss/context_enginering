@@ -328,6 +328,14 @@ def main():
     )
 
     require(
+        "NPF and visual rules recognize registered point9 exception",
+        "meeting point 9 priority uses its registered vertical execution-group exception" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        and "meeting point 9's" in read("_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md")
+        and "vertical execution sequence is such an exception" in read("_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"),
+        failures,
+    )
+
+    require(
         "composition authority registers vertical point9 exception",
         "Registered slide-level exception:" in read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
         and "point9_vertical_sequence_missing_count == 0" in read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
