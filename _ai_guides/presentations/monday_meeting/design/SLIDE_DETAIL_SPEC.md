@@ -659,7 +659,7 @@ The dependency cards must feed the planning recommendations on ③–⑤, ⑨ an
 
 ## Pre-meeting cross-team contract review
 
-Before the Monday meeting, inspect the verified integration surfaces that materially connect teams when those surfaces exist in the current sprint, for example Frontend ↔ Backend API contracts and Backend ↔ Native/JNA contracts.
+Before the meeting, inspect verified integration surfaces that materially connect work areas or teams when such interfaces exist in the current work period.
 
 This is a planning and verification step, not permission to invent a problem. Record only source-grounded findings.
 
@@ -1172,13 +1172,7 @@ AI must not invent owner/deadline merely to make the action look complete.
 
 When the meeting produces confirmed changes, ⑬ should translate them into concrete repository actions where applicable rather than ending with generic follow-up language.
 
-Examples of valid action types:
-- update an existing issue's scope or acceptance criteria
-- create a grounded missing issue
-- move/defer/pause work in the project plan when confirmed
-- document a verified blocker/dependency
-- document a confirmed technical/contract decision
-- schedule confirmed pairing/review/support when the source provides it
+Valid repository follow-up may include updating or creating work items, adjusting confirmed planning state, documenting dependencies or decisions, and recording confirmed collaboration actions. Keep this rule generic; project-specific examples belong in project data, not in the context framework.
 
 These are presentation/action-plan items; generating the deck does not itself mutate the project repository unless the user separately requests that action.
 
