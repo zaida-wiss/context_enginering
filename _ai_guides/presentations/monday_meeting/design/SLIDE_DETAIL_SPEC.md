@@ -531,7 +531,7 @@ Do not invent progress percentages, days of delay or actions.
 
 # ③ FRONTEND
 
-Purpose: define what Frontend should do next.
+Purpose: show the complete verified forward-looking Frontend work state for the upcoming period.
 
 Include all verified Frontend work relevant to the upcoming period:
 - active unfinished work verified from GitHub/issues/PRs/branches during the sprint interval
@@ -548,8 +548,13 @@ verified relevant activity when available and use neutral wording; never imply
 poor performance. Each work item keeps its source symbol.
 
 When evidence permits, add separate `🔎 AI-analys` and `⭐ AI-förslag` blocks
-for order, parallel work, ownership, reactivation, deferral or closure. Do not
-invent estimates or assignments. Every card answers `Vad bör hända härnäst?`.
+for local team context, ownership, reactivation, deferral or closure. Do not
+invent estimates or assignments. Every card answers `Vad är läget och vad är
+nästa lokala rörelse?`.
+
+Points ③–⑤ do not decide the project-wide execution order and do not reproduce
+the final action list. Cross-team ranking belongs to ⑨; the concise executable
+action output belongs to ⑬.
 
 Verified decisions summarized in the point-1 `Teamsammanfattning` subsection
 may reappear here only when they materially control future work. Present the verified decision as fact and the resulting next action
@@ -711,6 +716,10 @@ Never translate these questions into invented hours, percentages or velocity.
 
 Purpose: give the team a **compact, immediately usable execution order** for
 the remaining sprint work.
+
+Point ⑨ selects and orders work from the evidence in ③–⑧. It does not repeat
+the complete team inventories from ③–⑤. Each selected work item appears once
+in ⑨, inside the single execution group that reflects its current priority.
 
 Meeting point 9 uses cards inside a **mandatory vertical execution sequence**.
 The slide-level structure is optimized for fast scanning and clear priority and
@@ -1062,7 +1071,15 @@ Never blend schedule facts, AI analysis and AI suggestions into one unlabeled pa
 
 # ⑬ NEXT STEPS
 
-Purpose: make the next actions clear while preserving provenance and showing risk-driven prioritization.
+Purpose: make the concise executable action output clear while preserving provenance and showing risk-driven prioritization.
+
+### Progressive-funnel hard rule
+
+Point ⑬ contains only concrete actions that follow from the ordering in ⑨ or
+from verified team decisions and that now require execution, confirmation or
+follow-up. It does not reproduce the complete team inventories from ③–⑤ or
+copy every priority row from ⑨. When an item returns here, its function must
+change from status/priority information into a clear action.
 
 **Prioritization rule:** Actions that reduce high-risk or high-consequence threats come first.
 Reference the risks from ⑦ that these actions address.
