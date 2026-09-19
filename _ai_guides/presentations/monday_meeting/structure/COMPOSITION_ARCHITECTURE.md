@@ -65,7 +65,17 @@ Examples of acceptable empty states:
 - `Inga nya tekniska beslut verifierade`
 - `Sprintmål saknas i registrerad källa — behöver bekräftas`
 
-An empty state must preserve provenance and must never invent certainty.
+### Verified empty versus incomplete — hard rule
+
+A verified empty state is allowed only when acquisition succeeded for the
+applicable dataset and the verified result contains zero matching records.
+
+A missing, failed or incomplete source is not an empty result. Render it as an
+explicit unknown/incomplete state with `⚠`, name the missing source and follow
+the incomplete-source user-decision gate in `SYSTEM_CONTRACT.yaml`. Never use
+phrases such as `Inga blockers` or `Inget arbete` when the source is incomplete.
+
+Every empty or incomplete state preserves provenance and never invents certainty.
 
 ## 3. CROSS-SLIDE RED THREADS
 
