@@ -22,6 +22,7 @@ STALE_ACTIVE_PATTERNS = {
     "old Native meeting point": "📝⑥ Native",
     "old team range": "④–⑥",
     "obsolete workflow columns": "Arbete | Läge | Härnäst | Vem",
+    "stale 10 pt provenance footer minimum": "footer uses priority level 4 but must remain at least 10 pt",
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
@@ -54,6 +55,7 @@ REQUIRED_ACTIVE_PATTERNS = {
     "design/PROVENANCE_AND_AI_LABELING.md": (
         "rendered_missing_glyph_count == 0",
         "minimum provenance/source text size in this deck: **11 pt**",
+        "footer uses priority level 4 but must remain at least 11 pt",
         "MIXED CARDS — SYMBOL IN BLOCK, FULL LABEL AT BOTTOM",
         "card_bottom_provenance_symbol_text_mismatch_count == 0",
     ),
