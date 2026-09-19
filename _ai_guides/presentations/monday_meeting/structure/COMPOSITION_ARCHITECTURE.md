@@ -74,6 +74,12 @@ The deck must preserve these connected reasoning chains when relevant evidence e
 ### Work thread
 ① completed work → ③–⑤ current/remaining team work → ⑨ priority → ⑪ goals → ⑫ plan → ⑬ next steps.
 
+This is a progressive funnel, not permission to duplicate the same content:
+- ③–⑤ own the complete verified forward-looking work state per team
+- ⑨ owns project-wide selection, priority and execution order
+- ⑬ owns the concise executable action output
+- an item may reappear only when its function changes between these stages
+
 ### Dependency thread
 ③–⑤ team blockers → ⑥ dependency view → ⑨ execution order → ⑫ plan/fallback → ⑬ next actions.
 
