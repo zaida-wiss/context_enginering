@@ -1140,7 +1140,7 @@ Do not include rhetorical questions or questions without a concrete reason for a
 
 # FOOTERS / SOURCES
 
-Slide-level footer may summarize the major registered sources used.
+Every physical slide, including continuation slides, MUST contain a reserved source footer listing the deduplicated registered sources actually used on that physical slide.
 
 However, footer source text NEVER replaces item-level provenance when a slide mixes:
 - source facts
