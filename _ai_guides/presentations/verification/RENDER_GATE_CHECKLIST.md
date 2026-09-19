@@ -78,6 +78,9 @@ wcag_aa_violation_count == 0
 color_only_information_count == 0
 mixed_team_card_color_only_identity_count == 0
 dedicated_team_slide_missing_text_team_context_count == 0
+dedicated_team_card_repeats_team_name_count == 0
+mixed_team_card_missing_explicit_team_text_count == 0
+verified_empty_state_from_incomplete_source_count == 0
 ```
 
 Also verify:
@@ -87,6 +90,9 @@ Also verify:
 - transparency does not reduce effective contrast
 - on dedicated team slides, the primary slide header explicitly names the team; cards do not need to repeat the team name
 - on mixed-team slides, every relevant card includes an explicit non-color team label
+- person and team are separate verified renderer fields; dedicated team cards show first name only, while mixed-team cards show person + team
+- a verified empty state is used only after successful acquisition returns zero matching records
+- missing/incomplete sources render `⚠` unknown states and never `Inga ...`
 - team accent color is supplementary and never the sole ownership cue when no surrounding text identifies the team
 
 Any failure → STOP.
