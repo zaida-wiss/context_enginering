@@ -453,7 +453,7 @@ status cue. Never list an unverifiable source as used or verified. If a required
 source failure triggers a STOP rule, retain the failure in the audit/report;
 the footer does not make delivery permissible.
 
-The footer uses priority level 4 but must remain at least 10 pt and pass WCAG
+The footer uses priority level 4 but must remain at least 11 pt and pass WCAG
 2.2 AA contrast. If the source list does not fit, wrap it within the reserved
 footer or continue content on another slide; never overlap the footer.
 
