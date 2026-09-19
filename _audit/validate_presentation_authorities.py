@@ -76,6 +76,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "points 3–5 → 9 → 13 form a progressive funnel",
         "content_block_provenance_symbol_missing_count: 0",
         "card_bottom_provenance_full_label_missing_count: 0",
+        "dedicated_team_card_repeats_team_name_count: 0",
+        "mixed_team_card_missing_explicit_team_text_count: 0",
     ),
     "design/VISUAL_DESIGN_MANDATORY.md": (
         "Every physical slide reserves a bottom footer container",
