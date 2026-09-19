@@ -386,6 +386,7 @@ execution_sequence:
       - "points 3–5 own backlog, future work, older inactive work and decisions that govern upcoming team work"
       - "meeting point 9 content structure is supplied by SLIDE_DETAIL_SPEC.md"
       - "meeting point 9 visual fit and continuation behavior are supplied by the registered design/overflow authorities"
+      - "points 3–5 → 9 → 13 form a progressive funnel: team work state → project-wide priority → concise executable actions"
       - "canonical source symbols are preserved and not replaced by tags"
 
   sprint_period_resolution:
