@@ -22,7 +22,7 @@ All provenance labels and symbols MUST comply with WCAG 2.2 AA.
 - color is never the sole information carrier
 - source identity always uses icon + text
 - provenance labels may never be hidden to save space
-- minimum provenance/source text size in this deck: **10 pt**
+- minimum provenance/source text size in this deck: **11 pt**
 - provenance/source information uses visual-priority level 4: lowest emphasis,
   but always with its canonical symbol, text label and WCAG-compliant contrast
 
