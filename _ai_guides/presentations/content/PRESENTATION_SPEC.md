@@ -1018,59 +1018,6 @@ Termer markeras med 📚 för att visa att detta är lärmål.
 
 ---
 
-## 📋 COPYABLE MEETING TEXT — Obligatorisk Renderingskrav
-
-**Presentationen tjänar två syften: mötesstöd + sekreterarstöd.**
-
-### Regel: All Text Måste Vara Redigerbar
-
-```
-✅ KRÄVS:
-- Verklig PowerPoint-text (inte inbakad i bilder)
-- Sekreteraren kan markera och kopiera text
-- Formuleringarna är kompletta även när de kopieras
-
-❌ FÖRBJUDET:
-- Text inbakad i grafikbilder
-- Screenshots av slides
-- Rasteriserad text
-- Decorative text som inte går att kopiera
-```
-
-### Användningsfall: Sekreteraren
-
-1. Mötet går
-2. Sekreteraren ser på presentationen: "✓ #52 – Portfolio (Rasha) · Gör Frontend-integration möjlig"
-3. Sekreteraren markerar och kopierar: `✓ #52 – Portfolio (Rasha) · Gör Frontend-integration möjlig`
-4. Sekreteraren klistrar in i mötesprotokollet
-5. Protokollet har samma formulering som presentationen
-
-### Textkvalitet
-
-All presentationstext måste vara:
-- ✅ **Kompllett** — förvänd utan visuell layout
-- ✅ **Tydlig** — samma mening med eller utan farger/ikoner
-- ✅ **Verifierad** — ingen stavning/grammatik-fel
-- ✅ **Konsekvent** — samma format varje vecka
-
-### Exempel på Rätt Format
-
-```
-Presentation visar:
-  ✓ #52 – Portfolio health summary (Rasha)
-    Gör Frontend-integration möjlig
-    Merged PR #81 · 4 commits · klart 11 sep
-
-Sekreteraren kopierar detta direkt:
-  ✓ #52 – Portfolio health summary (Rasha)
-  Gör Frontend-integration möjlig
-  Merged PR #81 · 4 commits · klart 11 sep
-
-Mötesprotokoll får samma text.
-```
-
----
-
 **Senast uppdaterad:** 2026-09-13  
 **Syfte:** Canonical specification för alla presentationer  
 **Status:** Source of Truth — alla andra filer fördjupar, motsäger aldrig denna
