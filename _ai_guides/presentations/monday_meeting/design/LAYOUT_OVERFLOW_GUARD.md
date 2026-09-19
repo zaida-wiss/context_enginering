@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 3.5
+  version: 3.6
 ---
 
 # 🚨 LAYOUT OVERFLOW GUARD — Responsive Cards, WCAG First
@@ -94,7 +94,7 @@ text, clipping, weak contrast or excessive density.
 
 | Slide type | Default | Maximum |
 |---|---|---:|
-| `①`, `①a`, `①b`, `①c`, `①d` | responsive, 3 × 2 when readable | 6 per physical slide |
+| meeting point 1 + any continuation pages | responsive, 3 × 2 when readable | 6 per physical slide |
 | `②`–`⑤` | 2 × 2 | 4 |
 | `⑥`–`⑧`, `⑩`–`⑫`, `⑭` | 2 × 2 | 4 |
 | `⑨` | vertical execution groups; cards inside groups | responsive / paginate |
@@ -273,5 +273,5 @@ Do not deliver until all hard-failure counts are zero.
 ---
 
 **Status:** REQUIRED
-**Version:** 3.5
+**Version:** 3.6
 **Last updated:** 2026-09-17
