@@ -306,7 +306,7 @@ required_datasets:
 
   open_pull_requests:
     source_id: "GITHUB_OPEN_PRS"
-    classification: "CRITICAL (strong signal of active work; required for ①D–①E slides)"
+    classification: "CRITICAL (strong signal of active work; required for active-work planning in points 3–5 and 9)"
     purpose: >
       Collect all open PRs linked to active issues. These PRs indicate work that is
       completed at code-level but waiting for review/merge. Essential for showing
@@ -343,7 +343,7 @@ required_datasets:
         4. Commit messages in PR: grep for '#NUM'
 
     output_structure: >
-      Per PR (for ①D–①E slides — pågår work):
+      Per PR (for active-work planning in points 3–5 and 9):
         #PR_NUMBER · #ISSUE_NUMBER Title
         Assignee: [person who worked]
         Reviewers: [list of requested_reviewers, or "ej tilldelad"]
@@ -357,7 +357,7 @@ required_datasets:
     classification: "CRITICAL (activity evidence; required for active work detection)"
     purpose: >
       Collect branches and recent commits to detect active work on issues
-      that may not yet have open PRs. Critical for slides ①D–①E (Pågår utan PR).
+      that may not yet have open PRs. Critical for active-work detection and planning in points 3–5 and 9.
 
       Project Board may be outdated or inaccessible; commit history is authoritative.
 
@@ -403,7 +403,7 @@ required_datasets:
     required_fields_per_branch:
       - name
       - last_commit_sha
-      - last_commit_date (CRITICAL — shown on slides ①B–①E)
+      - last_commit_date (CRITICAL — used for activity verification and shown only where the active slide/content authority requires it)
       - commit_author.login
       - commit_author.name (display name for slide)
       - commit_message (for linking to issue)
