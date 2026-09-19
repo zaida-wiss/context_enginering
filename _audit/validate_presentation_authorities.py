@@ -31,6 +31,9 @@ REQUIRED_ACTIVE_PATTERNS = {
         "pause and ask the user whether to continue without the named source",
         "PASS_WITH_USER_OVERRIDE",
     ),
+    "../../data/SOURCES.yaml": (
+        "PAUSE, report INCOMPLETE, name the source and ask whether to continue without it",
+    ),
     "data/DATA_ACQUISITION_CONTRACT.yaml": (
         "PAUSE BEFORE RENDERING if any dataset classified REQUIRED or CRITICAL is INCOMPLETE",
         "continue_without_source",
