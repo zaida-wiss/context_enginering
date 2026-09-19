@@ -148,6 +148,8 @@ Do not use one AI icon for both analysis and proposal.
 ### Supplementary workflow symbols
 
 - `📌 Väntar i PR` identifies work with a verified open pull request.
+  The pushpin is rendered before the PR number/title inside the card, for example
+  `📌 #114`, and repeated as `📌 Väntar i PR` in the card-bottom provenance row.
 - `🔗 Beroende` identifies a dependency relation or dependency view.
 
 Workflow symbols never replace source identity. In the content block, show the
@@ -181,7 +183,15 @@ Correct:
 - `⭐ AI-förslag`
 
 If the selected font cannot render a canonical symbol, use a symbol-capable
-fallback font for that glyph. Do not substitute a tag or question mark.
+fallback font for that glyph. When no verified font can preserve the symbol,
+render an embedded native/vector icon with the same canonical meaning. Do not
+substitute a tag, question mark, ASCII character, letter, punctuation mark or
+textual abbreviation.
+
+ASCII transliteration is explicitly forbidden. Examples of forbidden output
+include `📌 → |`, `✅ → +`, `🔎 → ~`, `⭐ → *`, `⚠ → !` and
+`📅 → #`. The rendered audience-facing artifact must contain the intended
+visual symbol, not merely equivalent source text.
 
 ### Rendered glyph integrity gate
 
@@ -206,6 +216,9 @@ Required result:
 rendered_missing_glyph_count == 0
 rendered_replacement_glyph_count == 0
 canonical_symbol_render_mismatch_count == 0
+canonical_symbol_ascii_transliteration_count == 0
+waiting_pr_pushpin_missing_before_identifier_count == 0
+waiting_pr_bottom_pushpin_label_missing_count == 0
 ```
 
 The audience should be able to distinguish immediately between:
