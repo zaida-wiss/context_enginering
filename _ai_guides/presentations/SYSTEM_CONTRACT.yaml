@@ -605,7 +605,9 @@ render_acceptance:
     ai_analysis_without_magnifying_glass_count: 0
     ai_proposal_without_star_count: 0
     unverified_item_presented_as_confirmed_count: 0
-    mixed_provenance_card_without_block_labels_count: 0
+    content_block_provenance_symbol_missing_count: 0
+    card_bottom_provenance_full_label_missing_count: 0
+    card_bottom_provenance_symbol_text_mismatch_count: 0
     provenance_symbol_replaced_by_tag_count: 0
     provenance_text_without_canonical_symbol_count: 0
     waiting_pr_title_missing_pushpin_count: 0
