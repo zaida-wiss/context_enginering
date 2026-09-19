@@ -451,6 +451,9 @@ ai_proposal_without_star_count == 0
 rendered_missing_glyph_count == 0
 rendered_replacement_glyph_count == 0
 canonical_symbol_render_mismatch_count == 0
+canonical_symbol_ascii_transliteration_count == 0
+waiting_pr_pushpin_missing_before_identifier_count == 0
+waiting_pr_bottom_pushpin_label_missing_count == 0
 unverified_item_presented_as_confirmed_count == 0
 content_block_provenance_symbol_missing_count == 0
 card_bottom_provenance_full_label_missing_count == 0
@@ -466,6 +469,8 @@ ai_analysis_without_magnifying_glass_count == 0
 Manual checks:
 - validation is performed on the final rendered/exported artifact, not only on source text
 - no canonical symbol renders as an empty square, replacement character, unrelated glyph or invisible character
+- no canonical symbol is transliterated to ASCII, including `📌 → |`, `✅ → +`, `🔎 → ~`, `⭐ → *`, `⚠ → !` or `📅 → #`
+- every open/waiting PR card shows a visible pushpin before its PR identifier and repeats `📌 Väntar i PR` in the card-bottom row
 - each symbol uses the primary font only when that font demonstrably renders it; otherwise the affected glyph/run uses a verified symbol-capable fallback
 - each semantic content block starts with its canonical provenance symbol only
 - each card repeats every used symbol with its full text label in one deduplicated bottom provenance row
