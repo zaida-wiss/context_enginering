@@ -331,8 +331,17 @@ def main():
     require(
         "authority conflicts require an explicit user decision",
         "conflict_decision_gate:" in system_contract
-        and "ask the user for a decision" in system_contract
+        and "ask the user for a decision" in system_contract.lower()
         and "ask the user to" in authority_registry.lower(),
+        failures,
+    )
+
+    require(
+        "system maintenance treats authority order as ownership only",
+        "authority_ownership:" in system_contract
+        and "must never be" in system_contract
+        and "ask the user for an explicit decision" in system_contract.lower()
+        and "conflict_resolution:" not in system_contract,
         failures,
     )
 
