@@ -20,11 +20,13 @@ All provenance labels and symbols MUST comply with WCAG 2.2 AA.
 
 - normal-text contrast >= 4.5:1
 - color is never the sole information carrier
-- source identity always uses icon + text
-- provenance labels may never be hidden to save space
+- each content block carries its canonical provenance symbol
+- every symbol used in the card is repeated with its full text label in the card's bottom provenance row
+- provenance symbols and bottom labels may never be hidden to save space
 - minimum provenance/source text size in this deck: **11 pt**
-- provenance/source information uses visual-priority level 4: lowest emphasis,
-  but always with its canonical symbol, text label and WCAG-compliant contrast
+- the bottom provenance row uses visual-priority level 4: lowest emphasis,
+  but always with canonical symbol + text label and WCAG-compliant contrast
+- inline block symbols inherit the block's readable treatment and must remain clearly visible
 
 If a provenance label cannot fit accessibly, change card geometry or paginate.
 Level 4 must never be implemented with opacity or color that makes the source
@@ -60,8 +62,9 @@ Use when an action, question, decision or plan is explicitly present in:
 - meeting protocol / meeting notes
 
 The meeting symbol `👥` is mandatory whenever the named source is a meeting
-protocol. The verification symbol `✅` is also mandatory. Always render the
-complete visible label `👥 ✅ Mötesprotokoll`.
+protocol. The verification symbol `✅` is also mandatory. Render `👥 ✅`
+with the content block and the complete visible label
+`👥 ✅ Mötesprotokoll` in the card's bottom provenance row.
 
 ### ✅ Teamfakta
 Use when an action, question, decision or plan is explicitly present in:
@@ -147,26 +150,31 @@ Do not use one AI icon for both analysis and proposal.
 - `📌 Väntar i PR` identifies work with a verified open pull request.
 - `🔗 Beroende` identifies a dependency relation or dependency view.
 
-Workflow symbols never replace source identity. When a dependency is inferred
-or interpreted by AI, both meanings must be visible in the same text block:
+Workflow symbols never replace source identity. In the content block, show the
+workflow symbol together with the canonical provenance symbol:
+
+`🔗 · 🔎 [analysis text]`
+
+`🔗 · 👥 ✅ [verified dependency text]`
+
+The bottom provenance row expands every symbol used in the card, for example:
 
 `🔗 Beroende · 🔎 AI-analys`
-
-A verified dependency instead retains its verified source label, for example:
 
 `🔗 Beroende · 👥 ✅ Mötesprotokoll`
 
 ### Symbols may never be replaced by tags
 
-The symbol is a required part of the visible source identity. Render the
-canonical symbol as a Unicode glyph immediately before its text label.
+The symbol is required inline at the start of its content block. The card's
+bottom provenance row repeats that symbol immediately before its full text label.
 
 Forbidden replacements include:
 - a pill, tag, badge or chip that contains only `AI-förslag` or `AI-analys`
 - a color-coded tag without the canonical symbol
 - question-mark variants of the AI labels
 - abbreviations such as `AI-F` / `AI-A`
-- a legend-only symbol while the individual card shows a text tag
+- a slide-level legend as the only explanation of a card's symbols
+- a card-bottom text label that is missing its matching canonical symbol
 
 Correct:
 - `🔎 AI-analys`
@@ -189,8 +197,8 @@ Before delivery:
 5. export and inspect again
 
 A source-file search for the Unicode character is not sufficient proof that the
-audience can see it. The rendered symbol and its adjacent text label must both
-be legible.
+audience can see it. Both the inline block symbol and its matching symbol + text
+label in the bottom provenance row must be legible.
 
 Required result:
 
@@ -212,32 +220,36 @@ Do **not** use red text to mean fact.
 
 Red means blocker/critical in the status system, and color alone may not carry meaning.
 
-Source identity must always be represented by **icon + text**.
+Source identity must always be represented by both layers: **inline icon** and
+the matching **icon + text** in the card's bottom provenance row.
 
-Color may support the source label, but never replace it.
+Color may support either layer, but never replace them.
 
 ---
 
-## 4. MIXED CARDS MUST LABEL EACH BLOCK
+## 4. MIXED CARDS — SYMBOL IN BLOCK, FULL LABEL AT BOTTOM
 
-A single card may contain fact, AI analysis and/or AI proposal.
+A single card may contain fact, AI analysis and/or AI proposal. Prefix each
+semantic content block with only its canonical symbol. At the bottom of the card,
+show a deduplicated provenance row containing symbol + full text label for every
+class used in the card.
 
 Example:
 
 ```text
 Tisdag 22 sep
 
-📅 Schemafakta
-PL-avstämning 12:30–14:00 i Slack Huddle.
+📅 PL-avstämning 12:30–14:00 i Slack Huddle.
 
-🔎 AI-analys
-Integrationsstatus är den mest sannolika diskussionspunkten utifrån beroendena.
+🔎 Integrationsstatus är den mest sannolika diskussionspunkten utifrån beroendena.
 
-⭐ AI-förslag
-Ta med tydlig status på integration, test och README.
+⭐ Ta med tydlig status på integration, test och README.
+
+📅 Schemafakta · 🔎 AI-analys · ⭐ AI-förslag
 ```
 
-Do not blend these into one unlabelled paragraph.
+Do not blend blocks without symbols. Do not repeat the full text label inside
+each content block, and do not omit the consolidated bottom row.
 
 ---
 
@@ -254,10 +266,12 @@ Order inside the card when present:
 
 ```text
 Dag + datum
-📅 Schemafakta
-👥 ✅ Mötesprotokoll
-🔎 AI-analys
-⭐ AI-förslag
+📅 [schedule fact]
+👥 ✅ [meeting fact]
+🔎 [AI analysis]
+⭐ [AI proposal]
+
+📅 Schemafakta · 👥 ✅ Mötesprotokoll · 🔎 AI-analys · ⭐ AI-förslag
 ```
 
 Only text explicitly present in the schedule is `📅 Schemafakta`.
@@ -281,7 +295,8 @@ Build next steps in this evidence order:
 2. explicit actions from approved/prefilled team input
 3. AI-derived proposals based on verified project data
 
-Every card must contain its own provenance label.
+Every card must contain inline provenance symbol(s) and a matching consolidated
+symbol + text provenance row at the bottom.
 
 Verified:
 ```text
@@ -396,18 +411,16 @@ that no new signal was identified in the inspected sources.
 
 ## 10. VISUAL TREATMENT
 
-Provenance is compact metadata:
+Provenance uses two coordinated visual layers:
 
-- preferred: 10–11 pt
-- minimum: 10 pt
+- inline content layer: canonical symbol only at the start of each semantic block
+- card-bottom layer: deduplicated canonical symbol + short full text label for every class used
+- both layers remain left aligned and inside the relevant card
 - contrast must remain WCAG AA
-- icon + short text
-- left aligned
-- inside the relevant card/block
 
 Do not rely only on a slide footer when different cards have different origins.
-
-Icons must remain legible and must not be the only carrier of meaning; always pair with text.
+The bottom card row supplies the text meaning for inline symbols; a slide-level
+footer remains an additional source summary.
 
 ## Mandatory per-slide source footer
 
@@ -464,7 +477,9 @@ pl_question_card_without_provenance_count == 0
 ai_analysis_without_magnifying_glass_count == 0
 ai_proposal_without_star_count == 0
 unverified_item_presented_as_confirmed_count == 0
-mixed_provenance_card_without_block_labels_count == 0
+content_block_provenance_symbol_missing_count == 0
+card_bottom_provenance_full_label_missing_count == 0
+card_bottom_provenance_symbol_text_mismatch_count == 0
 ```
 
 The audience must always be able to answer:
