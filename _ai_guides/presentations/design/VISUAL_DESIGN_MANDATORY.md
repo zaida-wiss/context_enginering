@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.1
+  version: 5.2
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -50,7 +50,8 @@ The deck uses:
 - clear hierarchy
 - responsive cards
 - cards and responsive card grids as the primary visual language across the deck
-- chronology, dependencies, risk and priority communicated within the same card/grid grammar through ordering, grouping, headings, symbols and optional connectors
+- chronology, dependencies and risk normally communicated within the shared card/grid grammar through ordering, grouping, headings, symbols and optional connectors
+- meeting point 9 priority uses its registered vertical execution-group exception while retaining the same card components
 - deliberate whitespace that creates grouping and breathing room instead of decorative emptiness
 
 ### NPF-first visual composition
@@ -324,8 +325,8 @@ Hard rules:
 - maximum 4 cards unless slide authority is stricter
 - lower density when text length requires it
 
-The four-team-board exception above governs meeting point 9, not the ninth
-physical slide in the deck.
+The registered vertical execution-group exception above governs meeting point 9,
+not the ninth physical slide in the deck.
 
 ### ⑬ next steps
 - 4×1 only when each card remains readable
@@ -476,5 +477,5 @@ Card internals are governed by `CARD_COMPONENT_STANDARD.md`; global design must 
 ---
 
 **Status:** PRODUCTION
-**Version:** 5.1
+**Version:** 5.2
 **Last updated:** 2026-09-17
