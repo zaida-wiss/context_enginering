@@ -11,6 +11,16 @@ rule: >
   rules. Validators verify those rules. References illustrate them. Retired files
   remain historical material outside the production task bundle.
 
+bootstrap_and_navigation:
+  rule: >
+    Entry, registry and navigation files that connect the presentation system but
+    do not own presentation behavior by themselves.
+  files:
+    - AUTHORITY_REGISTRY.yaml
+    - MANDATORY_READING_ORDER.md
+    - README.md
+    - monday_meeting/README.md
+
 active_authorities:
   - rank: 1
     file: INTEGRITY_CONSTRAINT.md
