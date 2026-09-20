@@ -355,7 +355,7 @@ Note: On a dedicated team slide, the slide header names the team and the card us
 Rendering rules:
 - pedagogical explanation sits directly under the title
 - flexible whitespace separates the explanation from the bottom information zone
-- `Tomac` sits near the bottom of the card
+- the verified contributor identity sits near the bottom of the card
 - merge/review verification sits directly below the name
 - timestamp sits at the bottom and stays one line
 - identity uses the primary text color, not team accent color
