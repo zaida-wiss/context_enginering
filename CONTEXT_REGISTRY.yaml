@@ -85,19 +85,19 @@ logical_destinations:
 
   data:
     course_schedule:
-      path: "data/manual/course/TEAM_SCHEDULE.yaml"
+      path: "projects/avanza/course/TEAM_SCHEDULE.yaml"
     course_schedule_guide:
-      path: "data/manual/course/SCHEDULE.md"
+      path: "projects/avanza/course/SCHEDULE.md"
     course_milestones:
-      path: "data/manual/course/MILESTONES.yaml"
+      path: "projects/avanza/course/MILESTONES.yaml"
     course_roadmap:
-      path: "data/manual/course/TEAM_ROADMAP.yaml"
+      path: "projects/avanza/course/TEAM_ROADMAP.yaml"
     course_deadlines:
-      path: "data/manual/course/COURSE_DEADLINES.md"
+      path: "projects/avanza/course/COURSE_DEADLINES.md"
     cto_feed_forward:
-      path: "data/manual/course/CTO_FEED_FORWARD.md"
+      path: "projects/avanza/course/CTO_FEED_FORWARD.md"
     cto_feed_forward_instructions:
-      path: "data/manual/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
+      path: "projects/avanza/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
     ui_design_reference:
       path: "data/manual/design/UI_DESIGN_REFERENCE.md"
 
