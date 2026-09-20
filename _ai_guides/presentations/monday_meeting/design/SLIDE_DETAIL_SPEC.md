@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.4
+  version: 3.5
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -84,7 +84,7 @@ for example `person: {PERSON}` and `team: {TEAM}`.
 
 Rendering rule:
 - dedicated team slide whose primary header names the team: show `{PERSON}` only;
-  do not repeat `Frontend` inside the card
+  do not repeat the registered team name inside the card
 - mixed-team slide: show the explicit non-color cue `{PERSON} · {TEAM}`
 - the narrow left team accent remains supplementary in both cases
 
@@ -263,7 +263,7 @@ Canonical visual order:
 `🎯 → 🕒 → 📍 → 💡 → 🛠`
 
 For every school task, submission task and deadline shown on the cover, all five
-meanings must still be answered from registered `_memory` and presentation-data
+meanings must still be answered from the selected project's registered context and presentation-data
 documentation:
 
 1. `🎯` exact task/deliverable or PL/course topic
@@ -538,60 +538,42 @@ Do not invent progress percentages, days of delay or actions.
 
 ---
 
-# ③ FRONTEND
+# ③–⑤ REGISTERED TEAM / WORKSTREAM SLOTS
 
-Purpose: show the complete verified forward-looking Frontend work state for the upcoming period.
+Purpose: show the complete verified forward-looking work state for the selected
+project's registered teams/workstreams in their configured presentation order.
 
-Include all verified Frontend work relevant to the upcoming period:
-- active unfinished work verified from GitHub/issues/PRs/branches during the sprint interval
-- assigned backlog not yet started
-- future work already documented in the board/roadmap
-- older open work with no verified recent activity
-- open PR/review work
-- blockers/dependencies
-- verified decisions that govern upcoming Frontend work
+Populate each available team slot from selected-project context rather than
+hardcoding technical layers or team names. For every rendered team/workstream,
+include when verified:
+- active unfinished work from current issues/PRs/branches;
+- assigned backlog not yet started;
+- future work already documented in the board/roadmap;
+- older open work with no verified recent activity;
+- open PR/review work;
+- blockers and dependencies;
+- decisions that materially govern upcoming work;
+- integration/contract status relevant to that team's registered boundaries.
 
-Classify every item visibly as `Pågår`, `Backlog`, `Framtida`, `Äldre/inaktiv`,
-`📌 Väntar i PR` or another verified state. For `Äldre/inaktiv`, show the last
-verified relevant activity when available and use neutral wording; never imply
-poor performance. Each work item keeps its source symbol.
+Classify every item visibly as `Pågår`, `Backlog`, `Framtida`,
+`Äldre/inaktiv`, `📌 Väntar i PR` or another verified state. For
+`Äldre/inaktiv`, show the last verified relevant activity when available and
+use neutral wording; never imply poor performance. Each work item keeps its
+source symbol.
 
 When evidence permits, add separate `🔎 AI-analys` and `⭐ AI-förslag` blocks
 for local team context, ownership, reactivation, deferral or closure. Do not
-invent estimates or assignments. Every card answers `Vad är läget och vad är
-nästa lokala rörelse?`.
+invent estimates or assignments. Respect the global team-ownership boundary:
+cross-team dependencies change coordination and sequencing, not implementation
+ownership.
 
-Points ③–⑤ do not decide the project-wide execution order and do not reproduce
-the final action list. Cross-team ranking belongs to ⑨; the concise executable
-action output belongs to ⑬.
+Points ③–⑤ do not decide project-wide execution order and do not reproduce the
+final action list. Cross-team/project-wide ranking belongs to ⑨; concise
+executable action output belongs to ⑬.
 
-Verified decisions summarized in the point-1 `Teamsammanfattning` subsection
-may reappear here only when they materially control future work. Present the verified decision as fact and the resulting next action
-as confirmed or `⭐ AI-förslag` according to evidence.
-
----
-
-# ④ BACKEND
-
-Purpose: define what Backend should do next.
-
-Use the complete forward-looking content logic from ③, including backlog,
-future work, older inactive work and governing decisions. Include verified API/contract/integration
-status when relevant and make cross-team unlocking work explicit. Keep facts,
-analysis and suggestions visually distinct.
-
----
-
-# ⑤ NATIVE
-
-Purpose: define what Native should do next.
-
-Use the complete forward-looking content logic from ③, including backlog,
-future work, older inactive work and governing decisions. Include verified JNA/native integration status
-when relevant. Keep independent mock/module work separate from work that waits
-for integration. Never invent numeric estimates, capacity or ownership.
-
----
+If the selected project registers fewer or more team/workstream presentation
+slots than this meeting format can represent directly, follow the composition
+authority's continuation/empty-state rules rather than inventing teams.
 
 # ⑥ BLOCKERS & DEPENDENCIES
 
@@ -630,8 +612,8 @@ Definierar endpoints + payload för integrationen.
 ```
 
 ```text
-Riktig Java HTTP
-Byter mock mot riktig Backend-kommunikation.
+Service integration
+Byter lokal testdubbel mot verifierad extern tjänst.
 ⏳ väntar
 ```
 
@@ -677,12 +659,17 @@ Fields:
 
 # ⑦ RISKS
 
-Purpose: surface relevant current risks and show concrete impact on THIS WEEK's decisions.
+Purpose: surface relevant current risks and show concrete impact on the current work period's decisions.
 
-**This slide prepares the CTO Feed Forward task** (due Sept 24):
-- Show which risks drove trade-offs this week
-- Show which mitigations are implemented/tested
-- Show which technical choices were altered to reduce risk
+When the selected project's registered course/project context contains an
+upcoming risk-focused deliverable, use verified requirements from that context
+to shape which risk evidence is useful. Do not hardcode a course assignment or
+deadline in this global authority.
+
+Show when evidence supports it:
+- which risks drove trade-offs in the current work period;
+- which mitigations are implemented/tested;
+- which technical choices were altered to reduce risk
 
 Per risk:
 - risk statement grounded in evidence
@@ -698,7 +685,7 @@ If mitigation is model-derived, mark it `⭐ AI-förslag`.
 
 **Critical rule:** Current risks must influence planning suggestions when they materially change sequence, WIP or parallelization. Do not list risks as isolated information if they should change what the team does next.
 
-**For CTO preparation:** Choose risks that show *actual decision impact*, not just theoretical concern.
+Choose risks that show *actual decision impact*, not just theoretical concern.
 
 ---
 
