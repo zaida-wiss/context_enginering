@@ -160,10 +160,8 @@ Team colors represent teams:
 - Neutral: `#94A3B8` (gray)
 
 Examples:
-- `Zaida` (not `Zaida Wiss`, not `Zaida · Frontend`)
-- `Tomac`
-- `Rasha`
-- `Henrik`
+- `{FIRST_NAME}` on a dedicated team slide
+- `{FIRST_NAME} · {TEAM}` only when an explicit non-color team cue is required
 - `Hela teamet`
 
 Hard rules:
@@ -185,7 +183,7 @@ Every verified issue or PR identifier uses the owning team's canonical color:
 - Native: `#A855F7`
 - Cross-team: `#CBD5E1`
 
-The identifier is dynamic, for example `#99`, `#105` or `#108`; examples never
+The identifier is dynamic, for example `#ISSUE_ID` or `#PR_ID`; examples never
 hard-code which PRs exist. For an open PR, the complete heading begins
 `📌 #[PR_NUMBER]`. Apply team color to `#[PR_NUMBER]`, not to the pushpin.
 The same card's bottom information zone must contain `📌 Väntar i PR`.
@@ -242,8 +240,8 @@ This answers: **Vad gäller detta och vad löser/tillför detta i projektet?**
 
 ## Operational metadata / verification
 Examples:
-- `Merged: Zaida | Review: Björn`
-- `Branch: frontend/#83-save-allocation`
+- `Merged: {MERGER} | Review: {REVIEWER}`
+- `Branch: {WORK_BRANCH}`
 - `👥 ✅ Mötesprotokoll 17 sep`
 - `⭐ AI-förslag`
 
@@ -266,10 +264,10 @@ Canonical format:
 `Merged: [verified name or blank] | Review: [verified approving reviewer(s) or blank]`
 
 Examples:
-- `Merged: Björn | Review: Zaida`
-- `Merged: Björn | Review: Zaida, Rasha`
-- `Merged: Björn | Review:`
-- `Merged: | Review: Zaida`
+- `Merged: {MERGER} | Review: {REVIEWER}`
+- `Merged: {MERGER} | Review: {REVIEWER_A}, {REVIEWER_B}`
+- `Merged: {MERGER} | Review:`
+- `Merged: | Review: {REVIEWER}`
 
 `requested_reviewers` must never populate the visible `Review:` field for a merged PR. Only actual submitted `APPROVED` reviews count for that field.
 
@@ -343,12 +341,12 @@ If the timestamp is not useful to the meeting, omit it rather than filling space
 # 7. CANONICAL MERGED-PR CARD
 
 ```text
-#80 · Drift från live target
+#ISSUE_ID · [verifierad titel]
 Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
 
-Tomac
-Merged: Zaida | Review: Björn
+{FIRST_NAME}
+Merged: {MERGER} | Review: {REVIEWER}
                          14 sep · 10:16
 ```
 
@@ -371,12 +369,12 @@ Rendering rules:
 # 8. CANONICAL ACTIVE ISSUE / PR CARD
 
 ```text
-#88 · Kritiska MVP-tester
+#ISSUE_ID · [verifierad titel]
 Testar login, målallokering och drift för kritiska MVP-flöden.
 
 
-Zaida
-PR #114 · Build/frontend/#88-critical-interactions
+{FIRST_NAME}
+PR #PR_ID · {WORK_BRANCH}
 ```
 
 Name and operational verification/metadata are anchored at the bottom.
