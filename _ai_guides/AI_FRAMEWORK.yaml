@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.7
+version: 1.8
 metadata:
   type: global_authority
   critical: true
@@ -276,6 +276,76 @@ project_aware_technical_advisory:
     load_only_context_needed_to_evaluate_material_project_interactions: true
     do_not_load_all_project_activity_by_default: true
   evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
+
+historical_context_and_pre_implementation:
+  purpose: >
+    Use project history when it can materially improve correctness or explain
+    why the project reached its current state, without slowing routine answers
+    through unnecessary repository-wide history scans.
+  scope: global
+  history_is_evidence_not_automatic_truth: true
+  context_depth_strategy:
+    principle: use_the_cheapest_sufficient_context_first
+    local_context_sufficient:
+      action: answer_directly
+    targeted_history_materially_needed:
+      action: retrieve_automatically
+      user_permission_required: false
+    broader_project_review_helpful_but_not_required:
+      action: >
+        Answer from sufficient current context and explicitly offer a broader
+        project/history review, stating what additional evidence it could add.
+    deep_project_history_analysis:
+      action: >
+        Perform automatically only when the task clearly requires it; otherwise
+        offer it when its additional latency or scope would be material.
+  automatic_history_triggers:
+    - architecture_or_design_rationale
+    - ownership_or_responsibility_inference
+    - material_refactoring_or_removal_where_prior_intent_or_regression_risk_matters
+    - cross_team_or_cross_component_integration_decisions
+    - technical_debt_whose_origin_changes_the_recommendation
+    - suspected_regression_or_reintroduction_of_a_previous_solution
+    - questions_where_why_the_code_exists_materially_affects_the_answer
+  preferred_historical_evidence:
+    - explicit_project_decisions_and_declared_ownership
+    - relevant_issues_and_acceptance_criteria
+    - relevant_pull_requests_reviews_and_discussion
+    - relevant_commits_and_file_change_history
+    - recurring_contribution_patterns
+  inference_rules:
+    - distinguish_declared_ownership_from_observed_ownership
+    - distinguish_current_fact_from_historical_fact
+    - distinguish_verified_intent_from_ai_inference
+    - do_not_treat_commit_count_as_formal_ownership
+    - do_not_assume_past_design_is_still_intended
+    - avoid_repository_wide_history_scans_when_targeted_history_is_sufficient
+  pre_implementation_gate:
+    trigger: before_starting_implementation_of_a_new_issue
+    required: true
+    mode: lightweight_and_progressive
+    purpose: >
+      Orient implementation in the current project before code is changed and
+      catch relevant dependencies, collisions, prior decisions and regression
+      risks early.
+    automatic_checks:
+      - read_the_issue_and_acceptance_criteria
+      - identify_the_affected_architecture_code_areas_and_interfaces
+      - inspect_relevant_current_project_rules_and_team_ownership
+      - check_relevant_open_or_recent_work_for_dependencies_collisions_or_duplication
+      - inspect_targeted_history_when_it_can_materially_change_the_solution
+      - identify_relevant_tests_constraints_and_integration_requirements
+    output_behavior:
+      no_material_finding: proceed_without_ceremonial_status_report
+      material_finding: >
+        Surface the finding, evidence, consequence and recommended sequencing or
+        approach before implementation.
+      genuine_active_rule_conflict: follow_conflict_decision_gate
+    constraints:
+      - do_not_scan_the_entire_repository_or_history_by_default
+      - do_not_turn_the_gate_into_a_fixed_long_checklist_for_the_user
+      - respect_registered_team_ownership_boundaries
+      - user_retains_decision_authority_for_material_choices
 
 context_first_correction:
   trigger: recurring_behavior_design_or_process_defect_caused_by_repository_instructions
