@@ -739,6 +739,36 @@ def main():
         ok = False
     checks.append(result(ok, "meeting-point-specific geometry overrides the global grid fallback", "generic visual rules can erase timeline/dependency/priority/planning formats"))
 
+    print("\nINVARIANT 19: Point 2 Covers the Full Course Period")
+    ok = True
+    try:
+        detail = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        detail_required = (
+            "entire registered",
+            "course/project period",
+            "from course start to final delivery",
+            "current-week marker",
+        )
+        gate_required = (
+            "point2_full_course_period_missing_count == 0",
+            "point2_course_start_anchor_missing_count == 0",
+            "point2_final_delivery_anchor_missing_count == 0",
+            "point2_current_position_marker_missing_count == 0",
+            "point2_near_term_only_timeline_count == 0",
+            "near-term-only timeline",
+        )
+        if not all(token in detail for token in detail_required):
+            print("❌ point-2 content authority no longer requires full-period chronology")
+            ok = False
+        if not all(token in gate for token in gate_required):
+            print("❌ render gate can accept a truncated point-2 course timeline")
+            ok = False
+    except Exception as exc:
+        print(f"❌ full-course timeline inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "point 2 must span course start through final delivery and mark the current position", "point 2 can regress to a near-term-only timeline"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
