@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.6
+  version: 5.7
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
