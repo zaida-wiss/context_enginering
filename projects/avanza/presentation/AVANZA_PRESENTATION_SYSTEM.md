@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.0
+version: 1.1
 status: active
 scope: projects/avanza
 ---
@@ -54,7 +54,7 @@ Continuation pages retain the same anatomy and geometry.
 
 Ordinary Avanza card pages use a stable SIX-SLOT geometry:
 
-- 2 columns × 3 rows
+- 3 columns × 2 rows
 - the six slots remain spatially reserved even when fewer than six cards exist
 - one card occupies one normal slot; it does not expand merely because adjacent slots are empty
 - empty slots are visual whitespace, not placeholder cards
@@ -290,7 +290,7 @@ Avanza-specific failures include:
 - visually black/charcoal background
 - lost glass/rounded card treatment
 - decorative overlay crossing text
-- ordinary card page not preserving the 2×3 six-slot geometry
+- ordinary card page not preserving the 3×2 six-slot geometry
 - one/few cards expanding merely because slots are unused
 - missing meeting-point title
 - special diagram/timeline flattened into generic cards
