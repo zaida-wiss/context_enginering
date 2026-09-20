@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.2
+version: 5.3
 last_updated: 2026-09-20
 base_path: "_ai_guides/presentations"
 
@@ -24,6 +24,7 @@ core_principles:
   - "All source/provenance meaning is communicated with the canonical symbol + text defined by the provenance authority."
   - "The complete Monday deck preserves the official meeting-point order and cross-slide reasoning chains defined by the composition authority."
   - "Presentation defects are corrected in the owning context rule/validator first; a presentation-only patch is never the final fix."
+  - "Required meeting text remains native/editable presentation text so it can be selected and copied into meeting notes; do not rasterize required textual content merely for visual fidelity."
 
 ###############################################################################
 # EXECUTION / BRANCH SNAPSHOT
@@ -378,6 +379,7 @@ execution_sequence:
       - "meeting point 9 visual fit and continuation behavior are supplied by the registered design/overflow authorities"
       - "points 3–5 → 9 → 13 form a progressive funnel: team work state → project-wide priority → concise executable actions"
       - "canonical source symbols are preserved and not replaced by tags"
+      - "required meeting text is native/selectable/copyable text in the presentation artifact, not flattened into images or vector paths"
 
   sprint_period_resolution:
     cadence_authority: "../../PROJECTS.yaml -> selected project manifest -> context.sprint_cadence.path"
