@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.4
+  version: 5.5
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -375,11 +375,12 @@ Hard rules:
 
 ### Meeting point 1
 - six cards is the standard capacity per physical slide; meeting point 1 has no total card or slide limit
-- use six when at least six grounded items exist and all six remain readable
+- when at least six grounded items exist for the same point-1 subsection, the generator MUST first attempt a six-card `3×2` composition at the preferred/readability-safe typography and required card rows
+- use fewer than six only after the six-card attempt fails a measured fit/readability/render check; do not pre-emptively choose 4+2 merely because merge cards contain metadata
 - team-summary AI cards are required content in the final point-1 subsection, not filler
 - point-1 subsection meaning comes from its canonical subtitle/verified merge target, never from a hard-coded continuation letter
 - never create unrelated filler cards merely to reach six
-- preferred layout may be 3×2 when readable; card geometry remains responsive
+- preferred/default six-card layout is 3×2; card geometry remains responsive
 - if more than six grounded items exist, create as many lowercase-letter continuation slides as required
 - if six cards do not fit within WCAG/readability rules, use fewer per physical slide and continue; never omit a grounded item because of density
 
