@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.7
+version: 2.8
 metadata:
   type: registry
   critical: true
@@ -39,6 +39,10 @@ registries:
     path: "PROJECTS.yaml"
   context_ingestion:
     path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
+  project_template:
+    path: "projects/_template/PROJECT.yaml"
+  project_onboarding:
+    path: "projects/_template/README.md"
 
 logical_destinations:
   global:
@@ -72,6 +76,12 @@ logical_destinations:
       path: "_ai_guides/project/CROSS_LAYER_AWARENESS.yaml"
     technical_debt:
       path: "_ai_guides/project/TECHNICAL_DEBT.md"
+
+  project_template:
+    manifest:
+      path: "projects/_template/PROJECT.yaml"
+    onboarding:
+      path: "projects/_template/README.md"
 
   selected_project:
     manifest:
