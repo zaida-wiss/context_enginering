@@ -282,7 +282,7 @@ def main():
         fixture_text = read_text(fixture_manifest)
         fixture_paths = parse_manifest_paths(fixture_manifest)
         fixture_source_data = read_sources_section(fixture_sources)
-        no_named_project_leak = "avanza" not in fixture_text.lower() and "avanza" not in read_text(fixture_sources).lower()
+        fixture_sources_text = read_text(fixture_sources)\n        no_named_project_leak = "projects/" not in fixture_text.replace("_audit/fixtures/project_b/", "") and "projects/" not in fixture_sources_text
         ok = (
             set(simulated_active) == {"project_b"}
             and simulated_active["project_b"]["manifest"] == fixture_manifest
