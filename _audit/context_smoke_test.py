@@ -408,10 +408,10 @@ def main():
         failures,
     )
     require(
-        "required meeting text stays native and editable",
-        "editable_text:" in system_contract
-        and "native editable/selectable" in system_contract
-        and "required_text_rasterized_count == 0" in render_gate,
+        "obsolete native editable/selectable text rule is absent",
+        "editable_text:" not in system_contract
+        and "native editable/selectable" not in system_contract
+        and "required_text_rasterized_count == 0" not in render_gate,
         failures,
     )
 
@@ -448,9 +448,9 @@ def main():
         failures,
     )
     require(
-        "both registered collection branches are mandatory acquisition targets",
-        "C/C++-Native (Native/System collection point)" in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
-        and "Java-Development-Environment (Backend collection point)" in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"),
+        "collection branches are loaded dynamically from registered project data",
+        "Load collection branches dynamically" in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
+        and "do not hard-code team names or branch names in this framework" in read("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"),
         failures,
     )
 
@@ -469,10 +469,10 @@ def main():
     )
 
     require(
-        "point 1 keeps develop-native-java-summary order",
-        "merged to `develop`" in slide
-        and "merged to `C/C++-Native`" in slide
-        and "merged to `Java-Development-Environment`" in slide
+        "point 1 follows registered integration and collection-branch order",
+        "{PRIMARY_INTEGRATION_BRANCH}" in presentation_architecture
+        and "{REGISTERED_COLLECTION_BRANCHES_IN_PROJECT_ORDER}" in presentation_architecture
+        and "Teamsammanfattning" in presentation_architecture
         and "separate WIP/unfinished-work slide" in presentation_architecture,
         failures,
     )
