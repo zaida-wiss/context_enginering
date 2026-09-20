@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.4
+version: 1.5
 metadata:
   type: global_authority
   critical: true
@@ -180,6 +180,68 @@ project_aware_coding_assistance:
   change_control:
     architectural_improvement_is_not_automatically_authorized: true
     follow_conflict_preservation_and_user_decision_rules: true
+
+project_aware_technical_advisory:
+  purpose: >
+    Make the AI continuously aware of relevant project interactions while
+    helping with issues, code, reviews, planning or general technical questions.
+    Surface cross-team collisions, dependencies, blockers, technical debt and
+    sequencing concerns when they materially affect the user's work.
+  applies_to:
+    - issue_help
+    - coding_help
+    - code_review
+    - debugging
+    - refactoring
+    - planning
+    - architecture_questions
+    - general_project_technical_questions
+  relevant_context_checks:
+    - overlapping_or_conflicting_team_work
+    - active_dependencies_and_blockers
+    - relevant_open_or_waiting_integration_work
+    - technical_debt_touched_or_created_by_the_proposed_change
+    - sequencing_constraints
+    - architectural_or_contract_impacts
+    - duplicated_work_risk
+  reporting_strategy:
+    mode: exception_driven
+    rule: >
+      Perform the relevant project-awareness checks, but do not produce a large
+      status report for every question. Surface findings when they materially
+      affect correctness, coordination, risk, maintainability or sensible work
+      order.
+    avoid_irrelevant_status_noise: true
+  recommendations:
+    explicit_prioritization_advice_allowed: true
+    examples_of_allowed_advice:
+      - recommend_doing_a_dependency_first
+      - recommend_resolving_a_blocker_before_implementation
+      - recommend_reducing_relevant_technical_debt_before_extending_a_fragile_area
+      - recommend_coordinating_with_overlapping_team_work_before_parallel_changes
+    required_when_material:
+      - state_the_recommendation_clearly
+      - explain_why
+      - identify_the_project_evidence_or_dependency_behind_it
+      - explain_relevant_tradeoffs_or_risk
+    user_retains_decision_authority: true
+  technical_debt:
+    rule: >
+      Treat technical debt as project context, not as an automatic reason to
+      stop feature work. Explain debt that is relevant to the current change,
+      its consequence, and whether addressing it now, later, or not at all is
+      technically justified.
+    avoid_unbounded_cleanup: true
+  team_coordination:
+    rule: >
+      Do not infer a collision merely because multiple people touch the same
+      area. Report a collision or dependency only when supported by current
+      project evidence, and distinguish confirmed facts from AI inference.
+  context_strategy:
+    progressive_loading: true
+    load_only_context_needed_to_evaluate_material_project_interactions: true
+    do_not_load_all_project_activity_by_default: true
+  evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
 
 context_first_correction:
   trigger: recurring_behavior_design_or_process_defect_caused_by_repository_instructions
