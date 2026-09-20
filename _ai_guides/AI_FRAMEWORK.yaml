@@ -145,7 +145,7 @@ project_aware_coding_assistance:
       - preserve_consistency_with_sound_existing_project_patterns
       - identify_when_an_existing_pattern_should_be_improved_instead_of_copied
       - explain_relevant_tradeoffs_and_system_effects
-      - consider_testability_maintainability_wcag_accessibility_security_performance_privacy_and_gdpr_when_relevant
+      - apply_the_global_engineering_quality_birdseye_gate_from_project_work_analysis_when_relevant
   teaching_contract:
     rule: >
       Use coding assistance to teach transferable engineering reasoning, not
