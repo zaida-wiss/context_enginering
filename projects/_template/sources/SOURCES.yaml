@@ -1,0 +1,22 @@
+---
+name: project_sources_template
+description: Registered external/current sources for one project
+version: 1.0
+
+sources:
+  - id: PRIMARY_REPOSITORY
+    purpose: "Current repository state"
+    required: true
+    critical: true
+    methods:
+      - "<supported-access-method>"
+    location: "<source-identifier-or-url>"
+    fallback: []
+
+rules:
+  - "Add sources only when they are real and verified."
+  - "Mark required/critical deliberately; do not inherit another project's choices."
+  - "Dynamic project state should resolve from registered current sources."
+  - "If all allowed methods for a required critical source fail, follow the global incomplete-source decision gate."
+
+status: TEMPLATE
