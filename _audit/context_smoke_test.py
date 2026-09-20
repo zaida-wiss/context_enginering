@@ -422,7 +422,8 @@ def main():
         "point 1 semantic subsections do not depend on legacy fixed letters",
         "Decisions summarized in ①d" not in slide
         and "Teamsammanfattning" in composition
-        and "continuation letters do not define semantic subsection meaning" in composition.lower(),
+        and "{PRIMARY_INTEGRATION_BRANCH} → {REGISTERED_COLLECTION_BRANCHES_IN_PROJECT_ORDER} → Teamsammanfattning" in composition
+        and "①d" not in composition,
         failures,
     )
 
