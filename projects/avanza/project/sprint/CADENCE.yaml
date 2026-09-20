@@ -1,0 +1,32 @@
+---
+name: sprint_cadence
+description: Canonical sprint-boundary rules for the Avanza project
+metadata:
+  type: project_data
+  project: avanza
+  status: active
+  timezone: Europe/Stockholm
+
+cadence:
+  duration_days: 7
+  start_day: monday
+  start_time: "09:00"
+  timezone: Europe/Stockholm
+  end_rule: next_sprint_start
+  interval_semantics: "[start, end)"
+
+completion_window:
+  rule: >
+    "Completed this sprint" contains only work whose verified completion timestamp
+    is inside the active sprint interval from sprint start inclusive to the
+    current verified data cutoff. At a new sprint boundary this dataset starts
+    empty and fills only with work completed in the new sprint.
+  reset_at_each_sprint_start: true
+  carry_previous_sprint_completed_work_into_current: false
+
+continuity:
+  rule: >
+    Current-state information is not reset merely because a new sprint starts.
+    Open work, blockers, risks, dependencies and other still-current facts remain
+    eligible when verified as current.
+  carry_current_open_state_across_boundary: true
