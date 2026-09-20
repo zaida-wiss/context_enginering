@@ -1,33 +1,19 @@
-# Memory — Project Context Index
+# Memory — Legacy Domain Index
 
-`_memory` contains long-lived project knowledge.
+`_memory` is no longer the canonical home for project-specific memory.
 
-Canonical repository paths and task bundles are resolved through
-[`CONTEXT_REGISTRY.yaml`](../CONTEXT_REGISTRY.yaml).
+Project-specific long-lived context is resolved through:
+`PROJECTS.yaml → selected project → PROJECT.yaml → context.*`.
 
-## Canonical memory
+For example, team identity/membership belongs to the selected project's
+registered `context.team_roster.path`, not to a global roster in this folder.
 
-| File | Purpose |
-|---|---|
-| [`TEAM_ROSTER.md`](TEAM_ROSTER.md) | Team membership and verified GitHub identities |
+Global reusable behavior belongs under `_ai_guides/`. Project facts belong
+under the corresponding `projects/<project>/` root.
 
-## Other domains
-
-- project instructions → [`_ai_guides/project/`](../_ai_guides/project/)
-- living/manual course data → [`data/manual/course/`](../data/manual/course/)
-- manual design sources → [`data/manual/design/`](../data/manual/design/)
-- derived data → [`data/derived/`](../data/derived/)
-- presentation schemas/instructions → [`_ai_guides/presentations/`](../_ai_guides/presentations/)
-
-The memory index does not duplicate rules or live facts.
-
-## Migration audit
-
-Current classification and migration state is recorded in:
-
-- [`_audit/MEMORY_DOMAIN_INVENTORY.yaml`](../_audit/MEMORY_DOMAIN_INVENTORY.yaml)
+Do not add new project-specific facts to `_memory`.
 
 ---
 
-**Status:** canonical memory index
-**Last updated:** 2026-09-18
+**Status:** legacy domain index
+**Last updated:** 2026-09-20
