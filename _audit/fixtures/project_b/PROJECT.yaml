@@ -15,6 +15,10 @@ context:
   sources:
     required: true
     path: "_audit/fixtures/project_b/sources/SOURCES.yaml"
+  presentation:
+    required: false
+    authority:
+      path: "_audit/fixtures/project_b/presentation/PRESENTATION_SYSTEM.md"
 
 ownership:
   rule: >
