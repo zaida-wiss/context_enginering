@@ -3,7 +3,7 @@ name: presentation_architecture
 description: Design architecture — Single Source of Truth for presentation system
 metadata:
   type: critical_specification
-  version: 2.4
+  version: 2.5
 ---
 
 # 📐 PRESENTATION ARCHITECTURE — Single Source of Truth
@@ -100,7 +100,7 @@ deck-wide composition ownership.
 ### DATA AUTHORITIES
 - `DATA_ACQUISITION_CONTRACT.yaml` — how data is acquired
 - `ACTIVE_WORK_DETECTION_MODEL.md` — how active work is classified
-- `data/SOURCES.yaml` — allowed external sources/access methods
+- selected project's registered source registry — allowed external sources/access methods
 
 ---
 
@@ -206,9 +206,9 @@ Red is not a fact color. Red remains blocker/critical.
 These are density rules:
 
 - Meeting point 1: verified completed work in the active sprint; 6 cards is standard capacity per physical slide with unlimited continuation slides
-- Point-1 order: `develop` merges → `C/C++-Native` merges → `Java-Development-Environment` merges → AI team summaries
+- Point-1 order: selected project's registered primary integration branch → registered collection branches in project order → AI team summaries
 - Point 1 has no separate WIP/unfinished-work slide; unfinished work belongs to later planning points
-- `③–⑤`: separate Frontend, Backend and Native forward-planning sections; they own backlog, future work, older inactive work and governing decisions
+- `③–⑤`: project-registered team/workstream forward-planning sections; they own backlog, future work, older inactive work and governing decisions
 - Point 9 is an explicit slide-level exception to the general grid: its execution groups are vertically stacked top-to-bottom
 - Point 9 content/group semantics and continuation behavior are defined by `SLIDE_DETAIL_SPEC.md`
 - Point 9 cards still follow `CARD_COMPONENT_STANDARD.md`; vertical fit/pagination follows `LAYOUT_OVERFLOW_GUARD.md`
@@ -322,6 +322,6 @@ Any non-zero count means: fix → rerender → reinspect.
 
 ---
 
-**Last updated:** 2026-09-18
+**Last updated:** 2026-09-20
 **Status:** Production architecture
-**Version:** 2.4
+**Version:** 2.5
