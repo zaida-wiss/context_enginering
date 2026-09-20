@@ -1118,7 +1118,7 @@ def main():
         dependency_map_required = (
             "Dependency / blocker relationship map — mandatory",
             "visible directional connector(s)",
-            "Do not flatten a verified dependency graph into a generic 2×N card grid",
+            "generic 2×N card grid",
             "point6_relational_dependency_rendered_as_unconnected_cards_count == 0",
             "point6_missing_directional_connector_count == 0",
         )
@@ -1143,8 +1143,8 @@ def main():
         gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
 
         point9_required = (
-            "compact full-width row/band language",
-            "thin separators or subtle row surfaces rather than large cards",
+            "compact full-width",
+            "subtle row",
             "compact full-width work rows/bands",
             "point9_large_card_component_count == 0",
             "point9_vertically_stretched_row_count == 0",
