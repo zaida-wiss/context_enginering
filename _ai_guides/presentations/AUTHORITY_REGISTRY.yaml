@@ -86,27 +86,12 @@ supporting_data_models:
 references:
   - monday_meeting/design/TEMPLATE_REFERENCE.html
 
-retired_guides:
-  - AI_PROMPT_GENERATE_PRESENTATION.md
-  - content/PRESENTATION_SPEC.md
-  - design/PRESENTATION_STYLE.md
-  - design/RESPONSIVE_LAYOUT_STANDARD.md
-  - structure/PRESENTATION_CONTENT.md
-  - structure/SPRINT_PROTOCOL_NUMBERED.md
-  - structure/SPRINT_MEETING_PROTOCOL_TEMPLATE.md
-  - verification/AI_VERIFICATION_WORKFLOW.md
-  - data/DATA_COLLECTION_CHECKLIST.md
-  - data/SOURCE_CHECK.md
-  - design/DESIGN_MODERN.md
-  - monday_meeting/design/PL_QUESTIONS_STANDARD.md
-  - monday_meeting/design/PRESENTATION_RED_THREADS.md
-  - monday_meeting/structure/PRESENTATION_STRUCTURE.md
-  - templates/TEAM_WORK_OVERVIEW.md
-  - verification/VERIFICATION_BOARD_VS_GIT.md
-  - verification/VERIFICATION_REPORT_TEMPLATE.md
-  - verification/VERIFICATION_SYSTEM.md
-  - verification/VERIFICATION_THIS_WEEK.md
-  - verification/VISUAL_VERIFICATION.md
+retired_guides: []
+
+retired_history_note: >
+  Retired guides that have been safely removed are preserved by Git history,
+  not as live production paths. Before deletion, unique useful rules must be
+  migrated to the correct active authority.
 
 retired_rule: >
   Retired guides are historical context outside the production task bundle.
