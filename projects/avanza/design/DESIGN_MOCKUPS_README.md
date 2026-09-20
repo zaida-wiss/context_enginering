@@ -2,14 +2,18 @@
 
 **Dessa mockups visar måldesignen för Avanza Portföljhälsa-appen.**
 
-## Mockups i denna mapp
+## Assetstatus
+
+> ⚠️ **Refererade assets saknas i Git.** De fyra mockupfilerna nedan beskrivs av den historiska projektdokumentationen, men har inte kunnat återfinnas på `dev` eller beläggas som versionshanterade filer i den granskade Git-historiken. Dokumentationen bevaras som projektkontext; filerna får inte behandlas som tillgängliga förrän de faktiskt återfinns eller återskapas från en verifierad källa.
+
+## Refererade mockups
 
 | Mockup | Sida | Syfte | Format | Storlek |
 |--------|------|-------|--------|---------|
-| `01_login.webp` | Login | Inloggnings-sida för användare | WebP | 7.2 KB |
-| `02_overview.webp` | Portföljöversikt | Huvudvyn - total portföljvärde + varning om drift | WebP | 27 KB |
-| `03_target_allocation.webp` | Målallokering | Ange målallokering (60% aktier / 40% fonder) | WebP | 20 KB |
-| `04_holdings_table.webp` | Innehav-tabell | Lista över alla innehav med värde i SEK | WebP | 21 KB |
+| `01_login.webp` *(saknas)* | Login | Inloggnings-sida för användare | WebP | 7.2 KB |
+| `02_overview.webp` *(saknas)* | Portföljöversikt | Huvudvyn - total portföljvärde + varning om drift | WebP | 27 KB |
+| `03_target_allocation.webp` *(saknas)* | Målallokering | Ange målallokering (60% aktier / 40% fonder) | WebP | 20 KB |
+| `04_holdings_table.webp` *(saknas)* | Innehav-tabell | Lista över alla innehav med värde i SEK | WebP | 21 KB |
 
 ## Design-Principer (från Mockups)
 
