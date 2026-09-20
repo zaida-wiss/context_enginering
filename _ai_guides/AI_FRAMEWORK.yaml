@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.11
+version: 1.12
 metadata:
   type: global_authority
   critical: true
@@ -145,7 +145,7 @@ project_aware_coding_assistance:
       - preserve_consistency_with_sound_existing_project_patterns
       - identify_when_an_existing_pattern_should_be_improved_instead_of_copied
       - explain_relevant_tradeoffs_and_system_effects
-      - consider_testability_maintainability_accessibility_security_and_performance_when_relevant
+      - consider_testability_maintainability_wcag_accessibility_security_performance_privacy_and_gdpr_when_relevant
   teaching_contract:
     rule: >
       Use coding assistance to teach transferable engineering reasoning, not
@@ -184,6 +184,19 @@ project_aware_coding_assistance:
       Trivial, low-risk edits may be answered directly when broader project
       context cannot materially change the correct solution. Do not perform
       repository-wide discovery as ceremony.
+  birdseye_quality_authority: "_ai_guides/PROJECT_WORK_ANALYSIS.md"
+  accessibility_definition:
+    rule: >
+      In global engineering quality checks, unqualified accessibility means
+      WCAG accessibility. Lighthouse may provide useful measurements but does
+      not replace WCAG review or broader engineering analysis.
+  privacy_scope:
+    rule: >
+      Consider privacy/GDPR both in the selected project's product/data flows
+      and in AI-assisted working practices, including unnecessary personal-data
+      exposure in prompts, issues, commits, logs, documentation and external
+      services. Do not represent engineering checks as a legal compliance
+      determination.
   evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
   change_control:
     architectural_improvement_is_not_automatically_authorized: true
