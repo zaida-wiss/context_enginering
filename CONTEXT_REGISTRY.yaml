@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.1
+version: 3.2
 metadata:
   type: registry
   critical: true
@@ -104,6 +104,14 @@ logical_destinations:
   presentation_schemas:
     current_sprint:
       path: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
+
+  presentation_processes:
+    data_collection:
+      path: "_ai_guides/presentations/data/DATA_COLLECTION_MANDATORY.md"
+    active_work_detection:
+      path: "_ai_guides/presentations/data/ACTIVE_WORK_DETECTION_MODEL.md"
+    composition:
+      path: "_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md"
 
   data:
     selected_project_course:
@@ -264,8 +272,16 @@ tasks:
     bootstrap: "presentation_bootstrap"
     content_authority:
       path: "_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md"
+    composition_authority:
+      ref: "logical_destinations.presentation_processes.composition"
+    current_sprint_schema:
+      ref: "logical_destinations.presentation_schemas.current_sprint"
     data_acquisition:
       path: "_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"
+    data_collection_process:
+      ref: "logical_destinations.presentation_processes.data_collection"
+    active_work_detection:
+      ref: "logical_destinations.presentation_processes.active_work_detection"
     source_registry:
       ref: "logical_destinations.selected_project.source_registry"
     project_presentation_authority:
