@@ -21,7 +21,7 @@ All data MUST pass these validations before rendering. NO EXCEPTIONS.
 ```
 MUST be found in:
   - GitHub API response (GITHUB_OPEN_ISSUES, GITHUB_OPEN_PRS, GITHUB_MERGED_PRS)
-  - OR TEAM_ROSTER.md
+  - OR the selected project's registered team roster
 
 If NOT found in either:
   ACTION: REJECT data point
@@ -70,7 +70,7 @@ If NOT found:
 ```
 MUST be found in:
   - GitHub PR review data (API response)
-  - OR TEAM_ROSTER.md
+  - OR the selected project's registered team roster
 
 If NOT found:
   ACTION: REJECT data point
