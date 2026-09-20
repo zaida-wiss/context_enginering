@@ -365,6 +365,7 @@ state when acquisition failed. A merge to a registered collection branch must
 never be folded into the primary-integration slide or only summarized in a team-summary card.
 
 Six cards is the standard capacity per physical slide, never a total limit.
+When six or more grounded completed-work cards exist inside the same point-1 subsection, first compose and measure a 3×2 six-card physical slide. Split to a lower-density continuation only when that concrete render fails the active readability/fit gates; do not assume six cards are too dense before measuring them.
 Create as many continuation slides as required and never omit grounded completed
 work.
 
