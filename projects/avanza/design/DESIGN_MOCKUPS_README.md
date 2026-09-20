@@ -53,8 +53,14 @@ Komponenter som krävs:
 4. HoldingsTable
 
 Använd design-mockups för CSS/layout-inspiration.
-Follow TEAM_STANDARDS.md för TypeScript + CSS modules."
+Resolve TEAM_STANDARDS.md for workflow standards, and verify TypeScript/CSS-module requirements against current project configuration or a documented project requirement."
 ```
+
+## Frontend implementation context
+
+The following checklist and architecture are preserved from the historical Avanza frontend documentation. They are **project-specific context**, not generic framework rules.
+
+Technology/style requirements such as TypeScript, CSS Modules or exact implementation conventions are mandatory only when verified by the active project repository/configuration, a registered external requirement, or a documented team decision. Do not promote a historical example to a binding rule without that evidence.
 
 ## Frontend-Checklist
 
@@ -83,4 +89,4 @@ App.tsx
 ---
 
 **Senast uppdaterad:** 2026-09-07
-**Status:** Design mockups från Avanza - redo för implementation
+**Status:** Historical Avanza design context preserved; referenced image assets are currently missing and implementation requirements must be re-verified against active project sources
