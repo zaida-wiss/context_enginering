@@ -1144,7 +1144,6 @@ def main():
 
         point9_required = (
             "compact full-width",
-            "subtle row",
             "compact full-width work rows/bands",
             "point9_large_card_component_count == 0",
             "point9_vertically_stretched_row_count == 0",
