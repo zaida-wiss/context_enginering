@@ -81,7 +81,6 @@ supporting_data_models:
     - models/DEPENDENCY_CHAIN_PLANNING.md
     - models/REPO_FIRST_RECONSTRUCTION.md
     - models/WEEKLY_PROGRESS_MODEL.md
-    - GITHUB_DIAGNOSTICS.md
     - TEST_MODE.md
 
 references:
