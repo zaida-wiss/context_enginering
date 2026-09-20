@@ -256,7 +256,7 @@ point_1_unverified_collection_activity_presented_as_merge_count == 0
 
 ### Forward planning in points 3–5
 
-- Frontend, Backend and Native each include their verified active, backlog, future and older inactive work
+- each team/workstream registered into meeting points 3–5 includes its verified active, backlog, future and older inactive work
 - every item has a visible verified state and a concrete next-step field
 - older inactive work uses neutral wording and shows last verified activity when available
 - decisions appear when they materially govern upcoming work and retain their verified source
@@ -540,8 +540,7 @@ Manual checks:
 - group 4 may be omitted only when verified empty; proposals that must remove a
   blocker or protect a critical path may be promoted to `Prioritering först`
   or `Parallellt` while retaining `⭐ AI-förslag`
-- Frontend, Backend, Native/System and Cross-team are considered as planning
-  perspectives when relevant; this is a coverage check, not a column-layout rule
+- every selected-project registered team/workstream plus cross-team/integration work is considered as a planning perspective when relevant; this is a coverage check, not a column-layout rule
 - team/layer ownership is shown with text/structure when useful and never by
   color alone
 - an item appears in only one execution group on a physical planning sequence
