@@ -1087,6 +1087,53 @@ def main():
         "presentation support files can become orphaned, duplicated or silently inactive",
     ))
 
+    print("\nINVARIANT 28: Recovered Friday Presentation Capabilities")
+    ok = True
+    try:
+        contract = read_text("_ai_guides/presentations/SYSTEM_CONTRACT.yaml")
+        readability = read_text("_ai_guides/presentations/design/READABILITY_HARD_RULES.md")
+        detail = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+
+        copyable_required = (
+            "Required meeting text remains native/editable presentation text",
+            "required meeting text is native/selectable/copyable text",
+            "required_text_rasterized_count == 0",
+            "required_text_not_selectable_or_copyable_count == 0",
+        )
+        if not all(token in contract + "\n" + gate for token in copyable_required):
+            print("❌ copyable meeting-text contract can regress or disappear")
+            ok = False
+
+        terminology_required = (
+            "DOMAIN TERMINOLOGY SHOULD TEACH, NOT DECODE",
+            "keep the real industry term visible",
+            "explain only terms that actually appear on the slide",
+            "unexplained_material_domain_term_count == 0",
+        )
+        if not all(token in readability + "\n" + gate for token in terminology_required):
+            print("❌ domain-terminology pedagogy can regress or disappear")
+            ok = False
+
+        dependency_map_required = (
+            "Dependency / blocker relationship map — mandatory",
+            "visible directional connector(s)",
+            "Do not flatten a verified dependency graph into a generic 2×N card grid",
+            "point6_relational_dependency_rendered_as_unconnected_cards_count == 0",
+            "point6_missing_directional_connector_count == 0",
+        )
+        if not all(token in detail + "\n" + gate for token in dependency_map_required):
+            print("❌ point 6 can regress from dependency map to unrelated cards")
+            ok = False
+    except Exception as exc:
+        print(f"❌ recovered Friday capability inspection failed: {exc}")
+        ok = False
+    checks.append(result(
+        ok,
+        "copyable text, domain pedagogy and blocker/dependency map remain protected",
+        "Friday presentation capabilities can silently disappear during refactoring",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
