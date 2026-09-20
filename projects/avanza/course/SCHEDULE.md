@@ -110,7 +110,7 @@ Du deltar när det finns behov av individuell uppföljning.
 **Torsdag:** Projektarbete + demo
 **Fredag:** LIA-sök & företagsdialog
 
-**DEADLINE:** Torsdag 1 okt kl. 16:00 - Inspelad demo-repetition (Canvas)
+**DEADLINE:** Torsdag 1 okt kl. 16:00 - Delivery Manager + UX specialist: två filmer (enligt publicerad kursinstruktion)
 
 ---
 
@@ -198,7 +198,7 @@ Ditt team deltar när det är ert block. Övrig tid arbetar ni med projektet.
 | Vecka | Datum | Vad | Tid | Plats |
 |-------|-------|-----|-----|-------|
 | V6 | Tors 24 sep | CTO-underlag | 16:00 | Canvas |
-| V7 | Tors 1 okt | Inspelad demo | 16:00 | Canvas |
+| V7 | Tors 1 okt | Delivery Manager + UX specialist — två filmer | 16:00 | Enligt publicerad kursinstruktion |
 | V9 | Tors 15 okt | Kvaldemo-plan | 17:00 | Canvas |
 | V10 | Tors 22 okt | KVALDEMO | 09:00–14:15 | Zoom |
 | V11 | Mån 26 okt | Omtagsplan | 16:00 | Canvas |
@@ -228,3 +228,17 @@ Ditt team deltar när det är ert block. Övrig tid arbetar ni med projektet.
 - **V3:** Fokus = "Fungerande delar + teststatus" → Prioritera feature-completion + test-writing
 - **V6:** Fokus = "CTO-underlag" → Dokumentera tekniska beslut + risk-analys
 - **V9:** Fokus = "Kvaldemo-plan" → Stabilisera demo + presentation
+
+
+### Back Office-förtydligande för V6/V7
+
+Verifierat från Chas Back Office-meddelanden:
+
+- CTO-underlaget före 24 september ska tolkas och tas fram av teamet utan PL.
+- Teamet behöver gemensamt välja vad Victor ska få se och därefter förbereda/spela in filmen.
+- Back Office uppskattar minst två teammöten för att få ihop CTO-underlaget.
+- Nästa specialistuppgift publiceras på måndagen och gäller Delivery Manager + UX specialist.
+- Deadline för den uppgiften är 1 oktober och den kräver två filmer i stället för en.
+- Planeringen ska ta höjd för tidsåtgången utan att omvandla den till påhittade timmar.
+
+Källa: `CHAS_BACKOFFICE_ANNOUNCEMENTS.md`.
