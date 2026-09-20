@@ -203,8 +203,9 @@ def main():
         failures,
     )
     require(
-        "router uses current issue_body_template logical ID",
-        "project.issue_body_template" in router
+        "router delegates canonical task paths to the context registry",
+        "Canonical task routing" in router
+        and "CONTEXT_REGISTRY.yaml" in router
         and "project.definition_of_done_template" not in router,
         failures,
     )
@@ -420,7 +421,8 @@ def main():
     require(
         "point 1 semantic subsections do not depend on legacy fixed letters",
         "Decisions summarized in ①d" not in slide
-        and "point-1 `Teamsammanfattning` subsection" in slide,
+        and "Teamsammanfattning" in composition
+        and "continuation letters do not define semantic subsection meaning" in composition.lower(),
         failures,
     )
 
