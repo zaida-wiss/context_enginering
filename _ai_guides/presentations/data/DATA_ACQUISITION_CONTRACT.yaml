@@ -4,7 +4,7 @@ description: Canonical acquisition method for required datasets — deterministi
 metadata:
   type: process
   critical: true
-  version: 1.2
+  version: 1.3
 ---
 
 # DATA ACQUISITION CONTRACT
@@ -179,14 +179,14 @@ required_datasets:
       - "merged_at != null (CRITICAL: exclude unmerged PRs)"
       - "merged_at >= REPORTING_PERIOD_START"
       - "merged_at < REPORTING_PERIOD_END"
-      - "base.ref in [PRIMARY_INTEGRATION_BRANCH, COLLECTION_BRANCH_A, COLLECTION_BRANCH_B]"
+      - "base.ref is the primary integration branch or one of the collection branches resolved from selected project manifest -> context.repository_flow"
       - "use assignees[] for attribution (person who worked on code, not merger)"
 
-    requirement: "ALL merged PRs in reporting period (develop + collection branches)"
+    requirement: "ALL merged PRs in reporting period targeting the selected project's registered primary integration branch or collection branches"
     fields:
       - number (PR number)
       - title
-      - base.ref (branch merged to: develop or collection branch)
+      - base.ref (registered primary integration branch or collection branch)
       - head.ref
       - merged_at (timestamp)
       - merged_by.login (person who merged)
@@ -376,11 +376,11 @@ required_datasets:
         Teams often use dedicated branches as collection points BEFORE merging to develop.
         These MUST be scanned for complete risk/blocker/capacity analysis.
 
-        KNOWN COLLECTION BRANCHES (MANDATORY to scan):
-          - PRIMARY_INTEGRATION_BRANCH (registered primary integration target)
-          - COLLECTION_BRANCH_A (registered collection point)
-          - COLLECTION_BRANCH_B (registered collection point)
-          - [Other team-specific branches if they exist]
+        REGISTERED BRANCHES (MANDATORY to scan):
+          - Load the repository-flow authority from selected project manifest -> context.repository_flow
+          - Scan integration.primary_branch
+          - Scan every collection_branches[].branch
+          - Include additional team-specific branches only when verified by registered project data
 
         DISCOVERY (if unknown branches exist):
           - List all branches with recent commits (last 14 days)
@@ -519,11 +519,11 @@ required_datasets:
       Use issue links and commits to determine true identity.
 
     classification_rule: >
-      develop_delivery: base_branch == develop
-      team_delivery: base_branch == verified_collection_branch
+      primary_integration_delivery: base_branch == registered integration.primary_branch
+      collection_delivery: base_branch == a verified registered collection_branches[].branch
 
     mandatory_page_dataset:
-      order: ["COLLECTION_BRANCH_A", "COLLECTION_BRANCH_B"]
+      order: "collection_branches order from the selected project's registered repository-flow authority"
       render_when_empty: true
       empty_state_requires_successful_acquisition: true
       incomplete_state_names_failed_source: true
