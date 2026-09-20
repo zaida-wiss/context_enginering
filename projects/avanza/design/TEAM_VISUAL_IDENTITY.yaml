@@ -1,0 +1,38 @@
+---
+name: team_visual_identity
+description: Canonical Avanza team labels and visual identity used in project-facing artifacts
+version: 1.0
+metadata:
+  type: project_design_config
+  project: avanza
+  status: active
+
+teams:
+  frontend:
+    display_name: "Frontend"
+    color: "#2DD4BF"
+  backend:
+    display_name: "Backend"
+    color: "#FF4FA3"
+  native:
+    display_name: "Native/System"
+    short_name: "Native"
+    color: "#A855F7"
+  cross_team:
+    display_name: "Cross-team"
+    color: "#CBD5E1"
+
+neutral:
+  color: "#94A3B8"
+
+usage:
+  rule: >
+    Use these project-specific identities only after the Avanza project has been
+    selected. Generic presentation authorities must not hardcode these team
+    names or colors.
+  accessibility: >
+    Color is supplementary. Mixed-team views require a non-color identity cue
+    resolved from this configuration.
+
+---
+status: ACTIVE
