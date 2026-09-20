@@ -67,13 +67,16 @@ helps distinguish activity from progress.
 
 Resolve the registered conditional source `GOOGLE_SPRINT_PLANNING`.
 
-When the Team Avanza 1 spreadsheet contains an accessible worksheet/tab named
-exactly `Sprintplanering`, use that source as the primary source for the
-**decided sprint purpose, sprint goals and planned focus** represented there.
+When the selected project's registered sprint-planning source is available
+according to that source registry's own discovery rule, use it as the primary
+source for the **decided sprint purpose, sprint goals and planned focus**
+represented there. Project-specific document names, worksheet names and IDs
+must be read from the selected project's source registry rather than embedded
+in this generic authority.
 
 The AI reads the actual values from the source. It does not infer missing cells.
 
-When `GOOGLE_SPRINT_PLANNING` reports `UNAVAILABLE_NOT_YET_CREATED`, continue
+When the registered sprint-planning source reports its configured unavailable/not-yet-created state, continue
 to confirmed meeting decisions and registered milestone/course sources. GitHub
 activity may explain progress but does not become a decided sprint goal by
 inference.
