@@ -703,6 +703,52 @@ Conditional slides may only be omitted for a source-grounded reason recorded in 
 
 ---
 
+## COPYABLE MEETING TEXT
+
+Required meeting content in an editable presentation artifact must remain native
+selectable text.
+
+Required:
+```text
+required_text_rasterized_count == 0
+required_text_vector_path_only_count == 0
+required_text_not_selectable_or_copyable_count == 0
+```
+
+Manual check on representative work-list, planning and next-step slides:
+- click/select the visible text in PowerPoint/Slides;
+- copy it into a plain document;
+- verify meaningful meeting text survives as text, not as an image;
+- diagrams may use shapes/connectors, but their labels remain native text.
+
+## DOMAIN TERMINOLOGY PEDAGOGY
+
+Required:
+```text
+unexplained_material_domain_term_count == 0
+detached_glossary_for_absent_term_count == 0
+```
+
+Manual check:
+- necessary unfamiliar industry terms retain the real term;
+- the first useful occurrence includes a short plain-language explanation;
+- the explanation connects the term to project value/context;
+- no term is explained unless it appears on the slide.
+
+## POINT 6 RELATIONSHIP MAP
+
+When two or more verified dependencies form a material relationship:
+
+```text
+point6_relational_dependency_rendered_as_unconnected_cards_count == 0
+point6_missing_directional_connector_count == 0
+point6_missing_blocked_or_unlocked_node_count == 0
+```
+
+Inspect the actual render. A dependency relationship must be visible as a map/
+graph with direction; card nodes alone are insufficient when the relation is
+material.
+
 ## 15. FINAL DELIVERY GATE
 
 Deliver only when:
