@@ -1,0 +1,29 @@
+---
+name: synthetic_project_c_fixture
+description: Test-only neutral project manifest used to prove multi-project isolation
+version: 1.0
+metadata:
+  type: test_fixture
+  status: synthetic
+
+identity:
+  project_id: "project_c"
+  display_name: "Synthetic Project C"
+  repository: "example/project-c"
+
+context:
+  sources:
+    required: true
+    path: "_audit/fixtures/project_c/sources/SOURCES.yaml"
+
+ownership:
+  rule: >
+    Project-specific facts belong under this synthetic project root. Generic
+    framework behavior remains global and must not embed facts from this project.
+
+capabilities:
+  rule: >
+    Missing optional capabilities are valid unless a requested task requires them.
+
+---
+status: SYNTHETIC_TEST_FIXTURE
