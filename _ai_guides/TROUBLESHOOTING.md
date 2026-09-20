@@ -15,7 +15,7 @@ authority that owns the affected behavior.
 
 Check:
 
-1. the registered source in `../data/SOURCES.yaml`
+1. the selected project's source registry resolved through `../PROJECTS.yaml` → project manifest
 2. `presentations/data/DATA_ACQUISITION_CONTRACT.yaml`
 3. the acquisition receipt/data audit required by `presentations/SYSTEM_CONTRACT.yaml`
 
