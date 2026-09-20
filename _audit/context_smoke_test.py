@@ -393,10 +393,11 @@ def main():
         failures,
     )
     require(
-        "obsolete native editable/selectable text rule is absent",
-        "editable_text:" not in system_contract
-        and "native editable/selectable" not in system_contract
-        and "required_text_rasterized_count == 0" not in render_gate,
+        "required meeting text remains native/selectable/copyable",
+        "Required meeting text remains native/editable presentation text" in system_contract
+        and "required meeting text is native/selectable/copyable text" in system_contract
+        and "required_text_rasterized_count == 0" in render_gate
+        and "required_text_not_selectable_or_copyable_count == 0" in render_gate,
         failures,
     )
 
