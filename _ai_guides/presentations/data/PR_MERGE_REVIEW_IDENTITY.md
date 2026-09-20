@@ -59,25 +59,25 @@ Do not skip steps 3–5 merely because basic PR metadata was already fetched.
 Canonical format:
 
 ```text
-Merged: Zaida | Review: Björn
+Merged: {MERGER_DISPLAY_NAME} | Review: {REVIEWER_DISPLAY_NAME}
 ```
 
 Multiple approving reviewers:
 
 ```text
-Merged: Zaida | Review: Björn, Rasha
+Merged: {MERGER_DISPLAY_NAME} | Review: {REVIEWER_A}, {REVIEWER_B}
 ```
 
 If one identity remains genuinely unverifiable after the required lookup:
 
 ```text
-Merged: Zaida | Review:
+Merged: {MERGER_DISPLAY_NAME} | Review:
 ```
 
 or
 
 ```text
-Merged: | Review: Björn
+Merged: | Review: {REVIEWER_DISPLAY_NAME}
 ```
 
 Do not print `ej verifierat`, `okänd`, technical API notes or retrieval diagnostics on the meeting card.
