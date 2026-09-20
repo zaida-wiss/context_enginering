@@ -1,0 +1,73 @@
+---
+name: project_context_template
+description: Canonical manifest template for one project
+version: 1.0
+metadata:
+  type: project_manifest_template
+  status: template
+
+identity:
+  project_id: "<project_id>"
+  display_name: "<display_name>"
+  repository: "<owner/repository-or-workspace-id>"
+
+context:
+  sources:
+    required: true
+    path: "projects/<project_id>/sources/SOURCES.yaml"
+
+  # CONDITIONAL: add only when the project has a stable roster used by tasks.
+  team_roster:
+    required: false
+    path: "projects/<project_id>/team/TEAM_ROSTER.md"
+
+  # CONDITIONAL: add only the project-management capabilities that exist.
+  sprint_cadence:
+    required: false
+    path: "projects/<project_id>/project/cadence/CADENCE.yaml"
+  working_time_constraints:
+    required: false
+    path: "projects/<project_id>/project/constraints/WORKING_TIME.yaml"
+  repository_flow:
+    required: false
+    path: "projects/<project_id>/project/repository/REPOSITORY_FLOW.yaml"
+
+  # CONDITIONAL: requirements may contain any subset actually needed.
+  requirements:
+    required: false
+    requirements:
+      path: "projects/<project_id>/requirements/REQUIREMENTS.md"
+    milestones:
+      path: "projects/<project_id>/requirements/MILESTONES.yaml"
+    deadlines:
+      path: "projects/<project_id>/requirements/DEADLINES.md"
+
+  # OPTIONAL.
+  design:
+    required: false
+    visual_identity:
+      path: "projects/<project_id>/design/VISUAL_IDENTITY.yaml"
+
+  # CONDITIONAL/OPTIONAL project-owned long-lived context.
+  decisions:
+    required: false
+    path: "projects/<project_id>/decisions/"
+  additional_context:
+    required: false
+    path: "projects/<project_id>/context/"
+
+ownership:
+  rule: >
+    Project-specific facts, identities, source URLs and IDs, schedules,
+    requirements, design references, decisions and examples belong under this
+    project root. Generic framework files must resolve project context
+    abstractly and must not embed facts from this project.
+
+capabilities:
+  rule: >
+    A task must require only capabilities declared by this project. Missing
+    optional or conditional capabilities are not errors unless the requested
+    task explicitly requires them.
+
+---
+status: TEMPLATE
