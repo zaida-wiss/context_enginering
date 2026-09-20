@@ -11,10 +11,10 @@ Läs denna **varje gång** användaren frågar om frontend-kod.
 **REGEL: Du MÅSTE läsa design-specen innan du svarar**
 
 1. **Läs denna fil** (`FRONTEND_AI_INSTRUCTIONS.md`) ← Du är här
-2. **Läs sedan:** `data/manual/design/UI_DESIGN_REFERENCE.md`
-3. **Kolla bilderna:** `_docs/`-mappen för mockups
-4. **Basera svaret på:** Design-specifikationen från mockuperna
-5. **Referera i svaret:** "Enligt mockup XX..."
+2. **Resolve selected project:** `PROJECTS.yaml → selected project → PROJECT.yaml`
+3. **Läs projektets registrerade designkontext**, för Avanza: `projects/avanza/design/DESIGN_MOCKUPS_README.md`
+4. **Kontrollera endast bild-assets som faktiskt finns i Git.** Saknas en refererad asset får AI:n inte påstå att bilden har inspekterats.
+5. **Basera svaret på verifierad designkontext** och skilj dokumenterade designkrav från visuellt verifierade detaljer.
 
 ---
 
@@ -52,7 +52,7 @@ Läs denna **varje gång** användaren frågar om frontend-kod.
 ```markdown
 ## [Komponentnamn]
 
-Enligt mockup [XX_namn.webp] (_docs/XX_namn.webp) behöver komponenten:
+Enligt den verifierade projektdesignen behöver komponenten:
 - Requirement 1 från designen
 - Requirement 2 från designen
 - Requirement 3 från designen
@@ -67,7 +67,7 @@ Enligt mockup [XX_namn.webp] (_docs/XX_namn.webp) behöver komponenten:
 - [ ] CSS modules (en per komponent)
 
 ### Se även
-- [UI_DESIGN_REFERENCE.md](../data/manual/design/UI_DESIGN_REFERENCE.md) - Full spec för denna komponent
+- Projektets registrerade designkontext via `PROJECT.yaml → context.design.*`
 - [DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md) - Acceptance criteria
 - [TEAM_STANDARDS.md](project/TEAM_STANDARDS.md) - Code standards
 ```
@@ -76,13 +76,13 @@ Enligt mockup [XX_namn.webp] (_docs/XX_namn.webp) behöver komponenten:
 
 ## ❌ Vad Du INTE Ska Göra
 
-❌ Svara på frontend-frågor utan att läsa UI_DESIGN_REFERENCE.md först  
-❌ Förutsätta design utan att kolla mockup-bilderna  
-❌ Bygga komponenter som inte matchar mockup-specen  
+❌ Svara på frontend-frågor utan att läsa projektets registrerade designkontext först  
+❌ Påstå att en mockup-bild har kontrollerats när asseten saknas  
+❌ Bygga komponenter som strider mot verifierad designkontext  
 ❌ Ge layout-förslag som strider mot designen  
-❌ Ignorera varnings-logiken (drift > 5%)  
+❌ Ignorera dokumenterad varnings-logik (drift > 5%)  
 
-**Istället:** Alltid säg "Enligt mockup..." och referera till bildfilen
+**Istället:** Ange om uppgiften kommer från dokumenterad designkontext eller från en faktiskt verifierad bild-asset.
 
 ---
 
@@ -114,16 +114,9 @@ Exempel från mockup:
 
 ---
 
-## 🔗 Länka Till Mockups i Svaret
+## 🔗 Källstatus för mockups
 
-**Så refererar du i ditt svar:**
-
-```markdown
-Enligt mockup [02_overview.webp](_docs/02_overview.webp):
-- Varningsbox ska vara orange
-- Text ska vara dynamisk: "Du driftat från {target}% till {current}%"
-- Kolla UI_DESIGN_REFERENCE.md för detaljer
-```
+För Avanza beskriver projektdokumentationen fyra historiska mockups, men dessa assets är för närvarande markerade som saknade i Git. Referera därför till designkravet i dokumentationen, inte till en bild som om den hade inspekterats. Om assets senare återfinns och verifieras kan visuella detaljer åter användas som bildbelagd källa.
 
 ---
 
@@ -131,7 +124,7 @@ Enligt mockup [02_overview.webp](_docs/02_overview.webp):
 
 **För varje frontend-fråga, referera även till:**
 
-1. **[UI_DESIGN_REFERENCE.md](../data/manual/design/UI_DESIGN_REFERENCE.md)** - Full mockup-spec
+1. **Projektets registrerade designkontext** via `PROJECT.yaml → context.design.*`
 2. **[DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md)** - Acceptance criteria
 3. **[TEAM_STANDARDS.md](project/TEAM_STANDARDS.md)** - Code standards (TypeScript, CSS modules, etc.)
 
@@ -141,11 +134,11 @@ Enligt mockup [02_overview.webp](_docs/02_overview.webp):
 
 Innan du skickar frontend-hjälpen, kontrollera:
 
-- [ ] Jag läste `UI_DESIGN_REFERENCE.md`
-- [ ] Jag kollade mockup-bilden(es) i `_docs/`
-- [ ] Min kod matchar mockup-specen
-- [ ] Jag refererade till mockup-bilden(es) i mitt svar
-- [ ] Jag länkade till `UI_DESIGN_REFERENCE.md`
+- [ ] Jag läste projektets registrerade designkontext
+- [ ] Jag verifierade om refererade bild-assets faktiskt finns
+- [ ] Jag skiljer dokumenterad design från visuellt verifierad design
+- [ ] Min kod matchar den verifierade designkontexten
+- [ ] Jag påstår inte att en saknad bild har inspekterats
 - [ ] Kod följer `TEAM_STANDARDS.md` (TypeScript, CSS modules, etc.)
 - [ ] Jag nämner acceptance criteria från `DEFINITION_OF_DONE.md`
 
@@ -170,14 +163,14 @@ Innan du skickar frontend-hjälpen, kontrollera:
 ## 📞 Vid Frågor
 
 Om du är osäker på design-detaljer:
-1. Kolla mockup-bilden igen
-2. Läs UI_DESIGN_REFERENCE.md igen
-3. Om fortfarande osäker, säg: "Enligt mockup visar designen X, men det behöver förtydligas. Kan du bekräfta?"
+1. Läs projektets registrerade designkontext igen
+2. Kontrollera om relevant asset faktiskt finns
+3. Om en visuell detalj inte kan verifieras, säg tydligt att dokumentationen beskriver kravet men att bilden saknas; gissa inte.
 
 ---
 
-**Version:** 1.0  
-**Senast uppdaterad:** 2026-09-07  
+**Version:** 1.1  
+**Senast uppdaterad:** 2026-09-20  
 **Ansvarig:** Frontend-teamet + AI-assistenter
 
 **Denna fil läses automatiskt varje gång frontend-hjälp behövs.**
