@@ -928,6 +928,29 @@ def main():
         ok = False
     checks.append(result(ok, "render gate preserves navy background, rounded glass cards and responsive in-card fit", "visual design can regress while geometry-only tests stay green"))
 
+    print("\nINVARIANT 26: Developer Identity + Latest Delivery Activity")
+    ok = True
+    try:
+        card = read_text("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        required = (
+            "developer and assignee are one presentation concept",
+            "{FIRST_NAME} · PR {D MMM · HH:MM}",
+            "{FIRST_NAME} · commit {D MMM · HH:MM}",
+            "separate_developer_and_assignee_row_count == 0",
+            "developer_activity_row_missing_count == 0",
+            "developer_activity_timestamp_detached_from_name_count == 0",
+            "active_pr_wrong_activity_timestamp_type_count == 0",
+        )
+        joined = card + "\n" + gate
+        if not all(token in joined for token in required):
+            print("❌ active issue/PR cards can split developer/assignee or detach latest delivery activity from the developer")
+            ok = False
+    except Exception as exc:
+        print(f"❌ developer/activity inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "active issue/PR cards unify developer/assignee and show latest delivery activity on the same row", "ownership/activity metadata can regress to duplicate or detached rows"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
