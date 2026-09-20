@@ -650,6 +650,30 @@ def main():
         ok = False
     checks.append(result(ok, "issue and sprint tasks load progressively while presentation safety/delivery core remains mandatory", "task context optimization weakens planning relevance or presentation safety gates"))
 
+    print("\nINVARIANT 16: Project-Aware Context Ingestion Routing")
+    ok = True
+    try:
+        routing = read_text("_ai_guides/context/CONTEXT_ROUTING.yaml")
+        stale_project_routes = (
+            "data.course_schedule",
+            "data.course_milestones",
+            "data.course_roadmap",
+            "memory.current_sprint_schema",
+            "memory.team_roster",
+        )
+        leaked = [route for route in stale_project_routes if route in routing]
+        if leaked:
+            print(f"❌ context ingestion still routes project facts through global legacy shorthands: {leaked}")
+            ok = False
+        required = ("selected_project.manifest", "selected_project.team_roster", "selected_project.source_registry", "Resolve the selected project")
+        if not all(token in routing for token in required):
+            print("❌ context ingestion does not consistently resolve project-owned facts through selected-project context")
+            ok = False
+    except Exception as exc:
+        print(f"❌ context-ingestion routing inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "new project facts route through selected-project capabilities rather than global legacy domains", "context ingestion can leak project facts into global memory/data domains"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
