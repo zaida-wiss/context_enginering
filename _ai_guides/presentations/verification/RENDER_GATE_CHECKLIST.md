@@ -290,6 +290,10 @@ pedagogical_line_not_directly_under_title_count == 0
 next_step_card_missing_project_value_microcopy_count == 0
 legacy_developed_by_label_count == 0
 legacy_identity_prefix_count == 0
+separate_developer_and_assignee_row_count == 0
+developer_activity_row_missing_count == 0
+developer_activity_timestamp_detached_from_name_count == 0
+active_pr_wrong_activity_timestamp_type_count == 0
 unnecessary_activity_timestamp_count == 0
 identity_row_not_primary_color_count == 0
 timestamp_not_quiet_microcopy_color_count == 0
@@ -369,7 +373,8 @@ Merged PR cards:
 - do not replace it with PR creation or latest commit time
 
 Active/open cards:
-- do not show PR-created/latest-commit/issue-created timestamps automatically
+- active Issue/PR cards show exactly one latest delivery-activity time on the same row as the verified developer identity: PR submission/open time when a PR exists, otherwise latest verified commit/push time
+- do not show issue-created or issue-updated time as a substitute
 - show time only when it materially helps meeting status understanding
 
 Required:
