@@ -14,7 +14,7 @@ Validates:
 9. Global routing/validation does not require legacy project-owned source/roster paths.
 10. The reusable project template and onboarding contract exist without depending on a named project.
 11. The global control plane is free of named-project dependencies; named projects belong only in PROJECTS.yaml and project roots.
-12. Project manifests explicitly preserve the boundary: reusable operating methods are global; project roots own facts, configuration and confirmed project-specific decisions.\n13. Project legacy files cannot become active authorities.\n14. A synthetic empty project registry resolves to zero projects without fallback to a named project.
+12. Project manifests explicitly preserve the boundary: reusable operating methods are global; project roots own facts, configuration and confirmed project-specific decisions.\n13. Project legacy files cannot become active authorities.\n14. A synthetic empty project registry resolves to zero projects without fallback to a named project.\n15. A neutral synthetic Project B can onboard through the same generic manifest/source contract without named-project leakage.
 
 This intentionally uses a small YAML-path parser so the audit has no PyYAML dependency.
 """
@@ -267,6 +267,33 @@ def main():
         checks.append(result(ok, "empty project registry resolves to zero projects with no fallback", "empty project registry creates or assumes a project"))
     except Exception as exc:
         checks.append(result(False, "", f"zero-project simulation failed: {exc}"))
+
+    print("\nINVARIANT 1C: Neutral Project B Onboarding Simulation")
+    try:
+        fixture_manifest = "_audit/fixtures/project_b/PROJECT.yaml"
+        fixture_sources = "_audit/fixtures/project_b/sources/SOURCES.yaml"
+        synthetic_registry = """projects:
+  project_b:
+    status: active
+    manifest: "_audit/fixtures/project_b/PROJECT.yaml"
+"""
+        simulated = parse_project_registry_text(synthetic_registry)
+        simulated_active = {k: v for k, v in simulated.items() if v.get("status") == "active"}
+        fixture_text = read_text(fixture_manifest)
+        fixture_paths = parse_manifest_paths(fixture_manifest)
+        fixture_source_data = read_sources_section(fixture_sources)
+        no_named_project_leak = "avanza" not in fixture_text.lower() and "avanza" not in read_text(fixture_sources).lower()
+        ok = (
+            set(simulated_active) == {"project_b"}
+            and simulated_active["project_b"]["manifest"] == fixture_manifest
+            and fixture_paths == [fixture_sources]
+            and all(os.path.exists(path.rstrip("/")) for path in fixture_paths)
+            and fixture_source_data.get("PRIMARY_REPOSITORY", {}).get("source_id") == "PRIMARY_REPOSITORY"
+            and no_named_project_leak
+        )
+        checks.append(result(ok, "neutral Project B resolves through the generic project contract without named-project leakage", "neutral Project B cannot onboard through the generic project contract"))
+    except Exception as exc:
+        checks.append(result(False, "", f"Project B simulation failed: {exc}"))
 
     print("\nINVARIANT 2: Project Manifest Paths Exist")
     ok = True
