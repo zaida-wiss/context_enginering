@@ -1063,6 +1063,21 @@ def main():
         if not all(token in retired_redirect for token in retired_required):
             print("❌ stale Monday data-collection duplicate is not safely retired/redirected")
             ok = False
+
+        presentation_root = "_ai_guides/presentations"
+        classified_extensions = (".md", ".yaml", ".yml", ".html")
+        orphaned = []
+        for root, _, names in os.walk(presentation_root):
+            for name in names:
+                if not name.endswith(classified_extensions):
+                    continue
+                full_path = os.path.join(root, name).replace(os.sep, "/")
+                relative = full_path[len(presentation_root) + 1 :]
+                if relative not in authority_registry:
+                    orphaned.append(relative)
+        if orphaned:
+            print(f"❌ presentation files are not classified by AUTHORITY_REGISTRY: {sorted(orphaned)}")
+            ok = False
     except Exception as exc:
         print(f"❌ presentation support registration inspection failed: {exc}")
         ok = False
