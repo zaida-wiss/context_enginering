@@ -51,20 +51,20 @@ Example for meeting point 1:
 
 ```text
 ✏️ 1. Avklarat sedan förra mötet
-Mergat till develop
+{PRIMARY_INTEGRATION_SUBTITLE}
 ```
 
 Another page in the same meeting point:
 
 ```text
 ✏️ 1. Avklarat sedan förra mötet
-Backend — mergat till collection branch
+{COLLECTION_BRANCH_SUBTITLE}
 ```
 
 Hard rules:
 - the meeting-point number and its official title are mandatory on every slide belonging to that meeting point
 - the page-specific content label is always subordinate: subtitle/section label, never the primary heading
-- never replace `Avklarat sedan förra mötet` with `Mergat till develop`, `Påbörjat arbete`, `Teamsammanfattning` or any other page content label
+- never replace `Avklarat sedan förra mötet` with `{PRIMARY_INTEGRATION_SUBTITLE}`, `Påbörjat arbete`, `Teamsammanfattning` or any other page content label
 - continuation/subsection markers may be shown as secondary navigation, but they do not replace the official meeting-point number/title
 - every continuation slide repeats the full official meeting-point heading
 - the pen and meeting-point number remain one semantic header identity
@@ -291,11 +291,10 @@ cover and use a `⓪a` continuation rather than reducing readability or dropping
 any of the five answers.
 
 Sprint-period boundary:
-- resolve the active sprint containing the request timestamp in `Europe/Stockholm`
-- sprint start is Monday 09:00; sprint end is the following Monday 09:00
+- resolve the selected project's sprint cadence from its registered `context.sprint_cadence` authority
+- resolve the active sprint containing the request timestamp using that cadence's timezone, start boundary and interval semantics
 - display the full scheduled date range on the cover even when the request is made before sprint end
-- example: request Monday 21 September at 08:58 → `Sprintperiod 14 september–21 september`
-- factual content uses the actual verified data cutoff, never the future 09:00 endpoint
+- factual content uses the actual verified data cutoff, never a future sprint endpoint
 
 Do not include design-process explanations.
 
@@ -307,13 +306,11 @@ Official meeting-point title shown on **every** slide in this section:
 
 `✏️ 1. Avklarat sedan förra mötet`
 
-Page-specific descriptions such as `Mergat till develop`, `Mergat till {COLLECTION_BRANCH_A}`,
-`Mergat till {COLLECTION_BRANCH_B}` and `Teamsammanfattning` are subtitles,
+Page-specific descriptions resolved from the selected project's registered repository-flow authority — including its primary integration subtitle and each registered collection-branch subtitle — plus `Teamsammanfattning`, are subtitles,
 never replacements for the official meeting-point title.
 
 Use the active sprint resolved from the request timestamp. Meeting point 1
-covers `SPRINT_START inclusive → DATA_CUTOFF inclusive`, where sprint boundaries
-are Monday 09:00 in `Europe/Stockholm`. It may not claim work after the actual
+covers the active interval from `SPRINT_START` to `DATA_CUTOFF` according to the selected project's registered sprint-cadence interval semantics. It may not claim work after the actual
 data cutoff merely because the cover displays the full scheduled sprint end.
 
 ## Scope: only completed work
@@ -336,43 +333,40 @@ the covered period and is verified by an approved source. Never include a
 planned decision, a decision candidate, an unresolved question or an AI-suggested
 decision here.
 
-“Done” means a verified merge during the sprint window to either `develop` or
-one of the registered collection branches `{COLLECTION_BRANCH_A}` or
-`{COLLECTION_BRANCH_B}`. Project-board `Done` is a consistency check,
+“Done” means a verified merge during the sprint window to either the registered primary integration branch or one of the collection branches resolved from the selected project's `context.repository_flow` authority. Project-board `Done` is a consistency check,
 not a substitute for merge evidence. Show mismatches instead of guessing.
 Deduplicate work promoted through multiple branches.
 
 Mandatory content order:
-1. merged to `develop`
-2. merged to `{COLLECTION_BRANCH_A}`
-3. merged to `{COLLECTION_BRANCH_B}`
-4. AI-proposed team summaries for the meeting protocol
+1. registered primary integration branch
+2. every registered collection branch, in repository-flow order
+3. AI-proposed team summaries for the meeting protocol
 
-Every target above gets its own physical slide sequence, in the stated order.
-The two registered collection-branch pages are mandatory even when the verified
+Every registered delivery target above gets its own physical slide sequence, in the stated order.
+Each registered collection-branch page is mandatory even when the verified
 merge result is empty: render a grounded empty state, or an explicit incomplete
 state when acquisition failed. A merge to a registered collection branch must
-never be folded into the `develop` slide or only summarized in a team-summary card.
+never be folded into the primary-integration slide or only summarized in a team-summary card.
 
 Six cards is the standard capacity per physical slide, never a total limit.
 Create as many continuation slides as required and never omit grounded completed
 work.
 
-## Subtitle — Mergat till develop
+## Subtitle — {PRIMARY_INTEGRATION_SUBTITLE}
 
 Primary heading remains:
 `✏️ 1. Avklarat sedan förra mötet`
 
 Subtitle:
-`Mergat till develop`
+`{PRIMARY_INTEGRATION_SUBTITLE}`
 
-Show every PR actually merged to `develop` during the sprint window. Sort
+Show every PR actually merged to the registered primary integration branch during the sprint window. Sort
 oldest first. Each card contains verified PR number/title, grounded contribution,
 actual contributor(s), team, merger/reviewer when verified and merge timestamp.
 Do not include collection-branch-only merges here.
 
 All continuation slides for this target keep the same subtitle exactly:
-`Mergat till develop`. Do not render generic subtitles such as `Mergat under
+`{PRIMARY_INTEGRATION_SUBTITLE}`. Do not render generic subtitles such as `Mergat under
 sprinten`, `del 2`, `merged work` or equivalent.
 
 ## Subtitle — Mergat till {COLLECTION_BRANCH_A}
@@ -381,7 +375,7 @@ Primary heading remains:
 `✏️ 1. Avklarat sedan förra mötet`
 
 Canonical branch: `{COLLECTION_BRANCH_A}`. Show every verified merge to this branch during
-the sprint window after the `develop` pages. Use the same evidence fields as
+the sprint window after the primary-integration pages. Use the same evidence fields as
 above where available.
 
 This collection branch always gets its own physical slide sequence. When verified
