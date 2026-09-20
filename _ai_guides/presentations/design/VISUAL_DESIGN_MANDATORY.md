@@ -248,8 +248,8 @@ Rendered meeting slides use a two-level header hierarchy.
 - smaller and calmer than the meeting-point header
 - continuation letter belongs here, not beside the meeting-point number
 - examples:
-  - `Mergat till C/C++-Native`
-  - `Mergat till Java-Development-Environment`
+  - `Mergat till {COLLECTION_BRANCH_A}`
+  - `Mergat till {COLLECTION_BRANCH_B}`
   - `Teamsammanfattning till mötesprotokollet`
 
 ### Per-meeting-point page counter
