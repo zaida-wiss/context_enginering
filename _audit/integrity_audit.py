@@ -831,6 +831,30 @@ def main():
         ok = False
     checks.append(result(ok, "source symbols stay inline while full source explanations live in the slide margin/footer", "long source labels can crowd cards or source symbols can lose their explanation"))
 
+    print("\nINVARIANT 22: Meeting Protocol Is Decision Evidence, Not Priority Truth")
+    ok = True
+    try:
+        planning = read_text("_ai_guides/project/GOALS_AND_SPRINT_PLANNING.md")
+        detail = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        required = (
+            "Meeting protocol is decision evidence, not priority truth",
+            "independently cross-check it against available verified evidence",
+            "🔎 AI-analys — HEADS-UP",
+            "Mandatory priority sanity check against team decisions",
+            "team_priority_without_independent_sanity_check_count == 0",
+            "material_priority_misalignment_without_ai_headsup_count == 0",
+            "meeting_decision_silently_rewritten_by_ai_count == 0",
+        )
+        joined = planning + "\n" + detail + "\n" + gate
+        if not all(token in joined for token in required):
+            print("❌ meeting protocol can become automatic priority truth or suppress AI heads-up")
+            ok = False
+    except Exception as exc:
+        print(f"❌ priority sanity-check inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "meeting decisions are preserved as evidence while AI independently checks priority alignment", "team protocol can be mistaken for optimal priority truth"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
