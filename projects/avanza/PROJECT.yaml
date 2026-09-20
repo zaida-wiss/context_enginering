@@ -19,6 +19,8 @@ context:
     path: "projects/avanza/team/TEAM_ROSTER.md"
   sprint_cadence:
     path: "projects/avanza/project/sprint/CADENCE.yaml"
+  working_time_constraints:
+    path: "projects/avanza/project/constraints/WORKING_TIME.yaml"
   course:
     schedule:
       path: "projects/avanza/course/TEAM_SCHEDULE.yaml"
