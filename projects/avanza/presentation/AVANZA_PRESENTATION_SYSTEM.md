@@ -88,21 +88,50 @@ Mark the current sprint at its true chronological position. Nearest deadlines
 and school/submission meaning remain grounded in registered course sources.
 
 ### ③ Frontend
-Show current/remaining Frontend work, what should happen next and local
-blockers/dependencies that affect execution.
+Use a two-step information logic across the point:
+1. **Var är vi?** — current/remaining work and per-issue delivery/DoD evidence.
+2. **Vad gör vi?** — next work in grounded order, local blockers/dependencies,
+   work this team is waiting for, and work other teams are waiting for from Frontend.
+
+DoD is evaluated per issue/work item when the registered project definition and
+evidence allow it. Never present one generic DoD state for the whole team.
 
 ### ④ Backend
-Show current/remaining Backend work, what should happen next and cross-team
-unlocking work explicitly.
+Use the same two-step logic:
+1. **Var är vi?** — current/remaining work and per-issue delivery/DoD evidence.
+2. **Vad gör vi?** — next work in grounded order, local dependencies and
+   cross-team unlocking work explicitly, including what other teams are waiting
+   for from Backend.
+
+DoD is evaluated per issue/work item when evidence allows it, never as one
+generic team-wide status.
 
 ### ⑤ Native/System
-Show current/remaining Native/System work, integration readiness and local
-blockers/dependencies.
+Use the same two-step logic:
+1. **Var är vi?** — current/remaining work, integration readiness and per-issue
+   delivery/DoD evidence.
+2. **Vad gör vi?** — next work in grounded order, local blockers/dependencies,
+   integration prerequisites and work other teams are waiting for from Native/System.
+
+DoD is evaluated per issue/work item when evidence allows it, never as one
+generic team-wide status.
 
 ### ⑥ Blockers och beroenden
 Use a dependency map/graph when verified dependency direction exists.
 Show what blocks what, affected team/work, consequence, required action and
-fallback productive work where evidence allows it. Connectors stay outside cards.
+fallback productive work where evidence allows it.
+
+For each material blocker/dependency, resolve when evidence exists:
+- prerequisite/root cause
+- blocked work/team
+- work/team unlocked when resolved
+- owner or responsible area
+- expected resolution/deadline when verified
+- productive fallback work while waiting
+
+Distinguish a dependency from a true blocker: waiting on one prerequisite does
+not mean the whole team is blocked if useful independent work remains.
+Connectors stay outside cards.
 
 ### ⑦ Risker
 Make the chain visible:
@@ -137,6 +166,13 @@ Each action explains what it concerns and why it matters.
 ### ⑭ Frågor till PL
 Each material unresolved question gets a clear question block/card and a grounded
 reason the answer matters to scope, priority, dependency, acceptance criteria or plan.
+
+When evidence allows, also state the decision horizon:
+- answer needed during this meeting / today
+- answer can wait
+
+Questions needing an immediate answer appear before questions that can wait.
+Do not manufacture urgency when the source does not support it.
 
 ## 6. Red threads — mandatory cross-slide continuity
 
