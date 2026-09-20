@@ -1,0 +1,32 @@
+---
+name: project_registry
+description: Registry of project contexts available through this context-engineering repository
+version: 1.0
+metadata:
+  type: registry
+  critical: true
+  owns: project identity and project-context roots only
+
+projects:
+  avanza:
+    display_name: "Avanza Team 1"
+    status: active
+    context_root: "projects/avanza"
+    current_legacy_context:
+      project_guides: "_ai_guides/project"
+      memory: "_memory"
+      data: "data"
+      decisions: "docs/decisions"
+    repository_match:
+      github_repository: "chas-challenge-2026/avanza-team1"
+    migration_state: "registered_before_preservation_first_move"
+
+resolution:
+  rule: >
+    Select a project only when the user names it, the active repository/workspace
+    matches it exactly, or it is the sole registered project. When multiple
+    projects exist and no unique match is available, ask the user which project
+    applies. Never use historical frequency as a default.
+
+---
+status: ACTIVE
