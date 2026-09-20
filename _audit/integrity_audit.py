@@ -1134,6 +1134,43 @@ def main():
         "Friday presentation capabilities can silently disappear during refactoring",
     ))
 
+    print("\nINVARIANT 29: Friday Special Layouts Stay Special")
+    ok = True
+    try:
+        visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        composition = read_text("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
+        detail = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+
+        point9_required = (
+            "compact full-width row/band language",
+            "thin separators or subtle row surfaces rather than large cards",
+            "compact full-width work rows/bands",
+            "point9_large_card_component_count == 0",
+            "point9_vertically_stretched_row_count == 0",
+        )
+        if not all(token in visual + "\n" + composition + "\n" + gate for token in point9_required):
+            print("❌ point 9 can regress from Friday compact priority rows to large generic cards")
+            ok = False
+
+        point6_required = (
+            "Dependency / blocker relationship map — mandatory",
+            "visible directional connector(s)",
+            "point6_relational_dependency_rendered_as_unconnected_cards_count == 0",
+            "point6_missing_directional_connector_count == 0",
+        )
+        if not all(token in detail + "\n" + gate for token in point6_required):
+            print("❌ point 6 can regress from blocker/dependency map to unrelated cards")
+            ok = False
+    except Exception as exc:
+        print(f"❌ Friday special-layout inspection failed: {exc}")
+        ok = False
+    checks.append(result(
+        ok,
+        "timeline/blocker/priority special layouts remain semantically distinct from ordinary cards",
+        "special meeting-point layouts can be flattened into the ordinary card grid",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
