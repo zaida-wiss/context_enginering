@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   for_ai: true
-  version: 2.4
+  version: 2.5
 ---
 
 # 🧠 ACCESSIBILITY & NEURODIVERSITY — ABSOLUTE BOUNDARY
@@ -53,6 +53,24 @@ Do NOT use red merely to indicate:
 - source
 - school schedule content
 - decoration
+
+---
+
+## Shared-screen readability
+
+WCAG contrast compliance alone is not enough for a meeting deck. Content must
+also remain comfortably readable when screen-shared or projected.
+
+Mandatory:
+- prefer fewer items per slide over visually small text;
+- ordinary explanatory/body text should target at least **20 pt**;
+- metadata/supporting text should target at least **18 pt**;
+- if those targets cannot be maintained, paginate before compressing;
+- a dense infographic/dashboard that requires close inspection is not an
+  acceptable substitute for readable meeting slides.
+
+These are readability targets in addition to the component hard minima. Where
+another authority requires a larger size, the larger requirement wins.
 
 ---
 
