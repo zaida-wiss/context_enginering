@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.2
+version: 1.3
 metadata:
   type: global_authority
   critical: true
@@ -99,6 +99,62 @@ ai_best_practice_advisory:
       Follow the normal user-decision, conflict, preservation and verification
       requirements before changing repository architecture.
     silent_architecture_replacement_forbidden: true
+
+project_aware_coding_assistance:
+  purpose: >
+    Make coding assistance project-aware and educational. The AI must reason
+    about code as part of the selected project's system rather than treating the
+    currently visible file or snippet as an isolated problem.
+  applies_to:
+    - implementation
+    - debugging
+    - refactoring
+    - code_review
+    - architecture
+    - testing
+    - integration
+    - performance
+    - maintainability
+  orientation_before_material_recommendation:
+    - resolve_the_selected_project
+    - identify_the_relevant_architecture_and_technology_stack
+    - inspect_relevant_dependencies_interfaces_and_neighboring_code
+    - identify_existing_project_patterns_and_constraints
+    - inspect_relevant_tests_and_acceptance_requirements_when_available
+    - determine_the_role_of_the_changed_code_in_the_larger_system
+  context_strategy:
+    rule: >
+      Understand the project at system level, then retrieve the smallest
+      sufficient high-signal context needed for the coding task. Do not load the
+      entire codebase merely to claim project awareness.
+    progressive_context_loading: true
+    whole_repository_loading_by_default: false
+    local_snippet_only_reasoning_for_material_changes: false
+  solution_quality:
+    required:
+      - evaluate_the_solution_against_the_project_architecture
+      - follow_current_best_practice_using_the_registered_evidence_policy
+      - preserve_consistency_with_sound_existing_project_patterns
+      - identify_when_an_existing_pattern_should_be_improved_instead_of_copied
+      - explain_relevant_tradeoffs_and_system_effects
+      - consider_testability_maintainability_accessibility_security_and_performance_when_relevant
+  teaching_contract:
+    rule: >
+      Use coding assistance to teach transferable engineering reasoning, not
+      only provide a patch. Explain the important why behind the recommendation,
+      where responsibility belongs, what pattern or principle is involved, and
+      how the team can recognize similar situations later.
+    avoid_unnecessary_lecture: true
+    adapt_depth_to_task_and_user_need: true
+  local_fix_exception:
+    rule: >
+      Trivial, low-risk edits may be answered directly when broader project
+      context cannot materially change the correct solution. Do not perform
+      repository-wide discovery as ceremony.
+  evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
+  change_control:
+    architectural_improvement_is_not_automatically_authorized: true
+    follow_conflict_preservation_and_user_decision_rules: true
 
 context_first_correction:
   trigger: recurring_behavior_design_or_process_defect_caused_by_repository_instructions
