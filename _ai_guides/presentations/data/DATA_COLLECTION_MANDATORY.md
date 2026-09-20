@@ -26,7 +26,7 @@ metadata:
 
 ### Merged PR Attribution Chain
 
-For each **merged PR to develop** or **collection branch**:
+For each **merged PR to the selected project's registered primary integration branch** or **registered collection branch**:
 
 1. **Developed by** (WHO WROTE THE CODE)
    - Query: `pr.commits[].author.login` — actual commit authors (PRIMARY)
@@ -46,7 +46,7 @@ For each **merged PR to develop** or **collection branch**:
 
 ### Collection Branch Treatment
 
-Collection branches (Java-Development-Environment, C/C++-Native, etc.) track work BEFORE develop merge.
+Registered collection branches track work before delivery to the selected project's primary integration branch.
 
 **Same attribution chain** applies to collection PRs:
 - Commits → authors
@@ -65,7 +65,7 @@ When same work appears in BOTH collection branch AND develop branch:
 2. Check **commit SHA ancestry** — if commits appear in both PRs, same work
 3. Check **source branch + commit set** — if same changes, same work
 
-**Result:** Show ONLY the develop delivery (final state). Hide the intermediate collection PR.
+**Result:** Prefer the final primary-integration delivery when the selected project's repository-flow presentation rule requires a single representation. Hide the intermediate collection PR in that case.
 
 ---
 
@@ -79,10 +79,10 @@ When same work appears in BOTH collection branch AND develop branch:
   - [ ] reviews[] populated with user.login + state
   - [ ] merged_by.login recorded
   - [ ] linked_issues[] recorded
-- [ ] Collection branches scanned (Java-Development-Environment, C/C++-Native, others?)
+- [ ] Every collection branch registered by the selected project's repository-flow config scanned
 - [ ] Collection branch PRs use SAME attribution chain
 - [ ] Deduplication applied: linked issues + commit ancestry checked
-- [ ] All 7 team members appear in some attributable work (or explicitly shown as absent)
+- [ ] Every member in the selected project's canonical roster is accounted for (or explicitly shown as having no verified work)
 
 ### Verification Before Presentation
 
