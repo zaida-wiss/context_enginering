@@ -61,6 +61,11 @@ active_authorities:
     category: acquisition
     owns: mechanical data acquisition and reporting-period filtering
   - rank: 13
+    project_resolved: presentation_authority
+    resolve_via: "../../PROJECTS.yaml -> selected project manifest -> context.presentation.authority.path"
+    category: project_presentation
+    owns: project-specific presentation composition, geometry and project semantics
+  - rank: 14
     project_resolved: source_registry
     resolve_via: "../../PROJECTS.yaml -> selected project manifest -> context.sources.path"
     category: source_registry
