@@ -71,7 +71,7 @@ card/grid system through card order, group headings, symbols, short connectors
 and provenance.
 
 Allowed:
-- 3×2, 2×2, 2×1 or 1×1 responsive grids;
+- the grid/slot geometry registered by the active project presentation authority; when none is registered, a readability-safe responsive grid;
 - grouped cards under a shared heading;
 - arrows/connectors between cards when they clarify dependencies;
 - continuation slides when the common grid cannot remain readable.
@@ -105,7 +105,7 @@ If cards are text-heavy, use fewer cards than the maximum.
 
 Examples:
 - 4 long cards may become 2 cards + 2 cards on continuation
-- 6 merge cards must first be rendered/tested as 3×2; they may become 4 + 2 only when that measured six-card render cannot satisfy typography, required rows, spacing, source-footer reservation or overlap rules
+- multi-card merge pages follow the active project's registered card geometry; if that geometry cannot satisfy typography, required rows, spacing, source-footer reservation or overlap rules, paginate according to project authority rather than silently changing the project's visual contract
 - next-step cards with pedagogical explanations must paginate rather than drop the explanations
 
 ---
