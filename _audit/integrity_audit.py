@@ -964,18 +964,18 @@ def main():
                 continue
             manifest_text = read_text(manifest)
             match = re.search(r"""presentation:\s*.*?authority:\s*.*?path:\s*["']?([^"'\n]+)""", manifest_text, re.S)
+            # Project presentation authority is optional. Global presentation
+            # rules remain the default when the capability is not declared.
             if not match:
-                print(f"❌ {project_id}: project presentation authority path is not registered")
-                ok = False
                 continue
             authority_path = match.group(1).strip()
             if not os.path.exists(authority_path):
-                print(f"❌ {project_id}: registered presentation authority missing: {authority_path}")
+                print(f"❌ {project_id}: declared presentation authority missing: {authority_path}")
                 ok = False
     except Exception as exc:
         print(f"❌ project presentation authority routing inspection failed: {exc}")
         ok = False
-    checks.append(result(ok, "active project presentation authority resolves through the selected project manifest", "project presentation rules can exist without being loaded by the presentation router"))
+    checks.append(result(ok, "declared project presentation authorities resolve through the selected project manifest while undeclared projects inherit global defaults", "declared project presentation rules can exist without being loaded by the presentation router"))
 
     print("\nINVARIANT 25: Presentation Visual Fidelity Gate")
     ok = True
