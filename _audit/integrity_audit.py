@@ -14,7 +14,7 @@ Validates:
 9. Global routing/validation does not require legacy project-owned source/roster paths.
 10. The reusable project template and onboarding contract exist without depending on a named project.
 11. The global control plane is free of named-project dependencies; named projects belong only in PROJECTS.yaml and project roots.
-12. Project manifests explicitly preserve the boundary: reusable operating methods are global; project roots own facts, configuration and confirmed project-specific decisions.\n13. Project legacy files cannot become active authorities.\n14. A synthetic empty project registry resolves to zero projects without fallback to a named project.\n15. A neutral synthetic Project B can onboard through the same generic manifest/source contract without named-project leakage.
+12. Project manifests explicitly preserve the boundary: reusable operating methods are global; project roots own facts, configuration and confirmed project-specific decisions.\n13. Project legacy files cannot become active authorities.\n14. A synthetic empty project registry resolves to zero projects without fallback to a named project.\n15. A neutral synthetic Project B can onboard through the same generic manifest/source contract without named-project leakage.\n16. Two simultaneously active projects keep manifests and source registries isolated.
 
 This intentionally uses a small YAML-path parser so the audit has no PyYAML dependency.
 """
@@ -294,6 +294,44 @@ def main():
         checks.append(result(ok, "neutral Project B resolves through the generic project contract without named-project leakage", "neutral Project B cannot onboard through the generic project contract"))
     except Exception as exc:
         checks.append(result(False, "", f"Project B simulation failed: {exc}"))
+
+    print("\nINVARIANT 1D: Multi-Project Context Isolation")
+    try:
+        synthetic_registry = """projects:
+  avanza:
+    status: active
+    manifest: "projects/avanza/PROJECT.yaml"
+  project_b:
+    status: active
+    manifest: "_audit/fixtures/project_b/PROJECT.yaml"
+"""
+        simulated = parse_project_registry_text(synthetic_registry)
+        simulated_active = {k: v for k, v in simulated.items() if v.get("status") == "active"}
+        expected = {
+            "avanza": ("projects/avanza/PROJECT.yaml", "projects/avanza/sources/SOURCES.yaml"),
+            "project_b": ("_audit/fixtures/project_b/PROJECT.yaml", "_audit/fixtures/project_b/sources/SOURCES.yaml"),
+        }
+        resolved = {}
+        for project_id, (manifest, expected_source) in expected.items():
+            manifest_text = read_text(manifest)
+            match = re.search(r"""context:\s*.*?sources:\s*.*?path:\s*["']?([^"'\n]+)""", manifest_text, re.S)
+            resolved[project_id] = match.group(1).strip() if match else None
+        distinct_manifests = len({entry.get("manifest") for entry in simulated_active.values()}) == 2
+        distinct_sources = len(set(resolved.values())) == 2
+        correct_routing = all(
+            simulated_active.get(project_id, {}).get("manifest") == manifest
+            and resolved.get(project_id) == source
+            for project_id, (manifest, source) in expected.items()
+        )
+        cross_leak = (
+            "project_b" in read_text(expected["avanza"][0]).lower()
+            or "projects/avanza/" in read_text(expected["project_b"][0]).lower()
+            or "avanza" in read_text(expected["project_b"][1]).lower()
+        )
+        ok = set(simulated_active) == set(expected) and distinct_manifests and distinct_sources and correct_routing and not cross_leak
+        checks.append(result(ok, "two projects resolve to distinct manifests and source registries without cross-project leakage", "multi-project routing mixes or leaks project context"))
+    except Exception as exc:
+        checks.append(result(False, "", f"multi-project isolation simulation failed: {exc}"))
 
     print("\nINVARIANT 2: Project Manifest Paths Exist")
     ok = True
