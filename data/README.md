@@ -1,18 +1,20 @@
 # Data
 
-This directory is the canonical home for repository-held data and source registries.
+This directory is a generic domain for repository-held data that is not owned by one selected project.
 
-## Canonical source registry
+## Project-specific source registries
 
-- `SOURCES.yaml` — machine-readable registry for live/external sources, IDs, access methods and fallback order.
-- `SOURCES.md` — human-readable guide to the registry.
+Project-specific live/external source registries resolve through:
+`PROJECTS.yaml → selected project → PROJECT.yaml → context.sources.path`.
 
-## Data categories
+Do not add a global project source registry here. Project facts and project-owned manual data belong under the corresponding `projects/<project>/` root.
 
-Repository-held data is grouped by role:
+## Generic data categories
 
-- `manual/` — manually entered source material when no live source exists.
-- `snapshots/` — explicit point-in-time captures.
-- `derived/` — reproducible data calculated from registered sources.
+When genuinely cross-project data is needed, it may be grouped by role:
 
-Live facts should stay connected to APIs, GitHub, Google Drive or another registered live source whenever possible. Instruction files reference source IDs instead of copying live facts.
+- `manual/` — manually entered generic source material when no live source exists.
+- `snapshots/` — explicit generic point-in-time captures.
+- `derived/` — reproducible generic data calculated from registered sources.
+
+Live facts should stay connected to registered live sources whenever possible. Instruction files should resolve project-owned source IDs through the selected project manifest rather than copying live facts.
