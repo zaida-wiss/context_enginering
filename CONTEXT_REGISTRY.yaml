@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.5
+version: 2.6
 metadata:
   type: registry
   critical: true
@@ -35,10 +35,8 @@ registries:
     path: "_ai_guides/project/README.md"
   presentation_authorities:
     path: "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml"
-  external_sources:
-    path: "data/SOURCES.yaml"
-  external_sources_guide:
-    path: "data/SOURCES.md"
+  projects:
+    path: "PROJECTS.yaml"
   context_ingestion:
     path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
 
@@ -75,33 +73,27 @@ logical_destinations:
     technical_debt:
       path: "_ai_guides/project/TECHNICAL_DEBT.md"
 
-  memory:
+  selected_project:
+    manifest:
+      resolve_via: "PROJECTS.yaml -> selected project -> manifest"
     team_roster:
-      path: "_memory/TEAM_ROSTER.md"
+      resolve_via: "selected project manifest -> context.team_roster.path"
+    source_registry:
+      resolve_via: "selected project manifest -> context.sources.path"
+    sprint_cadence:
+      resolve_via: "selected project manifest -> context.sprint_cadence.path"
+    repository_flow:
+      resolve_via: "selected project manifest -> context.repository_flow.path"
 
   presentation_schemas:
     current_sprint:
       path: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
 
   data:
-    project_sprint_cadence:
-      path: "projects/avanza/project/sprint/CADENCE.yaml"
-    course_schedule:
-      path: "projects/avanza/course/TEAM_SCHEDULE.yaml"
-    course_schedule_guide:
-      path: "projects/avanza/course/SCHEDULE.md"
-    course_milestones:
-      path: "projects/avanza/course/MILESTONES.yaml"
-    course_roadmap:
-      path: "projects/avanza/course/TEAM_ROADMAP.yaml"
-    course_deadlines:
-      path: "projects/avanza/course/COURSE_DEADLINES.md"
-    cto_feed_forward:
-      path: "projects/avanza/course/CTO_FEED_FORWARD.md"
-    cto_feed_forward_instructions:
-      path: "projects/avanza/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
-    ui_design_reference:
-      path: "data/manual/design/UI_DESIGN_REFERENCE.md"
+    selected_project_course:
+      resolve_via: "selected project manifest -> context.course"
+    selected_project_design:
+      resolve_via: "selected project manifest -> context.design"
 
   decisions:
     confirmed:
@@ -226,7 +218,7 @@ tasks:
     data_acquisition:
       path: "_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"
     source_registry:
-      ref: "registries.external_sources"
+      ref: "logical_destinations.selected_project.source_registry"
     planning_authority:
       ref: "logical_destinations.project.goals_and_sprint_planning"
     risk_authority:
@@ -262,4 +254,4 @@ path_change_process:
 ---
 
 status: ACTIVE
-last_updated: 2026-09-18
+last_updated: 2026-09-20
