@@ -272,6 +272,7 @@ def main():
     try:
         fixture_manifest = "_audit/fixtures/project_b/PROJECT.yaml"
         fixture_sources = "_audit/fixtures/project_b/sources/SOURCES.yaml"
+        fixture_presentation = "_audit/fixtures/project_b/presentation/PRESENTATION_SYSTEM.md"
         synthetic_registry = """projects:
   project_b:
     status: active
@@ -290,6 +291,8 @@ def main():
             and fixture_paths == [fixture_sources]
             and all(os.path.exists(path.rstrip("/")) for path in fixture_paths)
             and fixture_source_data.get("PRIMARY_REPOSITORY", {}).get("source_id") == "PRIMARY_REPOSITORY"
+            and fixture_presentation in fixture_paths
+            and os.path.exists(fixture_presentation)
             and no_named_project_leak
         )
         checks.append(result(ok, "neutral Project B resolves through the generic project contract without named-project leakage", "neutral Project B cannot onboard through the generic project contract"))
