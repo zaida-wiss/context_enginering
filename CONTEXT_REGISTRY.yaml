@@ -84,6 +84,8 @@ logical_destinations:
       path: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
 
   data:
+    project_sprint_cadence:
+      path: "projects/avanza/project/sprint/CADENCE.yaml"
     course_schedule:
       path: "projects/avanza/course/TEAM_SCHEDULE.yaml"
     course_schedule_guide:
