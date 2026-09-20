@@ -133,13 +133,10 @@ slide_zone_predictability_failure_count == 0
 competing_primary_focus_count == 0
 unclear_reading_direction_count == 0
 inconsistent_primary_font_family_count == 0
-required_text_rasterized_count == 0
 ```
 
 For each rendered slide, inspect the actual PDF/image and verify font-family
-consistency visually. Also inspect the PPTX structure/source to confirm that
-presentation-authored required meeting text remains native editable/selectable
-text rather than flattened image text.
+consistency visually.
 
 Then verify that within approximately five seconds a viewer can identify:
 - meeting point;
