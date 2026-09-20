@@ -855,6 +855,31 @@ def main():
         ok = False
     checks.append(result(ok, "meeting decisions are preserved as evidence while AI independently checks priority alignment", "team protocol can be mistaken for optimal priority truth"))
 
+    print("\nINVARIANT 23: AI Senior Team-Member Posture")
+    ok = True
+    try:
+        framework = read_text("_ai_guides/AI_FRAMEWORK.yaml")
+        analysis = read_text("_ai_guides/PROJECT_WORK_ANALYSIS.md")
+        required = (
+            "senior_team_member_posture:",
+            "independently_validate_team_assumptions_against_current_verified_evidence",
+            "challenge_a_team_priority_when_verified_evidence_indicates_a_materially_better_or_safer_order",
+            'material_concern_label: "🔎 AI-analys — HEADS-UP"',
+            "user_and_team_retain_decision_authority: true",
+            "ai_does_not_claim_formal_team_role_or_human_experience: true",
+            "## Senior engineering posture",
+            "ask whether the team is solving the right problem",
+            "exception-driven",
+        )
+        joined = framework + "\n" + analysis
+        if not all(token in joined for token in required):
+            print("❌ global AI behavior lost senior engineering challenge/orientation contract")
+            ok = False
+    except Exception as exc:
+        print(f"❌ senior-posture inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "AI contributes with senior engineering bird's-eye judgment while humans retain decisions", "AI can regress to passive execution/status repetition or overclaim human authority"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
