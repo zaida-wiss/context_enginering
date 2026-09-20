@@ -51,12 +51,10 @@ Team color normally appears as a narrow vertical accent on the left. For issue
 and PR cards, the verified `#NUMBER` also uses the owning team's color. Team
 color must not outline or fill the whole card.
 
-Canonical team colors:
-- Frontend: `#2DD4BF`
-- Backend: `#FF4FA3`
-- Native: `#A855F7`
-- Cross-team: `#CBD5E1`
-- Neutral: `#94A3B8`
+Canonical team colors are project data. Resolve the selected project's registered
+team visual identity and use its team and neutral accent values. If the selected
+project has no registered mapping, use a neutral accessible accent and do not
+invent team colors.
 
 Recommended left accent width: visually equivalent to **4–6 px**.
 
@@ -152,12 +150,9 @@ and a team-colored issue/PR number.
 
 **Name format: FIRST NAME ONLY** (no team label, no full name).
 
-Team colors represent teams:
-- Frontend: `#2DD4BF` (teal)
-- Backend: `#FF4FA3` (pink)
-- Native: `#A855F7` (purple)
-- Cross-team: `#CBD5E1` (slate)
-- Neutral: `#94A3B8` (gray)
+Team colors represent the identities registered by the selected project.
+Resolve labels and colors through the project's team visual identity; do not
+embed project-specific names or color values in this generic authority.
 
 Examples:
 - `{FIRST_NAME}` on a dedicated team slide
@@ -168,7 +163,7 @@ Hard rules:
 - do **not** use full names — first name only
 - team ownership must never rely on color alone across the complete slide context
 - on a dedicated team slide whose primary header explicitly names the team, do not repeat the team name inside every card; the header supplies the non-color ownership cue and the left accent color is supplementary
-- on mixed-team slides, include an explicit non-color team cue on each relevant card: `Frontend`, `Backend`, `Native/System` or `Cross-team`
+- on mixed-team slides, include the selected project's registered display name as an explicit non-color team cue on each relevant card
 - if a card is reused outside its original dedicated team slide, add the explicit team label again
 - team accent color remains supplementary only
 - do **not** prefix with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent wording
@@ -177,11 +172,8 @@ Hard rules:
 
 ## Issue and PR number team color
 
-Every verified issue or PR identifier uses the owning team's canonical color:
-- Frontend: `#2DD4BF`
-- Backend: `#FF4FA3`
-- Native: `#A855F7`
-- Cross-team: `#CBD5E1`
+Every verified issue or PR identifier uses the owning team's canonical color
+resolved from the selected project's registered team visual identity.
 
 The identifier is dynamic, for example `#ISSUE_ID` or `#PR_ID`; examples never
 hard-code which PRs exist. For an open PR, the complete heading begins
@@ -394,8 +386,8 @@ If a status symbol is useful for the meeting (for example waiting/blocked), it m
 Dependency and next-step nodes use the same universal hierarchy:
 
 ```text
-API-kontrakt
-Definierar endpoints + payload så Frontend och Backend kan integrera stabilt.
+Integrationskontrakt
+Definierar gränssnitt + payload så två beroende delar kan integrera stabilt.
 
 
 🔴 Behöver låsas
