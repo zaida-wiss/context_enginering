@@ -1,7 +1,7 @@
 ---
 name: project_work_analysis
 description: Global evidence-driven project analysis for implementation, planning, review and reporting
-version: 1.0
+version: 1.1
 metadata:
   type: global_ai_authority
   scope: all_projects
@@ -13,6 +13,31 @@ metadata:
 This authority owns reusable reasoning about current project work. Project-specific
 facts remain in the selected project's registered context. Presentation rules
 consume this analysis; they do not redefine it.
+
+## Mandatory project bird's-eye orientation
+
+Before a material project answer, recommendation or implementation change, build
+or refresh a lightweight current project map. This is the baseline context, not
+an optional deep audit.
+
+Orient across:
+- system architecture and major layers;
+- core user/data/execution flows relevant to the product;
+- registered team ownership and integration boundaries;
+- currently active branches and pull requests across the project;
+- current work that can materially intersect the requested area;
+- important dependencies, blockers, risks and technical debt;
+- relevant project constraints, tests and delivery/integration flow.
+
+The purpose is to notice what is working well as well as what may require a
+change, coordination, sequencing adjustment or challenge to an assumption.
+
+Do not read every file or every historical commit by default. First establish
+the current bird's-eye map, then deepen only the areas that can materially
+change the answer.
+
+Trivial, low-risk questions may use an already-current project map when no
+material project interaction can change the answer.
 
 ## Evidence reconstruction
 
@@ -99,6 +124,30 @@ Before starting a new issue, automatically perform the lightweight relevant
 checks. Escalate to targeted history or broader project context when that is
 material to correctness. If broader analysis is useful but not required, it may
 be offered with an explanation of what additional evidence it could add.
+
+## Pedagogical system understanding
+
+Teach the system before the detail.
+
+Prioritize the mental model that is most important for understanding the task,
+especially:
+1. core flows — how user actions, data or execution move through the system;
+2. responsibility boundaries — which component/layer/team owns what;
+3. cause and consequence — why something exists and what changes upstream or downstream;
+4. dependencies and sequence — prerequisites, safe parallel work and timing;
+5. engineering principle — the reusable reason behind the recommended approach.
+
+When relevant, make the explanation sufficient for the user to understand:
+- **What** is happening or being changed;
+- **Where** it belongs in the system;
+- **Why** it exists or is recommended;
+- **How** it works or should be implemented;
+- **When** it matters, should happen, or becomes safe/useful.
+
+These are comprehension dimensions, not mandatory headings. Do not mechanically
+repeat five labels when a shorter explanation teaches the important model more
+clearly. Explain the highest-value concepts first and avoid repeating context the
+user already understands.
 
 ## Reuse by outputs
 
