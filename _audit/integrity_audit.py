@@ -846,6 +846,7 @@ def main():
     try:
         card = read_text("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md")
         gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        contract = read_text("_ai_guides/presentations/SYSTEM_CONTRACT.yaml")
         required = (
             "Full source labels are rendered once in the physical slide's reserved source margin/footer.",
             "slide source margin/footer deduplicates every source symbol used",
@@ -853,7 +854,7 @@ def main():
             "inline_symbol_slide_margin_source_mismatch_count == 0",
             "physical slide margin/footer deduplicates the used source symbols",
         )
-        joined = card + "\n" + gate
+        joined = card + "\n" + gate + "\n" + contract
         if not all(token in joined for token in required):
             print("❌ provenance contract does not preserve inline symbol → full slide-margin explanation")
             ok = False
