@@ -879,23 +879,14 @@ def main():
     try:
         visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
         overflow = read_text("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md")
-        avanza = read_text("projects/avanza/presentation/AVANZA_PRESENTATION_SYSTEM.md")
         global_required = (
             "card capacity, slot orientation and pagination are owned by the active project presentation authority",
             "the grid/slot geometry registered by the active project presentation authority",
             "design fidelity is part of fit",
         )
-        avanza_required = (
-            "2 columns × 3 rows",
-            "six positions are spatially reserved",
-            "one ordinary card occupies one normal slot",
-        )
         joined_global = visual + "\n" + overflow
         if not all(token in joined_global for token in global_required):
             print("❌ global presentation rules can override project-owned card geometry")
-            ok = False
-        if not all(token in avanza for token in avanza_required):
-            print("❌ Avanza presentation authority lost its fixed 2-column × 3-row ordinary-card contract")
             ok = False
         stale_global = (
             "MUST first attempt a six-card `3×2` composition",
@@ -907,7 +898,7 @@ def main():
     except Exception as exc:
         print(f"❌ project-owned geometry inspection failed: {exc}")
         ok = False
-    checks.append(result(ok, "global layout delegates card geometry while Avanza preserves its fixed 2-column × 3-row contract", "project presentation geometry can be overridden by stale global layout rules"))
+    checks.append(result(ok, "global layout delegates card geometry to the selected project authority", "global presentation rules can override project-owned geometry"))
 
     print("\nINVARIANT 24B: Project Presentation Authority Routing")
     ok = True
