@@ -1,0 +1,11 @@
+---
+name: cadence_template
+description: Project cadence and timezone
+status: TEMPLATE
+timezone: "<IANA timezone>"
+cadence:
+  type: "<sprint|iteration|continuous|other>"
+  start_rule: "<verified rule>"
+  end_rule: "<verified rule>"
+rules:
+  - "Do not invent cadence, sprint boundaries or working days."
