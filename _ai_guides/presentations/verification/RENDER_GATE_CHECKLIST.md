@@ -364,6 +364,8 @@ When rendered, timestamp must follow `CARD_COMPONENT_STANDARD.md`.
 
 Merged PR cards:
 - use merge timestamp
+- render it as the **bottom-most row of the card**, single-line and right-aligned/lower-right where card geometry permits
+- keep `Merged: … | Review: …` immediately above the timestamp inside the reserved bottom information zone
 - do not replace it with PR creation or latest commit time
 
 Active/open cards:
