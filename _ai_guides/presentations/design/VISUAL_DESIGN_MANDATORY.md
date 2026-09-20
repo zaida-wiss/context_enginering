@@ -41,13 +41,15 @@ If a layout cannot satisfy these rules, change the layout or paginate.
 
 ## 1. GLOBAL VISUAL LANGUAGE
 
-The deck uses:
-- calm deep navy canvas
-- soft dark glass-like cards
-- rounded corners
-- subtle depth/shadow
-- low-glare surfaces
+The deck uses the visual identity registered by the active project presentation authority.
+
+Globally mandatory regardless of project identity:
+- accessible contrast
+- low-glare readable surfaces
 - clear hierarchy
+- sufficient internal padding
+- no decorative layer crossing readable text
+- no clipping, overlap or visual corruption
 - responsive cards
 - cards are the shared component language across the deck, but **slide geometry is owned by the active meeting-point contract**
 - responsive card grids are the default only when no meeting-point-specific geometry is registered
@@ -213,10 +215,11 @@ Every ordinary rendered card must preserve:
 - all required text remains inside the visible rounded card bounds with approved padding; no text may touch/cross the rounded edge;
 - density changes may resize/reflow cards, but MUST NOT remove corner rounding, glass/depth treatment, padding, required rows or readable hierarchy.
 
-For a six-card 3×2 attempt, **design fidelity is part of fit**. If six cards only
-fit by flattening the cards, removing depth, reducing required padding, clipping
-text, or degrading typography, that six-card attempt has failed and the slide
-must use a lower-density continuation layout.
+For any project-owned card geometry, **design fidelity is part of fit**. If the
+registered geometry fits only by removing the project's required visual treatment,
+reducing required padding, clipping text or degrading typography, the render has
+failed. Follow the project's pagination/continuation rule rather than silently
+changing its visual contract.
 
 ### Team accent and issue/PR identifiers
 Team ownership is shown with a narrow left accent and, on issue/PR cards, the
@@ -394,15 +397,12 @@ Hard rules:
 
 
 ### Meeting point 1
-- six cards is the standard capacity per physical slide; meeting point 1 has no total card or slide limit
-- when at least six grounded items exist for the same point-1 subsection, the generator MUST first attempt a six-card `3×2` composition at the preferred/readability-safe typography and required card rows
-- use fewer than six only after the six-card attempt fails a measured fit/readability/render check; do not pre-emptively choose 4+2 merely because merge cards contain metadata
+- card capacity, slot orientation and pagination are owned by the active project presentation authority when registered
 - team-summary AI cards are required content in the final point-1 subsection, not filler
 - point-1 subsection meaning comes from its canonical subtitle/verified merge target, never from a hard-coded continuation letter
-- never create unrelated filler cards merely to reach six
-- preferred/default six-card layout is 3×2; card geometry remains responsive
-- if more than six grounded items exist, create as many lowercase-letter continuation slides as required
-- if six cards do not fit within WCAG/readability rules, use fewer per physical slide and continue; never omit a grounded item because of density
+- never create unrelated filler cards merely to satisfy a visual slot count
+- never omit a grounded item because of density
+- global readability, source-footer, overlap and clipping gates remain mandatory regardless of project geometry
 
 ### ②–⑧, ⑩–⑫ and ⑭
 - maximum 4 cards unless slide authority is stricter
@@ -546,7 +546,7 @@ This file requires globally:
 - slide titles remain at 36 pt or larger
 - slide titles are never shrunk for fit
 - slide-level typography minimums respected
-- background visibly dark navy with canonical `#15182E` base; black/near-black fallback count = 0
+- rendered background and card appearance match the active project's registered visual identity; global contrast/readability gates still pass
 - distance-readability pass: ordinary body text targets >= 20 pt and metadata targets >= 18 pt; paginate before compression
 - school/submission cards containing the five required meanings use the canonical symbols `🎯 🕒 📍 💡 🛠` rather than repeated VAD/HUR/VARFÖR/NÄR/VAR labels
 - every rendered urgency/priority state uses both semantic text/symbol and the canonical red/orange/green urgency color
