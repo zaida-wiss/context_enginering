@@ -363,10 +363,10 @@ execution_sequence:
       - "same repository ref used for all internal files"
       - "authority conflicts recorded with both rules, owners and resolution"
       - "cover uses verified current-week PL focus and deadlines"
-      - "every school task answers Vad, När, Var, Varför and Hur from registered _memory/data sources"
+      - "every applicable course/project task answers the required task-information dimensions from the selected project's registered context/data sources"
       - "meeting point 1 uses six cards as standard capacity per physical slide and has no total slide/card limit"
       - "meeting point 1 always renders the registered primary integration branch, every registered collection branch in project-defined order, and Teamsammanfattning, including verified empty/incomplete branch pages"
-      - "cover sprint period is the active Monday 09:00–next Monday 09:00 interval containing the request timestamp"
+      - "cover sprint period is the active interval resolved from the selected project's registered sprint cadence using the request timestamp"
       - "meeting point 1 contains only verified work from active sprint start through the actual data cutoff"
       - "the deck is always an in-progress planning document for the active sprint"
       - "points 3–5 and 9 plan the remaining horizon from data cutoff to active sprint end"
@@ -380,31 +380,27 @@ execution_sequence:
       - "canonical source symbols are preserved and not replaced by tags"
 
   sprint_period_resolution:
-    timezone: "Europe/Stockholm"
+    cadence_authority: "../../PROJECTS.yaml -> selected project manifest -> context.sprint_cadence.path"
     rule: >
-      Resolve the active sprint from the request timestamp, not from the target
-      meeting label. Sprints start Monday at 09:00 and end the following Monday
-      at 09:00. The cover displays the complete scheduled start/end dates of the
+      Resolve the active sprint from the request timestamp using the selected
+      project's registered sprint cadence, not from the target meeting label.
+      The cover displays the complete registered start/end boundaries of the
       active sprint containing the request timestamp. Meeting point 1 includes
-      verified work from sprint start through the actual acquisition cutoff;
-      it never claims future work between cutoff and sprint end.
+      verified work from sprint start through the actual acquisition cutoff; it
+      never claims future work between cutoff and sprint end.
     boundary_rule: >
-      A request before Monday 09:00 belongs to the sprint that is still ending.
-      A request at or after Monday 09:00 belongs to the newly started sprint.
+      Apply the selected project's registered timezone, start day/time,
+      duration and interval-boundary semantics exactly.
     forward_use_rule: >
       Regardless of request day/time, the presentation is an in-progress working
       document for the resolved active sprint. Verified facts cover sprint start
       through data cutoff; forward sections cover remaining work through sprint
       end using verified plans or explicit AI labels.
-    example: >
-      For a request made during an active sprint before the meeting starts, show
-      the complete registered sprint interval on the cover and use the request
-      time as the latest possible factual cutoff.
 
   cover_school_task_contract:
     required_questions: ["Vad", "När", "Var", "Varför", "Hur"]
     scope: "all school tasks/deadlines and PL topics in or materially affecting the current week"
-    source_boundary: "registered _memory and presentation data sources"
+    source_boundary: "selected project manifest -> registered course/project context and presentation data sources"
     rules:
       - "all five answers are visible on the cover or its ⓪a continuation"
       - "each verified answer retains source provenance"
