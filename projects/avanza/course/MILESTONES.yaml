@@ -4,7 +4,7 @@ description: Critical deadlines and milestones for Team 1 (Chas Challenge 2026)
 metadata:
   source: CHAS course schedule
   timezone: Europe/Stockholm
-  updated: 2026-09-16
+  updated: 2026-09-20
 ---
 
 milestones:
@@ -16,17 +16,19 @@ milestones:
     source: "course_deadline"
     verified: true
     description: "CTO material delivery"
-    submission: "Canvas"
+    submission: "Google Sheet — Chas Extended Challenge – Specialist Feed Forward"
+    instruction_location: "Canvas > Filer"
 
-  - id: "demo-recording"
-    title: "Inspelad demo-repetition"
+  - id: "dm-ux-specialist-underlag"
+    title: "Delivery Manager + UX specialist — två filmer"
     due_date: "2026-10-01"
     due_time: "16:00"
     week: "V7"
-    source: "course_deadline"
+    source: "course_deadline + chas_backoffice_announcement"
     verified: true
-    description: "Recorded demo rehearsal"
-    submission: "Canvas"
+    description: "Specialistunderlag similar to CTO assignment; two recorded films instead of one"
+    submission: "Follow published course instruction"
+    planning_note: "Back Office warns not to underestimate the time required"
 
   - id: "kvaldemo-plan"
     title: "Kvaldemo-plan"
