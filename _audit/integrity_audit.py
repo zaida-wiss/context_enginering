@@ -478,6 +478,34 @@ def main():
             ok = False
     checks.append(result(ok, "reusable team/project methods are globally owned and project manifests preserve the boundary", "global method ownership or project boundary is incomplete"))
 
+    print("\nINVARIANT 13: Project Legacy Files Cannot Become Active Authorities")
+    ok = True
+    try:
+        registry_text = read_text("CONTEXT_REGISTRY.yaml")
+        for project_id, entry in active.items():
+            manifest = entry.get("manifest")
+            if not manifest or not os.path.exists(manifest):
+                continue
+            project_root = os.path.dirname(manifest)
+            legacy_root = os.path.join(project_root, "legacy")
+            legacy_prefix = legacy_root.replace(os.sep, "/") + "/"
+            if legacy_prefix in registry_text:
+                print(f"❌ {project_id}: global context registry references project legacy path {legacy_prefix}")
+                ok = False
+            if os.path.isdir(legacy_root):
+                for name in os.listdir(legacy_root):
+                    if not name.endswith((".md", ".yaml", ".yml")):
+                        continue
+                    legacy_path = os.path.join(legacy_root, name)
+                    legacy_text = read_text(legacy_path).lower()
+                    if "archived" not in legacy_text or "not generic framework authority" not in legacy_text:
+                        print(f"❌ {project_id}: legacy file lacks explicit non-authority marker: {legacy_path}")
+                        ok = False
+    except Exception as exc:
+        print(f"❌ legacy-authority inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "project legacy files are explicitly non-authoritative and absent from the global registry", "project legacy content can leak into active authority routing"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
