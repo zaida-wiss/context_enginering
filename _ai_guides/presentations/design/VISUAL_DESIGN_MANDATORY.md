@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.3
+  version: 5.4
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -49,9 +49,10 @@ The deck uses:
 - low-glare surfaces
 - clear hierarchy
 - responsive cards
-- cards and responsive card grids as the primary visual language across the deck
-- chronology, dependencies and risk normally communicated within the shared card/grid grammar through ordering, grouping, headings, symbols and optional connectors
-- meeting point 9 priority uses its registered vertical execution-group exception while retaining the same card components
+- cards are the shared component language across the deck, but **slide geometry is owned by the active meeting-point contract**
+- responsive card grids are the default only when no meeting-point-specific geometry is registered
+- chronology, dependencies, planning and priority use the geometry required by their meeting-point authority; the global visual system must not flatten those formats into a generic grid
+- registered meeting-point formats such as a chronological timeline, dependency view, vertical execution sequence or chronological day-plan remain mandatory while reusing the shared card components
 - deliberate whitespace that creates grouping and breathing room instead of decorative emptiness
 
 ### NPF-first visual composition
@@ -69,8 +70,9 @@ Every slide must pass a quick-scan test:
 The deck must feel **predictable and structurally consistent**:
 - stable header, palette, card language, provenance grammar and grid behavior
 - the same card system is reused across meeting points
-- the normal slide-level composition is responsive card/grid
-- meeting point 9 is the explicit registered exception: its execution groups are vertically stacked top-to-bottom while still using the same card components
+- the normal slide-level composition is responsive card/grid **only when the meeting-point authority does not define a stricter format**
+- meeting-point-specific geometry is stable semantics, not decoration, and must survive refactoring
+- examples include point ② chronological timeline, point ⑥ dependency structure, point ⑨ vertical execution sequence and point ⑫ chronological day/plan sequence when required by their active contracts
 - no arbitrary redesign from one slide to the next
 
 One work/information item = one card unless a compact grouped card is explicitly allowed by the slide-content authority.
@@ -80,7 +82,7 @@ One work/information item = one card unless a compact grouped card is explicitly
 Every rendered meeting slide uses the same three spatial zones:
 
 1. **Header zone** — meeting-point title, optional subordinate subtitle and local page counter.
-2. **Content zone** — card-based content using the default responsive grid or a registered slide-level exception such as point 9.
+2. **Content zone** — content using the geometry required by the active meeting-point contract; use the responsive grid only as the fallback when no stricter geometry is registered.
 3. **Source/footer zone** — compact provenance/source summary and quiet operational metadata when required.
 
 Hard rules:
@@ -312,27 +314,45 @@ Teamsammanfattning till mötesprotokollet
 
 ---
 
-## 4B. POINT 2 — SHARED CARD/GRID COMPOSITION
+## 4B. POINT 2 — CHRONOLOGICAL TIMELINE FORMAT
 
-Meeting point 2 uses the same responsive card/grid language as the rest of the deck.
+Meeting point 2 follows the stricter Monday-meeting content/structure authority.
+Its primary visual is a **true chronological course/project timeline** covering
+the registered course/project period required by `SLIDE_DETAIL_SPEC.md` and
+`COMPOSITION_ARCHITECTURE.md`.
 
-Chronology is communicated by:
-- left-to-right or top-to-bottom card order;
-- clear date/time labels inside each card;
-- compact phase/month headings when useful;
-- status symbol + text + color;
-- an explicit `AKTUELL SPRINT` card/badge when current position needs emphasis.
+The global card system still governs the appearance of timeline nodes/cards, but
+it MUST NOT replace the timeline with an ordinary 2×2, 3×2 or other generic grid.
 
-Do not require a full-slide timeline. If chronology needs more space, paginate
-into continuation slides while preserving card order.
+Required:
+- chronological direction is visually explicit through a line/axis/connector and ordered nodes;
+- dates/times are visible at the relevant timeline positions;
+- the current week/sprint position is visibly marked;
+- status uses symbol + text + semantic color;
+- the nearest consequential deadline receives stronger hierarchy;
+- continuation slides preserve chronological continuity when needed.
 
-Nearest-focus items use the same card component standard, with stronger hierarchy
-for the nearest consequential deadline.
+If the timeline becomes dense, paginate or segment the chronology. Never solve
+density by converting it into an unrelated dashboard/grid.
 
 
 ---
 
 ## 5. CARD GRIDS — MAXIMUM DENSITY, NOT TARGET
+
+### Meeting-point geometry precedence — hard rule
+
+Before choosing a slide layout, resolve the active meeting-point contract.
+
+Precedence:
+1. meeting-point-specific geometry in the Monday-meeting structure/content authorities;
+2. registered slide-level exceptions;
+3. global responsive card/grid fallback.
+
+The global design authority may style a specialized format but may not replace
+its semantic geometry. A timeline remains a timeline; a dependency view remains
+a dependency view; a vertical priority sequence remains vertical; a
+chronological day/plan sequence remains chronological.
 
 ### Meeting point 9: vertical priority sequence
 
