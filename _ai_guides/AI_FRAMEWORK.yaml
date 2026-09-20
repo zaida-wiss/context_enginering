@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.8
+version: 1.9
 metadata:
   type: global_authority
   critical: true
@@ -276,6 +276,15 @@ project_aware_technical_advisory:
     load_only_context_needed_to_evaluate_material_project_interactions: true
     do_not_load_all_project_activity_by_default: true
   evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
+
+project_work_analysis:
+  authority: "_ai_guides/PROJECT_WORK_ANALYSIS.md"
+  scope: global
+  rule: >
+    Use the shared project-work analysis authority for dependency, collision,
+    ownership-aware sequencing and evidence reconstruction across coding,
+    issue work, review, sprint planning and reporting. Task-specific outputs
+    consume this analysis and must not create competing reasoning models.
 
 historical_context_and_pre_implementation:
   purpose: >
