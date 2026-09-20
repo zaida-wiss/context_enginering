@@ -30,3 +30,24 @@ continuity:
     Open work, blockers, risks, dependencies and other still-current facts remain
     eligible when verified as current.
   carry_current_open_state_across_boundary: true
+
+planning_availability:
+  project_work_days:
+    - monday
+    - tuesday
+    - wednesday
+    - thursday
+  non_project_days:
+    - friday
+    - saturday
+    - sunday
+  available_project_days_per_sprint: 4
+  hard_rule: >
+    Sprint planning, workload distribution, capacity reasoning and planning
+    proposals must never count Friday, Saturday or Sunday as available project
+    work time. Project work is planned only Monday through Thursday.
+  numeric_capacity_rule: >
+    Four eligible project-work days does not imply any fixed number of hours.
+    Never infer hours per day, percentage availability, velocity or individual
+    capacity. Use verified availability, absence, meetings and estimates from
+    registered sources; otherwise keep numeric capacity unknown.
