@@ -801,6 +801,35 @@ def main():
         ok = False
     checks.append(result(ok, "merged PR cards preserve merge/review identity and a quiet lower-right merge timestamp", "merged PR metadata can disappear or timestamp can become visually dominant"))
 
+    print("\nINVARIANT 21: Source Symbol Inline + Full Explanation in Slide Margin")
+    ok = True
+    try:
+        card = read_text("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        required = (
+            "Full source labels are rendered once in the physical slide's reserved source margin/footer.",
+            "slide source margin/footer deduplicates every source symbol used",
+            "slide_margin_source_full_label_missing_count == 0",
+            "inline_symbol_slide_margin_source_mismatch_count == 0",
+            "physical slide margin/footer deduplicates the used source symbols",
+        )
+        joined = card + "\n" + gate
+        if not all(token in joined for token in required):
+            print("❌ provenance contract does not preserve inline symbol → full slide-margin explanation")
+            ok = False
+        stale = (
+            "each card repeats every used symbol with its full text label",
+            "card_bottom_provenance_full_label_missing_count == 0",
+            "card_bottom_provenance_symbol_text_mismatch_count == 0",
+        )
+        if any(token in joined for token in stale):
+            print("❌ stale card-level long provenance labels conflict with slide-margin source explanation")
+            ok = False
+    except Exception as exc:
+        print(f"❌ source-symbol/margin inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "source symbols stay inline while full source explanations live in the slide margin/footer", "long source labels can crowd cards or source symbols can lose their explanation"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
