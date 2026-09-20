@@ -5,7 +5,7 @@ metadata:
   type: rule
   critical: true
   enforced: always
-  version: 2.0
+  version: 2.1
 ---
 
 # Data integrity contract
@@ -22,7 +22,7 @@ clear verification state.
 
 A factual data point is ready for use when all applicable conditions are met:
 
-- **Source:** the source is registered in `data/SOURCES.yaml`
+- **Source:** the source is registered in the selected project's source registry resolved through its project manifest
 - **Access method:** the access method is registered for that source
 - **Verification:** the acquisition result is recorded in the current data-acquisition receipt
 - **Fallback order:** registered fallbacks are followed in their defined order when needed
@@ -101,7 +101,7 @@ The surrounding files have separate roles:
 
 - `AUTHORITY_REGISTRY.yaml` identifies which files own each rule category
 - `SYSTEM_CONTRACT.yaml` decides execution flow and STOP/CONTINUE gates
-- `data/SOURCES.yaml` owns source definitions, access methods and fallback order
+- the selected project's registered source registry owns source definitions, access methods and fallback order
 - `data/DATA_ACQUISITION_CONTRACT.yaml` owns the acquisition procedure
 - `design/PROVENANCE_AND_AI_LABELING.md` owns visual/source labeling
 
@@ -123,5 +123,5 @@ ai_interpretation_is_labeled == true
 ---
 
 **Status:** ACTIVE
-**Version:** 2.0
-**Last updated:** 2026-09-18
+**Version:** 2.1
+**Last updated:** 2026-09-20
