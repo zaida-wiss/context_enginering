@@ -189,7 +189,7 @@ tasks:
       - "logical_destinations.project.testing"
       - "logical_destinations.project.team_tone_and_collaboration"
     source_refs:
-      - "registries.external_sources"
+      - "logical_destinations.selected_project.source_registry"
     output_expectations:
       - "verified current goal/plan when available"
       - "explicit source provenance"
