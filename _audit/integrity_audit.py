@@ -872,27 +872,40 @@ def main():
         ok = False
     checks.append(result(ok, "AI contributes with senior engineering bird's-eye judgment while humans retain decisions", "AI can regress to passive execution/status repetition or overclaim human authority"))
 
-    print("\nINVARIANT 24: Point 1 Six-Card First Attempt")
+    print("\nINVARIANT 24: Project-Owned Presentation Geometry")
     ok = True
     try:
         visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
         overflow = read_text("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md")
-        detail = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
-        required = (
-            "MUST first attempt a six-card `3×2` composition",
-            "use fewer than six only after the six-card attempt fails a measured fit/readability/render check",
-            "6 merge cards must first be rendered/tested as 3×2",
-            "first compose and measure a 3×2 six-card physical slide",
-            "do not assume six cards are too dense before measuring them",
+        avanza = read_text("projects/avanza/presentation/AVANZA_PRESENTATION_SYSTEM.md")
+        global_required = (
+            "card capacity, slot orientation and pagination are owned by the active project presentation authority",
+            "the grid/slot geometry registered by the active project presentation authority",
+            "design fidelity is part of fit",
         )
-        joined = visual + "\n" + overflow + "\n" + detail
-        if not all(token in joined for token in required):
-            print("❌ point-1 generator can split six grounded cards before testing the canonical 3×2 layout")
+        avanza_required = (
+            "2 columns × 3 rows",
+            "six positions are spatially reserved",
+            "one ordinary card occupies one normal slot",
+        )
+        joined_global = visual + "\n" + overflow
+        if not all(token in joined_global for token in global_required):
+            print("❌ global presentation rules can override project-owned card geometry")
+            ok = False
+        if not all(token in avanza for token in avanza_required):
+            print("❌ Avanza presentation authority lost its fixed 2-column × 3-row ordinary-card contract")
+            ok = False
+        stale_global = (
+            "MUST first attempt a six-card `3×2` composition",
+            "6 merge cards must first be rendered/tested as 3×2",
+        )
+        if any(token in joined_global for token in stale_global):
+            print("❌ stale global 3×2 rule conflicts with project-owned geometry")
             ok = False
     except Exception as exc:
-        print(f"❌ point-1 six-card inspection failed: {exc}")
+        print(f"❌ project-owned geometry inspection failed: {exc}")
         ok = False
-    checks.append(result(ok, "point 1 attempts and measures six cards in 3×2 before lower-density pagination", "point 1 can regress to unnecessary 4+2 pagination"))
+    checks.append(result(ok, "global layout delegates card geometry while Avanza preserves its fixed 2-column × 3-row contract", "project presentation geometry can be overridden by stale global layout rules"))
 
     print("\nINVARIANT 25: Presentation Visual Fidelity Gate")
     ok = True
