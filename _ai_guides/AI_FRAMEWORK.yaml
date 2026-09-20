@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.3
+version: 1.4
 metadata:
   type: global_authority
   critical: true
@@ -144,6 +144,31 @@ project_aware_coding_assistance:
       only provide a patch. Explain the important why behind the recommendation,
       where responsibility belongs, what pattern or principle is involved, and
       how the team can recognize similar situations later.
+    source_transparency:
+      required_for_material_best_practice_recommendations: true
+      reasoning_chain:
+        - source_evidence
+        - engineering_principle_supported_by_the_evidence
+        - relevant_project_context
+        - ai_reasoning_that_connects_principle_to_project
+        - recommendation
+      required_output:
+        - what_is_recommended
+        - why_it_is_recommended
+        - why_it_fits_this_project
+        - maturity_classification
+        - sources_or_evidence_used
+        - relevant_tradeoffs
+      attribution_rules:
+        - state_what_the_source_directly_supports
+        - distinguish_source_claims_from_ai_inference
+        - do_not_hide_ai_judgment_behind_the_phrase_best_practice
+        - make_sources_specific_enough_for_the_team_to_verify
+        - acknowledge_material_source_disagreement_or_uncertainty
+      pedagogical_goal: >
+        The team should be able to inspect the evidence, challenge the AI's
+        interpretation, and reuse the underlying engineering reasoning in later
+        coding decisions.
     avoid_unnecessary_lecture: true
     adapt_depth_to_task_and_user_need: true
   local_fix_exception:
