@@ -1,0 +1,85 @@
+---
+name: team_milestones
+description: Critical deadlines and milestones for Team 1 (Chas Challenge 2026)
+metadata:
+  source: CHAS course schedule
+  timezone: Europe/Stockholm
+  updated: 2026-09-16
+---
+
+milestones:
+  - id: "cto-underlag"
+    title: "CTO-underlag"
+    due_date: "2026-09-24"
+    due_time: "16:00"
+    week: "V6"
+    source: "course_deadline"
+    verified: true
+    description: "CTO material delivery"
+    submission: "Canvas"
+
+  - id: "demo-recording"
+    title: "Inspelad demo-repetition"
+    due_date: "2026-10-01"
+    due_time: "16:00"
+    week: "V7"
+    source: "course_deadline"
+    verified: true
+    description: "Recorded demo rehearsal"
+    submission: "Canvas"
+
+  - id: "kvaldemo-plan"
+    title: "Kvaldemo-plan"
+    due_date: "2026-10-15"
+    due_time: "17:00"
+    week: "V9"
+    source: "course_deadline"
+    verified: true
+    description: "Quality demo plan"
+    submission: "Canvas"
+
+  - id: "kvaldemo-live"
+    title: "KVALDEMO — Live för Kund"
+    due_date: "2026-10-22"
+    due_time: "09:00-14:15"
+    week: "V10"
+    source: "course_deadline"
+    verified: true
+    description: "Quality demo live for customer"
+    location: "Zoom"
+
+  - id: "omtagsplan"
+    title: "Omtagsplan"
+    due_date: "2026-10-26"
+    due_time: "16:00"
+    week: "V11"
+    source: "course_deadline"
+    verified: true
+    description: "Rework/revision plan"
+    submission: "Canvas"
+
+  - id: "final-delivery"
+    title: "SLUTLEVERANS"
+    due_date: "2026-11-04"
+    due_time: "15:00"
+    week: "V12"
+    source: "course_deadline"
+    verified: true
+    description: "Final delivery deadline"
+    submission: "Canvas"
+
+  - id: "finalday"
+    title: "FINALDAG"
+    due_date: "2026-11-05"
+    due_time: "09:00-12:00"
+    week: "V12"
+    source: "course_deadline"
+    verified: true
+    description: "Final competition day (if qualified)"
+    location: "Zoom"
+
+current_deadline:
+  next: "cto-underlag"
+  days_until: 8
+  date: "2026-09-24"
+  critical: true
