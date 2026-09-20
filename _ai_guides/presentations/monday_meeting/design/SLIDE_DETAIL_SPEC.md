@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.3
+  version: 3.4
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -126,7 +126,7 @@ Analysis and proposals must not share the same AI icon.
 
 A Monday-meeting deck is not complete if it only reports status. It must also help the team plan the next work period.
 
-For **Frontend, Backend, Native and Cross-team**, derive an actionable planning recommendation from verified project data whenever enough evidence exists.
+For **every team/workstream registered by the selected project, plus cross-team work when applicable**, derive an actionable planning recommendation from verified project data whenever enough evidence exists.
 
 The recommendation must answer, as far as evidence permits:
 1. **Vad bör tas först?** — work that removes a blocker, unlocks another team, protects a deadline, or closes a critical core-flow gap.
@@ -140,12 +140,9 @@ Use `🔎 AI-analys` for the reasoning and `⭐ AI-förslag` for the recommended
 
 ### Four-perspective planning coverage
 
-Planning analysis must consider these perspectives when relevant:
-
-- Frontend
-- Backend
-- Native/System
-- Cross-team
+Planning analysis must consider every team/workstream registered by the selected
+project when relevant, plus cross-team/integration work when it genuinely spans
+registered ownership boundaries.
 
 This is a **coverage requirement**, not a page-layout requirement.
 
@@ -207,7 +204,7 @@ PL during the current week.
 
 Content:
 - meeting date
-- `Avanza Team 1`
+- selected project's registered display name
 - active sprint period resolved from the request timestamp
 - sprintfokus, grounded in verified project data
 - every verified school task/deadline that falls in or materially affects the current week
@@ -276,8 +273,8 @@ documentation:
 5. `🛠` documented submission method, meeting format, required artefact or execution instructions
 
 Each answer retains source-level provenance. Do not derive `Varför` or `Hur`
-from the task title alone. Search the registered schedule, milestones, roadmap,
-current-sprint context and other registered `_memory`/data documentation.
+from the task title alone. Search the selected project's registered schedule, milestones, roadmap,
+current-sprint context and other registered project/data documentation.
 
 If one answer remains unavailable after source acquisition, keep the task on the
 cover and retain the corresponding icon with an explicit warning, for example:
