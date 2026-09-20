@@ -522,6 +522,34 @@ Manual checks:
 
 ---
 
+## 12A. TEAM-PLAN PRIORITY SANITY CHECK
+
+Before delivery, validate that team-confirmed priorities have been independently
+checked against available verified planning evidence rather than accepted from
+the meeting protocol as automatic priority truth.
+
+Required:
+
+```text
+team_priority_without_independent_sanity_check_count == 0
+material_priority_misalignment_without_ai_headsup_count == 0
+ai_headsup_without_conflicting_evidence_count == 0
+ai_headsup_without_source_provenance_count == 0
+meeting_decision_silently_rewritten_by_ai_count == 0
+```
+
+Checks:
+- `👥 ✅ Mötesprotokoll` means "the team confirmed this", not "this is objectively the correct priority";
+- compare team ordering against deadlines/course requirements, sprint goals,
+  dependencies/blockers, risks, actual repository/PR/issue state, cross-team
+  constraints and documented capacity when those sources are available;
+- a material mismatch renders `🔎 AI-analys — HEADS-UP` near the affected planning content;
+- the heads-up names the mismatch and likely consequence and cites the evidence;
+- a changed order/action is `⭐ AI-förslag`, never disguised as a team decision;
+- no heads-up is invented when the evidence does not support a material concern.
+
+---
+
 ## 12B. POINT 9 — VERTICAL PRIORITY VIEW
 
 Required:
