@@ -92,7 +92,7 @@ Never modify an authority merely to preserve a stale example.
 
 `context_enginering` owns presentation instructions.
 
-`chas-challenge-2026/avanza-team1` is a **project-data source only** for presentations.
+The registered project repository is a **project-data source only** for presentations.
 
 Allowed project data includes:
 - issues
