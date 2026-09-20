@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.4
+  version: 5.5
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -31,15 +31,13 @@ Authority order:
 Required totals:
 - total merged PRs
 - total open PRs
-- total commits to develop
+- total relevant commits to the selected project's registered integration/collection branches
 - total open assigned/active issues
 
 Required classification:
-- Frontend
-- Backend
-- Native
-- Cross-team
-- Other
+- every team/workstream registered by the selected project
+- cross-team/integration work when applicable
+- other/unclassified only when evidence cannot map the item safely
 
 Checks:
 
@@ -203,11 +201,10 @@ Manual checks:
 - the cover names the current sprint/week and the verified topic to handle with PL
 - when a current-week PL/teamavstämning is verified, its primary card visibly contains all three meanings `🎯 Vad/fokus`, `🕒 När`, `💡 Varför`
 - generic cards such as `Syfte`, `AI-läge`, `Viktigt nu`, status metrics or decorative summaries may appear only after all mandatory PL/school/deadline content is present; they never replace it
-- the sprint period is the Monday 09:00–next Monday 09:00 interval containing the request timestamp
+- the sprint period is resolved from the selected project's registered sprint-cadence authority using the request timestamp
 - meeting point 2 renders a chronological course/project timeline with an explicit current-week marker
 - the point-2 timeline contains no blocker, dependency or risk cards; those remain in points ⑥ and ⑦
-- for a request on 2026-09-19, the visible active sprint interval begins `14 september` and ends `21 september 2026`
-- a Monday 08:58 request still shows the sprint ending at 09:00 that day
+- boundary behavior follows the selected project's registered cadence exactly; regression fixtures may test concrete timestamps without making those dates global presentation rules
 - meeting point 1 contains no factual activity after the actual acquisition cutoff
 - the deck is framed as `Sprint in progress`, not as a retrospective for a closed sprint
 - points 3–5 and 9 cover actionable remaining work through the displayed sprint end
@@ -215,7 +212,7 @@ Manual checks:
 - every school task/deadline in or affecting the week answers `Vad`, `När`, `Var`, `Varför`, `Hur`
 - deadline meaning/consequence is visible under `Varför`
 - submission, meeting or execution method is visible under `Hur`
-- each answer is grounded in registered `_memory`/data documentation
+- each answer is grounded in the selected project's registered context/data sources
 - any missing answer remains visible as `⚠ [fält] kunde inte verifieras`
 - an AI interpretation is separated as `🔎 AI-analys` and never substitutes for a verified answer
 - if the cover cannot fit accessibly, the five-question content continues on `⓪a`; it is never dropped
@@ -233,13 +230,12 @@ point_1_unverified_collection_activity_presented_as_merge_count == 0
 ```
 
 - every physical slide repeats the primary heading `✏️ 1. Avklarat sedan förra mötet`
-- `Mergat till develop`, `Mergat till C/C++-Native`, `Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles only
-- every `develop` page, including continuations, uses the exact subtitle `Mergat till develop`; generic text such as `Mergat under sprinten - del 2` is forbidden
-- `C/C++-Native` always gets its own physical slide sequence directly after the `develop` sequence, with the exact subtitle `Mergat till C/C++-Native`; use a verified empty/incomplete state when needed
-- `Java-Development-Environment` always gets its own physical slide sequence after `C/C++-Native`, with the exact subtitle `Mergat till Java-Development-Environment`; use a verified empty/incomplete state when needed
+- the selected project's registered primary-integration subtitle, every registered collection-branch subtitle, and `Teamsammanfattning` are subtitles only
+- every primary-integration page, including continuations, uses the exact subtitle registered by the selected project's repository-flow config; generic replacement subtitles are forbidden
+- every collection branch registered by the selected project's repository-flow config gets its own physical slide sequence after the primary integration sequence, in registered project order, using its registered exact subtitle; use a verified empty/incomplete state when needed
 - collection-branch slide inclusion is decided from verified merge evidence for that target branch in the sprint interval; ordinary direct commits/branch activity are not relabeled as merges
 - if a collection branch has relevant direct work but no verified merge, that work may inform later active-work/planning slides but does not create a false `Mergat till ...` point-1 slide
-- collection-branch merges may not be folded into the `develop` pages or only mentioned in the team summary
+- collection-branch merges may not be folded into the primary-integration sequence when the selected project's repository-flow rule requires a separate sequence pages or only mentioned in the team summary
 - no page-specific subtitle may replace the official meeting-point heading
 - detailed cards in meeting point 1 contain completed work only
 - six cards is the capacity of one physical slide, not a total cap for meeting point 1
