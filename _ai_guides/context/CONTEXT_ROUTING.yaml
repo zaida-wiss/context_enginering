@@ -4,7 +4,7 @@ description: Minimal router for classifying and placing user-provided project co
 metadata:
   type: process
   critical: true
-  version: 2.1
+  version: 2.2
 ---
 
 # Context ingestion router
@@ -77,20 +77,27 @@ Missing fields remain unset until they are known.
 
 Resolve paths through `CONTEXT_REGISTRY.yaml`.
 
-Canonical logical routing:
+Canonical logical routing is project-aware:
 
 ```yaml
-schedule: data.course_schedule
-deadline: data.course_milestones
-milestone: data.course_roadmap
-sprint_goal: memory.current_sprint_schema
-roadmap: data.course_roadmap
-team_roster: memory.team_roster
-decision: decisions.confirmed
-manual_source: data.manual
+schedule: selected_project.manifest -> context.course.schedule.path
+deadline: selected_project.manifest -> context.course.deadlines.path
+milestone: selected_project.manifest -> context.course.milestones.path
+sprint_goal: selected_project.manifest -> context.sprint_cadence.path or a narrower registered project planning path
+roadmap: selected_project.manifest -> context.course.roadmap.path
+team_roster: selected_project.team_roster
+decision: selected_project.manifest -> narrowest registered project decision domain when project-specific
+global_decision: decisions.confirmed
+manual_source: selected_project.source_registry or the narrowest registered project-owned source/material domain
 ```
 
-The registry maps these logical destinations to physical repository paths.
+Project-owned facts MUST NOT be routed into the global `memory` or `data` domains
+merely because an older logical shorthand exists. Resolve the selected project
+first, then use only capabilities declared by its manifest. If the needed
+project-owned category is not declared, propose/register the narrowest reusable
+project capability instead of silently falling back to a global dumping ground.
+
+The registry maps stable global destinations and selected-project resolvers.
 
 ## Conflict handling
 
