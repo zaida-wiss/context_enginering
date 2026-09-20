@@ -1,7 +1,7 @@
 ---
 name: project_work_analysis
 description: Global evidence-driven project analysis for implementation, planning, review and reporting
-version: 1.2
+version: 1.3
 metadata:
   type: global_ai_authority
   scope: all_projects
@@ -212,6 +212,18 @@ These are comprehension dimensions, not mandatory headings. Do not mechanically
 repeat five labels when a shorter explanation teaches the important model more
 clearly. Explain the highest-value concepts first and avoid repeating context the
 user already understands.
+
+Preserve the useful teaching intent without imposing a fixed response template:
+- make material source/evidence choices transparent when they affect the answer;
+- explain the engineering reasoning needed for the team to reuse the lesson;
+- connect material advice to project goals, constraints, risks or system effects;
+- compare meaningful alternatives when a choice exists;
+- use questions or teach-back only when it genuinely improves learning, not as
+  a mandatory ending to every answer.
+
+Decision record: on 2026-09-20 the user selected the adaptive system-first model
+over the legacy rule requiring fixed WHAT/HOW/WHY/NEXT headings in every answer.
+The legacy fixed-heading requirement must not remain active.
 
 ## Reuse by outputs
 
