@@ -1,0 +1,154 @@
+---
+name: ai_best_practice_evidence_policy
+description: Global evidence and freshness policy for AI architecture and context-engineering recommendations
+version: 1.0
+metadata:
+  type: global_evidence_authority
+  critical: true
+  status: active
+  normative: true
+
+purpose: >
+  Make claims about AI best practice, emerging practice and experimental
+  approaches traceable, current and discussable. The policy governs how the AI
+  researches, classifies and explains recommendations; it does not make external
+  sources repository authorities.
+
+source_hierarchy:
+  - rank: 1
+    class: primary_authoritative
+    prefer:
+      - official_documentation_for_the_relevant_model_platform_or_tool
+      - official_engineering_guidance
+      - official_specifications_and_standards
+      - original_research_or_technical_reports
+    use_for:
+      - current_capabilities
+      - supported_instruction_and_agent_patterns
+      - platform_constraints
+      - documented_recommended_practices
+
+  - rank: 2
+    class: reproducible_technical_evidence
+    prefer:
+      - peer_reviewed_or_original_research
+      - reproducible_evaluations
+      - maintained_reference_implementations
+      - well_documented_open_source_implementations
+    use_for:
+      - comparing_approaches
+      - validating_behavior_beyond_vendor_claims
+      - identifying_patterns_with_technical_evidence
+
+  - rank: 3
+    class: practitioner_signal
+    examples:
+      - engineering_case_studies
+      - conference_material
+      - experienced_practitioner_reports
+      - high_quality_technical_discussion
+    use_for:
+      - detecting_emerging_patterns
+      - discovering_tradeoffs_and_failure_modes
+    limitation: >
+      Practitioner adoption or popularity is a signal, not proof of best practice.
+
+source_selection:
+  rules:
+    - prefer_sources_closest_to_the_claim
+    - prefer_current_sources_for_fast_changing_capabilities
+    - prefer_primary_sources_over_summaries_when_available
+    - cross_check_material_claims_when_sources_or_results_disagree
+    - distinguish_vendor_recommendation_from_independent_evidence
+    - do_not_treat_search_rank_popularity_or_recency_as_quality_by_itself
+    - do_not_treat_one_vendor_pattern_as_universal_without_support
+  community_sources:
+    role: discovery_and_practitioner_signal
+    authoritative_by_default: false
+
+maturity_classification:
+  established_best_practice:
+    evidence_expectation: >
+      Strong authoritative or reproducible support plus evidence that the
+      practice is sufficiently stable for the relevant use case.
+  emerging_practice:
+    evidence_expectation: >
+      Current credible evidence or implementation experience supports the
+      approach, but adoption, evidence or interfaces are still evolving.
+  experimental_proposal:
+    evidence_expectation: >
+      Plausible forward-looking approach with limited evidence or project-specific
+      validation still required.
+    required_behavior:
+      - label_as_experimental
+      - define_how_to_test_it
+      - define_success_or_failure_evidence_when_practical
+
+recommendation_contract:
+  for_material_architecture_recommendations:
+    required:
+      - recommendation
+      - why
+      - maturity_classification
+      - evidence_basis
+      - relevant_tradeoffs
+      - migration_or_adoption_cost_when_material
+      - project_fit
+    when_multiple_meaningful_options_exist:
+      - compare_options
+      - explain_what_each_optimizes_for
+      - identify_reversible_vs_hard_to_reverse_choices
+      - preserve_user_decision_authority
+
+freshness:
+  fast_changing_topics:
+    examples:
+      - model_capabilities
+      - agent_interfaces
+      - tool_use
+      - context_management
+      - instruction_discovery
+      - coding_agent_features
+    rule: >
+      Verify current authoritative material before making a material claim when
+      live research is available. Record the date or version when it materially
+      affects the recommendation.
+  stable_topics:
+    rule: >
+      Re-research when the decision depends on a possibly changed capability,
+      specification or ecosystem convention.
+
+context_engineering_quality:
+  guiding_principle: >
+    Prefer the smallest relevant high-signal context that reliably produces the
+    desired behavior. Separate global behavior, project context and task-specific
+    context so agents do not receive irrelevant project facts by default.
+  evaluate:
+    - context_relevance
+    - instruction_clarity
+    - ambiguity
+    - duplication
+    - source_provenance
+    - project_isolation
+    - discoverability
+    - verification_and_evals
+    - maintenance_cost
+    - portability_across_ai_tools
+
+anti_patterns:
+  - call_something_best_practice_without_evidence
+  - equate_newest_with_best
+  - equate_popular_with_best
+  - hide_tradeoffs
+  - present_experimental_practice_as_established
+  - copy_vendor_specific_structure_without_checking_project_fit
+  - overload_global_context_with_task_or_project_specific_details
+  - silently_replace_repository_architecture_from_external_advice
+
+repository_change_rule: >
+  External evidence informs recommendations. It does not override active
+  repository rules or the conflict/user-decision gates. Material architecture
+  changes follow preservation-first migration and verification.
+
+---
+status: ACTIVE
