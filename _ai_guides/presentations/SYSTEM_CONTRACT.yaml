@@ -259,20 +259,6 @@ responsive_visual_system:
   absolute_accessibility: "WCAG 2.2 AA"
   readability_authority: "design/READABILITY_HARD_RULES.md"
 
-  editable_text:
-    rule: >
-      Presentation-authored meeting content must remain native editable/selectable
-      text in the PPTX. Do not rasterize or bake required meeting text into images
-      merely to preserve layout.
-    image_text_exception: >
-      Text naturally contained in a source screenshot, diagram asset or other
-      referenced image may remain image content, but it never substitutes for
-      required presentation-authored accessible text.
-    forbidden:
-      - "rasterizing required slide text to solve fit"
-      - "converting required meeting text to image-only content"
-      - "using flattened text as a substitute for responsive layout"
-
   slide_title:
     preferred_pt: 36
     minimum_pt: 36
