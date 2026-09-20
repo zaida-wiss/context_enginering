@@ -4,7 +4,7 @@ description: Canonical acquisition method for required datasets — deterministi
 metadata:
   type: process
   critical: true
-  version: 1.4
+  version: 1.5
 ---
 
 # DATA ACQUISITION CONTRACT
@@ -40,7 +40,7 @@ test_mode_activation:
 required_datasets:
   project_context:
     classification: "REQUIRED (foundation for presentation metadata)"
-    canonical_method: "Read from _memory/presentations/"
+    canonical_method: "Resolve project context from PROJECTS.yaml -> selected project manifest -> registered context entries"
 
     datasets:
       schedule:
@@ -373,7 +373,7 @@ required_datasets:
       1_collect_all_branches: "Use GITHUB_BRANCHES source: GET /repos/{owner}/{repository}/branches"
 
       2_CRITICAL_identify_team_collection_branches: >
-        Teams often use dedicated branches as collection points BEFORE merging to develop.
+        Projects may use dedicated branches as collection points BEFORE merging to the registered primary integration branch.
         These MUST be scanned for complete risk/blocker/capacity analysis.
 
         REGISTERED BRANCHES (MANDATORY to scan):
@@ -478,10 +478,10 @@ required_datasets:
   collection_branches_and_merges:
     source_type: "derived_filtering"
     note: "NOT an external source; filtering of GITHUB_BRANCHES + GITHUB_COMMITS by known team branches"
-    classification: "SECONDARY (track team progress before develop integration)"
+    classification: "SECONDARY (track team progress before primary integration)"
     purpose: >
       Track work merged to team collection branches (e.g., a registered collection branch for one work area,
-      another registered collection branch for another work area). This represents team progress before integration to develop.
+      another registered collection branch for another work area). This represents team progress before primary integration.
 
     sources_used:
       - GITHUB_BRANCHES (to identify collection branches)
@@ -511,8 +511,8 @@ required_datasets:
         3. Source branch + commit set (same changes)
 
       Rule: If same work (same linked issue OR same commit ancestry)
-      appears as both collection-branch AND develop delivery,
-      show ONLY the develop delivery (later in timeline).
+      appears as both collection-branch AND primary-integration delivery,
+      show ONLY the primary-integration delivery (later in timeline).
 
       IMPORTANT: PR numbers alone are INSUFFICIENT.
       A collection-branch PR and a later integration PR may represent the same work.
