@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.9
+version: 3.0
 metadata:
   type: registry
   critical: true
@@ -168,18 +168,30 @@ tasks:
 
   coding_assistance:
     purpose: "Help with code while checking the relevant surrounding project system."
-    load:
-      - "logical_destinations.global.ai_framework"
-      - "logical_destinations.global.cognitive_accessibility_neuroinclusive_design"
-      - "logical_destinations.global.ai_best_practice_evidence_policy"
-      - "logical_destinations.project.team_standards"
-      - "logical_destinations.project.testing"
-      - "logical_destinations.project.goals_and_sprint_planning"
-      - "logical_destinations.project.risk_management"
-      - "logical_destinations.project.dependencies_and_capacity"
-      - "logical_destinations.project.cross_layer_awareness"
-      - "logical_destinations.project.technical_debt"
-      - "logical_destinations.project.team_tone_and_collaboration"
+    context_loading:
+      strategy: progressive_minimum_sufficient
+      required_core:
+        - "logical_destinations.global.ai_framework"
+        - "logical_destinations.project.team_standards"
+        - "logical_destinations.project.testing"
+      conditional:
+        accessibility_or_cognitive_design_relevant:
+          - "logical_destinations.global.cognitive_accessibility_neuroinclusive_design"
+        material_best_practice_or_architecture_recommendation:
+          - "logical_destinations.global.ai_best_practice_evidence_policy"
+        goal_or_delivery_context_material:
+          - "logical_destinations.project.goals_and_sprint_planning"
+        risk_material:
+          - "logical_destinations.project.risk_management"
+        dependency_capacity_or_sequencing_material:
+          - "logical_destinations.project.dependencies_and_capacity"
+        cross_layer_or_integration_material:
+          - "logical_destinations.project.cross_layer_awareness"
+        technical_debt_material:
+          - "logical_destinations.project.technical_debt"
+        team_interaction_or_collaboration_material:
+          - "logical_destinations.project.team_tone_and_collaboration"
+      rule: "Load conditional authorities only when their domain can materially change the answer or action."
     behavior:
       - "solve the user's immediate coding problem"
       - "inspect relevant contract/integration context when the change crosses a boundary"
