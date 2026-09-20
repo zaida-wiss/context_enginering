@@ -61,8 +61,8 @@ Enligt den verifierade projektdesignen behöver komponenten:
 [Din implementering här]
 
 ### Design-Checklist
-- [ ] Matchar mockup-layout
-- [ ] Använder rätt färger (från mockup)
+- [ ] Matchar verifierad designkontext
+- [ ] Använder dokumenterade färger; visuella detaljer från bild endast om asseten verifierats
 - [ ] Validering enligt spec
 - [ ] CSS modules (en per komponent)
 
@@ -150,13 +150,13 @@ Innan du skickar frontend-hjälpen, kontrollera:
 → Läs mockup-specen, ge kod + design-checklist + links
 
 **"Varför denna design?"**  
-→ Referera till mockup-bilden och säg "Enligt mockup XX..."
+→ Referera till den verifierade designkällan. Hänvisa till en bild endast om asseten faktiskt finns och har inspekterats.
 
 **"Kan jag göra det annorlunda?"**  
-→ Säg: "Mockup visar detta. Om det behöver ändras, uppdatera mockup-bilden först, sen revidera jag koden."
+→ Beskriv vad den verifierade designkontexten kräver och vad som kan ändras. Kräv inte uppdatering av en bild som saknas.
 
 **"Det fungerar inte som mockup visar"**  
-→ Debug utifrån mockup-specen, ge korrigerad kod
+→ Verifiera först om mockup-asseten finns. Om den saknas, debugga mot dokumenterad designkontext och var tydlig med att visuell jämförelse inte kan göras.
 
 ---
 
