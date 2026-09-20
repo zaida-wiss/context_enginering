@@ -28,8 +28,29 @@ current_sprint:
   end_date: null
 
   # FETCH: Sprint duration in days
-  # SOURCE: Registered project sprint cadence
+  # SOURCE: Selected project's registered sprint cadence
   duration_days: null
+
+  # FETCH: Exact sprint boundary rule/timezone from selected project
+  # SOURCE: Selected project's registered sprint cadence
+  boundary:
+    start: null
+    end: null
+    timezone: null
+
+  completed_this_sprint:
+    # DERIVE: verified completed work within [active sprint start, verified data cutoff]
+    items: []
+    reset_at_sprint_boundary: true
+    carry_previous_sprint_items: false
+
+  continuing_current_state:
+    # DERIVE: still-current open work/risk/dependency/blocker state
+    # This is not cleared merely because a sprint boundary is crossed.
+    open_work: []
+    blockers: []
+    risks: []
+    dependencies: []
 
   # FETCH: Current project phase name
   # SOURCE: Google Docs meeting protocol OR GitHub project board
