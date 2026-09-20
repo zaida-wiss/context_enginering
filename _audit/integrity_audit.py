@@ -702,6 +702,43 @@ def main():
         ok = False
     checks.append(result(ok, "presentation authorities preserve navy background, readable type, five-symbol grammar and semantic priority colors", "presentation rendering can regress to black/small text or lose semantic visual cues"))
 
+    print("\nINVARIANT 18: Meeting-Point Geometry Precedes Global Grid")
+    ok = True
+    try:
+        visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        detail = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
+        composition = read_text("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
+        required_visual = (
+            "Meeting-point geometry precedence — hard rule",
+            "meeting-point-specific geometry",
+            "true chronological course/project timeline",
+            "A timeline remains a timeline",
+            "vertical priority sequence remains vertical",
+        )
+        if not all(token in visual for token in required_visual):
+            print("❌ global visual authority can flatten registered meeting-point geometry")
+            ok = False
+        forbidden_point2 = (
+            "Meeting point 2 uses the same responsive card/grid language as the rest of the deck.",
+            "Do not require a full-slide timeline.",
+        )
+        if any(token in visual for token in forbidden_point2):
+            print("❌ stale point-2 generic-grid rule conflicts with chronological timeline authority")
+            ok = False
+        if "Primary visual: chronological course/project timeline — mandatory" not in detail:
+            print("❌ point-2 detail authority lost mandatory chronological timeline")
+            ok = False
+        if "②: a chronological course/project timeline with an explicit current-week marker" not in composition:
+            print("❌ composition architecture lost point-2 timeline contract")
+            ok = False
+        if "⑨ uses vertically stacked execution groups" not in composition:
+            print("❌ composition architecture lost point-9 vertical execution contract")
+            ok = False
+    except Exception as exc:
+        print(f"❌ meeting-point geometry inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "meeting-point-specific geometry overrides the global grid fallback", "generic visual rules can erase timeline/dependency/priority/planning formats"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
