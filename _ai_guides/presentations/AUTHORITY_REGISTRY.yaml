@@ -61,7 +61,8 @@ active_authorities:
     category: acquisition
     owns: mechanical data acquisition and reporting-period filtering
   - rank: 13
-    file: ../../data/SOURCES.yaml
+    project_resolved: source_registry
+    resolve_via: "../../PROJECTS.yaml -> selected project manifest -> context.sources.path"
     category: source_registry
     owns: allowed sources, URLs, access methods and fallback order
 
