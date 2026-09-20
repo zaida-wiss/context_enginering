@@ -1,7 +1,7 @@
 ---
 name: project_work_analysis
 description: Global evidence-driven project analysis for implementation, planning, review and reporting
-version: 1.1
+version: 1.2
 metadata:
   type: global_ai_authority
   scope: all_projects
@@ -25,7 +25,7 @@ Orient across:
 - core user/data/execution flows relevant to the product;
 - registered team ownership and integration boundaries;
 - currently active branches and pull requests across the project;
-- current work that can materially intersect the requested area;
+- current backlog, issues and work that can materially intersect the requested area;
 - important dependencies, blockers, risks and technical debt;
 - relevant project constraints, tests and delivery/integration flow.
 
@@ -81,6 +81,70 @@ Before material implementation or sequencing advice, identify relevant:
 - technical debt that materially changes the implementation choice
 
 Shared files or nearby activity are signals to inspect, not proof of a collision.
+
+## Issue planning gate
+
+Before proposing new issues, first reconstruct the current planning picture from
+the selected project's registered current sources.
+
+Required baseline:
+- current backlog and existing open/relevant issues;
+- active branches and pull requests;
+- architecture, core flows and integration boundaries;
+- registered team ownership;
+- dependencies, blockers and likely collisions;
+- relevant delivery constraints and available project capacity when planning a sprint;
+- current technical debt and debt risks touched by the proposed work.
+
+Before suggesting a new issue, check whether the work:
+- already exists in the backlog or as an issue;
+- is already being implemented or reviewed;
+- duplicates or conflicts with active work;
+- depends on work that should happen first;
+- can safely proceed in parallel;
+- is obsolete because the architecture or project state changed;
+- should instead be a refinement, split or consolidation of existing work;
+- exposes technical debt that needs explicit treatment.
+
+The backlog is evidence, not unquestionable truth. Identify stale, duplicate,
+poorly sequenced or architecture-incompatible backlog items when supported by
+current project evidence.
+
+### Technical-debt early warning
+
+Detect technical debt as early as planning, then keep evaluating it during
+implementation and review.
+
+For each material proposal, classify the relevant debt effect as one of:
+- no_known_debt;
+- debt_risk;
+- creates_debt;
+- reduces_debt.
+
+When debt exists or may be introduced, explain the concrete shortcut, fragility
+or maintenance cost and its likely consequence. Prefer preventing avoidable debt
+before it becomes embedded.
+
+Technical debt is not an automatic stop condition. A deliberate temporary
+compromise may be reasonable, but it must be visible, justified and trackable:
+record why it is accepted, its consequence, and the condition or timing for
+repayment. Do not create cleanup work merely for aesthetic preference.
+
+### Canonical new-issue proposal table
+
+New issue proposals must first be delivered in a decision-friendly comparison
+table using these columns, in this order:
+
+| Priority | Issue proposal | Core flow | Dependencies | Risk/collision | Technical debt | Recommended order | Why now? |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+
+The table is the proposal layer, not the final GitHub issue body. Do not present
+an AI proposal as an already-decided team commitment.
+
+After the user/team selects a proposal for creation, expand it into the
+project's applicable issue format, including clear purpose/problem, scope,
+measurable acceptance criteria, relevant technical context, dependencies and
+readiness information when applicable.
 
 ## Sequencing
 
