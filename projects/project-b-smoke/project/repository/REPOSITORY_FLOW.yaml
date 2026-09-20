@@ -1,0 +1,9 @@
+---
+name: project_b_smoke_repository_flow
+description: Synthetic repository flow for onboarding smoke test
+version: 1.0
+primary_integration:
+  branch: "integration"
+collection_branches: []
+---
+status: ACTIVE
