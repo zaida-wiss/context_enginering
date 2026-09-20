@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.8
+  version: 5.9
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -249,8 +249,11 @@ Every ordinary rendered card must preserve:
 - a modern **frosted-glass / glassmorphism** surface distinct from the navy canvas and from opaque flat panels;
 - a semi-transparent blue/navy tint visually equivalent to the `#263352` / `#2E3B5F` family;
 - a restrained light edge/highlight, approximately the `#60769B` family, to create the frosted-glass boundary;
-- subtle depth through restrained shadow + highlight and/or tonal/transparency layering while preserving WCAG contrast;
-- no heavy black shadow, no opaque charcoal slab and no flat-black card fallback;
+- subtle depth through a restrained **box shadow** + highlight and/or tonal/transparency layering while preserving WCAG contrast;
+- canonical box-shadow character: soft, broad and low-opacity, visually similar to `0 8px 24px rgba(5, 12, 28, 0.18–0.28)`;
+- box shadow must create separation from the canvas without making the card look lifted like a modal/dialog;
+- shadow hue should remain deep navy/blue-black rather than neutral pure black;
+- no heavy black shadow, no hard-edged drop shadow, no opaque charcoal slab and no flat-black card fallback;
 - primary text on the glass surface uses `#F7FAFF` or an equivalent verified light text role; supporting text uses the approved lighter secondary/metadata roles;
 - black or near-black card text on these dark glass surfaces is a visual failure;
 - content-driven responsive geometry: card height/width adapts to wrapped content and required bottom zones;
@@ -595,7 +598,7 @@ This file requires globally:
 - slide-level typography minimums respected
 - background visibly modern navy in the approved `#1E274A` → `#111A33` family; black/near-black fallback count = 0
 - dark-surface black/near-black text count = 0; primary/secondary/metadata text uses approved light palette roles
-- cards preserve the global rounded frosted-glass/glassmorphism treatment, subtle light edge/depth and global contrast/readability gates
+- cards preserve the global rounded frosted-glass/glassmorphism treatment, subtle light edge, soft box-shadow depth and global contrast/readability gates
 - distance-readability pass: ordinary body text targets >= 20 pt and metadata targets >= 18 pt; paginate before compression
 - school/submission cards containing the five required meanings use the canonical symbols `🎯 🕒 📍 💡 🛠` rather than repeated VAD/HUR/VARFÖR/NÄR/VAR labels
 - every rendered urgency/priority state uses both semantic text/symbol and the canonical red/orange/green urgency color
