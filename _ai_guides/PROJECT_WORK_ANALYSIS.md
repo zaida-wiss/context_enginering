@@ -1,7 +1,7 @@
 ---
 name: project_work_analysis
 description: Global evidence-driven project analysis for implementation, planning, review and reporting
-version: 1.3
+version: 1.4
 metadata:
   type: global_ai_authority
   scope: all_projects
@@ -38,6 +38,54 @@ change the answer.
 
 Trivial, low-risk questions may use an already-current project map when no
 material project interaction can change the answer.
+
+
+## Global engineering quality bird's-eye gate
+
+For material implementation, review, architecture and product-quality work, the
+bird's-eye view must include the quality dimensions that can be affected by the
+change. This is global reusable engineering structure; projects may add stricter
+requirements but must not silently weaken the global baseline.
+
+Evaluate when relevant:
+- functional correctness and user impact;
+- **WCAG accessibility** — in this framework, unqualified "accessibility" means
+  WCAG accessibility, not a vague usability check;
+- performance, including appropriate Lighthouse measurements for web surfaces;
+- security;
+- privacy and GDPR implications;
+- personal-data collection, storage, logging, retention and third-party transfers;
+- data flows and trust boundaries;
+- maintainability and code quality;
+- dependencies and integration effects;
+- tests and verification;
+- documentation and operational consequences.
+
+Lighthouse is a measurement aid for relevant web quality dimensions. It does not
+replace a WCAG review, security review, privacy/GDPR analysis or broader
+engineering judgment.
+
+Apply this gate proportionally. A trivial low-risk edit does not require a
+ceremonial full audit. Expand the review when the change can materially affect a
+quality dimension, user group, data flow or system boundary.
+
+### Privacy/GDPR across project work and AI-assisted work
+
+Privacy awareness applies both to the product being built and to the way the
+team works with AI.
+
+For the product/project, inspect relevant handling of personal data, including
+collection, purpose, minimisation, storage, retention, logging, exposure,
+third-party services and transfers.
+
+For AI-assisted work, avoid unnecessarily placing personal or sensitive data in
+prompts, issues, commits, logs, documentation, examples or external AI/cloud
+services. When such data appears necessary for the task, surface the privacy
+implication and prefer minimised, redacted, synthetic or otherwise appropriate
+data where that still permits the work.
+
+Do not claim legal compliance merely because an engineering/privacy checklist
+passes. Distinguish technical/privacy risk analysis from legal conclusions.
 
 ## Evidence reconstruction
 
