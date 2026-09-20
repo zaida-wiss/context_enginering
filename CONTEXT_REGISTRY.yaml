@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.6
+version: 2.7
 metadata:
   type: registry
   critical: true
@@ -17,13 +17,13 @@ domains:
     purpose: "how tasks are performed"
   memory:
     path: "_memory"
-    purpose: "long-lived project knowledge"
+    purpose: "legacy-compatible generic memory/index domain; project-owned long-lived context resolves through the selected project manifest"
   data:
     path: "data"
-    purpose: "live-source registry, manual source material, snapshots and derived data"
+    purpose: "generic repository-held manual material, snapshots and derived data; project-owned source registries resolve through the selected project manifest"
   decisions:
     path: "docs"
-    purpose: "confirmed project decisions and supporting documentation"
+    purpose: "generic decision/documentation domain; project-owned facts remain under the selected project root unless explicitly registered otherwise"
   validation:
     path: "_audit"
     purpose: "repository integrity and authority validation"
