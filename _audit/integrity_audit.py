@@ -793,7 +793,7 @@ def main():
         if not all(token in gate for token in gate_required):
             print("❌ render gate can omit merged-PR identity row or discrete merge timestamp")
             ok = False
-        if "timestamp_not_primary_color_count == 0" in gate or "same primary text color as the title" in gate:
+        if "timestamp_not_primary_color_count == 0" in gate or "relevant timestamp, when present, uses the same primary text color as the title" in gate:
             print("❌ stale timestamp styling still conflicts with quiet timestamp standard")
             ok = False
     except Exception as exc:
