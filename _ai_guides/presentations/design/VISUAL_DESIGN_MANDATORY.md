@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.7
+  version: 5.8
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -143,15 +143,16 @@ own authority rules.
 
 | Element | Hex | Role |
 |---|---|---|
-| Slide background | `#15182E` | canonical calm deep navy base; never black |
-| Card surface | `#1E233B` | primary card surface |
-| Alternate card surface | `#252A45` | optional subtle variation |
-| Decorative card edge | `#33405D` | non-semantic separation |
-| Meaningful neutral divider | `#7F8AA6` | structural meaning when needed |
-| Main text | `#F7F8FC` | titles / primary content |
-| Secondary text | `#D2D7E4` | supporting information |
-| Metadata text | `#B0B8CC` | metadata |
-| Quiet microcopy/timestamp | `#A2ABC0` | tertiary content, still WCAG-safe |
+| Slide background — upper tone | `#1E274A` | modern navy field; never black |
+| Slide background — lower tone | `#111A33` | deeper navy field; never black |
+| Card surface | `#263352` | frosted-glass primary tint |
+| Alternate card surface | `#2E3B5F` | optional frosted-glass variation |
+| Glass highlight / border | `#60769B` | subtle luminous separation, non-semantic |
+| Meaningful neutral divider | `#91A0BC` | structural meaning when needed |
+| Main text | `#F7FAFF` | titles / primary content |
+| Secondary text | `#D8E2F2` | supporting information |
+| Metadata text | `#C3D0E3` | metadata |
+| Quiet microcopy/timestamp | `#B9C6DA` | tertiary content, still WCAG-safe |
 
 ### Four-level text-color hierarchy
 
@@ -186,34 +187,45 @@ on school/submission cards, while the underlying five meanings remain mandatory.
 
 ### Background rendering contract — mandatory
 
-The canonical base is `#15182E`. The rendered slide background must read as
-**modern dark navy**, never black, charcoal-black or near-black.
+The canonical background is a **modern rounded glass-look navy field**, never
+black, charcoal-black or near-black.
 
-Allowed:
-- `#15182E` as the dominant/base field;
-- subtle tonal variation within the same dark-blue/navy family;
-- a restrained gradient, vignette or soft geometric tonal shift when it does
-  not reduce contrast or compete with content.
+Canonical background treatment:
+- use a restrained navy gradient from approximately `#1E274A` to `#111A33`;
+- the lighter `#1E274A` tone should remain visible enough that the deck reads as
+  blue/navy rather than almost black;
+- the darker `#111A33` tone provides depth but must not dominate the entire slide;
+- the gradient may be linear or softly radial, but must remain calm and low-glare.
 
 Required behavior:
-- tonal variation stays visibly blue/navy rather than neutral black;
-- the base color remains recognizable across the deck;
-- decorative shifts are low-contrast and non-semantic;
-- cards remain distinguishable from the background at accessible contrast;
-- if an implementation cannot render the tonal treatment reliably, fall back
-  to solid `#15182E`, never to black.
+- the rendered slide must visibly read as **blue/navy**, not neutral black;
+- tonal variation stays subtle and non-semantic;
+- cards remain visually distinct from the background while preserving WCAG contrast;
+- if an implementation cannot render the gradient reliably, fall back to a solid
+  navy sampled from the canonical range, preferably `#18213E`; never fall back to black;
+- no rendered slide may use `#15182E` as a hard lock if doing so makes the result
+  visually darker than the approved modern navy range.
 
 Forbidden:
 - `#000000` or visually black slide backgrounds;
+- charcoal/graphite fields that read as black;
 - black-to-navy gradients;
 - high-glare neon/bright gradients;
 - decorative texture that reduces text legibility.
 
 Palette rules:
-- same background/card family across the entire deck
-- no black/high-glare cards
-- transparency must preserve contrast
-- actual rendered colors must pass WCAG
+- same modern navy/glass family across the entire deck;
+- no black/high-glare cards;
+- transparency must preserve contrast;
+- actual rendered colors must pass WCAG 2.2 AA;
+- normal text contrast must be >= **4.5:1**;
+- WCAG large text contrast must be >= **3:1**;
+- on dark/navy cards and slide backgrounds, primary/secondary/metadata text must
+  use the approved light palette roles; **black or near-black text is forbidden**;
+- dark text is permitted only on an explicitly light surface where the resulting
+  contrast independently passes WCAG;
+- when a text-color choice is ambiguous on a dark surface, use the approved light
+  text role rather than a dark neutral;
 - priority must never be communicated by color alone; size/weight/spacing and labels support the hierarchy
 
 ---
@@ -234,12 +246,21 @@ collapse to flat rectangular panels merely to increase density.
 
 Every ordinary rendered card must preserve:
 - a visibly rounded silhouette equivalent to approximately **16–20 px** corner radius;
-- a soft dark glass-like surface distinct from both the navy canvas and opaque flat-black panels;
-- subtle depth through restrained shadow/highlight and/or tonal/transparency layering while preserving WCAG contrast;
-- the canonical navy relationship: slide base `#15182E`, card family `#1E233B` / `#252A45`; no black or charcoal substitution;
+- a modern **frosted-glass / glassmorphism** surface distinct from the navy canvas and from opaque flat panels;
+- a semi-transparent blue/navy tint visually equivalent to the `#263352` / `#2E3B5F` family;
+- a restrained light edge/highlight, approximately the `#60769B` family, to create the frosted-glass boundary;
+- subtle depth through restrained shadow + highlight and/or tonal/transparency layering while preserving WCAG contrast;
+- no heavy black shadow, no opaque charcoal slab and no flat-black card fallback;
+- primary text on the glass surface uses `#F7FAFF` or an equivalent verified light text role; supporting text uses the approved lighter secondary/metadata roles;
+- black or near-black card text on these dark glass surfaces is a visual failure;
 - content-driven responsive geometry: card height/width adapts to wrapped content and required bottom zones;
 - all required text remains inside the visible rounded card bounds with approved padding; no text may touch/cross the rounded edge;
 - density changes may resize/reflow cards, but MUST NOT remove corner rounding, glass/depth treatment, padding, required rows or readable hierarchy.
+
+A platform that cannot apply a true backdrop blur MUST still reproduce the
+**visual effect** of frosted glass through semi-transparent navy tint, restrained
+highlight/border, soft depth and controlled tonal layering. True blur is not
+required; the perceived frosted-glass treatment is.
 
 For any project-owned card geometry, **design fidelity is part of fit**. If the
 registered geometry fits only by removing the project's required visual treatment,
@@ -572,8 +593,9 @@ This file requires globally:
 - slide titles remain at 36 pt or larger
 - slide titles are never shrunk for fit
 - slide-level typography minimums respected
-- background visibly dark navy with canonical `#15182E` base; black/near-black fallback count = 0
-- cards preserve the global glass-like rounded treatment and global contrast/readability gates
+- background visibly modern navy in the approved `#1E274A` → `#111A33` family; black/near-black fallback count = 0
+- dark-surface black/near-black text count = 0; primary/secondary/metadata text uses approved light palette roles
+- cards preserve the global rounded frosted-glass/glassmorphism treatment, subtle light edge/depth and global contrast/readability gates
 - distance-readability pass: ordinary body text targets >= 20 pt and metadata targets >= 18 pt; paginate before compression
 - school/submission cards containing the five required meanings use the canonical symbols `🎯 🕒 📍 💡 🛠` rather than repeated VAD/HUR/VARFÖR/NÄR/VAR labels
 - every rendered urgency/priority state uses both semantic text/symbol and the canonical red/orange/green urgency color
@@ -584,7 +606,7 @@ Do not duplicate the full render-gate checklist here.
 
 ## CORE PRINCIPLE
 
-**Calm navy canvas + soft cards + clear hierarchy + responsive geometry + accessible rendering.**
+**Modern navy canvas + rounded frosted-glass cards + clear hierarchy + responsive geometry + WCAG-safe light text.**
 
 Card internals are governed by `CARD_COMPONENT_STANDARD.md`; global design must not redefine them.
 
