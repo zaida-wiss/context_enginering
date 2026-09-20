@@ -497,10 +497,9 @@ The current sprint must be clearly identifiable inside the card/grid system.
 Use an explicit card/badge/section label such as:
 `AKTUELL SPRINT` / `Vi är här`
 
-Show the complete sprint date range and place a visually unambiguous current-week
-marker at the correct position on the time axis. For the sprint containing
-2026-09-19, the displayed interval is exactly `14–21 september 2026`; never shift
-its start to the meeting date.
+Show the complete registered sprint date range and place a visually unambiguous
+current-week marker at the correct position on the time axis. Never shift the
+registered sprint start to the meeting date.
 
 ### Status color semantics
 
@@ -958,7 +957,7 @@ Do not invent numeric estimates or availability.
 
 Team ownership is secondary on this slide.
 
-Do not split the slide into Frontend/Backend/Native/Cross-team columns.
+Do not split the slide into fixed project-specific team columns.
 The priority order across the whole project is the primary organizing principle.
 
 ### Vertical execution geometry — mandatory
