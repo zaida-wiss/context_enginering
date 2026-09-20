@@ -32,9 +32,9 @@ The deck always follows this sequence:
 ⓪ Cover
 ① Avklarat sedan förra mötet
 ② Nuläge och deadlines
-③ Frontend
-④ Backend
-⑤ Native/System
+③ {REGISTERED_TEAM_1}
+④ {REGISTERED_TEAM_2}
+⑤ {REGISTERED_TEAM_3}
 ⑥ Blockers och beroenden
 ⑦ Risker
 ⑧ Kapacitet och estimering
@@ -51,9 +51,8 @@ No custom thematic section may replace, reorder or silently skip an official mee
 A point may use multiple physical slides when required for readability. Continuation slides preserve the same official meeting-point identity.
 
 Meeting point ① has a mandatory physical-page sequence:
-`develop → C/C++-Native → Java-Development-Environment → Teamsammanfattning`.
-All four subsections are rendered; verified-empty or source-incomplete branch
-pages are explicit rather than silently omitted.
+`{PRIMARY_INTEGRATION_BRANCH} → {REGISTERED_COLLECTION_BRANCHES_IN_PROJECT_ORDER} → Teamsammanfattning`.
+Render the primary integration subsection, one subsection for every registered collection branch, and the team-summary subsection. Verified-empty or source-incomplete branch pages are explicit rather than silently omitted.
 
 ## 2. PRESENCE / EMPTY-STATE RULE
 
@@ -87,22 +86,22 @@ Every empty or incomplete state preserves provenance and never invents certainty
 The deck must preserve these connected reasoning chains when relevant evidence exists.
 
 ### Work thread
-① completed work → ③–⑤ current/remaining team work → ⑨ priority → ⑪ goals → ⑫ plan → ⑬ next steps.
+① completed work → ③–⑤ current/remaining registered-team work → ⑨ priority → ⑪ goals → ⑫ plan → ⑬ next steps.
 
 This is a progressive funnel, not permission to duplicate the same content:
-- ③–⑤ own the complete verified forward-looking work state per team
+- ③–⑤ own the complete verified forward-looking work state for the registered team assigned to each team slot
 - ⑨ owns project-wide selection, priority and execution order
 - ⑬ owns the concise executable action output
 - an item may reappear only when its function changes between these stages
 
 ### Dependency thread
-③–⑤ team blockers → ⑥ dependency view → ⑨ execution order → ⑫ plan/fallback → ⑬ next actions.
+③–⑤ registered-team blockers → ⑥ dependency view → ⑨ execution order → ⑫ plan/fallback → ⑬ next actions.
 
 ### Risk thread
 ⑦ risk → ⑧ realistic capacity constraint when applicable → ⑨ changed priority/order → ⑪ goal pressure/alignment → ⑫ mitigation in plan → ⑬ concrete action.
 
 ### Capacity thread
-③–⑤ workload evidence → ⑧ verified/qualitative capacity → ⑨ WIP/order choice → ⑪ realistic goal → ⑫ feasible plan.
+③–⑤ registered-team workload evidence → ⑧ verified/qualitative capacity → ⑨ WIP/order choice → ⑪ realistic goal → ⑫ feasible plan.
 
 A later slide must not ignore a verified blocker/risk/capacity fact that materially changes execution order.
 
