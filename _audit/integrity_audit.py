@@ -14,6 +14,7 @@ Validates:
 9. Global routing/validation does not require legacy project-owned source/roster paths.
 10. The reusable project template and onboarding contract exist without depending on a named project.
 11. The global control plane is free of named-project dependencies; named projects belong only in PROJECTS.yaml and project roots.
+12. Project manifests explicitly preserve the boundary: reusable operating methods are global; project roots own facts, configuration and confirmed project-specific decisions.
 
 This intentionally uses a small YAML-path parser so the audit has no PyYAML dependency.
 """
@@ -444,6 +445,33 @@ def main():
                 print(f"❌ {control} depends on registered-project literal: {literal}")
                 ok = False
     checks.append(result(ok, "global control plane has no registered-project path/repository dependencies", "named-project dependency remains in global control plane"))
+
+    print("\nINVARIANT 12: Global-Method / Project-Fact Boundary")
+    required_global_methods = [
+        "_ai_guides/project/TEAM_STANDARDS.md",
+        "_ai_guides/project/TEAM_TONE_AND_COLLABORATION.yaml",
+        "_ai_guides/project/HR_AND_TEAM_SUPPORT.yaml",
+        "_ai_guides/project/DEFINITION_OF_DONE.md",
+        "_ai_guides/project/TESTING.md",
+        "_ai_guides/project/GOALS_AND_SPRINT_PLANNING.md",
+        "_ai_guides/project/RISK_MANAGEMENT.md",
+        "_ai_guides/project/DEPENDENCIES_AND_CAPACITY.md",
+    ]
+    ok = True
+    for target in required_global_methods:
+        if not os.path.exists(target):
+            print(f"❌ missing reusable global method: {target}")
+            ok = False
+    for project_id, entry in active.items():
+        manifest = entry.get("manifest")
+        if not manifest or not os.path.exists(manifest):
+            continue
+        manifest_text = read_text(manifest)
+        boundary_terms = ("project-specific facts", "generic framework")
+        if not all(term in manifest_text.lower() for term in boundary_terms):
+            print(f"❌ {project_id}: manifest does not state the reusable-method/project-fact ownership boundary")
+            ok = False
+    checks.append(result(ok, "reusable team/project methods are globally owned and project manifests preserve the boundary", "global method ownership or project boundary is incomplete"))
 
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
