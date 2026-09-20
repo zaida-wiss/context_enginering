@@ -1026,6 +1026,52 @@ def main():
         ok = False
     checks.append(result(ok, "active issue/PR cards unify developer/assignee and show latest delivery activity on the same row", "ownership/activity metadata can regress to duplicate or detached rows"))
 
+    print("\nINVARIANT 27: Presentation Support Files Are Registered and Routed")
+    ok = True
+    try:
+        authority_registry = read_text("_ai_guides/presentations/AUTHORITY_REGISTRY.yaml")
+        context_registry = read_text("CONTEXT_REGISTRY.yaml")
+        retired_redirect = read_text("_ai_guides/presentations/monday_meeting/data/DATA_COLLECTION_MANDATORY.md")
+        required_registered = (
+            "../COGNITIVE_ACCESSIBILITY_NEUROINCLUSIVE_DESIGN.md",
+            "../AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml",
+            "data/CURRENT_SPRINT_SCHEMA.yaml",
+            "data/DATA_COLLECTION_MANDATORY.md",
+            "data/ACTIVE_WORK_DETECTION_MODEL.md",
+            "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md",
+            "monday_meeting/data/DATA_COLLECTION_MANDATORY.md",
+        )
+        if not all(token in authority_registry for token in required_registered):
+            print("❌ one or more important presentation support files are not classified in AUTHORITY_REGISTRY")
+            ok = False
+
+        required_task_routes = (
+            "logical_destinations.presentation_processes.composition",
+            "logical_destinations.presentation_schemas.current_sprint",
+            "logical_destinations.presentation_processes.data_collection",
+            "logical_destinations.presentation_processes.active_work_detection",
+        )
+        if not all(token in context_registry for token in required_task_routes):
+            print("❌ Monday presentation task does not route through all critical support processes/schemas")
+            ok = False
+
+        retired_required = (
+            "status: retired",
+            "RETIRED_NON_AUTHORITY",
+            "_ai_guides/presentations/data/DATA_COLLECTION_MANDATORY.md",
+        )
+        if not all(token in retired_redirect for token in retired_required):
+            print("❌ stale Monday data-collection duplicate is not safely retired/redirected")
+            ok = False
+    except Exception as exc:
+        print(f"❌ presentation support registration inspection failed: {exc}")
+        ok = False
+    checks.append(result(
+        ok,
+        "important presentation support files are classified, routed and protected from orphaning",
+        "presentation support files can become orphaned, duplicated or silently inactive",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
