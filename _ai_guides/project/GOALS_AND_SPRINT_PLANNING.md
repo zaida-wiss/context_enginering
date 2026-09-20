@@ -81,6 +81,34 @@ to confirmed meeting decisions and registered milestone/course sources. GitHub
 activity may explain progress but does not become a decided sprint goal by
 inference.
 
+## Meeting protocol is decision evidence, not priority truth
+
+A meeting protocol proves what the team discussed, decided, assigned or believed
+at that point in time. It does **not** by itself prove that the resulting
+priority order is optimal, safe or aligned with the project's actual constraints.
+
+Before presenting a confirmed team priority as the recommended execution order,
+AI must independently cross-check it against available verified evidence,
+including when relevant:
+- registered course/submission deadlines and consequences;
+- sprint goals and milestone requirements;
+- dependency/blocker direction;
+- open PR/issue state and actual repository progress;
+- risk register and current material risks;
+- cross-team/interface constraints;
+- capacity/availability facts;
+- technical/core-flow gaps that materially threaten delivery.
+
+If the confirmed team plan appears misaligned with stronger verified evidence:
+1. preserve the protocol faithfully as `👥 ✅ Mötesprotokoll` — what the team decided;
+2. add a separate `🔎 AI-analys — HEADS-UP` explaining the concrete mismatch;
+3. add `⭐ AI-förslag` only when a changed order/action can be grounded in that evidence;
+4. cite the evidence that triggered the warning;
+5. leave the final decision to the team/user.
+
+Never silently rewrite the meeting decision. Never suppress a material warning
+merely because the team previously agreed on the plan.
+
 ### 2. Confirmed meeting decisions
 
 Use the registered meeting protocol for:
