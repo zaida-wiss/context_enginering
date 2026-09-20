@@ -144,9 +144,22 @@ For action and next-step cards, the pedagogical line must answer:
 
 ---
 
-# 4. PERSON IDENTITY ROW — FIRST NAME ONLY
+# 4. DEVELOPER IDENTITY + LATEST DELIVERY ACTIVITY — ONE ROW
 
-Canonical visible format is the person's first name only. Team is shown by the
+For active Issue/PR work, **developer and assignee are one presentation concept**.
+Never render separate `Developer` and `Assigned` rows for the same work item.
+Resolve the verified assigned/developing person from project evidence; do not infer
+ownership merely from an unrelated commit author.
+
+Canonical visible format is the person's first name followed on the **same row**
+by the latest verified delivery activity timestamp:
+- if the work has been sent/opened as a PR, show `{FIRST_NAME} · PR {D MMM · HH:MM}`;
+- otherwise, when a verified commit exists, show `{FIRST_NAME} · commit {D MMM · HH:MM}`;
+- PR submission/open time takes precedence over an earlier commit because it
+  represents the later delivery transition;
+- if neither timestamp is verified, show the verified first name without inventing a time.
+
+Team is shown by the
 containing team section/column and may be reinforced by the card's left accent
 and a team-colored issue/PR number.
 
@@ -168,6 +181,7 @@ Hard rules:
 - on mixed-team slides, include the selected project's registered display name as an explicit non-color team cue on each relevant card
 - if a card is reused outside its original dedicated team slide, add the explicit team label again
 - team accent color remains supplementary only
+- do **not** create separate `Utvecklare` and `Assigned` rows; they are the same visible ownership concept
 - do **not** prefix with `Utvecklat av`, `Developed by`, `Developer:`, `Assigned to:` or equivalent wording
 - use the main/primary text color, not the team accent color, for ordinary identity text
 - use semibold/bold weight, but not extra-bold/black
@@ -303,13 +317,19 @@ Do not substitute:
 
 when the card represents a completed merge.
 
-## Active/open work cards
-Show the latest commit/push timestamp only when it materially helps the meeting understand recency of work.
+## Active/open Issue/PR work cards
+The delivery-activity timestamp belongs **on the same row as the verified developer name**, not in a separate lower-right timestamp row.
 
-Do **not** use:
-- PR opened/created timestamp
-- issue created timestamp
-- issue updated timestamp
+Selection order:
+1. if the work has been sent/opened as a PR, use the verified PR submission/open timestamp;
+2. otherwise use the latest verified commit/push timestamp;
+3. never use issue-created or issue-updated time as a substitute.
+
+Canonical forms:
+- `{FIRST_NAME} · PR 17 sep · 15:05`
+- `{FIRST_NAME} · commit 17 sep · 14:22`
+
+Do not render a second separate developer/assignee field or duplicate the same activity timestamp elsewhere on the card.
 
 If shown:
 - exactly **one compact line** — date and clock time must never wrap to separate lines
@@ -373,7 +393,7 @@ PR #PR_ID · {WORK_BRANCH}
 
 Name and operational verification/metadata are anchored at the bottom.
 
-Do not append PR creation/latest-commit time by default.
+Append the selected PR-submission or latest-commit activity time on the **same row as {FIRST_NAME}**. Do not create a separate Assigned row or a detached activity timestamp.
 
 Evidence level is **not rendered as text on the card**. Do not show `GitHub · nivå 1`, `nivå 2`, etc.
 
