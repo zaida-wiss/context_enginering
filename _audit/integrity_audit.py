@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 """
-Repository Integrity Audit — mechanical context validation
+Repository Integrity Audit — project-aware mechanical context validation
 
 Validates:
-1. Source IDs exist, match their registry key and are unique
-2. Source fallback methods are compatible with allowed methods
-3. Presentation acquisition delegates source-access ownership
-4. Required bootstrap files exist
-5. Every canonical path registered in CONTEXT_REGISTRY exists
-6. Logical references used by task bundles and project router resolve
-7. Retired/moved project logical IDs are not used by the active router
+1. PROJECTS.yaml discovers active project manifests without hardcoded project IDs.
+2. Every active project manifest exists and its registered context paths resolve.
+3. Every project source registry has present, matching, unique source IDs.
+4. Source fallback access methods are compatible when an allowed-method contract exists.
+5. Presentation acquisition delegates source-access ownership to project-resolved sources.
+6. Required global bootstrap files exist without requiring legacy project copies.
+7. Every canonical path registered in CONTEXT_REGISTRY exists.
+8. Logical references used by task bundles and the global project router resolve.
+9. Global routing/validation does not require legacy project-owned source/roster paths.
+
+This intentionally uses a small YAML-path parser so the audit has no PyYAML dependency.
 """
 
 import os
@@ -22,9 +26,61 @@ def read_text(path):
         return handle.read()
 
 
-def read_sources_section():
-    """Extract the top-level source registry with lightweight parsing."""
-    content = read_text("data/SOURCES.yaml")
+def quoted_value(text):
+    return text.strip().strip("\"'")
+
+
+def parse_project_registry():
+    text = read_text("PROJECTS.yaml")
+    lines = text.splitlines()
+    projects = {}
+    in_projects = False
+    current = None
+
+    for line in lines:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or stripped == "---":
+            continue
+        indent = len(line) - len(line.lstrip())
+
+        if indent == 0:
+            in_projects = stripped == "projects:"
+            current = None
+            continue
+
+        if not in_projects:
+            continue
+
+        if indent == 2 and stripped.endswith(":"):
+            current = stripped[:-1]
+            projects[current] = {"manifest": None, "status": None}
+            continue
+
+        if current and indent == 4 and ":" in stripped:
+            key, value = stripped.split(":", 1)
+            key = key.strip()
+            value = quoted_value(value)
+            if key in {"manifest", "status"}:
+                projects[current][key] = value
+
+    return projects
+
+
+def parse_manifest_paths(path):
+    text = read_text(path)
+    paths = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("path:"):
+            value = quoted_value(stripped.split("path:", 1)[1])
+            if value:
+                paths.append(value)
+    return paths
+
+
+def read_sources_section(path):
+    """Extract top-level source definitions with lightweight parsing."""
+    content = read_text(path)
     lines = content.splitlines()
     sources_start = None
     sources_end = None
@@ -65,28 +121,31 @@ def read_sources_section():
 
         if indent == 2 and ":" in stripped and not stripped.startswith("-"):
             key = stripped.rstrip(":").strip()
-            if key and key[0].isupper():
+            if key:
                 current_source = key
                 current_list = None
                 sources[current_source] = {
                     "source_id": None,
                     "allowed_access_methods": [],
-                    "fallbacks": [],
+                    "allowed_implementations": [],
+                    "fallback_methods": [],
                 }
             continue
 
         if current_source is None:
             continue
 
-        if "source_id:" in stripped:
-            value = stripped.split("source_id:", 1)[1].strip().strip("\"'")
+        if "source_id:" in stripped and not stripped.startswith("- source_id:"):
+            value = quoted_value(stripped.split("source_id:", 1)[1])
             sources[current_source]["source_id"] = value
             continue
 
         if stripped == "allowed_access_methods:":
-            current_list = "allowed"
+            current_list = "allowed_access_methods"
             continue
-
+        if stripped == "allowed_implementations:":
+            current_list = "allowed_implementations"
+            continue
         if stripped == "fallbacks:":
             current_list = "fallbacks"
             continue
@@ -94,37 +153,26 @@ def read_sources_section():
         if indent <= 4 and stripped.endswith(":"):
             current_list = None
 
-        if current_list == "allowed" and stripped.startswith("- "):
-            method = stripped[2:].strip().strip("\"'")
-            if method:
-                sources[current_source]["allowed_access_methods"].append(method)
+        if current_list in {"allowed_access_methods", "allowed_implementations"} and stripped.startswith("- "):
+            value = quoted_value(stripped[2:])
+            if value:
+                sources[current_source][current_list].append(value)
             continue
 
         if current_list == "fallbacks" and stripped.startswith("- method:"):
-            method = stripped.split("method:", 1)[1].strip().strip("\"'")
-            if method:
-                sources[current_source]["fallbacks"].append(method)
+            value = quoted_value(stripped.split("method:", 1)[1])
+            if value:
+                sources[current_source]["fallback_methods"].append(value)
 
     return sources
 
 
 def parse_context_registry():
-    """
-    Parse the simple canonical path shapes from CONTEXT_REGISTRY.yaml.
-
-    Returns:
-      logical_ids: logical_destinations.<domain>.<id> -> file path
-      registries: registries.<id> -> file path
-      all_paths: all path values found in the registry
-      registry_text: full text
-    """
     text = read_text("CONTEXT_REGISTRY.yaml")
     lines = text.splitlines()
-
     logical_ids = {}
     registries = {}
     all_paths = []
-
     section = None
     level1 = None
     level2 = None
@@ -133,7 +181,6 @@ def parse_context_registry():
         stripped = line.strip()
         if not stripped or stripped.startswith("#"):
             continue
-
         indent = len(line) - len(line.lstrip())
 
         if indent == 0 and stripped.endswith(":"):
@@ -151,9 +198,9 @@ def parse_context_registry():
                 level2 = stripped[:-1]
                 continue
             if indent == 6 and stripped.startswith("path:") and level1 and level2:
-                path_value = stripped.split("path:", 1)[1].strip().strip("\"'")
-                logical_ids[f"logical_destinations.{level1}.{level2}"] = path_value
-                all_paths.append(path_value)
+                value = quoted_value(stripped.split("path:", 1)[1])
+                logical_ids[f"logical_destinations.{level1}.{level2}"] = value
+                all_paths.append(value)
                 continue
 
         if section == "registries":
@@ -161,265 +208,198 @@ def parse_context_registry():
                 level1 = stripped[:-1]
                 continue
             if indent == 4 and stripped.startswith("path:") and level1:
-                path_value = stripped.split("path:", 1)[1].strip().strip("\"'")
-                registries[f"registries.{level1}"] = path_value
-                all_paths.append(path_value)
+                value = quoted_value(stripped.split("path:", 1)[1])
+                registries[f"registries.{level1}"] = value
+                all_paths.append(value)
                 continue
 
         if stripped.startswith("path:"):
-            path_value = stripped.split("path:", 1)[1].strip().strip("\"'")
-            if path_value:
-                all_paths.append(path_value)
+            value = quoted_value(stripped.split("path:", 1)[1])
+            if value:
+                all_paths.append(value)
 
     return logical_ids, registries, all_paths, text
 
 
 def collect_reference_tokens(text):
-    """Collect stable logical references embedded in YAML/Markdown text."""
-    return set(
-        re.findall(
-            r"\b(?:logical_destinations\.[A-Za-z0-9_.-]+|registries\.[A-Za-z0-9_.-]+)\b",
-            text,
-        )
-    )
+    return set(re.findall(r"\b(?:logical_destinations\.[A-Za-z0-9_.-]+|registries\.[A-Za-z0-9_.-]+)\b", text))
 
 
 def collect_project_router_ids(text):
-    """Collect human-facing shorthand project.<id> references from the router."""
     return set(re.findall(r"\bproject\.([A-Za-z0-9_-]+)\b", text))
 
 
-def main():
-    all_pass = True
-    invariant_results = []
+def result(ok, good, bad):
+    print(("✅ PASS: " + good) if ok else ("❌ FAIL: " + bad))
+    return ok
 
+
+def main():
+    checks = []
     print("=" * 80)
     print("REPOSITORY INTEGRITY AUDIT")
     print("=" * 80)
-    print()
 
-    # INVARIANT 1
-    print("INVARIANT 1: Source ID Presence and Uniqueness")
-    print("-" * 80)
+    print("\nINVARIANT 1: Active Project Discovery")
     try:
-        sources = read_sources_section()
-        source_ids = []
-        local_pass = True
-
-        for source_key, source_data in sources.items():
-            source_id = source_data["source_id"]
-            if not source_id:
-                print(f"❌ FAIL: {source_key} has no source_id")
-                local_pass = False
-                continue
-
-            source_ids.append(source_id)
-            if source_key != source_id:
-                print(f"❌ FAIL: {source_key} key ≠ source_id value ({source_id})")
-                local_pass = False
-
-        duplicates = sorted({x for x in source_ids if source_ids.count(x) > 1})
-        if duplicates:
-            print(f"❌ FAIL: Duplicate source_ids: {duplicates}")
-            local_pass = False
-
-        if local_pass:
-            print(f"✅ PASS: {len(source_ids)} unique source IDs")
+        projects = parse_project_registry()
+        active = {k: v for k, v in projects.items() if v.get("status") == "active"}
+        ok = bool(active) and all(v.get("manifest") for v in active.values())
+        checks.append(result(ok, f"{len(active)} active project manifest(s) discovered", "active projects/manifests could not be resolved"))
     except Exception as exc:
-        print(f"❌ FAIL: Cannot parse SOURCES.yaml: {exc}")
-        local_pass = False
+        active = {}
+        checks.append(result(False, "", f"PROJECTS.yaml parse failed: {exc}"))
 
-    invariant_results.append(local_pass)
-    all_pass &= local_pass
-    print()
-
-    # INVARIANT 2
-    print("INVARIANT 2: Fallback Methods Respect Allowed Access")
-    print("-" * 80)
-    local_pass = True
-    for source_key, source_data in sources.items():
-        allowed = {m.split("(")[0].strip() for m in source_data["allowed_access_methods"]}
-        for fallback_method in source_data["fallbacks"]:
-            method_name = fallback_method.split("(")[0].strip()
-            if method_name and method_name not in allowed:
-                print(
-                    f"❌ FAIL: {source_key}: fallback '{method_name}' "
-                    "not in allowed_access_methods"
-                )
-                local_pass = False
-
-    if local_pass:
-        print("✅ PASS: fallback methods are compatible with allowed access methods")
-    invariant_results.append(local_pass)
-    all_pass &= local_pass
-    print()
-
-    # INVARIANT 3
-    print("INVARIANT 3: Source Access Authority Separation")
-    print("-" * 80)
-    try:
-        contract = read_text(
-            "_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"
-        )
-        local_pass = (
-            "access_methods_authority:" in contract
-            or "source_registry" in contract
-            or "SOURCES.yaml" in contract
-        )
-        if local_pass:
-            print("✅ PASS: acquisition contract delegates source-access ownership")
+    print("\nINVARIANT 2: Project Manifest Paths Exist")
+    ok = True
+    project_sources = {}
+    for project_id, entry in active.items():
+        manifest = entry["manifest"]
+        if not os.path.exists(manifest):
+            print(f"❌ {project_id}: manifest missing: {manifest}")
+            ok = False
+            continue
+        paths = parse_manifest_paths(manifest)
+        for target in paths:
+            if not os.path.exists(target.rstrip("/")):
+                print(f"❌ {project_id}: manifest target missing: {target}")
+                ok = False
+        manifest_text = read_text(manifest)
+        match = re.search(r"context:\s*.*?sources:\s*\n\s*path:\s*[\\"']?([^\\"'\n]+)", manifest_text, re.S)
+        if match:
+            project_sources[project_id] = match.group(1).strip()
         else:
-            print("❌ FAIL: acquisition contract does not expose source authority")
+            print(f"❌ {project_id}: context.sources.path missing")
+            ok = False
+    checks.append(result(ok, "all active project manifest paths resolve", "one or more project manifest paths are invalid"))
+
+    print("\nINVARIANT 3: Project Source IDs")
+    ok = True
+    for project_id, source_path in project_sources.items():
+        try:
+            sources = read_sources_section(source_path)
+            ids = []
+            for key, data in sources.items():
+                source_id = data["source_id"]
+                if not source_id:
+                    print(f"❌ {project_id}/{key}: source_id missing")
+                    ok = False
+                    continue
+                ids.append(source_id)
+                if key != source_id:
+                    print(f"❌ {project_id}/{key}: key != source_id ({source_id})")
+                    ok = False
+            duplicates = sorted({x for x in ids if ids.count(x) > 1})
+            if duplicates:
+                print(f"❌ {project_id}: duplicate source IDs: {duplicates}")
+                ok = False
+            print(f"   {project_id}: {len(ids)} source IDs inspected")
+        except Exception as exc:
+            print(f"❌ {project_id}: source registry failed: {exc}")
+            ok = False
+    checks.append(result(ok, "project source IDs are present, matching and unique", "project source registry validation failed"))
+
+    print("\nINVARIANT 4: Fallback Access Compatibility")
+    ok = True
+    for project_id, source_path in project_sources.items():
+        sources = read_sources_section(source_path)
+        for key, data in sources.items():
+            allowed = set(data["allowed_access_methods"]) | set(data["allowed_implementations"])
+            if not allowed:
+                continue
+            for method in data["fallback_methods"]:
+                if method not in allowed:
+                    print(f"❌ {project_id}/{key}: fallback method {method!r} is not allowed")
+                    ok = False
+    checks.append(result(ok, "declared fallback methods respect declared access contracts", "fallback/access mismatch found"))
+
+    print("\nINVARIANT 5: Presentation Source Ownership Delegation")
+    try:
+        contract = read_text("_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml")
+        ok = "source_registry" in contract or "project manifest" in contract or "selected project" in contract
+        checks.append(result(ok, "acquisition delegates source ownership", "acquisition contract does not delegate source ownership"))
     except Exception as exc:
-        print(f"❌ FAIL: cannot inspect acquisition contract: {exc}")
-        local_pass = False
+        checks.append(result(False, "", f"acquisition contract unavailable: {exc}"))
 
-    invariant_results.append(local_pass)
-    all_pass &= local_pass
-    print()
-
-    # INVARIANT 4
-    print("INVARIANT 4: Required Bootstrap Files Exist")
-    print("-" * 80)
-    required_files = [
+    print("\nINVARIANT 6: Required Global Bootstrap Files Exist")
+    required = [
         "README.md",
+        "PROJECTS.yaml",
         "CONTEXT_REGISTRY.yaml",
+        "_ai_guides/AI_FRAMEWORK.yaml",
         "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md",
         "_ai_guides/presentations/MANDATORY_READING_ORDER.md",
         "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml",
         "_ai_guides/presentations/INTEGRITY_CONSTRAINT.md",
         "_ai_guides/presentations/SYSTEM_CONTRACT.yaml",
+    ]
+    ok = True
+    for target in required:
+        exists = os.path.exists(target)
+        print(f"{'✅' if exists else '❌'} {target}")
+        ok &= exists
+    checks.append(ok)
+
+    print("\nINVARIANT 7: Registered Canonical Paths Exist")
+    try:
+        logical_ids, registries, paths, registry_text = parse_context_registry()
+        missing = [p for p in sorted(set(paths)) if not os.path.exists(p.rstrip("/"))]
+        for target in missing:
+            print(f"❌ missing: {target}")
+        ok = not missing
+        checks.append(result(ok, f"{len(set(paths))} registered paths resolve", "registered canonical paths are missing"))
+    except Exception as exc:
+        logical_ids, registries, registry_text = {}, {}, ""
+        checks.append(result(False, "", f"CONTEXT_REGISTRY parse failed: {exc}"))
+
+    print("\nINVARIANT 8: Logical References Resolve")
+    known = set(logical_ids) | set(registries)
+    unresolved = sorted(ref for ref in collect_reference_tokens(registry_text) if ref not in known)
+    for ref in unresolved:
+        print(f"❌ unresolved: {ref}")
+    ok = not unresolved
+    try:
+        router = read_text("_ai_guides/project/PROJECT_CONTEXT_ROUTER.md")
+        # Project selection is registry-driven. Literal project.<id> shorthands in
+        # the generic router are treated as legacy leakage, not required routing.
+        leaked_ids = collect_project_router_ids(router)
+        if leaked_ids:
+            print(f"❌ generic router contains literal project IDs: {sorted(leaked_ids)}")
+            ok = False
+    except Exception as exc:
+        print(f"❌ router inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "logical references and generic router resolve", "unresolved refs or project-ID leakage found"))
+
+    print("\nINVARIANT 9: Legacy Project-Owned Global Copies Are Not Required")
+    legacy_required = {
         "data/SOURCES.yaml",
         "_memory/TEAM_ROSTER.md",
-    ]
-    local_pass = True
-    for filepath in required_files:
-        exists = os.path.exists(filepath)
-        print(f"{'✅' if exists else '❌'} {filepath}")
-        local_pass &= exists
-
-    invariant_results.append(local_pass)
-    all_pass &= local_pass
-    print()
-
-    # INVARIANT 5
-    print("INVARIANT 5: Registered Canonical Paths Exist")
-    print("-" * 80)
-    try:
-        logical_ids, registries, registered_paths, registry_text = parse_context_registry()
-        local_pass = True
-        for filepath in sorted(set(registered_paths)):
-            # Directory registrations intentionally end with '/'.
-            target = filepath.rstrip("/")
-            exists = os.path.exists(target)
-            if not exists:
-                print(f"❌ FAIL: registered path missing: {filepath}")
-                local_pass = False
-
-        if local_pass:
-            print(f"✅ PASS: {len(set(registered_paths))} registered paths resolve")
-    except Exception as exc:
-        print(f"❌ FAIL: cannot parse CONTEXT_REGISTRY.yaml: {exc}")
-        local_pass = False
-        logical_ids, registries, registry_text = {}, {}, ""
-
-    invariant_results.append(local_pass)
-    all_pass &= local_pass
-    print()
-
-    # INVARIANT 6
-    print("INVARIANT 6: Task and Router Logical References Resolve")
-    print("-" * 80)
-    local_pass = True
-
-    known_refs = set(logical_ids) | set(registries)
-    registry_refs = collect_reference_tokens(registry_text)
-
-    unresolved_registry_refs = sorted(ref for ref in registry_refs if ref not in known_refs)
-    for ref in unresolved_registry_refs:
-        print(f"❌ FAIL: unresolved registry/task ref: {ref}")
-        local_pass = False
-
-    try:
-        router_text = read_text("_ai_guides/project/PROJECT_CONTEXT_ROUTER.md")
-        project_ids = collect_project_router_ids(router_text)
-        known_project_ids = {
-            ref.split(".", 2)[2]
-            for ref in logical_ids
-            if ref.startswith("logical_destinations.project.")
-        }
-
-        unresolved_router = sorted(project_ids - known_project_ids)
-        for item in unresolved_router:
-            print(f"❌ FAIL: unresolved router shorthand: project.{item}")
-            local_pass = False
-    except Exception as exc:
-        print(f"❌ FAIL: cannot inspect project router: {exc}")
-        local_pass = False
-
-    if local_pass:
-        print("✅ PASS: task and project-router logical references resolve")
-
-    invariant_results.append(local_pass)
-    all_pass &= local_pass
-    print()
-
-    # INVARIANT 7
-    print("INVARIANT 7: Retired Project Logical IDs Are Not Active")
-    print("-" * 80)
-    retired_project_ids = {
-        "definition_of_done_template",
     }
+    active_control_files = [
+        "CONTEXT_REGISTRY.yaml",
+        "_ai_guides/presentations/SYSTEM_CONTRACT.yaml",
+        "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml",
+        "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md",
+    ]
+    ok = True
+    for control in active_control_files:
+        text = read_text(control)
+        for legacy in legacy_required:
+            if legacy in text:
+                print(f"❌ {control} still requires legacy project-owned path {legacy}")
+                ok = False
+    checks.append(result(ok, "global control plane no longer requires legacy source/roster copies", "legacy project-owned paths are still active"))
 
-    local_pass = True
-    try:
-        router_text = read_text("_ai_guides/project/PROJECT_CONTEXT_ROUTER.md")
-        registry_text = read_text("CONTEXT_REGISTRY.yaml")
-
-        for retired in sorted(retired_project_ids):
-            patterns = [
-                f"project.{retired}",
-                f"logical_destinations.project.{retired}",
-            ]
-            for pattern in patterns:
-                if pattern in router_text or pattern in registry_text:
-                    print(f"❌ FAIL: retired logical ID still active: {pattern}")
-                    local_pass = False
-
-        if local_pass:
-            print("✅ PASS: no retired project logical IDs are active")
-    except Exception as exc:
-        print(f"❌ FAIL: retired-ID check failed: {exc}")
-        local_pass = False
-
-    invariant_results.append(local_pass)
-    all_pass &= local_pass
-    print()
-
-    # FINAL RESULT
-    passed = sum(1 for result in invariant_results if result)
-    total = len(invariant_results)
-
-    print("=" * 80)
+    passed = sum(bool(x) for x in checks)
+    print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
     print("=" * 80)
-    print()
-
-    if all_pass:
-        print(f"✅ {passed}/{total} INVARIANTS PASS")
+    if all(checks):
+        print(f"✅ {passed}/{len(checks)} INVARIANTS PASS")
         print("STATUS: READY FOR SMOKE TEST")
-        try:
-            commit = os.popen("git rev-parse --short HEAD").read().strip()
-            branch = os.popen("git rev-parse --abbrev-ref HEAD").read().strip()
-            if commit:
-                print(f"Commit: {commit}")
-            if branch:
-                print(f"Branch: {branch}")
-        except Exception:
-            pass
         return 0
-
-    print(f"❌ {passed}/{total} INVARIANTS PASS")
+    print(f"❌ {passed}/{len(checks)} INVARIANTS PASS")
     print("STATUS: AUDIT FAILED — resolve issues before smoke test")
     return 1
 
