@@ -117,6 +117,28 @@ microcopy; it is a hierarchy/composition test, not a content-deletion rule.
 
 ---
 
+## 1B. GLOBAL DESIGN INHERITANCE AND PROJECT OVERRIDES — HARD RULE
+
+Global presentation design is the default for every project.
+
+A project may add project-specific composition, semantics or visual rules. A project
+may also intentionally override a global design rule, but such a conflicting
+override is never applied silently or automatically.
+
+When a project rule conflicts with an active global design rule:
+1. stop before rendering or changing the effective design;
+2. show the concrete global rule and the conflicting project rule;
+3. explain the visible consequence of choosing either;
+4. ask the user an explicit control question;
+5. apply the project override only after the user explicitly approves that deviation.
+
+Without explicit approval, the global design wins by default.
+
+An approved override is scoped to the project unless the user explicitly says the
+global framework itself should change. Accessibility, source integrity, conflict
+handling and other non-design safety/quality authorities remain governed by their
+own authority rules.
+
 ## 2. CANONICAL PALETTE
 
 | Element | Hex | Role |
