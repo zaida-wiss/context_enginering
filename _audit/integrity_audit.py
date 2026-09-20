@@ -769,38 +769,30 @@ def main():
         ok = False
     checks.append(result(ok, "point 2 must span course start through final delivery and mark the current position", "point 2 can regress to a near-term-only timeline"))
 
-    print("\nINVARIANT 20: Merged PR Identity + Quiet Timestamp")
+    print("\nINVARIANT 20: Compact Developer + Delivery Activity Row")
     ok = True
     try:
         card = read_text("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md")
         gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
-        card_required = (
-            "Merged: [verified name or blank] | Review: [verified approving reviewer(s) or blank]",
-            "Show the **merge timestamp**.",
-            "lower-right aligned where card geometry permits",
-            "Quiet microcopy/timestamp",
+        required = (
+            "developer and assignee are one presentation concept",
+            "same row",
+            "PR submission/open timestamp",
+            "latest verified commit/push timestamp",
+            "MUST NOT add a per-card `MERGAD`, `Merged`, checkmark badge, pill, stamp or equivalent merge label",
+            "redundant_merge_badge_or_stamp_count == 0",
+            "separate_developer_and_assigned_row_count == 0",
+            "developer_activity_time_detached_from_identity_count == 0",
+            "unrequested_tag_comment_reaction_metadata_count == 0",
         )
-        gate_required = (
-            "merged_pr_merge_review_row_missing_count == 0",
-            "merged_pr_merge_review_row_not_bottom_zone_count == 0",
-            "merged_pr_merge_timestamp_missing_count == 0",
-            "timestamp_not_quiet_microcopy_color_count == 0",
-            "bottom-most row of the card",
-            "single-line and right-aligned/lower-right",
-        )
-        if not all(token in card for token in card_required):
-            print("❌ merged-PR card standard lost merge/review or quiet timestamp semantics")
-            ok = False
-        if not all(token in gate for token in gate_required):
-            print("❌ render gate can omit merged-PR identity row or discrete merge timestamp")
-            ok = False
-        if "timestamp_not_primary_color_count == 0" in gate or "relevant timestamp, when present, uses the same primary text color as the title" in gate:
-            print("❌ stale timestamp styling still conflicts with quiet timestamp standard")
+        joined = card + "\n" + gate
+        if not all(token in joined for token in required):
+            print("❌ card model can duplicate ownership/activity metadata or repeat merge status")
             ok = False
     except Exception as exc:
-        print(f"❌ merged-PR timestamp/identity inspection failed: {exc}")
+        print(f"❌ compact developer/activity inspection failed: {exc}")
         ok = False
-    checks.append(result(ok, "merged PR cards preserve merge/review identity and a quiet lower-right merge timestamp", "merged PR metadata can disappear or timestamp can become visually dominant"))
+    checks.append(result(ok, "issue/PR cards keep one developer identity with delivery time and no redundant merge badge", "cards can regress to duplicated Assigned/developer rows, detached timestamps or noisy merge/tags metadata"))
 
     print("\nINVARIANT 21: Source Symbol Inline + Full Explanation in Slide Margin")
     ok = True
