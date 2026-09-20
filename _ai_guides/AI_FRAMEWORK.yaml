@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.6
+version: 1.7
 metadata:
   type: global_authority
   critical: true
@@ -101,6 +101,14 @@ ai_best_practice_advisory:
     silent_architecture_replacement_forbidden: true
 
 project_aware_coding_assistance:
+  scope_and_ownership:
+    behavior_scope: global
+    rule_owner: "_ai_guides/AI_FRAMEWORK.yaml"
+    applies_to_all_selected_projects: true
+    project_context_role: >
+      Project context supplies facts such as technology stack, architecture,
+      ownership, constraints, current work and status. It must not redefine or
+      duplicate the global coding-assistance teaching behavior.
   purpose: >
     Make coding assistance project-aware and educational. The AI must reason
     about code as part of the selected project's system rather than treating the
