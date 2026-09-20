@@ -1,6 +1,6 @@
 ---
 name: data_sources
-description: "Guide to data sources (see SOURCES.yaml for authoritative registry)"
+description: "Guide to data sources (see the selected project's source registry for authoritative registry)"
 metadata:
   type: reference
   updated: 2026-09-15
@@ -8,9 +8,9 @@ metadata:
 
 # 📊 DATA SOURCES — Where to Find Information
 
-**AUTHORITATIVE REGISTRY:** [`data/SOURCES.yaml`](../../../data/SOURCES.yaml)
+**AUTHORITATIVE REGISTRY:** the selected project's source registry resolved through its project manifest
 
-This file is a **human-friendly guide** only. For actual URLs, IDs, and access methods, see SOURCES.yaml.
+This file is a **human-friendly guide** only. For actual URLs, IDs, and access methods, see the selected project's source registry.
 
 ---
 
@@ -18,7 +18,7 @@ This file is a **human-friendly guide** only. For actual URLs, IDs, and access m
 
 ### 1. WORK COMPLETED THIS WEEK
 
-**Source:** `GITHUB_MERGED_PRS` (see SOURCES.yaml)
+**Source:** `GITHUB_MERGED_PRS` (see the selected project's source registry)
 
 Filter: `merged_at` within REPORTING_PERIOD, `base.ref == 'develop'`
 
@@ -26,7 +26,7 @@ Fallback: GitHub web merged PRs page, then Google Sheets if available
 
 ### 2. ACTIVE ISSUES (open, with owner)
 
-**Source:** `GITHUB_OPEN_ISSUES` (see SOURCES.yaml)
+**Source:** `GITHUB_OPEN_ISSUES` (see the selected project's source registry)
 
 Filter: `state=open`, `assignees.length > 0`, `updated_at` within REPORTING_PERIOD
 
@@ -38,25 +38,25 @@ Fallback: GitHub web issues page, then Google Sheets
 
 **Source:** `GITHUB_TEAM_ROSTER` (local file)
 
-Location: `_memory/TEAM_ROSTER.md`
+Location: resolve `team_roster` through the selected project's manifest
 
 Required: 7 verified members
 
 ### 4. PROJECT BOARD STATUS (optional)
 
-**Source:** `GITHUB_PROJECT_BOARD` (see SOURCES.yaml)
+**Source:** `GITHUB_PROJECT_BOARD` (see the selected project's source registry)
 
 Can be derived from open issues if unavailable
 
 ### 5. RISK & ASSET REGISTER (optional)
 
-**Source:** `GOOGLE_RISK_REGISTER` (see SOURCES.yaml)
+**Source:** `GOOGLE_RISK_REGISTER` (see the selected project's source registry)
 
 Requires Google Drive Connector
 
 ### 6. MEETING PROTOCOL (fallback)
 
-**Source:** `GOOGLE_MEETING_PROTOCOL` (see SOURCES.yaml)
+**Source:** `GOOGLE_MEETING_PROTOCOL` (see the selected project's source registry)
 
 Requires Google Drive Connector
 
@@ -64,7 +64,7 @@ Requires Google Drive Connector
 
 ## Access Methods
 
-For each source, see SOURCES.yaml for:
+For each source, see the selected project's source registry for:
 - Primary access method (preferred)
 - Fallback chain (try in order)
 - Forbidden methods (never use)
@@ -73,4 +73,4 @@ For each source, see SOURCES.yaml for:
 ---
 
 **Last updated:** 2026-09-15  
-**All source URLs, IDs, and methods:** see `data/SOURCES.yaml`
+**All source URLs, IDs, and methods:** resolve through the selected project's manifest
