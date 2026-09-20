@@ -47,8 +47,7 @@ root task route has been resolved.
 - `NAVIGATION.md` — convenience index only
 - `TROUBLESHOOTING.md` — troubleshooting index
 - `ORDBOK.md` — terminology
-- `SKILLS.md` — general task guidance
-
+- Project-specific legacy task guidance is archived under the selected project's `legacy/` domain and is not generic authority.
 Reference files do not override active authorities.
 
 ## Retired material
