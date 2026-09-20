@@ -58,8 +58,8 @@ Verify:
 - real issue/PR IDs
 - accurate state
 - assignee verified or internally unknown
-- merger/reviewer identity based on actual source evidence
-- timestamp from source data
+- verified developer/assignee identity from actual source evidence
+- latest relevant delivery activity time (PR submission/open, otherwise latest verified commit/push) from source data
 - contribution explanation grounded in issue/PR/diff/commit evidence
 - no invented branch, owner, reviewer, merger, deadline or code effect
 
@@ -311,7 +311,10 @@ Manual visual checks across **every card type**:
 - relevant timestamp uses the quiet microcopy/timestamp color defined by the global palette and remains deliberately subordinate to title/body content
 - pedagogical explanation is calmer/secondary
 - branch/status/provenance/ordinary metadata is quieter than the explanation while still WCAG-AA compliant
-- no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the identity row
+- no card duplicates developer and assignee as separate visible concepts
+- developer identity and selected PR/commit activity time share one row when that time is available
+- cards inside a `Mergat till …` subsection do not repeat merge state with a badge, pill, stamp, checkmark or `MERGAD`/`Merged` label
+- generic tags, comment counts and reaction counts are absent unless the active meeting-point contract explicitly requires them
 - every next-step/action card explains what the action concerns and why it matters to the project
 - separate semantic blocks have the minimum required vertical spacing
 - no text rows visually touch
@@ -321,79 +324,51 @@ If card content cannot fit while preserving the required spacing and type sizes,
 
 ---
 
-## 7. MERGE / REVIEW METADATA
+## 7. COMPLETED-WORK IDENTITY WITHOUT REDUNDANT MERGE LABELS
 
-Canonical visible pattern:
+For cards inside a verified `Mergat till …` subsection, the subsection title and
+placement already express merge state. Per-card merge badges/stamps/pills and
+`MERGAD`/`Merged` labels are forbidden.
 
+The card instead verifies:
+- one developer/assignee identity only;
+- first-name presentation identity according to the card standard;
+- selected delivery activity time on that same row: PR submission/open time when available, otherwise latest verified commit/push time;
+- no generic tags, comment counts or reaction counts unless specifically required.
+
+Hard counters:
 ```text
-Merged: [verified name or blank] | Review: [verified name(s) or blank]
+redundant_merge_badge_or_stamp_count == 0
+separate_developer_and_assigned_row_count == 0
+developer_activity_time_detached_from_identity_count == 0
+unrequested_tag_comment_reaction_metadata_count == 0
 ```
 
-Acceptable:
-- `Merged: Björn | Review: Zaida`
-- `Merged: Björn | Review:`
-- `Merged: | Review: Zaida`
-
-Fail visible wording such as:
-- `ej verifierat`
-- `verifierad`
-- `verifierat via merge-commit`
-- `faktisk review behöver verifieras`
-- `Merged by:`
-- `Reviewed by:`
-
-Required:
-
-```text
-legacy_merged_by_label_count == 0
-legacy_reviewed_by_label_count == 0
-unverified_identity_commentary_count == 0
-merged_pr_without_merger_lookup_count == 0
-merged_pr_without_submitted_reviews_lookup_count == 0
-review_field_populated_from_requested_reviewers_count == 0
-verified_approving_reviewer_omitted_from_card_count == 0
-merged_pr_merge_review_row_missing_count == 0
-merged_pr_merge_review_row_not_bottom_zone_count == 0
-merged_pr_merge_timestamp_missing_count == 0
-verified_merger_omitted_from_card_count == 0
-```
-
-Unknown identity remains blank in the meeting card only after the dedicated lookup has been performed; uncertainty stays in the internal audit.
+The containing subtitle/section supplies the explicit non-color merge/team context;
+accent color remains supplementary.
 
 ---
 
-## 8. TIMESTAMP RELEVANCE
+## 8. DELIVERY-ACTIVITY TIME
 
-When rendered, timestamp must follow `CARD_COMPONENT_STANDARD.md`.
+For Issue/PR work cards, time belongs to the developer identity row rather than
+a detached timestamp line.
 
-Merged PR cards:
-- use merge timestamp
-- render it as the **bottom-most row of the card**, single-line and right-aligned/lower-right where card geometry permits
-- keep `Merged: … | Review: …` immediately above the timestamp inside the reserved bottom information zone
-- do not replace it with PR creation or latest commit time
+Selection:
+1. verified PR submission/open time when the work has been sent to PR;
+2. otherwise latest verified commit/push time;
+3. never issue-created/issue-updated time as a substitute.
 
-Active/open cards:
-- active Issue/PR cards show exactly one latest delivery-activity time on the same row as the verified developer identity: PR submission/open time when a PR exists, otherwise latest verified commit/push time
-- do not show issue-created or issue-updated time as a substitute
-- show time only when it materially helps meeting status understanding
-
-Required:
-
+Verify:
 ```text
-timestamp_two_line_count == 0
-timestamp_prefix_count == 0
-timestamp_not_right_aligned_count == 0
-unnecessary_activity_timestamp_count == 0
-merged_pr_wrong_timestamp_type_count == 0
+developer_activity_time_detached_from_identity_count == 0
+developer_activity_time_wrong_source_count == 0
+separate_developer_and_assigned_row_count == 0
 ```
 
-Example:
+Do not add a merge timestamp merely because the card is displayed in a merge
+subsection; the subsection already communicates completed merge context.
 
-```text
-14 sep · 10:16
-```
-
----
 
 ## 9. ACTIVE-WORK EVIDENCE
 
