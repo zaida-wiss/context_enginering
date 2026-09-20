@@ -159,6 +159,21 @@ The user/team should be able to see immediately:
 2. **why**
 3. **what consequence** the change has
 
+## Project planning calendar and hard constraints
+
+Before proposing sprint scope, work distribution, sequencing or capacity, load
+the selected project's registered sprint cadence, work calendar and hard
+planning constraints.
+
+Project-specific workdays or non-workdays must never be inferred from this
+generic authority. When a selected project marks a day as unavailable for
+project work, do not allocate, recommend or count project work on that day.
+
+A count of eligible workdays does not imply a fixed number of hours. Numeric
+hours, percentages, velocity or individual capacity require verified project
+sources. If they are unavailable, keep numeric capacity unknown and use only
+verified qualitative planning evidence.
+
 ## Proposing future sprint planning
 
 When asked what the next sprint should focus on, the AI should actively help.
