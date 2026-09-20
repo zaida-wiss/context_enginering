@@ -4,7 +4,7 @@ description: Canonical acquisition method for required datasets — deterministi
 metadata:
   type: process
   critical: true
-  version: 1.1
+  version: 1.2
 ---
 
 # DATA ACQUISITION CONTRACT
@@ -44,20 +44,20 @@ required_datasets:
 
     datasets:
       schedule:
-        file: "data/manual/course/TEAM_SCHEDULE.yaml"
-        supporting_file: "data/manual/course/SCHEDULE.md"
-        purpose: "Meeting times, recurring events, weekly PL focus and school-task instructions"
-        required_for: "framsida PL focus and school-task Vad/När/Var/Varför/Hur"
+        file: "selected project manifest -> context.course.team_schedule"
+        supporting_file: "selected project manifest -> context.course.schedule"
+        purpose: "Meeting times, recurring events, weekly focus and task instructions"
+        required_for: "cover focus and verified task What/When/Where/Why/How"
 
       milestones:
-        file: "data/manual/course/MILESTONES.yaml"
+        file: "selected project manifest -> context.course.milestones"
         purpose: "Critical deadlines, deliverables, submission place/method"
-        required_for: "framsida current-week deadlines and school-task Vad/När/Var/Varför/Hur"
+        required_for: "cover current-period deadlines and verified task What/When/Where/Why/How"
 
       roadmap:
-        file: "data/manual/course/TEAM_ROADMAP.yaml"
-        purpose: "Project phases, timeline, documented purpose and weekly consequence"
-        required_for: "contextual sprint positioning and verified Varför"
+        file: "selected project manifest -> context.course.roadmap"
+        purpose: "Project phases, timeline, documented purpose and current-period consequence"
+        required_for: "contextual sprint positioning and verified Why"
 
       current_sprint:
         file: "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
@@ -72,12 +72,12 @@ required_datasets:
         - "Varför"
         - "Hur"
       source_search_order:
-        - "data/manual/course/TEAM_SCHEDULE.yaml"
-        - "data/manual/course/SCHEDULE.md"
-        - "data/manual/course/MILESTONES.yaml"
-        - "data/manual/course/TEAM_ROADMAP.yaml"
+        - "selected project manifest -> context.course.team_schedule"
+        - "selected project manifest -> context.course.schedule"
+        - "selected project manifest -> context.course.milestones"
+        - "selected project manifest -> context.course.roadmap"
         - "_ai_guides/presentations/data/CURRENT_SPRINT_SCHEMA.yaml"
-        - "other registered _memory/data sources"
+        - "other sources registered by the selected project"
       missing_field_rule: "Render ⚠ [FIELD] kunde inte verifieras; never infer from title alone"
       provenance_rule: "Every populated answer must identify the supporting registered source"
 
