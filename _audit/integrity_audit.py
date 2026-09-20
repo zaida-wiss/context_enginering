@@ -769,6 +769,38 @@ def main():
         ok = False
     checks.append(result(ok, "point 2 must span course start through final delivery and mark the current position", "point 2 can regress to a near-term-only timeline"))
 
+    print("\nINVARIANT 20: Merged PR Identity + Quiet Timestamp")
+    ok = True
+    try:
+        card = read_text("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        card_required = (
+            "Merged: [verified name or blank] | Review: [verified approving reviewer(s) or blank]",
+            "Show the **merge timestamp**.",
+            "lower-right aligned where card geometry permits",
+            "Quiet microcopy/timestamp",
+        )
+        gate_required = (
+            "merged_pr_merge_review_row_missing_count == 0",
+            "merged_pr_merge_review_row_not_bottom_zone_count == 0",
+            "merged_pr_merge_timestamp_missing_count == 0",
+            "timestamp_not_quiet_microcopy_color_count == 0",
+            "bottom-most, single-line and right-aligned/lower-right",
+        )
+        if not all(token in card for token in card_required):
+            print("❌ merged-PR card standard lost merge/review or quiet timestamp semantics")
+            ok = False
+        if not all(token in gate for token in gate_required):
+            print("❌ render gate can omit merged-PR identity row or discrete merge timestamp")
+            ok = False
+        if "timestamp_not_primary_color_count == 0" in gate or "same primary text color as the title" in gate:
+            print("❌ stale timestamp styling still conflicts with quiet timestamp standard")
+            ok = False
+    except Exception as exc:
+        print(f"❌ merged-PR timestamp/identity inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "merged PR cards preserve merge/review identity and a quiet lower-right merge timestamp", "merged PR metadata can disappear or timestamp can become visually dominant"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
