@@ -1,0 +1,58 @@
+---
+name: avanza_project_context
+description: Canonical manifest for Avanza-specific project context
+version: 1.0
+metadata:
+  type: project_manifest
+  project: avanza
+  status: active
+
+identity:
+  project_id: avanza
+  display_name: "Avanza Team 1"
+  repository: "chas-challenge-2026/avanza-team1"
+
+context:
+  sources:
+    path: "projects/avanza/sources/SOURCES.yaml"
+  team_roster:
+    path: "projects/avanza/team/TEAM_ROSTER.md"
+  sprint_cadence:
+    path: "projects/avanza/project/sprint/CADENCE.yaml"
+  course:
+    schedule:
+      path: "projects/avanza/course/TEAM_SCHEDULE.yaml"
+    schedule_guide:
+      path: "projects/avanza/course/SCHEDULE.md"
+    milestones:
+      path: "projects/avanza/course/MILESTONES.yaml"
+    roadmap:
+      path: "projects/avanza/course/TEAM_ROADMAP.yaml"
+    deadlines:
+      path: "projects/avanza/course/COURSE_DEADLINES.md"
+    cto_feed_forward:
+      path: "projects/avanza/course/CTO_FEED_FORWARD.md"
+    cto_feed_forward_instructions:
+      path: "projects/avanza/course/CTO_FEED_FORWARD_INSTRUCTIONS.md"
+  design:
+    mockup_documentation:
+      path: "projects/avanza/design/DESIGN_MOCKUPS_README.md"
+
+ownership:
+  rule: >
+    Avanza-specific facts, identities, source URLs and IDs, schedules, course
+    context, project design references and other project examples belong under
+    this project root. Generic framework files outside this root must reference
+    selected-project context abstractly and must not embed Avanza-specific
+    examples or facts.
+
+migration:
+  mode: preservation_first
+  rule: >
+    Legacy copies remain until their consumers have been repointed and the
+    project-owned replacements have been verified. Delete a legacy copy only
+    after confirming that no unique information or required reference would be
+    lost.
+
+---
+status: ACTIVE
