@@ -1,11 +1,11 @@
 ---
 name: testing_standard
 description: Risk-based testing standard for project issues and pull requests
-version: 1.0
+version: 1.1
 metadata:
   type: project_authority
   status: active
-  last_updated: 2026-09-18
+  last_updated: 2026-09-20
 ---
 
 # Testing standard
@@ -91,7 +91,7 @@ Typical examples:
 
 Use for a small number of critical flows where several layers must work together.
 
-Typical examples in this project:
+Typical multi-layer examples:
 - authenticate → load portfolio
 - read holdings → calculate/display portfolio state
 - change target allocation → save → reload
@@ -100,9 +100,11 @@ Typical examples in this project:
 E2E tests are most valuable for core workflows; they do not need to duplicate
 every lower-level test.
 
-## Project-specific testing guide
+## Technology examples — apply only when relevant
 
-### Frontend — React / TypeScript
+The examples below are reusable testing patterns, not declarations about the selected project's stack. Apply a section only when the selected project actually uses that technology or boundary, as verified by its repository/configuration or registered project context.
+
+### Example: frontend — React / TypeScript
 
 For an issue that changes frontend behavior, consider:
 - user-visible rendering
@@ -117,7 +119,7 @@ For an issue that changes frontend behavior, consider:
 Pure transformation or calculation logic is often best covered with unit tests.
 User interactions are normally better covered with component/interaction tests.
 
-### Backend — Java
+### Example: backend — Java
 
 For backend changes, consider:
 - business/service rules
@@ -131,7 +133,7 @@ For backend changes, consider:
 Security-sensitive behavior should include both an allowed case and a relevant
 denied/invalid case.
 
-### Native/System — C/C++
+### Example: native/system — C/C++
 
 For native or calculation changes, consider:
 - deterministic calculation results
@@ -266,5 +268,5 @@ The important skill is being able to explain:
 
 ---
 **Status:** ACTIVE
-**Version:** 1.0
-**Last updated:** 2026-09-18
+**Version:** 1.1
+**Last updated:** 2026-09-20
