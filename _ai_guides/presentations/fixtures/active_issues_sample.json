@@ -1,81 +1,64 @@
 {
   "execution_mode": "TEST_MODE",
   "data_source": "fixtures/active_issues_sample.json",
-  "note": "Deterministic test data for success path verification. PRODUCTION: use live GitHub sources.",
+  "note": "Deterministic synthetic test data for success path verification. PRODUCTION: use the selected project's registered live sources.",
   "active_issues": [
     {
       "number": 108,
-      "title": "Implement rate limiting on API endpoints",
-      "assignees": [{"login": "Svartakatten"}],
-      "updated_at": "2026-09-14T10:00:00Z",
+      "title": "Add request throttling",
+      "assignees": [
+        {
+          "login": "dev-alpha"
+        }
+      ],
+      "updated_at": "2026-01-14T10:00:00Z",
       "state": "open",
-      "team": "Backend",
-      "labels": ["backend", "api", "urgent"]
+      "team": "Team Alpha",
+      "labels": [
+        "service",
+        "urgent"
+      ]
     },
     {
       "number": 112,
-      "title": "Native app crash on login screen",
-      "assignees": [{"login": "Henrik-Westerlund"}],
-      "updated_at": "2026-09-13T16:45:00Z",
+      "title": "Client login state regression",
+      "assignees": [
+        {
+          "login": "dev-beta"
+        }
+      ],
+      "updated_at": "2026-01-13T16:45:00Z",
       "state": "open",
-      "team": "Native/System",
-      "labels": ["native", "crash", "blocker"]
+      "team": "Team Beta",
+      "labels": [
+        "client",
+        "blocker"
+      ]
     },
     {
       "number": 115,
-      "title": "Design system documentation incomplete",
-      "assignees": [{"login": "bjorneboman"}],
-      "updated_at": "2026-09-14T08:30:00Z",
+      "title": "Integration contract documentation",
+      "assignees": [
+        {
+          "login": "dev-gamma"
+        }
+      ],
+      "updated_at": "2026-01-14T08:30:00Z",
       "state": "open",
-      "team": "Frontend",
-      "labels": ["frontend", "documentation"]
-    },
-    {
-      "number": 118,
-      "title": "TypeScript type definitions missing",
-      "assignees": [{"login": "zaida-wiss"}],
-      "updated_at": "2026-09-13T14:20:00Z",
-      "state": "open",
-      "team": "Frontend",
-      "labels": ["frontend", "typescript"]
-    },
-    {
-      "number": 121,
-      "title": "Database schema migration needed",
-      "assignees": [{"login": "rashaknifdi"}],
-      "updated_at": "2026-09-14T11:15:00Z",
-      "state": "open",
-      "team": "Backend",
-      "labels": ["backend", "database"]
-    },
-    {
-      "number": 124,
-      "title": "iOS app distribution setup",
-      "assignees": [{"login": "TomacBarin"}],
-      "updated_at": "2026-09-12T09:45:00Z",
-      "state": "open",
-      "team": "Frontend",
-      "labels": ["native", "ios", "deployment"]
-    },
-    {
-      "number": 127,
-      "title": "Performance testing infrastructure",
-      "assignees": [{"login": "lundhpargmailcom"}],
-      "updated_at": "2026-09-14T07:20:00Z",
-      "state": "open",
-      "team": "Native/System",
-      "labels": ["system", "performance", "testing"]
+      "team": "Team Beta",
+      "labels": [
+        "documentation"
+      ]
     }
   ],
   "metadata": {
-    "reporting_period_start": "2026-09-08T09:00:00Z",
-    "reporting_period_end": "2026-09-15T09:00:00Z",
-    "total_open_issues": 7,
+    "reporting_period_start": "2026-01-08T09:00:00Z",
+    "reporting_period_end": "2026-01-15T09:00:00Z",
+    "total_open_issues": 3,
     "team_coverage": {
-      "Frontend": 3,
-      "Backend": 2,
-      "Native/System": 2
+      "Team Alpha": 1,
+      "Team Beta": 2
     },
-    "activity_note": "All issues updated within reporting period with assigned owners"
+    "activity_note": "All fixture identities, teams, dates and work items are synthetic."
   }
 }
