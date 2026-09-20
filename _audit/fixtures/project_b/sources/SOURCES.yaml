@@ -1,0 +1,16 @@
+---
+name: synthetic_project_b_sources
+description: Test-only source registry for neutral Project B
+version: 1.0
+
+sources:
+  PRIMARY_REPOSITORY:
+    source_id: PRIMARY_REPOSITORY
+    purpose: "Synthetic current repository state"
+    required: true
+    critical: true
+    allowed_access_methods:
+      - "fixture"
+    fallbacks: []
+
+status: SYNTHETIC_TEST_FIXTURE
