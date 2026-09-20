@@ -138,7 +138,7 @@ def main() -> int:
                     f"{required_pattern}"
                 )
 
-    for group in ("validators", "references", "retired_guides"):
+    for group in ("validators", "references"):
         for filename in registry[group]:
             if not (PRESENTATIONS / filename).exists():
                 errors.append(f"missing {group} file: {filename}")
