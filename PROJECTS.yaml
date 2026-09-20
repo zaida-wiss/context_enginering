@@ -12,6 +12,7 @@ projects:
     display_name: "Avanza Team 1"
     status: active
     context_root: "projects/avanza"
+    manifest: "projects/avanza/PROJECT.yaml"
     current_legacy_context:
       project_guides: "_ai_guides/project"
       memory: "_memory"
