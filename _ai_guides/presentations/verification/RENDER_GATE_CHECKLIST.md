@@ -366,8 +366,13 @@ developer_activity_time_wrong_source_count == 0
 separate_developer_and_assigned_row_count == 0
 ```
 
-Do not add a merge timestamp merely because the card is displayed in a merge
-subsection; the subsection already communicates completed merge context.
+For completed work in a verified merge subsection, do not add a redundant
+`MERGAD`/`Merged` badge merely to repeat the subsection meaning.
+
+When the active project presentation authority requires merge-event metadata,
+preserve the verified merger identity and verified merge timestamp as distinct
+information. The merge timestamp represents the merge event and is not a
+substitute for the developer's PR/push/commit activity time.
 
 
 ## 9. ACTIVE-WORK EVIDENCE
@@ -596,7 +601,8 @@ Verify on every physical slide that uses cards:
 - card surface remains visually distinguishable from the slide canvas at WCAG-safe contrast;
 - every text child remains inside its rounded card bounds with approved internal padding;
 - responsive card geometry grows/reflows for wrapped text and required bottom information zones;
-- a 3×2 density pass is rejected if it succeeds only by removing rounding, glass/depth treatment, padding, required rows or readable hierarchy.
+- any density/layout pass is rejected if it succeeds only by removing rounding, glass/depth treatment, padding, required rows or readable hierarchy;
+- project-specific grid orientation/slot geometry is validated against the active project presentation authority.
 
 Hard counters:
 ```text
