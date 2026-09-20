@@ -156,6 +156,17 @@ When uncertainty is large, prefer:
 Capacity means the amount of work a person/team can realistically take on in
 the planning period.
 
+### Project calendar constraint
+
+Capacity reasoning starts with the selected project's registered work calendar
+and hard planning constraints. Days marked unavailable for project work have
+zero project-planning availability and must not be used for scheduling,
+workload distribution, parallelization proposals or implied spare capacity.
+
+Eligible workdays alone never establish numeric capacity. Do not multiply days
+by assumed working hours. Apply verified meetings, absence, availability and
+estimates when available; otherwise numeric capacity remains unknown.
+
 ### Verified capacity
 
 Numeric capacity may be used when it comes from a registered source such as:
