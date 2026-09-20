@@ -1,0 +1,9 @@
+---
+name: repository_flow_template
+description: Verified repository integration flow
+status: TEMPLATE
+primary_integration:
+  branch: "<branch>"
+collection_branches: []
+rules:
+  - "Declare only branches/flows that actually exist for this project."
