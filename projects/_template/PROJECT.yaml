@@ -42,6 +42,12 @@ context:
     deadlines:
       path: "projects/<project_id>/requirements/DEADLINES.md"
 
+  # OPTIONAL: project-specific presentation composition/semantics.
+  presentation:
+    required: false
+    authority:
+      path: "projects/<project_id>/presentation/PRESENTATION_SYSTEM.md"
+
   # OPTIONAL.
   design:
     required: false
