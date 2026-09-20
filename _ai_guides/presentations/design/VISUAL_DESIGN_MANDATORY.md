@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.2
+  version: 5.3
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -113,7 +113,7 @@ microcopy; it is a hierarchy/composition test, not a content-deletion rule.
 
 | Element | Hex | Role |
 |---|---|---|
-| Slide background | `#15182E` | calm deep navy canvas |
+| Slide background | `#15182E` | canonical calm deep navy base; never black |
 | Card surface | `#1E233B` | primary card surface |
 | Alternate card surface | `#252A45` | optional subtle variation |
 | Decorative card edge | `#33405D` | non-semantic separation |
@@ -153,6 +153,31 @@ The canonical school-task metadata symbols are:
 `🎯 task · 🕒 time · 📍 place · 💡 purpose · 🛠 method`.
 These symbols replace repeated text labels such as `VAD / NÄR / VAR / VARFÖR / HUR`
 on school/submission cards, while the underlying five meanings remain mandatory.
+
+### Background rendering contract — mandatory
+
+The canonical base is `#15182E`. The rendered slide background must read as
+**modern dark navy**, never black, charcoal-black or near-black.
+
+Allowed:
+- `#15182E` as the dominant/base field;
+- subtle tonal variation within the same dark-blue/navy family;
+- a restrained gradient, vignette or soft geometric tonal shift when it does
+  not reduce contrast or compete with content.
+
+Required behavior:
+- tonal variation stays visibly blue/navy rather than neutral black;
+- the base color remains recognizable across the deck;
+- decorative shifts are low-contrast and non-semantic;
+- cards remain distinguishable from the background at accessible contrast;
+- if an implementation cannot render the tonal treatment reliably, fall back
+  to solid `#15182E`, never to black.
+
+Forbidden:
+- `#000000` or visually black slide backgrounds;
+- black-to-navy gradients;
+- high-glare neon/bright gradients;
+- decorative texture that reduces text legibility.
 
 Palette rules:
 - same background/card family across the entire deck
@@ -209,7 +234,27 @@ wording, geometry, density or pagination — never by font-family substitution.
 
 This file owns only slide-level roles:
 - slide title/header: **36 pt**, bold — this is both the preferred and minimum size
-- section header: **22 pt minimum**, bold
+- section header: **24 pt minimum**, bold
+- ordinary slide/card body text should normally render at **20 pt or larger**
+- supporting metadata should normally render at **18 pt or larger**
+
+The body/metadata values above are presentation-level readability targets.
+Component-specific authorities may require larger text. They must not be used to
+justify shrinking required component text below its owning hard minimum.
+
+### Distance-readability rule — mandatory
+
+A meeting presentation is designed to be read on a shared screen, not only on
+the author's laptop.
+
+If ordinary content would need to become smaller than the readability targets:
+1. shorten non-essential wording without removing meaning;
+2. reduce cards/items on the physical slide;
+3. enlarge the card/content area;
+4. create continuation slides.
+
+**More slides are preferred to smaller text.** Dense dashboard-style layouts
+that technically fit but require close reading are a render failure.
 
 ### Slide-title hard rule
 
@@ -460,6 +505,10 @@ This file requires globally:
 - slide titles remain at 36 pt or larger
 - slide titles are never shrunk for fit
 - slide-level typography minimums respected
+- background visibly dark navy with canonical `#15182E` base; black/near-black fallback count = 0
+- distance-readability pass: ordinary body text targets >= 20 pt and metadata targets >= 18 pt; paginate before compression
+- school/submission cards containing the five required meanings use the canonical symbols `🎯 🕒 📍 💡 🛠` rather than repeated VAD/HUR/VARFÖR/NÄR/VAR labels
+- every rendered urgency/priority state uses both semantic text/symbol and the canonical red/orange/green urgency color
 
 Do not duplicate the full render-gate checklist here.
 
