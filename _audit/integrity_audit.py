@@ -3,7 +3,7 @@
 Repository Integrity Audit — project-aware mechanical context validation
 
 Validates:
-1. PROJECTS.yaml discovers active project manifests without hardcoded project IDs.
+1. PROJECTS.yaml discovers active project manifests without hardcoded project IDs and remains valid with zero active projects.
 2. Every active project manifest exists and its registered context paths resolve.
 3. Every project source registry has present, matching, unique source IDs.
 4. Source fallback access methods are compatible when an allowed-method contract exists.
@@ -12,6 +12,7 @@ Validates:
 7. Every canonical path registered in CONTEXT_REGISTRY exists.
 8. Logical references used by task bundles and the global project router resolve.
 9. Global routing/validation does not require legacy project-owned source/roster paths.
+10. The reusable project template and onboarding contract exist without depending on a named project.
 
 This intentionally uses a small YAML-path parser so the audit has no PyYAML dependency.
 """
@@ -244,8 +245,8 @@ def main():
     try:
         projects = parse_project_registry()
         active = {k: v for k, v in projects.items() if v.get("status") == "active"}
-        ok = bool(active) and all(v.get("manifest") for v in active.values())
-        checks.append(result(ok, f"{len(active)} active project manifest(s) discovered", "active projects/manifests could not be resolved"))
+        ok = all(v.get("manifest") for v in active.values())
+        checks.append(result(ok, f"{len(active)} active project manifest(s) discovered; zero is valid", "active project entries contain unresolved manifests"))
     except Exception as exc:
         active = {}
         checks.append(result(False, "", f"PROJECTS.yaml parse failed: {exc}"))
@@ -390,6 +391,32 @@ def main():
                 print(f"❌ {control} still requires legacy project-owned path {legacy}")
                 ok = False
     checks.append(result(ok, "global control plane no longer requires legacy source/roster copies", "legacy project-owned paths are still active"))
+
+    print("\nINVARIANT 10: Reusable Project Onboarding Contract")
+    template_required = [
+        "projects/_template/README.md",
+        "projects/_template/PROJECT.yaml",
+        "projects/_template/sources/SOURCES.yaml",
+    ]
+    ok = True
+    for target in template_required:
+        exists = os.path.exists(target)
+        print(f"{'✅' if exists else '❌'} {target}")
+        ok &= exists
+    try:
+        template_manifest = read_text("projects/_template/PROJECT.yaml")
+        template_guide = read_text("projects/_template/README.md")
+        named_project_leak = re.search(r"\\bavanza\\b|chas-challenge-2026", template_manifest + "\n" + template_guide, re.I)
+        if named_project_leak:
+            print("❌ project template contains named-project leakage")
+            ok = False
+        if "<project_id>" not in template_manifest:
+            print("❌ project template lacks project_id placeholder routing")
+            ok = False
+    except Exception as exc:
+        print(f"❌ project template inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "project onboarding template is present and project-neutral", "project onboarding contract is incomplete or project-specific"))
 
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
