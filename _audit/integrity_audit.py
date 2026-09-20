@@ -288,7 +288,7 @@ def main():
         ok = (
             set(simulated_active) == {"project_b"}
             and simulated_active["project_b"]["manifest"] == fixture_manifest
-            and fixture_paths == [fixture_sources]
+            and set(fixture_paths) == {fixture_sources, fixture_presentation}
             and all(os.path.exists(path.rstrip("/")) for path in fixture_paths)
             and fixture_source_data.get("PRIMARY_REPOSITORY", {}).get("source_id") == "PRIMARY_REPOSITORY"
             and fixture_presentation in fixture_paths
