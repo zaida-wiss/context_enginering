@@ -4,7 +4,7 @@ description: Team 1 project phases and timeline (Chas Challenge 2026)
 metadata:
   source: CHAS course schedule
   timezone: Europe/Stockholm
-  updated: 2026-09-16
+  updated: 2026-09-20
 ---
 
 project_period:
@@ -39,14 +39,15 @@ phases:
 
   - week: "V7"
     dates: "2026-09-28 — 2026-10-02"
-    name: "CTO-feedforward"
-    focus: "Integrate CTO feedback, scope, technical risks, demo"
+    name: "CTO-feedforward + DM/UX-underlag"
+    focus: "Receive CTO feed forward; prepare Delivery Manager and UX specialist material; record two films"
     deadline: "2026-10-01"
+    planning_note: "Back Office explicitly warns against underestimating the time required"
 
   - week: "V8"
     dates: "2026-10-05 — 2026-10-09"
     name: "UX & DM-feedforward"
-    focus: "Integrate UX and Delivery Manager feedback"
+    focus: "Receive and integrate UX and Delivery Manager feedback from the two-film specialist assignment"
 
   - week: "V9"
     dates: "2026-10-12 — 2026-10-16"
