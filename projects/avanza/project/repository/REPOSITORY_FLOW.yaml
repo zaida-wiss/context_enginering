@@ -1,0 +1,37 @@
+---
+name: repository_flow
+description: Canonical Avanza repository integration and collection-branch structure
+version: 1.0
+metadata:
+  type: project_repository_config
+  project: avanza
+  status: active
+
+integration:
+  primary_branch: "develop"
+  completed_delivery:
+    rule: >
+      A verified merge to the primary integration branch during the active sprint
+      is completed delivery for the meeting's completed-work view.
+
+collection_branches:
+  - branch: "C/C++-Native"
+    presentation_subtitle: "Mergat till C/C++-Native"
+    own_completed_work_sequence: true
+  - branch: "Java-Development-Environment"
+    presentation_subtitle: "Mergat till Java-Development-Environment"
+    own_completed_work_sequence: true
+
+presentation:
+  primary_branch_subtitle: "Mergat till develop"
+  collection_branch_rule: >
+    Each registered collection branch gets its own completed-work slide sequence
+    after the primary integration-branch sequence. Do not fold collection-branch
+    delivery into the primary-branch pages.
+  deduplication_rule: >
+    If the same delivery is later merged to the primary integration branch in
+    the same relevant timeline, prefer the later primary-branch delivery where
+    the presentation rule requires a single representation.
+
+---
+status: ACTIVE
