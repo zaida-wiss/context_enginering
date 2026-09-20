@@ -122,6 +122,25 @@ Especially:
 
 Analysis and proposals must not share the same AI icon.
 
+## Mandatory priority sanity check against team decisions
+
+The meeting protocol is authoritative for **what the team decided**, not for
+whether that decision is the best current priority.
+
+Before rendering forward-looking priorities, independently compare team-confirmed
+ordering with verified deadlines/course requirements, sprint goals,
+dependencies/blockers, risks, repository/PR/issue state, cross-team constraints
+and documented capacity when available.
+
+A material mismatch must render:
+
+`🔎 AI-analys — HEADS-UP`
+
+State the team priority, conflicting evidence, likely consequence and supporting
+source(s). A better order/action, when evidence supports one, is
+`⭐ AI-förslag`. Preserve the team decision as team evidence; never silently
+rewrite it.
+
 ## Mandatory planning support
 
 A Monday-meeting deck is not complete if it only reports status. It must also help the team plan the next work period.
