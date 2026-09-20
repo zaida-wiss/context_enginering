@@ -22,16 +22,16 @@ For each required piece of information, use the source priority listed there:
 
 ### 1. Team Roster
 ```
-Source: TEAM_ROSTER.md (local file in this repo)
+Source: selected project manifest → registered canonical team roster
 Format: [Name, GitHub username, team designation]
-Requirement: All 7 members verified
+Requirement: Every registered roster member accounted for
 ```
 
 ### 2. Merged PRs (REPORTING_PERIOD)
 ```
 Sources: [`DATA_SOURCES.md`](../../data/DATA_SOURCES.md) section "WORK COMPLETED THIS WEEK"
 Primary: GitHub API or web pulls tab
-Fallback: Google Sheets (see [`data/SOURCES.md`](../../../../data/SOURCES.md) for link)
+Fallback: follow the selected project's registered source registry
 
 Collect: PR#, title, author, assignee, merged_at timestamp, base branch
 Verify: merged_at is within REPORTING_PERIOD (see [`SYSTEM_CONTRACT.yaml`](../../SYSTEM_CONTRACT.yaml))
@@ -56,7 +56,7 @@ Sources: [`DATA_SOURCES.md`](../../data/DATA_SOURCES.md) section "REPOSITORY STR
 Primary: GitHub API branches endpoint
 Fallback: GitHub web branches page
 
-Collect: All branches in repository (develop, Java-Development-Environment, C/C++-Native, etc.)
+Collect: All relevant repository branches, including the primary integration branch and every collection branch registered by the selected project's repository-flow config
 Requirement: Branches per SYSTEM_CONTRACT.yaml dataset_5_branches (REQUIRED before GitHub collection complete)
 ```
 
@@ -82,13 +82,13 @@ Collect if available. If unavailable, note in footer with ⚠️. Never stop ren
 
 ### Project Board (optional)
 ```
-Source: See [`data/SOURCES.md`](../../../../data/SOURCES.md) for board link
+Source: selected project's registered source registry
 Fallback: Reconstruct from Issues and PRs data
 ```
 
 ### Meeting Protocol (optional)
 ```
-Source: See [`data/SOURCES.md`](../../../../data/SOURCES.md) for Google Docs link
+Source: selected project's registered source registry
 Use for: Context only — never influences required-information decisions
 ```
 
