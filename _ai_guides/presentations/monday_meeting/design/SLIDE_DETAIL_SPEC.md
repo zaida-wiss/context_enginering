@@ -80,12 +80,12 @@ For work/action cards, content must not require legacy labels such as:
 - `Assigned to:`
 
 When person/team identity is shown, provide separate verified renderer fields,
-for example `person: Zaida` and `team: Frontend`.
+for example `person: {PERSON}` and `team: {TEAM}`.
 
 Rendering rule:
-- dedicated team slide whose primary header names the team: show `Zaida` only;
+- dedicated team slide whose primary header names the team: show `{PERSON}` only;
   do not repeat `Frontend` inside the card
-- mixed-team slide: show the explicit non-color cue `Zaida · Frontend`
+- mixed-team slide: show the explicit non-color cue `{PERSON} · {TEAM}`
 - the narrow left team accent remains supplementary in both cases
 
 Timestamp content must be meeting-relevant:
@@ -307,8 +307,8 @@ Official meeting-point title shown on **every** slide in this section:
 
 `✏️ 1. Avklarat sedan förra mötet`
 
-Page-specific descriptions such as `Mergat till develop`, `Mergat till C/C++-Native`,
-`Mergat till Java-Development-Environment` and `Teamsammanfattning` are subtitles,
+Page-specific descriptions such as `Mergat till develop`, `Mergat till {COLLECTION_BRANCH_A}`,
+`Mergat till {COLLECTION_BRANCH_B}` and `Teamsammanfattning` are subtitles,
 never replacements for the official meeting-point title.
 
 Use the active sprint resolved from the request timestamp. Meeting point 1
@@ -337,15 +337,15 @@ planned decision, a decision candidate, an unresolved question or an AI-suggeste
 decision here.
 
 “Done” means a verified merge during the sprint window to either `develop` or
-one of the registered collection branches `C/C++-Native` or
-`Java-Development-Environment`. Project-board `Done` is a consistency check,
+one of the registered collection branches `{COLLECTION_BRANCH_A}` or
+`{COLLECTION_BRANCH_B}`. Project-board `Done` is a consistency check,
 not a substitute for merge evidence. Show mismatches instead of guessing.
 Deduplicate work promoted through multiple branches.
 
 Mandatory content order:
 1. merged to `develop`
-2. merged to `C/C++-Native`
-3. merged to `Java-Development-Environment`
+2. merged to `{COLLECTION_BRANCH_A}`
+3. merged to `{COLLECTION_BRANCH_B}`
 4. AI-proposed team summaries for the meeting protocol
 
 Every target above gets its own physical slide sequence, in the stated order.
@@ -375,33 +375,33 @@ All continuation slides for this target keep the same subtitle exactly:
 `Mergat till develop`. Do not render generic subtitles such as `Mergat under
 sprinten`, `del 2`, `merged work` or equivalent.
 
-## Subtitle — Mergat till C/C++-Native
+## Subtitle — Mergat till {COLLECTION_BRANCH_A}
 
 Primary heading remains:
 `✏️ 1. Avklarat sedan förra mötet`
 
-Canonical branch: `C/C++-Native`. Show every verified merge to this branch during
+Canonical branch: `{COLLECTION_BRANCH_A}`. Show every verified merge to this branch during
 the sprint window after the `develop` pages. Use the same evidence fields as
 above where available.
 
 This collection branch always gets its own physical slide sequence. When verified
-merge evidence is empty, show `Inga verifierade merges till C/C++-Native under perioden`;
+merge evidence is empty, show `Inga verifierade merges till {COLLECTION_BRANCH_A} under perioden`;
 when acquisition is incomplete, show the source-specific warning instead. The slide
-subtitle must be exactly `Mergat till C/C++-Native`.
+subtitle must be exactly `Mergat till {COLLECTION_BRANCH_A}`.
 
-## Subtitle — Mergat till Java-Development-Environment
+## Subtitle — Mergat till {COLLECTION_BRANCH_B}
 
 Primary heading remains:
 `✏️ 1. Avklarat sedan förra mötet`
 
-Canonical branch: `Java-Development-Environment`. Show every verified merge to
-this branch during the sprint window after `C/C++-Native`. Use the same evidence
+Canonical branch: `{COLLECTION_BRANCH_B}`. Show every verified merge to
+this branch during the sprint window after `{COLLECTION_BRANCH_A}`. Use the same evidence
 fields as above where available.
 
 This collection branch always gets its own physical slide sequence. When verified
-merge evidence is empty, show `Inga verifierade merges till Java-Development-Environment under perioden`;
+merge evidence is empty, show `Inga verifierade merges till {COLLECTION_BRANCH_B} under perioden`;
 when acquisition is incomplete, show the source-specific warning instead. The slide
-subtitle must be exactly `Mergat till Java-Development-Environment`.
+subtitle must be exactly `Mergat till {COLLECTION_BRANCH_B}`.
 
 ## Subtitle — Teamsammanfattning till mötesprotokollet
 
@@ -646,7 +646,7 @@ Byter mock mot riktig Backend-kommunikation.
 ```
 
 ```text
-#106 HttpOnly auth
+#ISSUE_ID · concise verified work title
 Flyttar auth till säkrare cookie-baserad lösning.
 ⏳ efter integration
 ```
@@ -869,9 +869,9 @@ Show only:
 Example:
 
 ```text
-#84 Visual asset allocation  ✅
-#89 MVP core-flow E2E        ✅
-#69 FX-info popover          ✅
+#ISSUE_A · verified item  ✅
+#ISSUE_B · verified item  ✅
+#ISSUE_C · verified item  ✅
 ```
 
 No pedagogical explanation is required in the backlog group.
@@ -908,7 +908,7 @@ Use when:
 Compact format:
 
 ```text
-⭐ Korrigera #123 — [kort vad som behöver ändras]
+⭐ Korrigera #ISSUE_ID — [kort vad som behöver ändras]
 ```
 
 Do not create filler proposals.
@@ -993,7 +993,7 @@ or enable.
 Compact form:
 
 ```text
-📌 #114  Kritiska MVP-tester väntar på review/merge  ✅
+📌 #PR_ID  [verifierat arbete] väntar på review/merge  ✅
 ```
 
 Do not create a separate PR section unless the dataset is unusually large and a
