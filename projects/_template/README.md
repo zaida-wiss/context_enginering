@@ -29,6 +29,7 @@ A project must be removable without breaking the global framework. Project facts
 | Requirements | `requirements/REQUIREMENTS.md` | CONDITIONAL |
 | Milestones | `requirements/MILESTONES.yaml` | CONDITIONAL |
 | Deadlines | `requirements/DEADLINES.md` | CONDITIONAL |
+| Project-specific presentation rules | `presentation/PRESENTATION_SYSTEM.md` | OPTIONAL |
 | Visual identity/design facts | `design/VISUAL_IDENTITY.yaml` | OPTIONAL |
 | Confirmed project decisions | `decisions/` | CONDITIONAL |
 | Other long-lived project facts | `context/` | OPTIONAL |
