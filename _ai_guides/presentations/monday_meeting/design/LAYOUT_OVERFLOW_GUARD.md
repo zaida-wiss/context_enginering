@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 3.6
+  version: 3.7
 ---
 
 # 🚨 LAYOUT OVERFLOW GUARD — Responsive Cards, WCAG First
@@ -105,7 +105,7 @@ If cards are text-heavy, use fewer cards than the maximum.
 
 Examples:
 - 4 long cards may become 2 cards + 2 cards on continuation
-- 6 merge cards may become 4 + 2 if the 3-column cards cannot remain readable
+- 6 merge cards must first be rendered/tested as 3×2; they may become 4 + 2 only when that measured six-card render cannot satisfy typography, required rows, spacing, source-footer reservation or overlap rules
 - next-step cards with pedagogical explanations must paginate rather than drop the explanations
 
 ---
