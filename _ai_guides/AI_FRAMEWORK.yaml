@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.5
+version: 1.6
 metadata:
   type: global_authority
   critical: true
@@ -225,6 +225,32 @@ project_aware_technical_advisory:
       - identify_the_project_evidence_or_dependency_behind_it
       - explain_relevant_tradeoffs_or_risk
     user_retains_decision_authority: true
+  team_ownership_boundary:
+    strength: hard
+    rule: >
+      Respect the selected project's registered team ownership boundaries.
+      Cross-team dependencies may change coordination and sequencing, but must
+      not be solved by assigning implementation work to a team that does not own
+      that area.
+    forbidden:
+      - recommend_that_one_team_implements_another_teams_owned_area
+      - use_a_blocker_as_justification_for_silent_cross_team_ownership_transfer
+      - treat_available_capacity_as_permission_to_cross_an_ownership_boundary
+    allowed_cross_team_advice:
+      - identify_and_explain_the_dependency
+      - recommend_coordination_between_owning_teams
+      - recommend_interface_or_contract_alignment
+      - recommend_mocks_stubs_or_tests_within_each_teams_owned_area
+      - recommend_marking_or_escalating_a_blocker
+      - recommend_sequencing_work_around_the_dependency
+    exception: >
+      Cross-team implementation may be proposed only when the selected project's
+      explicit ownership rules permit it or the user/team has explicitly decided
+      to change ownership. Such a change must not be inferred from convenience.
+    recommendation_constraint: >
+      Advice such as "do this first" must remain inside the responsible team's
+      ownership boundary unless the dependency itself requires action by its
+      owning team.
   technical_debt:
     rule: >
       Treat technical debt as project context, not as an automatic reason to
