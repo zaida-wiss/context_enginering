@@ -173,12 +173,9 @@ Palette rules:
 
 ### Team accent and issue/PR identifiers
 Team ownership is shown with a narrow left accent and, on issue/PR cards, the
-same team color on the `#NUMBER`:
-- Frontend `#2DD4BF`
-- Backend `#FF4FA3`
-- Native `#A855F7`
-- Cross-team `#CBD5E1`
-- Neutral `#94A3B8`
+the same team color on the `#NUMBER`. Team labels, team colors and the neutral
+accent are resolved from the selected project's registered team visual identity.
+This generic authority must not embed project-specific mappings.
 
 Do not use full team-colored outlines or team-colored card fills.
 Color is supplementary: the visible team column/section or a text label must
