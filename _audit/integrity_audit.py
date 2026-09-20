@@ -138,7 +138,7 @@ def read_sources_section(path):
         if current_source is None:
             continue
 
-        if "source_id:" in stripped and not stripped.startswith("- source_id:"):
+        if indent == 4 and stripped.startswith("source_id:"):
             value = quoted_value(stripped.split("source_id:", 1)[1])
             sources[current_source]["source_id"] = value
             continue
@@ -204,6 +204,9 @@ def parse_context_registry():
                 value = quoted_value(stripped.split("path:", 1)[1])
                 logical_ids[f"logical_destinations.{level1}.{level2}"] = value
                 all_paths.append(value)
+                continue
+            if indent == 6 and stripped.startswith("resolve_via:") and level1 and level2:
+                logical_ids[f"logical_destinations.{level1}.{level2}"] = "<dynamic>"
                 continue
 
         if section == "registries":
@@ -467,8 +470,10 @@ def main():
         if not manifest or not os.path.exists(manifest):
             continue
         manifest_text = read_text(manifest)
-        boundary_terms = ("project-specific facts", "generic framework")
-        if not all(term in manifest_text.lower() for term in boundary_terms):
+        lower_manifest = manifest_text.lower()
+        preserves_fact_boundary = ("specific facts" in lower_manifest or "project-specific facts" in lower_manifest)
+        preserves_global_boundary = "generic framework" in lower_manifest
+        if not (preserves_fact_boundary and preserves_global_boundary):
             print(f"❌ {project_id}: manifest does not state the reusable-method/project-fact ownership boundary")
             ok = False
     checks.append(result(ok, "reusable team/project methods are globally owned and project manifests preserve the boundary", "global method ownership or project boundary is incomplete"))
