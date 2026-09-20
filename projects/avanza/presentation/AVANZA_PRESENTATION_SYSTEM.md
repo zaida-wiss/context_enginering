@@ -8,11 +8,20 @@ scope: projects/avanza
 
 # Avanza Presentation System
 
-This file owns the Avanza-specific presentation identity and meeting-point composition.
-Global authorities still own WCAG/accessibility, source integrity, overflow safety,
-evidence semantics and conflict handling.
+This file owns Avanza-specific presentation composition and project semantics.
+Global presentation design is inherited by default, including the current navy/glass
+visual foundation. Avanza rules may add or specialize behavior without needing to
+duplicate the global design.
 
-## 1. Visual identity — Avanza only
+If an Avanza-specific design rule would conflict with an active global design rule,
+the AI must stop and ask an explicit control question before applying that project
+override. Without explicit approval for the deviation, the global design remains
+effective.
+
+Global authorities also continue to own WCAG/accessibility, source integrity,
+overflow safety, evidence semantics and conflict handling.
+
+## 1. Inherited visual identity — global default used by Avanza
 
 The rendered deck must visibly read as modern dark navy, never black.
 
