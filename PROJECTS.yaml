@@ -17,6 +17,15 @@ projects:
       github_repository: "chas-challenge-2026/avanza-team1"
     migration_state: "project_context_migrated; generic legacy domains retained only for cross-project framework use"
 
+  project-b-smoke:
+    display_name: "Project B Smoke"
+    status: active
+    context_root: "projects/project-b-smoke"
+    manifest: "projects/project-b-smoke/PROJECT.yaml"
+    repository_match:
+      github_repository: "example/project-b-smoke"
+    migration_state: "synthetic_onboarding_smoke_test"
+
 resolution:
   rule: >
     Select a project only when the user names it, the active repository/workspace
