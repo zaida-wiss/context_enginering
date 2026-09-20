@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.5
+  version: 3.6
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -643,7 +643,25 @@ Flyttar auth till säkrare cookie-baserad lösning.
 ⏳ efter integration
 ```
 
-Optional arrows/connectors between cards may represent verified dependency direction.
+### ⑥B Dependency / blocker relationship map — mandatory when relational structure exists
+
+When two or more verified dependencies/blockers form a chain, fork, fan-in,
+fan-out or cross-team relationship, the primary visual MUST be a relationship
+map rather than a set of unrelated ordinary cards.
+
+The map must show:
+- prerequisite/root cause node;
+- blocked work/team node;
+- unlocked work/team node when known;
+- visible directional connector(s) showing `waits for → blocks/unlocks`;
+- owner/responsible area when verified;
+- fallback/parallel path when productive work can continue.
+
+Use cards as nodes, but preserve the graph/map relationship. Do not flatten a
+verified dependency graph into a generic 2×N card grid merely for visual
+consistency.
+
+A single isolated dependency may use one chain card without a full map.
 
 If dependency direction is inferred by AI rather than explicitly supported, mark the interpretation `🔎 AI-analys`.
 
