@@ -1,68 +1,61 @@
 ---
 name: project_context_router
-description: Minimal router for Avanza project work
+description: Generic router from a resolved project context to canonical task owners
 metadata:
   type: router
   status: active
-  version: 2.9
+  version: 3.0
 ---
 
-# Avanza project context router
+# Project context router
 
 ## Purpose
 
-This file routes project work to the correct canonical owner. It does not repeat
+This file routes work after the active project has been resolved. It does not
+choose a historical/default project and does not repeat project facts,
 presentation rules, data-source rules or team standards.
 
-## Global framework first
+## Resolve project first
 
-Before resolving project-specific owners, apply
-[`../AI_FRAMEWORK.yaml`](../AI_FRAMEWORK.yaml).
+Apply [`../AI_FRAMEWORK.yaml`](../AI_FRAMEWORK.yaml) and resolve project identity
+through [`../../PROJECTS.yaml`](../../PROJECTS.yaml).
 
-If active project rules genuinely conflict, stop and ask the user to decide as
-required by the global conflict-decision gate. Do not resolve the contradiction
-from router order or authority rank.
+If multiple projects are registered and neither the user nor a verifiable active
+repository/workspace identifies one uniquely, ask the user which project applies.
+Never assume the historically most common project.
 
-## Start from the repository map
+After resolution, load only:
+1. the global framework,
+2. the selected project's registered context,
+3. task-specific authorities needed for the request.
 
-Resolve canonical paths through [`../../CONTEXT_REGISTRY.yaml`](../../CONTEXT_REGISTRY.yaml).
+Do not mix facts, course material, design references, sources, people or current
+state between projects.
 
-For project work:
+## Canonical task routing
 
-- team/code/Git workflow → `project.team_standards`
-- testing and verification → `project.testing`
-- goals, milestones and sprint planning → `project.goals_and_sprint_planning`
-- risk analysis and mitigation reasoning → `project.risk_management`
-- dependencies, blockers, estimates and capacity → `project.dependencies_and_capacity`
-- Frontend ↔ Backend ↔ Native/System contracts and active-branch alignment → `project.cross_layer_awareness`
-- technical debt recognition/prioritisation → `project.technical_debt`
-- coding help with system-level awareness → `tasks.coding_assistance`
-- Definition of Done → `project.definition_of_done`
-- default communication/feedback tone → `project.team_tone_and_collaboration`
-- conflict/needs/people-support → `project.hr_and_team_support`
-- issue creation → `tasks.issue_creation`
-- reusable issue body → `project.issue_body_template`
-- risk-register template → `project.risk_register_template`
-- long-lived team identity → `memory.team_roster`
-- live/current project facts → registered live sources in `data/SOURCES.yaml`
-- presentation requests → the `monday_meeting_presentation` task bundle in `CONTEXT_REGISTRY.yaml`
+Resolve canonical task paths through
+[`../../CONTEXT_REGISTRY.yaml`](../../CONTEXT_REGISTRY.yaml).
+
+The current registry still contains legacy project paths while project-specific
+data is migrated preservation-first into registered project roots. A legacy path
+may be used only after project resolution identifies the project that owns it.
 
 ## Current-state principle
 
-Current claims about issues, PRs, branches, commits, blockers, reviews, schedules
-or other changing project state are resolved from the registered current source
-for that fact.
+Current claims about issues, PRs, branches, commits, blockers, reviews,
+schedules or other changing project state come from the selected project's
+registered current source.
 
-Long-lived context explains the project; live data establishes current state.
+Long-lived context explains the selected project; live data establishes its
+current state.
 
-## Model-neutral use
+## Conflict behavior
 
-Give the model the goal, the canonical owner and the relevant verified data.
-Load only the dependencies needed for the current task, then validate the
-result with the task's registered acceptance checks.
+A genuine active-rule conflict is handled by the global conflict-decision gate.
+Router order must never silently resolve it.
 
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.9
-**Last updated:** 2026-09-18
+**Version:** 3.0
