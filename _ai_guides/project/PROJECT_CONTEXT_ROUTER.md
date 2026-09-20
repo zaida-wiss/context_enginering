@@ -4,7 +4,7 @@ description: Generic router from a resolved project context to canonical task ow
 metadata:
   type: router
   status: active
-  version: 3.0
+  version: 3.1
 ---
 
 # Project context router
@@ -42,6 +42,22 @@ The current registry still contains legacy project paths while project-specific
 data is migrated preservation-first into registered project roots. A legacy path
 may be used only after project resolution identifies the project that owns it.
 
+## Project creation and information placement
+
+For a new project, use `../../projects/_template/README.md` and
+`../../projects/_template/PROJECT.yaml` as the global onboarding contract.
+
+Before writing newly learned information, classify it as either global reusable
+behavior or selected-project context. Project context goes to the narrowest
+registered project domain. Do not copy another project's folder contents as
+defaults, invent a new project folder ad hoc, or use `context/` as a dumping
+ground. If a genuinely new category recurs across projects, propose a generic
+contract/category.
+
+A project may omit conditional/optional capabilities. Task routing must require
+only capabilities needed by the requested task and declared by the selected
+project.
+
 ## Current-state principle
 
 Current claims about issues, PRs, branches, commits, blockers, reviews,
@@ -59,4 +75,4 @@ Router order must never silently resolve it.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 3.0
+**Version:** 3.1
