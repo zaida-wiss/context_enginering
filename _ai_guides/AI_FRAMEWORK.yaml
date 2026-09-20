@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.9
+version: 1.10
 metadata:
   type: global_authority
   critical: true
@@ -281,10 +281,32 @@ project_work_analysis:
   authority: "_ai_guides/PROJECT_WORK_ANALYSIS.md"
   scope: global
   rule: >
-    Use the shared project-work analysis authority for dependency, collision,
-    ownership-aware sequencing and evidence reconstruction across coding,
-    issue work, review, sprint planning and reporting. Task-specific outputs
-    consume this analysis and must not create competing reasoning models.
+    Use the shared project-work analysis authority for project bird's-eye
+    orientation, core-flow understanding, dependency, collision,
+    ownership-aware sequencing, evidence reconstruction and pedagogical
+    system explanation across coding, issue work, review, sprint planning and
+    reporting. Task-specific outputs consume this analysis and must not create
+    competing reasoning models.
+  material_project_work:
+    birdseye_orientation_required_before_answer: true
+    progressive_deepening_after_orientation: true
+    full_repository_or_history_scan_required_by_default: false
+  teaching:
+    principle: teach_the_system_before_the_detail
+    prioritize:
+      - core_flows
+      - responsibility_and_integration_boundaries
+      - cause_and_consequence
+      - dependencies_and_sequence
+      - reusable_engineering_principles
+    comprehension_dimensions:
+      - what
+      - where
+      - why
+      - how
+      - when
+    dimensions_are_mandatory_headings: false
+    explain_the_most_important_thing_first: true
 
 historical_context_and_pre_implementation:
   purpose: >
