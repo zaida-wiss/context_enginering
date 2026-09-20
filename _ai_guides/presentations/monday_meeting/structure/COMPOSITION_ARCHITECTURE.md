@@ -125,7 +125,8 @@ Point ② boundary:
 Registered slide-level exception:
 - ⑨ uses vertically stacked execution groups in the order
   `Prioritering först → Parallellt → Backlog → Förslag framåt`.
-  Cards remain the component language inside each group.
+  Inside those groups, use compact full-width work rows/bands with subtle
+  separators or surfaces rather than ordinary large cards.
 
 Use fewer/wider cards and continuation slides when needed. No other meeting
 point may introduce a different slide-level composition without an explicit
