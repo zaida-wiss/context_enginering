@@ -268,7 +268,7 @@ def main():
                 print(f"❌ {project_id}: manifest target missing: {target}")
                 ok = False
         manifest_text = read_text(manifest)
-        match = re.search(r"context:\s*.*?sources:\s*\n\s*path:\s*[\\"']?([^\\"'\n]+)", manifest_text, re.S)
+        match = re.search(r"""context:\s*.*?sources:\s*\n\s*path:\s*["']?([^"'\n]+)""", manifest_text, re.S)
         if match:
             project_sources[project_id] = match.group(1).strip()
         else:
