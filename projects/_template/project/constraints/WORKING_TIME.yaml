@@ -1,0 +1,8 @@
+---
+name: working_time_template
+description: Verified project planning constraints
+status: TEMPLATE
+constraints: []
+rules:
+  - "Store only verified project constraints."
+  - "Do not infer hours or capacity from generic assumptions."
