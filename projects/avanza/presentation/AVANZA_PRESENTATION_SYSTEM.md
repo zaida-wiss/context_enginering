@@ -87,6 +87,11 @@ Show the full registered course/project chronology, not only the current week.
 Mark the current sprint at its true chronological position. Nearest deadlines
 and school/submission meaning remain grounded in registered course sources.
 
+Make the delivery chain explicit when evidence supports it:
+**current position -> remaining/missing work -> roadmap/milestone -> deadline -> consequence**.
+Do not invent percentage-complete values when the registered sources do not
+support them.
+
 ### ③ Frontend
 Use a two-step information logic across the point:
 1. **Var är vi?** — current/remaining work and per-issue delivery/DoD evidence.
@@ -95,6 +100,8 @@ Use a two-step information logic across the point:
 
 DoD is evaluated per issue/work item when the registered project definition and
 evidence allow it. Never present one generic DoD state for the whole team.
+When grounded estimate/effort evidence exists, carry it forward as input to ⑧;
+never invent an estimate merely to populate capacity.
 
 ### ④ Backend
 Use the same two-step logic:
@@ -104,7 +111,8 @@ Use the same two-step logic:
    for from Backend.
 
 DoD is evaluated per issue/work item when evidence allows it, never as one
-generic team-wide status.
+generic team-wide status. When grounded estimate/effort evidence exists, carry
+it forward as input to ⑧; never invent an estimate merely to populate capacity.
 
 ### ⑤ Native/System
 Use the same two-step logic:
@@ -114,7 +122,8 @@ Use the same two-step logic:
    integration prerequisites and work other teams are waiting for from Native/System.
 
 DoD is evaluated per issue/work item when evidence allows it, never as one
-generic team-wide status.
+generic team-wide status. When grounded estimate/effort evidence exists, carry
+it forward as input to ⑧; never invent an estimate merely to populate capacity.
 
 ### ⑥ Blockers och beroenden
 Use a dependency map/graph when verified dependency direction exists.
@@ -207,7 +216,19 @@ When evidence allows, also state the decision horizon:
 Questions needing an immediate answer appear before questions that can wait.
 Do not manufacture urgency when the source does not support it.
 
-## 6. Red threads — mandatory cross-slide continuity
+## 6. Data continuity and red threads
+
+Acquire and verify shared meeting data once per generation run where the active
+source contract allows it, then reuse the same verified facts through ①–⑭.
+Do not independently reinterpret the same repository event differently on later
+slides. Refresh a fact only when the source contract or freshness requirement
+requires a new lookup.
+
+A missing optional fact does not invalidate an entire meeting point. Render the
+grounded information that remains useful, expose a meaningful unknown when it
+affects a decision, and never fill a missing field with invented data.
+
+### Mandatory cross-slide continuity
 
 ### Work thread
 ① completed work -> ③–⑤ remaining team work -> ⑨ execution order ->
