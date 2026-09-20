@@ -880,6 +880,28 @@ def main():
         ok = False
     checks.append(result(ok, "AI contributes with senior engineering bird's-eye judgment while humans retain decisions", "AI can regress to passive execution/status repetition or overclaim human authority"))
 
+    print("\nINVARIANT 24: Point 1 Six-Card First Attempt")
+    ok = True
+    try:
+        visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        overflow = read_text("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md")
+        detail = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
+        required = (
+            "MUST first attempt a six-card `3×2` composition",
+            "use fewer than six only after the six-card attempt fails a measured fit/readability/render check",
+            "6 merge cards must first be rendered/tested as 3×2",
+            "first compose and measure a 3×2 six-card physical slide",
+            "do not assume six cards are too dense before measuring them",
+        )
+        joined = visual + "\n" + overflow + "\n" + detail
+        if not all(token in joined for token in required):
+            print("❌ point-1 generator can split six grounded cards before testing the canonical 3×2 layout")
+            ok = False
+    except Exception as exc:
+        print(f"❌ point-1 six-card inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "point 1 attempts and measures six cards in 3×2 before lower-density pagination", "point 1 can regress to unnecessary 4+2 pagination"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
