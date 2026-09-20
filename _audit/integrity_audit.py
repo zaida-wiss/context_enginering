@@ -785,7 +785,8 @@ def main():
             "merged_pr_merge_review_row_not_bottom_zone_count == 0",
             "merged_pr_merge_timestamp_missing_count == 0",
             "timestamp_not_quiet_microcopy_color_count == 0",
-            "bottom-most, single-line and right-aligned/lower-right",
+            "bottom-most row of the card",
+            "single-line and right-aligned/lower-right",
         )
         if not all(token in card for token in card_required):
             print("❌ merged-PR card standard lost merge/review or quiet timestamp semantics")
