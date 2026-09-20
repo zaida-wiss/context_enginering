@@ -15,17 +15,21 @@ metadata:
 # See data/SOURCES.yaml for source definitions.
 
 current_sprint:
-  # FETCH: ISO week (e.g., "2026-W39")
-  # SOURCE: Presentation pipeline — derived from Monday meeting date
-  week: null
+  # FETCH: Sprint identifier/label when available
+  # SOURCE: Registered project sprint data
+  sprint_id: null
 
-  # FETCH: Week start date (ISO 8601)
-  # SOURCE: Derived from ISO week
+  # FETCH: Sprint start date/time (ISO 8601)
+  # SOURCE: Registered project sprint cadence / explicit sprint plan
   start_date: null
 
-  # FETCH: Week end date (ISO 8601)
-  # SOURCE: Derived from ISO week
+  # FETCH: Sprint end date/time (ISO 8601)
+  # SOURCE: Next registered sprint boundary or explicit sprint plan
   end_date: null
+
+  # FETCH: Sprint duration in days
+  # SOURCE: Registered project sprint cadence
+  duration_days: null
 
   # FETCH: Current project phase name
   # SOURCE: Google Docs meeting protocol OR GitHub project board
@@ -77,10 +81,9 @@ current_sprint:
     # SOURCE: Google Docs document metadata (last modified time)
     updated_at: null
 
-    # FETCH: ISO week this capacity data is valid for
-    # SOURCE: Presentation pipeline — must match presentation week
-    # FORMAT: "2026-W39"
-    valid_for_week: null
+    # FETCH: Registered sprint/period this capacity data is valid for
+    # SOURCE: Presentation pipeline — must match the active project sprint
+    valid_for_sprint: null
 
   # FETCH: Next critical deadline
   # SOURCE: Google Docs meeting protocol OR GitHub Milestones
