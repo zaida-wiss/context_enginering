@@ -94,6 +94,8 @@ logical_destinations:
       resolve_via: "selected project manifest -> context.team_roster.path"
     source_registry:
       resolve_via: "selected project manifest -> context.sources.path"
+    presentation_authority:
+      resolve_via: "selected project manifest -> context.presentation.authority.path"
     sprint_cadence:
       resolve_via: "selected project manifest -> context.sprint_cadence.path"
     repository_flow:
@@ -266,6 +268,9 @@ tasks:
       path: "_ai_guides/presentations/data/DATA_ACQUISITION_CONTRACT.yaml"
     source_registry:
       ref: "logical_destinations.selected_project.source_registry"
+    project_presentation_authority:
+      ref: "logical_destinations.selected_project.presentation_authority"
+      required_when_declared: true
     planning_authority:
       ref: "logical_destinations.project.goals_and_sprint_planning"
     risk_authority:
