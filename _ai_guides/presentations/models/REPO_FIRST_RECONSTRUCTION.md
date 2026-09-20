@@ -1,258 +1,51 @@
 ---
 name: repo-first-reconstruction
-description: Repo-first methodology for reconstructing weekly work — collect all activity first, classify second
+description: Generic repo-first methodology for reconstructing work from repository evidence
 metadata:
   type: process
   critical: true
 ---
 
-# 📊 REPO-FIRST RECONSTRUCTION — Alla Commits/PRs Först, Sen Klassificering
+# Repo-first reconstruction
 
-**RULE: Weekly work reconstruction must start with COMPLETE repository activity, not with issues or person-first approach.**
+Weekly/work-period reconstruction starts with the complete relevant repository activity for the exact reporting window. Do not begin from a selected issue, person or PR list.
 
----
+## Sequence
 
-## ❌ WRONG APPROACH (causes missing work)
+1. Collect all relevant commits for the exact reporting window and registered branches.
+2. Collect merged PRs in the window.
+3. Collect open PRs with verified work activity in the window.
+4. Collect issues with verified work activity in the window.
+5. Cross-reference commits, PRs and issues.
+6. Classify work using registered project metadata and changed paths.
+7. Cluster related evidence into coherent work areas.
+8. Map contributors and teams from the canonical roster/project data.
+9. Validate complete coverage before presentation composition.
 
-```
-❌ Issue-first:
-   1. List open/closed issues
-   2. Pick relevant ones
-   3. Try to find commits that match
-   Result: Commits without issues are MISSED (like Björn's design system)
+## Classification
 
-❌ Person-first:
-   1. Go through each person
-   2. Find their issues
-   3. Report those
-   Result: Work that person contributed to but didn't "own" is MISSED
+Do not hard-code repository paths, team names or work areas in this framework.
+Use, in order:
 
-❌ PR-first:
-   1. List merged PRs
-   2. Only look at their titles
-   3. Stop when done
-   Result: Multiple commits/PRs per person per work area get collapsed
-```
+1. verified PR/commit description,
+2. changed file paths,
+3. linked issue data,
+4. registered project metadata.
 
----
+Work without a linked issue still counts when repository evidence verifies it.
 
-## ✅ CORRECT APPROACH (repo-first)
+## Completeness
 
-**Step 1: COLLECT EVERYTHING**
+Every relevant repository activity item in the reporting window must be accounted for or explicitly excluded by a documented rule. Contributor credit follows verified contribution evidence, not issue ownership alone.
 
-```
-From GitHub, fetch COMPLETE dataset for exact time window
-(from previous Monday meeting to this Monday meeting):
+The reporting window uses exact registered meeting/report boundaries. Never replace it with an approximate phrase such as "last 7 days".
 
-☐ ALL commits on develop branch
-  - Include author name, hash, message, date
-  - Do NOT limit to "top N" or "recent"
-  
-☐ ALL merged PRs (merged during period)
-  - Include author, title, description, merge date
-  - Include linked issues (if any)
-  
-☐ ALL open PRs with activity during period
-  - Comments, reviews, code changes
-  
-☐ ALL issues with activity during period
-  - Closed issues (when closed)
-  - Open issues with commits/PR updates (NOT just comments)
-```
+Before composition verify:
+- all relevant commits are accounted for;
+- merged PRs are accounted for;
+- active PRs with work activity are accounted for;
+- issues with verified work activity are accounted for;
+- every canonical roster member has been checked;
+- all discovered work areas are represented or explicitly excluded.
 
-**Step 2: RECONSTRUCT WORK AREAS**
-
-Group by file paths and problem domain:
-
-```
-frontend/**              → Frontend work area
-backend/**               → Backend work area
-native/**, c/**, cpp/** → System/Native work area
-docs/**                  → Associate with primary area (who's it documenting?)
-shared/*                 → Cross-team
-```
-
-**Step 3: IDENTIFY CONTRIBUTORS**
-
-For each commit/PR:
-```
-- Extract author GitHub login
-- Map to real name via TEAM_ROSTER.md
-- Assign to team (Frontend/Backend/System)
-- Assign to work area (Auth, Dashboard, Risk Motor, etc)
-```
-
-**Step 4: CLUSTER INTO WORK AREAS**
-
-Group commits/PRs by work area, showing all contributors:
-
-```
-Frontend – Auth & Login:
-  ✅ PR #90 Login Page (Zaida)
-    - 4 commits by Zaida
-    - Merged 2026-09-10
-  ✅ PR #91 Password Reset (Zaida)
-    - 2 commits by Zaida
-    - Merged 2026-09-11
-
-Frontend – Design System:
-  ✅ PR #79 Design System Foundation (Björn)
-    - 15 commits by Björn
-    - 26 files changed
-    - Merged 2026-09-10
-    - Includes: CSS variables, Panel refactor, topbar rebuild
-```
-
-**Step 5: VALIDATE COVERAGE**
-
-Check TEAM_ROSTER.md:
-
-```
-Frontend: Zaida ✅, Jan [?], Marco [?]
-Backend: Anna [?], Kiran [?], Tomac [?]
-System: Björn ✅, Sam [?]
-
-Who's missing? ← If anyone is missing, report explicitly
-```
-
-**Step 6: BUILD SLIDES**
-
-Only after ALL data is collected and classified.
-
----
-
-## Mechanical Rules
-
-### Rule 1: No Activity Disappears
-
-```
-EVERY commit/PR from time window MUST appear somewhere:
-
-IF commit is on develop/relevant branch
-  AND timestamp is within period
-  THEN it MUST be reported in presentation
-
-UNLESS: Excluded by documented fallback (e.g., "revert commit", "ci/cd-only")
-```
-
-### Rule 2: Contributor-Based Clustering
-
-```
-DO NOT:
-  "issue #42 was done" (implies one person)
-
-DO:
-  "auth work area: Zaida (4 commits, PR #90), Jan (review, 1 commit)"
-```
-
-### Rule 3: File Path Authority
-
-```
-If file path unclear, use this hierarchy:
-  1. PR description / commit message
-  2. File paths changed
-  3. Issue title/description
-  4. Team knowledge (backend person usually works in backend/)
-```
-
-### Rule 4: Multiple Small PRs = One Work Area
-
-```
-DO NOT list:
-  PR #80 Dashboard mock
-  PR #81 Dashboard refactor
-  PR #82 Dashboard styles
-  (as three separate items)
-
-DO cluster:
-  Frontend – Dashboard
-  ✅ PR #80 #81 #82 (Tomac, 3 commits each)
-```
-
-### Rule 5: Work Without Issues Still Counts
-
-```
-Björn's design system work:
-  - No GitHub issue explicitly labeled "design system"
-  - But 15 commits on frontend/components/
-  - And PR #79 with full description
-  - STILL counts as major work area
-  
-Presentation MUST show it.
-```
-
----
-
-## Time Window Calculation
-
-```
-THIS WEEK:
-  Starts: Previous Monday 09:00 (when sprint meeting ended)
-  Ends: This Monday 09:00 (when sprint meeting starts)
-  
-Example: 
-  Previous meeting: Monday 2026-09-08 09:00
-  This meeting: Monday 2026-09-15 09:00
-  Window: All activity 2026-09-08 09:00 — 2026-09-15 09:00
-  
-RULE: EXACT timestamp required. "Last 7 days" is NOT precise enough.
-```
-
----
-
-## Completeness Gate
-
-**Before Slide ①A and ①B are rendered:**
-
-```
-✅ All commits in time window accounted for
-✅ All merged PRs in time window accounted for
-✅ All open PRs with activity in time window accounted for
-✅ All open issues with activity (commits/PR-updates, NOT comments) accounted for
-✅ Every team member in TEAM_ROSTER.md checked
-✅ Coverage report generated (who had activity, who didn't)
-✅ No work area is empty in a team that had activity
-```
-
----
-
-## Why Repo-First Works
-
-```
-Issue-first:          "What issues were closed?"
-                      → Misses work without issues
-
-Person-first:         "What did Jan do?"
-                      → Misses work Jan contributed to but didn't own
-
-Repo-first:           "What changed in the repo?"
-                      → Captures EVERYTHING
-                      → Then assign to person/team/area
-                      → Nothing gets lost
-```
-
----
-
-## Example: Why Björn's Work Didn't Disappear with Repo-First
-
-```
-Repo-first approach:
-  1. Collect all PRs merged 2026-09-08 to 2026-09-15
-     → Found PR #79 (design system)
-  2. Extract author: björnb → Björn
-  3. Classify by path: frontend/components/* → Frontend
-  4. Group: Frontend – Design System
-  5. Report: "Björn: Design System (15 commits, PR #79)"
-
-Issue-first approach (what happened):
-  1. List GitHub issues from backlog
-  2. See issue #40 (login) is closed
-  3. Focus on that
-  4. Never found that Björn also worked on design system
-     (because design system wasn't a separate issue)
-  5. Result: Björn's work missing from presentation
-```
-
----
-
-**Senast uppdaterad:** 2026-09-13
+The active acquisition, integrity and composition authorities own the final presentation behavior. This model only defines reconstruction methodology.
