@@ -30,10 +30,10 @@ project_context_resolution:
   resolution_order:
     - explicit_project_named_by_user
     - exact_match_from_active_repository_or_workspace_when_verifiable
-    - sole_registered_project_when_exactly_one_exists
     - ask_user_to_choose
-  multiple_projects_and_no_unique_match:
+  no_explicit_or_workspace_project_match:
     action: ASK_USER
+    applies_even_when_only_one_project_is_registered: true
     guessing_forbidden: true
   forbidden:
     - treat_context_repository_itself_as_an_implicit_project
