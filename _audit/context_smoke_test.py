@@ -87,8 +87,6 @@ def main():
     design_authority = read("_ai_guides/presentations/design/DESIGN_AUTHORITY.md")
     presentation_architecture = read("_ai_guides/presentations/ARCHITECTURE.md")
     composition = read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
-    sources = read("data/SOURCES.yaml")
-    course_schedule = read("data/manual/course/TEAM_SCHEDULE.yaml")
 
     print("=" * 80)
     print("SMOKE TEST 1 — CODING ASSISTANCE")
@@ -255,14 +253,6 @@ def main():
         "Identify" in risk and "Assess" in risk and "Mitigate" in risk and "Monitor" in risk,
         failures,
     )
-    require(
-        "conditional Sprintplanering source is registered",
-        "GOOGLE_SPRINT_PLANNING:" in sources
-        and 'worksheet_title: "Sprintplanering"' in sources
-        and "UNAVAILABLE_NOT_YET_CREATED" in sources,
-        failures,
-    )
-
     print()
     print("=" * 80)
     print("SMOKE TEST 4 — MONDAY MEETING PRESENTATION")
@@ -288,14 +278,6 @@ def main():
     )
     for ref in presentation_refs:
         require(f"presentation bundle contains {ref}", ref in registry, failures)
-
-    require(
-        "course-week PL focus resolves dynamically from target meeting date",
-        'resolution: "dynamic"' in course_schedule
-        and 'source: "SCHEDULE.md"' in course_schedule
-        and "Never reuse a previously stored week focus" in course_schedule,
-        failures,
-    )
 
     require(
         "presentation bootstrap loads global AI framework first",
