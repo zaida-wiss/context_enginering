@@ -902,6 +902,32 @@ def main():
         ok = False
     checks.append(result(ok, "point 1 attempts and measures six cards in 3×2 before lower-density pagination", "point 1 can regress to unnecessary 4+2 pagination"))
 
+    print("\nINVARIANT 25: Presentation Visual Fidelity Gate")
+    ok = True
+    try:
+        visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        required = (
+            "Rendered card-surface fidelity — hard gate",
+            "design fidelity is part of fit",
+            "VISUAL FIDELITY — CARD SURFACE + RESPONSIVENESS",
+            "flat_card_surface_regression_count == 0",
+            "card_corner_rounding_missing_count == 0",
+            "card_depth_treatment_missing_count == 0",
+            "card_text_outside_rounded_bounds_count == 0",
+            "responsive_card_geometry_failure_count == 0",
+            "density_fit_achieved_by_design_degradation_count == 0",
+            "actual slide image/PDF appearance",
+        )
+        joined = visual + "\n" + gate
+        if not all(token in joined for token in required):
+            print("❌ presentation can pass while losing rounded glass cards or responsive visual fidelity")
+            ok = False
+    except Exception as exc:
+        print(f"❌ visual-fidelity inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "render gate preserves navy background, rounded glass cards and responsive in-card fit", "visual design can regress while geometry-only tests stay green"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
