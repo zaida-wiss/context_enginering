@@ -86,6 +86,7 @@ def main():
     authority_registry = read("_ai_guides/presentations/AUTHORITY_REGISTRY.yaml")
     design_authority = read("_ai_guides/presentations/design/DESIGN_AUTHORITY.md")
     presentation_architecture = read("_ai_guides/presentations/ARCHITECTURE.md")
+    composition = read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
     sources = read("data/SOURCES.yaml")
     course_schedule = read("data/manual/course/TEAM_SCHEDULE.yaml")
 
