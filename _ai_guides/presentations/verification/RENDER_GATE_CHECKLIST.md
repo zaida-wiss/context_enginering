@@ -185,6 +185,11 @@ Required:
 cover_wrong_week_count == 0
 cover_sprint_period_not_based_on_request_timestamp_count == 0
 point2_timeline_not_chronological_count == 0
+point2_full_course_period_missing_count == 0
+point2_course_start_anchor_missing_count == 0
+point2_final_delivery_anchor_missing_count == 0
+point2_current_position_marker_missing_count == 0
+point2_near_term_only_timeline_count == 0
 point2_current_week_marker_missing_count == 0
 point2_blocker_or_risk_card_count == 0
 meeting_point_1_fact_after_data_cutoff_count == 0
@@ -203,6 +208,12 @@ Manual checks:
 - generic cards such as `Syfte`, `AI-läge`, `Viktigt nu`, status metrics or decorative summaries may appear only after all mandatory PL/school/deadline content is present; they never replace it
 - the sprint period is resolved from the selected project's registered sprint-cadence authority using the request timestamp
 - meeting point 2 renders a chronological course/project timeline with an explicit current-week marker
+- the point-2 timeline visibly spans the **entire registered course/project period**, not only the current or next sprint
+- the first visible timeline anchor corresponds to the registered course/project start
+- the final visible timeline anchor corresponds to the registered final delivery/end milestone
+- the current week/sprint marker is positioned between those anchors according to verified dates
+- course weeks/phases, sprint boundaries and material verified milestones share the same chronological axis; continuation slides may segment the axis but may not omit its beginning or end
+- a near-term-only timeline (for example current sprint + next deadline) fails even when its local dates are correct
 - the point-2 timeline contains no blocker, dependency or risk cards; those remain in points ⑥ and ⑦
 - boundary behavior follows the selected project's registered cadence exactly; regression fixtures may test concrete timestamps without making those dates global presentation rules
 - meeting point 1 contains no factual activity after the actual acquisition cutoff
