@@ -1,0 +1,91 @@
+---
+name: team_schedule
+description: Team 1 recurring meetings, times, and recurring events (Chas Challenge 2026)
+metadata:
+  source: CHAS course schedule
+  timezone: Europe/Stockholm
+  updated: 2026-09-16
+---
+
+project_sprint_cadence:
+  duration_days: 7
+  start_day: "monday"
+  start_time: "09:00"
+  end_rule: "next_sprint_start"
+  timezone: "Europe/Stockholm"
+  scope: "Avanza project"
+  note: >
+    Project sprints are one week long. Resolve each sprint from its registered
+    Monday sprint start to the next registered Monday sprint start; do not infer
+    sprint boundaries from ISO calendar-week dates alone.
+
+recurring_meetings:
+  monday:
+    - time: "09:00-10:30"
+      type: "sprint_planning"
+      description: "Sprintstart + projektarbete"
+
+  tuesday:
+    - time: "11:15-12:15"
+      type: "lunch"
+      note: "Before PL meeting for quiet discussion time"
+
+    - time: "12:30-14:00"
+      type: "pl_meeting"
+      name: "Teamavstämning med Projektledare"
+      description: "Follow up project, priorities, blockers, focus"
+      location: "Slack Huddle"
+      recurring: true
+
+  wednesday:
+    - time: "08:00-09:00"
+      type: "individual_follow_up"
+      name: "Individuella möten med PL (efter behov)"
+      description: "One-on-one if needed"
+      location: "Slack Huddle"
+
+    - time: "12:00-13:00"
+      type: "lunch"
+
+  thursday:
+    - time: "15:00-15:30"
+      type: "uppföljningsmöte innan helgen"
+      description: "Slack Huddle"
+
+  friday:
+    - time: "08:00-10:00"
+      type: "lia_preparation"
+      description: "LIA prep drop-in"
+      location: "Scandic hotel"
+
+    - time: "10:00-12:00"
+      type: "lia_search"
+      description: "Active LIA search and company dialogue"
+      location: "Scandic hotel"
+
+    - time: "12:00-13:00"
+      type: "lunch"
+      location: "Scandic hotel"
+
+    - time: "13:00-16:00"
+      type: "lia_search"
+      description: "Active LIA search and company dialogue"
+      location: "Scandic hotel"
+
+    - time: "16:00-17:00"
+      type: "lia_followup"
+      description: "Efterarbete LIA-sök"
+      location: "Scandic hotel"
+      note: "SACRED - No project work allowed on Fridays (course requirement)"
+
+current_week_focus:
+  resolution: "dynamic"
+  rule: >
+    Resolve the relevant course week from the target meeting date, then read the
+    matching week block in SCHEDULE.md. Never reuse a previously stored week focus
+    merely because this file was last updated during that week.
+  source: "SCHEDULE.md"
+  target_date: null
+  resolved_week: null
+  pl_meeting_focus: null
+  sprint_goal: null
