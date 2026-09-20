@@ -1,0 +1,40 @@
+---
+name: working_time_constraints
+description: Canonical hard project-working-time constraints for the Avanza project
+version: 1.0
+metadata:
+  type: project_constraint
+  project: avanza
+  status: active
+  timezone: Europe/Stockholm
+  source: "projects/avanza/course/TEAM_SCHEDULE.yaml"
+  source_basis: "course requirement"
+
+constraints:
+  friday_no_project_work:
+    type: unavailable_project_day
+    weekday: friday
+    project_work_allowed: false
+    severity: hard
+    rule: >
+      No Avanza project work may be planned, allocated, recommended or counted
+      on Fridays. Friday course time is reserved for the registered non-project
+      activities in the course schedule.
+    applies_to:
+      - sprint_planning
+      - capacity_reasoning
+      - daily_planning
+      - AI_proposals
+      - meeting_presentations
+    planning_effect:
+      - "Do not place project tasks on Friday."
+      - "Do not count Friday as an eligible Avanza project workday."
+      - "Do not suggest Friday as overflow, catch-up or parallel project time."
+      - "Keep numeric hours unknown unless a verified project source supplies them."
+
+provenance:
+  verified_fact: true
+  source_note: "SACRED - No project work allowed on Fridays (course requirement)"
+
+---
+status: ACTIVE
