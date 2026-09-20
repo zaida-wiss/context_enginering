@@ -135,33 +135,66 @@ Connectors stay outside cards.
 
 ### ⑦ Risker
 Make the chain visible:
-risk -> consequence -> mitigation -> impact on this week's plan.
-A material risk must influence later planning rather than exist as an isolated list.
+risk -> likelihood when grounded -> consequence/impact -> mitigation -> fallback/backup -> impact on this week's plan.
+Do not manufacture a probability or severity score merely to complete the chain.
+
+A material risk must influence later capacity, priority, sprint-goal and planning
+reasoning rather than exist as an isolated list. If a risk does not materially
+change execution, keep that distinction visible instead of exaggerating it.
 
 ### ⑧ Kapacitet och estimering
-Use verified numeric capacity only when sourced. Otherwise reason qualitatively
-about load, WIP, availability and opportunities to unblock or parallelize work.
+Compare **available capacity with grounded planned need** using the unit actually
+supported by project evidence (for example verified availability, hours, points,
+WIP constraints or another registered measure).
+
+Use verified numeric capacity only when sourced. Never invent hours, velocity or
+estimates merely to make the comparison numeric. When numbers are unavailable,
+reason qualitatively about load, WIP, availability and opportunities to unblock
+or parallelize work.
+
+The point must answer whether the current plan appears feasible from the evidence
+available and identify the constraint that would require replanning.
 
 ### ⑨ Prioritering och scope
 Use a vertical project-wide execution sequence:
 Prioritering först -> Parallellt -> Backlog -> grounded AI proposals when needed.
 Prerequisites appear before work they unlock.
 
+The sequence must explain **why this order**. Ground the explanation in verified
+dependencies, risk, capacity and deadline/scope constraints when they materially
+affect the order. Do not manufacture a priority rule when evidence is absent.
+
 ### ⑩ Tekniska beslut
-Show verified decision, affected area/team and source. Do not promote a code
-pattern into a confirmed team decision without evidence.
+Show verified decision, decision owner when verified, affected area/team/work and
+source/documentation location. When a decision is still open, show its decision
+horizon/deadline only when grounded.
+
+Do not promote a code pattern into a confirmed team decision without evidence.
 
 ### ⑪ Sprintmål
-Separate source-backed goals from AI proposals. Goals must remain realistic in
-light of verified blockers, risks and capacity.
+Separate source-backed goals from AI proposals. Reconcile the documented goal
+against completed/current work, blockers, risks, capacity and priority.
+
+Do not silently rewrite an official sprint goal. If verified evidence makes the
+documented goal unrealistic or internally inconsistent, show the mismatch and
+the decision needed. AI proposals remain explicitly proposals.
 
 ### ⑫ Sprintplan
 Use chronological plan structure. Make dependency order, fallback work,
-availability and risk-driven sequencing visible.
+availability, grounded capacity and risk-driven sequencing visible.
+
+The plan must remain consistent with the sprint goal and execution order from ⑨.
+Do not manufacture a daily timetable where the project sources provide no such
+schedule.
 
 ### ⑬ Nästa steg
 Concrete actions continue the dependency-aware order from ⑨ and plan from ⑫.
-Each action explains what it concerns and why it matters.
+Each action states what it concerns, why it matters, the owner and time horizon
+when verified/decided, and a verification point: **how will the team know this
+action is complete?**
+
+Do not force every next step into a GitHub mutation; the action type follows the
+actual work and decision needed.
 
 ### ⑭ Frågor till PL
 Each material unresolved question gets a clear question block/card and a grounded
