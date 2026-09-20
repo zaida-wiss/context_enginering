@@ -1170,6 +1170,34 @@ def main():
         "special meeting-point layouts can be flattened into the ordinary card grid",
     ))
 
+    print("\nINVARIANT 30: Avanza 3x2 Ordinary Card Geometry")
+    ok = True
+    try:
+        avanza = read_text("projects/avanza/presentation/AVANZA_PRESENTATION_SYSTEM.md")
+        required = (
+            "3 columns × 2 rows",
+            "stable SIX-SLOT geometry",
+            "ordinary card page not preserving the 3×2 six-slot geometry",
+        )
+        if not all(token in avanza for token in required):
+            print("❌ Avanza ordinary card geometry can regress away from the approved 3×2 six-slot layout")
+            ok = False
+        stale = (
+            "2 columns × 3 rows",
+            "2×3 six-slot geometry",
+        )
+        if any(token in avanza for token in stale):
+            print("❌ stale Avanza 2×3 geometry remains active after user decision")
+            ok = False
+    except Exception as exc:
+        print(f"❌ Avanza 3×2 geometry inspection failed: {exc}")
+        ok = False
+    checks.append(result(
+        ok,
+        "Avanza ordinary card pages preserve the approved 3×2 six-slot geometry",
+        "Avanza ordinary card pages can silently regress to 2×3 or another grid",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
