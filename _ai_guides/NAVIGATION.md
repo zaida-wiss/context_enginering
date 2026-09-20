@@ -49,7 +49,7 @@ Design and accessibility:
 Data and sources:
 
 - `presentations/data/DATA_ACQUISITION_CONTRACT.yaml`
-- `../data/SOURCES.yaml`
+- selected project source registry via `../PROJECTS.yaml` → project manifest
 
 Verification:
 
