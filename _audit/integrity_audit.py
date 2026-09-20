@@ -335,6 +335,41 @@ def main():
     except Exception as exc:
         checks.append(result(False, "", f"multi-project isolation simulation failed: {exc}"))
 
+    print("\nINVARIANT 1E: Named Project Deletion Independence Simulation")
+    try:
+        # Simulate removal of every registered project from project discovery.
+        # Global framework files must remain resolvable without reading a named
+        # project root. Project-specific validators belong to the project itself.
+        simulated = parse_project_registry_text("projects:\n")
+        global_required = [
+            "README.md",
+            "CONTEXT_REGISTRY.yaml",
+            "_ai_guides/AI_FRAMEWORK.yaml",
+            "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md",
+            "_ai_guides/presentations/MANDATORY_READING_ORDER.md",
+            "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml",
+            "_ai_guides/presentations/INTEGRITY_CONSTRAINT.md",
+            "_ai_guides/presentations/SYSTEM_CONTRACT.yaml",
+            "projects/_template/README.md",
+            "projects/_template/PROJECT.yaml",
+        ]
+        files_exist = all(os.path.exists(path) for path in global_required)
+        no_project_selected = simulated == {}
+        registry_text = read_text("CONTEXT_REGISTRY.yaml")
+        abstract_project_routing = (
+            "logical_destinations.selected_project.source_registry" in registry_text
+            and "logical_destinations.selected_project.presentation_authority" in registry_text
+            and "selected project manifest -> context.presentation.authority.path" in registry_text
+        )
+        ok = files_exist and no_project_selected and abstract_project_routing
+        checks.append(result(
+            ok,
+            "global framework remains resolvable with zero named projects and keeps selected-project routing abstract",
+            "global framework still requires a named project to resolve core routing",
+        ))
+    except Exception as exc:
+        checks.append(result(False, "", f"named-project deletion simulation failed: {exc}"))
+
     print("\nINVARIANT 2: Project Manifest Paths Exist")
     ok = True
     project_sources = {}
@@ -493,6 +528,13 @@ def main():
         placeholder_missing = "<project_id>" not in template_manifest
         if placeholder_missing:
             print("❌ project template lacks project_id placeholder routing")
+            ok = False
+        presentation_capability_missing = (
+            "presentation:" not in template_manifest
+            or "projects/<project_id>/presentation/PRESENTATION_SYSTEM.md" not in template_manifest
+        )
+        if presentation_capability_missing:
+            print("❌ project template lacks optional project presentation authority capability")
             ok = False
     except Exception as exc:
         print(f"❌ project template inspection failed: {exc}")
