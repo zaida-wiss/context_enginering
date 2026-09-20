@@ -46,10 +46,10 @@ h2 { margin: 0 0 22px; font-size: 22px; line-height: 1.3; color: #D2D7E4; }
   border-radius: 5px;
   background: #94A3B8;
 }
-.frontend::before { background:#2DD4BF; }
-.backend::before { background:#FF4FA3; }
-.native::before { background:#A855F7; }
-.cross::before { background:#CBD5E1; }
+.frontend::before { background:var(--team-frontend, #94A3B8); }
+.backend::before { background:var(--team-backend, #94A3B8); }
+.native::before { background:var(--team-native, #94A3B8); }
+.cross::before { background:var(--team-cross, #CBD5E1); }
 .title {
   margin: 0;
   font-size: 19px;
@@ -92,7 +92,7 @@ h2 { margin: 0 0 22px; font-size: 22px; line-height: 1.3; color: #D2D7E4; }
 <body>
 
 <div class="notice">
-  <strong>REFERENCE ONLY.</strong> Normativa regler finns i ACCESSIBILITY_NEURODIVERSITY.md, VISUAL_DESIGN_MANDATORY.md och CARD_COMPONENT_STANDARD.md. Om detta exempel avviker från en authority-fil gäller authority-filen.
+  <strong>REFERENCE ONLY.</strong> Normativa regler finns i ACCESSIBILITY_NEURODIVERSITY.md, VISUAL_DESIGN_MANDATORY.md och CARD_COMPONENT_STANDARD.md. Teamfärger ska injiceras från valt projekts registrerade visuella identitet; fallback är neutral. Om detta exempel avviker från en authority-fil gäller authority-filen.
 </div>
 
 <section class="slide">
@@ -102,16 +102,16 @@ h2 { margin: 0 0 22px; font-size: 22px; line-height: 1.3; color: #D2D7E4; }
     <article class="card frontend">
       <div class="title">#105 · Test foundation</div>
       <div class="explanation">Lägger grunden för tester av kritiska frontendflöden.</div>
-      <div class="owner"><span class="person">Zaida</span><span class="team"> · Frontend</span></div>
-      <div class="meta">Merged: Björn | Review:</div>
+      <div class="owner"><span class="person">Developer A</span><span class="team"> · Frontend</span></div>
+      <div class="meta">Merged: Reviewer A | Review:</div>
       <div class="timestamp">15 sep · 09:59</div>
     </article>
 
     <article class="card backend">
       <div class="title">#95 · Stoppa SQL-injektion</div>
       <div class="explanation">Login byter till parametriserad JdbcTemplate-fråga.</div>
-      <div class="owner"><span class="person">Rasha</span><span class="team"> · Backend</span></div>
-      <div class="meta">Merged: Erik | Review: Rasha</div>
+      <div class="owner"><span class="person">Developer B</span><span class="team"> · Backend</span></div>
+      <div class="meta">Merged: Reviewer B | Review: Developer B</div>
       <div class="timestamp">14 sep · 08:59</div>
     </article>
   </div>
@@ -124,7 +124,7 @@ h2 { margin: 0 0 22px; font-size: 22px; line-height: 1.3; color: #D2D7E4; }
     <article class="card frontend">
       <div class="title">#113 / #83 · Spara via API-adapter</div>
       <div class="explanation">Sparflödet går via saveAllocation/useSaveAllocation; HTTP-adaptern är förberedd.</div>
-      <div class="owner"><span class="person">Tomac</span><span class="team"> · Frontend</span></div>
+      <div class="owner"><span class="person">Developer C</span><span class="team"> · Frontend</span></div>
       <div class="meta">Öppen PR · branch frontend/#83-save-allocation</div>
       <div class="timestamp">17 sep · 09:19</div>
     </article>
@@ -132,7 +132,7 @@ h2 { margin: 0 0 22px; font-size: 22px; line-height: 1.3; color: #D2D7E4; }
     <article class="card frontend">
       <div class="title">#85 · Responsiv topbar/navigation</div>
       <div class="explanation">Topbar görs responsiv med grid och mobilanpassning.</div>
-      <div class="owner"><span class="person">Björn</span><span class="team"> · Frontend</span></div>
+      <div class="owner"><span class="person">Developer D</span><span class="team"> · Frontend</span></div>
       <div class="meta">Branch 85-frontend-responsive-shared-header-and-navigation</div>
       <div class="timestamp">16 sep · 20:58</div>
     </article>
