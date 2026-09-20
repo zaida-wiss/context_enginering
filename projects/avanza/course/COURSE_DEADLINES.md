@@ -47,3 +47,22 @@ Your job (Team + PL together):
 This is **not just evaluation** — it's **practicing how to respond to expert feedback in a real project context**. Victor is simulating a stakeholder or senior engineer giving you more input than your timeline allows. How you handle that matters.
 
 See: [`CTO_FEED_FORWARD_INSTRUCTIONS.md`](CTO_FEED_FORWARD_INSTRUCTIONS.md) for full instructions.
+
+
+## Delivery Manager + UX specialist — Specialistunderlag
+
+**Deadline:** 1 oktober 2026
+
+Verifierat från Chas Back Office:
+
+- uppgiften publiceras på måndagen före deadline;
+- den gäller underlag till **Delivery Manager och UX specialist**;
+- upplägget kommer i stora drag att likna CTO-uppgiften;
+- teamet ska spela in **två filmer i stället för en**;
+- Back Office varnar för att underskatta tidsåtgången och uppmanar teamet att
+  planera arbetet så att det inte halkar efter.
+
+Exakt innehåll/metod utöver detta ska läsas från den publicerade instruktionen
+när den finns och får inte fyllas i med antaganden.
+
+Source evidence: `CHAS_BACKOFFICE_ANNOUNCEMENTS.md`.
