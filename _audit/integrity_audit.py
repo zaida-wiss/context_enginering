@@ -298,18 +298,18 @@ def main():
     print("\nINVARIANT 1D: Multi-Project Context Isolation")
     try:
         synthetic_registry = """projects:
-  avanza:
-    status: active
-    manifest: "projects/avanza/PROJECT.yaml"
   project_b:
     status: active
     manifest: "_audit/fixtures/project_b/PROJECT.yaml"
+  project_c:
+    status: active
+    manifest: "_audit/fixtures/project_c/PROJECT.yaml"
 """
         simulated = parse_project_registry_text(synthetic_registry)
         simulated_active = {k: v for k, v in simulated.items() if v.get("status") == "active"}
         expected = {
-            "avanza": ("projects/avanza/PROJECT.yaml", "projects/avanza/sources/SOURCES.yaml"),
             "project_b": ("_audit/fixtures/project_b/PROJECT.yaml", "_audit/fixtures/project_b/sources/SOURCES.yaml"),
+            "project_c": ("_audit/fixtures/project_c/PROJECT.yaml", "_audit/fixtures/project_c/sources/SOURCES.yaml"),
         }
         resolved = {}
         for project_id, (manifest, expected_source) in expected.items():
@@ -324,12 +324,13 @@ def main():
             for project_id, (manifest, source) in expected.items()
         )
         cross_leak = (
-            "project_b" in read_text(expected["avanza"][0]).lower()
-            or "projects/avanza/" in read_text(expected["project_b"][0]).lower()
-            or "avanza" in read_text(expected["project_b"][1]).lower()
+            "project_c" in read_text(expected["project_b"][0]).lower()
+            or "project_b" in read_text(expected["project_c"][0]).lower()
+            or "project_c" in read_text(expected["project_b"][1]).lower()
+            or "project_b" in read_text(expected["project_c"][1]).lower()
         )
         ok = set(simulated_active) == set(expected) and distinct_manifests and distinct_sources and correct_routing and not cross_leak
-        checks.append(result(ok, "two projects resolve to distinct manifests and source registries without cross-project leakage", "multi-project routing mixes or leaks project context"))
+        checks.append(result(ok, "two neutral synthetic projects resolve to distinct manifests and source registries without cross-project leakage", "multi-project routing mixes or leaks project context"))
     except Exception as exc:
         checks.append(result(False, "", f"multi-project isolation simulation failed: {exc}"))
 
