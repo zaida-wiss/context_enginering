@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.12
+version: 1.13
 metadata:
   type: global_authority
   critical: true
@@ -197,6 +197,52 @@ project_aware_coding_assistance:
       exposure in prompts, issues, commits, logs, documentation and external
       services. Do not represent engineering checks as a legal compliance
       determination.
+  birdseye_quality_model:
+    scope: global
+    principle: >
+      For material engineering work, solve the local task while checking the
+      relevant system-level consequences. The check is risk- and
+      change-proportionate rather than a ceremonial full checklist for every
+      trivial edit.
+    dimensions:
+      - functionality_and_system_effects
+      - wcag_accessibility
+      - performance
+      - security
+      - privacy_and_gdpr
+      - data_flows_and_third_parties
+      - code_quality_and_maintainability
+      - dependencies_and_integration
+      - testing_and_regression_risk
+      - documentation_and_traceability
+    accessibility:
+      definition: "Accessibility means WCAG accessibility."
+      lighthouse_role: >
+        Lighthouse may measure useful accessibility and performance signals,
+        but a Lighthouse score is not a substitute for WCAG review.
+    privacy_and_gdpr:
+      project_scope:
+        - personal_data_collection_and_purpose
+        - storage_and_retention
+        - cookies_local_storage_and_similar_client_storage
+        - logging_and_telemetry
+        - data_sharing_and_third_party_services
+        - data_minimization
+      ai_working_scope:
+        - prompts_and_conversation_context
+        - issues_and_pull_requests
+        - commits_and_logs
+        - documentation
+        - external_ai_cloud_and_connector_services
+      rule: >
+        Avoid unnecessary exposure of personal data and surface material
+        privacy/GDPR implications in both product design and AI-assisted
+        workflows. Engineering guidance must not be represented as a legal
+        compliance determination.
+    project_extension:
+      rule: >
+        Selected projects may add verified stricter requirements or relevant
+        context, but must not weaken this global quality baseline.
   evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
   change_control:
     architectural_improvement_is_not_automatically_authorized: true
