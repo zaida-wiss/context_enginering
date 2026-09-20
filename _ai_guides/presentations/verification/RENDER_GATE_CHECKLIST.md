@@ -108,6 +108,8 @@ modern_navy_lighter_tone_missing_count == 0
 dark_surface_black_text_count == 0
 frosted_glass_card_treatment_missing_count == 0
 glass_card_light_edge_missing_count == 0
+glass_card_box_shadow_missing_count == 0
+hard_or_heavy_card_shadow_count == 0
 noncanonical_card_surface_count == 0
 high_glare_surface_count == 0
 full_team_outline_count == 0
@@ -606,7 +608,8 @@ Verify on every physical slide that uses cards:
 - visible slide canvas uses the canonical modern navy `#1E274A` → `#111A33` family and does not render black/charcoal/near-black;
 - the lighter navy tone remains visibly present so the deck reads as blue/navy rather than almost black;
 - ordinary cards visibly retain rounded corners equivalent to the canonical 16–20 px treatment;
-- cards retain the frosted-glass/glassmorphism surface: semi-transparent navy tint, restrained light edge/highlight and subtle depth rather than flat opaque panels;
+- cards retain the frosted-glass/glassmorphism surface: semi-transparent navy tint, restrained light edge/highlight and a soft broad low-opacity box shadow rather than flat opaque panels;
+- box shadows must read as subtle depth, not hard black outlines or modal-style elevation;
 - card surface remains visually distinguishable from the slide canvas at WCAG-safe contrast;
 - black or near-black text on dark/navy slide or card surfaces is forbidden; approved light text roles must be used;
 - normal text contrast is >= 4.5:1 and large text contrast is >= 3:1 after transparency/compositing;
