@@ -909,6 +909,37 @@ def main():
         ok = False
     checks.append(result(ok, "global layout delegates card geometry while Avanza preserves its fixed 2-column × 3-row contract", "project presentation geometry can be overridden by stale global layout rules"))
 
+    print("\nINVARIANT 24B: Project Presentation Authority Routing")
+    ok = True
+    try:
+        registry = read_text("_ai_guides/presentations/AUTHORITY_REGISTRY.yaml")
+        required_registry = (
+            "project_resolved: presentation_authority",
+            "context.presentation.authority.path",
+            "category: project_presentation",
+        )
+        if not all(token in registry for token in required_registry):
+            print("❌ presentation authority registry does not resolve project-owned presentation rules")
+            ok = False
+        for project_id, entry in active.items():
+            manifest = entry.get("manifest")
+            if not manifest or not os.path.exists(manifest):
+                continue
+            manifest_text = read_text(manifest)
+            match = re.search(r"""presentation:\s*.*?authority:\s*.*?path:\s*["']?([^"'\n]+)""", manifest_text, re.S)
+            if not match:
+                print(f"❌ {project_id}: project presentation authority path is not registered")
+                ok = False
+                continue
+            authority_path = match.group(1).strip()
+            if not os.path.exists(authority_path):
+                print(f"❌ {project_id}: registered presentation authority missing: {authority_path}")
+                ok = False
+    except Exception as exc:
+        print(f"❌ project presentation authority routing inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "active project presentation authority resolves through the selected project manifest", "project presentation rules can exist without being loaded by the presentation router"))
+
     print("\nINVARIANT 25: Presentation Visual Fidelity Gate")
     ok = True
     try:
