@@ -55,55 +55,14 @@ When explicitly requested:
 
 ## Fixture Data Structure
 
-### `fixtures/merged_prs_sample.json`
+The canonical fixture payloads live in:
 
-```json
-{
-  "execution_mode": "TEST_MODE",
-  "merged_prs": [
-    {
-      "number": 42,
-      "title": "Fix login flow security",
-      "assignees": ["Rasha Knifdi"],
-      "merged_at": "2026-09-12T14:30:00Z",
-      "base": { "ref": "develop" }
-    },
-    {
-      "number": 45,
-      "title": "Update design tokens",
-      "assignees": ["Björn Boman"],
-      "merged_at": "2026-09-13T09:15:00Z",
-      "base": { "ref": "develop" }
-    }
-    // ... 5+ more PRs covering all 7 team members
-  ]
-}
-```
+- `fixtures/merged_prs_sample.json`
+- `fixtures/active_issues_sample.json`
 
-### `fixtures/active_issues_sample.json`
+They use deterministic **synthetic identities, teams, dates and work items**. Do not duplicate fixture payloads in this guide; read the fixture files directly so documentation cannot drift from the test data.
 
-```json
-{
-  "execution_mode": "TEST_MODE",
-  "active_issues": [
-    {
-      "number": 108,
-      "title": "Implement rate limiting",
-      "assignees": ["Erik Berglund"],
-      "updated_at": "2026-09-14T10:00:00Z",
-      "state": "open"
-    },
-    {
-      "number": 112,
-      "title": "Native app crash on login",
-      "assignees": ["Henrik Westerlund"],
-      "updated_at": "2026-09-13T16:45:00Z",
-      "state": "open"
-    }
-    // ... more issues covering all 7 team members
-  ]
-}
-```
+Fixture coverage is defined by the fixture metadata, not by any real project's roster.
 
 ---
 
@@ -113,7 +72,7 @@ All slides in TEST MODE presentations must include:
 
 ```
 ⚠️ TEST MODE — Fixture data. For production: use live GitHub sources.
-Generated: 2026-09-15 | Commit: [SHA] | Test fixtures version: 1.0
+Generated: [runtime date] | Commit: [SHA] | Test fixtures: canonical fixture files
 ```
 
 ---
@@ -134,7 +93,7 @@ If user does NOT request TEST_MODE:
 After TEST_MODE completes, verify:
 
 - [ ] Presentation rendered successfully (no STOP at gates)
-- [ ] All 7 team members represented in ① Avklarat
+- [ ] Synthetic fixture identities represented according to the fixture metadata/coverage
 - [ ] Modular composition created correct slides (①, ②, ③④⑤, ⑥-⑭)
 - [ ] Design rules followed (28pt headers, CANONICAL LAYOUT, NPF rules)
 - [ ] Render gate passed (VISUAL_DESIGN_MANDATORY verified)
@@ -144,4 +103,4 @@ After TEST_MODE completes, verify:
 ---
 
 **Status:** Ready for testing  
-**Last updated:** 2026-09-15
+**Last updated:** 2026-09-20
