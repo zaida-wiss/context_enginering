@@ -1,7 +1,7 @@
 ---
 name: sources_registry
 description: Machine-readable registry of all external data sources, URLs, IDs, access methods, and classifications
-version: 1.0
+version: 1.1
 metadata:
   type: project_registry
   project: avanza
@@ -349,6 +349,18 @@ sources:
       - "web_search"
       - "export_without_connector"
 
+  # LOCAL VERIFIED COURSE EVIDENCE
+
+  CHAS_BACKOFFICE_ANNOUNCEMENTS:
+    source_id: "CHAS_BACKOFFICE_ANNOUNCEMENTS"
+    classification: "REQUIRED"
+    purpose: "Verified Chas Back Office announcements for CTO preparation, PL boundary, and Delivery Manager/UX specialist assignment"
+    primary:
+      method: "local_file"
+      path: "projects/avanza/course/CHAS_BACKOFFICE_ANNOUNCEMENTS.md"
+      note: "Canonical transcription of user-provided screenshots; preserves only visible verified facts"
+    fallbacks: []
+
   # UTILITIES
 
   WEBAIM_CONTRAST_CHECKER:
@@ -402,7 +414,7 @@ access_methods:
     supported_sources: ["GOOGLE_PROJECT_DATA_SHEET", "GOOGLE_RISK_REGISTER", "GOOGLE_MEETING_PROTOCOL"]
   local_file:
     definition: "Local repository file (always available)"
-    supported_sources: ["GITHUB_TEAM_ROSTER"]
+    supported_sources: ["GITHUB_TEAM_ROSTER", "CHAS_BACKOFFICE_ANNOUNCEMENTS"]
   web_direct:
     definition: "Direct web access (reference tools only)"
     supported_sources: ["WEBAIM_CONTRAST_CHECKER"]
@@ -412,6 +424,6 @@ access_methods:
 
 ---
 
-**Last updated:** 2026-09-18
+**Last updated:** 2026-09-20
 **Status:** Machine-readable registry (YAML) — single source of truth
 **Governance:** This file OWNS all URLs, IDs, access methods, classifications. Other files reference by source_id only.
