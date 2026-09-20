@@ -603,6 +603,36 @@ Manual checks:
 
 ---
 
+## 12B. VISUAL FIDELITY — CARD SURFACE + RESPONSIVENESS
+
+Visual inspection is mandatory in addition to geometric overflow checks.
+A technically non-overflowing slide is **not** a pass when the canonical card
+appearance was removed to make content fit.
+
+Verify on every physical slide that uses cards:
+- visible slide canvas uses the canonical dark-navy `#15182E` base/family and does not render black/charcoal;
+- ordinary cards visibly retain rounded corners equivalent to the canonical 16–20 px treatment;
+- cards retain the soft dark glass-like surface and subtle depth treatment rather than flat rectangular panels;
+- card surface remains visually distinguishable from the slide canvas at WCAG-safe contrast;
+- every text child remains inside its rounded card bounds with approved internal padding;
+- responsive card geometry grows/reflows for wrapped text and required bottom information zones;
+- a 3×2 density pass is rejected if it succeeds only by removing rounding, glass/depth treatment, padding, required rows or readable hierarchy.
+
+Hard counters:
+```text
+noncanonical_background_color_count == 0
+flat_card_surface_regression_count == 0
+card_corner_rounding_missing_count == 0
+card_depth_treatment_missing_count == 0
+card_text_outside_rounded_bounds_count == 0
+card_required_padding_violation_count == 0
+responsive_card_geometry_failure_count == 0
+density_fit_achieved_by_design_degradation_count == 0
+```
+
+The final render review must inspect the actual slide image/PDF appearance; source
+code or bounding-box tests alone cannot satisfy this gate.
+
 ## 13. OVERFLOW / COLLISION
 
 Required:
