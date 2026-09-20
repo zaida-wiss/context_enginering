@@ -179,7 +179,7 @@ required_datasets:
       - "merged_at != null (CRITICAL: exclude unmerged PRs)"
       - "merged_at >= REPORTING_PERIOD_START"
       - "merged_at < REPORTING_PERIOD_END"
-      - "base.ref in ['develop', 'C/C++-Native', 'Java-Development-Environment']"
+      - "base.ref in [PRIMARY_INTEGRATION_BRANCH, COLLECTION_BRANCH_A, COLLECTION_BRANCH_B]"
       - "use assignees[] for attribution (person who worked on code, not merger)"
 
     requirement: "ALL merged PRs in reporting period (develop + collection branches)"
@@ -370,16 +370,16 @@ required_datasets:
         purpose: "Commits per branch during reporting period"
 
     execution_sequence:
-      1_collect_all_branches: "Use GITHUB_BRANCHES source: GET /repos/chas-challenge-2026/avanza-team1/branches"
+      1_collect_all_branches: "Use GITHUB_BRANCHES source: GET /repos/{owner}/{repository}/branches"
 
       2_CRITICAL_identify_team_collection_branches: >
         Teams often use dedicated branches as collection points BEFORE merging to develop.
         These MUST be scanned for complete risk/blocker/capacity analysis.
 
         KNOWN COLLECTION BRANCHES (MANDATORY to scan):
-          - develop (default target)
-          - C/C++-Native (Native/System collection point)
-          - Java-Development-Environment (Backend collection point)
+          - PRIMARY_INTEGRATION_BRANCH (registered primary integration target)
+          - COLLECTION_BRANCH_A (registered collection point)
+          - COLLECTION_BRANCH_B (registered collection point)
           - [Other team-specific branches if they exist]
 
         DISCOVERY (if unknown branches exist):
@@ -389,11 +389,11 @@ required_datasets:
 
       3_collect_recent_commits_per_branch: >
         For EACH branch (especially collection branches):
-          GET /repos/chas-challenge-2026/avanza-team1/commits?sha=[branch]&since=[START]&until=[END]&per_page=100
+          GET /repos/{owner}/{repository}/commits?sha=[branch]&since=[START]&until=[END]&per_page=100
 
       4_filter_relevant_branches: >
         Branches matching patterns:
-          - Collection branches (develop, C/C++-Native, Java-Development-Environment, etc) — ALWAYS
+          - Registered integration/collection branches — ALWAYS
           - feature/* — if recent commits
           - bugfix/* — if recent commits
           - {team}/* (frontend/, backend/, native/) — if recent commits
@@ -419,9 +419,9 @@ required_datasets:
 
     output_structure: >
       Per branch with recent commits:
-        branch: docs/#67-update-readme
-        linked_issue: #67 (inferred from branch name)
-        last_commit: 2026-09-16 14:23 · Zaida Wiss
+        branch: {work-area}/{issue-id}-{short-description}
+        linked_issue: #ISSUE_ID (inferred from branch name)
+        last_commit: {TIMESTAMP} · {PERSON_DISPLAY_NAME}
         status: Pågår (aktiv branch, commits denna vecka)
 
     active_work_detection_logic:
@@ -456,7 +456,7 @@ required_datasets:
     derivation_sequence:
       1_parse_issue_body: "Search issue body for '#[number]' references (blockers/dependencies)"
       2_check_pr_links: "Get PRs linked to each issue via issue.linked_issues"
-      3_infer_from_branch_name: "Branch pattern might indicate dependency (e.g., 'after-#67')"
+      3_infer_from_branch_name: "Branch pattern might indicate dependency (e.g., 'after-#ISSUE_ID')"
       4_explicit_labels: "Check for 'blocks-', 'depends-on-', 'after-' labels if team uses them"
 
     required_fields:
@@ -480,8 +480,8 @@ required_datasets:
     note: "NOT an external source; filtering of GITHUB_BRANCHES + GITHUB_COMMITS by known team branches"
     classification: "SECONDARY (track team progress before develop integration)"
     purpose: >
-      Track work merged to team collection branches (e.g., Java-Development-Environment for Backend,
-      C/C++-Native for Native). This represents team progress before integration to develop.
+      Track work merged to team collection branches (e.g., a registered collection branch for one work area,
+      another registered collection branch for another work area). This represents team progress before integration to develop.
 
     sources_used:
       - GITHUB_BRANCHES (to identify collection branches)
@@ -489,9 +489,9 @@ required_datasets:
 
     known_branches:
       backend:
-        - "Java-Development-Environment"
+        - "COLLECTION_BRANCH_A"
       native:
-        - "C/C++-Native"
+        - "COLLECTION_BRANCH_B"
       frontend: [] # Frontend typically develops directly on develop
 
     discovery:
@@ -518,7 +518,7 @@ required_datasets:
       show ONLY the develop delivery (later in timeline).
 
       IMPORTANT: PR numbers alone are INSUFFICIENT.
-      Collection PR #107 and later develop PR #109 may represent same work.
+      A collection-branch PR and a later integration PR may represent the same work.
       Use issue links and commits to determine true identity.
 
     classification_rule: >
@@ -526,7 +526,7 @@ required_datasets:
       team_delivery: base_branch == verified_collection_branch
 
     mandatory_page_dataset:
-      order: ["C/C++-Native", "Java-Development-Environment"]
+      order: ["COLLECTION_BRANCH_A", "COLLECTION_BRANCH_B"]
       render_when_empty: true
       empty_state_requires_successful_acquisition: true
       incomplete_state_names_failed_source: true
@@ -641,10 +641,10 @@ reporting_period:
     REPORTING_PERIOD = [SPRINT_START, DATA_CUTOFF]
     COVER_PERIOD = [SPRINT_START date, SPRINT_END date]
 
-    Example: request Monday 2026-09-21 08:58 Europe/Stockholm
-      SPRINT_START: 2026-09-14 09:00
-      SPRINT_END: 2026-09-21 09:00
-      DATA_CUTOFF: 2026-09-21 08:58 (or earlier verified source cutoff)
+    Example: request during an active sprint before its end boundary
+      SPRINT_START: {REGISTERED_SPRINT_START}
+      SPRINT_END: {REGISTERED_SPRINT_END}
+      DATA_CUTOFF: {REQUEST_TIME_OR_EARLIER_VERIFIED_SOURCE_CUTOFF}
       COVER: Sprintperiod 14 september–21 september
 
     Boundary:
@@ -693,7 +693,7 @@ validation_rules:
     purpose: "Commits not linked to issues or PRs (refactoring, docs, chores)"
 
     canonical_method:
-      endpoint: "/repos/chas-challenge-2026/avanza-team1/commits"
+      endpoint: "/repos/{owner}/{repository}/commits"
       http_method: "GET"
       params:
         since: "REPORTING_PERIOD_START"
@@ -703,8 +703,8 @@ validation_rules:
     required_fields:
       - sha (commit hash)
       - message (commit message)
-      - author.name (display name — e.g. "Zaida Wiss")
-      - author.login (GitHub username — e.g. "zaida-wiss")
+      - author.name (verified display name from source data)
+      - author.login (verified GitHub username from source data)
       - author.date (timestamp)
       - html_url (link to commit on github.com)
 
@@ -780,19 +780,19 @@ data_acquisition_receipt:
         status: "HTTP_ERROR"
         http_code: 403
         failure_reason: "API rate limit exceeded (X-RateLimit-Remaining: 0)"
-        tried_at: "2026-09-15T10:30:45Z"
+        tried_at: "{ATTEMPT_TIMESTAMP_1}"
 
       - source: "GITHUB_MERGED_PRS.fallbacks[0] (github_web, see EXTERNAL_SOURCES.yaml)"
         status: "EMPTY_RESPONSE"
         failure_reason: "Web page loaded but no PR data extracted (selector mismatch or page layout changed)"
-        tried_at: "2026-09-15T10:31:12Z"
+        tried_at: "{ATTEMPT_TIMESTAMP_2}"
         fallback_reason: "GitHub API rate-limited, trying web fallback"
 
       - source: "GITHUB_MERGED_PRS.fallbacks[1] (google_drive_connector on GOOGLE_PROJECT_DATA_SHEET, see EXTERNAL_SOURCES.yaml)"
         status: "AUTH_ERROR"
         http_code: 403
         failure_reason: "Permission denied on Google Sheets (Sheet not shared with connector, or token expired)"
-        tried_at: "2026-09-15T10:31:45Z"
+        tried_at: "{ATTEMPT_TIMESTAMP_3}"
         fallback_reason: "GitHub web fallback failed, trying Sheets"
 
     final_status: "INCOMPLETE"
