@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 2.8
+version: 2.9
 metadata:
   type: registry
   critical: true
@@ -48,6 +48,10 @@ logical_destinations:
   global:
     ai_framework:
       path: "_ai_guides/AI_FRAMEWORK.yaml"
+    cognitive_accessibility_neuroinclusive_design:
+      path: "_ai_guides/COGNITIVE_ACCESSIBILITY_NEUROINCLUSIVE_DESIGN.md"
+    ai_best_practice_evidence_policy:
+      path: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
 
   project:
     context_router:
@@ -166,6 +170,8 @@ tasks:
     purpose: "Help with code while checking the relevant surrounding project system."
     load:
       - "logical_destinations.global.ai_framework"
+      - "logical_destinations.global.cognitive_accessibility_neuroinclusive_design"
+      - "logical_destinations.global.ai_best_practice_evidence_policy"
       - "logical_destinations.project.team_standards"
       - "logical_destinations.project.testing"
       - "logical_destinations.project.goals_and_sprint_planning"
@@ -240,6 +246,7 @@ tasks:
     technical_debt_authority:
       ref: "logical_destinations.project.technical_debt"
     design_authorities:
+      - "_ai_guides/COGNITIVE_ACCESSIBILITY_NEUROINCLUSIVE_DESIGN.md"
       - "_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"
       - "_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md"
       - "_ai_guides/presentations/design/READABILITY_HARD_RULES.md"
