@@ -292,7 +292,7 @@ legacy_developed_by_label_count == 0
 legacy_identity_prefix_count == 0
 unnecessary_activity_timestamp_count == 0
 identity_row_not_primary_color_count == 0
-timestamp_not_primary_color_count == 0
+timestamp_not_quiet_microcopy_color_count == 0
 secondary_text_too_prominent_count == 0
 assignee_not_visually_emphasized_count == 0
 visible_evidence_level_label_count == 0
@@ -304,7 +304,7 @@ timestamp_not_right_aligned_count == 0
 Manual visual checks across **every card type**:
 - card title uses primary text color
 - person/team identity row, when present, uses the same primary text color as the title
-- relevant timestamp, when present, uses the same primary text color as the title
+- relevant timestamp uses the quiet microcopy/timestamp color defined by the global palette and remains deliberately subordinate to title/body content
 - pedagogical explanation is calmer/secondary
 - branch/status/provenance/ordinary metadata is quieter than the explanation while still WCAG-AA compliant
 - no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the identity row
@@ -348,6 +348,9 @@ merged_pr_without_merger_lookup_count == 0
 merged_pr_without_submitted_reviews_lookup_count == 0
 review_field_populated_from_requested_reviewers_count == 0
 verified_approving_reviewer_omitted_from_card_count == 0
+merged_pr_merge_review_row_missing_count == 0
+merged_pr_merge_review_row_not_bottom_zone_count == 0
+merged_pr_merge_timestamp_missing_count == 0
 verified_merger_omitted_from_card_count == 0
 ```
 
