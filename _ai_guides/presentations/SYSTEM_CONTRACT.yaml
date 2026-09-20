@@ -371,7 +371,7 @@ execution_sequence:
       - "points 3–5 and 9 plan the remaining horizon from data cutoff to active sprint end"
       - "the final meeting-point-1 teamsammanfattning subsection uses 1–10 sentences per registered team, names every registered team member and grounds each contribution/decision"
       - "meeting point 2 is a chronological course/project timeline with a current-week marker and contains no blockers, dependencies or risks"
-      - "for the sprint containing 2026-09-19, the visible sprint interval is exactly 14–21 September 2026"
+      - "the visible sprint interval uses the complete registered sprint boundaries and never shifts its start to the meeting date"
       - "points 3–5 are team slots populated from the registered team roster/order and own backlog, future work, older inactive work and decisions that govern upcoming team work"
       - "meeting point 9 content structure is supplied by SLIDE_DETAIL_SPEC.md"
       - "meeting point 9 visual fit and continuation behavior are supplied by the registered design/overflow authorities"
@@ -396,9 +396,9 @@ execution_sequence:
       through data cutoff; forward sections cover remaining work through sprint
       end using verified plans or explicit AI labels.
     example: >
-      For a request on Monday 2026-09-21 at 08:58 Europe/Stockholm, show
-      sprintperiod 14 September–21 September on the cover and use 08:58 as the
-      latest possible factual cutoff.
+      For a request made during an active sprint before the meeting starts, show
+      the complete registered sprint interval on the cover and use the request
+      time as the latest possible factual cutoff.
 
   cover_school_task_contract:
     required_questions: ["Vad", "När", "Var", "Varför", "Hur"]
