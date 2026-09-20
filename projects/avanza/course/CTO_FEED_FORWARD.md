@@ -13,6 +13,19 @@ metadata:
 
 ---
 
+## Back Office-förtydligande om arbetssättet
+
+Verifierat i Chas Back Office-meddelanden:
+
+- detta är en **självständig teamuppgift före feed forward**;
+- PL ska **inte** hjälpa teamet tolka instruktionen eller skapa CTO-underlaget;
+- teamet behöver gemensamt tolka instruktionen och välja vad Victor behöver se;
+- förberedelse och inspelning är ett separat arbetssteg;
+- Back Office uppskattar att det behövs **minst två teammöten** för att få ihop underlaget enligt instruktionen;
+- efter Victors feed forward kommer PL tillbaka in för att hjälpa teamet tolka återkopplingen och prioritera förbättringsförslag.
+
+Källa: `CHAS_BACKOFFICE_ANNOUNCEMENTS.md`.
+
 ## Vad filmen ska innehålla
 
 Underlaget till Victors ska vara en inspelad film på max 5 minuter där ni delar skärm och visar hur ni har arbetat med risk i projektet. Fokusera på hur riskanalysen har påverkat era beslut—inte bara vilka risker ni har listat.
@@ -59,6 +72,15 @@ Här kommer PL tillbaka in i processen. Tillsammans tittar ni på Victors feed f
 **Målet är inte att göra allt—utan att fatta bra beslut om vad som är viktigast och vad som är good enough.**
 
 ---
+
+## Nästa specialistuppgift
+
+Back Office har även meddelat att nästa uppgift publiceras på måndagen och gäller
+underlag till **Delivery Manager och UX specialist**, med deadline **1 oktober**.
+Den liknar CTO-uppgiften men kräver **två filmer i stället för en**. Teamet har
+uttryckligen uppmanats att planera för tidsåtgången och inte underskatta arbetet.
+
+Källa: `CHAS_BACKOFFICE_ANNOUNCEMENTS.md`.
 
 ## Koppling till presentationssystemet
 
