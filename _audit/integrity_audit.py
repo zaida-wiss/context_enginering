@@ -13,6 +13,7 @@ Validates:
 8. Logical references used by task bundles and the global project router resolve.
 9. Global routing/validation does not require legacy project-owned source/roster paths.
 10. The reusable project template and onboarding contract exist without depending on a named project.
+11. The global control plane is free of named-project dependencies; named projects belong only in PROJECTS.yaml and project roots.
 
 This intentionally uses a small YAML-path parser so the audit has no PyYAML dependency.
 """
@@ -406,17 +407,43 @@ def main():
     try:
         template_manifest = read_text("projects/_template/PROJECT.yaml")
         template_guide = read_text("projects/_template/README.md")
-        named_project_leak = re.search(r"\\bavanza\\b|chas-challenge-2026", template_manifest + "\n" + template_guide, re.I)
-        if named_project_leak:
-            print("❌ project template contains named-project leakage")
-            ok = False
-        if "<project_id>" not in template_manifest:
+        placeholder_missing = "<project_id>" not in template_manifest
+        if placeholder_missing:
             print("❌ project template lacks project_id placeholder routing")
             ok = False
     except Exception as exc:
         print(f"❌ project template inspection failed: {exc}")
         ok = False
     checks.append(result(ok, "project onboarding template is present and project-neutral", "project onboarding contract is incomplete or project-specific"))
+
+    print("\nINVARIANT 11: Named-Project Deletion Independence")
+    global_control_files = [
+        "CONTEXT_REGISTRY.yaml",
+        "_ai_guides/AI_FRAMEWORK.yaml",
+        "_ai_guides/project/PROJECT_CONTEXT_ROUTER.md",
+        "_ai_guides/presentations/MANDATORY_READING_ORDER.md",
+        "_ai_guides/presentations/AUTHORITY_REGISTRY.yaml",
+        "_ai_guides/presentations/INTEGRITY_CONSTRAINT.md",
+        "_ai_guides/presentations/SYSTEM_CONTRACT.yaml",
+        "projects/_template/README.md",
+        "projects/_template/PROJECT.yaml",
+    ]
+    # PROJECTS.yaml is intentionally excluded: it is the one global registry
+    # allowed to name registered projects. This audit must not hardcode any
+    # current project name, otherwise adding/removing projects would require
+    # editing the global validator itself.
+    registry = read_text("PROJECTS.yaml")
+    registered_roots = set(re.findall(r'^\\s*context_root:\\s*["\\\']?([^"\\\'\\n]+)', registry, re.M))
+    registered_repositories = set(re.findall(r'^\\s*github_repository:\\s*["\\\']?([^"\\\'\\n]+)', registry, re.M))
+    forbidden_literals = sorted(registered_roots | registered_repositories)
+    ok = True
+    for control in global_control_files:
+        text = read_text(control)
+        for literal in forbidden_literals:
+            if literal and literal in text:
+                print(f"❌ {control} depends on registered-project literal: {literal}")
+                ok = False
+    checks.append(result(ok, "global control plane has no registered-project path/repository dependencies", "named-project dependency remains in global control plane"))
 
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
