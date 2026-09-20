@@ -211,7 +211,7 @@ These are density rules:
 - `③–⑤`: project-registered team/workstream forward-planning sections; they own backlog, future work, older inactive work and governing decisions
 - Point 9 is an explicit slide-level exception to the general grid: its execution groups are vertically stacked top-to-bottom
 - Point 9 content/group semantics and continuation behavior are defined by `SLIDE_DETAIL_SPEC.md`
-- Point 9 cards still follow `CARD_COMPONENT_STANDARD.md`; vertical fit/pagination follows `LAYOUT_OVERFLOW_GUARD.md`
+- Point 9 uses its registered compact row/band component instead of ordinary cards; text roles, provenance, WCAG and spacing still inherit the applicable global component/readability rules, while vertical fit/pagination follows `LAYOUT_OVERFLOW_GUARD.md`
 - `③–⑤` and `⑨`: plan the remaining active-sprint horizon from data cutoff to sprint end
 - `②`, `⑥–⑧` and `⑩–⑫`: max 4, responsive card layout
 - `⑬`: max 4; 4×1 only when readable, otherwise 2×2/fewer
