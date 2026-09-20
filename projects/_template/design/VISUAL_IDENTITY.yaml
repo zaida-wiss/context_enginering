@@ -1,0 +1,8 @@
+---
+name: visual_identity_template
+description: Optional project-owned visual identity
+status: TEMPLATE
+tokens: {}
+rules:
+  - "Use only verified project design facts."
+  - "Accessibility requirements remain governed by global authorities unless the project adds stricter compatible requirements."
