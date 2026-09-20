@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.0
+version: 3.1
 metadata:
   type: registry
   critical: true
@@ -137,17 +137,29 @@ presentation_bootstrap:
 tasks:
   issue_creation:
     purpose: "Create or improve a GitHub issue using the project's canonical workflow."
-    load:
-      - "logical_destinations.global.ai_framework"
-      - "logical_destinations.project.team_standards"
-      - "logical_destinations.project.testing"
-      - "logical_destinations.project.definition_of_done"
-      - "logical_destinations.project.issue_body_template"
-      - "logical_destinations.project.team_tone_and_collaboration"
-      - "logical_destinations.project.goals_and_sprint_planning"
-      - "logical_destinations.project.risk_management"
-      - "logical_destinations.project.dependencies_and_capacity"
-      - "logical_destinations.project.cross_layer_awareness"
+    context_loading:
+      strategy: progressive_minimum_sufficient
+      required_core:
+        - "logical_destinations.global.ai_framework"
+        - "logical_destinations.project.team_standards"
+        - "logical_destinations.project.testing"
+        - "logical_destinations.project.definition_of_done"
+        - "logical_destinations.project.issue_body_template"
+      conditional:
+        collaboration_or_people_context_material:
+          - "logical_destinations.project.team_tone_and_collaboration"
+        goal_or_sprint_alignment_material:
+          - "logical_destinations.project.goals_and_sprint_planning"
+        risk_material:
+          - "logical_destinations.project.risk_management"
+          - "logical_destinations.project.risk_register_template"
+        dependency_capacity_or_sequencing_material:
+          - "logical_destinations.project.dependencies_and_capacity"
+        cross_layer_or_integration_material:
+          - "logical_destinations.project.cross_layer_awareness"
+        confirmed_decision_context_material:
+          - "logical_destinations.decisions.confirmed"
+      rule: "Load conditional authorities only when they can materially change issue scope, order, acceptance criteria, risk, ownership or readiness."
     supporting_context:
       - "logical_destinations.project.risk_register_template"
       - "logical_destinations.decisions.confirmed"
@@ -208,14 +220,21 @@ tasks:
 
   sprint_planning:
     purpose: "Resolve decided goals from verified sources and propose future goals, milestones and issues transparently."
-    load:
-      - "logical_destinations.global.ai_framework"
-      - "logical_destinations.project.goals_and_sprint_planning"
-      - "logical_destinations.project.risk_management"
-      - "logical_destinations.project.dependencies_and_capacity"
-      - "logical_destinations.project.team_standards"
-      - "logical_destinations.project.testing"
-      - "logical_destinations.project.team_tone_and_collaboration"
+    context_loading:
+      strategy: progressive_minimum_sufficient
+      required_core:
+        - "logical_destinations.global.ai_framework"
+        - "logical_destinations.project.goals_and_sprint_planning"
+        - "logical_destinations.project.dependencies_and_capacity"
+        - "logical_destinations.project.team_standards"
+      conditional:
+        risk_material:
+          - "logical_destinations.project.risk_management"
+        issue_testing_or_readiness_material:
+          - "logical_destinations.project.testing"
+        team_interaction_or_collaboration_material:
+          - "logical_destinations.project.team_tone_and_collaboration"
+      rule: "Load conditional authorities only when their domain can materially change sprint goals, sequencing, readiness or team coordination."
     source_refs:
       - "logical_destinations.selected_project.source_registry"
     output_expectations:
