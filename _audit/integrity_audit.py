@@ -621,6 +621,35 @@ def main():
         ok = False
     checks.append(result(ok, "coding task bundle encodes progressive minimum-sufficient context loading", "coding task bundle can force unrelated context into every coding task"))
 
+    print("\nINVARIANT 15: Progressive Planning Context + Presentation Safety Core")
+    ok = True
+    try:
+        registry_text = read_text("CONTEXT_REGISTRY.yaml")
+        for task_name in ("issue_creation", "sprint_planning"):
+            task_match = re.search(rf"(?ms)^  {task_name}:\n(.*?)(?=^  [a-zA-Z0-9_]+:\n|^path_change_process:)", registry_text)
+            task = task_match.group(1) if task_match else ""
+            if "strategy: progressive_minimum_sufficient" not in task or "required_core:" not in task or "conditional:" not in task:
+                print(f"❌ {task_name} does not encode progressive minimum-sufficient loading")
+                ok = False
+            if re.search(r"(?m)^    load:\s*$", task):
+                print(f"❌ {task_name} still exposes a monolithic mandatory load list")
+                ok = False
+        presentation_router = read_text("_ai_guides/presentations/MANDATORY_READING_ORDER.md")
+        required_bootstrap = ("AI_FRAMEWORK.yaml", "AUTHORITY_REGISTRY.yaml", "INTEGRITY_CONSTRAINT.md", "SYSTEM_CONTRACT.yaml")
+        if not all(name in presentation_router for name in required_bootstrap):
+            print("❌ presentation bootstrap lost a mandatory safety/execution authority")
+            ok = False
+        presentation_task = re.search(r"(?ms)^  monday_meeting_presentation:\n(.*?)(?=^path_change_process:)", registry_text)
+        presentation = presentation_task.group(1) if presentation_task else ""
+        required_delivery = ("design_authorities:", "verification:", "default_delivery:")
+        if not all(name in presentation for name in required_delivery):
+            print("❌ Monday presentation task lost design, verification or delivery gates")
+            ok = False
+    except Exception as exc:
+        print(f"❌ planning/presentation context inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "issue and sprint tasks load progressively while presentation safety/delivery core remains mandatory", "task context optimization weakens planning relevance or presentation safety gates"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
