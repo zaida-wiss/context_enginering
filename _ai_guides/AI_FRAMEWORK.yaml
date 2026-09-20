@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.10
+version: 1.11
 metadata:
   type: global_authority
   critical: true
@@ -307,6 +307,60 @@ project_work_analysis:
       - when
     dimensions_are_mandatory_headings: false
     explain_the_most_important_thing_first: true
+
+
+issue_planning_gate:
+  authority: "_ai_guides/PROJECT_WORK_ANALYSIS.md"
+  scope: global
+  trigger:
+    - new_issue_proposals
+    - backlog_refinement
+    - issue_prioritization
+    - sprint_issue_planning
+  required_before_proposals: true
+  automatic_checks:
+    - refresh_the_lightweight_project_birdseye
+    - inspect_current_registered_backlog_and_relevant_existing_issues
+    - inspect_active_branches_and_pull_requests
+    - identify_core_flows_architecture_and_integration_boundaries
+    - respect_registered_team_ownership
+    - identify_dependencies_blockers_collisions_and_duplicate_work
+    - evaluate_current_and_proposed_technical_debt
+    - identify_stale_obsolete_or_architecture_incompatible_backlog_items_when_evidence_supports_it
+    - use_verified_project_capacity_and_delivery_constraints_when_relevant
+  proposal_output:
+    canonical_table_required: true
+    columns:
+      - priority
+      - issue_proposal
+      - core_flow
+      - dependencies
+      - risk_or_collision
+      - technical_debt
+      - recommended_order
+      - why_now
+    technical_debt_values:
+      - no_known_debt
+      - debt_risk
+      - creates_debt
+      - reduces_debt
+    proposal_is_not_team_decision: true
+  after_selection:
+    expand_to_project_issue_format: true
+    include_when_applicable:
+      - purpose_or_problem
+      - scope
+      - measurable_acceptance_criteria
+      - relevant_technical_context
+      - dependencies
+      - readiness_information
+  constraints:
+    - do_not_propose_duplicate_work
+    - do_not_treat_backlog_as_infallible
+    - surface_avoidable_technical_debt_early
+    - deliberate_temporary_debt_must_be_visible_justified_and_trackable
+    - respect_team_ownership_boundary
+    - user_or_team_retains_decision_authority
 
 historical_context_and_pre_implementation:
   purpose: >
