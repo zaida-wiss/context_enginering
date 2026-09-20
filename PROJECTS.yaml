@@ -1,7 +1,7 @@
 ---
 name: project_registry
 description: Registry of project contexts available through this context-engineering repository
-version: 1.0
+version: 1.1
 metadata:
   type: registry
   critical: true
@@ -13,14 +13,9 @@ projects:
     status: active
     context_root: "projects/avanza"
     manifest: "projects/avanza/PROJECT.yaml"
-    current_legacy_context:
-      project_guides: "_ai_guides/project"
-      memory: "_memory"
-      data: "data"
-      decisions: "docs/decisions"
     repository_match:
       github_repository: "chas-challenge-2026/avanza-team1"
-    migration_state: "registered_before_preservation_first_move"
+    migration_state: "project_context_migrated; generic legacy domains retained only for cross-project framework use"
 
 resolution:
   rule: >
