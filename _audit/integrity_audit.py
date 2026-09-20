@@ -674,6 +674,34 @@ def main():
         ok = False
     checks.append(result(ok, "new project facts route through selected-project capabilities rather than global legacy domains", "context ingestion can leak project facts into global memory/data domains"))
 
+    print("\nINVARIANT 17: Presentation Readability + Semantic Visual Grammar")
+    ok = True
+    try:
+        visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        access = read_text("_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md")
+        visual_required = (
+            "#15182E",
+            "never black",
+            "More slides are preferred to smaller text.",
+            "20 pt or larger",
+            "18 pt or larger",
+            "🎯 task · 🕒 time · 📍 place · 💡 purpose · 🛠 method",
+            "#EF4444",
+            "#F59E0B",
+            "#22C55E",
+        )
+        if not all(token in visual for token in visual_required):
+            print("❌ global presentation authority lost navy/readability/symbol/priority semantics")
+            ok = False
+        access_required = ("Shared-screen readability", "20 pt", "18 pt", "paginate before compressing")
+        if not all(token in access for token in access_required):
+            print("❌ accessibility authority lost shared-screen readability targets")
+            ok = False
+    except Exception as exc:
+        print(f"❌ presentation visual grammar inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "presentation authorities preserve navy background, readable type, five-symbol grammar and semantic priority colors", "presentation rendering can regress to black/small text or lose semantic visual cues"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
