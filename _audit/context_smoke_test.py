@@ -331,7 +331,8 @@ def main():
 
     require(
         "NPF and visual rules recognize registered point9 exception",
-        "meeting point 9 priority uses its registered vertical execution-group exception" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        "meeting-point-specific geometry is stable semantics" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        and "vertical priority sequence remains vertical" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
         and "meeting point 9's" in read("_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md")
         and "vertical execution sequence is such an exception" in read("_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md"),
         failures,
