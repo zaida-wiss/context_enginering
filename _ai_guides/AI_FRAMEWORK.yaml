@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.1
+version: 1.2
 metadata:
   type: global_authority
   critical: true
@@ -45,6 +45,7 @@ project_context_resolution:
 
 
 ai_best_practice_advisory:
+  evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
   purpose: >
     Make the AI an active architecture and context-engineering advisor, not only
     an executor of the repository's current rules. Help the user reason toward
