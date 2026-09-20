@@ -627,15 +627,16 @@ required_datasets:
     stop_condition: "source fails AND all fallbacks fail (use DATA_AUDIT to confirm)"
 
 reporting_period:
-  definition: "active 7-day sprint containing the request timestamp, anchored Monday 09:00 Stockholm"
-  timezone: "Europe/Stockholm"
+  definition: "active sprint containing the request timestamp, resolved from the selected project's registered sprint cadence"
+  cadence_authority: "selected project manifest -> context.sprint_cadence.path"
   cover_format: "SPRINT_START date through SPRINT_END date"
 
   AUTHORITATIVE_DEFINITION: |
-    SPRINT_START = latest Monday 09:00 Europe/Stockholm that is <= REQUEST_TIMESTAMP
-    SPRINT_END = SPRINT_START + 7 calendar days
+    Load the selected project's registered sprint cadence.
+    Resolve SPRINT_START and SPRINT_END from that cadence and REQUEST_TIMESTAMP.
+    Treat the cadence's interval semantics as authoritative.
     DATA_CUTOFF = min(actual acquisition timestamp, SPRINT_END)
-    REPORTING_PERIOD = [SPRINT_START, DATA_CUTOFF]
+    REPORTING_PERIOD = [SPRINT_START, DATA_CUTOFF] subject to the registered interval semantics.
     COVER_PERIOD = [SPRINT_START date, SPRINT_END date]
 
     Example: request during an active sprint before its end boundary
@@ -645,8 +646,8 @@ reporting_period:
       COVER: Sprintperiod {REGISTERED_SPRINT_START_DATE}–{REGISTERED_SPRINT_END_DATE}
 
     Boundary:
-      08:59:59 belongs to the sprint that is ending.
-      09:00:00 belongs to the new sprint.
+      The exact boundary time and timezone come from the selected project's
+      registered sprint cadence. Never hardcode them in this generic contract.
       Never present activity after DATA_CUTOFF as completed/current fact.
 
   compare_fields:
