@@ -7,18 +7,6 @@ metadata:
   updated: 2026-09-16
 ---
 
-project_sprint_cadence:
-  duration_days: 7
-  start_day: "monday"
-  start_time: "09:00"
-  end_rule: "next_sprint_start"
-  timezone: "Europe/Stockholm"
-  scope: "Avanza project"
-  note: >
-    Project sprints are one week long. Resolve each sprint from its registered
-    Monday sprint start to the next registered Monday sprint start; do not infer
-    sprint boundaries from ISO calendar-week dates alone.
-
 recurring_meetings:
   monday:
     - time: "09:00-10:30"
