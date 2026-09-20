@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.8
+  version: 1.9
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -103,8 +103,8 @@ For Issue/PR/Merge/action cards, use this visual order:
 2. **Pedagogical contribution / project-value line** — directly under the title
 3. flexible whitespace / remaining content area
 4. **Person/team identity row** when relevant — anchored in the card's bottom information zone
-5. **Operational verification/metadata** — directly below identity in the bottom information zone; for merged PR cards this includes the canonical `Merged: … | Review: …` row
-6. **Timestamp** — bottom-most row when relevant according to the timestamp standard
+5. **Operational verification/metadata** — only when it adds information not already expressed by slide placement/header
+6. **Activity time** — for Issue/PR work, kept on the same row as the verified developer identity when available
 
 Full source labels are rendered once in the physical slide's reserved source margin/footer. Cards carry only the canonical inline source symbol beside the factual statement, unless a card-specific contract explicitly requires an additional status/verification label.
 
@@ -121,13 +121,13 @@ This applies to all card types when those fields exist:
 - risk cards
 - team-summary cards
 
-Examples of bottom-zone verification/provenance:
+Examples of bottom-zone verification/provenance when they add non-redundant meaning:
 - `👥 ✅ Mötesprotokoll 17 sep`
-- `✅ GitHub + mötesprotokoll`
 - `🔎 AI-analys`
 - `⭐ AI-förslag`
 - `📅 Schemafakta`
-- branch / PR / merge-review metadata when relevant
+
+Do not repeat a merge/team/branch status inside every card when the containing slide subtitle, section and placement already establish that context. In particular, a `Mergat till …` subsection MUST NOT add a per-card `MERGAD`, `Merged`, checkmark badge, pill, stamp or equivalent merge label.
 
 If a card has no person identity, the verification/provenance row is still anchored to the bottom.
 
@@ -307,15 +307,18 @@ Never go below 11 pt.
 
 A timestamp is not generic activity decoration. It is shown only when the time itself helps the meeting understand delivery or current status.
 
-## Merged PR cards
-Show the **merge timestamp**.
+## Completed work shown inside a verified merge subsection
+The slide/subsection placement carries the merge state. Do **not** add a merge badge, merge stamp, `MERGAD`/`Merged` label or detached merge timestamp to each card.
 
-Do not substitute:
-- PR creation time
-- latest commit time
-- issue creation time
+Show the verified developer identity and the latest relevant **delivery activity before/completing the handoff** on the same row:
+1. PR submission/open timestamp when the work was sent to PR;
+2. otherwise latest verified commit/push timestamp.
 
-when the card represents a completed merge.
+Canonical examples:
+- `{FIRST_NAME} · PR 17 sep · 15:05`
+- `{FIRST_NAME} · commit 17 sep · 14:22`
+
+The containing `Mergat till …` subtitle supplies the explicit non-color merge meaning; team/branch accent color is supplementary.
 
 ## Active/open Issue/PR work cards
 The delivery-activity timestamp belongs **on the same row as the verified developer name**, not in a separate lower-right timestamp row.
@@ -352,31 +355,26 @@ If the timestamp is not useful to the meeting, omit it rather than filling space
 
 ---
 
-# 7. CANONICAL MERGED-PR CARD
+# 7. CANONICAL COMPLETED ISSUE / PR CARD INSIDE MERGE SUBSECTION
 
 ```text
 #ISSUE_ID · [verifierad titel]
 Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
 
-{FIRST_NAME}
-Merged: {MERGER} | Review: {REVIEWER}
-                         14 sep · 10:16
+{FIRST_NAME} · PR 14 sep · 10:16
 ```
 
-Note: On a dedicated team slide, the slide header names the team and the card uses the supplementary left accent color without repeating the team text. On mixed-team slides, the card includes explicit team text plus the accent color.
-
 Rendering rules:
+- the containing slide subtitle/section supplies the merge-target/status meaning
+- do not render a per-card merge badge, pill, stamp, checkmark or `MERGAD`/`Merged` label
+- do not repeat a team label when the containing section already identifies the team; use placement plus the supplementary team accent
 - pedagogical explanation sits directly under the title
-- flexible whitespace separates the explanation from the bottom information zone
-- the verified contributor identity sits near the bottom of the card
-- merge/review verification sits directly below the name
-- timestamp sits at the bottom and stays one line
-- identity uses the primary text color, not team accent color
-- timestamp uses the quiet microcopy/timestamp color and stays visually unobtrusive
-- only verified merger and actual approving reviewer names appear
-- dedicated merger/review lookup is mandatory before an empty field is accepted
-- timestamp is the merge timestamp
+- flexible whitespace keeps the card airy and separates explanation from the bottom identity/activity row
+- verified developer identity and selected PR/commit activity time share one compact bottom row
+- developer/assignee is one presentation concept; never duplicate it
+- do not add tags, comment counts or reaction counts merely because GitHub exposes them
+- provenance explanations remain in the reserved slide footer
 
 ---
 
@@ -393,7 +391,7 @@ PR #PR_ID · {WORK_BRANCH}
 
 Name and operational verification/metadata are anchored at the bottom.
 
-Append the selected PR-submission or latest-commit activity time on the **same row as {FIRST_NAME}**. Do not create a separate Assigned row or a detached activity timestamp.
+Append the selected PR-submission or latest-commit activity time on the **same row as {FIRST_NAME}**. Do not create a separate Assigned row or a detached activity timestamp. Do not render generic tags, comment counts or reaction counts unless a meeting-point-specific authority explicitly requires them.
 
 Evidence level is **not rendered as text on the card**. Do not show `GitHub · nivå 1`, `nivå 2`, etc.
 
@@ -562,8 +560,10 @@ unverified_identity_commentary_count == 0
 timestamp_not_single_line_count == 0
 timestamp_wrapped_line_count == 0
 timestamp_not_right_aligned_count == 0
-verified_approving_reviewer_omitted_from_card_count == 0
-verified_merger_omitted_from_card_count == 0
+redundant_merge_badge_or_stamp_count == 0
+separate_developer_and_assigned_row_count == 0
+developer_activity_time_detached_from_identity_count == 0
+unrequested_tag_comment_reaction_metadata_count == 0
 ```
 
 Also verify:
@@ -572,9 +572,9 @@ Also verify:
 - person identity is first-name-only and sits in the bottom information zone
 - every semantic content block begins with its canonical provenance symbol
 - the slide source margin/footer deduplicates every source symbol used and shows symbol + full source name/explanation
-- if a timestamp exists, operational card metadata such as `Merged: … | Review: …` sits immediately above it; full source explanations remain in the slide margin/footer
-- merged PR timestamp is the merge timestamp
-- open/active cards do not display PR-created/latest-commit timestamps merely because that data exists
+- merge-subsection cards do not repeat merge state as a badge/stamp/label because the containing subtitle/placement supplies that context
+- developer/assignee appears once; selected PR-submission/latest-commit time sits on that same identity row
+- generic tags, comments and reactions are omitted unless specifically required by the active meeting-point contract
 - timestamps use the quiet microcopy/timestamp color and do not compete for focus
 - every displayed timestamp is a single line in `D MMM · HH:MM` style, localized like `14 sep · 10:16`
 - pedagogical explanation is calmer than the primary layer
