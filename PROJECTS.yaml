@@ -24,9 +24,10 @@ projects:
 resolution:
   rule: >
     Select a project only when the user names it, the active repository/workspace
-    matches it exactly, or it is the sole registered project. When multiple
-    projects exist and no unique match is available, ask the user which project
-    applies. Never use historical frequency as a default.
+    matches a separate active project repository/workspace exactly. The context
+    repository itself never selects a project. If no project is identified by
+    those signals, ask the user which project applies, even when only one project
+    is currently registered. Never use historical frequency as a default.
 
 ---
 status: ACTIVE
