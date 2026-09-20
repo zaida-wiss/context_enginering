@@ -472,8 +472,8 @@ waiting_pr_pushpin_missing_before_identifier_count == 0
 waiting_pr_bottom_pushpin_label_missing_count == 0
 unverified_item_presented_as_confirmed_count == 0
 content_block_provenance_symbol_missing_count == 0
-card_bottom_provenance_full_label_missing_count == 0
-card_bottom_provenance_symbol_text_mismatch_count == 0
+slide_margin_source_full_label_missing_count == 0
+inline_symbol_slide_margin_source_mismatch_count == 0
 ai_no_finding_without_exact_checked_sources_count == 0
 ai_check_trace_source_not_actually_inspected_count == 0
 provenance_symbol_replaced_by_tag_count == 0
@@ -489,8 +489,10 @@ Manual checks:
 - every open/waiting PR card shows a visible pushpin before its PR identifier and repeats `📌 Väntar i PR` in the card-bottom row
 - each symbol uses the primary font only when that font demonstrably renders it; otherwise the affected glyph/run uses a verified symbol-capable fallback
 - each semantic content block starts with its canonical provenance symbol only
-- each card repeats every used symbol with its full text label in one deduplicated bottom provenance row
-- the inline symbols and bottom labels agree exactly
+- each factual content block uses its canonical source symbol inline, close to the statement it supports
+- the physical slide margin/footer deduplicates the used source symbols and expands each to its full readable source name/explanation
+- ordinary cards do not repeat long source names merely to satisfy provenance; the inline symbol maps to the slide-margin explanation
+- inline symbols and slide-margin source explanations agree exactly
 - no tag, chip, badge, color or `?` replaces `⭐` or `🔎`
 - when an AI health-check reports that no new signal was identified, any
   `🔎 AI-kontroll` trace lists the exact sources/locations actually inspected
@@ -618,7 +620,7 @@ Source-footer checks:
 - every verified source has its canonical symbol and readable name
 - every meeting-protocol source uses the full label `👥 ✅ Mötesprotokoll`
 - every expected but unverifiable source has `⚠`, explicit failure text and a struck-through name
-- inline card/block symbols and the full bottom provenance row remain present and agree with the footer
+- inline card/block source symbols remain present and agree exactly with the full source explanations in the slide margin/footer
 - the measured footer container does not intersect cards, diagrams or slide bounds
 
 ---
