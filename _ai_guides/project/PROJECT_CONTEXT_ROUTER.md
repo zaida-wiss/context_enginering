@@ -20,9 +20,10 @@ presentation rules, data-source rules or team standards.
 Apply [`../AI_FRAMEWORK.yaml`](../AI_FRAMEWORK.yaml) and resolve project identity
 through [`../../PROJECTS.yaml`](../../PROJECTS.yaml).
 
-If multiple projects are registered and neither the user nor a verifiable active
-repository/workspace identifies one uniquely, ask the user which project applies.
-Never assume the historically most common project.
+If neither the user nor a verifiable separate active project repository/workspace
+identifies a project uniquely, ask the user which project applies. This applies
+even when only one project is currently registered. Opening or linking only this
+context repository never selects a project.
 
 After resolution, load only:
 1. the global framework,
