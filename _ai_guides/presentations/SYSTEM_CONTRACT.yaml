@@ -3,8 +3,8 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.1
-last_updated: 2026-09-18
+version: 5.2
+last_updated: 2026-09-20
 base_path: "_ai_guides/presentations"
 
 ###############################################################################
@@ -114,7 +114,8 @@ authority:
     owns: "pre-delivery validation"
 
   data_registry:
-    file: "../../data/SOURCES.yaml"
+    project_resolved: "source_registry"
+    resolve_via: "../../PROJECTS.yaml -> selected project manifest -> context.sources.path"
     owns: "registered sources, URLs/IDs, source classifications and fallback order"
 
   data_acquisition:
@@ -155,7 +156,7 @@ execution_receipt:
 
   source_routing:
     context_registry: "../../CONTEXT_REGISTRY.yaml"
-    source_registry_ref: "registries.external_sources"
+    source_registry_ref: "selected project manifest -> context.sources.path"
     context_ingestion_ref: "registries.context_ingestion"
 
   missing_required_dependency:
@@ -167,7 +168,7 @@ execution_receipt:
 ###############################################################################
 external_sources_policy:
   mode: "ALLOWLIST_ONLY"
-  registry: "../../data/SOURCES.yaml"
+  registry: "../../PROJECTS.yaml -> selected project manifest -> context.sources.path"
   rules:
     - "Use only registered project sources and their registered fallback chain."
     - "GitHub Connector/API is preferred for GitHub project data."
@@ -195,7 +196,7 @@ presentation_mode:
   pre_meeting:
     capacity: "optional"
     focus: "RISK-DRIVEN — show how risk analysis shaped THIS WEEK's decisions"
-    purpose: "Mötesunderlag AND preparation for CTO Feed Forward task (Sept 24 video, Sept 28 feedback)"
+    purpose: "Meeting support and preparation for verified current project/course deliverables from the selected project context"
     rule: "Never estimate hours. Use verified documented constraints only."
     if_missing: "Use approved placeholder or omit capacity slide according to slide/content rules."
     risk_integration: >
