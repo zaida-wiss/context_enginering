@@ -470,9 +470,9 @@ def main():
 
     require(
         "point 1 follows registered integration and collection-branch order",
-        "{PRIMARY_INTEGRATION_BRANCH}" in presentation_architecture
-        and "{REGISTERED_COLLECTION_BRANCHES_IN_PROJECT_ORDER}" in presentation_architecture
-        and "Teamsammanfattning" in presentation_architecture
+        "{PRIMARY_INTEGRATION_BRANCH}" in composition
+        and "{REGISTERED_COLLECTION_BRANCHES_IN_PROJECT_ORDER}" in composition
+        and "Teamsammanfattning" in composition
         and "separate WIP/unfinished-work slide" in presentation_architecture,
         failures,
     )
