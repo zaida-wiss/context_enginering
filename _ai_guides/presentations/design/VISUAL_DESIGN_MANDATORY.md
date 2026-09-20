@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.5
+  version: 5.6
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -197,6 +197,26 @@ Palette rules:
 - content-driven height
 - subtle shadow/depth
 - no fixed height that forces clipping
+
+### Rendered card-surface fidelity — hard gate
+
+The words **glass-like**, **rounded** and **responsive** are render requirements,
+not optional mood-board language. A deck fails visual verification when its cards
+collapse to flat rectangular panels merely to increase density.
+
+Every ordinary rendered card must preserve:
+- a visibly rounded silhouette equivalent to approximately **16–20 px** corner radius;
+- a soft dark glass-like surface distinct from both the navy canvas and opaque flat-black panels;
+- subtle depth through restrained shadow/highlight and/or tonal/transparency layering while preserving WCAG contrast;
+- the canonical navy relationship: slide base `#15182E`, card family `#1E233B` / `#252A45`; no black or charcoal substitution;
+- content-driven responsive geometry: card height/width adapts to wrapped content and required bottom zones;
+- all required text remains inside the visible rounded card bounds with approved padding; no text may touch/cross the rounded edge;
+- density changes may resize/reflow cards, but MUST NOT remove corner rounding, glass/depth treatment, padding, required rows or readable hierarchy.
+
+For a six-card 3×2 attempt, **design fidelity is part of fit**. If six cards only
+fit by flattening the cards, removing depth, reducing required padding, clipping
+text, or degrading typography, that six-card attempt has failed and the slide
+must use a lower-density continuation layout.
 
 ### Team accent and issue/PR identifiers
 Team ownership is shown with a narrow left accent and, on issue/PR cards, the
