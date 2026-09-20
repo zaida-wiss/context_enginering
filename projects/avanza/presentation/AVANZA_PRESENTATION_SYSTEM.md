@@ -160,15 +160,28 @@ Ordinary work cards preserve a stable internal hierarchy:
 - quiet operational/source information at the bottom
 
 For completed merge work, the containing subtitle/section communicates merge
-state; do not add a redundant MERGED/MERGAD badge merely to repeat that state.
+state; do not add a redundant MERGED/MERGAD badge, pill, tag or stamp at the top
+of each card merely to repeat that state.
 
-Avanza additionally requires the operational bottom information that has meeting
-value (for example request/push information when verified and required by the
-active meeting data contract) to remain present rather than being deleted for
-visual simplification.
+A completed merge card must still preserve the distinct verified identities and
+event metadata that matter:
+- developer/contributor identity
+- delivery activity such as PR/push/commit when required by the active meeting data contract
+- the person who actually merged the PR
+- the verified merge timestamp
 
-A separate merge timestamp may occupy the lower-right card zone when verified.
-It must not collide with the developer/delivery row or source/footer content.
+Developer and merger are different semantic roles even when the same person
+happens to fill both roles. Do not collapse one into the other.
+
+The merger identity belongs in the card's lower information zone. The merge
+timestamp belongs in the lower-right card zone and represents the merge event,
+not PR-open time or latest-commit time. It must not collide with the
+developer/delivery row, merger identity or source/footer content.
+
+Avanza additionally requires operational bottom information with meeting value
+(for example request/push information when verified and required by the active
+meeting data contract) to remain present rather than being deleted for visual
+simplification.
 
 ## 8. Visual QA
 
@@ -183,7 +196,8 @@ Avanza-specific failures include:
 - missing meeting-point title
 - special diagram/timeline flattened into generic cards
 - dependency/blocker information not carried forward into priority/plan/actions
-- required bottom operational row or verified merge timestamp lost through simplification
+- required bottom operational row, verified merger identity or verified merge timestamp lost through simplification
+- redundant MERGED/MERGAD tag/stamp added to a card whose containing page already communicates merge state
 
 The historical presentation rules are recovery evidence, not active authority.
 This file records the reconciled Avanza behavior after refactoring.
