@@ -22,6 +22,27 @@ scope:
   domain_specific_rules_may_extend: true
   domain_specific_rules_may_bypass: false
 
+project_context_resolution:
+  purpose: >
+    Resolve the active project before loading project-specific facts, sources,
+    memory, course data, design references or project rules.
+  registry: "PROJECTS.yaml"
+  resolution_order:
+    - explicit_project_named_by_user
+    - exact_match_from_active_repository_or_workspace_when_verifiable
+    - sole_registered_project_when_exactly_one_exists
+    - ask_user_to_choose
+  multiple_projects_and_no_unique_match:
+    action: ASK_USER
+    guessing_forbidden: true
+  forbidden:
+    - treat_context_repository_itself_as_an_implicit_project
+    - silently_default_to_a_historically_common_project
+    - mix_project_specific_data_across_registered_projects
+  after_resolution:
+    - load_only_the_selected_projects_registered_context_plus_global_framework
+    - keep_course_project_design_and_external_sources_scoped_to_selected_project
+
 context_first_correction:
   trigger: recurring_behavior_design_or_process_defect_caused_by_repository_instructions
   required_sequence:
