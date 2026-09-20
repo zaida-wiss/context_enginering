@@ -1,176 +1,115 @@
-# 🎨 Frontend AI Instructions
+# Frontend AI Instructions
 
-**Denna fil instruerar ALLA AI-assistenter hur de ska hjälpa med frontend-utveckling.**
+This file defines **generic frontend-assistance routing** for projects registered in this context-engineering repository.
 
-Läs denna **varje gång** användaren frågar om frontend-kod.
-
----
-
-## ⚙️ Din Instruktion (VARJE FRONTEND-FRÅGA)
-
-**REGEL: Du MÅSTE läsa design-specen innan du svarar**
-
-1. **Läs denna fil** (`FRONTEND_AI_INSTRUCTIONS.md`) ← Du är här
-2. **Resolve selected project:** `PROJECTS.yaml → selected project → PROJECT.yaml`
-3. **Läs projektets registrerade designkontext**, för Avanza: `projects/avanza/design/DESIGN_MOCKUPS_README.md`
-4. **Kontrollera endast bild-assets som faktiskt finns i Git.** Saknas en refererad asset får AI:n inte påstå att bilden har inspekterats.
-5. **Basera svaret på verifierad designkontext** och skilj dokumenterade designkrav från visuellt verifierade detaljer.
+It does not own project-specific components, branding, thresholds, framework choices or coding-language requirements.
 
 ---
 
-## 📘 TypeScript är Mandatory
+## Frontend request flow
 
-**REGEL: Alla kodexempel MÅSTE vara TypeScript**
+For frontend assistance:
 
-- ✅ Explicit types på all kod
-- ✅ Interfaces för all data
-- ✅ Enums för constants
-- ✅ Generics där relevant
-- ✅ Strict mode enabled
-- ❌ ALDRIG `any` types
-- ❌ ALDRIG JavaScript-only
-- ❌ ALDRIG lösa typer
+1. Read this file.
+2. Resolve the selected project through `PROJECTS.yaml → selected project → PROJECT.yaml`.
+3. Load the project's registered design context from `PROJECT.yaml → context.design.*` when present and relevant.
+4. Resolve workflow/code standards through `CONTEXT_REGISTRY.yaml` and the active project/repository configuration.
+5. Verify referenced assets before claiming they were inspected.
+6. Separate:
+   - verified project requirements,
+   - visually verified details,
+   - historical/documented context,
+   - AI recommendations.
 
----
-
-## 🎯 Frontend-Komponenter & Mockups
-
-| Komponent | Mockup-Fil | Vad Den Visar |
-|-----------|-----------|---------------|
-| LoginForm | `01_login.webp` | Email + lösenord inloggning |
-| PortfolioOverview | `02_overview.webp` | Huvudvy med varning när drift > 5% |
-| WarningBox | `02_overview.webp` | Orange varningsbox för drift |
-| TargetAllocationForm | `03_target_allocation.webp` | Sätta 60/40 målallokering |
-| HoldingsTable | `04_holdings_table.webp` | Tabell med alla innehav i SEK |
+If no project is selected, do not silently use another project's frontend rules.
 
 ---
 
-## 📝 Svar-Format - Så Ska Du Struktura Det
+## Technology and code rules
 
-**Använd denna struktur VARJE GÅNG du svarar på frontend-frågor:**
+Do not invent a mandatory language, framework, styling system or architecture.
 
-```markdown
-## [Komponentnamn]
+Resolve technology requirements in this order:
 
-Enligt den verifierade projektdesignen behöver komponenten:
-- Requirement 1 från designen
-- Requirement 2 från designen
-- Requirement 3 från designen
+1. actual project repository configuration (compiler, package manifest, formatter/linter, framework configuration)
+2. registered external/course/customer requirements
+3. documented project/team decisions
+4. framework/language conventions as recommendations
 
-### Kod (TypeScript + React)
-[Din implementering här]
+Examples such as TypeScript, React, CSS Modules, JavaScript or another stack are binding only when the selected project's verified context establishes them.
 
-### Design-Checklist
-- [ ] Matchar verifierad designkontext
-- [ ] Använder dokumenterade färger; visuella detaljer från bild endast om asseten verifierats
-- [ ] Validering enligt spec
-- [ ] CSS modules (en per komponent)
-
-### Se även
-- Projektets registrerade designkontext via `PROJECT.yaml → context.design.*`
-- [DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md) - Acceptance criteria
-- [TEAM_STANDARDS.md](project/TEAM_STANDARDS.md) - Code standards
-```
+Never promote a recommendation or historical example to a project rule.
 
 ---
 
-## ❌ Vad Du INTE Ska Göra
+## Design authority
 
-❌ Svara på frontend-frågor utan att läsa projektets registrerade designkontext först  
-❌ Påstå att en mockup-bild har kontrollerats när asseten saknas  
-❌ Bygga komponenter som strider mot verifierad designkontext  
-❌ Ge layout-förslag som strider mot designen  
-❌ Ignorera dokumenterad varnings-logik (drift > 5%)  
+Use the selected project's registered design context.
 
-**Istället:** Ange om uppgiften kommer från dokumenterad designkontext eller från en faktiskt verifierad bild-asset.
+A design document may contain both current requirements and historical context. Preserve that distinction.
 
----
+If a document references an image/mockup asset:
 
-## 🎨 Design-Detaljer Du MÅSTE Följa
+- verify that the asset actually exists before describing it as visually inspected;
+- when the asset is missing, use only what the documentation itself establishes;
+- do not infer colours, spacing, layout, interaction or component details from a missing image;
+- surface uncertainty when a requirement cannot be verified.
 
-### Färger
-- **Grön knapp:** Avanza-brand (#00A86B eller liknande)
-- **Orange varning:** Risk-indikator (risk-box)
-- **Grå bakgrund:** Neutral, clean design
-- **Vit panel:** Fokus på innehål
-
-### Komponenter (Mandatory)
-- LoginForm - Email + Password inputs
-- PortfolioOverview - Total värde + varning
-- WarningBox - Orange alert när drift > 5%
-- TargetAllocationForm - Input validering (sum = 100%)
-- HoldingsTable - 7 kolumner med FX-justerad värde
-
-### Varning-Logic (KRITISK!)
-```
-Om (currentAllocation - targetAllocation) > 5% → Visa WarningBox
-
-Exempel från mockup:
-- Mål: 60% aktier
-- Faktisk: 75% aktier
-- Drift: 15% (> 5%) → VISA VARNING
-- Text: "Du driftat från 60% till 75% aktier (gräns 5%)"
-```
+Project-specific components, brand colours, business thresholds and UI rules belong under `projects/<project>/...`, not in this generic guide.
 
 ---
 
-## 🔗 Källstatus för mockups
+## Accessibility and usability
 
-För Avanza beskriver projektdokumentationen fyra historiska mockups, men dessa assets är för närvarande markerade som saknade i Git. Referera därför till designkravet i dokumentationen, inte till en bild som om den hade inspekterats. Om assets senare återfinns och verifieras kan visuella detaljer åter användas som bildbelagd källa.
+Treat accessibility requirements from the selected project, registered external requirements and applicable framework authorities as requirements.
 
----
+When no project-specific rule exists, recommend accessible frontend practice without presenting the recommendation as a confirmed project decision.
 
-## 📚 Standard References
-
-**För varje frontend-fråga, referera även till:**
-
-1. **Projektets registrerade designkontext** via `PROJECT.yaml → context.design.*`
-2. **[DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md)** - Acceptance criteria
-3. **[TEAM_STANDARDS.md](project/TEAM_STANDARDS.md)** - Code standards (TypeScript, CSS modules, etc.)
+Do not reduce readability or accessibility merely to imitate an unverified visual reference.
 
 ---
 
-## ✅ Checklist - Innan Du Svarar
+## Response structure
 
-Innan du skickar frontend-hjälpen, kontrollera:
+Adapt the answer to the user's task rather than forcing one fixed template.
 
-- [ ] Jag läste projektets registrerade designkontext
-- [ ] Jag verifierade om refererade bild-assets faktiskt finns
-- [ ] Jag skiljer dokumenterad design från visuellt verifierad design
-- [ ] Min kod matchar den verifierade designkontexten
-- [ ] Jag påstår inte att en saknad bild har inspekterats
-- [ ] Kod följer `TEAM_STANDARDS.md` (TypeScript, CSS modules, etc.)
-- [ ] Jag nämner acceptance criteria från `DEFINITION_OF_DONE.md`
+For implementation help, normally make clear:
 
----
+- what is verified by project context;
+- what code/configuration establishes the technology choice;
+- the implementation or debugging guidance;
+- relevant acceptance/testing considerations;
+- any uncertainty caused by unavailable sources/assets.
 
-## 🚨 Om Användaren Säger
-
-**"Hjälp mig bygga [komponent]"**  
-→ Läs mockup-specen, ge kod + design-checklist + links
-
-**"Varför denna design?"**  
-→ Referera till den verifierade designkällan. Hänvisa till en bild endast om asseten faktiskt finns och har inspekterats.
-
-**"Kan jag göra det annorlunda?"**  
-→ Beskriv vad den verifierade designkontexten kräver och vad som kan ändras. Kräv inte uppdatering av en bild som saknas.
-
-**"Det fungerar inte som mockup visar"**  
-→ Verifiera först om mockup-asseten finns. Om den saknas, debugga mot dokumenterad designkontext och var tydlig med att visuell jämförelse inte kan göras.
+Use project standards through their registered logical paths instead of embedding project-specific rules here.
 
 ---
 
-## 📞 Vid Frågor
+## Before answering
 
-Om du är osäker på design-detaljer:
-1. Läs projektets registrerade designkontext igen
-2. Kontrollera om relevant asset faktiskt finns
-3. Om en visuell detalj inte kan verifieras, säg tydligt att dokumentationen beskriver kravet men att bilden saknas; gissa inte.
+Check that:
+
+- [ ] the correct project was selected;
+- [ ] relevant design context was resolved through its project manifest;
+- [ ] referenced assets were verified before visual claims were made;
+- [ ] project facts are not being taken from another project;
+- [ ] technology requirements are backed by configuration, requirement or decision;
+- [ ] historical context is not being presented as a current mandatory rule;
+- [ ] AI recommendations are distinguishable from verified requirements;
+- [ ] relevant accessibility, testing and Definition-of-Done concerns are considered.
 
 ---
 
-**Version:** 1.1  
-**Senast uppdaterad:** 2026-09-20  
-**Ansvarig:** Frontend-teamet + AI-assistenter
+## When information is incomplete
 
-**Denna fil läses automatiskt varje gång frontend-hjälp behövs.**
+If a missing source or asset prevents a required claim, follow the repository's source/integrity rules.
+
+Do not guess.
+
+A missing visual asset does not erase preserved textual design context; it only limits what can truthfully be claimed from the image itself.
+
+---
+
+**Version:** 2.0  
+**Last updated:** 2026-09-20  
+**Status:** ACTIVE — generic project-resolved frontend guidance
