@@ -308,7 +308,7 @@ Never go below 11 pt.
 A timestamp is not generic activity decoration. It is shown only when the time itself helps the meeting understand delivery or current status.
 
 ## Completed work shown inside a verified merge subsection
-The slide/subsection placement carries the merge state. Do **not** add a merge badge, merge stamp, `MERGAD`/`Merged` label or detached merge timestamp to each card.
+The slide/subsection placement may carry merge state. Whether a project shows a merge badge, merger identity or merge-event timestamp is owned by the active project presentation authority. Do not add redundant state labels when the project authority says the containing page already communicates that state.
 
 Show the verified developer identity and the latest relevant **delivery activity before/completing the handoff** on the same row:
 1. PR submission/open timestamp when the work was sent to PR;
@@ -496,8 +496,8 @@ Allowed adaptations:
 - natural text wrapping
 - card grows in height
 - wider cards through a lower-density grid
-- 2×2 → 2×1 → 1×1 when needed
-- continuation slide
+- project-owned grid/geometry when one is registered
+- continuation slide when required by readability or the active project presentation authority
 
 Fit order:
 1. preferred typography
