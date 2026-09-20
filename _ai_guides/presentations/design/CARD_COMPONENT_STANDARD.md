@@ -76,7 +76,7 @@ Hard rules:
 - AI proposals are clearly visible at level 2 but never compete with the issue title/assignee
 - merge/review and pedagogical explanation share the calmer level-3 treatment
 - AI analysis uses level 3 unless another active content rule requires stronger warning semantics
-- inline provenance symbols stay with their content blocks; full symbol + text provenance labels use level 4 in the bottom information zone
+- inline provenance symbols stay with their factual content blocks; **full source names/explanations belong in the slide source margin/footer, not repeated inside ordinary cards**
 - branch, timestamps and technical metadata use level 4 and must not compete with levels 1–3
 - do not use accent/team colors for ordinary metadata merely to attract attention
 - level 4 blends most gently into the card surface while still meeting font-size and WCAG contrast requirements
@@ -103,12 +103,14 @@ For Issue/PR/Merge/action cards, use this visual order:
 2. **Pedagogical contribution / project-value line** — directly under the title
 3. flexible whitespace / remaining content area
 4. **Person/team identity row** when relevant — anchored in the card's bottom information zone
-5. **Verification/provenance + operational metadata** — directly below identity in the bottom information zone
+5. **Operational verification/metadata** — directly below identity in the bottom information zone; for merged PR cards this includes the canonical `Merged: … | Review: …` row
 6. **Timestamp** — bottom-most row when relevant according to the timestamp standard
+
+Full source labels are rendered once in the physical slide's reserved source margin/footer. Cards carry only the canonical inline source symbol beside the factual statement, unless a card-specific contract explicitly requires an additional status/verification label.
 
 ### Bottom-anchor hard rule
 
-**Name/identity and the full symbol + text verification/provenance row must always sit at the bottom of the card, not immediately after the body copy. Inline provenance symbols remain with their content blocks.**
+**Name/identity and required operational metadata must always sit at the bottom of the card, not immediately after the body copy. Inline provenance symbols remain with their factual content blocks. Full source symbol + text explanations are deduplicated in the slide margin/footer.**
 
 This applies to all card types when those fields exist:
 - status cards
@@ -520,8 +522,8 @@ pedagogical_line_not_directly_under_title_count == 0
 identity_not_bottom_anchored_count == 0
 verification_not_bottom_anchored_count == 0
 content_block_provenance_symbol_missing_count == 0
-card_bottom_provenance_full_label_missing_count == 0
-card_bottom_provenance_symbol_text_mismatch_count == 0
+slide_margin_source_full_label_missing_count == 0
+inline_symbol_slide_margin_source_mismatch_count == 0
 waiting_pr_pushpin_missing_before_identifier_count == 0
 waiting_pr_bottom_pushpin_label_missing_count == 0
 canonical_symbol_ascii_transliteration_count == 0
@@ -549,8 +551,8 @@ Also verify:
 - no card displays `Utvecklat av`, `Developed by`, `Developer:` or `Assigned to:` before the person/team identity row
 - person identity is first-name-only and sits in the bottom information zone
 - every semantic content block begins with its canonical provenance symbol
-- the bottom provenance row deduplicates every symbol used and shows symbol + full text label
-- if a timestamp exists, the full bottom provenance row sits immediately above the timestamp
+- the slide source margin/footer deduplicates every source symbol used and shows symbol + full source name/explanation
+- if a timestamp exists, operational card metadata such as `Merged: … | Review: …` sits immediately above it; full source explanations remain in the slide margin/footer
 - merged PR timestamp is the merge timestamp
 - open/active cards do not display PR-created/latest-commit timestamps merely because that data exists
 - timestamps use the quiet microcopy/timestamp color and do not compete for focus
