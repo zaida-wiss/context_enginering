@@ -67,6 +67,19 @@ Video should demonstrate how risk work has **shaped actual decisions**. Choose c
 
 ---
 
+## Operational Planning Clarification from Chas Back Office
+
+Verified from Chas Back Office announcements:
+
+- Before Sept 24, the team must jointly interpret the instruction.
+- The team must jointly choose what Victor needs to see from the project.
+- Preparing and recording the video is a separate work step.
+- Back Office estimates that **at least two team meetings** are needed to assemble the material according to the instruction.
+- PL is explicitly **not** responsible for interpreting the instruction or creating the CTO material before feed forward.
+- PL returns after Victor's feed forward to support interpretation and prioritization.
+
+See `CHAS_BACKOFFICE_ANNOUNCEMENTS.md` for the preserved announcement evidence.
+
 ## Key Context
 
 - This is a **team self-interpretation task** — no PL until after feedback
