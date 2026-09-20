@@ -41,15 +41,19 @@ If a layout cannot satisfy these rules, change the layout or paginate.
 
 ## 1. GLOBAL VISUAL LANGUAGE
 
-The deck uses the visual identity registered by the active project presentation authority.
-
-Globally mandatory regardless of project identity:
-- accessible contrast
-- low-glare readable surfaces
+The global presentation design uses:
+- calm deep navy canvas
+- soft dark glass-like cards
+- rounded corners
+- subtle depth/shadow
+- low-glare surfaces
 - clear hierarchy
 - sufficient internal padding
 - no decorative layer crossing readable text
 - no clipping, overlap or visual corruption
+
+Projects may add semantic accents and project-specific composition, but must preserve
+this global visual foundation unless a future explicit framework decision replaces it.
 - responsive cards
 - cards are the shared component language across the deck, but **slide geometry is owned by the active meeting-point contract**
 - responsive card grids are the default only when no meeting-point-specific geometry is registered
@@ -546,7 +550,8 @@ This file requires globally:
 - slide titles remain at 36 pt or larger
 - slide titles are never shrunk for fit
 - slide-level typography minimums respected
-- rendered background and card appearance match the active project's registered visual identity; global contrast/readability gates still pass
+- background visibly dark navy with canonical `#15182E` base; black/near-black fallback count = 0
+- cards preserve the global glass-like rounded treatment and global contrast/readability gates
 - distance-readability pass: ordinary body text targets >= 20 pt and metadata targets >= 18 pt; paginate before compression
 - school/submission cards containing the five required meanings use the canonical symbols `🎯 🕒 📍 💡 🛠` rather than repeated VAD/HUR/VARFÖR/NÄR/VAR labels
 - every rendered urgency/priority state uses both semantic text/symbol and the canonical red/orange/green urgency color
