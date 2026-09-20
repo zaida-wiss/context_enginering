@@ -551,6 +551,8 @@ point9_team_coverage_gap_without_reason_count == 0
 point9_vertical_sequence_missing_count == 0
 point9_group_vertical_order_violation_count == 0
 point9_side_by_side_group_count == 0
+point9_large_card_component_count == 0
+point9_vertically_stretched_row_count == 0
 point9_meta_layout_language_visible_count == 0
 suggested_issue_without_goal_link_count == 0
 unverified_owner_presented_as_fact_count == 0
@@ -560,7 +562,8 @@ Manual checks:
 - meeting point 9 uses the mandatory vertical execution sequence from `SLIDE_DETAIL_SPEC.md`
 - inspect actual rendered geometry: each execution group begins below the previous group's bottom edge
 - the four execution groups may not be arranged as a 2×2/four-quadrant matrix
-- cards remain the internal components inside each group
+- each work item uses a compact full-width row/band with a thin separator or subtle surface, not an ordinary large card
+- row height follows content; rows are never vertically stretched merely to fill the slide
 - if the vertical sequence becomes dense, paginate instead of shrinking below readability minima
 - no visible subtitle/body text explains presentation-layout mechanics such as `inte fyrkolumnstavla`, `vertical layout` or equivalent
 - execution groups appear in the canonical logical order:
