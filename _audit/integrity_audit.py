@@ -583,6 +583,44 @@ def main():
         ok = False
     checks.append(result(ok, "project legacy files are explicitly non-authoritative and absent from the global registry", "project legacy content can leak into active authority routing"))
 
+    print("\nINVARIANT 14: Progressive Minimum-Sufficient Task Context")
+    ok = True
+    try:
+        registry_text = read_text("CONTEXT_REGISTRY.yaml")
+        coding_match = re.search(r"(?ms)^  coding_assistance:\n(.*?)(?=^  [a-zA-Z0-9_]+:\n|^path_change_process:)", registry_text)
+        coding = coding_match.group(1) if coding_match else ""
+        required_markers = (
+            "strategy: progressive_minimum_sufficient",
+            "required_core:",
+            "conditional:",
+            "Load conditional authorities only when their domain can materially change the answer or action.",
+        )
+        if not coding or not all(marker in coding for marker in required_markers):
+            print("❌ coding_assistance does not encode progressive minimum-sufficient loading")
+            ok = False
+        legacy_load = re.search(r"(?m)^    load:\s*$", coding)
+        if legacy_load:
+            print("❌ coding_assistance still exposes a monolithic mandatory load list")
+            ok = False
+        core_match = re.search(r"(?ms)required_core:\n(.*?)(?=^      conditional:)", coding)
+        core = core_match.group(1) if core_match else ""
+        forbidden_core = (
+            "goals_and_sprint_planning",
+            "risk_management",
+            "dependencies_and_capacity",
+            "cross_layer_awareness",
+            "technical_debt",
+            "team_tone_and_collaboration",
+        )
+        leaked = [name for name in forbidden_core if name in core]
+        if leaked:
+            print(f"❌ conditional domains leaked into required coding core: {leaked}")
+            ok = False
+    except Exception as exc:
+        print(f"❌ progressive-context inspection failed: {exc}")
+        ok = False
+    checks.append(result(ok, "coding task bundle encodes progressive minimum-sufficient context loading", "coding task bundle can force unrelated context into every coding task"))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
