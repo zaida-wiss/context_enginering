@@ -85,7 +85,7 @@ required_datasets:
 
   team_roster:
     canonical_method: "Read TEAM_ROSTER.md file locally"
-    requirement: 7 members
+    requirement: all members defined by the canonical roster
     fields:
       - name
       - github_username
@@ -140,7 +140,7 @@ required_datasets:
           🔴 BLOCKERAT:
             - #ISSUE_NUMBER Title · [blocking reason if any]
 
-    requirement: "ALL 7 team members from TEAM_ROSTER MUST appear (even with zero activity). Missing persons = DATA_AUDIT FAIL"
+    requirement: "ALL members from TEAM_ROSTER MUST appear (even with zero activity). Missing registered persons = DATA_AUDIT FAIL"
     stop_condition: "If any required issue data missing or TEAM_ROSTER incomplete, STOP with DATA_AUDIT ERROR"
 
   merged_prs:
@@ -396,7 +396,7 @@ required_datasets:
           - Registered integration/collection branches — ALWAYS
           - feature/* — if recent commits
           - bugfix/* — if recent commits
-          - {team}/* (frontend/, backend/, native/) — if recent commits
+          - {team}/* — if recent commits and the pattern is supported by registered project data
           - Any branch with commits in REPORTING_PERIOD
 
       5_exclude_stale_branches: >
@@ -487,12 +487,9 @@ required_datasets:
       - GITHUB_BRANCHES (to identify collection branches)
       - GITHUB_COMMITS (to track recent activity)
 
-    known_branches:
-      backend:
-        - "COLLECTION_BRANCH_A"
-      native:
-        - "COLLECTION_BRANCH_B"
-      frontend: [] # Frontend typically develops directly on develop
+    registered_branches:
+      source: "registered project data / source registry"
+      rule: "Load collection branches dynamically with their associated registered team/work area; do not hard-code team names or branch names in this framework."
 
     discovery:
       allow_additional_verified_branches: true
@@ -645,7 +642,7 @@ reporting_period:
       SPRINT_START: {REGISTERED_SPRINT_START}
       SPRINT_END: {REGISTERED_SPRINT_END}
       DATA_CUTOFF: {REQUEST_TIME_OR_EARLIER_VERIFIED_SOURCE_CUTOFF}
-      COVER: Sprintperiod 14 september–21 september
+      COVER: Sprintperiod {REGISTERED_SPRINT_START_DATE}–{REGISTERED_SPRINT_END_DATE}
 
     Boundary:
       08:59:59 belongs to the sprint that is ending.
@@ -680,7 +677,7 @@ endpoint_failure_vs_data_completeness:
 validation_rules:
   merged_prs_minimum: "At least 1, or mark week as 'no merged work'"
   active_issues_minimum: "At least 1, or mark week as 'no open work'"
-  team_roster: "Exactly 7, or STOP"
+  team_roster: "Exactly the complete canonical roster from TEAM_ROSTER.md, or STOP"
 
   rule: >-
     Zero verified activity in a category is valid. A missing source is not an
