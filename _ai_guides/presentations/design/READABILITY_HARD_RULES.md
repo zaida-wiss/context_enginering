@@ -178,6 +178,24 @@ Ansvar: Hela teamet
 
 If source evidence does not support the claimed project value, use neutral wording or mark the interpretation as AI-derived according to provenance rules. Never invent impact.
 
+## 5B. DOMAIN TERMINOLOGY SHOULD TEACH, NOT DECODE
+
+The deck may also function as a lightweight learning aid for junior team members.
+
+When a technical or domain term is necessary and may be unfamiliar:
+- keep the real industry term visible rather than replacing it with vague wording;
+- explain it briefly in plain language at its first useful occurrence;
+- connect the explanation to the concrete project context or decision;
+- explain only terms that actually appear on the slide;
+- prefer one short adjacent explanation over a detached glossary;
+- do not add terminology merely to make the presentation sound more technical.
+
+The purpose is reusable understanding: a team member should leave knowing both
+**what the term means here** and **why it matters to the work**.
+
+This requirement never justifies extra density. If the explanation does not fit
+at the active readability minimums, paginate or simplify the surrounding content.
+
 ## 6. DEPENDENCIES MUST DRIVE ORDER
 
 When verified dependencies exist, the presentation must make the suggested sequence visible.
