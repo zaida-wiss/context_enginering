@@ -1,62 +1,33 @@
 ---
 name: sources_guide
-description: "Guide to registered external sources (see SOURCES.yaml for authoritative registry)"
+description: Generic guide to project-resolved external source registries
 metadata:
   type: reference
-  critical: true
+  critical: false
 ---
 
-# 🔗 External Sources — ALLOWLIST & REGISTRY
+# External sources — generic routing guide
 
-**🚨 CRITICAL:** Presentation generation ONLY uses registered sources. No web search. No unregistered websites.
+Global framework files do not own project source IDs, URLs, document IDs,
+repository names or fallback endpoints.
 
-## Single Source of Truth
+For project work:
 
-**All URLs, IDs, access methods, and classifications are defined in:**  
-→ **[`SOURCES.yaml`](SOURCES.yaml)** ← AUTHORITATIVE REGISTRY
+1. resolve the selected project through `PROJECTS.yaml`;
+2. load its manifest;
+3. resolve `context.sources.path`;
+4. use only the source definitions and access methods declared there.
 
-This file (SOURCES.md) is a **human-friendly guide**. For machine-readable definitions, always reference SOURCES.yaml.
+Project-specific source examples belong inside the owning project root.
+Global documentation may use only synthetic placeholders such as:
 
----
-
-## 📋 Classification Overview
-
-See **SOURCES.yaml** for complete registry.
-
-**REQUIRED sources** (presentation STOPS if unavailable):
-- GitHub API: Merged PRs, Open Issues  
-- Local file: Team Roster
-
-**FALLBACK sources** (try if primary fails):
-- GitHub web: Merged PR page, Issues page
-- Google Sheets: Project data (requires Google Connector)
-- Google Docs: Meeting protocol (requires Google Connector)
-
-**OPTIONAL sources** (nice-to-have, do not block):
-- GitHub Project Board
-- Risk & Asset register (Google Sheets)
-
-## 🚀 How to Reference External Sources
-
-**DO THIS:**
 ```yaml
-source_id: "GITHUB_MERGED_PRS"
-reference: "See SOURCES.yaml: GITHUB_MERGED_PRS"
+source_id: "EXAMPLE_CURRENT_WORK"
+reference: "selected project source registry"
 ```
 
-**DO NOT DO THIS (examples of what NOT to do):**
-```yaml
-# ❌ WRONG: Hardcoded raw URL instead of source_id
-url: "https://api.github.com/repos/chas-challenge-2026/avanza-team1/pulls?..."
-
-# ❌ WRONG: Hardcoded raw sheet ID instead of source_id
-sheet_id: "1TECz-PkbJhK6Jux6tpjcXDNvUNUZGI_nnIDE5rKr5UI"
-```
-
-**The registry owns all URLs and IDs. Reference by source_id only.**
+Do not place real project URLs, sheet/document IDs, branch names or source IDs
+in this global guide.
 
 ---
-
-**Last updated:** 2026-09-18  
-**Maintained by:** Team process maintainer  
-**Linked from:** DATA_SOURCES.md, MANDATORY_READING_ORDER.md, presentations data collection guides
+status: ACTIVE_GENERIC_REFERENCE
