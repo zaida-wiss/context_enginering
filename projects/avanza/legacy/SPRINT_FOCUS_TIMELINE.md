@@ -9,7 +9,7 @@ metadata:
   migrated: 2026-09-18
 ---
 
-> RETIRED NON-AUTHORITY — historical snapshot only. Do not route current tasks or presentations through this file.
+> ARCHIVED · NOT GENERIC FRAMEWORK AUTHORITY · RETIRED NON-AUTHORITY — historical snapshot only. Do not route current tasks or presentations through this file.
 
 # Sprint Fokus-väg & Tidslinje
 
