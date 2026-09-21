@@ -480,7 +480,8 @@ def main():
     require(
         "collection branch validation distinguishes merge from direct activity",
         "point_1_verified_collection_merge_without_own_slide_count == 0" in render_gate
-        and "ordinary direct commits/branch activity are not relabeled as merges" in render_gate,
+        and "ordinary one-parent direct commits are not relabeled as merges" in render_gate
+        and "direct collection-branch activity may not be dropped merely because it is excluded from point 1" in render_gate,
         failures,
     )
     require(
