@@ -1,7 +1,7 @@
 ---
 name: risk_management
 description: Canonical project risk-management reasoning standard aligned with the team's risk workbook and CTO assignment
-version: 1.0
+version: 1.1
 metadata:
   type: project_authority
   status: active
@@ -428,6 +428,26 @@ When helping the team learn, ask questions such as:
 - Does this risk justify changing the current sprint plan?
 - Did this risk cause a decision worth documenting?
 
+## Presentation symbol mapping
+
+When risk information is shown in a presentation, map the risk model to the
+canonical presentation symbol grammar:
+
+- `⚡` risk / what could go wrong
+- `📈` likelihood
+- `💥` consequence / impact
+- `🛡` mitigation or control
+- `👤` verified owner
+- `↘` residual risk
+- `🔎` AI analysis
+- `⭐` AI proposal
+
+This makes the risk-analysis chain visually scannable while retaining the full
+text values. Risk level keeps its registered symbol + text + color treatment.
+
+`⚠` remains reserved for source uncertainty and is not reused as the generic
+risk symbol.
+
 ## Presentation integration
 
 Presentations use the canonical risk register for current risk facts.
@@ -442,5 +462,5 @@ A presentation should show risk as a decision input, not as an isolated list.
 ---
 
 **Status:** ACTIVE
-**Version:** 1.0
-**Last updated:** 2026-09-18
+**Version:** 1.1
+**Last updated:** 2026-09-21
