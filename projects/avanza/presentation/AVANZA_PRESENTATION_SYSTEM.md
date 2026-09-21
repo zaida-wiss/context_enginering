@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.2
+version: 1.3
 status: active
 scope: projects/avanza
 ---
@@ -301,6 +301,7 @@ Avanza-specific failures include:
 - decorative overlay crossing text
 - ordinary card page not preserving the 3×2 six-slot geometry
 - one/few cards expanding merely because slots are unused
+- empty/blank placeholder card surfaces rendered in reserved unused slots; unused slots must remain plain whitespace
 - missing meeting-point title
 - special diagram/timeline flattened into generic cards
 - dependency/blocker information not carried forward into priority/plan/actions
