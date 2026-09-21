@@ -1,7 +1,7 @@
 ---
 name: avanza_project_context
 description: Canonical manifest for Avanza-specific project context
-version: 1.0
+version: 1.1
 metadata:
   type: project_manifest
   project: avanza
@@ -43,6 +43,8 @@ context:
   presentation:
     authority:
       path: "projects/avanza/presentation/AVANZA_PRESENTATION_SYSTEM.md"
+    visible_content_boundary:
+      path: "projects/avanza/presentation/VISIBLE_CONTENT_BOUNDARY.md"
   design:
     team_visual_identity:
       path: "projects/avanza/design/TEAM_VISUAL_IDENTITY.yaml"
