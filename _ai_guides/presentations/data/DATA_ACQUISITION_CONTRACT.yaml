@@ -143,6 +143,49 @@ required_datasets:
     requirement: "ALL members from TEAM_ROSTER MUST appear (even with zero activity). Missing registered persons = DATA_AUDIT FAIL"
     stop_condition: "If any required issue data missing or TEAM_ROSTER incomplete, STOP with DATA_AUDIT ERROR"
 
+  direct_collection_branch_activity:
+    source_id: "GITHUB_COLLECTION_BRANCH_COMMITS"
+    classification: "REQUIRED for registered collection branches"
+    purpose: >
+      Capture verified completed delivery made directly to a registered collection
+      branch when no pull request exists. This is especially required for teams
+      that integrate by direct commit/merge rather than GitHub PR.
+
+    execution_sequence:
+      1_resolve_branches: "Read all registered collection branches from selected project manifest -> context.repository_flow"
+      2_collect_commits: "For each collection branch, collect commits during REPORTING_PERIOD with pagination"
+      3_inspect_parents: "Inspect commit parent structure so merge commits and direct commits are both detectable"
+      4_attribute: "Use verified commit author/committer identity; map to team roster only when identity mapping is verified"
+      5_deduplicate: "Deduplicate commits already represented by a verified PR or later primary-integration delivery"
+      6_emit_delivery_records: "Emit branch-delivery records even when linked_pull_request is null"
+
+    fields_required:
+      - branch
+      - commit.sha
+      - commit.message
+      - commit.author
+      - commit.committer
+      - commit.timestamp
+      - commit.parents[]
+      - linked_pull_request (nullable)
+      - linked_issue (nullable)
+
+    hard_rules:
+      - "Absence of a PR MUST NOT suppress verified direct activity on a registered collection branch."
+      - "Never invent PR number, reviewer, approval or assignee when the branch activity has none."
+      - "A merge commit with two or more parents may be labeled as a branch merge; an ordinary one-parent commit remains a direct commit."
+      - "Visible timestamp uses the latest verified delivery commit represented by the card."
+      - "If assignee cannot be verified independently, show the verified contributor/author role instead of relabeling the commit author as assignee."
+
+    output: >
+      One completed-delivery record per deduplicated work item/delivery for the
+      collection-branch slide. linked_pull_request may be null.
+
+    stop_condition: >
+      If a registered collection branch cannot be inspected, mark that branch
+      source incomplete and use the incomplete-source user-decision gate. Never
+      render a verified-empty branch page from PR results alone.
+
   merged_prs:
     source_id: "GITHUB_MERGED_PRS"
     classification: "SECONDARY (supporting data, linked from per_person_activity)"
