@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.15
+version: 1.16
 metadata:
   type: global_authority
   critical: true
@@ -149,15 +149,57 @@ instruction_authoring_standard:
         better: "Verify the destination and all consumers, complete the stale-path scan, then delete the old path."
       - bad: "Do not use the team name in every card."
         better: "On dedicated team slides, use the slide header plus the registered team accent/symbol; reserve explicit team text for mixed-team views."
+  contradiction_preflight:
+    purpose: >
+      Prevent new instructions from introducing incompatible active behavior.
+      Before inserting or changing a durable AI rule, compare the proposed
+      desired state against the active authorities that govern the same scope,
+      owner, routing path and downstream behavior.
+    resolution_order:
+      - identify_the_proposed_rules_scope_owner_and_desired_state
+      - load_active_authorities_that_can_materially_govern_the_same_behavior
+      - compare_required_outcomes_not_only_wording
+      - classify_as_compatible_extension_overlap_or_genuine_conflict
+      - proceed_when_compatible
+      - consolidate_when_same_meaning_is_duplicated
+      - stop_and_notify_user_immediately_when_genuine_conflict_exists
+    genuine_conflict_definition: >
+      A genuine conflict exists when two active rules require outcomes that
+      cannot both be satisfied in the same execution state.
+    compatible_extension_definition: >
+      A more specific rule may add detail to a broader rule when both desired
+      states can still be satisfied together.
+    immediate_conflict_notice:
+      required: true
+      timing: before_repository_mutation
+      include:
+        - proposed_rule_summary
+        - existing_conflicting_rule_summary
+        - exact_owner_and_file_for_each_rule
+        - conflicting_required_outcomes
+        - practical_consequence_of_each_option
+        - recommended_resolution_when_best_practice_supports_one
+      user_decision_required_before_change: true
+    consolidation_rule: >
+      When multiple active rules express the same desired state with different
+      negative wording, consolidate them under the clearest positive canonical
+      rule and preserve only necessary boundary checks.
+    success_condition: >
+      Every new durable AI rule either fits the active hierarchy without
+      contradiction, consolidates redundant wording into one clearer owner, or
+      reaches the user before any incompatible rule is inserted.
+
   update_workflow:
     required_steps:
       - identify_the_instruction_owner
+      - run_contradiction_preflight_against_active_authorities
       - preserve_or_improve_the_existing_hierarchy
       - rewrite_negative_only_rules_into_positive_execution_paths_where_safe
       - keep_necessary_hard_boundaries_explicit
       - make_examples_synthetic_and_project_neutral_at_global_scope
       - update_dependent_validators_when_behavior_changes
       - run_context_smoke_and_integrity_validation
+      - confirm_no_new_active_rule_conflict_was_introduced
   validation_contract:
     required:
       - positive_execution_path_present_for_material_rule
@@ -167,6 +209,8 @@ instruction_authoring_standard:
       - hard_prohibitions_limited_to_material_boundaries
       - examples_show_correct_behavior_first
       - project_specific_examples_absent_from_global_ai_instructions
+      - contradiction_preflight_completed_before_durable_instruction_write
+      - genuine_conflict_reported_before_repository_mutation
 
 ai_best_practice_advisory:
   evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
