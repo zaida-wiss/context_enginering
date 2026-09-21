@@ -4,7 +4,7 @@ description: Canonical acquisition method for required datasets — deterministi
 metadata:
   type: process
   critical: true
-  version: 1.6
+  version: 1.7
 ---
 
 # DATA ACQUISITION CONTRACT
@@ -266,11 +266,12 @@ required_datasets:
     classification: "OPTIONAL (enhances team awareness)"
     note: "Local file source, not external GitHub API"
     canonical_source:
-      path: "docs/decisions/*.md (one decision per file)"
-      exclude: "docs/examples/** (CRITICAL: never read examples)"
+      resolve_via: "selected project manifest -> context.decisions.records.path"
+      include: "*.md decision records"
+      exclude: "README.md, project audit/history directories, examples/fixtures"
 
     purpose: "Show decisions verified as decided during reporting period"
-    access_method: "Read all .md files from docs/decisions/ directory ONLY"
+    access_method: "Read decision records only from selected project manifest -> context.decisions.records.path"
 
     schema_validation:
       required_fields:
@@ -287,7 +288,7 @@ required_datasets:
 
     filtering_rule: >
       Include decision ONLY if ALL:
-        1. File is in docs/decisions/ (NOT docs/examples/)
+        1. File is inside selected project manifest -> context.decisions.records.path and is not the index README
         2. status == "confirmed"
         3. (decision_date OR updated_date) within REPORTING_PERIOD
         4. All required fields present and valid
