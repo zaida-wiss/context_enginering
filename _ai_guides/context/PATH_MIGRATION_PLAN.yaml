@@ -1,0 +1,230 @@
+---
+name: path_migration_plan
+description: Canonical migration plan for safe repository file and directory moves
+metadata:
+  type: governance
+  critical: true
+  version: 1.0
+  scope: global
+---
+
+# Path Migration Plan
+
+## Purpose
+
+A file or directory move can break routing, manifests, task bundles, relative
+links, validators, examples, generated artifacts and project isolation even when
+the destination file exists.
+
+This plan defines the mandatory end-to-end procedure for every move/rename.
+
+## Core rule
+
+A move is a dependency migration, not a filesystem operation.
+
+No source path is deleted until:
+- the destination exists;
+- the destination is owned by the correct manifest/registry capability;
+- every known consumer has been updated or explicitly retired;
+- stale-path search is clean;
+- applicable validators pass.
+
+## Migration receipt
+
+Create this receipt before mutation:
+
+```yaml
+path_migration_receipt:
+  scope: <global | selected_project>
+  semantic_owner: <registry/manifest capability>
+  source: <exact path>
+  destination: <exact path>
+  move_type: <file | directory | binary_asset | canonical_authority | reference>
+  source_exists: true
+  destination_parent_exists: true
+  destination_parent_owned_by_same_scope: true
+  destination_conflict: false
+
+  consumers:
+    manifests: []
+    registries: []
+    task_bundles: []
+    routers: []
+    authority_maps: []
+    validators: []
+    source_registries: []
+    documentation_links: []
+    relative_links: []
+    generated_build_scripts: []
+    tests_and_fixtures: []
+    other_references: []
+
+  content_preservation:
+    required: true
+    verification: <text_match | blob_sha | checksum | semantic_review>
+
+  deletion_gate:
+    allowed: false
+```
+
+## Phase 1 — Preflight
+
+1. Verify the exact source path on the active ref.
+2. Resolve its semantic owner through:
+   - `CONTEXT_REGISTRY.yaml` for global capabilities;
+   - selected project `PROJECT.yaml` for project-owned capabilities;
+   - authority registry when the moved file owns rules.
+3. Verify the proposed destination belongs to the same intended scope.
+4. Verify the destination parent exists or is an explicitly approved new capability.
+5. Verify the destination does not already contain a conflicting owner/file.
+6. Build the complete consumer map before writing.
+
+## Phase 2 — Consumer discovery
+
+Search for the old path and the semantic capability, not only the filename.
+
+Inspect at minimum:
+- `CONTEXT_REGISTRY.yaml`;
+- `PROJECTS.yaml`;
+- selected project manifest;
+- project template manifest when the capability is reusable;
+- task bundles;
+- routers;
+- authority registries;
+- source registries;
+- validators and smoke tests;
+- Markdown/HTML relative links;
+- code imports/reads/path constants;
+- build/render scripts;
+- fixtures/examples;
+- audit specifications;
+- documentation indexes;
+- generated-artifact configuration.
+
+A path migration is unsafe while consumer discovery is incomplete.
+
+## Phase 3 — Destination creation
+
+1. Create/copy the destination.
+2. Preserve contents exactly unless the move also contains an explicitly approved
+   semantic change.
+3. For text, compare full text before/after when feasible.
+4. For binary files, preserve the blob SHA when possible; otherwise compare a
+   checksum/size and inspect the destination.
+5. Verify the destination exists on the active ref before changing consumers.
+
+## Phase 4 — Routing and consumer update
+
+Update all affected references in dependency order:
+
+1. canonical owner manifest/registry;
+2. authority map/selected-project capability;
+3. task bundles and routers;
+4. source/data acquisition contracts;
+5. validators/smoke tests;
+6. documentation indexes and relative links;
+7. examples/fixtures only when they intentionally consume the moved capability.
+
+Do not hardcode a project-specific path into a global router to solve a move.
+Global routing must remain abstract and resolve project paths through the
+selected project manifest.
+
+## Phase 5 — Stale-path verification
+
+Search the full repository for:
+- exact old path;
+- old directory prefix;
+- old relative-link variants;
+- old path constants in code;
+- old documentation references.
+
+Classify every remaining hit:
+- legitimate historical text;
+- stale active consumer;
+- archived/legacy reference;
+- test fixture;
+- migration record.
+
+Active consumers must be zero before deletion.
+
+## Phase 6 — Delete old source
+
+Deletion is allowed only when:
+- destination verified;
+- consumer update complete;
+- old-path active-reference count == 0;
+- destination is resolvable from the canonical owner;
+- applicable validators pass pre-delete.
+
+After delete:
+1. verify source path no longer exists;
+2. verify destination still exists;
+3. rerun stale-path search;
+4. rerun validators.
+
+## Directory moves
+
+For a directory move:
+- inventory every contained file before mutation;
+- preserve the full relative structure unless a separate restructure is approved;
+- verify file count and expected paths at the destination;
+- update directory-level and file-level consumers;
+- do not delete the old directory until every contained file passes the migration gate.
+
+## Canonical authority moves
+
+For a canonical authority:
+- update the authority registry before dependent task routes;
+- verify only one active owner remains;
+- verify no duplicate competing authority remains;
+- run authority validation before deleting the old file.
+
+## Project-owned moves
+
+Project-owned data/assets remain under `projects/<project_id>/`.
+
+A project move must update the selected project's manifest first-class
+capability when the destination is meant to be reusable by tasks.
+
+Merely placing a file in the project directory does not make it active.
+
+## Render/data consumer rule
+
+Moving a file must not silently change what gets rendered or loaded.
+
+A consumer receives the moved file only when its task route/manifest capability
+explicitly references that semantic owner.
+
+Examples:
+- audit history does not become presentation content because it was moved;
+- mockup assets do not become slides merely because the design path exists;
+- project decisions are consumed only by tasks that resolve the project's
+  registered decision-record capability.
+
+## Required validation gates
+
+Before a move is considered complete:
+
+```text
+source_verified_before_move_count == 1
+destination_verified_after_copy_count == 1
+unresolved_consumer_count == 0
+stale_active_old_path_reference_count == 0
+manifest_registry_target_missing_count == 0
+duplicate_active_authority_count == 0
+project_scope_escape_count == 0
+consumer_render_scope_changed_unintentionally_count == 0
+post_move_integrity_failure_count == 0
+```
+
+## Failure behavior
+
+On any failed gate:
+- STOP the deletion step;
+- keep the verified destination if safe;
+- keep/restore the old source until routing is repaired;
+- report the exact failing consumer/path;
+- do not claim the migration is complete.
+
+---
+status: ACTIVE
