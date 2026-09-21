@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.5
+version: 5.6
 last_updated: 2026-09-21
 base_path: "_ai_guides/presentations"
 
@@ -293,7 +293,9 @@ responsive_visual_system:
     rules:
       - "measure wrapped text before placing the next child"
       - "derive each child top from the previous measured bottom plus required gap"
-      - "reserve the complete bottom information zone before laying out upper content"
+      - "resolve and measure all required bottom information rows before laying out upper content"
+      - "reserve the complete measured bottom information zone, including row gaps, before body/title layout"
+      - "body content may never consume, overlap or displace that reserved bottom zone"
       - "grow card, reduce density or paginate when measured content does not fit"
       - "fail rendering on any sibling bounding-box intersection"
     forbidden:
