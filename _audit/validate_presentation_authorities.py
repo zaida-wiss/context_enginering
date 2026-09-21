@@ -106,6 +106,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "canonical_gradient_missing_count == 0",
         "point_1_ordinary_direct_commit_on_merged_slide_count == 0",
         "verified_direct_collection_activity_dropped_from_later_status_count == 0",
+        "rendered_artifact_audit == PASS",
+        "python _audit/rendered_presentation_audit.py",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
@@ -117,6 +119,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "card_bottom_provenance_full_label_missing_count: 0",
         "dedicated_team_card_repeats_team_name_count: 0",
         "mixed_team_card_missing_explicit_team_text_count: 0",
+        "rendered_artifact_audit PASS",
+        "../../_audit/rendered_presentation_audit.py",
     ),
     "design/VISUAL_DESIGN_MANDATORY.md": (
         "Every physical slide reserves a bottom footer container",
