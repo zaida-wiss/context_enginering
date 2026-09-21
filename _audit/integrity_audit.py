@@ -1595,6 +1595,69 @@ def main():
         "AI rule updates can introduce silent contradictions into active authorities",
     ))
 
+    print("\nINVARIANT 36: End-to-End Presentation Symbol Grammar")
+    ok = True
+    try:
+        provenance = read_text("_ai_guides/presentations/design/PROVENANCE_AND_AI_LABELING.md")
+        slide = read_text("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
+        cards = read_text("_ai_guides/presentations/design/CARD_COMPONENT_STANDARD.md")
+        gate = read_text("_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md")
+        risk = read_text("_ai_guides/project/RISK_MANAGEMENT.md")
+
+        required_symbols = ("📅", "🎯", "🕒", "📍", "💡", "🛠", "👤", "🔎", "⭐", "📌", "🔗", "⚡", "📈", "💥", "🛡", "↘")
+        if not all(symbol in provenance for symbol in required_symbols):
+            print("❌ canonical presentation symbol grammar is incomplete")
+            ok = False
+
+        required_pipeline = (
+            "source/data field",
+            "composition meaning",
+            "canonical symbol token",
+            "renderer symbol/icon",
+            "exported PPTX/PDF",
+            "rendered visual inspection",
+        )
+        if not all(token in provenance for token in required_pipeline):
+            print("❌ symbol grammar does not define end-to-end persistence")
+            ok = False
+
+        required_render_gates = (
+            "semantic_field_missing_required_symbol_count == 0",
+            "owner_field_missing_person_symbol_count == 0",
+            "github_verified_source_missing_github_icon_check_pair_count == 0",
+            "waiting_pr_pushpin_missing_before_identifier_count == 0",
+            "risk_field_missing_registered_risk_symbol_count == 0",
+            "risk_mitigation_missing_shield_symbol_count == 0",
+            "risk_residual_missing_residual_symbol_count == 0",
+            "rendered_symbol_inventory_mismatch_count == 0",
+        )
+        if not all(token in gate for token in required_render_gates):
+            print("❌ render gate does not fail on missing semantic symbols")
+            ok = False
+
+        if "Semantic symbol placement" not in cards or "symbol + gap + text" not in cards:
+            print("❌ card renderer contract does not reserve measured space for symbols")
+            ok = False
+
+        risk_required = ("⚡", "📈", "💥", "🛡", "👤", "↘", "Presentation symbol mapping")
+        if not all(token in risk for token in risk_required):
+            print("❌ risk method does not map fields to presentation symbols")
+            ok = False
+
+        if "🎯 → 🕒 → 📍 → 💡 → 🛠 → 👤" not in slide:
+            print("❌ school/task information grammar is missing the complete six-field symbol order")
+            ok = False
+
+    except Exception as exc:
+        print(f"❌ presentation-symbol inspection failed: {exc}")
+        ok = False
+
+    checks.append(result(
+        ok,
+        "presentation task/provenance/GitHub/workflow/risk symbols persist from semantic data to rendered artifact",
+        "presentation symbol semantics can disappear or collide during rendering",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
