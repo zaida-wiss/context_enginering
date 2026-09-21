@@ -1,7 +1,7 @@
 ---
 name: avanza_project_context
 description: Canonical manifest for Avanza-specific project context
-version: 1.4
+version: 1.5
 metadata:
   type: project_manifest
   project: avanza
@@ -13,6 +13,12 @@ identity:
   repository: "chas-challenge-2026/avanza-team1"
 
 context:
+  isolation_markers:
+    path: "projects/avanza/ISOLATION_MARKERS.yaml"
+  decisions:
+    path: "projects/avanza/decisions/README.md"
+  audit_history:
+    path: "projects/avanza/audit/README.md"
   sources:
     path: "projects/avanza/sources/SOURCES.yaml"
   team_roster:
