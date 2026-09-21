@@ -1,7 +1,7 @@
 ---
 name: team_visual_identity
 description: Canonical Avanza team labels and visual identity used in project-facing artifacts
-version: 1.0
+version: 1.1
 metadata:
   type: project_design_config
   project: avanza
@@ -10,17 +10,41 @@ metadata:
 teams:
   frontend:
     display_name: "Frontend"
+    short_name: "FE"
     color: "#2DD4BF"
+    symbol: "🖥"
   backend:
     display_name: "Backend"
+    short_name: "BE"
     color: "#FF4FA3"
+    symbol: "🗄"
   native:
     display_name: "Native/System"
     short_name: "Native"
     color: "#A855F7"
+    symbol: "⚙"
   cross_team:
     display_name: "Cross-team"
-    color: "#CBD5E1"
+    short_name: "Cross"
+    color: "#F59E0B"
+    symbol: "🔗"
+
+criticality:
+  critical:
+    display_name: "Kritiskt"
+    color: "#EF4444"
+    symbol: "●"
+    meaning: "riskerar deadline, scope, demo eller blockerar annat team"
+  important:
+    display_name: "Viktigt"
+    color: "#F59E0B"
+    symbol: "●"
+    meaning: "påverkar plan/prioritet men stoppar inte allt direkt"
+  stable:
+    display_name: "Stabilt"
+    color: "#22C55E"
+    symbol: "●"
+    meaning: "klar/låg risk eller normal uppföljning"
 
 neutral:
   color: "#94A3B8"
@@ -32,7 +56,12 @@ usage:
     names or colors.
   accessibility: >
     Color is supplementary. Mixed-team views require a non-color identity cue
-    resolved from this configuration.
+    resolved from this configuration. Criticality must always use symbol + text +
+    color together, never color alone.
+  meeting_cards: >
+    Team color marks ownership/area. Criticality color marks urgency/risk. When
+    both are present, use team color as the narrow ownership accent and show
+    criticality as symbol + text inside the card.
 
 ---
 status: ACTIVE
