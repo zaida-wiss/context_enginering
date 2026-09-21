@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.3
+version: 1.4
 status: active
 scope: projects/avanza
 ---
@@ -302,6 +302,9 @@ Avanza-specific failures include:
 - ordinary card page not preserving the 3×2 six-slot geometry
 - one/few cards expanding merely because slots are unused
 - empty/blank placeholder card surfaces rendered in reserved unused slots; unused slots must remain plain whitespace
+- internal QA/debug/render-control slides included in the user-facing meeting deck
+- connector arrows/lines or node dots shown on ordinary card slides such as ③–⑤, ⑦–⑧, ⑩–⑪, ⑬–⑭
+- low-contrast or overly transparent text that becomes visually faint on the dark navy/glass surfaces
 - missing meeting-point title
 - special diagram/timeline flattened into generic cards
 - dependency/blocker information not carried forward into priority/plan/actions
