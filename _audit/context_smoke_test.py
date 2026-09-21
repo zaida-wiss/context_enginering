@@ -201,6 +201,39 @@ def main():
         failures,
     )
     require(
+        "AI instruction authoring is positive-first and hierarchy-driven",
+        "instruction_authoring_standard:" in ai_framework
+        and "desired_state_first" in ai_framework
+        and "positive_execution_path_before_prohibition" in ai_framework
+        and "hierarchy_before_exception_lists" in ai_framework
+        and "rewrite_negative_only_rules_into_positive_execution_paths_where_safe" in ai_framework,
+        failures,
+    )
+    require(
+        "AI instruction authoring requires explicit execution semantics",
+        "authoring_order:" in ai_framework
+        and "canonical_owner_and_authority" in ai_framework
+        and "execution_sequence" in ai_framework
+        and "output_or_completion_contract" in ai_framework
+        and "validation_and_failure_signals" in ai_framework,
+        failures,
+    )
+    require(
+        "AI instruction authoring keeps negation for material boundaries",
+        "use_negation_for:" in ai_framework
+        and "project_isolation_boundary" in ai_framework
+        and "destructive_action_gate" in ai_framework
+        and "authority_conflict_boundary" in ai_framework,
+        failures,
+    )
+    require(
+        "human guide mirrors positive-first authoring without becoming normative",
+        "Writing AI instructions: positive, hierarchical and executable" in ai_framework_guide
+        and "desired behavior first" in ai_framework_guide
+        and "normative: false" in ai_framework_guide,
+        failures,
+    )
+    require(
         "global conflict gate requires STOP and user decision",
         yaml_scalar(ai_framework, "conflict_decision_gate", "action") == "STOP"
         and yaml_scalar(ai_framework, "conflict_decision_gate", "user_decision_required") is True,
