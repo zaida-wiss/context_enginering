@@ -1274,6 +1274,145 @@ def main():
         "AI can still place new context ambiguously or create unregistered canonical destinations",
     ))
 
+    print("\nINVARIANT 32: Project Context Isolation")
+    ok = True
+    try:
+        text_extensions = {
+            ".md", ".yaml", ".yml", ".json", ".html", ".txt", ".py", ".js",
+            ".jsx", ".ts", ".tsx", ".css", ".scss", ".toml", ".ini", ".cfg"
+        }
+
+        for project_id, entry in active.items():
+            manifest = entry.get("manifest")
+            if not manifest or not os.path.exists(manifest):
+                continue
+
+            manifest_text = read_text(manifest)
+            marker_match = re.search(
+                r"""isolation_markers:\s*\n\s*path:\s*["']?([^"'\n]+)""",
+                manifest_text,
+                re.S,
+            )
+            if not marker_match:
+                print(f"❌ {project_id}: active project manifest has no context.isolation_markers.path")
+                ok = False
+                continue
+
+            marker_path = marker_match.group(1).strip()
+            if not os.path.exists(marker_path):
+                print(f"❌ {project_id}: isolation marker file missing: {marker_path}")
+                ok = False
+                continue
+
+            marker_text = read_text(marker_path)
+            root_match = re.search(r"""^project_root:\s*["']?([^"'\n]+)""", marker_text, re.M)
+            if not root_match:
+                print(f"❌ {project_id}: isolation marker file has no project_root")
+                ok = False
+                continue
+            project_root = root_match.group(1).strip().rstrip("/")
+
+            markers = []
+            in_markers = False
+            for line in marker_text.splitlines():
+                stripped = line.strip()
+                if stripped == "markers:":
+                    in_markers = True
+                    continue
+                if in_markers:
+                    if line and not line.startswith(" "):
+                        break
+                    if stripped.startswith("- "):
+                        marker = quoted_value(stripped[2:])
+                        if marker:
+                            markers.append(marker)
+
+            allowed_paths = set()
+            in_allowed = False
+            for line in marker_text.splitlines():
+                stripped = line.strip()
+                if stripped == "allowed_outside_project_root:":
+                    in_allowed = True
+                    continue
+                if in_allowed:
+                    if line and not line.startswith(" "):
+                        break
+                    if stripped.startswith("- path:"):
+                        allowed_paths.add(quoted_value(stripped.split("path:", 1)[1]))
+
+            if not markers:
+                print(f"❌ {project_id}: isolation marker list is empty")
+                ok = False
+                continue
+
+            leaks = []
+            for root, dirs, files in os.walk("."):
+                rel_root = root[2:] if root.startswith("./") else root
+                if rel_root == ".git" or rel_root.startswith(".git/"):
+                    dirs[:] = []
+                    continue
+                if rel_root == project_root or rel_root.startswith(project_root + "/"):
+                    dirs[:] = []
+                    continue
+
+                for name in files:
+                    rel = os.path.join(rel_root, name).replace(os.sep, "/")
+                    if rel.startswith("./"):
+                        rel = rel[2:]
+                    if rel in allowed_paths:
+                        continue
+                    ext = os.path.splitext(name)[1].lower()
+                    if ext not in text_extensions:
+                        continue
+                    try:
+                        text_value = read_text(rel)
+                    except (UnicodeDecodeError, OSError):
+                        continue
+                    for marker in markers:
+                        if marker and marker in text_value:
+                            leaks.append((rel, marker))
+
+            if leaks:
+                for rel, marker in sorted(set(leaks)):
+                    print(f"❌ {project_id}: project marker leaked outside project root: {marker!r} in {rel}")
+                ok = False
+
+            # Project-specific binary assets must also remain under project_root.
+            # The marker file may name known project asset filenames; path-level
+            # leakage is caught by scanning repository paths, not binary contents.
+            tree_paths = []
+            for root, dirs, files in os.walk("."):
+                rel_root = root[2:] if root.startswith("./") else root
+                if rel_root == ".git" or rel_root.startswith(".git/"):
+                    dirs[:] = []
+                    continue
+                if rel_root == project_root or rel_root.startswith(project_root + "/"):
+                    dirs[:] = []
+                    continue
+                for name in files:
+                    rel = os.path.join(rel_root, name).replace(os.sep, "/")
+                    if rel.startswith("./"):
+                        rel = rel[2:]
+                    tree_paths.append(rel)
+
+            for marker in markers:
+                if "." not in marker:
+                    continue
+                for rel in tree_paths:
+                    if marker in rel and rel not in allowed_paths:
+                        print(f"❌ {project_id}: project asset/path marker leaked outside project root: {marker!r} in {rel}")
+                        ok = False
+
+    except Exception as exc:
+        print(f"❌ project-context isolation inspection failed: {exc}")
+        ok = False
+
+    checks.append(result(
+        ok,
+        "project-owned markers, examples, facts and assets stay under each project root",
+        "project-specific context can still leak into global instructions, data, docs, audits or assets",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
