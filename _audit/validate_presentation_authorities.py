@@ -50,7 +50,7 @@ REFERENCE_STALE_PATTERNS = {
 }
 
 PROJECT_PRESENTATION_STALE_PATTERNS = {
-    "retired Avanza solid canvas": "#15182E",
+    "retired project-specific solid canvas": "#15182E",
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
@@ -123,7 +123,7 @@ REQUIRED_ACTIVE_PATTERNS = {
         "friday_present_in_project_sprint_plan_count == 0",
         "mixed_team_card_missing_team_symbol_count == 0",
         "team_symbol_render_mismatch_count == 0",
-        "avanza_text_below_project_minimum_count == 0",
+        "project_text_below_project_minimum_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
