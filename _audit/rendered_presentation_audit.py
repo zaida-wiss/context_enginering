@@ -71,6 +71,7 @@ class ShapeInfo:
     font_sizes: list[float]
     has_gradient: bool
     explicit_text_colors: list[str]
+    font_families: list[str]
 
     @property
     def right(self) -> int:
@@ -192,6 +193,16 @@ def _explicit_text_colors(sp: ET.Element) -> list[str]:
     return colors
 
 
+def _font_families(sp: ET.Element) -> list[str]:
+    families: list[str] = []
+    for tag in ("a:rPr", "a:defRPr", "a:endParaRPr"):
+        for latin in sp.findall(f".//{tag}/a:latin", NS):
+            face = (latin.attrib.get("typeface") or "").strip()
+            if face and not face.startswith("+"):
+                families.append(face)
+    return families
+
+
 def _geometry(sp: ET.Element) -> str | None:
     node = sp.find(".//a:prstGeom", NS)
     return node.attrib.get("prst") if node is not None else None
@@ -233,6 +244,7 @@ def _extract_shapes(root: ET.Element) -> list[ShapeInfo]:
                 font_sizes=_font_sizes(sp),
                 has_gradient=_has_gradient(sp),
                 explicit_text_colors=_explicit_text_colors(sp),
+                font_families=_font_families(sp),
             )
         )
     return shapes
@@ -279,6 +291,9 @@ def audit_pptx(path: Path, project: str | None = None) -> list[Finding]:
         if not slide_names:
             return [finding("FAIL", "pptx_no_slides", "No slides found in PPTX.", artifact=str(path))]
 
+        meeting_title_positions: list[tuple[float, float]] = []
+        primary_font_counts: Counter[str] = Counter()
+
         for idx, name in enumerate(slide_names, 1):
             root = ET.fromstring(zf.read(name))
             shapes = _extract_shapes(root)
@@ -312,6 +327,13 @@ def audit_pptx(path: Path, project: str | None = None) -> list[Finding]:
                 s for s in shapes
                 if s.text and (TITLE_RE.match(s.text.strip()) or (s.y < slide_h * 0.16 and s.font_sizes and max(s.font_sizes) >= 28))
             ]
+            meeting_titles = [s for s in title_shapes if TITLE_RE.match(s.text.strip())]
+            for title in meeting_titles:
+                meeting_title_positions.append((
+                    title.x / max(slide_w, 1),
+                    title.y / max(slide_h, 1),
+                ))
+
             for title in title_shapes:
                 if title.font_sizes and max(title.font_sizes) < MIN_TITLE_PT - 0.01:
                     results.append(finding(
@@ -319,6 +341,12 @@ def audit_pptx(path: Path, project: str | None = None) -> list[Finding]:
                         f"Slide title is {max(title.font_sizes):.1f} pt; minimum is {MIN_TITLE_PT:g} pt.",
                         artifact=str(path), page=idx,
                     ))
+
+            for shape in shapes:
+                if not re.search(r"[A-Za-zÅÄÖåäö]", shape.text):
+                    continue
+                for family in set(shape.font_families):
+                    primary_font_counts[family] += 1
 
             if any("000000" == c for s in shapes for c in s.explicit_text_colors):
                 results.append(finding(
@@ -349,6 +377,20 @@ def audit_pptx(path: Path, project: str | None = None) -> list[Finding]:
                     continue
                 dedup.append(card)
             cards = dedup
+
+            # Header/content-zone separation: cards may never intrude into the
+            # meeting-point title region.
+            for title in meeting_titles:
+                for card in cards:
+                    if bbox_intersection(
+                        (title.x, title.y, title.right, title.bottom),
+                        (card.x, card.y, card.right, card.bottom),
+                    ) > 0:
+                        results.append(finding(
+                            "FAIL", "npf_header_content_overlap",
+                            "A card overlaps the meeting-point header zone.",
+                            artifact=str(path), page=idx,
+                        ))
 
             # Card overlap / visible gap checks.
             for i, a in enumerate(cards):
@@ -398,6 +440,28 @@ def audit_pptx(path: Path, project: str | None = None) -> list[Finding]:
                         "Avanza ordinary card expanded beyond one six-slot column while empty slots exist.",
                         artifact=str(path), page=idx,
                     ))
+
+        if len(meeting_title_positions) >= 2:
+            xs = [x for x, _ in meeting_title_positions]
+            ys = [y for _, y in meeting_title_positions]
+            if max(xs) - min(xs) > 0.055 or max(ys) - min(ys) > 0.055:
+                results.append(finding(
+                    "FAIL", "npf_meeting_title_position_inconsistent",
+                    "Meeting-point title position varies by more than 5.5% of slide width/height across PPTX slides.",
+                    artifact=str(path),
+                ))
+
+        significant_fonts = {
+            family: count for family, count in primary_font_counts.items()
+            if count >= 2
+        }
+        if len(significant_fonts) > 1:
+            results.append(finding(
+                "FAIL", "inconsistent_primary_font_family",
+                "Multiple primary Latin font families are used repeatedly: "
+                + ", ".join(f"{family} ({count})" for family, count in sorted(significant_fonts.items())),
+                artifact=str(path),
+            ))
 
     if not results:
         results.append(finding("INFO", "pptx_checks_passed", "PPTX structural checks passed.", artifact=str(path)))
@@ -454,6 +518,7 @@ def audit_pdf(path: Path) -> list[Finding]:
         return [finding("FAIL", "pdf_open_failed", f"Could not open PDF: {exc}", artifact=str(path))]
 
     title_tops: list[tuple[int, float]] = []
+    title_lefts: list[tuple[int, float]] = []
     fallback = parse_color_hex("18213E")
     upper = parse_color_hex("1E274A")
     lower = parse_color_hex("111A33")
@@ -510,6 +575,7 @@ def audit_pdf(path: Path) -> list[Finding]:
 
             if TITLE_RE.match(text):
                 title_tops.append((pageno, bbox.y0 / max(page_rect.height, 1)))
+                title_lefts.append((pageno, bbox.x0 / max(page_rect.width, 1)))
                 if size < MIN_TITLE_PT - 0.05:
                     results.append(finding(
                         "FAIL", "pdf_title_below_36pt",
@@ -582,11 +648,15 @@ def audit_pdf(path: Path) -> list[Finding]:
             ))
 
     if len(title_tops) >= 2:
-        positions = [pos for _, pos in title_tops]
-        if max(positions) - min(positions) > 0.055:
+        vertical_positions = [pos for _, pos in title_tops]
+        horizontal_positions = [pos for _, pos in title_lefts]
+        if (
+            max(vertical_positions) - min(vertical_positions) > 0.055
+            or max(horizontal_positions) - min(horizontal_positions) > 0.055
+        ):
             results.append(finding(
                 "FAIL", "npf_title_zone_inconsistent",
-                "Meeting-point title vertical position varies by more than 5.5% of page height across slides.",
+                "Meeting-point title position varies by more than 5.5% of page width/height across rendered slides.",
                 artifact=str(path),
             ))
 
@@ -610,6 +680,8 @@ def self_test() -> int:
         failures.append("meeting_point")
     if _meeting_point("① Backend") is not None:
         failures.append("circled_number_not_parsed_as_active_header")
+    if cluster_count([1, 1.1, 5, 5.1, 9, 9.1], 0.5) != 3:
+        failures.append("npf_cluster_regression")
     if failures:
         print("Rendered presentation audit self-test: FAIL")
         for item in failures:
