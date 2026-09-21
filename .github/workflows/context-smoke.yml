@@ -46,6 +46,9 @@ jobs:
       - name: Run presentation authority audit
         run: python _audit/validate_presentation_authorities.py
 
+      - name: Run presentation routing audit
+        run: python _audit/presentation_routing_audit.py
+
       - name: Self-test rendered presentation validator
         run: python _audit/rendered_presentation_audit.py --self-test
 
