@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.9
+  version: 4.0
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -33,6 +33,48 @@ Any visual example in this file is descriptive only.
 ---
 
 # GLOBAL CONTENT RULES
+
+## Canonical symbol matrix
+
+Compose semantic fields with the global symbol grammar before layout/rendering.
+Symbols travel with their field into PPTX/PDF.
+
+| Meaning | Symbol |
+|---|---|
+| schedule/calendar fact | `📅` |
+| what/task/focus | `🎯` |
+| when/deadline/time | `🕒` |
+| where/channel/place | `📍` |
+| why/purpose/consequence | `💡` |
+| how/method | `🛠` |
+| who/owner/person | `👤` |
+| verified team/source fact | `✅` |
+| verified meeting fact | `👥 ✅` |
+| GitHub verified | GitHub icon + `✅` |
+| waiting in PR | `📌` |
+| merge/integration event | `🔀` |
+| dependency | `🔗` |
+| AI analysis | `🔎` |
+| AI proposal | `⭐` |
+| source uncertainty | `⚠` |
+| risk | `⚡` |
+| likelihood | `📈` |
+| impact | `💥` |
+| mitigation | `🛡` |
+| residual risk | `↘` |
+
+Meeting-point application:
+- ⓪ uses the five-question task grammar `🎯 🕒 📍 💡 🛠` for each school/deadline item and `📅` for verified schedule facts;
+- ① and ③–⑤ use GitHub icon + `✅`, `👤`, and workflow symbols such as `📌`/`🔀` when supported;
+- ⑥ uses `🔗` on dependency relations and `🔎`/`⭐` only for derived interpretation/proposals;
+- ⑦ uses the risk grammar `⚡ 📈 💥 🛡 👤 ↘`;
+- ⑫ uses `📅` for schedule facts and `🔎`/`⭐` for derived planning;
+- ⑬ uses provenance symbols on every action;
+- ⑭ uses provenance symbols on every question.
+
+A symbol is part of the field definition. Layout simplification may paginate or
+shorten wording while preserving each surviving field's symbol.
+
 
 ## Meeting-point headers — fixed meeting-point title + page subtitle
 
