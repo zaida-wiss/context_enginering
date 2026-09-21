@@ -101,6 +101,9 @@ REQUIRED_ACTIVE_PATTERNS = {
         "Canonical symbols are semantic content, not decoration",
         "canonical_symbol_missing_after_simplification_count == 0",
         "canonical_symbol_missing_in_export_count == 0",
+        "Meeting-point symbol application",
+        "⚡ risk → 📈 likelihood → 💥 impact → 🛡 mitigation → 👤 owner → ↘ residual",
+        "GitHub icon + `✅`",
     ),
     "verification/RENDER_GATE_CHECKLIST.md": (
         "canonical_symbol_render_mismatch_count == 0",
@@ -124,6 +127,11 @@ REQUIRED_ACTIVE_PATTERNS = {
         "mixed_team_card_missing_team_symbol_count == 0",
         "team_symbol_render_mismatch_count == 0",
         "project_text_below_project_minimum_count == 0",
+        "cover_visible_school_field_missing_task_symbol_count == 0",
+        "github_work_card_missing_verified_source_pair_count == 0",
+        "risk_slide_missing_risk_symbol_count == 0",
+        "risk_mitigation_missing_shield_symbol_count == 0",
+        "risk_residual_missing_residual_symbol_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
@@ -159,6 +167,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "dedicated team slide whose primary header names the team",
         "verified ordinary one-parent direct commits on a registered collection branch are mandatory evidence here",
         "they must not disappear merely because they are excluded from point 1",
+        "Canonical symbol matrix",
+        "⑦ uses the risk grammar",
     ),
     "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md": (
         "This is a progressive funnel, not permission to duplicate the same content",
