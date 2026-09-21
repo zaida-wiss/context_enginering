@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.7
+version: 1.8
 status: active
 scope: projects/avanza
 ---
@@ -44,15 +44,15 @@ meeting itself is about the presentation framework.
 Canonical symbols are part of the information architecture and survive every
 simplification, refactor and render pass.
 
-Required symbol classes include:
-- `📅` schedule/course facts
-- `👥 ✅` meeting-protocol facts
-- `✅` verified team facts
-- `🔎` AI analysis
-- `⭐` AI proposal
-- `⚠` source uncertainty
-- `📌` waiting PR
-- `🔗` dependency/cross-team
+Avanza consumes the complete canonical symbol grammar from
+`PROVENANCE_AND_AI_LABELING.md`.
+
+Required classes include:
+- task meaning: `📅 🎯 🕒 📍 💡 🛠 👤`
+- provenance/reasoning: `👥 ✅ 🔎 ⭐ ⚠`
+- GitHub verification: GitHub icon + `✅`
+- workflow: `📌 🔗 🔀`
+- risk analysis: `⚡ 📈 💥 🛡 👤 ↘`
 - project team symbols from `TEAM_VISUAL_IDENTITY.yaml`
 
 A symbol may be rendered with a symbol-capable font or as a native/vector icon,
@@ -424,6 +424,7 @@ Avanza-specific failures include:
 - special diagram/timeline flattened into generic cards
 - dependency/blocker information not carried forward into priority/plan/actions
 - required bottom operational row, verified merger identity, verified approving reviewer or verified merge timestamp lost through simplification
+- any canonical task/provenance/GitHub/workflow/risk/team symbol lost, substituted or detached from its semantic field
 - redundant MERGED/MERGAD tag/stamp added to a card whose containing page already communicates merge state
 
 The historical presentation rules are recovery evidence, not active authority.
