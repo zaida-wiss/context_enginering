@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.3
+  version: 6.4
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -436,6 +436,33 @@ Manual visual checks across **every card type**:
 - block spacing is not compressed merely to fit more cards
 
 If card content cannot fit while preserving the required spacing and type sizes, reduce density or paginate.
+
+---
+
+## 6A. SEMANTIC-HIERARCHY PRESERVATION CHECK
+
+For every simplification or dense card, verify the rendered result follows the
+active semantic hierarchy:
+
+1. verified truth/accessibility
+2. required slide/card identity fields
+3. project/decision meaning
+4. supporting operational context
+5. redundant repetition and decoration
+
+A valid simplification removes or consolidates the lowest-priority layer first.
+If a lower-priority repeated label disappears while higher-priority role/event
+facts remain visible, the hierarchy is preserved.
+
+For completed merge cards specifically, verify the distinct semantic facts remain:
+- contributor/developer;
+- merger;
+- submitted approving reviewer(s);
+- merge-event time;
+- delivery activity when required by the card contract.
+
+The `Mergat till …` subtitle satisfies only the high-level merged-state context.
+It does not satisfy any of the distinct person/event fields above.
 
 ---
 
