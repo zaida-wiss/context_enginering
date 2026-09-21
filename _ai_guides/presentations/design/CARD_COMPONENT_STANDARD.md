@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.10
+  version: 1.11
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -331,17 +331,40 @@ Never go below 11 pt.
 A timestamp is not generic activity decoration. It is shown only when the time itself helps the meeting understand delivery or current status.
 
 ## Completed work shown inside a verified merge subsection
-The slide/subsection placement may carry merge state. Whether a project shows a merge badge, merger identity or merge-event timestamp is owned by the active project presentation authority. Do not add redundant state labels when the project authority says the containing page already communicates that state.
 
-Show the verified developer identity and the latest relevant **delivery activity before/completing the handoff** on the same row:
-1. PR submission/open timestamp when the work was sent to PR;
-2. otherwise latest verified commit/push timestamp.
+The slide/subsection placement supplies the **merge-state label**, so a redundant
+MERGED/MERGAD badge, stamp or pill is forbidden. That does **not** remove the
+event metadata required to understand who delivered, who merged, who approved
+and when the merge happened.
 
-Canonical examples:
-- `{FIRST_NAME} · PR 17 sep · 15:05`
-- `{FIRST_NAME} · commit 17 sep · 14:22`
+For a verified merged-PR card, preserve these distinct bottom-zone rows when the
+source evidence exists:
 
-The containing `Mergat till …` subtitle supplies the explicit non-color merge meaning; team/branch accent color is supplementary.
+1. **Developer/delivery row** — verified contributor/assignee + latest relevant
+   pre-merge delivery activity:
+   - PR submission/open time when available;
+   - otherwise latest verified commit/push time.
+2. **Merge/review row** — `Merged: {MERGER} | Review: {APPROVING_REVIEWER(S)}`.
+3. **Merge-event timestamp** — verified merge time, anchored at the bottom-right
+   of the card.
+
+Canonical example:
+
+```text
+{FIRST_NAME} · PR 17 sep · 15:05
+Merged: {MERGER} | Review: {REVIEWER}
+                         18 sep · 09:42
+```
+
+Hard semantic distinctions:
+- developer/contributor ≠ merger;
+- PR-open/commit activity time ≠ merge-event time;
+- requested reviewer ≠ approving reviewer;
+- the subtitle may replace only the redundant merge-state badge, never merger,
+  approving-reviewer or merge-time information.
+
+If merger/reviewer identity cannot be verified, keep the field blank according
+to the merge/review identity rule; never invent a person.
 
 ## Active/open Issue/PR work cards
 The delivery-activity timestamp belongs **on the same row as the verified developer name**, not in a separate lower-right timestamp row.
@@ -386,6 +409,8 @@ Beräknar drift från aktuell målallokering i stället för mock-flagga.
 
 
 {FIRST_NAME} · PR 14 sep · 10:16
+Merged: {MERGER} | Review: {REVIEWER}
+                         14 sep · 10:44
 ```
 
 Rendering rules:
@@ -393,9 +418,12 @@ Rendering rules:
 - do not render a per-card merge badge, pill, stamp, checkmark or `MERGAD`/`Merged` label
 - do not repeat a team label when the containing section already identifies the team; use placement plus the supplementary team accent
 - pedagogical explanation sits directly under the title
-- flexible whitespace keeps the card airy and separates explanation from the bottom identity/activity row
+- flexible whitespace separates explanation from the reserved bottom information zone
 - verified developer identity and selected PR/commit activity time share one compact bottom row
+- verified merger and approving reviewer(s) occupy the next bottom row
+- verified merge-event time is the lowest/right-most timestamp row
 - developer/assignee is one presentation concept; never duplicate it
+- developer, merger and approving reviewer remain distinct semantic roles
 - do not add tags, comment counts or reaction counts merely because GitHub exposes them
 - provenance explanations remain in the reserved slide footer
 
