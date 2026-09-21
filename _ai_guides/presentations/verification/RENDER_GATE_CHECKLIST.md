@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.5
+  version: 6.6
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -40,7 +40,7 @@ The executable validator currently performs mechanical checks for:
 - circled meeting-point numbering regression;
 - card overlap and too-small card gaps;
 - 3×2 card geometry for points 1 and 3–5 when 5–6 ordinary cards exist;
-- Avanza card expansion into reserved empty slots when project context is supplied;
+- project-specific card expansion into reserved empty slots when a fixed-slot project contract is supplied;
 - empty/blank card placeholder surfaces in unused reserved slots;
 - selectable text in exported PDF;
 - material PDF text-block overlap;
@@ -170,7 +170,7 @@ debug_marker_shape_count == 0
 explicit_text_contrast_failure_count == 0
 overtransparent_text_count == 0
 visible_text_overlap_count == 0
-visible_text_below_avanza_minimum_count == 0
+visible_text_below_project_minimum_count == 0
 canonical_symbol_missing_after_simplification_count == 0
 canonical_symbol_missing_in_export_count == 0
 ```
@@ -184,7 +184,7 @@ Manual visual checks:
 - no content card enters the footer/source zone
 - no footer/source text competes with primary content
 - every visible text block was measured before placement; no two independent text blocks occupy overlapping bounds
-- Avanza project slides use the active project deck-wide readability minima when those are stricter than global minima
+- Project slides use the selected project's registered deck-wide readability minima when those are stricter than global minima
 - canonical provenance/workflow/team symbols remain visible after PDF export
 
 ### Five-second scan check
@@ -473,16 +473,16 @@ It does not satisfy any of the distinct person/event fields above.
 
 ---
 
-## 6B. AVANZA PROJECT-SPECIFIC RENDER CHECKS
+## 6B. PROJECT-SPECIFIC RENDER CHECKS
 
-When the selected project is Avanza, require:
+When the selected project declares the corresponding project-specific presentation contracts, require:
 
 ```text
 friday_present_in_project_sprint_plan_count == 0
 dedicated_team_card_repeats_team_name_count == 0
 mixed_team_card_missing_team_symbol_count == 0
 team_symbol_render_mismatch_count == 0
-avanza_text_below_project_minimum_count == 0
+project_text_below_project_minimum_count == 0
 ```
 
 Manual checks:
