@@ -87,7 +87,67 @@ def main():
     design_authority = read("_ai_guides/presentations/design/DESIGN_AUTHORITY.md")
     presentation_architecture = read("_ai_guides/presentations/ARCHITECTURE.md")
     composition = read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
+    context_routing = read("_ai_guides/context/CONTEXT_ROUTING.yaml")
+    placement_contract = read("_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml")
 
+    print("=" * 80)
+    print("SMOKE TEST 0 — CONTEXT INGESTION + EXACT PLACEMENT")
+    print("=" * 80)
+
+    require(
+        "context placement contract is registered",
+        "context_placement:" in registry
+        and "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml" in registry,
+        failures,
+    )
+    require(
+        "context ingestion task is registered",
+        "context_ingestion:" in registry
+        and "emit a user-visible placement receipt before canonical mutation" in registry,
+        failures,
+    )
+    require(
+        "router delegates exact placement to placement contract",
+        "CONTEXT_PLACEMENT_CONTRACT.yaml" in context_routing
+        and "emit placement receipt to user" in context_routing
+        and "split mixed input into atomic information units" in context_routing,
+        failures,
+    )
+    require(
+        "placement hierarchy resolves exact owner and target",
+        "## Placement hierarchy" in placement_contract
+        and "Canonical owner" in placement_contract
+        and "Exact target" in placement_contract,
+        failures,
+    )
+    require(
+        "mixed input must be split before storage",
+        "## Atomic-information rule" in placement_contract
+        and "not assumed to belong in one file" in placement_contract,
+        failures,
+    )
+    require(
+        "placement receipt precedes canonical mutation",
+        "Placement receipt — mandatory before mutation" in placement_contract
+        and "target: <exact repository path>" in placement_contract
+        and "action: <write | merge | ask_user | no_persist>" in placement_contract,
+        failures,
+    )
+    require(
+        "ambiguity/new capability invokes focused clarification",
+        "## Clarification gate" in placement_contract
+        and "Clarification required" in placement_contract
+        and "new canonical category/file/manifest capability is required" in placement_contract,
+        failures,
+    )
+    require(
+        "new canonical files require registration",
+        "new_canonical_file_unregistered_count > 0" in placement_contract
+        and "register the capability" in placement_contract,
+        failures,
+    )
+
+    print()
     print("=" * 80)
     print("SMOKE TEST 1 — CODING ASSISTANCE")
     print("=" * 80)
