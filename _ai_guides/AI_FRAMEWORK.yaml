@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.14
+version: 1.15
 metadata:
   type: global_authority
   critical: true
@@ -43,6 +43,130 @@ project_context_resolution:
     - load_only_the_selected_projects_registered_context_plus_global_framework
     - keep_course_project_design_and_external_sources_scoped_to_selected_project
 
+
+instruction_authoring_standard:
+  scope: global
+  purpose: >
+    Make AI-facing repository instructions easy to execute correctly by describing
+    the intended behavior, ownership, order and outcome in explicit positive terms.
+    Use prohibitions as safety boundaries, not as the primary way to define behavior.
+  governing_principles:
+    - desired_state_first
+    - positive_execution_path_before_prohibition
+    - hierarchy_before_exception_lists
+    - explicit_owner_scope_and_destination
+    - concrete_sequence_before_edge_cases
+    - explain_why_when_it_improves_correct_execution
+    - use_examples_that_demonstrate_the_correct_pattern
+    - prefer_precise_operational_language_over_ambiguous_shorthand
+    - keep_project_examples_out_of_global_instructions
+    - align_with_current_best_practice_and_registered_evidence_policy
+  authoring_order:
+    - purpose_and_scope
+    - canonical_owner_and_authority
+    - desired_state
+    - execution_sequence
+    - inputs_and_preconditions
+    - output_or_completion_contract
+    - propagation_or_downstream_effects
+    - examples_of_correct_execution
+    - exceptional_boundaries_and_hard_prohibitions
+    - validation_and_failure_signals
+  positive_first_rule:
+    rule: >
+      State what the AI should do before describing what it must avoid. Whenever
+      a prohibition can be replaced by a complete desired-state instruction,
+      make the desired-state instruction canonical and keep only the minimum
+      prohibition needed to protect an important boundary.
+    preferred_pattern:
+      - "Resolve the selected project through the project registry, then load that project's registered context."
+      - "Place project facts under the selected project's registered root and route them through its manifest."
+      - "Render only content explicitly selected by the presentation task route."
+    discouraged_pattern:
+      - "Do not guess the project."
+      - "Do not put project information globally."
+      - "Do not render random files."
+    interpretation: >
+      The discouraged examples may still appear as compact safety checks after
+      the positive execution path is already defined. They do not replace the
+      executable desired-state instruction.
+  hierarchy_rule:
+    rule: >
+      Prefer structured decision hierarchies, routing trees and ownership chains
+      over long flat lists of negations. The AI should be able to determine what
+      to do by following the hierarchy from scope to owner to action to
+      validation.
+    required_when_applicable:
+      - scope_hierarchy
+      - authority_hierarchy
+      - routing_hierarchy
+      - execution_order
+      - fallback_or_clarification_gate
+      - completion_gate
+  detail_standard:
+    rule: >
+      A durable AI instruction should be detailed enough that a new model session
+      can execute it without relying on hidden historical context. State the
+      relevant actor, input, operation, destination, sequence, completion
+      condition and downstream effects when those dimensions matter.
+    completeness_dimensions:
+      - who_or_which_actor
+      - what_action
+      - where_or_which_owner
+      - when_or_under_which_trigger
+      - how_or_in_which_order
+      - why_or_which_goal_when_material
+      - completion_condition
+      - validation_method
+    brevity_rule: >
+      Prefer compact precision over repetition. Detail means complete execution
+      semantics, not duplicated wording.
+  best_practice_rule:
+    rule: >
+      When AI-facing repository instructions are materially updated, check them
+      against the active best-practice evidence policy. Prefer established
+      patterns for explicit contracts, separation of concerns, single ownership,
+      deterministic routing, traceable provenance and executable validation.
+    evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
+  negation_policy:
+    use_negation_for:
+      - absolute_safety_boundary
+      - data_integrity_boundary
+      - authority_conflict_boundary
+      - project_isolation_boundary
+      - destructive_action_gate
+      - prohibited_fallback_that_would_corrupt_semantics
+    rewrite_when_possible:
+      - replace_negative_only_rule_with_positive_execution_path
+      - combine_repeated_prohibitions_under_one_higher_level_boundary
+      - move_edge_case_prohibitions_after_the_canonical_flow
+      - replace_project_specific_negative_examples_with_synthetic_positive_examples
+  examples:
+    bad_to_better:
+      - bad: "Do not write mixed input into one file."
+        better: "Split mixed input into atomic information units, route each unit to its semantic owner, then write each unit to its resolved target."
+      - bad: "Do not delete the old path too early."
+        better: "Verify the destination and all consumers, complete the stale-path scan, then delete the old path."
+      - bad: "Do not use the team name in every card."
+        better: "On dedicated team slides, use the slide header plus the registered team accent/symbol; reserve explicit team text for mixed-team views."
+  update_workflow:
+    required_steps:
+      - identify_the_instruction_owner
+      - preserve_or_improve_the_existing_hierarchy
+      - rewrite_negative_only_rules_into_positive_execution_paths_where_safe
+      - keep_necessary_hard_boundaries_explicit
+      - make_examples_synthetic_and_project_neutral_at_global_scope
+      - update_dependent_validators_when_behavior_changes
+      - run_context_smoke_and_integrity_validation
+  validation_contract:
+    required:
+      - positive_execution_path_present_for_material_rule
+      - hierarchy_or_sequence_present_when_order_matters
+      - exact_owner_or_destination_present_when_routing_matters
+      - completion_condition_present_when_state_transition_matters
+      - hard_prohibitions_limited_to_material_boundaries
+      - examples_show_correct_behavior_first
+      - project_specific_examples_absent_from_global_ai_instructions
 
 ai_best_practice_advisory:
   evidence_policy: "_ai_guides/AI_BEST_PRACTICE_EVIDENCE_POLICY.yaml"
