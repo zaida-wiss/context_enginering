@@ -153,7 +153,12 @@ def resolve_active_project_presentation_authorities() -> list[Path]:
     if not PROJECT_REGISTRY.exists():
         return []
 
-    data = yaml.safe_load(PROJECT_REGISTRY.read_text(encoding="utf-8")) or {}
+    docs = list(yaml.safe_load_all(PROJECT_REGISTRY.read_text(encoding="utf-8")))
+    data = {}
+    for doc in docs:
+        if isinstance(doc, dict):
+            data.update(doc)
+
     resolved: list[Path] = []
 
     for project_id, project in (data.get("projects") or {}).items():
@@ -168,7 +173,12 @@ def resolve_active_project_presentation_authorities() -> list[Path]:
         if not manifest_path.exists():
             continue
 
-        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8")) or {}
+        manifest_docs = list(yaml.safe_load_all(manifest_path.read_text(encoding="utf-8")))
+        manifest = {}
+        for doc in manifest_docs:
+            if isinstance(doc, dict):
+                manifest.update(doc)
+
         authority_rel = (
             (((manifest.get("context") or {}).get("presentation") or {}).get("authority") or {}).get("path")
         )
@@ -178,9 +188,56 @@ def resolve_active_project_presentation_authorities() -> list[Path]:
     return resolved
 
 
+def resolve_active_project_team_visual_identities() -> list[Path]:
+    """Resolve active project team-visual-identity files from PROJECTS.yaml."""
+    if not PROJECT_REGISTRY.exists():
+        return []
+
+    docs = list(yaml.safe_load_all(PROJECT_REGISTRY.read_text(encoding="utf-8")))
+    data = {}
+    for doc in docs:
+        if isinstance(doc, dict):
+            data.update(doc)
+
+    resolved: list[Path] = []
+
+    for project_id, project in (data.get("projects") or {}).items():
+        if project.get("status") != "active":
+            continue
+
+        manifest_rel = project.get("manifest")
+        if not manifest_rel:
+            continue
+
+        manifest_path = ROOT / manifest_rel
+        if not manifest_path.exists():
+            continue
+
+        manifest_docs = list(yaml.safe_load_all(manifest_path.read_text(encoding="utf-8")))
+        manifest = {}
+        for doc in manifest_docs:
+            if isinstance(doc, dict):
+                manifest.update(doc)
+
+        identity_rel = (
+            (((manifest.get("context") or {}).get("design") or {}).get("team_visual_identity") or {}).get("path")
+        )
+        if identity_rel:
+            resolved.append(ROOT / identity_rel)
+
+    return resolved
+
+
 def main() -> int:
     registry = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))
     errors: list[str] = []
+
+    registry_text = REGISTRY.read_text(encoding="utf-8")
+    context_registry_text = (ROOT / "CONTEXT_REGISTRY.yaml").read_text(encoding="utf-8")
+    if "project_resolved: team_visual_identity" not in registry_text:
+        errors.append("presentation authority registry does not route project team visual identity")
+    if "project_team_visual_identity:" not in context_registry_text:
+        errors.append("Monday presentation task does not load project team visual identity")
     category_owner: dict[str, str] = {}
 
     for authority in registry["active_authorities"]:
@@ -241,6 +298,23 @@ def main() -> int:
             if pattern in project_text:
                 errors.append(
                     f"{label} in project presentation authority {project_authority}: {pattern}"
+                )
+
+    # Project-resolved visual-identity files are active production inputs too.
+    for visual_identity in resolve_active_project_team_visual_identities():
+        if not visual_identity.exists():
+            errors.append(f"missing project team visual identity: {visual_identity}")
+            continue
+        identity_text = visual_identity.read_text(encoding="utf-8", errors="replace")
+        required_identity_tokens = (
+            "color:",
+            "display_name:",
+            "Color is supplementary.",
+        )
+        for token in required_identity_tokens:
+            if token not in identity_text:
+                errors.append(
+                    f"project team visual identity missing required token in {visual_identity}: {token}"
                 )
 
     # Reference examples do not own rules, but they must not demonstrate retired
