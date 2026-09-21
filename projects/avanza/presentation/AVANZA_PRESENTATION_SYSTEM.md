@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.1
+version: 1.2
 status: active
 scope: projects/avanza
 ---
@@ -23,21 +23,30 @@ overflow safety, evidence semantics and conflict handling.
 
 ## 1. Inherited visual identity — global default used by Avanza
 
-The rendered deck must visibly read as modern dark navy, never black.
+Avanza does **not** own its own slide-background palette or card-surface palette.
+Those values are inherited from the active global authority
+`_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md`.
 
-- canvas: #15182E as the recognizable navy base
-- card family: #1E233B / #252A45
-- ordinary cards: dark frosted/glass-like surface
-- rounded silhouette: approximately 16–20 px equivalent
-- restrained shadow, edge highlight and tonal depth
-- decorative/translucent layers always behind text and never across text bounds
-- generous whitespace and predictable alignment
-- team/status accent is supplementary; color never carries meaning alone
-- no flat black/charcoal substitution
-- if tonal/gradient rendering is unreliable, fall back to solid #15182E
+For the current active global design this means:
+- canvas uses the canonical modern navy gradient `#1E274A → #111A33`;
+- if gradient rendering is unavailable, use the global fallback defined by the
+  global visual authority, never a project-specific replacement;
+- ordinary cards use the global frosted/glass-like surface system;
+- rounded silhouette, restrained shadow, edge highlight and tonal depth follow
+  the global visual authority;
+- decorative/translucent layers stay behind text and never cross text bounds;
+- generous whitespace and predictable alignment remain mandatory;
+- team/status accent is supplementary; color never carries meaning alone.
 
-A render fails Avanza visual identity if the background looks black, cards lose
-their rounded glass character, or decorative layers obscure content.
+Global WCAG/NPF/readability rules remain fully binding in Avanza. Avanza may add
+project semantics and team identity, but it may not weaken or replace global
+accessibility, typography, spacing, contrast, background or card-surface rules
+without an explicit user-approved project override recorded in the framework.
+
+A render fails Avanza visual identity if the background looks black/charcoal,
+the global gradient is missing without the registered fallback condition, cards
+lose their rounded glass character, decorative layers obscure content, or
+global WCAG/NPF/readability gates fail.
 
 ## 2. Stable page anatomy
 
