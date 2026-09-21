@@ -89,6 +89,7 @@ def main():
     composition = read("_ai_guides/presentations/monday_meeting/structure/COMPOSITION_ARCHITECTURE.md")
     context_routing = read("_ai_guides/context/CONTEXT_ROUTING.yaml")
     placement_contract = read("_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml")
+    migration_plan = read("_ai_guides/context/PATH_MIGRATION_PLAN.yaml")
 
     print("=" * 80)
     print("SMOKE TEST 0 — CONTEXT INGESTION + EXACT PLACEMENT")
@@ -98,6 +99,13 @@ def main():
         "context placement contract is registered",
         "context_placement:" in registry
         and "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml" in registry,
+        failures,
+    )
+    require(
+        "path migration plan is registered",
+        "path_migration:" in registry
+        and "_ai_guides/context/PATH_MIGRATION_PLAN.yaml" in registry
+        and "path_change_process:" in registry,
         failures,
     )
     require(
@@ -144,6 +152,22 @@ def main():
         "new canonical files require registration",
         "new_canonical_file_unregistered_count > 0" in placement_contract
         and "register the capability" in placement_contract,
+        failures,
+    )
+    require(
+        "moves require preflight consumer map and deletion gate",
+        "Migration receipt" in migration_plan
+        and "Consumer discovery" in migration_plan
+        and "Delete old source" in migration_plan
+        and "old-path active-reference count == 0" in migration_plan
+        and "post_move_integrity_failure_count == 0" in migration_plan,
+        failures,
+    )
+    require(
+        "project decisions resolve through selected project manifest",
+        "decision_records:" in registry
+        and "context.decisions.records.path" in registry
+        and "logical_destinations.selected_project.decision_records" in registry,
         failures,
     )
 
