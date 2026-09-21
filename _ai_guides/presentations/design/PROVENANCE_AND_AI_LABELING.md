@@ -299,9 +299,9 @@ Only text explicitly present in the schedule is `📅 Schemafakta`.
 Items such as these are normally AI-derived unless separately verified:
 - `Lås scope, kapacitet och ägare`
 - `Prioritet: API-kontrakt + JNA + öppna PR-reviewer`
-- `Få svar om CTO-underlaget`
+- `Få svar om det verifierade kursunderlaget`
 - `Stäng öppna frågetecken`
-- `Verifiera att CTO-materialet har ägare och checkbar status`
+- `Verifiera att det verifierade kursmaterialet har ägare och checkbar status`
 
 Classify each as either analysis (`🔎`) or proposal (`⭐`) based on what the sentence actually does.
 
@@ -411,7 +411,7 @@ categories. Good examples include:
 - `GitHub · open issues linked to current sprint`
 - `GitHub · active branches touching [verified integration boundary]`
 - `GOOGLE_MEETING_PROTOCOL · sprint planning / blockers`
-- `docs/decisions/`
+- selected project's registered decision-record path
 - a named API-contract file or registered source
 
 Only list sources that were actually inspected in that analysis run.
