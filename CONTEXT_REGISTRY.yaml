@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.4
+version: 3.5
 metadata:
   type: registry
   critical: true
@@ -94,6 +94,8 @@ logical_destinations:
   selected_project:
     manifest:
       resolve_via: "PROJECTS.yaml -> selected project -> manifest"
+    isolation_markers:
+      resolve_via: "selected project manifest -> context.isolation_markers.path"
     team_roster:
       resolve_via: "selected project manifest -> context.team_roster.path"
     source_registry:
@@ -136,9 +138,6 @@ logical_destinations:
       path: "data/snapshots/"
     derived:
       path: "data/derived/"
-    sprint_focus_timeline:
-      path: "data/derived/SPRINT_FOCUS_TIMELINE.md"
-      canonical: false
 
 presentation_bootstrap:
   router:
