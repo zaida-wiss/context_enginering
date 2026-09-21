@@ -1,7 +1,7 @@
 ---
 name: avanza_project_context
 description: Canonical manifest for Avanza-specific project context
-version: 1.3
+version: 1.4
 metadata:
   type: project_manifest
   project: avanza
@@ -17,6 +17,8 @@ context:
     path: "projects/avanza/sources/SOURCES.yaml"
   team_roster:
     path: "projects/avanza/team/TEAM_ROSTER.md"
+  domain_glossary:
+    path: "projects/avanza/context/DOMAIN_GLOSSARY.md"
   sprint_cadence:
     path: "projects/avanza/project/sprint/CADENCE.yaml"
   working_time_constraints:
