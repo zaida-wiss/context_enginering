@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.6
+  version: 3.7
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -364,10 +364,10 @@ merge result is empty: render a grounded empty state, or an explicit incomplete
 state when acquisition failed. A merge to a registered collection branch must
 never be folded into the primary-integration slide or only summarized in a team-summary card.
 
-Six cards is the standard capacity per physical slide, never a total limit.
-When six or more grounded completed-work cards exist inside the same point-1 subsection, first compose and measure a 3×2 six-card physical slide. Split to a lower-density continuation only when that concrete render fails the active readability/fit gates; do not assume six cards are too dense before measuring them.
-Create as many continuation slides as required and never omit grounded completed
-work.
+Six cards remains the standard point-1 work-card capacity per physical slide, never a total limit.
+The exact 3×2 geometry, spacing, fallback density and pagination behavior are owned
+by `VISUAL_DESIGN_MANDATORY.md`. Create as many continuation slides as required
+and never omit grounded completed work.
 
 ## Subtitle — {PRIMARY_INTEGRATION_SUBTITLE}
 
