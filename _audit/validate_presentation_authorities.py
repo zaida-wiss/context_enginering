@@ -98,6 +98,9 @@ REQUIRED_ACTIVE_PATTERNS = {
         "footer uses priority level 4 but must remain at least 11 pt",
         "MIXED CARDS — SYMBOL IN BLOCK, FULL LABEL AT BOTTOM",
         "card_bottom_provenance_symbol_text_mismatch_count == 0",
+        "canonical symbols are semantic content, not decoration",
+        "canonical_symbol_missing_after_simplification_count == 0",
+        "canonical_symbol_missing_in_export_count == 0",
     ),
     "verification/RENDER_GATE_CHECKLIST.md": (
         "canonical_symbol_render_mismatch_count == 0",
@@ -117,6 +120,10 @@ REQUIRED_ACTIVE_PATTERNS = {
         "verified_approving_reviewer_omitted_from_card_count == 0",
         "verified_merge_timestamp_omitted_from_card_count == 0",
         "merge_event_time_replaced_by_pr_or_commit_time_count == 0",
+        "friday_present_in_project_sprint_plan_count == 0",
+        "mixed_team_card_missing_team_symbol_count == 0",
+        "team_symbol_render_mismatch_count == 0",
+        "avanza_text_below_project_minimum_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
@@ -313,6 +320,18 @@ def main() -> int:
                     f"{label} in project presentation authority {project_authority}: {pattern}"
                 )
 
+        project_required_tokens = (
+            "Symbol layer is semantic content",
+            "Friday is a registered non-project day and is therefore omitted entirely",
+            "team accent and symbol without repeating",
+        )
+        for token in project_required_tokens:
+            if token not in project_text:
+                errors.append(
+                    f"project presentation authority missing required regression token in "
+                    f"{project_authority}: {token}"
+                )
+
     # Project-resolved visual-identity files are active production inputs too.
     for visual_identity in resolve_active_project_team_visual_identities():
         if not visual_identity.exists():
@@ -322,6 +341,8 @@ def main() -> int:
         required_identity_tokens = (
             "color:",
             "display_name:",
+            "symbol:",
+            "symbol_persistence:",
             "Color is supplementary.",
         )
         for token in required_identity_tokens:
