@@ -98,7 +98,7 @@ REQUIRED_ACTIVE_PATTERNS = {
         "footer uses priority level 4 but must remain at least 11 pt",
         "MIXED CARDS — SYMBOL IN BLOCK, FULL LABEL AT BOTTOM",
         "card_bottom_provenance_symbol_text_mismatch_count == 0",
-        "canonical symbols are semantic content, not decoration",
+        "Canonical symbols are semantic content, not decoration",
         "canonical_symbol_missing_after_simplification_count == 0",
         "canonical_symbol_missing_in_export_count == 0",
     ),
