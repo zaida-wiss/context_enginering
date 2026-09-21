@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 6.0
+  version: 6.1
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -143,7 +143,8 @@ own authority rules.
 
 | Element | Hex | Role |
 |---|---|---|
-| Slide background | `#0F1830` | canonical deep navy canvas |
+| Slide background — upper tone | `#1E274A` | canonical modern navy upper field |
+| Slide background — lower tone | `#111A33` | canonical modern navy lower field |
 | Card surface | `#18233D` | canonical dark glass/navy surface |
 | Alternate card surface | `#202C47` | optional dark glass variation |
 | Glass highlight / border | `#64748B` | subtle separation, non-semantic |
@@ -186,34 +187,32 @@ on school/submission cards, while the underlying five meanings remain mandatory.
 
 ### Background rendering contract — mandatory
 
-The canonical background is the same stable deep navy canvas used by the preserved
-Monday-meeting layout in `main`.
+The canonical background is the modern blue/navy gradient family approved by the
+user. This is the single active background authority.
 
 Canonical background treatment:
-- slide background is `#0F1830`;
-- the same background color is used throughout the deck unless a future explicit
-  design decision changes the global authority;
-- do not introduce a lighter/darker gradient that changes the perceived deck
-  identity;
-- glass depth belongs in cards and subtle shadows, not by changing the slide
-  background from slide to slide.
+- use a restrained gradient from approximately `#1E274A` to `#111A33`;
+- the lighter `#1E274A` tone must remain visibly present so the deck reads as
+  modern blue/navy rather than almost black;
+- the darker `#111A33` tone provides depth but must not dominate the whole slide;
+- the gradient may be linear or softly radial, but must remain calm, low-glare and
+  visually consistent across the entire deck;
+- if a renderer cannot reproduce the gradient reliably, use solid `#18213E` as
+  the fallback — never black and never the retired `#0F1830` background.
 
 Required behavior:
-- every slide reads as the same deep navy;
-- cards remain visually distinct using the `#18233D` / `#202C47` family,
-  transparency, subtle edge and shadow;
-- main text is `#FFFFFF`;
-- secondary text is `#CBD5E1`;
-- metadata is `#94A3B8`;
-- quiet microcopy/timestamps may use `#8290A7` only when actual rendered contrast
-  passes WCAG 2.2 AA.
+- every slide belongs to the same modern navy family;
+- cards remain visually distinct through glass tint, rounded corners, subtle edge
+  and soft shadow;
+- text uses the approved light text roles and must retain WCAG 2.2 AA contrast.
 
 Forbidden:
+- `#0F1830` as the active/canonical slide background;
 - black or near-black replacement backgrounds;
-- per-slide background color changes;
-- decorative gradients that materially alter the canonical `#0F1830` appearance;
-- black/near-black text on the dark background or dark cards;
-- lowering text opacity enough to weaken contrast.
+- charcoal/graphite fields that visually read as black;
+- arbitrary per-slide background changes;
+- high-glare/neon gradients;
+- decorative textures that reduce legibility.
 
 Palette rules:
 - use the same navy/text family across the complete deck;
@@ -439,15 +438,26 @@ Hard rules:
 - paginate when needed instead of shrinking below readability minima.
 
 
-### Meeting point 1
-- card capacity, slot orientation and pagination are owned by the active project presentation authority when registered
+### Meeting point 1 — standard 3×2 work-card grid
+- standard physical-slide capacity is **3 columns × 2 rows = 6 cards**
+- when 5–6 grounded cards exist in the same point-1 subsection, first compose and measure the 3×2 layout
+- do not pre-emptively fall back to 2×2 merely because six cards exist
+- reduce to 2 columns / fewer cards only when the concrete 3×2 render fails an active readability, spacing, overlap, clipping or WCAG gate
+- continuation slides preserve the same meeting-point header/subtitle and retry the highest valid density
 - team-summary AI cards are required content in the final point-1 subsection, not filler
-- point-1 subsection meaning comes from its canonical subtitle/verified merge target, never from a hard-coded continuation letter
-- never create unrelated filler cards merely to satisfy a visual slot count
-- never omit a grounded item because of density
-- global readability, source-footer, overlap and clipping gates remain mandatory regardless of project geometry
+- never create unrelated filler cards merely to satisfy six slots
+- never omit grounded work because of density
 
-### ②–⑧, ⑩–⑫ and ⑭
+### Meeting points 3–5 — standard 3×2 team/workstream grid
+- each registered team/workstream slide first uses **3 columns × 2 rows = 6 cards** when 5–6 grounded work cards are available
+- the six-card grid is the preferred/standard geometry for ordinary team work inventory on these points
+- preserve visible horizontal and vertical gaps between every card; cards must never touch
+- use fewer slots naturally when fewer than six grounded cards exist; never add filler
+- fall back to 2 columns / fewer cards only after the concrete 3×2 render fails readability, spacing, overlap, clipping or WCAG gates
+- when more than six grounded cards exist, continue onto another slide rather than shrinking text below active minima
+- specialized content inside points 3–5 may use a stricter registered geometry when explicitly required by the meeting-point authority
+
+### ②, ⑥–⑧, ⑩–⑫ and ⑭
 - maximum 4 cards unless slide authority is stricter
 - lower density when text length requires it
 
