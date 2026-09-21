@@ -13,6 +13,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 PRESENTATIONS = ROOT / "_ai_guides" / "presentations"
 REGISTRY = PRESENTATIONS / "AUTHORITY_REGISTRY.yaml"
+PROJECT_REGISTRY = ROOT / "PROJECTS.yaml"
 
 STALE_ACTIVE_PATTERNS = {
     "legacy AI suggestion symbol": "? AI-förslag",
@@ -25,6 +26,32 @@ STALE_ACTIVE_PATTERNS = {
     "stale 10 pt provenance footer minimum": "footer uses priority level 4 but must remain at least 10 pt",
     "stale critical-data continue rule": "mark as INCOMPLETE, but continue with available data",
     "retired solid presentation background": "slide background is `#0F1830`",
+}
+
+}
+
+REFERENCE_REQUIRED_PATTERNS = {
+    "monday_meeting/design/TEMPLATE_REFERENCE.html": (
+        "linear-gradient(145deg, #1E274A 0%, #111A33 100%)",
+        "grid-template-columns: repeat(3, minmax(0,1fr))",
+        "font-size: 48px",
+        "font-size: 32px",
+        "✏️ 1. Avklarat sedan förra mötet",
+        "Mergat till develop",
+    ),
+}
+
+REFERENCE_STALE_PATTERNS = {
+    "monday_meeting/design/TEMPLATE_REFERENCE.html": (
+        "background: #0F1830",
+        "grid-template-columns: repeat(2, minmax(0,1fr))",
+        "<h1>①",
+        "Leverans: <strong>direkt commit</strong>",
+    ),
+}
+
+PROJECT_PRESENTATION_STALE_PATTERNS = {
+    "retired Avanza solid canvas": "#15182E",
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
@@ -117,6 +144,37 @@ REQUIRED_ACTIVE_PATTERNS = {
 }
 
 
+
+def resolve_active_project_presentation_authorities() -> list[Path]:
+    """Resolve active project presentation-authority files from PROJECTS.yaml."""
+    if not PROJECT_REGISTRY.exists():
+        return []
+
+    data = yaml.safe_load(PROJECT_REGISTRY.read_text(encoding="utf-8")) or {}
+    resolved: list[Path] = []
+
+    for project_id, project in (data.get("projects") or {}).items():
+        if project.get("status") != "active":
+            continue
+
+        manifest_rel = project.get("manifest")
+        if not manifest_rel:
+            continue
+
+        manifest_path = ROOT / manifest_rel
+        if not manifest_path.exists():
+            continue
+
+        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8")) or {}
+        authority_rel = (
+            (((manifest.get("context") or {}).get("presentation") or {}).get("authority") or {}).get("path")
+        )
+        if authority_rel:
+            resolved.append(ROOT / authority_rel)
+
+    return resolved
+
+
 def main() -> int:
     registry = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))
     errors: list[str] = []
@@ -154,6 +212,35 @@ def main() -> int:
                     f"missing required presentation regression pattern in {filename}: "
                     f"{required_pattern}"
                 )
+
+    # Project-resolved presentation authorities are active production inputs too.
+    for project_authority in resolve_active_project_presentation_authorities():
+        if not project_authority.exists():
+            errors.append(f"missing project presentation authority: {project_authority}")
+            continue
+        project_text = project_authority.read_text(encoding="utf-8", errors="replace")
+        for label, pattern in PROJECT_PRESENTATION_STALE_PATTERNS.items():
+            if pattern in project_text:
+                errors.append(
+                    f"{label} in project presentation authority {project_authority}: {pattern}"
+                )
+
+    # Reference examples do not own rules, but they must not demonstrate retired
+    # visuals or stale semantics that can pull generation away from active authorities.
+    for filename, patterns in REFERENCE_REQUIRED_PATTERNS.items():
+        ref_path = PRESENTATIONS / filename
+        if not ref_path.exists():
+            errors.append(f"missing reference file: {filename}")
+            continue
+        ref_text = ref_path.read_text(encoding="utf-8", errors="replace")
+        for pattern in patterns:
+            if pattern not in ref_text:
+                errors.append(
+                    f"reference missing current regression pattern in {filename}: {pattern}"
+                )
+        for pattern in REFERENCE_STALE_PATTERNS.get(filename, ()):
+            if pattern in ref_text:
+                errors.append(f"stale reference pattern in {filename}: {pattern}")
 
     for group in ("validators", "references"):
         for filename in registry[group]:
