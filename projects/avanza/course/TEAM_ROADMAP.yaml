@@ -76,8 +76,14 @@ phases:
     critical: true
 
 current_phase:
-  week: "V3-V5"
-  name: "Produktion Sprint 1-3"
-  started: "2026-08-31"
-  ends: "2026-09-18"
-  next_deadline: "2026-09-24 (CTO-underlag)"
+  resolution: "dynamic"
+  rule: >
+    Resolve the current phase from the target/request date against project_period
+    and phases[].dates. Do not reuse a stored phase label after its date interval
+    has ended.
+  target_date: null
+  resolved_week: null
+  resolved_phase: null
+  next_deadline:
+    resolve_via: "projects/avanza/course/MILESTONES.yaml -> nearest verified future milestone"
+
