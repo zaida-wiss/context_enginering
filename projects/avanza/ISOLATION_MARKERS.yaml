@@ -5,7 +5,7 @@ metadata:
   type: project_validation_config
   project: avanza
   status: active
-  version: 1.0
+  version: 1.1
 ---
 
 project_root: "projects/avanza"
@@ -27,6 +27,17 @@ markers:
   - "Henrik"
   - "Pär"
   - "Björn"
+  - "Chas"
+  - "Team 1"
+  - "portfolio-API"
+  - "portfolio-endpoint"
+  - "GET /api/portfolio"
+  - "PUT /api/allocation"
+  - "VITE_USE_MOCK"
+  - "frontend/#82-use-portfolio"
+  - "frontend/#83-save-allocation"
+  - "01_login.webp"
+  - "NewMockup01.jpg"
 
 allowed_outside_project_root:
   - path: "PROJECTS.yaml"
