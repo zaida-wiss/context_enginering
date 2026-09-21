@@ -1210,6 +1210,70 @@ def main():
         "Avanza ordinary card pages can silently regress to 2×3 or another grid",
     ))
 
+    print("\nINVARIANT 31: Deterministic Context Placement Governance")
+    ok = True
+    try:
+        registry = read_text("CONTEXT_REGISTRY.yaml")
+        routing = read_text("_ai_guides/context/CONTEXT_ROUTING.yaml")
+        placement = read_text("_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml")
+        readme = read_text("README.md")
+
+        required_registry = (
+            "context_placement:",
+            "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml",
+            "context_ingestion:",
+            "emit a user-visible placement receipt before canonical mutation",
+        )
+        if not all(token in registry for token in required_registry):
+            print("❌ context registry does not register the exact-placement contract/task")
+            ok = False
+
+        required_routing = (
+            "split mixed input into atomic information units",
+            "resolve exact canonical owner + exact file through CONTEXT_PLACEMENT_CONTRACT",
+            "emit placement receipt to user",
+        )
+        if not all(token in routing for token in required_routing):
+            print("❌ context router can write without exact placement resolution")
+            ok = False
+
+        required_contract = (
+            "Placement hierarchy",
+            "Atomic-information rule",
+            "Destination matrix",
+            "New capability gate",
+            "Placement receipt — mandatory before mutation",
+            "Clarification gate",
+            "Propagation contract",
+            "canonical_write_without_exact_owner_count > 0",
+            "canonical_write_without_exact_target_count > 0",
+            "mixed_input_unsplit_count > 0",
+            "new_canonical_file_unregistered_count > 0",
+            "placement_receipt_missing_before_canonical_mutation_count > 0",
+        )
+        if not all(token in placement for token in required_contract):
+            print("❌ exact-placement contract is missing deterministic ownership/routing protections")
+            ok = False
+
+        readme_required = (
+            "CONTEXT_PLACEMENT_CONTRACT.yaml",
+            "Mixed user text is split into separate information units before routing.",
+            "exact target file",
+        )
+        if not all(token in readme for token in readme_required):
+            print("❌ repository entrypoint does not explain deterministic placement behavior")
+            ok = False
+
+    except Exception as exc:
+        print(f"❌ context placement governance inspection failed: {exc}")
+        ok = False
+
+    checks.append(result(
+        ok,
+        "new information resolves scope, semantic owner, exact target and propagation before canonical writes",
+        "AI can still place new context ambiguously or create unregistered canonical destinations",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
