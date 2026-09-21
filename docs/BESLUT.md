@@ -1,36 +1,28 @@
 ---
 name: decisions_index
-description: Index of team decisions (actual decisions in docs/decisions/*.md)
+description: Index and storage guidance for global framework decisions
 metadata:
-  format: "One decision per file with YAML frontmatter"
+  type: reference
   canonical_path: "docs/decisions/"
-  updated: 2026-09-16
+  updated: 2026-09-21
 ---
 
-# BESLUT — Team 1
+# Global framework decisions
 
-Denna fil är ett **INDEX** för teamets officiella beslut.
+This directory stores decisions about the reusable context-engineering framework.
 
-**Alla verkliga beslut lagras i separata filer under [`docs/decisions/`](decisions/).**
+Project-specific decisions belong under the selected project root, for example:
 
-## Varför denna struktur?
+```text
+projects/<project-id>/decisions/
+```
 
-- **En fil per beslut** = enkel uppdatering, versionshantering, och merge-konflikthantering
-- **Maskinläsbar format** = alla AI-agenter tolkar YAML-frontmatter på samma sätt
-- **Typ-säker** = DATA_ACQUISITION läser direkt från `docs/decisions/` utan att behöva tolka många frontmatter-block i samma fil
+Global decision files must remain project-neutral. They may use placeholders such
+as `{TEAM_NAME}`, `{PRIMARY_BRANCH}` or synthetic `Team A`, but must not
+contain real project names, people, repositories, branches, deadlines, course
+facts or product-domain examples.
 
-## Aktuella beslut
-
-| Beslut-ID | Titel | Decision Date | Status |
-|-----------|-------|---------------|--------|
-| `frontend-test-strategy` | [Teststrategi — Vitest + RTL](decisions/frontend-test-strategy.md) | 2026-09-15 | ✓ confirmed |
-| `review-is-work` | [Review som arbetsstatus](decisions/review-is-work.md) | 2026-09-15 | ✓ confirmed |
-
-## Lägg till nytt beslut
-
-Skapa ny fil i `docs/decisions/` med namn `<decision-id>.md`:
-
-**Exempel-template:**
+## Decision file shape
 
 ```markdown
 ---
@@ -40,31 +32,17 @@ updated_date: YYYY-MM-DD
 status: confirmed
 ---
 
-# [Beslutets namn]
+# [Decision name]
 
-## Beslut
-[Vad beslutades - en eller två meningar]
+## Decision
+[Reusable framework decision]
 
-## Påverkan
-[Varför detta spelar roll för framtida arbete]
+## Impact
+[How reusable behavior changes]
 ```
 
-**Regler:**
-- `id`: slug-format (lowercase, hyphens) — måste matcha filnamnet
-- `decision_date`: när beslut fattades
-- `updated_date`: när beslut senast uppdaterades
-- `status`: `confirmed` (eller `proposed` om under diskussion)
-
-## Integration med presentation
-
-DATA_ACQUISITION_CONTRACT läser alla `docs/decisions/*.md` filer och:
-- Filtrerar på `decision_date` / `updated_date` för rapportperiod
-- Exkluderar filer med `status: proposed` (inte bekräftade än)
-- Visar upp till 4 beslut i presentation Slide ①E
-
-Se [`CONTEXT_ROUTING.yaml`](../_ai_guides/context/CONTEXT_ROUTING.yaml) för hur man klassificerar nytt innehål.
+Project decision indexes and project presentation consumers resolve through the
+selected project's manifest/context rather than this global index.
 
 ---
-
-**Status:** ACTIVE  
-**Last synced with DATA_ACQUISITION_CONTRACT.yaml:** 2026-09-16
+status: ACTIVE
