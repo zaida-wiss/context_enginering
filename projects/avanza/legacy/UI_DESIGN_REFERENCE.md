@@ -7,7 +7,7 @@ metadata:
   status: retired_non_authority
 ---
 
-> RETIRED NON-AUTHORITY — historical design snapshot only. Current tasks resolve project design through the project manifest.
+> ARCHIVED · NOT GENERIC FRAMEWORK AUTHORITY · RETIRED NON-AUTHORITY — historical design snapshot only. Current tasks resolve project design through the project manifest.
 
 # 🎨 UI Design Reference - Portföljhälsa
 
