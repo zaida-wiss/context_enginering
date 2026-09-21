@@ -1511,6 +1511,52 @@ def main():
         "repository paths can still be moved without updating all affected consumers",
     ))
 
+    print("\nINVARIANT 34: Positive-First AI Instruction Authoring")
+    ok = True
+    try:
+        framework = read_text("_ai_guides/AI_FRAMEWORK.yaml")
+        guide = read_text("_ai_guides/AI_FRAMEWORK.md")
+
+        required_framework = (
+            "instruction_authoring_standard:",
+            "desired_state_first",
+            "positive_execution_path_before_prohibition",
+            "hierarchy_before_exception_lists",
+            "explicit_owner_scope_and_destination",
+            "authoring_order:",
+            "desired_state",
+            "execution_sequence",
+            "output_or_completion_contract",
+            "validation_and_failure_signals",
+            "negation_policy:",
+            "rewrite_negative_only_rules_into_positive_execution_paths_where_safe",
+            "hard_prohibitions_limited_to_material_boundaries",
+            "examples_show_correct_behavior_first",
+            "project_specific_examples_absent_from_global_ai_instructions",
+        )
+        if not all(token in framework for token in required_framework):
+            print("❌ global AI framework lacks the positive-first instruction-authoring contract")
+            ok = False
+
+        required_guide = (
+            "Writing AI instructions: positive, hierarchical and executable",
+            "desired behavior first",
+            "Resolve scope → resolve owner → resolve target → execute → propagate → validate.",
+        )
+        if not all(token in guide for token in required_guide):
+            print("❌ human AI-framework guide does not explain the positive-first hierarchy")
+            ok = False
+
+    except Exception as exc:
+        print(f"❌ positive-first instruction-authoring inspection failed: {exc}")
+        ok = False
+
+    checks.append(result(
+        ok,
+        "AI-facing rules describe desired state, hierarchy, execution order and validation before relying on prohibitions",
+        "AI instructions can regress into negative-only rule accumulation or ambiguous execution semantics",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
