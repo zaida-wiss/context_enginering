@@ -11,7 +11,7 @@ They verify model behavior, not only repository structure.
 
 ### Prompt
 
-> Jag jobbar i frontend och ska börja använda ett nytt portfolio-API. Hjälp mig
+> Jag jobbar i frontend och ska börja använda ett nytt resource-API. Hjälp mig
 > med koden och kontrollera om det finns något i backend/native eller på aktiva
 > brancher som jag behöver stämma av innan jag bygger vidare.
 
@@ -55,7 +55,7 @@ Expected:
 
 ### Prompt B — API contract change
 
-> Skapa en issue för att ändra portfolio-endpointens response-format.
+> Skapa en issue för att ändra resource-endpointens response-format.
 
 Expected:
 - contract/dependency section
