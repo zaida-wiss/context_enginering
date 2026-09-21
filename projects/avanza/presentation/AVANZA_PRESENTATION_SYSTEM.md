@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.6
+version: 1.7
 status: active
 scope: projects/avanza
 ---
@@ -39,22 +39,53 @@ Presentation rules may influence selection, ordering, status labels, symbols and
 layout. They may not become the subject of the meeting deck unless the requested
 meeting itself is about the presentation framework.
 
+## 0A. Symbol layer is semantic content
+
+Canonical symbols are part of the information architecture and survive every
+simplification, refactor and render pass.
+
+Required symbol classes include:
+- `📅` schedule/course facts
+- `👥 ✅` meeting-protocol facts
+- `✅` verified team facts
+- `🔎` AI analysis
+- `⭐` AI proposal
+- `⚠` source uncertainty
+- `📌` waiting PR
+- `🔗` dependency/cross-team
+- project team symbols from `TEAM_VISUAL_IDENTITY.yaml`
+
+A symbol may be rendered with a symbol-capable font or as a native/vector icon,
+but its meaning must remain visible in the exported PDF. Symbol loss is a render
+failure, not an acceptable visual simplification.
+
+For cards with provenance meaning, keep the inline symbol at the relevant content
+block and the matching symbol + text in the card-bottom provenance row as defined
+by the global provenance authority.
+
 ## 0B. Team colors and criticality are separate semantic layers
 
 Use `projects/avanza/design/TEAM_VISUAL_IDENTITY.yaml` for team identity:
-- Frontend = turquoise accent
-- Backend = pink accent
-- Native/System = purple accent
-- Cross-team = neutral/slate accent plus explicit text `Cross-team`
+- Frontend = turquoise accent + `🖥`
+- Backend = pink accent + `🗄`
+- Native/System = purple accent + `⚙`
+- Cross-team = orange accent + `🔗`
 
-Team color identifies ownership only. It never carries urgency.
-
-Urgency/criticality uses a separate status layer with symbol + text + color:
+Team identity uses a stable visual pair: **team accent + team symbol**.  
+Criticality is a separate layer:
 - `🔴 Kritisk` = blocks deadline/demo/core flow or requires decision now
 - `🟠 Viktig` = affects current sprint or unlocks another team soon
 - `🟢 Stabil` = useful/trackable but not currently blocking
 
-If both team and criticality are needed, show both layers: team accent on the card edge and a textual criticality chip/line inside the card.
+On a dedicated team slide, the slide header already names the team. Cards therefore
+use the team accent and symbol without repeating `Frontend`, `Backend` or
+`Native/System` as ordinary card text.
+
+On mixed-team slides, each card uses the team symbol + accent and the slide contains
+a compact legend mapping symbols to teams. This supplies a non-color cue without
+repeating the full team name inside every card.
+
+Criticality always uses symbol + text + color and remains independent of team identity.
 
 ## 0C. Collection-branch completion semantics
 
@@ -268,8 +299,15 @@ documented goal unrealistic or internally inconsistent, show the mismatch and
 the decision needed. AI proposals remain explicitly proposals.
 
 ### ⑫ Sprintplan
-Use chronological plan structure. Make dependency order, fallback work,
-availability, grounded capacity and risk-driven sequencing visible.
+Use a chronological **project-work** plan structure for eligible project days only.
+Make dependency order, fallback work, availability, grounded capacity and
+risk-driven sequencing visible.
+
+For Avanza, Friday is a registered non-project day and is therefore omitted entirely
+from the sprint-plan sequence. Do not render a Friday card, empty Friday slot,
+disabled Friday column or Friday project placeholder. Friday may still appear on
+course-schedule/timeline slides when relevant as course context, but it is not part
+of project sprint planning.
 
 The plan must remain consistent with the sprint goal and execution order from ⑨.
 Do not manufacture a daily timetable where the project sources provide no such
