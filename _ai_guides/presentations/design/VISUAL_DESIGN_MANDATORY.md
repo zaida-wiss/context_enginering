@@ -5,7 +5,7 @@ metadata:
   type: process
   critical: true
   required_before: rendering
-  version: 5.9
+  version: 6.0
 ---
 
 # 🎨 VISUAL DESIGN MANDATORY
@@ -143,16 +143,15 @@ own authority rules.
 
 | Element | Hex | Role |
 |---|---|---|
-| Slide background — upper tone | `#1E274A` | modern navy field; never black |
-| Slide background — lower tone | `#111A33` | deeper navy field; never black |
-| Card surface | `#263352` | frosted-glass primary tint |
-| Alternate card surface | `#2E3B5F` | optional frosted-glass variation |
-| Glass highlight / border | `#60769B` | subtle luminous separation, non-semantic |
-| Meaningful neutral divider | `#91A0BC` | structural meaning when needed |
-| Main text | `#F7FAFF` | titles / primary content |
-| Secondary text | `#D8E2F2` | supporting information |
-| Metadata text | `#C3D0E3` | metadata |
-| Quiet microcopy/timestamp | `#B9C6DA` | tertiary content, still WCAG-safe |
+| Slide background | `#0F1830` | canonical deep navy canvas |
+| Card surface | `#18233D` | canonical dark glass/navy surface |
+| Alternate card surface | `#202C47` | optional dark glass variation |
+| Glass highlight / border | `#64748B` | subtle separation, non-semantic |
+| Meaningful neutral divider | `#64748B` | structural meaning when needed |
+| Main text | `#FFFFFF` | titles / primary content |
+| Secondary text | `#CBD5E1` | supporting information |
+| Metadata text | `#94A3B8` | metadata |
+| Quiet microcopy/timestamp | `#8290A7` | tertiary content, only when WCAG-safe |
 
 ### Four-level text-color hierarchy
 
@@ -187,46 +186,40 @@ on school/submission cards, while the underlying five meanings remain mandatory.
 
 ### Background rendering contract — mandatory
 
-The canonical background is a **modern rounded glass-look navy field**, never
-black, charcoal-black or near-black.
+The canonical background is the same stable deep navy canvas used by the preserved
+Monday-meeting layout in `main`.
 
 Canonical background treatment:
-- use a restrained navy gradient from approximately `#1E274A` to `#111A33`;
-- the lighter `#1E274A` tone should remain visible enough that the deck reads as
-  blue/navy rather than almost black;
-- the darker `#111A33` tone provides depth but must not dominate the entire slide;
-- the gradient may be linear or softly radial, but must remain calm and low-glare.
+- slide background is `#0F1830`;
+- the same background color is used throughout the deck unless a future explicit
+  design decision changes the global authority;
+- do not introduce a lighter/darker gradient that changes the perceived deck
+  identity;
+- glass depth belongs in cards and subtle shadows, not by changing the slide
+  background from slide to slide.
 
 Required behavior:
-- the rendered slide must visibly read as **blue/navy**, not neutral black;
-- tonal variation stays subtle and non-semantic;
-- cards remain visually distinct from the background while preserving WCAG contrast;
-- if an implementation cannot render the gradient reliably, fall back to a solid
-  navy sampled from the canonical range, preferably `#18213E`; never fall back to black;
-- no rendered slide may use `#15182E` as a hard lock if doing so makes the result
-  visually darker than the approved modern navy range.
+- every slide reads as the same deep navy;
+- cards remain visually distinct using the `#18233D` / `#202C47` family,
+  transparency, subtle edge and shadow;
+- main text is `#FFFFFF`;
+- secondary text is `#CBD5E1`;
+- metadata is `#94A3B8`;
+- quiet microcopy/timestamps may use `#8290A7` only when actual rendered contrast
+  passes WCAG 2.2 AA.
 
 Forbidden:
-- `#000000` or visually black slide backgrounds;
-- charcoal/graphite fields that read as black;
-- black-to-navy gradients;
-- high-glare neon/bright gradients;
-- decorative texture that reduces text legibility.
+- black or near-black replacement backgrounds;
+- per-slide background color changes;
+- decorative gradients that materially alter the canonical `#0F1830` appearance;
+- black/near-black text on the dark background or dark cards;
+- lowering text opacity enough to weaken contrast.
 
 Palette rules:
-- same modern navy/glass family across the entire deck;
-- no black/high-glare cards;
-- transparency must preserve contrast;
-- actual rendered colors must pass WCAG 2.2 AA;
-- normal text contrast must be >= **4.5:1**;
-- WCAG large text contrast must be >= **3:1**;
-- on dark/navy cards and slide backgrounds, primary/secondary/metadata text must
-  use the approved light palette roles; **black or near-black text is forbidden**;
-- dark text is permitted only on an explicitly light surface where the resulting
-  contrast independently passes WCAG;
-- when a text-color choice is ambiguous on a dark surface, use the approved light
-  text role rather than a dark neutral;
-- priority must never be communicated by color alone; size/weight/spacing and labels support the hierarchy
+- use the same navy/text family across the complete deck;
+- team/status colors remain accents, never replacements for text color;
+- color never carries meaning alone;
+- actual rendered colors must pass WCAG 2.2 AA.
 
 ---
 
