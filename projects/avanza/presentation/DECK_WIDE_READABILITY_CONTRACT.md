@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_render_contract
-version: 1.0
+version: 1.1
 status: active
 scope: projects/avanza/presentation
 ---
@@ -16,15 +16,15 @@ Every delivered Avanza meeting slide must be readable as a PDF screenshot at nor
 
 ## Minimum rendered text sizes
 
-For Avanza meeting decks:
+For Avanza meeting decks, use presentation-readable sizes across the whole deck:
 
-- cover title: 40 pt preferred, 36 pt minimum
+- cover title: 42 pt preferred, 38 pt minimum
 - meeting-point header: 34 pt preferred, 32 pt minimum
-- subtitle: 18 pt preferred, 16 pt minimum
-- card/node title: 20 pt preferred, 18 pt minimum
-- body text: 16 pt preferred, 15 pt minimum
-- metadata/owner/source inside card: 13 pt preferred, 12 pt minimum
-- footer/source text: 10 pt preferred, 9 pt minimum
+- subtitle: 20 pt preferred, 18 pt minimum
+- card/node title: 22 pt preferred, 20 pt minimum
+- body text: 18 pt preferred, 17 pt minimum
+- metadata/owner/source inside card: 14 pt preferred, 13 pt minimum
+- footer/source text: 11 pt preferred, 10 pt minimum
 
 Any generated text below these minima is a render failure unless it is a non-user-facing hidden artifact, which must not be delivered.
 
@@ -38,7 +38,7 @@ If text does not fit at the readable minimums:
 3. split into continuation slides;
 4. use a less dense special structure.
 
-Never solve fit by overlapping text, reducing line spacing below 1.15, or letting a card/node keep fixed dimensions while text grows inside it.
+Never solve fit by overlapping text, reducing line spacing below 1.15, shrinking text below the deck-wide minima, or letting a card/node keep fixed dimensions while text grows inside it.
 
 ## Universal overlap rule
 
