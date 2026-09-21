@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.6
+  version: 5.7
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -247,6 +247,8 @@ Required:
 point_1_separate_wip_slide_count == 0
 point_1_verified_collection_merge_without_own_slide_count == 0
 point_1_unverified_collection_activity_presented_as_merge_count == 0
+point_1_ordinary_direct_commit_on_merged_slide_count == 0
+verified_direct_collection_activity_dropped_from_later_status_count == 0
 point1_expected_3x2_not_attempted_count == 0
 point1_3x2_used_below_five_cards_without_reason_count == 0
 card_gap_below_required_minimum_count == 0
@@ -256,8 +258,11 @@ card_gap_below_required_minimum_count == 0
 - the selected project's registered primary-integration subtitle, every registered collection-branch subtitle, and `Teamsammanfattning` are subtitles only
 - every primary-integration page, including continuations, uses the exact subtitle registered by the selected project's repository-flow config; generic replacement subtitles are forbidden
 - every collection branch registered by the selected project's repository-flow config gets its own physical slide sequence after the primary integration sequence, in registered project order, using its registered exact subtitle; use a verified empty/incomplete state when needed
-- collection-branch slide inclusion is decided from verified merge evidence for that target branch in the sprint interval; ordinary direct commits/branch activity are not relabeled as merges
-- if a collection branch has relevant direct work but no verified merge, that work may inform later active-work/planning slides but does not create a false `Mergat till ...` point-1 slide
+- collection-branch slide inclusion is decided from verified merge-event evidence for that target branch in the sprint interval; ordinary one-parent direct commits are not relabeled as merges
+- a verified target-branch merge commit may qualify as merge evidence even without a PR when the merge event itself is proven
+- ordinary one-parent direct commits are forbidden as detailed cards on `Mergat till ...` slides
+- if a collection branch has relevant ordinary direct work but no verified merge event, that activity must be routed to the owning team's points 3–5 status/planning content; when concrete partial value exists it may also support `Påbörjat men inte avklarat` in the team summary
+- direct collection-branch activity may not be dropped merely because it is excluded from point 1
 - collection-branch merges may not be folded into the primary-integration sequence when the selected project's repository-flow rule requires a separate sequence pages or only mentioned in the team summary
 - no page-specific subtitle may replace the official meeting-point heading
 - detailed cards in meeting point 1 contain completed work only
