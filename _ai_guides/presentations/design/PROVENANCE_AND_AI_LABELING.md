@@ -5,7 +5,7 @@ metadata:
   type: design-and-content-integrity
   critical: true
   required_before: rendering
-  version: 1.4
+  version: 1.5
 ---
 
 # 🏷️ PROVENANCE & AI LABELING STANDARD
@@ -134,6 +134,11 @@ Never silently convert unclear origin into fact.
 
 ## 2. ICON SEMANTICS — HARD RULE
 
+Canonical symbols are semantic content, not decoration. Layout simplification,
+density reduction, refactoring and export may change placement but may not remove
+the symbol layer. If a symbol-bearing block survives, its canonical symbol survives
+with it.
+
 Use the icons consistently across the whole deck:
 
 - `📅` = verified schedule fact
@@ -217,6 +222,8 @@ rendered_missing_glyph_count == 0
 rendered_replacement_glyph_count == 0
 canonical_symbol_render_mismatch_count == 0
 canonical_symbol_ascii_transliteration_count == 0
+canonical_symbol_missing_after_simplification_count == 0
+canonical_symbol_missing_in_export_count == 0
 waiting_pr_pushpin_missing_before_identifier_count == 0
 waiting_pr_bottom_pushpin_label_missing_count == 0
 ```
