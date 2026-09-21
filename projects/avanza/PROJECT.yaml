@@ -1,7 +1,7 @@
 ---
 name: avanza_project_context
 description: Canonical manifest for Avanza-specific project context
-version: 1.2
+version: 1.3
 metadata:
   type: project_manifest
   project: avanza
@@ -47,6 +47,8 @@ context:
       path: "projects/avanza/presentation/VISIBLE_CONTENT_BOUNDARY.md"
     dependency_map_readability:
       path: "projects/avanza/presentation/DEPENDENCY_MAP_READABILITY.md"
+    deck_wide_readability:
+      path: "projects/avanza/presentation/DECK_WIDE_READABILITY_CONTRACT.md"
   design:
     team_visual_identity:
       path: "projects/avanza/design/TEAM_VISUAL_IDENTITY.yaml"
