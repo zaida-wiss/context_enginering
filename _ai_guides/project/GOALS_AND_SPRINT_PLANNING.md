@@ -65,7 +65,7 @@ helps distinguish activity from progress.
 
 ### 1. Explicit sprint planning source
 
-Resolve the registered conditional source `GOOGLE_SPRINT_PLANNING`.
+Resolve the selected project's registered sprint-planning source.
 
 When the selected project's registered sprint-planning source is available
 according to that source registry's own discovery rule, use it as the primary
