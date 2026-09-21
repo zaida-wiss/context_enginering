@@ -6,7 +6,7 @@ metadata:
   critical: false
   status: active
   normative: false
-  version: 1.2
+  version: 1.3
 ---
 
 # GLOBAL AI FRAMEWORK — HUMAN GUIDE
@@ -56,6 +56,31 @@ pattern first and remain synthetic/project-neutral at global scope.
 
 The normative contract is
 `AI_FRAMEWORK.yaml -> instruction_authoring_standard`.
+
+## Contradiction preflight before changing AI rules
+
+Before adding or changing a durable AI instruction, compare its required outcome
+with the active authorities that govern the same behavior.
+
+Classify the relationship as:
+- compatible extension;
+- duplicate/overlap that should be consolidated;
+- genuine conflict.
+
+A genuine conflict means both active rules cannot be satisfied at the same time.
+
+When that happens, notify the user **before repository mutation**. Show:
+- the proposed rule;
+- the existing conflicting rule;
+- the owning file for each;
+- the exact outcomes that collide;
+- the practical consequence of choosing either direction.
+
+Then wait for the user's decision before changing either authority.
+
+This conflict gate works together with the positive-first authoring standard:
+clear desired states make contradictions easier to detect than long collections
+of negative rules.
 
 ## Context-first correction
 
