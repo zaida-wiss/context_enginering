@@ -934,7 +934,9 @@ def main():
             "Without explicit approval, the global design wins by default.",
             "Meeting point 1 — standard 3×2 work-card grid",
             "Meeting points 3–5 — standard 3×2 team/workstream grid",
-            "the grid/slot geometry registered by the active project presentation authority; when none is registered, a readability-safe responsive grid;",
+            "the active global geometry baseline from `VISUAL_DESIGN_MANDATORY.md`",
+            "project-specific geometry only through the registered project authority",
+            "explicit conflict/override gate when it differs from the global baseline",
             "design fidelity is part of fit",
         )
         if not all(token in joined_global for token in global_required):
