@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.5
+version: 1.6
 status: active
 scope: projects/avanza
 ---
@@ -20,6 +20,69 @@ effective.
 
 Global authorities also continue to own WCAG/accessibility, source integrity,
 overflow safety, evidence semantics and conflict handling.
+
+## 0. Content boundary — what may become visible meeting text
+
+User-facing Avanza slides may contain only:
+- verified Avanza project facts from registered project sources;
+- verified course/schedule/deadline facts from registered course sources;
+- verified team/person/branch/PR/commit/review facts from GitHub or registered team sources;
+- explicitly labelled `🔎 AI-analys` when the slide needs analysis for a meeting decision;
+- explicitly labelled `⭐ AI-förslag` when the slide needs a suggested action/question.
+
+Framework text is control input, not slide content. Do not render phrases such as
+`hierarki`, `debug`, `QA`, `renderkontroll`, `dev-regler`, `versionen bygger på`,
+`content boundary`, `whitespace är bättre än fejdata`, or similar process notes as
+ordinary meeting content.
+
+Presentation rules may influence selection, ordering, status labels, symbols and
+layout. They may not become the subject of the meeting deck unless the requested
+meeting itself is about the presentation framework.
+
+## 0B. Team colors and criticality are separate semantic layers
+
+Use `projects/avanza/design/TEAM_VISUAL_IDENTITY.yaml` for team identity:
+- Frontend = turquoise accent
+- Backend = pink accent
+- Native/System = purple accent
+- Cross-team = neutral/slate accent plus explicit text `Cross-team`
+
+Team color identifies ownership only. It never carries urgency.
+
+Urgency/criticality uses a separate status layer with symbol + text + color:
+- `🔴 Kritisk` = blocks deadline/demo/core flow or requires decision now
+- `🟠 Viktig` = affects current sprint or unlocks another team soon
+- `🟢 Stabil` = useful/trackable but not currently blocking
+
+If both team and criticality are needed, show both layers: team accent on the card edge and a textual criticality chip/line inside the card.
+
+## 0C. Collection-branch completion semantics
+
+For meeting point 1, each registered delivery target owns its own completed-work page.
+
+Primary integration branch (`develop`):
+- completed evidence = verified merge to `develop` during the active interval.
+
+Collection branches such as `Java-Development-Environment` and `C/C++-Native`:
+- completed-on-that-branch evidence = any verified merge, rebase result, or direct commit/push that lands on the collection branch during the active interval;
+- a PR into `develop` is not required for the collection-branch page;
+- work shown on a collection-branch page must clearly state the target branch and evidence type: `merge`, `rebase`, `direct commit` or `branch push`;
+- once it is on that collection branch, it is considered avklarat for that branch page even if not yet merged onward to `develop`.
+
+Collection branch work must never disappear merely because it lacks a PR to `develop`.
+
+## 0D. Mandatory bottom fields for meeting point 1 cards
+
+For every completed-work card in meeting point 1, preserve the following fields when evidence exists:
+- developed/assigned by: first name or verified GitHub login mapped to first name when available;
+- delivered by / commit author when no PR exists;
+- merged by when the evidence is a PR merge or merge commit;
+- approved/reviewed by when an APPROVED review exists;
+- latest relevant delivery time: PR open, commit, push, merge or collection-branch landing time;
+- target branch;
+- evidence type: PR merge, merge commit, rebase/direct commit, branch push.
+
+If a field is unavailable, leave that specific field as unknown or omit only that field. Do not omit the whole bottom zone and do not replace unknown people with guesses.
 
 ## 1. Inherited visual identity — global default used by Avanza
 
@@ -83,6 +146,9 @@ meeting point is a generic grid.
 - other points may use a documented special structure only when that structure
   communicates the information more clearly than the ordinary six-slot page
 
+Special structures outrank the generic card renderer. A timeline, dependency map,
+vertical sequence or sprint plan must never be flattened into ordinary 3×2 cards.
+
 ## 5. Meeting-point narrative contract
 
 ### ① Avklarat sedan förra mötet
@@ -90,6 +156,10 @@ Completed work only in detailed work cards.
 Keep separate subtitles/pages for relevant collection branches such as develop,
 Java-Development-Environment and C/C++-Native, followed by team summary.
 Do not turn the page subtitle into the meeting-point title.
+
+For collection branches, show every verified branch landing event as completed on
+that branch even without a PR to `develop`. Include direct commit/rebase/branch push
+evidence when that is the actual delivery path.
 
 ### ② Nuläge och deadlines
 Show the full registered course/project chronology, not only the current week.
@@ -299,6 +369,10 @@ simplification.
 Before delivery, inspect the rendered output, not only source code.
 
 Avanza-specific failures include:
+- visible AI/framework instructions as ordinary meeting content
+- team colors not matching `TEAM_VISUAL_IDENTITY.yaml`
+- criticality shown only by color or mixed with team-color identity
+- collection-branch landing events omitted because they lack PRs to `develop`
 - visually black/charcoal background
 - lost glass/rounded card treatment
 - decorative overlay crossing text
