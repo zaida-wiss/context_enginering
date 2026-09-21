@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.7
+  version: 5.8
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -12,6 +12,44 @@ metadata:
 A presentation may be delivered only when both data integrity and the actual rendered artifact pass.
 
 This checklist validates existing authorities. It must not redefine their rules.
+
+## Executable artifact audit — mandatory
+
+The checklist is not sufficient by itself. Run the repository validator on the
+actual artifact before delivery:
+
+```bash
+python _audit/rendered_presentation_audit.py deck.pptx --pdf deck.pdf --project <selected_project_id>
+```
+
+When the deliverable is PDF-only, validate the PDF directly. When both PPTX and
+PDF exist, validate both so source-geometry and export/render defects are both
+covered.
+
+Required:
+
+```text
+rendered_artifact_audit == PASS
+rendered_artifact_audit_fail_count == 0
+```
+
+The executable validator currently performs mechanical checks for:
+- explicit PPTX/PDF text below hard minimums;
+- meeting-point title size;
+- visible replacement/missing glyphs;
+- circled meeting-point numbering regression;
+- card overlap and too-small card gaps;
+- 3×2 card geometry for points 1 and 3–5 when 5–6 ordinary cards exist;
+- Avanza card expansion into reserved empty slots when project context is supplied;
+- selectable text in exported PDF;
+- material PDF text-block overlap;
+- rendered background/gradient/fallback proxies;
+- rendered text contrast proxies where local background sampling is reliable;
+- NPF title-zone positional consistency across slides.
+
+Manual inspection remains required for semantics and visual qualities that cannot
+yet be measured reliably (for example whether a glass effect feels visually
+balanced or whether five-second scan hierarchy is cognitively clear).
 
 Authority order:
 1. `SYSTEM_CONTRACT.yaml`
@@ -808,6 +846,7 @@ PROVENANCE_AND_AI_LABELING == PASS
 OVERFLOW_AND_COLLISION == PASS
 DEPENDENCY_AWARE_PLAN == PASS
 ACTUAL_RENDER_INSPECTION == PASS
+RENDERED_ARTIFACT_AUDIT == PASS
 ```
 
 If any gate fails:
