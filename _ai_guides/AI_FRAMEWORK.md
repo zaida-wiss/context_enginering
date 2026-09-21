@@ -6,7 +6,7 @@ metadata:
   critical: false
   status: active
   normative: false
-  version: 1.1
+  version: 1.2
 ---
 
 # GLOBAL AI FRAMEWORK — HUMAN GUIDE
@@ -18,6 +18,44 @@ If this guide and the YAML contract differ, the YAML file is the source of truth
 
 The framework applies to every AI task in this repository: coding, issues,
 planning, risk work, documentation, presentations, reviews and audits.
+
+## Writing AI instructions: positive, hierarchical and executable
+
+When AI-facing rules are updated, describe the **desired behavior first**.
+
+A strong instruction tells the model:
+- what action to take;
+- which authority owns the behavior;
+- which hierarchy or router resolves the next step;
+- in which order execution happens;
+- what a correct result looks like;
+- how completion is validated.
+
+Use hard prohibitions for material boundaries such as project isolation,
+destructive actions, genuine authority conflicts and data-integrity protection.
+For ordinary behavior, prefer a complete positive execution path over a growing
+list of negations.
+
+Preferred pattern:
+
+```text
+Resolve scope → resolve owner → resolve target → execute → propagate → validate.
+```
+
+Instead of accumulating:
+
+```text
+Do not put it here.
+Do not use that file.
+Do not forget this other case.
+```
+
+When a material AI instruction changes, improve the hierarchy, desired state and
+completion contract at the same time. Examples should demonstrate the correct
+pattern first and remain synthetic/project-neutral at global scope.
+
+The normative contract is
+`AI_FRAMEWORK.yaml -> instruction_authoring_standard`.
 
 ## Context-first correction
 
