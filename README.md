@@ -104,6 +104,7 @@ and converted into the closest accessible alternative instead.
 | How is the final artifact validated? | [`RENDER_GATE_CHECKLIST.md`](_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md) |
 | Where should new rules be placed? | [`DESIGN_AUTHORITY.md`](_ai_guides/presentations/design/DESIGN_AUTHORITY.md) + [`ARCHITECTURE.md`](_ai_guides/presentations/ARCHITECTURE.md) |
 | Where should newly supplied context/facts/rules be stored? | [`CONTEXT_PLACEMENT_CONTRACT.yaml`](_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml) + [`CONTEXT_ROUTING.yaml`](_ai_guides/context/CONTEXT_ROUTING.yaml) |
+| How are files/folders moved safely without breaking routing? | [`PATH_MIGRATION_PLAN.yaml`](_ai_guides/context/PATH_MIGRATION_PLAN.yaml) |
 
 Do not add competing rules outside the owning authority. Project facts are
 resolved through the selected project's manifest rather than embedded in these
