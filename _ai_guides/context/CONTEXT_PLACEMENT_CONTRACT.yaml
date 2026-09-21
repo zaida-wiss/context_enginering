@@ -4,7 +4,7 @@ description: Canonical contract for deciding exactly where new information belon
 metadata:
   type: governance
   critical: true
-  version: 1.0
+  version: 1.1
   scope: global
 ---
 
@@ -68,24 +68,61 @@ Resolve every incoming information unit through this hierarchy, in order:
 8. **Placement receipt**
    Present the resolved placement before mutation.
 
+## Project isolation boundary
+
+Project-specific information belongs under the selected project's registered
+`project_root`.
+
+This includes:
+- real project facts and examples;
+- product/domain terminology derived from a real project;
+- people and team-member identities;
+- real repository names, branch names, issue/PR IDs and source IDs;
+- course/customer/deadline material;
+- screenshots, mockups and other project assets;
+- project-grounded audit runs and project-specific decision records.
+
+Global locations such as `_ai_guides/`, `data/`, `docs/` and `_audit/`
+contain reusable rules, neutral templates, generic validators and **synthetic
+project-neutral examples only**.
+
+A global rule may refer to `selected project`, `{PROJECT_ROOT}`,
+`{TEAM_NAME}`, `{PRIMARY_BRANCH}` or synthetic Team A/Team B examples. It
+must not copy a real project's values into the global rule.
+
+Minimal project-registration pointers in the global project registry are allowed
+only when required to resolve the project's manifest. The project manifest
+remains the owner of project context.
+
+Each project may register a project-owned isolation-marker file. Global integrity
+validation loads that file dynamically and rejects marker leakage outside the
+project root and explicitly allowed minimal registry paths.
+
+When an existing leak is found:
+1. preserve useful project information by moving it under the project root;
+2. replace global examples with synthetic project-neutral examples;
+3. update paths/registries/consumers;
+4. add regression protection;
+5. validate before considering cleanup complete.
+
 ## Atomic-information rule
 
 A user-provided text is not assumed to belong in one file.
 
 Split mixed input into the smallest meaningful information units before routing.
 
-Example:
+Synthetic example:
 
 ```text
-"The CTO film is due Thursday at 16:00, Friday is not project work,
-and the sprint slide should omit Friday."
+"A course deliverable is due Thursday at 16:00, one weekday is unavailable for
+project work, and the project plan should omit that unavailable day."
 ```
 
 is three separate units:
 
-- course deadline -> project course/deadline owner
-- project working-time constraint -> project constraint owner
-- presentation behavior -> project presentation authority
+- course deadline -> selected-project course/deadline owner
+- project working-time constraint -> selected-project constraint owner
+- presentation behavior -> selected-project presentation authority
 
 Do not store the entire paragraph in one convenient file merely because the
 facts arrived together.
@@ -132,14 +169,14 @@ explicitly accepted as a durable rule/decision.
 
 For incoming rules, classify by what the rule governs.
 
-Examples:
+Synthetic/project-neutral examples:
 
 - "card body text must be at least X" -> card/readability authority, not slide-content file
-- "point 12 omits Friday for Avanza" -> Avanza presentation authority, grounded by project working-time constraint
-- "Friday is not project work" -> project constraint owner, not presentation authority
-- "team Frontend is turquoise" -> project visual identity
+- "a project plan omits a registered unavailable workday" -> selected-project presentation authority, grounded by its project constraint
+- "a registered weekday is unavailable for project work" -> selected-project constraint owner, not presentation authority
+- "Team A uses a project-owned accent" -> selected-project visual identity
 - "AI must ask before resolving a genuine conflict" -> global AI framework
-- "new course deadline is Thursday 16:00" -> course deadline data, not AI instruction
+- "a new course deadline is Thursday 16:00" -> selected-project course deadline data, not AI instruction
 
 A consumer file may reference the owner, but durable truth is written to the
 single semantic owner first.
@@ -207,8 +244,8 @@ For repository-writing workflows, the AI should normally state where the
 information will be placed before the write, for example:
 
 ```text
-Jag tolkar detta som en Avanza-specifik kursdeadline.
-Jag lägger den i projects/avanza/course/COURSE_DEADLINES.md.
+Jag tolkar detta som en projektspecifik kursdeadline.
+Jag lägger den i den valda projektmanifestets registrerade deadline-fil.
 Presentationer läser sedan värdet därifrån.
 ```
 
@@ -249,6 +286,10 @@ canonical_write_without_exact_owner_count > 0
 canonical_write_without_exact_target_count > 0
 mixed_input_unsplit_count > 0
 project_fact_written_to_global_dumping_domain_count > 0
+project_example_outside_project_root_count > 0
+project_identifier_in_global_ai_instruction_count > 0
+project_asset_outside_project_root_count > 0
+project_audit_outside_project_root_count > 0
 new_canonical_file_unregistered_count > 0
 genuine_conflict_silently_resolved_count > 0
 ambiguous_destination_written_without_clarification_count > 0
