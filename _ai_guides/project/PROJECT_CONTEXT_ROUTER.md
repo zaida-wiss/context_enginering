@@ -4,7 +4,7 @@ description: Generic router from a resolved project context to canonical task ow
 metadata:
   type: router
   status: active
-  version: 3.1
+  version: 3.2
 ---
 
 # Project context router
@@ -48,8 +48,14 @@ For a new project, use `../../projects/_template/README.md` and
 `../../projects/_template/PROJECT.yaml` as the global onboarding contract.
 
 Before writing newly learned information, classify it as either global reusable
-behavior or selected-project context. Project context goes to the narrowest
-registered project domain. Do not copy another project's folder contents as
+behavior or selected-project context. Exact placement follows
+`../context/CONTEXT_PLACEMENT_CONTRACT.yaml`. Project context goes to the
+narrowest registered project domain under the selected project's root.
+
+Real project facts, examples, people, branches, repository/source IDs, course
+material, screenshots/assets, project decisions and project-grounded audit
+records remain under that project root. Global AI guides and validators use only
+abstract routing language and synthetic project-neutral examples. Do not copy another project's folder contents as
 defaults, invent a new project folder ad hoc, or use `context/` as a dumping
 ground. If a genuinely new category recurs across projects, propose a generic
 contract/category.
@@ -75,4 +81,4 @@ Router order must never silently resolve it.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 3.1
+**Version:** 3.2
