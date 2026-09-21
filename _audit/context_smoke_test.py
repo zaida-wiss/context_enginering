@@ -451,7 +451,8 @@ def main():
     )
     require(
         "point 1 continuation letters do not define subsection meaning",
-        "point-1 subsection meaning comes from its canonical subtitle/verified merge target" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        "continuation slides preserve the same meeting-point header/subtitle" in read("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
+        and "continuation/subsection markers may be shown as secondary navigation" in read("_ai_guides/presentations/monday_meeting/design/SLIDE_DETAIL_SPEC.md")
         and "meeting point 1 + any continuation pages" in read("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md"),
         failures,
     )
