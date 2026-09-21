@@ -4,7 +4,7 @@ description: Canonical contract for deciding exactly where new information belon
 metadata:
   type: governance
   critical: true
-  version: 1.1
+  version: 1.2
   scope: global
 ---
 
@@ -104,6 +104,45 @@ When an existing leak is found:
 3. update paths/registries/consumers;
 4. add regression protection;
 5. validate before considering cleanup complete.
+
+## Path migration contract
+
+Moving or renaming a canonical/project-owned file is a routing change, not a
+filesystem-only action.
+
+Before a move, resolve:
+
+```yaml
+path_migration_receipt:
+  source: <exact existing path>
+  destination: <exact intended path>
+  semantic_owner: <manifest/registry capability>
+  source_exists: true
+  destination_parent_valid: true
+  destination_conflict: false
+  registered_consumers:
+    - <manifest/registry/reference>
+  action: <move | ask_user>
+```
+
+Migration order:
+
+1. verify the exact source path exists on the active ref;
+2. resolve the destination from the owning manifest/registry or approved new capability;
+3. verify the destination parent belongs to the same semantic owner;
+4. search for consumers of the old path;
+5. create/copy the destination and verify byte/text preservation where applicable;
+6. update manifest/registry/consumer references;
+7. verify the new path exists and is reachable through the owning manifest/registry;
+8. search again for the old path;
+9. delete the old path only after steps 5–8 pass;
+10. run integrity/smoke validation.
+
+For binary assets, preserve the existing blob when possible and verify the new
+tree path before removing the old tree entry.
+
+A move is incomplete while either the old canonical reference remains active or
+the new destination is not registered/resolvable.
 
 ## Atomic-information rule
 
@@ -290,6 +329,10 @@ project_example_outside_project_root_count > 0
 project_identifier_in_global_ai_instruction_count > 0
 project_asset_outside_project_root_count > 0
 project_audit_outside_project_root_count > 0
+path_move_without_verified_source_count > 0
+path_move_without_registered_destination_count > 0
+path_move_with_unupdated_consumer_count > 0
+old_path_deleted_before_new_path_verified_count > 0
 new_canonical_file_unregistered_count > 0
 genuine_conflict_silently_resolved_count > 0
 ambiguous_destination_written_without_clarification_count > 0
