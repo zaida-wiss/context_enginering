@@ -1,7 +1,7 @@
 ---
 name: team_visual_identity
 description: Canonical Avanza team labels and visual identity used in project-facing artifacts
-version: 1.1
+version: 1.2
 metadata:
   type: project_design_config
   project: avanza
@@ -59,9 +59,17 @@ usage:
     resolved from this configuration. Criticality must always use symbol + text +
     color together, never color alone.
   meeting_cards: >
-    Team color marks ownership/area. Criticality color marks urgency/risk. When
-    both are present, use team color as the narrow ownership accent and show
-    criticality as symbol + text inside the card.
+    Team color marks ownership/area and the registered team symbol supplies the
+    non-color cue. On dedicated team slides, do not repeat the team name inside
+    each card because the slide header already provides that text context. On
+    mixed-team slides, use team accent + team symbol and one compact legend for
+    the slide rather than repeating full team names inside every card. Criticality
+    color marks urgency/risk and always appears as symbol + text + color inside
+    the card.
+  symbol_persistence: >
+    Registered team symbols are semantic UI, not decoration. They must survive
+    generation, simplification and PDF export. Missing or substituted symbols are
+    render failures.
 
 ---
 status: ACTIVE
