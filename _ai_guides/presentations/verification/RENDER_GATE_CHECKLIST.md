@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.0
+  version: 6.1
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -48,7 +48,11 @@ The executable validator currently performs mechanical checks for:
 - rendered text contrast proxies where local background sampling is reliable;
 - NPF title-zone positional consistency across slides;
 - header/content-zone overlap in PPTX geometry;
-- repeated primary Latin font-family consistency across the deck.
+- repeated primary Latin font-family consistency across the deck;
+- internal QA/audit/render-control slide leakage;
+- connectors on meeting points that do not own connector-based structures;
+- small unlabeled debug/control marker shapes on ordinary meeting slides;
+- explicit low-contrast or overly transparent text on the dark presentation surfaces.
 
 Manual inspection remains required for semantics and visual qualities that cannot
 yet be measured reliably (for example whether a glass effect feels visually
@@ -160,6 +164,11 @@ card_system_inconsistency_count == 0
 slide_title_below_36pt_count == 0
 slide_title_shrunk_for_fit_count == 0
 body_text_below_role_minimum_count == 0
+internal_qa_slide_leaked_count == 0
+connector_on_non_special_slide_count == 0
+debug_marker_shape_count == 0
+explicit_text_contrast_failure_count == 0
+overtransparent_text_count == 0
 ```
 
 Manual visual checks:
@@ -196,6 +205,21 @@ Then verify that within approximately five seconds a viewer can identify:
 - provenance class when the slide mixes fact/analysis/proposal.
 
 Any failure → reduce density/emphasis, reflow or paginate and rerender.
+
+### Delivery-scope hygiene
+
+Required:
+
+```text
+internal_qa_slide_leaked_count == 0
+connector_on_non_special_slide_count == 0
+debug_marker_shape_count == 0
+```
+
+- internal audit, data-coverage, render-control or QA slides remain outside the user-facing deck;
+- ordinary card slides must not contain free connector arrows/lines;
+- connector-based visuals are restricted to meeting points whose active structure explicitly requires them;
+- construction dots, control handles and unlabeled debug markers are forbidden in delivered slides.
 
 ---
 
