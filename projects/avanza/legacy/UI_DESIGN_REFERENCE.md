@@ -3,8 +3,11 @@ name: ui_design_reference
 description: Manually maintained source guide derived from Avanza Portföljhälsa mockups
 metadata:
   type: manual_source
-  status: active
+  authority: false
+  status: retired_non_authority
 ---
+
+> RETIRED NON-AUTHORITY — historical design snapshot only. Current tasks resolve project design through the project manifest.
 
 # 🎨 UI Design Reference - Portföljhälsa
 
@@ -12,7 +15,7 @@ metadata:
 
 ## Mockup-Mappen
 
-**Sökväg:** `/context_enginering/_docs/`  
+**Sökväg:** `projects/avanza/design/mockups/`  
 **Format:** WebP-bilder (4 mockups från Avanza, ~75 KB totalt)  
 **Ansvarig:** Frontend-teamet
 
@@ -75,7 +78,7 @@ metadata:
 ```markdown
 Jag bygger Frontend för Avanza Portföljhälsa.
 
-Här är design-mockups från context_enginering/_docs/:
+Här är design-mockups från projects/avanza/design/mockups/:
 1. Login-sida
 2. Portföljöversikt (med varning när drift > 5%)
 3. Målallokering-form (60/40 allocation)
