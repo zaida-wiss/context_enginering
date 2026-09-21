@@ -5,10 +5,35 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.12
+  version: 1.13
 ---
 
 # 🎴 CARD COMPONENT STANDARD
+
+## Semantic symbol placement
+
+Symbols are part of the measured content layout, not decorative overlays.
+
+Use `PROVENANCE_AND_AI_LABELING.md` as the canonical symbol grammar.
+
+Renderer behavior:
+- place the field symbol/icon at the leading edge of the row it identifies;
+- reserve icon width + gap before measuring text width;
+- align the symbol vertically with its semantic row;
+- wrap text only inside the remaining measured width;
+- keep provenance/workflow symbols attached to their corresponding content;
+- preserve required symbols when wording is shortened or content is paginated.
+
+The renderer measures **symbol + gap + text** as one semantic unit before final
+placement. A card grows, reflows or paginates when the measured unit does not fit.
+
+Successful output has:
+- readable symbols;
+- readable text;
+- no symbol/text collision;
+- no symbol floating over another row;
+- no symbol removed to solve density.
+
 
 This file is the **single authority for the internal layout of presentation cards**.
 
