@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.6
+version: 3.7
 metadata:
   type: registry
   critical: true
@@ -41,6 +41,8 @@ registries:
     path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
   context_placement:
     path: "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml"
+  path_migration:
+    path: "_ai_guides/context/PATH_MIGRATION_PLAN.yaml"
   project_template:
     path: "projects/_template/PROJECT.yaml"
   project_onboarding:
@@ -50,6 +52,10 @@ logical_destinations:
   global:
     context_placement_contract:
       path: "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml"
+    path_migration_plan:
+      path: "_ai_guides/context/PATH_MIGRATION_PLAN.yaml"
+    framework_decisions:
+      path: "docs/decisions/"
     ai_framework:
       path: "_ai_guides/AI_FRAMEWORK.yaml"
     cognitive_accessibility_neuroinclusive_design:
@@ -96,6 +102,10 @@ logical_destinations:
       resolve_via: "PROJECTS.yaml -> selected project -> manifest"
     isolation_markers:
       resolve_via: "selected project manifest -> context.isolation_markers.path"
+    decision_index:
+      resolve_via: "selected project manifest -> context.decisions.index.path"
+    decision_records:
+      resolve_via: "selected project manifest -> context.decisions.records.path"
     team_roster:
       resolve_via: "selected project manifest -> context.team_roster.path"
     source_registry:
@@ -127,9 +137,6 @@ logical_destinations:
     selected_project_design:
       resolve_via: "selected project manifest -> context.design"
 
-  decisions:
-    confirmed:
-      path: "docs/decisions/"
 
   storage:
     manual:
@@ -192,11 +199,11 @@ tasks:
         cross_layer_or_integration_material:
           - "logical_destinations.project.cross_layer_awareness"
         confirmed_decision_context_material:
-          - "logical_destinations.decisions.confirmed"
+          - "logical_destinations.selected_project.decision_records"
       rule: "Load conditional authorities only when they can materially change issue scope, order, acceptance criteria, risk, ownership or readiness."
     supporting_context:
       - "logical_destinations.project.risk_register_template"
-      - "logical_destinations.decisions.confirmed"
+      - "logical_destinations.selected_project.decision_records"
     output_expectations:
       - "issue-specific Acceptance Criteria"
       - "issue-specific Testing section selected by risk"
@@ -339,7 +346,7 @@ tasks:
       authority: "_ai_guides/presentations/SYSTEM_CONTRACT.yaml"
 
 path_change_process:
-  authority: "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml#path-migration-contract"
+  authority: "_ai_guides/context/PATH_MIGRATION_PLAN.yaml"
   rule: >
     A move/rename is complete only when the source path was verified, the destination
     was resolved through its semantic owner, the new target exists, all registered
