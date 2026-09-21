@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.7
+  version: 6.8
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -182,6 +182,19 @@ risk_field_missing_registered_risk_symbol_count == 0
 risk_mitigation_missing_shield_symbol_count == 0
 risk_residual_missing_residual_symbol_count == 0
 rendered_symbol_inventory_mismatch_count == 0
+cover_visible_school_field_missing_task_symbol_count == 0
+github_work_card_missing_verified_source_pair_count == 0
+github_work_card_missing_person_symbol_count == 0
+open_pr_missing_pushpin_count == 0
+dependency_relation_missing_link_symbol_count == 0
+risk_slide_missing_risk_symbol_count == 0
+risk_likelihood_missing_chart_symbol_count == 0
+risk_impact_missing_impact_symbol_count == 0
+risk_mitigation_missing_shield_symbol_count == 0
+risk_owner_missing_person_symbol_count == 0
+risk_residual_missing_residual_symbol_count == 0
+ai_analysis_missing_magnifier_count == 0
+ai_proposal_missing_star_count == 0
 ```
 
 Manual visual checks:
@@ -200,6 +213,9 @@ Manual visual checks:
 - waiting PRs retain 📌 before the PR identifier/title
 - risk views preserve ⚡ risk, 📈 likelihood, 💥 impact, 🛡 mitigation, 👤 owner and ↘ residual-risk symbols when those fields are present
 - symbol inventory declared by composition/data matches the final rendered symbol inventory
+- point ⑦ visibly uses the risk semantic sequence ⚡ / 📈 / 💥 / 🛡 / 👤 / ↘ for supported fields
+- cover school/deadline cards visibly use 🎯 / 🕒 / 📍 / 💡 / 🛠 for supported five-question fields
+- GitHub work cards keep source verification, person identity and workflow state as separate visible symbol layers
 
 ### Five-second scan check
 
