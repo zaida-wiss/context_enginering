@@ -373,6 +373,13 @@ Use the active sprint resolved from the request timestamp. Meeting point 1
 covers the active interval from `SPRINT_START` to `DATA_CUTOFF` according to the selected project's registered sprint-cadence interval semantics. It may not claim work after the actual
 data cutoff merely because the cover displays the full scheduled sprint end.
 
+At the exact registered sprint-start boundary, meeting point 1 resets to the new
+active sprint. Completed work from the interval that just ended must disappear
+from the current point-1 dataset and remain only in history. Until the new sprint
+contains verified completed work, keep every mandatory target page and render its
+grounded empty state. Never reuse the previous sprint's cards to avoid an empty
+page.
+
 ## Scope: only completed work
 
 Meeting point 1 is the completed-work section. Detailed work cards here show

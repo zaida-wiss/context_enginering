@@ -188,6 +188,12 @@ Keep separate subtitles/pages for relevant collection branches such as develop,
 Java-Development-Environment and C/C++-Native, followed by team summary.
 Do not turn the page subtitle into the meeting-point title.
 
+The content window follows `projects/avanza/project/sprint/CADENCE.yaml` and
+switches every Monday at 09:00 Europe/Stockholm. At that moment point 1 starts
+empty for the new sprint and then fills only with verified completion events from
+the active sprint. Never carry the previous sprint's completed cards across the
+09:00 boundary; preserve them only as historical evidence.
+
 For collection branches, show every verified branch landing event as completed on
 that branch even without a PR to `develop`. Include direct commit/rebase/branch push
 evidence when that is the actual delivery path.

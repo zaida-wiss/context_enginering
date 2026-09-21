@@ -21,6 +21,12 @@ completion_window:
     is inside the active sprint interval from sprint start inclusive to the
     current verified data cutoff. At a new sprint boundary this dataset starts
     empty and fills only with work completed in the new sprint.
+  boundary_behavior: >
+    Every Monday at 09:00 Europe/Stockholm, the completed-work window switches
+    immediately to the new active sprint. Meeting point 1 is empty at the boundary
+    unless completion evidence exists at or after that exact timestamp. Work from
+    the sprint that ended at 09:00 remains historical evidence and must not be
+    carried into the new meeting-point-1 result.
   reset_at_each_sprint_start: true
   carry_previous_sprint_completed_work_into_current: false
 

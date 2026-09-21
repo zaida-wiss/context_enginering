@@ -690,6 +690,12 @@ reporting_period:
     REPORTING_PERIOD = [SPRINT_START, DATA_CUTOFF] subject to the registered interval semantics.
     COVER_PERIOD = [SPRINT_START date, SPRINT_END date]
 
+    At the exact sprint-start boundary, completed-work acquisition resets to the
+    new interval. Previous-sprint completion events are historical and must not
+    appear in meeting point 1 for the new sprint. Until a new completion event is
+    verified at or after SPRINT_START, meeting point 1 renders grounded empty
+    states for its required delivery targets.
+
     Example: request during an active sprint before its end boundary
       SPRINT_START: {REGISTERED_SPRINT_START}
       SPRINT_END: {REGISTERED_SPRINT_END}

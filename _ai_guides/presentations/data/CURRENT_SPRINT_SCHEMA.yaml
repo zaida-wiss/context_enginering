@@ -43,6 +43,9 @@ current_sprint:
     items: []
     reset_at_sprint_boundary: true
     carry_previous_sprint_items: false
+    # At the exact boundary, this list starts empty and may contain only
+    # completion events timestamped at or after the new sprint start.
+    boundary_state: empty_until_new_sprint_completion_is_verified
 
   continuing_current_state:
     # DERIVE: still-current open work/risk/dependency/blocker state
