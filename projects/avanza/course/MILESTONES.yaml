@@ -81,7 +81,11 @@ milestones:
     location: "Zoom"
 
 current_deadline:
-  next: "cto-underlag"
-  days_until: 8
-  date: "2026-09-24"
-  critical: true
+  resolution: "dynamic"
+  rule: >
+    Resolve the nearest verified future milestone from the target/request
+    timestamp. Calculate relative days/hours at runtime; do not persist a
+    days_until value that can become stale.
+  target_timestamp: null
+  resolved_milestone_id: null
+
