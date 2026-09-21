@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.6
+version: 5.7
 last_updated: 2026-09-21
 base_path: "_ai_guides/presentations"
 
@@ -27,6 +27,8 @@ core_principles:
   - "Required meeting text remains native/editable presentation text so it can be selected and copied into meeting notes; do not rasterize required textual content merely for visual fidelity."
   - "The user-facing deck contains only the cover plus official meeting points 1–14 and required continuation pages. Internal QA, audit, render-control and debug slides are forbidden in the delivered deck."
   - "Debug/control artifacts such as connector handles, node dots, construction lines and test annotations are forbidden in user-facing output."
+  - "Refactoring, deduplication or removal of negative wording MUST preserve the underlying semantic invariant. A rule is not removed merely because a duplicated 'must not/never' sentence is deleted."
+  - "Before deleting or weakening a prohibition, required field or omission guard, migrate its invariant to the owning authority and a regression check in the same change."
   - "Connectors are permitted only where the active meeting-point structure explicitly requires them; ordinary card slides must not contain free connector graphics."
 
 ###############################################################################
