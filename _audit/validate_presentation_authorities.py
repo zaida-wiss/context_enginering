@@ -24,6 +24,7 @@ STALE_ACTIVE_PATTERNS = {
     "obsolete workflow columns": "Arbete | Läge | Härnäst | Vem",
     "stale 10 pt provenance footer minimum": "footer uses priority level 4 but must remain at least 10 pt",
     "stale critical-data continue rule": "mark as INCOMPLETE, but continue with available data",
+    "retired solid presentation background": "slide background is `#0F1830`",
 }
 
 REQUIRED_ACTIVE_PATTERNS = {
@@ -70,6 +71,10 @@ REQUIRED_ACTIVE_PATTERNS = {
         "card_bottom_provenance_full_label_missing_count == 0",
         "verified_empty_state_from_incomplete_source_count == 0",
         "dedicated_team_card_repeats_team_name_count == 0",
+        "point1_expected_3x2_not_attempted_count == 0",
+        "points3_5_expected_3x2_not_attempted_count == 0",
+        "card_gap_below_required_minimum_count == 0",
+        "canonical_gradient_missing_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
@@ -84,6 +89,11 @@ REQUIRED_ACTIVE_PATTERNS = {
     ),
     "design/VISUAL_DESIGN_MANDATORY.md": (
         "Every physical slide reserves a bottom footer container",
+        "use a restrained gradient from approximately `#1E274A` to `#111A33`",
+        "fallback — never black and never the retired `#0F1830` background",
+        "Meeting point 1 — standard 3×2 work-card grid",
+        "Meeting points 3–5 — standard 3×2 team/workstream grid",
+        "preserve visible horizontal and vertical gaps between every card; cards must never touch",
     ),
     "monday_meeting/design/SLIDE_DETAIL_SPEC.md": (
         "Every physical slide, including continuation slides, MUST contain a reserved source footer",
