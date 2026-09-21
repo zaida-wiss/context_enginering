@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.6
+  version: 6.7
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -173,6 +173,15 @@ visible_text_overlap_count == 0
 visible_text_below_project_minimum_count == 0
 canonical_symbol_missing_after_simplification_count == 0
 canonical_symbol_missing_in_export_count == 0
+semantic_field_missing_required_symbol_count == 0
+owner_field_missing_person_symbol_count == 0
+github_verified_source_missing_github_icon_check_pair_count == 0
+waiting_pr_pushpin_missing_before_identifier_count == 0
+dependency_symbol_missing_count == 0
+risk_field_missing_registered_risk_symbol_count == 0
+risk_mitigation_missing_shield_symbol_count == 0
+risk_residual_missing_residual_symbol_count == 0
+rendered_symbol_inventory_mismatch_count == 0
 ```
 
 Manual visual checks:
@@ -186,6 +195,11 @@ Manual visual checks:
 - every visible text block was measured before placement; no two independent text blocks occupy overlapping bounds
 - Project slides use the selected project's registered deck-wide readability minima when those are stricter than global minima
 - canonical provenance/workflow/team symbols remain visible after PDF export
+- task semantics use the canonical symbols when those fields are visible: 📅 calendar/source, 🎯 what, 🕒 when, 📍 where, 💡 why, 🛠 how, 👤 who
+- verified GitHub-derived facts use the GitHub icon + ✅ visual pair when source identity is shown
+- waiting PRs retain 📌 before the PR identifier/title
+- risk views preserve ⚡ risk, 📈 likelihood, 💥 impact, 🛡 mitigation, 👤 owner and ↘ residual-risk symbols when those fields are present
+- symbol inventory declared by composition/data matches the final rendered symbol inventory
 
 ### Five-second scan check
 
