@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.1
+  version: 6.2
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -403,7 +403,16 @@ visible_evidence_level_label_count == 0
 unverified_identity_commentary_count == 0
 timestamp_not_single_line_count == 0
 timestamp_not_right_aligned_count == 0
+required_card_bottom_information_missing_count == 0
+card_bottom_information_outside_bounds_count == 0
+card_bottom_information_overlaps_body_count == 0
 ```
+
+Bottom-zone mechanical/visual checks:
+- required identity/activity/merge/review/timestamp/operational rows are resolved before upper card layout;
+- when verified bottom fields exist, the rendered card contains them inside its lower information zone;
+- no body or pedagogical text occupies the reserved bottom-information bounds;
+- missing space triggers reflow/pagination, never deletion of bottom information.
 
 Manual visual checks across **every card type**:
 - card title uses primary text color
