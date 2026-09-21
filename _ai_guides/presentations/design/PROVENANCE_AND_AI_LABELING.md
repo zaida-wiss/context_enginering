@@ -5,7 +5,7 @@ metadata:
   type: design-and-content-integrity
   critical: true
   required_before: rendering
-  version: 1.6
+  version: 1.7
 ---
 
 # 🏷️ PROVENANCE & AI LABELING STANDARD
@@ -200,6 +200,41 @@ Risk semantics use symbols that do not collide with source uncertainty:
 
 Risk level/criticality additionally uses its registered **symbol + text + color**
 semantics. Color remains supplementary.
+
+### Meeting-point symbol application
+
+The symbol grammar is applied by meaning, not by decoration. When a meeting
+point renders the corresponding semantic field, use the canonical symbol:
+
+- cover / school task: `🎯` what, `🕒` when, `📍` where, `💡` why, `🛠` how;
+- ownership / responsibility: `👤` who;
+- verified schedule block: `📅`;
+- verified GitHub fact: GitHub vector icon + `✅`;
+- waiting/open PR: `📌`;
+- dependency relation: `🔗`;
+- verified merge/integration event when shown: `🔀`;
+- AI interpretation: `🔎`;
+- AI recommendation: `⭐`;
+- risk item: `⚡`;
+- likelihood: `📈`;
+- impact/consequence: `💥`;
+- mitigation/control: `🛡`;
+- residual risk: `↘`.
+
+For meeting point ⑦, the risk grammar is the default semantic structure:
+`⚡ risk → 📈 likelihood → 💥 impact → 🛡 mitigation → 👤 owner → ↘ residual`
+when those fields are supported by evidence. AI-derived interpretation or
+mitigation remains separately marked with `🔎` or `⭐`.
+
+For GitHub work cards in points ① and ③–⑤, source identity and workflow state
+are separate:
+- GitHub icon + `✅` tells the audience the fact is verified from GitHub;
+- `📌` tells the audience the work is waiting in an open PR;
+- `🔀` may identify a verified merge/integration event;
+- `👤` identifies the verified person/owner field.
+
+A card may contain several of these symbols because each represents a different
+semantic dimension.
 
 ### End-to-end persistence
 
