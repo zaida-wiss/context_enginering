@@ -22,11 +22,11 @@ Team ownership must never rely on color alone **across the complete slide contex
 
 Rules:
 - On a dedicated team slide whose header explicitly names the team, e.g.
-  `3. Frontend`, the header provides the non-color team meaning. Individual cards
+  `{MEETING_POINT}. {TEAM_NAME}`, the header provides the non-color team meaning. Individual cards
   do not repeat the team name; the left team accent color is sufficient as the
   supplementary card-level cue.
 - On mixed-team slides, each card must include an explicit non-color team cue,
-  e.g. `Frontend`, `Backend`, `Native/System` or `Cross-team`, in addition
+  e.g. `{TEAM_NAME}` or a registered project-owned team symbol, in addition
   to the team accent color.
 - If a card is exported or reused outside its original team slide, it must regain
   an explicit team label because the surrounding header context is no longer present.
