@@ -3,8 +3,8 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.3
-last_updated: 2026-09-20
+version: 5.4
+last_updated: 2026-09-21
 base_path: "_ai_guides/presentations"
 
 ###############################################################################
@@ -113,6 +113,10 @@ authority:
   verification:
     file: "verification/RENDER_GATE_CHECKLIST.md"
     owns: "pre-delivery validation"
+
+  rendered_artifact_validator:
+    file: "../../_audit/rendered_presentation_audit.py"
+    owns: "mechanical PPTX/PDF artifact inspection for typography, geometry, overlap, card gaps, 3x2 structure, glyphs, selectable text, rendered background and contrast proxies"
 
   data_registry:
     project_resolved: "source_registry"
@@ -455,7 +459,14 @@ execution_sequence:
 
   step_8:
     name: "Render + inspect"
-    rule: "Use RENDER_GATE_CHECKLIST on actual artifact."
+    rule: >
+      Use RENDER_GATE_CHECKLIST on the actual artifact and run the executable
+      rendered-artifact validator. For PPTX authored internally and PDF delivered
+      externally, validate both artifacts together when both exist.
+    command_examples:
+      - "python _audit/rendered_presentation_audit.py deck.pptx --pdf deck.pdf --project <selected_project_id>"
+      - "python _audit/rendered_presentation_audit.py deck.pdf --project <selected_project_id>"
+    required_result: "rendered_artifact_audit PASS"
 
   step_9:
     name: "Deliver"
@@ -549,6 +560,7 @@ artifact_gates:
     requires:
       - "build_gate PASS"
       - "render_gate PASS"
+      - "rendered_artifact_audit PASS"
       - "WCAG_2_2_AA PASS"
       - "READABILITY_HARD_RULES PASS"
       - "PROVENANCE_AND_AI_LABELING PASS"
@@ -571,6 +583,13 @@ artifact_gates:
 # FINAL RENDER CONDITIONS
 ###############################################################################
 render_acceptance:
+  executable_validator:
+    path: "../../_audit/rendered_presentation_audit.py"
+    rule: >
+      Delivery requires a zero-failure result from the executable validator on
+      the actual user-facing artifact. When both PPTX and PDF exist, validate both
+      so source-structure defects and export/render defects are both detectable.
+    pdf_dependency: "../../_audit/requirements-rendered-presentation.txt"
   zero_count_requirements:
     wcag_aa_violation_count: 0
     color_only_information_count: 0
