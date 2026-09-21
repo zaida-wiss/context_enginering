@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.7
+version: 5.8
 last_updated: 2026-09-21
 base_path: "_ai_guides/presentations"
 
@@ -27,9 +27,59 @@ core_principles:
   - "Required meeting text remains native/editable presentation text so it can be selected and copied into meeting notes; do not rasterize required textual content merely for visual fidelity."
   - "The user-facing deck contains only the cover plus official meeting points 1–14 and required continuation pages. Internal QA, audit, render-control and debug slides are forbidden in the delivered deck."
   - "Debug/control artifacts such as connector handles, node dots, construction lines and test annotations are forbidden in user-facing output."
-  - "Refactoring, deduplication or removal of negative wording MUST preserve the underlying semantic invariant. A rule is not removed merely because a duplicated 'must not/never' sentence is deleted."
-  - "Before deleting or weakening a prohibition, required field or omission guard, migrate its invariant to the owning authority and a regression check in the same change."
+  - "Presentation behavior is governed by explicit ownership and semantic hierarchy rather than duplicated prohibitions."
+  - "Refactoring or deduplication preserves the hierarchy: higher-priority meaning and required fields remain intact while lower-priority duplication or decoration may be simplified."
+  - "When a rule is consolidated, migrate its semantic responsibility to the owning authority and protect that hierarchy with a regression check in the same change."
   - "Connectors are permitted only where the active meeting-point structure explicitly requires them; ordinary card slides must not contain free connector graphics."
+
+###############################################################################
+# SEMANTIC PRESERVATION HIERARCHY
+###############################################################################
+semantic_preservation_hierarchy:
+  rule: >
+    When content, layout or rules are simplified, preserve meaning from the top
+    of this hierarchy downward. Lower levels may yield to higher levels; higher
+    levels are never sacrificed to preserve lower-level presentation detail.
+
+  levels:
+    level_1:
+      name: "Accessibility + verified truth"
+      includes:
+        - "WCAG/readability boundaries"
+        - "verified factual meaning"
+        - "explicit unknown/incomplete state"
+    level_2:
+      name: "Meeting-point identity + required semantic fields"
+      includes:
+        - "official meeting-point title and page purpose"
+        - "required work identity, status and event fields owned by slide/card contracts"
+        - "distinct semantic roles such as contributor, merger and approving reviewer"
+    level_3:
+      name: "Decision and planning meaning"
+      includes:
+        - "dependencies"
+        - "risk consequences"
+        - "priority order"
+        - "next action and ownership when verified or explicitly proposed"
+    level_4:
+      name: "Supporting operational context"
+      includes:
+        - "branch"
+        - "timestamps"
+        - "provenance"
+        - "technical metadata required by the active contract"
+    level_5:
+      name: "Redundant state repetition + decoration"
+      includes:
+        - "repeated labels already communicated by slide placement"
+        - "decorative badges"
+        - "non-essential visual ornament"
+
+  simplification_order:
+    - "remove or consolidate level-5 duplication first"
+    - "shorten wording within a level without changing its meaning"
+    - "reflow or paginate"
+    - "preserve every required field from levels 1–4 according to its owning authority"
 
 ###############################################################################
 # EXECUTION / BRANCH SNAPSHOT
