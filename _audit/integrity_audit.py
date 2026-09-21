@@ -727,7 +727,8 @@ def main():
         visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
         access = read_text("_ai_guides/presentations/design/ACCESSIBILITY_NEURODIVERSITY.md")
         visual_required = (
-            "#15182E",
+            "#1E274A",
+            "#111A33",
             "never black",
             "More slides are preferred to smaller text.",
             "20 pt or larger",
@@ -920,31 +921,40 @@ def main():
         ok = False
     checks.append(result(ok, "AI contributes with senior engineering bird's-eye judgment while humans retain decisions", "AI can regress to passive execution/status repetition or overclaim human authority"))
 
-    print("\nINVARIANT 24: Project-Owned Presentation Geometry")
+    print("\nINVARIANT 24: Global Baseline + Explicit Project Geometry Override")
     ok = True
     try:
         visual = read_text("_ai_guides/presentations/design/VISUAL_DESIGN_MANDATORY.md")
         overflow = read_text("_ai_guides/presentations/monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md")
+        joined_global = visual + "\n" + overflow
+
         global_required = (
-            "card capacity, slot orientation and pagination are owned by the active project presentation authority",
-            "the grid/slot geometry registered by the active project presentation authority",
+            "Global presentation design is the default for every project.",
+            "ask the user an explicit control question",
+            "Without explicit approval, the global design wins by default.",
+            "Meeting point 1 — standard 3×2 work-card grid",
+            "Meeting points 3–5 — standard 3×2 team/workstream grid",
+            "the grid/slot geometry registered by the active project presentation authority; when none is registered, a readability-safe responsive grid;",
             "design fidelity is part of fit",
         )
-        joined_global = visual + "\n" + overflow
         if not all(token in joined_global for token in global_required):
-            print("❌ global presentation rules can override project-owned card geometry")
+            print("❌ presentation geometry lost either the global 3×2 baseline or explicit project-override gate")
             ok = False
-        stale_global = (
-            "MUST first attempt a six-card `3×2` composition",
-            "6 merge cards must first be rendered/tested as 3×2",
+
+        stale_unconditional_delegation = (
+            "card capacity, slot orientation and pagination are owned by the active project presentation authority",
         )
-        if any(token in joined_global for token in stale_global):
-            print("❌ stale global 3×2 rule conflicts with project-owned geometry")
+        if any(token in joined_global for token in stale_unconditional_delegation):
+            print("❌ stale unconditional project-geometry delegation can bypass the active global baseline")
             ok = False
     except Exception as exc:
-        print(f"❌ project-owned geometry inspection failed: {exc}")
+        print(f"❌ global/project geometry inspection failed: {exc}")
         ok = False
-    checks.append(result(ok, "global layout delegates card geometry to the selected project authority", "global presentation rules can override project-owned geometry"))
+    checks.append(result(
+        ok,
+        "global 3×2 baseline remains active while project-specific geometry requires the registered override path",
+        "presentation geometry can silently bypass either the global baseline or project-specific override contract",
+    ))
 
     print("\nINVARIANT 24B: Project Presentation Authority Routing")
     ok = True
