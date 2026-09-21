@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.5
+  version: 5.6
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -105,6 +105,8 @@ Validate against `VISUAL_DESIGN_MANDATORY.md` and `READABILITY_HARD_RULES.md`:
 noncanonical_background_color_count == 0
 near_black_background_count == 0
 modern_navy_lighter_tone_missing_count == 0
+canonical_gradient_missing_count == 0
+retired_solid_background_present_count == 0
 dark_surface_black_text_count == 0
 frosted_glass_card_treatment_missing_count == 0
 glass_card_light_edge_missing_count == 0
@@ -245,6 +247,9 @@ Required:
 point_1_separate_wip_slide_count == 0
 point_1_verified_collection_merge_without_own_slide_count == 0
 point_1_unverified_collection_activity_presented_as_merge_count == 0
+point1_expected_3x2_not_attempted_count == 0
+point1_3x2_used_below_five_cards_without_reason_count == 0
+card_gap_below_required_minimum_count == 0
 ```
 
 - every physical slide repeats the primary heading `✏️ 1. Avklarat sedan förra mötet`
@@ -273,6 +278,21 @@ point_1_unverified_collection_activity_presented_as_merge_count == 0
 - a member without verified completed activity uses neutral evidence-limited wording, never a performance inference
 
 ### Forward planning in points 3–5
+
+Required:
+
+```text
+points3_5_expected_3x2_not_attempted_count == 0
+points3_5_3x2_used_below_five_cards_without_reason_count == 0
+card_gap_below_required_minimum_count == 0
+```
+
+Manual geometry checks:
+- when a point 3–5 physical slide has 5–6 grounded ordinary work cards, first render and measure the canonical 3 columns × 2 rows layout;
+- with fewer than 5 grounded work cards, use only the required number of slots; do not add filler merely to create a 3×2 matrix;
+- cards must retain visible horizontal and vertical separation; no card edges may touch;
+- fall back from 3×2 only after the actual render fails readability, spacing, overlap, clipping or WCAG gates;
+- when more than 6 grounded cards exist, continue to another physical slide rather than shrinking text or collapsing gaps.
 
 - each team/workstream registered into meeting points 3–5 includes its verified active, backlog, future and older inactive work
 - every item has a visible verified state and a concrete next-step field
@@ -614,6 +634,8 @@ Verify on every physical slide that uses cards:
 - black or near-black text on dark/navy slide or card surfaces is forbidden; approved light text roles must be used;
 - normal text contrast is >= 4.5:1 and large text contrast is >= 3:1 after transparency/compositing;
 - every text child remains inside its rounded card bounds with approved internal padding;
+- ordinary card grids preserve visible horizontal and vertical gaps between cards; adjacent card edges must never touch;
+- point 1 and points 3–5 attempt the canonical 3×2 geometry when 5–6 grounded ordinary work cards are present, before any lower-density fallback;
 - responsive card geometry grows/reflows for wrapped text and required bottom information zones;
 - any density/layout pass is rejected if it succeeds only by removing rounding, glass/depth treatment, padding, required rows or readable hierarchy;
 - project-specific grid orientation/slot geometry is validated against the active project presentation authority.
@@ -621,6 +643,8 @@ Verify on every physical slide that uses cards:
 Hard counters:
 ```text
 noncanonical_background_color_count == 0
+canonical_gradient_missing_count == 0
+retired_solid_background_present_count == 0
 flat_card_surface_regression_count == 0
 card_corner_rounding_missing_count == 0
 card_depth_treatment_missing_count == 0
