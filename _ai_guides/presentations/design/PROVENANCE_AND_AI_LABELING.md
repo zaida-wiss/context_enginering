@@ -5,7 +5,7 @@ metadata:
   type: design-and-content-integrity
   critical: true
   required_before: rendering
-  version: 1.5
+  version: 1.6
 ---
 
 # 🏷️ PROVENANCE & AI LABELING STANDARD
@@ -133,6 +133,90 @@ Never silently convert unclear origin into fact.
 ---
 
 ## 2. ICON SEMANTICS — HARD RULE
+## 2A. CANONICAL PRESENTATION SYMBOL GRAMMAR
+
+The presentation uses one semantic symbol grammar from data/composition through
+rendered PPTX/PDF. Symbols are functional information architecture.
+
+### Task / question meanings
+
+Use these symbols whenever the corresponding meaning is rendered:
+
+- `📅` = calendar / verified schedule source
+- `🎯` = what / task / deliverable / focus
+- `🕒` = when / time / deadline
+- `📍` = where / channel / submission place
+- `💡` = why / purpose / consequence
+- `🛠` = how / method / execution/submission method
+- `👤` = who / verified owner, assignee, contributor or responsible person
+
+The symbol appears directly with the information it explains. A text heading
+elsewhere on the slide does not replace the semantic symbol when the field is
+shown.
+
+### Provenance / reasoning
+
+- `👥 ✅` = verified meeting-protocol fact
+- `✅` = other verified team/source fact
+- `🔎` = AI analysis / interpretation
+- `⭐` = AI proposal / recommendation
+- `⚠` = source/origin requires verification
+
+`⚠` is reserved for source uncertainty. Risk content uses the separate risk
+grammar below so the same symbol never carries two active meanings.
+
+### GitHub verification
+
+Verified GitHub-derived facts use a **GitHub icon + ✅** visual pair and the
+visible text label `GitHub verifierat` where source identity is useful.
+
+Renderer contract:
+- use the registered/native GitHub/Lucide GitHub vector icon rather than an
+  ASCII substitute;
+- pair the icon with `✅` and readable source text in source/provenance rows;
+- retain issue/PR/commit identifiers as text;
+- source verification does not replace workflow state symbols such as `📌`.
+
+### Workflow
+
+- `📌` = verified open PR / waiting in PR
+- `🔗` = dependency / cross-team relation
+- `🔀` = verified integration/merge event when a merge/integration symbol is useful
+- `✅` = completed/verified state only when its surrounding label makes that
+  state unambiguous
+
+### Risk analysis
+
+Risk semantics use symbols that do not collide with source uncertainty:
+
+- `⚡` = risk / uncertain threat to an objective
+- `📈` = likelihood/probability assessment
+- `💥` = consequence/impact
+- `🛡` = mitigation/control
+- `👤` = verified risk owner
+- `↘` = residual risk after control
+- `🔎` = AI interpretation of risk evidence
+- `⭐` = AI-proposed mitigation, reprioritisation or candidate risk
+
+Risk level/criticality additionally uses its registered **symbol + text + color**
+semantics. Color remains supplementary.
+
+### End-to-end persistence
+
+For each semantic block:
+
+```text
+source/data field
+  → composition meaning
+  → canonical symbol token
+  → renderer symbol/icon
+  → exported PPTX/PDF
+  → rendered visual inspection
+```
+
+A simplification may shorten wording or paginate content. It preserves the
+symbol token attached to every surviving semantic field.
+
 
 Canonical symbols are semantic content, not decoration. Layout simplification,
 density reduction, refactoring and export may change placement but may not remove
@@ -224,6 +308,11 @@ canonical_symbol_render_mismatch_count == 0
 canonical_symbol_ascii_transliteration_count == 0
 canonical_symbol_missing_after_simplification_count == 0
 canonical_symbol_missing_in_export_count == 0
+semantic_field_missing_required_symbol_count == 0
+owner_field_missing_person_symbol_count == 0
+github_verified_source_missing_github_icon_check_pair_count == 0
+risk_field_missing_registered_risk_symbol_count == 0
+rendered_symbol_inventory_mismatch_count == 0
 waiting_pr_pushpin_missing_before_identifier_count == 0
 waiting_pr_bottom_pushpin_label_missing_count == 0
 ```
@@ -509,5 +598,5 @@ The audience must always be able to answer:
 ---
 
 **Status:** PRODUCTION
-**Version:** 1.4
-**Last updated:** 2026-09-17
+**Version:** 1.6
+**Last updated:** 2026-09-21
