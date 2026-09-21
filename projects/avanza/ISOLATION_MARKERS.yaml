@@ -1,0 +1,42 @@
+---
+name: project_isolation_markers
+description: Project-owned identifiers that must not leak into global framework files
+metadata:
+  type: project_validation_config
+  project: avanza
+  status: active
+  version: 1.0
+---
+
+project_root: "projects/avanza"
+
+markers:
+  - "Avanza"
+  - "avanza-team1"
+  - "chas-challenge-2026/avanza-team1"
+  - "Portföljhälsa"
+  - "Team Avanza 1"
+  - "C/C++-Native"
+  - "Java-Development-Environment"
+  - "CTO-underlag"
+  - "Victor Axelsson"
+  - "GOOGLE_SPRINT_PLANNING"
+  - "R-24"
+  - "Tomac"
+  - "Rasha"
+  - "Henrik"
+  - "Pär"
+  - "Björn"
+
+allowed_outside_project_root:
+  - path: "PROJECTS.yaml"
+    reason: "minimal project registration pointer only"
+
+rules:
+  - "Global AI instructions use only synthetic project-neutral examples."
+  - "Project facts, examples, people, branches, repository IDs, course content and assets stay under project_root."
+  - "Project-specific audit run artifacts stay under project_root."
+  - "Global validators may load this file dynamically but may not copy its marker values into global code."
+
+---
+status: ACTIVE
