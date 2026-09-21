@@ -361,6 +361,21 @@ sources:
       note: "Canonical transcription of user-provided screenshots; preserves only visible verified facts"
     fallbacks: []
 
+  DM_UX_FEED_FORWARD_INSTRUCTIONS:
+    source_id: "DM_UX_FEED_FORWARD_INSTRUCTIONS"
+    classification: "REQUIRED"
+    purpose: "Canonical school instruction for the Delivery Manager and UX specialist feed-forward assignment"
+    primary:
+      method: "local_file"
+      path: "projects/avanza/course/DM_UX_FEED_FORWARD_INSTRUCTIONS.md"
+      note: "Verbatim, AI-readable transcription of the user-provided school PDF"
+    original:
+      method: "local_file"
+      path: "projects/avanza/course/source_documents/DM_UX_FEED_FORWARD_INSTRUCTIONS.pdf"
+      sha256: "a9ed2e30a6fab9e33ca88d1141080ab7af26dc9dc3406f0eb77d5b8e02b7af3e"
+      note: "Unmodified original PDF retained as source evidence"
+    fallbacks: []
+
   # UTILITIES
 
   WEBAIM_CONTRAST_CHECKER:
@@ -414,7 +429,7 @@ access_methods:
     supported_sources: ["GOOGLE_PROJECT_DATA_SHEET", "GOOGLE_RISK_REGISTER", "GOOGLE_MEETING_PROTOCOL"]
   local_file:
     definition: "Local repository file (always available)"
-    supported_sources: ["GITHUB_TEAM_ROSTER", "CHAS_BACKOFFICE_ANNOUNCEMENTS"]
+    supported_sources: ["GITHUB_TEAM_ROSTER", "CHAS_BACKOFFICE_ANNOUNCEMENTS", "DM_UX_FEED_FORWARD_INSTRUCTIONS"]
   web_direct:
     definition: "Direct web access (reference tools only)"
     supported_sources: ["WEBAIM_CONTRAST_CHECKER"]
@@ -424,6 +439,6 @@ access_methods:
 
 ---
 
-**Last updated:** 2026-09-20
+**Last updated:** 2026-09-21
 **Status:** Machine-readable registry (YAML) — single source of truth
 **Governance:** This file OWNS all URLs, IDs, access methods, classifications. Other files reference by source_id only.

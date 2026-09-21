@@ -24,7 +24,7 @@ milestones:
     due_date: "2026-10-01"
     due_time: "16:00"
     week: "V7"
-    source: "course_deadline + chas_backoffice_announcement"
+    source: "DM_UX_FEED_FORWARD_INSTRUCTIONS"
     verified: true
     description: "Specialistunderlag similar to CTO assignment; two recorded films instead of one"
     submission: "Follow published course instruction"
@@ -88,4 +88,3 @@ current_deadline:
     days_until value that can become stale.
   target_timestamp: null
   resolved_milestone_id: null
-

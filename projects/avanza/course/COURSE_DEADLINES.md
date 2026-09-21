@@ -62,7 +62,9 @@ Verifierat från Chas Back Office:
 - Back Office varnar för att underskatta tidsåtgången och uppmanar teamet att
   planera arbetet så att det inte halkar efter.
 
-Exakt innehåll/metod utöver detta ska läsas från den publicerade instruktionen
-när den finns och får inte fyllas i med antaganden.
+Den fullständiga publicerade instruktionen finns ordagrant i
+[`DM_UX_FEED_FORWARD_INSTRUCTIONS.md`](DM_UX_FEED_FORWARD_INSTRUCTIONS.md).
+Originaldokumentet finns oförändrat i
+[`source_documents/DM_UX_FEED_FORWARD_INSTRUCTIONS.pdf`](source_documents/DM_UX_FEED_FORWARD_INSTRUCTIONS.pdf).
 
-Source evidence: `CHAS_BACKOFFICE_ANNOUNCEMENTS.md`.
+Source evidence: `DM_UX_FEED_FORWARD_INSTRUCTIONS` och `CHAS_BACKOFFICE_ANNOUNCEMENTS`.
