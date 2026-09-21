@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.4
+  version: 6.5
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -169,6 +169,10 @@ connector_on_non_special_slide_count == 0
 debug_marker_shape_count == 0
 explicit_text_contrast_failure_count == 0
 overtransparent_text_count == 0
+visible_text_overlap_count == 0
+visible_text_below_avanza_minimum_count == 0
+canonical_symbol_missing_after_simplification_count == 0
+canonical_symbol_missing_in_export_count == 0
 ```
 
 Manual visual checks:
@@ -179,6 +183,9 @@ Manual visual checks:
 - header, content and source/footer zones are visibly stable from slide to slide
 - no content card enters the footer/source zone
 - no footer/source text competes with primary content
+- every visible text block was measured before placement; no two independent text blocks occupy overlapping bounds
+- Avanza project slides use the active project deck-wide readability minima when those are stricter than global minima
+- canonical provenance/workflow/team symbols remain visible after PDF export
 
 ### Five-second scan check
 
@@ -463,6 +470,27 @@ For completed merge cards specifically, verify the distinct semantic facts remai
 
 The `Mergat till …` subtitle satisfies only the high-level merged-state context.
 It does not satisfy any of the distinct person/event fields above.
+
+---
+
+## 6B. AVANZA PROJECT-SPECIFIC RENDER CHECKS
+
+When the selected project is Avanza, require:
+
+```text
+friday_present_in_project_sprint_plan_count == 0
+dedicated_team_card_repeats_team_name_count == 0
+mixed_team_card_missing_team_symbol_count == 0
+team_symbol_render_mismatch_count == 0
+avanza_text_below_project_minimum_count == 0
+```
+
+Manual checks:
+- point 12 contains only eligible project-work days; Friday is absent from the project sprint-plan sequence;
+- dedicated Frontend/Backend/Native slides use the slide header plus team accent/symbol and do not repeat the team name inside every card;
+- mixed-team slides use registered team symbols plus accents and a compact legend;
+- criticality remains a separate symbol + text + color layer;
+- the exported PDF preserves all canonical provenance/workflow/team symbols.
 
 ---
 
