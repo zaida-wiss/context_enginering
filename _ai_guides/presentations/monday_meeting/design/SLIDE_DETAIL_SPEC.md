@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.7
+  version: 3.8
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -349,8 +349,7 @@ the covered period and is verified by an approved source. Never include a
 planned decision, a decision candidate, an unresolved question or an AI-suggested
 decision here.
 
-“Done” means a verified merge during the sprint window to either the registered primary integration branch or one of the collection branches resolved from the selected project's `context.repository_flow` authority. Project-board `Done` is a consistency check,
-not a substitute for merge evidence. Show mismatches instead of guessing.
+“Done” means a verified merge event during the sprint window to either the registered primary integration branch or one of the collection branches resolved from the selected project's `context.repository_flow` authority. A merge event may be proven by a merged PR or by a verified target-branch merge commit. An ordinary one-parent direct commit is branch activity, not a merge, and does not qualify for detailed point-1 `Mergat till ...` content. Project-board `Done` is a consistency check, not a substitute for merge evidence. Show mismatches instead of guessing.
 Deduplicate work promoted through multiple branches.
 
 Mandatory content order:
@@ -395,7 +394,11 @@ Canonical branch: `{COLLECTION_BRANCH_A}`. Show every verified merge to this bra
 the sprint window after the primary-integration pages. Use the same evidence fields as
 above where available.
 
-This collection branch always gets its own physical slide sequence. When verified
+This collection branch always gets its own physical slide sequence. Only verified
+merge events belong on this `Mergat till ...` sequence. Ordinary one-parent direct
+commits are excluded from these cards and routed to the owning team's points 3–5
+status/planning content; when they created concrete partial value they may also
+support `Påbörjat men inte avklarat` in the team summary. When verified
 merge evidence is empty, show `Inga verifierade merges till {COLLECTION_BRANCH_A} under perioden`;
 when acquisition is incomplete, show the source-specific warning instead. The slide
 subtitle must be exactly `Mergat till {COLLECTION_BRANCH_A}`.
@@ -409,7 +412,11 @@ Canonical branch: `{COLLECTION_BRANCH_B}`. Show every verified merge to
 this branch during the sprint window after `{COLLECTION_BRANCH_A}`. Use the same evidence
 fields as above where available.
 
-This collection branch always gets its own physical slide sequence. When verified
+This collection branch always gets its own physical slide sequence. Only verified
+merge events belong on this `Mergat till ...` sequence. Ordinary one-parent direct
+commits are excluded from these cards and routed to the owning team's points 3–5
+status/planning content; when they created concrete partial value they may also
+support `Påbörjat men inte avklarat` in the team summary. When verified
 merge evidence is empty, show `Inga verifierade merges till {COLLECTION_BRANCH_B} under perioden`;
 when acquisition is incomplete, show the source-specific warning instead. The slide
 subtitle must be exactly `Mergat till {COLLECTION_BRANCH_B}`.
@@ -559,6 +566,12 @@ Do not invent progress percentages, days of delay or actions.
 ---
 
 # ③–⑤ REGISTERED TEAM / WORKSTREAM SLOTS
+
+Direct collection-branch activity routing rule:
+- verified ordinary one-parent direct commits on a registered collection branch are mandatory evidence here when relevant to the owning team/workstream;
+- they must not disappear merely because they are excluded from point 1;
+- label them by their actual state/contribution, never as a merge unless merge-event evidence exists;
+- deduplicate against work already represented by a verified merge/PR.
 
 Purpose: show the complete verified forward-looking work state for the selected
 project's registered teams/workstreams in their configured presentation order.
