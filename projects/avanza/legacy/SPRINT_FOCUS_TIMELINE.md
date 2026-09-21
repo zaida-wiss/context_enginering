@@ -4,11 +4,14 @@ description: Historical derived sprint-focus material awaiting regeneration from
 metadata:
   type: derived_data
   canonical: false
-  status: stale_until_regenerated
+  authority: false
+  status: retired_non_authority
   migrated: 2026-09-18
 ---
 
-v# Sprint Fokus-väg & Tidslinje
+> RETIRED NON-AUTHORITY — historical snapshot only. Do not route current tasks or presentations through this file.
+
+# Sprint Fokus-väg & Tidslinje
 
 | Sprint | Datum | Vecko-Fokus | Kritisk Deadline | Leverans / Resultat | Teamlead | Typ | Status |
 |--------|-------|------------|------------------|-------------------|----------|-----|--------|
