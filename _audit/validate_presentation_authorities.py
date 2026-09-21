@@ -43,7 +43,7 @@ REFERENCE_REQUIRED_PATTERNS = {
 REFERENCE_STALE_PATTERNS = {
     "monday_meeting/design/TEMPLATE_REFERENCE.html": (
         "background: #0F1830",
-        "grid-template-columns: repeat(2, minmax(0,1fr))",
+        ".grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr));",
         "<h1>①",
         "Leverans: <strong>direkt commit</strong>",
     ),
@@ -70,7 +70,7 @@ REQUIRED_ACTIVE_PATTERNS = {
         "trigger the explicit incomplete-source user decision gate",
         "ordinary_direct_commit",
         "Only merge_event records are eligible for",
-        "ordinary_direct_commit records remain mandatory evidence for points 3–5",
+        "ordinary_direct_commit feeds points 3–5 planning/status",
     ),
     "design/READABILITY_HARD_RULES.md": (
         "timestamp/source/provenance/footer microcopy: **11 pt minimum**",
@@ -80,8 +80,8 @@ REQUIRED_ACTIVE_PATTERNS = {
     "design/CARD_COMPONENT_STANDARD.md": (
         "title → pedagogical explanation: **6 px minimum, 8 px preferred**",
         "explanation → bottom identity zone: **14 px minimum**",
-        "Inline provenance symbols remain with their content blocks",
-        "card_bottom_provenance_full_label_missing_count == 0",
+        "inline provenance symbols stay with their factual content blocks",
+        "full source names/explanations belong in the slide source margin/footer",
     ),
     "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md": (
         "title → pedagogical explanation: **6 px minimum, 8 px preferred**",
@@ -116,7 +116,7 @@ REQUIRED_ACTIVE_PATTERNS = {
         'approved_status: "PASS_WITH_USER_OVERRIDE"',
         "points 3–5 → 9 → 13 form a progressive funnel",
         "content_block_provenance_symbol_missing_count: 0",
-        "card_bottom_provenance_full_label_missing_count: 0",
+        "All source/provenance meaning is communicated with the canonical symbol + text defined by the provenance authority.",
         "dedicated_team_card_repeats_team_name_count: 0",
         "mixed_team_card_missing_explicit_team_text_count: 0",
         "rendered_artifact_audit PASS",
@@ -132,12 +132,12 @@ REQUIRED_ACTIVE_PATTERNS = {
     ),
     "monday_meeting/design/SLIDE_DETAIL_SPEC.md": (
         "Every physical slide, including continuation slides, MUST contain a reserved source footer",
-        "Points ③–⑤ do not decide the project-wide execution order",
+        "Points ③–⑤ do not decide project-wide execution order",
         "Each selected work item appears once",
         "Progressive-funnel hard rule",
         "provide separate verified renderer fields",
         "dedicated team slide whose primary header names the team",
-        "ordinary one-parent direct commits are mandatory evidence here",
+        "verified ordinary one-parent direct commits on a registered collection branch are mandatory evidence here",
         "they must not disappear merely because they are excluded from point 1",
     ),
     "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md": (
