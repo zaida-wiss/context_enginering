@@ -1413,6 +1413,88 @@ def main():
         "project-specific context can still leak into global instructions, data, docs, audits or assets",
     ))
 
+    print("\nINVARIANT 33: Safe Path Migration Governance")
+    ok = True
+    try:
+        registry = read_text("CONTEXT_REGISTRY.yaml")
+        placement = read_text("_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml")
+        migration = read_text("_ai_guides/context/PATH_MIGRATION_PLAN.yaml")
+        template = read_text("projects/_template/PROJECT.yaml")
+
+        required_registry = (
+            "path_migration:",
+            "_ai_guides/context/PATH_MIGRATION_PLAN.yaml",
+            "path_change_process:",
+            'authority: "_ai_guides/context/PATH_MIGRATION_PLAN.yaml"',
+            "decision_records:",
+            "context.decisions.records.path",
+        )
+        if not all(token in registry for token in required_registry):
+            print("❌ registry does not fully route migration governance or project decision records")
+            ok = False
+
+        required_placement = (
+            "## Path migration authority",
+            "PATH_MIGRATION_PLAN.yaml",
+            "A path-migration receipt is mandatory before mutation",
+        )
+        if not all(token in placement for token in required_placement):
+            print("❌ placement contract does not delegate moves to the migration authority")
+            ok = False
+
+        required_plan = (
+            "A move is a dependency migration, not a filesystem operation.",
+            "## Phase 1 — Preflight",
+            "## Phase 2 — Consumer discovery",
+            "## Phase 3 — Destination creation",
+            "## Phase 4 — Routing and consumer update",
+            "## Phase 5 — Stale-path verification",
+            "## Phase 6 — Delete old source",
+            "unresolved_consumer_count == 0",
+            "stale_active_old_path_reference_count == 0",
+            "manifest_registry_target_missing_count == 0",
+            "consumer_render_scope_changed_unintentionally_count == 0",
+            "post_move_integrity_failure_count == 0",
+        )
+        if not all(token in migration for token in required_plan):
+            print("❌ migration plan is missing one or more preflight/update/delete safety gates")
+            ok = False
+
+        required_template = (
+            'authority: "_ai_guides/context/PATH_MIGRATION_PLAN.yaml"',
+            "decisions:",
+            "index:",
+            "records:",
+        )
+        if not all(token in template for token in required_template):
+            print("❌ reusable project template cannot express safe migrations and exact decision paths")
+            ok = False
+
+        # Every active project that declares decisions must expose a records path.
+        for project_id, entry in active.items():
+            manifest = entry.get("manifest")
+            if not manifest or not os.path.exists(manifest):
+                continue
+            manifest_text = read_text(manifest)
+            if "decisions:" in manifest_text:
+                if not re.search(
+                    r"""decisions:\s*.*?records:\s*\n\s*path:\s*["']?([^"'\n]+)""",
+                    manifest_text,
+                    re.S,
+                ):
+                    print(f"❌ {project_id}: decisions capability lacks context.decisions.records.path")
+                    ok = False
+
+    except Exception as exc:
+        print(f"❌ path migration governance inspection failed: {exc}")
+        ok = False
+
+    checks.append(result(
+        ok,
+        "moves/renames require preflight, consumer propagation, stale-path cleanup and post-move validation",
+        "repository paths can still be moved without updating all affected consumers",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
