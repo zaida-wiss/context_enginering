@@ -185,14 +185,29 @@ def main() -> int:
 
     for authority in registry["active_authorities"]:
         category = authority["category"]
-        filename = authority["file"]
+        filename = authority.get("file")
+        project_resolved = authority.get("project_resolved")
 
+        owner_label = filename or f"project_resolved:{project_resolved}"
         if category in category_owner:
             errors.append(
                 f"duplicate owner for {category}: "
-                f"{category_owner[category]} and {filename}"
+                f"{category_owner[category]} and {owner_label}"
             )
-        category_owner[category] = filename
+        category_owner[category] = owner_label
+
+        # Project-resolved authorities are validated through the selected project
+        # manifest below. They intentionally do not have a static presentation file.
+        if project_resolved:
+            if not authority.get("resolve_via"):
+                errors.append(
+                    f"project-resolved authority {project_resolved} is missing resolve_via"
+                )
+            continue
+
+        if not filename:
+            errors.append(f"active authority for {category} has neither file nor project_resolved")
+            continue
 
         authority_path = (PRESENTATIONS / filename).resolve()
         if not authority_path.exists():
@@ -250,7 +265,7 @@ def main() -> int:
             if not (PRESENTATIONS / filename).exists():
                 errors.append(f"missing {group} file: {filename}")
 
-    active_files = {item["file"] for item in registry["active_authorities"]}
+    active_files = {item["file"] for item in registry["active_authorities"] if item.get("file")}
     retired_files = set(registry["retired_guides"])
     overlap = active_files & retired_files
     if overlap:
