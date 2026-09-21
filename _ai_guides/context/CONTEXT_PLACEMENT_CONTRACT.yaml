@@ -4,7 +4,7 @@ description: Canonical contract for deciding exactly where new information belon
 metadata:
   type: governance
   critical: true
-  version: 1.2
+  version: 1.3
   scope: global
 ---
 
@@ -104,6 +104,18 @@ When an existing leak is found:
 3. update paths/registries/consumers;
 4. add regression protection;
 5. validate before considering cleanup complete.
+
+## Path migration authority
+
+All move/rename operations MUST execute through
+`PATH_MIGRATION_PLAN.yaml`.
+
+The placement contract decides **where** content belongs. The migration plan owns
+**how** an existing path is moved safely, including consumer discovery, routing
+updates, stale-path scanning, deletion gating and post-move validation.
+
+A path-migration receipt is mandatory before mutation and a migration may not be
+declared complete until the plan's post-move gates pass.
 
 ## Path migration contract
 
