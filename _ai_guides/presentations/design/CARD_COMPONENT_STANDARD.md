@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.9
+  version: 1.10
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -111,6 +111,29 @@ Full source labels are rendered once in the physical slide's reserved source mar
 ### Bottom-anchor hard rule
 
 **Name/identity and required operational metadata must always sit at the bottom of the card, not immediately after the body copy. Inline provenance symbols remain with their factual content blocks. Full source symbol + text explanations are deduplicated in the slide margin/footer.**
+
+### Bottom-zone reservation — mandatory render algorithm
+
+The renderer MUST lay out every card in this order:
+
+1. resolve which bottom rows are required from verified data;
+2. measure those rows at their required font sizes and line spacing;
+3. reserve their complete height at the bottom of the card, including required gaps;
+4. only then measure/place title, pedagogical text and any middle content in the remaining upper area;
+5. if the upper content no longer fits, shorten non-essential wording, reduce card density or paginate — never consume the reserved bottom zone.
+
+The bottom zone is therefore **not leftover space**. It is allocated before body content.
+
+A render fails when verified bottom information exists but:
+- its row is omitted;
+- it is pushed outside the card bounds;
+- it overlaps body copy;
+- it is clipped;
+- it is moved into the slide footer merely to make the card fit;
+- it is rendered so faintly that it fails WCAG;
+- body content occupies the area reserved for it.
+
+For ordinary work/action/question cards, do not create a visually empty lower strip when no bottom metadata exists; the card may use that space naturally. The reservation is driven by actual required fields, not by decorative padding.
 
 This applies to all card types when those fields exist:
 - status cards
