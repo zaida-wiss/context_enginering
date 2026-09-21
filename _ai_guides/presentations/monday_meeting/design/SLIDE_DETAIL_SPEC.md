@@ -3,7 +3,7 @@ name: slide_detail_spec
 description: MANDATORY — content blueprint for Monday Meeting slides ⓪–⑭
 metadata:
   type: critical_specification
-  version: 3.8
+  version: 3.9
 ---
 
 # 📊 SLIDE DETAIL SPECIFICATION — CONTENT ONLY
@@ -277,9 +277,10 @@ as labels on every card. Use the canonical icon grammar instead:
 - `📍` = where it takes place or is submitted
 - `💡` = why it exists / documented purpose or consequence
 - `🛠` = how it is carried out or submitted
+- `👤` = who owns, performs, submits or is responsible when verified
 
 Canonical visual order:
-`🎯 → 🕒 → 📍 → 💡 → 🛠`
+`🎯 → 🕒 → 📍 → 💡 → 🛠 → 👤`
 
 For every school task, submission task and deadline shown on the cover, all five
 meanings must still be answered from the selected project's registered context and presentation-data
@@ -290,6 +291,7 @@ documentation:
 3. `📍` verified place, channel or submission platform
 4. `💡` documented purpose, learning/project objective or verified consequence
 5. `🛠` documented submission method, meeting format, required artefact or execution instructions
+6. `👤` verified responsible person/team/recipient when the source identifies one; otherwise `👤 ⚠ kunde inte verifieras`
 
 Each answer retains source-level provenance. Do not derive `Varför` or `Hur`
 from the task title alone. Search the selected project's registered schedule, milestones, roadmap,
