@@ -1,6 +1,6 @@
 name: presentation_authority_registry
 description: Canonical registry of active authorities, validators, references and retired guides
-version: 1.5
+version: 1.6
 metadata:
   type: registry
   critical: true
@@ -80,6 +80,11 @@ active_authorities:
     resolve_via: "../../PROJECTS.yaml -> selected project manifest -> context.sources.path"
     category: source_registry
     owns: allowed sources, URLs, access methods and fallback order
+  - rank: 15
+    project_resolved: team_visual_identity
+    resolve_via: "../../PROJECTS.yaml -> selected project manifest -> context.design.team_visual_identity.path"
+    category: project_visual_identity
+    owns: project-specific team labels, team accent colors and non-color identity cues
 
 validators:
   - verification/RENDER_GATE_CHECKLIST.md
