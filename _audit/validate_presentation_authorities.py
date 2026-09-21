@@ -28,7 +28,6 @@ STALE_ACTIVE_PATTERNS = {
     "retired solid presentation background": "slide background is `#0F1830`",
 }
 
-}
 
 REFERENCE_REQUIRED_PATTERNS = {
     "monday_meeting/design/TEMPLATE_REFERENCE.html": (
