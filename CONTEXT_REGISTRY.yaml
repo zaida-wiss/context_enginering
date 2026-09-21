@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.5
+version: 3.6
 metadata:
   type: registry
   critical: true
@@ -339,12 +339,19 @@ tasks:
       authority: "_ai_guides/presentations/SYSTEM_CONTRACT.yaml"
 
 path_change_process:
+  authority: "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml#path-migration-contract"
   rule: >
-    A moved canonical file is updated in this registry first. Dependent references
-    are then updated and validated before the migration step is considered complete.
+    A move/rename is complete only when the source path was verified, the destination
+    was resolved through its semantic owner, the new target exists, all registered
+    consumers point to the new target, and the old path is no longer an active reference.
   validation:
-    - "search repository for the previous canonical path"
+    - "verify exact source path exists before mutation"
+    - "verify destination belongs to the owning manifest/registry capability"
+    - "search repository for consumers of the previous path before mutation"
+    - "verify destination exists after copy/move"
     - "verify every registered target exists on the active ref"
+    - "search repository again for stale previous-path references"
+    - "delete old path only after destination and consumers are verified"
     - "run applicable repository validators"
 
 ---
