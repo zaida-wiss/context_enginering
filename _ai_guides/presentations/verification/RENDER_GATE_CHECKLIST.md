@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.9
+  version: 6.0
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -41,6 +41,7 @@ The executable validator currently performs mechanical checks for:
 - card overlap and too-small card gaps;
 - 3×2 card geometry for points 1 and 3–5 when 5–6 ordinary cards exist;
 - Avanza card expansion into reserved empty slots when project context is supplied;
+- empty/blank card placeholder surfaces in unused reserved slots;
 - selectable text in exported PDF;
 - material PDF text-block overlap;
 - rendered background/gradient/fallback proxies;
@@ -294,6 +295,7 @@ verified_direct_collection_activity_dropped_from_later_status_count == 0
 point1_expected_3x2_not_attempted_count == 0
 point1_3x2_used_below_five_cards_without_reason_count == 0
 card_gap_below_required_minimum_count == 0
+empty_card_placeholder_count == 0
 ```
 
 - every physical slide repeats the primary heading `✏️ 1. Avklarat sedan förra mötet`
