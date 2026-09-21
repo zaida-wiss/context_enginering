@@ -265,6 +265,25 @@ def _looks_like_card(shape: ShapeInfo, slide_w: int, slide_h: int) -> bool:
     return bool(shape.text) and shape.w >= slide_w * 0.20 and shape.h >= slide_h * 0.18
 
 
+def _card_has_visible_content(card: ShapeInfo, shapes: list[ShapeInfo]) -> bool:
+    """True when a card surface contains actual visible text content.
+
+    Card backgrounds and text are often separate sibling shapes in PPTX XML, so
+    checking card.text alone would incorrectly mark valid cards as empty.
+    """
+    if card.text.strip():
+        return True
+
+    for shape in shapes:
+        if shape is card or not shape.text.strip() or shape.w <= 0 or shape.h <= 0:
+            continue
+        cx = shape.center_x
+        cy = shape.center_y
+        if card.x <= cx <= card.right and card.y <= cy <= card.bottom:
+            return True
+    return False
+
+
 def _meeting_point(text: str) -> int | None:
     for line in text.splitlines():
         m = TITLE_RE.match(line.strip())
@@ -377,6 +396,19 @@ def audit_pptx(path: Path, project: str | None = None) -> list[Finding]:
                     continue
                 dedup.append(card)
             cards = dedup
+
+            # Reserved grid slots are geometry only. They must not render as
+            # empty glass/rounded card surfaces. Unused slots remain whitespace.
+            empty_cards = [
+                card for card in cards
+                if not _card_has_visible_content(card, shapes)
+            ]
+            if empty_cards:
+                results.append(finding(
+                    "FAIL", "empty_card_placeholder",
+                    f"{len(empty_cards)} blank card surface(s) rendered without visible content; unused slots must remain whitespace.",
+                    artifact=str(path), page=idx,
+                ))
 
             # Header/content-zone separation: cards may never intrude into the
             # meeting-point title region.
@@ -680,6 +712,10 @@ def self_test() -> int:
         failures.append("meeting_point")
     if _meeting_point("① Backend") is not None:
         failures.append("circled_number_not_parsed_as_active_header")
+    test_card = ShapeInfo("", 0, 0, 100, 100, "roundRect", [], False, [], [])
+    test_text = ShapeInfo("X", 10, 10, 20, 20, None, [], False, [], [])
+    if not _card_has_visible_content(test_card, [test_card, test_text]):
+        failures.append("card_content_detection")
     if cluster_count([1, 1.1, 5, 5.1, 9, 9.1], 0.5) != 3:
         failures.append("npf_cluster_regression")
     if failures:
