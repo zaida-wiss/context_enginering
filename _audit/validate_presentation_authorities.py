@@ -82,6 +82,10 @@ REQUIRED_ACTIVE_PATTERNS = {
         "explanation → bottom identity zone: **14 px minimum**",
         "inline provenance symbols stay with their factual content blocks",
         "full source names/explanations belong in the slide source margin/footer",
+        "Merged: {MERGER} | Review: {APPROVING_REVIEWER(S)}",
+        "verified merge-event time",
+        "developer/contributor ≠ merger",
+        "requested reviewer ≠ approving reviewer",
     ),
     "monday_meeting/design/LAYOUT_OVERFLOW_GUARD.md": (
         "title → pedagogical explanation: **6 px minimum, 8 px preferred**",
@@ -108,6 +112,10 @@ REQUIRED_ACTIVE_PATTERNS = {
         "verified_direct_collection_activity_dropped_from_later_status_count == 0",
         "rendered_artifact_audit == PASS",
         "python _audit/rendered_presentation_audit.py",
+        "verified_merger_omitted_from_card_count == 0",
+        "verified_approving_reviewer_omitted_from_card_count == 0",
+        "verified_merge_timestamp_omitted_from_card_count == 0",
+        "merge_event_time_replaced_by_pr_or_commit_time_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
@@ -121,6 +129,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "mixed_team_card_missing_explicit_team_text_count: 0",
         "rendered_artifact_audit PASS",
         "../../_audit/rendered_presentation_audit.py",
+        "Refactoring, deduplication or removal of negative wording MUST preserve the underlying semantic invariant.",
+        "Before deleting or weakening a prohibition, required field or omission guard, migrate its invariant to the owning authority and a regression check in the same change.",
     ),
     "design/VISUAL_DESIGN_MANDATORY.md": (
         "Every physical slide reserves a bottom footer container",
