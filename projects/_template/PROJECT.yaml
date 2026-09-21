@@ -1,7 +1,7 @@
 ---
 name: project_context_template
 description: Canonical manifest template for one project
-version: 1.0
+version: 1.1
 metadata:
   type: project_manifest_template
   status: template
@@ -57,7 +57,10 @@ context:
   # CONDITIONAL/OPTIONAL project-owned long-lived context.
   decisions:
     required: false
-    path: "projects/<project_id>/decisions/"
+    index:
+      path: "projects/<project_id>/decisions/README.md"
+    records:
+      path: "projects/<project_id>/decisions/"
   additional_context:
     required: false
     path: "projects/<project_id>/context/"
@@ -74,6 +77,14 @@ capabilities:
     A task must require only capabilities declared by this project. Missing
     optional or conditional capabilities are not errors unless the requested
     task explicitly requires them.
+
+migration:
+  authority: "_ai_guides/context/PATH_MIGRATION_PLAN.yaml"
+  rule: >
+    Any move or rename under this project root must preserve semantic ownership,
+    update this manifest and every registered consumer before the old path is
+    deleted. A file existing at the destination does not make it active unless
+    the relevant capability points to it.
 
 ---
 status: TEMPLATE
