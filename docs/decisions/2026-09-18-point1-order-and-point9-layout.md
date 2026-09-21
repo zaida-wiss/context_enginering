@@ -7,12 +7,11 @@
 
 ### User decision: 1A
 
-Keep the current completed-work order:
+Keep the reusable completed-work routing order:
 
-1. merged to `develop`
-2. merged to `C/C++-Native`
-3. merged to `Java-Development-Environment`
-4. AI-proposed team summaries
+1. merged to the selected project's registered primary integration branch
+2. registered collection branches in project-defined order
+3. team summaries
 
 Do **not** create a separate WIP/unfinished-work slide inside meeting point 1.
 
