@@ -3,7 +3,7 @@
 ###############################################################################
 
 task: monday_meeting_presentation
-version: 5.4
+version: 5.5
 last_updated: 2026-09-21
 base_path: "_ai_guides/presentations"
 
@@ -25,6 +25,9 @@ core_principles:
   - "The complete Monday deck preserves the official meeting-point order and cross-slide reasoning chains defined by the composition authority."
   - "Presentation defects are corrected in the owning context rule/validator first; a presentation-only patch is never the final fix."
   - "Required meeting text remains native/editable presentation text so it can be selected and copied into meeting notes; do not rasterize required textual content merely for visual fidelity."
+  - "The user-facing deck contains only the cover plus official meeting points 1–14 and required continuation pages. Internal QA, audit, render-control and debug slides are forbidden in the delivered deck."
+  - "Debug/control artifacts such as connector handles, node dots, construction lines and test annotations are forbidden in user-facing output."
+  - "Connectors are permitted only where the active meeting-point structure explicitly requires them; ordinary card slides must not contain free connector graphics."
 
 ###############################################################################
 # EXECUTION / BRANCH SNAPSHOT
@@ -344,6 +347,9 @@ responsive_visual_system:
     - "automatic shrink-to-fit"
     - "removing provenance labels to save space"
     - "removing pedagogical/project-value microcopy to save space"
+    - "including internal QA/audit/render-control slides in the user-facing deck"
+    - "leaving debug/control markers, connector handles or construction graphics visible"
+    - "using connector arrows on ordinary card slides that do not own a connector-based structure"
 
 ###############################################################################
 # EXECUTION SEQUENCE
