@@ -4,10 +4,13 @@ description: Minimal router for classifying and placing user-provided project co
 metadata:
   type: process
   critical: true
-  version: 2.2
+  version: 2.3
 ---
 
 # Context ingestion router
+
+This router delegates exact file-level placement and the user-visible pre-write
+receipt to `CONTEXT_PLACEMENT_CONTRACT.yaml`.
 
 ## Purpose
 
@@ -24,17 +27,23 @@ registered presentation authorities.
 ```text
 new information
   ↓
-classify
+split mixed input into atomic information units
+  ↓
+classify scope + semantic type
   ↓
 extract structured fields
   ↓
 resolve logical destination through CONTEXT_REGISTRY
   ↓
+resolve exact canonical owner + exact file through CONTEXT_PLACEMENT_CONTRACT
+  ↓
 compare with existing canonical context
   ↓
-merge, update or request a decision
+emit placement receipt to user
   ↓
-record source + update time
+write / merge OR ask focused control question
+  ↓
+record source + update time + propagation
 ```
 
 ## Information classes
@@ -50,6 +59,12 @@ Use the smallest fitting class:
 - `decision` — confirmed project/process/technical decisions
 - `manual_source` — source material supplied manually because no live registered source exists
 - `unknown` — classification needs clarification
+- `rule` — durable behavior/instruction that changes how a system works
+- `constraint` — durable boundary such as unavailable project time or ownership restriction
+- `presentation_behavior` — project/global presentation composition or rendering behavior
+- `design_identity` — colors, symbols or project visual identity
+- `source_evidence` — externally or manually supplied evidence that may support facts
+- `current_state` — changing repository/project status that normally stays live rather than long-lived context
 
 ## Structured fields
 
@@ -99,6 +114,9 @@ project capability instead of silently falling back to a global dumping ground.
 
 The registry maps stable global destinations and selected-project resolvers.
 
+Exact file placement is resolved by `CONTEXT_PLACEMENT_CONTRACT.yaml`.
+Do not write based only on a broad category match.
+
 ## Conflict handling
 
 Compare incoming information with the current canonical value.
@@ -123,6 +141,10 @@ unknown:
 When a conflict affects presentation rules, first identify the owning authority
 through the presentation authority registry before proposing a change.
 
+When destination itself is ambiguous, use the placement contract's clarification
+gate. Name the candidate destinations and explain the practical consequence of
+each before asking the user.
+
 ## Source handling
 
 Every stored project fact keeps a source identity.
@@ -142,6 +164,7 @@ presentation instruction files.
 
 After a canonical context value changes:
 
+0. confirm the placement receipt matches the actual file(s) to be written
 1. update the owning data/memory/decision location
 2. update dependent indexes or registries when the path or dependency changed
 3. leave presentation rules unchanged unless the user requested a rule change
@@ -164,5 +187,5 @@ model to replace its own operating instructions.
 ---
 
 **Status:** ACTIVE ROUTER
-**Version:** 2.1
+**Version:** 2.3
 **Last updated:** 2026-09-18
