@@ -1,7 +1,7 @@
 ---
 name: team_standards
 description: Canonical project workflow and team operating standards
-version: 2.2
+version: 2.3
 metadata:
   type: project_authority
   status: active
@@ -24,7 +24,7 @@ Detailed rule areas have their own owners:
 - completion criteria → `DEFINITION_OF_DONE.md`
 - team communication → `TEAM_TONE_AND_COLLABORATION.yaml`
 - people/conflict support → `HR_AND_TEAM_SUPPORT.yaml`
-- confirmed decisions → `docs/decisions/`
+- confirmed decisions → selected project manifest → `context.decisions.records.path`
 - current project facts → registered data sources
 
 ## Rule status
@@ -84,7 +84,7 @@ unstructured change.
 ## Step 3 — Capture decisions
 
 When the work creates or confirms a meaningful technical/process decision,
-record it in `docs/decisions/`.
+record it in the selected project's registered `context.decisions.records.path`.
 
 The issue or PR should link the relevant decision.
 
@@ -302,5 +302,5 @@ When helping create an issue, PR description, review or implementation plan:
 ---
 
 **Status:** ACTIVE
-**Version:** 2.2
+**Version:** 2.3
 **Last updated:** 2026-09-18
