@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.2
+version: 3.3
 metadata:
   type: registry
   critical: true
@@ -96,6 +96,8 @@ logical_destinations:
       resolve_via: "selected project manifest -> context.sources.path"
     presentation_authority:
       resolve_via: "selected project manifest -> context.presentation.authority.path"
+    team_visual_identity:
+      resolve_via: "selected project manifest -> context.design.team_visual_identity.path"
     sprint_cadence:
       resolve_via: "selected project manifest -> context.sprint_cadence.path"
     repository_flow:
@@ -287,6 +289,9 @@ tasks:
     project_presentation_authority:
       ref: "logical_destinations.selected_project.presentation_authority"
       required_when_declared: true
+    project_team_visual_identity:
+      ref: "logical_destinations.selected_project.team_visual_identity"
+      required_when_declared: true
     planning_authority:
       ref: "logical_destinations.project.goals_and_sprint_planning"
     risk_authority:
@@ -323,4 +328,4 @@ path_change_process:
 ---
 
 status: ACTIVE
-last_updated: 2026-09-20
+last_updated: 2026-09-21
