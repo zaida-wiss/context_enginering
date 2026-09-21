@@ -1557,6 +1557,44 @@ def main():
         "AI instructions can regress into negative-only rule accumulation or ambiguous execution semantics",
     ))
 
+    print("\nINVARIANT 35: AI Rule Contradiction Preflight")
+    ok = True
+    try:
+        framework = read_text("_ai_guides/AI_FRAMEWORK.yaml")
+        guide = read_text("_ai_guides/AI_FRAMEWORK.md")
+        required = (
+            "contradiction_preflight:",
+            "compare_required_outcomes_not_only_wording",
+            "stop_and_notify_user_immediately_when_genuine_conflict_exists",
+            "timing: before_repository_mutation",
+            "exact_owner_and_file_for_each_rule",
+            "conflicting_required_outcomes",
+            "practical_consequence_of_each_option",
+            "user_decision_required_before_change: true",
+            "confirm_no_new_active_rule_conflict_was_introduced",
+        )
+        if not all(token in framework for token in required):
+            print("❌ AI framework lacks contradiction preflight or immediate conflict notice")
+            ok = False
+
+        guide_required = (
+            "Contradiction preflight before changing AI rules",
+            "before repository mutation",
+            "Then wait for the user's decision",
+        )
+        if not all(token in guide for token in guide_required):
+            print("❌ human guide does not explain immediate contradiction handling")
+            ok = False
+    except Exception as exc:
+        print(f"❌ contradiction-preflight inspection failed: {exc}")
+        ok = False
+
+    checks.append(result(
+        ok,
+        "durable AI rule changes are checked for incompatible outcomes and genuine conflicts are surfaced before mutation",
+        "AI rule updates can introduce silent contradictions into active authorities",
+    ))
+
     passed = sum(bool(x) for x in checks)
     print("\n" + "=" * 80)
     print("FINAL AUDIT RESULT")
