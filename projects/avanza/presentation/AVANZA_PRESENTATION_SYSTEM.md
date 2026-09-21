@@ -1,7 +1,7 @@
 ---
 project: avanza
 type: project_presentation_authority
-version: 1.4
+version: 1.5
 status: active
 scope: projects/avanza
 ---
@@ -276,14 +276,17 @@ event metadata that matter:
 - developer/contributor identity
 - delivery activity such as PR/push/commit when required by the active meeting data contract
 - the person who actually merged the PR
+- the verified approving reviewer(s), based only on submitted APPROVED reviews
 - the verified merge timestamp
 
 Developer and merger are different semantic roles even when the same person
 happens to fill both roles. Do not collapse one into the other.
 
-The merger identity belongs in the card's lower information zone. The merge
-timestamp belongs in the lower-right card zone and represents the merge event,
-not PR-open time or latest-commit time. It must not collide with the
+The merger and approving-reviewer identities belong in the card's lower
+information zone. The merge timestamp belongs in the lower-right card zone and
+represents the merge event, not PR-open time or latest-commit time. A verified
+reviewer must never disappear merely because the containing page already says
+`Mergat till …`. It must not collide with the
 developer/delivery row, merger identity or source/footer content.
 
 Avanza additionally requires operational bottom information with meeting value
@@ -308,7 +311,7 @@ Avanza-specific failures include:
 - missing meeting-point title
 - special diagram/timeline flattened into generic cards
 - dependency/blocker information not carried forward into priority/plan/actions
-- required bottom operational row, verified merger identity or verified merge timestamp lost through simplification
+- required bottom operational row, verified merger identity, verified approving reviewer or verified merge timestamp lost through simplification
 - redundant MERGED/MERGAD tag/stamp added to a card whose containing page already communicates merge state
 
 The historical presentation rules are recovery evidence, not active authority.
