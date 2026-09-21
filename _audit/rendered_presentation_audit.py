@@ -464,12 +464,12 @@ def audit_pptx(path: Path, project: str | None = None) -> list[Finding]:
                         artifact=str(path), page=idx,
                     ))
 
-            if project == "avanza" and mp in {1, 3, 4, 5} and 1 <= len(cards) < 5:
+            if project and mp in {1, 3, 4, 5} and 1 <= len(cards) < 5:
                 too_wide = [c for c in cards if c.w > slide_w * 0.36]
                 if too_wide:
                     results.append(finding(
-                        "FAIL", "avanza_card_expanded_into_empty_slots",
-                        "Avanza ordinary card expanded beyond one six-slot column while empty slots exist.",
+                        "FAIL", "project_card_expanded_into_empty_slots",
+                        "Project ordinary card expanded beyond one fixed-slot column while empty slots exist.",
                         artifact=str(path), page=idx,
                     ))
 
