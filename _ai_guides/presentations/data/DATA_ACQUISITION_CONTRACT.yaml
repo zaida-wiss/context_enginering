@@ -4,7 +4,7 @@ description: Canonical acquisition method for required datasets — deterministi
 metadata:
   type: process
   critical: true
-  version: 1.5
+  version: 1.6
 ---
 
 # DATA ACQUISITION CONTRACT
@@ -147,9 +147,10 @@ required_datasets:
     source_id: "GITHUB_COLLECTION_BRANCH_COMMITS"
     classification: "REQUIRED for registered collection branches"
     purpose: >
-      Capture verified completed delivery made directly to a registered collection
-      branch when no pull request exists. This is especially required for teams
-      that integrate by direct commit/merge rather than GitHub PR.
+      Capture verified activity made directly on a registered collection branch
+      when no pull request exists. Distinguish real merge events from ordinary
+      one-parent direct commits so presentation routing cannot mislabel activity
+      as merged delivery.
 
     execution_sequence:
       1_resolve_branches: "Read all registered collection branches from selected project manifest -> context.repository_flow"
@@ -157,7 +158,8 @@ required_datasets:
       3_inspect_parents: "Inspect commit parent structure so merge commits and direct commits are both detectable"
       4_attribute: "Use verified commit author/committer identity; map to team roster only when identity mapping is verified"
       5_deduplicate: "Deduplicate commits already represented by a verified PR or later primary-integration delivery"
-      6_emit_delivery_records: "Emit branch-delivery records even when linked_pull_request is null"
+      6_classify_delivery: "Classify each record as merge_event when parent-count/evidence proves a merge; otherwise ordinary_direct_commit"
+      7_route_records: "merge_event may feed point-1 Mergat till ...; ordinary_direct_commit feeds points 3–5 planning/status and may support team-summary partial-value wording"
 
     fields_required:
       - branch
@@ -173,13 +175,18 @@ required_datasets:
     hard_rules:
       - "Absence of a PR MUST NOT suppress verified direct activity on a registered collection branch."
       - "Never invent PR number, reviewer, approval or assignee when the branch activity has none."
-      - "A merge commit with two or more parents may be labeled as a branch merge; an ordinary one-parent commit remains a direct commit."
+      - "A merge commit with two or more parents may qualify as a verified branch merge when target-branch evidence confirms the merge event."
+      - "An ordinary one-parent direct commit MUST NOT appear on a point-1 slide subtitled Mergat till ...."
+      - "Ordinary direct commits MUST be routed to the owning team's point 3–5 status/planning content; when they produced concrete partial value they may also support the team-summary Påbörjat men inte avklarat note."
       - "Visible timestamp uses the latest verified delivery commit represented by the card."
       - "If assignee cannot be verified independently, show the verified contributor/author role instead of relabeling the commit author as assignee."
 
     output: >
-      One completed-delivery record per deduplicated work item/delivery for the
-      collection-branch slide. linked_pull_request may be null.
+      One deduplicated branch-activity record per work item/delivery with an
+      explicit activity_class of merge_event or ordinary_direct_commit.
+      linked_pull_request may be null. Only merge_event records are eligible for
+      point-1 Mergat till ... pages. ordinary_direct_commit records remain mandatory
+      evidence for points 3–5 and related planning/team-summary logic.
 
     stop_condition: >
       If a registered collection branch cannot be inspected, mark that branch
