@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 5.8
+  version: 5.9
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -45,7 +45,9 @@ The executable validator currently performs mechanical checks for:
 - material PDF text-block overlap;
 - rendered background/gradient/fallback proxies;
 - rendered text contrast proxies where local background sampling is reliable;
-- NPF title-zone positional consistency across slides.
+- NPF title-zone positional consistency across slides;
+- header/content-zone overlap in PPTX geometry;
+- repeated primary Latin font-family consistency across the deck.
 
 Manual inspection remains required for semantics and visual qualities that cannot
 yet be measured reliably (for example whether a glass effect feels visually
@@ -178,6 +180,8 @@ slide_zone_predictability_failure_count == 0
 competing_primary_focus_count == 0
 unclear_reading_direction_count == 0
 inconsistent_primary_font_family_count == 0
+npf_header_content_overlap_count == 0
+npf_meeting_title_position_inconsistent_count == 0
 ```
 
 For each rendered slide, inspect the actual PDF/image and verify font-family
