@@ -245,7 +245,7 @@ course sequence. If priority is model-derived, label the reasoning `🔎 AI-anal
 Do not use this school-task priority scale on ordinary issue/PR cards.
 
 
-`PL-fokus` must match the actual upcoming PL meeting theme/agenda when that source exists. Do not replace a concrete agenda such as `CTO-underlag` with a generic inferred summary such as testing/documentation unless the latter is explicitly part of the registered agenda. AI interpretation may be added separately with provenance.
+`PL-fokus` must match the actual upcoming PL meeting theme/agenda when that source exists. Do not replace a concrete agenda such as `{VERIFIED_PL_AGENDA_TOPIC}` with a generic inferred summary such as testing/documentation unless the latter is explicitly part of the registered agenda. AI interpretation may be added separately with provenance.
 
 ### PL meeting card — merge focus into the meeting card
 
@@ -1131,7 +1131,7 @@ Examples of `📅 Schemafakta` only when explicitly present in schedule:
 
 Examples that are NOT schedule facts unless explicitly stated:
 - `Lås scope, kapacitet och ägare`
-- `Få svar om CTO-underlaget`
+- `Få svar om det verifierade kursunderlaget`
 - `Stäng öppna frågetecken`
 - suggested priorities for the day
 
