@@ -41,7 +41,9 @@ Examples:
 - ✅ + text = done
 - ◐ + text = in progress
 - 🔴/✕ + text = blocked/critical
-- ? + text = unknown / AI-derived where defined by provenance rules
+- ⚠ + text = source/origin not safely verified
+- 🔎 + text = AI analysis / interpretation
+- ⭐ + text = AI proposal / recommendation
 - team color + team name/accent placement = team ownership
 
 ### Red
@@ -231,7 +233,9 @@ Canonical meanings:
 ✅ = klart / verifierat where explicitly defined
 ◐  = pågår
 ✕ / 🔴 = blockerad / kritisk
-?  = okänd / AI-derived only where provenance standard defines it
+⚠  = källa/origin inte säkert verifierad
+🔎  = AI-analys / tolkning
+⭐  = AI-förslag / rekommendation
 →  = beroende / riktning
 ```
 
@@ -313,5 +317,5 @@ No exception is allowed because “it looks better” or “otherwise there are 
 ---
 
 **Status:** PRODUCTION
-**Version:** 2.4
+**Version:** 2.5
 **Last updated:** 2026-09-17
