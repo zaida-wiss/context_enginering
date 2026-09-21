@@ -71,7 +71,8 @@ card/grid system through card order, group headings, symbols, short connectors
 and provenance.
 
 Allowed:
-- the grid/slot geometry registered by the active project presentation authority; when none is registered, a readability-safe responsive grid;
+- the active global geometry baseline from `VISUAL_DESIGN_MANDATORY.md`;
+- project-specific geometry only through the registered project authority and the explicit conflict/override gate when it differs from the global baseline;
 - grouped cards under a shared heading;
 - arrows/connectors between cards when they clarify dependencies;
 - continuation slides when the common grid cannot remain readable.
@@ -94,8 +95,9 @@ text, clipping, weak contrast or excessive density.
 
 | Slide type | Default | Maximum |
 |---|---|---:|
-| meeting point 1 + any continuation pages | responsive, 3 × 2 when readable | 6 per physical slide |
-| `②`–`⑤` | 2 × 2 | 4 |
+| meeting point 1 + any continuation pages | 3 × 2 when 5–6 ordinary cards are grounded and readable | 6 per physical slide |
+| `②` | 2 × 2 | 4 |
+| `③`–`⑤` | 3 × 2 when 5–6 ordinary cards are grounded and readable | 6 per physical slide |
 | `⑥`–`⑧`, `⑩`–`⑫`, `⑭` | 2 × 2 | 4 |
 | `⑨` | vertical execution groups; cards inside groups | responsive / paginate |
 | `⑬` | 4 × 1 only when readable with required microcopy; otherwise 2 × 2 | 4 |
