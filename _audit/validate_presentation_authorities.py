@@ -42,6 +42,9 @@ REQUIRED_ACTIVE_PATTERNS = {
         "Follow source/API pagination until ALL relevant commits",
         "Use accessible continuation slides when needed",
         "trigger the explicit incomplete-source user decision gate",
+        "ordinary_direct_commit",
+        "Only merge_event records are eligible for",
+        "ordinary_direct_commit records remain mandatory evidence for points 3–5",
     ),
     "design/READABILITY_HARD_RULES.md": (
         "timestamp/source/provenance/footer microcopy: **11 pt minimum**",
@@ -75,6 +78,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "points3_5_expected_3x2_not_attempted_count == 0",
         "card_gap_below_required_minimum_count == 0",
         "canonical_gradient_missing_count == 0",
+        "point_1_ordinary_direct_commit_on_merged_slide_count == 0",
+        "verified_direct_collection_activity_dropped_from_later_status_count == 0",
     ),
     "SYSTEM_CONTRACT.yaml": (
         "minimum_text_pt: 11",
@@ -102,6 +107,8 @@ REQUIRED_ACTIVE_PATTERNS = {
         "Progressive-funnel hard rule",
         "provide separate verified renderer fields",
         "dedicated team slide whose primary header names the team",
+        "ordinary one-parent direct commits are mandatory evidence here",
+        "they must not disappear merely because they are excluded from point 1",
     ),
     "monday_meeting/structure/COMPOSITION_ARCHITECTURE.md": (
         "This is a progressive funnel, not permission to duplicate the same content",
