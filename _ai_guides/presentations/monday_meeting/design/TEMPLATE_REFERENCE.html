@@ -82,6 +82,20 @@ h2 { margin: 0 0 22px; font-size: 22px; line-height: 1.3; color: #D2D7E4; }
 }
 .owner .person { color: #F7F8FC; }
 .owner .team { color: #D2D7E4; }
+.merge-details {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 6px 14px;
+}
+.detail {
+  font-size: 11px;
+  line-height: 1.35;
+  color: #D2D7E4;
+}
+.detail strong { color: #F7F8FC; font-weight: 700; }
 .meta {
   margin-top: 7px;
   font-size: 11px;
@@ -113,17 +127,25 @@ h2 { margin: 0 0 22px; font-size: 22px; line-height: 1.3; color: #D2D7E4; }
     <article class="card frontend">
       <div class="title">#105 · Test foundation</div>
       <div class="explanation">Lägger grunden för tester av kritiska frontendflöden.</div>
-      <div class="owner"><span class="person">Developer A</span><span class="team"> · Frontend</span></div>
-      <div class="meta">Merged: Reviewer A | Review:</div>
-      <div class="timestamp">15 sep · 09:59</div>
+      <div class="owner"><span class="person">Assignad: Alex</span></div>
+      <div class="merge-details">
+        <div class="detail">Senaste commit/PR: <strong>15 sep · 09:59</strong></div>
+        <div class="detail">Mergad av: <strong>Robin</strong></div>
+        <div class="detail">Godkänd av: <strong>Sam</strong></div>
+      </div>
+      <div class="timestamp">Senast verifierad · 15 sep · 09:59</div>
     </article>
 
     <article class="card backend">
       <div class="title">#95 · Stoppa SQL-injektion</div>
       <div class="explanation">Login byter till parametriserad JdbcTemplate-fråga.</div>
-      <div class="owner"><span class="person">Developer B</span><span class="team"> · Backend</span></div>
-      <div class="meta">Merged: Reviewer B | Review: Developer B</div>
-      <div class="timestamp">14 sep · 08:59</div>
+      <div class="owner"><span class="person">Assignad: Kim</span></div>
+      <div class="merge-details">
+        <div class="detail">Senaste commit/PR: <strong>14 sep · 08:59</strong></div>
+        <div class="detail">Mergad av: <strong>Robin</strong></div>
+        <div class="detail">Godkänd av: <strong>Kim</strong></div>
+      </div>
+      <div class="timestamp">Senast verifierad · 14 sep · 08:59</div>
     </article>
   </div>
 </section>
