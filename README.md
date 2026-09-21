@@ -44,6 +44,23 @@ Machine-readable global paths and task bundles are registered in
 atlas for reusable authorities and task dependencies. Project-specific paths are
 resolved through the selected project's manifest.
 
+New information is placed through
+[`_ai_guides/context/CONTEXT_ROUTING.yaml`](_ai_guides/context/CONTEXT_ROUTING.yaml)
+and the exact-placement contract
+[`_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml`](_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml).
+
+Before canonical repository mutation, the AI resolves and normally tells the user:
+- global/project/task-only scope,
+- information class,
+- owning authority/capability,
+- exact target file,
+- required propagation.
+
+Mixed user text is split into separate information units before routing. A focused
+control question is required when project/destination/authority is genuinely
+ambiguous or a new canonical capability is needed; otherwise the AI may proceed
+after stating the destination.
+
 ## What do you want to do?
 
 ### Regular project work
@@ -86,6 +103,7 @@ and converted into the closest accessible alternative instead.
 | How is active work detected? | [`ACTIVE_WORK_DETECTION_MODEL.md`](_ai_guides/presentations/data/ACTIVE_WORK_DETECTION_MODEL.md) |
 | How is the final artifact validated? | [`RENDER_GATE_CHECKLIST.md`](_ai_guides/presentations/verification/RENDER_GATE_CHECKLIST.md) |
 | Where should new rules be placed? | [`DESIGN_AUTHORITY.md`](_ai_guides/presentations/design/DESIGN_AUTHORITY.md) + [`ARCHITECTURE.md`](_ai_guides/presentations/ARCHITECTURE.md) |
+| Where should newly supplied context/facts/rules be stored? | [`CONTEXT_PLACEMENT_CONTRACT.yaml`](_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml) + [`CONTEXT_ROUTING.yaml`](_ai_guides/context/CONTEXT_ROUTING.yaml) |
 
 Do not add competing rules outside the owning authority. Project facts are
 resolved through the selected project's manifest rather than embedded in these
