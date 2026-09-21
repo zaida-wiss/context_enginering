@@ -1,7 +1,7 @@
 ---
 name: avanza_project_context
 description: Canonical manifest for Avanza-specific project context
-version: 1.5
+version: 1.6
 metadata:
   type: project_manifest
   project: avanza
@@ -62,6 +62,8 @@ context:
       path: "projects/avanza/design/TEAM_VISUAL_IDENTITY.yaml"
     mockup_documentation:
       path: "projects/avanza/design/DESIGN_MOCKUPS_README.md"
+    mockup_assets:
+      path: "projects/avanza/design/mockups/"
 
 ownership:
   rule: >
