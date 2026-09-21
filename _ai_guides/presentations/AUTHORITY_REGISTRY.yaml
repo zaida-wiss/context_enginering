@@ -1,6 +1,6 @@
 name: presentation_authority_registry
 description: Canonical registry of active authorities, validators, references and retired guides
-version: 1.4
+version: 1.5
 metadata:
   type: registry
   critical: true
@@ -83,6 +83,7 @@ active_authorities:
 
 validators:
   - verification/RENDER_GATE_CHECKLIST.md
+  - ../../_audit/rendered_presentation_audit.py
   - design/DESIGN_AUTHORITY.md
   - ARCHITECTURE.md
 
