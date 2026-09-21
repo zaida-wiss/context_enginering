@@ -1,0 +1,259 @@
+---
+name: context_placement_contract
+description: Canonical contract for deciding exactly where new information belongs before repository mutation
+metadata:
+  type: governance
+  critical: true
+  version: 1.0
+  scope: global
+---
+
+# Context Placement Contract
+
+## Purpose
+
+This contract determines the exact repository level, semantic owner and canonical
+destination for newly supplied information before any write occurs.
+
+It complements `CONTEXT_ROUTING.yaml`:
+- `CONTEXT_ROUTING.yaml` classifies and routes the information class.
+- this contract resolves the **exact placement decision** and makes it visible to
+  the user before repository mutation.
+
+The goal is deterministic placement, project isolation and traceable propagation.
+
+## Placement hierarchy
+
+Resolve every incoming information unit through this hierarchy, in order:
+
+1. **Scope**
+   - global reusable behavior
+   - selected-project context
+   - task/artifact-only content that should not become canonical context
+
+2. **Semantic type**
+   - verified fact
+   - source/evidence
+   - confirmed decision
+   - rule/constraint
+   - design/presentation behavior
+   - process/workflow
+   - derived analysis/proposal
+   - transient current-state data
+
+3. **Owning domain**
+   Choose the narrowest domain that owns the meaning, not the place where the
+   information happens to be used.
+
+4. **Canonical owner**
+   Resolve through `CONTEXT_REGISTRY.yaml`, the selected project manifest and,
+   when relevant, the domain authority registry.
+
+5. **Exact target**
+   Resolve one concrete file path, or identify that a new registered capability
+   is required before writing.
+
+6. **Conflict and compatibility**
+   Compare the incoming unit with the current canonical owner:
+   - same
+   - compatible update
+   - genuine conflict
+   - ambiguous destination
+   - new capability required
+
+7. **Propagation**
+   Identify indexes, manifests, registries, validators and downstream consumers
+   that must change because of the canonical update.
+
+8. **Placement receipt**
+   Present the resolved placement before mutation.
+
+## Atomic-information rule
+
+A user-provided text is not assumed to belong in one file.
+
+Split mixed input into the smallest meaningful information units before routing.
+
+Example:
+
+```text
+"The CTO film is due Thursday at 16:00, Friday is not project work,
+and the sprint slide should omit Friday."
+```
+
+is three separate units:
+
+- course deadline -> project course/deadline owner
+- project working-time constraint -> project constraint owner
+- presentation behavior -> project presentation authority
+
+Do not store the entire paragraph in one convenient file merely because the
+facts arrived together.
+
+## Destination matrix
+
+Use the narrowest registered owner.
+
+### Global reusable behavior
+
+| Incoming meaning | Canonical owner |
+|---|---|
+| global AI behavior | `logical_destinations.global.ai_framework` |
+| global project-work process | registered global project authority |
+| global presentation rule | owning category from presentation `AUTHORITY_REGISTRY.yaml` |
+| global accessibility/cognitive rule | registered global accessibility authority |
+| generic routing behavior | `registries.context_ingestion` / this placement contract |
+
+### Selected-project context
+
+| Incoming meaning | Canonical owner resolution |
+|---|---|
+| schedule | selected project manifest -> `context.course.schedule.path` |
+| deadline | selected project manifest -> `context.course.deadlines.path` |
+| milestone | selected project manifest -> `context.course.milestones.path` |
+| roadmap | selected project manifest -> `context.course.roadmap.path` |
+| sprint cadence/working period | selected project manifest -> sprint/constraint capability |
+| people/team membership | selected project manifest -> `context.team_roster.path` |
+| project source evidence | selected project manifest -> `context.sources.path` plus narrow source material file when registered |
+| repository/branch workflow | selected project manifest -> `context.repository_flow.path` |
+| project presentation behavior | selected project manifest -> `context.presentation.authority.path` or a registered subordinate presentation contract |
+| project visual identity | selected project manifest -> `context.design.team_visual_identity.path` |
+| project constraint | narrowest registered project constraint capability |
+| project decision | narrowest registered project decision domain |
+| current GitHub state | registered live source; do not persist as long-lived fact unless an explicit snapshot is required |
+
+### Task/artifact-only material
+
+A one-off artifact request, draft wording, temporary analysis or unconfirmed AI
+proposal remains task-local unless the user asks to make it canonical or it is
+explicitly accepted as a durable rule/decision.
+
+## Rule-owner routing
+
+For incoming rules, classify by what the rule governs.
+
+Examples:
+
+- "card body text must be at least X" -> card/readability authority, not slide-content file
+- "point 12 omits Friday for Avanza" -> Avanza presentation authority, grounded by project working-time constraint
+- "Friday is not project work" -> project constraint owner, not presentation authority
+- "team Frontend is turquoise" -> project visual identity
+- "AI must ask before resolving a genuine conflict" -> global AI framework
+- "new course deadline is Thursday 16:00" -> course deadline data, not AI instruction
+
+A consumer file may reference the owner, but durable truth is written to the
+single semantic owner first.
+
+## New capability gate
+
+When no registered destination can correctly own the incoming unit:
+
+1. do not place it in a generic dumping file;
+2. identify the missing capability;
+3. propose the narrowest reusable capability and path;
+4. state which manifest/registry must register it;
+5. ask for user approval before creating a new canonical category or architecture;
+6. after approval, create/register the capability and add validation.
+
+## Placement receipt — mandatory before mutation
+
+Before writing canonical context, show a concise receipt.
+
+Required fields:
+
+```yaml
+placement_receipt:
+  project: <global | selected project id | none>
+  unit: <short description of information unit>
+  classification: <fact | source | decision | rule | constraint | design | process | current_state>
+  scope: <global | project | task_only>
+  owner: <logical authority/capability>
+  target: <exact repository path>
+  propagation:
+    - <dependent registry/manifest/validator, if any>
+  conflict_state: <same | compatible_update | conflict | ambiguous | new_capability>
+  action: <write | merge | ask_user | no_persist>
+```
+
+The user-facing version may be compact prose, but the same meanings must be
+resolved internally before mutation.
+
+## Clarification gate
+
+### No clarification needed
+
+Proceed after informing the user of placement when:
+- one project is explicitly resolved;
+- one canonical owner clearly matches;
+- the update is compatible with current context;
+- no new category/architecture is needed.
+
+### Clarification required
+
+Ask one focused control question before writing when:
+- project selection is ambiguous;
+- two or more canonical owners are equally plausible;
+- the incoming text could be either a fact or a durable rule/decision;
+- a genuine active-rule conflict exists;
+- a new canonical category/file/manifest capability is required;
+- writing would change architectural ownership rather than only content.
+
+The question must include the candidate destinations and the practical
+consequence of each option.
+
+## Placement information to user
+
+For repository-writing workflows, the AI should normally state where the
+information will be placed before the write, for example:
+
+```text
+Jag tolkar detta som en Avanza-specifik kursdeadline.
+Jag lägger den i projects/avanza/course/COURSE_DEADLINES.md.
+Presentationer läser sedan värdet därifrån.
+```
+
+For mixed input:
+
+```text
+Texten innehåller tre separata informationsenheter. Jag delar upp dem:
+1. deadline -> ...
+2. working-time constraint -> ...
+3. presentation behavior -> ...
+```
+
+Do not expose internal framework prose inside user-facing project artifacts.
+
+## Propagation contract
+
+After the canonical write:
+
+1. update the canonical owner;
+2. update a project manifest only when a new/moved capability must be registered;
+3. update `CONTEXT_REGISTRY.yaml` only when global logical routing changes;
+4. update authority registries only when ownership/activation changes;
+5. update validators when the invariant needs regression protection;
+6. update consumer/reference files only by delegation or synchronized example;
+7. run applicable smoke/integrity validators;
+8. report exact files changed and whether validation passed.
+
+A factual update should not automatically mutate presentation rules.
+A presentation rule should not duplicate the factual source it consumes.
+
+## Failure conditions
+
+Placement is invalid when any of these occur:
+
+```text
+canonical_write_without_resolved_scope_count > 0
+canonical_write_without_exact_owner_count > 0
+canonical_write_without_exact_target_count > 0
+mixed_input_unsplit_count > 0
+project_fact_written_to_global_dumping_domain_count > 0
+new_canonical_file_unregistered_count > 0
+genuine_conflict_silently_resolved_count > 0
+ambiguous_destination_written_without_clarification_count > 0
+placement_receipt_missing_before_canonical_mutation_count > 0
+```
+
+---
+status: ACTIVE
