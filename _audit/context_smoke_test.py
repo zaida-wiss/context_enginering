@@ -227,6 +227,22 @@ def main():
         failures,
     )
     require(
+        "AI rule updates run contradiction preflight before mutation",
+        "contradiction_preflight:" in ai_framework
+        and "compare_required_outcomes_not_only_wording" in ai_framework
+        and "stop_and_notify_user_immediately_when_genuine_conflict_exists" in ai_framework
+        and "timing: before_repository_mutation" in ai_framework
+        and "user_decision_required_before_change: true" in ai_framework,
+        failures,
+    )
+    require(
+        "conflict notice explains both owners outcomes and consequences",
+        "exact_owner_and_file_for_each_rule" in ai_framework
+        and "conflicting_required_outcomes" in ai_framework
+        and "practical_consequence_of_each_option" in ai_framework,
+        failures,
+    )
+    require(
         "human guide mirrors positive-first authoring without becoming normative",
         "Writing AI instructions: positive, hierarchical and executable" in ai_framework_guide
         and "desired behavior first" in ai_framework_guide
