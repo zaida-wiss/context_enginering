@@ -1,7 +1,7 @@
 ---
 name: working_time_constraints
 description: Canonical hard project-working-time constraints for the Avanza project
-version: 1.0
+version: 1.1
 metadata:
   type: project_constraint
   project: avanza
@@ -30,6 +30,8 @@ constraints:
       - "Do not place project tasks on Friday."
       - "Do not count Friday as an eligible Avanza project workday."
       - "Do not suggest Friday as overflow, catch-up or parallel project time."
+      - "For meeting point 12 sprint planning, omit Friday entirely from the project-work sequence; do not render an empty, disabled or placeholder Friday card."
+      - "Friday may appear only in course-context views such as the full course timeline/schedule when that context is relevant."
       - "Keep numeric hours unknown unless a verified project source supplies them."
 
 provenance:
