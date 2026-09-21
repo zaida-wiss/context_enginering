@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.3
+version: 3.4
 metadata:
   type: registry
   critical: true
@@ -39,6 +39,8 @@ registries:
     path: "PROJECTS.yaml"
   context_ingestion:
     path: "_ai_guides/context/CONTEXT_ROUTING.yaml"
+  context_placement:
+    path: "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml"
   project_template:
     path: "projects/_template/PROJECT.yaml"
   project_onboarding:
@@ -46,6 +48,8 @@ registries:
 
 logical_destinations:
   global:
+    context_placement_contract:
+      path: "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml"
     ai_framework:
       path: "_ai_guides/AI_FRAMEWORK.yaml"
     cognitive_accessibility_neuroinclusive_design:
@@ -147,6 +151,25 @@ presentation_bootstrap:
     path: "_ai_guides/presentations/SYSTEM_CONTRACT.yaml"
 
 tasks:
+  context_ingestion:
+    purpose: "Classify newly supplied information, resolve its exact canonical owner and target, and write only after placement is explicit."
+    load:
+      - "registries.context_ingestion"
+      - "registries.context_placement"
+      - "logical_destinations.global.ai_framework"
+      - "registries.projects"
+    behavior:
+      - "split mixed input into atomic information units"
+      - "resolve global/project/task-only scope"
+      - "resolve exact semantic owner and exact repository path"
+      - "emit a user-visible placement receipt before canonical mutation"
+      - "ask one focused control question only when destination/project/authority is genuinely ambiguous or architectural"
+      - "propagate registry/manifest/validator updates only when ownership or capability changes"
+    validation:
+      - "canonical file exists or new capability is explicitly approved and registered"
+      - "project-specific information remains under the selected project root"
+      - "new canonical files are registered before considered active"
+
   issue_creation:
     purpose: "Create or improve a GitHub issue using the project's canonical workflow."
     context_loading:
