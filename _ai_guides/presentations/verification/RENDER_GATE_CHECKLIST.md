@@ -4,7 +4,7 @@ description: Mechanical checklist for when a Monday Meeting presentation may be 
 metadata:
   type: process
   critical: true
-  version: 6.2
+  version: 6.3
 ---
 
 # 🚨 RENDER-GATE CHECKLIST
@@ -406,10 +406,16 @@ timestamp_not_right_aligned_count == 0
 required_card_bottom_information_missing_count == 0
 card_bottom_information_outside_bounds_count == 0
 card_bottom_information_overlaps_body_count == 0
+verified_merger_omitted_from_card_count == 0
+verified_approving_reviewer_omitted_from_card_count == 0
+verified_merge_timestamp_omitted_from_card_count == 0
+merge_event_time_replaced_by_pr_or_commit_time_count == 0
 ```
 
 Bottom-zone mechanical/visual checks:
 - required identity/activity/merge/review/timestamp/operational rows are resolved before upper card layout;
+- on verified merged-PR cards, developer/delivery, merger/reviewer and merge-event time remain distinct bottom-zone information;
+- a `Mergat till …` page subtitle may suppress only a redundant merge-state badge; it never suppresses verified merger, approving reviewer or merge timestamp;
 - when verified bottom fields exist, the rendered card contains them inside its lower information zone;
 - no body or pedagogical text occupies the reserved bottom-information bounds;
 - missing space triggers reflow/pagination, never deletion of bottom information.
