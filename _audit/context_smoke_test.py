@@ -187,6 +187,33 @@ def main():
         "logical_destinations.project.team_tone_and_collaboration",
     ]
     require(
+        "presentation symbol grammar is complete and end-to-end",
+        "CANONICAL PRESENTATION SYMBOL GRAMMAR" in provenance
+        and "🎯" in provenance
+        and "🕒" in provenance
+        and "📍" in provenance
+        and "💡" in provenance
+        and "🛠" in provenance
+        and "👤" in provenance
+        and "GitHub icon + ✅" in provenance
+        and "📌" in provenance
+        and "⚡" in provenance
+        and "🛡" in provenance
+        and "↘" in provenance
+        and "rendered_symbol_inventory_mismatch_count == 0" in provenance,
+        failures,
+    )
+    require(
+        "render gate fails on lost task GitHub workflow and risk symbols",
+        "semantic_field_missing_required_symbol_count == 0" in render_gate
+        and "github_verified_source_missing_github_icon_check_pair_count == 0" in render_gate
+        and "waiting_pr_pushpin_missing_before_identifier_count == 0" in render_gate
+        and "risk_field_missing_registered_risk_symbol_count == 0" in render_gate
+        and "rendered_symbol_inventory_mismatch_count == 0" in render_gate,
+        failures,
+    )
+
+    require(
         "global AI framework YAML is registered",
         "logical_destinations:" in registry
         and "ai_framework:" in registry
