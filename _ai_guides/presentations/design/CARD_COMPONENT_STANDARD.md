@@ -5,7 +5,7 @@ metadata:
   type: design-specification
   critical: true
   required_before: rendering
-  version: 1.11
+  version: 1.12
 ---
 
 # 🎴 CARD COMPONENT STANDARD
@@ -92,6 +92,32 @@ The intended scan order is:
 ```text
 Issue-titel → pedagogisk förklaring/AI → [luft] → assignee → källa/metadata/tid
 ```
+
+---
+
+# 2A. CARD SEMANTIC HIERARCHY — WHAT SURVIVES SIMPLIFICATION
+
+Card layout decisions follow this order of semantic importance:
+
+1. **Work identity** — issue/PR/title and what the work actually is.
+2. **Human identity** — verified assignee/contributor; on completed merge work,
+   merger and approving reviewer remain separate roles.
+3. **Project meaning** — what the work contributes, changes, unlocks or protects.
+4. **State/event meaning** — current status, delivery activity and merge event.
+5. **Operational support** — branch, source/provenance and technical metadata.
+6. **Redundant repetition / decoration** — badges or labels already expressed by
+   slide title, subtitle, placement or another higher-level cue.
+
+When space is constrained, resolve it from level 6 upward: consolidate redundant
+state repetition first, shorten wording without changing meaning, then reflow or
+paginate. Required fields from levels 1–5 remain governed by their owning content
+contract.
+
+For a completed merged-PR card this hierarchy means:
+- the page subtitle can carry the general fact that the item is merged;
+- the card still carries the distinct contributor, merger, approving reviewer
+  and merge-event time when verified because those are different semantic facts;
+- decorative merge badges rank below those facts and may be omitted first.
 
 ---
 
@@ -356,12 +382,16 @@ Merged: {MERGER} | Review: {REVIEWER}
                          18 sep · 09:42
 ```
 
-Hard semantic distinctions:
-- developer/contributor ≠ merger;
-- PR-open/commit activity time ≠ merge-event time;
-- requested reviewer ≠ approving reviewer;
-- the subtitle may replace only the redundant merge-state badge, never merger,
-  approving-reviewer or merge-time information.
+Semantic role hierarchy:
+- contributor/developer = who produced the work;
+- merger = who completed the merge event;
+- approving reviewer = who submitted an APPROVED review;
+- delivery activity time = PR-open or commit/push transition;
+- merge-event time = when the merge actually completed;
+- page subtitle = high-level merged-state context.
+
+The subtitle therefore replaces only the lowest-priority repeated state label.
+It does not replace the distinct role/event facts above it.
 
 If merger/reviewer identity cannot be verified, keep the field blank according
 to the merge/review identity rule; never invent a person.
