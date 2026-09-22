@@ -456,7 +456,7 @@ access_methods:
     supported_sources: ["GOOGLE_PROJECT_DATA_SHEET", "GOOGLE_RISK_REGISTER", "GOOGLE_MEETING_PROTOCOL"]
   local_file:
     definition: "Local repository file (always available)"
-    supported_sources: ["GITHUB_TEAM_ROSTER", "CHAS_BACKOFFICE_ANNOUNCEMENTS", "DM_UX_FEED_FORWARD_INSTRUCTIONS"]
+    supported_sources: ["GITHUB_TEAM_ROSTER", "CHAS_BACKOFFICE_ANNOUNCEMENTS", "DM_UX_FEED_FORWARD_INSTRUCTIONS", "AVANZA_CASE_BRIEF", "AVANZA_CASE_FILM_TRANSCRIPT"]
   web_direct:
     definition: "Direct web access (reference tools only)"
     supported_sources: ["WEBAIM_CONTRAST_CHECKER"]
