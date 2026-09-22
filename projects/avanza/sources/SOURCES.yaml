@@ -1,7 +1,7 @@
 ---
 name: sources_registry
 description: Machine-readable registry of all external data sources, URLs, IDs, access methods, and classifications
-version: 1.1
+version: 1.2
 metadata:
   type: project_registry
   project: avanza
@@ -349,6 +349,33 @@ sources:
       - "web_search"
       - "export_without_connector"
 
+
+  # PRIMARY CUSTOMER CASE SOURCES
+
+  AVANZA_CASE_BRIEF:
+    source_id: "AVANZA_CASE_BRIEF"
+    classification: "REFERENCE"
+    evidence_role: "PRIMARY_SOURCE"
+    purpose: "Primary written customer case brief for Avanza Portföljhälsa; use as source evidence for customer problem, scope, MVP, v1/v2 requirements and technical case facts"
+    primary:
+      method: "local_file"
+      path: "projects/avanza/sources/source_documents/AVANZA_CASE_BRIEF.md"
+      note: "User-supplied primary source preserved without interpretive rewriting"
+    interpretation_rule: "Do not promote derived summaries or legacy interpretations above this source when establishing case facts."
+    fallbacks: []
+
+  AVANZA_CASE_FILM_TRANSCRIPT:
+    source_id: "AVANZA_CASE_FILM_TRANSCRIPT"
+    classification: "REFERENCE"
+    evidence_role: "PRIMARY_SOURCE"
+    purpose: "Primary transcript of the Avanza customer case film; use as source evidence for the customer's stated pain, intent, constraints and desired outcomes"
+    primary:
+      method: "local_file"
+      path: "projects/avanza/sources/source_documents/AVANZA_CASE_FILM_TRANSCRIPT.txt"
+      note: "User-supplied transcript preserved without timestamps and without interpretive rewriting"
+    interpretation_rule: "When a claim is presented as the customer's own stated intent or pain, ground it in this transcript rather than a derived summary when applicable."
+    fallbacks: []
+
   # LOCAL VERIFIED COURSE EVIDENCE
 
   CHAS_BACKOFFICE_ANNOUNCEMENTS:
@@ -439,6 +466,6 @@ access_methods:
 
 ---
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-22
 **Status:** Machine-readable registry (YAML) — single source of truth
 **Governance:** This file OWNS all URLs, IDs, access methods, classifications. Other files reference by source_id only.
