@@ -6,6 +6,10 @@ on:
       - dev
       - main
     paths:
+      - "AGENTS.md"
+      - ".github/copilot-instructions.md"
+      - "AGENTS.md"
+      - ".github/copilot-instructions.md"
       - "CONTEXT_REGISTRY.yaml"
       - "PROJECTS.yaml"
       - "projects/**"
