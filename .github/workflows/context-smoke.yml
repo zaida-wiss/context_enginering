@@ -8,8 +8,6 @@ on:
     paths:
       - "AGENTS.md"
       - ".github/copilot-instructions.md"
-      - "AGENTS.md"
-      - ".github/copilot-instructions.md"
       - "CONTEXT_REGISTRY.yaml"
       - "PROJECTS.yaml"
       - "projects/**"
@@ -19,6 +17,8 @@ on:
       - ".github/workflows/context-smoke.yml"
   pull_request:
     paths:
+      - "AGENTS.md"
+      - ".github/copilot-instructions.md"
       - "CONTEXT_REGISTRY.yaml"
       - "PROJECTS.yaml"
       - "projects/**"
