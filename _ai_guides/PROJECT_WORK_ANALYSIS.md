@@ -1,7 +1,7 @@
 ---
 name: project_work_analysis
 description: Global evidence-driven project analysis for implementation, planning, review and reporting
-version: 1.5
+version: 1.6
 metadata:
   type: global_ai_authority
   scope: all_projects
@@ -111,6 +111,30 @@ data where that still permits the work.
 Do not claim legal compliance merely because an engineering/privacy checklist
 passes. Distinguish technical/privacy risk analysis from legal conclusions.
 
+## Project fact proof gate
+
+Apply the global `project_fact_proof_gate` from `AI_FRAMEWORK.yaml` to every
+material claim about actual project state.
+
+Use these evidence states:
+
+- **VERIFIED** — directly supported by an inspectable source.
+- **DERIVED** — deterministically and reproducibly calculated from VERIFIED
+  inputs without adding an unverified project premise.
+- **UNKNOWN** — the evidence does not establish the claim.
+- **PROPOSAL** — AI recommendation, option or suggested future action; never
+  project state.
+
+The practical rule is **prove it or preserve the unknown**. When a material fact
+is missing, inspect additional relevant evidence if available. If the evidence
+still does not establish it, say that it is UNKNOWN. Do not fill the gap from
+what usually happens, what looks likely, naming conventions, historical habits,
+team stereotypes or nearby activity.
+
+Reasoning is still useful: explain consequences of VERIFIED facts, compare
+options and make PROPOSALS. But reasoning must not manufacture an unverified
+premise about what is actually true in the project.
+
 ## Evidence reconstruction
 
 Start from the smallest sufficient current evidence set and expand only when it
@@ -125,21 +149,23 @@ Correlate, when relevant:
 - declared ownership
 - targeted history
 
-Do not infer:
+Do not infer project facts such as:
 - assignee from commit author alone
 - ownership from commit count alone
 - active implementation from a project-board status alone
 - current intent from historical activity alone
 - issue linkage from a branch name alone without verification
+- dependency or blocker status from nearby file activity alone
+- a decision from an unmerged implementation or an AI recommendation
 
-Distinguish:
-- declared ownership
-- observed contribution
-- integration boundaries
-- verified facts
-- historical facts
-- AI inference
-- AI recommendation
+When material, make the evidence status visible and distinguish:
+- VERIFIED current project facts
+- VERIFIED historical facts
+- DERIVED results with their verified inputs and reproducible method
+- UNKNOWN facts that could not be established
+- PROPOSALS and recommendations
+
+A signal may justify further inspection. A signal is not proof of the claim.
 
 ## Dependency and collision analysis
 
