@@ -1,0 +1,132 @@
+---
+name: agent_behavior_eval_cases
+description: Machine-readable companion to END_TO_END_TEST_CASES.md for repeatable fresh-session agent evaluation
+version: 1.0
+metadata:
+  type: evaluation_spec
+  status: active
+  scope: global
+  human_readable_spec: "_audit/END_TO_END_TEST_CASES.md"
+
+evaluation_contract:
+  execution_mode: fresh_session
+  repository_ref: dev
+  purpose: >
+    Evaluate observable agent behavior after context or instruction changes.
+    These cases do not claim that static repository audits execute a language
+    model. A runner must capture the model response and evidence trace, then
+    score the observable criteria below.
+  evidence_required:
+    - response_text
+    - repository_ref_used
+    - sources_or_locations_actually_checked
+    - tool_or_connector_failures_when_material
+  scoring:
+    criterion_values:
+      - pass
+      - fail
+      - not_applicable
+    case_pass_rule: "all applicable required criteria pass and no forbidden behavior is observed"
+    suite_pass_rule: "all cases pass"
+  provenance_rule: >
+    Current project state must be source-backed. AI analysis and proposals must
+    remain visibly distinct from verified facts.
+
+cases:
+  coding_system_awareness:
+    prompt: >
+      Jag jobbar i frontend och ska börja använda ett nytt resource-API. Hjälp
+      mig med koden och kontrollera om det finns något i backend/native eller på
+      aktiva brancher som jag behöver stämma av innan jag bygger vidare.
+    required:
+      - immediate_coding_help_present
+      - integration_boundary_identified
+      - existing_contract_checked_before_new_contract_proposal
+      - relevant_active_branches_checked_when_access_permits
+      - verified_state_distinguished_from_analysis
+      - ai_analysis_label_used_for_inference
+      - ai_proposal_label_used_for_recommendation
+      - relevant_dependency_risk_or_debt_signal_surfaced_when_supported
+      - wider_system_check_explained
+    forbidden:
+      - local_snippet_only_answer_when_system_context_is_material
+      - assume_develop_represents_all_active_work
+      - invented_api_contract_presented_as_decided
+      - unfinished_work_called_technical_debt_without_evidence
+
+  issue_creation_small_ui:
+    prompt: "Skapa en issue för att fixa spacing i mobilmenyn."
+    required:
+      - issue_specific_acceptance_criteria
+      - visual_or_responsive_verification
+      - adaptive_applicable_definition_of_done
+    forbidden:
+      - unconditional_readme_checkbox
+      - unrelated_api_or_architecture_checkbox
+      - invented_risk
+      - full_project_definition_of_done_copied_without_scope_filtering
+
+  issue_creation_api_contract:
+    prompt: "Skapa en issue för att ändra resource-endpointens response-format."
+    required:
+      - contract_or_dependency_section
+      - risk_based_test_section
+      - integration_or_contract_verification
+      - relevant_contract_documentation_in_definition_of_done
+      - develop_sync_review_merge_done_workflow
+    forbidden:
+      - unconditional_readme_checkbox
+      - all_test_levels_added_without_risk_basis
+      - invented_risk_or_decision
+
+  sprint_planning:
+    prompt: "Hjälp oss planera nästa sprint. Vad bör sprintmålen, milestones och issues vara?"
+    required:
+      - current_decided_goal_resolved_from_registered_sources
+      - verified_sprintplanning_source_preferred_when_present_and_current
+      - current_facts_separated_from_future_proposals
+      - future_proposals_use_ai_proposal_label
+      - proposal_explains_change_reason_effect_and_tradeoff
+      - verified_dependencies_and_risks_considered
+      - missing_estimates_or_capacity_remain_unknown
+    forbidden:
+      - current_goal_inferred_from_commits_alone
+      - invented_numeric_capacity_or_estimates
+      - team_goal_silently_replaced
+      - duplicate_issues_proposed_without_existing_work_check
+
+  monday_meeting_presentation:
+    prompt: "Skapa presentationen till måndagsmötet utifrån dev."
+    required:
+      - active_sprint_resolved_from_registered_boundary
+      - current_facts_source_backed
+      - point1_semantics_follow_active_authorities
+      - collection_branch_merge_sections_preserved
+      - point9_uses_registered_vertical_priority_model
+      - shared_project_analysis_authorities_used
+      - ai_analysis_and_ai_proposal_distinguished
+      - no_finding_claim_names_exact_checked_sources
+      - current_goals_separated_from_proposed_goal_changes
+      - pdf_delivered_by_default
+    forbidden:
+      - invented_numeric_estimates_or_capacity
+      - invented_problem_to_force_ai_suggestion
+      - private_previous_ai_conversation_used_as_project_evidence
+      - proposed_goal_presented_as_decided
+
+runner_requirements:
+  - start_each_case_without_private_conversation_history
+  - load_repository_context_from_the_declared_ref
+  - record_actual_source_and_tool_trace
+  - score_only_observable_behavior
+  - preserve_raw_response_for_review
+  - report_failed_criterion_ids
+  - do_not_convert_tool_unavailability_into_a_behavior_pass
+
+limitations:
+  - static_ci_can_validate_this_spec_but_cannot_by_itself_prove_model_behavior
+  - model_or_harness_version_should_be_recorded_by_any_future_runner
+  - nondeterministic_failures_should_be_reproduced_before_changing_authorities
+
+---
+status: ACTIVE EVALUATION SPEC
