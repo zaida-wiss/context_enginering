@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.16
+version: 1.17
 metadata:
   type: global_authority
   critical: true
@@ -42,6 +42,83 @@ project_context_resolution:
   after_resolution:
     - load_only_the_selected_projects_registered_context_plus_global_framework
     - keep_course_project_design_and_external_sources_scoped_to_selected_project
+
+
+project_fact_proof_gate:
+  scope: global
+  purpose: >
+    Ensure that claims about a real project's state are provable from explicit
+    evidence. When evidence is insufficient, preserve the uncertainty instead of
+    completing the picture with a plausible guess.
+  applies_to:
+    - project_status
+    - ownership
+    - issue_and_pull_request_relationships
+    - dependencies_and_blockers
+    - decisions_and_requirements
+    - schedules_and_deadlines
+    - architecture_and_implementation_state
+    - risks_and_incidents
+    - presentations_and_reports
+    - planning_and_recommendations
+  evidence_states:
+    VERIFIED:
+      definition: >
+        The claim is directly supported by an identified current or stable source
+        whose content can be inspected and reproduced.
+      requirement:
+        - source_identity_is_available
+        - source_supports_the_specific_claim
+    DERIVED:
+      definition: >
+        The claim follows deterministically from VERIFIED inputs by an explicit,
+        reproducible transformation or calculation.
+      requirement:
+        - all_material_inputs_are_VERIFIED
+        - derivation_can_be_reproduced
+        - derivation_does_not_add_unverified_real_world_assumptions
+    UNKNOWN:
+      definition: >
+        The available evidence does not establish the claim.
+      requirement:
+        - preserve_as_unknown_until_verified
+    PROPOSAL:
+      definition: >
+        A recommendation, option, hypothesis for investigation, or suggested
+        future action. A proposal is not project state and must remain visibly
+        separate from VERIFIED and DERIVED claims.
+  execution_sequence:
+    - identify_each_material_project_state_claim_needed_for_the_answer
+    - retrieve_the_smallest_sufficient_evidence_set
+    - classify_each_claim_as_VERIFIED_DERIVED_UNKNOWN_or_PROPOSAL
+    - cite_or_name_the_supporting_source_for_VERIFIED_claims_when_material
+    - expose_the_verified_inputs_and_method_for_DERIVED_claims_when_material
+    - expand_evidence_retrieval_when_UNKNOWN_would_materially_change_the_answer
+    - keep_the_claim_UNKNOWN_when_sufficient_evidence_still_does_not_exist
+    - present_recommendations_only_as_PROPOSAL
+  hard_boundaries:
+    - never_present_UNKNOWN_as_fact
+    - never_convert_plausibility_probability_pattern_similarity_or_historical_habit_into_project_fact
+    - never_infer_current_state_only_from_naming_conventions_commit_author_commit_count_or_nearby_activity
+    - never_use_private_previous_ai_conversation_as_project_evidence
+    - never_hide_an_unverified_assumption_inside_a_DERIVED_claim
+  reasoning_boundary: >
+    AI reasoning may compare verified facts, explain implications and propose
+    actions. It must not manufacture a missing real-project premise. If the
+    reasoning requires an unverified premise about the project's actual state,
+    that premise remains UNKNOWN and the resulting statement must not be
+    presented as established project reality.
+  failure_behavior:
+    material_required_fact_unverified: >
+      Retrieve more evidence when available. If sufficient evidence still cannot
+      be obtained, state that the fact is UNKNOWN and explain what evidence would
+      be needed to establish it.
+    source_or_connector_failure: >
+      Report the failure when material and do not reinterpret tool unavailability
+      as evidence that the underlying claim is false or true.
+  completion_condition: >
+    Every material real-project claim in the output is either VERIFIED, DERIVED
+    from VERIFIED inputs, explicitly UNKNOWN, or clearly separated as a PROPOSAL.
 
 
 instruction_authoring_standard:
