@@ -92,6 +92,7 @@ def main():
     migration_plan = read("_ai_guides/context/PATH_MIGRATION_PLAN.yaml")
     agent_eval = read("_audit/AGENT_BEHAVIOR_EVAL_CASES.yaml")
     agent_eval_runner = read("_audit/AGENT_BEHAVIOR_EVAL_RUNNER.py")
+    agent_eval_harness = read("_audit/AGENT_BEHAVIOR_EVAL_HARNESS.py")
 
     print("=" * 80)
     print("SMOKE TEST — AGENT BEHAVIOR EVAL SPEC")
@@ -133,6 +134,15 @@ def main():
         and "sources_or_locations_actually_checked" in agent_eval_runner
         and "model_or_harness" in agent_eval_runner
         and "repository_ref_used" in agent_eval_runner,
+        failures,
+    )
+    require(
+        "agent eval harness isolates each case in a fresh subprocess",
+        "subprocess.run(" in agent_eval_harness
+        and "fresh_subprocess_per_case" in agent_eval_harness
+        and "This harness captures raw evidence only" in agent_eval_harness
+        and "pending_explicit_grading" in agent_eval_harness
+        and "repository_ref_used" in agent_eval_harness,
         failures,
     )
 
