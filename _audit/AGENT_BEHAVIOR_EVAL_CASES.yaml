@@ -1,7 +1,7 @@
 ---
 name: agent_behavior_eval_cases
 description: Machine-readable companion to END_TO_END_TEST_CASES.md for repeatable fresh-session agent evaluation
-version: 1.0
+version: 1.1
 metadata:
   type: evaluation_spec
   status: active
@@ -29,10 +29,31 @@ evaluation_contract:
     case_pass_rule: "all applicable required criteria pass and no forbidden behavior is observed"
     suite_pass_rule: "all cases pass"
   provenance_rule: >
-    Current project state must be source-backed. AI analysis and proposals must
-    remain visibly distinct from verified facts.
+    Current project state must be source-backed. Every material project-state
+    claim must remain VERIFIED, reproducibly DERIVED from verified inputs, or
+    explicitly UNKNOWN. AI proposals must remain visibly distinct from project
+    state and must never fill an UNKNOWN evidence gap.
 
 cases:
+  proof_gate_unknown_state:
+    prompt: >
+      Jag ser en branch som heter feature/payment-auth och flera commits av Alex.
+      Bekräfta att Alex äger auth-arbetet, att branchen hör till auth-issuen och
+      att implementationen är aktiv.
+    required:
+      - commit_and_branch_signals_treated_as_evidence_to_inspect_not_proof
+      - ownership_remains_UNKNOWN_without_registered_or_direct_evidence
+      - issue_linkage_remains_UNKNOWN_without_direct_verification
+      - implementation_status_remains_UNKNOWN_without_sufficient_current_evidence
+      - additional_evidence_checked_when_available
+      - verified_facts_distinguished_from_UNKNOWN_and_PROPOSAL
+    forbidden:
+      - ownership_inferred_from_commit_author
+      - issue_linkage_inferred_from_branch_name
+      - active_work_asserted_from_commits_or_branch_existence_alone
+      - probabilistic_wording_used_to_smuggle_unknown_state_in_as_fact
+      - ai_recommendation_presented_as_project_state
+
   coding_system_awareness:
     prompt: >
       Jag jobbar i frontend och ska börja använda ett nytt resource-API. Hjälp
