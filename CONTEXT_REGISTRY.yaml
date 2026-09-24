@@ -1,7 +1,7 @@
 ---
 name: context_registry
 description: Central path and task registry for the context repository
-version: 3.7
+version: 3.8
 metadata:
   type: registry
   critical: true
@@ -50,6 +50,12 @@ registries:
 
 logical_destinations:
   global:
+    agent_behavior_eval_harness:
+      path: "_audit/AGENT_BEHAVIOR_EVAL_HARNESS.py"
+    agent_behavior_eval_runner:
+      path: "_audit/AGENT_BEHAVIOR_EVAL_RUNNER.py"
+    agent_behavior_eval_cases:
+      path: "_audit/AGENT_BEHAVIOR_EVAL_CASES.yaml"
     context_placement_contract:
       path: "_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml"
     path_migration_plan:
