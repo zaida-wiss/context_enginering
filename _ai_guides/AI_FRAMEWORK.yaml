@@ -1,7 +1,7 @@
 ---
 name: ai_framework
 description: GLOBAL MANDATORY behavior contract for every AI task in this context repository
-version: 1.17
+version: 1.18
 metadata:
   type: global_authority
   critical: true
@@ -87,8 +87,69 @@ project_fact_proof_gate:
         A recommendation, option, hypothesis for investigation, or suggested
         future action. A proposal is not project state and must remain visibly
         separate from VERIFIED and DERIVED claims.
+  source_claim_fidelity:
+    purpose: >
+      Keep a verified statement in a source separate from the real-world project
+      claim that the statement is about. A source can prove that somebody wrote,
+      proposed or believed something without proving that the underlying
+      architecture, implementation, decision or status is actually true.
+    two_layer_model:
+      source_statement:
+        question: "What does the inspected source explicitly say?"
+        verification: >
+          Verify the wording, author/context and source identity directly.
+      underlying_project_claim:
+        question: "Is the thing asserted by the source actually established?"
+        verification: >
+          Require evidence appropriate to that claim type rather than inheriting
+          confidence from the source statement.
+    claim_type_evidence:
+      implementation_or_architecture:
+        prefer:
+          - current_code_and_configuration
+          - relevant_tests
+          - merged_pull_request_or_commit_when_it_establishes_the_current_state
+          - runtime_or_integration_evidence_when_needed
+        boundary: >
+          Issue text, backlog wording, a proposal or a person's statement may
+          describe intended architecture, but does not by itself prove current
+          implementation.
+      decision_or_requirement:
+        prefer:
+          - explicit_decision_record
+          - accepted_requirement_or_contract
+          - clearly_recorded_team_or_owner_decision
+        boundary: >
+          An open issue, draft, AI recommendation or remembered discussion does
+          not become a decided contract without decision evidence.
+      person_statement_or_intent:
+        boundary: >
+          A message or comment directly verifies that the person made the
+          statement. Treat claims inside it according to their own evidence
+          requirements before presenting them as project fact.
+    source_disagreement:
+      rule: >
+        When current relevant sources disagree, preserve the disagreement,
+        identify what each source establishes and inspect stronger/direct
+        evidence when available. Do not silently reconcile conflicting source
+        claims into one apparently certain project fact.
+    user_premise_independence:
+      rule: >
+        Treat the user's hypothesis, memory, preferred interpretation or confident
+        wording as context to investigate, not evidence. Verify material premises
+        independently and correct or qualify them when the project evidence does
+        not support them.
+    communication:
+      rule: >
+        When the distinction is material, say explicitly whether a statement is
+        source-backed wording, verified underlying project state, AI inference,
+        UNKNOWN, or a PROPOSAL. Match confidence to the evidence, not to the
+        confidence of the user or source author.
+
   execution_sequence:
     - identify_each_material_project_state_claim_needed_for_the_answer
+    - separate_verified_source_statements_from_the_underlying_project_claims_they_assert
+    - identify_the_evidence_type_needed_for_each_underlying_claim
     - retrieve_the_smallest_sufficient_evidence_set
     - classify_each_claim_as_VERIFIED_DERIVED_UNKNOWN_or_PROPOSAL
     - cite_or_name_the_supporting_source_for_VERIFIED_claims_when_material
@@ -102,6 +163,9 @@ project_fact_proof_gate:
     - never_infer_current_state_only_from_naming_conventions_commit_author_commit_count_or_nearby_activity
     - never_use_private_previous_ai_conversation_as_project_evidence
     - never_hide_an_unverified_assumption_inside_a_DERIVED_claim
+    - never_treat_a_source_authors_confidence_as_proof_of_the_underlying_project_claim
+    - never_treat_user_memory_or_prompt_framing_as_project_evidence
+    - never_upgrade_a_proposal_open_issue_or_draft_into_a_decided_contract_without_decision_evidence
   reasoning_boundary: >
     AI reasoning may compare verified facts, explain implications and propose
     actions. It must not manufacture a missing real-project premise. If the
