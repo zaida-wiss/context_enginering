@@ -91,6 +91,7 @@ def main():
     placement_contract = read("_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml")
     migration_plan = read("_ai_guides/context/PATH_MIGRATION_PLAN.yaml")
     agent_eval = read("_audit/AGENT_BEHAVIOR_EVAL_CASES.yaml")
+    agent_eval_runner = read("_audit/AGENT_BEHAVIOR_EVAL_RUNNER.py")
 
     print("=" * 80)
     print("SMOKE TEST — AGENT BEHAVIOR EVAL SPEC")
@@ -123,6 +124,15 @@ def main():
     require(
         "agent eval does not claim static CI proves model behavior",
         "static_ci_can_validate_this_spec_but_cannot_by_itself_prove_model_behavior" in agent_eval,
+        failures,
+    )
+    require(
+        "agent eval has a harness-agnostic evidence runner",
+        "This runner is intentionally harness-agnostic" in agent_eval_runner
+        and "response_text" in agent_eval_runner
+        and "sources_or_locations_actually_checked" in agent_eval_runner
+        and "model_or_harness" in agent_eval_runner
+        and "repository_ref_used" in agent_eval_runner,
         failures,
     )
 
