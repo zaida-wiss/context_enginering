@@ -90,6 +90,41 @@ def main():
     context_routing = read("_ai_guides/context/CONTEXT_ROUTING.yaml")
     placement_contract = read("_ai_guides/context/CONTEXT_PLACEMENT_CONTRACT.yaml")
     migration_plan = read("_ai_guides/context/PATH_MIGRATION_PLAN.yaml")
+    agent_eval = read("_audit/AGENT_BEHAVIOR_EVAL_CASES.yaml")
+
+    print("=" * 80)
+    print("SMOKE TEST — AGENT BEHAVIOR EVAL SPEC")
+    print("=" * 80)
+    require(
+        "machine-readable agent behavior eval spec is active",
+        "name: agent_behavior_eval_cases" in agent_eval
+        and "status: ACTIVE EVALUATION SPEC" in agent_eval,
+        failures,
+    )
+    for case_id in [
+        "coding_system_awareness:",
+        "issue_creation_small_ui:",
+        "issue_creation_api_contract:",
+        "sprint_planning:",
+        "monday_meeting_presentation:",
+    ]:
+        require(
+            f"agent eval contains {case_id[:-1]}",
+            case_id in agent_eval,
+            failures,
+        )
+    require(
+        "agent eval requires fresh sessions and evidence trace",
+        "execution_mode: fresh_session" in agent_eval
+        and "sources_or_locations_actually_checked" in agent_eval
+        and "preserve_raw_response_for_review" in agent_eval,
+        failures,
+    )
+    require(
+        "agent eval does not claim static CI proves model behavior",
+        "static_ci_can_validate_this_spec_but_cannot_by_itself_prove_model_behavior" in agent_eval,
+        failures,
+    )
 
     print("=" * 80)
     print("SMOKE TEST 0 — CONTEXT INGESTION + EXACT PLACEMENT")
