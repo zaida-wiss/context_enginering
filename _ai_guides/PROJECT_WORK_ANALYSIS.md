@@ -1,7 +1,7 @@
 ---
 name: project_work_analysis
 description: Global evidence-driven project analysis for implementation, planning, review and reporting
-version: 1.7
+version: 1.8
 metadata:
   type: global_ai_authority
   scope: all_projects
@@ -230,19 +230,44 @@ repayment. Do not create cleanup work merely for aesthetic preference.
 
 ### Canonical new-issue proposal table
 
-New issue proposals must first be delivered in a decision-friendly comparison
-table using these columns, in this order:
+New issue proposals must first be delivered as one row per proposed issue using
+these columns, in this exact order:
 
-| Priority | Issue proposal | Core flow | Dependencies | Risk/collision | Technical debt | Recommended order | Why now? |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Title** | **Body** | **Assignees** | **Status** | **Priority** | **Labels** | **Estimate** |
+| --- | --- | --- | --- | --- | --- | --- |
 
-The table is the proposal layer, not the final GitHub issue body. Do not present
-an AI proposal as an already-decided team commitment.
+The columns map to the issue and project-planning fields the team needs:
 
-After the user/team selects a proposal for creation, expand it into the
-project's applicable issue format, including clear purpose/problem, scope,
-measurable acceptance criteria, relevant technical context, dependencies and
-readiness information when applicable.
+- **Title** — the proposed final issue title, following verified project naming
+  conventions when such conventions exist.
+- **Body** — the complete proposed issue body. Generate it from
+  `_ai_guides/project/templates/ISSUE_BODY.md` and keep only the sections that
+  are relevant to the actual change. The body must make the problem/need and
+  intended outcome clear, include measurable Acceptance Criteria, and include
+  relevant dependencies/contracts, testing, decisions, risk analysis and
+  applicable Definition of Done when those areas apply.
+- **Assignees** — verified GitHub username(s) when responsibility is established.
+- **Status** — the verified or explicitly proposed project-board status.
+- **Priority** — the verified or explicitly proposed priority.
+- **Labels** — verified existing labels or clearly proposed labels that fit the
+  issue.
+- **Estimate** — the verified or explicitly proposed estimate when the project
+  uses estimates.
+
+When a field is not established by current evidence or an explicit user/team
+decision, leave the table cell blank rather than inventing a value. A blank cell
+means unset/unknown, not an inferred default.
+
+The table is the proposal layer. Do not present an AI proposal as an
+already-decided team commitment. Material reasoning such as core-flow impact,
+dependencies, collision risk, sequencing and technical-debt effect must still be
+performed before the row is generated and reflected in **Body** where it changes
+scope, readiness, Acceptance Criteria or implementation obligations.
+
+After the user/team selects a row for creation, create the GitHub issue from the
+selected **Title**, **Body**, **Assignees** and **Labels**, and apply **Status**,
+**Priority** and **Estimate** through the project's supported project-management
+fields when those values are set and the available integration supports them.
 
 ## Sequencing
 
