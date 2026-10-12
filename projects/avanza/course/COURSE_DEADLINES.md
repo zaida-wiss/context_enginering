@@ -68,3 +68,20 @@ Originaldokumentet finns oförändrat i
 [`source_documents/DM_UX_FEED_FORWARD_INSTRUCTIONS.pdf`](source_documents/DM_UX_FEED_FORWARD_INSTRUCTIONS.pdf).
 
 Source evidence: `DM_UX_FEED_FORWARD_INSTRUCTIONS` och `CHAS_BACKOFFICE_ANNOUNCEMENTS`.
+
+
+---
+
+## Kvaldemo — kvalplan och live-demo
+
+**Kvalplan:** torsdag **15 oktober 2026 kl. 17.00** i **Canvas**. Högst **en halv sida**. Ta fram planen som team och bolla den med PL.
+
+Planen måste beskriva **(1)** demomanus minut för minut och ansvariga, **(2)** kärnflödet/MVP steg för steg, **(3)** plan B vid teknikproblem, **(4)** medveten avgränsning och motivering, **(5)** tre förväntade kundfrågor och ansvarig svarsperson.
+
+**Kvaldemo:** torsdag **22 oktober 2026** i **Zoom**. Varje team har 20 minuter: 10 min demo, 6 min kundfrågor/feed forward och 4 min byte. Teamordningen lottas. Kundblock: 09.00–10.00, 10.15–11.15, 12.00–13.00 och 13.15–14.15; Avanza-teamets specifika block är inte angivet i instruktionen.
+
+Kunden bedömer **kundnytta**, **trygghet och kvalitet**, samt **teknikval och presentation**. Kunden väljer ett team till finalen.
+
+**Slutleverans v2:** onsdag **4 november 2026 kl. 15.00**. Teamet ska agera på kundens feed forward tillsammans med PL, även om det inte går vidare. Detta är ett kurskrav.
+
+Källa: användaruppladdad `Kvaldemo – Instruktion.pdf` (3 sidor). Se [KVALDEMO_INSTRUCTIONS.md](KVALDEMO_INSTRUCTIONS.md) för instruktionens innehåll. **PDF-originalet återstår att ladda upp** under `source_documents/KVALDEMO_INSTRUCTIONS.pdf`.
